@@ -1,0 +1,66 @@
+/*
+ * Copyright (c) 2011 chargebee.com
+ * All Rights Reserved.
+ */
+package com.chargebee.internal;
+
+import com.chargebee.models.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class ResultBase {
+
+    private JSONObject jsonObj;
+
+    public ResultBase(JSONObject jsonObj) {
+        this.jsonObj = jsonObj;
+    }
+
+    public Subscription subscription() {
+        return (Subscription)get("subscription");
+    }
+
+    public Customer customer() {
+        return (Customer)get("customer");
+    }
+
+    public Card card() {
+        return (Card)get("card");
+    }
+
+    public Invoice invoice() {
+        return (Invoice)get("invoice");
+    }
+
+    public Transaction transaction() {
+        return (Transaction)get("transaction");
+    }
+
+    public Event event() {
+        return (Event)get("event");
+    }
+
+    public HostedPage hostedPage() {
+        return (HostedPage)get("hosted_page");
+    }
+
+    private Resource get(String key) {
+        JSONObject modelJson = jsonObj.optJSONObject(key);
+        if(modelJson == null) {
+            return null;
+        }
+        Class<Resource> modelClaz = ClazzUtil.getClaz(key);
+        return ClazzUtil.createInstance(modelClaz, modelJson);
+    }
+
+    @Override
+    public String toString() {
+        try {
+            return jsonObj.toString(2);
+        } catch (JSONException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
+}

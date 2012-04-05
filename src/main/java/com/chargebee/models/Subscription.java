@@ -1,0 +1,340 @@
+/*
+ * Copyright (c) 2012 chargebee.com
+ * All Rights Reserved.
+ */
+package com.chargebee.models;
+
+import com.chargebee.*;
+import com.chargebee.internal.*;
+import com.chargebee.internal.HttpUtil.Method;
+import com.chargebee.models.enums.*;
+import org.json.*;
+import java.io.*;
+import java.sql.Timestamp;
+import java.util.*;
+
+public class Subscription extends Resource<Subscription> {
+
+    public enum Status {
+        IN_TRIAL,
+        ACTIVE,
+        NON_RENEWING,
+        CANCELLED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class Addon extends Resource<Addon> {
+        public Addon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Integer quantity() {
+            return optInteger("quantity");
+        }
+
+    }
+
+    //Constructors
+    //============
+
+    public Subscription(String jsonStr) {
+        super(jsonStr);
+    }
+    
+    public Subscription(JSONObject jsonObj) {
+        super(jsonObj);
+    }
+
+    // Fields
+    //=======
+
+    public String id() {
+        return reqString("id");
+    }
+
+    public String planId() {
+        return reqString("plan_id");
+    }
+
+    public Integer planQuantity() {
+        return reqInteger("plan_quantity");
+    }
+
+    public Status status() {
+        return reqEnum("status", Status.class);
+    }
+
+    public Timestamp trialStart() {
+        return optTimestamp("trial_start");
+    }
+
+    public Timestamp trialEnd() {
+        return optTimestamp("trial_end");
+    }
+
+    public Timestamp currentTermStart() {
+        return optTimestamp("current_term_start");
+    }
+
+    public Timestamp currentTermEnd() {
+        return optTimestamp("current_term_end");
+    }
+
+    public Timestamp createdAt() {
+        return optTimestamp("created_at");
+    }
+
+    public Timestamp activatedAt() {
+        return optTimestamp("activated_at");
+    }
+
+    public Timestamp cancelledAt() {
+        return optTimestamp("cancelled_at");
+    }
+
+    public Integer dueInvoicesCount() {
+        return optInteger("due_invoices_count");
+    }
+
+    public Timestamp dueSince() {
+        return optTimestamp("due_since");
+    }
+
+    public Integer totalDues() {
+        return optInteger("total_dues");
+    }
+
+    public List<Subscription.Addon> addons() {
+        return optList("addons", Subscription.Addon.class);
+    }
+
+    // Operations
+    //===========
+
+    public static CreateRequest create() throws IOException {
+        String url = url("subscriptions");
+        return new CreateRequest(Method.POST, url);
+    }
+
+    public static ListRequest list() throws IOException {
+        String url = url("subscriptions");
+        return new ListRequest(url);
+    }
+
+    public static Request retrieve(String id) throws IOException {
+        String url = url("subscriptions", nullCheck(id));
+        return new Request(Method.GET, url);
+    }
+
+    public static UpdateRequest update(String id) throws IOException {
+        String url = url("subscriptions", nullCheck(id));
+        return new UpdateRequest(Method.POST, url);
+    }
+
+    public static CancelRequest cancel(String id) throws IOException {
+        String url = url("subscriptions", nullCheck(id), "cancel");
+        return new CancelRequest(Method.POST, url);
+    }
+
+    public static Request reactivate(String id) throws IOException {
+        String url = url("subscriptions", nullCheck(id), "reactivate");
+        return new Request(Method.POST, url);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class CreateRequest extends Request {
+
+        private Params params = new Params();
+
+        private CreateRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public CreateRequest id(String id) {
+            params.add("id", id);
+            return this;
+        }
+
+        public CreateRequest planId(String planId) {
+            params.add("plan_id", planId);
+            return this;
+        }
+
+        public CreateRequest planQuantity(Integer planQuantity) {
+            params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public CreateRequest customerEmail(String customerEmail) {
+            params.addOpt("customer[email]", customerEmail);
+            return this;
+        }
+
+        public CreateRequest customerFirstName(String customerFirstName) {
+            params.addOpt("customer[first_name]", customerFirstName);
+            return this;
+        }
+
+        public CreateRequest customerLastName(String customerLastName) {
+            params.addOpt("customer[last_name]", customerLastName);
+            return this;
+        }
+
+        public CreateRequest customerCompany(String customerCompany) {
+            params.addOpt("customer[company]", customerCompany);
+            return this;
+        }
+
+        public CreateRequest cardGateway(Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public CreateRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public CreateRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public CreateRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CreateRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CreateRequest cardCvv(Integer cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public CreateRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public CreateRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public CreateRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public CreateRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CreateRequest addonId(int index, String addonId) {
+            params.addOpt("addon[id][" + index + "]", addonId);
+            return this;
+        }
+
+        public CreateRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateRequest extends Request {
+
+        private Params params = new Params();
+
+        private UpdateRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public UpdateRequest planId(String planId) {
+            params.addOpt("plan_id", planId);
+            return this;
+        }
+
+        public UpdateRequest planQuantity(Integer planQuantity) {
+            params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public UpdateRequest replaceAddonList(Boolean replaceAddonList) {
+            params.addOpt("replace_addon_list", replaceAddonList);
+            return this;
+        }
+
+        public UpdateRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+        public UpdateRequest addonId(int index, String addonId) {
+            params.addOpt("addon[id][" + index + "]", addonId);
+            return this;
+        }
+
+        public UpdateRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CancelRequest extends Request {
+
+        private Params params = new Params();
+
+        private CancelRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public CancelRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+}
