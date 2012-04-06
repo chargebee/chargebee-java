@@ -259,12 +259,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
         public CreateRequest addonId(int index, String addonId) {
-            params.addOpt("addon[id][" + index + "]", addonId);
+            params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
 
         public CreateRequest addonQuantity(int index, Integer addonQuantity) {
-            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
 
@@ -303,12 +303,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
         public UpdateRequest addonId(int index, String addonId) {
-            params.addOpt("addon[id][" + index + "]", addonId);
+            params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
 
         public UpdateRequest addonQuantity(int index, Integer addonQuantity) {
-            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
 

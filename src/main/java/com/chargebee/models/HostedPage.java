@@ -176,12 +176,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public CheckoutNewRequest addonId(int index, String addonId) {
-            params.addOpt("addon[id][" + index + "]", addonId);
+            params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
 
         public CheckoutNewRequest addonQuantity(int index, Integer addonQuantity) {
-            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
 
@@ -230,12 +230,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public CheckoutExistingRequest addonId(int index, String addonId) {
-            params.addOpt("addon[id][" + index + "]", addonId);
+            params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
 
         public CheckoutExistingRequest addonQuantity(int index, Integer addonQuantity) {
-            params.addOpt("addon[quantity][" + index + "]", addonQuantity);
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
 
