@@ -57,8 +57,8 @@ public class Transaction extends Resource<Transaction> {
         return reqEnum("gateway", Gateway.class);
     }
 
-    public Long invoiceId() {
-        return reqLong("invoice_id");
+    public String invoiceId() {
+        return reqString("invoice_id");
     }
 
     public Type type() {
