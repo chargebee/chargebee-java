@@ -1,8 +1,3 @@
-
-/*
- * Copyright (c) 2011 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee;
 
 import com.chargebee.internal.ResultBase;
@@ -48,7 +43,7 @@ public class ListResult extends ArrayList<ListResult.Entry> {
         String cursor = respJson.optString("next_offset");
         return (cursor == null || cursor.isEmpty()) ? null : cursor;
     }
-    
+
     @Override
     public String toString() {
         try {

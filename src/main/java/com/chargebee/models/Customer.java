@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.models;
 
 import com.chargebee.*;
@@ -20,7 +16,7 @@ public class Customer extends Resource<Customer> {
         VALID,
         ABOUT_TO_EXPIRE,
         EXPIRED,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -30,7 +26,7 @@ public class Customer extends Resource<Customer> {
     public Customer(String jsonStr) {
         super(jsonStr);
     }
-    
+
     public Customer(JSONObject jsonObj) {
         super(jsonObj);
     }

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.models;
 
 import com.chargebee.*;
@@ -20,7 +16,7 @@ public class Subscription extends Resource<Subscription> {
         ACTIVE,
         NON_RENEWING,
         CANCELLED,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -45,7 +41,7 @@ public class Subscription extends Resource<Subscription> {
     public Subscription(String jsonStr) {
         super(jsonStr);
     }
-    
+
     public Subscription(JSONObject jsonObj) {
         super(jsonObj);
     }

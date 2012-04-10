@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.models;
 
 import com.chargebee.*;
@@ -21,7 +17,7 @@ public class Event extends Resource<Event> {
         SUCCEEDED,
         RE_SCHEDULED,
         FAILED,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -31,7 +27,7 @@ public class Event extends Resource<Event> {
     public Event(InputStream is) throws IOException {
         super(is);
     }
-    
+
     public Event(BufferedReader rd) throws IOException {
         super(rd);
     }
@@ -39,7 +35,7 @@ public class Event extends Resource<Event> {
     public Event(String jsonStr) {
         super(jsonStr);
     }
-    
+
     public Event(JSONObject jsonObj) {
         super(jsonObj);
     }

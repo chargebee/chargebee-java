@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.models;
 
 import com.chargebee.*;
@@ -19,7 +15,7 @@ public class HostedPage extends Resource<HostedPage> {
         CHECKOUT_NEW,
         CHECKOUT_EXISTING,
         UPDATE_CARD,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -29,14 +25,14 @@ public class HostedPage extends Resource<HostedPage> {
         SUCCEEDED,
         CANCELLED,
         FAILED,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
     public enum FailureReason {
         CARD_ERROR,
         SERVER_ERROR,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -46,7 +42,7 @@ public class HostedPage extends Resource<HostedPage> {
     public HostedPage(String jsonStr) {
         super(jsonStr);
     }
-    
+
     public HostedPage(JSONObject jsonObj) {
         super(jsonObj);
     }

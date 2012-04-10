@@ -1,19 +1,15 @@
-/*
- * Copyright (c) 2011 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee;
 
 import org.json.*;
 
 public class APIException extends RuntimeException {
-    
+
     private JSONObject jsonObj;
     public final int httpCode;
     public final String code;
     public final String message;
     public final String param;
-    
+
     public APIException(JSONObject jsonObj) {
         this.jsonObj = jsonObj;
         try {

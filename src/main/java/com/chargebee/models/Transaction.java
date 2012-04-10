@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.models;
 
 import com.chargebee.*;
@@ -19,7 +15,7 @@ public class Transaction extends Resource<Transaction> {
         AUTHORIZE,
         PAYMENT,
         REFUND,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -27,7 +23,7 @@ public class Transaction extends Resource<Transaction> {
         SUCCESS,
         VOIDED,
         FAILURE,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a 
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
@@ -37,7 +33,7 @@ public class Transaction extends Resource<Transaction> {
     public Transaction(String jsonStr) {
         super(jsonStr);
     }
-    
+
     public Transaction(JSONObject jsonObj) {
         super(jsonObj);
     }
@@ -57,8 +53,8 @@ public class Transaction extends Resource<Transaction> {
         return reqEnum("gateway", Gateway.class);
     }
 
-    public Long invoiceId() {
-        return reqLong("invoice_id");
+    public String invoiceId() {
+        return reqString("invoice_id");
     }
 
     public Type type() {

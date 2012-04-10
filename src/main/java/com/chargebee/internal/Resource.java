@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.chargebee.internal;
 
 import com.chargebee.Environment;
@@ -20,7 +16,7 @@ import org.json.*;
 public class Resource<T> {
 
     private static final Logger logger = Logger.getLogger(Resource.class.getName());
-    
+
     public final JSONObject jsonObj;
 
     private static final String unknown = "_UNKNOWN";
@@ -36,15 +32,15 @@ public class Resource<T> {
             throw new RuntimeException(jexp);
         }
     }
-    
+
     public Resource(InputStream is) throws IOException {
         this(new BufferedReader(new InputStreamReader(is)));
     }
-    
+
     public Resource(BufferedReader rd) throws IOException {
         this(getAsString(rd));
     }
-    
+
     private static String getAsString(BufferedReader rd) throws IOException {
         StringBuilder buf = new StringBuilder();
         String line = null;
@@ -125,11 +121,11 @@ public class Resource<T> {
            return (E) Enum.valueOf(enumClass, value.toUpperCase());
         }catch(Exception ex){
            logger.severe(" The property " + key + " has unexpected value " + value);
-           return (E) Enum.valueOf(enumClass, unknown);            
+           return (E) Enum.valueOf(enumClass, unknown);
         }
     }
-    
-    
+
+
 
     /**
      * @param <S> The sub-resource type

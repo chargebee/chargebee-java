@@ -4,14 +4,43 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.chargebee</groupId>
     <artifactId>chargebee-java</artifactId>
+    <version>1.0.0</version>
 
     <packaging>jar</packaging>
-    <version>1.0.0</version>
-    <name>chargebee-java</name>
 
-    <url>http://maven.apache.org</url>
+    <name>ChargeBee Java</name>
+    <description>Java client library for ChargeBee API</description>
+
+    <url>https://github.com/chargebee/chargebee-java</url>
+
+    <organization>
+        <name>ChargeBee</name>
+        <url>http://www.chargebee.com</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:git@github.com:chargebee/chargebee-java.git</connection>
+        <developerConnection>scm:git:git@github.com:chargebee/chargebee-java.git</developerConnection>
+        <url>https://github.com/chargebee/chargebee-java.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>kps</id>
+            <name>KP Saravanan</name>
+            <email>kps@chargebee.com</email>
+            <timezone>+5:30</timezone>
+        </developer>
+        <developer>
+            <id>thiyagu</id>
+            <name>T Thiyagarajan</name>
+            <email>thiyagu@chargebee.com</email>
+            <timezone>+5:30</timezone>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -34,10 +63,6 @@
         </dependency>
     </dependencies>
 
-    <organization>
-        <name>Chargebee</name>
-        <url>http://www.chargebee.com</url>
-    </organization>
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -49,21 +74,20 @@
             <resource>
                 <directory>.</directory>
                 <includes>
-                    <include>VERSION</include>
+                    <include>LICENSE</include>
                 </includes>
             </resource>
         </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
+                <artifactId>maven-gpg-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <id>sign-artifacts</id>
                         <phase>verify</phase>
                         <goals>
-                                <goal>jar</goal>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -77,28 +101,19 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-            <!--
-            Use this if you want to build a jar with dependencies that
-            are just bundled together. This will have issues if there is are
-            version conflicts
-            -->
-            <!--plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
                 <executions>
                     <execution>
-                        <id>jar-with-dependencies</id>
-                        <phase>package</phase>
+                        <id>attach-sources</id>
                         <goals>
-                            <goal>single</goal>
+                            <goal>jar</goal>
                         </goals>
-                        <configuration>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                        </configuration>
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>jarjar-maven-plugin</artifactId>

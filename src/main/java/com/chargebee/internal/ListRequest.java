@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2011 chargebee.com
- * All Rights Reserved.
- */
 package com.chargebee.internal;
 
 import com.chargebee.Environment;
