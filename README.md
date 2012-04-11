@@ -5,14 +5,14 @@ The java library for integrating with ChargeBee Recurring Billing and Subscripti
 ## Installation
 
 ### Maven users
-Add the below dependency to your ```pom.xml```
-<pre><code>
-<dependency>
-  <groupId>com.chargebee</groupId>
-  <artifactId>chargebee-java</artifactId>
-  <version>1.0.0</version>
-</dependency>
-</code></pre>
+Add the below dependency to your ```pom.xml```:
+
+    <dependency>
+      <groupId>com.chargebee</groupId>
+      <artifactId>chargebee-java</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
 
 ### To download the jar directly
 
