@@ -81,7 +81,7 @@ public class Invoice extends Resource<Invoice> {
     //=======
 
     public String id() {
-        return reqString("id");
+        return optString("id");
     }
 
     public String subscriptionId() {

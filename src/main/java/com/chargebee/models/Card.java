@@ -74,11 +74,11 @@ public class Card extends Resource<Card> {
     }
 
     public Integer expiryMonth() {
-        return reqInteger("expiry_month");
+        return optInteger("expiry_month");
     }
 
     public Integer expiryYear() {
-        return reqInteger("expiry_year");
+        return optInteger("expiry_year");
     }
 
     public String maskedNumber() {
