@@ -126,6 +126,11 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
+        public CheckoutNewRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
         public CheckoutNewRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -197,6 +202,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
+            return this;
+        }
+
+        public CheckoutExistingRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
             return this;
         }
 
