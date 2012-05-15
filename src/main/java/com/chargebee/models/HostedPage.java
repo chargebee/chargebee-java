@@ -82,6 +82,10 @@ public class HostedPage extends Resource<HostedPage> {
         return optTimestamp("expires_at");
     }
 
+    public String coupon() {
+        return optString("coupon");
+    }
+
     // Operations
     //===========
 

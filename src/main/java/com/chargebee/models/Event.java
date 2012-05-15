@@ -48,7 +48,7 @@ public class Event extends Resource<Event> {
     }
 
     public Timestamp occurredAt() {
-        return optTimestamp("occurred_at");
+        return reqTimestamp("occurred_at");
     }
 
     public WebhookStatus webhookStatus() {

@@ -30,11 +30,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public Timestamp dateFrom() {
-            return optTimestamp("date_from");
+            return reqTimestamp("date_from");
         }
 
         public Timestamp dateTo() {
-            return optTimestamp("date_to");
+            return reqTimestamp("date_to");
         }
 
         public Integer unitAmount() {
@@ -93,7 +93,7 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public Timestamp startDate() {
-        return optTimestamp("start_date");
+        return reqTimestamp("start_date");
     }
 
     public Timestamp endDate() {
