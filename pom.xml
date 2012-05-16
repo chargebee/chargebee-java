@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chargebee</groupId>
-    <artifactId>chargebee-java</artifactId>
-    <version>1.0.2</version>
+    <artifactId>chargebee-java-rr</artifactId>
+    <version>v1.0.2-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
