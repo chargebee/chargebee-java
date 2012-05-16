@@ -302,13 +302,13 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest endOfTerm(Boolean endOfTerm) {
-            params.addOpt("end_of_term", endOfTerm);
+        public UpdateRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
             return this;
         }
 
-        public UpdateRequest coupon(String coupon) {
-            params.addOpt("coupon", coupon);
+        public UpdateRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
             return this;
         }
 
