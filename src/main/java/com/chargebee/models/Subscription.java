@@ -137,9 +137,9 @@ public class Subscription extends Resource<Subscription> {
         return new CancelRequest(Method.POST, url);
     }
 
-    public static Request reactivate(String id) throws IOException {
+    public static ReactivateRequest reactivate(String id) throws IOException {
         String url = url("subscriptions", nullCheck(id), "reactivate");
-        return new Request(Method.POST, url);
+        return new ReactivateRequest(Method.POST, url);
     }
 
 
@@ -324,6 +324,25 @@ public class Subscription extends Resource<Subscription> {
 
         public CancelRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ReactivateRequest extends Request {
+
+        private Params params = new Params();
+
+        private ReactivateRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
+            params.addOpt("trial_period_days", trialPeriodDays);
             return this;
         }
 

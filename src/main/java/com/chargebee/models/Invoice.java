@@ -22,7 +22,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
-            PLAN_CHARGE, ADDON_CHARGE, CHARGE, CREDIT, PLAN_PRORATED_CHARGE, PLAN_PRORATED_CREDIT, ADDON_PRORATED_CHARGE, ADDON_PRORATED_CREDIT;
+            PLAN_SETUP_CHARGE, PLAN_CHARGE, ADDON_CHARGE, CHARGE, CREDIT, PLAN_PRORATED_CHARGE, PLAN_PRORATED_CREDIT, ADDON_PRORATED_CHARGE, ADDON_PRORATED_CREDIT;
         }
 
         public LineItem(JSONObject jsonObj) {
@@ -30,11 +30,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public Timestamp dateFrom() {
-            return optTimestamp("date_from");
+            return reqTimestamp("date_from");
         }
 
         public Timestamp dateTo() {
-            return optTimestamp("date_to");
+            return reqTimestamp("date_to");
         }
 
         public Integer unitAmount() {
@@ -93,7 +93,7 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public Timestamp startDate() {
-        return optTimestamp("start_date");
+        return reqTimestamp("start_date");
     }
 
     public Timestamp endDate() {
