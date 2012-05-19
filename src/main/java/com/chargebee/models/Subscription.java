@@ -109,6 +109,10 @@ public class Subscription extends Resource<Subscription> {
         return optList("addons", Subscription.Addon.class);
     }
 
+    public String coupon() {
+        return optString("coupon");
+    }
+
     // Operations
     //===========
 
@@ -166,6 +170,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public CreateRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
             return this;
         }
 
@@ -290,6 +299,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
+            return this;
+        }
+
+        public UpdateRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
             return this;
         }
 

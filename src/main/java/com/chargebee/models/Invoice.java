@@ -21,10 +21,6 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class LineItem extends Resource<LineItem> {
-        public enum Type {
-            PLAN_SETUP_CHARGE, PLAN_CHARGE, ADDON_CHARGE, CHARGE, CREDIT, PLAN_PRORATED_CHARGE, PLAN_PRORATED_CREDIT, ADDON_PRORATED_CHARGE, ADDON_PRORATED_CREDIT;
-        }
-
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -48,10 +44,6 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class Discount extends Resource<Discount> {
-        public enum Type {
-            COUPON;
-        }
-
         public Discount(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -86,6 +78,10 @@ public class Invoice extends Resource<Invoice> {
 
     public String subscriptionId() {
         return reqString("subscription_id");
+    }
+
+    public Boolean recurring() {
+        return reqBoolean("recurring");
     }
 
     public Status status() {
@@ -142,5 +138,76 @@ public class Invoice extends Resource<Invoice> {
         return new ListRequest(url);
     }
 
+    public static ChargeRequest charge() throws IOException {
+        String url = url("invoices", "charge");
+        return new ChargeRequest(Method.POST, url);
+    }
+
+    public static ChargeAddonRequest chargeAddon() throws IOException {
+        String url = url("invoices", "charge_addon");
+        return new ChargeAddonRequest(Method.POST, url);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class ChargeRequest extends Request {
+
+        private Params params = new Params();
+
+        private ChargeRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public ChargeRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+        public ChargeRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+        public ChargeRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChargeAddonRequest extends Request {
+
+        private Params params = new Params();
+
+        private ChargeAddonRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public ChargeAddonRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+        public ChargeAddonRequest addonId(String addonId) {
+            params.add("addon_id", addonId);
+            return this;
+        }
+
+        public ChargeAddonRequest quantity(Integer quantity) {
+            params.addOpt("quantity", quantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }
