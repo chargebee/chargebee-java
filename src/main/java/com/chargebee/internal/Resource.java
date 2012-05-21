@@ -5,6 +5,7 @@ import java.io.*;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.*;
 
@@ -57,7 +58,15 @@ public class Resource<T> {
     public String optString(String key) {
         return optional(key, String.class);
     }
+    
+    public Boolean reqBoolean(String key) {
+        return assertReqProp(key, optional(key, Boolean.class));
+    }
 
+    public Boolean optBoolean(String key) {
+        return optional(key, Boolean.class);
+    }
+    
     public Integer reqInteger(String key) {
         return assertReqProp(key, optInteger( key));
     }
@@ -120,12 +129,10 @@ public class Resource<T> {
         try {
            return (E) Enum.valueOf(enumClass, value.toUpperCase());
         }catch(Exception ex){
-           logger.severe(" The property " + key + " has unexpected value " + value);
+           logger.log(Level.SEVERE, " The property {0} has unexpected value {1}", new Object[]{key, value});
            return (E) Enum.valueOf(enumClass, unknown);
         }
     }
-
-
 
     /**
      * @param <S> The sub-resource type
