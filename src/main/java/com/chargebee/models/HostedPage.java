@@ -126,11 +126,6 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
-        public CheckoutNewRequest coupon(String coupon) {
-            params.addOpt("coupon", coupon);
-            return this;
-        }
-
         public CheckoutNewRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -138,16 +133,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
-            return this;
-        }
-
-        public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
-            params.add("subscription[plan_id]", subscriptionPlanId);
-            return this;
-        }
-
-        public CheckoutNewRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
-            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
             return this;
         }
 
@@ -168,6 +153,21 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest customerCompany(String customerCompany) {
             params.addOpt("customer[company]", customerCompany);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionCoupon(String subscriptionCoupon) {
+            params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
         }
 
@@ -205,11 +205,6 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutExistingRequest coupon(String coupon) {
-            params.addOpt("coupon", coupon);
-            return this;
-        }
-
         public CheckoutExistingRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -227,6 +222,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
             params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionCoupon(String subscriptionCoupon) {
+            params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
         }
 
