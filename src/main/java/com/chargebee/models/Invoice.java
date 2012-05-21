@@ -22,7 +22,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
-            PLAN_CHARGE, ADDON_CHARGE, CHARGE, CREDIT, PLAN_PRORATED_CHARGE, PLAN_PRORATED_CREDIT, ADDON_PRORATED_CHARGE, ADDON_PRORATED_CREDIT;
+            PLAN_SETUP_CHARGE, PLAN_CHARGE, ADDON_CHARGE, CHARGE, CREDIT, PLAN_PRORATED_CHARGE, PLAN_PRORATED_CREDIT, ADDON_PRORATED_CHARGE, ADDON_PRORATED_CREDIT;
         }
 
         public LineItem(JSONObject jsonObj) {
