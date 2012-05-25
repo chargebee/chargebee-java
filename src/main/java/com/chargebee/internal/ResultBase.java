@@ -24,6 +24,10 @@ public class ResultBase {
         return (Card)get("card");
     }
 
+    public Address address() {
+        return (Address)get("address");
+    }
+
     public Invoice invoice() {
         return (Invoice)get("invoice");
     }
