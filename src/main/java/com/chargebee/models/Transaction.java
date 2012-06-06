@@ -53,6 +53,10 @@ public class Transaction extends Resource<Transaction> {
         return reqEnum("gateway", Gateway.class);
     }
 
+    public String description() {
+        return optString("description");
+    }
+
     public String invoiceId() {
         return reqString("invoice_id");
     }
@@ -89,8 +93,8 @@ public class Transaction extends Resource<Transaction> {
         return optLong("refunded_tx_id");
     }
 
-    public String refundMemo() {
-        return optString("refund_memo");
+    public Integer refundAmount() {
+        return optInteger("refund_amount");
     }
 
     public Timestamp voidedAt() {

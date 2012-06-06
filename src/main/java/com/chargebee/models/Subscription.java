@@ -20,6 +20,13 @@ public class Subscription extends Resource<Subscription> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum CancelReason {
+        NOT_PAID,
+        NO_CARD,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class Addon extends Resource<Addon> {
         public Addon(JSONObject jsonObj) {
             super(jsonObj);
@@ -91,6 +98,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Timestamp cancelledAt() {
         return optTimestamp("cancelled_at");
+    }
+
+    public CancelReason cancelReason() {
+        return optEnum("cancel_reason", CancelReason.class);
     }
 
     public Integer dueInvoicesCount() {
