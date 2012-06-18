@@ -88,10 +88,6 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("duration_month");
     }
 
-    public Date validTill() {
-        return optTimestamp("valid_till");
-    }
-
     public Integer maxRedemptions() {
         return optInteger("max_redemptions");
     }
@@ -114,6 +110,10 @@ public class Coupon extends Resource<Coupon> {
 
     public Timestamp archivedAt() {
         return optTimestamp("archived_at");
+    }
+
+    public Timestamp validTill() {
+        return optTimestamp("valid_till");
     }
 
     // Operations
