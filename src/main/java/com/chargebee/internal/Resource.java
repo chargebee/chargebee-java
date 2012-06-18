@@ -19,6 +19,22 @@ public class Resource<T> {
     private static final Logger logger = Logger.getLogger(Resource.class.getName());
 
     public final JSONObject jsonObj;
+    
+    public static void main(String[] args) {
+        try {
+            JSONObject json = new JSONObject("{\"tt1\":12.5,\"tt2\":1.07}");
+            //json.put("tt1", 12.1d);
+            //json.put("tt2", 1.01f);
+            System.out.println(json);
+            System.out.println(json.getDouble("tt1"));
+            System.out.println(json.getDouble("tt2"));
+            
+        } catch (Throwable th) {
+            th.printStackTrace();
+        } finally {
+            System.exit(0);
+        }
+    }
 
     private static final String unknown = "_UNKNOWN";
 
@@ -74,12 +90,25 @@ public class Resource<T> {
     public Integer optInteger(String key) {
         Integer value = optional( key, Integer.class);
         try{
-            return (value != null)? new Integer(value.intValue()):null;
+            return (value != null)? value : null;
         }catch(Exception ex){
             throw conversionException(key);
         }
     }
+    
+    public Double reqDouble(String key) {
+        return assertReqProp(key, reqDouble( key));
+    }
 
+    public Double optDouble(String key) {
+        Double value = optional( key, Double.class);
+        try{
+            return (value != null)? value : null;
+        }catch(Exception ex){
+            throw conversionException(key);
+        }
+    }
+    
     public Long reqLong(String key) {
         return assertReqProp(key, optLong( key));
     }

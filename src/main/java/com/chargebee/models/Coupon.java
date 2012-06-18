@@ -89,7 +89,7 @@ public class Coupon extends Resource<Coupon> {
     }
 
     public Date validTill() {
-        return optDate("valid_till");
+        return optTimestamp("valid_till");
     }
 
     public Integer maxRedemptions() {
