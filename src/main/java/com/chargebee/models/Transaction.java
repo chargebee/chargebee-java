@@ -93,10 +93,6 @@ public class Transaction extends Resource<Transaction> {
         return optLong("refunded_tx_id");
     }
 
-    public Integer refundAmount() {
-        return optInteger("refund_amount");
-    }
-
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
     }
