@@ -44,6 +44,18 @@ public class ResultBase {
         return (HostedPage)get("hosted_page");
     }
 
+    public Plan plan() {
+        return (Plan)get("plan");
+    }
+
+    public Addon addon() {
+        return (Addon)get("addon");
+    }
+
+    public Coupon coupon() {
+        return (Coupon)get("coupon");
+    }
+
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
         if(modelJson == null) {
