@@ -62,6 +62,10 @@ public class Plan extends Resource<Plan> {
         return reqInteger("price");
     }
 
+    public Integer period() {
+        return reqInteger("period");
+    }
+
     public PeriodUnit periodUnit() {
         return reqEnum("period_unit", PeriodUnit.class);
     }
