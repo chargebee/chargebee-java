@@ -82,6 +82,30 @@ public class Card extends Resource<Card> {
         return reqInteger("expiry_year");
     }
 
+    public String billingAddr1() {
+        return optString("billing_addr1");
+    }
+
+    public String billingAddr2() {
+        return optString("billing_addr2");
+    }
+
+    public String billingCity() {
+        return optString("billing_city");
+    }
+
+    public String billingState() {
+        return optString("billing_state");
+    }
+
+    public String billingCountry() {
+        return optString("billing_country");
+    }
+
+    public String billingZip() {
+        return optString("billing_zip");
+    }
+
     public String maskedNumber() {
         return optString("masked_number");
     }
