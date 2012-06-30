@@ -41,6 +41,14 @@ public class Invoice extends Resource<Invoice> {
             return optInteger("quantity");
         }
 
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public String description() {
+            return reqString("description");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
