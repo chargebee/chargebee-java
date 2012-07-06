@@ -185,6 +185,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest trialEnd(Timestamp trialEnd) {
+            params.addOpt("trial_end", trialEnd);
+            return this;
+        }
+
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -367,6 +372,12 @@ public class Subscription extends Resource<Subscription> {
             super(httpMeth, url);
         }
 
+        public ReactivateRequest trialEnd(Timestamp trialEnd) {
+            params.addOpt("trial_end", trialEnd);
+            return this;
+        }
+
+        @Deprecated
         public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
             params.addOpt("trial_period_days", trialPeriodDays);
             return this;

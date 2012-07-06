@@ -42,10 +42,14 @@ public class Params {
         } else if(c.isEnum()) {
             return value.toString().toLowerCase();
         } else if(c == Timestamp.class) {
-            return String.valueOf(((Timestamp)value).getTime());
+            return asUnixTimestamp((Timestamp)value);
         } else {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }
+    }
+    
+    private static String asUnixTimestamp(Timestamp ts) {
+        return String.valueOf(ts.getTime() / 1000);
     }
 
     @Override
