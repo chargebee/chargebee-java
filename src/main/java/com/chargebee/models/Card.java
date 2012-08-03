@@ -136,7 +136,7 @@ public class Card extends Resource<Card> {
         }
 
         public UpdateCardForCustomerRequest gateway(Gateway gateway) {
-            params.add("gateway", gateway);
+            params.addOpt("gateway", gateway);
             return this;
         }
 

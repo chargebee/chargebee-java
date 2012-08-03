@@ -74,6 +74,10 @@ public class HostedPage extends Resource<HostedPage> {
         return optString("pass_thru_content");
     }
 
+    public Boolean embedView() {
+        return reqBoolean("embed_view");
+    }
+
     public Timestamp createdAt() {
         return optTimestamp("created_at");
     }
@@ -131,8 +135,13 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest embedView(Boolean embedView) {
+            params.addOpt("embed_view", embedView);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
-            params.add("subscription[id]", subscriptionId);
+            params.addOpt("subscription[id]", subscriptionId);
             return this;
         }
 
@@ -177,7 +186,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public CheckoutNewRequest cardGateway(Gateway cardGateway) {
-            params.add("card[gateway]", cardGateway);
+            params.addOpt("card[gateway]", cardGateway);
             return this;
         }
 
@@ -215,6 +224,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest embedView(Boolean embedView) {
+            params.addOpt("embed_view", embedView);
+            return this;
+        }
+
         public CheckoutExistingRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -236,7 +250,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public CheckoutExistingRequest cardGateway(Gateway cardGateway) {
-            params.add("card[gateway]", cardGateway);
+            params.addOpt("card[gateway]", cardGateway);
             return this;
         }
 
@@ -264,13 +278,18 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
+        public UpdateCardRequest embedView(Boolean embedView) {
+            params.addOpt("embed_view", embedView);
+            return this;
+        }
+
         public UpdateCardRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
             return this;
         }
 
         public UpdateCardRequest cardGateway(Gateway cardGateway) {
-            params.add("card[gateway]", cardGateway);
+            params.addOpt("card[gateway]", cardGateway);
             return this;
         }
 

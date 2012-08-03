@@ -171,7 +171,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
         public CreateRequest id(String id) {
-            params.add("id", id);
+            params.addOpt("id", id);
             return this;
         }
 
