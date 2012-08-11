@@ -74,8 +74,8 @@ public class HostedPage extends Resource<HostedPage> {
         return optString("pass_thru_content");
     }
 
-    public Boolean embedView() {
-        return reqBoolean("embed_view");
+    public Boolean embed() {
+        return reqBoolean("embed");
     }
 
     public Timestamp createdAt() {
@@ -135,8 +135,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest embedView(Boolean embedView) {
-            params.addOpt("embed_view", embedView);
+        public CheckoutNewRequest embed(Boolean embed) {
+            params.addOpt("embed", embed);
             return this;
         }
 
@@ -224,8 +224,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutExistingRequest embedView(Boolean embedView) {
-            params.addOpt("embed_view", embedView);
+        public CheckoutExistingRequest embed(Boolean embed) {
+            params.addOpt("embed", embed);
             return this;
         }
 
@@ -278,8 +278,8 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
-        public UpdateCardRequest embedView(Boolean embedView) {
-            params.addOpt("embed_view", embedView);
+        public UpdateCardRequest embed(Boolean embed) {
+            params.addOpt("embed", embed);
             return this;
         }
 
