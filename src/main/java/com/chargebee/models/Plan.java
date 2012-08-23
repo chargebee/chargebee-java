@@ -90,6 +90,10 @@ public class Plan extends Resource<Plan> {
         return optTimestamp("archived_at");
     }
 
+    public Integer billingCycles() {
+        return optInteger("billing_cycles");
+    }
+
     public String redirectUrl() {
         return optString("redirect_url");
     }

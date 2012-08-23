@@ -130,6 +130,11 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
+        public CheckoutNewRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
         public CheckoutNewRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -212,6 +217,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         private CheckoutExistingRequest(Method httpMeth, String url) {
             super(httpMeth, url);
+        }
+
+        public CheckoutExistingRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
         }
 
         public CheckoutExistingRequest replaceAddonList(Boolean replaceAddonList) {

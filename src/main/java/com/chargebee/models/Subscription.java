@@ -89,6 +89,10 @@ public class Subscription extends Resource<Subscription> {
         return optTimestamp("current_term_end");
     }
 
+    public Integer remainingBillingCycles() {
+        return optInteger("remaining_billing_cycles");
+    }
+
     public Timestamp createdAt() {
         return optTimestamp("created_at");
     }
@@ -187,6 +191,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
+            return this;
+        }
+
+        public CreateRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
@@ -311,6 +320,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public UpdateRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
