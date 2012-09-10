@@ -229,6 +229,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest cardTmpToken(String cardTmpToken) {
+            params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
         public CreateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;

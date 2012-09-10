@@ -140,6 +140,11 @@ public class Card extends Resource<Card> {
             return this;
         }
 
+        public UpdateCardForCustomerRequest tmpToken(String tmpToken) {
+            params.addOpt("tmp_token", tmpToken);
+            return this;
+        }
+
         public UpdateCardForCustomerRequest firstName(String firstName) {
             params.addOpt("first_name", firstName);
             return this;

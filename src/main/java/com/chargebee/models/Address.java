@@ -37,12 +37,20 @@ public class Address extends Resource<Address> {
         return optString("last_name");
     }
 
+    public String company() {
+        return optString("company");
+    }
+
     public String addr() {
         return optString("addr");
     }
 
     public String extendedAddr() {
         return optString("extended_addr");
+    }
+
+    public String extendedAddr2() {
+        return optString("extended_addr2");
     }
 
     public String city() {
@@ -110,6 +118,11 @@ public class Address extends Resource<Address> {
             return this;
         }
 
+        public UpdateRequest company(String company) {
+            params.addOpt("company", company);
+            return this;
+        }
+
         public UpdateRequest addr(String addr) {
             params.addOpt("addr", addr);
             return this;
@@ -117,6 +130,11 @@ public class Address extends Resource<Address> {
 
         public UpdateRequest extendedAddr(String extendedAddr) {
             params.addOpt("extended_addr", extendedAddr);
+            return this;
+        }
+
+        public UpdateRequest extendedAddr2(String extendedAddr2) {
+            params.addOpt("extended_addr2", extendedAddr2);
             return this;
         }
 
