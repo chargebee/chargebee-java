@@ -343,6 +343,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest prorate(Boolean prorate) {
+            params.addOpt("prorate", prorate);
+            return this;
+        }
+
         public UpdateRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
