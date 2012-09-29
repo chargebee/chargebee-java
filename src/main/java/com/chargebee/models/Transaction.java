@@ -56,10 +56,6 @@ public class Transaction extends Resource<Transaction> {
         return optString("description");
     }
 
-    public String invoiceId() {
-        return reqString("invoice_id");
-    }
-
     public Type type() {
         return reqEnum("type", Type.class);
     }
