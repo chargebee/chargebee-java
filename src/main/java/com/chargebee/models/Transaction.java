@@ -20,7 +20,9 @@ public class Transaction extends Resource<Transaction> {
 
     public enum Status {
         SUCCESS,
+        SCHEDULED,
         VOIDED,
+        VOID_SCHEDULED,
         FAILURE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -54,6 +56,10 @@ public class Transaction extends Resource<Transaction> {
 
     public String description() {
         return optString("description");
+    }
+
+    public String invoiceId() {
+        return reqString("invoice_id");
     }
 
     public Type type() {

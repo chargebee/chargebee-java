@@ -207,8 +207,8 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public ChargeAddonRequest quantity(Integer quantity) {
-            params.addOpt("quantity", quantity);
+        public ChargeAddonRequest addonQuantity(Integer addonQuantity) {
+            params.addOpt("addon_quantity", addonQuantity);
             return this;
         }
 
