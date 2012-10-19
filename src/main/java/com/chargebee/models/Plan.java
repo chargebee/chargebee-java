@@ -78,6 +78,10 @@ public class Plan extends Resource<Plan> {
         return optEnum("trial_period_unit", TrialPeriodUnit.class);
     }
 
+    public Integer freeQuantity() {
+        return reqInteger("free_quantity");
+    }
+
     public Integer setupCost() {
         return optInteger("setup_cost");
     }

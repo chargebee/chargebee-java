@@ -328,6 +328,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest trialEnd(Timestamp trialEnd) {
+            params.addOpt("trial_end", trialEnd);
+            return this;
+        }
+
         public UpdateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -350,6 +355,76 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+        public UpdateRequest cardGateway(Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public UpdateRequest cardTmpToken(String cardTmpToken) {
+            params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public UpdateRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public UpdateRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public UpdateRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public UpdateRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public UpdateRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public UpdateRequest cardCvv(Integer cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public UpdateRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public UpdateRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public UpdateRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public UpdateRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public UpdateRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public UpdateRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
 
