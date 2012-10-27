@@ -12,7 +12,6 @@ import java.util.*;
 public class Invoice extends Resource<Invoice> {
 
     public enum Status {
-        DRAFT,
         PAID,
         PAYMENT_DUE,
         NOT_PAID,

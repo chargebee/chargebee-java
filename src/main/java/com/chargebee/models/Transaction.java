@@ -12,6 +12,7 @@ import java.util.*;
 public class Transaction extends Resource<Transaction> {
 
     public enum Type {
+        AUTHORIZATION,
         PAYMENT,
         REFUND,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
