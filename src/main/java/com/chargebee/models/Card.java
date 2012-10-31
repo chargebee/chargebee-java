@@ -49,7 +49,7 @@ public class Card extends Resource<Card> {
     }
 
     public Status status() {
-        return optEnum("status", Status.class);
+        return reqEnum("status", Status.class);
     }
 
     public Gateway gateway() {
