@@ -43,6 +43,25 @@ public class Subscription extends Resource<Subscription> {
 
     }
 
+    public static class Coupon extends Resource<Coupon> {
+        public Coupon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String couponId() {
+            return reqString("coupon_id");
+        }
+
+        public Timestamp applyTill() {
+            return optTimestamp("apply_till");
+        }
+
+        public Integer appliedCount() {
+            return reqInteger("applied_count");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -127,6 +146,10 @@ public class Subscription extends Resource<Subscription> {
 
     public String coupon() {
         return optString("coupon");
+    }
+
+    public List<Subscription.Coupon> coupons() {
+        return optList("coupons", Subscription.Coupon.class);
     }
 
     // Operations
