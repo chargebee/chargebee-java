@@ -14,7 +14,7 @@ public class Customer extends Resource<Customer> {
     public enum CardStatus {
         NO_CARD,
         VALID,
-        ABOUT_TO_EXPIRE,
+        EXPIRING,
         EXPIRED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
