@@ -373,6 +373,11 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, url);
         }
 
+        public CheckoutOnetimeAddonsRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
         public CheckoutOnetimeAddonsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
