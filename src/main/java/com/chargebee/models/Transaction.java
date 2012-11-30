@@ -46,7 +46,7 @@ public class Transaction extends Resource<Transaction> {
     }
 
     public String subscriptionId() {
-        return reqString("subscription_id");
+        return optString("subscription_id");
     }
 
     public Gateway gateway() {
@@ -73,10 +73,6 @@ public class Transaction extends Resource<Transaction> {
         return optString("id_at_gateway");
     }
 
-    public String maskedCardNumber() {
-        return reqString("masked_card_number");
-    }
-
     public String errorCode() {
         return optString("error_code");
     }
@@ -95,6 +91,10 @@ public class Transaction extends Resource<Transaction> {
 
     public Status status() {
         return reqEnum("status", Status.class);
+    }
+
+    public String maskedCardNumber() {
+        return reqString("masked_card_number");
     }
 
     // Operations
