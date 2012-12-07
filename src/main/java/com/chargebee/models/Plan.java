@@ -86,6 +86,10 @@ public class Plan extends Resource<Plan> {
         return optInteger("setup_cost");
     }
 
+    public Double downgradePenality() {
+        return optDouble("downgrade_penality");
+    }
+
     public Status status() {
         return reqEnum("status", Status.class);
     }
