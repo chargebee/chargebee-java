@@ -15,6 +15,7 @@ public class Invoice extends Resource<Invoice> {
         PAID,
         PAYMENT_DUE,
         NOT_PAID,
+        PENDING,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -130,8 +131,23 @@ public class Invoice extends Resource<Invoice> {
     // Operations
     //===========
 
+    public static AddChargeRequest addCharge(String id) throws IOException {
+        String url = url("invoices", nullCheck(id), "add_charge");
+        return new AddChargeRequest(Method.POST, url);
+    }
+
+    public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
+        String url = url("invoices", nullCheck(id), "add_addon_charge");
+        return new AddAddonChargeRequest(Method.POST, url);
+    }
+
     public static ListRequest list() throws IOException {
         String url = url("invoices");
+        return new ListRequest(url);
+    }
+
+    public static ListRequest invoicesForSubscription(String id) throws IOException {
+        String url = url("subscriptions", nullCheck(id), "invoices");
         return new ListRequest(url);
     }
 
@@ -140,9 +156,9 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.GET, url);
     }
 
-    public static ListRequest invoicesForSubscription(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id), "invoices");
-        return new ListRequest(url);
+    public static Request collect(String id) throws IOException {
+        String url = url("invoices", nullCheck(id), "collect");
+        return new Request(Method.POST, url);
     }
 
     public static ChargeRequest charge() throws IOException {
@@ -158,6 +174,54 @@ public class Invoice extends Resource<Invoice> {
 
     // Operation Request Classes
     //==========================
+
+    public static class AddChargeRequest extends Request {
+
+        private Params params = new Params();
+
+        private AddChargeRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public AddChargeRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+        public AddChargeRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddAddonChargeRequest extends Request {
+
+        private Params params = new Params();
+
+        private AddAddonChargeRequest(Method httpMeth, String url) {
+            super(httpMeth, url);
+        }
+
+        public AddAddonChargeRequest addonId(String addonId) {
+            params.add("addon_id", addonId);
+            return this;
+        }
+
+        public AddAddonChargeRequest addonQuantity(Integer addonQuantity) {
+            params.addOpt("addon_quantity", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class ChargeRequest extends Request {
 
