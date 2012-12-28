@@ -11,6 +11,13 @@ import java.util.*;
 
 public class Transaction extends Resource<Transaction> {
 
+    public enum PaymentMethod {
+        CARD,
+        OFFLINE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Type {
         AUTHORIZATION,
         PAYMENT,
@@ -47,6 +54,10 @@ public class Transaction extends Resource<Transaction> {
 
     public String subscriptionId() {
         return optString("subscription_id");
+    }
+
+    public PaymentMethod paymentMethod() {
+        return reqEnum("payment_method", PaymentMethod.class);
     }
 
     public Gateway gateway() {

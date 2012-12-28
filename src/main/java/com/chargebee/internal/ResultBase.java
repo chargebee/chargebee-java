@@ -43,6 +43,10 @@ public class ResultBase {
     public HostedPage hostedPage() {
         return (HostedPage)get("hosted_page");
     }
+    
+    public OfflineCheckout offlineCheckout() {
+        return (OfflineCheckout)get("offline_checkout");
+    }
 
     public Plan plan() {
         return (Plan)get("plan");
