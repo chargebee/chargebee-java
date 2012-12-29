@@ -147,7 +147,8 @@ public class HttpUtil {
     }
 
     private static String getAuthValue(Environment config) {
-        return "Basic " + Base64.encodeBase64String((config.apiKey + ":").getBytes()).replaceAll("\n", "");
+        return "Basic " + Base64.encodeBase64String((config.apiKey + ":").getBytes())
+                .replaceAll("\r?", "").replaceAll("\n?", "");
     }
 
     private static JSONObject getContentAsJSON(HttpURLConnection conn, boolean error) throws IOException {
