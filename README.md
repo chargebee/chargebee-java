@@ -10,25 +10,32 @@ Add the below dependency to your ```pom.xml```:
     <dependency>
       <groupId>com.chargebee</groupId>
       <artifactId>chargebee-java</artifactId>
-      <version>1.0.0</version>
+      <version>1.1.10</version>
     </dependency>
 
 
-### To download the jar directly
+### To get the latest jar
 
-  * Get the ChargeBee Java jar from https://github.com/chargebee/chargebee-java/downloads
+ChargeBee java jar is distributed as part of the release under the ```dist``` directory. Just checkout out the latest version by ```git checkout [latest release tag]```
+
+or
+
+Build the jar by running maven as follows: 
+
+<pre><code>git checkout [latest release tag]
+mvn clean package</code></pre> 
 
 ## Documentation
 
-  * <a href="https://apidocs.chargebee.com/docs/api?lang=java" target="_blank">API Reference</a>
+<a href="https://apidocs.chargebee.com/docs/api?lang=java" target="_blank">API Reference</a>
 
 ## Usage
 You can also copy the below code snippet from our
 <a href="https://apidocs.chargebee.com/docs/api?lang=java" target="_blank">API Reference</a>
 documentation. We have provided downloadable code for each API operation.
 
-<pre><code>
-import java.io.IOException;
+
+<pre><code>import java.io.IOException;
 import com.chargebee.*;
 import com.chargebee.models.*;
 import com.chargebee.models.enums.*;
@@ -48,8 +55,7 @@ public class Sample{
     Card card = result.card();
     System.out.println(result);
   }
-}
-</code></pre>
+}</code></pre>
 
 ## License
 
