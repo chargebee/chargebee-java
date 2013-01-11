@@ -86,8 +86,8 @@ public class Plan extends Resource<Plan> {
         return optInteger("setup_cost");
     }
 
-    public Double downgradePenality() {
-        return optDouble("downgrade_penality");
+    public Double downgradePenalty() {
+        return optDouble("downgrade_penalty");
     }
 
     public Status status() {
