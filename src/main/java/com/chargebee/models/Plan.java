@@ -12,6 +12,7 @@ import java.util.*;
 public class Plan extends Resource<Plan> {
 
     public enum PeriodUnit {
+        WEEK,
         MONTH,
         YEAR,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
