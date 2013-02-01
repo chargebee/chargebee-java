@@ -11,6 +11,7 @@ public enum Gateway {
     PAYPAL_PRO,
     WIRECARD,
     OGONE,
+    BEANSTREAM,
     EWAY,
     HDFC,
     NOT_APPLICABLE,
