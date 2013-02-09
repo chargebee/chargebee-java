@@ -41,6 +41,10 @@ public class Invoice extends Resource<Invoice> {
             return optInteger("quantity");
         }
 
+        public Integer tax() {
+            return optInteger("tax");
+        }
+
         public Integer amount() {
             return reqInteger("amount");
         }
@@ -53,6 +57,21 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Discount extends Resource<Discount> {
         public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+    }
+
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
             super(jsonObj);
         }
 
@@ -120,12 +139,20 @@ public class Invoice extends Resource<Invoice> {
         return reqInteger("sub_total");
     }
 
+    public Integer tax() {
+        return reqInteger("tax");
+    }
+
     public List<Invoice.LineItem> lineItems() {
         return optList("line_items", Invoice.LineItem.class);
     }
 
     public List<Invoice.Discount> discounts() {
         return optList("discounts", Invoice.Discount.class);
+    }
+
+    public List<Invoice.Tax> taxes() {
+        return optList("taxes", Invoice.Tax.class);
     }
 
     // Operations

@@ -202,6 +202,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
         public CheckoutNewRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
@@ -273,6 +278,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public CheckoutExistingRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
