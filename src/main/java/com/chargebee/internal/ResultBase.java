@@ -36,16 +36,20 @@ public class ResultBase {
         return (Transaction)get("transaction");
     }
 
-    public Event event() {
-        return (Event)get("event");
-    }
-
     public HostedPage hostedPage() {
         return (HostedPage)get("hosted_page");
+    }
+
+    public Estimate estimate() {
+        return (Estimate)get("estimate");
     }
     
     public OfflineCheckout offlineCheckout() {
         return (OfflineCheckout)get("offline_checkout");
+    }
+
+    public Event event() {
+        return (Event)get("event");
     }
 
     public Plan plan() {
