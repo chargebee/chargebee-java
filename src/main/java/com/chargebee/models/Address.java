@@ -92,12 +92,10 @@ public class Address extends Resource<Address> {
 
     public static class UpdateRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateRequest subscriptionId(String subscriptionId) {
             params.add("subscription_id", subscriptionId);
             return this;
@@ -166,12 +164,10 @@ public class Address extends Resource<Address> {
 
     public static class RetrieveRequest extends Request {
 
-        private Params params = new Params();
-
         private RetrieveRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public RetrieveRequest subscriptionId(String subscriptionId) {
             params.add("subscription_id", subscriptionId);
             return this;

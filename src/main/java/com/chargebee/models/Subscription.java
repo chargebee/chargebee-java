@@ -191,12 +191,10 @@ public class Subscription extends Resource<Subscription> {
 
     public static class CreateRequest extends Request {
 
-        private Params params = new Params();
-
         private CreateRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CreateRequest id(String id) {
             params.addOpt("id", id);
             return this;
@@ -244,6 +242,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest customerCompany(String customerCompany) {
             params.addOpt("customer[company]", customerCompany);
+            return this;
+        }
+
+        public CreateRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
@@ -335,12 +338,10 @@ public class Subscription extends Resource<Subscription> {
 
     public static class UpdateRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateRequest planId(String planId) {
             params.addOpt("plan_id", planId);
             return this;
@@ -469,12 +470,10 @@ public class Subscription extends Resource<Subscription> {
 
     public static class CancelRequest extends Request {
 
-        private Params params = new Params();
-
         private CancelRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CancelRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
@@ -488,12 +487,10 @@ public class Subscription extends Resource<Subscription> {
 
     public static class ReactivateRequest extends Request {
 
-        private Params params = new Params();
-
         private ReactivateRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public ReactivateRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;

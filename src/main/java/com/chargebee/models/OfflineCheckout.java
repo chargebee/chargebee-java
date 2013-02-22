@@ -86,12 +86,10 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
 
     public static class PreRegisterRequest extends Request {
 
-        private Params params = new Params();
-
         private PreRegisterRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public PreRegisterRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -150,12 +148,10 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
 
     public static class PostRegisterRequest extends Request {
 
-        private Params params = new Params();
-
         private PostRegisterRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public PostRegisterRequest succeeded(Boolean succeeded) {
             params.add("succeeded", succeeded);
             return this;

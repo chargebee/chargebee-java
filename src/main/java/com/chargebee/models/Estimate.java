@@ -153,12 +153,10 @@ public class Estimate extends Resource<Estimate> {
 
     public static class CreateSubscriptionRequest extends Request {
 
-        private Params params = new Params();
-
         private CreateSubscriptionRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CreateSubscriptionRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -207,12 +205,10 @@ public class Estimate extends Resource<Estimate> {
 
     public static class UpdateSubscriptionRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateSubscriptionRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;

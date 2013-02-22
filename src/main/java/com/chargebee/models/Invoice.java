@@ -115,6 +115,10 @@ public class Invoice extends Resource<Invoice> {
         return reqEnum("status", Status.class);
     }
 
+    public String vatNumber() {
+        return optString("vat_number");
+    }
+
     public Timestamp startDate() {
         return reqTimestamp("start_date");
     }
@@ -204,12 +208,10 @@ public class Invoice extends Resource<Invoice> {
 
     public static class AddChargeRequest extends Request {
 
-        private Params params = new Params();
-
         private AddChargeRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public AddChargeRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
@@ -228,12 +230,10 @@ public class Invoice extends Resource<Invoice> {
 
     public static class AddAddonChargeRequest extends Request {
 
-        private Params params = new Params();
-
         private AddAddonChargeRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public AddAddonChargeRequest addonId(String addonId) {
             params.add("addon_id", addonId);
             return this;
@@ -252,12 +252,10 @@ public class Invoice extends Resource<Invoice> {
 
     public static class ChargeRequest extends Request {
 
-        private Params params = new Params();
-
         private ChargeRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public ChargeRequest subscriptionId(String subscriptionId) {
             params.add("subscription_id", subscriptionId);
             return this;
@@ -281,12 +279,10 @@ public class Invoice extends Resource<Invoice> {
 
     public static class ChargeAddonRequest extends Request {
 
-        private Params params = new Params();
-
         private ChargeAddonRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public ChargeAddonRequest subscriptionId(String subscriptionId) {
             params.add("subscription_id", subscriptionId);
             return this;

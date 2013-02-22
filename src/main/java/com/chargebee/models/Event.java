@@ -66,9 +66,9 @@ public class Event extends Resource<Event> {
     // Operations
     //===========
 
-    public static ListRequest list() throws IOException {
+    public static EventListRequest list() throws IOException {
         String url = url("events");
-        return new ListRequest(url);
+        return new EventListRequest(url);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -86,4 +86,45 @@ public class Event extends Resource<Event> {
     public Content content(){
         return new Content(optJSONObject("content"));
     }
+
+    // Operation Request Classes
+    //==========================
+
+    public static class EventListRequest extends ListRequest {
+
+        private EventListRequest(String url) {
+            super(url);
+        }
+    
+        public EventListRequest limit(Integer limit) {
+            params.addOpt("limit", limit);
+            return this;
+        }
+
+        public EventListRequest offset(String offset) {
+            params.addOpt("offset", offset);
+            return this;
+        }
+
+        public EventListRequest startTime(Timestamp startTime) {
+            params.addOpt("start_time", startTime);
+            return this;
+        }
+
+        public EventListRequest endTime(Timestamp endTime) {
+            params.addOpt("end_time", endTime);
+            return this;
+        }
+
+        public EventListRequest webhookStatus(WebhookStatus webhookStatus) {
+            params.addOpt("webhook_status", webhookStatus);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
 }

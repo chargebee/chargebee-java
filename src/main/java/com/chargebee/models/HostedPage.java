@@ -136,12 +136,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutNewRequest extends Request {
 
-        private Params params = new Params();
-
         private CheckoutNewRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CheckoutNewRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -182,6 +180,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -199,11 +202,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
-            return this;
-        }
-
-        public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
-            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
@@ -230,12 +228,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutExistingRequest extends Request {
 
-        private Params params = new Params();
-
         private CheckoutExistingRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CheckoutExistingRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -309,12 +305,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class UpdateCardRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateCardRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateCardRequest embed(Boolean embed) {
             params.addOpt("embed", embed);
             return this;
@@ -338,12 +332,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutOnetimeChargeRequest extends Request {
 
-        private Params params = new Params();
-
         private CheckoutOnetimeChargeRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CheckoutOnetimeChargeRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
@@ -377,12 +369,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutOnetimeAddonsRequest extends Request {
 
-        private Params params = new Params();
-
         private CheckoutOnetimeAddonsRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public CheckoutOnetimeAddonsRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;

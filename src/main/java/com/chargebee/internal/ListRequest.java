@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ListRequest {
 
     private String url;
-    private Params params = new Params();
+    protected Params params = new Params();
 
     public ListRequest(String url) {
         this.url = url;

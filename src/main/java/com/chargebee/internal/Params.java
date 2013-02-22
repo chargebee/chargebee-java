@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.*;
 
 public class Params {
-    public static final Params EMPTY = new Params();
 
     private Map<String, String> m = new HashMap<String, String>();
 

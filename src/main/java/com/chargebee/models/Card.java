@@ -133,12 +133,10 @@ public class Card extends Resource<Card> {
 
     public static class UpdateCardForCustomerRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateCardForCustomerRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateCardForCustomerRequest gateway(Gateway gateway) {
             params.addOpt("gateway", gateway);
             return this;

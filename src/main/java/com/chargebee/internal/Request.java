@@ -10,6 +10,8 @@ public class Request {
     private HttpUtil.Method httpMeth;
 
     private String url;
+    
+    protected Params params = new Params();
 
     public Request(Method httpMeth, String url) {
         this.url = url;
@@ -34,6 +36,6 @@ public class Request {
     }
 
     protected Params params() {
-        return Params.EMPTY;
+        return params;
     }
 }

@@ -86,12 +86,10 @@ public class Customer extends Resource<Customer> {
 
     public static class UpdateRequest extends Request {
 
-        private Params params = new Params();
-
         private UpdateRequest(Method httpMeth, String url) {
             super(httpMeth, url);
         }
-
+    
         public UpdateRequest firstName(String firstName) {
             params.addOpt("first_name", firstName);
             return this;
@@ -109,6 +107,11 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
+            return this;
+        }
+
+        public UpdateRequest vatNumber(String vatNumber) {
+            params.addOpt("vat_number", vatNumber);
             return this;
         }
 
