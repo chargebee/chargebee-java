@@ -92,10 +92,6 @@ public class Transaction extends Resource<Transaction> {
         return optString("error_text");
     }
 
-    public Long refundedTxId() {
-        return optLong("refunded_tx_id");
-    }
-
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
     }
@@ -106,6 +102,10 @@ public class Transaction extends Resource<Transaction> {
 
     public String maskedCardNumber() {
         return reqString("masked_card_number");
+    }
+
+    public String refundedTxnId() {
+        return optString("refunded_txn_id");
     }
 
     // Operations
