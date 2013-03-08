@@ -245,11 +245,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest customerVatNumber(String customerVatNumber) {
-            params.addOpt("customer[vat_number]", customerVatNumber);
-            return this;
-        }
-
         public CreateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
@@ -317,6 +312,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CreateRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
@@ -449,6 +449,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public UpdateRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 

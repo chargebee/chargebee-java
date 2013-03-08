@@ -207,6 +207,11 @@ public class Card extends Resource<Card> {
             return this;
         }
 
+        public UpdateCardForCustomerRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

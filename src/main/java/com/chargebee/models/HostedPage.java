@@ -180,11 +180,6 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
-            params.addOpt("customer[vat_number]", customerVatNumber);
-            return this;
-        }
-
         public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -207,6 +202,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
@@ -316,6 +316,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public UpdateCardRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
+            return this;
+        }
+
+        public UpdateCardRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 

@@ -36,6 +36,10 @@ public class Estimate extends Resource<Estimate> {
             return optInteger("tax");
         }
 
+        public Double taxRate() {
+            return optDouble("tax_rate");
+        }
+
         public Integer amount() {
             return reqInteger("amount");
         }

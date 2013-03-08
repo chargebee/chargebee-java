@@ -54,6 +54,10 @@ public class Customer extends Resource<Customer> {
         return optString("company");
     }
 
+    public String vatNumber() {
+        return optString("vat_number");
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }
@@ -107,11 +111,6 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
-            return this;
-        }
-
-        public UpdateRequest vatNumber(String vatNumber) {
-            params.addOpt("vat_number", vatNumber);
             return this;
         }
 
