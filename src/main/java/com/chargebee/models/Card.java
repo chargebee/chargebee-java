@@ -172,7 +172,7 @@ public class Card extends Resource<Card> {
             return this;
         }
 
-        public UpdateCardForCustomerRequest cvv(Integer cvv) {
+        public UpdateCardForCustomerRequest cvv(String cvv) {
             params.addOpt("cvv", cvv);
             return this;
         }

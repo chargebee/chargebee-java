@@ -280,7 +280,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest cardCvv(Integer cardCvv) {
+        public CreateRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
             return this;
         }
@@ -417,7 +417,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest cardCvv(Integer cardCvv) {
+        public UpdateRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
             return this;
         }
