@@ -245,6 +245,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerAutoCollection(AutoCollection customerAutoCollection) {
+            params.addOpt("customer[auto_collection]", customerAutoCollection);
+            return this;
+        }
+
         public CreateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;

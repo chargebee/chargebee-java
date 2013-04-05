@@ -58,6 +58,10 @@ public class Customer extends Resource<Customer> {
         return optString("vat_number");
     }
 
+    public AutoCollection autoCollection() {
+        return reqEnum("auto_collection", AutoCollection.class);
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }
