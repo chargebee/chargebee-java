@@ -9,6 +9,7 @@ public enum Gateway {
     TCO,
     WORLDPAY,
     PAYPAL_PRO,
+    PAYMILL,
     PIN,
     WIRECARD,
     OGONE,
