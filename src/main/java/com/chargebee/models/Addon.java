@@ -25,6 +25,15 @@ public class Addon extends Resource<Addon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PeriodUnit {
+        WEEK,
+        MONTH,
+        YEAR,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Status {
         ACTIVE,
         ARCHIVED,
@@ -68,6 +77,14 @@ public class Addon extends Resource<Addon> {
 
     public Integer price() {
         return reqInteger("price");
+    }
+
+    public Integer period() {
+        return optInteger("period");
+    }
+
+    public PeriodUnit periodUnit() {
+        return reqEnum("period_unit", PeriodUnit.class);
     }
 
     public String unit() {

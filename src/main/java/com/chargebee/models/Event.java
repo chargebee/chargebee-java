@@ -13,6 +13,7 @@ public class Event extends Resource<Event> {
 
     public enum WebhookStatus {
         NOT_CONFIGURED,
+        NOT_APPLICABLE,
         SCHEDULED,
         SUCCEEDED,
         RE_SCHEDULED,
