@@ -125,13 +125,13 @@ public class Coupon extends Resource<Coupon> {
     //===========
 
     public static ListRequest list() throws IOException {
-        String url = url("coupons");
-        return new ListRequest(url);
+        String uri = uri("coupons");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("coupons", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("coupons", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
 

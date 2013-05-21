@@ -115,18 +115,18 @@ public class Transaction extends Resource<Transaction> {
     //===========
 
     public static ListRequest list() throws IOException {
-        String url = url("transactions");
-        return new ListRequest(url);
+        String uri = uri("transactions");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("transactions", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("transactions", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static ListRequest transactionsForSubscription(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id), "transactions");
-        return new ListRequest(url);
+        String uri = uri("subscriptions", nullCheck(id), "transactions");
+        return new ListRequest(uri);
     }
 
 

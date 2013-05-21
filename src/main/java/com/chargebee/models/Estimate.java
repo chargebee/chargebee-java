@@ -142,13 +142,13 @@ public class Estimate extends Resource<Estimate> {
     //===========
 
     public static CreateSubscriptionRequest createSubscription() throws IOException {
-        String url = url("estimates", "create_subscription");
-        return new CreateSubscriptionRequest(Method.POST, url);
+        String uri = uri("estimates", "create_subscription");
+        return new CreateSubscriptionRequest(Method.POST, uri);
     }
 
     public static UpdateSubscriptionRequest updateSubscription() throws IOException {
-        String url = url("estimates", "update_subscription");
-        return new UpdateSubscriptionRequest(Method.POST, url);
+        String uri = uri("estimates", "update_subscription");
+        return new UpdateSubscriptionRequest(Method.POST, uri);
     }
 
 
@@ -157,8 +157,8 @@ public class Estimate extends Resource<Estimate> {
 
     public static class CreateSubscriptionRequest extends Request {
 
-        private CreateSubscriptionRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CreateSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CreateSubscriptionRequest billingCycles(Integer billingCycles) {
@@ -209,8 +209,8 @@ public class Estimate extends Resource<Estimate> {
 
     public static class UpdateSubscriptionRequest extends Request {
 
-        private UpdateSubscriptionRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {

@@ -9,12 +9,12 @@ public class Request {
 
     private HttpUtil.Method httpMeth;
 
-    private String url;
+    private String uri;
     
     protected Params params = new Params();
 
-    public Request(Method httpMeth, String url) {
-        this.url = url;
+    public Request(Method httpMeth, String uri) {
+        this.uri = uri;
         this.httpMeth = httpMeth;
     }
 
@@ -23,6 +23,10 @@ public class Request {
     }
 
     public final Result request(Environment env) throws IOException {
+        if(env == null) {
+            throw new RuntimeException("Environment cannot be null");
+        }
+        String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
         switch(httpMeth) {
             case GET:
                 return HttpUtil.get(url, params(), env);

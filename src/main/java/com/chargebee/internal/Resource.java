@@ -231,10 +231,6 @@ public class Resource<T> {
         return new RuntimeException("The property " + key + " not in the required format");
     }
 
-    protected static String url(String ... paths){
-        return url(Environment.defaultConfig(), paths);
-    }
-
     protected static String nullCheck(String id) {
         if(id == null || id.isEmpty()) {
             throw new RuntimeException("id cannot be null/empty");
@@ -242,8 +238,8 @@ public class Resource<T> {
         return id;
     }
 
-    protected static String url(Environment env, String ... paths){
-        StringBuilder strBuf = new StringBuilder(env.apiBaseUrl());
+    protected static String uri(String ... paths){
+        StringBuilder strBuf = new StringBuilder();
         for (String path : paths) {
             try {//Using URLEncoder is wrong as it encodes for form. Replace it with Google's CharEscapers.java
                 strBuf.append('/').append(URLEncoder.encode(path, Environment.CHARSET));

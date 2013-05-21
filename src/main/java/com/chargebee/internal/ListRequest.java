@@ -6,11 +6,11 @@ import java.io.IOException;
 
 public class ListRequest {
 
-    private String url;
+    private String uri;
     protected Params params = new Params();
 
-    public ListRequest(String url) {
-        this.url = url;
+    public ListRequest(String uri) {
+        this.uri = uri;
     }
 
     public ListRequest limit(int limit) {
@@ -28,6 +28,10 @@ public class ListRequest {
     }
 
     public final ListResult request(Environment env) throws IOException {
+        if(env == null) {
+            throw new RuntimeException("Environment cannot be null");
+        }
+        String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
         return HttpUtil.getList(url, params(), env);
     }
 

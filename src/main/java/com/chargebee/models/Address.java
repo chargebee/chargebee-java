@@ -77,13 +77,13 @@ public class Address extends Resource<Address> {
     //===========
 
     public static UpdateRequest update() throws IOException {
-        String url = url("addresses");
-        return new UpdateRequest(Method.POST, url);
+        String uri = uri("addresses");
+        return new UpdateRequest(Method.POST, uri);
     }
 
     public static RetrieveRequest retrieve() throws IOException {
-        String url = url("addresses");
-        return new RetrieveRequest(Method.GET, url);
+        String uri = uri("addresses");
+        return new RetrieveRequest(Method.GET, uri);
     }
 
 
@@ -92,8 +92,8 @@ public class Address extends Resource<Address> {
 
     public static class UpdateRequest extends Request {
 
-        private UpdateRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateRequest subscriptionId(String subscriptionId) {
@@ -164,8 +164,8 @@ public class Address extends Resource<Address> {
 
     public static class RetrieveRequest extends Request {
 
-        private RetrieveRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private RetrieveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public RetrieveRequest subscriptionId(String subscriptionId) {

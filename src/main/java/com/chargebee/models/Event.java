@@ -68,13 +68,13 @@ public class Event extends Resource<Event> {
     //===========
 
     public static EventListRequest list() throws IOException {
-        String url = url("events");
-        return new EventListRequest(url);
+        String uri = uri("events");
+        return new EventListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("events", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("events", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static class Content extends ResultBase{
@@ -93,8 +93,8 @@ public class Event extends Resource<Event> {
 
     public static class EventListRequest extends ListRequest {
 
-        private EventListRequest(String url) {
-            super(url);
+        private EventListRequest(String uri) {
+            super(uri);
         }
     
         public EventListRequest limit(Integer limit) {

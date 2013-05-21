@@ -103,13 +103,13 @@ public class Addon extends Resource<Addon> {
     //===========
 
     public static ListRequest list() throws IOException {
-        String url = url("addons");
-        return new ListRequest(url);
+        String uri = uri("addons");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("addons", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("addons", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
 

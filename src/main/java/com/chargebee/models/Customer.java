@@ -74,18 +74,18 @@ public class Customer extends Resource<Customer> {
     //===========
 
     public static ListRequest list() throws IOException {
-        String url = url("customers");
-        return new ListRequest(url);
+        String uri = uri("customers");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("customers", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("customers", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static UpdateRequest update(String id) throws IOException {
-        String url = url("customers", nullCheck(id));
-        return new UpdateRequest(Method.POST, url);
+        String uri = uri("customers", nullCheck(id));
+        return new UpdateRequest(Method.POST, uri);
     }
 
 
@@ -94,8 +94,8 @@ public class Customer extends Resource<Customer> {
 
     public static class UpdateRequest extends Request {
 
-        private UpdateRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateRequest firstName(String firstName) {

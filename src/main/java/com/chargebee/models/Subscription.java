@@ -156,33 +156,33 @@ public class Subscription extends Resource<Subscription> {
     //===========
 
     public static CreateRequest create() throws IOException {
-        String url = url("subscriptions");
-        return new CreateRequest(Method.POST, url);
+        String uri = uri("subscriptions");
+        return new CreateRequest(Method.POST, uri);
     }
 
     public static ListRequest list() throws IOException {
-        String url = url("subscriptions");
-        return new ListRequest(url);
+        String uri = uri("subscriptions");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("subscriptions", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static UpdateRequest update(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id));
-        return new UpdateRequest(Method.POST, url);
+        String uri = uri("subscriptions", nullCheck(id));
+        return new UpdateRequest(Method.POST, uri);
     }
 
     public static CancelRequest cancel(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id), "cancel");
-        return new CancelRequest(Method.POST, url);
+        String uri = uri("subscriptions", nullCheck(id), "cancel");
+        return new CancelRequest(Method.POST, uri);
     }
 
     public static ReactivateRequest reactivate(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id), "reactivate");
-        return new ReactivateRequest(Method.POST, url);
+        String uri = uri("subscriptions", nullCheck(id), "reactivate");
+        return new ReactivateRequest(Method.POST, uri);
     }
 
 
@@ -191,8 +191,8 @@ public class Subscription extends Resource<Subscription> {
 
     public static class CreateRequest extends Request {
 
-        private CreateRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CreateRequest id(String id) {
@@ -343,8 +343,8 @@ public class Subscription extends Resource<Subscription> {
 
     public static class UpdateRequest extends Request {
 
-        private UpdateRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateRequest planId(String planId) {
@@ -480,8 +480,8 @@ public class Subscription extends Resource<Subscription> {
 
     public static class CancelRequest extends Request {
 
-        private CancelRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CancelRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CancelRequest endOfTerm(Boolean endOfTerm) {
@@ -497,8 +497,8 @@ public class Subscription extends Resource<Subscription> {
 
     public static class ReactivateRequest extends Request {
 
-        private ReactivateRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private ReactivateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public ReactivateRequest trialEnd(Timestamp trialEnd) {

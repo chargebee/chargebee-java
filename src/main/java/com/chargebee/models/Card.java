@@ -118,13 +118,13 @@ public class Card extends Resource<Card> {
     //===========
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("cards", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("cards", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static UpdateCardForCustomerRequest updateCardForCustomer(String id) throws IOException {
-        String url = url("customers", nullCheck(id), "credit_card");
-        return new UpdateCardForCustomerRequest(Method.POST, url);
+        String uri = uri("customers", nullCheck(id), "credit_card");
+        return new UpdateCardForCustomerRequest(Method.POST, uri);
     }
 
 
@@ -133,8 +133,8 @@ public class Card extends Resource<Card> {
 
     public static class UpdateCardForCustomerRequest extends Request {
 
-        private UpdateCardForCustomerRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateCardForCustomerRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateCardForCustomerRequest gateway(Gateway gateway) {

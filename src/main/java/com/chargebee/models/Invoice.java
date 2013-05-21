@@ -167,43 +167,43 @@ public class Invoice extends Resource<Invoice> {
     //===========
 
     public static AddChargeRequest addCharge(String id) throws IOException {
-        String url = url("invoices", nullCheck(id), "add_charge");
-        return new AddChargeRequest(Method.POST, url);
+        String uri = uri("invoices", nullCheck(id), "add_charge");
+        return new AddChargeRequest(Method.POST, uri);
     }
 
     public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
-        String url = url("invoices", nullCheck(id), "add_addon_charge");
-        return new AddAddonChargeRequest(Method.POST, url);
+        String uri = uri("invoices", nullCheck(id), "add_addon_charge");
+        return new AddAddonChargeRequest(Method.POST, uri);
     }
 
     public static ListRequest list() throws IOException {
-        String url = url("invoices");
-        return new ListRequest(url);
+        String uri = uri("invoices");
+        return new ListRequest(uri);
     }
 
     public static ListRequest invoicesForSubscription(String id) throws IOException {
-        String url = url("subscriptions", nullCheck(id), "invoices");
-        return new ListRequest(url);
+        String uri = uri("subscriptions", nullCheck(id), "invoices");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("invoices", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("invoices", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static Request collect(String id) throws IOException {
-        String url = url("invoices", nullCheck(id), "collect");
-        return new Request(Method.POST, url);
+        String uri = uri("invoices", nullCheck(id), "collect");
+        return new Request(Method.POST, uri);
     }
 
     public static ChargeRequest charge() throws IOException {
-        String url = url("invoices", "charge");
-        return new ChargeRequest(Method.POST, url);
+        String uri = uri("invoices", "charge");
+        return new ChargeRequest(Method.POST, uri);
     }
 
     public static ChargeAddonRequest chargeAddon() throws IOException {
-        String url = url("invoices", "charge_addon");
-        return new ChargeAddonRequest(Method.POST, url);
+        String uri = uri("invoices", "charge_addon");
+        return new ChargeAddonRequest(Method.POST, uri);
     }
 
 
@@ -212,8 +212,8 @@ public class Invoice extends Resource<Invoice> {
 
     public static class AddChargeRequest extends Request {
 
-        private AddChargeRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private AddChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public AddChargeRequest amount(Integer amount) {
@@ -234,8 +234,8 @@ public class Invoice extends Resource<Invoice> {
 
     public static class AddAddonChargeRequest extends Request {
 
-        private AddAddonChargeRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private AddAddonChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public AddAddonChargeRequest addonId(String addonId) {
@@ -256,8 +256,8 @@ public class Invoice extends Resource<Invoice> {
 
     public static class ChargeRequest extends Request {
 
-        private ChargeRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private ChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public ChargeRequest subscriptionId(String subscriptionId) {
@@ -283,8 +283,8 @@ public class Invoice extends Resource<Invoice> {
 
     public static class ChargeAddonRequest extends Request {
 
-        private ChargeAddonRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private ChargeAddonRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public ChargeAddonRequest subscriptionId(String subscriptionId) {

@@ -111,13 +111,13 @@ public class Plan extends Resource<Plan> {
     //===========
 
     public static ListRequest list() throws IOException {
-        String url = url("plans");
-        return new ListRequest(url);
+        String uri = uri("plans");
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("plans", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("plans", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
 

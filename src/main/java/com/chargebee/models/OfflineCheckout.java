@@ -66,18 +66,18 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
     //===========
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("offline_checkouts", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("offline_checkouts", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static PreRegisterRequest preRegister() throws IOException {
-        String url = url("offline_checkouts", "pre_register");
-        return new PreRegisterRequest(Method.POST, url);
+        String uri = uri("offline_checkouts", "pre_register");
+        return new PreRegisterRequest(Method.POST, uri);
     }
 
     public static PostRegisterRequest postRegister(String id) throws IOException {
-        String url = url("offline_checkouts", nullCheck(id), "post_register");
-        return new PostRegisterRequest(Method.POST, url);
+        String uri = uri("offline_checkouts", nullCheck(id), "post_register");
+        return new PostRegisterRequest(Method.POST, uri);
     }
 
 
@@ -86,8 +86,8 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
 
     public static class PreRegisterRequest extends Request {
 
-        private PreRegisterRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private PreRegisterRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public PreRegisterRequest billingCycles(Integer billingCycles) {
@@ -148,8 +148,8 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
 
     public static class PostRegisterRequest extends Request {
 
-        private PostRegisterRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private PostRegisterRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public PostRegisterRequest succeeded(Boolean succeeded) {

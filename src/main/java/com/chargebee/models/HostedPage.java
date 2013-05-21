@@ -92,33 +92,33 @@ public class HostedPage extends Resource<HostedPage> {
     //===========
 
     public static CheckoutNewRequest checkoutNew() throws IOException {
-        String url = url("hosted_pages", "checkout_new");
-        return new CheckoutNewRequest(Method.POST, url);
+        String uri = uri("hosted_pages", "checkout_new");
+        return new CheckoutNewRequest(Method.POST, uri);
     }
 
     public static CheckoutExistingRequest checkoutExisting() throws IOException {
-        String url = url("hosted_pages", "checkout_existing");
-        return new CheckoutExistingRequest(Method.POST, url);
+        String uri = uri("hosted_pages", "checkout_existing");
+        return new CheckoutExistingRequest(Method.POST, uri);
     }
 
     public static UpdateCardRequest updateCard() throws IOException {
-        String url = url("hosted_pages", "update_card");
-        return new UpdateCardRequest(Method.POST, url);
+        String uri = uri("hosted_pages", "update_card");
+        return new UpdateCardRequest(Method.POST, uri);
     }
 
     public static CheckoutOnetimeChargeRequest checkoutOnetimeCharge() throws IOException {
-        String url = url("hosted_pages", "checkout_onetime_charge");
-        return new CheckoutOnetimeChargeRequest(Method.POST, url);
+        String uri = uri("hosted_pages", "checkout_onetime_charge");
+        return new CheckoutOnetimeChargeRequest(Method.POST, uri);
     }
 
     public static CheckoutOnetimeAddonsRequest checkoutOnetimeAddons() throws IOException {
-        String url = url("hosted_pages", "checkout_onetime_addons");
-        return new CheckoutOnetimeAddonsRequest(Method.POST, url);
+        String uri = uri("hosted_pages", "checkout_onetime_addons");
+        return new CheckoutOnetimeAddonsRequest(Method.POST, uri);
     }
 
     public static Request retrieve(String id) throws IOException {
-        String url = url("hosted_pages", nullCheck(id));
-        return new Request(Method.GET, url);
+        String uri = uri("hosted_pages", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
     public static class Content extends ResultBase{
@@ -136,8 +136,8 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutNewRequest extends Request {
 
-        private CheckoutNewRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CheckoutNewRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CheckoutNewRequest billingCycles(Integer billingCycles) {
@@ -228,8 +228,8 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutExistingRequest extends Request {
 
-        private CheckoutExistingRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CheckoutExistingRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CheckoutExistingRequest billingCycles(Integer billingCycles) {
@@ -305,8 +305,8 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class UpdateCardRequest extends Request {
 
-        private UpdateCardRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private UpdateCardRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public UpdateCardRequest embed(Boolean embed) {
@@ -337,8 +337,8 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutOnetimeChargeRequest extends Request {
 
-        private CheckoutOnetimeChargeRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CheckoutOnetimeChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CheckoutOnetimeChargeRequest amount(Integer amount) {
@@ -374,8 +374,8 @@ public class HostedPage extends Resource<HostedPage> {
 
     public static class CheckoutOnetimeAddonsRequest extends Request {
 
-        private CheckoutOnetimeAddonsRequest(Method httpMeth, String url) {
-            super(httpMeth, url);
+        private CheckoutOnetimeAddonsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
         }
     
         public CheckoutOnetimeAddonsRequest coupon(String coupon) {
