@@ -91,7 +91,7 @@ public class Event extends Resource<Event> {
     // Operation Request Classes
     //==========================
 
-    public static class EventListRequest extends ListRequest {
+    public static class EventListRequest extends ListRequest<EventListRequest> {
 
         private EventListRequest(String uri) {
             super(uri);

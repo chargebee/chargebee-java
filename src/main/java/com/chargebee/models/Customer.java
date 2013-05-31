@@ -92,7 +92,7 @@ public class Customer extends Resource<Customer> {
     // Operation Request Classes
     //==========================
 
-    public static class UpdateRequest extends Request {
+    public static class UpdateRequest extends Request<UpdateRequest> {
 
         private UpdateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

@@ -90,7 +90,7 @@ public class Address extends Resource<Address> {
     // Operation Request Classes
     //==========================
 
-    public static class UpdateRequest extends Request {
+    public static class UpdateRequest extends Request<UpdateRequest> {
 
         private UpdateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -162,7 +162,7 @@ public class Address extends Resource<Address> {
         }
     }
 
-    public static class RetrieveRequest extends Request {
+    public static class RetrieveRequest extends Request<RetrieveRequest> {
 
         private RetrieveRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

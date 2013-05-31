@@ -131,7 +131,7 @@ public class Card extends Resource<Card> {
     // Operation Request Classes
     //==========================
 
-    public static class UpdateCardForCustomerRequest extends Request {
+    public static class UpdateCardForCustomerRequest extends Request<UpdateCardForCustomerRequest> {
 
         private UpdateCardForCustomerRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

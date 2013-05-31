@@ -134,7 +134,7 @@ public class HostedPage extends Resource<HostedPage> {
     // Operation Request Classes
     //==========================
 
-    public static class CheckoutNewRequest extends Request {
+    public static class CheckoutNewRequest extends Request<CheckoutNewRequest> {
 
         private CheckoutNewRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -226,7 +226,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
     }
 
-    public static class CheckoutExistingRequest extends Request {
+    public static class CheckoutExistingRequest extends Request<CheckoutExistingRequest> {
 
         private CheckoutExistingRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -303,7 +303,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
     }
 
-    public static class UpdateCardRequest extends Request {
+    public static class UpdateCardRequest extends Request<UpdateCardRequest> {
 
         private UpdateCardRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -335,7 +335,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
     }
 
-    public static class CheckoutOnetimeChargeRequest extends Request {
+    public static class CheckoutOnetimeChargeRequest extends Request<CheckoutOnetimeChargeRequest> {
 
         private CheckoutOnetimeChargeRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -372,7 +372,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
     }
 
-    public static class CheckoutOnetimeAddonsRequest extends Request {
+    public static class CheckoutOnetimeAddonsRequest extends Request<CheckoutOnetimeAddonsRequest> {
 
         private CheckoutOnetimeAddonsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

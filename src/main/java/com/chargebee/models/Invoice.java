@@ -210,7 +210,7 @@ public class Invoice extends Resource<Invoice> {
     // Operation Request Classes
     //==========================
 
-    public static class AddChargeRequest extends Request {
+    public static class AddChargeRequest extends Request<AddChargeRequest> {
 
         private AddChargeRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -232,7 +232,7 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
-    public static class AddAddonChargeRequest extends Request {
+    public static class AddAddonChargeRequest extends Request<AddAddonChargeRequest> {
 
         private AddAddonChargeRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -254,7 +254,7 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
-    public static class ChargeRequest extends Request {
+    public static class ChargeRequest extends Request<ChargeRequest> {
 
         private ChargeRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -281,7 +281,7 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
-    public static class ChargeAddonRequest extends Request {
+    public static class ChargeAddonRequest extends Request<ChargeAddonRequest> {
 
         private ChargeAddonRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

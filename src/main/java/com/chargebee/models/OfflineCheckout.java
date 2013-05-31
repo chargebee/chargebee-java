@@ -84,7 +84,7 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
     // Operation Request Classes
     //==========================
 
-    public static class PreRegisterRequest extends Request {
+    public static class PreRegisterRequest extends Request<PreRegisterRequest> {
 
         private PreRegisterRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -146,7 +146,7 @@ public class OfflineCheckout extends Resource<OfflineCheckout> {
         }
     }
 
-    public static class PostRegisterRequest extends Request {
+    public static class PostRegisterRequest extends Request<PostRegisterRequest> {
 
         private PostRegisterRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

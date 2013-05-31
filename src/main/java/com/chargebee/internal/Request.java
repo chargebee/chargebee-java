@@ -5,7 +5,7 @@ import com.chargebee.Result;
 import com.chargebee.internal.HttpUtil.Method;
 import java.io.IOException;
 
-public class Request {
+public class Request<U extends Request> {
 
     private HttpUtil.Method httpMeth;
 
@@ -18,6 +18,15 @@ public class Request {
         this.httpMeth = httpMeth;
     }
 
+    public U param(String paramName, Object value){
+        params.add(paramName, value);
+        return (U)this;
+    }
+    
+    protected Params params() {
+        return params;
+    }
+    
     public final Result request() throws IOException {
         return request(Environment.defaultConfig());
     }
@@ -39,7 +48,4 @@ public class Request {
         }
     }
 
-    protected Params params() {
-        return params;
-    }
 }

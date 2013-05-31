@@ -155,7 +155,7 @@ public class Estimate extends Resource<Estimate> {
     // Operation Request Classes
     //==========================
 
-    public static class CreateSubscriptionRequest extends Request {
+    public static class CreateSubscriptionRequest extends Request<CreateSubscriptionRequest> {
 
         private CreateSubscriptionRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -207,7 +207,7 @@ public class Estimate extends Resource<Estimate> {
         }
     }
 
-    public static class UpdateSubscriptionRequest extends Request {
+    public static class UpdateSubscriptionRequest extends Request<UpdateSubscriptionRequest> {
 
         private UpdateSubscriptionRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);

@@ -189,7 +189,7 @@ public class Subscription extends Resource<Subscription> {
     // Operation Request Classes
     //==========================
 
-    public static class CreateRequest extends Request {
+    public static class CreateRequest extends Request<CreateRequest> {
 
         private CreateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -341,7 +341,7 @@ public class Subscription extends Resource<Subscription> {
         }
     }
 
-    public static class UpdateRequest extends Request {
+    public static class UpdateRequest extends Request<UpdateRequest> {
 
         private UpdateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -478,7 +478,7 @@ public class Subscription extends Resource<Subscription> {
         }
     }
 
-    public static class CancelRequest extends Request {
+    public static class CancelRequest extends Request<CancelRequest> {
 
         private CancelRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
@@ -495,7 +495,7 @@ public class Subscription extends Resource<Subscription> {
         }
     }
 
-    public static class ReactivateRequest extends Request {
+    public static class ReactivateRequest extends Request<ReactivateRequest> {
 
         private ReactivateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
