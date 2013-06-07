@@ -33,6 +33,8 @@ public class Transaction extends Resource<Transaction> {
         SUCCESS,
         VOIDED,
         FAILURE,
+        TIMEOUT,
+        UNKNOWN,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -87,6 +89,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("id_at_gateway");
     }
 
+    public Status status() {
+        return optEnum("status", Status.class);
+    }
+
     public String errorCode() {
         return optString("error_code");
     }
@@ -97,10 +103,6 @@ public class Transaction extends Resource<Transaction> {
 
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
-    }
-
-    public Status status() {
-        return reqEnum("status", Status.class);
     }
 
     public String maskedCardNumber() {

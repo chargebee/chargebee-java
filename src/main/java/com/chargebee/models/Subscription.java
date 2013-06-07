@@ -144,6 +144,7 @@ public class Subscription extends Resource<Subscription> {
         return optList("addons", Subscription.Addon.class);
     }
 
+    @Deprecated
     public String coupon() {
         return optString("coupon");
     }

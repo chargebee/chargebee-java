@@ -35,10 +35,21 @@ public class Coupon extends Resource<Coupon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    @Deprecated
     public enum ApplyDiscountOn {
         PLANS,
         PLANS_AND_ADDONS,
         PLANS_WITH_QUANTITY,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public enum ApplyOn {
+        INVOICE_AMOUNT,
+        SPECIFIED_ITEMS_TOTAL,
+        EACH_SPECIFIED_ITEM,
+        EACH_UNIT_OF_SPECIFIED_ITEMS,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -105,8 +116,13 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("redemptions");
     }
 
+    @Deprecated
     public ApplyDiscountOn applyDiscountOn() {
         return reqEnum("apply_discount_on", ApplyDiscountOn.class);
+    }
+
+    public ApplyOn applyOn() {
+        return reqEnum("apply_on", ApplyOn.class);
     }
 
     public Timestamp createdAt() {
