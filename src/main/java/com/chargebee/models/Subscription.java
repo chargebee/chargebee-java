@@ -176,6 +176,11 @@ public class Subscription extends Resource<Subscription> {
         return new UpdateRequest(Method.POST, uri);
     }
 
+    public static ChangeTermEndRequest changeTermEnd(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "change_term_end");
+        return new ChangeTermEndRequest(Method.POST, uri);
+    }
+
     public static CancelRequest cancel(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "cancel");
         return new CancelRequest(Method.POST, uri);
@@ -470,6 +475,23 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChangeTermEndRequest extends Request<ChangeTermEndRequest> {
+
+        private ChangeTermEndRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ChangeTermEndRequest termEndsAt(Timestamp termEndsAt) {
+            params.add("term_ends_at", termEndsAt);
             return this;
         }
 
