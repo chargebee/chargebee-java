@@ -8,6 +8,7 @@ public enum Gateway {
     BRAINTREE,
     ELAVON,
     EWAY,
+    FIRST_DATA_GLOBAL,
     HDFC,
     MIGS,
     NMI,
