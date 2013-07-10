@@ -161,6 +161,11 @@ public class Subscription extends Resource<Subscription> {
         return new CreateRequest(Method.POST, uri);
     }
 
+    public static CreateForCustomerRequest createForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "subscriptions");
+        return new CreateForCustomerRequest(Method.POST, uri);
+    }
+
     public static ListRequest list() throws IOException {
         String uri = uri("subscriptions");
         return new ListRequest(uri);
@@ -228,6 +233,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+        public CreateRequest customerId(String customerId) {
+            params.addOpt("customer[id]", customerId);
             return this;
         }
 
@@ -337,6 +347,58 @@ public class Subscription extends Resource<Subscription> {
         }
 
         public CreateRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateForCustomerRequest extends Request<CreateForCustomerRequest> {
+
+        private CreateForCustomerRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateForCustomerRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+        public CreateForCustomerRequest planId(String planId) {
+            params.add("plan_id", planId);
+            return this;
+        }
+
+        public CreateForCustomerRequest planQuantity(Integer planQuantity) {
+            params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public CreateForCustomerRequest trialEnd(Timestamp trialEnd) {
+            params.addOpt("trial_end", trialEnd);
+            return this;
+        }
+
+        public CreateForCustomerRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+        public CreateForCustomerRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+        public CreateForCustomerRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+
+        public CreateForCustomerRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
