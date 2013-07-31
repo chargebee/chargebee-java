@@ -121,14 +121,14 @@ public class Transaction extends Resource<Transaction> {
         return new ListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
-        String uri = uri("transactions", nullCheck(id));
-        return new Request(Method.GET, uri);
-    }
-
     public static ListRequest transactionsForSubscription(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "transactions");
         return new ListRequest(uri);
+    }
+
+    public static Request retrieve(String id) throws IOException {
+        String uri = uri("transactions", nullCheck(id));
+        return new Request(Method.GET, uri);
     }
 
 

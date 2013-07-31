@@ -76,19 +76,41 @@ public class Address extends Resource<Address> {
     // Operations
     //===========
 
-    public static UpdateRequest update() throws IOException {
-        String uri = uri("addresses");
-        return new UpdateRequest(Method.POST, uri);
-    }
-
     public static RetrieveRequest retrieve() throws IOException {
         String uri = uri("addresses");
         return new RetrieveRequest(Method.GET, uri);
     }
 
+    public static UpdateRequest update() throws IOException {
+        String uri = uri("addresses");
+        return new UpdateRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
+
+    public static class RetrieveRequest extends Request<RetrieveRequest> {
+
+        private RetrieveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RetrieveRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+        public RetrieveRequest label(String label) {
+            params.add("label", label);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class UpdateRequest extends Request<UpdateRequest> {
 
@@ -153,28 +175,6 @@ public class Address extends Resource<Address> {
 
         public UpdateRequest country(String country) {
             params.addOpt("country", country);
-            return this;
-        }
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class RetrieveRequest extends Request<RetrieveRequest> {
-
-        private RetrieveRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public RetrieveRequest subscriptionId(String subscriptionId) {
-            params.add("subscription_id", subscriptionId);
-            return this;
-        }
-
-        public RetrieveRequest label(String label) {
-            params.add("label", label);
             return this;
         }
 

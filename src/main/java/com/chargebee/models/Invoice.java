@@ -166,14 +166,14 @@ public class Invoice extends Resource<Invoice> {
     // Operations
     //===========
 
-    public static AddChargeRequest addCharge(String id) throws IOException {
-        String uri = uri("invoices", nullCheck(id), "add_charge");
-        return new AddChargeRequest(Method.POST, uri);
+    public static ChargeRequest charge() throws IOException {
+        String uri = uri("invoices", "charge");
+        return new ChargeRequest(Method.POST, uri);
     }
 
-    public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
-        String uri = uri("invoices", nullCheck(id), "add_addon_charge");
-        return new AddAddonChargeRequest(Method.POST, uri);
+    public static ChargeAddonRequest chargeAddon() throws IOException {
+        String uri = uri("invoices", "charge_addon");
+        return new ChargeAddonRequest(Method.POST, uri);
     }
 
     public static ListRequest list() throws IOException {
@@ -191,68 +191,24 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.GET, uri);
     }
 
+    public static AddChargeRequest addCharge(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "add_charge");
+        return new AddChargeRequest(Method.POST, uri);
+    }
+
+    public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "add_addon_charge");
+        return new AddAddonChargeRequest(Method.POST, uri);
+    }
+
     public static Request collect(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "collect");
         return new Request(Method.POST, uri);
     }
 
-    public static ChargeRequest charge() throws IOException {
-        String uri = uri("invoices", "charge");
-        return new ChargeRequest(Method.POST, uri);
-    }
-
-    public static ChargeAddonRequest chargeAddon() throws IOException {
-        String uri = uri("invoices", "charge_addon");
-        return new ChargeAddonRequest(Method.POST, uri);
-    }
-
 
     // Operation Request Classes
     //==========================
-
-    public static class AddChargeRequest extends Request<AddChargeRequest> {
-
-        private AddChargeRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public AddChargeRequest amount(Integer amount) {
-            params.add("amount", amount);
-            return this;
-        }
-
-        public AddChargeRequest description(String description) {
-            params.add("description", description);
-            return this;
-        }
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class AddAddonChargeRequest extends Request<AddAddonChargeRequest> {
-
-        private AddAddonChargeRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public AddAddonChargeRequest addonId(String addonId) {
-            params.add("addon_id", addonId);
-            return this;
-        }
-
-        public AddAddonChargeRequest addonQuantity(Integer addonQuantity) {
-            params.addOpt("addon_quantity", addonQuantity);
-            return this;
-        }
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
 
     public static class ChargeRequest extends Request<ChargeRequest> {
 
@@ -298,6 +254,50 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public ChargeAddonRequest addonQuantity(Integer addonQuantity) {
+            params.addOpt("addon_quantity", addonQuantity);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddChargeRequest extends Request<AddChargeRequest> {
+
+        private AddChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddChargeRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+        public AddChargeRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddAddonChargeRequest extends Request<AddAddonChargeRequest> {
+
+        private AddAddonChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddAddonChargeRequest addonId(String addonId) {
+            params.add("addon_id", addonId);
+            return this;
+        }
+
+        public AddAddonChargeRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
             return this;
         }
