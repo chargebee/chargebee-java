@@ -137,7 +137,7 @@ public class HttpUtil {
 
     private static void addHeaders(HttpURLConnection conn, Environment config) {
         addHeader(conn, "Accept-Charset", Environment.CHARSET);
-        addHeader(conn, "User-Agent", "Chargebee-Java-Client");
+        addHeader(conn, "User-Agent", String.format("Chargebee-Java-Client v%s", Environment.LIBRARY_VERSION));
         addHeader(conn, "Authorization", getAuthValue(config));
         addHeader(conn, "Accept", "application/json");
     }

@@ -30,7 +30,9 @@ public class Environment {
 
     public static String CHARSET = "UTF-8";
 
-    public static final String VERSION = "v1";
+    public static final String API_VERSION = "v1";
+    
+    public static final String LIBRARY_VERSION = "1.2.3";
 
     private final String apiBaseUrl;
 
@@ -42,7 +44,7 @@ public class Environment {
         this.siteName = siteName;
         String domainSuffix = System.getProperty("com.chargebee.api.domain.suffix", "chargebee.com");
         String proto = System.getProperty("com.chargebee.api.protocol", "https");
-        this.apiBaseUrl = proto + "://" + siteName +"." + domainSuffix +"/api/" + VERSION;
+        this.apiBaseUrl = proto + "://" + siteName +"." + domainSuffix +"/api/" + API_VERSION;
     }
 
     public static void configure(String siteName, String apikey) {
