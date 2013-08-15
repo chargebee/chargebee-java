@@ -52,6 +52,10 @@ public class Event extends Resource<Event> {
         return reqTimestamp("occurred_at");
     }
 
+    public Source source() {
+        return reqEnum("source", Source.class);
+    }
+
     public WebhookStatus webhookStatus() {
         return reqEnum("webhook_status", WebhookStatus.class);
     }

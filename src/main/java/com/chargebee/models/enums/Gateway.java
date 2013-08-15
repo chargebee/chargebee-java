@@ -5,6 +5,7 @@ public enum Gateway {
     AUTHORIZE_NET,
     BALANCED_PAYMENTS,
     BEANSTREAM,
+    BLUEPAY,
     BRAINTREE,
     ELAVON,
     EWAY,
