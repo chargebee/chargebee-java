@@ -196,6 +196,11 @@ public class Subscription extends Resource<Subscription> {
         return new ReactivateRequest(Method.POST, uri);
     }
 
+    public static AddCreditRequest addCredit(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "add_credit");
+        return new AddCreditRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -594,6 +599,28 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
             params.addOpt("trial_period_days", trialPeriodDays);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddCreditRequest extends Request<AddCreditRequest> {
+
+        private AddCreditRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddCreditRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+        public AddCreditRequest description(String description) {
+            params.add("description", description);
             return this;
         }
 
