@@ -180,6 +180,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;

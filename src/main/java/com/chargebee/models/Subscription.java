@@ -266,6 +266,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
+            return this;
+        }
+
         public CreateRequest customerAutoCollection(AutoCollection customerAutoCollection) {
             params.addOpt("customer[auto_collection]", customerAutoCollection);
             return this;
@@ -338,6 +343,36 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CreateRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public CreateRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CreateRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
 

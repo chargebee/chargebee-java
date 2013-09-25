@@ -191,6 +191,19 @@ public class Resource<T> {
         return toRet;
     }
 
+    public <S extends Resource> S reqSubResource(String key, Class<S> claz) {
+        return assertReqProp(key, optSubResource(key, claz));
+    }
+    
+    public <S extends Resource> S optSubResource(String key, Class<S> claz){
+        JSONObject resAsJson = jsonObj.optJSONObject(key);
+        if(resAsJson == null){
+            return null;
+        }
+
+        return ClazzUtil.createInstance(claz, resAsJson);
+    }
+    
 
     private <T> T optional(String key, Class<T> type) {
         Object val = jsonObj.opt(key);

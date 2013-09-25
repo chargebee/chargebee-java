@@ -20,6 +20,37 @@ public class Customer extends Resource<Customer> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class BillingAddress extends Resource<BillingAddress> {
+        public BillingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -50,6 +81,10 @@ public class Customer extends Resource<Customer> {
         return optString("email");
     }
 
+    public String phone() {
+        return optString("phone");
+    }
+
     public String company() {
         return optString("company");
     }
@@ -70,6 +105,10 @@ public class Customer extends Resource<Customer> {
         return optEnum("card_status", CardStatus.class);
     }
 
+    public Customer.BillingAddress billingAddress() {
+        return optSubResource("billing_address", Customer.BillingAddress.class);
+    }
+
     // Operations
     //===========
 
@@ -86,6 +125,11 @@ public class Customer extends Resource<Customer> {
     public static UpdateRequest update(String id) throws IOException {
         String uri = uri("customers", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
+    }
+
+    public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "update_billing_info");
+        return new UpdateBillingInfoRequest(Method.POST, uri);
     }
 
 
@@ -113,8 +157,60 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public UpdateRequest phone(String phone) {
+            params.addOpt("phone", phone);
+            return this;
+        }
+
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateBillingInfoRequest extends Request<UpdateBillingInfoRequest> {
+
+        private UpdateBillingInfoRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateBillingInfoRequest vatNumber(String vatNumber) {
+            params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
 
