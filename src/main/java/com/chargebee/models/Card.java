@@ -127,6 +127,11 @@ public class Card extends Resource<Card> {
         return new UpdateCardForCustomerRequest(Method.POST, uri);
     }
 
+    public static Request deleteCardForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "delete_card");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================

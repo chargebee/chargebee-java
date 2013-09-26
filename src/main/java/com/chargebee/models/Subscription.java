@@ -60,6 +60,10 @@ public class Subscription extends Resource<Subscription> {
             return reqInteger("applied_count");
         }
 
+        public String couponCode() {
+            return optString("coupon_code");
+        }
+
     }
 
     //Constructors

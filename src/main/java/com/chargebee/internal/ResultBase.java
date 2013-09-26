@@ -63,6 +63,10 @@ public class ResultBase {
     public Coupon coupon() {
         return (Coupon)get("coupon");
     }
+    
+    public CouponCode couponCode() {
+        return (CouponCode)get("coupon_code");
+    }
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
