@@ -210,6 +210,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -282,6 +283,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public CheckoutExistingRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -324,6 +326,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public UpdateCardRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
