@@ -21,6 +21,14 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class LineItem extends Resource<LineItem> {
+        public enum Type {
+            CHARGE, PRORATED_CHARGE, SETUP_CHARGE;
+        }
+
+        public enum EntityType {
+            PLAN, ADDON, ADHOC;
+        }
+
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -57,9 +65,25 @@ public class Invoice extends Resource<Invoice> {
             return reqString("description");
         }
 
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
+        public enum Type {
+            COUPON, CREDIT_ADJUSTMENT;
+        }
+
         public Discount(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -70,6 +94,14 @@ public class Invoice extends Resource<Invoice> {
 
         public String description() {
             return optString("description");
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
         }
 
     }
