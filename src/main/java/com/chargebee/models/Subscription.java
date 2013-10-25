@@ -12,6 +12,7 @@ import java.util.*;
 public class Subscription extends Resource<Subscription> {
 
     public enum Status {
+        FUTURE,
         IN_TRIAL,
         ACTIVE,
         NON_RENEWING,
@@ -96,6 +97,10 @@ public class Subscription extends Resource<Subscription> {
         return reqEnum("status", Status.class);
     }
 
+    public Timestamp startDate() {
+        return optTimestamp("start_date");
+    }
+
     public Timestamp trialStart() {
         return optTimestamp("trial_start");
     }
@@ -118,6 +123,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Timestamp createdAt() {
         return optTimestamp("created_at");
+    }
+
+    public Timestamp startedAt() {
+        return optTimestamp("started_at");
     }
 
     public Timestamp activatedAt() {
@@ -227,6 +236,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public CreateRequest startDate(Timestamp startDate) {
+            params.addOpt("start_date", startDate);
             return this;
         }
 
@@ -422,6 +436,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateForCustomerRequest startDate(Timestamp startDate) {
+            params.addOpt("start_date", startDate);
+            return this;
+        }
+
         public CreateForCustomerRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;
@@ -466,6 +485,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+        public UpdateRequest startDate(Timestamp startDate) {
+            params.addOpt("start_date", startDate);
             return this;
         }
 

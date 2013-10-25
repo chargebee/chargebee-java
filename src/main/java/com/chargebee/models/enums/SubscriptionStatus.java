@@ -1,6 +1,7 @@
 package com.chargebee.models.enums;
 
 public enum SubscriptionStatus {
+    FUTURE,
     IN_TRIAL,
     ACTIVE,
     NON_RENEWING,

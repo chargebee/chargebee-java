@@ -195,6 +195,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
             params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
@@ -270,6 +275,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
             params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 

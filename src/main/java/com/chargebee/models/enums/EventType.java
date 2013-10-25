@@ -2,6 +2,7 @@ package com.chargebee.models.enums;
 
 public enum EventType {
     SUBSCRIPTION_CREATED,
+    SUBSCRIPTION_STARTED,
     SUBSCRIPTION_TRIAL_ENDING,
     SUBSCRIPTION_ACTIVATED,
     SUBSCRIPTION_CHANGED,

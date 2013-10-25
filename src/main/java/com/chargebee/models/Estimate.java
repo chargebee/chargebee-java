@@ -213,6 +213,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
         public CreateSubscriptionRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
             params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
@@ -277,6 +282,11 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
             params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 
