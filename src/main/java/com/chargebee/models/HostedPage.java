@@ -129,6 +129,9 @@ public class HostedPage extends Resource<HostedPage> {
     }
 
     public Content content(){
+        if (optJSONObject("content") == null) {
+            return null;
+        }
         return new Content(optJSONObject("content"));
     }
     // Operation Request Classes
