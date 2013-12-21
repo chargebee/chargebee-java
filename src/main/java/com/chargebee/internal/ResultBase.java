@@ -80,7 +80,7 @@ public class ResultBase {
     @Override
     public String toString() {
         try {
-            return (jsonObj == null) ? null : jsonObj.toString(2);
+            return jsonObj.toString(2);
         } catch (JSONException ex) {
             throw new RuntimeException(ex);
         }
