@@ -44,10 +44,6 @@ public class ResultBase {
         return (Estimate)get("estimate");
     }
     
-    public OfflineCheckout offlineCheckout() {
-        return (OfflineCheckout)get("offline_checkout");
-    }
-
     public Event event() {
         return (Event)get("event");
     }
