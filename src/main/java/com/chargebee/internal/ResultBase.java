@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public class ResultBase {
 
     private JSONObject jsonObj;
-
+    
     public ResultBase(JSONObject jsonObj) {
         this.jsonObj = jsonObj;
     }
@@ -22,10 +22,6 @@ public class ResultBase {
 
     public Card card() {
         return (Card)get("card");
-    }
-
-    public Address address() {
-        return (Address)get("address");
     }
 
     public Invoice invoice() {
@@ -43,10 +39,6 @@ public class ResultBase {
     public Estimate estimate() {
         return (Estimate)get("estimate");
     }
-    
-    public Event event() {
-        return (Event)get("event");
-    }
 
     public Plan plan() {
         return (Plan)get("plan");
@@ -59,10 +51,23 @@ public class ResultBase {
     public Coupon coupon() {
         return (Coupon)get("coupon");
     }
-    
+
     public CouponCode couponCode() {
         return (CouponCode)get("coupon_code");
     }
+
+    public Address address() {
+        return (Address)get("address");
+    }
+
+    public Event event() {
+        return (Event)get("event");
+    }
+
+    public Comment comment() {
+        return (Comment)get("comment");
+    }
+
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);

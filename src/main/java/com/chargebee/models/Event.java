@@ -126,6 +126,11 @@ public class Event extends Resource<Event> {
             return this;
         }
 
+        public EventListRequest eventType(EventType eventType) {
+            params.addOpt("event_type", eventType);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

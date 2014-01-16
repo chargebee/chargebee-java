@@ -184,6 +184,11 @@ public class Subscription extends Resource<Subscription> {
         return new ListRequest(uri);
     }
 
+    public static ListRequest subscriptionsForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "subscriptions");
+        return new ListRequest(uri);
+    }
+
     public static Request retrieve(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -590,6 +595,36 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public UpdateRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public UpdateRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public UpdateRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public UpdateRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public UpdateRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
 
