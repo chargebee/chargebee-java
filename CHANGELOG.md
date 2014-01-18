@@ -1,3 +1,7 @@
+### v1.1.30  (2014-01-18) 
+* * *    
+Support addedBy attribute as input while creating comment. This can be used to pass information about who added the comment. If not provided, the value will be name of the api key.
+
 ### v1.1.29  (2014-01-16)  
 * * *    
 * Adding object that represent comments resource. Now comments can be added to the entities - Subscription, Invoice, Transaction, Plan, Addon & Coupon. 

@@ -108,6 +108,11 @@ public class Comment extends Resource<Comment> {
             return this;
         }
 
+        public CreateRequest addedBy(String addedBy) {
+            params.addOpt("added_by", addedBy);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
