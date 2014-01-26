@@ -36,7 +36,7 @@ public class Params {
 
     private static String toValStr(Object value) {
         Class c = value.getClass();
-        if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class) {
+        if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class) {
             return value.toString();
         } else if(c.isEnum()) {
             return value.toString().toLowerCase();
