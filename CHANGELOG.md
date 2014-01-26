@@ -1,3 +1,8 @@
+### v1.1.31  (2014-01-26) 
+* * *    
+Support for creating plans & addons on the fly via API.
+Support for handling double data type params handled. Eg., download_penality param for create new plan.
+
 ### v1.1.30  (2014-01-18) 
 * * *    
 Support addedBy attribute as input while creating comment. This can be used to pass information about who added the comment. If not provided, the value will be name of the api key.
