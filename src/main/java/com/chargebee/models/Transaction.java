@@ -136,5 +136,35 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.GET, uri);
     }
 
+    public static RefundRequest refund(String id) throws IOException {
+        String uri = uri("transactions", nullCheck(id), "refund");
+        return new RefundRequest(Method.POST, uri);
+    }
+
+
+    // Operation Request Classes
+    //==========================
+
+    public static class RefundRequest extends Request<RefundRequest> {
+
+        private RefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RefundRequest refundAmount(Integer refundAmount) {
+            params.addOpt("refund_amount", refundAmount);
+            return this;
+        }
+
+        public RefundRequest memo(String memo) {
+            params.addOpt("memo", memo);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

@@ -1,6 +1,11 @@
+### v1.1.32  (2014-02-02) 
+* * *    
+Support for refund invoice and transaction.
+
 ### v1.1.31  (2014-01-26) 
 * * *    
 * Support for creating plans & addons on the fly via API.
+
 * Support for handling double data type params handled. Eg., download_penality param for create new plan.
 
 ### v1.1.30  (2014-01-18) 
