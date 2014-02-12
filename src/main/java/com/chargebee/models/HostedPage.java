@@ -329,6 +329,11 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public UpdateCardRequest passThruContent(String passThruContent) {
+            params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
         public UpdateCardRequest embed(Boolean embed) {
             params.addOpt("embed", embed);
             return this;

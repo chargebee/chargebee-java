@@ -233,6 +233,11 @@ public class Invoice extends Resource<Invoice> {
         return new AddAddonChargeRequest(Method.POST, uri);
     }
 
+    public static Request pdf(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "pdf");
+        return new Request(Method.POST, uri);
+    }
+
     public static Request collect(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "collect");
         return new Request(Method.POST, uri);

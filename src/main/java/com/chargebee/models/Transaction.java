@@ -105,6 +105,10 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("voided_at");
     }
 
+    public String voidDescription() {
+        return optString("void_description");
+    }
+
     public String maskedCardNumber() {
         return reqString("masked_card_number");
     }

@@ -68,6 +68,10 @@ public class ResultBase {
         return (Comment)get("comment");
     }
 
+    public Download download() {
+        return (Download)get("download");
+    }
+
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
