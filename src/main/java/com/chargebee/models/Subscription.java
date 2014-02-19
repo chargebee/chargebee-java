@@ -369,6 +369,31 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public CreateRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public CreateRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public CreateRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public CreateRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
         public CreateRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
@@ -376,6 +401,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
 
@@ -396,6 +426,66 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
 
@@ -598,6 +688,31 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public UpdateRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public UpdateRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public UpdateRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public UpdateRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
         public UpdateRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
@@ -605,6 +720,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
 
@@ -625,6 +745,66 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public UpdateRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
 

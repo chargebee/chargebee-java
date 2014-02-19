@@ -37,8 +37,16 @@ public class Address extends Resource<Address> {
         return optString("last_name");
     }
 
+    public String email() {
+        return optString("email");
+    }
+
     public String company() {
         return optString("company");
+    }
+
+    public String phone() {
+        return optString("phone");
     }
 
     public String addr() {

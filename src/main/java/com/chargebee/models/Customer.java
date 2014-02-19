@@ -25,12 +25,36 @@ public class Customer extends Resource<Customer> {
             super(jsonObj);
         }
 
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
         public String line1() {
             return optString("line1");
         }
 
         public String line2() {
             return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
         }
 
         public String city() {
@@ -184,6 +208,31 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public UpdateBillingInfoRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
         public UpdateBillingInfoRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
@@ -191,6 +240,11 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
 
