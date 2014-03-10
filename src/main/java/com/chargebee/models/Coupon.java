@@ -54,6 +54,24 @@ public class Coupon extends Resource<Coupon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PlanConstraint {
+        NONE,
+        ALL,
+        SPECIFIC,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public enum AddonConstraint {
+        NONE,
+        ALL,
+        SPECIFIC,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -104,6 +122,10 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("duration_month");
     }
 
+    public Timestamp validTill() {
+        return optTimestamp("valid_till");
+    }
+
     public Integer maxRedemptions() {
         return optInteger("max_redemptions");
     }
@@ -125,6 +147,14 @@ public class Coupon extends Resource<Coupon> {
         return reqEnum("apply_on", ApplyOn.class);
     }
 
+    public PlanConstraint planConstraint() {
+        return reqEnum("plan_constraint", PlanConstraint.class);
+    }
+
+    public AddonConstraint addonConstraint() {
+        return reqEnum("addon_constraint", AddonConstraint.class);
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }
@@ -133,12 +163,21 @@ public class Coupon extends Resource<Coupon> {
         return optTimestamp("archived_at");
     }
 
-    public Timestamp validTill() {
-        return optTimestamp("valid_till");
+    public List<String> planIds() {
+        return optList("plan_ids", String.class);
+    }
+
+    public List<String> addonIds() {
+        return optList("addon_ids", String.class);
     }
 
     // Operations
     //===========
+
+    public static CreateRequest create() throws IOException {
+        String uri = uri("coupons");
+        return new CreateRequest(Method.POST, uri);
+    }
 
     public static ListRequest list() throws IOException {
         String uri = uri("coupons");
@@ -150,5 +189,124 @@ public class Coupon extends Resource<Coupon> {
         return new Request(Method.GET, uri);
     }
 
+
+    // Operation Request Classes
+    //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest id(String id) {
+            params.add("id", id);
+            return this;
+        }
+
+
+        public CreateRequest name(String name) {
+            params.add("name", name);
+            return this;
+        }
+
+
+        public CreateRequest invoiceName(String invoiceName) {
+            params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public CreateRequest discountType(DiscountType discountType) {
+            params.add("discount_type", discountType);
+            return this;
+        }
+
+
+        public CreateRequest discountAmount(Integer discountAmount) {
+            params.addOpt("discount_amount", discountAmount);
+            return this;
+        }
+
+
+        public CreateRequest discountPercentage(Double discountPercentage) {
+            params.addOpt("discount_percentage", discountPercentage);
+            return this;
+        }
+
+
+        public CreateRequest discountQuantity(Integer discountQuantity) {
+            params.addOpt("discount_quantity", discountQuantity);
+            return this;
+        }
+
+
+        public CreateRequest applyOn(ApplyOn applyOn) {
+            params.add("apply_on", applyOn);
+            return this;
+        }
+
+
+        public CreateRequest planConstraint(PlanConstraint planConstraint) {
+            params.addOpt("plan_constraint", planConstraint);
+            return this;
+        }
+
+
+        public CreateRequest addonConstraint(AddonConstraint addonConstraint) {
+            params.addOpt("addon_constraint", addonConstraint);
+            return this;
+        }
+
+
+        public CreateRequest planIds(List<String> planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public CreateRequest planIds(String... planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public CreateRequest addonIds(List<String> addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public CreateRequest addonIds(String... addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public CreateRequest durationType(DurationType durationType) {
+            params.add("duration_type", durationType);
+            return this;
+        }
+
+
+        public CreateRequest durationMonth(Integer durationMonth) {
+            params.addOpt("duration_month", durationMonth);
+            return this;
+        }
+
+
+        public CreateRequest validTill(Timestamp validTill) {
+            params.addOpt("valid_till", validTill);
+            return this;
+        }
+
+
+        public CreateRequest maxRedemptions(Integer maxRedemptions) {
+            params.addOpt("max_redemptions", maxRedemptions);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

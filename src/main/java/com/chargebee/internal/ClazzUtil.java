@@ -60,4 +60,13 @@ public class ClazzUtil {
         }
     }
 
+
+    public static <T> T createNumberInstance(Class<T> claz, String val) {
+        try {
+            return claz.getConstructor(String.class).newInstance(val);
+        } catch(Exception exp) {
+            throw new RuntimeException(exp);
+        }
+    }
+    
 }

@@ -65,15 +65,18 @@ public class CouponCode extends Resource<CouponCode> {
             return this;
         }
 
+
         public CreateRequest couponSetName(String couponSetName) {
             params.add("coupon_set_name", couponSetName);
             return this;
         }
 
+
         public CreateRequest code(String code) {
             params.add("code", code);
             return this;
         }
+
 
         @Override
         public Params params() {

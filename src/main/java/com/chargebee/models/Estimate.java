@@ -198,6 +198,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+
         public CreateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;
@@ -265,20 +266,24 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+
         public UpdateSubscriptionRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
         }
+
 
         public UpdateSubscriptionRequest prorate(Boolean prorate) {
             params.addOpt("prorate", prorate);
             return this;
         }
 
+
         public UpdateSubscriptionRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
         }
+
 
         public UpdateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);

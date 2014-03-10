@@ -109,10 +109,12 @@ public class Address extends Resource<Address> {
             return this;
         }
 
+
         public RetrieveRequest label(String label) {
             params.add("label", label);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -131,60 +133,72 @@ public class Address extends Resource<Address> {
             return this;
         }
 
+
         public UpdateRequest label(String label) {
             params.add("label", label);
             return this;
         }
+
 
         public UpdateRequest firstName(String firstName) {
             params.addOpt("first_name", firstName);
             return this;
         }
 
+
         public UpdateRequest lastName(String lastName) {
             params.addOpt("last_name", lastName);
             return this;
         }
+
 
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
             return this;
         }
 
+
         public UpdateRequest addr(String addr) {
             params.addOpt("addr", addr);
             return this;
         }
+
 
         public UpdateRequest extendedAddr(String extendedAddr) {
             params.addOpt("extended_addr", extendedAddr);
             return this;
         }
 
+
         public UpdateRequest extendedAddr2(String extendedAddr2) {
             params.addOpt("extended_addr2", extendedAddr2);
             return this;
         }
+
 
         public UpdateRequest city(String city) {
             params.addOpt("city", city);
             return this;
         }
 
+
         public UpdateRequest state(String state) {
             params.addOpt("state", state);
             return this;
         }
+
 
         public UpdateRequest zip(String zip) {
             params.addOpt("zip", zip);
             return this;
         }
 
+
         public UpdateRequest country(String country) {
             params.addOpt("country", country);
             return this;
         }
+
 
         @Override
         public Params params() {

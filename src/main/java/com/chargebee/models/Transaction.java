@@ -160,10 +160,12 @@ public class Transaction extends Resource<Transaction> {
             return this;
         }
 
+
         public RefundRequest memo(String memo) {
             params.addOpt("memo", memo);
             return this;
         }
+
 
         @Override
         public Params params() {

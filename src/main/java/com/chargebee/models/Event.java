@@ -106,30 +106,36 @@ public class Event extends Resource<Event> {
             return this;
         }
 
+
         public EventListRequest offset(String offset) {
             params.addOpt("offset", offset);
             return this;
         }
+
 
         public EventListRequest startTime(Timestamp startTime) {
             params.addOpt("start_time", startTime);
             return this;
         }
 
+
         public EventListRequest endTime(Timestamp endTime) {
             params.addOpt("end_time", endTime);
             return this;
         }
+
 
         public EventListRequest webhookStatus(WebhookStatus webhookStatus) {
             params.addOpt("webhook_status", webhookStatus);
             return this;
         }
 
+
         public EventListRequest eventType(EventType eventType) {
             params.addOpt("event_type", eventType);
             return this;
         }
+
 
         @Override
         public Params params() {

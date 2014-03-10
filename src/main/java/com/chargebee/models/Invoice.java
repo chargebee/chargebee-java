@@ -263,15 +263,18 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public ChargeRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
         }
 
+
         public ChargeRequest description(String description) {
             params.add("description", description);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -290,15 +293,18 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public ChargeAddonRequest addonId(String addonId) {
             params.add("addon_id", addonId);
             return this;
         }
 
+
         public ChargeAddonRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -317,10 +323,12 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public AddChargeRequest description(String description) {
             params.add("description", description);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -339,10 +347,12 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public AddAddonChargeRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -361,10 +371,12 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
         public RefundRequest memo(String memo) {
             params.addOpt("memo", memo);
             return this;
         }
+
 
         @Override
         public Params params() {

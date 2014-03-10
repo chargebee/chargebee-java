@@ -147,71 +147,86 @@ public class Card extends Resource<Card> {
             return this;
         }
 
+
         public UpdateCardForCustomerRequest tmpToken(String tmpToken) {
             params.addOpt("tmp_token", tmpToken);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest firstName(String firstName) {
             params.addOpt("first_name", firstName);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest lastName(String lastName) {
             params.addOpt("last_name", lastName);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest number(String number) {
             params.add("number", number);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest expiryMonth(Integer expiryMonth) {
             params.add("expiry_month", expiryMonth);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest expiryYear(Integer expiryYear) {
             params.add("expiry_year", expiryYear);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest cvv(String cvv) {
             params.addOpt("cvv", cvv);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest billingAddr1(String billingAddr1) {
             params.addOpt("billing_addr1", billingAddr1);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest billingAddr2(String billingAddr2) {
             params.addOpt("billing_addr2", billingAddr2);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest billingCity(String billingCity) {
             params.addOpt("billing_city", billingCity);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest billingState(String billingState) {
             params.addOpt("billing_state", billingState);
             return this;
         }
+
 
         public UpdateCardForCustomerRequest billingZip(String billingZip) {
             params.addOpt("billing_zip", billingZip);
             return this;
         }
 
+
         public UpdateCardForCustomerRequest billingCountry(String billingCountry) {
             params.addOpt("billing_country", billingCountry);
             return this;
         }
 
+
+        @Deprecated
         public UpdateCardForCustomerRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;

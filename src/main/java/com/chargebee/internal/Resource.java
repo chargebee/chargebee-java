@@ -177,7 +177,7 @@ public class Resource<T> {
     /**
      * @param <S> The sub-resource type
      */
-    public <S extends Resource> List<S> optList(String key, Class<S> claz){
+    public <S> List<S> optList(String key, Class<S> claz){
         JSONArray arr = jsonObj.optJSONArray(key);
         if(arr == null){
             return Collections.EMPTY_LIST;
@@ -185,8 +185,19 @@ public class Resource<T> {
 
         List<S> toRet = new ArrayList<S>(arr.length());
         for (int i = 0; i < arr.length(); i++) {
-            JSONObject json = arr.optJSONObject(i);
-            toRet.add(ClazzUtil.createInstance(claz, json));
+            if(claz == String.class){
+              toRet.add((S)arr.optString(i));  
+            }else if(Number.class.isAssignableFrom(claz)){
+              String s = arr.optString(i);
+              if(s == null){
+                  toRet.add(null);
+              }else{
+                  toRet.add(ClazzUtil.createNumberInstance(claz,s));
+              }
+            }else{
+              JSONObject json = arr.optJSONObject(i);
+              toRet.add(ClazzUtil.createInstance(claz, json));
+            }
         }
         return toRet;
     }

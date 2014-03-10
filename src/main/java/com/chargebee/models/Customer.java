@@ -171,25 +171,30 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+
         public UpdateRequest lastName(String lastName) {
             params.addOpt("last_name", lastName);
             return this;
         }
+
 
         public UpdateRequest email(String email) {
             params.addOpt("email", email);
             return this;
         }
 
+
         public UpdateRequest phone(String phone) {
             params.addOpt("phone", phone);
             return this;
         }
 
+
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -207,6 +212,7 @@ public class Customer extends Resource<Customer> {
             params.addOpt("vat_number", vatNumber);
             return this;
         }
+
 
         public UpdateBillingInfoRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);

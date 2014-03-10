@@ -234,35 +234,42 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         public CreateRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
         }
+
 
         public CreateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
             return this;
         }
 
+
         public CreateRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
         }
+
 
         public CreateRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;
         }
 
+
         public CreateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
+
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
         }
+
 
         public CreateRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
@@ -521,35 +528,42 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         public CreateForCustomerRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
         }
+
 
         public CreateForCustomerRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
             return this;
         }
 
+
         public CreateForCustomerRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
         }
+
 
         public CreateForCustomerRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;
         }
 
+
         public CreateForCustomerRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
+
         public CreateForCustomerRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
         }
+
 
         public CreateForCustomerRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
@@ -578,45 +592,54 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         public UpdateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
             return this;
         }
+
 
         public UpdateRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
         }
 
+
         public UpdateRequest trialEnd(Timestamp trialEnd) {
             params.addOpt("trial_end", trialEnd);
             return this;
         }
+
 
         public UpdateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
+
         public UpdateRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
         }
+
 
         public UpdateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
         }
 
+
         public UpdateRequest prorate(Boolean prorate) {
             params.addOpt("prorate", prorate);
             return this;
         }
 
+
         public UpdateRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
         }
+
 
         public UpdateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -840,6 +863,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         @Override
         public Params params() {
             return params;
@@ -856,6 +880,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("end_of_term", endOfTerm);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -874,11 +899,13 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         @Deprecated
         public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
             params.addOpt("trial_period_days", trialPeriodDays);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -897,10 +924,12 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
         public AddCreditRequest description(String description) {
             params.add("description", description);
             return this;
         }
+
 
         @Override
         public Params params() {

@@ -115,6 +115,11 @@ public class Plan extends Resource<Plan> {
         return new CreateRequest(Method.POST, uri);
     }
 
+    public static UpdateRequest update(String id) throws IOException {
+        String uri = uri("plans", nullCheck(id));
+        return new UpdateRequest(Method.POST, uri);
+    }
+
     public static ListRequest list() throws IOException {
         String uri = uri("plans");
         return new ListRequest(uri);
@@ -140,65 +145,168 @@ public class Plan extends Resource<Plan> {
             return this;
         }
 
+
         public CreateRequest name(String name) {
             params.add("name", name);
             return this;
         }
+
 
         public CreateRequest invoiceName(String invoiceName) {
             params.addOpt("invoice_name", invoiceName);
             return this;
         }
 
+
         public CreateRequest trialPeriod(Integer trialPeriod) {
             params.addOpt("trial_period", trialPeriod);
             return this;
         }
+
 
         public CreateRequest trialPeriodUnit(TrialPeriodUnit trialPeriodUnit) {
             params.addOpt("trial_period_unit", trialPeriodUnit);
             return this;
         }
 
+
         public CreateRequest period(Integer period) {
             params.addOpt("period", period);
             return this;
         }
+
 
         public CreateRequest periodUnit(PeriodUnit periodUnit) {
             params.addOpt("period_unit", periodUnit);
             return this;
         }
 
+
         public CreateRequest setupCost(Integer setupCost) {
             params.addOpt("setup_cost", setupCost);
             return this;
         }
+
 
         public CreateRequest price(Integer price) {
             params.addOpt("price", price);
             return this;
         }
 
+
         public CreateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
+
 
         public CreateRequest freeQuantity(Integer freeQuantity) {
             params.addOpt("free_quantity", freeQuantity);
             return this;
         }
 
+
         public CreateRequest downgradePenalty(Double downgradePenalty) {
             params.addOpt("downgrade_penalty", downgradePenalty);
             return this;
         }
 
+
         public CreateRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
         }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateRequest extends Request<UpdateRequest> {
+
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
+        public UpdateRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceName(String invoiceName) {
+            params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public UpdateRequest trialPeriod(Integer trialPeriod) {
+            params.addOpt("trial_period", trialPeriod);
+            return this;
+        }
+
+
+        public UpdateRequest trialPeriodUnit(TrialPeriodUnit trialPeriodUnit) {
+            params.addOpt("trial_period_unit", trialPeriodUnit);
+            return this;
+        }
+
+
+        public UpdateRequest period(Integer period) {
+            params.addOpt("period", period);
+            return this;
+        }
+
+
+        public UpdateRequest periodUnit(PeriodUnit periodUnit) {
+            params.addOpt("period_unit", periodUnit);
+            return this;
+        }
+
+
+        public UpdateRequest setupCost(Integer setupCost) {
+            params.addOpt("setup_cost", setupCost);
+            return this;
+        }
+
+
+        public UpdateRequest price(Integer price) {
+            params.addOpt("price", price);
+            return this;
+        }
+
+
+        public UpdateRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public UpdateRequest freeQuantity(Integer freeQuantity) {
+            params.addOpt("free_quantity", freeQuantity);
+            return this;
+        }
+
+
+        public UpdateRequest downgradePenalty(Double downgradePenalty) {
+            params.addOpt("downgrade_penalty", downgradePenalty);
+            return this;
+        }
+
+
+        public UpdateRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
 
         @Override
         public Params params() {

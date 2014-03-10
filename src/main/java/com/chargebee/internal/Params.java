@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Params {
 
-    private Map<String, String> m = new HashMap<String, String>();
+    private Map<String, Object> m = new HashMap<String, Object>();
 
     public void add(String paramName, Object value) {
         if(value == null) {
@@ -30,11 +30,11 @@ public class Params {
         return m.keySet();
     }
 
-    public Set<Map.Entry<String, String>> entries() {
+    public Set<Map.Entry<String, Object>> entries() {
         return m.entrySet();
     }
 
-    private static String toValStr(Object value) {
+    private static Object toValStr(Object value) {
         Class c = value.getClass();
         if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class) {
             return value.toString();
@@ -42,6 +42,20 @@ public class Params {
             return value.toString().toLowerCase();
         } else if(c == Timestamp.class) {
             return asUnixTimestamp((Timestamp)value);
+        } else if(value instanceof List){
+            List origList = ((List)value);
+            List<String> l = new ArrayList(origList.size());
+            for (Object item : origList) {
+                l.add((String)toValStr(item));                
+            }
+            return l;
+        } else if(value instanceof Object[]){
+            Object[] origList = ((Object[])value);
+            List<String> l = new ArrayList(origList.length);
+            for (Object item : origList) {
+                l.add((String)toValStr(item));                
+            }
+            return l;            
         } else {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }

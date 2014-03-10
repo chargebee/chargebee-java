@@ -98,20 +98,24 @@ public class Comment extends Resource<Comment> {
             return this;
         }
 
+
         public CreateRequest entityId(String entityId) {
             params.add("entity_id", entityId);
             return this;
         }
+
 
         public CreateRequest notes(String notes) {
             params.add("notes", notes);
             return this;
         }
 
+
         public CreateRequest addedBy(String addedBy) {
             params.addOpt("added_by", addedBy);
             return this;
         }
+
 
         @Override
         public Params params() {
@@ -130,20 +134,24 @@ public class Comment extends Resource<Comment> {
             return this;
         }
 
+
         public CommentListRequest offset(String offset) {
             params.addOpt("offset", offset);
             return this;
         }
+
 
         public CommentListRequest entityType(EntityType entityType) {
             params.addOpt("entity_type", entityType);
             return this;
         }
 
+
         public CommentListRequest entityId(String entityId) {
             params.addOpt("entity_id", entityId);
             return this;
         }
+
 
         @Override
         public Params params() {

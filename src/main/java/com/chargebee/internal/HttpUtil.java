@@ -63,9 +63,19 @@ public class HttpUtil {
 
     public static String toQueryStr(Params map) {
         StringJoiner buf = new StringJoiner("&");
-        for (Map.Entry<String, String> entry : map.entries()) {
-            String keyValPair = enc(entry.getKey()) + "=" + enc(entry.getValue());
-            buf.add(keyValPair);
+        for (Map.Entry<String, Object> entry : map.entries()) {
+            Object value = entry.getValue();            
+            if(value instanceof List){
+               List<String> l = (List<String>)value;
+                for (int i = 0; i < l.size(); i++) {
+                    String val = l.get(i);
+                    String keyValPair = enc(entry.getKey() + "[" + i + "]") + "=" + enc(val != null?val:"");
+                    buf.add(keyValPair);
+                }
+            }else{
+               String keyValPair = enc(entry.getKey()) + "=" + enc((String)value);                
+               buf.add(keyValPair);
+            }
         }
         return buf.toString();
     }

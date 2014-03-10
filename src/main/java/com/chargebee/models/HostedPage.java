@@ -88,6 +88,10 @@ public class HostedPage extends Resource<HostedPage> {
         return optTimestamp("expires_at");
     }
 
+    public Boolean iframeMessaging() {
+        return reqBoolean("iframe_messaging");
+    }
+
     // Operations
     //===========
 
@@ -148,15 +152,24 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
         public CheckoutNewRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
         }
 
+
         public CheckoutNewRequest embed(Boolean embed) {
             params.addOpt("embed", embed);
             return this;
         }
+
+
+        public CheckoutNewRequest iframeMessaging(Boolean iframeMessaging) {
+            params.addOpt("iframe_messaging", iframeMessaging);
+            return this;
+        }
+
 
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
@@ -251,20 +264,30 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
         public CheckoutExistingRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
         }
+
 
         public CheckoutExistingRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
         }
 
+
         public CheckoutExistingRequest embed(Boolean embed) {
             params.addOpt("embed", embed);
             return this;
         }
+
+
+        public CheckoutExistingRequest iframeMessaging(Boolean iframeMessaging) {
+            params.addOpt("iframe_messaging", iframeMessaging);
+            return this;
+        }
+
 
         public CheckoutExistingRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
@@ -334,10 +357,18 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
         public UpdateCardRequest embed(Boolean embed) {
             params.addOpt("embed", embed);
             return this;
         }
+
+
+        public UpdateCardRequest iframeMessaging(Boolean iframeMessaging) {
+            params.addOpt("iframe_messaging", iframeMessaging);
+            return this;
+        }
+
 
         public UpdateCardRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
@@ -372,15 +403,18 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
         public CheckoutOnetimeChargeRequest description(String description) {
             params.add("description", description);
             return this;
         }
 
+
         public CheckoutOnetimeChargeRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
         }
+
 
         public CheckoutOnetimeChargeRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
@@ -409,10 +443,12 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
         public CheckoutOnetimeAddonsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
         }
+
 
         public CheckoutOnetimeAddonsRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
