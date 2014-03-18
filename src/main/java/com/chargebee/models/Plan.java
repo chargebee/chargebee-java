@@ -29,6 +29,7 @@ public class Plan extends Resource<Plan> {
     public enum Status {
         ACTIVE,
         ARCHIVED,
+        DELETED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -128,6 +129,11 @@ public class Plan extends Resource<Plan> {
     public static Request retrieve(String id) throws IOException {
         String uri = uri("plans", nullCheck(id));
         return new Request(Method.GET, uri);
+    }
+
+    public static Request delete(String id) throws IOException {
+        String uri = uri("plans", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
     }
 
 
