@@ -19,22 +19,6 @@ public class Resource<T> {
     private static final Logger logger = Logger.getLogger(Resource.class.getName());
 
     public final JSONObject jsonObj;
-    
-    public static void main(String[] args) {
-        try {
-            JSONObject json = new JSONObject("{\"tt1\":12.5,\"tt2\":1.07}");
-            //json.put("tt1", 12.1d);
-            //json.put("tt2", 1.01f);
-            System.out.println(json);
-            System.out.println(json.getDouble("tt1"));
-            System.out.println(json.getDouble("tt2"));
-            
-        } catch (Throwable th) {
-            th.printStackTrace();
-        } finally {
-            System.exit(0);
-        }
-    }
 
     private static final String unknown = "_UNKNOWN";
 
@@ -74,7 +58,7 @@ public class Resource<T> {
     public String optString(String key) {
         return optional(key, String.class);
     }
-    
+
     public Boolean reqBoolean(String key) {
         return assertReqProp(key, optional(key, Boolean.class));
     }
@@ -82,7 +66,7 @@ public class Resource<T> {
     public Boolean optBoolean(String key) {
         return optional(key, Boolean.class);
     }
-    
+
     public Integer reqInteger(String key) {
         return assertReqProp(key, optInteger( key));
     }
@@ -95,7 +79,7 @@ public class Resource<T> {
             throw conversionException(key);
         }
     }
-    
+
     public Double reqDouble(String key) {
         return assertReqProp(key, reqDouble( key));
     }
@@ -108,7 +92,7 @@ public class Resource<T> {
             throw conversionException(key);
         }
     }
-    
+
     public Long reqLong(String key) {
         return assertReqProp(key, optLong( key));
     }
@@ -186,7 +170,7 @@ public class Resource<T> {
         List<S> toRet = new ArrayList<S>(arr.length());
         for (int i = 0; i < arr.length(); i++) {
             if(claz == String.class){
-              toRet.add((S)arr.optString(i));  
+              toRet.add((S)arr.optString(i));
             }else if(Number.class.isAssignableFrom(claz)){
               String s = arr.optString(i);
               if(s == null){
@@ -205,7 +189,7 @@ public class Resource<T> {
     public <S extends Resource> S reqSubResource(String key, Class<S> claz) {
         return assertReqProp(key, optSubResource(key, claz));
     }
-    
+
     public <S extends Resource> S optSubResource(String key, Class<S> claz){
         JSONObject resAsJson = jsonObj.optJSONObject(key);
         if(resAsJson == null){
@@ -214,7 +198,7 @@ public class Resource<T> {
 
         return ClazzUtil.createInstance(claz, resAsJson);
     }
-    
+
 
     private <T> T optional(String key, Class<T> type) {
         Object val = jsonObj.opt(key);

@@ -1,4 +1,4 @@
-### v1.1.36  (2014-03-18)
+### v1.1.37  (2014-03-19)
 * * *
 Support for deleting the plans & addons. See our API documentation on [Delete a plan](https://apidocs.chargebee.com/docs/api/plans#delete_a_plan "Delete a plan") & [Delete an addon](https://apidocs.chargebee.com/docs/api/addons#delete_an_addon "Delete an addon").
 

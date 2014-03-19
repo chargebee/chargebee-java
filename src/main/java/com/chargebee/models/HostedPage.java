@@ -88,10 +88,6 @@ public class HostedPage extends Resource<HostedPage> {
         return optTimestamp("expires_at");
     }
 
-    public Boolean iframeMessaging() {
-        return reqBoolean("iframe_messaging");
-    }
-
     // Operations
     //===========
 
