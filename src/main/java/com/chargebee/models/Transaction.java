@@ -39,6 +39,37 @@ public class Transaction extends Resource<Transaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class LinkedInvoice extends Resource<LinkedInvoice> {
+        public enum TxnType {
+            AUTHORIZATION, PAYMENT, REFUND;
+        }
+
+        public enum TxnStatus {
+            SUCCESS, VOIDED, FAILURE, TIMEOUT, NEEDS_ATTENTION;
+        }
+
+        public LinkedInvoice(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String invoiceId() {
+            return reqString("invoice_id");
+        }
+
+        public Integer appliedAmount() {
+            return reqInteger("applied_amount");
+        }
+
+        public Timestamp invoiceDate() {
+            return optTimestamp("invoice_date");
+        }
+
+        public Integer invoiceAmount() {
+            return optInteger("invoice_amount");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -63,6 +94,10 @@ public class Transaction extends Resource<Transaction> {
 
     public PaymentMethod paymentMethod() {
         return reqEnum("payment_method", PaymentMethod.class);
+    }
+
+    public String referenceNumber() {
+        return optString("reference_number");
     }
 
     public Gateway gateway() {
@@ -117,6 +152,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("refunded_txn_id");
     }
 
+    public List<Transaction.LinkedInvoice> linkedInvoices() {
+        return optList("linked_invoices", Transaction.LinkedInvoice.class);
+    }
+
     // Operations
     //===========
 
@@ -140,6 +179,11 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.GET, uri);
     }
 
+    public static RecordPaymentRequest recordPayment(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "record_payment");
+        return new RecordPaymentRequest(Method.POST, uri);
+    }
+
     public static RefundRequest refund(String id) throws IOException {
         String uri = uri("transactions", nullCheck(id), "refund");
         return new RefundRequest(Method.POST, uri);
@@ -148,6 +192,42 @@ public class Transaction extends Resource<Transaction> {
 
     // Operation Request Classes
     //==========================
+
+    public static class RecordPaymentRequest extends Request<RecordPaymentRequest> {
+
+        private RecordPaymentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RecordPaymentRequest paymentMethod(PaymentMethod paymentMethod) {
+            params.add("payment_method", paymentMethod);
+            return this;
+        }
+
+
+        public RecordPaymentRequest paidAt(Timestamp paidAt) {
+            params.add("paid_at", paidAt);
+            return this;
+        }
+
+
+        public RecordPaymentRequest referenceNumber(String referenceNumber) {
+            params.addOpt("reference_number", referenceNumber);
+            return this;
+        }
+
+
+        public RecordPaymentRequest memo(String memo) {
+            params.addOpt("memo", memo);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class RefundRequest extends Request<RefundRequest> {
 

@@ -121,6 +121,45 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class LinkedTransaction extends Resource<LinkedTransaction> {
+        public enum TxnType {
+            AUTHORIZATION, PAYMENT, REFUND;
+        }
+
+        public enum TxnStatus {
+            SUCCESS, VOIDED, FAILURE, TIMEOUT, NEEDS_ATTENTION;
+        }
+
+        public LinkedTransaction(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String txnId() {
+            return reqString("txn_id");
+        }
+
+        public Integer appliedAmount() {
+            return reqInteger("applied_amount");
+        }
+
+        public TxnType txnType() {
+            return reqEnum("txn_type", TxnType.class);
+        }
+
+        public TxnStatus txnStatus() {
+            return optEnum("txn_status", TxnStatus.class);
+        }
+
+        public Timestamp txnDate() {
+            return optTimestamp("txn_date");
+        }
+
+        public Integer txnAmount() {
+            return optInteger("txn_amount");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -195,6 +234,10 @@ public class Invoice extends Resource<Invoice> {
         return optList("taxes", Invoice.Tax.class);
     }
 
+    public List<Invoice.LinkedTransaction> linkedTransactions() {
+        return optList("linked_transactions", Invoice.LinkedTransaction.class);
+    }
+
     // Operations
     //===========
 
@@ -223,6 +266,11 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.GET, uri);
     }
 
+    public static Request pdf(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "pdf");
+        return new Request(Method.POST, uri);
+    }
+
     public static AddChargeRequest addCharge(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "add_charge");
         return new AddChargeRequest(Method.POST, uri);
@@ -231,11 +279,6 @@ public class Invoice extends Resource<Invoice> {
     public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "add_addon_charge");
         return new AddAddonChargeRequest(Method.POST, uri);
-    }
-
-    public static Request pdf(String id) throws IOException {
-        String uri = uri("invoices", nullCheck(id), "pdf");
-        return new Request(Method.POST, uri);
     }
 
     public static Request collect(String id) throws IOException {
