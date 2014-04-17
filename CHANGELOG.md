@@ -1,3 +1,7 @@
+### v1.1.39  (2014-04-17)
+* * *
+Issue fix. For linked invoices and transactions, the enum values are used directly from Invoice & Transaction resource to represent type & status attributes.
+
 ### v1.1.38  (2014-03-25)
 * * *
 * Now the [Transaction attributes](https://apidocs.chargebee.com/docs/api/transactions#transaction_attributes "Transaction attributes") contains the details about the linked invoices.

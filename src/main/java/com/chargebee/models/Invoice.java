@@ -122,14 +122,6 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class LinkedTransaction extends Resource<LinkedTransaction> {
-        public enum TxnType {
-            AUTHORIZATION, PAYMENT, REFUND;
-        }
-
-        public enum TxnStatus {
-            SUCCESS, VOIDED, FAILURE, TIMEOUT, NEEDS_ATTENTION;
-        }
-
         public LinkedTransaction(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -142,12 +134,12 @@ public class Invoice extends Resource<Invoice> {
             return reqInteger("applied_amount");
         }
 
-        public TxnType txnType() {
-            return reqEnum("txn_type", TxnType.class);
+        public Transaction.Type txnType() {
+            return reqEnum("txn_type", Transaction.Type.class);
         }
 
-        public TxnStatus txnStatus() {
-            return optEnum("txn_status", TxnStatus.class);
+        public Transaction.Status txnStatus() {
+            return optEnum("txn_status", Transaction.Status.class);
         }
 
         public Timestamp txnDate() {

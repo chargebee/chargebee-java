@@ -40,14 +40,6 @@ public class Transaction extends Resource<Transaction> {
     }
 
     public static class LinkedInvoice extends Resource<LinkedInvoice> {
-        public enum TxnType {
-            AUTHORIZATION, PAYMENT, REFUND;
-        }
-
-        public enum TxnStatus {
-            SUCCESS, VOIDED, FAILURE, TIMEOUT, NEEDS_ATTENTION;
-        }
-
         public LinkedInvoice(JSONObject jsonObj) {
             super(jsonObj);
         }
