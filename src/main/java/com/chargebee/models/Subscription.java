@@ -67,6 +67,61 @@ public class Subscription extends Resource<Subscription> {
 
     }
 
+    public static class ShippingAddress extends Resource<ShippingAddress> {
+        public ShippingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -164,6 +219,10 @@ public class Subscription extends Resource<Subscription> {
 
     public List<Subscription.Coupon> coupons() {
         return optList("coupons", Subscription.Coupon.class);
+    }
+
+    public Subscription.ShippingAddress shippingAddress() {
+        return optSubResource("shipping_address", Subscription.ShippingAddress.class);
     }
 
     // Operations
