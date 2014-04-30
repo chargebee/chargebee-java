@@ -152,8 +152,20 @@ public class Address extends Resource<Address> {
         }
 
 
+        public UpdateRequest email(String email) {
+            params.addOpt("email", email);
+            return this;
+        }
+
+
         public UpdateRequest company(String company) {
             params.addOpt("company", company);
+            return this;
+        }
+
+
+        public UpdateRequest phone(String phone) {
+            params.addOpt("phone", phone);
             return this;
         }
 
