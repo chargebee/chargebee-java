@@ -1,6 +1,7 @@
 package com.chargebee.models.enums;
 
 public enum EntityType {
+    CUSTOMER,
     SUBSCRIPTION,
     INVOICE,
     TRANSACTION,

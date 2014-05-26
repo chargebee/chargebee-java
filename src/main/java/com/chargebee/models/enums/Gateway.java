@@ -8,6 +8,7 @@ public enum Gateway {
     PAYPAL_PRO,
     PIN,
     EWAY,
+    EWAY_RAPID,
     WORLDPAY,
     BALANCED_PAYMENTS,
     BEANSTREAM,

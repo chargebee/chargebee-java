@@ -136,6 +136,11 @@ public class Customer extends Resource<Customer> {
     // Operations
     //===========
 
+    public static CreateRequest create() throws IOException {
+        String uri = uri("customers");
+        return new CreateRequest(Method.POST, uri);
+    }
+
     public static ListRequest list() throws IOException {
         String uri = uri("customers");
         return new ListRequest(uri);
@@ -159,6 +164,196 @@ public class Customer extends Resource<Customer> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
+        public CreateRequest firstName(String firstName) {
+            params.addOpt("first_name", firstName);
+            return this;
+        }
+
+
+        public CreateRequest lastName(String lastName) {
+            params.addOpt("last_name", lastName);
+            return this;
+        }
+
+
+        public CreateRequest email(String email) {
+            params.addOpt("email", email);
+            return this;
+        }
+
+
+        public CreateRequest phone(String phone) {
+            params.addOpt("phone", phone);
+            return this;
+        }
+
+
+        public CreateRequest company(String company) {
+            params.addOpt("company", company);
+            return this;
+        }
+
+
+        public CreateRequest autoCollection(AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateRequest vatNumber(String vatNumber) {
+            params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public CreateRequest cardGateway(Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateRequest cardTmpToken(String cardTmpToken) {
+            params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public CreateRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public CreateRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public CreateRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public CreateRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CreateRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CreateRequest cardCvv(String cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public CreateRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public CreateRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public CreateRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public CreateRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public CreateRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public CreateRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public CreateRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public CreateRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CreateRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CreateRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public CreateRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CreateRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class UpdateRequest extends Request<UpdateRequest> {
 

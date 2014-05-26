@@ -170,6 +170,10 @@ public class Invoice extends Resource<Invoice> {
         return reqString("id");
     }
 
+    public String customerId() {
+        return reqString("customer_id");
+    }
+
     public String subscriptionId() {
         return reqString("subscription_id");
     }
@@ -250,6 +254,11 @@ public class Invoice extends Resource<Invoice> {
 
     public static ListRequest invoicesForSubscription(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "invoices");
+        return new ListRequest(uri);
+    }
+
+    public static ListRequest invoicesForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
