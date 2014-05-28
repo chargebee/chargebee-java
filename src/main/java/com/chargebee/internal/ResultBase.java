@@ -72,6 +72,10 @@ public class ResultBase {
         return (Download)get("download");
     }
 
+    public PortalSession portalSession() {
+        return (PortalSession)get("portal_session");
+    }
+
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
