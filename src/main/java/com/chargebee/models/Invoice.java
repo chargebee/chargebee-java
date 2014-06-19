@@ -175,7 +175,7 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public String subscriptionId() {
-        return reqString("subscription_id");
+        return optString("subscription_id");
     }
 
     public Boolean recurring() {
@@ -252,13 +252,13 @@ public class Invoice extends Resource<Invoice> {
         return new ListRequest(uri);
     }
 
-    public static ListRequest invoicesForSubscription(String id) throws IOException {
-        String uri = uri("subscriptions", nullCheck(id), "invoices");
+    public static ListRequest invoicesForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
-    public static ListRequest invoicesForCustomer(String id) throws IOException {
-        String uri = uri("customers", nullCheck(id), "invoices");
+    public static ListRequest invoicesForSubscription(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
@@ -302,8 +302,14 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
+        public ChargeRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
         public ChargeRequest subscriptionId(String subscriptionId) {
-            params.add("subscription_id", subscriptionId);
+            params.addOpt("subscription_id", subscriptionId);
             return this;
         }
 
@@ -320,6 +326,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -332,8 +344,14 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
+        public ChargeAddonRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
         public ChargeAddonRequest subscriptionId(String subscriptionId) {
-            params.add("subscription_id", subscriptionId);
+            params.addOpt("subscription_id", subscriptionId);
             return this;
         }
 
@@ -346,6 +364,12 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
+            return this;
+        }
+
+
+        public ChargeAddonRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
             return this;
         }
 

@@ -80,6 +80,10 @@ public class Transaction extends Resource<Transaction> {
         return reqString("id");
     }
 
+    public String customerId() {
+        return optString("customer_id");
+    }
+
     public String subscriptionId() {
         return optString("subscription_id");
     }
@@ -153,6 +157,11 @@ public class Transaction extends Resource<Transaction> {
 
     public static ListRequest list() throws IOException {
         String uri = uri("transactions");
+        return new ListRequest(uri);
+    }
+
+    public static ListRequest transactionsForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "transactions");
         return new ListRequest(uri);
     }
 
