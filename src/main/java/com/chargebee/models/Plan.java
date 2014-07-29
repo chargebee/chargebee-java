@@ -26,6 +26,13 @@ public class Plan extends Resource<Plan> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum ChargeModel {
+        FLAT_FEE,
+        PER_UNIT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Status {
         ACTIVE,
         ARCHIVED,
@@ -60,6 +67,10 @@ public class Plan extends Resource<Plan> {
         return optString("invoice_name");
     }
 
+    public String description() {
+        return optString("description");
+    }
+
     public Integer price() {
         return reqInteger("price");
     }
@@ -78,6 +89,10 @@ public class Plan extends Resource<Plan> {
 
     public TrialPeriodUnit trialPeriodUnit() {
         return optEnum("trial_period_unit", TrialPeriodUnit.class);
+    }
+
+    public ChargeModel chargeModel() {
+        return reqEnum("charge_model", ChargeModel.class);
     }
 
     public Integer freeQuantity() {
@@ -106,6 +121,10 @@ public class Plan extends Resource<Plan> {
 
     public String redirectUrl() {
         return optString("redirect_url");
+    }
+
+    public Boolean enabledInHostedPages() {
+        return reqBoolean("enabled_in_hosted_pages");
     }
 
     // Operations
@@ -206,6 +225,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest chargeModel(ChargeModel chargeModel) {
+            params.addOpt("charge_model", chargeModel);
+            return this;
+        }
+
+
         public CreateRequest freeQuantity(Integer freeQuantity) {
             params.addOpt("free_quantity", freeQuantity);
             return this;
@@ -220,6 +245,12 @@ public class Plan extends Resource<Plan> {
 
         public CreateRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CreateRequest enabledInHostedPages(Boolean enabledInHostedPages) {
+            params.addOpt("enabled_in_hosted_pages", enabledInHostedPages);
             return this;
         }
 
@@ -296,6 +327,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public UpdateRequest chargeModel(ChargeModel chargeModel) {
+            params.addOpt("charge_model", chargeModel);
+            return this;
+        }
+
+
         public UpdateRequest freeQuantity(Integer freeQuantity) {
             params.addOpt("free_quantity", freeQuantity);
             return this;
@@ -310,6 +347,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public UpdateRequest enabledInHostedPages(Boolean enabledInHostedPages) {
+            params.addOpt("enabled_in_hosted_pages", enabledInHostedPages);
             return this;
         }
 

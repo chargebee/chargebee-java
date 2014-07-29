@@ -68,6 +68,10 @@ public class Addon extends Resource<Addon> {
         return optString("invoice_name");
     }
 
+    public String description() {
+        return optString("description");
+    }
+
     public Type type() {
         return reqEnum("type", Type.class);
     }

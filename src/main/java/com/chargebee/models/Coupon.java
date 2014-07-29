@@ -134,10 +134,6 @@ public class Coupon extends Resource<Coupon> {
         return optEnum("status", Status.class);
     }
 
-    public Integer redemptions() {
-        return optInteger("redemptions");
-    }
-
     @Deprecated
     public ApplyDiscountOn applyDiscountOn() {
         return reqEnum("apply_discount_on", ApplyDiscountOn.class);
@@ -169,6 +165,10 @@ public class Coupon extends Resource<Coupon> {
 
     public List<String> addonIds() {
         return optList("addon_ids", String.class);
+    }
+
+    public Integer redemptions() {
+        return optInteger("redemptions");
     }
 
     // Operations

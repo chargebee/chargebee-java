@@ -273,6 +273,16 @@ public class Subscription extends Resource<Subscription> {
         return new ReactivateRequest(Method.POST, uri);
     }
 
+    public static AddChargeAtTermEndRequest addChargeAtTermEnd(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "add_charge_at_term_end");
+        return new AddChargeAtTermEndRequest(Method.POST, uri);
+    }
+
+    public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "charge_addon_at_term_end");
+        return new ChargeAddonAtTermEndRequest(Method.POST, uri);
+    }
+
     public static AddCreditRequest addCredit(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "add_credit");
         return new AddCreditRequest(Method.POST, uri);
@@ -962,6 +972,54 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
             params.addOpt("trial_period_days", trialPeriodDays);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddChargeAtTermEndRequest extends Request<AddChargeAtTermEndRequest> {
+
+        private AddChargeAtTermEndRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddChargeAtTermEndRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        public AddChargeAtTermEndRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChargeAddonAtTermEndRequest extends Request<ChargeAddonAtTermEndRequest> {
+
+        private ChargeAddonAtTermEndRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ChargeAddonAtTermEndRequest addonId(String addonId) {
+            params.add("addon_id", addonId);
+            return this;
+        }
+
+
+        public ChargeAddonAtTermEndRequest addonQuantity(Integer addonQuantity) {
+            params.addOpt("addon_quantity", addonQuantity);
             return this;
         }
 

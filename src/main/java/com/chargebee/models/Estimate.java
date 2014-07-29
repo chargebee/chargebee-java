@@ -183,6 +183,11 @@ public class Estimate extends Resource<Estimate> {
         return new UpdateSubscriptionRequest(Method.POST, uri);
     }
 
+    public static RenewalEstimateRequest renewalEstimate(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "renewal_estimate");
+        return new RenewalEstimateRequest(Method.GET, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -285,6 +290,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public UpdateSubscriptionRequest includeDelayedCharges(Boolean includeDelayedCharges) {
+            params.addOpt("include_delayed_charges", includeDelayedCharges);
+            return this;
+        }
+
+
         public UpdateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -334,6 +345,24 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RenewalEstimateRequest extends Request<RenewalEstimateRequest> {
+
+        private RenewalEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RenewalEstimateRequest includeDelayedCharges(Boolean includeDelayedCharges) {
+            params.addOpt("include_delayed_charges", includeDelayedCharges);
+            return this;
+        }
+
 
         @Override
         public Params params() {
