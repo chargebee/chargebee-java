@@ -183,6 +183,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest description(String description) {
+            params.addOpt("description", description);
+            return this;
+        }
+
+
         public CreateRequest trialPeriod(Integer trialPeriod) {
             params.addOpt("trial_period", trialPeriod);
             return this;
@@ -281,6 +287,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest invoiceName(String invoiceName) {
             params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public UpdateRequest description(String description) {
+            params.addOpt("description", description);
             return this;
         }
 

@@ -225,6 +225,10 @@ public class Subscription extends Resource<Subscription> {
         return optSubResource("shipping_address", Subscription.ShippingAddress.class);
     }
 
+    public Boolean hasScheduledChanges() {
+        return optBoolean("has_scheduled_changes");
+    }
+
     // Operations
     //===========
 
@@ -251,6 +255,16 @@ public class Subscription extends Resource<Subscription> {
     public static Request retrieve(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id));
         return new Request(Method.GET, uri);
+    }
+
+    public static Request retrieveWithScheduledChanges(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "retrieve_with_scheduled_changes");
+        return new Request(Method.GET, uri);
+    }
+
+    public static Request removeScheduledChanges(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_changes");
+        return new Request(Method.POST, uri);
     }
 
     public static UpdateRequest update(String id) throws IOException {
@@ -281,11 +295,6 @@ public class Subscription extends Resource<Subscription> {
     public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "charge_addon_at_term_end");
         return new ChargeAddonAtTermEndRequest(Method.POST, uri);
-    }
-
-    public static AddCreditRequest addCredit(String id) throws IOException {
-        String uri = uri("subscriptions", nullCheck(id), "add_credit");
-        return new AddCreditRequest(Method.POST, uri);
     }
 
 
@@ -1020,30 +1029,6 @@ public class Subscription extends Resource<Subscription> {
 
         public ChargeAddonAtTermEndRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
-            return this;
-        }
-
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class AddCreditRequest extends Request<AddCreditRequest> {
-
-        private AddCreditRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public AddCreditRequest amount(Integer amount) {
-            params.add("amount", amount);
-            return this;
-        }
-
-
-        public AddCreditRequest description(String description) {
-            params.add("description", description);
             return this;
         }
 

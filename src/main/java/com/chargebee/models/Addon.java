@@ -160,6 +160,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest description(String description) {
+            params.addOpt("description", description);
+            return this;
+        }
+
+
         public CreateRequest chargeType(ChargeType chargeType) {
             params.add("charge_type", chargeType);
             return this;
@@ -222,6 +228,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest invoiceName(String invoiceName) {
             params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public UpdateRequest description(String description) {
+            params.addOpt("description", description);
             return this;
         }
 
