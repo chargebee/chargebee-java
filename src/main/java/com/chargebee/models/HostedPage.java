@@ -172,6 +172,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest customerId(String customerId) {
+            params.addOpt("customer[id]", customerId);
+            return this;
+        }
+
         public CheckoutNewRequest customerEmail(String customerEmail) {
             params.addOpt("customer[email]", customerEmail);
             return this;

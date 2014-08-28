@@ -196,6 +196,14 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("cancel_reason", CancelReason.class);
     }
 
+    public String affiliateToken() {
+        return optString("affiliate_token");
+    }
+
+    public String createdFromIp() {
+        return optString("created_from_ip");
+    }
+
     public Integer dueInvoicesCount() {
         return optInteger("due_invoices_count");
     }
@@ -345,6 +353,18 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateRequest affiliateToken(String affiliateToken) {
+            params.addOpt("affiliate_token", affiliateToken);
+            return this;
+        }
+
+
+        public CreateRequest createdFromIp(String createdFromIp) {
+            params.addOpt("created_from_ip", createdFromIp);
             return this;
         }
 
