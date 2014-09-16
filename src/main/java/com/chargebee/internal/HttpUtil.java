@@ -1,12 +1,13 @@
 package com.chargebee.internal;
 
 import com.chargebee.*;
-import org.apache.commons.codec.binary.Base64;
-import org.json.*;
+import com.chargebee.exceptions.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
+import org.apache.commons.codec.binary.Base64;
+import org.json.*;
 
 public class HttpUtil {
 
@@ -127,9 +128,26 @@ public class HttpUtil {
             throw new RuntimeException("Got http_no_content response");
         }
         boolean error = httpRespCode < 200 || httpRespCode > 299;
-        JSONObject jsonResp = getContentAsJSON(conn, error);
+        String content = getContentAsString(conn, error);
+        JSONObject jsonResp = getContentAsJSON(content);
         if(error) {
-            throw new APIException(jsonResp);
+            try {
+                jsonResp.getString("api_error_code");
+                String type = jsonResp.optString("type");
+                if ("payment".equals(type)) {
+                    throw new PaymentException(httpRespCode, jsonResp);
+                } else if ("operation_failed".equals(type)) {
+                    throw new OperationFailedException(httpRespCode, jsonResp);
+                } else if ("invalid_request".equals(type)) {
+                    throw new InvalidRequestException(httpRespCode, jsonResp);
+                } else{
+                    throw new APIException(httpRespCode, jsonResp);
+                }
+            }catch(APIException ex){
+                throw ex;            
+            } catch (Exception ex) {
+                throw new RuntimeException("Error when parsing the error response. Probably not ChargeBee' error response. The content is \n " + content, ex);
+            }
         }
         return new Resp(httpRespCode, jsonResp);
     }
@@ -161,15 +179,13 @@ public class HttpUtil {
                 .replaceAll("\r?", "").replaceAll("\n?", "");
     }
 
-    private static JSONObject getContentAsJSON(HttpURLConnection conn, boolean error) throws IOException {
-        String content = getContentAsString(conn, error);
+    private static JSONObject getContentAsJSON(String content) throws IOException {
         JSONObject obj;
         try {
             obj = new JSONObject(content);
         } catch (JSONException exp) {
-            throw new RuntimeException(exp.getMessage());
+            throw new RuntimeException("Not in JSON format. Probably not a ChargeBee response. \n " + content,exp);
         }
-        checkRequiredJSONResp(obj);
         return obj;
     }
 
@@ -197,9 +213,4 @@ public class HttpUtil {
         }
     }
 
-    private static void checkRequiredJSONResp(JSONObject respObj) {
-        if (respObj == null) {
-            throw new RuntimeException("Expected json formatted content in response");
-        }
-    }
 }

@@ -4,24 +4,49 @@ import org.json.*;
 
 public class APIException extends RuntimeException {
 
-    private JSONObject jsonObj;
-    public final int httpCode;
-    public final String code;
-    public final String message;
+    public final JSONObject jsonObj;
+
+    public final int httpStatusCode;
+    public final String type;
     public final String param;
+    public final String apiErrorCode;
 
-    public APIException(JSONObject jsonObj) {
+    
+    /**
+     * Use {@link #httpStatusCode} instead.
+     * @deprecated
+     */
+    @Deprecated
+    public final int httpCode;
+    
+    /**
+     * Use {@link #apiErrorCode} instead.
+     * @deprecated
+     */
+    @Deprecated
+    public final String code;
+    /**
+     * Use {@link #getMessage()} instead.
+     * @deprecated
+     */
+    @Deprecated
+    public final String message;
+    
+
+    public APIException(int httpStatusCode,JSONObject jsonObj) throws Exception {
+        super(jsonObj.getString("message"));
         this.jsonObj = jsonObj;
-        try {
-            this.httpCode = jsonObj.getInt("http_status_code");
-            this.message = jsonObj.getString("error_msg");
-            this.code = jsonObj.optString("error_code");
-            this.param = jsonObj.optString("error_param");
-        } catch(JSONException exp) {
-            throw new RuntimeException(exp);
-        }
-    }
+        this.httpStatusCode = httpStatusCode;
+        this.apiErrorCode = jsonObj.getString("api_error_code");
+        this.type = jsonObj.optString("type");
+        this.param = jsonObj.optString("param");
 
+        this.httpCode = httpStatusCode;
+        this.code = jsonObj.getString("error_code");
+        this.message = jsonObj.getString("error_msg");
+    }
+    
+    
     public boolean isParamErr() {
         return param != null;
     }
