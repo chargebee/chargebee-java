@@ -391,6 +391,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateRequest autoCollection(AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
