@@ -75,6 +75,33 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class PaymentMethod extends Resource<PaymentMethod> {
+        public enum Type {
+            CARD, AMAZON_PAYMENTS;
+        }
+
+        public enum Status {
+            VALID, EXPIRING, EXPIRED, INVALID;
+        }
+
+        public PaymentMethod(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Type type() {
+            return optEnum("type", Type.class);
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public String referenceId() {
+            return optString("reference_id");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -131,6 +158,10 @@ public class Customer extends Resource<Customer> {
 
     public Customer.BillingAddress billingAddress() {
         return optSubResource("billing_address", Customer.BillingAddress.class);
+    }
+
+    public Customer.PaymentMethod paymentMethod() {
+        return optSubResource("payment_method", Customer.PaymentMethod.class);
     }
 
     // Operations
