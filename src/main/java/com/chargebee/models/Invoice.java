@@ -152,6 +152,61 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class LinkedOrder extends Resource<LinkedOrder> {
+        public enum Status {
+            NEW, PROCESSING, COMPLETE, CANCELLED, VOIDED;
+        }
+
+        public LinkedOrder(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String invoiceId() {
+            return reqString("invoice_id");
+        }
+
+        public Status status() {
+            return optEnum("status", Status.class);
+        }
+
+        public String referenceId() {
+            return optString("reference_id");
+        }
+
+        public String fulfillmentStatus() {
+            return optString("fulfillment_status");
+        }
+
+        public String note() {
+            return optString("note");
+        }
+
+        public String trackingId() {
+            return optString("tracking_id");
+        }
+
+        public String batchId() {
+            return optString("batch_id");
+        }
+
+        public String createdBy() {
+            return optString("created_by");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public Timestamp statusUpdateAt() {
+            return reqTimestamp("status_update_at");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -234,6 +289,10 @@ public class Invoice extends Resource<Invoice> {
         return optList("linked_transactions", Invoice.LinkedTransaction.class);
     }
 
+    public List<Invoice.LinkedOrder> linkedOrders() {
+        return optList("linked_orders", Invoice.LinkedOrder.class);
+    }
+
     // Operations
     //===========
 
@@ -247,9 +306,9 @@ public class Invoice extends Resource<Invoice> {
         return new ChargeAddonRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static InvoiceListRequest list() throws IOException {
         String uri = uri("invoices");
-        return new ListRequest(uri);
+        return new InvoiceListRequest(uri);
     }
 
     public static ListRequest invoicesForCustomer(String id) throws IOException {
@@ -370,6 +429,36 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class InvoiceListRequest extends ListRequest<InvoiceListRequest> {
+
+        private InvoiceListRequest(String uri) {
+            super(uri);
+        }
+    
+        public InvoiceListRequest limit(Integer limit) {
+            params.addOpt("limit", limit);
+            return this;
+        }
+
+
+        public InvoiceListRequest offset(String offset) {
+            params.addOpt("offset", offset);
+            return this;
+        }
+
+
+        public InvoiceListRequest paidOnAfter(Timestamp paidOnAfter) {
+            params.addOpt("paid_on_after", paidOnAfter);
             return this;
         }
 

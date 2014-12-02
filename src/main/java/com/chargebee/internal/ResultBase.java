@@ -28,6 +28,10 @@ public class ResultBase {
         return (Invoice)get("invoice");
     }
 
+    public Order order() {
+        return (Order)get("order");
+    }
+
     public Transaction transaction() {
         return (Transaction)get("transaction");
     }
