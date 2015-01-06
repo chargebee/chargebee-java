@@ -77,11 +77,15 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-            CARD, AMAZON_PAYMENTS;
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public enum Status {
-            VALID, EXPIRING, EXPIRED, INVALID;
+             VALID,EXPIRING,EXPIRED,INVALID,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public PaymentMethod(JSONObject jsonObj) {
@@ -150,6 +154,10 @@ public class Customer extends Resource<Customer> {
 
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
+    }
+
+    public String createdFromIp() {
+        return optString("created_from_ip");
     }
 
     public CardStatus cardStatus() {
@@ -246,6 +254,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest vatNumber(String vatNumber) {
             params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public CreateRequest createdFromIp(String createdFromIp) {
+            params.addOpt("created_from_ip", createdFromIp);
             return this;
         }
 

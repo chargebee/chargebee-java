@@ -25,6 +25,7 @@ public class Subscription extends Resource<Subscription> {
         NOT_PAID,
         NO_CARD,
         FRAUD_REVIEW_FAILED,
+        NON_COMPLIANT_EU_CUSTOMER,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

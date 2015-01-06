@@ -14,6 +14,10 @@ public enum EventType {
     SUBSCRIPTION_RENEWED,
     INVOICE_RECEIPT,
     INVOICE_CREATED,
+    
+    
+    
+    
     PAYMENT_SUCCEEDED,
     PAYMENT_FAILED,
     PAYMENT_REFUNDED,

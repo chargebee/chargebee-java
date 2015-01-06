@@ -17,6 +17,7 @@ public class HostedPage extends Resource<HostedPage> {
         UPDATE_CARD,
         CHECKOUT_ONETIME_CHARGE,
         CHECKOUT_ONETIME_ADDONS,
+        UPDATE_PAYMENT_METHOD,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -101,9 +102,15 @@ public class HostedPage extends Resource<HostedPage> {
         return new CheckoutExistingRequest(Method.POST, uri);
     }
 
+    @Deprecated
     public static UpdateCardRequest updateCard() throws IOException {
         String uri = uri("hosted_pages", "update_card");
         return new UpdateCardRequest(Method.POST, uri);
+    }
+
+    public static UpdatePaymentMethodRequest updatePaymentMethod() throws IOException {
+        String uri = uri("hosted_pages", "update_payment_method");
+        return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
     public static CheckoutOnetimeChargeRequest checkoutOnetimeCharge() throws IOException {
@@ -383,6 +390,52 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public UpdateCardRequest cardGateway(Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdatePaymentMethodRequest extends Request<UpdatePaymentMethodRequest> {
+
+        private UpdatePaymentMethodRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdatePaymentMethodRequest passThruContent(String passThruContent) {
+            params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        public UpdatePaymentMethodRequest embed(Boolean embed) {
+            params.addOpt("embed", embed);
+            return this;
+        }
+
+
+        public UpdatePaymentMethodRequest iframeMessaging(Boolean iframeMessaging) {
+            params.addOpt("iframe_messaging", iframeMessaging);
+            return this;
+        }
+
+
+        public UpdatePaymentMethodRequest customerId(String customerId) {
+            params.add("customer[id]", customerId);
+            return this;
+        }
+
+        @Deprecated
+        public UpdatePaymentMethodRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }

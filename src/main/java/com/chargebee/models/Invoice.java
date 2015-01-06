@@ -22,11 +22,15 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
-            CHARGE, PRORATED_CHARGE, SETUP_CHARGE;
+             CHARGE,PRORATED_CHARGE,SETUP_CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public enum EntityType {
-            PLAN, ADDON, ADHOC;
+             PLAN,ADDON,ADHOC,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public LineItem(JSONObject jsonObj) {
@@ -81,7 +85,9 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Discount extends Resource<Discount> {
         public enum Type {
-            COUPON, CREDIT_ADJUSTMENT;
+             COUPON,CREDIT_ADJUSTMENT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public Discount(JSONObject jsonObj) {
@@ -154,7 +160,9 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LinkedOrder extends Resource<LinkedOrder> {
         public enum Status {
-            NEW, PROCESSING, COMPLETE, CANCELLED, VOIDED;
+             NEW,PROCESSING,COMPLETE,CANCELLED,VOIDED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public LinkedOrder(JSONObject jsonObj) {
