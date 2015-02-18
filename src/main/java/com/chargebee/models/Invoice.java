@@ -173,10 +173,6 @@ public class Invoice extends Resource<Invoice> {
             return reqString("id");
         }
 
-        public String invoiceId() {
-            return reqString("invoice_id");
-        }
-
         public Status status() {
             return optEnum("status", Status.class);
         }
@@ -189,28 +185,12 @@ public class Invoice extends Resource<Invoice> {
             return optString("fulfillment_status");
         }
 
-        public String note() {
-            return optString("note");
-        }
-
-        public String trackingId() {
-            return optString("tracking_id");
-        }
-
         public String batchId() {
             return optString("batch_id");
         }
 
-        public String createdBy() {
-            return optString("created_by");
-        }
-
         public Timestamp createdAt() {
             return reqTimestamp("created_at");
-        }
-
-        public Timestamp statusUpdateAt() {
-            return reqTimestamp("status_update_at");
         }
 
     }

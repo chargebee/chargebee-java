@@ -61,6 +61,10 @@ public class Customer extends Resource<Customer> {
             return optString("city");
         }
 
+        public String stateCode() {
+            return optString("state_code");
+        }
+
         public String state() {
             return optString("state");
         }
@@ -319,6 +323,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest cardBillingStateCode(String cardBillingStateCode) {
+            params.addOpt("card[billing_state_code]", cardBillingStateCode);
+            return this;
+        }
+
         public CreateRequest cardBillingState(String cardBillingState) {
             params.addOpt("card[billing_state]", cardBillingState);
             return this;
@@ -376,6 +385,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CreateRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
 
@@ -502,6 +516,11 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
 
