@@ -195,6 +195,124 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class ShippingAddress extends Resource<ShippingAddress> {
+        public ShippingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+    }
+
+    public static class BillingAddress extends Resource<BillingAddress> {
+        public BillingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -281,8 +399,21 @@ public class Invoice extends Resource<Invoice> {
         return optList("linked_orders", Invoice.LinkedOrder.class);
     }
 
+    public Invoice.ShippingAddress shippingAddress() {
+        return optSubResource("shipping_address", Invoice.ShippingAddress.class);
+    }
+
+    public Invoice.BillingAddress billingAddress() {
+        return optSubResource("billing_address", Invoice.BillingAddress.class);
+    }
+
     // Operations
     //===========
+
+    public static CreateRequest create() throws IOException {
+        String uri = uri("invoices");
+        return new CreateRequest(Method.POST, uri);
+    }
 
     public static ChargeRequest charge() throws IOException {
         String uri = uri("invoices", "charge");
@@ -342,6 +473,115 @@ public class Invoice extends Resource<Invoice> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+
+        public CreateRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public CreateRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+
+        public CreateRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class ChargeRequest extends Request<ChargeRequest> {
 
