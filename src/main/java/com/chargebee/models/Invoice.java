@@ -470,6 +470,11 @@ public class Invoice extends Resource<Invoice> {
         return new RefundRequest(Method.POST, uri);
     }
 
+    public static DeleteRequest delete(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "delete");
+        return new DeleteRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -759,6 +764,24 @@ public class Invoice extends Resource<Invoice> {
 
         public RefundRequest memo(String memo) {
             params.addOpt("memo", memo);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteRequest extends Request<DeleteRequest> {
+
+        private DeleteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 

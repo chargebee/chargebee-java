@@ -489,6 +489,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest cardIpAddress(String cardIpAddress) {
+            params.addOpt("card[ip_address]", cardIpAddress);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -919,6 +924,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public UpdateRequest cardIpAddress(String cardIpAddress) {
+            params.addOpt("card[ip_address]", cardIpAddress);
             return this;
         }
 

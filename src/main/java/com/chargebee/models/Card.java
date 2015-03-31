@@ -114,6 +114,10 @@ public class Card extends Resource<Card> {
         return optString("billing_zip");
     }
 
+    public String ipAddress() {
+        return optString("ip_address");
+    }
+
     public String maskedNumber() {
         return optString("masked_number");
     }
@@ -232,6 +236,12 @@ public class Card extends Resource<Card> {
 
         public UpdateCardForCustomerRequest billingCountry(String billingCountry) {
             params.addOpt("billing_country", billingCountry);
+            return this;
+        }
+
+
+        public UpdateCardForCustomerRequest ipAddress(String ipAddress) {
+            params.addOpt("ip_address", ipAddress);
             return this;
         }
 

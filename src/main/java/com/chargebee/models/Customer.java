@@ -343,6 +343,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest cardIpAddress(String cardIpAddress) {
+            params.addOpt("card[ip_address]", cardIpAddress);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;

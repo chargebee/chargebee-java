@@ -16,7 +16,7 @@ public enum EventType {
     SUBSCRIPTION_SCHEDULED_CANCELLATION_REMOVED,
     INVOICE_RECEIPT,
     INVOICE_CREATED,
-    
+    INVOICE_DELETED,
     
     
     
