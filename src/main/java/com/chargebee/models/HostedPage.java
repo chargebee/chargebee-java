@@ -156,6 +156,18 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutNewRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
         public CheckoutNewRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -279,6 +291,18 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutExistingRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
         public CheckoutExistingRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -360,6 +384,18 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public UpdateCardRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public UpdateCardRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
         public UpdateCardRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;
@@ -406,6 +442,18 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public UpdatePaymentMethodRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public UpdatePaymentMethodRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
         public UpdatePaymentMethodRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
             return this;

@@ -176,6 +176,10 @@ public class Customer extends Resource<Customer> {
         return optSubResource("payment_method", Customer.PaymentMethod.class);
     }
 
+    public String invoiceNotes() {
+        return optString("invoice_notes");
+    }
+
     // Operations
     //===========
 
@@ -264,6 +268,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest createdFromIp(String createdFromIp) {
             params.addOpt("created_from_ip", createdFromIp);
+            return this;
+        }
+
+
+        public CreateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 
@@ -457,6 +467,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest autoCollection(AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 

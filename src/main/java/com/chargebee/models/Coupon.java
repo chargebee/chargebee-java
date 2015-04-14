@@ -171,6 +171,10 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("redemptions");
     }
 
+    public String invoiceNotes() {
+        return optString("invoice_notes");
+    }
+
     // Operations
     //===========
 
@@ -299,6 +303,12 @@ public class Coupon extends Resource<Coupon> {
 
         public CreateRequest maxRedemptions(Integer maxRedemptions) {
             params.addOpt("max_redemptions", maxRedemptions);
+            return this;
+        }
+
+
+        public CreateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 

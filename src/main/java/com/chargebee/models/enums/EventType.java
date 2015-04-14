@@ -18,7 +18,7 @@ public enum EventType {
     INVOICE_CREATED,
     INVOICE_DELETED,
     
-    
+    SUBSCRIPTION_RENEWAL_REMINDER,
     
     PAYMENT_SUCCEEDED,
     PAYMENT_FAILED,

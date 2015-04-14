@@ -181,6 +181,10 @@ public class Subscription extends Resource<Subscription> {
         return optInteger("remaining_billing_cycles");
     }
 
+    public String poNumber() {
+        return optString("po_number");
+    }
+
     public Timestamp createdAt() {
         return optTimestamp("created_at");
     }
@@ -240,6 +244,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Boolean hasScheduledChanges() {
         return optBoolean("has_scheduled_changes");
+    }
+
+    public String invoiceNotes() {
+        return optString("invoice_notes");
     }
 
     // Operations
@@ -367,6 +375,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
         public CreateRequest affiliateToken(String affiliateToken) {
             params.addOpt("affiliate_token", affiliateToken);
             return this;
@@ -375,6 +389,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest createdFromIp(String createdFromIp) {
             params.addOpt("created_from_ip", createdFromIp);
+            return this;
+        }
+
+
+        public CreateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 
@@ -693,6 +713,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public CreateForCustomerRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
         public CreateForCustomerRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -840,6 +872,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
         public UpdateRequest prorate(Boolean prorate) {
             params.addOpt("prorate", prorate);
             return this;
@@ -848,6 +886,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 

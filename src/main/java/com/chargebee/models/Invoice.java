@@ -195,6 +195,31 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class Note extends Resource<Note> {
+        public enum EntityType {
+             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Note(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public String note() {
+            return reqString("note");
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+    }
+
     public static class ShippingAddress extends Resource<ShippingAddress> {
         public ShippingAddress(JSONObject jsonObj) {
             super(jsonObj);
@@ -331,6 +356,10 @@ public class Invoice extends Resource<Invoice> {
         return reqString("id");
     }
 
+    public String poNumber() {
+        return optString("po_number");
+    }
+
     public String customerId() {
         return reqString("customer_id");
     }
@@ -361,6 +390,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Integer amount() {
         return optInteger("amount");
+    }
+
+    public Integer amountDue() {
+        return optInteger("amount_due");
     }
 
     public Timestamp paidOn() {
@@ -397,6 +430,10 @@ public class Invoice extends Resource<Invoice> {
 
     public List<Invoice.LinkedOrder> linkedOrders() {
         return optList("linked_orders", Invoice.LinkedOrder.class);
+    }
+
+    public List<Invoice.Note> notes() {
+        return optList("notes", Invoice.Note.class);
     }
 
     public Invoice.ShippingAddress shippingAddress() {
@@ -493,6 +530,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
             return this;
         }
 
@@ -624,6 +667,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -662,6 +711,12 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public ChargeAddonRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
             return this;
         }
 

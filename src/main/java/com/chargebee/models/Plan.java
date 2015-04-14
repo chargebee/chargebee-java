@@ -127,6 +127,10 @@ public class Plan extends Resource<Plan> {
         return reqBoolean("enabled_in_hosted_pages");
     }
 
+    public String invoiceNotes() {
+        return optString("invoice_notes");
+    }
+
     // Operations
     //===========
 
@@ -261,6 +265,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -365,6 +375,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest enabledInHostedPages(Boolean enabledInHostedPages) {
             params.addOpt("enabled_in_hosted_pages", enabledInHostedPages);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 

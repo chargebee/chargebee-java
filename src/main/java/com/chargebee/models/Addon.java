@@ -104,6 +104,10 @@ public class Addon extends Resource<Addon> {
         return optTimestamp("archived_at");
     }
 
+    public String invoiceNotes() {
+        return optString("invoice_notes");
+    }
+
     // Operations
     //===========
 
@@ -202,6 +206,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -270,6 +280,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest unit(String unit) {
             params.addOpt("unit", unit);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
 

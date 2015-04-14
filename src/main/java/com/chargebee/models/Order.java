@@ -76,7 +76,7 @@ public class Order extends Resource<Order> {
     }
 
     public Timestamp statusUpdateAt() {
-        return reqTimestamp("status_update_at");
+        return optTimestamp("status_update_at");
     }
 
     // Operations
