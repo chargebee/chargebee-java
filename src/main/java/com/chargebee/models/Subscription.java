@@ -444,6 +444,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest paymentMethodType(Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
         public CreateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
@@ -903,6 +913,16 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public UpdateRequest paymentMethodType(Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public UpdateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
         }
 

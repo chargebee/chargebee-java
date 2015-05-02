@@ -203,6 +203,11 @@ public class Customer extends Resource<Customer> {
         return new UpdateRequest(Method.POST, uri);
     }
 
+    public static UpdatePaymentMethodRequest updatePaymentMethod(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "update_payment_method");
+        return new UpdatePaymentMethodRequest(Method.POST, uri);
+    }
+
     public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "update_billing_info");
         return new UpdateBillingInfoRequest(Method.POST, uri);
@@ -285,6 +290,16 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public CreateRequest paymentMethodType(Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
         }
 
@@ -476,6 +491,28 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdatePaymentMethodRequest extends Request<UpdatePaymentMethodRequest> {
+
+        private UpdatePaymentMethodRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdatePaymentMethodRequest paymentMethodType(Type paymentMethodType) {
+            params.add("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.add("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
 
         @Override
         public Params params() {

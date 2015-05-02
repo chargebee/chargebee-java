@@ -502,6 +502,11 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.POST, uri);
     }
 
+    public static Request collectPayment(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "collect_payment");
+        return new Request(Method.POST, uri);
+    }
+
     public static RefundRequest refund(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "refund");
         return new RefundRequest(Method.POST, uri);
