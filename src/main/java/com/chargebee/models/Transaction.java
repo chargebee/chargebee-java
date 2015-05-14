@@ -197,6 +197,12 @@ public class Transaction extends Resource<Transaction> {
             super(httpMeth, uri);
         }
     
+        public RecordPaymentRequest amount(Integer amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
         public RecordPaymentRequest paymentMethod(PaymentMethod paymentMethod) {
             params.add("payment_method", paymentMethod);
             return this;
