@@ -1,3 +1,12 @@
+### v1.1.60 (2015-05-27)
+* * *
+
+** APIs deprecated**:
+
+Support for downgrade penalty is deprecated for Create & Update methods of Plan API.
+
+The attribute "downgrade_penalty" for plan resource has been deprecated.
+
 ### v1.1.59 (2015-05-20)
 * * *
 

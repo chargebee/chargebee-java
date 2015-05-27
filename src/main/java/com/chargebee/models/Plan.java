@@ -103,6 +103,7 @@ public class Plan extends Resource<Plan> {
         return optInteger("setup_cost");
     }
 
+    @Deprecated
     public Double downgradePenalty() {
         return optDouble("downgrade_penalty");
     }
@@ -247,6 +248,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        @Deprecated
         public CreateRequest downgradePenalty(Double downgradePenalty) {
             params.addOpt("downgrade_penalty", downgradePenalty);
             return this;
@@ -361,6 +363,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        @Deprecated
         public UpdateRequest downgradePenalty(Double downgradePenalty) {
             params.addOpt("downgrade_penalty", downgradePenalty);
             return this;
