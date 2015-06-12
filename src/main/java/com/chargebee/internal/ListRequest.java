@@ -4,10 +4,8 @@ import com.chargebee.Environment;
 import com.chargebee.ListResult;
 import java.io.IOException;
 
-public class ListRequest<U extends ListRequest> {
+public class ListRequest<U extends ListRequest> extends RequestBase<U>{
 
-    private String uri;
-    protected Params params = new Params();
 
     public ListRequest(String uri) {
         this.uri = uri;
@@ -32,10 +30,7 @@ public class ListRequest<U extends ListRequest> {
             throw new RuntimeException("Environment cannot be null");
         }
         String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
-        return HttpUtil.getList(url, params(), env);
+        return HttpUtil.getList(url, params(),headers, env);
     }
 
-    protected Params params() {
-        return params;
-    }
 }

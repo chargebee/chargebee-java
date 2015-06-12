@@ -1,18 +1,14 @@
 package com.chargebee.internal;
 
-import com.chargebee.Environment;
-import com.chargebee.Result;
+import com.chargebee.*;
 import com.chargebee.internal.HttpUtil.Method;
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
 
-public class Request<U extends Request> {
+public class Request<U extends Request> extends RequestBase<U>{
 
-    private HttpUtil.Method httpMeth;
-
-    private String uri;
+    private final HttpUtil.Method httpMeth;
     
-    protected Params params = new Params();
-
     public Request(Method httpMeth, String uri) {
         this.uri = uri;
         this.httpMeth = httpMeth;
@@ -22,11 +18,7 @@ public class Request<U extends Request> {
         params.add(paramName, value);
         return (U)this;
     }
-    
-    protected Params params() {
-        return params;
-    }
-    
+        
     public final Result request() throws IOException {
         return request(Environment.defaultConfig());
     }
@@ -38,11 +30,9 @@ public class Request<U extends Request> {
         String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
         switch(httpMeth) {
             case GET:
-                return HttpUtil.get(url, params(), env);
+                return HttpUtil.get(url, params(),headers, env);
             case POST:
-                return HttpUtil.post(url, params(), env);
-            case PUT:
-                return HttpUtil.put(url, params(), env);
+                return HttpUtil.post(url, params(),headers, env);
             default:
                 throw new RuntimeException("Not handled type [" + httpMeth + "]");
         }

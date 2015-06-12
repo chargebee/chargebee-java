@@ -14,6 +14,7 @@ public class Coupon extends Resource<Coupon> {
     public enum DiscountType {
         FIXED_AMOUNT,
         PERCENTAGE,
+        @Deprecated
         OFFER_QUANTITY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -47,8 +48,10 @@ public class Coupon extends Resource<Coupon> {
 
     public enum ApplyOn {
         INVOICE_AMOUNT,
+        @Deprecated
         SPECIFIED_ITEMS_TOTAL,
         EACH_SPECIFIED_ITEM,
+        @Deprecated
         EACH_UNIT_OF_SPECIFIED_ITEMS,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -110,6 +113,7 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("discount_amount");
     }
 
+    @Deprecated
     public Integer discountQuantity() {
         return optInteger("discount_quantity");
     }
@@ -239,6 +243,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        @Deprecated
         public CreateRequest discountQuantity(Integer discountQuantity) {
             params.addOpt("discount_quantity", discountQuantity);
             return this;

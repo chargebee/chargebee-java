@@ -180,6 +180,10 @@ public class Customer extends Resource<Customer> {
         return optString("invoice_notes");
     }
 
+    public Integer accountCredits() {
+        return reqInteger("account_credits");
+    }
+
     // Operations
     //===========
 
@@ -211,6 +215,21 @@ public class Customer extends Resource<Customer> {
     public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "update_billing_info");
         return new UpdateBillingInfoRequest(Method.POST, uri);
+    }
+
+    public static AddAccountCreditsRequest addAccountCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "add_account_credits");
+        return new AddAccountCreditsRequest(Method.POST, uri);
+    }
+
+    public static DeductAccountCreditsRequest deductAccountCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "deduct_account_credits");
+        return new DeductAccountCreditsRequest(Method.POST, uri);
+    }
+
+    public static SetAccountCreditsRequest setAccountCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "set_account_credits");
+        return new SetAccountCreditsRequest(Method.POST, uri);
     }
 
 
@@ -596,6 +615,78 @@ public class Customer extends Resource<Customer> {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddAccountCreditsRequest extends Request<AddAccountCreditsRequest> {
+
+        private AddAccountCreditsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddAccountCreditsRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        public AddAccountCreditsRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeductAccountCreditsRequest extends Request<DeductAccountCreditsRequest> {
+
+        private DeductAccountCreditsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeductAccountCreditsRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        public DeductAccountCreditsRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class SetAccountCreditsRequest extends Request<SetAccountCreditsRequest> {
+
+        private SetAccountCreditsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public SetAccountCreditsRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        public SetAccountCreditsRequest description(String description) {
+            params.add("description", description);
+            return this;
+        }
+
 
         @Override
         public Params params() {

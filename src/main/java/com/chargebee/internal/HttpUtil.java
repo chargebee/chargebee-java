@@ -12,7 +12,7 @@ import org.json.*;
 public class HttpUtil {
 
     public enum Method {
-        GET, POST, PUT, DELETE;
+        GET, POST;
     }
 
     /**
@@ -36,31 +36,28 @@ public class HttpUtil {
         }
     }
 
-    public static Result get(String url, Params params, Environment env) throws IOException {
+    public static Result get(String url, Params params, Map<String,String> headers,Environment env) throws IOException {
         if(params != null && !params.isEmpty()) {
             url = url + '?' + toQueryStr(params); // fixme: what about url size restrictions ??
         }
-        HttpURLConnection conn = createConnection(url, Method.GET, env);
+        HttpURLConnection conn = createConnection(url, Method.GET, headers,env);
         Resp resp = sendRequest(conn);
         return resp.toResult();
     }
 
-    public static ListResult getList(String url, Params params, Environment env) throws IOException {
+    public static ListResult getList(String url, Params params, Map<String,String> headers,Environment env) throws IOException {
         if(params != null && !params.isEmpty()) {
             url = url + '?' + toQueryStr(params); // fixme: what about url size restrictions ??
         }
-        HttpURLConnection conn = createConnection(url, Method.GET, env);
+        HttpURLConnection conn = createConnection(url, Method.GET, headers,env);
         Resp resp = sendRequest(conn);
         return resp.toListResult();
     }
 
-    public static Result post(String url, Params params, Environment env) throws IOException {
-        return doFormSubmit(url,Method.POST, toQueryStr(params), env);
+    public static Result post(String url, Params params, Map<String,String> headers, Environment env) throws IOException {
+        return doFormSubmit(url,Method.POST, toQueryStr(params), headers,env);
     }
 
-    public static Result put(String url, Params params, Environment env) throws IOException {
-        return doFormSubmit(url,Method.PUT, toQueryStr(params), env);
-    }
 
     public static String toQueryStr(Params map) {
         StringJoiner buf = new StringJoiner("&");
@@ -89,8 +86,9 @@ public class HttpUtil {
         }
     }
 
-    private static Result doFormSubmit(String url,Method m, String queryStr, Environment env) throws IOException {
-        HttpURLConnection conn = createConnection(url, m, env);
+    private static Result doFormSubmit(String url,Method m, String queryStr, Map<String,String> headers,
+            Environment env) throws IOException {
+        HttpURLConnection conn = createConnection(url, m, headers,env);
         writeContent(conn, queryStr);
         Resp resp = sendRequest(conn);
         return resp.toResult();
@@ -108,14 +106,17 @@ public class HttpUtil {
         }
     }
 
-    private static HttpURLConnection createConnection(String url, Method m, Environment config)
+    private static HttpURLConnection createConnection(String url, Method m, 
+            Map<String,String> headers,
+            Environment config)
             throws IOException {
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod(m.name());
         setTimeouts(conn, config);
         addHeaders(conn, config);
+        addCustomHeaders(conn,headers);
         setContentType(conn, m);
-        if ((m == Method.POST) || (m == Method.PUT)) {
+        if (m == Method.POST) {
             conn.setDoOutput(true);
         }
         conn.setUseCaches(false);
@@ -158,7 +159,7 @@ public class HttpUtil {
     }
 
     private static void setContentType(HttpURLConnection conn, Method m) {
-        if ((m == Method.POST) || (m == Method.PUT)) {
+        if (m == Method.POST) {
             addHeader(conn, "Content-Type", "application/x-www-form-urlencoded;charset=" + Environment.CHARSET);
         }
     }
@@ -168,6 +169,12 @@ public class HttpUtil {
         addHeader(conn, "User-Agent", String.format("Chargebee-Java-Client v%s", Environment.LIBRARY_VERSION));
         addHeader(conn, "Authorization", getAuthValue(config));
         addHeader(conn, "Accept", "application/json");
+    }
+
+    private static void addCustomHeaders(HttpURLConnection conn, Map<String, String> headers) {
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+            addHeader(conn, entry.getKey(), entry.getValue());
+        }
     }
 
     private static void addHeader(HttpURLConnection conn, String headerName, String value) {
@@ -212,5 +219,7 @@ public class HttpUtil {
             resp.close();
         }
     }
+    
+    
 
 }
