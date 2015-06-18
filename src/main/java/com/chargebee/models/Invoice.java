@@ -15,6 +15,7 @@ public class Invoice extends Resource<Invoice> {
         PAID,
         PAYMENT_DUE,
         NOT_PAID,
+        VOIDED,
         PENDING,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -512,6 +513,11 @@ public class Invoice extends Resource<Invoice> {
         return new RefundRequest(Method.POST, uri);
     }
 
+    public static VoidInvoiceRequest voidInvoice(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "void");
+        return new VoidInvoiceRequest(Method.POST, uri);
+    }
+
     public static DeleteRequest delete(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
@@ -824,6 +830,24 @@ public class Invoice extends Resource<Invoice> {
 
         public RefundRequest memo(String memo) {
             params.addOpt("memo", memo);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class VoidInvoiceRequest extends Request<VoidInvoiceRequest> {
+
+        private VoidInvoiceRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public VoidInvoiceRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
