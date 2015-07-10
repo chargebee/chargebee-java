@@ -100,6 +100,10 @@ public class Customer extends Resource<Customer> {
             return optEnum("type", Type.class);
         }
 
+        public Gateway gateway() {
+            return reqEnum("gateway", Gateway.class);
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
         }
@@ -317,6 +321,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
         public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
@@ -525,6 +534,11 @@ public class Customer extends Resource<Customer> {
     
         public UpdatePaymentMethodRequest paymentMethodType(Type paymentMethodType) {
             params.add("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
 

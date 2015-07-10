@@ -513,6 +513,11 @@ public class Invoice extends Resource<Invoice> {
         return new RefundRequest(Method.POST, uri);
     }
 
+    public static RecordRefundRequest recordRefund(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "record_refund");
+        return new RecordRefundRequest(Method.POST, uri);
+    }
+
     public static VoidInvoiceRequest voidInvoice(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "void");
         return new VoidInvoiceRequest(Method.POST, uri);
@@ -833,6 +838,44 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RecordRefundRequest extends Request<RecordRefundRequest> {
+
+        private RecordRefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RecordRefundRequest memo(String memo) {
+            params.add("memo", memo);
+            return this;
+        }
+
+
+        public RecordRefundRequest transactionAmount(Integer transactionAmount) {
+            params.addOpt("transaction[amount]", transactionAmount);
+            return this;
+        }
+
+        public RecordRefundRequest transactionPaymentMethod(PaymentMethod transactionPaymentMethod) {
+            params.add("transaction[payment_method]", transactionPaymentMethod);
+            return this;
+        }
+
+        public RecordRefundRequest transactionReferenceNumber(String transactionReferenceNumber) {
+            params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        public RecordRefundRequest transactionDate(Timestamp transactionDate) {
+            params.add("transaction[date]", transactionDate);
+            return this;
+        }
 
         @Override
         public Params params() {

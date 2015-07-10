@@ -11,18 +11,6 @@ import java.util.*;
 
 public class Transaction extends Resource<Transaction> {
 
-    public enum PaymentMethod {
-        CARD,
-        CASH,
-        CHECK,
-        BANK_TRANSFER,
-        AMAZON_PAYMENTS,
-        PAYPAL_EXPRESS_CHECKOUT,
-        OTHER,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
     public enum Type {
         AUTHORIZATION,
         PAYMENT,
@@ -102,6 +90,7 @@ public class Transaction extends Resource<Transaction> {
         return reqEnum("gateway", Gateway.class);
     }
 
+    @Deprecated
     public String description() {
         return optString("description");
     }
@@ -138,6 +127,7 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("voided_at");
     }
 
+    @Deprecated
     public String voidDescription() {
         return optString("void_description");
     }

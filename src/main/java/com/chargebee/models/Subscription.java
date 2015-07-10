@@ -449,6 +449,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
         public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
@@ -918,6 +923,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest paymentMethodType(Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public UpdateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
 
