@@ -21,6 +21,15 @@ public class Invoice extends Resource<Invoice> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum DunningStatus {
+        IN_PROGRESS,
+        EXHAUSTED,
+        STOPPED,
+        SUCCESS,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
              CHARGE,PRORATED_CHARGE,SETUP_CHARGE,
@@ -401,6 +410,10 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("paid_on");
     }
 
+    public DunningStatus dunningStatus() {
+        return optEnum("dunning_status", DunningStatus.class);
+    }
+
     public Timestamp nextRetry() {
         return optTimestamp("next_retry");
     }
@@ -461,6 +474,11 @@ public class Invoice extends Resource<Invoice> {
     public static ChargeAddonRequest chargeAddon() throws IOException {
         String uri = uri("invoices", "charge_addon");
         return new ChargeAddonRequest(Method.POST, uri);
+    }
+
+    public static Request stopDunning(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "stop_dunning");
+        return new Request(Method.POST, uri);
     }
 
     public static InvoiceListRequest list() throws IOException {
