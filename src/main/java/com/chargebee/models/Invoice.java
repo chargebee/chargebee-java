@@ -426,6 +426,14 @@ public class Invoice extends Resource<Invoice> {
         return reqInteger("tax");
     }
 
+    public Boolean firstInvoice() {
+        return optBoolean("first_invoice");
+    }
+
+    public String currencyCode() {
+        return optString("currency_code");
+    }
+
     public List<Invoice.LineItem> lineItems() {
         return optList("line_items", Invoice.LineItem.class);
     }

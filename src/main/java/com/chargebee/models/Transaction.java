@@ -144,6 +144,10 @@ public class Transaction extends Resource<Transaction> {
         return optList("linked_invoices", Transaction.LinkedInvoice.class);
     }
 
+    public String currencyCode() {
+        return optString("currency_code");
+    }
+
     // Operations
     //===========
 
