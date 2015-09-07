@@ -11,16 +11,38 @@ import java.util.*;
 
 public class Event extends Resource<Event> {
 
+    @Deprecated
     public enum WebhookStatus {
         NOT_CONFIGURED,
-        NOT_APPLICABLE,
         SCHEDULED,
         SUCCEEDED,
         RE_SCHEDULED,
         FAILED,
         SKIPPED,
+        NOT_APPLICABLE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class Webhook extends Resource<Webhook> {
+        public enum WebhookStatus {
+             NOT_CONFIGURED,SCHEDULED,SUCCEEDED,RE_SCHEDULED,FAILED,SKIPPED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Webhook(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public WebhookStatus webhookStatus() {
+            return reqEnum("webhook_status", WebhookStatus.class);
+        }
+
     }
 
     //Constructors
@@ -57,12 +79,22 @@ public class Event extends Resource<Event> {
         return reqEnum("source", Source.class);
     }
 
+    public String user() {
+        return optString("user");
+    }
+
+    @Deprecated
     public WebhookStatus webhookStatus() {
         return reqEnum("webhook_status", WebhookStatus.class);
     }
 
+    @Deprecated
     public String webhookFailureReason() {
         return optString("webhook_failure_reason");
+    }
+
+    public List<Event.Webhook> webhooks() {
+        return optList("webhooks", Event.Webhook.class);
     }
 
     public EventType eventType() {
