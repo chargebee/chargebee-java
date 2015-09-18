@@ -132,6 +132,10 @@ public class Plan extends Resource<Plan> {
         return optString("invoice_notes");
     }
 
+    public Boolean taxable() {
+        return optBoolean("taxable");
+    }
+
     // Operations
     //===========
 
@@ -267,6 +271,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest taxable(Boolean taxable) {
+            params.addOpt("taxable", taxable);
+            return this;
+        }
+
+
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -378,6 +388,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest enabledInHostedPages(Boolean enabledInHostedPages) {
             params.addOpt("enabled_in_hosted_pages", enabledInHostedPages);
+            return this;
+        }
+
+
+        public UpdateRequest taxable(Boolean taxable) {
+            params.addOpt("taxable", taxable);
             return this;
         }
 

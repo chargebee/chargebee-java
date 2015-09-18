@@ -63,6 +63,10 @@ public class Invoice extends Resource<Invoice> {
             return optInteger("quantity");
         }
 
+        public Boolean isTaxed() {
+            return reqBoolean("is_taxed");
+        }
+
         public Integer tax() {
             return optInteger("tax");
         }

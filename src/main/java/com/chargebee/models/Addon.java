@@ -108,6 +108,10 @@ public class Addon extends Resource<Addon> {
         return optString("invoice_notes");
     }
 
+    public Boolean taxable() {
+        return optBoolean("taxable");
+    }
+
     // Operations
     //===========
 
@@ -206,6 +210,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest taxable(Boolean taxable) {
+            params.addOpt("taxable", taxable);
+            return this;
+        }
+
+
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -280,6 +290,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest unit(String unit) {
             params.addOpt("unit", unit);
+            return this;
+        }
+
+
+        public UpdateRequest taxable(Boolean taxable) {
+            params.addOpt("taxable", taxable);
             return this;
         }
 

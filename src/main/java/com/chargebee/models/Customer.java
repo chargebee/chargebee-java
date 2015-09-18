@@ -168,6 +168,10 @@ public class Customer extends Resource<Customer> {
         return optString("created_from_ip");
     }
 
+    public Taxability taxability() {
+        return optEnum("taxability", Taxability.class);
+    }
+
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
     }
@@ -290,6 +294,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest vatNumber(String vatNumber) {
             params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public CreateRequest taxability(Taxability taxability) {
+            params.addOpt("taxability", taxability);
             return this;
         }
 
@@ -510,6 +520,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest autoCollection(AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public UpdateRequest taxability(Taxability taxability) {
+            params.addOpt("taxability", taxability);
             return this;
         }
 
