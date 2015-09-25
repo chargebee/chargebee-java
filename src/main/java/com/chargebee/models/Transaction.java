@@ -20,6 +20,7 @@ public class Transaction extends Resource<Transaction> {
     }
 
     public enum Status {
+        IN_PROGRESS,
         SUCCESS,
         VOIDED,
         FAILURE,
@@ -133,7 +134,7 @@ public class Transaction extends Resource<Transaction> {
     }
 
     public String maskedCardNumber() {
-        return reqString("masked_card_number");
+        return optString("masked_card_number");
     }
 
     public String refundedTxnId() {

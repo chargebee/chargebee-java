@@ -1,3 +1,19 @@
+### v1.1.68 (2015-09-25)
+* * *
+
+** APIs updated**:
+
+New transaction status "in_progress" & payment method type "direct_debit"  are added as part of "status" & "payment_method" attributes of transaction resource.
+See : https://apidocs.chargebee.com/docs/api/transactions#transaction_attributes
+
+A new payment method type "direct_debit" is added as part of "type" attribute of payment_method sub-resource for customer resource. See : https://apidocs.chargebee.com/docs/api/customers#customer_attributes
+
+Now, events "invoice_generated", "payment_initiated" & "refund_initiated" can be fetched via API. See : https://apidocs.chargebee.com/docs/api/events#event_types.
+
+** APIs deprecated**:
+
+Attributes "card_status" of customer resource has been deprecated.
+
 ### v1.1.67 (2015-09-18)
 * * *
 
