@@ -11,6 +11,13 @@ import java.util.*;
 
 public class Estimate extends Resource<Estimate> {
 
+    public enum PriceType {
+        TAX_EXCLUSIVE,
+        TAX_INCLUSIVE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
              CHARGE,PRORATED_CHARGE,SETUP_CHARGE,
@@ -164,6 +171,10 @@ public class Estimate extends Resource<Estimate> {
         return reqInteger("amount");
     }
 
+    public PriceType priceType() {
+        return reqEnum("price_type", PriceType.class);
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
@@ -246,6 +257,31 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CreateSubscriptionRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public CreateSubscriptionRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
 
@@ -343,6 +379,31 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
 

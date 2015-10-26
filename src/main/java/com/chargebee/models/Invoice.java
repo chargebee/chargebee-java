@@ -21,6 +21,13 @@ public class Invoice extends Resource<Invoice> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PriceType {
+        TAX_EXCLUSIVE,
+        TAX_INCLUSIVE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum DunningStatus {
         IN_PROGRESS,
         EXHAUSTED,
@@ -392,6 +399,10 @@ public class Invoice extends Resource<Invoice> {
 
     public String vatNumber() {
         return optString("vat_number");
+    }
+
+    public PriceType priceType() {
+        return reqEnum("price_type", PriceType.class);
     }
 
     public Timestamp startDate() {

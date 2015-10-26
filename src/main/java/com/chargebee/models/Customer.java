@@ -161,6 +161,10 @@ public class Customer extends Resource<Customer> {
         return reqEnum("auto_collection", AutoCollection.class);
     }
 
+    public Boolean allowDirectDebit() {
+        return reqBoolean("allow_direct_debit");
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }
@@ -290,6 +294,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest autoCollection(AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateRequest allowDirectDebit(Boolean allowDirectDebit) {
+            params.addOpt("allow_direct_debit", allowDirectDebit);
             return this;
         }
 
@@ -522,6 +532,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest autoCollection(AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public UpdateRequest allowDirectDebit(Boolean allowDirectDebit) {
+            params.addOpt("allow_direct_debit", allowDirectDebit);
             return this;
         }
 

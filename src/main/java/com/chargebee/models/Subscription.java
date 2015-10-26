@@ -439,6 +439,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerAllowDirectDebit(Boolean customerAllowDirectDebit) {
+            params.addOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+            return this;
+        }
+
         public CreateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
