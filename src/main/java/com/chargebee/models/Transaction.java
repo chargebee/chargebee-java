@@ -15,6 +15,7 @@ public class Transaction extends Resource<Transaction> {
         AUTHORIZATION,
         PAYMENT,
         REFUND,
+        PAYMENT_REVERSAL,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -43,12 +44,39 @@ public class Transaction extends Resource<Transaction> {
             return reqInteger("applied_amount");
         }
 
+        public Timestamp appliedAt() {
+            return reqTimestamp("applied_at");
+        }
+
         public Timestamp invoiceDate() {
             return optTimestamp("invoice_date");
         }
 
         public Integer invoiceAmount() {
             return optInteger("invoice_amount");
+        }
+
+    }
+
+    public static class LinkedRefund extends Resource<LinkedRefund> {
+        public LinkedRefund(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer txnAmount() {
+            return reqInteger("txn_amount");
+        }
+
+        public Timestamp txnDate() {
+            return reqTimestamp("txn_date");
+        }
+
+        public String txnId() {
+            return reqString("txn_id");
+        }
+
+        public Transaction.Status txnStatus() {
+            return optEnum("txn_status", Transaction.Status.class);
         }
 
     }
@@ -133,16 +161,32 @@ public class Transaction extends Resource<Transaction> {
         return optString("void_description");
     }
 
+    public Integer amountUnused() {
+        return optInteger("amount_unused");
+    }
+
     public String maskedCardNumber() {
         return optString("masked_card_number");
+    }
+
+    public String referenceTransactionId() {
+        return optString("reference_transaction_id");
     }
 
     public String refundedTxnId() {
         return optString("refunded_txn_id");
     }
 
+    public String reversalTransactionId() {
+        return optString("reversal_transaction_id");
+    }
+
     public List<Transaction.LinkedInvoice> linkedInvoices() {
         return optList("linked_invoices", Transaction.LinkedInvoice.class);
+    }
+
+    public List<Transaction.LinkedRefund> linkedRefunds() {
+        return optList("linked_refunds", Transaction.LinkedRefund.class);
     }
 
     public String currencyCode() {

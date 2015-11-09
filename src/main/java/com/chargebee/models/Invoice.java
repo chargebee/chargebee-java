@@ -161,6 +161,10 @@ public class Invoice extends Resource<Invoice> {
             return reqInteger("applied_amount");
         }
 
+        public Timestamp appliedAt() {
+            return reqTimestamp("applied_at");
+        }
+
         public Transaction.Type txnType() {
             return reqEnum("txn_type", Transaction.Type.class);
         }

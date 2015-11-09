@@ -98,7 +98,7 @@ public class Customer extends Resource<Customer> {
         }
 
         public Type type() {
-            return optEnum("type", Type.class);
+            return reqEnum("type", Type.class);
         }
 
         public Gateway gateway() {
@@ -196,6 +196,10 @@ public class Customer extends Resource<Customer> {
 
     public Integer accountCredits() {
         return reqInteger("account_credits");
+    }
+
+    public Integer excessPayments() {
+        return reqInteger("excess_payments");
     }
 
     // Operations
