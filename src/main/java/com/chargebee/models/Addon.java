@@ -104,6 +104,10 @@ public class Addon extends Resource<Addon> {
         return optTimestamp("archived_at");
     }
 
+    public Boolean enabledInPortal() {
+        return reqBoolean("enabled_in_portal");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -210,6 +214,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest enabledInPortal(Boolean enabledInPortal) {
+            params.addOpt("enabled_in_portal", enabledInPortal);
+            return this;
+        }
+
+
         public CreateRequest taxable(Boolean taxable) {
             params.addOpt("taxable", taxable);
             return this;
@@ -290,6 +300,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest unit(String unit) {
             params.addOpt("unit", unit);
+            return this;
+        }
+
+
+        public UpdateRequest enabledInPortal(Boolean enabledInPortal) {
+            params.addOpt("enabled_in_portal", enabledInPortal);
             return this;
         }
 

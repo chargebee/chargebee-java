@@ -63,20 +63,20 @@ public class Transaction extends Resource<Transaction> {
             super(jsonObj);
         }
 
-        public Integer txnAmount() {
-            return reqInteger("txn_amount");
+        public String txnId() {
+            return reqString("txn_id");
+        }
+
+        public Transaction.Status txnStatus() {
+            return reqEnum("txn_status", Transaction.Status.class);
         }
 
         public Timestamp txnDate() {
             return reqTimestamp("txn_date");
         }
 
-        public String txnId() {
-            return reqString("txn_id");
-        }
-
-        public Transaction.Status txnStatus() {
-            return optEnum("txn_status", Transaction.Status.class);
+        public Integer txnAmount() {
+            return reqInteger("txn_amount");
         }
 
     }

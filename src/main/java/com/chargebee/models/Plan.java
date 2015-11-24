@@ -128,6 +128,10 @@ public class Plan extends Resource<Plan> {
         return reqBoolean("enabled_in_hosted_pages");
     }
 
+    public Boolean enabledInPortal() {
+        return reqBoolean("enabled_in_portal");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -271,6 +275,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest enabledInPortal(Boolean enabledInPortal) {
+            params.addOpt("enabled_in_portal", enabledInPortal);
+            return this;
+        }
+
+
         public CreateRequest taxable(Boolean taxable) {
             params.addOpt("taxable", taxable);
             return this;
@@ -388,6 +398,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest enabledInHostedPages(Boolean enabledInHostedPages) {
             params.addOpt("enabled_in_hosted_pages", enabledInHostedPages);
+            return this;
+        }
+
+
+        public UpdateRequest enabledInPortal(Boolean enabledInPortal) {
+            params.addOpt("enabled_in_portal", enabledInPortal);
             return this;
         }
 
