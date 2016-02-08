@@ -11,13 +11,6 @@ import java.util.*;
 
 public class Estimate extends Resource<Estimate> {
 
-    public enum PriceType {
-        TAX_EXCLUSIVE,
-        TAX_INCLUSIVE,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
     public static class LineItem extends Resource<LineItem> {
         public enum Type {
              CHARGE,PRORATED_CHARGE,SETUP_CHARGE,
@@ -167,12 +160,20 @@ public class Estimate extends Resource<Estimate> {
         return reqBoolean("collect_now");
     }
 
+    public PriceType priceType() {
+        return reqEnum("price_type", PriceType.class);
+    }
+
     public Integer amount() {
         return reqInteger("amount");
     }
 
-    public PriceType priceType() {
-        return reqEnum("price_type", PriceType.class);
+    public Integer creditsApplied() {
+        return reqInteger("credits_applied");
+    }
+
+    public Integer amountDue() {
+        return reqInteger("amount_due");
     }
 
     public Integer subTotal() {

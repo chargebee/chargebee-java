@@ -80,6 +80,49 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class Contact extends Resource<Contact> {
+        public Contact(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return reqString("email");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String label() {
+            return optString("label");
+        }
+
+        public Boolean enabled() {
+            return reqBoolean("enabled");
+        }
+
+        public Boolean sendAccountEmail() {
+            return reqBoolean("send_account_email");
+        }
+
+        public Boolean sendBillingEmail() {
+            return reqBoolean("send_billing_email");
+        }
+
+    }
+
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
              CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,
@@ -186,6 +229,10 @@ public class Customer extends Resource<Customer> {
         return optSubResource("billing_address", Customer.BillingAddress.class);
     }
 
+    public List<Customer.Contact> contacts() {
+        return optList("contacts", Customer.Contact.class);
+    }
+
     public Customer.PaymentMethod paymentMethod() {
         return optSubResource("payment_method", Customer.PaymentMethod.class);
     }
@@ -196,6 +243,10 @@ public class Customer extends Resource<Customer> {
 
     public Integer accountCredits() {
         return reqInteger("account_credits");
+    }
+
+    public Integer refundableCredits() {
+        return reqInteger("refundable_credits");
     }
 
     public Integer excessPayments() {
@@ -233,6 +284,21 @@ public class Customer extends Resource<Customer> {
     public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "update_billing_info");
         return new UpdateBillingInfoRequest(Method.POST, uri);
+    }
+
+    public static AddContactRequest addContact(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "add_contact");
+        return new AddContactRequest(Method.POST, uri);
+    }
+
+    public static UpdateContactRequest updateContact(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "update_contact");
+        return new UpdateContactRequest(Method.POST, uri);
+    }
+
+    public static DeleteContactRequest deleteContact(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "delete_contact");
+        return new DeleteContactRequest(Method.POST, uri);
     }
 
     public static AddAccountCreditsRequest addAccountCredits(String id) throws IOException {
@@ -665,6 +731,137 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddContactRequest extends Request<AddContactRequest> {
+
+        private AddContactRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddContactRequest contactId(String contactId) {
+            params.addOpt("contact[id]", contactId);
+            return this;
+        }
+
+        public AddContactRequest contactFirstName(String contactFirstName) {
+            params.addOpt("contact[first_name]", contactFirstName);
+            return this;
+        }
+
+        public AddContactRequest contactLastName(String contactLastName) {
+            params.addOpt("contact[last_name]", contactLastName);
+            return this;
+        }
+
+        public AddContactRequest contactEmail(String contactEmail) {
+            params.add("contact[email]", contactEmail);
+            return this;
+        }
+
+        public AddContactRequest contactPhone(String contactPhone) {
+            params.addOpt("contact[phone]", contactPhone);
+            return this;
+        }
+
+        public AddContactRequest contactLabel(String contactLabel) {
+            params.addOpt("contact[label]", contactLabel);
+            return this;
+        }
+
+        public AddContactRequest contactEnabled(Boolean contactEnabled) {
+            params.addOpt("contact[enabled]", contactEnabled);
+            return this;
+        }
+
+        public AddContactRequest contactSendBillingEmail(Boolean contactSendBillingEmail) {
+            params.addOpt("contact[send_billing_email]", contactSendBillingEmail);
+            return this;
+        }
+
+        public AddContactRequest contactSendAccountEmail(Boolean contactSendAccountEmail) {
+            params.addOpt("contact[send_account_email]", contactSendAccountEmail);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateContactRequest extends Request<UpdateContactRequest> {
+
+        private UpdateContactRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateContactRequest contactId(String contactId) {
+            params.add("contact[id]", contactId);
+            return this;
+        }
+
+        public UpdateContactRequest contactFirstName(String contactFirstName) {
+            params.addOpt("contact[first_name]", contactFirstName);
+            return this;
+        }
+
+        public UpdateContactRequest contactLastName(String contactLastName) {
+            params.addOpt("contact[last_name]", contactLastName);
+            return this;
+        }
+
+        public UpdateContactRequest contactEmail(String contactEmail) {
+            params.addOpt("contact[email]", contactEmail);
+            return this;
+        }
+
+        public UpdateContactRequest contactPhone(String contactPhone) {
+            params.addOpt("contact[phone]", contactPhone);
+            return this;
+        }
+
+        public UpdateContactRequest contactLabel(String contactLabel) {
+            params.addOpt("contact[label]", contactLabel);
+            return this;
+        }
+
+        public UpdateContactRequest contactEnabled(Boolean contactEnabled) {
+            params.addOpt("contact[enabled]", contactEnabled);
+            return this;
+        }
+
+        public UpdateContactRequest contactSendBillingEmail(Boolean contactSendBillingEmail) {
+            params.addOpt("contact[send_billing_email]", contactSendBillingEmail);
+            return this;
+        }
+
+        public UpdateContactRequest contactSendAccountEmail(Boolean contactSendAccountEmail) {
+            params.addOpt("contact[send_account_email]", contactSendAccountEmail);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteContactRequest extends Request<DeleteContactRequest> {
+
+        private DeleteContactRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteContactRequest contactId(String contactId) {
+            params.add("contact[id]", contactId);
             return this;
         }
 

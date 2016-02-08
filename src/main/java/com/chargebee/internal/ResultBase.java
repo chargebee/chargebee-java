@@ -12,6 +12,7 @@ public class ResultBase {
         this.jsonObj = jsonObj;
     }
 
+
     public Subscription subscription() {
         return (Subscription)get("subscription");
     }
@@ -79,7 +80,6 @@ public class ResultBase {
     public PortalSession portalSession() {
         return (PortalSession)get("portal_session");
     }
-
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
