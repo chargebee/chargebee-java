@@ -213,6 +213,10 @@ public class Subscription extends Resource<Subscription> {
         return optString("created_from_ip");
     }
 
+    public Boolean hasScheduledChanges() {
+        return reqBoolean("has_scheduled_changes");
+    }
+
     public Integer dueInvoicesCount() {
         return optInteger("due_invoices_count");
     }
@@ -240,10 +244,6 @@ public class Subscription extends Resource<Subscription> {
 
     public Subscription.ShippingAddress shippingAddress() {
         return optSubResource("shipping_address", Subscription.ShippingAddress.class);
-    }
-
-    public Boolean hasScheduledChanges() {
-        return optBoolean("has_scheduled_changes");
     }
 
     public String invoiceNotes() {
@@ -321,6 +321,11 @@ public class Subscription extends Resource<Subscription> {
     public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "charge_addon_at_term_end");
         return new ChargeAddonAtTermEndRequest(Method.POST, uri);
+    }
+
+    public static Request delete(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
     }
 
 

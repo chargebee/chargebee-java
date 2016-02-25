@@ -316,6 +316,11 @@ public class Customer extends Resource<Customer> {
         return new SetAccountCreditsRequest(Method.POST, uri);
     }
 
+    public static Request delete(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
