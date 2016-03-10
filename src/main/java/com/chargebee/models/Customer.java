@@ -316,9 +316,9 @@ public class Customer extends Resource<Customer> {
         return new SetAccountCreditsRequest(Method.POST, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static DeleteRequest delete(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "delete");
-        return new Request(Method.POST, uri);
+        return new DeleteRequest(Method.POST, uri);
     }
 
 
@@ -938,6 +938,24 @@ public class Customer extends Resource<Customer> {
 
         public SetAccountCreditsRequest description(String description) {
             params.add("description", description);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteRequest extends Request<DeleteRequest> {
+
+        private DeleteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteRequest deletePaymentMethod(Boolean deletePaymentMethod) {
+            params.addOpt("delete_payment_method", deletePaymentMethod);
             return this;
         }
 

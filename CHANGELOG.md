@@ -1,3 +1,10 @@
+### v1.1.74 (2016-03-10)
+* * *
+
+** APIs updated**:
+
+Support to keep the card in gateway while deleting customer. Delete a customer API accepts "delete_payment_method" parameter. See: https://apidocs.chargebee.com/docs/api/customers#delete_a_customer
+
 ### v1.1.73 (2016-02-25)
 * * *
 

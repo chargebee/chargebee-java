@@ -59,7 +59,7 @@ public class Resource<T> {
     }
 
     public Boolean reqBoolean(String key) {
-        return assertReqProp(key, optional(key, Boolean.class));
+        return assertReqProp(key, optBoolean(key));
     }
 
     public Boolean optBoolean(String key) {
@@ -80,7 +80,7 @@ public class Resource<T> {
     }
 
     public Double reqDouble(String key) {
-        return assertReqProp(key, reqDouble( key));
+        return assertReqProp(key, optDouble(key));
     }
 
     public Double optDouble(String key) {
