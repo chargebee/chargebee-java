@@ -30,9 +30,9 @@ public class Environment {
 
     public static final String CHARSET = "UTF-8";
 
-    public static final String API_VERSION = "v2";
+    public static final String API_VERSION = "v1";
     
-    public static final String LIBRARY_VERSION = "2.0.0-beta";
+    public static final String LIBRARY_VERSION = "1.1.75";
 
     private final String apiBaseUrl;
 

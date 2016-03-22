@@ -11,6 +11,117 @@ import java.util.*;
 
 public class Estimate extends Resource<Estimate> {
 
+    public static class LineItem extends Resource<LineItem> {
+        public enum Type {
+             CHARGE,PRORATED_CHARGE,SETUP_CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum EntityType {
+             PLAN,ADDON,ADHOC,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public LineItem(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Timestamp dateFrom() {
+            return reqTimestamp("date_from");
+        }
+
+        public Timestamp dateTo() {
+            return reqTimestamp("date_to");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
+        }
+
+        public Integer quantity() {
+            return optInteger("quantity");
+        }
+
+        public Boolean isTaxed() {
+            return reqBoolean("is_taxed");
+        }
+
+        public Integer tax() {
+            return optInteger("tax");
+        }
+
+        public Double taxRate() {
+            return optDouble("tax_rate");
+        }
+
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public String description() {
+            return reqString("description");
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+    }
+
+    public static class Discount extends Resource<Discount> {
+        public enum Type {
+             COUPON,CREDIT_ADJUSTMENT,ACCOUNT_CREDITS,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+    }
+
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -29,16 +140,56 @@ public class Estimate extends Resource<Estimate> {
         return reqTimestamp("created_at");
     }
 
-    public SubscriptionEstimate subscriptionEstimate() {
-        return optSubResource("subscription_estimate", SubscriptionEstimate.class);
+    public Boolean recurring() {
+        return reqBoolean("recurring");
     }
 
-    public InvoiceEstimate invoiceEstimate() {
-        return optSubResource("invoice_estimate", InvoiceEstimate.class);
+    public String subscriptionId() {
+        return optString("subscription_id");
     }
 
-    public List<CreditNoteEstimate> creditNoteEstimates() {
-        return optList("credit_note_estimates", CreditNoteEstimate.class);
+    public SubscriptionStatus subscriptionStatus() {
+        return optEnum("subscription_status", SubscriptionStatus.class);
+    }
+
+    public Timestamp termEndsAt() {
+        return optTimestamp("term_ends_at");
+    }
+
+    public Boolean collectNow() {
+        return reqBoolean("collect_now");
+    }
+
+    public PriceType priceType() {
+        return reqEnum("price_type", PriceType.class);
+    }
+
+    public Integer amount() {
+        return reqInteger("amount");
+    }
+
+    public Integer creditsApplied() {
+        return reqInteger("credits_applied");
+    }
+
+    public Integer amountDue() {
+        return reqInteger("amount_due");
+    }
+
+    public Integer subTotal() {
+        return reqInteger("sub_total");
+    }
+
+    public List<Estimate.LineItem> lineItems() {
+        return optList("line_items", Estimate.LineItem.class);
+    }
+
+    public List<Estimate.Discount> discounts() {
+        return optList("discounts", Estimate.Discount.class);
+    }
+
+    public List<Estimate.Tax> taxes() {
+        return optList("taxes", Estimate.Tax.class);
     }
 
     // Operations
@@ -69,12 +220,6 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
-        public CreateSubscriptionRequest useExistingBalances(Boolean useExistingBalances) {
-            params.addOpt("use_existing_balances", useExistingBalances);
-            return this;
-        }
-
-
         public CreateSubscriptionRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -203,12 +348,6 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-        public UpdateSubscriptionRequest useExistingBalances(Boolean useExistingBalances) {
-            params.addOpt("use_existing_balances", useExistingBalances);
-            return this;
-        }
-
-
         public UpdateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -303,12 +442,6 @@ public class Estimate extends Resource<Estimate> {
     
         public RenewalEstimateRequest includeDelayedCharges(Boolean includeDelayedCharges) {
             params.addOpt("include_delayed_charges", includeDelayedCharges);
-            return this;
-        }
-
-
-        public RenewalEstimateRequest useExistingBalances(Boolean useExistingBalances) {
-            params.addOpt("use_existing_balances", useExistingBalances);
             return this;
         }
 
