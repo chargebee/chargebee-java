@@ -179,6 +179,10 @@ public class Coupon extends Resource<Coupon> {
         return optString("invoice_notes");
     }
 
+    public JSONObject metaData() {
+        return optJSONObject("meta_data");
+    }
+
     // Operations
     //===========
 
@@ -314,6 +318,12 @@ public class Coupon extends Resource<Coupon> {
 
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 

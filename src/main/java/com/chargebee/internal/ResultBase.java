@@ -81,8 +81,13 @@ public class ResultBase {
         return (PortalSession)get("portal_session");
     }
 
+
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
+        return _get(key, modelJson);
+    }
+
+    private Resource _get(String key, JSONObject modelJson) {
         if(modelJson == null) {
             return null;
         }

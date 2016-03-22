@@ -253,6 +253,10 @@ public class Customer extends Resource<Customer> {
         return reqInteger("excess_payments");
     }
 
+    public JSONObject metaData() {
+        return optJSONObject("meta_data");
+    }
+
     // Operations
     //===========
 
@@ -387,6 +391,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest taxability(Taxability taxability) {
             params.addOpt("taxability", taxability);
+            return this;
+        }
+
+
+        public CreateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 
@@ -625,6 +635,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 

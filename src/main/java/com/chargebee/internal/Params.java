@@ -2,6 +2,7 @@ package com.chargebee.internal;
 
 import java.sql.Timestamp;
 import java.util.*;
+import org.json.JSONObject;
 
 public class Params {
 
@@ -56,6 +57,8 @@ public class Params {
                 l.add((String)toValStr(item));                
             }
             return l;            
+        } else if(value instanceof JSONObject) {
+            return value.toString();
         } else {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }

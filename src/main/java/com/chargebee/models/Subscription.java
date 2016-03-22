@@ -250,6 +250,10 @@ public class Subscription extends Resource<Subscription> {
         return optString("invoice_notes");
     }
 
+    public JSONObject metaData() {
+        return optJSONObject("meta_data");
+    }
+
     // Operations
     //===========
 
@@ -400,6 +404,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 
@@ -755,6 +765,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
         public CreateForCustomerRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -922,6 +938,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 
