@@ -116,6 +116,10 @@ public class Addon extends Resource<Addon> {
         return optBoolean("taxable");
     }
 
+    public JSONObject metaData() {
+        return optJSONObject("meta_data");
+    }
+
     // Operations
     //===========
 
@@ -232,6 +236,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -318,6 +328,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 

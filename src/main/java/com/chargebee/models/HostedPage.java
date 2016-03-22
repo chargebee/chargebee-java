@@ -113,16 +113,6 @@ public class HostedPage extends Resource<HostedPage> {
         return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
-    public static CheckoutOnetimeChargeRequest checkoutOnetimeCharge() throws IOException {
-        String uri = uri("hosted_pages", "checkout_onetime_charge");
-        return new CheckoutOnetimeChargeRequest(Method.POST, uri);
-    }
-
-    public static CheckoutOnetimeAddonsRequest checkoutOnetimeAddons() throws IOException {
-        String uri = uri("hosted_pages", "checkout_onetime_addons");
-        return new CheckoutOnetimeAddonsRequest(Method.POST, uri);
-    }
-
     public static Request retrieve(String id) throws IOException {
         String uri = uri("hosted_pages", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -490,90 +480,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public UpdatePaymentMethodRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
-            return this;
-        }
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class CheckoutOnetimeChargeRequest extends Request<CheckoutOnetimeChargeRequest> {
-
-        private CheckoutOnetimeChargeRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public CheckoutOnetimeChargeRequest amount(Integer amount) {
-            params.add("amount", amount);
-            return this;
-        }
-
-
-        public CheckoutOnetimeChargeRequest description(String description) {
-            params.add("description", description);
-            return this;
-        }
-
-
-        public CheckoutOnetimeChargeRequest passThruContent(String passThruContent) {
-            params.addOpt("pass_thru_content", passThruContent);
-            return this;
-        }
-
-
-        public CheckoutOnetimeChargeRequest subscriptionId(String subscriptionId) {
-            params.add("subscription[id]", subscriptionId);
-            return this;
-        }
-
-        public CheckoutOnetimeChargeRequest cardGateway(Gateway cardGateway) {
-            params.addOpt("card[gateway]", cardGateway);
-            return this;
-        }
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class CheckoutOnetimeAddonsRequest extends Request<CheckoutOnetimeAddonsRequest> {
-
-        private CheckoutOnetimeAddonsRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public CheckoutOnetimeAddonsRequest coupon(String coupon) {
-            params.addOpt("coupon", coupon);
-            return this;
-        }
-
-
-        public CheckoutOnetimeAddonsRequest passThruContent(String passThruContent) {
-            params.addOpt("pass_thru_content", passThruContent);
-            return this;
-        }
-
-
-        public CheckoutOnetimeAddonsRequest subscriptionId(String subscriptionId) {
-            params.add("subscription[id]", subscriptionId);
-            return this;
-        }
-
-        public CheckoutOnetimeAddonsRequest cardGateway(Gateway cardGateway) {
-            params.addOpt("card[gateway]", cardGateway);
-            return this;
-        }
-
-        public CheckoutOnetimeAddonsRequest addonId(int index, String addonId) {
-            params.add("addons[id][" + index + "]", addonId);
-            return this;
-        }
-
-        public CheckoutOnetimeAddonsRequest addonQuantity(int index, Integer addonQuantity) {
-            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
 
