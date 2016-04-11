@@ -52,8 +52,51 @@ public class Transaction extends Resource<Transaction> {
             return optTimestamp("invoice_date");
         }
 
-        public Integer invoiceAmount() {
-            return optInteger("invoice_amount");
+        public Integer invoiceTotal() {
+            return optInteger("invoice_total");
+        }
+
+        public Invoice.Status invoiceStatus() {
+            return reqEnum("invoice_status", Invoice.Status.class);
+        }
+
+    }
+
+    public static class LinkedCreditNote extends Resource<LinkedCreditNote> {
+        public LinkedCreditNote(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String cnId() {
+            return reqString("cn_id");
+        }
+
+        public Integer appliedAmount() {
+            return reqInteger("applied_amount");
+        }
+
+        public Timestamp appliedAt() {
+            return reqTimestamp("applied_at");
+        }
+
+        public CreditNote.ReasonCode cnReasonCode() {
+            return reqEnum("cn_reason_code", CreditNote.ReasonCode.class);
+        }
+
+        public Timestamp cnDate() {
+            return optTimestamp("cn_date");
+        }
+
+        public Integer cnTotal() {
+            return optInteger("cn_total");
+        }
+
+        public CreditNote.Status cnStatus() {
+            return reqEnum("cn_status", CreditNote.Status.class);
+        }
+
+        public String cnReferenceInvoiceId() {
+            return reqString("cn_reference_invoice_id");
         }
 
     }
@@ -119,11 +162,6 @@ public class Transaction extends Resource<Transaction> {
         return reqEnum("gateway", Gateway.class);
     }
 
-    @Deprecated
-    public String description() {
-        return optString("description");
-    }
-
     public Type type() {
         return reqEnum("type", Type.class);
     }
@@ -156,11 +194,6 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("voided_at");
     }
 
-    @Deprecated
-    public String voidDescription() {
-        return optString("void_description");
-    }
-
     public Integer amountUnused() {
         return optInteger("amount_unused");
     }
@@ -183,6 +216,10 @@ public class Transaction extends Resource<Transaction> {
 
     public List<Transaction.LinkedInvoice> linkedInvoices() {
         return optList("linked_invoices", Transaction.LinkedInvoice.class);
+    }
+
+    public List<Transaction.LinkedCreditNote> linkedCreditNotes() {
+        return optList("linked_credit_notes", Transaction.LinkedCreditNote.class);
     }
 
     public List<Transaction.LinkedRefund> linkedRefunds() {
@@ -211,8 +248,8 @@ public class Transaction extends Resource<Transaction> {
         return new ListRequest(uri);
     }
 
-    public static ListRequest transactionsForInvoice(String id) throws IOException {
-        String uri = uri("invoices", nullCheck(id), "transactions");
+    public static ListRequest paymentsForInvoice(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "payments");
         return new ListRequest(uri);
     }
 
@@ -221,55 +258,5 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.GET, uri);
     }
 
-    public static RecordPaymentRequest recordPayment(String id) throws IOException {
-        String uri = uri("invoices", nullCheck(id), "record_payment");
-        return new RecordPaymentRequest(Method.POST, uri);
-    }
-
-
-    // Operation Request Classes
-    //==========================
-
-    public static class RecordPaymentRequest extends Request<RecordPaymentRequest> {
-
-        private RecordPaymentRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public RecordPaymentRequest amount(Integer amount) {
-            params.addOpt("amount", amount);
-            return this;
-        }
-
-
-        public RecordPaymentRequest paymentMethod(PaymentMethod paymentMethod) {
-            params.add("payment_method", paymentMethod);
-            return this;
-        }
-
-
-        public RecordPaymentRequest paidAt(Timestamp paidAt) {
-            params.add("paid_at", paidAt);
-            return this;
-        }
-
-
-        public RecordPaymentRequest referenceNumber(String referenceNumber) {
-            params.addOpt("reference_number", referenceNumber);
-            return this;
-        }
-
-
-        public RecordPaymentRequest memo(String memo) {
-            params.addOpt("memo", memo);
-            return this;
-        }
-
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
 
 }

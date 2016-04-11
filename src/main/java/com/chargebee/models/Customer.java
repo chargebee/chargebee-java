@@ -241,8 +241,8 @@ public class Customer extends Resource<Customer> {
         return optString("invoice_notes");
     }
 
-    public Integer accountCredits() {
-        return reqInteger("account_credits");
+    public Integer promotionalCredits() {
+        return reqInteger("promotional_credits");
     }
 
     public Integer refundableCredits() {
@@ -305,19 +305,19 @@ public class Customer extends Resource<Customer> {
         return new DeleteContactRequest(Method.POST, uri);
     }
 
-    public static AddAccountCreditsRequest addAccountCredits(String id) throws IOException {
-        String uri = uri("customers", nullCheck(id), "add_account_credits");
-        return new AddAccountCreditsRequest(Method.POST, uri);
+    public static AddPromotionalCreditsRequest addPromotionalCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "add_promotional_credits");
+        return new AddPromotionalCreditsRequest(Method.POST, uri);
     }
 
-    public static DeductAccountCreditsRequest deductAccountCredits(String id) throws IOException {
-        String uri = uri("customers", nullCheck(id), "deduct_account_credits");
-        return new DeductAccountCreditsRequest(Method.POST, uri);
+    public static DeductPromotionalCreditsRequest deductPromotionalCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "deduct_promotional_credits");
+        return new DeductPromotionalCreditsRequest(Method.POST, uri);
     }
 
-    public static SetAccountCreditsRequest setAccountCredits(String id) throws IOException {
-        String uri = uri("customers", nullCheck(id), "set_account_credits");
-        return new SetAccountCreditsRequest(Method.POST, uri);
+    public static SetPromotionalCreditsRequest setPromotionalCredits(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "set_promotional_credits");
+        return new SetPromotionalCreditsRequest(Method.POST, uri);
     }
 
     public static DeleteRequest delete(String id) throws IOException {
@@ -892,19 +892,19 @@ public class Customer extends Resource<Customer> {
         }
     }
 
-    public static class AddAccountCreditsRequest extends Request<AddAccountCreditsRequest> {
+    public static class AddPromotionalCreditsRequest extends Request<AddPromotionalCreditsRequest> {
 
-        private AddAccountCreditsRequest(Method httpMeth, String uri) {
+        private AddPromotionalCreditsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
     
-        public AddAccountCreditsRequest amount(Integer amount) {
+        public AddPromotionalCreditsRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
         }
 
 
-        public AddAccountCreditsRequest description(String description) {
+        public AddPromotionalCreditsRequest description(String description) {
             params.add("description", description);
             return this;
         }
@@ -916,19 +916,19 @@ public class Customer extends Resource<Customer> {
         }
     }
 
-    public static class DeductAccountCreditsRequest extends Request<DeductAccountCreditsRequest> {
+    public static class DeductPromotionalCreditsRequest extends Request<DeductPromotionalCreditsRequest> {
 
-        private DeductAccountCreditsRequest(Method httpMeth, String uri) {
+        private DeductPromotionalCreditsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
     
-        public DeductAccountCreditsRequest amount(Integer amount) {
+        public DeductPromotionalCreditsRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
         }
 
 
-        public DeductAccountCreditsRequest description(String description) {
+        public DeductPromotionalCreditsRequest description(String description) {
             params.add("description", description);
             return this;
         }
@@ -940,19 +940,19 @@ public class Customer extends Resource<Customer> {
         }
     }
 
-    public static class SetAccountCreditsRequest extends Request<SetAccountCreditsRequest> {
+    public static class SetPromotionalCreditsRequest extends Request<SetPromotionalCreditsRequest> {
 
-        private SetAccountCreditsRequest(Method httpMeth, String uri) {
+        private SetPromotionalCreditsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
     
-        public SetAccountCreditsRequest amount(Integer amount) {
+        public SetPromotionalCreditsRequest amount(Integer amount) {
             params.add("amount", amount);
             return this;
         }
 
 
-        public SetAccountCreditsRequest description(String description) {
+        public SetPromotionalCreditsRequest description(String description) {
             params.add("description", description);
             return this;
         }
