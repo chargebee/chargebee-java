@@ -4,7 +4,7 @@
 #### Attributes and Operations Removed/Renamed in V2
 Chargebee [API V2](https://apidocs.chargebee.com/docs/api#versions) is now live! All our future developments will happen in V2. 
 
-V2 has been released to accommodate certain backwards-incompatible changes. Refer our [API V2 Upgradation guide](https://apidocs.chargebee.com/docs/api#api-v2-upgradation-guide) for the complete listing of the attributes and operations that have been removed/renamed in API V2.
+V2 has been released to accommodate certain backwards-incompatible changes. Refer our [API V2 Upgradation guide](https://apidocs.chargebee.com/docs/api/v1#api-v2-upgradation-guide) for the complete listing of the attributes and operations that have been removed/renamed in API V2.
 
 #### Incremental Changes in V2
 
