@@ -26,6 +26,7 @@ public class Subscription extends Resource<Subscription> {
         NO_CARD,
         FRAUD_REVIEW_FAILED,
         NON_COMPLIANT_EU_CUSTOMER,
+        TAX_CALCULATION_FAILED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -441,6 +442,16 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest customerTaxability(Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public CreateRequest customerEntityCode(EntityCode customerEntityCode) {
+            params.addOpt("customer[entity_code]", customerEntityCode);
+            return this;
+        }
+
+        public CreateRequest customerExemptNumber(String customerExemptNumber) {
+            params.addOpt("customer[exempt_number]", customerExemptNumber);
             return this;
         }
 

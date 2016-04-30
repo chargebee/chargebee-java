@@ -105,8 +105,23 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
-            params.addOpt("billing_address[country]", billingAddressCountry);
+        public CreateSubscriptionRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CreateSubscriptionRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateSubscriptionRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CreateSubscriptionRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
 
@@ -120,8 +135,28 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
-            params.addOpt("shipping_address[country]", shippingAddressCountry);
+        public CreateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
 
@@ -135,6 +170,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
         public CreateSubscriptionRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -142,6 +182,16 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubscriptionRequest customerTaxability(Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public CreateSubscriptionRequest customerEntityCode(EntityCode customerEntityCode) {
+            params.addOpt("customer[entity_code]", customerEntityCode);
+            return this;
+        }
+
+        public CreateSubscriptionRequest customerExemptNumber(String customerExemptNumber) {
+            params.addOpt("customer[exempt_number]", customerExemptNumber);
             return this;
         }
 
@@ -233,8 +283,23 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public UpdateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
-            params.addOpt("billing_address[country]", billingAddressCountry);
+        public UpdateSubscriptionRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
 
@@ -248,8 +313,28 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public UpdateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
-            params.addOpt("shipping_address[country]", shippingAddressCountry);
+        public UpdateSubscriptionRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
 
@@ -263,11 +348,17 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
         public UpdateSubscriptionRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
 
+        @Deprecated
         public UpdateSubscriptionRequest customerTaxability(Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;

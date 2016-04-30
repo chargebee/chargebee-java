@@ -132,6 +132,10 @@ public class Plan extends Resource<Plan> {
         return reqBoolean("enabled_in_portal");
     }
 
+    public String taxCode() {
+        return optString("tax_code");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -291,6 +295,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest taxCode(String taxCode) {
+            params.addOpt("tax_code", taxCode);
+            return this;
+        }
+
+
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -420,6 +430,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest taxable(Boolean taxable) {
             params.addOpt("taxable", taxable);
+            return this;
+        }
+
+
+        public UpdateRequest taxCode(String taxCode) {
+            params.addOpt("tax_code", taxCode);
             return this;
         }
 
