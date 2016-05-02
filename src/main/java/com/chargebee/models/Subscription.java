@@ -947,6 +947,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+
+
         public UpdateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
