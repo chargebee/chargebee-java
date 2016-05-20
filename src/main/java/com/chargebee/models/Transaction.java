@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -233,16 +235,18 @@ public class Transaction extends Resource<Transaction> {
     // Operations
     //===========
 
-    public static ListRequest list() throws IOException {
+    public static TransactionListRequest list() throws IOException {
         String uri = uri("transactions");
-        return new ListRequest(uri);
+        return new TransactionListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest transactionsForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "transactions");
         return new ListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest transactionsForSubscription(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "transactions");
         return new ListRequest(uri);
@@ -258,5 +262,81 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.GET, uri);
     }
 
+
+    // Operation Request Classes
+    //==========================
+
+    public static class TransactionListRequest extends ListRequest<TransactionListRequest> {
+
+        private TransactionListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<TransactionListRequest> id() {
+            return new StringFilter<TransactionListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<TransactionListRequest> customerId() {
+            return new StringFilter<TransactionListRequest>("customer_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<TransactionListRequest> subscriptionId() {
+            return new StringFilter<TransactionListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        public EnumFilter<PaymentMethod, TransactionListRequest> paymentMethod() {
+            return new EnumFilter<PaymentMethod, TransactionListRequest>("payment_method",this);        
+        }
+
+
+        public EnumFilter<Gateway, TransactionListRequest> gateway() {
+            return new EnumFilter<Gateway, TransactionListRequest>("gateway",this);        
+        }
+
+
+        public StringFilter<TransactionListRequest> idAtGateway() {
+            return new StringFilter<TransactionListRequest>("id_at_gateway",this);        
+        }
+
+
+        public StringFilter<TransactionListRequest> referenceNumber() {
+            return new StringFilter<TransactionListRequest>("reference_number",this).supportsPresenceOperator(true);        
+        }
+
+
+        public EnumFilter<Type, TransactionListRequest> type() {
+            return new EnumFilter<Type, TransactionListRequest>("type",this);        
+        }
+
+
+        public TimestampFilter<TransactionListRequest> date() {
+            return new TimestampFilter<TransactionListRequest>("date",this);        
+        }
+
+
+        public NumberFilter<Integer, TransactionListRequest> amount() {
+            return new NumberFilter<Integer, TransactionListRequest>("amount",this);        
+        }
+
+
+        public EnumFilter<Status, TransactionListRequest> status() {
+            return new EnumFilter<Status, TransactionListRequest>("status",this);        
+        }
+
+
+        public TransactionListRequest sortByDate(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

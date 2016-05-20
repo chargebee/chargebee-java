@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -191,9 +193,9 @@ public class Coupon extends Resource<Coupon> {
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static CouponListRequest list() throws IOException {
         String uri = uri("coupons");
-        return new ListRequest(uri);
+        return new CouponListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -324,6 +326,59 @@ public class Coupon extends Resource<Coupon> {
 
         public CreateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CouponListRequest extends ListRequest<CouponListRequest> {
+
+        private CouponListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<CouponListRequest> id() {
+            return new StringFilter<CouponListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CouponListRequest> name() {
+            return new StringFilter<CouponListRequest>("name",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<DiscountType, CouponListRequest> discountType() {
+            return new EnumFilter<DiscountType, CouponListRequest>("discount_type",this);        
+        }
+
+
+        public EnumFilter<DurationType, CouponListRequest> durationType() {
+            return new EnumFilter<DurationType, CouponListRequest>("duration_type",this);        
+        }
+
+
+        public EnumFilter<Status, CouponListRequest> status() {
+            return new EnumFilter<Status, CouponListRequest>("status",this);        
+        }
+
+
+        public EnumFilter<ApplyOn, CouponListRequest> applyOn() {
+            return new EnumFilter<ApplyOn, CouponListRequest>("apply_on",this);        
+        }
+
+
+        public TimestampFilter<CouponListRequest> createdAt() {
+            return new TimestampFilter<CouponListRequest>("created_at",this);        
+        }
+
+
+        public CouponListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
 

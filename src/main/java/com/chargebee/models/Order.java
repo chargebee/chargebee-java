@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -97,11 +99,12 @@ public class Order extends Resource<Order> {
         return new Request(Method.GET, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static OrderListRequest list() throws IOException {
         String uri = uri("orders");
-        return new ListRequest(uri);
+        return new OrderListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest ordersForInvoice(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "orders");
         return new ListRequest(uri);
@@ -209,6 +212,44 @@ public class Order extends Resource<Order> {
 
         public UpdateRequest batchId(String batchId) {
             params.addOpt("batch_id", batchId);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class OrderListRequest extends ListRequest<OrderListRequest> {
+
+        private OrderListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<OrderListRequest> id() {
+            return new StringFilter<OrderListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<OrderListRequest> invoiceId() {
+            return new StringFilter<OrderListRequest>("invoice_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Status, OrderListRequest> status() {
+            return new EnumFilter<Status, OrderListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<OrderListRequest> createdAt() {
+            return new TimestampFilter<OrderListRequest>("created_at",this);        
+        }
+
+
+        public OrderListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
 

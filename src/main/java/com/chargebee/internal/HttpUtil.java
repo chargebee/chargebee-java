@@ -47,7 +47,7 @@ public class HttpUtil {
 
     public static ListResult getList(String url, Params params, Map<String,String> headers,Environment env) throws IOException {
         if(params != null && !params.isEmpty()) {
-            url = url + '?' + toQueryStr(params); // fixme: what about url size restrictions ??
+            url = url + '?' + toQueryStr(params, true); // fixme: what about url size restrictions ??
         }
         HttpURLConnection conn = createConnection(url, Method.GET, headers,env);
         Resp resp = sendRequest(conn);
@@ -60,11 +60,20 @@ public class HttpUtil {
 
 
     public static String toQueryStr(Params map) {
+        return toQueryStr(map, false);
+    }
+    
+    public static String toQueryStr(Params map, boolean isListReq) {
         StringJoiner buf = new StringJoiner("&");
         for (Map.Entry<String, Object> entry : map.entries()) {
             Object value = entry.getValue();            
             if(value instanceof List){
                List<String> l = (List<String>)value;
+               if(isListReq){
+                   String keyValPair = enc(entry.getKey()) + "=" + enc(l.isEmpty()?"":l.toString());
+                   buf.add(keyValPair);
+                   continue;
+               }
                 for (int i = 0; i < l.size(); i++) {
                     String val = l.get(i);
                     String keyValPair = enc(entry.getKey() + "[" + i + "]") + "=" + enc(val != null?val:"");

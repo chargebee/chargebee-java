@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -50,6 +52,10 @@ public class CreditNote extends Resource<CreditNote> {
 
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
+        }
+
+        public String id() {
+            return optString("id");
         }
 
         public Timestamp dateFrom() {
@@ -140,12 +146,51 @@ public class CreditNote extends Resource<CreditNote> {
             super(jsonObj);
         }
 
+        public String name() {
+            return reqString("name");
+        }
+
         public Integer amount() {
             return reqInteger("amount");
         }
 
         public String description() {
             return optString("description");
+        }
+
+    }
+
+    public static class LineItemTax extends Resource<LineItemTax> {
+        public LineItemTax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String taxName() {
+            return reqString("tax_name");
+        }
+
+        public Double taxRate() {
+            return reqDouble("tax_rate");
+        }
+
+        public Integer taxAmount() {
+            return reqInteger("tax_amount");
+        }
+
+        public TaxJurisType taxJurisType() {
+            return optEnum("tax_juris_type", TaxJurisType.class);
+        }
+
+        public String taxJurisName() {
+            return optString("tax_juris_name");
+        }
+
+        public String taxJurisCode() {
+            return optString("tax_juris_code");
         }
 
     }
@@ -298,6 +343,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optList("taxes", CreditNote.Tax.class);
     }
 
+    public List<CreditNote.LineItemTax> lineItemTaxes() {
+        return optList("line_item_taxes", CreditNote.LineItemTax.class);
+    }
+
     public List<CreditNote.LinkedRefund> linkedRefunds() {
         return optList("linked_refunds", CreditNote.LinkedRefund.class);
     }
@@ -314,15 +363,102 @@ public class CreditNote extends Resource<CreditNote> {
         return new Request(Method.GET, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static CreditNoteListRequest list() throws IOException {
         String uri = uri("credit_notes");
-        return new ListRequest(uri);
+        return new CreditNoteListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest creditNotesForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "credit_notes");
         return new ListRequest(uri);
     }
 
+
+    // Operation Request Classes
+    //==========================
+
+    public static class CreditNoteListRequest extends ListRequest<CreditNoteListRequest> {
+
+        private CreditNoteListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<CreditNoteListRequest> id() {
+            return new StringFilter<CreditNoteListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CreditNoteListRequest> customerId() {
+            return new StringFilter<CreditNoteListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CreditNoteListRequest> subscriptionId() {
+            return new StringFilter<CreditNoteListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<CreditNoteListRequest> referenceInvoiceId() {
+            return new StringFilter<CreditNoteListRequest>("reference_invoice_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Type, CreditNoteListRequest> type() {
+            return new EnumFilter<Type, CreditNoteListRequest>("type",this);        
+        }
+
+
+        public EnumFilter<ReasonCode, CreditNoteListRequest> reasonCode() {
+            return new EnumFilter<ReasonCode, CreditNoteListRequest>("reason_code",this);        
+        }
+
+
+        public EnumFilter<Status, CreditNoteListRequest> status() {
+            return new EnumFilter<Status, CreditNoteListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<CreditNoteListRequest> date() {
+            return new TimestampFilter<CreditNoteListRequest>("date",this);        
+        }
+
+
+        public NumberFilter<Integer, CreditNoteListRequest> total() {
+            return new NumberFilter<Integer, CreditNoteListRequest>("total",this);        
+        }
+
+
+        public EnumFilter<PriceType, CreditNoteListRequest> priceType() {
+            return new EnumFilter<PriceType, CreditNoteListRequest>("price_type",this);        
+        }
+
+
+        public NumberFilter<Integer, CreditNoteListRequest> amountAllocated() {
+            return new NumberFilter<Integer, CreditNoteListRequest>("amount_allocated",this);        
+        }
+
+
+        public NumberFilter<Integer, CreditNoteListRequest> amountRefunded() {
+            return new NumberFilter<Integer, CreditNoteListRequest>("amount_refunded",this);        
+        }
+
+
+        public NumberFilter<Integer, CreditNoteListRequest> amountAvailable() {
+            return new NumberFilter<Integer, CreditNoteListRequest>("amount_available",this);        
+        }
+
+
+        public CreditNoteListRequest sortByDate(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

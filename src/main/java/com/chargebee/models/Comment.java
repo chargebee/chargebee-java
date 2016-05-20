@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -129,18 +131,6 @@ public class Comment extends Resource<Comment> {
             super(uri);
         }
     
-        public CommentListRequest limit(Integer limit) {
-            params.addOpt("limit", limit);
-            return this;
-        }
-
-
-        public CommentListRequest offset(String offset) {
-            params.addOpt("offset", offset);
-            return this;
-        }
-
-
         public CommentListRequest entityType(EntityType entityType) {
             params.addOpt("entity_type", entityType);
             return this;
@@ -149,6 +139,17 @@ public class Comment extends Resource<Comment> {
 
         public CommentListRequest entityId(String entityId) {
             params.addOpt("entity_id", entityId);
+            return this;
+        }
+
+
+        public TimestampFilter<CommentListRequest> createdAt() {
+            return new TimestampFilter<CommentListRequest>("created_at",this);        
+        }
+
+
+        public CommentListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
 

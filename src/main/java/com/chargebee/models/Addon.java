@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -137,9 +139,9 @@ public class Addon extends Resource<Addon> {
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static AddonListRequest list() throws IOException {
         String uri = uri("addons");
-        return new ListRequest(uri);
+        return new AddonListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -351,6 +353,58 @@ public class Addon extends Resource<Addon> {
         public UpdateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
             return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddonListRequest extends ListRequest<AddonListRequest> {
+
+        private AddonListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<AddonListRequest> id() {
+            return new StringFilter<AddonListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<AddonListRequest> name() {
+            return new StringFilter<AddonListRequest>("name",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Type, AddonListRequest> type() {
+            return new EnumFilter<Type, AddonListRequest>("type",this);        
+        }
+
+
+        public EnumFilter<ChargeType, AddonListRequest> chargeType() {
+            return new EnumFilter<ChargeType, AddonListRequest>("charge_type",this);        
+        }
+
+
+        public NumberFilter<Integer, AddonListRequest> price() {
+            return new NumberFilter<Integer, AddonListRequest>("price",this);        
+        }
+
+
+        public NumberFilter<Integer, AddonListRequest> period() {
+            return new NumberFilter<Integer, AddonListRequest>("period",this);        
+        }
+
+
+        public EnumFilter<PeriodUnit, AddonListRequest> periodUnit() {
+            return new EnumFilter<PeriodUnit, AddonListRequest>("period_unit",this);        
+        }
+
+
+        public EnumFilter<Status, AddonListRequest> status() {
+            return new EnumFilter<Status, AddonListRequest>("status",this);        
         }
 
 

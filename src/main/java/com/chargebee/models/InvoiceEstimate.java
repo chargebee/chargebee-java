@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -20,6 +22,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
+        }
+
+        public String id() {
+            return optString("id");
         }
 
         public Timestamp dateFrom() {
@@ -110,12 +116,51 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             super(jsonObj);
         }
 
+        public String name() {
+            return reqString("name");
+        }
+
         public Integer amount() {
             return reqInteger("amount");
         }
 
         public String description() {
             return optString("description");
+        }
+
+    }
+
+    public static class LineItemTax extends Resource<LineItemTax> {
+        public LineItemTax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String taxName() {
+            return reqString("tax_name");
+        }
+
+        public Double taxRate() {
+            return reqDouble("tax_rate");
+        }
+
+        public Integer taxAmount() {
+            return reqInteger("tax_amount");
+        }
+
+        public TaxJurisType taxJurisType() {
+            return optEnum("tax_juris_type", TaxJurisType.class);
+        }
+
+        public String taxJurisName() {
+            return optString("tax_juris_name");
+        }
+
+        public String taxJurisCode() {
+            return optString("tax_juris_code");
         }
 
     }
@@ -172,6 +217,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
     public List<InvoiceEstimate.Tax> taxes() {
         return optList("taxes", InvoiceEstimate.Tax.class);
+    }
+
+    public List<InvoiceEstimate.LineItemTax> lineItemTaxes() {
+        return optList("line_item_taxes", InvoiceEstimate.LineItemTax.class);
     }
 
     // Operations

@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -273,9 +275,9 @@ public class Customer extends Resource<Customer> {
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static CustomerListRequest list() throws IOException {
         String uri = uri("customers");
-        return new ListRequest(uri);
+        return new CustomerListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -419,6 +421,8 @@ public class Customer extends Resource<Customer> {
             params.addOpt("meta_data", metaData);
             return this;
         }
+
+
 
 
         public CreateRequest createdFromIp(String createdFromIp) {
@@ -592,6 +596,64 @@ public class Customer extends Resource<Customer> {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CustomerListRequest extends ListRequest<CustomerListRequest> {
+
+        private CustomerListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<CustomerListRequest> id() {
+            return new StringFilter<CustomerListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CustomerListRequest> firstName() {
+            return new StringFilter<CustomerListRequest>("first_name",this).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<CustomerListRequest> lastName() {
+            return new StringFilter<CustomerListRequest>("last_name",this).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<CustomerListRequest> email() {
+            return new StringFilter<CustomerListRequest>("email",this).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<CustomerListRequest> company() {
+            return new StringFilter<CustomerListRequest>("company",this).supportsPresenceOperator(true);        
+        }
+
+
+        public EnumFilter<AutoCollection, CustomerListRequest> autoCollection() {
+            return new EnumFilter<AutoCollection, CustomerListRequest>("auto_collection",this);        
+        }
+
+
+        public EnumFilter<Taxability, CustomerListRequest> taxability() {
+            return new EnumFilter<Taxability, CustomerListRequest>("taxability",this);        
+        }
+
+
+        public TimestampFilter<CustomerListRequest> createdAt() {
+            return new TimestampFilter<CustomerListRequest>("created_at",this);        
+        }
+
+
+        public CustomerListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+
 
         @Override
         public Params params() {

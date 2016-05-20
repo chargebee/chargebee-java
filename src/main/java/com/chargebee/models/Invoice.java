@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -39,6 +41,10 @@ public class Invoice extends Resource<Invoice> {
 
         public LineItem(JSONObject jsonObj) {
             super(jsonObj);
+        }
+
+        public String id() {
+            return optString("id");
         }
 
         public Timestamp dateFrom() {
@@ -129,12 +135,51 @@ public class Invoice extends Resource<Invoice> {
             super(jsonObj);
         }
 
+        public String name() {
+            return reqString("name");
+        }
+
         public Integer amount() {
             return reqInteger("amount");
         }
 
         public String description() {
             return optString("description");
+        }
+
+    }
+
+    public static class LineItemTax extends Resource<LineItemTax> {
+        public LineItemTax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String taxName() {
+            return reqString("tax_name");
+        }
+
+        public Double taxRate() {
+            return reqDouble("tax_rate");
+        }
+
+        public Integer taxAmount() {
+            return reqInteger("tax_amount");
+        }
+
+        public TaxJurisType taxJurisType() {
+            return optEnum("tax_juris_type", TaxJurisType.class);
+        }
+
+        public String taxJurisName() {
+            return optString("tax_juris_name");
+        }
+
+        public String taxJurisCode() {
+            return optString("tax_juris_code");
         }
 
     }
@@ -549,6 +594,10 @@ public class Invoice extends Resource<Invoice> {
         return optList("taxes", Invoice.Tax.class);
     }
 
+    public List<Invoice.LineItemTax> lineItemTaxes() {
+        return optList("line_item_taxes", Invoice.LineItemTax.class);
+    }
+
     public List<Invoice.LinkedPayment> linkedPayments() {
         return optList("linked_payments", Invoice.LinkedPayment.class);
     }
@@ -609,11 +658,13 @@ public class Invoice extends Resource<Invoice> {
         return new InvoiceListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest invoicesForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest invoicesForSubscription(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "invoices");
         return new ListRequest(uri);
@@ -895,20 +946,79 @@ public class Invoice extends Resource<Invoice> {
             super(uri);
         }
     
-        public InvoiceListRequest limit(Integer limit) {
-            params.addOpt("limit", limit);
-            return this;
-        }
-
-
-        public InvoiceListRequest offset(String offset) {
-            params.addOpt("offset", offset);
-            return this;
-        }
-
-
         public InvoiceListRequest paidOnAfter(Timestamp paidOnAfter) {
             params.addOpt("paid_on_after", paidOnAfter);
+            return this;
+        }
+
+
+        public StringFilter<InvoiceListRequest> id() {
+            return new StringFilter<InvoiceListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<InvoiceListRequest> subscriptionId() {
+            return new StringFilter<InvoiceListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        public StringFilter<InvoiceListRequest> customerId() {
+            return new StringFilter<InvoiceListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public BooleanFilter<InvoiceListRequest> recurring() {
+            return new BooleanFilter<InvoiceListRequest>("recurring",this);        
+        }
+
+
+        public EnumFilter<Status, InvoiceListRequest> status() {
+            return new EnumFilter<Status, InvoiceListRequest>("status",this);        
+        }
+
+
+        public EnumFilter<PriceType, InvoiceListRequest> priceType() {
+            return new EnumFilter<PriceType, InvoiceListRequest>("price_type",this);        
+        }
+
+
+        public TimestampFilter<InvoiceListRequest> date() {
+            return new TimestampFilter<InvoiceListRequest>("date",this);        
+        }
+
+
+        public NumberFilter<Integer, InvoiceListRequest> total() {
+            return new NumberFilter<Integer, InvoiceListRequest>("total",this);        
+        }
+
+
+        public NumberFilter<Integer, InvoiceListRequest> amountPaid() {
+            return new NumberFilter<Integer, InvoiceListRequest>("amount_paid",this);        
+        }
+
+
+        public NumberFilter<Integer, InvoiceListRequest> amountAdjusted() {
+            return new NumberFilter<Integer, InvoiceListRequest>("amount_adjusted",this);        
+        }
+
+
+        public NumberFilter<Integer, InvoiceListRequest> creditsApplied() {
+            return new NumberFilter<Integer, InvoiceListRequest>("credits_applied",this);        
+        }
+
+
+        public NumberFilter<Integer, InvoiceListRequest> amountDue() {
+            return new NumberFilter<Integer, InvoiceListRequest>("amount_due",this);        
+        }
+
+
+        public EnumFilter<DunningStatus, InvoiceListRequest> dunningStatus() {
+            return new EnumFilter<DunningStatus, InvoiceListRequest>("dunning_status",this).supportsPresenceOperator(true);        
+        }
+
+
+        public InvoiceListRequest sortByDate(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
             return this;
         }
 

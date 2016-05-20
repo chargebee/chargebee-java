@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -146,6 +148,10 @@ public class Subscription extends Resource<Subscription> {
         return reqString("id");
     }
 
+    public String customerId() {
+        return reqString("customer_id");
+    }
+
     public String planId() {
         return reqString("plan_id");
     }
@@ -268,11 +274,12 @@ public class Subscription extends Resource<Subscription> {
         return new CreateForCustomerRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static SubscriptionListRequest list() throws IOException {
         String uri = uri("subscriptions");
-        return new ListRequest(uri);
+        return new SubscriptionListRequest(uri);
     }
 
+    @Deprecated
     public static ListRequest subscriptionsForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "subscriptions");
         return new ListRequest(uri);
@@ -389,6 +396,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("po_number", poNumber);
             return this;
         }
+
+
+
+
 
 
         public CreateRequest affiliateToken(String affiliateToken) {
@@ -856,6 +867,64 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class SubscriptionListRequest extends ListRequest<SubscriptionListRequest> {
+
+        private SubscriptionListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<SubscriptionListRequest> id() {
+            return new StringFilter<SubscriptionListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<SubscriptionListRequest> customerId() {
+            return new StringFilter<SubscriptionListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<SubscriptionListRequest> planId() {
+            return new StringFilter<SubscriptionListRequest>("plan_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Status, SubscriptionListRequest> status() {
+            return new EnumFilter<Status, SubscriptionListRequest>("status",this);        
+        }
+
+
+        public EnumFilter<CancelReason, SubscriptionListRequest> cancelReason() {
+            return new EnumFilter<CancelReason, SubscriptionListRequest>("cancel_reason",this).supportsPresenceOperator(true);        
+        }
+
+
+        public NumberFilter<Integer, SubscriptionListRequest> remainingBillingCycles() {
+            return new NumberFilter<Integer, SubscriptionListRequest>("remaining_billing_cycles",this).supportsPresenceOperator(true);        
+        }
+
+
+        public TimestampFilter<SubscriptionListRequest> createdAt() {
+            return new TimestampFilter<SubscriptionListRequest>("created_at",this);        
+        }
+
+
+        public BooleanFilter<SubscriptionListRequest> hasScheduledChanges() {
+            return new BooleanFilter<SubscriptionListRequest>("has_scheduled_changes",this);        
+        }
+
+
+        public SubscriptionListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+
 
         @Override
         public Params params() {

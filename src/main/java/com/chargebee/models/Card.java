@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -140,6 +142,11 @@ public class Card extends Resource<Card> {
         return new SwitchGatewayForCustomerRequest(Method.POST, uri);
     }
 
+    public static CopyCardForCustomerRequest copyCardForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "copy_card");
+        return new CopyCardForCustomerRequest(Method.POST, uri);
+    }
+
     public static Request deleteCardForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "delete_card");
         return new Request(Method.POST, uri);
@@ -270,6 +277,24 @@ public class Card extends Resource<Card> {
         }
     
         public SwitchGatewayForCustomerRequest gateway(Gateway gateway) {
+            params.add("gateway", gateway);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CopyCardForCustomerRequest extends Request<CopyCardForCustomerRequest> {
+
+        private CopyCardForCustomerRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CopyCardForCustomerRequest gateway(Gateway gateway) {
             params.add("gateway", gateway);
             return this;
         }

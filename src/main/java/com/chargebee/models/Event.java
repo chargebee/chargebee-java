@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -142,18 +144,6 @@ public class Event extends Resource<Event> {
             super(uri);
         }
     
-        public EventListRequest limit(Integer limit) {
-            params.addOpt("limit", limit);
-            return this;
-        }
-
-
-        public EventListRequest offset(String offset) {
-            params.addOpt("offset", offset);
-            return this;
-        }
-
-
         public EventListRequest startTime(Timestamp startTime) {
             params.addOpt("start_time", startTime);
             return this;
@@ -174,6 +164,22 @@ public class Event extends Resource<Event> {
 
         public EventListRequest eventType(EventType eventType) {
             params.addOpt("event_type", eventType);
+            return this;
+        }
+
+
+        public StringFilter<EventListRequest> id() {
+            return new StringFilter<EventListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Source, EventListRequest> source() {
+            return new EnumFilter<Source, EventListRequest>("source",this);        
+        }
+
+
+        public EventListRequest sortByOccurredAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","occurred_at");
             return this;
         }
 

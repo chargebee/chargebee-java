@@ -32,5 +32,10 @@ public class ListRequest<U extends ListRequest> extends RequestBase<U>{
         String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
         return HttpUtil.getList(url, params(),headers, env);
     }
+    
+    @Override
+    public Params params() {
+        return params;
+    }
 
 }

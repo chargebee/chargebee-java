@@ -2,6 +2,8 @@ package com.chargebee.models;
 
 import com.chargebee.*;
 import com.chargebee.internal.*;
+import com.chargebee.filters.*;
+import com.chargebee.filters.enums.SortOrder;
 import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
@@ -161,9 +163,9 @@ public class Plan extends Resource<Plan> {
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static ListRequest list() throws IOException {
+    public static PlanListRequest list() throws IOException {
         String uri = uri("plans");
-        return new ListRequest(uri);
+        return new PlanListRequest(uri);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -449,6 +451,63 @@ public class Plan extends Resource<Plan> {
         public UpdateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
             return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PlanListRequest extends ListRequest<PlanListRequest> {
+
+        private PlanListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<PlanListRequest> id() {
+            return new StringFilter<PlanListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<PlanListRequest> name() {
+            return new StringFilter<PlanListRequest>("name",this).supportsMultiOperators(true);        
+        }
+
+
+        public NumberFilter<Integer, PlanListRequest> price() {
+            return new NumberFilter<Integer, PlanListRequest>("price",this);        
+        }
+
+
+        public NumberFilter<Integer, PlanListRequest> period() {
+            return new NumberFilter<Integer, PlanListRequest>("period",this);        
+        }
+
+
+        public EnumFilter<PeriodUnit, PlanListRequest> periodUnit() {
+            return new EnumFilter<PeriodUnit, PlanListRequest>("period_unit",this);        
+        }
+
+
+        public NumberFilter<Integer, PlanListRequest> trialPeriod() {
+            return new NumberFilter<Integer, PlanListRequest>("trial_period",this).supportsPresenceOperator(true);        
+        }
+
+
+        public EnumFilter<TrialPeriodUnit, PlanListRequest> trialPeriodUnit() {
+            return new EnumFilter<TrialPeriodUnit, PlanListRequest>("trial_period_unit",this);        
+        }
+
+
+        public EnumFilter<ChargeModel, PlanListRequest> chargeModel() {
+            return new EnumFilter<ChargeModel, PlanListRequest>("charge_model",this);        
+        }
+
+
+        public EnumFilter<Status, PlanListRequest> status() {
+            return new EnumFilter<Status, PlanListRequest>("status",this);        
         }
 
 
