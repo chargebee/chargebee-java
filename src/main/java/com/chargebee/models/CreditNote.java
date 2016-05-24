@@ -331,6 +331,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqInteger("sub_total");
     }
 
+    public String currencyCode() {
+        return optString("currency_code");
+    }
+
     public List<CreditNote.LineItem> lineItems() {
         return optList("line_items", CreditNote.LineItem.class);
     }
