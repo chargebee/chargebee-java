@@ -39,6 +39,10 @@ public class Estimate extends Resource<Estimate> {
         return optSubResource("invoice_estimate", InvoiceEstimate.class);
     }
 
+    public InvoiceEstimate nextInvoiceEstimate() {
+        return optSubResource("next_invoice_estimate", InvoiceEstimate.class);
+    }
+
     public List<CreditNoteEstimate> creditNoteEstimates() {
         return optList("credit_note_estimates", CreditNoteEstimate.class);
     }
