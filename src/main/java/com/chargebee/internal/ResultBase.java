@@ -28,6 +28,10 @@ public class ResultBase {
         return (Card)get("card");
     }
 
+    public ThirdPartyPaymentMethod thirdPartyPaymentMethod() {
+        return (ThirdPartyPaymentMethod)get("third_party_payment_method");
+    }
+
     public Invoice invoice() {
         return (Invoice)get("invoice");
     }
