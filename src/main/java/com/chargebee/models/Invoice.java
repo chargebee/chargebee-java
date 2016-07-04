@@ -530,6 +530,10 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("date");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer total() {
         return optInteger("total");
     }
@@ -576,10 +580,6 @@ public class Invoice extends Resource<Invoice> {
 
     public Boolean firstInvoice() {
         return optBoolean("first_invoice");
-    }
-
-    public String currencyCode() {
-        return optString("currency_code");
     }
 
     public List<Invoice.LineItem> lineItems() {
@@ -741,6 +741,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -858,6 +864,12 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public ChargeRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 

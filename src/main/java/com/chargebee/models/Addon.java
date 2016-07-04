@@ -86,6 +86,10 @@ public class Addon extends Resource<Addon> {
         return reqInteger("price");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer period() {
         return optInteger("period");
     }
@@ -200,6 +204,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public CreateRequest period(Integer period) {
             params.addOpt("period", period);
             return this;
@@ -298,6 +308,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest price(Integer price) {
             params.addOpt("price", price);
+            return this;
+        }
+
+
+        public UpdateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 

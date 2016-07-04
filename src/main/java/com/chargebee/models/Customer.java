@@ -998,6 +998,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public AddPromotionalCreditsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public AddPromotionalCreditsRequest description(String description) {
             params.add("description", description);
             return this;
@@ -1022,6 +1028,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public DeductPromotionalCreditsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public DeductPromotionalCreditsRequest description(String description) {
             params.add("description", description);
             return this;
@@ -1042,6 +1054,12 @@ public class Customer extends Resource<Customer> {
     
         public SetPromotionalCreditsRequest amount(Integer amount) {
             params.add("amount", amount);
+            return this;
+        }
+
+
+        public SetPromotionalCreditsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 

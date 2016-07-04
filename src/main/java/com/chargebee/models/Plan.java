@@ -77,6 +77,10 @@ public class Plan extends Resource<Plan> {
         return reqInteger("price");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer period() {
         return reqInteger("period");
     }
@@ -248,6 +252,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public CreateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -383,6 +393,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest price(Integer price) {
             params.addOpt("price", price);
+            return this;
+        }
+
+
+        public UpdateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 
