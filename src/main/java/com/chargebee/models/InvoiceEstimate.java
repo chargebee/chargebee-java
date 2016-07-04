@@ -187,6 +187,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
         return reqEnum("price_type", PriceType.class);
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }

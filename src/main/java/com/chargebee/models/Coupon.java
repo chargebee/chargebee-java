@@ -120,6 +120,10 @@ public class Coupon extends Resource<Coupon> {
         return optInteger("discount_quantity");
     }
 
+    public String currencyCode() {
+        return optString("currency_code");
+    }
+
     public DurationType durationType() {
         return reqEnum("duration_type", DurationType.class);
     }
@@ -239,6 +243,12 @@ public class Coupon extends Resource<Coupon> {
 
         public CreateRequest discountAmount(Integer discountAmount) {
             params.addOpt("discount_amount", discountAmount);
+            return this;
+        }
+
+
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
             return this;
         }
 

@@ -152,6 +152,10 @@ public class Subscription extends Resource<Subscription> {
         return reqString("customer_id");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public String planId() {
         return reqString("plan_id");
     }

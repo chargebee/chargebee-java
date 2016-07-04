@@ -307,6 +307,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqEnum("price_type", PriceType.class);
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer total() {
         return optInteger("total");
     }
@@ -329,10 +333,6 @@ public class CreditNote extends Resource<CreditNote> {
 
     public Integer subTotal() {
         return reqInteger("sub_total");
-    }
-
-    public String currencyCode() {
-        return optString("currency_code");
     }
 
     public List<CreditNote.LineItem> lineItems() {

@@ -172,6 +172,10 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("date");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer amount() {
         return optInteger("amount");
     }
@@ -226,10 +230,6 @@ public class Transaction extends Resource<Transaction> {
 
     public List<Transaction.LinkedRefund> linkedRefunds() {
         return optList("linked_refunds", Transaction.LinkedRefund.class);
-    }
-
-    public String currencyCode() {
-        return optString("currency_code");
     }
 
     // Operations

@@ -41,6 +41,10 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
         return optString("id");
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Status status() {
         return optEnum("status", Status.class);
     }

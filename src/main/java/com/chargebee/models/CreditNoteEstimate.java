@@ -198,6 +198,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return reqEnum("price_type", PriceType.class);
     }
 
+    public String currencyCode() {
+        return reqString("currency_code");
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
