@@ -34,6 +34,7 @@ public class Coupon extends Resource<Coupon> {
         ACTIVE,
         EXPIRED,
         ARCHIVED,
+        DELETED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -205,6 +206,11 @@ public class Coupon extends Resource<Coupon> {
     public static Request retrieve(String id) throws IOException {
         String uri = uri("coupons", nullCheck(id));
         return new Request(Method.GET, uri);
+    }
+
+    public static Request delete(String id) throws IOException {
+        String uri = uri("coupons", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
     }
 
 
