@@ -309,6 +309,11 @@ public class Subscription extends Resource<Subscription> {
         return new RemoveScheduledCancellationRequest(Method.POST, uri);
     }
 
+    public static RemoveCouponsRequest removeCoupons(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "remove_coupons");
+        return new RemoveCouponsRequest(Method.POST, uri);
+    }
+
     public static UpdateRequest update(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
@@ -947,6 +952,28 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemoveCouponsRequest extends Request<RemoveCouponsRequest> {
+
+        private RemoveCouponsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemoveCouponsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public RemoveCouponsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
         @Override
         public Params params() {
