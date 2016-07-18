@@ -330,6 +330,11 @@ public class Customer extends Resource<Customer> {
         return new SetPromotionalCreditsRequest(Method.POST, uri);
     }
 
+    public static RecordExcessPaymentRequest recordExcessPayment(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "record_excess_payment");
+        return new RecordExcessPaymentRequest(Method.POST, uri);
+    }
+
     public static DeleteRequest delete(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
@@ -1069,6 +1074,49 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RecordExcessPaymentRequest extends Request<RecordExcessPaymentRequest> {
+
+        private RecordExcessPaymentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RecordExcessPaymentRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public RecordExcessPaymentRequest transactionAmount(Integer transactionAmount) {
+            params.add("transaction[amount]", transactionAmount);
+            return this;
+        }
+
+        public RecordExcessPaymentRequest transactionCurrencyCode(String transactionCurrencyCode) {
+            params.addOpt("transaction[currency_code]", transactionCurrencyCode);
+            return this;
+        }
+
+        public RecordExcessPaymentRequest transactionDate(Timestamp transactionDate) {
+            params.add("transaction[date]", transactionDate);
+            return this;
+        }
+
+        public RecordExcessPaymentRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
+            params.add("transaction[payment_method]", transactionPaymentMethod);
+            return this;
+        }
+
+        public RecordExcessPaymentRequest transactionReferenceNumber(String transactionReferenceNumber) {
+            params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
 
         @Override
         public Params params() {
