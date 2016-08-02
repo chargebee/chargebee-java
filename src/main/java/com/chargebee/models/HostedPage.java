@@ -16,9 +16,8 @@ public class HostedPage extends Resource<HostedPage> {
     public enum Type {
         CHECKOUT_NEW,
         CHECKOUT_EXISTING,
+        @Deprecated
         UPDATE_CARD,
-        CHECKOUT_ONETIME_CHARGE,
-        CHECKOUT_ONETIME_ADDONS,
         UPDATE_PAYMENT_METHOD,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -243,6 +242,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionInvoiceNotes(String subscriptionInvoiceNotes) {
+            params.addOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
+            return this;
+        }
+
         public CheckoutNewRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
@@ -345,6 +349,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionInvoiceNotes(String subscriptionInvoiceNotes) {
+            params.addOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
             return this;
         }
 

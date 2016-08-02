@@ -367,6 +367,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new Request(Method.GET, uri);
     }
 
+    public static Request pdf(String id) throws IOException {
+        String uri = uri("credit_notes", nullCheck(id), "pdf");
+        return new Request(Method.POST, uri);
+    }
+
     public static CreditNoteListRequest list() throws IOException {
         String uri = uri("credit_notes");
         return new CreditNoteListRequest(uri);

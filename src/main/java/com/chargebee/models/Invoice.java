@@ -958,6 +958,7 @@ public class Invoice extends Resource<Invoice> {
             super(uri);
         }
     
+        @Deprecated
         public InvoiceListRequest paidOnAfter(Timestamp paidOnAfter) {
             params.addOpt("paid_on_after", paidOnAfter);
             return this;
@@ -996,6 +997,11 @@ public class Invoice extends Resource<Invoice> {
 
         public TimestampFilter<InvoiceListRequest> date() {
             return new TimestampFilter<InvoiceListRequest>("date",this);        
+        }
+
+
+        public TimestampFilter<InvoiceListRequest> paidAt() {
+            return new TimestampFilter<InvoiceListRequest>("paid_at",this);        
         }
 
 

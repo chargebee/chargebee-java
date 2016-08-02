@@ -144,26 +144,16 @@ public class Event extends Resource<Event> {
             super(uri);
         }
     
+        @Deprecated
         public EventListRequest startTime(Timestamp startTime) {
             params.addOpt("start_time", startTime);
             return this;
         }
 
 
+        @Deprecated
         public EventListRequest endTime(Timestamp endTime) {
             params.addOpt("end_time", endTime);
-            return this;
-        }
-
-
-        public EventListRequest webhookStatus(WebhookStatus webhookStatus) {
-            params.addOpt("webhook_status", webhookStatus);
-            return this;
-        }
-
-
-        public EventListRequest eventType(EventType eventType) {
-            params.addOpt("event_type", eventType);
             return this;
         }
 
@@ -173,8 +163,33 @@ public class Event extends Resource<Event> {
         }
 
 
+        public EnumFilter<WebhookStatus, EventListRequest> webhookStatus() {
+            return new EnumFilter<WebhookStatus, EventListRequest>("webhook_status",this);        
+        }
+        @Deprecated
+        public EventListRequest webhookStatus(WebhookStatus webhookStatus) {
+            params.addOpt("webhook_status", webhookStatus);
+            return this;
+        }
+
+
+        public EnumFilter<EventType, EventListRequest> eventType() {
+            return new EnumFilter<EventType, EventListRequest>("event_type",this);        
+        }
+        @Deprecated
+        public EventListRequest eventType(EventType eventType) {
+            params.addOpt("event_type", eventType);
+            return this;
+        }
+
+
         public EnumFilter<Source, EventListRequest> source() {
             return new EnumFilter<Source, EventListRequest>("source",this);        
+        }
+
+
+        public TimestampFilter<EventListRequest> occurredAt() {
+            return new TimestampFilter<EventListRequest>("occurred_at",this);        
         }
 
 
