@@ -29,6 +29,7 @@ public class Subscription extends Resource<Subscription> {
         FRAUD_REVIEW_FAILED,
         NON_COMPLIANT_EU_CUSTOMER,
         TAX_CALCULATION_FAILED,
+        CURRENCY_INCOMPATIBLE_WITH_GATEWAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
