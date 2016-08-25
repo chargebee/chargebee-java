@@ -419,6 +419,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("zip");
         }
 
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {
@@ -476,6 +480,10 @@ public class Invoice extends Resource<Invoice> {
 
         public String zip() {
             return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
         }
 
     }
@@ -821,6 +829,11 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
 

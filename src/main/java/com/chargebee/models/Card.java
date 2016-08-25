@@ -252,6 +252,7 @@ public class Card extends Resource<Card> {
         }
 
 
+        @Deprecated
         public UpdateCardForCustomerRequest ipAddress(String ipAddress) {
             params.addOpt("ip_address", ipAddress);
             return this;
