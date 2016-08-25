@@ -23,6 +23,14 @@ public class Customer extends Resource<Customer> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum FraudFlag {
+        SAFE,
+        SUSPICIOUS,
+        FRAUDULENT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class BillingAddress extends Resource<BillingAddress> {
         public BillingAddress(JSONObject jsonObj) {
             super(jsonObj);
@@ -80,6 +88,10 @@ public class Customer extends Resource<Customer> {
             return optString("zip");
         }
 
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
     }
 
     public static class Contact extends Resource<Contact> {
@@ -133,7 +145,7 @@ public class Customer extends Resource<Customer> {
         }
 
         public enum Status {
-             VALID,EXPIRING,EXPIRED,INVALID,
+             VALID,EXPIRING,EXPIRED,INVALID,PENDING_VERIFICATION,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -233,6 +245,10 @@ public class Customer extends Resource<Customer> {
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
+    }
+
+    public FraudFlag fraudFlag() {
+        return optEnum("fraud_flag", FraudFlag.class);
     }
 
     public Customer.BillingAddress billingAddress() {
@@ -430,6 +446,7 @@ public class Customer extends Resource<Customer> {
 
 
 
+        @Deprecated
         public CreateRequest createdFromIp(String createdFromIp) {
             params.addOpt("created_from_ip", createdFromIp);
             return this;
@@ -464,6 +481,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public CreateRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
             return this;
         }
 
@@ -532,6 +554,7 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest cardIpAddress(String cardIpAddress) {
             params.addOpt("card[ip_address]", cardIpAddress);
             return this;
@@ -599,6 +622,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CreateRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
 
@@ -767,7 +795,12 @@ public class Customer extends Resource<Customer> {
         }
 
         public UpdatePaymentMethodRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
-            params.add("payment_method[reference_id]", paymentMethodReferenceId);
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
             return this;
         }
 
@@ -851,6 +884,11 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public UpdateBillingInfoRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
 

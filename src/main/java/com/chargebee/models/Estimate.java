@@ -146,6 +146,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
         public CreateSubscriptionRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
@@ -178,6 +183,11 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateSubscriptionRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
 
@@ -324,6 +334,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
         public UpdateSubscriptionRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
@@ -356,6 +371,11 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
 

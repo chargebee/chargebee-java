@@ -83,6 +83,10 @@ public class Address extends Resource<Address> {
         return optString("zip");
     }
 
+    public ValidationStatus validationStatus() {
+        return optEnum("validation_status", ValidationStatus.class);
+    }
+
     public String subscriptionId() {
         return reqString("subscription_id");
     }
@@ -220,6 +224,12 @@ public class Address extends Resource<Address> {
 
         public UpdateRequest country(String country) {
             params.addOpt("country", country);
+            return this;
+        }
+
+
+        public UpdateRequest validationStatus(ValidationStatus validationStatus) {
+            params.addOpt("validation_status", validationStatus);
             return this;
         }
 
