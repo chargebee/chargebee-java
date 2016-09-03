@@ -728,6 +728,11 @@ public class Invoice extends Resource<Invoice> {
         return new VoidInvoiceRequest(Method.POST, uri);
     }
 
+    public static WriteOffRequest writeOff(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "write_off");
+        return new WriteOffRequest(Method.POST, uri);
+    }
+
     public static DeleteRequest delete(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
@@ -1255,6 +1260,24 @@ public class Invoice extends Resource<Invoice> {
         }
     
         public VoidInvoiceRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class WriteOffRequest extends Request<WriteOffRequest> {
+
+        private WriteOffRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public WriteOffRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
         }
