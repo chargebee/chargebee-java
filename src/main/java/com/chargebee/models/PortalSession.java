@@ -155,6 +155,12 @@ public class PortalSession extends Resource<PortalSession> {
         }
 
 
+        public CreateRequest forwardUrl(String forwardUrl) {
+            params.addOpt("forward_url", forwardUrl);
+            return this;
+        }
+
+
         public CreateRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
             return this;

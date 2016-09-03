@@ -362,6 +362,11 @@ public class CreditNote extends Resource<CreditNote> {
     // Operations
     //===========
 
+    public static CreateRequest create() throws IOException {
+        String uri = uri("credit_notes");
+        return new CreateRequest(Method.POST, uri);
+    }
+
     public static Request retrieve(String id) throws IOException {
         String uri = uri("credit_notes", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -386,6 +391,68 @@ public class CreditNote extends Resource<CreditNote> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest referenceInvoiceId(String referenceInvoiceId) {
+            params.add("reference_invoice_id", referenceInvoiceId);
+            return this;
+        }
+
+
+        public CreateRequest total(Integer total) {
+            params.addOpt("total", total);
+            return this;
+        }
+
+
+        public CreateRequest type(Type type) {
+            params.add("type", type);
+            return this;
+        }
+
+
+        public CreateRequest reasonCode(ReasonCode reasonCode) {
+            params.add("reason_code", reasonCode);
+            return this;
+        }
+
+
+        public CreateRequest customerNotes(String customerNotes) {
+            params.addOpt("customer_notes", customerNotes);
+            return this;
+        }
+
+
+        public CreateRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
+            params.add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+            return this;
+        }
+
+        public CreateRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
+            params.add("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+            return this;
+        }
+
+        public CreateRequest lineItemQuantity(int index, Integer lineItemQuantity) {
+            params.add("line_items[quantity][" + index + "]", lineItemQuantity);
+            return this;
+        }
+
+        public CreateRequest lineItemDescription(int index, String lineItemDescription) {
+            params.addOpt("line_items[description][" + index + "]", lineItemDescription);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class CreditNoteListRequest extends ListRequest<CreditNoteListRequest> {
 
