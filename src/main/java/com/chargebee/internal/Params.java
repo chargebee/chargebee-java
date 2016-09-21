@@ -2,6 +2,8 @@ package com.chargebee.internal;
 
 import java.sql.Timestamp;
 import java.util.*;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Params {
@@ -35,14 +37,14 @@ public class Params {
         return m.entrySet();
     }
 
-    private static Object toValStr(Object value) {
+    public static Object toValStr(Object value) {
         Class c = value.getClass();
         if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class) {
             return value.toString();
         } else if(c.isEnum()) {
             return value.toString().toLowerCase();
         } else if(c == Timestamp.class) {
-            return asUnixTimestamp((Timestamp)value);
+            return String.valueOf(asUnixTimestamp((Timestamp)value));
         } else if(value instanceof List){
             List origList = ((List)value);
             List<String> l = new ArrayList(origList.size());
@@ -59,13 +61,15 @@ public class Params {
             return l;            
         } else if(value instanceof JSONObject) {
             return value.toString();
+        } else if(value instanceof JSONArray) {
+            return value.toString();
         } else {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }
     }
     
-    private static String asUnixTimestamp(Timestamp ts) {
-        return String.valueOf(ts.getTime() / 1000);
+    public static Long asUnixTimestamp(Timestamp ts) {
+        return ts.getTime() / 1000;
     }
 
     @Override

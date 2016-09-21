@@ -70,7 +70,7 @@ public class HttpUtil {
             if(value instanceof List){
                List<String> l = (List<String>)value;
                if(isListReq){
-                   String keyValPair = enc(entry.getKey()) + "=" + enc(l.isEmpty()?"":l.toString());
+                   String keyValPair = enc(entry.getKey()) + "=" + enc(l.isEmpty()?"": l.toString());
                    buf.add(keyValPair);
                    continue;
                }
