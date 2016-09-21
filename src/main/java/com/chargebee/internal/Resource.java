@@ -3,6 +3,7 @@ package com.chargebee.internal;
 import com.chargebee.Environment;
 import com.chargebee.gdata.PercentEscaper;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.logging.Level;
@@ -73,6 +74,19 @@ public class Resource<T> {
 
     public Integer optInteger(String key) {
         Integer value = optional( key, Integer.class);
+        try{
+            return (value != null)? value : null;
+        }catch(Exception ex){
+            throw conversionException(key);
+        }
+    }
+    
+    public BigDecimal reqBigDecimal(String key) {
+        return assertReqProp(key, optBigDecimal( key));
+    }
+
+    public BigDecimal optBigDecimal(String key) {
+        BigDecimal value = optional( key, BigDecimal.class);
         try{
             return (value != null)? value : null;
         }catch(Exception ex){
@@ -208,6 +222,9 @@ public class Resource<T> {
         if(!type.isAssignableFrom(val.getClass())){
             //JSON returns Integer values if the string format is without decimal points
             // Like 10  instead of 10.0 
+            if(BigDecimal.class == type && val instanceof Number){
+                return (T) new BigDecimal(String.valueOf(val));
+            }
             if(Double.class == type && val instanceof Number){
                 return (T) new Double(((Number)val).doubleValue());
             }

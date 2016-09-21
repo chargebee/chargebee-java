@@ -1,7 +1,11 @@
 package com.chargebee.filters;
 
 import com.chargebee.internal.ListRequest;
+import static com.chargebee.internal.Params.asUnixTimestamp;
 import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -41,7 +45,8 @@ public class TimestampFilter<U extends ListRequest> {
     }
 
     public U between(Timestamp value1, Timestamp value2) {
-        req.params().addOpt(paramName + "[between]", new Timestamp[]{value1, value2});
+        JSONArray jArr = serialize(Arrays.asList(value1, value2));
+        req.params().addOpt(paramName + "[between]", jArr);
         return req;
     }
 
@@ -51,5 +56,13 @@ public class TimestampFilter<U extends ListRequest> {
         }
         req.params().addOpt(paramName + "[is_present]", value);
         return req;
+    }
+    
+    private JSONArray serialize(List<Timestamp> list){
+        JSONArray jArr = new JSONArray();
+        for(Timestamp timestamp : list){
+            jArr.put(asUnixTimestamp(timestamp));
+        }
+        return jArr;
     }
 }

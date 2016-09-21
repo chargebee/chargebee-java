@@ -1,3 +1,11 @@
+###v2.1.3 (2016-09-21)
+* * * 
+
+** APIs updated**:
+The new Gateway type "gocardless" for card resource is added. See card attributes
+See : https://apidocs.chargebee.com/docs/api/cards#card_attributes
+
+
 ###v2.1.2 (2016-09-03)
 * * * 
 ** APIs added**:

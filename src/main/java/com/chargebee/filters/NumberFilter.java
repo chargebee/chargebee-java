@@ -1,6 +1,8 @@
 package com.chargebee.filters;
 
 import com.chargebee.internal.ListRequest;
+import java.util.Arrays;
+import org.json.JSONArray;
 
 /**
  *
@@ -45,7 +47,8 @@ public class NumberFilter<T,U extends ListRequest> {
     }
     
     public U between(T val1, T val2){
-        req.params().addOpt(paramName + "[between]", (T[])new Object[]{val1, val2});
+        JSONArray jArr = new JSONArray(Arrays.asList(val1,val2));
+        req.params().addOpt(paramName + "[between]", jArr);
         return req;
     }
     
@@ -67,5 +70,4 @@ public class NumberFilter<T,U extends ListRequest> {
         req.params().addOpt(paramName + "[is_present]", value);
         return req;
     }
-
 }
