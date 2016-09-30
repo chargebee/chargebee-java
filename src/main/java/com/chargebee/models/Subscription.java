@@ -229,6 +229,14 @@ public class Subscription extends Resource<Subscription> {
         return optString("created_from_ip");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public Boolean hasScheduledChanges() {
         return reqBoolean("has_scheduled_changes");
     }
@@ -268,6 +276,10 @@ public class Subscription extends Resource<Subscription> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public Boolean deleted() {
+        return reqBoolean("deleted");
     }
 
     // Operations
@@ -911,6 +923,12 @@ public class Subscription extends Resource<Subscription> {
             super(uri);
         }
     
+        public SubscriptionListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<SubscriptionListRequest> id() {
             return new StringFilter<SubscriptionListRequest>("id",this).supportsMultiOperators(true);        
         }
@@ -948,6 +966,11 @@ public class Subscription extends Resource<Subscription> {
 
         public BooleanFilter<SubscriptionListRequest> hasScheduledChanges() {
             return new BooleanFilter<SubscriptionListRequest>("has_scheduled_changes",this);        
+        }
+
+
+        public TimestampFilter<SubscriptionListRequest> updatedAt() {
+            return new TimestampFilter<SubscriptionListRequest>("updated_at",this);        
         }
 
 

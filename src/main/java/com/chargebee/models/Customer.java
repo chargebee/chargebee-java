@@ -242,6 +242,14 @@ public class Customer extends Resource<Customer> {
         return optString("exempt_number");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -281,6 +289,10 @@ public class Customer extends Resource<Customer> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public Boolean deleted() {
+        return reqBoolean("deleted");
     }
 
     // Operations
@@ -642,6 +654,12 @@ public class Customer extends Resource<Customer> {
             super(uri);
         }
     
+        public CustomerListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<CustomerListRequest> id() {
             return new StringFilter<CustomerListRequest>("id",this).supportsMultiOperators(true);        
         }
@@ -679,6 +697,11 @@ public class Customer extends Resource<Customer> {
 
         public TimestampFilter<CustomerListRequest> createdAt() {
             return new TimestampFilter<CustomerListRequest>("created_at",this);        
+        }
+
+
+        public TimestampFilter<CustomerListRequest> updatedAt() {
+            return new TimestampFilter<CustomerListRequest>("updated_at",this);        
         }
 
 

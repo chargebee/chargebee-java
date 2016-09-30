@@ -578,6 +578,14 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("next_retry_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
@@ -636,6 +644,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Invoice.BillingAddress billingAddress() {
         return optSubResource("billing_address", Invoice.BillingAddress.class);
+    }
+
+    public Boolean deleted() {
+        return reqBoolean("deleted");
     }
 
     // Operations
@@ -983,6 +995,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public InvoiceListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<InvoiceListRequest> id() {
             return new StringFilter<InvoiceListRequest>("id",this).supportsMultiOperators(true);        
         }
@@ -1050,6 +1068,11 @@ public class Invoice extends Resource<Invoice> {
 
         public EnumFilter<DunningStatus, InvoiceListRequest> dunningStatus() {
             return new EnumFilter<DunningStatus, InvoiceListRequest>("dunning_status",this).supportsPresenceOperator(true);        
+        }
+
+
+        public TimestampFilter<InvoiceListRequest> updatedAt() {
+            return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
         }
 
 
