@@ -331,6 +331,14 @@ public class CreditNote extends Resource<CreditNote> {
         return optTimestamp("refunded_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
@@ -357,6 +365,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public List<CreditNote.Allocation> allocations() {
         return optList("allocations", CreditNote.Allocation.class);
+    }
+
+    public Boolean deleted() {
+        return reqBoolean("deleted");
     }
 
     // Operations
@@ -422,6 +434,12 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public CreateRequest date(Timestamp date) {
+            params.addOpt("date", date);
+            return this;
+        }
+
+
         public CreateRequest customerNotes(String customerNotes) {
             params.addOpt("customer_notes", customerNotes);
             return this;
@@ -460,6 +478,12 @@ public class CreditNote extends Resource<CreditNote> {
             super(uri);
         }
     
+        public CreditNoteListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<CreditNoteListRequest> id() {
             return new StringFilter<CreditNoteListRequest>("id",this).supportsMultiOperators(true);        
         }
@@ -522,6 +546,11 @@ public class CreditNote extends Resource<CreditNote> {
 
         public NumberFilter<Integer, CreditNoteListRequest> amountAvailable() {
             return new NumberFilter<Integer, CreditNoteListRequest>("amount_available",this);        
+        }
+
+
+        public TimestampFilter<CreditNoteListRequest> updatedAt() {
+            return new TimestampFilter<CreditNoteListRequest>("updated_at",this);        
         }
 
 

@@ -200,6 +200,14 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("voided_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public Integer amountUnused() {
         return optInteger("amount_unused");
     }
@@ -230,6 +238,10 @@ public class Transaction extends Resource<Transaction> {
 
     public List<Transaction.LinkedRefund> linkedRefunds() {
         return optList("linked_refunds", Transaction.LinkedRefund.class);
+    }
+
+    public Boolean deleted() {
+        return reqBoolean("deleted");
     }
 
     // Operations
@@ -272,6 +284,12 @@ public class Transaction extends Resource<Transaction> {
             super(uri);
         }
     
+        public TransactionListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<TransactionListRequest> id() {
             return new StringFilter<TransactionListRequest>("id",this).supportsMultiOperators(true);        
         }
@@ -324,6 +342,11 @@ public class Transaction extends Resource<Transaction> {
 
         public EnumFilter<Status, TransactionListRequest> status() {
             return new EnumFilter<Status, TransactionListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<TransactionListRequest> updatedAt() {
+            return new TimestampFilter<TransactionListRequest>("updated_at",this);        
         }
 
 
