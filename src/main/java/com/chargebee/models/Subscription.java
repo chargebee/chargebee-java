@@ -412,6 +412,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        @Deprecated
         public CreateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -423,6 +424,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CreateRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
 
 
@@ -807,6 +818,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        @Deprecated
         public CreateForCustomerRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -818,6 +830,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CreateForCustomerRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForCustomerRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
         public CreateForCustomerRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
@@ -1068,6 +1090,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        @Deprecated
         public UpdateRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -1080,6 +1103,22 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
+
         public UpdateRequest prorate(Boolean prorate) {
             params.addOpt("prorate", prorate);
             return this;
@@ -1088,6 +1127,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public UpdateRequest forceTermReset(Boolean forceTermReset) {
+            params.addOpt("force_term_reset", forceTermReset);
             return this;
         }
 
