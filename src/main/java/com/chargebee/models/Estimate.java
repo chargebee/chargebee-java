@@ -81,6 +81,16 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateSubscriptionRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateSubscriptionRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CreateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;
@@ -106,6 +116,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        @Deprecated
         public CreateSubscriptionRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
@@ -245,6 +256,22 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public UpdateSubscriptionRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
+
         public UpdateSubscriptionRequest prorate(Boolean prorate) {
             params.addOpt("prorate", prorate);
             return this;
@@ -253,6 +280,12 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public UpdateSubscriptionRequest forceTermReset(Boolean forceTermReset) {
+            params.addOpt("force_term_reset", forceTermReset);
             return this;
         }
 
@@ -294,6 +327,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        @Deprecated
         public UpdateSubscriptionRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;

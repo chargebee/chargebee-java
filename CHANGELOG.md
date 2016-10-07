@@ -1,3 +1,14 @@
+###v2.1.5 (2016-10-07)
+* * * 
+
+** APIs updated**:
+
+The parameter "coupon" is deprecated and as an alternate new parameter "coupon_ids" is added in Create Subscription, Create Subscription for Customer, Update Subscription, Create Subscription Estimate and Update Subscription Estimate API.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#create_a_subscription
+
+The new parameters "force_term_reset" and "replace_coupon_list" is added to Update Subscription and Update Subscription Estimate API.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#update_a_subscription
+
 ###v2.1.4 (2016-09-30)
 * * * 
 
