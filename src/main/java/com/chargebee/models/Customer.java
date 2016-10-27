@@ -275,6 +275,10 @@ public class Customer extends Resource<Customer> {
         return optString("invoice_notes");
     }
 
+    public String preferredCurrencyCode() {
+        return optString("preferred_currency_code");
+    }
+
     public Integer promotionalCredits() {
         return reqInteger("promotional_credits");
     }
@@ -402,6 +406,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest preferredCurrencyCode(String preferredCurrencyCode) {
+            params.addOpt("preferred_currency_code", preferredCurrencyCode);
+            return this;
+        }
+
+
         public CreateRequest phone(String phone) {
             params.addOpt("phone", phone);
             return this;
@@ -448,6 +458,8 @@ public class Customer extends Resource<Customer> {
             params.addOpt("exempt_number", exemptNumber);
             return this;
         }
+
+
 
 
         public CreateRequest metaData(JSONObject metaData) {
@@ -741,6 +753,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateRequest preferredCurrencyCode(String preferredCurrencyCode) {
+            params.addOpt("preferred_currency_code", preferredCurrencyCode);
+            return this;
+        }
+
+
         public UpdateRequest phone(String phone) {
             params.addOpt("phone", phone);
             return this;
@@ -787,6 +805,8 @@ public class Customer extends Resource<Customer> {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
+
+
 
 
         public UpdateRequest metaData(JSONObject metaData) {
