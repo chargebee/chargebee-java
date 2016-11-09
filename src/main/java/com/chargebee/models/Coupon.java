@@ -170,6 +170,14 @@ public class Coupon extends Resource<Coupon> {
         return optTimestamp("archived_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public List<String> planIds() {
         return optList("plan_ids", String.class);
     }
@@ -390,6 +398,11 @@ public class Coupon extends Resource<Coupon> {
 
         public TimestampFilter<CouponListRequest> createdAt() {
             return new TimestampFilter<CouponListRequest>("created_at",this);        
+        }
+
+
+        public TimestampFilter<CouponListRequest> updatedAt() {
+            return new TimestampFilter<CouponListRequest>("updated_at",this);        
         }
 
 

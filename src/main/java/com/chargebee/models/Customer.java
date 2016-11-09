@@ -218,6 +218,10 @@ public class Customer extends Resource<Customer> {
         return reqEnum("auto_collection", AutoCollection.class);
     }
 
+    public Integer netTermDays() {
+        return reqInteger("net_term_days");
+    }
+
     public Boolean allowDirectDebit() {
         return reqBoolean("allow_direct_debit");
     }
@@ -426,6 +430,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest autoCollection(AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
             return this;
         }
 
@@ -779,6 +789,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest allowDirectDebit(Boolean allowDirectDebit) {
             params.addOpt("allow_direct_debit", allowDirectDebit);
+            return this;
+        }
+
+
+        public UpdateRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
             return this;
         }
 

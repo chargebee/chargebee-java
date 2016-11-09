@@ -504,6 +504,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerNetTermDays(Integer customerNetTermDays) {
+            params.addOpt("customer[net_term_days]", customerNetTermDays);
+            return this;
+        }
+
         public CreateRequest customerPhone(String customerPhone) {
             params.addOpt("customer[phone]", customerPhone);
             return this;
