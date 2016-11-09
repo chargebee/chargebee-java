@@ -142,6 +142,14 @@ public class Plan extends Resource<Plan> {
         return optString("tax_code");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -524,6 +532,11 @@ public class Plan extends Resource<Plan> {
 
         public EnumFilter<Status, PlanListRequest> status() {
             return new EnumFilter<Status, PlanListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<PlanListRequest> updatedAt() {
+            return new TimestampFilter<PlanListRequest>("updated_at",this);        
         }
 
 

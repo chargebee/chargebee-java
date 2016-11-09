@@ -15,6 +15,7 @@ public class Invoice extends Resource<Invoice> {
 
     public enum Status {
         PAID,
+        POSTED,
         PAYMENT_DUE,
         NOT_PAID,
         VOIDED,
@@ -536,6 +537,14 @@ public class Invoice extends Resource<Invoice> {
 
     public Timestamp date() {
         return optTimestamp("date");
+    }
+
+    public Timestamp dueDate() {
+        return optTimestamp("due_date");
+    }
+
+    public Integer netTermDays() {
+        return optInteger("net_term_days");
     }
 
     public String currencyCode() {

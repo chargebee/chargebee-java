@@ -118,6 +118,14 @@ public class Addon extends Resource<Addon> {
         return optString("tax_code");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -421,6 +429,11 @@ public class Addon extends Resource<Addon> {
 
         public EnumFilter<Status, AddonListRequest> status() {
             return new EnumFilter<Status, AddonListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<AddonListRequest> updatedAt() {
+            return new TimestampFilter<AddonListRequest>("updated_at",this);        
         }
 
 
