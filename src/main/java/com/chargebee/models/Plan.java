@@ -158,6 +158,10 @@ public class Plan extends Resource<Plan> {
         return optBoolean("taxable");
     }
 
+    public String taxProfileId() {
+        return optString("tax_profile_id");
+    }
+
     public JSONObject metaData() {
         return optJSONObject("meta_data");
     }
@@ -315,6 +319,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest taxProfileId(String taxProfileId) {
+            params.addOpt("tax_profile_id", taxProfileId);
+            return this;
+        }
+
+
         public CreateRequest taxCode(String taxCode) {
             params.addOpt("tax_code", taxCode);
             return this;
@@ -456,6 +466,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest taxable(Boolean taxable) {
             params.addOpt("taxable", taxable);
+            return this;
+        }
+
+
+        public UpdateRequest taxProfileId(String taxProfileId) {
+            params.addOpt("tax_profile_id", taxProfileId);
             return this;
         }
 
