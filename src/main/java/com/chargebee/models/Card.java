@@ -34,6 +34,16 @@ public class Card extends Resource<Card> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum FundingType {
+        CREDIT,
+        DEBIT,
+        PREPAID,
+        NOT_KNOWN,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -78,6 +88,10 @@ public class Card extends Resource<Card> {
 
     public CardType cardType() {
         return optEnum("card_type", CardType.class);
+    }
+
+    public FundingType fundingType() {
+        return reqEnum("funding_type", FundingType.class);
     }
 
     public Integer expiryMonth() {

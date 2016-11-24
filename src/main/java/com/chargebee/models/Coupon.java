@@ -221,6 +221,11 @@ public class Coupon extends Resource<Coupon> {
         return new Request(Method.POST, uri);
     }
 
+    public static CopyRequest copy() throws IOException {
+        String uri = uri("coupons", "copy");
+        return new CopyRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -408,6 +413,30 @@ public class Coupon extends Resource<Coupon> {
 
         public CouponListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CopyRequest extends Request<CopyRequest> {
+
+        private CopyRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CopyRequest fromSite(String fromSite) {
+            params.add("from_site", fromSite);
+            return this;
+        }
+
+
+        public CopyRequest idAtFromSite(String idAtFromSite) {
+            params.add("id_at_from_site", idAtFromSite);
             return this;
         }
 

@@ -170,6 +170,11 @@ public class Addon extends Resource<Addon> {
         return new Request(Method.POST, uri);
     }
 
+    public static CopyRequest copy() throws IOException {
+        String uri = uri("addons", "copy");
+        return new CopyRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -450,6 +455,30 @@ public class Addon extends Resource<Addon> {
 
         public TimestampFilter<AddonListRequest> updatedAt() {
             return new TimestampFilter<AddonListRequest>("updated_at",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CopyRequest extends Request<CopyRequest> {
+
+        private CopyRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CopyRequest fromSite(String fromSite) {
+            params.add("from_site", fromSite);
+            return this;
+        }
+
+
+        public CopyRequest idAtFromSite(String idAtFromSite) {
+            params.add("id_at_from_site", idAtFromSite);
+            return this;
         }
 
 
