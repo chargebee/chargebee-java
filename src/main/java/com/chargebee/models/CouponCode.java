@@ -64,6 +64,11 @@ public class CouponCode extends Resource<CouponCode> {
         return new Request(Method.GET, uri);
     }
 
+    public static CouponCodeListRequest list() throws IOException {
+        String uri = uri("coupon_codes");
+        return new CouponCodeListRequest(uri);
+    }
+
     public static Request archive(String id) throws IOException {
         String uri = uri("coupon_codes", nullCheck(id), "archive");
         return new Request(Method.POST, uri);
@@ -94,6 +99,38 @@ public class CouponCode extends Resource<CouponCode> {
         public CreateRequest code(String code) {
             params.add("code", code);
             return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CouponCodeListRequest extends ListRequest<CouponCodeListRequest> {
+
+        private CouponCodeListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<CouponCodeListRequest> code() {
+            return new StringFilter<CouponCodeListRequest>("code",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CouponCodeListRequest> couponId() {
+            return new StringFilter<CouponCodeListRequest>("coupon_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<CouponCodeListRequest> couponSetName() {
+            return new StringFilter<CouponCodeListRequest>("coupon_set_name",this);        
+        }
+
+
+        public EnumFilter<Status, CouponCodeListRequest> status() {
+            return new EnumFilter<Status, CouponCodeListRequest>("status",this);        
         }
 
 
