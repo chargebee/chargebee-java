@@ -212,6 +212,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
+
         public CheckoutNewRequest customerPhone(String customerPhone) {
             params.addOpt("customer[phone]", customerPhone);
             return this;

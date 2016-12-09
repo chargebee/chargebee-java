@@ -331,6 +331,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optTimestamp("refunded_at");
     }
 
+    public Timestamp voidedAt() {
+        return optTimestamp("voided_at");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
@@ -546,6 +550,11 @@ public class CreditNote extends Resource<CreditNote> {
 
         public NumberFilter<Integer, CreditNoteListRequest> amountAvailable() {
             return new NumberFilter<Integer, CreditNoteListRequest>("amount_available",this);        
+        }
+
+
+        public TimestampFilter<CreditNoteListRequest> voidedAt() {
+            return new TimestampFilter<CreditNoteListRequest>("voided_at",this);        
         }
 
 
