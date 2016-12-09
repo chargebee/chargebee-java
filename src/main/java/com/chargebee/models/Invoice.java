@@ -587,6 +587,10 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("next_retry_at");
     }
 
+    public Timestamp voidedAt() {
+        return optTimestamp("voided_at");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
@@ -1517,6 +1521,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public TimestampFilter<InvoiceListRequest> voidedAt() {
+            return new TimestampFilter<InvoiceListRequest>("voided_at",this);        
+        }
+
+
         public TimestampFilter<InvoiceListRequest> updatedAt() {
             return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
         }
@@ -1627,8 +1636,28 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public RecordPaymentRequest transactionIdAtGateway(String transactionIdAtGateway) {
+            params.addOpt("transaction[id_at_gateway]", transactionIdAtGateway);
+            return this;
+        }
+
+        public RecordPaymentRequest transactionStatus(Transaction.Status transactionStatus) {
+            params.addOpt("transaction[status]", transactionStatus);
+            return this;
+        }
+
         public RecordPaymentRequest transactionDate(Timestamp transactionDate) {
             params.addOpt("transaction[date]", transactionDate);
+            return this;
+        }
+
+        public RecordPaymentRequest transactionErrorCode(String transactionErrorCode) {
+            params.addOpt("transaction[error_code]", transactionErrorCode);
+            return this;
+        }
+
+        public RecordPaymentRequest transactionErrorText(String transactionErrorText) {
+            params.addOpt("transaction[error_text]", transactionErrorText);
             return this;
         }
 

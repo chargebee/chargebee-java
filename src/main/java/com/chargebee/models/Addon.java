@@ -118,6 +118,22 @@ public class Addon extends Resource<Addon> {
         return optString("tax_code");
     }
 
+    public String sku() {
+        return optString("sku");
+    }
+
+    public String accountingCode() {
+        return optString("accounting_code");
+    }
+
+    public String accountingCategory1() {
+        return optString("accounting_category1");
+    }
+
+    public String accountingCategory2() {
+        return optString("accounting_category2");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
@@ -287,6 +303,30 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest sku(String sku) {
+            params.addOpt("sku", sku);
+            return this;
+        }
+
+
+        public CreateRequest accountingCode(String accountingCode) {
+            params.addOpt("accounting_code", accountingCode);
+            return this;
+        }
+
+
+        public CreateRequest accountingCategory1(String accountingCategory1) {
+            params.addOpt("accounting_category1", accountingCategory1);
+            return this;
+        }
+
+
+        public CreateRequest accountingCategory2(String accountingCategory2) {
+            params.addOpt("accounting_category2", accountingCategory2);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -397,6 +437,30 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public UpdateRequest sku(String sku) {
+            params.addOpt("sku", sku);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCode(String accountingCode) {
+            params.addOpt("accounting_code", accountingCode);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCategory1(String accountingCategory1) {
+            params.addOpt("accounting_category1", accountingCategory1);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCategory2(String accountingCategory2) {
+            params.addOpt("accounting_category2", accountingCategory2);
             return this;
         }
 

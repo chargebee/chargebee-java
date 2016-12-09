@@ -254,6 +254,10 @@ public class Customer extends Resource<Customer> {
         return optTimestamp("updated_at");
     }
 
+    public String locale() {
+        return optString("locale");
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -458,6 +462,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest locale(String locale) {
+            params.addOpt("locale", locale);
+            return this;
+        }
+
+
         public CreateRequest entityCode(EntityCode entityCode) {
             params.addOpt("entity_code", entityCode);
             return this;
@@ -468,8 +478,6 @@ public class Customer extends Resource<Customer> {
             params.addOpt("exempt_number", exemptNumber);
             return this;
         }
-
-
 
 
         public CreateRequest metaData(JSONObject metaData) {
@@ -805,6 +813,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateRequest locale(String locale) {
+            params.addOpt("locale", locale);
+            return this;
+        }
+
+
         public UpdateRequest entityCode(EntityCode entityCode) {
             params.addOpt("entity_code", entityCode);
             return this;
@@ -821,8 +835,6 @@ public class Customer extends Resource<Customer> {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
         }
-
-
 
 
         public UpdateRequest metaData(JSONObject metaData) {

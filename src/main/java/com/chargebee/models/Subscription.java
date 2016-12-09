@@ -8,6 +8,7 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -252,6 +253,18 @@ public class Subscription extends Resource<Subscription> {
 
     public Integer totalDues() {
         return optInteger("total_dues");
+    }
+
+    public Integer mrr() {
+        return optInteger("mrr");
+    }
+
+    public BigDecimal exchangeRate() {
+        return optBigDecimal("exchange_rate");
+    }
+
+    public String baseCurrencyCode() {
+        return optString("base_currency_code");
     }
 
     public List<Subscription.Addon> addons() {
@@ -502,6 +515,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest customerTaxability(Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public CreateRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
             return this;
         }
 
@@ -999,6 +1017,11 @@ public class Subscription extends Resource<Subscription> {
 
         public TimestampFilter<SubscriptionListRequest> createdAt() {
             return new TimestampFilter<SubscriptionListRequest>("created_at",this);        
+        }
+
+
+        public TimestampFilter<SubscriptionListRequest> cancelledAt() {
+            return new TimestampFilter<SubscriptionListRequest>("cancelled_at",this);        
         }
 
 
@@ -1687,6 +1710,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest customerTaxability(Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public ImportSubscriptionRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
             return this;
         }
 
