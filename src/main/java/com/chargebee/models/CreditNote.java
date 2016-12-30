@@ -106,6 +106,10 @@ public class CreditNote extends Resource<CreditNote> {
             return reqEnum("entity_type", EntityType.class);
         }
 
+        public TaxExemptReason taxExemptReason() {
+            return optEnum("tax_exempt_reason", TaxExemptReason.class);
+        }
+
         public String entityId() {
             return optString("entity_id");
         }

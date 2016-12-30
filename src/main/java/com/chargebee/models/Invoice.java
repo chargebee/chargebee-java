@@ -96,6 +96,10 @@ public class Invoice extends Resource<Invoice> {
             return reqEnum("entity_type", EntityType.class);
         }
 
+        public TaxExemptReason taxExemptReason() {
+            return optEnum("tax_exempt_reason", TaxExemptReason.class);
+        }
+
         public String entityId() {
             return optString("entity_id");
         }
@@ -882,6 +886,11 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -978,6 +987,12 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
+            return this;
+        }
+
+
+        public ChargeAddonRequest addonUnitPrice(Integer addonUnitPrice) {
+            params.addOpt("addon_unit_price", addonUnitPrice);
             return this;
         }
 
@@ -1581,6 +1596,12 @@ public class Invoice extends Resource<Invoice> {
 
         public AddAddonChargeRequest addonQuantity(Integer addonQuantity) {
             params.addOpt("addon_quantity", addonQuantity);
+            return this;
+        }
+
+
+        public AddAddonChargeRequest addonUnitPrice(Integer addonUnitPrice) {
+            params.addOpt("addon_unit_price", addonUnitPrice);
             return this;
         }
 

@@ -14,6 +14,14 @@ import java.util.*;
 
 public class Subscription extends Resource<Subscription> {
 
+    public enum BillingPeriodUnit {
+        WEEK,
+        MONTH,
+        YEAR,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum Status {
         FUTURE,
         IN_TRIAL,
@@ -47,6 +55,10 @@ public class Subscription extends Resource<Subscription> {
 
         public Integer quantity() {
             return optInteger("quantity");
+        }
+
+        public Integer unitPrice() {
+            return optInteger("unit_price");
         }
 
     }
@@ -169,6 +181,26 @@ public class Subscription extends Resource<Subscription> {
 
     public Integer planQuantity() {
         return reqInteger("plan_quantity");
+    }
+
+    public Integer planUnitPrice() {
+        return optInteger("plan_unit_price");
+    }
+
+    public Integer setupFee() {
+        return optInteger("setup_fee");
+    }
+
+    public Integer billingPeriod() {
+        return optInteger("billing_period");
+    }
+
+    public BillingPeriodUnit billingPeriodUnit() {
+        return optEnum("billing_period_unit", BillingPeriodUnit.class);
+    }
+
+    public Integer planFreeQuantity() {
+        return optInteger("plan_free_quantity");
     }
 
     public Status status() {
@@ -414,6 +446,18 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+
+        public CreateRequest planUnitPrice(Integer planUnitPrice) {
+            params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public CreateRequest setupFee(Integer setupFee) {
+            params.addOpt("setup_fee", setupFee);
             return this;
         }
 
@@ -804,6 +848,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -830,6 +879,18 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+
+        public CreateForCustomerRequest planUnitPrice(Integer planUnitPrice) {
+            params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public CreateForCustomerRequest setupFee(Integer setupFee) {
+            params.addOpt("setup_fee", setupFee);
             return this;
         }
 
@@ -967,6 +1028,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1101,6 +1167,18 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+
+        public UpdateRequest planUnitPrice(Integer planUnitPrice) {
+            params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public UpdateRequest setupFee(Integer setupFee) {
+            params.addOpt("setup_fee", setupFee);
             return this;
         }
 
@@ -1448,6 +1526,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1563,6 +1646,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ChargeAddonAtTermEndRequest addonUnitPrice(Integer addonUnitPrice) {
+            params.addOpt("addon_unit_price", addonUnitPrice);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1589,6 +1678,18 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest planUnitPrice(Integer planUnitPrice) {
+            params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest setupFee(Integer setupFee) {
+            params.addOpt("setup_fee", setupFee);
             return this;
         }
 
@@ -1993,6 +2094,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -2019,6 +2125,18 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportForCustomerRequest planQuantity(Integer planQuantity) {
             params.addOpt("plan_quantity", planQuantity);
+            return this;
+        }
+
+
+        public ImportForCustomerRequest planUnitPrice(Integer planUnitPrice) {
+            params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public ImportForCustomerRequest setupFee(Integer setupFee) {
+            params.addOpt("setup_fee", setupFee);
             return this;
         }
 
@@ -2182,6 +2300,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportForCustomerRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public ImportForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
 
