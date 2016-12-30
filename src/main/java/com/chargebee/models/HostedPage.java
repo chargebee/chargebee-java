@@ -232,6 +232,16 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
@@ -270,6 +280,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public CheckoutNewRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
 
@@ -342,6 +357,16 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
         public CheckoutExistingRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
@@ -380,6 +405,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public CheckoutExistingRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
 

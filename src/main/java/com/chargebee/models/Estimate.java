@@ -106,6 +106,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CreateSubscriptionRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
         public CreateSubscriptionRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
@@ -232,6 +242,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -314,6 +329,16 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
             params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
 
@@ -431,6 +456,11 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
 
