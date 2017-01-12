@@ -215,6 +215,11 @@ public class Plan extends Resource<Plan> {
         return new CopyRequest(Method.POST, uri);
     }
 
+    public static Request unarchive(String id) throws IOException {
+        String uri = uri("plans", nullCheck(id), "unarchive");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================

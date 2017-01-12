@@ -226,6 +226,11 @@ public class Coupon extends Resource<Coupon> {
         return new CopyRequest(Method.POST, uri);
     }
 
+    public static Request unarchive(String id) throws IOException {
+        String uri = uri("coupons", nullCheck(id), "unarchive");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
