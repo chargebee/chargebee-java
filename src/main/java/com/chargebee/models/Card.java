@@ -70,6 +70,10 @@ public class Card extends Resource<Card> {
         return reqEnum("gateway", Gateway.class);
     }
 
+    public String gatewayAccountId() {
+        return optString("gateway_account_id");
+    }
+
     public String firstName() {
         return optString("first_name");
     }
@@ -176,8 +180,15 @@ public class Card extends Resource<Card> {
             super(httpMeth, uri);
         }
     
+        @Deprecated
         public UpdateCardForCustomerRequest gateway(Gateway gateway) {
             params.addOpt("gateway", gateway);
+            return this;
+        }
+
+
+        public UpdateCardForCustomerRequest gatewayAccountId(String gatewayAccountId) {
+            params.addOpt("gateway_account_id", gatewayAccountId);
             return this;
         }
 
@@ -291,8 +302,15 @@ public class Card extends Resource<Card> {
             super(httpMeth, uri);
         }
     
+        @Deprecated
         public SwitchGatewayForCustomerRequest gateway(Gateway gateway) {
-            params.add("gateway", gateway);
+            params.addOpt("gateway", gateway);
+            return this;
+        }
+
+
+        public SwitchGatewayForCustomerRequest gatewayAccountId(String gatewayAccountId) {
+            params.add("gateway_account_id", gatewayAccountId);
             return this;
         }
 
@@ -309,8 +327,8 @@ public class Card extends Resource<Card> {
             super(httpMeth, uri);
         }
     
-        public CopyCardForCustomerRequest gateway(Gateway gateway) {
-            params.add("gateway", gateway);
+        public CopyCardForCustomerRequest gatewayAccountId(String gatewayAccountId) {
+            params.add("gateway_account_id", gatewayAccountId);
             return this;
         }
 

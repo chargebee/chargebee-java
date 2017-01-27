@@ -162,6 +162,10 @@ public class Customer extends Resource<Customer> {
             return reqEnum("gateway", Gateway.class);
         }
 
+        public String gatewayAccountId() {
+            return optString("gateway_account_id");
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
         }
@@ -501,8 +505,14 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        @Deprecated
         public CreateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
 
@@ -516,8 +526,14 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public CreateRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
 
@@ -843,6 +859,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateRequest fraudFlag(FraudFlag fraudFlag) {
+            params.addOpt("fraud_flag", fraudFlag);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -860,8 +882,14 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        @Deprecated
         public UpdatePaymentMethodRequest paymentMethodGateway(Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
 

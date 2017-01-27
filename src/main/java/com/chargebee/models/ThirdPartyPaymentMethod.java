@@ -35,8 +35,12 @@ public class ThirdPartyPaymentMethod extends Resource<ThirdPartyPaymentMethod> {
         return reqEnum("gateway", Gateway.class);
     }
 
+    public String gatewayAccountId() {
+        return optString("gateway_account_id");
+    }
+
     public String referenceId() {
-        return optString("reference_id");
+        return reqString("reference_id");
     }
 
     // Operations
