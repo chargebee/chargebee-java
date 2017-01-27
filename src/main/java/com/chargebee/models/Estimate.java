@@ -55,6 +55,11 @@ public class Estimate extends Resource<Estimate> {
         return new CreateSubscriptionRequest(Method.POST, uri);
     }
 
+    public static CreateSubForCustomerEstimateRequest createSubForCustomerEstimate(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "create_subscription_estimate");
+        return new CreateSubForCustomerEstimateRequest(Method.GET, uri);
+    }
+
     public static UpdateSubscriptionRequest updateSubscription() throws IOException {
         String uri = uri("estimates", "update_subscription");
         return new UpdateSubscriptionRequest(Method.POST, uri);
@@ -243,6 +248,130 @@ public class Estimate extends Resource<Estimate> {
         }
 
         public CreateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateSubForCustomerEstimateRequest extends Request<CreateSubForCustomerEstimateRequest> {
+
+        private CreateSubForCustomerEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateSubForCustomerEstimateRequest useExistingBalances(Boolean useExistingBalances) {
+            params.addOpt("use_existing_balances", useExistingBalances);
+            return this;
+        }
+
+
+        public CreateSubForCustomerEstimateRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public CreateSubForCustomerEstimateRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }

@@ -152,6 +152,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("subscription_id");
     }
 
+    public String gatewayAccountId() {
+        return optString("gateway_account_id");
+    }
+
     public PaymentMethod paymentMethod() {
         return reqEnum("payment_method", PaymentMethod.class);
     }
@@ -312,6 +316,11 @@ public class Transaction extends Resource<Transaction> {
 
         public EnumFilter<Gateway, TransactionListRequest> gateway() {
             return new EnumFilter<Gateway, TransactionListRequest>("gateway",this);        
+        }
+
+
+        public StringFilter<TransactionListRequest> gatewayAccountId() {
+            return new StringFilter<TransactionListRequest>("gateway_account_id",this).supportsMultiOperators(true);        
         }
 
 

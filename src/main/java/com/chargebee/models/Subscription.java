@@ -597,8 +597,14 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
 
@@ -612,8 +618,14 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public CreateRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
 
@@ -1270,8 +1282,14 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        @Deprecated
         public UpdateRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public UpdateRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
 
@@ -1285,8 +1303,14 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public UpdateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public UpdateRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
 
@@ -1849,8 +1873,14 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public ImportSubscriptionRequest cardGateway(Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public ImportSubscriptionRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
 
@@ -1864,8 +1894,14 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public ImportSubscriptionRequest paymentMethodGateway(Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public ImportSubscriptionRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
 
