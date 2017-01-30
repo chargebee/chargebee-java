@@ -23,6 +23,7 @@ public class CreditNote extends Resource<CreditNote> {
     public enum ReasonCode {
         WRITE_OFF,
         SUBSCRIPTION_CHANGE,
+        SUBSCRIPTION_CANCELLATION,
         CHARGEBACK,
         PRODUCT_UNSATISFACTORY,
         SERVICE_UNSATISFACTORY,
