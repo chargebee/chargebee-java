@@ -400,6 +400,18 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public UpdateSubscriptionRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+        public UpdateSubscriptionRequest reactivateFrom(Timestamp reactivateFrom) {
+            params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
         public UpdateSubscriptionRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -430,6 +442,12 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
+            return this;
+        }
+
+
+        public UpdateSubscriptionRequest reactivate(Boolean reactivate) {
+            params.addOpt("reactivate", reactivate);
             return this;
         }
 

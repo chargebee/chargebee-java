@@ -227,6 +227,10 @@ public class Subscription extends Resource<Subscription> {
         return optTimestamp("current_term_end");
     }
 
+    public Timestamp nextBillingAt() {
+        return optTimestamp("next_billing_at");
+    }
+
     public Integer remainingBillingCycles() {
         return optInteger("remaining_billing_cycles");
     }
@@ -405,6 +409,11 @@ public class Subscription extends Resource<Subscription> {
     public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "charge_addon_at_term_end");
         return new ChargeAddonAtTermEndRequest(Method.POST, uri);
+    }
+
+    public static ChargeFutureRenewalsRequest chargeFutureRenewals(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "charge_future_renewals");
+        return new ChargeFutureRenewalsRequest(Method.POST, uri);
     }
 
     public static ImportSubscriptionRequest importSubscription() throws IOException {
@@ -1226,6 +1235,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+        public UpdateRequest reactivateFrom(Timestamp reactivateFrom) {
+            params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
         public UpdateRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -1262,6 +1283,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
+            return this;
+        }
+
+
+        public UpdateRequest reactivate(Boolean reactivate) {
+            params.addOpt("reactivate", reactivate);
             return this;
         }
 
@@ -1622,6 +1649,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ReactivateRequest reactivateFrom(Timestamp reactivateFrom) {
+            params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1672,6 +1705,24 @@ public class Subscription extends Resource<Subscription> {
 
         public ChargeAddonAtTermEndRequest addonUnitPrice(Integer addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChargeFutureRenewalsRequest extends Request<ChargeFutureRenewalsRequest> {
+
+        private ChargeFutureRenewalsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ChargeFutureRenewalsRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
 
