@@ -446,6 +446,18 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public CopyRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
+        public CopyRequest forSiteMerging(Boolean forSiteMerging) {
+            params.addOpt("for_site_merging", forSiteMerging);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

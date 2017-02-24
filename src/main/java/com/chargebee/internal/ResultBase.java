@@ -92,6 +92,14 @@ public class ResultBase {
         return (PortalSession)get("portal_session");
     }
 
+    public SiteMigrationDetail siteMigrationDetail() {
+        return (SiteMigrationDetail)get("site_migration_detail");
+    }
+
+    public ResourceMigration resourceMigration() {
+        return (ResourceMigration)get("resource_migration");
+    }
+
     public List<CreditNote> creditNotes() {
         return (List<CreditNote>) getList("credit_notes", "credit_note");
     }
