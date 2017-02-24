@@ -384,6 +384,11 @@ public class Customer extends Resource<Customer> {
         return new DeleteRequest(Method.POST, uri);
     }
 
+    public static MoveRequest move() throws IOException {
+        String uri = uri("customers", "move");
+        return new MoveRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -1269,6 +1274,30 @@ public class Customer extends Resource<Customer> {
     
         public DeleteRequest deletePaymentMethod(Boolean deletePaymentMethod) {
             params.addOpt("delete_payment_method", deletePaymentMethod);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class MoveRequest extends Request<MoveRequest> {
+
+        private MoveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public MoveRequest idAtFromSite(String idAtFromSite) {
+            params.add("id_at_from_site", idAtFromSite);
+            return this;
+        }
+
+
+        public MoveRequest fromSite(String fromSite) {
+            params.add("from_site", fromSite);
             return this;
         }
 

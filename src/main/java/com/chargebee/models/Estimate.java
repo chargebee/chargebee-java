@@ -635,6 +635,18 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public RenewalEstimateRequest ignoreScheduledCancellation(Boolean ignoreScheduledCancellation) {
+            params.addOpt("ignore_scheduled_cancellation", ignoreScheduledCancellation);
+            return this;
+        }
+
+
+        public RenewalEstimateRequest ignoreScheduledChanges(Boolean ignoreScheduledChanges) {
+            params.addOpt("ignore_scheduled_changes", ignoreScheduledChanges);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
