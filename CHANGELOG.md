@@ -1,3 +1,8 @@
+###v2.2.6 (2017-03-07)
+* * * 
+	
+In the List methods, additional methods have been introduced for filtering of resources based on custom fields.
+
 ###v2.2.5 (2017-02-24)
 * * * 
 
