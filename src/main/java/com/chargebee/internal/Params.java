@@ -1,6 +1,7 @@
 package com.chargebee.internal;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +42,10 @@ public class Params {
         Class c = value.getClass();
         if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class) {
             return value.toString();
-        } else if(c.isEnum()) {
+        } else if (c == Date.class) {
+            return new SimpleDateFormat("yyyy-MM-dd").format((Date)value);
+        } 
+        else if(c.isEnum()) {
             return value.toString().toLowerCase();
         } else if(c == Timestamp.class) {
             return String.valueOf(asUnixTimestamp((Timestamp)value));
