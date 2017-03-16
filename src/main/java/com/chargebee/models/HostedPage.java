@@ -147,6 +147,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
         public CheckoutNewRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -472,6 +478,12 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest reactivate(Boolean reactivate) {
             params.addOpt("reactivate", reactivate);
+            return this;
+        }
+
+
+        public CheckoutExistingRequest forceTermReset(Boolean forceTermReset) {
+            params.addOpt("force_term_reset", forceTermReset);
             return this;
         }
 

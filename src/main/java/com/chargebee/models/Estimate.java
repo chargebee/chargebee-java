@@ -86,6 +86,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateSubscriptionRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
         public CreateSubscriptionRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -272,6 +278,12 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubForCustomerEstimateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public CreateSubForCustomerEstimateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
 

@@ -615,6 +615,10 @@ public class Invoice extends Resource<Invoice> {
         return optBoolean("first_invoice");
     }
 
+    public Boolean hasAdvanceCharges() {
+        return optBoolean("has_advance_charges");
+    }
+
     public List<Invoice.LineItem> lineItems() {
         return optList("line_items", Invoice.LineItem.class);
     }

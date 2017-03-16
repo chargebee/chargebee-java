@@ -496,6 +496,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
         public CreateRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -941,6 +947,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
         public CreateForCustomerRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -1104,6 +1116,11 @@ public class Subscription extends Resource<Subscription> {
 
         public TimestampFilter<SubscriptionListRequest> createdAt() {
             return new TimestampFilter<SubscriptionListRequest>("created_at",this);        
+        }
+
+
+        public TimestampFilter<SubscriptionListRequest> nextBillingAt() {
+            return new TimestampFilter<SubscriptionListRequest>("next_billing_at",this);        
         }
 
 
@@ -1651,6 +1668,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+        public ReactivateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
 

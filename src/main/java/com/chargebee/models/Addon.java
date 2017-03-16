@@ -344,12 +344,6 @@ public class Addon extends Resource<Addon> {
             super(httpMeth, uri);
         }
     
-        public UpdateRequest id(String id) {
-            params.addOpt("id", id);
-            return this;
-        }
-
-
         public UpdateRequest name(String name) {
             params.addOpt("name", name);
             return this;
