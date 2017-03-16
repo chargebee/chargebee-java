@@ -405,12 +405,6 @@ public class Plan extends Resource<Plan> {
             super(httpMeth, uri);
         }
     
-        public UpdateRequest id(String id) {
-            params.addOpt("id", id);
-            return this;
-        }
-
-
         public UpdateRequest name(String name) {
             params.addOpt("name", name);
             return this;
