@@ -28,11 +28,14 @@ public class HostedPage extends Resource<HostedPage> {
         REQUESTED,
         SUCCEEDED,
         CANCELLED,
+        @Deprecated
         FAILED,
+        ACKNOWLEDGED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    @Deprecated
     public enum FailureReason {
         CARD_ERROR,
         SERVER_ERROR,
@@ -70,6 +73,7 @@ public class HostedPage extends Resource<HostedPage> {
         return optEnum("state", State.class);
     }
 
+    @Deprecated
     public FailureReason failureReason() {
         return optEnum("failure_reason", FailureReason.class);
     }
@@ -88,6 +92,18 @@ public class HostedPage extends Resource<HostedPage> {
 
     public Timestamp expiresAt() {
         return optTimestamp("expires_at");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public JSONObject checkoutInfo() {
+        return optJSONObject("checkout_info");
     }
 
     // Operations
@@ -114,9 +130,19 @@ public class HostedPage extends Resource<HostedPage> {
         return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
+    public static Request acknowledge(String id) throws IOException {
+        String uri = uri("hosted_pages", nullCheck(id), "acknowledge");
+        return new Request(Method.POST, uri);
+    }
+
     public static Request retrieve(String id) throws IOException {
         String uri = uri("hosted_pages", nullCheck(id));
         return new Request(Method.GET, uri);
+    }
+
+    public static HostedPageListRequest list() throws IOException {
+        String uri = uri("hosted_pages");
+        return new HostedPageListRequest(uri);
     }
 
     public static class Content extends ResultBase{
@@ -722,6 +748,38 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class HostedPageListRequest extends ListRequest<HostedPageListRequest> {
+
+        private HostedPageListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<HostedPageListRequest> id() {
+            return new StringFilter<HostedPageListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<Type, HostedPageListRequest> type() {
+            return new EnumFilter<Type, HostedPageListRequest>("type",this);        
+        }
+
+
+        public EnumFilter<State, HostedPageListRequest> state() {
+            return new EnumFilter<State, HostedPageListRequest>("state",this);        
+        }
+
+
+        public TimestampFilter<HostedPageListRequest> updatedAt() {
+            return new TimestampFilter<HostedPageListRequest>("updated_at",this);        
+        }
+
 
         @Override
         public Params params() {
