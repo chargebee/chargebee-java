@@ -1119,6 +1119,11 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public TimestampFilter<SubscriptionListRequest> activatedAt() {
+            return new TimestampFilter<SubscriptionListRequest>("activated_at",this);        
+        }
+
+
         public TimestampFilter<SubscriptionListRequest> nextBillingAt() {
             return new TimestampFilter<SubscriptionListRequest>("next_billing_at",this);        
         }

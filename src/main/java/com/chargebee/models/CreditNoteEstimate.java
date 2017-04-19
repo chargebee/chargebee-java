@@ -176,6 +176,35 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     }
 
+    public static class LineItemDiscount extends Resource<LineItemDiscount> {
+        public enum DiscountType {
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public LineItemDiscount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return reqString("line_item_id");
+        }
+
+        public DiscountType discountType() {
+            return reqEnum("discount_type", DiscountType.class);
+        }
+
+        public String couponId() {
+            return optString("coupon_id");
+        }
+
+        public Integer discountAmount() {
+            return reqInteger("discount_amount");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -236,6 +265,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     public List<CreditNoteEstimate.LineItemTax> lineItemTaxes() {
         return optList("line_item_taxes", CreditNoteEstimate.LineItemTax.class);
+    }
+
+    public List<CreditNoteEstimate.LineItemDiscount> lineItemDiscounts() {
+        return optList("line_item_discounts", CreditNoteEstimate.LineItemDiscount.class);
     }
 
     // Operations
