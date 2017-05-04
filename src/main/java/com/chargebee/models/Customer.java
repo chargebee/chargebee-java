@@ -96,6 +96,45 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class ReferralUrl extends Resource<ReferralUrl> {
+        public ReferralUrl(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String externalCustomerId() {
+            return optString("external_customer_id");
+        }
+
+        public String referralSharingUrl() {
+            return reqString("referral_sharing_url");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public Timestamp updatedAt() {
+            return reqTimestamp("updated_at");
+        }
+
+        public String referralCampaignId() {
+            return reqString("referral_campaign_id");
+        }
+
+        public String referralAccountId() {
+            return reqString("referral_account_id");
+        }
+
+        public String referralExternalCampaignId() {
+            return optString("referral_external_campaign_id");
+        }
+
+        public ReferralSystem referralSystem() {
+            return reqEnum("referral_system", ReferralSystem.class);
+        }
+
+    }
+
     public static class Contact extends Resource<Contact> {
         public Contact(JSONObject jsonObj) {
             super(jsonObj);
@@ -173,7 +212,7 @@ public class Customer extends Resource<Customer> {
         }
 
         public String referenceId() {
-            return optString("reference_id");
+            return reqString("reference_id");
         }
 
     }
@@ -264,6 +303,10 @@ public class Customer extends Resource<Customer> {
         return optString("locale");
     }
 
+    public Boolean consolidatedInvoicing() {
+        return optBoolean("consolidated_invoicing");
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -273,8 +316,20 @@ public class Customer extends Resource<Customer> {
         return optEnum("fraud_flag", FraudFlag.class);
     }
 
+    public String primaryPaymentSourceId() {
+        return optString("primary_payment_source_id");
+    }
+
+    public String backupPaymentSourceId() {
+        return optString("backup_payment_source_id");
+    }
+
     public Customer.BillingAddress billingAddress() {
         return optSubResource("billing_address", Customer.BillingAddress.class);
+    }
+
+    public List<Customer.ReferralUrl> referralUrls() {
+        return optList("referral_urls", Customer.ReferralUrl.class);
     }
 
     public List<Customer.Contact> contacts() {
@@ -344,6 +399,11 @@ public class Customer extends Resource<Customer> {
     public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "update_billing_info");
         return new UpdateBillingInfoRequest(Method.POST, uri);
+    }
+
+    public static AssignPaymentRoleRequest assignPaymentRole(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "assign_payment_role");
+        return new AssignPaymentRoleRequest(Method.POST, uri);
     }
 
     public static AddContactRequest addContact(String id) throws IOException {
@@ -493,6 +553,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public CreateRequest consolidatedInvoicing(Boolean consolidatedInvoicing) {
+            params.addOpt("consolidated_invoicing", consolidatedInvoicing);
             return this;
         }
 
@@ -872,6 +938,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateRequest consolidatedInvoicing(Boolean consolidatedInvoicing) {
+            params.addOpt("consolidated_invoicing", consolidatedInvoicing);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -997,6 +1069,30 @@ public class Customer extends Resource<Customer> {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AssignPaymentRoleRequest extends Request<AssignPaymentRoleRequest> {
+
+        private AssignPaymentRoleRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AssignPaymentRoleRequest paymentSourceId(String paymentSourceId) {
+            params.add("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public AssignPaymentRoleRequest role(Role role) {
+            params.add("role", role);
+            return this;
+        }
+
 
         @Override
         public Params params() {
@@ -1159,6 +1255,18 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public AddPromotionalCreditsRequest creditType(CreditType creditType) {
+            params.addOpt("credit_type", creditType);
+            return this;
+        }
+
+
+        public AddPromotionalCreditsRequest reference(String reference) {
+            params.addOpt("reference", reference);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1189,6 +1297,18 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public DeductPromotionalCreditsRequest creditType(CreditType creditType) {
+            params.addOpt("credit_type", creditType);
+            return this;
+        }
+
+
+        public DeductPromotionalCreditsRequest reference(String reference) {
+            params.addOpt("reference", reference);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1215,6 +1335,18 @@ public class Customer extends Resource<Customer> {
 
         public SetPromotionalCreditsRequest description(String description) {
             params.add("description", description);
+            return this;
+        }
+
+
+        public SetPromotionalCreditsRequest creditType(CreditType creditType) {
+            params.addOpt("credit_type", creditType);
+            return this;
+        }
+
+
+        public SetPromotionalCreditsRequest reference(String reference) {
+            params.addOpt("reference", reference);
             return this;
         }
 

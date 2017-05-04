@@ -50,6 +50,9 @@ public enum EventType {
     CARD_EXPIRY_REMINDER,
     CARD_EXPIRED,
     CARD_DELETED,
+    PAYMENT_SOURCE_ADDED,
+    PAYMENT_SOURCE_UPDATED,
+    PAYMENT_SOURCE_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

@@ -24,12 +24,16 @@ public class ResultBase {
         return (Customer)get("customer");
     }
 
-    public Card card() {
-        return (Card)get("card");
+    public PaymentSource paymentSource() {
+        return (PaymentSource)get("payment_source");
     }
 
     public ThirdPartyPaymentMethod thirdPartyPaymentMethod() {
         return (ThirdPartyPaymentMethod)get("third_party_payment_method");
+    }
+
+    public Card card() {
+        return (Card)get("card");
     }
 
     public Invoice invoice() {
@@ -38,6 +42,10 @@ public class ResultBase {
 
     public CreditNote creditNote() {
         return (CreditNote)get("credit_note");
+    }
+
+    public UnbilledCharge unbilledCharge() {
+        return (UnbilledCharge)get("unbilled_charge");
     }
 
     public Order order() {
@@ -100,8 +108,16 @@ public class ResultBase {
         return (ResourceMigration)get("resource_migration");
     }
 
+    public List<UnbilledCharge> unbilledCharges() {
+        return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
+    }
+
     public List<CreditNote> creditNotes() {
         return (List<CreditNote>) getList("credit_notes", "credit_note");
+    }
+
+    public List<Invoice> invoices() {
+        return (List<Invoice>) getList("invoices", "invoice");
     }
 
 

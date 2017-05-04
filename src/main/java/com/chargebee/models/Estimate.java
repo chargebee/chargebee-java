@@ -47,6 +47,10 @@ public class Estimate extends Resource<Estimate> {
         return optList("credit_note_estimates", CreditNoteEstimate.class);
     }
 
+    public List<UnbilledCharge> unbilledChargeEstimates() {
+        return optList("unbilled_charge_estimates", UnbilledCharge.class);
+    }
+
     // Operations
     //===========
 
@@ -92,6 +96,8 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+
+
         public CreateSubscriptionRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -101,6 +107,12 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
+
+        public CreateSubscriptionRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
 
         public CreateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
@@ -276,6 +288,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateSubForCustomerEstimateRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
         public CreateSubForCustomerEstimateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -286,6 +304,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
+
+
 
 
         public CreateSubForCustomerEstimateRequest couponIds(List<String> couponIds) {
@@ -472,6 +492,12 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest useExistingBalances(Boolean useExistingBalances) {
             params.addOpt("use_existing_balances", useExistingBalances);
+            return this;
+        }
+
+
+        public UpdateSubscriptionRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
         }
 
