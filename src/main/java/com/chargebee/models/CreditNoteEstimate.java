@@ -35,6 +35,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("id");
         }
 
+        public String subscriptionId() {
+            return optString("subscription_id");
+        }
+
         public Timestamp dateFrom() {
             return reqTimestamp("date_from");
         }

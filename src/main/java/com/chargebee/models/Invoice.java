@@ -48,6 +48,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("id");
         }
 
+        public String subscriptionId() {
+            return optString("subscription_id");
+        }
+
         public Timestamp dateFrom() {
             return reqTimestamp("date_from");
         }
@@ -843,6 +847,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
         public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -992,6 +1002,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1042,6 +1058,12 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public ChargeAddonRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
             return this;
         }
 
@@ -1657,6 +1679,12 @@ public class Invoice extends Resource<Invoice> {
     
         public CollectPaymentRequest amount(Integer amount) {
             params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public CollectPaymentRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
             return this;
         }
 

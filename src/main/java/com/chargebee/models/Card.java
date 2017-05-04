@@ -58,8 +58,8 @@ public class Card extends Resource<Card> {
     // Fields
     //=======
 
-    public String customerId() {
-        return reqString("customer_id");
+    public String paymentSourceId() {
+        return reqString("payment_source_id");
     }
 
     public Status status() {
@@ -136,6 +136,10 @@ public class Card extends Resource<Card> {
 
     public String ipAddress() {
         return optString("ip_address");
+    }
+
+    public String customerId() {
+        return reqString("customer_id");
     }
 
     public String maskedNumber() {

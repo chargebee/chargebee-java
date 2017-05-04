@@ -179,6 +179,8 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+
+
         public CheckoutNewRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -289,6 +291,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionAutoCollection(AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionInvoiceNotes(String subscriptionInvoiceNotes) {
             params.addOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
             return this;
@@ -308,6 +315,11 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutNewRequest customerConsolidatedInvoicing(Boolean customerConsolidatedInvoicing) {
+            params.addOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
             return this;
         }
 
