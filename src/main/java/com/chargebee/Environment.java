@@ -47,8 +47,32 @@ public class Environment {
         this.apiBaseUrl = proto + "://" + siteName +"." + domainSuffix +"/api/" + API_VERSION;
     }
 
+    /**
+     * Configure an environment with a domain
+     *
+     * In general using the default domain of chargebee.com should work, in
+     * which case the two-argument {@link #Environment(String, String)} constructor
+     * should be used.
+     */
+    public Environment(String siteName, String apiKey, String domain) {
+        this.apiKey = apiKey;
+        this.siteName = siteName;
+        String proto = System.getProperty("com.chargebee.api.protocol", "https");
+        this.apiBaseUrl = proto + "://" + siteName +"." + domain +"/api/" + API_VERSION;
+    }
+
     public static void configure(String siteName, String apikey) {
         Environment.defaultEnv = new Environment(siteName, apikey);
+    }
+
+    /**
+     * Configure the default environment with a domain
+     *
+     * In general using the default domain of chargebee.com should work, in
+     * which case the two-argument {@link #configure} should be used.
+     */
+    public static void configure(String siteName, String apikey, String domain) {
+        Environment.defaultEnv = new Environment(siteName, apikey, domain);
     }
 
     public static Environment defaultConfig() {
