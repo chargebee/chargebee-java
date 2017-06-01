@@ -260,7 +260,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public CreateRequest trialPeriodUnit(TrialPeriodUnit trialPeriodUnit) {
+        public CreateRequest trialPeriodUnit(Plan.TrialPeriodUnit trialPeriodUnit) {
             params.addOpt("trial_period_unit", trialPeriodUnit);
             return this;
         }
@@ -272,7 +272,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public CreateRequest periodUnit(PeriodUnit periodUnit) {
+        public CreateRequest periodUnit(Plan.PeriodUnit periodUnit) {
             params.addOpt("period_unit", periodUnit);
             return this;
         }
@@ -302,7 +302,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public CreateRequest chargeModel(ChargeModel chargeModel) {
+        public CreateRequest chargeModel(Plan.ChargeModel chargeModel) {
             params.addOpt("charge_model", chargeModel);
             return this;
         }
@@ -429,7 +429,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public UpdateRequest trialPeriodUnit(TrialPeriodUnit trialPeriodUnit) {
+        public UpdateRequest trialPeriodUnit(Plan.TrialPeriodUnit trialPeriodUnit) {
             params.addOpt("trial_period_unit", trialPeriodUnit);
             return this;
         }
@@ -441,7 +441,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public UpdateRequest periodUnit(PeriodUnit periodUnit) {
+        public UpdateRequest periodUnit(Plan.PeriodUnit periodUnit) {
             params.addOpt("period_unit", periodUnit);
             return this;
         }
@@ -471,7 +471,7 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public UpdateRequest chargeModel(ChargeModel chargeModel) {
+        public UpdateRequest chargeModel(Plan.ChargeModel chargeModel) {
             params.addOpt("charge_model", chargeModel);
             return this;
         }
@@ -596,8 +596,8 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public EnumFilter<PeriodUnit, PlanListRequest> periodUnit() {
-            return new EnumFilter<PeriodUnit, PlanListRequest>("period_unit",this);        
+        public EnumFilter<Plan.PeriodUnit, PlanListRequest> periodUnit() {
+            return new EnumFilter<Plan.PeriodUnit, PlanListRequest>("period_unit",this);        
         }
 
 
@@ -606,18 +606,18 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public EnumFilter<TrialPeriodUnit, PlanListRequest> trialPeriodUnit() {
-            return new EnumFilter<TrialPeriodUnit, PlanListRequest>("trial_period_unit",this);        
+        public EnumFilter<Plan.TrialPeriodUnit, PlanListRequest> trialPeriodUnit() {
+            return new EnumFilter<Plan.TrialPeriodUnit, PlanListRequest>("trial_period_unit",this);        
         }
 
 
-        public EnumFilter<ChargeModel, PlanListRequest> chargeModel() {
-            return new EnumFilter<ChargeModel, PlanListRequest>("charge_model",this);        
+        public EnumFilter<Plan.ChargeModel, PlanListRequest> chargeModel() {
+            return new EnumFilter<Plan.ChargeModel, PlanListRequest>("charge_model",this);        
         }
 
 
-        public EnumFilter<Status, PlanListRequest> status() {
-            return new EnumFilter<Status, PlanListRequest>("status",this);        
+        public EnumFilter<Plan.Status, PlanListRequest> status() {
+            return new EnumFilter<Plan.Status, PlanListRequest>("status",this);        
         }
 
 

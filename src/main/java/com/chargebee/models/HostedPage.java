@@ -241,7 +241,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest customerTaxability(Taxability customerTaxability) {
+        public CheckoutNewRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
@@ -291,7 +291,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest subscriptionAutoCollection(AutoCollection subscriptionAutoCollection) {
+        public CheckoutNewRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
             params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
             return this;
         }
@@ -302,7 +302,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public CheckoutNewRequest cardGateway(Gateway cardGateway) {
+        public CheckoutNewRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -388,7 +388,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public CheckoutNewRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -458,7 +458,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CheckoutNewRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -608,7 +608,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public CheckoutExistingRequest cardGateway(Gateway cardGateway) {
+        public CheckoutExistingRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -687,7 +687,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public UpdateCardRequest cardGateway(Gateway cardGateway) {
+        public UpdateCardRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -751,7 +751,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public UpdatePaymentMethodRequest cardGateway(Gateway cardGateway) {
+        public UpdatePaymentMethodRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -778,13 +778,13 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-        public EnumFilter<Type, HostedPageListRequest> type() {
-            return new EnumFilter<Type, HostedPageListRequest>("type",this);        
+        public EnumFilter<HostedPage.Type, HostedPageListRequest> type() {
+            return new EnumFilter<HostedPage.Type, HostedPageListRequest>("type",this);        
         }
 
 
-        public EnumFilter<State, HostedPageListRequest> state() {
-            return new EnumFilter<State, HostedPageListRequest>("state",this);        
+        public EnumFilter<HostedPage.State, HostedPageListRequest> state() {
+            return new EnumFilter<HostedPage.State, HostedPageListRequest>("state",this);        
         }
 
 

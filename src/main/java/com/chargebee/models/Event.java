@@ -173,18 +173,18 @@ public class Event extends Resource<Event> {
         }
 
 
-        public EnumFilter<EventType, EventListRequest> eventType() {
-            return new EnumFilter<EventType, EventListRequest>("event_type",this);        
+        public EnumFilter<com.chargebee.models.enums.EventType, EventListRequest> eventType() {
+            return new EnumFilter<com.chargebee.models.enums.EventType, EventListRequest>("event_type",this);        
         }
         @Deprecated
-        public EventListRequest eventType(EventType eventType) {
+        public EventListRequest eventType(com.chargebee.models.enums.EventType eventType) {
             params.addOpt("event_type", eventType);
             return this;
         }
 
 
-        public EnumFilter<Source, EventListRequest> source() {
-            return new EnumFilter<Source, EventListRequest>("source",this);        
+        public EnumFilter<com.chargebee.models.enums.Source, EventListRequest> source() {
+            return new EnumFilter<com.chargebee.models.enums.Source, EventListRequest>("source",this);        
         }
 
 

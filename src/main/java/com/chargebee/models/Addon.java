@@ -230,7 +230,7 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public CreateRequest chargeType(ChargeType chargeType) {
+        public CreateRequest chargeType(Addon.ChargeType chargeType) {
             params.add("charge_type", chargeType);
             return this;
         }
@@ -254,13 +254,13 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public CreateRequest periodUnit(PeriodUnit periodUnit) {
+        public CreateRequest periodUnit(Addon.PeriodUnit periodUnit) {
             params.addOpt("period_unit", periodUnit);
             return this;
         }
 
 
-        public CreateRequest type(Type type) {
+        public CreateRequest type(Addon.Type type) {
             params.add("type", type);
             return this;
         }
@@ -362,7 +362,7 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public UpdateRequest chargeType(ChargeType chargeType) {
+        public UpdateRequest chargeType(Addon.ChargeType chargeType) {
             params.addOpt("charge_type", chargeType);
             return this;
         }
@@ -386,13 +386,13 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public UpdateRequest periodUnit(PeriodUnit periodUnit) {
+        public UpdateRequest periodUnit(Addon.PeriodUnit periodUnit) {
             params.addOpt("period_unit", periodUnit);
             return this;
         }
 
 
-        public UpdateRequest type(Type type) {
+        public UpdateRequest type(Addon.Type type) {
             params.addOpt("type", type);
             return this;
         }
@@ -488,13 +488,13 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public EnumFilter<Type, AddonListRequest> type() {
-            return new EnumFilter<Type, AddonListRequest>("type",this);        
+        public EnumFilter<Addon.Type, AddonListRequest> type() {
+            return new EnumFilter<Addon.Type, AddonListRequest>("type",this);        
         }
 
 
-        public EnumFilter<ChargeType, AddonListRequest> chargeType() {
-            return new EnumFilter<ChargeType, AddonListRequest>("charge_type",this);        
+        public EnumFilter<Addon.ChargeType, AddonListRequest> chargeType() {
+            return new EnumFilter<Addon.ChargeType, AddonListRequest>("charge_type",this);        
         }
 
 
@@ -508,13 +508,13 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public EnumFilter<PeriodUnit, AddonListRequest> periodUnit() {
-            return new EnumFilter<PeriodUnit, AddonListRequest>("period_unit",this);        
+        public EnumFilter<Addon.PeriodUnit, AddonListRequest> periodUnit() {
+            return new EnumFilter<Addon.PeriodUnit, AddonListRequest>("period_unit",this);        
         }
 
 
-        public EnumFilter<Status, AddonListRequest> status() {
-            return new EnumFilter<Status, AddonListRequest>("status",this);        
+        public EnumFilter<Addon.Status, AddonListRequest> status() {
+            return new EnumFilter<Addon.Status, AddonListRequest>("status",this);        
         }
 
 

@@ -228,7 +228,7 @@ public class Address extends Resource<Address> {
         }
 
 
-        public UpdateRequest validationStatus(ValidationStatus validationStatus) {
+        public UpdateRequest validationStatus(com.chargebee.models.enums.ValidationStatus validationStatus) {
             params.addOpt("validation_status", validationStatus);
             return this;
         }

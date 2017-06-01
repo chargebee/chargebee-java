@@ -292,7 +292,7 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-        public CreateUsingTempTokenRequest type(Type type) {
+        public CreateUsingTempTokenRequest type(com.chargebee.models.enums.Type type) {
             params.add("type", type);
             return this;
         }
@@ -328,7 +328,7 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-        public CreateUsingPermanentTokenRequest type(Type type) {
+        public CreateUsingPermanentTokenRequest type(com.chargebee.models.enums.Type type) {
             params.add("type", type);
             return this;
         }
@@ -375,12 +375,6 @@ public class PaymentSource extends Resource<PaymentSource> {
             return this;
         }
 
-
-        @Deprecated
-        public CreateCardRequest cardGateway(Gateway cardGateway) {
-            params.addOpt("card[gateway]", cardGateway);
-            return this;
-        }
 
         public CreateCardRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
@@ -452,12 +446,6 @@ public class PaymentSource extends Resource<PaymentSource> {
             return this;
         }
 
-        @Deprecated
-        public CreateCardRequest cardIpAddress(String cardIpAddress) {
-            params.addOpt("card[ip_address]", cardIpAddress);
-            return this;
-        }
-
         @Override
         public Params params() {
             return params;
@@ -475,13 +463,13 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-        public EnumFilter<Type, PaymentSourceListRequest> type() {
-            return new EnumFilter<Type, PaymentSourceListRequest>("type",this);        
+        public EnumFilter<com.chargebee.models.enums.Type, PaymentSourceListRequest> type() {
+            return new EnumFilter<com.chargebee.models.enums.Type, PaymentSourceListRequest>("type",this);        
         }
 
 
-        public EnumFilter<Status, PaymentSourceListRequest> status() {
-            return new EnumFilter<Status, PaymentSourceListRequest>("status",this);        
+        public EnumFilter<PaymentSource.Status, PaymentSourceListRequest> status() {
+            return new EnumFilter<PaymentSource.Status, PaymentSourceListRequest>("status",this);        
         }
 
 

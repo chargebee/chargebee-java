@@ -309,13 +309,13 @@ public class Transaction extends Resource<Transaction> {
         }
 
 
-        public EnumFilter<PaymentMethod, TransactionListRequest> paymentMethod() {
-            return new EnumFilter<PaymentMethod, TransactionListRequest>("payment_method",this);        
+        public EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionListRequest> paymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionListRequest>("payment_method",this);        
         }
 
 
-        public EnumFilter<Gateway, TransactionListRequest> gateway() {
-            return new EnumFilter<Gateway, TransactionListRequest>("gateway",this);        
+        public EnumFilter<com.chargebee.models.enums.Gateway, TransactionListRequest> gateway() {
+            return new EnumFilter<com.chargebee.models.enums.Gateway, TransactionListRequest>("gateway",this);        
         }
 
 
@@ -334,8 +334,8 @@ public class Transaction extends Resource<Transaction> {
         }
 
 
-        public EnumFilter<Type, TransactionListRequest> type() {
-            return new EnumFilter<Type, TransactionListRequest>("type",this);        
+        public EnumFilter<Transaction.Type, TransactionListRequest> type() {
+            return new EnumFilter<Transaction.Type, TransactionListRequest>("type",this);        
         }
 
 
@@ -349,8 +349,8 @@ public class Transaction extends Resource<Transaction> {
         }
 
 
-        public EnumFilter<Status, TransactionListRequest> status() {
-            return new EnumFilter<Status, TransactionListRequest>("status",this);        
+        public EnumFilter<Transaction.Status, TransactionListRequest> status() {
+            return new EnumFilter<Transaction.Status, TransactionListRequest>("status",this);        
         }
 
 

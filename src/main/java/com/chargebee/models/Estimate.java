@@ -39,6 +39,10 @@ public class Estimate extends Resource<Estimate> {
         return optSubResource("invoice_estimate", InvoiceEstimate.class);
     }
 
+    public List<InvoiceEstimate> invoiceEstimates() {
+        return optList("invoice_estimates", InvoiceEstimate.class);
+    }
+
     public InvoiceEstimate nextInvoiceEstimate() {
         return optSubResource("next_invoice_estimate", InvoiceEstimate.class);
     }
@@ -190,7 +194,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public CreateSubscriptionRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -230,7 +234,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CreateSubscriptionRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -240,12 +244,12 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest customerTaxability(Taxability customerTaxability) {
+        public CreateSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
-        public CreateSubscriptionRequest customerEntityCode(EntityCode customerEntityCode) {
+        public CreateSubscriptionRequest customerEntityCode(com.chargebee.models.enums.EntityCode customerEntityCode) {
             params.addOpt("customer[entity_code]", customerEntityCode);
             return this;
         }
@@ -388,7 +392,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CreateSubForCustomerEstimateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -578,7 +582,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public UpdateSubscriptionRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public UpdateSubscriptionRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -618,7 +622,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public UpdateSubscriptionRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public UpdateSubscriptionRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -629,7 +633,7 @@ public class Estimate extends Resource<Estimate> {
         }
 
         @Deprecated
-        public UpdateSubscriptionRequest customerTaxability(Taxability customerTaxability) {
+        public UpdateSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
