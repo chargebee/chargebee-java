@@ -114,6 +114,11 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return new UnbilledChargeListRequest(uri);
     }
 
+    public static InvoiceNowEstimateRequest invoiceNowEstimate() throws IOException {
+        String uri = uri("unbilled_charges", "invoice_now_estimate");
+        return new InvoiceNowEstimateRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -155,6 +160,30 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
         public StringFilter<UnbilledChargeListRequest> customerId() {
             return new StringFilter<UnbilledChargeListRequest>("customer_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class InvoiceNowEstimateRequest extends Request<InvoiceNowEstimateRequest> {
+
+        private InvoiceNowEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public InvoiceNowEstimateRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public InvoiceNowEstimateRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
         }
 
 

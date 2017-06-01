@@ -503,7 +503,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public CreateRequest autoCollection(AutoCollection autoCollection) {
+        public CreateRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }
@@ -527,7 +527,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public CreateRequest taxability(Taxability taxability) {
+        public CreateRequest taxability(com.chargebee.models.enums.Taxability taxability) {
             params.addOpt("taxability", taxability);
             return this;
         }
@@ -539,7 +539,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public CreateRequest entityCode(EntityCode entityCode) {
+        public CreateRequest entityCode(com.chargebee.models.enums.EntityCode entityCode) {
             params.addOpt("entity_code", entityCode);
             return this;
         }
@@ -579,7 +579,7 @@ public class Customer extends Resource<Customer> {
 
 
         @Deprecated
-        public CreateRequest cardGateway(Gateway cardGateway) {
+        public CreateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -594,13 +594,13 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-        public CreateRequest paymentMethodType(Type paymentMethodType) {
+        public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
 
         @Deprecated
-        public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+        public CreateRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
@@ -756,7 +756,7 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-        public CreateRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public CreateRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -804,13 +804,18 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public EnumFilter<AutoCollection, CustomerListRequest> autoCollection() {
-            return new EnumFilter<AutoCollection, CustomerListRequest>("auto_collection",this);        
+        public StringFilter<CustomerListRequest> phone() {
+            return new StringFilter<CustomerListRequest>("phone",this).supportsPresenceOperator(true);        
         }
 
 
-        public EnumFilter<Taxability, CustomerListRequest> taxability() {
-            return new EnumFilter<Taxability, CustomerListRequest>("taxability",this);        
+        public EnumFilter<com.chargebee.models.enums.AutoCollection, CustomerListRequest> autoCollection() {
+            return new EnumFilter<com.chargebee.models.enums.AutoCollection, CustomerListRequest>("auto_collection",this);        
+        }
+
+
+        public EnumFilter<com.chargebee.models.enums.Taxability, CustomerListRequest> taxability() {
+            return new EnumFilter<com.chargebee.models.enums.Taxability, CustomerListRequest>("taxability",this);        
         }
 
 
@@ -878,7 +883,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public UpdateRequest autoCollection(AutoCollection autoCollection) {
+        public UpdateRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }
@@ -896,7 +901,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public UpdateRequest taxability(Taxability taxability) {
+        public UpdateRequest taxability(com.chargebee.models.enums.Taxability taxability) {
             params.addOpt("taxability", taxability);
             return this;
         }
@@ -908,7 +913,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public UpdateRequest entityCode(EntityCode entityCode) {
+        public UpdateRequest entityCode(com.chargebee.models.enums.EntityCode entityCode) {
             params.addOpt("entity_code", entityCode);
             return this;
         }
@@ -956,13 +961,13 @@ public class Customer extends Resource<Customer> {
             super(httpMeth, uri);
         }
     
-        public UpdatePaymentMethodRequest paymentMethodType(Type paymentMethodType) {
+        public UpdatePaymentMethodRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.add("payment_method[type]", paymentMethodType);
             return this;
         }
 
         @Deprecated
-        public UpdatePaymentMethodRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+        public UpdatePaymentMethodRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
@@ -1065,7 +1070,7 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-        public UpdateBillingInfoRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public UpdateBillingInfoRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -1088,7 +1093,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public AssignPaymentRoleRequest role(Role role) {
+        public AssignPaymentRoleRequest role(com.chargebee.models.enums.Role role) {
             params.add("role", role);
             return this;
         }
@@ -1255,7 +1260,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public AddPromotionalCreditsRequest creditType(CreditType creditType) {
+        public AddPromotionalCreditsRequest creditType(com.chargebee.models.enums.CreditType creditType) {
             params.addOpt("credit_type", creditType);
             return this;
         }
@@ -1297,7 +1302,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public DeductPromotionalCreditsRequest creditType(CreditType creditType) {
+        public DeductPromotionalCreditsRequest creditType(com.chargebee.models.enums.CreditType creditType) {
             params.addOpt("credit_type", creditType);
             return this;
         }
@@ -1339,7 +1344,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public SetPromotionalCreditsRequest creditType(CreditType creditType) {
+        public SetPromotionalCreditsRequest creditType(com.chargebee.models.enums.CreditType creditType) {
             params.addOpt("credit_type", creditType);
             return this;
         }

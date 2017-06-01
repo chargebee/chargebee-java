@@ -87,7 +87,7 @@ public class ResourceMigration extends Resource<ResourceMigration> {
         }
 
 
-        public RetrieveLatestRequest entityType(EntityType entityType) {
+        public RetrieveLatestRequest entityType(com.chargebee.models.enums.EntityType entityType) {
             params.add("entity_type", entityType);
             return this;
         }

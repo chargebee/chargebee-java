@@ -582,7 +582,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateRequest autoCollection(AutoCollection autoCollection) {
+        public CreateRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }
@@ -672,7 +672,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest customerTaxability(Taxability customerTaxability) {
+        public CreateRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
@@ -682,7 +682,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest customerEntityCode(EntityCode customerEntityCode) {
+        public CreateRequest customerEntityCode(com.chargebee.models.enums.EntityCode customerEntityCode) {
             params.addOpt("customer[entity_code]", customerEntityCode);
             return this;
         }
@@ -702,7 +702,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest customerAutoCollection(AutoCollection customerAutoCollection) {
+        public CreateRequest customerAutoCollection(com.chargebee.models.enums.AutoCollection customerAutoCollection) {
             params.addOpt("customer[auto_collection]", customerAutoCollection);
             return this;
         }
@@ -718,7 +718,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
         @Deprecated
-        public CreateRequest cardGateway(Gateway cardGateway) {
+        public CreateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -733,13 +733,13 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest paymentMethodType(Type paymentMethodType) {
+        public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
 
         @Deprecated
-        public CreateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+        public CreateRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
@@ -890,7 +890,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public CreateRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -960,7 +960,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CreateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -1052,7 +1052,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateForCustomerRequest autoCollection(AutoCollection autoCollection) {
+        public CreateForCustomerRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }
@@ -1171,7 +1171,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateForCustomerRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CreateForCustomerRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -1224,13 +1224,13 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public EnumFilter<Status, SubscriptionListRequest> status() {
-            return new EnumFilter<Status, SubscriptionListRequest>("status",this);        
+        public EnumFilter<Subscription.Status, SubscriptionListRequest> status() {
+            return new EnumFilter<Subscription.Status, SubscriptionListRequest>("status",this);        
         }
 
 
-        public EnumFilter<CancelReason, SubscriptionListRequest> cancelReason() {
-            return new EnumFilter<CancelReason, SubscriptionListRequest>("cancel_reason",this).supportsPresenceOperator(true);        
+        public EnumFilter<Subscription.CancelReason, SubscriptionListRequest> cancelReason() {
+            return new EnumFilter<Subscription.CancelReason, SubscriptionListRequest>("cancel_reason",this).supportsPresenceOperator(true);        
         }
 
 
@@ -1463,7 +1463,7 @@ public class Subscription extends Resource<Subscription> {
 
 
         @Deprecated
-        public UpdateRequest cardGateway(Gateway cardGateway) {
+        public UpdateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -1478,13 +1478,13 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest paymentMethodType(Type paymentMethodType) {
+        public UpdateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
 
         @Deprecated
-        public UpdateRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+        public UpdateRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
@@ -1640,7 +1640,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public UpdateRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -1710,7 +1710,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public UpdateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -1967,7 +1967,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest status(Status status) {
+        public ImportSubscriptionRequest status(Subscription.Status status) {
             params.add("status", status);
             return this;
         }
@@ -2049,7 +2049,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest customerTaxability(Taxability customerTaxability) {
+        public ImportSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
@@ -2059,7 +2059,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest customerEntityCode(EntityCode customerEntityCode) {
+        public ImportSubscriptionRequest customerEntityCode(com.chargebee.models.enums.EntityCode customerEntityCode) {
             params.addOpt("customer[entity_code]", customerEntityCode);
             return this;
         }
@@ -2079,7 +2079,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest customerAutoCollection(AutoCollection customerAutoCollection) {
+        public ImportSubscriptionRequest customerAutoCollection(com.chargebee.models.enums.AutoCollection customerAutoCollection) {
             params.addOpt("customer[auto_collection]", customerAutoCollection);
             return this;
         }
@@ -2090,7 +2090,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
         @Deprecated
-        public ImportSubscriptionRequest cardGateway(Gateway cardGateway) {
+        public ImportSubscriptionRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
@@ -2105,13 +2105,13 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest paymentMethodType(Type paymentMethodType) {
+        public ImportSubscriptionRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
 
         @Deprecated
-        public ImportSubscriptionRequest paymentMethodGateway(Gateway paymentMethodGateway) {
+        public ImportSubscriptionRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
@@ -2256,7 +2256,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public ImportSubscriptionRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -2326,7 +2326,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public ImportSubscriptionRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -2439,7 +2439,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportForCustomerRequest status(Status status) {
+        public ImportForCustomerRequest status(Subscription.Status status) {
             params.add("status", status);
             return this;
         }
@@ -2552,7 +2552,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportForCustomerRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public ImportForCustomerRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -2590,7 +2590,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public OverrideBillingProfileRequest autoCollection(AutoCollection autoCollection) {
+        public OverrideBillingProfileRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }

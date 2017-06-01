@@ -92,8 +92,8 @@ public class SiteMigrationDetail extends Resource<SiteMigrationDetail> {
         }
 
 
-        public EnumFilter<EntityType, SiteMigrationDetailListRequest> entityType() {
-            return new EnumFilter<EntityType, SiteMigrationDetailListRequest>("entity_type",this);        
+        public EnumFilter<com.chargebee.models.enums.EntityType, SiteMigrationDetailListRequest> entityType() {
+            return new EnumFilter<com.chargebee.models.enums.EntityType, SiteMigrationDetailListRequest>("entity_type",this);        
         }
 
 

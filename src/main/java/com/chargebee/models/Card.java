@@ -185,7 +185,7 @@ public class Card extends Resource<Card> {
         }
     
         @Deprecated
-        public UpdateCardForCustomerRequest gateway(Gateway gateway) {
+        public UpdateCardForCustomerRequest gateway(com.chargebee.models.enums.Gateway gateway) {
             params.addOpt("gateway", gateway);
             return this;
         }
@@ -307,7 +307,7 @@ public class Card extends Resource<Card> {
         }
     
         @Deprecated
-        public SwitchGatewayForCustomerRequest gateway(Gateway gateway) {
+        public SwitchGatewayForCustomerRequest gateway(com.chargebee.models.enums.Gateway gateway) {
             params.addOpt("gateway", gateway);
             return this;
         }

@@ -132,7 +132,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public CreateRequest status(Status status) {
+        public CreateRequest status(Order.Status status) {
             params.addOpt("status", status);
             return this;
         }
@@ -180,7 +180,7 @@ public class Order extends Resource<Order> {
             super(httpMeth, uri);
         }
     
-        public UpdateRequest status(Status status) {
+        public UpdateRequest status(Order.Status status) {
             params.addOpt("status", status);
             return this;
         }
@@ -238,8 +238,8 @@ public class Order extends Resource<Order> {
         }
 
 
-        public EnumFilter<Status, OrderListRequest> status() {
-            return new EnumFilter<Status, OrderListRequest>("status",this);        
+        public EnumFilter<Order.Status, OrderListRequest> status() {
+            return new EnumFilter<Order.Status, OrderListRequest>("status",this);        
         }
 
 

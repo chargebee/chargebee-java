@@ -918,7 +918,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public CreateRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public CreateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -1110,13 +1110,13 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ImportInvoiceRequest priceType(PriceType priceType) {
+        public ImportInvoiceRequest priceType(com.chargebee.models.enums.PriceType priceType) {
             params.addOpt("price_type", priceType);
             return this;
         }
 
 
-        public ImportInvoiceRequest taxOverrideReason(TaxOverrideReason taxOverrideReason) {
+        public ImportInvoiceRequest taxOverrideReason(com.chargebee.models.enums.TaxOverrideReason taxOverrideReason) {
             params.addOpt("tax_override_reason", taxOverrideReason);
             return this;
         }
@@ -1146,7 +1146,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ImportInvoiceRequest status(Status status) {
+        public ImportInvoiceRequest status(Invoice.Status status) {
             params.addOpt("status", status);
             return this;
         }
@@ -1235,7 +1235,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public ImportInvoiceRequest billingAddressValidationStatus(ValidationStatus billingAddressValidationStatus) {
+        public ImportInvoiceRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
@@ -1305,7 +1305,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public ImportInvoiceRequest shippingAddressValidationStatus(ValidationStatus shippingAddressValidationStatus) {
+        public ImportInvoiceRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
@@ -1450,7 +1450,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public ImportInvoiceRequest taxJurisType(int index, TaxJurisType taxJurisType) {
+        public ImportInvoiceRequest taxJurisType(int index, com.chargebee.models.enums.TaxJurisType taxJurisType) {
             params.addOpt("taxes[juris_type][" + index + "]", taxJurisType);
             return this;
         }
@@ -1470,7 +1470,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public ImportInvoiceRequest paymentPaymentMethod(int index, PaymentMethod paymentPaymentMethod) {
+        public ImportInvoiceRequest paymentPaymentMethod(int index, com.chargebee.models.enums.PaymentMethod paymentPaymentMethod) {
             params.add("payments[payment_method][" + index + "]", paymentPaymentMethod);
             return this;
         }
@@ -1545,13 +1545,13 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public EnumFilter<Status, InvoiceListRequest> status() {
-            return new EnumFilter<Status, InvoiceListRequest>("status",this);        
+        public EnumFilter<Invoice.Status, InvoiceListRequest> status() {
+            return new EnumFilter<Invoice.Status, InvoiceListRequest>("status",this);        
         }
 
 
-        public EnumFilter<PriceType, InvoiceListRequest> priceType() {
-            return new EnumFilter<PriceType, InvoiceListRequest>("price_type",this);        
+        public EnumFilter<com.chargebee.models.enums.PriceType, InvoiceListRequest> priceType() {
+            return new EnumFilter<com.chargebee.models.enums.PriceType, InvoiceListRequest>("price_type",this);        
         }
 
 
@@ -1590,8 +1590,8 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public EnumFilter<DunningStatus, InvoiceListRequest> dunningStatus() {
-            return new EnumFilter<DunningStatus, InvoiceListRequest>("dunning_status",this).supportsPresenceOperator(true);        
+        public EnumFilter<Invoice.DunningStatus, InvoiceListRequest> dunningStatus() {
+            return new EnumFilter<Invoice.DunningStatus, InvoiceListRequest>("dunning_status",this).supportsPresenceOperator(true);        
         }
 
 
@@ -1712,7 +1712,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public RecordPaymentRequest transactionPaymentMethod(PaymentMethod transactionPaymentMethod) {
+        public RecordPaymentRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
             params.add("transaction[payment_method]", transactionPaymentMethod);
             return this;
         }
@@ -1811,7 +1811,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public RecordRefundRequest transactionPaymentMethod(PaymentMethod transactionPaymentMethod) {
+        public RecordRefundRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
             params.add("transaction[payment_method]", transactionPaymentMethod);
             return this;
         }

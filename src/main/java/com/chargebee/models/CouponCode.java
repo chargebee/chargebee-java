@@ -129,8 +129,8 @@ public class CouponCode extends Resource<CouponCode> {
         }
 
 
-        public EnumFilter<Status, CouponCodeListRequest> status() {
-            return new EnumFilter<Status, CouponCodeListRequest>("status",this);        
+        public EnumFilter<CouponCode.Status, CouponCodeListRequest> status() {
+            return new EnumFilter<CouponCode.Status, CouponCodeListRequest>("status",this);        
         }
 
 

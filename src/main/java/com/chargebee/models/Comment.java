@@ -95,7 +95,7 @@ public class Comment extends Resource<Comment> {
             super(httpMeth, uri);
         }
     
-        public CreateRequest entityType(EntityType entityType) {
+        public CreateRequest entityType(com.chargebee.models.enums.EntityType entityType) {
             params.add("entity_type", entityType);
             return this;
         }
@@ -131,7 +131,7 @@ public class Comment extends Resource<Comment> {
             super(uri);
         }
     
-        public CommentListRequest entityType(EntityType entityType) {
+        public CommentListRequest entityType(com.chargebee.models.enums.EntityType entityType) {
             params.addOpt("entity_type", entityType);
             return this;
         }

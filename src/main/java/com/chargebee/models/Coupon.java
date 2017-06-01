@@ -259,7 +259,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public CreateRequest discountType(DiscountType discountType) {
+        public CreateRequest discountType(Coupon.DiscountType discountType) {
             params.add("discount_type", discountType);
             return this;
         }
@@ -290,7 +290,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public CreateRequest applyOn(ApplyOn applyOn) {
+        public CreateRequest applyOn(Coupon.ApplyOn applyOn) {
             params.add("apply_on", applyOn);
             return this;
         }
@@ -328,7 +328,7 @@ public class Coupon extends Resource<Coupon> {
             return this;
         }
 
-        public CreateRequest durationType(DurationType durationType) {
+        public CreateRequest durationType(Coupon.DurationType durationType) {
             params.add("duration_type", durationType);
             return this;
         }
@@ -386,23 +386,23 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public EnumFilter<DiscountType, CouponListRequest> discountType() {
-            return new EnumFilter<DiscountType, CouponListRequest>("discount_type",this);        
+        public EnumFilter<Coupon.DiscountType, CouponListRequest> discountType() {
+            return new EnumFilter<Coupon.DiscountType, CouponListRequest>("discount_type",this);        
         }
 
 
-        public EnumFilter<DurationType, CouponListRequest> durationType() {
-            return new EnumFilter<DurationType, CouponListRequest>("duration_type",this);        
+        public EnumFilter<Coupon.DurationType, CouponListRequest> durationType() {
+            return new EnumFilter<Coupon.DurationType, CouponListRequest>("duration_type",this);        
         }
 
 
-        public EnumFilter<Status, CouponListRequest> status() {
-            return new EnumFilter<Status, CouponListRequest>("status",this);        
+        public EnumFilter<Coupon.Status, CouponListRequest> status() {
+            return new EnumFilter<Coupon.Status, CouponListRequest>("status",this);        
         }
 
 
-        public EnumFilter<ApplyOn, CouponListRequest> applyOn() {
-            return new EnumFilter<ApplyOn, CouponListRequest>("apply_on",this);        
+        public EnumFilter<Coupon.ApplyOn, CouponListRequest> applyOn() {
+            return new EnumFilter<Coupon.ApplyOn, CouponListRequest>("apply_on",this);        
         }
 
 

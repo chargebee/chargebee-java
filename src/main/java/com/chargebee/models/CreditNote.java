@@ -468,13 +468,13 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public CreateRequest type(Type type) {
+        public CreateRequest type(CreditNote.Type type) {
             params.add("type", type);
             return this;
         }
 
 
-        public CreateRequest reasonCode(ReasonCode reasonCode) {
+        public CreateRequest reasonCode(CreditNote.ReasonCode reasonCode) {
             params.add("reason_code", reasonCode);
             return this;
         }
@@ -550,18 +550,18 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public EnumFilter<Type, CreditNoteListRequest> type() {
-            return new EnumFilter<Type, CreditNoteListRequest>("type",this);        
+        public EnumFilter<CreditNote.Type, CreditNoteListRequest> type() {
+            return new EnumFilter<CreditNote.Type, CreditNoteListRequest>("type",this);        
         }
 
 
-        public EnumFilter<ReasonCode, CreditNoteListRequest> reasonCode() {
-            return new EnumFilter<ReasonCode, CreditNoteListRequest>("reason_code",this);        
+        public EnumFilter<CreditNote.ReasonCode, CreditNoteListRequest> reasonCode() {
+            return new EnumFilter<CreditNote.ReasonCode, CreditNoteListRequest>("reason_code",this);        
         }
 
 
-        public EnumFilter<Status, CreditNoteListRequest> status() {
-            return new EnumFilter<Status, CreditNoteListRequest>("status",this);        
+        public EnumFilter<CreditNote.Status, CreditNoteListRequest> status() {
+            return new EnumFilter<CreditNote.Status, CreditNoteListRequest>("status",this);        
         }
 
 
@@ -575,8 +575,8 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public EnumFilter<PriceType, CreditNoteListRequest> priceType() {
-            return new EnumFilter<PriceType, CreditNoteListRequest>("price_type",this);        
+        public EnumFilter<com.chargebee.models.enums.PriceType, CreditNoteListRequest> priceType() {
+            return new EnumFilter<com.chargebee.models.enums.PriceType, CreditNoteListRequest>("price_type",this);        
         }
 
 
