@@ -106,6 +106,10 @@ public class Card extends Resource<Card> {
         return reqInteger("expiry_year");
     }
 
+    public String issuingCountry() {
+        return optString("issuing_country");
+    }
+
     public String billingAddr1() {
         return optString("billing_addr1");
     }

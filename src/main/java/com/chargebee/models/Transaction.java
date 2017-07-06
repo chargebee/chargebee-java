@@ -33,6 +33,14 @@ public class Transaction extends Resource<Transaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum FraudFlag {
+        SAFE,
+        SUSPICIOUS,
+        FRAUDULENT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class LinkedInvoice extends Resource<LinkedInvoice> {
         public LinkedInvoice(JSONObject jsonObj) {
             super(jsonObj);
@@ -192,6 +200,10 @@ public class Transaction extends Resource<Transaction> {
         return optEnum("status", Status.class);
     }
 
+    public FraudFlag fraudFlag() {
+        return optEnum("fraud_flag", FraudFlag.class);
+    }
+
     public String errorCode() {
         return optString("error_code");
     }
@@ -210,6 +222,10 @@ public class Transaction extends Resource<Transaction> {
 
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
+    }
+
+    public String fraudReason() {
+        return optString("fraud_reason");
     }
 
     public Integer amountUnused() {

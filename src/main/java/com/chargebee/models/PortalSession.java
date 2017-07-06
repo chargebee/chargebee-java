@@ -150,7 +150,7 @@ public class PortalSession extends Resource<PortalSession> {
         }
     
         public CreateRequest redirectUrl(String redirectUrl) {
-            params.add("redirect_url", redirectUrl);
+            params.addOpt("redirect_url", redirectUrl);
             return this;
         }
 

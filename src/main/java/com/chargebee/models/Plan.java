@@ -393,6 +393,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest status(Plan.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

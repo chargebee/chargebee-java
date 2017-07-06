@@ -1951,6 +1951,15 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+
+
+        public ImportSubscriptionRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
         public ImportSubscriptionRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -2011,6 +2020,9 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("affiliate_token", affiliateToken);
             return this;
         }
+
+
+
 
         public ImportSubscriptionRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
@@ -2411,7 +2423,9 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportForCustomerRequest autoCollection(AutoCollection autoCollection) {
+
+
+        public ImportForCustomerRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }

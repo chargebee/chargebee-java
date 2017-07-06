@@ -332,6 +332,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest status(Addon.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

@@ -122,7 +122,7 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
         public String bankName() {
-            return reqString("bank_name");
+            return optString("bank_name");
         }
 
         public String mandateId() {
@@ -209,6 +209,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public String ipAddress() {
         return optString("ip_address");
+    }
+
+    public String issuingCountry() {
+        return optString("issuing_country");
     }
 
     public PaymentSource.Card card() {

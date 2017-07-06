@@ -364,6 +364,12 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public CreateRequest status(Coupon.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
