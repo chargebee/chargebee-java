@@ -1635,6 +1635,16 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
+            params.addOpt("line_item[date_from]", lineItemDateFrom);
+            return this;
+        }
+
+        public AddChargeRequest lineItemDateTo(Timestamp lineItemDateTo) {
+            params.addOpt("line_item[date_to]", lineItemDateTo);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1664,6 +1674,16 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
+        public AddAddonChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
+            params.addOpt("line_item[date_from]", lineItemDateFrom);
+            return this;
+        }
+
+        public AddAddonChargeRequest lineItemDateTo(Timestamp lineItemDateTo) {
+            params.addOpt("line_item[date_to]", lineItemDateTo);
+            return this;
+        }
 
         @Override
         public Params params() {

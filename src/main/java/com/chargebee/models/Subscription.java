@@ -596,6 +596,16 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
+        public CreateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
         public CreateRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -1066,6 +1076,16 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
+        public CreateForCustomerRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
         public CreateForCustomerRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -1245,7 +1265,7 @@ public class Subscription extends Resource<Subscription> {
 
 
         public TimestampFilter<SubscriptionListRequest> activatedAt() {
-            return new TimestampFilter<SubscriptionListRequest>("activated_at",this);        
+            return new TimestampFilter<SubscriptionListRequest>("activated_at",this).supportsPresenceOperator(true);        
         }
 
 
@@ -1390,6 +1410,14 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+
+
+        public UpdateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 
@@ -1753,6 +1781,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ChangeTermEndRequest prorate(Boolean prorate) {
+            params.addOpt("prorate", prorate);
+            return this;
+        }
+
+
+        public ChangeTermEndRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -1810,6 +1850,16 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+
+
+
+
+        public ReactivateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 

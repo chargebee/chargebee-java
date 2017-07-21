@@ -181,6 +181,16 @@ public class HostedPage extends Resource<HostedPage> {
 
 
 
+
+
+        public CheckoutNewRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
         public CheckoutNewRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -510,6 +520,14 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+
+
+        public CheckoutExistingRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 

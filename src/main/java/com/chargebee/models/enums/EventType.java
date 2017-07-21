@@ -53,6 +53,10 @@ public enum EventType {
     PAYMENT_SOURCE_ADDED,
     PAYMENT_SOURCE_UPDATED,
     PAYMENT_SOURCE_DELETED,
+    UNBILLED_CHARGES_CREATED,
+    UNBILLED_CHARGES_VOIDED,
+    UNBILLED_CHARGES_DELETED,
+    UNBILLED_CHARGES_INVOICED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

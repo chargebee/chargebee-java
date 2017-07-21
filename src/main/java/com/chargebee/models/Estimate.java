@@ -78,6 +78,16 @@ public class Estimate extends Resource<Estimate> {
         return new RenewalEstimateRequest(Method.GET, uri);
     }
 
+    public static Request upcomingInvoicesEstimate(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "upcoming_invoices_estimate");
+        return new Request(Method.GET, uri);
+    }
+
+    public static ChangeTermEndRequest changeTermEnd(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "change_term_end_estimate");
+        return new ChangeTermEndRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -96,6 +106,16 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubscriptionRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+
+
+
+
+        public CreateSubscriptionRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 
@@ -312,6 +332,16 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+
+
+        public CreateSubForCustomerEstimateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
         public CreateSubForCustomerEstimateRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -444,6 +474,14 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+
+
+        public UpdateSubscriptionRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 
@@ -685,6 +723,36 @@ public class Estimate extends Resource<Estimate> {
 
         public RenewalEstimateRequest ignoreScheduledChanges(Boolean ignoreScheduledChanges) {
             params.addOpt("ignore_scheduled_changes", ignoreScheduledChanges);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChangeTermEndRequest extends Request<ChangeTermEndRequest> {
+
+        private ChangeTermEndRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ChangeTermEndRequest termEndsAt(Timestamp termEndsAt) {
+            params.addOpt("term_ends_at", termEndsAt);
+            return this;
+        }
+
+
+        public ChangeTermEndRequest prorate(Boolean prorate) {
+            params.addOpt("prorate", prorate);
+            return this;
+        }
+
+
+        public ChangeTermEndRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
         }
 

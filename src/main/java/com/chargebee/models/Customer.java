@@ -13,6 +13,18 @@ import java.util.*;
 
 public class Customer extends Resource<Customer> {
 
+    public enum BillingDayOfWeek {
+        SUNDAY,
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     @Deprecated
     public enum CardStatus {
         NO_CARD,
@@ -307,6 +319,22 @@ public class Customer extends Resource<Customer> {
         return optBoolean("consolidated_invoicing");
     }
 
+    public Integer billingDate() {
+        return optInteger("billing_date");
+    }
+
+    public BillingDateMode billingDateMode() {
+        return optEnum("billing_date_mode", BillingDateMode.class);
+    }
+
+    public BillingDayOfWeek billingDayOfWeek() {
+        return optEnum("billing_day_of_week", BillingDayOfWeek.class);
+    }
+
+    public BillingDayOfWeekMode billingDayOfWeekMode() {
+        return optEnum("billing_day_of_week_mode", BillingDayOfWeekMode.class);
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -350,6 +378,10 @@ public class Customer extends Resource<Customer> {
 
     public Integer promotionalCredits() {
         return reqInteger("promotional_credits");
+    }
+
+    public Integer unbilledCharges() {
+        return reqInteger("unbilled_charges");
     }
 
     public Integer refundableCredits() {
@@ -449,6 +481,11 @@ public class Customer extends Resource<Customer> {
     public static MoveRequest move() throws IOException {
         String uri = uri("customers", "move");
         return new MoveRequest(Method.POST, uri);
+    }
+
+    public static ChangeBillingDateRequest changeBillingDate(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "change_billing_date");
+        return new ChangeBillingDateRequest(Method.POST, uri);
     }
 
 
@@ -1437,6 +1474,42 @@ public class Customer extends Resource<Customer> {
 
         public MoveRequest fromSite(String fromSite) {
             params.add("from_site", fromSite);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ChangeBillingDateRequest extends Request<ChangeBillingDateRequest> {
+
+        private ChangeBillingDateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ChangeBillingDateRequest billingDate(Integer billingDate) {
+            params.addOpt("billing_date", billingDate);
+            return this;
+        }
+
+
+        public ChangeBillingDateRequest billingDateMode(com.chargebee.models.enums.BillingDateMode billingDateMode) {
+            params.addOpt("billing_date_mode", billingDateMode);
+            return this;
+        }
+
+
+        public ChangeBillingDateRequest billingDayOfWeek(Customer.BillingDayOfWeek billingDayOfWeek) {
+            params.addOpt("billing_day_of_week", billingDayOfWeek);
+            return this;
+        }
+
+
+        public ChangeBillingDateRequest billingDayOfWeekMode(com.chargebee.models.enums.BillingDayOfWeekMode billingDayOfWeekMode) {
+            params.addOpt("billing_day_of_week_mode", billingDayOfWeekMode);
             return this;
         }
 
