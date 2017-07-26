@@ -19,8 +19,8 @@ public class Resource<T> {
 
     private static final Logger logger = Logger.getLogger(Resource.class.getName());
 
-    public final JSONObject jsonObj;
-
+    public JSONObject jsonObj;
+    
     private static final String unknown = "_UNKNOWN";
 
     public Resource(JSONObject jsonObj){

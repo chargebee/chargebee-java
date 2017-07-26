@@ -108,6 +108,10 @@ public class ResultBase {
         return (ResourceMigration)get("resource_migration");
     }
 
+    public TimeMachine timeMachine() {
+        return (TimeMachine)get("time_machine");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }
