@@ -61,6 +61,10 @@ public class Subscription extends Resource<Subscription> {
             return optInteger("unit_price");
         }
 
+        public Timestamp trialEnd() {
+            return optTimestamp("trial_end");
+        }
+
     }
 
     public static class Coupon extends Resource<Coupon> {
@@ -995,6 +999,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1208,6 +1217,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
+        public CreateForCustomerRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
 
@@ -1760,6 +1774,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
+        public UpdateRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
 

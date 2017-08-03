@@ -294,6 +294,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -439,6 +444,11 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubForCustomerEstimateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
 
@@ -688,6 +698,11 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
 
