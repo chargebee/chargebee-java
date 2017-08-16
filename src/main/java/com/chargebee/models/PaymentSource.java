@@ -249,6 +249,11 @@ public class PaymentSource extends Resource<PaymentSource> {
         return new CreateCardRequest(Method.POST, uri);
     }
 
+    public static UpdateCardRequest updateCard(String id) throws IOException {
+        String uri = uri("payment_sources", nullCheck(id), "update_card");
+        return new UpdateCardRequest(Method.POST, uri);
+    }
+
     public static Request retrieve(String id) throws IOException {
         String uri = uri("payment_sources", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -446,6 +451,79 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
         public CreateCardRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateCardRequest extends Request<UpdateCardRequest> {
+
+        private UpdateCardRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateCardRequest gatewayMetaData(String gatewayMetaData) {
+            params.addOpt("gateway_meta_data", gatewayMetaData);
+            return this;
+        }
+
+
+        public UpdateCardRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public UpdateCardRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public UpdateCardRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public UpdateCardRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingStateCode(String cardBillingStateCode) {
+            params.addOpt("card[billing_state_code]", cardBillingStateCode);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public UpdateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
