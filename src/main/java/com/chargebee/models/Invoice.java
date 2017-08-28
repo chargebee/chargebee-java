@@ -736,6 +736,16 @@ public class Invoice extends Resource<Invoice> {
         return new ImportInvoiceRequest(Method.POST, uri);
     }
 
+    public static ApplyPaymentsRequest applyPayments(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "apply_payments");
+        return new ApplyPaymentsRequest(Method.POST, uri);
+    }
+
+    public static ApplyCreditsRequest applyCredits(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "apply_credits");
+        return new ApplyCreditsRequest(Method.POST, uri);
+    }
+
     public static InvoiceListRequest list() throws IOException {
         String uri = uri("invoices");
         return new InvoiceListRequest(uri);
@@ -796,6 +806,16 @@ public class Invoice extends Resource<Invoice> {
     public static RecordRefundRequest recordRefund(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "record_refund");
         return new RecordRefundRequest(Method.POST, uri);
+    }
+
+    public static RemovePaymentRequest removePayment(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "remove_payment");
+        return new RemovePaymentRequest(Method.POST, uri);
+    }
+
+    public static RemoveCreditNoteRequest removeCreditNote(String id) throws IOException {
+        String uri = uri("invoices", nullCheck(id), "remove_credit_note");
+        return new RemoveCreditNoteRequest(Method.POST, uri);
     }
 
     public static VoidInvoiceRequest voidInvoice(String id) throws IOException {
@@ -1506,6 +1526,40 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
+    public static class ApplyPaymentsRequest extends Request<ApplyPaymentsRequest> {
+
+        private ApplyPaymentsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ApplyPaymentsRequest transactionId(int index, String transactionId) {
+            params.addOpt("transactions[id][" + index + "]", transactionId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ApplyCreditsRequest extends Request<ApplyCreditsRequest> {
+
+        private ApplyCreditsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ApplyCreditsRequest creditNoteId(int index, String creditNoteId) {
+            params.addOpt("credit_notes[id][" + index + "]", creditNoteId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class InvoiceListRequest extends ListRequest<InvoiceListRequest> {
 
         private InvoiceListRequest(String uri) {
@@ -1523,6 +1577,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
+
+
 
 
         public StringFilter<InvoiceListRequest> id() {
@@ -1848,6 +1904,40 @@ public class Invoice extends Resource<Invoice> {
 
         public RecordRefundRequest creditNoteReasonCode(CreditNote.ReasonCode creditNoteReasonCode) {
             params.addOpt("credit_note[reason_code]", creditNoteReasonCode);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemovePaymentRequest extends Request<RemovePaymentRequest> {
+
+        private RemovePaymentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemovePaymentRequest transactionId(String transactionId) {
+            params.add("transaction[id]", transactionId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemoveCreditNoteRequest extends Request<RemoveCreditNoteRequest> {
+
+        private RemoveCreditNoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemoveCreditNoteRequest creditNoteId(String creditNoteId) {
+            params.add("credit_note[id]", creditNoteId);
             return this;
         }
 

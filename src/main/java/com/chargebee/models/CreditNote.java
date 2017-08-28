@@ -436,6 +436,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new Request(Method.POST, uri);
     }
 
+    public static VoidCreditNoteRequest voidCreditNote(String id) throws IOException {
+        String uri = uri("credit_notes", nullCheck(id), "void");
+        return new VoidCreditNoteRequest(Method.POST, uri);
+    }
+
     public static CreditNoteListRequest list() throws IOException {
         String uri = uri("credit_notes");
         return new CreditNoteListRequest(uri);
@@ -445,6 +450,11 @@ public class CreditNote extends Resource<CreditNote> {
     public static ListRequest creditNotesForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "credit_notes");
         return new ListRequest(uri);
+    }
+
+    public static DeleteRequest delete(String id) throws IOException {
+        String uri = uri("credit_notes", nullCheck(id), "delete");
+        return new DeleteRequest(Method.POST, uri);
     }
 
 
@@ -512,6 +522,24 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class VoidCreditNoteRequest extends Request<VoidCreditNoteRequest> {
+
+        private VoidCreditNoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public VoidCreditNoteRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
 
         @Override
         public Params params() {
@@ -608,6 +636,24 @@ public class CreditNote extends Resource<CreditNote> {
 
         public CreditNoteListRequest sortByDate(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteRequest extends Request<DeleteRequest> {
+
+        private DeleteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
