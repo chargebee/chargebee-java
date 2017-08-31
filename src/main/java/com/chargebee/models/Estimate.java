@@ -88,6 +88,11 @@ public class Estimate extends Resource<Estimate> {
         return new ChangeTermEndRequest(Method.POST, uri);
     }
 
+    public static CancelSubscriptionRequest cancelSubscription(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "cancel_subscription_estimate");
+        return new CancelSubscriptionRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -768,6 +773,48 @@ public class Estimate extends Resource<Estimate> {
 
         public ChangeTermEndRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CancelSubscriptionRequest extends Request<CancelSubscriptionRequest> {
+
+        private CancelSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CancelSubscriptionRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public CancelSubscriptionRequest creditOptionForCurrentTermCharges(com.chargebee.models.enums.CreditOptionForCurrentTermCharges creditOptionForCurrentTermCharges) {
+            params.addOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+            return this;
+        }
+
+
+        public CancelSubscriptionRequest unbilledChargesOption(com.chargebee.models.enums.UnbilledChargesOption unbilledChargesOption) {
+            params.addOpt("unbilled_charges_option", unbilledChargesOption);
+            return this;
+        }
+
+
+        public CancelSubscriptionRequest accountReceivablesHandling(com.chargebee.models.enums.AccountReceivablesHandling accountReceivablesHandling) {
+            params.addOpt("account_receivables_handling", accountReceivablesHandling);
+            return this;
+        }
+
+
+        public CancelSubscriptionRequest refundableCreditsHandling(com.chargebee.models.enums.RefundableCreditsHandling refundableCreditsHandling) {
+            params.addOpt("refundable_credits_handling", refundableCreditsHandling);
             return this;
         }
 

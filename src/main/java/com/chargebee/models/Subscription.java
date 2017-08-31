@@ -1830,6 +1830,30 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CancelRequest creditOptionForCurrentTermCharges(com.chargebee.models.enums.CreditOptionForCurrentTermCharges creditOptionForCurrentTermCharges) {
+            params.addOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+            return this;
+        }
+
+
+        public CancelRequest unbilledChargesOption(com.chargebee.models.enums.UnbilledChargesOption unbilledChargesOption) {
+            params.addOpt("unbilled_charges_option", unbilledChargesOption);
+            return this;
+        }
+
+
+        public CancelRequest accountReceivablesHandling(com.chargebee.models.enums.AccountReceivablesHandling accountReceivablesHandling) {
+            params.addOpt("account_receivables_handling", accountReceivablesHandling);
+            return this;
+        }
+
+
+        public CancelRequest refundableCreditsHandling(com.chargebee.models.enums.RefundableCreditsHandling refundableCreditsHandling) {
+            params.addOpt("refundable_credits_handling", refundableCreditsHandling);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

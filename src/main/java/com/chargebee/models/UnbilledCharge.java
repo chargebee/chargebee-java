@@ -96,6 +96,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optTimestamp("voided_at");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 
@@ -153,6 +157,12 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             super(uri);
         }
     
+        public UnbilledChargeListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<UnbilledChargeListRequest> subscriptionId() {
             return new StringFilter<UnbilledChargeListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
