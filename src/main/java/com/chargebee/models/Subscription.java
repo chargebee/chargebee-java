@@ -742,6 +742,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;
@@ -765,6 +766,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public CreateRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
             return this;
         }
 
@@ -1515,6 +1521,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public UpdateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;
@@ -2205,6 +2212,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Deprecated
         public ImportSubscriptionRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;

@@ -192,7 +192,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLEPAY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -626,6 +626,7 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        @Deprecated
         public CreateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;
