@@ -990,6 +990,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
+            params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
+            return this;
+        }
+
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -1766,6 +1771,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public UpdateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
+            params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
         }
 

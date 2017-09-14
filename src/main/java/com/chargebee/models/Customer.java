@@ -400,6 +400,10 @@ public class Customer extends Resource<Customer> {
         return reqBoolean("deleted");
     }
 
+    public Boolean registeredForGst() {
+        return optBoolean("registered_for_gst");
+    }
+
     // Operations
     //===========
 
@@ -560,6 +564,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest vatNumber(String vatNumber) {
             params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public CreateRequest registeredForGst(Boolean registeredForGst) {
+            params.addOpt("registered_for_gst", registeredForGst);
             return this;
         }
 
@@ -1039,6 +1049,12 @@ public class Customer extends Resource<Customer> {
     
         public UpdateBillingInfoRequest vatNumber(String vatNumber) {
             params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest registeredForGst(Boolean registeredForGst) {
+            params.addOpt("registered_for_gst", registeredForGst);
             return this;
         }
 
