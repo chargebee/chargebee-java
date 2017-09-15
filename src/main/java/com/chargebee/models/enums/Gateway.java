@@ -25,6 +25,8 @@ public enum Gateway {
     SAGE_PAY,
     TCO,
     WIRECARD,
+    AMAZON_PAYMENTS,
+    PAYPAL_EXPRESS_CHECKOUT,
     GOCARDLESS,
     ADYEN,
     NOT_APPLICABLE,
