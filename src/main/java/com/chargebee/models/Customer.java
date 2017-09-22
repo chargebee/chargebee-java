@@ -477,6 +477,12 @@ public class Customer extends Resource<Customer> {
         return new RecordExcessPaymentRequest(Method.POST, uri);
     }
 
+    @Deprecated
+    public static CollectPaymentRequest collectPayment(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "collect_payment");
+        return new CollectPaymentRequest(Method.POST, uri);
+    }
+
     public static DeleteRequest delete(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
@@ -1450,6 +1456,142 @@ public class Customer extends Resource<Customer> {
 
         public RecordExcessPaymentRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CollectPaymentRequest extends Request<CollectPaymentRequest> {
+
+        private CollectPaymentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CollectPaymentRequest amount(Integer amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public CollectPaymentRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CollectPaymentRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CollectPaymentRequest retainPaymentSource(Boolean retainPaymentSource) {
+            params.addOpt("retain_payment_source", retainPaymentSource);
+            return this;
+        }
+
+
+        public CollectPaymentRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+            return this;
+        }
+
+        public CollectPaymentRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        public CollectPaymentRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public CollectPaymentRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public CollectPaymentRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public CollectPaymentRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CollectPaymentRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CollectPaymentRequest cardCvv(String cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingStateCode(String cardBillingStateCode) {
+            params.addOpt("card[billing_state_code]", cardBillingStateCode);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public CollectPaymentRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CollectPaymentRequest invoiceAllocationInvoiceId(int index, String invoiceAllocationInvoiceId) {
+            params.addOpt("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
+            return this;
+        }
+
+        public CollectPaymentRequest invoiceAllocationAllocationAmount(int index, Integer invoiceAllocationAllocationAmount) {
+            params.addOpt("invoice_allocations[allocation_amount][" + index + "]", invoiceAllocationAllocationAmount);
             return this;
         }
 
