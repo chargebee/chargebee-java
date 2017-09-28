@@ -1,3 +1,14 @@
+### v2.4.2 (2017-09-28)
+* * * 
+
+** APIs updated**: 
+
+The deprecation has been removed from parameter 'vat_number' in Hosted pages Checkout new and Checkout existing APIs.
+See : https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
+
+The parameter 'gateway_meta_data' type has been changed to Json in 'Update a card payment source' API. 
+See : https://apidocs.chargebee.com/docs/api/payment_sources#update_a_card_payment_source
+
 ### v2.4.1 (2017-09-22)
 * * * 
 

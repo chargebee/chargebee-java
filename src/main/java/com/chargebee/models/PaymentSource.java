@@ -467,7 +467,7 @@ public class PaymentSource extends Resource<PaymentSource> {
             super(httpMeth, uri);
         }
     
-        public UpdateCardRequest gatewayMetaData(String gatewayMetaData) {
+        public UpdateCardRequest gatewayMetaData(JSONObject gatewayMetaData) {
             params.addOpt("gateway_meta_data", gatewayMetaData);
             return this;
         }
