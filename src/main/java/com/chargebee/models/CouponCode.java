@@ -47,6 +47,10 @@ public class CouponCode extends Resource<CouponCode> {
         return reqString("coupon_id");
     }
 
+    public String couponSetId() {
+        return reqString("coupon_set_id");
+    }
+
     public String couponSetName() {
         return reqString("coupon_set_name");
     }
@@ -54,6 +58,7 @@ public class CouponCode extends Resource<CouponCode> {
     // Operations
     //===========
 
+    @Deprecated
     public static CreateRequest create() throws IOException {
         String uri = uri("coupon_codes");
         return new CreateRequest(Method.POST, uri);

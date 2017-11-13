@@ -477,7 +477,6 @@ public class Customer extends Resource<Customer> {
         return new RecordExcessPaymentRequest(Method.POST, uri);
     }
 
-    @Deprecated
     public static CollectPaymentRequest collectPayment(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "collect_payment");
         return new CollectPaymentRequest(Method.POST, uri);

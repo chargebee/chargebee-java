@@ -19,6 +19,8 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         UPDATE_CARD,
         UPDATE_PAYMENT_METHOD,
+        MANAGE_PAYMENT_SOURCES,
+        COLLECT_NOW,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -128,6 +130,18 @@ public class HostedPage extends Resource<HostedPage> {
     public static UpdatePaymentMethodRequest updatePaymentMethod() throws IOException {
         String uri = uri("hosted_pages", "update_payment_method");
         return new UpdatePaymentMethodRequest(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static ManagePaymentSourcesRequest managePaymentSources() throws IOException {
+        String uri = uri("hosted_pages", "manage_payment_sources");
+        return new ManagePaymentSourcesRequest(Method.POST, uri);
+    }
+
+    @Deprecated
+    public static CollectNowRequest collectNow() throws IOException {
+        String uri = uri("hosted_pages", "collect_now");
+        return new CollectNowRequest(Method.POST, uri);
     }
 
     public static Request acknowledge(String id) throws IOException {
@@ -773,6 +787,68 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         public UpdatePaymentMethodRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ManagePaymentSourcesRequest extends Request<ManagePaymentSourcesRequest> {
+
+        private ManagePaymentSourcesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ManagePaymentSourcesRequest customerId(String customerId) {
+            params.add("customer[id]", customerId);
+            return this;
+        }
+
+        @Deprecated
+        public ManagePaymentSourcesRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public ManagePaymentSourcesRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CollectNowRequest extends Request<CollectNowRequest> {
+
+        private CollectNowRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CollectNowRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CollectNowRequest customerId(String customerId) {
+            params.add("customer[id]", customerId);
+            return this;
+        }
+
+        @Deprecated
+        public CollectNowRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CollectNowRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }

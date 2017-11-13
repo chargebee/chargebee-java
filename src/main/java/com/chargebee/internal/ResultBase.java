@@ -76,6 +76,10 @@ public class ResultBase {
         return (Coupon)get("coupon");
     }
 
+    public CouponSet couponSet() {
+        return (CouponSet)get("coupon_set");
+    }
+
     public CouponCode couponCode() {
         return (CouponCode)get("coupon_code");
     }

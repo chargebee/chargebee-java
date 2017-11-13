@@ -65,6 +65,10 @@ public class Subscription extends Resource<Subscription> {
             return optTimestamp("trial_end");
         }
 
+        public Integer remainingBillingCycles() {
+            return optInteger("remaining_billing_cycles");
+        }
+
     }
 
     public static class Coupon extends Resource<Coupon> {
