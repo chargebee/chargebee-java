@@ -229,6 +229,33 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class Balance extends Resource<Balance> {
+        public Balance(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer promotionalCredits() {
+            return reqInteger("promotional_credits");
+        }
+
+        public Integer excessPayments() {
+            return reqInteger("excess_payments");
+        }
+
+        public Integer refundableCredits() {
+            return reqInteger("refundable_credits");
+        }
+
+        public Integer unbilledCharges() {
+            return reqInteger("unbilled_charges");
+        }
+
+        public String balanceCurrencyCode() {
+            return reqString("balance_currency_code");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -392,6 +419,10 @@ public class Customer extends Resource<Customer> {
         return reqInteger("excess_payments");
     }
 
+    public List<Customer.Balance> balances() {
+        return optList("balances", Customer.Balance.class);
+    }
+
     public JSONObject metaData() {
         return optJSONObject("meta_data");
     }
@@ -457,16 +488,19 @@ public class Customer extends Resource<Customer> {
         return new DeleteContactRequest(Method.POST, uri);
     }
 
+    @Deprecated
     public static AddPromotionalCreditsRequest addPromotionalCredits(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "add_promotional_credits");
         return new AddPromotionalCreditsRequest(Method.POST, uri);
     }
 
+    @Deprecated
     public static DeductPromotionalCreditsRequest deductPromotionalCredits(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "deduct_promotional_credits");
         return new DeductPromotionalCreditsRequest(Method.POST, uri);
     }
 
+    @Deprecated
     public static SetPromotionalCreditsRequest setPromotionalCredits(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "set_promotional_credits");
         return new SetPromotionalCreditsRequest(Method.POST, uri);

@@ -77,7 +77,7 @@ public class PortalSession extends Resource<PortalSession> {
     }
 
     public String redirectUrl() {
-        return reqString("redirect_url");
+        return optString("redirect_url");
     }
 
     public Status status() {

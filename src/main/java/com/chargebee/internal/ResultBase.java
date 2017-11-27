@@ -36,6 +36,10 @@ public class ResultBase {
         return (Card)get("card");
     }
 
+    public PromotionalCredit promotionalCredit() {
+        return (PromotionalCredit)get("promotional_credit");
+    }
+
     public Invoice invoice() {
         return (Invoice)get("invoice");
     }
