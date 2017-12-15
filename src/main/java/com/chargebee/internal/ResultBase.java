@@ -162,6 +162,10 @@ public class ResultBase {
         Class<Resource> modelClaz = ClazzUtil.getClaz(key);
         return ClazzUtil.createInstance(modelClaz, modelJson);
     }
+    
+    public JSONObject jsonObj(){
+        return jsonObj;
+    }
 
     @Override
     public String toString() {

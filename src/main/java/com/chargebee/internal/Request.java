@@ -3,7 +3,6 @@ package com.chargebee.internal;
 import com.chargebee.*;
 import com.chargebee.internal.HttpUtil.Method;
 import java.io.*;
-import java.util.*;
 
 public class Request<U extends Request> extends RequestBase<U>{
 
@@ -19,23 +18,34 @@ public class Request<U extends Request> extends RequestBase<U>{
         return (U)this;
     }
         
-    public final Result request() throws IOException {
+    public final Result request() throws Exception {
         return request(Environment.defaultConfig());
     }
 
-    public final Result request(Environment env) throws IOException {
-        if(env == null) {
-            throw new RuntimeException("Environment cannot be null");
-        }
-        String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
-        switch(httpMeth) {
-            case GET:
-                return HttpUtil.get(url, params(),headers, env);
-            case POST:
-                return HttpUtil.post(url, params(),headers, env);
-            default:
-                throw new RuntimeException("Not handled type [" + httpMeth + "]");
-        }
+    public final Result request(Environment env) throws Exception {
+        RequestWrap c = new RequestWrap<Request>(env, this) {
+
+            @Override
+            public Result call() throws Exception {
+                return _request(env, request);
+            }
+        };
+        return (Result) (env.reqInterceptor() != null ? env.reqInterceptor().handleRequest(c) : c.call());
     }
 
+    private static Result _request(Environment env, Request<?> req) throws IOException {
+        if (env == null) {
+            throw new RuntimeException("Environment cannot be null");
+        }
+        String url = new StringBuilder(env.apiBaseUrl()).append(req.uri).toString();
+        switch (req.httpMeth) {
+            case GET:
+                return HttpUtil.get(url, req.params(), req.headers, env);
+            case POST:
+                return HttpUtil.post(url, req.params(), req.headers, env);
+            default:
+                throw new RuntimeException("Not handled type [" + req.httpMeth + "]");
+        }
+    }
+    
 }

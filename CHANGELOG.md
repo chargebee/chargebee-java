@@ -1,3 +1,11 @@
+### v2.4.5 (2017-12-15)
+
+* New Gateway Type orbital has been released
+
+** Events added**:
+
+New Event Type subscription_changes_scheduled, subscription_scheduled_changes_removed and pending_invoice_updated has been released
+
 ### v2.4.4 (2017-11-27)
 * * * 
 

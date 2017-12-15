@@ -7,7 +7,7 @@ import org.json.*;
 /**
  * To represent list output of ChargeBee APIs (like getting list of subscriptions !!)
  */
-public class ListResult extends ArrayList<ListResult.Entry> {
+public class ListResult extends ArrayList<ListResult.Entry> implements ApiResponse {
 
     /**
      * represents each entry in this result-list
@@ -28,6 +28,14 @@ public class ListResult extends ArrayList<ListResult.Entry> {
         initEntries();
     }
 
+    public int httpCode() {
+        return httpCode;
+    }
+
+    public JSONObject jsonResponse() {
+        return respJson;
+    }
+    
     private void initEntries() {
         try {
             JSONArray arr = respJson.getJSONArray("list");

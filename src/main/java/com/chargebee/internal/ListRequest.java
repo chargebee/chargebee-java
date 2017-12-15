@@ -1,5 +1,6 @@
 package com.chargebee.internal;
 
+import com.chargebee.RequestWrap;
 import com.chargebee.Environment;
 import com.chargebee.ListResult;
 import com.chargebee.filters.*;
@@ -43,16 +44,28 @@ public class ListRequest<U extends ListRequest> extends RequestBase<U>{
         return new DateFilter<Date, U>(paramName, (U)this).supportsPresenceOperator(true);
     }
     
-    public final ListResult request() throws IOException {
+    public final ListResult request() throws Exception {
         return request(Environment.defaultConfig());
     }
 
-    public final ListResult request(Environment env) throws IOException {
-        if(env == null) {
+    public final ListResult request(Environment env) throws IOException, Exception {
+        RequestWrap c = new RequestWrap<ListRequest>(env, this) {
+
+            @Override
+            public ListResult call() throws Exception {
+                return _request(env, request);
+            }
+        };
+        return (ListResult) (env.reqInterceptor() != null ? env.reqInterceptor().handleRequest(c) : c.call());
+
+    }
+    
+    private static ListResult _request(Environment env, ListRequest req) throws IOException {
+        if (env == null) {
             throw new RuntimeException("Environment cannot be null");
         }
-        String url = new StringBuilder(env.apiBaseUrl()).append(uri).toString();
-        return HttpUtil.getList(url, params(),headers, env);
+        String url = new StringBuilder(env.apiBaseUrl()).append(req.uri).toString();
+        return HttpUtil.getList(url, req.params(), req.headers, env);
     }
     
     @Override
