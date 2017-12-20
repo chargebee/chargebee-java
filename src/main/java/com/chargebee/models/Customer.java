@@ -707,6 +707,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
         public CreateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
@@ -1071,6 +1076,11 @@ public class Customer extends Resource<Customer> {
 
         public UpdatePaymentMethodRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
             params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+            return this;
+        }
+
+        public UpdatePaymentMethodRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
             return this;
         }
 

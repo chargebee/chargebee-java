@@ -313,6 +313,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public CreateUsingTempTokenRequest issuingCountry(String issuingCountry) {
+            params.addOpt("issuing_country", issuingCountry);
+            return this;
+        }
+
+
         public CreateUsingTempTokenRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
@@ -351,6 +357,12 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingPermanentTokenRequest referenceId(String referenceId) {
             params.add("reference_id", referenceId);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest issuingCountry(String issuingCountry) {
+            params.addOpt("issuing_country", issuingCountry);
             return this;
         }
 

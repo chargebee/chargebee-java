@@ -778,6 +778,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
         public CreateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
@@ -1562,6 +1567,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
         public UpdateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
@@ -2250,6 +2260,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public ImportSubscriptionRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
             return this;
         }
 

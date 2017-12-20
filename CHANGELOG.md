@@ -1,3 +1,10 @@
+### v2.4.6 (2017-12-20)
+
+* New input attribute payment_method[issuing_country] has been released in create a customer, update payment method for a customer, create a subscription, update a subscription API
+
+* New input attribute issuing_country has been released in create using temporary token and create using permanent token API
+
+
 ### v2.4.5 (2017-12-15)
 
 * New Gateway Type orbital has been released
