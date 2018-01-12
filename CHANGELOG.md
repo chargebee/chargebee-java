@@ -1,3 +1,6 @@
+### v2.4.7 (2017-01-12)
+* New endpoint "Update invoice details" has been added to Invoice resource.
+
 ### v2.4.6 (2017-12-20)
 
 * New input attribute payment_method[issuing_country] has been released in create a customer, update payment method for a customer, create a subscription, update a subscription API
