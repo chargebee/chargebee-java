@@ -1,4 +1,10 @@
-### v2.4.7 (2017-01-12)
+### v2.4.8 (2018-01-24)
+* * * 
+
+New Gateway enum types moneris and moneris_us has been added.
+See : https://apidocs.chargebee.com/docs/api/cards#card_gateway
+
+### v2.4.7 (2018-01-12)
 * New endpoint "Update invoice details" has been added to Invoice resource.
 
 ### v2.4.6 (2017-12-20)
