@@ -386,6 +386,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqInteger("sub_total");
     }
 
+    public Integer roundOffAmount() {
+        return optInteger("round_off_amount");
+    }
+
     public List<CreditNote.LineItem> lineItems() {
         return optList("line_items", CreditNote.LineItem.class);
     }

@@ -138,7 +138,6 @@ public class HostedPage extends Resource<HostedPage> {
         return new ManagePaymentSourcesRequest(Method.POST, uri);
     }
 
-    @Deprecated
     public static CollectNowRequest collectNow() throws IOException {
         String uri = uri("hosted_pages", "collect_now");
         return new CollectNowRequest(Method.POST, uri);

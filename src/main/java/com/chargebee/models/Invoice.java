@@ -656,6 +656,10 @@ public class Invoice extends Resource<Invoice> {
         return optInteger("amount_to_collect");
     }
 
+    public Integer roundOffAmount() {
+        return optInteger("round_off_amount");
+    }
+
     public List<Invoice.LineItem> lineItems() {
         return optList("line_items", Invoice.LineItem.class);
     }

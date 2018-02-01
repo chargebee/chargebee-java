@@ -188,6 +188,10 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("date");
     }
 
+    public Timestamp settledAt() {
+        return optTimestamp("settled_at");
+    }
+
     public String currencyCode() {
         return reqString("currency_code");
     }
