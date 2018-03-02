@@ -71,6 +71,10 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         return reqInteger("closing_balance");
     }
 
+    public String doneBy() {
+        return optString("done_by");
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }

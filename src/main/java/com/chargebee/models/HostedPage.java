@@ -132,7 +132,6 @@ public class HostedPage extends Resource<HostedPage> {
         return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
-    @Deprecated
     public static ManagePaymentSourcesRequest managePaymentSources() throws IOException {
         String uri = uri("hosted_pages", "manage_payment_sources");
         return new ManagePaymentSourcesRequest(Method.POST, uri);
