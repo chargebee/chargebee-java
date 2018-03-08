@@ -435,9 +435,9 @@ public class CreditNote extends Resource<CreditNote> {
         return new Request(Method.GET, uri);
     }
 
-    public static Request pdf(String id) throws IOException {
+    public static PdfRequest pdf(String id) throws IOException {
         String uri = uri("credit_notes", nullCheck(id), "pdf");
-        return new Request(Method.POST, uri);
+        return new PdfRequest(Method.POST, uri);
     }
 
     public static RecordRefundRequest recordRefund(String id) throws IOException {
@@ -531,6 +531,24 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PdfRequest extends Request<PdfRequest> {
+
+        private PdfRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PdfRequest dispositionType(com.chargebee.models.enums.DispositionType dispositionType) {
+            params.addOpt("disposition_type", dispositionType);
+            return this;
+        }
+
 
         @Override
         public Params params() {
