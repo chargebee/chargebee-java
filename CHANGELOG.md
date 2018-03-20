@@ -1,3 +1,9 @@
+### v2.5.2 (2018-03-20)
+* * * 
+
+New attribute 'deleted' has been added to Payment source resource.
+See : https://apidocs.chargebee.com/docs/api/payment_sources#payment_source_attributes
+
 ### v2.5.1 (2018-03-08)
 * * * 
 

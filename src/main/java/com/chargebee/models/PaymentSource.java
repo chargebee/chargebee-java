@@ -231,6 +231,10 @@ public class PaymentSource extends Resource<PaymentSource> {
         return optSubResource("paypal", PaymentSource.Paypal.class);
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 
