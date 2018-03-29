@@ -93,6 +93,16 @@ public class Estimate extends Resource<Estimate> {
         return new CancelSubscriptionRequest(Method.POST, uri);
     }
 
+    public static PauseSubscriptionRequest pauseSubscription(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "pause_subscription_estimate");
+        return new PauseSubscriptionRequest(Method.POST, uri);
+    }
+
+    public static ResumeSubscriptionRequest resumeSubscription(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "resume_subscription_estimate");
+        return new ResumeSubscriptionRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -828,6 +838,63 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PauseSubscriptionRequest extends Request<PauseSubscriptionRequest> {
+
+        private PauseSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PauseSubscriptionRequest pauseOption(com.chargebee.models.enums.PauseOption pauseOption) {
+            params.addOpt("pause_option", pauseOption);
+            return this;
+        }
+
+
+        public PauseSubscriptionRequest unbilledChargesHandling(com.chargebee.models.enums.UnbilledChargesHandling unbilledChargesHandling) {
+            params.addOpt("unbilled_charges_handling", unbilledChargesHandling);
+            return this;
+        }
+
+
+        public PauseSubscriptionRequest subscriptionPauseDate(Timestamp subscriptionPauseDate) {
+            params.addOpt("subscription[pause_date]", subscriptionPauseDate);
+            return this;
+        }
+
+        public PauseSubscriptionRequest subscriptionResumeDate(Timestamp subscriptionResumeDate) {
+            params.addOpt("subscription[resume_date]", subscriptionResumeDate);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ResumeSubscriptionRequest extends Request<ResumeSubscriptionRequest> {
+
+        private ResumeSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ResumeSubscriptionRequest resumeOption(com.chargebee.models.enums.ResumeOption resumeOption) {
+            params.addOpt("resume_option", resumeOption);
+            return this;
+        }
+
+
+        public ResumeSubscriptionRequest subscriptionResumeDate(Timestamp subscriptionResumeDate) {
+            params.addOpt("subscription[resume_date]", subscriptionResumeDate);
+            return this;
+        }
 
         @Override
         public Params params() {

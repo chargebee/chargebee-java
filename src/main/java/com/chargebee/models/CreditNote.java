@@ -24,6 +24,7 @@ public class CreditNote extends Resource<CreditNote> {
         WRITE_OFF,
         SUBSCRIPTION_CHANGE,
         SUBSCRIPTION_CANCELLATION,
+        SUBSCRIPTION_PAUSE,
         CHARGEBACK,
         PRODUCT_UNSATISFACTORY,
         SERVICE_UNSATISFACTORY,

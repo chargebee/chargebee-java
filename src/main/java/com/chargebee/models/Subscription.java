@@ -27,6 +27,7 @@ public class Subscription extends Resource<Subscription> {
         IN_TRIAL,
         ACTIVE,
         NON_RENEWING,
+        PAUSED,
         CANCELLED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -328,6 +329,14 @@ public class Subscription extends Resource<Subscription> {
         return optTimestamp("activated_at");
     }
 
+    public Timestamp pauseDate() {
+        return optTimestamp("pause_date");
+    }
+
+    public Timestamp resumeDate() {
+        return optTimestamp("resume_date");
+    }
+
     public Timestamp cancelledAt() {
         return optTimestamp("cancelled_at");
     }
@@ -522,6 +531,26 @@ public class Subscription extends Resource<Subscription> {
 
     public static Request delete(String id) throws IOException {
         String uri = uri("subscriptions", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
+    }
+
+    public static PauseRequest pause(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "pause");
+        return new PauseRequest(Method.POST, uri);
+    }
+
+    public static ResumeRequest resume(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "resume");
+        return new ResumeRequest(Method.POST, uri);
+    }
+
+    public static Request removeScheduledPause(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_pause");
+        return new Request(Method.POST, uri);
+    }
+
+    public static Request removeScheduledResumption(String id) throws IOException {
+        String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_resumption");
         return new Request(Method.POST, uri);
     }
 
@@ -2136,6 +2165,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportSubscriptionRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
+            params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
+            return this;
+        }
+
+
 
 
 
@@ -2478,6 +2513,26 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest transactionAmount(Integer transactionAmount) {
+            params.addOpt("transaction[amount]", transactionAmount);
+            return this;
+        }
+
+        public ImportSubscriptionRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
+            params.addOpt("transaction[payment_method]", transactionPaymentMethod);
+            return this;
+        }
+
+        public ImportSubscriptionRequest transactionReferenceNumber(String transactionReferenceNumber) {
+            params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        public ImportSubscriptionRequest transactionDate(Timestamp transactionDate) {
+            params.addOpt("transaction[date]", transactionDate);
+            return this;
+        }
+
         public ImportSubscriptionRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -2619,6 +2674,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForCustomerRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
+            params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
+            return this;
+        }
+
+
         public ImportForCustomerRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -2630,6 +2691,26 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public ImportForCustomerRequest transactionAmount(Integer transactionAmount) {
+            params.addOpt("transaction[amount]", transactionAmount);
+            return this;
+        }
+
+        public ImportForCustomerRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
+            params.addOpt("transaction[payment_method]", transactionPaymentMethod);
+            return this;
+        }
+
+        public ImportForCustomerRequest transactionReferenceNumber(String transactionReferenceNumber) {
+            params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        public ImportForCustomerRequest transactionDate(Timestamp transactionDate) {
+            params.addOpt("transaction[date]", transactionDate);
+            return this;
+        }
 
         public ImportForCustomerRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -2736,6 +2817,78 @@ public class Subscription extends Resource<Subscription> {
 
         public OverrideBillingProfileRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PauseRequest extends Request<PauseRequest> {
+
+        private PauseRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PauseRequest pauseOption(com.chargebee.models.enums.PauseOption pauseOption) {
+            params.addOpt("pause_option", pauseOption);
+            return this;
+        }
+
+
+        public PauseRequest pauseDate(Timestamp pauseDate) {
+            params.addOpt("pause_date", pauseDate);
+            return this;
+        }
+
+
+        public PauseRequest unbilledChargesHandling(com.chargebee.models.enums.UnbilledChargesHandling unbilledChargesHandling) {
+            params.addOpt("unbilled_charges_handling", unbilledChargesHandling);
+            return this;
+        }
+
+
+        public PauseRequest invoiceDunningHandling(com.chargebee.models.enums.InvoiceDunningHandling invoiceDunningHandling) {
+            params.addOpt("invoice_dunning_handling", invoiceDunningHandling);
+            return this;
+        }
+
+
+        public PauseRequest resumeDate(Timestamp resumeDate) {
+            params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ResumeRequest extends Request<ResumeRequest> {
+
+        private ResumeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ResumeRequest resumeOption(com.chargebee.models.enums.ResumeOption resumeOption) {
+            params.addOpt("resume_option", resumeOption);
+            return this;
+        }
+
+
+        public ResumeRequest resumeDate(Timestamp resumeDate) {
+            params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
+        public ResumeRequest unpaidInvoicesHandling(com.chargebee.models.enums.UnpaidInvoicesHandling unpaidInvoicesHandling) {
+            params.addOpt("unpaid_invoices_handling", unpaidInvoicesHandling);
             return this;
         }
 

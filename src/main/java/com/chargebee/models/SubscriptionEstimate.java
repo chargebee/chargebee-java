@@ -18,6 +18,7 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
         IN_TRIAL,
         ACTIVE,
         NON_RENEWING,
+        PAUSED,
         CANCELLED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -114,6 +115,14 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
 
     public Timestamp nextBillingAt() {
         return optTimestamp("next_billing_at");
+    }
+
+    public Timestamp pauseDate() {
+        return optTimestamp("pause_date");
+    }
+
+    public Timestamp resumeDate() {
+        return optTimestamp("resume_date");
     }
 
     public SubscriptionEstimate.ShippingAddress shippingAddress() {

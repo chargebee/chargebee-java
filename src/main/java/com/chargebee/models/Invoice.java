@@ -652,6 +652,10 @@ public class Invoice extends Resource<Invoice> {
         return optBoolean("has_advance_charges");
     }
 
+    public Timestamp expectedPaymentDate() {
+        return optTimestamp("expected_payment_date");
+    }
+
     public Integer amountToCollect() {
         return optInteger("amount_to_collect");
     }
