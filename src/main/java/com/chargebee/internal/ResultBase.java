@@ -32,6 +32,10 @@ public class ResultBase {
         return (ThirdPartyPaymentMethod)get("third_party_payment_method");
     }
 
+    public VirtualBankAccount virtualBankAccount() {
+        return (VirtualBankAccount)get("virtual_bank_account");
+    }
+
     public Card card() {
         return (Card)get("card");
     }
