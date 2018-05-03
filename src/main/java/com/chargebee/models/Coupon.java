@@ -216,6 +216,11 @@ public class Coupon extends Resource<Coupon> {
         return new Request(Method.GET, uri);
     }
 
+    public static UpdateRequest update(String id) throws IOException {
+        String uri = uri("coupons", nullCheck(id));
+        return new UpdateRequest(Method.POST, uri);
+    }
+
     public static Request delete(String id) throws IOException {
         String uri = uri("coupons", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
@@ -424,6 +429,128 @@ public class Coupon extends Resource<Coupon> {
 
         public CouponListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateRequest extends Request<UpdateRequest> {
+
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceName(String invoiceName) {
+            params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public UpdateRequest discountType(Coupon.DiscountType discountType) {
+            params.addOpt("discount_type", discountType);
+            return this;
+        }
+
+
+        public UpdateRequest discountAmount(Integer discountAmount) {
+            params.addOpt("discount_amount", discountAmount);
+            return this;
+        }
+
+
+        public UpdateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public UpdateRequest discountPercentage(Double discountPercentage) {
+            params.addOpt("discount_percentage", discountPercentage);
+            return this;
+        }
+
+
+        public UpdateRequest applyOn(Coupon.ApplyOn applyOn) {
+            params.addOpt("apply_on", applyOn);
+            return this;
+        }
+
+
+        public UpdateRequest planConstraint(PlanConstraint planConstraint) {
+            params.addOpt("plan_constraint", planConstraint);
+            return this;
+        }
+
+
+        public UpdateRequest addonConstraint(AddonConstraint addonConstraint) {
+            params.addOpt("addon_constraint", addonConstraint);
+            return this;
+        }
+
+
+        public UpdateRequest planIds(List<String> planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public UpdateRequest planIds(String... planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public UpdateRequest addonIds(List<String> addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public UpdateRequest addonIds(String... addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public UpdateRequest durationType(Coupon.DurationType durationType) {
+            params.addOpt("duration_type", durationType);
+            return this;
+        }
+
+
+        public UpdateRequest durationMonth(Integer durationMonth) {
+            params.addOpt("duration_month", durationMonth);
+            return this;
+        }
+
+
+        public UpdateRequest validTill(Timestamp validTill) {
+            params.addOpt("valid_till", validTill);
+            return this;
+        }
+
+
+        public UpdateRequest maxRedemptions(Integer maxRedemptions) {
+            params.addOpt("max_redemptions", maxRedemptions);
+            return this;
+        }
+
+
+        public UpdateRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
             return this;
         }
 
