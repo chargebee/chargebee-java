@@ -473,6 +473,11 @@ public class Customer extends Resource<Customer> {
         return new UpdateBillingInfoRequest(Method.POST, uri);
     }
 
+    public static ListRequest contactsForCustomer(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "contacts");
+        return new ListRequest(uri);
+    }
+
     public static AssignPaymentRoleRequest assignPaymentRole(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "assign_payment_role");
         return new AssignPaymentRoleRequest(Method.POST, uri);

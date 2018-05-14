@@ -1,3 +1,9 @@
+### v2.5.6 (2018-05-14)
+* * * 
+
+New endpoint 'List contacts for a customer' has been added to Customer resource.
+See : https://apidocs.chargebee.com/docs/api/customers#list_of_contacts_for_a_customer
+
 ### v2.5.5 (2018-05-03)
 * * * 
 

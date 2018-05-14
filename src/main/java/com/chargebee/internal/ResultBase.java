@@ -24,6 +24,10 @@ public class ResultBase {
         return (Customer)get("customer");
     }
 
+    public Contact contact() {
+        return (Contact)get("contact");
+    }
+
     public PaymentSource paymentSource() {
         return (PaymentSource)get("payment_source");
     }
