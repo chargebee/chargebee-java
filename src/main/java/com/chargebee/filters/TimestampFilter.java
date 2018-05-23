@@ -1,6 +1,6 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.ListRequest;
+import com.chargebee.internal.RequestBase;
 import java.sql.Timestamp;
 
 /**
@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  * @author sangeetha
  * @param <U>
  */
-public class TimestampFilter<U extends ListRequest> extends DateFilter<Timestamp, U> {
+public class TimestampFilter<U extends RequestBase> extends DateFilter<Timestamp, U> {
 
     public TimestampFilter(String paramName, U req) {
         super(paramName, req);

@@ -1,6 +1,6 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.ListRequest;
+import com.chargebee.internal.RequestBase;
 import java.util.Arrays;
 import org.json.JSONArray;
 
@@ -10,7 +10,7 @@ import org.json.JSONArray;
  * @param <T>
  * @param <U>
  */
-public class NumberFilter<T,U extends ListRequest> {
+public class NumberFilter<T,U extends RequestBase> {
 
     private U req;
     private String paramName;

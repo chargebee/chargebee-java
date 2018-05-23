@@ -128,6 +128,10 @@ public class ResultBase {
         return (TimeMachine)get("time_machine");
     }
 
+    public Export export() {
+        return (Export)get("export");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }
@@ -170,7 +174,7 @@ public class ResultBase {
         Class<Resource> modelClaz = ClazzUtil.getClaz(key);
         return ClazzUtil.createInstance(modelClaz, modelJson);
     }
-    
+
     public JSONObject jsonObj(){
         return jsonObj;
     }

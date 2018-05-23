@@ -1,3 +1,9 @@
+### v2.5.7 (2018-05-23)
+* * *
+
+* New Resource [Export](https://apidocs.chargebee.com/docs/api/exports) has been added
+* New payment gateway bluesnap has been added
+
 ### v2.5.6 (2018-05-14)
 * * * 
 

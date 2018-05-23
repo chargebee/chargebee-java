@@ -14,7 +14,7 @@ public class RequestBase<U extends RequestBase> {
     protected Params params = new Params();   
     protected Map<String,String> headers = new HashMap();
 
-    protected Params params() {
+    public Params params() {
         return params;
     }
 

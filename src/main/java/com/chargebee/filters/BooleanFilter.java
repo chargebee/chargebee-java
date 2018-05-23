@@ -1,6 +1,6 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.ListRequest;
+import com.chargebee.internal.RequestBase;
 
 /**
  *
@@ -8,7 +8,7 @@ import com.chargebee.internal.ListRequest;
  * @param <T>
  * @param <U>
  */
-public class BooleanFilter<U extends ListRequest> {
+public class BooleanFilter<U extends RequestBase> {
 
     private U req;
     private String paramName;

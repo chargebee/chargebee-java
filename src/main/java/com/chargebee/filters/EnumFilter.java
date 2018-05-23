@@ -1,7 +1,7 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.ListRequest;
 import com.chargebee.internal.Params;
+import com.chargebee.internal.RequestBase;
 import java.util.Arrays;
 import java.util.List;
 import org.json.JSONArray;
@@ -12,7 +12,7 @@ import org.json.JSONArray;
  * @param <T> The enum type
  * @param <U>
  */
-public class EnumFilter<T, U extends ListRequest> {
+public class EnumFilter<T, U extends RequestBase> {
 
     private U req;
     private String paramName;

@@ -253,7 +253,7 @@ public class Customer extends Resource<Customer> {
         public String currencyCode() {
             return reqString("currency_code");
         }
-        
+
         @Deprecated
         public String balanceCurrencyCode() {
             return reqString("balance_currency_code");

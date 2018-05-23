@@ -1,7 +1,7 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.ListRequest;
 import static com.chargebee.internal.Params.toValStr;
+import com.chargebee.internal.RequestBase;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.json.JSONArray;
  * @param <T>
  * @param <U>
  */
-public class DateFilter<T extends  Date, U extends ListRequest> {
+public class DateFilter<T extends  Date, U extends RequestBase> {
 
     private U req;
     private String paramName;

@@ -48,4 +48,9 @@ public class Request<U extends Request> extends RequestBase<U>{
         }
     }
     
+    @Override
+    public Params params() {
+        return params;
+    }
+    
 }

@@ -1668,13 +1668,13 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public TimestampFilter<InvoiceListRequest> voidedAt() {
-            return new TimestampFilter<InvoiceListRequest>("voided_at",this);        
+        public TimestampFilter<InvoiceListRequest> updatedAt() {
+            return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
         }
 
 
-        public TimestampFilter<InvoiceListRequest> updatedAt() {
-            return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
+        public TimestampFilter<InvoiceListRequest> voidedAt() {
+            return new TimestampFilter<InvoiceListRequest>("voided_at",this);        
         }
 
 
