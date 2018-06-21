@@ -104,7 +104,7 @@ public Export waitForExportCompletion()
         int count = 0;
         int sleepTime = Integer.getInteger("cb.java.export.sleep.millis", 10000);
         while(status() == Status.IN_PROCESS){
-            if(count++ > 30){
+            if(count++ > 50){
                 throw new RuntimeException("Export is taking too long");
             }
             Thread.sleep(sleepTime);

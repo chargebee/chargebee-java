@@ -691,6 +691,81 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
+            params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest bankAccountIban(String bankAccountIban) {
+            params.addOpt("bank_account[iban]", bankAccountIban);
+            return this;
+        }
+
+        public CreateRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+
+        public CreateRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+
+        public CreateRequest bankAccountCompany(String bankAccountCompany) {
+            params.addOpt("bank_account[company]", bankAccountCompany);
+            return this;
+        }
+
+        public CreateRequest bankAccountEmail(String bankAccountEmail) {
+            params.addOpt("bank_account[email]", bankAccountEmail);
+            return this;
+        }
+
+        public CreateRequest bankAccountBankName(String bankAccountBankName) {
+            params.addOpt("bank_account[bank_name]", bankAccountBankName);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
+            params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
+            return this;
+        }
+
+        public CreateRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
+            params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+            return this;
+        }
+
+        public CreateRequest bankAccountBankCode(String bankAccountBankCode) {
+            params.addOpt("bank_account[bank_code]", bankAccountBankCode);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
+            params.addOpt("bank_account[account_type]", bankAccountAccountType);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
+            params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+            return this;
+        }
+
+        public CreateRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
+            params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
+            return this;
+        }
+
+        public CreateRequest bankAccountIssuingCountry(String bankAccountIssuingCountry) {
+            params.addOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+            return this;
+        }
+
+        public CreateRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
+            params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+            return this;
+        }
+
         public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;

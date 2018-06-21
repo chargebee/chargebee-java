@@ -113,8 +113,24 @@ public class PaymentSource extends Resource<PaymentSource> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum EcheckType {
+             WEB,PPD,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum AccountHolderType {
+             INDIVIDUAL,COMPANY,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public BankAccount(JSONObject jsonObj) {
             super(jsonObj);
+        }
+
+        public String last4() {
+            return reqString("last4");
         }
 
         public String nameOnAccount() {
@@ -131,6 +147,14 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public AccountType accountType() {
             return optEnum("account_type", AccountType.class);
+        }
+
+        public EcheckType echeckType() {
+            return optEnum("echeck_type", EcheckType.class);
+        }
+
+        public AccountHolderType accountHolderType() {
+            return optEnum("account_holder_type", AccountHolderType.class);
         }
 
     }
@@ -253,9 +277,19 @@ public class PaymentSource extends Resource<PaymentSource> {
         return new CreateCardRequest(Method.POST, uri);
     }
 
+    public static CreateBankAccountRequest createBankAccount() throws IOException {
+        String uri = uri("payment_sources", "create_bank_account");
+        return new CreateBankAccountRequest(Method.POST, uri);
+    }
+
     public static UpdateCardRequest updateCard(String id) throws IOException {
         String uri = uri("payment_sources", nullCheck(id), "update_card");
         return new UpdateCardRequest(Method.POST, uri);
+    }
+
+    public static VerifyBankAccountRequest verifyBankAccount(String id) throws IOException {
+        String uri = uri("payment_sources", nullCheck(id), "verify_bank_account");
+        return new VerifyBankAccountRequest(Method.POST, uri);
     }
 
     public static Request retrieve(String id) throws IOException {
@@ -477,6 +511,106 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
     }
 
+    public static class CreateBankAccountRequest extends Request<CreateBankAccountRequest> {
+
+        private CreateBankAccountRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateBankAccountRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateBankAccountRequest issuingCountry(String issuingCountry) {
+            params.addOpt("issuing_country", issuingCountry);
+            return this;
+        }
+
+
+        public CreateBankAccountRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CreateBankAccountRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
+            params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountIban(String bankAccountIban) {
+            params.addOpt("bank_account[iban]", bankAccountIban);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountCompany(String bankAccountCompany) {
+            params.addOpt("bank_account[company]", bankAccountCompany);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountEmail(String bankAccountEmail) {
+            params.addOpt("bank_account[email]", bankAccountEmail);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountBankName(String bankAccountBankName) {
+            params.addOpt("bank_account[bank_name]", bankAccountBankName);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
+            params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
+            params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountBankCode(String bankAccountBankCode) {
+            params.addOpt("bank_account[bank_code]", bankAccountBankCode);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
+            params.addOpt("bank_account[account_type]", bankAccountAccountType);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
+            params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
+            params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
+            params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class UpdateCardRequest extends Request<UpdateCardRequest> {
 
         private UpdateCardRequest(Method httpMeth, String uri) {
@@ -543,6 +677,30 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class VerifyBankAccountRequest extends Request<VerifyBankAccountRequest> {
+
+        private VerifyBankAccountRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public VerifyBankAccountRequest amount1(Integer amount1) {
+            params.add("amount1", amount1);
+            return this;
+        }
+
+
+        public VerifyBankAccountRequest amount2(Integer amount2) {
+            params.add("amount2", amount2);
+            return this;
+        }
+
 
         @Override
         public Params params() {

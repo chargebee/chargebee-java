@@ -268,6 +268,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
         return optList("line_item_discounts", InvoiceEstimate.LineItemDiscount.class);
     }
 
+    public Integer roundOffAmount() {
+        return optInteger("round_off_amount");
+    }
+
     // Operations
     //===========
 

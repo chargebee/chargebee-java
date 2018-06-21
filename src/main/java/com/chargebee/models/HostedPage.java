@@ -144,6 +144,11 @@ public class HostedPage extends Resource<HostedPage> {
         return new CollectNowRequest(Method.POST, uri);
     }
 
+    public static RetrieveAgreementPdfRequest retrieveAgreementPdf() throws IOException {
+        String uri = uri("hosted_pages", "retrieve_agreement_pdf");
+        return new RetrieveAgreementPdfRequest(Method.POST, uri);
+    }
+
     public static Request acknowledge(String id) throws IOException {
         String uri = uri("hosted_pages", nullCheck(id), "acknowledge");
         return new Request(Method.POST, uri);
@@ -852,6 +857,24 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RetrieveAgreementPdfRequest extends Request<RetrieveAgreementPdfRequest> {
+
+        private RetrieveAgreementPdfRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RetrieveAgreementPdfRequest paymentSourceId(String paymentSourceId) {
+            params.add("payment_source_id", paymentSourceId);
+            return this;
+        }
+
 
         @Override
         public Params params() {

@@ -275,6 +275,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return optList("line_item_discounts", CreditNoteEstimate.LineItemDiscount.class);
     }
 
+    public Integer roundOffAmount() {
+        return optInteger("round_off_amount");
+    }
+
     // Operations
     //===========
 
