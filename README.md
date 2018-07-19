@@ -11,11 +11,13 @@ This library is for our <b>API version V2</b>. The library for V1 can be found i
 ### Maven users
 Add the below dependency to your ```pom.xml```:
 
-    <dependency>
-      <groupId>com.chargebee</groupId>
-      <artifactId>chargebee-java</artifactId>
-      <version>[latest-2.x.x-release-version]</version>
-    </dependency>
+```xml
+<dependency>
+  <groupId>com.chargebee</groupId>
+  <artifactId>chargebee-java</artifactId>
+  <version>[latest-2.x.x-release-version]</version>
+</dependency>
+```
 
 
 ### To get the latest jar
@@ -39,7 +41,8 @@ You can also copy the below code snippet from our
 documentation. We have provided downloadable code for each API operation.
 
 
-<pre><code>import java.io.IOException;
+```java
+import java.io.IOException;
 import com.chargebee.*;
 import com.chargebee.models.*;
 import com.chargebee.models.enums.*;
@@ -59,7 +62,8 @@ public class Sample{
     Card card = result.card();
     System.out.println(result);
   }
-}</code></pre>
+}
+```
 
 ## License
 
