@@ -25,6 +25,14 @@ public class Customer extends Resource<Customer> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PiiCleared {
+        ACTIVE,
+        SCHEDULED_FOR_CLEAR,
+        CLEARED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     @Deprecated
     public enum CardStatus {
         NO_CARD,
@@ -367,6 +375,10 @@ public class Customer extends Resource<Customer> {
         return optEnum("billing_day_of_week_mode", BillingDayOfWeekMode.class);
     }
 
+    public PiiCleared piiCleared() {
+        return optEnum("pii_cleared", PiiCleared.class);
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -539,6 +551,16 @@ public class Customer extends Resource<Customer> {
     public static ChangeBillingDateRequest changeBillingDate(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "change_billing_date");
         return new ChangeBillingDateRequest(Method.POST, uri);
+    }
+
+    public static MergeRequest merge() throws IOException {
+        String uri = uri("customers", "merge");
+        return new MergeRequest(Method.POST, uri);
+    }
+
+    public static Request clearPersonalData(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "clear_personal_data");
+        return new Request(Method.POST, uri);
     }
 
 
@@ -1797,6 +1819,30 @@ public class Customer extends Resource<Customer> {
 
         public ChangeBillingDateRequest billingDayOfWeekMode(com.chargebee.models.enums.BillingDayOfWeekMode billingDayOfWeekMode) {
             params.addOpt("billing_day_of_week_mode", billingDayOfWeekMode);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class MergeRequest extends Request<MergeRequest> {
+
+        private MergeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public MergeRequest fromCustomerId(String fromCustomerId) {
+            params.add("from_customer_id", fromCustomerId);
+            return this;
+        }
+
+
+        public MergeRequest toCustomerId(String toCustomerId) {
+            params.add("to_customer_id", toCustomerId);
             return this;
         }
 

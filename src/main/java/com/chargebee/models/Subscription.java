@@ -2240,6 +2240,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportSubscriptionRequest pauseDate(Timestamp pauseDate) {
+            params.addOpt("pause_date", pauseDate);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest resumeDate(Timestamp resumeDate) {
+            params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
         public ImportSubscriptionRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
@@ -2749,6 +2761,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForCustomerRequest pauseDate(Timestamp pauseDate) {
+            params.addOpt("pause_date", pauseDate);
+            return this;
+        }
+
+
+        public ImportForCustomerRequest resumeDate(Timestamp resumeDate) {
+            params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
         public ImportForCustomerRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
@@ -2958,6 +2982,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ResumeRequest resumeDate(Timestamp resumeDate) {
             params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
+        public ResumeRequest chargesHandling(com.chargebee.models.enums.ChargesHandling chargesHandling) {
+            params.addOpt("charges_handling", chargesHandling);
             return this;
         }
 

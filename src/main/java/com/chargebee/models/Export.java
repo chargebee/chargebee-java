@@ -57,6 +57,10 @@ public class Export extends Resource<Export> {
     // Fields
     //=======
 
+    public String id() {
+        return reqString("id");
+    }
+
     public String operationType() {
         return reqString("operation_type");
     }
@@ -71,10 +75,6 @@ public class Export extends Resource<Export> {
 
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
-    }
-
-    public String id() {
-        return reqString("id");
     }
 
     public Export.Download download() {
@@ -134,14 +134,14 @@ public Export waitForExportCompletion()
         }
 
 
-        public RevenueRecognitionRequest reportFromYear(Integer reportFromYear) {
-            params.add("report_from_year", reportFromYear);
+        public RevenueRecognitionRequest reportFromMonth(Integer reportFromMonth) {
+            params.add("report_from_month", reportFromMonth);
             return this;
         }
 
 
-        public RevenueRecognitionRequest reportToYear(Integer reportToYear) {
-            params.add("report_to_year", reportToYear);
+        public RevenueRecognitionRequest reportFromYear(Integer reportFromYear) {
+            params.add("report_from_year", reportFromYear);
             return this;
         }
 
@@ -152,8 +152,8 @@ public Export waitForExportCompletion()
         }
 
 
-        public RevenueRecognitionRequest reportFromMonth(Integer reportFromMonth) {
-            params.add("report_from_month", reportFromMonth);
+        public RevenueRecognitionRequest reportToYear(Integer reportToYear) {
+            params.add("report_to_year", reportToYear);
             return this;
         }
 
@@ -328,14 +328,14 @@ public Export waitForExportCompletion()
         }
 
 
-        public DeferredRevenueRequest reportFromYear(Integer reportFromYear) {
-            params.add("report_from_year", reportFromYear);
+        public DeferredRevenueRequest reportFromMonth(Integer reportFromMonth) {
+            params.add("report_from_month", reportFromMonth);
             return this;
         }
 
 
-        public DeferredRevenueRequest reportToYear(Integer reportToYear) {
-            params.add("report_to_year", reportToYear);
+        public DeferredRevenueRequest reportFromYear(Integer reportFromYear) {
+            params.add("report_from_year", reportFromYear);
             return this;
         }
 
@@ -346,8 +346,8 @@ public Export waitForExportCompletion()
         }
 
 
-        public DeferredRevenueRequest reportFromMonth(Integer reportFromMonth) {
-            params.add("report_from_month", reportFromMonth);
+        public DeferredRevenueRequest reportToYear(Integer reportToYear) {
+            params.add("report_to_year", reportToYear);
             return this;
         }
 

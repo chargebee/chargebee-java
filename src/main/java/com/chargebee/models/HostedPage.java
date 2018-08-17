@@ -144,6 +144,11 @@ public class HostedPage extends Resource<HostedPage> {
         return new CollectNowRequest(Method.POST, uri);
     }
 
+    public static ExtendSubscriptionRequest extendSubscription() throws IOException {
+        String uri = uri("hosted_pages", "extend_subscription");
+        return new ExtendSubscriptionRequest(Method.POST, uri);
+    }
+
     public static RetrieveAgreementPdfRequest retrieveAgreementPdf() throws IOException {
         String uri = uri("hosted_pages", "retrieve_agreement_pdf");
         return new RetrieveAgreementPdfRequest(Method.POST, uri);
@@ -855,6 +860,35 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CollectNowRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ExtendSubscriptionRequest extends Request<ExtendSubscriptionRequest> {
+
+        private ExtendSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ExtendSubscriptionRequest expiry(Integer expiry) {
+            params.addOpt("expiry", expiry);
+            return this;
+        }
+
+
+        public ExtendSubscriptionRequest billingCycle(Integer billingCycle) {
+            params.addOpt("billing_cycle", billingCycle);
+            return this;
+        }
+
+
+        public ExtendSubscriptionRequest subscriptionId(String subscriptionId) {
+            params.add("subscription[id]", subscriptionId);
             return this;
         }
 

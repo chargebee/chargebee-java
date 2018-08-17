@@ -891,6 +891,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public ResumeSubscriptionRequest chargesHandling(com.chargebee.models.enums.ChargesHandling chargesHandling) {
+            params.addOpt("charges_handling", chargesHandling);
+            return this;
+        }
+
+
         public ResumeSubscriptionRequest subscriptionResumeDate(Timestamp subscriptionResumeDate) {
             params.addOpt("subscription[resume_date]", subscriptionResumeDate);
             return this;
