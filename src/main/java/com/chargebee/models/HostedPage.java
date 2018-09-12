@@ -213,6 +213,16 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CheckoutNewRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
 
 
         public CheckoutNewRequest redirectUrl(String redirectUrl) {
@@ -500,17 +510,42 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public CheckoutNewRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public CheckoutNewRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public CheckoutNewRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -534,6 +569,16 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
+        public CheckoutExistingRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CheckoutExistingRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
 
         public CheckoutExistingRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
@@ -662,17 +707,42 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public CheckoutExistingRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public CheckoutExistingRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public CheckoutExistingRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

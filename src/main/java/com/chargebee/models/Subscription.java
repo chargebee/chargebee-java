@@ -72,6 +72,54 @@ public class Subscription extends Resource<Subscription> {
 
     }
 
+    public static class EventBasedAddon extends Resource<EventBasedAddon> {
+        public enum OnEvent {
+             SUBSCRIPTION_CREATION,SUBSCRIPTION_TRIAL_START,PLAN_ACTIVATION,SUBSCRIPTION_ACTIVATION,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public EventBasedAddon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Integer quantity() {
+            return reqInteger("quantity");
+        }
+
+        public Integer unitPrice() {
+            return reqInteger("unit_price");
+        }
+
+        public OnEvent onEvent() {
+            return reqEnum("on_event", OnEvent.class);
+        }
+
+        public Boolean chargeOnce() {
+            return reqBoolean("charge_once");
+        }
+
+    }
+
+    public static class ChargedEventBasedAddon extends Resource<ChargedEventBasedAddon> {
+        public ChargedEventBasedAddon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Timestamp lastChargedAt() {
+            return reqTimestamp("last_charged_at");
+        }
+
+    }
+
     public static class Coupon extends Resource<Coupon> {
         public Coupon(JSONObject jsonObj) {
             super(jsonObj);
@@ -401,6 +449,14 @@ public class Subscription extends Resource<Subscription> {
         return optList("addons", Subscription.Addon.class);
     }
 
+    public List<Subscription.EventBasedAddon> eventBasedAddons() {
+        return optList("event_based_addons", Subscription.EventBasedAddon.class);
+    }
+
+    public List<Subscription.ChargedEventBasedAddon> chargedEventBasedAddons() {
+        return optList("charged_event_based_addons", Subscription.ChargedEventBasedAddon.class);
+    }
+
     @Deprecated
     public String coupon() {
         return optString("coupon");
@@ -640,6 +696,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CreateRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CreateRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
 
 
 
@@ -1112,22 +1178,46 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public CreateRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public CreateRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public CreateRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CreateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CreateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CreateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public CreateRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public CreateRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
         public CreateRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -1216,6 +1306,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CreateForCustomerRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CreateForCustomerRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
 
 
 
@@ -1333,22 +1433,46 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public CreateForCustomerRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public CreateForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public CreateForCustomerRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public CreateForCustomerRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
         public CreateForCustomerRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -1532,6 +1656,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public UpdateRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public UpdateRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
 
         @Deprecated
         public UpdateRequest coupon(String coupon) {
@@ -1901,22 +2035,46 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public UpdateRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public UpdateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public UpdateRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
         public UpdateRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -2624,17 +2782,46 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public ImportSubscriptionRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public ImportSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public ImportSubscriptionRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public ImportSubscriptionRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public ImportSubscriptionRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public ImportSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public ImportSubscriptionRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public ImportSubscriptionRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public ImportSubscriptionRequest chargedEventBasedAddonId(int index, String chargedEventBasedAddonId) {
+            params.addOpt("charged_event_based_addons[id][" + index + "]", chargedEventBasedAddonId);
+            return this;
+        }
+        public ImportSubscriptionRequest chargedEventBasedAddonLastChargedAt(int index, Timestamp chargedEventBasedAddonLastChargedAt) {
+            params.addOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2885,17 +3072,46 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public ImportForCustomerRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public ImportForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
+        public ImportForCustomerRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public ImportForCustomerRequest chargedEventBasedAddonId(int index, String chargedEventBasedAddonId) {
+            params.addOpt("charged_event_based_addons[id][" + index + "]", chargedEventBasedAddonId);
+            return this;
+        }
+        public ImportForCustomerRequest chargedEventBasedAddonLastChargedAt(int index, Timestamp chargedEventBasedAddonLastChargedAt) {
+            params.addOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

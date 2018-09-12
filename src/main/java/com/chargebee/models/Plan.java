@@ -43,6 +43,82 @@ public class Plan extends Resource<Plan> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum AddonApplicability {
+        ALL,
+        RESTRICTED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class ApplicableAddon extends Resource<ApplicableAddon> {
+        public ApplicableAddon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+    }
+
+    public static class AttachedAddon extends Resource<AttachedAddon> {
+        public enum Type {
+             RECOMMENDED,MANDATORY,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public AttachedAddon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Integer quantity() {
+            return reqInteger("quantity");
+        }
+
+        public Integer billingCycles() {
+            return optInteger("billing_cycles");
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+    }
+
+    public static class EventBasedAddon extends Resource<EventBasedAddon> {
+        public enum OnEvent {
+             SUBSCRIPTION_CREATION,SUBSCRIPTION_TRIAL_START,PLAN_ACTIVATION,SUBSCRIPTION_ACTIVATION,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public EventBasedAddon(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Integer quantity() {
+            return reqInteger("quantity");
+        }
+
+        public OnEvent onEvent() {
+            return reqEnum("on_event", OnEvent.class);
+        }
+
+        public Boolean chargeOnce() {
+            return reqBoolean("charge_once");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -74,7 +150,7 @@ public class Plan extends Resource<Plan> {
     }
 
     public Integer price() {
-        return reqInteger("price");
+        return optInteger("price");
     }
 
     public String currencyCode() {
@@ -138,6 +214,10 @@ public class Plan extends Resource<Plan> {
         return reqBoolean("enabled_in_portal");
     }
 
+    public AddonApplicability addonApplicability() {
+        return reqEnum("addon_applicability", AddonApplicability.class);
+    }
+
     public String taxCode() {
         return optString("tax_code");
     }
@@ -180,6 +260,18 @@ public class Plan extends Resource<Plan> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public List<Plan.ApplicableAddon> applicableAddons() {
+        return optList("applicable_addons", Plan.ApplicableAddon.class);
+    }
+
+    public List<Plan.AttachedAddon> attachedAddons() {
+        return optList("attached_addons", Plan.AttachedAddon.class);
+    }
+
+    public List<Plan.EventBasedAddon> eventBasedAddons() {
+        return optList("event_based_addons", Plan.EventBasedAddon.class);
     }
 
     // Operations
@@ -314,6 +406,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest addonApplicability(Plan.AddonApplicability addonApplicability) {
+            params.addOpt("addon_applicability", addonApplicability);
+            return this;
+        }
+
+
         @Deprecated
         public CreateRequest downgradePenalty(Double downgradePenalty) {
             params.addOpt("downgrade_penalty", downgradePenalty);
@@ -399,6 +497,42 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest applicableAddonId(int index, String applicableAddonId) {
+            params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
+            return this;
+        }
+        public CreateRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CreateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CreateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public CreateRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public CreateRequest attachedAddonId(int index, String attachedAddonId) {
+            params.addOpt("attached_addons[id][" + index + "]", attachedAddonId);
+            return this;
+        }
+        public CreateRequest attachedAddonQuantity(int index, Integer attachedAddonQuantity) {
+            params.addOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+            return this;
+        }
+        public CreateRequest attachedAddonBillingCycles(int index, Integer attachedAddonBillingCycles) {
+            params.addOpt("attached_addons[billing_cycles][" + index + "]", attachedAddonBillingCycles);
+            return this;
+        }
+        public CreateRequest attachedAddonType(int index, AttachedAddon.Type attachedAddonType) {
+            params.addOpt("attached_addons[type][" + index + "]", attachedAddonType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -489,6 +623,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public UpdateRequest addonApplicability(Plan.AddonApplicability addonApplicability) {
+            params.addOpt("addon_applicability", addonApplicability);
+            return this;
+        }
+
+
         @Deprecated
         public UpdateRequest downgradePenalty(Double downgradePenalty) {
             params.addOpt("downgrade_penalty", downgradePenalty);
@@ -567,9 +707,42 @@ public class Plan extends Resource<Plan> {
             return this;
         }
 
-
-
-
+        public UpdateRequest applicableAddonId(int index, String applicableAddonId) {
+            params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public UpdateRequest attachedAddonId(int index, String attachedAddonId) {
+            params.addOpt("attached_addons[id][" + index + "]", attachedAddonId);
+            return this;
+        }
+        public UpdateRequest attachedAddonQuantity(int index, Integer attachedAddonQuantity) {
+            params.addOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+            return this;
+        }
+        public UpdateRequest attachedAddonBillingCycles(int index, Integer attachedAddonBillingCycles) {
+            params.addOpt("attached_addons[billing_cycles][" + index + "]", attachedAddonBillingCycles);
+            return this;
+        }
+        public UpdateRequest attachedAddonType(int index, AttachedAddon.Type attachedAddonType) {
+            params.addOpt("attached_addons[type][" + index + "]", attachedAddonType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -617,9 +790,16 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public EnumFilter<Plan.AddonApplicability, PlanListRequest> addonApplicability() {
+            return new EnumFilter<Plan.AddonApplicability, PlanListRequest>("addon_applicability",this);        
+        }
+
+
         public EnumFilter<Plan.ChargeModel, PlanListRequest> chargeModel() {
             return new EnumFilter<Plan.ChargeModel, PlanListRequest>("charge_model",this);        
         }
+
+
 
 
         public EnumFilter<Plan.Status, PlanListRequest> status() {
