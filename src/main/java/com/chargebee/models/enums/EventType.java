@@ -77,6 +77,11 @@ public enum EventType {
     UNBILLED_CHARGES_VOIDED,
     UNBILLED_CHARGES_DELETED,
     UNBILLED_CHARGES_INVOICED,
+    ORDER_CREATED,
+    ORDER_UPDATED,
+    ORDER_CANCELLED,
+    ORDER_DELIVERED,
+    ORDER_RETURNED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

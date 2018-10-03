@@ -13,6 +13,15 @@ import java.util.*;
 
 public class Customer extends Resource<Customer> {
 
+    public enum VatNumberStatus {
+        VALID,
+        INVALID,
+        NOT_VALIDATED,
+        UNDETERMINED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum BillingDayOfWeek {
         SUNDAY,
         MONDAY,
@@ -319,8 +328,20 @@ public class Customer extends Resource<Customer> {
         return reqInteger("net_term_days");
     }
 
+    public Timestamp vatNumberValidatedTime() {
+        return optTimestamp("vat_number_validated_time");
+    }
+
+    public VatNumberStatus vatNumberStatus() {
+        return optEnum("vat_number_status", VatNumberStatus.class);
+    }
+
     public Boolean allowDirectDebit() {
         return reqBoolean("allow_direct_debit");
+    }
+
+    public Boolean isLocationValid() {
+        return optBoolean("is_location_valid");
     }
 
     public Timestamp createdAt() {

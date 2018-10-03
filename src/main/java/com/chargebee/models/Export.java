@@ -99,6 +99,46 @@ public class Export extends Resource<Export> {
         return new DeferredRevenueRequest(Method.POST, uri);
     }
 
+    public static PlansRequest plans() throws IOException {
+        String uri = uri("exports", "plans");
+        return new PlansRequest(Method.POST, uri);
+    }
+
+    public static AddonsRequest addons() throws IOException {
+        String uri = uri("exports", "addons");
+        return new AddonsRequest(Method.POST, uri);
+    }
+
+    public static CouponsRequest coupons() throws IOException {
+        String uri = uri("exports", "coupons");
+        return new CouponsRequest(Method.POST, uri);
+    }
+
+    public static CustomersRequest customers() throws IOException {
+        String uri = uri("exports", "customers");
+        return new CustomersRequest(Method.POST, uri);
+    }
+
+    public static SubscriptionsRequest subscriptions() throws IOException {
+        String uri = uri("exports", "subscriptions");
+        return new SubscriptionsRequest(Method.POST, uri);
+    }
+
+    public static InvoicesRequest invoices() throws IOException {
+        String uri = uri("exports", "invoices");
+        return new InvoicesRequest(Method.POST, uri);
+    }
+
+    public static CreditNotesRequest creditNotes() throws IOException {
+        String uri = uri("exports", "credit_notes");
+        return new CreditNotesRequest(Method.POST, uri);
+    }
+
+    public static TransactionsRequest transactions() throws IOException {
+        String uri = uri("exports", "transactions");
+        return new TransactionsRequest(Method.POST, uri);
+    }
+
 public Export waitForExportCompletion() 
             throws Exception {
         int count = 0;
@@ -496,6 +536,470 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<DeferredRevenueRequest> customerUpdatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("customer[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PlansRequest extends Request<PlansRequest> {
+
+        private PlansRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<PlansRequest> planId() {
+            return new StringFilter<PlansRequest>("plan[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<PlansRequest> planName() {
+            return new StringFilter<PlansRequest>("plan[name]",this).supportsMultiOperators(true);        
+        }
+
+        public NumberFilter<Integer, PlansRequest> planPrice() {
+            return new NumberFilter<Integer, PlansRequest>("plan[price]",this);        
+        }
+
+        public NumberFilter<Integer, PlansRequest> planPeriod() {
+            return new NumberFilter<Integer, PlansRequest>("plan[period]",this);        
+        }
+
+        public EnumFilter<Plan.PeriodUnit, PlansRequest> planPeriodUnit() {
+            return new EnumFilter<Plan.PeriodUnit, PlansRequest>("plan[period_unit]",this);        
+        }
+
+        public NumberFilter<Integer, PlansRequest> planTrialPeriod() {
+            return new NumberFilter<Integer, PlansRequest>("plan[trial_period]",this).supportsPresenceOperator(true);        
+        }
+
+        public EnumFilter<Plan.TrialPeriodUnit, PlansRequest> planTrialPeriodUnit() {
+            return new EnumFilter<Plan.TrialPeriodUnit, PlansRequest>("plan[trial_period_unit]",this);        
+        }
+
+        public EnumFilter<Plan.AddonApplicability, PlansRequest> planAddonApplicability() {
+            return new EnumFilter<Plan.AddonApplicability, PlansRequest>("plan[addon_applicability]",this);        
+        }
+
+        public EnumFilter<Plan.Status, PlansRequest> planStatus() {
+            return new EnumFilter<Plan.Status, PlansRequest>("plan[status]",this);        
+        }
+
+        public TimestampFilter<PlansRequest> planUpdatedAt() {
+            return new TimestampFilter<PlansRequest>("plan[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddonsRequest extends Request<AddonsRequest> {
+
+        private AddonsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<AddonsRequest> addonId() {
+            return new StringFilter<AddonsRequest>("addon[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<AddonsRequest> addonName() {
+            return new StringFilter<AddonsRequest>("addon[name]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<Addon.ChargeType, AddonsRequest> addonChargeType() {
+            return new EnumFilter<Addon.ChargeType, AddonsRequest>("addon[charge_type]",this);        
+        }
+
+        public NumberFilter<Integer, AddonsRequest> addonPrice() {
+            return new NumberFilter<Integer, AddonsRequest>("addon[price]",this);        
+        }
+
+        public NumberFilter<Integer, AddonsRequest> addonPeriod() {
+            return new NumberFilter<Integer, AddonsRequest>("addon[period]",this);        
+        }
+
+        public EnumFilter<Addon.PeriodUnit, AddonsRequest> addonPeriodUnit() {
+            return new EnumFilter<Addon.PeriodUnit, AddonsRequest>("addon[period_unit]",this);        
+        }
+
+        public EnumFilter<Addon.Status, AddonsRequest> addonStatus() {
+            return new EnumFilter<Addon.Status, AddonsRequest>("addon[status]",this);        
+        }
+
+        public TimestampFilter<AddonsRequest> addonUpdatedAt() {
+            return new TimestampFilter<AddonsRequest>("addon[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CouponsRequest extends Request<CouponsRequest> {
+
+        private CouponsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<CouponsRequest> couponId() {
+            return new StringFilter<CouponsRequest>("coupon[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<CouponsRequest> couponName() {
+            return new StringFilter<CouponsRequest>("coupon[name]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<Coupon.DiscountType, CouponsRequest> couponDiscountType() {
+            return new EnumFilter<Coupon.DiscountType, CouponsRequest>("coupon[discount_type]",this);        
+        }
+
+        public EnumFilter<Coupon.DurationType, CouponsRequest> couponDurationType() {
+            return new EnumFilter<Coupon.DurationType, CouponsRequest>("coupon[duration_type]",this);        
+        }
+
+        public EnumFilter<Coupon.Status, CouponsRequest> couponStatus() {
+            return new EnumFilter<Coupon.Status, CouponsRequest>("coupon[status]",this);        
+        }
+
+        public EnumFilter<Coupon.ApplyOn, CouponsRequest> couponApplyOn() {
+            return new EnumFilter<Coupon.ApplyOn, CouponsRequest>("coupon[apply_on]",this);        
+        }
+
+        public TimestampFilter<CouponsRequest> couponCreatedAt() {
+            return new TimestampFilter<CouponsRequest>("coupon[created_at]",this);        
+        }
+
+        public TimestampFilter<CouponsRequest> couponUpdatedAt() {
+            return new TimestampFilter<CouponsRequest>("coupon[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CustomersRequest extends Request<CustomersRequest> {
+
+        private CustomersRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<CustomersRequest> customerId() {
+            return new StringFilter<CustomersRequest>("customer[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<CustomersRequest> customerFirstName() {
+            return new StringFilter<CustomersRequest>("customer[first_name]",this).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<CustomersRequest> customerLastName() {
+            return new StringFilter<CustomersRequest>("customer[last_name]",this).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<CustomersRequest> customerEmail() {
+            return new StringFilter<CustomersRequest>("customer[email]",this).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<CustomersRequest> customerCompany() {
+            return new StringFilter<CustomersRequest>("customer[company]",this).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<CustomersRequest> customerPhone() {
+            return new StringFilter<CustomersRequest>("customer[phone]",this).supportsPresenceOperator(true);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.AutoCollection, CustomersRequest> customerAutoCollection() {
+            return new EnumFilter<com.chargebee.models.enums.AutoCollection, CustomersRequest>("customer[auto_collection]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Taxability, CustomersRequest> customerTaxability() {
+            return new EnumFilter<com.chargebee.models.enums.Taxability, CustomersRequest>("customer[taxability]",this);        
+        }
+
+        public TimestampFilter<CustomersRequest> customerCreatedAt() {
+            return new TimestampFilter<CustomersRequest>("customer[created_at]",this);        
+        }
+
+        public TimestampFilter<CustomersRequest> customerUpdatedAt() {
+            return new TimestampFilter<CustomersRequest>("customer[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class SubscriptionsRequest extends Request<SubscriptionsRequest> {
+
+        private SubscriptionsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<SubscriptionsRequest> subscriptionId() {
+            return new StringFilter<SubscriptionsRequest>("subscription[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<SubscriptionsRequest> subscriptionCustomerId() {
+            return new StringFilter<SubscriptionsRequest>("subscription[customer_id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<SubscriptionsRequest> subscriptionPlanId() {
+            return new StringFilter<SubscriptionsRequest>("subscription[plan_id]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<Subscription.Status, SubscriptionsRequest> subscriptionStatus() {
+            return new EnumFilter<Subscription.Status, SubscriptionsRequest>("subscription[status]",this);        
+        }
+
+        public EnumFilter<Subscription.CancelReason, SubscriptionsRequest> subscriptionCancelReason() {
+            return new EnumFilter<Subscription.CancelReason, SubscriptionsRequest>("subscription[cancel_reason]",this).supportsPresenceOperator(true);        
+        }
+
+        public NumberFilter<Integer, SubscriptionsRequest> subscriptionRemainingBillingCycles() {
+            return new NumberFilter<Integer, SubscriptionsRequest>("subscription[remaining_billing_cycles]",this).supportsPresenceOperator(true);        
+        }
+
+        public TimestampFilter<SubscriptionsRequest> subscriptionCreatedAt() {
+            return new TimestampFilter<SubscriptionsRequest>("subscription[created_at]",this);        
+        }
+
+        public TimestampFilter<SubscriptionsRequest> subscriptionActivatedAt() {
+            return new TimestampFilter<SubscriptionsRequest>("subscription[activated_at]",this).supportsPresenceOperator(true);        
+        }
+
+        public TimestampFilter<SubscriptionsRequest> subscriptionNextBillingAt() {
+            return new TimestampFilter<SubscriptionsRequest>("subscription[next_billing_at]",this);        
+        }
+
+        public TimestampFilter<SubscriptionsRequest> subscriptionCancelledAt() {
+            return new TimestampFilter<SubscriptionsRequest>("subscription[cancelled_at]",this);        
+        }
+
+        public BooleanFilter<SubscriptionsRequest> subscriptionHasScheduledChanges() {
+            return new BooleanFilter<SubscriptionsRequest>("subscription[has_scheduled_changes]",this);        
+        }
+
+        public TimestampFilter<SubscriptionsRequest> subscriptionUpdatedAt() {
+            return new TimestampFilter<SubscriptionsRequest>("subscription[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class InvoicesRequest extends Request<InvoicesRequest> {
+
+        private InvoicesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<InvoicesRequest> invoiceId() {
+            return new StringFilter<InvoicesRequest>("invoice[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<InvoicesRequest> invoiceSubscriptionId() {
+            return new StringFilter<InvoicesRequest>("invoice[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<InvoicesRequest> invoiceCustomerId() {
+            return new StringFilter<InvoicesRequest>("invoice[customer_id]",this).supportsMultiOperators(true);        
+        }
+
+        public BooleanFilter<InvoicesRequest> invoiceRecurring() {
+            return new BooleanFilter<InvoicesRequest>("invoice[recurring]",this);        
+        }
+
+        public EnumFilter<Invoice.Status, InvoicesRequest> invoiceStatus() {
+            return new EnumFilter<Invoice.Status, InvoicesRequest>("invoice[status]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.PriceType, InvoicesRequest> invoicePriceType() {
+            return new EnumFilter<com.chargebee.models.enums.PriceType, InvoicesRequest>("invoice[price_type]",this);        
+        }
+
+        public TimestampFilter<InvoicesRequest> invoiceDate() {
+            return new TimestampFilter<InvoicesRequest>("invoice[date]",this);        
+        }
+
+        public TimestampFilter<InvoicesRequest> invoicePaidAt() {
+            return new TimestampFilter<InvoicesRequest>("invoice[paid_at]",this);        
+        }
+
+        public NumberFilter<Integer, InvoicesRequest> invoiceTotal() {
+            return new NumberFilter<Integer, InvoicesRequest>("invoice[total]",this);        
+        }
+
+        public NumberFilter<Integer, InvoicesRequest> invoiceAmountPaid() {
+            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_paid]",this);        
+        }
+
+        public NumberFilter<Integer, InvoicesRequest> invoiceAmountAdjusted() {
+            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_adjusted]",this);        
+        }
+
+        public NumberFilter<Integer, InvoicesRequest> invoiceCreditsApplied() {
+            return new NumberFilter<Integer, InvoicesRequest>("invoice[credits_applied]",this);        
+        }
+
+        public NumberFilter<Integer, InvoicesRequest> invoiceAmountDue() {
+            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_due]",this);        
+        }
+
+        public EnumFilter<Invoice.DunningStatus, InvoicesRequest> invoiceDunningStatus() {
+            return new EnumFilter<Invoice.DunningStatus, InvoicesRequest>("invoice[dunning_status]",this).supportsPresenceOperator(true);        
+        }
+
+        public TimestampFilter<InvoicesRequest> invoiceUpdatedAt() {
+            return new TimestampFilter<InvoicesRequest>("invoice[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreditNotesRequest extends Request<CreditNotesRequest> {
+
+        private CreditNotesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<CreditNotesRequest> creditNoteId() {
+            return new StringFilter<CreditNotesRequest>("credit_note[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<CreditNotesRequest> creditNoteCustomerId() {
+            return new StringFilter<CreditNotesRequest>("credit_note[customer_id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<CreditNotesRequest> creditNoteSubscriptionId() {
+            return new StringFilter<CreditNotesRequest>("credit_note[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<CreditNotesRequest> creditNoteReferenceInvoiceId() {
+            return new StringFilter<CreditNotesRequest>("credit_note[reference_invoice_id]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<CreditNote.Type, CreditNotesRequest> creditNoteType() {
+            return new EnumFilter<CreditNote.Type, CreditNotesRequest>("credit_note[type]",this);        
+        }
+
+        public EnumFilter<CreditNote.ReasonCode, CreditNotesRequest> creditNoteReasonCode() {
+            return new EnumFilter<CreditNote.ReasonCode, CreditNotesRequest>("credit_note[reason_code]",this);        
+        }
+
+        public EnumFilter<CreditNote.Status, CreditNotesRequest> creditNoteStatus() {
+            return new EnumFilter<CreditNote.Status, CreditNotesRequest>("credit_note[status]",this);        
+        }
+
+        public TimestampFilter<CreditNotesRequest> creditNoteDate() {
+            return new TimestampFilter<CreditNotesRequest>("credit_note[date]",this);        
+        }
+
+        public NumberFilter<Integer, CreditNotesRequest> creditNoteTotal() {
+            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[total]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest> creditNotePriceType() {
+            return new EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest>("credit_note[price_type]",this);        
+        }
+
+        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountAllocated() {
+            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_allocated]",this);        
+        }
+
+        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountRefunded() {
+            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_refunded]",this);        
+        }
+
+        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountAvailable() {
+            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_available]",this);        
+        }
+
+        public TimestampFilter<CreditNotesRequest> creditNoteVoidedAt() {
+            return new TimestampFilter<CreditNotesRequest>("credit_note[voided_at]",this);        
+        }
+
+        public TimestampFilter<CreditNotesRequest> creditNoteUpdatedAt() {
+            return new TimestampFilter<CreditNotesRequest>("credit_note[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class TransactionsRequest extends Request<TransactionsRequest> {
+
+        private TransactionsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<TransactionsRequest> transactionId() {
+            return new StringFilter<TransactionsRequest>("transaction[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionCustomerId() {
+            return new StringFilter<TransactionsRequest>("transaction[customer_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionSubscriptionId() {
+            return new StringFilter<TransactionsRequest>("transaction[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionPaymentSourceId() {
+            return new StringFilter<TransactionsRequest>("transaction[payment_source_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionsRequest> transactionPaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionsRequest>("transaction[payment_method]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Gateway, TransactionsRequest> transactionGateway() {
+            return new EnumFilter<com.chargebee.models.enums.Gateway, TransactionsRequest>("transaction[gateway]",this);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionGatewayAccountId() {
+            return new StringFilter<TransactionsRequest>("transaction[gateway_account_id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionIdAtGateway() {
+            return new StringFilter<TransactionsRequest>("transaction[id_at_gateway]",this);        
+        }
+
+        public StringFilter<TransactionsRequest> transactionReferenceNumber() {
+            return new StringFilter<TransactionsRequest>("transaction[reference_number]",this).supportsPresenceOperator(true);        
+        }
+
+        public EnumFilter<Transaction.Type, TransactionsRequest> transactionType() {
+            return new EnumFilter<Transaction.Type, TransactionsRequest>("transaction[type]",this);        
+        }
+
+        public TimestampFilter<TransactionsRequest> transactionDate() {
+            return new TimestampFilter<TransactionsRequest>("transaction[date]",this);        
+        }
+
+        public NumberFilter<Integer, TransactionsRequest> transactionAmount() {
+            return new NumberFilter<Integer, TransactionsRequest>("transaction[amount]",this);        
+        }
+
+        public EnumFilter<Transaction.Status, TransactionsRequest> transactionStatus() {
+            return new EnumFilter<Transaction.Status, TransactionsRequest>("transaction[status]",this);        
+        }
+
+        public TimestampFilter<TransactionsRequest> transactionUpdatedAt() {
+            return new TimestampFilter<TransactionsRequest>("transaction[updated_at]",this);        
         }
 
         @Override

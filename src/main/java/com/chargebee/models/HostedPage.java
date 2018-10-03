@@ -506,6 +506,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionAffiliateToken(String subscriptionAffiliateToken) {
+            params.addOpt("subscription[affiliate_token]", subscriptionAffiliateToken);
+            return this;
+        }
+
         public CheckoutNewRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;

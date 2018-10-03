@@ -44,6 +44,14 @@ public class Addon extends Resource<Addon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum ShippingFrequencyPeriodUnit {
+        YEAR,
+        MONTH,
+        WEEK,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -132,6 +140,18 @@ public class Addon extends Resource<Addon> {
 
     public String accountingCategory2() {
         return optString("accounting_category2");
+    }
+
+    public Boolean isShippable() {
+        return optBoolean("is_shippable");
+    }
+
+    public Integer shippingFrequencyPeriod() {
+        return optInteger("shipping_frequency_period");
+    }
+
+    public ShippingFrequencyPeriodUnit shippingFrequencyPeriodUnit() {
+        return optEnum("shipping_frequency_period_unit", ShippingFrequencyPeriodUnit.class);
     }
 
     public Long resourceVersion() {
@@ -332,6 +352,24 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest isShippable(Boolean isShippable) {
+            params.addOpt("is_shippable", isShippable);
+            return this;
+        }
+
+
+        public CreateRequest shippingFrequencyPeriod(Integer shippingFrequencyPeriod) {
+            params.addOpt("shipping_frequency_period", shippingFrequencyPeriod);
+            return this;
+        }
+
+
+        public CreateRequest shippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnit shippingFrequencyPeriodUnit) {
+            params.addOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+            return this;
+        }
+
+
         public CreateRequest status(Addon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -466,6 +504,24 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest accountingCategory2(String accountingCategory2) {
             params.addOpt("accounting_category2", accountingCategory2);
+            return this;
+        }
+
+
+        public UpdateRequest isShippable(Boolean isShippable) {
+            params.addOpt("is_shippable", isShippable);
+            return this;
+        }
+
+
+        public UpdateRequest shippingFrequencyPeriod(Integer shippingFrequencyPeriod) {
+            params.addOpt("shipping_frequency_period", shippingFrequencyPeriod);
+            return this;
+        }
+
+
+        public UpdateRequest shippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnit shippingFrequencyPeriodUnit) {
+            params.addOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
             return this;
         }
 

@@ -340,7 +340,13 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LinkedOrder extends Resource<LinkedOrder> {
         public enum Status {
-             NEW,PROCESSING,COMPLETE,CANCELLED,VOIDED,
+             NEW,PROCESSING,COMPLETE,CANCELLED,VOIDED,QUEUED,AWAITING_SHIPMENT,ON_HOLD,DELIVERED,SHIPPED,PARTIALLY_DELIVERED,RETURNED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum OrderType {
+             MANUAL,SYSTEM_GENERATED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -353,8 +359,16 @@ public class Invoice extends Resource<Invoice> {
             return reqString("id");
         }
 
+        public String documentNumber() {
+            return optString("document_number");
+        }
+
         public Status status() {
             return optEnum("status", Status.class);
+        }
+
+        public OrderType orderType() {
+            return optEnum("order_type", OrderType.class);
         }
 
         public String referenceId() {
