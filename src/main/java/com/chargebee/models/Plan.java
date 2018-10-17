@@ -28,9 +28,13 @@ public class Plan extends Resource<Plan> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    @Deprecated
     public enum ChargeModel {
         FLAT_FEE,
         PER_UNIT,
+        TIERED,
+        VOLUME,
+        STAIRSTEP,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -56,6 +60,25 @@ public class Plan extends Resource<Plan> {
         WEEK,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class Tier extends Resource<Tier> {
+        public Tier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer price() {
+            return reqInteger("price");
+        }
+
     }
 
     public static class ApplicableAddon extends Resource<ApplicableAddon> {
@@ -181,6 +204,11 @@ public class Plan extends Resource<Plan> {
         return optEnum("trial_period_unit", TrialPeriodUnit.class);
     }
 
+    public PricingModel pricingModel() {
+        return reqEnum("pricing_model", PricingModel.class);
+    }
+
+    @Deprecated
     public ChargeModel chargeModel() {
         return reqEnum("charge_model", ChargeModel.class);
     }
@@ -280,6 +308,10 @@ public class Plan extends Resource<Plan> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public List<Plan.Tier> tiers() {
+        return optList("tiers", Plan.Tier.class);
     }
 
     public List<Plan.ApplicableAddon> applicableAddons() {
@@ -414,7 +446,14 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public CreateRequest chargeModel(Plan.ChargeModel chargeModel) {
+        public CreateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
+            params.addOpt("pricing_model", pricingModel);
+            return this;
+        }
+
+
+        @Deprecated
+        public CreateRequest chargeModel(ChargeModel chargeModel) {
             params.addOpt("charge_model", chargeModel);
             return this;
         }
@@ -535,6 +574,18 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
+            params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+            return this;
+        }
+        public CreateRequest tierEndingUnit(int index, Integer tierEndingUnit) {
+            params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+            return this;
+        }
+        public CreateRequest tierPrice(int index, Integer tierPrice) {
+            params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
         public CreateRequest applicableAddonId(int index, String applicableAddonId) {
             params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
             return this;
@@ -649,7 +700,14 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public UpdateRequest chargeModel(Plan.ChargeModel chargeModel) {
+        public UpdateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
+            params.addOpt("pricing_model", pricingModel);
+            return this;
+        }
+
+
+        @Deprecated
+        public UpdateRequest chargeModel(ChargeModel chargeModel) {
             params.addOpt("charge_model", chargeModel);
             return this;
         }
@@ -763,6 +821,19 @@ public class Plan extends Resource<Plan> {
             return this;
         }
 
+
+        public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
+            params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+            return this;
+        }
+        public UpdateRequest tierEndingUnit(int index, Integer tierEndingUnit) {
+            params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+            return this;
+        }
+        public UpdateRequest tierPrice(int index, Integer tierPrice) {
+            params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
         public UpdateRequest applicableAddonId(int index, String applicableAddonId) {
             params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
             return this;
@@ -851,11 +922,15 @@ public class Plan extends Resource<Plan> {
         }
 
 
-        public EnumFilter<Plan.ChargeModel, PlanListRequest> chargeModel() {
-            return new EnumFilter<Plan.ChargeModel, PlanListRequest>("charge_model",this);        
+        @Deprecated
+        public EnumFilter<ChargeModel, PlanListRequest> chargeModel() {
+            return new EnumFilter<ChargeModel, PlanListRequest>("charge_model",this);        
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.PricingModel, PlanListRequest> pricingModel() {
+            return new EnumFilter<com.chargebee.models.enums.PricingModel, PlanListRequest>("pricing_model",this);        
+        }
 
 
         public EnumFilter<Plan.Status, PlanListRequest> status() {

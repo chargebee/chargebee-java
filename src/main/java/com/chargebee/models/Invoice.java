@@ -68,6 +68,14 @@ public class Invoice extends Resource<Invoice> {
             return optInteger("quantity");
         }
 
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
+        public PricingModel pricingModel() {
+            return optEnum("pricing_model", PricingModel.class);
+        }
+
         public Boolean isTaxed() {
             return reqBoolean("is_taxed");
         }
@@ -78,10 +86,6 @@ public class Invoice extends Resource<Invoice> {
 
         public Double taxRate() {
             return optDouble("tax_rate");
-        }
-
-        public Integer amount() {
-            return reqInteger("amount");
         }
 
         public Integer discountAmount() {
@@ -218,6 +222,33 @@ public class Invoice extends Resource<Invoice> {
 
         public String taxJurisCode() {
             return optString("tax_juris_code");
+        }
+
+    }
+
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public LineItemTier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
         }
 
     }
@@ -698,6 +729,10 @@ public class Invoice extends Resource<Invoice> {
         return optList("line_item_taxes", Invoice.LineItemTax.class);
     }
 
+    public List<Invoice.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", Invoice.LineItemTier.class);
+    }
+
     public List<Invoice.LinkedPayment> linkedPayments() {
         return optList("linked_payments", Invoice.LinkedPayment.class);
     }
@@ -978,27 +1013,22 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
         }
-
         public CreateRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-
         public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
-
         public CreateRequest chargeDescription(int index, String chargeDescription) {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -1361,141 +1391,138 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public ImportInvoiceRequest lineItemId(int index, String lineItemId) {
+            params.addOpt("line_items[id][" + index + "]", lineItemId);
+            return this;
+        }
         public ImportInvoiceRequest lineItemDateFrom(int index, Timestamp lineItemDateFrom) {
             params.addOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
             return this;
         }
-
         public ImportInvoiceRequest lineItemDateTo(int index, Timestamp lineItemDateTo) {
             params.addOpt("line_items[date_to][" + index + "]", lineItemDateTo);
             return this;
         }
-
         public ImportInvoiceRequest lineItemDescription(int index, String lineItemDescription) {
             params.add("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
-
         public ImportInvoiceRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
             params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemQuantity(int index, Integer lineItemQuantity) {
             params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
             return this;
         }
-
         public ImportInvoiceRequest lineItemAmount(int index, Integer lineItemAmount) {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
             params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
             return this;
         }
-
         public ImportInvoiceRequest lineItemEntityId(int index, String lineItemEntityId) {
             params.addOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
             return this;
         }
-
         public ImportInvoiceRequest lineItemItemLevelDiscount1EntityId(int index, String lineItemItemLevelDiscount1EntityId) {
             params.addOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
             return this;
         }
-
         public ImportInvoiceRequest lineItemItemLevelDiscount1Amount(int index, Integer lineItemItemLevelDiscount1Amount) {
             params.addOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemItemLevelDiscount2EntityId(int index, String lineItemItemLevelDiscount2EntityId) {
             params.addOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
             return this;
         }
-
         public ImportInvoiceRequest lineItemItemLevelDiscount2Amount(int index, Integer lineItemItemLevelDiscount2Amount) {
             params.addOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax1Name(int index, String lineItemTax1Name) {
             params.addOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax1Amount(int index, Integer lineItemTax1Amount) {
             params.addOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax2Name(int index, String lineItemTax2Name) {
             params.addOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax2Amount(int index, Integer lineItemTax2Amount) {
             params.addOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax3Name(int index, String lineItemTax3Name) {
             params.addOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax3Amount(int index, Integer lineItemTax3Amount) {
             params.addOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax4Name(int index, String lineItemTax4Name) {
             params.addOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
             return this;
         }
-
         public ImportInvoiceRequest lineItemTax4Amount(int index, Integer lineItemTax4Amount) {
             params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
             return this;
         }
-
+        public ImportInvoiceRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {
+            params.add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierStartingUnit(int index, Integer lineItemTierStartingUnit) {
+            params.add("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierEndingUnit(int index, Integer lineItemTierEndingUnit) {
+            params.add("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierQuantityUsed(int index, Integer lineItemTierQuantityUsed) {
+            params.add("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierUnitAmount(int index, Integer lineItemTierUnitAmount) {
+            params.add("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+            return this;
+        }
         public ImportInvoiceRequest discountEntityType(int index, Discount.EntityType discountEntityType) {
             params.add("discounts[entity_type][" + index + "]", discountEntityType);
             return this;
         }
-
         public ImportInvoiceRequest discountEntityId(int index, String discountEntityId) {
             params.addOpt("discounts[entity_id][" + index + "]", discountEntityId);
             return this;
         }
-
         public ImportInvoiceRequest discountDescription(int index, String discountDescription) {
             params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
-
         public ImportInvoiceRequest discountAmount(int index, Integer discountAmount) {
             params.add("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
-
         public ImportInvoiceRequest taxName(int index, String taxName) {
             params.add("taxes[name][" + index + "]", taxName);
             return this;
         }
-
         public ImportInvoiceRequest taxRate(int index, Double taxRate) {
             params.add("taxes[rate][" + index + "]", taxRate);
             return this;
         }
-
         public ImportInvoiceRequest taxAmount(int index, Integer taxAmount) {
             params.addOpt("taxes[amount][" + index + "]", taxAmount);
             return this;
         }
-
         public ImportInvoiceRequest taxDescription(int index, String taxDescription) {
             params.addOpt("taxes[description][" + index + "]", taxDescription);
             return this;
@@ -1505,52 +1532,42 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("taxes[juris_type][" + index + "]", taxJurisType);
             return this;
         }
-
         public ImportInvoiceRequest taxJurisName(int index, String taxJurisName) {
             params.addOpt("taxes[juris_name][" + index + "]", taxJurisName);
             return this;
         }
-
         public ImportInvoiceRequest taxJurisCode(int index, String taxJurisCode) {
             params.addOpt("taxes[juris_code][" + index + "]", taxJurisCode);
             return this;
         }
-
         public ImportInvoiceRequest paymentAmount(int index, Integer paymentAmount) {
             params.add("payments[amount][" + index + "]", paymentAmount);
             return this;
         }
-
         public ImportInvoiceRequest paymentPaymentMethod(int index, com.chargebee.models.enums.PaymentMethod paymentPaymentMethod) {
             params.add("payments[payment_method][" + index + "]", paymentPaymentMethod);
             return this;
         }
-
         public ImportInvoiceRequest paymentDate(int index, Timestamp paymentDate) {
             params.addOpt("payments[date][" + index + "]", paymentDate);
             return this;
         }
-
         public ImportInvoiceRequest paymentReferenceNumber(int index, String paymentReferenceNumber) {
             params.addOpt("payments[reference_number][" + index + "]", paymentReferenceNumber);
             return this;
         }
-
         public ImportInvoiceRequest noteEntityType(int index, Note.EntityType noteEntityType) {
             params.addOpt("notes[entity_type][" + index + "]", noteEntityType);
             return this;
         }
-
         public ImportInvoiceRequest noteEntityId(int index, String noteEntityId) {
             params.addOpt("notes[entity_id][" + index + "]", noteEntityId);
             return this;
         }
-
         public ImportInvoiceRequest noteNote(int index, String noteNote) {
             params.addOpt("notes[note][" + index + "]", noteNote);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -1567,7 +1584,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("transactions[id][" + index + "]", transactionId);
             return this;
         }
-
         @Override
         public Params params() {
             return params;
@@ -1584,7 +1600,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("credit_notes[id][" + index + "]", creditNoteId);
             return this;
         }
-
         @Override
         public Params params() {
             return params;

@@ -22,6 +22,29 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class Tier extends Resource<Tier> {
+        public Tier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -60,6 +83,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optInteger("unit_amount");
     }
 
+    public PricingModel pricingModel() {
+        return optEnum("pricing_model", PricingModel.class);
+    }
+
     public Integer quantity() {
         return optInteger("quantity");
     }
@@ -94,6 +121,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
+    }
+
+    public List<UnbilledCharge.Tier> tiers() {
+        return optList("tiers", UnbilledCharge.Tier.class);
     }
 
     public Boolean deleted() {

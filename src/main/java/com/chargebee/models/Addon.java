@@ -13,9 +13,13 @@ import java.util.*;
 
 public class Addon extends Resource<Addon> {
 
+    @Deprecated
     public enum Type {
         ON_OFF,
         QUANTITY,
+        TIERED,
+        VOLUME,
+        STAIRSTEP,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -52,6 +56,25 @@ public class Addon extends Resource<Addon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class Tier extends Resource<Tier> {
+        public Tier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer price() {
+            return reqInteger("price");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -82,6 +105,11 @@ public class Addon extends Resource<Addon> {
         return optString("description");
     }
 
+    public PricingModel pricingModel() {
+        return reqEnum("pricing_model", PricingModel.class);
+    }
+
+    @Deprecated
     public Type type() {
         return reqEnum("type", Type.class);
     }
@@ -91,7 +119,7 @@ public class Addon extends Resource<Addon> {
     }
 
     public Integer price() {
-        return reqInteger("price");
+        return optInteger("price");
     }
 
     public String currencyCode() {
@@ -176,6 +204,10 @@ public class Addon extends Resource<Addon> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public List<Addon.Tier> tiers() {
+        return optList("tiers", Addon.Tier.class);
     }
 
     // Operations
@@ -280,8 +312,15 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public CreateRequest type(Addon.Type type) {
-            params.add("type", type);
+        public CreateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
+            params.addOpt("pricing_model", pricingModel);
+            return this;
+        }
+
+
+        @Deprecated
+        public CreateRequest type(Type type) {
+            params.addOpt("type", type);
             return this;
         }
 
@@ -376,6 +415,18 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
+            params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+            return this;
+        }
+        public CreateRequest tierEndingUnit(int index, Integer tierEndingUnit) {
+            params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+            return this;
+        }
+        public CreateRequest tierPrice(int index, Integer tierPrice) {
+            params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -436,7 +487,14 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public UpdateRequest type(Addon.Type type) {
+        public UpdateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
+            params.addOpt("pricing_model", pricingModel);
+            return this;
+        }
+
+
+        @Deprecated
+        public UpdateRequest type(Type type) {
             params.addOpt("type", type);
             return this;
         }
@@ -528,6 +586,18 @@ public class Addon extends Resource<Addon> {
 
 
 
+        public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
+            params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+            return this;
+        }
+        public UpdateRequest tierEndingUnit(int index, Integer tierEndingUnit) {
+            params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+            return this;
+        }
+        public UpdateRequest tierPrice(int index, Integer tierPrice) {
+            params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -550,8 +620,14 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public EnumFilter<Addon.Type, AddonListRequest> type() {
-            return new EnumFilter<Addon.Type, AddonListRequest>("type",this);        
+        public EnumFilter<com.chargebee.models.enums.PricingModel, AddonListRequest> pricingModel() {
+            return new EnumFilter<com.chargebee.models.enums.PricingModel, AddonListRequest>("pricing_model",this);        
+        }
+
+
+        @Deprecated
+        public EnumFilter<Type, AddonListRequest> type() {
+            return new EnumFilter<Type, AddonListRequest>("type",this);        
         }
 
 

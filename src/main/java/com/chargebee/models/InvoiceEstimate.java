@@ -48,6 +48,14 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return optInteger("quantity");
         }
 
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
+        public PricingModel pricingModel() {
+            return optEnum("pricing_model", PricingModel.class);
+        }
+
         public Boolean isTaxed() {
             return reqBoolean("is_taxed");
         }
@@ -58,10 +66,6 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
         public Double taxRate() {
             return optDouble("tax_rate");
-        }
-
-        public Integer amount() {
-            return reqInteger("amount");
         }
 
         public Integer discountAmount() {
@@ -173,6 +177,33 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
     }
 
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public LineItemTier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
+        }
+
+    }
+
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
              ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,
@@ -262,6 +293,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
     public List<InvoiceEstimate.LineItemTax> lineItemTaxes() {
         return optList("line_item_taxes", InvoiceEstimate.LineItemTax.class);
+    }
+
+    public List<InvoiceEstimate.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", InvoiceEstimate.LineItemTier.class);
     }
 
     public List<InvoiceEstimate.LineItemDiscount> lineItemDiscounts() {

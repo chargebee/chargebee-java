@@ -62,6 +62,10 @@ public class Subscription extends Resource<Subscription> {
             return optInteger("unit_price");
         }
 
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
         public Timestamp trialEnd() {
             return optTimestamp("trial_end");
         }
@@ -315,6 +319,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Integer setupFee() {
         return optInteger("setup_fee");
+    }
+
+    public Integer planAmount() {
+        return optInteger("plan_amount");
     }
 
     public Integer billingPeriod() {

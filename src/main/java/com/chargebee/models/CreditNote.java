@@ -81,6 +81,14 @@ public class CreditNote extends Resource<CreditNote> {
             return optInteger("quantity");
         }
 
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
+        public PricingModel pricingModel() {
+            return optEnum("pricing_model", PricingModel.class);
+        }
+
         public Boolean isTaxed() {
             return reqBoolean("is_taxed");
         }
@@ -91,10 +99,6 @@ public class CreditNote extends Resource<CreditNote> {
 
         public Double taxRate() {
             return optDouble("tax_rate");
-        }
-
-        public Integer amount() {
-            return reqInteger("amount");
         }
 
         public Integer discountAmount() {
@@ -177,6 +181,33 @@ public class CreditNote extends Resource<CreditNote> {
 
         public Integer discountAmount() {
             return reqInteger("discount_amount");
+        }
+
+    }
+
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public LineItemTier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
         }
 
     }
@@ -403,6 +434,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optList("line_item_discounts", CreditNote.LineItemDiscount.class);
     }
 
+    public List<CreditNote.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", CreditNote.LineItemTier.class);
+    }
+
     public List<CreditNote.Tax> taxes() {
         return optList("taxes", CreditNote.Tax.class);
     }
@@ -517,22 +552,22 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
             return this;
         }
-
         public CreateRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
-            params.add("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+            params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
-
         public CreateRequest lineItemQuantity(int index, Integer lineItemQuantity) {
-            params.add("line_items[quantity][" + index + "]", lineItemQuantity);
+            params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
             return this;
         }
-
+        public CreateRequest lineItemAmount(int index, Integer lineItemAmount) {
+            params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
+            return this;
+        }
         public CreateRequest lineItemDescription(int index, String lineItemDescription) {
             params.addOpt("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
-
         @Override
         public Params params() {
             return params;

@@ -55,6 +55,14 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optInteger("quantity");
         }
 
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
+        public PricingModel pricingModel() {
+            return optEnum("pricing_model", PricingModel.class);
+        }
+
         public Boolean isTaxed() {
             return reqBoolean("is_taxed");
         }
@@ -65,10 +73,6 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
         public Double taxRate() {
             return optDouble("tax_rate");
-        }
-
-        public Integer amount() {
-            return reqInteger("amount");
         }
 
         public Integer discountAmount() {
@@ -209,6 +213,33 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     }
 
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public LineItemTier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Integer unitAmount() {
+            return reqInteger("unit_amount");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -273,6 +304,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     public List<CreditNoteEstimate.LineItemDiscount> lineItemDiscounts() {
         return optList("line_item_discounts", CreditNoteEstimate.LineItemDiscount.class);
+    }
+
+    public List<CreditNoteEstimate.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", CreditNoteEstimate.LineItemTier.class);
     }
 
     public Integer roundOffAmount() {
