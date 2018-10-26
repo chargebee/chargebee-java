@@ -21,7 +21,6 @@ public class HostedPage extends Resource<HostedPage> {
         UPDATE_PAYMENT_METHOD,
         MANAGE_PAYMENT_SOURCES,
         COLLECT_NOW,
-        @Deprecated
         EXTEND_SUBSCRIPTION,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */

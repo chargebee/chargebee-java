@@ -994,6 +994,10 @@ public Export waitForExportCompletion()
             return new NumberFilter<Integer, TransactionsRequest>("transaction[amount]",this);        
         }
 
+        public NumberFilter<Integer, TransactionsRequest> transactionAmountCapturable() {
+            return new NumberFilter<Integer, TransactionsRequest>("transaction[amount_capturable]",this);        
+        }
+
         public EnumFilter<Transaction.Status, TransactionsRequest> transactionStatus() {
             return new EnumFilter<Transaction.Status, TransactionsRequest>("transaction[status]",this);        
         }

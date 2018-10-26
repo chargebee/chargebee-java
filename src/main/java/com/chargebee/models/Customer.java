@@ -1760,12 +1760,10 @@ public class Customer extends Resource<Customer> {
             params.addOpt("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
             return this;
         }
-
         public CollectPaymentRequest invoiceAllocationAllocationAmount(int index, Integer invoiceAllocationAllocationAmount) {
             params.addOpt("invoice_allocations[allocation_amount][" + index + "]", invoiceAllocationAllocationAmount);
             return this;
         }
-
         @Override
         public Params params() {
             return params;

@@ -62,6 +62,8 @@ public enum EventType {
     PAYMENT_INITIATED,
     REFUND_INITIATED,
     NETD_PAYMENT_DUE_REMINDER,
+    AUTHORIZATION_SUCCEEDED,
+    AUTHORIZATION_VOIDED,
     CARD_ADDED,
     CARD_UPDATED,
     CARD_EXPIRY_REMINDER,
@@ -82,6 +84,8 @@ public enum EventType {
     ORDER_CANCELLED,
     ORDER_DELIVERED,
     ORDER_RETURNED,
+    ORDER_READY_TO_PROCESS,
+    ORDER_READY_TO_SHIP,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

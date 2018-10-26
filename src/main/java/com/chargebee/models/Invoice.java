@@ -933,8 +933,20 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest authorizationTransactionId(String authorizationTransactionId) {
+            params.addOpt("authorization_transaction_id", authorizationTransactionId);
+            return this;
+        }
+
+
         public CreateRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
             return this;
         }
 
@@ -1823,6 +1835,12 @@ public class Invoice extends Resource<Invoice> {
     
         public CollectPaymentRequest amount(Integer amount) {
             params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public CollectPaymentRequest authorizationTransactionId(String authorizationTransactionId) {
+            params.addOpt("authorization_transaction_id", authorizationTransactionId);
             return this;
         }
 

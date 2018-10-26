@@ -41,6 +41,13 @@ public class Transaction extends Resource<Transaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum AuthorizationReason {
+        BLOCKING_FUNDS,
+        VERIFICATION,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class LinkedInvoice extends Resource<LinkedInvoice> {
         public LinkedInvoice(JSONObject jsonObj) {
             super(jsonObj);
@@ -134,6 +141,35 @@ public class Transaction extends Resource<Transaction> {
 
     }
 
+    public static class LinkedPayment extends Resource<LinkedPayment> {
+        public enum Status {
+             IN_PROGRESS,SUCCESS,VOIDED,FAILURE,TIMEOUT,NEEDS_ATTENTION,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public LinkedPayment(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public Integer amount() {
+            return reqInteger("amount");
+        }
+
+        public Timestamp date() {
+            return reqTimestamp("date");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -212,6 +248,10 @@ public class Transaction extends Resource<Transaction> {
         return optEnum("fraud_flag", FraudFlag.class);
     }
 
+    public AuthorizationReason authorizationReason() {
+        return optEnum("authorization_reason", AuthorizationReason.class);
+    }
+
     public String errorCode() {
         return optString("error_code");
     }
@@ -252,6 +292,14 @@ public class Transaction extends Resource<Transaction> {
         return optString("refunded_txn_id");
     }
 
+    public String referenceAuthorizationId() {
+        return optString("reference_authorization_id");
+    }
+
+    public Integer amountCapturable() {
+        return optInteger("amount_capturable");
+    }
+
     public String reversalTransactionId() {
         return optString("reversal_transaction_id");
     }
@@ -268,12 +316,26 @@ public class Transaction extends Resource<Transaction> {
         return optList("linked_refunds", Transaction.LinkedRefund.class);
     }
 
+    public List<Transaction.LinkedPayment> linkedPayments() {
+        return optList("linked_payments", Transaction.LinkedPayment.class);
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
 
     // Operations
     //===========
+
+    public static CreateAuthorizationRequest createAuthorization() throws IOException {
+        String uri = uri("transactions", "create_authorization");
+        return new CreateAuthorizationRequest(Method.POST, uri);
+    }
+
+    public static Request voidTransaction(String id) throws IOException {
+        String uri = uri("transactions", nullCheck(id), "void");
+        return new Request(Method.POST, uri);
+    }
 
     public static TransactionListRequest list() throws IOException {
         String uri = uri("transactions");
@@ -305,6 +367,42 @@ public class Transaction extends Resource<Transaction> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateAuthorizationRequest extends Request<CreateAuthorizationRequest> {
+
+        private CreateAuthorizationRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateAuthorizationRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateAuthorizationRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateAuthorizationRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateAuthorizationRequest amount(Integer amount) {
+            params.add("amount", amount);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class TransactionListRequest extends ListRequest<TransactionListRequest> {
 
@@ -375,6 +473,11 @@ public class Transaction extends Resource<Transaction> {
 
         public NumberFilter<Integer, TransactionListRequest> amount() {
             return new NumberFilter<Integer, TransactionListRequest>("amount",this);        
+        }
+
+
+        public NumberFilter<Integer, TransactionListRequest> amountCapturable() {
+            return new NumberFilter<Integer, TransactionListRequest>("amount_capturable",this);        
         }
 
 
