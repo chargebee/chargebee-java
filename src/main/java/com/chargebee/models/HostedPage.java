@@ -22,6 +22,8 @@ public class HostedPage extends Resource<HostedPage> {
         MANAGE_PAYMENT_SOURCES,
         COLLECT_NOW,
         EXTEND_SUBSCRIPTION,
+        CHECKOUT_GIFT,
+        CLAIM_GIFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -146,6 +148,16 @@ public class HostedPage extends Resource<HostedPage> {
     public static ExtendSubscriptionRequest extendSubscription() throws IOException {
         String uri = uri("hosted_pages", "extend_subscription");
         return new ExtendSubscriptionRequest(Method.POST, uri);
+    }
+
+    public static CheckoutGiftRequest checkoutGift() throws IOException {
+        String uri = uri("hosted_pages", "checkout_gift");
+        return new CheckoutGiftRequest(Method.POST, uri);
+    }
+
+    public static ClaimGiftRequest claimGift() throws IOException {
+        String uri = uri("hosted_pages", "claim_gift");
+        return new ClaimGiftRequest(Method.POST, uri);
     }
 
     public static RetrieveAgreementPdfRequest retrieveAgreementPdf() throws IOException {
@@ -887,6 +899,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public ManagePaymentSourcesRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
         public ManagePaymentSourcesRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
             return this;
@@ -915,6 +933,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CollectNowRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
         public CollectNowRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
             return this;
@@ -963,6 +987,85 @@ public class HostedPage extends Resource<HostedPage> {
 
         public ExtendSubscriptionRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CheckoutGiftRequest extends Request<CheckoutGiftRequest> {
+
+        private CheckoutGiftRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CheckoutGiftRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutGiftRequest gifterCustomerId(String gifterCustomerId) {
+            params.addOpt("gifter[customer_id]", gifterCustomerId);
+            return this;
+        }
+
+        public CheckoutGiftRequest gifterLocale(String gifterLocale) {
+            params.addOpt("gifter[locale]", gifterLocale);
+            return this;
+        }
+
+        public CheckoutGiftRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public CheckoutGiftRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CheckoutGiftRequest subscriptionCoupon(String subscriptionCoupon) {
+            params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public CheckoutGiftRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public CheckoutGiftRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ClaimGiftRequest extends Request<ClaimGiftRequest> {
+
+        private ClaimGiftRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ClaimGiftRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public ClaimGiftRequest giftId(String giftId) {
+            params.add("gift[id]", giftId);
+            return this;
+        }
+
+        public ClaimGiftRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
             return this;
         }
 

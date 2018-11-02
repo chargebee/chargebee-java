@@ -64,6 +64,10 @@ public class ResultBase {
         return (Order)get("order");
     }
 
+    public Gift gift() {
+        return (Gift)get("gift");
+    }
+
     public Transaction transaction() {
         return (Transaction)get("transaction");
     }

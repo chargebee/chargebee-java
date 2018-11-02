@@ -294,6 +294,14 @@ public class Plan extends Resource<Plan> {
         return optTimestamp("updated_at");
     }
 
+    public Boolean giftable() {
+        return reqBoolean("giftable");
+    }
+
+    public String claimUrl() {
+        return optString("claim_url");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -568,8 +576,20 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest giftable(Boolean giftable) {
+            params.addOpt("giftable", giftable);
+            return this;
+        }
+
+
         public CreateRequest status(Plan.Status status) {
             params.addOpt("status", status);
+            return this;
+        }
+
+
+        public CreateRequest claimUrl(String claimUrl) {
+            params.addOpt("claim_url", claimUrl);
             return this;
         }
 
@@ -919,6 +939,11 @@ public class Plan extends Resource<Plan> {
 
         public EnumFilter<Plan.AddonApplicability, PlanListRequest> addonApplicability() {
             return new EnumFilter<Plan.AddonApplicability, PlanListRequest>("addon_applicability",this);        
+        }
+
+
+        public BooleanFilter<PlanListRequest> giftable() {
+            return new BooleanFilter<PlanListRequest>("giftable",this);        
         }
 
 

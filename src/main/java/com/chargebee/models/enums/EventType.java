@@ -86,6 +86,11 @@ public enum EventType {
     ORDER_RETURNED,
     ORDER_READY_TO_PROCESS,
     ORDER_READY_TO_SHIP,
+    GIFT_SCHEDULED,
+    GIFT_UNCLAIMED,
+    GIFT_CLAIMED,
+    GIFT_EXPIRED,
+    GIFT_CANCELLED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

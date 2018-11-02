@@ -64,7 +64,7 @@ public class Order extends Resource<Order> {
 
     public static class OrderLineItem extends Resource<OrderLineItem> {
         public enum Status {
-             QUEUED,AWAITING_SHIPMENT,ON_HOLD,DELIVERED,SHIPPED,PARTIALLY_DELIVERED,RETURNED,
+             QUEUED,AWAITING_SHIPMENT,ON_HOLD,DELIVERED,SHIPPED,PARTIALLY_DELIVERED,RETURNED,CANCELLED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -133,6 +133,10 @@ public class Order extends Resource<Order> {
 
         public Boolean isShippable() {
             return reqBoolean("is_shippable");
+        }
+
+        public String sku() {
+            return optString("sku");
         }
 
         public Status status() {
@@ -588,6 +592,18 @@ public class Order extends Resource<Order> {
         return optString("currency_code");
     }
 
+    public Boolean isGifted() {
+        return optBoolean("is_gifted");
+    }
+
+    public String giftNote() {
+        return optString("gift_note");
+    }
+
+    public String giftId() {
+        return optString("gift_id");
+    }
+
     // Operations
     //===========
 
@@ -861,6 +877,10 @@ public class Order extends Resource<Order> {
         }
         public UpdateRequest orderLineItemStatus(int index, OrderLineItem.Status orderLineItemStatus) {
             params.addOpt("order_line_items[status][" + index + "]", orderLineItemStatus);
+            return this;
+        }
+        public UpdateRequest orderLineItemSku(int index, String orderLineItemSku) {
+            params.addOpt("order_line_items[sku][" + index + "]", orderLineItemSku);
             return this;
         }
         @Override

@@ -163,6 +163,8 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+
+
         public CreateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;
@@ -420,6 +422,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
+
+
 
         public CreateSubForCustomerEstimateRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);

@@ -385,6 +385,10 @@ public class Subscription extends Resource<Subscription> {
         return optTimestamp("activated_at");
     }
 
+    public String giftId() {
+        return optString("gift_id");
+    }
+
     public Timestamp pauseDate() {
         return optTimestamp("pause_date");
     }

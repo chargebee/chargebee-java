@@ -697,6 +697,14 @@ public class Invoice extends Resource<Invoice> {
         return optBoolean("has_advance_charges");
     }
 
+    public Boolean termFinalized() {
+        return reqBoolean("term_finalized");
+    }
+
+    public Boolean isGifted() {
+        return reqBoolean("is_gifted");
+    }
+
     public Timestamp expectedPaymentDate() {
         return optTimestamp("expected_payment_date");
     }

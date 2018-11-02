@@ -582,6 +582,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<Plan.AddonApplicability, PlansRequest>("plan[addon_applicability]",this);        
         }
 
+        public BooleanFilter<PlansRequest> planGiftable() {
+            return new BooleanFilter<PlansRequest>("plan[giftable]",this);        
+        }
+
         public EnumFilter<Plan.Status, PlansRequest> planStatus() {
             return new EnumFilter<Plan.Status, PlansRequest>("plan[status]",this);        
         }
