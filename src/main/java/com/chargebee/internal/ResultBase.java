@@ -80,6 +80,10 @@ public class ResultBase {
         return (Estimate)get("estimate");
     }
 
+    public Quote quote() {
+        return (Quote)get("quote");
+    }
+
     public Plan plan() {
         return (Plan)get("plan");
     }
