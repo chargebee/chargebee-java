@@ -986,6 +986,11 @@ public class Order extends Resource<Order> {
         }
 
 
+        public StringFilter<OrderListRequest> subscriptionId() {
+            return new StringFilter<OrderListRequest>("subscription_id",this);        
+        }
+
+
         public EnumFilter<Order.Status, OrderListRequest> status() {
             return new EnumFilter<Order.Status, OrderListRequest>("status",this);        
         }
@@ -993,6 +998,11 @@ public class Order extends Resource<Order> {
 
         public TimestampFilter<OrderListRequest> shippingDate() {
             return new TimestampFilter<OrderListRequest>("shipping_date",this);        
+        }
+
+
+        public EnumFilter<Order.OrderType, OrderListRequest> orderType() {
+            return new EnumFilter<Order.OrderType, OrderListRequest>("order_type",this);        
         }
 
 
