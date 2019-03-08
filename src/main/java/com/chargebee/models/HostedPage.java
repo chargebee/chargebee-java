@@ -145,6 +145,11 @@ public class HostedPage extends Resource<HostedPage> {
         return new CollectNowRequest(Method.POST, uri);
     }
 
+    public static AcceptQuoteRequest acceptQuote() throws IOException {
+        String uri = uri("hosted_pages", "accept_quote");
+        return new AcceptQuoteRequest(Method.POST, uri);
+    }
+
     public static ExtendSubscriptionRequest extendSubscription() throws IOException {
         String uri = uri("hosted_pages", "extend_subscription");
         return new ExtendSubscriptionRequest(Method.POST, uri);
@@ -958,6 +963,23 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CollectNowRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AcceptQuoteRequest extends Request<AcceptQuoteRequest> {
+
+        private AcceptQuoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AcceptQuoteRequest quoteId(String quoteId) {
+            params.add("quote[id]", quoteId);
             return this;
         }
 

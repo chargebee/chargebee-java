@@ -138,6 +138,18 @@ public class Card extends Resource<Card> {
         return optString("billing_zip");
     }
 
+    public Timestamp createdAt() {
+        return reqTimestamp("created_at");
+    }
+
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public String ipAddress() {
         return optString("ip_address");
     }

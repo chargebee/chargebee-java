@@ -364,6 +364,10 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.GET, uri);
     }
 
+    public static DeleteOfflineTransactionRequest deleteOfflineTransaction(String id) throws IOException {
+        String uri = uri("transactions", nullCheck(id), "delete_offline_transaction");
+        return new DeleteOfflineTransactionRequest(Method.POST, uri);
+    }
 
     // Operation Request Classes
     //==========================
@@ -493,6 +497,28 @@ public class Transaction extends Resource<Transaction> {
 
         public TransactionListRequest sortByDate(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
+            return this;
+        }
+        public TransactionListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteOfflineTransactionRequest extends Request<DeleteOfflineTransactionRequest> {
+
+        private DeleteOfflineTransactionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteOfflineTransactionRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 

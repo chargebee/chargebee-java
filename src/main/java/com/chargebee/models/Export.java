@@ -139,6 +139,11 @@ public class Export extends Resource<Export> {
         return new TransactionsRequest(Method.POST, uri);
     }
 
+    public static OrdersRequest orders() throws IOException {
+        String uri = uri("exports", "orders");
+        return new OrdersRequest(Method.POST, uri);
+    }
+
 public Export waitForExportCompletion() 
             throws Exception {
         int count = 0;
@@ -1008,6 +1013,79 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<TransactionsRequest> transactionUpdatedAt() {
             return new TimestampFilter<TransactionsRequest>("transaction[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class OrdersRequest extends Request<OrdersRequest> {
+
+        private OrdersRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public NumberFilter<Integer, OrdersRequest> total() {
+            return new NumberFilter<Integer, OrdersRequest>("total",this);        
+        }
+
+
+        public StringFilter<OrdersRequest> orderId() {
+            return new StringFilter<OrdersRequest>("order[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<OrdersRequest> orderSubscriptionId() {
+            return new StringFilter<OrdersRequest>("order[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+        public StringFilter<OrdersRequest> orderCustomerId() {
+            return new StringFilter<OrdersRequest>("order[customer_id]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<Order.Status, OrdersRequest> orderStatus() {
+            return new EnumFilter<Order.Status, OrdersRequest>("order[status]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.PriceType, OrdersRequest> orderPriceType() {
+            return new EnumFilter<com.chargebee.models.enums.PriceType, OrdersRequest>("order[price_type]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderOrderDate() {
+            return new TimestampFilter<OrdersRequest>("order[order_date]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderShippingDate() {
+            return new TimestampFilter<OrdersRequest>("order[shipping_date]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderShippedAt() {
+            return new TimestampFilter<OrdersRequest>("order[shipped_at]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderDeliveredAt() {
+            return new TimestampFilter<OrdersRequest>("order[delivered_at]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderCancelledAt() {
+            return new TimestampFilter<OrdersRequest>("order[cancelled_at]",this);        
+        }
+
+        public NumberFilter<Integer, OrdersRequest> orderAmountPaid() {
+            return new NumberFilter<Integer, OrdersRequest>("order[amount_paid]",this);        
+        }
+
+        public NumberFilter<Integer, OrdersRequest> orderRefundableCredits() {
+            return new NumberFilter<Integer, OrdersRequest>("order[refundable_credits]",this);        
+        }
+
+        public NumberFilter<Integer, OrdersRequest> orderRefundableCreditsIssued() {
+            return new NumberFilter<Integer, OrdersRequest>("order[refundable_credits_issued]",this);        
+        }
+
+        public TimestampFilter<OrdersRequest> orderUpdatedAt() {
+            return new TimestampFilter<OrdersRequest>("order[updated_at]",this);        
         }
 
         @Override

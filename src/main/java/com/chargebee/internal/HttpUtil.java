@@ -178,6 +178,8 @@ public class HttpUtil {
         addHeader(conn, "User-Agent", String.format("Chargebee-Java-Client v%s", Environment.LIBRARY_VERSION));
         addHeader(conn, "Authorization", getAuthValue(config));
         addHeader(conn, "Accept", "application/json");
+        addHeader(conn, "OS-Version",String.format("%s  %s  %s",System.getProperty("os.name"),System.getProperty("os.arch"),System.getProperty("os.version")));
+        addHeader(conn,"Lang-Version",System.getProperty("java.version"));
     }
 
     private static void addCustomHeaders(HttpURLConnection conn, Map<String, String> headers) {

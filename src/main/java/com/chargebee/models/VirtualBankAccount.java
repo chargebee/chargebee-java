@@ -63,6 +63,18 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         return reqString("gateway_account_id");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
+    public Timestamp createdAt() {
+        return reqTimestamp("created_at");
+    }
+
     public String referenceId() {
         return reqString("reference_id");
     }
@@ -154,6 +166,16 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
     
         public StringFilter<VirtualBankAccountListRequest> customerId() {
             return new StringFilter<VirtualBankAccountListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public TimestampFilter<VirtualBankAccountListRequest> updatedAt() {
+            return new TimestampFilter<VirtualBankAccountListRequest>("updated_at",this);        
+        }
+
+
+        public TimestampFilter<VirtualBankAccountListRequest> createdAt() {
+            return new TimestampFilter<VirtualBankAccountListRequest>("created_at",this);        
         }
 
 

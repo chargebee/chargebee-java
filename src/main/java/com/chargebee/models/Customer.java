@@ -1053,6 +1053,10 @@ public class Customer extends Resource<Customer> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
+        public CustomerListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
 
 
         @Override

@@ -1567,6 +1567,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
         }
+        public SubscriptionListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
 
 
         @Override

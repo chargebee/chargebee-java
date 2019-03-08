@@ -207,6 +207,18 @@ public class PaymentSource extends Resource<PaymentSource> {
         return reqString("id");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
+    public Timestamp createdAt() {
+        return reqTimestamp("created_at");
+    }
+
     public String customerId() {
         return reqString("customer_id");
     }
@@ -726,6 +738,16 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public EnumFilter<PaymentSource.Status, PaymentSourceListRequest> status() {
             return new EnumFilter<PaymentSource.Status, PaymentSourceListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<PaymentSourceListRequest> updatedAt() {
+            return new TimestampFilter<PaymentSourceListRequest>("updated_at",this);        
+        }
+
+
+        public TimestampFilter<PaymentSourceListRequest> createdAt() {
+            return new TimestampFilter<PaymentSourceListRequest>("created_at",this);        
         }
 
 
