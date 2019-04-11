@@ -154,6 +154,18 @@ public class Addon extends Resource<Addon> {
         return optString("tax_code");
     }
 
+    public AvalaraSaleType avalaraSaleType() {
+        return optEnum("avalara_sale_type", AvalaraSaleType.class);
+    }
+
+    public Integer avalaraTransactionType() {
+        return optInteger("avalara_transaction_type");
+    }
+
+    public Integer avalaraServiceType() {
+        return optInteger("avalara_service_type");
+    }
+
     public String sku() {
         return optString("sku");
     }
@@ -349,6 +361,24 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest avalaraSaleType(com.chargebee.models.enums.AvalaraSaleType avalaraSaleType) {
+            params.addOpt("avalara_sale_type", avalaraSaleType);
+            return this;
+        }
+
+
+        public CreateRequest avalaraTransactionType(Integer avalaraTransactionType) {
+            params.addOpt("avalara_transaction_type", avalaraTransactionType);
+            return this;
+        }
+
+
+        public CreateRequest avalaraServiceType(Integer avalaraServiceType) {
+            params.addOpt("avalara_service_type", avalaraServiceType);
+            return this;
+        }
+
+
         public CreateRequest taxCode(String taxCode) {
             params.addOpt("tax_code", taxCode);
             return this;
@@ -520,6 +550,24 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest taxProfileId(String taxProfileId) {
             params.addOpt("tax_profile_id", taxProfileId);
+            return this;
+        }
+
+
+        public UpdateRequest avalaraSaleType(com.chargebee.models.enums.AvalaraSaleType avalaraSaleType) {
+            params.addOpt("avalara_sale_type", avalaraSaleType);
+            return this;
+        }
+
+
+        public UpdateRequest avalaraTransactionType(Integer avalaraTransactionType) {
+            params.addOpt("avalara_transaction_type", avalaraTransactionType);
+            return this;
+        }
+
+
+        public UpdateRequest avalaraServiceType(Integer avalaraServiceType) {
+            params.addOpt("avalara_service_type", avalaraServiceType);
             return this;
         }
 

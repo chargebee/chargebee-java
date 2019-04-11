@@ -352,6 +352,10 @@ public class Customer extends Resource<Customer> {
         return optString("created_from_ip");
     }
 
+    public JSONArray exemptionDetails() {
+        return optJSONArray("exemption_details");
+    }
+
     public Taxability taxability() {
         return optEnum("taxability", Taxability.class);
     }
@@ -471,6 +475,10 @@ public class Customer extends Resource<Customer> {
 
     public Boolean registeredForGst() {
         return optBoolean("registered_for_gst");
+    }
+
+    public CustomerType customerType() {
+        return optEnum("customer_type", CustomerType.class);
     }
 
     // Operations
@@ -668,6 +676,18 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest taxability(com.chargebee.models.enums.Taxability taxability) {
             params.addOpt("taxability", taxability);
+            return this;
+        }
+
+
+        public CreateRequest exemptionDetails(JSONArray exemptionDetails) {
+            params.addOpt("exemption_details", exemptionDetails);
+            return this;
+        }
+
+
+        public CreateRequest customerType(com.chargebee.models.enums.CustomerType customerType) {
+            params.addOpt("customer_type", customerType);
             return this;
         }
 
@@ -1127,6 +1147,18 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest taxability(com.chargebee.models.enums.Taxability taxability) {
             params.addOpt("taxability", taxability);
+            return this;
+        }
+
+
+        public UpdateRequest exemptionDetails(JSONArray exemptionDetails) {
+            params.addOpt("exemption_details", exemptionDetails);
+            return this;
+        }
+
+
+        public UpdateRequest customerType(com.chargebee.models.enums.CustomerType customerType) {
+            params.addOpt("customer_type", customerType);
             return this;
         }
 

@@ -369,6 +369,7 @@ public class Transaction extends Resource<Transaction> {
         return new DeleteOfflineTransactionRequest(Method.POST, uri);
     }
 
+
     // Operation Request Classes
     //==========================
 

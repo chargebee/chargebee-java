@@ -208,6 +208,18 @@ public class Invoice extends Resource<Invoice> {
             return reqDouble("tax_rate");
         }
 
+        public Boolean isPartialTaxApplied() {
+            return optBoolean("is_partial_tax_applied");
+        }
+
+        public Boolean isNonComplianceTax() {
+            return optBoolean("is_non_compliance_tax");
+        }
+
+        public Integer taxableAmount() {
+            return reqInteger("taxable_amount");
+        }
+
         public Integer taxAmount() {
             return reqInteger("tax_amount");
         }
@@ -1049,6 +1061,18 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
             return this;
         }
+        public CreateRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -1093,6 +1117,24 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public ChargeRequest avalaraSaleType(com.chargebee.models.enums.AvalaraSaleType avalaraSaleType) {
+            params.addOpt("avalara_sale_type", avalaraSaleType);
+            return this;
+        }
+
+
+        public ChargeRequest avalaraTransactionType(Integer avalaraTransactionType) {
+            params.addOpt("avalara_transaction_type", avalaraTransactionType);
+            return this;
+        }
+
+
+        public ChargeRequest avalaraServiceType(Integer avalaraServiceType) {
+            params.addOpt("avalara_service_type", avalaraServiceType);
             return this;
         }
 
@@ -1775,6 +1817,24 @@ public class Invoice extends Resource<Invoice> {
 
         public AddChargeRequest description(String description) {
             params.add("description", description);
+            return this;
+        }
+
+
+        public AddChargeRequest avalaraSaleType(com.chargebee.models.enums.AvalaraSaleType avalaraSaleType) {
+            params.addOpt("avalara_sale_type", avalaraSaleType);
+            return this;
+        }
+
+
+        public AddChargeRequest avalaraTransactionType(Integer avalaraTransactionType) {
+            params.addOpt("avalara_transaction_type", avalaraTransactionType);
+            return this;
+        }
+
+
+        public AddChargeRequest avalaraServiceType(Integer avalaraServiceType) {
+            params.addOpt("avalara_service_type", avalaraServiceType);
             return this;
         }
 

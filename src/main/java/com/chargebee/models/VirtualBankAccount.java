@@ -106,6 +106,11 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         return new VirtualBankAccountListRequest(uri);
     }
 
+    public static Request deleteLocal(String id) throws IOException {
+        String uri = uri("virtual_bank_accounts", nullCheck(id), "delete_local");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================

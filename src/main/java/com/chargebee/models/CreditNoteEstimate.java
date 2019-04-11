@@ -166,6 +166,18 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return reqDouble("tax_rate");
         }
 
+        public Boolean isPartialTaxApplied() {
+            return optBoolean("is_partial_tax_applied");
+        }
+
+        public Boolean isNonComplianceTax() {
+            return optBoolean("is_non_compliance_tax");
+        }
+
+        public Integer taxableAmount() {
+            return reqInteger("taxable_amount");
+        }
+
         public Integer taxAmount() {
             return reqInteger("tax_amount");
         }

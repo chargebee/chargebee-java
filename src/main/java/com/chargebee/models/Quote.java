@@ -206,6 +206,18 @@ public class Quote extends Resource<Quote> {
             return reqDouble("tax_rate");
         }
 
+        public Boolean isPartialTaxApplied() {
+            return optBoolean("is_partial_tax_applied");
+        }
+
+        public Boolean isNonComplianceTax() {
+            return optBoolean("is_non_compliance_tax");
+        }
+
+        public Integer taxableAmount() {
+            return reqInteger("taxable_amount");
+        }
+
         public Integer taxAmount() {
             return reqInteger("tax_amount");
         }
@@ -1167,6 +1179,18 @@ public class Quote extends Resource<Quote> {
         }
         public CreateForOnetimeChargesRequest chargeDescription(int index, String chargeDescription) {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
             return this;
         }
         @Override

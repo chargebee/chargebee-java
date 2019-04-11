@@ -1186,6 +1186,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerExemptionDetails(JSONArray customerExemptionDetails) {
+            params.addOpt("customer[exemption_details]", customerExemptionDetails);
+            return this;
+        }
+
+        public CreateRequest customerCustomerType(com.chargebee.models.enums.CustomerType customerCustomerType) {
+            params.addOpt("customer[customer_type]", customerCustomerType);
+            return this;
+        }
+
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -2246,6 +2256,28 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public AddChargeAtTermEndRequest avalaraSaleType(com.chargebee.models.enums.AvalaraSaleType avalaraSaleType) {
+            params.addOpt("avalara_sale_type", avalaraSaleType);
+            return this;
+        }
+
+
+        public AddChargeAtTermEndRequest avalaraTransactionType(Integer avalaraTransactionType) {
+            params.addOpt("avalara_transaction_type", avalaraTransactionType);
+            return this;
+        }
+
+
+        public AddChargeAtTermEndRequest avalaraServiceType(Integer avalaraServiceType) {
+            params.addOpt("avalara_service_type", avalaraServiceType);
+            return this;
+        }
+
+
+
+
+
+
         @Override
         public Params params() {
             return params;
@@ -2508,6 +2540,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest customerPhone(String customerPhone) {
             params.addOpt("customer[phone]", customerPhone);
+            return this;
+        }
+
+        public ImportSubscriptionRequest customerCustomerType(com.chargebee.models.enums.CustomerType customerCustomerType) {
+            params.addOpt("customer[customer_type]", customerCustomerType);
             return this;
         }
 

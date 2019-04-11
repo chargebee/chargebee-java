@@ -134,6 +134,14 @@ public class Resource<T> {
     public JSONObject optJSONObject(String key){
         return optional(key,JSONObject.class);
     }
+    
+    public JSONArray reqJSONArray(String key){
+        return assertReqProp(key, optJSONArray(key));
+    }
+    
+    public JSONArray optJSONArray(String key){
+        return optional(key,JSONArray.class);
+    }
 
     public Timestamp reqTimestamp(String key) {
         return assertReqProp(key, optTimestamp( key));

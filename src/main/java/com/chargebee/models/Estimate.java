@@ -311,6 +311,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest customerExemptionDetails(JSONArray customerExemptionDetails) {
+            params.addOpt("customer[exemption_details]", customerExemptionDetails);
+            return this;
+        }
+
+        public CreateSubscriptionRequest customerCustomerType(com.chargebee.models.enums.CustomerType customerCustomerType) {
+            params.addOpt("customer[customer_type]", customerCustomerType);
+            return this;
+        }
+
         public CreateSubscriptionRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;

@@ -304,6 +304,18 @@ public class Order extends Resource<Order> {
             return reqDouble("tax_rate");
         }
 
+        public Boolean isPartialTaxApplied() {
+            return optBoolean("is_partial_tax_applied");
+        }
+
+        public Boolean isNonComplianceTax() {
+            return optBoolean("is_non_compliance_tax");
+        }
+
+        public Integer taxableAmount() {
+            return reqInteger("taxable_amount");
+        }
+
         public Integer taxAmount() {
             return reqInteger("tax_amount");
         }
@@ -907,6 +919,12 @@ public class Order extends Resource<Order> {
         }
 
 
+        public CancelRequest cancelledAt(Timestamp cancelledAt) {
+            params.addOpt("cancelled_at", cancelledAt);
+            return this;
+        }
+
+
         public CancelRequest creditNoteTotal(Integer creditNoteTotal) {
             params.addOpt("credit_note[total]", creditNoteTotal);
             return this;
@@ -1028,6 +1046,10 @@ public class Order extends Resource<Order> {
 
         public OrderListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+        public OrderListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
             return this;
         }
 

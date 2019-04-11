@@ -329,6 +329,11 @@ public class PaymentSource extends Resource<PaymentSource> {
         return new Request(Method.POST, uri);
     }
 
+    public static Request deleteLocal(String id) throws IOException {
+        String uri = uri("payment_sources", nullCheck(id), "delete_local");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
