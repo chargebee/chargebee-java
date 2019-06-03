@@ -18,6 +18,10 @@ public class RequestBase<U extends RequestBase> {
         return params;
     }
 
+    public Map<String,String> headers() {
+        return headers;
+    }
+
     public U header(String headerName,String headerValue){        
         headers.put(headerName, headerValue);
         return (U)this;

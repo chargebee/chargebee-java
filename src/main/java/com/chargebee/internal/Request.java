@@ -33,6 +33,13 @@ public class Request<U extends Request> extends RequestBase<U>{
         return (Result) (env.reqInterceptor() != null ? env.reqInterceptor().handleRequest(c) : c.call());
     }
 
+    public final AsyncResult asyncRequest(Environment env) throws Exception {
+        if(env.asyncReqInterceptor() == null) {
+            throw new RuntimeException("Async Request interceptor cannot be null");
+        }
+        return env.asyncReqInterceptor().handleRequest(new AsyncRequestWrap(env, this, this.httpMeth, this.uri));
+    }
+
     private static Result _request(Environment env, Request<?> req) throws IOException {
         if (env == null) {
             throw new RuntimeException("Environment cannot be null");
@@ -52,5 +59,4 @@ public class Request<U extends Request> extends RequestBase<U>{
     public Params params() {
         return params;
     }
-    
 }

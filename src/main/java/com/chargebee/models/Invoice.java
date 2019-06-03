@@ -807,9 +807,9 @@ public class Invoice extends Resource<Invoice> {
         return new ChargeAddonRequest(Method.POST, uri);
     }
 
-    public static Request stopDunning(String id) throws IOException {
+    public static StopDunningRequest stopDunning(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "stop_dunning");
-        return new Request(Method.POST, uri);
+        return new StopDunningRequest(Method.POST, uri);
     }
 
     public static ImportInvoiceRequest importInvoice() throws IOException {
@@ -864,9 +864,9 @@ public class Invoice extends Resource<Invoice> {
         return new AddAddonChargeRequest(Method.POST, uri);
     }
 
-    public static Request close(String id) throws IOException {
+    public static CloseRequest close(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "close");
-        return new Request(Method.POST, uri);
+        return new CloseRequest(Method.POST, uri);
     }
 
     public static CollectPaymentRequest collectPayment(String id) throws IOException {
@@ -1217,6 +1217,24 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
+    public static class StopDunningRequest extends Request<StopDunningRequest> {
+
+        private StopDunningRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StopDunningRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+    
     public static class ImportInvoiceRequest extends Request<ImportInvoiceRequest> {
 
         private ImportInvoiceRequest(Method httpMeth, String uri) {
@@ -1642,6 +1660,12 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
+        public ApplyPaymentsRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public ApplyPaymentsRequest transactionId(int index, String transactionId) {
             params.addOpt("transactions[id][" + index + "]", transactionId);
             return this;
@@ -1657,7 +1681,13 @@ public class Invoice extends Resource<Invoice> {
         private ApplyCreditsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-    
+        
+        public ApplyCreditsRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public ApplyCreditsRequest creditNoteId(int index, String creditNoteId) {
             params.addOpt("credit_notes[id][" + index + "]", creditNoteId);
             return this;
@@ -1838,6 +1868,10 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public AddChargeRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
 
         public AddChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
@@ -1879,6 +1913,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddAddonChargeRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public AddAddonChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
@@ -1888,6 +1928,24 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item[date_to]", lineItemDateTo);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CloseRequest extends Request<CloseRequest> {
+
+        private CloseRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CloseRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
 
         @Override
         public Params params() {
@@ -1915,6 +1973,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CollectPaymentRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CollectPaymentRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
@@ -2169,6 +2233,12 @@ public class Invoice extends Resource<Invoice> {
 
         public UpdateDetailsRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public UpdateDetailsRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
