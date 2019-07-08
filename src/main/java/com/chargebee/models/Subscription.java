@@ -15,6 +15,7 @@ import java.util.*;
 public class Subscription extends Resource<Subscription> {
 
     public enum BillingPeriodUnit {
+        DAY,
         WEEK,
         MONTH,
         YEAR,
@@ -97,6 +98,11 @@ public class Subscription extends Resource<Subscription> {
 
         public Integer unitPrice() {
             return reqInteger("unit_price");
+        }
+
+        @Deprecated
+        public Integer servicePeriodInDays() {
+            return optInteger("service_period_in_days");
         }
 
         public OnEvent onEvent() {
@@ -387,6 +393,10 @@ public class Subscription extends Resource<Subscription> {
 
     public String giftId() {
         return optString("gift_id");
+    }
+
+    public Boolean overrideRelationship() {
+        return optBoolean("override_relationship");
     }
 
     public Timestamp pauseDate() {
@@ -737,8 +747,10 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-
-
+        public CreateRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
 
 
         public CreateRequest affiliateToken(String affiliateToken) {
@@ -1224,6 +1236,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CreateRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CreateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -1363,6 +1379,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest overrideRelationship(Boolean overrideRelationship) {
+            params.addOpt("override_relationship", overrideRelationship);
+            return this;
+        }
+
+
         public CreateForCustomerRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -1479,6 +1501,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CreateForCustomerRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CreateForCustomerRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -1570,6 +1596,11 @@ public class Subscription extends Resource<Subscription> {
 
         public TimestampFilter<SubscriptionListRequest> updatedAt() {
             return new TimestampFilter<SubscriptionListRequest>("updated_at",this);        
+        }
+
+
+        public BooleanFilter<SubscriptionListRequest> overrideRelationship() {
+            return new BooleanFilter<SubscriptionListRequest>("override_relationship",this);        
         }
 
 
@@ -1766,8 +1797,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
+        public UpdateRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
 
 
         public UpdateRequest invoiceNotes(String invoiceNotes) {
@@ -1784,6 +1817,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        public UpdateRequest overrideRelationship(Boolean overrideRelationship) {
+            params.addOpt("override_relationship", overrideRelationship);
             return this;
         }
 
@@ -2085,6 +2124,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public UpdateRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public UpdateRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
             params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
             return this;
@@ -2274,8 +2317,16 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public AddChargeAtTermEndRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
 
 
+        public AddChargeAtTermEndRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
+            return this;
+        }
 
 
         @Override
@@ -2304,6 +2355,18 @@ public class Subscription extends Resource<Subscription> {
 
         public ChargeAddonAtTermEndRequest addonUnitPrice(Integer addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
+            return this;
+        }
+
+
+        public ChargeAddonAtTermEndRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public ChargeAddonAtTermEndRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
             return this;
         }
 
@@ -2462,8 +2525,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
         }
-
-
 
 
 
@@ -2859,6 +2920,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public ImportSubscriptionRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public ImportSubscriptionRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -3147,6 +3212,10 @@ public class Subscription extends Resource<Subscription> {
         }
         public ImportForCustomerRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public ImportForCustomerRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
             return this;
         }
         public ImportForCustomerRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {

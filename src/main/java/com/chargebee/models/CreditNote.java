@@ -125,6 +125,10 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
@@ -434,6 +438,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optInteger("round_off_amount");
     }
 
+    public Integer fractionalCorrection() {
+        return optInteger("fractional_correction");
+    }
+
     public List<CreditNote.LineItem> lineItems() {
         return optList("line_items", CreditNote.LineItem.class);
     }
@@ -560,6 +568,12 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public CreateRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public CreateRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
             params.add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
             return this;
@@ -574,6 +588,14 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public CreateRequest lineItemAmount(int index, Integer lineItemAmount) {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
+            return this;
+        }
+        public CreateRequest lineItemDateFrom(int index, Timestamp lineItemDateFrom) {
+            params.addOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
+            return this;
+        }
+        public CreateRequest lineItemDateTo(int index, Timestamp lineItemDateTo) {
+            params.addOpt("line_items[date_to][" + index + "]", lineItemDateTo);
             return this;
         }
         public CreateRequest lineItemDescription(int index, String lineItemDescription) {

@@ -110,6 +110,10 @@ public class Quote extends Resource<Quote> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
@@ -708,6 +712,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CreateSubForCustomerQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CreateSubForCustomerQuoteRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -1039,6 +1047,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public UpdateSubscriptionQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public UpdateSubscriptionQuoteRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
             params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
             return this;
@@ -1173,6 +1185,14 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
+        public CreateForOnetimeChargesRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
         public CreateForOnetimeChargesRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -1191,6 +1211,14 @@ public class Quote extends Resource<Quote> {
         }
         public CreateForOnetimeChargesRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
             params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
         @Override

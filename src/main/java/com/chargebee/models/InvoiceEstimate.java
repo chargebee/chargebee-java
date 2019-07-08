@@ -92,6 +92,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {

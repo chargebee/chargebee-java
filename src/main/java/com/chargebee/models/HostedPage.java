@@ -555,6 +555,10 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
+        public CheckoutNewRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         public CheckoutNewRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
             params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
             return this;
@@ -750,6 +754,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
             return this;
         }
         public CheckoutExistingRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {

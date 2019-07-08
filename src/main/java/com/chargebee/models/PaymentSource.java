@@ -284,6 +284,11 @@ public class PaymentSource extends Resource<PaymentSource> {
         return new CreateUsingPermanentTokenRequest(Method.POST, uri);
     }
 
+    public static CreateUsingTokenRequest createUsingToken() throws IOException {
+        String uri = uri("payment_sources", "create_using_token");
+        return new CreateUsingTokenRequest(Method.POST, uri);
+    }
+
     public static CreateCardRequest createCard() throws IOException {
         String uri = uri("payment_sources", "create_card");
         return new CreateCardRequest(Method.POST, uri);
@@ -424,6 +429,38 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingPermanentTokenRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateUsingTokenRequest extends Request<CreateUsingTokenRequest> {
+
+        private CreateUsingTokenRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateUsingTokenRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateUsingTokenRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CreateUsingTokenRequest tokenId(String tokenId) {
+            params.add("token_id", tokenId);
             return this;
         }
 

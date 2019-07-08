@@ -99,6 +99,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {

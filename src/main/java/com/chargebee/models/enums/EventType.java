@@ -75,6 +75,9 @@ public enum EventType {
     VIRTUAL_BANK_ACCOUNT_ADDED,
     VIRTUAL_BANK_ACCOUNT_UPDATED,
     VIRTUAL_BANK_ACCOUNT_DELETED,
+    TOKEN_CREATED,
+    TOKEN_CONSUMED,
+    TOKEN_EXPIRED,
     UNBILLED_CHARGES_CREATED,
     UNBILLED_CHARGES_VOIDED,
     UNBILLED_CHARGES_DELETED,
@@ -94,6 +97,8 @@ public enum EventType {
     GIFT_CLAIMED,
     GIFT_EXPIRED,
     GIFT_CANCELLED,
+    HIERARCHY_CREATED,
+    HIERARCHY_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

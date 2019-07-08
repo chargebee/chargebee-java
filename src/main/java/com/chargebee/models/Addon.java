@@ -32,6 +32,7 @@ public class Addon extends Resource<Addon> {
     }
 
     public enum PeriodUnit {
+        DAY,
         WEEK,
         MONTH,
         YEAR,
@@ -52,6 +53,7 @@ public class Addon extends Resource<Addon> {
         YEAR,
         MONTH,
         WEEK,
+        DAY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

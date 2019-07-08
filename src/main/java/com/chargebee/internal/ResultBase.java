@@ -24,8 +24,16 @@ public class ResultBase {
         return (Customer)get("customer");
     }
 
+    public Hierarchy hierarchy() {
+        return (Hierarchy)get("hierarchy");
+    }
+
     public Contact contact() {
         return (Contact)get("contact");
+    }
+
+    public Token token() {
+        return (Token)get("token");
     }
 
     public PaymentSource paymentSource() {
@@ -146,6 +154,10 @@ public class ResultBase {
 
     public List<CreditNote> creditNotes() {
         return (List<CreditNote>) getList("credit_notes", "credit_note");
+    }
+
+    public List<Hierarchy> hierarchies() {
+        return (List<Hierarchy>) getList("hierarchies", "hierarchy");
     }
 
     public List<Invoice> invoices() {

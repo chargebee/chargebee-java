@@ -209,6 +209,11 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<RevenueRecognitionRequest> paymentOwner() {
+            return new StringFilter<RevenueRecognitionRequest>("payment_owner",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<RevenueRecognitionRequest> invoiceId() {
             return new StringFilter<RevenueRecognitionRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
@@ -349,6 +354,18 @@ public Export waitForExportCompletion()
             return new TimestampFilter<RevenueRecognitionRequest>("customer[updated_at]",this);        
         }
 
+        public StringFilter<RevenueRecognitionRequest> relationshipParentId() {
+            return new StringFilter<RevenueRecognitionRequest>("relationship[parent_id]",this);        
+        }
+
+        public StringFilter<RevenueRecognitionRequest> relationshipPaymentOwnerId() {
+            return new StringFilter<RevenueRecognitionRequest>("relationship[payment_owner_id]",this);        
+        }
+
+        public StringFilter<RevenueRecognitionRequest> relationshipInvoiceOwnerId() {
+            return new StringFilter<RevenueRecognitionRequest>("relationship[invoice_owner_id]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -400,6 +417,11 @@ public Export waitForExportCompletion()
         public DeferredRevenueRequest includeDiscounts(Boolean includeDiscounts) {
             params.addOpt("include_discounts", includeDiscounts);
             return this;
+        }
+
+
+        public StringFilter<DeferredRevenueRequest> paymentOwner() {
+            return new StringFilter<DeferredRevenueRequest>("payment_owner",this).supportsMultiOperators(true);        
         }
 
 
@@ -541,6 +563,18 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<DeferredRevenueRequest> customerUpdatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("customer[updated_at]",this);        
+        }
+
+        public StringFilter<DeferredRevenueRequest> relationshipParentId() {
+            return new StringFilter<DeferredRevenueRequest>("relationship[parent_id]",this);        
+        }
+
+        public StringFilter<DeferredRevenueRequest> relationshipPaymentOwnerId() {
+            return new StringFilter<DeferredRevenueRequest>("relationship[payment_owner_id]",this);        
+        }
+
+        public StringFilter<DeferredRevenueRequest> relationshipInvoiceOwnerId() {
+            return new StringFilter<DeferredRevenueRequest>("relationship[invoice_owner_id]",this);        
         }
 
         @Override
@@ -739,6 +773,18 @@ public Export waitForExportCompletion()
             return new TimestampFilter<CustomersRequest>("customer[updated_at]",this);        
         }
 
+        public StringFilter<CustomersRequest> relationshipParentId() {
+            return new StringFilter<CustomersRequest>("relationship[parent_id]",this);        
+        }
+
+        public StringFilter<CustomersRequest> relationshipPaymentOwnerId() {
+            return new StringFilter<CustomersRequest>("relationship[payment_owner_id]",this);        
+        }
+
+        public StringFilter<CustomersRequest> relationshipInvoiceOwnerId() {
+            return new StringFilter<CustomersRequest>("relationship[invoice_owner_id]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -811,6 +857,11 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<InvoicesRequest> paymentOwner() {
+            return new StringFilter<InvoicesRequest>("payment_owner",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<InvoicesRequest> invoiceId() {
             return new StringFilter<InvoicesRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }

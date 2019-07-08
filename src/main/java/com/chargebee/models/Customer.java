@@ -278,6 +278,25 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class Relationship extends Resource<Relationship> {
+        public Relationship(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String parentId() {
+            return optString("parent_id");
+        }
+
+        public String paymentOwnerId() {
+            return reqString("payment_owner_id");
+        }
+
+        public String invoiceOwnerId() {
+            return reqString("invoice_owner_id");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -477,8 +496,16 @@ public class Customer extends Resource<Customer> {
         return optBoolean("registered_for_gst");
     }
 
+    public Boolean businessCustomerWithoutVatNumber() {
+        return optBoolean("business_customer_without_vat_number");
+    }
+
     public CustomerType customerType() {
         return optEnum("customer_type", CustomerType.class);
+    }
+
+    public Customer.Relationship relationship() {
+        return optSubResource("relationship", Customer.Relationship.class);
     }
 
     // Operations
@@ -590,6 +617,21 @@ public class Customer extends Resource<Customer> {
     public static Request clearPersonalData(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "clear_personal_data");
         return new Request(Method.POST, uri);
+    }
+
+    public static RelationshipsRequest relationships(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "relationships");
+        return new RelationshipsRequest(Method.POST, uri);
+    }
+
+    public static Request deleteRelationship(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "delete_relationship");
+        return new Request(Method.POST, uri);
+    }
+
+    public static HierarchyRequest hierarchy(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "hierarchy");
+        return new HierarchyRequest(Method.GET, uri);
     }
 
 
@@ -722,6 +764,10 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
 
 
         @Deprecated
@@ -1078,6 +1124,18 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+
+        public StringFilter<CustomerListRequest> relationshipParentId() {
+            return new StringFilter<CustomerListRequest>("relationship[parent_id]",this);        
+        }
+
+        public StringFilter<CustomerListRequest> relationshipPaymentOwnerId() {
+            return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]",this);        
+        }
+
+        public StringFilter<CustomerListRequest> relationshipInvoiceOwnerId() {
+            return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]",this);        
+        }
 
         @Override
         public Params params() {
@@ -1690,6 +1748,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CollectPaymentRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
+
+
         public CollectPaymentRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
@@ -1898,6 +1962,54 @@ public class Customer extends Resource<Customer> {
 
         public MergeRequest toCustomerId(String toCustomerId) {
             params.add("to_customer_id", toCustomerId);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RelationshipsRequest extends Request<RelationshipsRequest> {
+
+        private RelationshipsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RelationshipsRequest parentId(String parentId) {
+            params.addOpt("parent_id", parentId);
+            return this;
+        }
+
+
+        public RelationshipsRequest paymentOwnerId(String paymentOwnerId) {
+            params.addOpt("payment_owner_id", paymentOwnerId);
+            return this;
+        }
+
+
+        public RelationshipsRequest invoiceOwnerId(String invoiceOwnerId) {
+            params.addOpt("invoice_owner_id", invoiceOwnerId);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class HierarchyRequest extends Request<HierarchyRequest> {
+
+        private HierarchyRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public HierarchyRequest hierarchyOperationType(com.chargebee.models.enums.HierarchyOperationType hierarchyOperationType) {
+            params.addOpt("hierarchy_operation_type", hierarchyOperationType);
             return this;
         }
 

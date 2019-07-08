@@ -112,6 +112,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("entity_id");
         }
 
+        public String customerId() {
+            return optString("customer_id");
+        }
+
     }
 
     public static class Discount extends Resource<Discount> {
@@ -785,6 +789,10 @@ public class Invoice extends Resource<Invoice> {
         return optSubResource("billing_address", Invoice.BillingAddress.class);
     }
 
+    public String paymentOwner() {
+        return optString("payment_owner");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
@@ -807,9 +815,9 @@ public class Invoice extends Resource<Invoice> {
         return new ChargeAddonRequest(Method.POST, uri);
     }
 
-    public static Request stopDunning(String id) throws IOException {
+    public static StopDunningRequest stopDunning(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "stop_dunning");
-        return new Request(Method.POST, uri);
+        return new StopDunningRequest(Method.POST, uri);
     }
 
     public static ImportInvoiceRequest importInvoice() throws IOException {
@@ -864,9 +872,9 @@ public class Invoice extends Resource<Invoice> {
         return new AddAddonChargeRequest(Method.POST, uri);
     }
 
-    public static Request close(String id) throws IOException {
+    public static CloseRequest close(String id) throws IOException {
         String uri = uri("invoices", nullCheck(id), "close");
-        return new Request(Method.POST, uri);
+        return new CloseRequest(Method.POST, uri);
     }
 
     public static CollectPaymentRequest collectPayment(String id) throws IOException {
@@ -1053,6 +1061,14 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
+        public CreateRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CreateRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -1071,6 +1087,14 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
             params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
         @Override
@@ -1111,6 +1135,18 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeRequest description(String description) {
             params.add("description", description);
+            return this;
+        }
+
+
+        public ChargeRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public ChargeRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
             return this;
         }
 
@@ -1193,6 +1229,18 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeAddonRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public ChargeAddonRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
+            return this;
+        }
+
+
         public ChargeAddonRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -1207,6 +1255,24 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class StopDunningRequest extends Request<StopDunningRequest> {
+
+        private StopDunningRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StopDunningRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
@@ -1642,6 +1708,12 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
+        public ApplyPaymentsRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public ApplyPaymentsRequest transactionId(int index, String transactionId) {
             params.addOpt("transactions[id][" + index + "]", transactionId);
             return this;
@@ -1658,6 +1730,12 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
+        public ApplyCreditsRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public ApplyCreditsRequest creditNoteId(int index, String creditNoteId) {
             params.addOpt("credit_notes[id][" + index + "]", creditNoteId);
             return this;
@@ -1759,6 +1837,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public StringFilter<InvoiceListRequest> paymentOwner() {
+            return new StringFilter<InvoiceListRequest>("payment_owner",this).supportsMultiOperators(true);        
+        }
+
+
         public TimestampFilter<InvoiceListRequest> updatedAt() {
             return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
         }
@@ -1839,6 +1922,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddChargeRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public AddChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
@@ -1879,6 +1968,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddAddonChargeRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public AddAddonChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
@@ -1888,6 +1983,24 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item[date_to]", lineItemDateTo);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CloseRequest extends Request<CloseRequest> {
+
+        private CloseRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CloseRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
 
         @Override
         public Params params() {
@@ -1915,6 +2028,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CollectPaymentRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CollectPaymentRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
@@ -2149,6 +2268,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public DeleteRequest claimCredits(Boolean claimCredits) {
+            params.addOpt("claim_credits", claimCredits);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -2169,6 +2294,12 @@ public class Invoice extends Resource<Invoice> {
 
         public UpdateDetailsRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public UpdateDetailsRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 
