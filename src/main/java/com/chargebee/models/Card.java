@@ -74,6 +74,10 @@ public class Card extends Resource<Card> {
         return optString("gateway_account_id");
     }
 
+    public String refTxId() {
+        return optString("ref_tx_id");
+    }
+
     public String firstName() {
         return optString("first_name");
     }

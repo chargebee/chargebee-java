@@ -977,6 +977,16 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -1853,6 +1863,16 @@ public class Customer extends Resource<Customer> {
 
         public CollectPaymentRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
 

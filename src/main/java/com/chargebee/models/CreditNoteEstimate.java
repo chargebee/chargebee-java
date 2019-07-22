@@ -330,6 +330,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return optInteger("round_off_amount");
     }
 
+    public String customerId() {
+        return optString("customer_id");
+    }
+
     // Operations
     //===========
 

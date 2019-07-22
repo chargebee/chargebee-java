@@ -41,6 +41,13 @@ public class Transaction extends Resource<Transaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum InitiatorType {
+        CUSTOMER,
+        MERCHANT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum AuthorizationReason {
         BLOCKING_FUNDS,
         VERIFICATION,
@@ -246,6 +253,14 @@ public class Transaction extends Resource<Transaction> {
 
     public FraudFlag fraudFlag() {
         return optEnum("fraud_flag", FraudFlag.class);
+    }
+
+    public InitiatorType initiatorType() {
+        return optEnum("initiator_type", InitiatorType.class);
+    }
+
+    public Boolean threeDSecure() {
+        return optBoolean("three_d_secure");
     }
 
     public AuthorizationReason authorizationReason() {

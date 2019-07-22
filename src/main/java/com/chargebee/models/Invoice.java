@@ -300,6 +300,37 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class DunningAttempt extends Resource<DunningAttempt> {
+        public DunningAttempt(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer attempt() {
+            return reqInteger("attempt");
+        }
+
+        public String transactionId() {
+            return optString("transaction_id");
+        }
+
+        public DunningType dunningType() {
+            return reqEnum("dunning_type", DunningType.class);
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public Transaction.Status txnStatus() {
+            return optEnum("txn_status", Transaction.Status.class);
+        }
+
+        public Integer txnAmount() {
+            return optInteger("txn_amount");
+        }
+
+    }
+
     public static class AppliedCredit extends Resource<AppliedCredit> {
         public AppliedCredit(JSONObject jsonObj) {
             super(jsonObj);
@@ -759,6 +790,10 @@ public class Invoice extends Resource<Invoice> {
 
     public List<Invoice.LinkedPayment> linkedPayments() {
         return optList("linked_payments", Invoice.LinkedPayment.class);
+    }
+
+    public List<Invoice.DunningAttempt> dunningAttempts() {
+        return optList("dunning_attempts", Invoice.DunningAttempt.class);
     }
 
     public List<Invoice.AppliedCredit> appliedCredits() {

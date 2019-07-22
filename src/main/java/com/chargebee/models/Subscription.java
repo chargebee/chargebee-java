@@ -1048,6 +1048,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -1470,6 +1480,16 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateForCustomerRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateForCustomerRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
 
@@ -1943,6 +1963,16 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateRequest cardIpAddress(String cardIpAddress) {
             params.addOpt("card[ip_address]", cardIpAddress);
+            return this;
+        }
+
+        public UpdateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public UpdateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
 

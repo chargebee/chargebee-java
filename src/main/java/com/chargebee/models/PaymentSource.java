@@ -289,6 +289,11 @@ public class PaymentSource extends Resource<PaymentSource> {
         return new CreateUsingTokenRequest(Method.POST, uri);
     }
 
+    public static CreateUsingPaymentIntentRequest createUsingPaymentIntent() throws IOException {
+        String uri = uri("payment_sources", "create_using_payment_intent");
+        return new CreateUsingPaymentIntentRequest(Method.POST, uri);
+    }
+
     public static CreateCardRequest createCard() throws IOException {
         String uri = uri("payment_sources", "create_card");
         return new CreateCardRequest(Method.POST, uri);
@@ -461,6 +466,42 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingTokenRequest tokenId(String tokenId) {
             params.add("token_id", tokenId);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateUsingPaymentIntentRequest extends Request<CreateUsingPaymentIntentRequest> {
+
+        private CreateUsingPaymentIntentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateUsingPaymentIntentRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateUsingPaymentIntentRequest gatewayAccountId(String gatewayAccountId) {
+            params.add("gateway_account_id", gatewayAccountId);
+            return this;
+        }
+
+
+        public CreateUsingPaymentIntentRequest gwToken(String gwToken) {
+            params.add("gw_token", gwToken);
+            return this;
+        }
+
+
+        public CreateUsingPaymentIntentRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
         }
 
@@ -673,6 +714,12 @@ public class PaymentSource extends Resource<PaymentSource> {
     
         public UpdateCardRequest gatewayMetaData(JSONObject gatewayMetaData) {
             params.addOpt("gateway_meta_data", gatewayMetaData);
+            return this;
+        }
+
+
+        public UpdateCardRequest referenceTransaction(String referenceTransaction) {
+            params.addOpt("reference_transaction", referenceTransaction);
             return this;
         }
 

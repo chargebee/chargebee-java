@@ -13,6 +13,13 @@ import java.util.*;
 
 public class VirtualBankAccount extends Resource<VirtualBankAccount> {
 
+    public enum Scheme {
+        ACH_CREDIT,
+        SEPA_CREDIT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -39,6 +46,10 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         return reqString("email");
     }
 
+    public Scheme scheme() {
+        return optEnum("scheme", Scheme.class);
+    }
+
     public String bankName() {
         return optString("bank_name");
     }
@@ -48,7 +59,7 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
     }
 
     public String routingNumber() {
-        return reqString("routing_number");
+        return optString("routing_number");
     }
 
     public String swiftCode() {
@@ -133,6 +144,12 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         }
 
 
+        public CreateUsingPermanentTokenRequest scheme(VirtualBankAccount.Scheme scheme) {
+            params.addOpt("scheme", scheme);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -153,6 +170,12 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
 
         public CreateRequest email(String email) {
             params.addOpt("email", email);
+            return this;
+        }
+
+
+        public CreateRequest scheme(VirtualBankAccount.Scheme scheme) {
+            params.addOpt("scheme", scheme);
             return this;
         }
 

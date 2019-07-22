@@ -323,6 +323,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
         return optInteger("round_off_amount");
     }
 
+    public String customerId() {
+        return optString("customer_id");
+    }
+
     // Operations
     //===========
 

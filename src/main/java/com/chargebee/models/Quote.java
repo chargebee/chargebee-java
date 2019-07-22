@@ -503,6 +503,11 @@ public class Quote extends Resource<Quote> {
         return new CreateForOnetimeChargesRequest(Method.POST, uri);
     }
 
+    public static QuoteListRequest list() throws IOException {
+        String uri = uri("quotes");
+        return new QuoteListRequest(uri);
+    }
+
     public static Request convert(String id) throws IOException {
         String uri = uri("quotes", nullCheck(id), "convert");
         return new Request(Method.POST, uri);
@@ -1221,6 +1226,60 @@ public class Quote extends Resource<Quote> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class QuoteListRequest extends ListRequest<QuoteListRequest> {
+
+        private QuoteListRequest(String uri) {
+            super(uri);
+        }
+    
+        public QuoteListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
+        public StringFilter<QuoteListRequest> id() {
+            return new StringFilter<QuoteListRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<QuoteListRequest> customerId() {
+            return new StringFilter<QuoteListRequest>("customer_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<QuoteListRequest> subscriptionId() {
+            return new StringFilter<QuoteListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
+        }
+
+
+        public EnumFilter<Quote.Status, QuoteListRequest> status() {
+            return new EnumFilter<Quote.Status, QuoteListRequest>("status",this);        
+        }
+
+
+        public TimestampFilter<QuoteListRequest> date() {
+            return new TimestampFilter<QuoteListRequest>("date",this);        
+        }
+
+
+        public TimestampFilter<QuoteListRequest> updatedAt() {
+            return new TimestampFilter<QuoteListRequest>("updated_at",this);        
+        }
+
+
+        public QuoteListRequest sortByDate(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

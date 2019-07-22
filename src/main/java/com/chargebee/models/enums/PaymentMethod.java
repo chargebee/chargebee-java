@@ -14,6 +14,7 @@ public enum PaymentMethod {
     APPLE_PAY,
     WECHAT_PAY,
     ACH_CREDIT,
+    SEPA_CREDIT,
     OTHER,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
