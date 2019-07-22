@@ -31,6 +31,13 @@ public class Transaction extends Resource<Transaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum InitiatorType {
+        CUSTOMER,
+        MERCHANT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class LinkedInvoice extends Resource<LinkedInvoice> {
         public LinkedInvoice(JSONObject jsonObj) {
             super(jsonObj);
@@ -142,6 +149,14 @@ public class Transaction extends Resource<Transaction> {
 
     public Status status() {
         return optEnum("status", Status.class);
+    }
+
+    public InitiatorType initiatorType() {
+        return optEnum("initiator_type", InitiatorType.class);
+    }
+
+    public Boolean threeDSecure() {
+        return optBoolean("three_d_secure");
     }
 
     public String errorCode() {

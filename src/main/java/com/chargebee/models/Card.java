@@ -58,6 +58,10 @@ public class Card extends Resource<Card> {
         return reqEnum("gateway", Gateway.class);
     }
 
+    public String referenceId() {
+        return optString("reference_id");
+    }
+
     public String firstName() {
         return optString("first_name");
     }
@@ -133,6 +137,11 @@ public class Card extends Resource<Card> {
     public static UpdateCardForCustomerRequest updateCardForCustomer(String id) throws IOException {
         String uri = uri("customers", nullCheck(id), "credit_card");
         return new UpdateCardForCustomerRequest(Method.POST, uri);
+    }
+
+    public static UpdateCardForCustomerUsingPaymentIntentRequest updateCardForCustomerUsingPaymentIntent(String id) throws IOException {
+        String uri = uri("customers", nullCheck(id), "credit_card_using_payment_intent");
+        return new UpdateCardForCustomerUsingPaymentIntentRequest(Method.POST, uri);
     }
 
     public static SwitchGatewayForCustomerRequest switchGatewayForCustomer(String id) throws IOException {
@@ -256,6 +265,30 @@ public class Card extends Resource<Card> {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateCardForCustomerUsingPaymentIntentRequest extends Request<UpdateCardForCustomerUsingPaymentIntentRequest> {
+
+        private UpdateCardForCustomerUsingPaymentIntentRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateCardForCustomerUsingPaymentIntentRequest gatewayAccountId(String gatewayAccountId) {
+            params.add("gateway_account_id", gatewayAccountId);
+            return this;
+        }
+
+
+        public UpdateCardForCustomerUsingPaymentIntentRequest gwToken(String gwToken) {
+            params.add("gw_token", gwToken);
+            return this;
+        }
+
 
         @Override
         public Params params() {
