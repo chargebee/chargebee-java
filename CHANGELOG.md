@@ -1,3 +1,8 @@
+### v1.1.78 (2019-08-07)
+* * *
+
+* New input parameter gw_payment_method_id has been added in update_card_for_customer_using_payment_intent, create_a_customer, create_a_subscription, create_subscription_for_customer and update_a_subscription api.
+
 ### v1.1.77 (2019-07-22)
 * * *
 

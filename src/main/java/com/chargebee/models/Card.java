@@ -290,6 +290,12 @@ public class Card extends Resource<Card> {
         }
 
 
+        public UpdateCardForCustomerUsingPaymentIntentRequest gwPaymentMethodId(String gwPaymentMethodId) {
+            params.addOpt("gw_payment_method_id", gwPaymentMethodId);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
