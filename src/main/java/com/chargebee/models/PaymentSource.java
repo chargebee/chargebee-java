@@ -274,72 +274,72 @@ public class PaymentSource extends Resource<PaymentSource> {
     // Operations
     //===========
 
-    public static CreateUsingTempTokenRequest createUsingTempToken() throws IOException {
+    public static CreateUsingTempTokenRequest createUsingTempToken() {
         String uri = uri("payment_sources", "create_using_temp_token");
         return new CreateUsingTempTokenRequest(Method.POST, uri);
     }
 
-    public static CreateUsingPermanentTokenRequest createUsingPermanentToken() throws IOException {
+    public static CreateUsingPermanentTokenRequest createUsingPermanentToken() {
         String uri = uri("payment_sources", "create_using_permanent_token");
         return new CreateUsingPermanentTokenRequest(Method.POST, uri);
     }
 
-    public static CreateUsingTokenRequest createUsingToken() throws IOException {
+    public static CreateUsingTokenRequest createUsingToken() {
         String uri = uri("payment_sources", "create_using_token");
         return new CreateUsingTokenRequest(Method.POST, uri);
     }
 
-    public static CreateUsingPaymentIntentRequest createUsingPaymentIntent() throws IOException {
+    public static CreateUsingPaymentIntentRequest createUsingPaymentIntent() {
         String uri = uri("payment_sources", "create_using_payment_intent");
         return new CreateUsingPaymentIntentRequest(Method.POST, uri);
     }
 
-    public static CreateCardRequest createCard() throws IOException {
+    public static CreateCardRequest createCard() {
         String uri = uri("payment_sources", "create_card");
         return new CreateCardRequest(Method.POST, uri);
     }
 
-    public static CreateBankAccountRequest createBankAccount() throws IOException {
+    public static CreateBankAccountRequest createBankAccount() {
         String uri = uri("payment_sources", "create_bank_account");
         return new CreateBankAccountRequest(Method.POST, uri);
     }
 
-    public static UpdateCardRequest updateCard(String id) throws IOException {
+    public static UpdateCardRequest updateCard(String id) {
         String uri = uri("payment_sources", nullCheck(id), "update_card");
         return new UpdateCardRequest(Method.POST, uri);
     }
 
-    public static VerifyBankAccountRequest verifyBankAccount(String id) throws IOException {
+    public static VerifyBankAccountRequest verifyBankAccount(String id) {
         String uri = uri("payment_sources", nullCheck(id), "verify_bank_account");
         return new VerifyBankAccountRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("payment_sources", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static PaymentSourceListRequest list() throws IOException {
+    public static PaymentSourceListRequest list() {
         String uri = uri("payment_sources");
         return new PaymentSourceListRequest(uri);
     }
 
-    public static SwitchGatewayAccountRequest switchGatewayAccount(String id) throws IOException {
+    public static SwitchGatewayAccountRequest switchGatewayAccount(String id) {
         String uri = uri("payment_sources", nullCheck(id), "switch_gateway_account");
         return new SwitchGatewayAccountRequest(Method.POST, uri);
     }
 
-    public static ExportPaymentSourceRequest exportPaymentSource(String id) throws IOException {
+    public static ExportPaymentSourceRequest exportPaymentSource(String id) {
         String uri = uri("payment_sources", nullCheck(id), "export_payment_source");
         return new ExportPaymentSourceRequest(Method.POST, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("payment_sources", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }
 
-    public static Request deleteLocal(String id) throws IOException {
+    public static Request deleteLocal(String id) {
         String uri = uri("payment_sources", nullCheck(id), "delete_local");
         return new Request(Method.POST, uri);
     }
@@ -496,6 +496,12 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingPaymentIntentRequest gwToken(String gwToken) {
             params.add("gw_token", gwToken);
+            return this;
+        }
+
+
+        public CreateUsingPaymentIntentRequest gwPaymentMethodId(String gwPaymentMethodId) {
+            params.addOpt("gw_payment_method_id", gwPaymentMethodId);
             return this;
         }
 

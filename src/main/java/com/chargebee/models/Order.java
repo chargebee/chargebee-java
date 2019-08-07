@@ -332,6 +332,14 @@ public class Order extends Resource<Order> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
@@ -619,48 +627,48 @@ public class Order extends Resource<Order> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("orders");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static UpdateRequest update(String id) throws IOException {
+    public static UpdateRequest update(String id) {
         String uri = uri("orders", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static Request assignOrderNumber(String id) throws IOException {
+    public static Request assignOrderNumber(String id) {
         String uri = uri("orders", nullCheck(id), "assign_order_number");
         return new Request(Method.POST, uri);
     }
 
-    public static CancelRequest cancel(String id) throws IOException {
+    public static CancelRequest cancel(String id) {
         String uri = uri("orders", nullCheck(id), "cancel");
         return new CancelRequest(Method.POST, uri);
     }
 
-    public static CreateRefundableCreditNoteRequest createRefundableCreditNote(String id) throws IOException {
+    public static CreateRefundableCreditNoteRequest createRefundableCreditNote(String id) {
         String uri = uri("orders", nullCheck(id), "create_refundable_credit_note");
         return new CreateRefundableCreditNoteRequest(Method.POST, uri);
     }
 
-    public static ReopenRequest reopen(String id) throws IOException {
+    public static ReopenRequest reopen(String id) {
         String uri = uri("orders", nullCheck(id), "reopen");
         return new ReopenRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("orders", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static OrderListRequest list() throws IOException {
+    public static OrderListRequest list() {
         String uri = uri("orders");
         return new OrderListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest ordersForInvoice(String id) throws IOException {
+    public static ListRequest ordersForInvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "orders");
         return new ListRequest(uri);
     }

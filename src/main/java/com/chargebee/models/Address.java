@@ -94,12 +94,12 @@ public class Address extends Resource<Address> {
     // Operations
     //===========
 
-    public static RetrieveRequest retrieve() throws IOException {
+    public static RetrieveRequest retrieve() {
         String uri = uri("addresses");
         return new RetrieveRequest(Method.GET, uri);
     }
 
-    public static UpdateRequest update() throws IOException {
+    public static UpdateRequest update() {
         String uri = uri("addresses");
         return new UpdateRequest(Method.POST, uri);
     }

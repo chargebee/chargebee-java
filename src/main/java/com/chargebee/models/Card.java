@@ -169,27 +169,27 @@ public class Card extends Resource<Card> {
     // Operations
     //===========
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("cards", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static UpdateCardForCustomerRequest updateCardForCustomer(String id) throws IOException {
+    public static UpdateCardForCustomerRequest updateCardForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "credit_card");
         return new UpdateCardForCustomerRequest(Method.POST, uri);
     }
 
-    public static SwitchGatewayForCustomerRequest switchGatewayForCustomer(String id) throws IOException {
+    public static SwitchGatewayForCustomerRequest switchGatewayForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "switch_gateway");
         return new SwitchGatewayForCustomerRequest(Method.POST, uri);
     }
 
-    public static CopyCardForCustomerRequest copyCardForCustomer(String id) throws IOException {
+    public static CopyCardForCustomerRequest copyCardForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "copy_card");
         return new CopyCardForCustomerRequest(Method.POST, uri);
     }
 
-    public static Request deleteCardForCustomer(String id) throws IOException {
+    public static Request deleteCardForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "delete_card");
         return new Request(Method.POST, uri);
     }

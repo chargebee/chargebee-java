@@ -145,27 +145,27 @@ public class Gift extends Resource<Gift> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("gifts");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("gifts", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static GiftListRequest list() throws IOException {
+    public static GiftListRequest list() {
         String uri = uri("gifts");
         return new GiftListRequest(uri);
     }
 
-    public static Request claim(String id) throws IOException {
+    public static Request claim(String id) {
         String uri = uri("gifts", nullCheck(id), "claim");
         return new Request(Method.POST, uri);
     }
 
-    public static Request cancel(String id) throws IOException {
+    public static Request cancel(String id) {
         String uri = uri("gifts", nullCheck(id), "cancel");
         return new Request(Method.POST, uri);
     }

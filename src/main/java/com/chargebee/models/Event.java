@@ -114,12 +114,12 @@ public class Event extends Resource<Event> {
     // Operations
     //===========
 
-    public static EventListRequest list() throws IOException {
+    public static EventListRequest list() {
         String uri = uri("events");
         return new EventListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("events", nullCheck(id));
         return new Request(Method.GET, uri);
     }

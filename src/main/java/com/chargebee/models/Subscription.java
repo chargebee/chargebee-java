@@ -511,123 +511,123 @@ public class Subscription extends Resource<Subscription> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("subscriptions");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static CreateForCustomerRequest createForCustomer(String id) throws IOException {
+    public static CreateForCustomerRequest createForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "subscriptions");
         return new CreateForCustomerRequest(Method.POST, uri);
     }
 
-    public static SubscriptionListRequest list() throws IOException {
+    public static SubscriptionListRequest list() {
         String uri = uri("subscriptions");
         return new SubscriptionListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest subscriptionsForCustomer(String id) throws IOException {
+    public static ListRequest subscriptionsForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "subscriptions");
         return new ListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("subscriptions", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static Request retrieveWithScheduledChanges(String id) throws IOException {
+    public static Request retrieveWithScheduledChanges(String id) {
         String uri = uri("subscriptions", nullCheck(id), "retrieve_with_scheduled_changes");
         return new Request(Method.GET, uri);
     }
 
-    public static Request removeScheduledChanges(String id) throws IOException {
+    public static Request removeScheduledChanges(String id) {
         String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_changes");
         return new Request(Method.POST, uri);
     }
 
-    public static RemoveScheduledCancellationRequest removeScheduledCancellation(String id) throws IOException {
+    public static RemoveScheduledCancellationRequest removeScheduledCancellation(String id) {
         String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_cancellation");
         return new RemoveScheduledCancellationRequest(Method.POST, uri);
     }
 
-    public static RemoveCouponsRequest removeCoupons(String id) throws IOException {
+    public static RemoveCouponsRequest removeCoupons(String id) {
         String uri = uri("subscriptions", nullCheck(id), "remove_coupons");
         return new RemoveCouponsRequest(Method.POST, uri);
     }
 
-    public static UpdateRequest update(String id) throws IOException {
+    public static UpdateRequest update(String id) {
         String uri = uri("subscriptions", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static ChangeTermEndRequest changeTermEnd(String id) throws IOException {
+    public static ChangeTermEndRequest changeTermEnd(String id) {
         String uri = uri("subscriptions", nullCheck(id), "change_term_end");
         return new ChangeTermEndRequest(Method.POST, uri);
     }
 
-    public static CancelRequest cancel(String id) throws IOException {
+    public static CancelRequest cancel(String id) {
         String uri = uri("subscriptions", nullCheck(id), "cancel");
         return new CancelRequest(Method.POST, uri);
     }
 
-    public static ReactivateRequest reactivate(String id) throws IOException {
+    public static ReactivateRequest reactivate(String id) {
         String uri = uri("subscriptions", nullCheck(id), "reactivate");
         return new ReactivateRequest(Method.POST, uri);
     }
 
-    public static AddChargeAtTermEndRequest addChargeAtTermEnd(String id) throws IOException {
+    public static AddChargeAtTermEndRequest addChargeAtTermEnd(String id) {
         String uri = uri("subscriptions", nullCheck(id), "add_charge_at_term_end");
         return new AddChargeAtTermEndRequest(Method.POST, uri);
     }
 
-    public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) throws IOException {
+    public static ChargeAddonAtTermEndRequest chargeAddonAtTermEnd(String id) {
         String uri = uri("subscriptions", nullCheck(id), "charge_addon_at_term_end");
         return new ChargeAddonAtTermEndRequest(Method.POST, uri);
     }
 
-    public static ChargeFutureRenewalsRequest chargeFutureRenewals(String id) throws IOException {
+    public static ChargeFutureRenewalsRequest chargeFutureRenewals(String id) {
         String uri = uri("subscriptions", nullCheck(id), "charge_future_renewals");
         return new ChargeFutureRenewalsRequest(Method.POST, uri);
     }
 
-    public static ImportSubscriptionRequest importSubscription() throws IOException {
+    public static ImportSubscriptionRequest importSubscription() {
         String uri = uri("subscriptions", "import_subscription");
         return new ImportSubscriptionRequest(Method.POST, uri);
     }
 
-    public static ImportForCustomerRequest importForCustomer(String id) throws IOException {
+    public static ImportForCustomerRequest importForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "import_subscription");
         return new ImportForCustomerRequest(Method.POST, uri);
     }
 
-    public static OverrideBillingProfileRequest overrideBillingProfile(String id) throws IOException {
+    public static OverrideBillingProfileRequest overrideBillingProfile(String id) {
         String uri = uri("subscriptions", nullCheck(id), "override_billing_profile");
         return new OverrideBillingProfileRequest(Method.POST, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("subscriptions", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }
 
-    public static PauseRequest pause(String id) throws IOException {
+    public static PauseRequest pause(String id) {
         String uri = uri("subscriptions", nullCheck(id), "pause");
         return new PauseRequest(Method.POST, uri);
     }
 
-    public static ResumeRequest resume(String id) throws IOException {
+    public static ResumeRequest resume(String id) {
         String uri = uri("subscriptions", nullCheck(id), "resume");
         return new ResumeRequest(Method.POST, uri);
     }
 
-    public static Request removeScheduledPause(String id) throws IOException {
+    public static Request removeScheduledPause(String id) {
         String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_pause");
         return new Request(Method.POST, uri);
     }
 
-    public static Request removeScheduledResumption(String id) throws IOException {
+    public static Request removeScheduledResumption(String id) {
         String uri = uri("subscriptions", nullCheck(id), "remove_scheduled_resumption");
         return new Request(Method.POST, uri);
     }
@@ -1055,6 +1055,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 
@@ -1490,6 +1495,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateForCustomerRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 
@@ -1973,6 +1983,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public UpdateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 

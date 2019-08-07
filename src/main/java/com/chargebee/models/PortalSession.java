@@ -119,22 +119,22 @@ public class PortalSession extends Resource<PortalSession> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("portal_sessions");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("portal_sessions", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static Request logout(String id) throws IOException {
+    public static Request logout(String id) {
         String uri = uri("portal_sessions", nullCheck(id), "logout");
         return new Request(Method.POST, uri);
     }
 
-    public static ActivateRequest activate(String id) throws IOException {
+    public static ActivateRequest activate(String id) {
         String uri = uri("portal_sessions", nullCheck(id), "activate");
         return new ActivateRequest(Method.POST, uri);
     }

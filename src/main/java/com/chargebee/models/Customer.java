@@ -511,125 +511,125 @@ public class Customer extends Resource<Customer> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("customers");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static CustomerListRequest list() throws IOException {
+    public static CustomerListRequest list() {
         String uri = uri("customers");
         return new CustomerListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("customers", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static UpdateRequest update(String id) throws IOException {
+    public static UpdateRequest update(String id) {
         String uri = uri("customers", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static UpdatePaymentMethodRequest updatePaymentMethod(String id) throws IOException {
+    public static UpdatePaymentMethodRequest updatePaymentMethod(String id) {
         String uri = uri("customers", nullCheck(id), "update_payment_method");
         return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
-    public static UpdateBillingInfoRequest updateBillingInfo(String id) throws IOException {
+    public static UpdateBillingInfoRequest updateBillingInfo(String id) {
         String uri = uri("customers", nullCheck(id), "update_billing_info");
         return new UpdateBillingInfoRequest(Method.POST, uri);
     }
 
-    public static ListRequest contactsForCustomer(String id) throws IOException {
+    public static ListRequest contactsForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "contacts");
         return new ListRequest(uri);
     }
 
-    public static AssignPaymentRoleRequest assignPaymentRole(String id) throws IOException {
+    public static AssignPaymentRoleRequest assignPaymentRole(String id) {
         String uri = uri("customers", nullCheck(id), "assign_payment_role");
         return new AssignPaymentRoleRequest(Method.POST, uri);
     }
 
-    public static AddContactRequest addContact(String id) throws IOException {
+    public static AddContactRequest addContact(String id) {
         String uri = uri("customers", nullCheck(id), "add_contact");
         return new AddContactRequest(Method.POST, uri);
     }
 
-    public static UpdateContactRequest updateContact(String id) throws IOException {
+    public static UpdateContactRequest updateContact(String id) {
         String uri = uri("customers", nullCheck(id), "update_contact");
         return new UpdateContactRequest(Method.POST, uri);
     }
 
-    public static DeleteContactRequest deleteContact(String id) throws IOException {
+    public static DeleteContactRequest deleteContact(String id) {
         String uri = uri("customers", nullCheck(id), "delete_contact");
         return new DeleteContactRequest(Method.POST, uri);
     }
 
     @Deprecated
-    public static AddPromotionalCreditsRequest addPromotionalCredits(String id) throws IOException {
+    public static AddPromotionalCreditsRequest addPromotionalCredits(String id) {
         String uri = uri("customers", nullCheck(id), "add_promotional_credits");
         return new AddPromotionalCreditsRequest(Method.POST, uri);
     }
 
     @Deprecated
-    public static DeductPromotionalCreditsRequest deductPromotionalCredits(String id) throws IOException {
+    public static DeductPromotionalCreditsRequest deductPromotionalCredits(String id) {
         String uri = uri("customers", nullCheck(id), "deduct_promotional_credits");
         return new DeductPromotionalCreditsRequest(Method.POST, uri);
     }
 
     @Deprecated
-    public static SetPromotionalCreditsRequest setPromotionalCredits(String id) throws IOException {
+    public static SetPromotionalCreditsRequest setPromotionalCredits(String id) {
         String uri = uri("customers", nullCheck(id), "set_promotional_credits");
         return new SetPromotionalCreditsRequest(Method.POST, uri);
     }
 
-    public static RecordExcessPaymentRequest recordExcessPayment(String id) throws IOException {
+    public static RecordExcessPaymentRequest recordExcessPayment(String id) {
         String uri = uri("customers", nullCheck(id), "record_excess_payment");
         return new RecordExcessPaymentRequest(Method.POST, uri);
     }
 
-    public static CollectPaymentRequest collectPayment(String id) throws IOException {
+    public static CollectPaymentRequest collectPayment(String id) {
         String uri = uri("customers", nullCheck(id), "collect_payment");
         return new CollectPaymentRequest(Method.POST, uri);
     }
 
-    public static DeleteRequest delete(String id) throws IOException {
+    public static DeleteRequest delete(String id) {
         String uri = uri("customers", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
     }
 
-    public static MoveRequest move() throws IOException {
+    public static MoveRequest move() {
         String uri = uri("customers", "move");
         return new MoveRequest(Method.POST, uri);
     }
 
-    public static ChangeBillingDateRequest changeBillingDate(String id) throws IOException {
+    public static ChangeBillingDateRequest changeBillingDate(String id) {
         String uri = uri("customers", nullCheck(id), "change_billing_date");
         return new ChangeBillingDateRequest(Method.POST, uri);
     }
 
-    public static MergeRequest merge() throws IOException {
+    public static MergeRequest merge() {
         String uri = uri("customers", "merge");
         return new MergeRequest(Method.POST, uri);
     }
 
-    public static Request clearPersonalData(String id) throws IOException {
+    public static Request clearPersonalData(String id) {
         String uri = uri("customers", nullCheck(id), "clear_personal_data");
         return new Request(Method.POST, uri);
     }
 
-    public static RelationshipsRequest relationships(String id) throws IOException {
+    public static RelationshipsRequest relationships(String id) {
         String uri = uri("customers", nullCheck(id), "relationships");
         return new RelationshipsRequest(Method.POST, uri);
     }
 
-    public static Request deleteRelationship(String id) throws IOException {
+    public static Request deleteRelationship(String id) {
         String uri = uri("customers", nullCheck(id), "delete_relationship");
         return new Request(Method.POST, uri);
     }
 
-    public static HierarchyRequest hierarchy(String id) throws IOException {
+    public static HierarchyRequest hierarchy(String id) {
         String uri = uri("customers", nullCheck(id), "hierarchy");
         return new HierarchyRequest(Method.GET, uri);
     }
@@ -984,6 +984,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 
@@ -1873,6 +1878,11 @@ public class Customer extends Resource<Customer> {
 
         public CollectPaymentRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 

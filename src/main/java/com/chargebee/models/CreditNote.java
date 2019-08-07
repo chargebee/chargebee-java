@@ -280,6 +280,14 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class LinkedRefund extends Resource<LinkedRefund> {
@@ -434,6 +442,18 @@ public class CreditNote extends Resource<CreditNote> {
         return reqInteger("sub_total");
     }
 
+    public Integer subTotalInLocalCurrency() {
+        return optInteger("sub_total_in_local_currency");
+    }
+
+    public Integer totalInLocalCurrency() {
+        return optInteger("total_in_local_currency");
+    }
+
+    public String localCurrencyCode() {
+        return optString("local_currency_code");
+    }
+
     public Integer roundOffAmount() {
         return optInteger("round_off_amount");
     }
@@ -486,38 +506,38 @@ public class CreditNote extends Resource<CreditNote> {
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("credit_notes", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static PdfRequest pdf(String id) throws IOException {
+    public static PdfRequest pdf(String id) {
         String uri = uri("credit_notes", nullCheck(id), "pdf");
         return new PdfRequest(Method.POST, uri);
     }
 
-    public static RecordRefundRequest recordRefund(String id) throws IOException {
+    public static RecordRefundRequest recordRefund(String id) {
         String uri = uri("credit_notes", nullCheck(id), "record_refund");
         return new RecordRefundRequest(Method.POST, uri);
     }
 
-    public static VoidCreditNoteRequest voidCreditNote(String id) throws IOException {
+    public static VoidCreditNoteRequest voidCreditNote(String id) {
         String uri = uri("credit_notes", nullCheck(id), "void");
         return new VoidCreditNoteRequest(Method.POST, uri);
     }
 
-    public static CreditNoteListRequest list() throws IOException {
+    public static CreditNoteListRequest list() {
         String uri = uri("credit_notes");
         return new CreditNoteListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest creditNotesForCustomer(String id) throws IOException {
+    public static ListRequest creditNotesForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "credit_notes");
         return new ListRequest(uri);
     }
 
-    public static DeleteRequest delete(String id) throws IOException {
+    public static DeleteRequest delete(String id) {
         String uri = uri("credit_notes", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
     }
@@ -688,6 +708,8 @@ public class CreditNote extends Resource<CreditNote> {
             super(uri);
         }
     
+
+
         public CreditNoteListRequest includeDeleted(Boolean includeDeleted) {
             params.addOpt("include_deleted", includeDeleted);
             return this;

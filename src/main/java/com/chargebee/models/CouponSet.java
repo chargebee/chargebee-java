@@ -59,37 +59,37 @@ public class CouponSet extends Resource<CouponSet> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("coupon_sets");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static AddCouponCodesRequest addCouponCodes(String id) throws IOException {
+    public static AddCouponCodesRequest addCouponCodes(String id) {
         String uri = uri("coupon_sets", nullCheck(id), "add_coupon_codes");
         return new AddCouponCodesRequest(Method.POST, uri);
     }
 
-    public static CouponSetListRequest list() throws IOException {
+    public static CouponSetListRequest list() {
         String uri = uri("coupon_sets");
         return new CouponSetListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("coupon_sets", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static UpdateRequest update(String id) throws IOException {
+    public static UpdateRequest update(String id) {
         String uri = uri("coupon_sets", nullCheck(id), "update");
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("coupon_sets", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }
 
-    public static Request deleteUnusedCouponCodes(String id) throws IOException {
+    public static Request deleteUnusedCouponCodes(String id) {
         String uri = uri("coupon_sets", nullCheck(id), "delete_unused_coupon_codes");
         return new Request(Method.POST, uri);
     }

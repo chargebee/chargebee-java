@@ -198,6 +198,14 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {

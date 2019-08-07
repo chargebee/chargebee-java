@@ -58,47 +58,47 @@ public class Estimate extends Resource<Estimate> {
     // Operations
     //===========
 
-    public static CreateSubscriptionRequest createSubscription() throws IOException {
+    public static CreateSubscriptionRequest createSubscription() {
         String uri = uri("estimates", "create_subscription");
         return new CreateSubscriptionRequest(Method.POST, uri);
     }
 
-    public static CreateSubForCustomerEstimateRequest createSubForCustomerEstimate(String id) throws IOException {
+    public static CreateSubForCustomerEstimateRequest createSubForCustomerEstimate(String id) {
         String uri = uri("customers", nullCheck(id), "create_subscription_estimate");
         return new CreateSubForCustomerEstimateRequest(Method.GET, uri);
     }
 
-    public static UpdateSubscriptionRequest updateSubscription() throws IOException {
+    public static UpdateSubscriptionRequest updateSubscription() {
         String uri = uri("estimates", "update_subscription");
         return new UpdateSubscriptionRequest(Method.POST, uri);
     }
 
-    public static RenewalEstimateRequest renewalEstimate(String id) throws IOException {
+    public static RenewalEstimateRequest renewalEstimate(String id) {
         String uri = uri("subscriptions", nullCheck(id), "renewal_estimate");
         return new RenewalEstimateRequest(Method.GET, uri);
     }
 
-    public static Request upcomingInvoicesEstimate(String id) throws IOException {
+    public static Request upcomingInvoicesEstimate(String id) {
         String uri = uri("customers", nullCheck(id), "upcoming_invoices_estimate");
         return new Request(Method.GET, uri);
     }
 
-    public static ChangeTermEndRequest changeTermEnd(String id) throws IOException {
+    public static ChangeTermEndRequest changeTermEnd(String id) {
         String uri = uri("subscriptions", nullCheck(id), "change_term_end_estimate");
         return new ChangeTermEndRequest(Method.POST, uri);
     }
 
-    public static CancelSubscriptionRequest cancelSubscription(String id) throws IOException {
+    public static CancelSubscriptionRequest cancelSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "cancel_subscription_estimate");
         return new CancelSubscriptionRequest(Method.POST, uri);
     }
 
-    public static PauseSubscriptionRequest pauseSubscription(String id) throws IOException {
+    public static PauseSubscriptionRequest pauseSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "pause_subscription_estimate");
         return new PauseSubscriptionRequest(Method.POST, uri);
     }
 
-    public static ResumeSubscriptionRequest resumeSubscription(String id) throws IOException {
+    public static ResumeSubscriptionRequest resumeSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "resume_subscription_estimate");
         return new ResumeSubscriptionRequest(Method.POST, uri);
     }

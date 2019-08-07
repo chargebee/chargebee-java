@@ -238,6 +238,14 @@ public class Quote extends Resource<Quote> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class ShippingAddress extends Resource<ShippingAddress> {
@@ -384,6 +392,10 @@ public class Quote extends Resource<Quote> {
         return reqString("id");
     }
 
+    public String name() {
+        return optString("name");
+    }
+
     public String poNumber() {
         return optString("po_number");
     }
@@ -394,6 +406,10 @@ public class Quote extends Resource<Quote> {
 
     public String subscriptionId() {
         return optString("subscription_id");
+    }
+
+    public String invoiceId() {
+        return optString("invoice_id");
     }
 
     public Status status() {
@@ -472,6 +488,10 @@ public class Quote extends Resource<Quote> {
         return optList("line_item_taxes", Quote.LineItemTax.class);
     }
 
+    public JSONArray notes() {
+        return optJSONArray("notes");
+    }
+
     public Quote.ShippingAddress shippingAddress() {
         return optSubResource("shipping_address", Quote.ShippingAddress.class);
     }
@@ -483,47 +503,47 @@ public class Quote extends Resource<Quote> {
     // Operations
     //===========
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("quotes", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static CreateSubForCustomerQuoteRequest createSubForCustomerQuote(String id) throws IOException {
+    public static CreateSubForCustomerQuoteRequest createSubForCustomerQuote(String id) {
         String uri = uri("customers", nullCheck(id), "create_subscription_quote");
         return new CreateSubForCustomerQuoteRequest(Method.POST, uri);
     }
 
-    public static UpdateSubscriptionQuoteRequest updateSubscriptionQuote() throws IOException {
+    public static UpdateSubscriptionQuoteRequest updateSubscriptionQuote() {
         String uri = uri("quotes", "update_subscription_quote");
         return new UpdateSubscriptionQuoteRequest(Method.POST, uri);
     }
 
-    public static CreateForOnetimeChargesRequest createForOnetimeCharges() throws IOException {
+    public static CreateForOnetimeChargesRequest createForOnetimeCharges() {
         String uri = uri("quotes", "create_for_onetime_charges");
         return new CreateForOnetimeChargesRequest(Method.POST, uri);
     }
 
-    public static QuoteListRequest list() throws IOException {
+    public static QuoteListRequest list() {
         String uri = uri("quotes");
         return new QuoteListRequest(uri);
     }
 
-    public static Request convert(String id) throws IOException {
+    public static ConvertRequest convert(String id) {
         String uri = uri("quotes", nullCheck(id), "convert");
-        return new Request(Method.POST, uri);
+        return new ConvertRequest(Method.POST, uri);
     }
 
-    public static UpdateStatusRequest updateStatus(String id) throws IOException {
+    public static UpdateStatusRequest updateStatus(String id) {
         String uri = uri("quotes", nullCheck(id), "update_status");
         return new UpdateStatusRequest(Method.POST, uri);
     }
 
-    public static DeleteRequest delete(String id) throws IOException {
+    public static DeleteRequest delete(String id) {
         String uri = uri("quotes", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
     }
 
-    public static PdfRequest pdf(String id) throws IOException {
+    public static PdfRequest pdf(String id) {
         String uri = uri("quotes", nullCheck(id), "pdf");
         return new PdfRequest(Method.POST, uri);
     }
@@ -538,6 +558,26 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
+
+
+        public CreateSubForCustomerQuoteRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public CreateSubForCustomerQuoteRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public CreateSubForCustomerQuoteRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
 
 
         public CreateSubForCustomerQuoteRequest billingCycles(Integer billingCycles) {
@@ -749,6 +789,24 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
+        public UpdateSubscriptionQuoteRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public UpdateSubscriptionQuoteRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public UpdateSubscriptionQuoteRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
         public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1096,6 +1154,24 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        public CreateForOnetimeChargesRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public CreateForOnetimeChargesRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public CreateForOnetimeChargesRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
         public CreateForOnetimeChargesRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
             return this;
@@ -1279,6 +1355,35 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ConvertRequest extends Request<ConvertRequest> {
+
+        private ConvertRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+
+
+        public ConvertRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public ConvertRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public ConvertRequest subscriptionPoNumber(String subscriptionPoNumber) {
+            params.addOpt("subscription[po_number]", subscriptionPoNumber);
+            return this;
+        }
 
         @Override
         public Params params() {

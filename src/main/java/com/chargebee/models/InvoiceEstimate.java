@@ -191,6 +191,14 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {

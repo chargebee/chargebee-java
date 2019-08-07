@@ -240,6 +240,14 @@ public class Invoice extends Resource<Invoice> {
             return optString("tax_juris_code");
         }
 
+        public Integer taxAmountInLocalCurrency() {
+            return optInteger("tax_amount_in_local_currency");
+        }
+
+        public String localCurrencyCode() {
+            return optString("local_currency_code");
+        }
+
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {
@@ -732,6 +740,18 @@ public class Invoice extends Resource<Invoice> {
         return reqInteger("sub_total");
     }
 
+    public Integer subTotalInLocalCurrency() {
+        return optInteger("sub_total_in_local_currency");
+    }
+
+    public Integer totalInLocalCurrency() {
+        return optInteger("total_in_local_currency");
+    }
+
+    public String localCurrencyCode() {
+        return optString("local_currency_code");
+    }
+
     public Integer tax() {
         return reqInteger("tax");
     }
@@ -835,129 +855,129 @@ public class Invoice extends Resource<Invoice> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("invoices");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static ChargeRequest charge() throws IOException {
+    public static ChargeRequest charge() {
         String uri = uri("invoices", "charge");
         return new ChargeRequest(Method.POST, uri);
     }
 
-    public static ChargeAddonRequest chargeAddon() throws IOException {
+    public static ChargeAddonRequest chargeAddon() {
         String uri = uri("invoices", "charge_addon");
         return new ChargeAddonRequest(Method.POST, uri);
     }
 
-    public static StopDunningRequest stopDunning(String id) throws IOException {
+    public static StopDunningRequest stopDunning(String id) {
         String uri = uri("invoices", nullCheck(id), "stop_dunning");
         return new StopDunningRequest(Method.POST, uri);
     }
 
-    public static ImportInvoiceRequest importInvoice() throws IOException {
+    public static ImportInvoiceRequest importInvoice() {
         String uri = uri("invoices", "import_invoice");
         return new ImportInvoiceRequest(Method.POST, uri);
     }
 
-    public static ApplyPaymentsRequest applyPayments(String id) throws IOException {
+    public static ApplyPaymentsRequest applyPayments(String id) {
         String uri = uri("invoices", nullCheck(id), "apply_payments");
         return new ApplyPaymentsRequest(Method.POST, uri);
     }
 
-    public static ApplyCreditsRequest applyCredits(String id) throws IOException {
+    public static ApplyCreditsRequest applyCredits(String id) {
         String uri = uri("invoices", nullCheck(id), "apply_credits");
         return new ApplyCreditsRequest(Method.POST, uri);
     }
 
-    public static InvoiceListRequest list() throws IOException {
+    public static InvoiceListRequest list() {
         String uri = uri("invoices");
         return new InvoiceListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest invoicesForCustomer(String id) throws IOException {
+    public static ListRequest invoicesForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest invoicesForSubscription(String id) throws IOException {
+    public static ListRequest invoicesForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "invoices");
         return new ListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("invoices", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static PdfRequest pdf(String id) throws IOException {
+    public static PdfRequest pdf(String id) {
         String uri = uri("invoices", nullCheck(id), "pdf");
         return new PdfRequest(Method.POST, uri);
     }
 
-    public static AddChargeRequest addCharge(String id) throws IOException {
+    public static AddChargeRequest addCharge(String id) {
         String uri = uri("invoices", nullCheck(id), "add_charge");
         return new AddChargeRequest(Method.POST, uri);
     }
 
-    public static AddAddonChargeRequest addAddonCharge(String id) throws IOException {
+    public static AddAddonChargeRequest addAddonCharge(String id) {
         String uri = uri("invoices", nullCheck(id), "add_addon_charge");
         return new AddAddonChargeRequest(Method.POST, uri);
     }
 
-    public static CloseRequest close(String id) throws IOException {
+    public static CloseRequest close(String id) {
         String uri = uri("invoices", nullCheck(id), "close");
         return new CloseRequest(Method.POST, uri);
     }
 
-    public static CollectPaymentRequest collectPayment(String id) throws IOException {
+    public static CollectPaymentRequest collectPayment(String id) {
         String uri = uri("invoices", nullCheck(id), "collect_payment");
         return new CollectPaymentRequest(Method.POST, uri);
     }
 
-    public static RecordPaymentRequest recordPayment(String id) throws IOException {
+    public static RecordPaymentRequest recordPayment(String id) {
         String uri = uri("invoices", nullCheck(id), "record_payment");
         return new RecordPaymentRequest(Method.POST, uri);
     }
 
-    public static RefundRequest refund(String id) throws IOException {
+    public static RefundRequest refund(String id) {
         String uri = uri("invoices", nullCheck(id), "refund");
         return new RefundRequest(Method.POST, uri);
     }
 
-    public static RecordRefundRequest recordRefund(String id) throws IOException {
+    public static RecordRefundRequest recordRefund(String id) {
         String uri = uri("invoices", nullCheck(id), "record_refund");
         return new RecordRefundRequest(Method.POST, uri);
     }
 
-    public static RemovePaymentRequest removePayment(String id) throws IOException {
+    public static RemovePaymentRequest removePayment(String id) {
         String uri = uri("invoices", nullCheck(id), "remove_payment");
         return new RemovePaymentRequest(Method.POST, uri);
     }
 
-    public static RemoveCreditNoteRequest removeCreditNote(String id) throws IOException {
+    public static RemoveCreditNoteRequest removeCreditNote(String id) {
         String uri = uri("invoices", nullCheck(id), "remove_credit_note");
         return new RemoveCreditNoteRequest(Method.POST, uri);
     }
 
-    public static VoidInvoiceRequest voidInvoice(String id) throws IOException {
+    public static VoidInvoiceRequest voidInvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "void");
         return new VoidInvoiceRequest(Method.POST, uri);
     }
 
-    public static WriteOffRequest writeOff(String id) throws IOException {
+    public static WriteOffRequest writeOff(String id) {
         String uri = uri("invoices", nullCheck(id), "write_off");
         return new WriteOffRequest(Method.POST, uri);
     }
 
-    public static DeleteRequest delete(String id) throws IOException {
+    public static DeleteRequest delete(String id) {
         String uri = uri("invoices", nullCheck(id), "delete");
         return new DeleteRequest(Method.POST, uri);
     }
 
-    public static UpdateDetailsRequest updateDetails(String id) throws IOException {
+    public static UpdateDetailsRequest updateDetails(String id) {
         String uri = uri("invoices", nullCheck(id), "update_details");
         return new UpdateDetailsRequest(Method.POST, uri);
     }

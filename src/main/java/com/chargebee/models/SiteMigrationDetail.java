@@ -62,7 +62,7 @@ public class SiteMigrationDetail extends Resource<SiteMigrationDetail> {
     // Operations
     //===========
 
-    public static SiteMigrationDetailListRequest list() throws IOException {
+    public static SiteMigrationDetailListRequest list() {
         String uri = uri("site_migration_details");
         return new SiteMigrationDetailListRequest(uri);
     }

@@ -67,17 +67,17 @@ public class TimeMachine extends Resource<TimeMachine> {
     // Operations
     //===========
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("time_machines", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static StartAfreshRequest startAfresh(String id) throws IOException {
+    public static StartAfreshRequest startAfresh(String id) {
         String uri = uri("time_machines", nullCheck(id), "start_afresh");
         return new StartAfreshRequest(Method.POST, uri);
     }
 
-    public static TravelForwardRequest travelForward(String id) throws IOException {
+    public static TravelForwardRequest travelForward(String id) {
         String uri = uri("time_machines", nullCheck(id), "travel_forward");
         return new TravelForwardRequest(Method.POST, uri);
     }

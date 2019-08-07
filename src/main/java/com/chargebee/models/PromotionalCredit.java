@@ -82,27 +82,27 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
     // Operations
     //===========
 
-    public static AddRequest add() throws IOException {
+    public static AddRequest add() {
         String uri = uri("promotional_credits", "add");
         return new AddRequest(Method.POST, uri);
     }
 
-    public static DeductRequest deduct() throws IOException {
+    public static DeductRequest deduct() {
         String uri = uri("promotional_credits", "deduct");
         return new DeductRequest(Method.POST, uri);
     }
 
-    public static SetRequest set() throws IOException {
+    public static SetRequest set() {
         String uri = uri("promotional_credits", "set");
         return new SetRequest(Method.POST, uri);
     }
 
-    public static PromotionalCreditListRequest list() throws IOException {
+    public static PromotionalCreditListRequest list() {
         String uri = uri("promotional_credits");
         return new PromotionalCreditListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("promotional_credits", nullCheck(id));
         return new Request(Method.GET, uri);
     }

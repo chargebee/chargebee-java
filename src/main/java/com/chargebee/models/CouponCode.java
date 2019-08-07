@@ -59,22 +59,22 @@ public class CouponCode extends Resource<CouponCode> {
     //===========
 
     @Deprecated
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("coupon_codes");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("coupon_codes", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static CouponCodeListRequest list() throws IOException {
+    public static CouponCodeListRequest list() {
         String uri = uri("coupon_codes");
         return new CouponCodeListRequest(uri);
     }
 
-    public static Request archive(String id) throws IOException {
+    public static Request archive(String id) {
         String uri = uri("coupon_codes", nullCheck(id), "archive");
         return new Request(Method.POST, uri);
     }

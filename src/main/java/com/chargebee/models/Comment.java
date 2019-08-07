@@ -65,22 +65,22 @@ public class Comment extends Resource<Comment> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("comments");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("comments", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static CommentListRequest list() throws IOException {
+    public static CommentListRequest list() {
         String uri = uri("comments");
         return new CommentListRequest(uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("comments", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }

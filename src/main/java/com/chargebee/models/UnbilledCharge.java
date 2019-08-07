@@ -134,22 +134,22 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
     // Operations
     //===========
 
-    public static InvoiceUnbilledChargesRequest invoiceUnbilledCharges() throws IOException {
+    public static InvoiceUnbilledChargesRequest invoiceUnbilledCharges() {
         String uri = uri("unbilled_charges", "invoice_unbilled_charges");
         return new InvoiceUnbilledChargesRequest(Method.POST, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("unbilled_charges", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }
 
-    public static UnbilledChargeListRequest list() throws IOException {
+    public static UnbilledChargeListRequest list() {
         String uri = uri("unbilled_charges");
         return new UnbilledChargeListRequest(uri);
     }
 
-    public static InvoiceNowEstimateRequest invoiceNowEstimate() throws IOException {
+    public static InvoiceNowEstimateRequest invoiceNowEstimate() {
         String uri = uri("unbilled_charges", "invoice_now_estimate");
         return new InvoiceNowEstimateRequest(Method.POST, uri);
     }

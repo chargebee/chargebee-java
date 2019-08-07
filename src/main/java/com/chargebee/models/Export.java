@@ -84,62 +84,62 @@ public class Export extends Resource<Export> {
     // Operations
     //===========
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("exports", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static RevenueRecognitionRequest revenueRecognition() throws IOException {
+    public static RevenueRecognitionRequest revenueRecognition() {
         String uri = uri("exports", "revenue_recognition");
         return new RevenueRecognitionRequest(Method.POST, uri);
     }
 
-    public static DeferredRevenueRequest deferredRevenue() throws IOException {
+    public static DeferredRevenueRequest deferredRevenue() {
         String uri = uri("exports", "deferred_revenue");
         return new DeferredRevenueRequest(Method.POST, uri);
     }
 
-    public static PlansRequest plans() throws IOException {
+    public static PlansRequest plans() {
         String uri = uri("exports", "plans");
         return new PlansRequest(Method.POST, uri);
     }
 
-    public static AddonsRequest addons() throws IOException {
+    public static AddonsRequest addons() {
         String uri = uri("exports", "addons");
         return new AddonsRequest(Method.POST, uri);
     }
 
-    public static CouponsRequest coupons() throws IOException {
+    public static CouponsRequest coupons() {
         String uri = uri("exports", "coupons");
         return new CouponsRequest(Method.POST, uri);
     }
 
-    public static CustomersRequest customers() throws IOException {
+    public static CustomersRequest customers() {
         String uri = uri("exports", "customers");
         return new CustomersRequest(Method.POST, uri);
     }
 
-    public static SubscriptionsRequest subscriptions() throws IOException {
+    public static SubscriptionsRequest subscriptions() {
         String uri = uri("exports", "subscriptions");
         return new SubscriptionsRequest(Method.POST, uri);
     }
 
-    public static InvoicesRequest invoices() throws IOException {
+    public static InvoicesRequest invoices() {
         String uri = uri("exports", "invoices");
         return new InvoicesRequest(Method.POST, uri);
     }
 
-    public static CreditNotesRequest creditNotes() throws IOException {
+    public static CreditNotesRequest creditNotes() {
         String uri = uri("exports", "credit_notes");
         return new CreditNotesRequest(Method.POST, uri);
     }
 
-    public static TransactionsRequest transactions() throws IOException {
+    public static TransactionsRequest transactions() {
         String uri = uri("exports", "transactions");
         return new TransactionsRequest(Method.POST, uri);
     }
 
-    public static OrdersRequest orders() throws IOException {
+    public static OrdersRequest orders() {
         String uri = uri("exports", "orders");
         return new OrdersRequest(Method.POST, uri);
     }

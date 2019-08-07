@@ -342,44 +342,44 @@ public class Transaction extends Resource<Transaction> {
     // Operations
     //===========
 
-    public static CreateAuthorizationRequest createAuthorization() throws IOException {
+    public static CreateAuthorizationRequest createAuthorization() {
         String uri = uri("transactions", "create_authorization");
         return new CreateAuthorizationRequest(Method.POST, uri);
     }
 
-    public static Request voidTransaction(String id) throws IOException {
+    public static Request voidTransaction(String id) {
         String uri = uri("transactions", nullCheck(id), "void");
         return new Request(Method.POST, uri);
     }
 
-    public static TransactionListRequest list() throws IOException {
+    public static TransactionListRequest list() {
         String uri = uri("transactions");
         return new TransactionListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest transactionsForCustomer(String id) throws IOException {
+    public static ListRequest transactionsForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "transactions");
         return new ListRequest(uri);
     }
 
     @Deprecated
-    public static ListRequest transactionsForSubscription(String id) throws IOException {
+    public static ListRequest transactionsForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "transactions");
         return new ListRequest(uri);
     }
 
-    public static ListRequest paymentsForInvoice(String id) throws IOException {
+    public static ListRequest paymentsForInvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "payments");
         return new ListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("transactions", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static DeleteOfflineTransactionRequest deleteOfflineTransaction(String id) throws IOException {
+    public static DeleteOfflineTransactionRequest deleteOfflineTransaction(String id) {
         String uri = uri("transactions", nullCheck(id), "delete_offline_transaction");
         return new DeleteOfflineTransactionRequest(Method.POST, uri);
     }

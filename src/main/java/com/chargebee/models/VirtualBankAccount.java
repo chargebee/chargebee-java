@@ -97,27 +97,27 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
     // Operations
     //===========
 
-    public static CreateUsingPermanentTokenRequest createUsingPermanentToken() throws IOException {
+    public static CreateUsingPermanentTokenRequest createUsingPermanentToken() {
         String uri = uri("virtual_bank_accounts", "create_using_permanent_token");
         return new CreateUsingPermanentTokenRequest(Method.POST, uri);
     }
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("virtual_bank_accounts");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("virtual_bank_accounts", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static VirtualBankAccountListRequest list() throws IOException {
+    public static VirtualBankAccountListRequest list() {
         String uri = uri("virtual_bank_accounts");
         return new VirtualBankAccountListRequest(uri);
     }
 
-    public static Request deleteLocal(String id) throws IOException {
+    public static Request deleteLocal(String id) {
         String uri = uri("virtual_bank_accounts", nullCheck(id), "delete_local");
         return new Request(Method.POST, uri);
     }

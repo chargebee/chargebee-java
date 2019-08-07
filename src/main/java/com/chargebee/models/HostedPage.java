@@ -114,73 +114,73 @@ public class HostedPage extends Resource<HostedPage> {
     // Operations
     //===========
 
-    public static CheckoutNewRequest checkoutNew() throws IOException {
+    public static CheckoutNewRequest checkoutNew() {
         String uri = uri("hosted_pages", "checkout_new");
         return new CheckoutNewRequest(Method.POST, uri);
     }
 
-    public static CheckoutExistingRequest checkoutExisting() throws IOException {
+    public static CheckoutExistingRequest checkoutExisting() {
         String uri = uri("hosted_pages", "checkout_existing");
         return new CheckoutExistingRequest(Method.POST, uri);
     }
 
     @Deprecated
-    public static UpdateCardRequest updateCard() throws IOException {
+    public static UpdateCardRequest updateCard() {
         String uri = uri("hosted_pages", "update_card");
         return new UpdateCardRequest(Method.POST, uri);
     }
 
-    public static UpdatePaymentMethodRequest updatePaymentMethod() throws IOException {
+    public static UpdatePaymentMethodRequest updatePaymentMethod() {
         String uri = uri("hosted_pages", "update_payment_method");
         return new UpdatePaymentMethodRequest(Method.POST, uri);
     }
 
-    public static ManagePaymentSourcesRequest managePaymentSources() throws IOException {
+    public static ManagePaymentSourcesRequest managePaymentSources() {
         String uri = uri("hosted_pages", "manage_payment_sources");
         return new ManagePaymentSourcesRequest(Method.POST, uri);
     }
 
-    public static CollectNowRequest collectNow() throws IOException {
+    public static CollectNowRequest collectNow() {
         String uri = uri("hosted_pages", "collect_now");
         return new CollectNowRequest(Method.POST, uri);
     }
 
-    public static AcceptQuoteRequest acceptQuote() throws IOException {
+    public static AcceptQuoteRequest acceptQuote() {
         String uri = uri("hosted_pages", "accept_quote");
         return new AcceptQuoteRequest(Method.POST, uri);
     }
 
-    public static ExtendSubscriptionRequest extendSubscription() throws IOException {
+    public static ExtendSubscriptionRequest extendSubscription() {
         String uri = uri("hosted_pages", "extend_subscription");
         return new ExtendSubscriptionRequest(Method.POST, uri);
     }
 
-    public static CheckoutGiftRequest checkoutGift() throws IOException {
+    public static CheckoutGiftRequest checkoutGift() {
         String uri = uri("hosted_pages", "checkout_gift");
         return new CheckoutGiftRequest(Method.POST, uri);
     }
 
-    public static ClaimGiftRequest claimGift() throws IOException {
+    public static ClaimGiftRequest claimGift() {
         String uri = uri("hosted_pages", "claim_gift");
         return new ClaimGiftRequest(Method.POST, uri);
     }
 
-    public static RetrieveAgreementPdfRequest retrieveAgreementPdf() throws IOException {
+    public static RetrieveAgreementPdfRequest retrieveAgreementPdf() {
         String uri = uri("hosted_pages", "retrieve_agreement_pdf");
         return new RetrieveAgreementPdfRequest(Method.POST, uri);
     }
 
-    public static Request acknowledge(String id) throws IOException {
+    public static Request acknowledge(String id) {
         String uri = uri("hosted_pages", nullCheck(id), "acknowledge");
         return new Request(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("hosted_pages", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static HostedPageListRequest list() throws IOException {
+    public static HostedPageListRequest list() {
         String uri = uri("hosted_pages");
         return new HostedPageListRequest(uri);
     }

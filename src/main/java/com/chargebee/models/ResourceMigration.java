@@ -66,7 +66,7 @@ public class ResourceMigration extends Resource<ResourceMigration> {
     // Operations
     //===========
 
-    public static RetrieveLatestRequest retrieveLatest() throws IOException {
+    public static RetrieveLatestRequest retrieveLatest() {
         String uri = uri("resource_migrations", "retrieve_latest");
         return new RetrieveLatestRequest(Method.GET, uri);
     }

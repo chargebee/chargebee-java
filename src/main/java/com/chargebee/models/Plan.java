@@ -351,37 +351,37 @@ public class Plan extends Resource<Plan> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("plans");
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static UpdateRequest update(String id) throws IOException {
+    public static UpdateRequest update(String id) {
         String uri = uri("plans", nullCheck(id));
         return new UpdateRequest(Method.POST, uri);
     }
 
-    public static PlanListRequest list() throws IOException {
+    public static PlanListRequest list() {
         String uri = uri("plans");
         return new PlanListRequest(uri);
     }
 
-    public static Request retrieve(String id) throws IOException {
+    public static Request retrieve(String id) {
         String uri = uri("plans", nullCheck(id));
         return new Request(Method.GET, uri);
     }
 
-    public static Request delete(String id) throws IOException {
+    public static Request delete(String id) {
         String uri = uri("plans", nullCheck(id), "delete");
         return new Request(Method.POST, uri);
     }
 
-    public static CopyRequest copy() throws IOException {
+    public static CopyRequest copy() {
         String uri = uri("plans", "copy");
         return new CopyRequest(Method.POST, uri);
     }
 
-    public static Request unarchive(String id) throws IOException {
+    public static Request unarchive(String id) {
         String uri = uri("plans", nullCheck(id), "unarchive");
         return new Request(Method.POST, uri);
     }
