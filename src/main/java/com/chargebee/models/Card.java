@@ -278,14 +278,20 @@ public class Card extends Resource<Card> {
             super(httpMeth, uri);
         }
     
+        public UpdateCardForCustomerUsingPaymentIntentRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent_id", paymentIntentId);
+            return this;
+        }
+
+
         public UpdateCardForCustomerUsingPaymentIntentRequest gatewayAccountId(String gatewayAccountId) {
-            params.add("gateway_account_id", gatewayAccountId);
+            params.addOpt("gateway_account_id", gatewayAccountId);
             return this;
         }
 
 
         public UpdateCardForCustomerUsingPaymentIntentRequest gwToken(String gwToken) {
-            params.add("gw_token", gwToken);
+            params.addOpt("gw_token", gwToken);
             return this;
         }
 

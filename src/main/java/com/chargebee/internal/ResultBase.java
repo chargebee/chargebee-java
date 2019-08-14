@@ -81,6 +81,10 @@ public class ResultBase {
         return (PortalSession)get("portal_session");
     }
 
+    public PaymentIntent paymentIntent() {
+        return (PaymentIntent)get("payment_intent");
+    }
+
 
     private Resource get(String key) {
         JSONObject modelJson = jsonObj.optJSONObject(key);
