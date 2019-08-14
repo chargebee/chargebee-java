@@ -501,7 +501,7 @@ public class CreditNote extends Resource<CreditNote> {
     // Operations
     //===========
 
-    public static CreateRequest create() throws IOException {
+    public static CreateRequest create() {
         String uri = uri("credit_notes");
         return new CreateRequest(Method.POST, uri);
     }

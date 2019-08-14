@@ -148,6 +148,10 @@ public class ResultBase {
         return (Export)get("export");
     }
 
+    public PaymentIntent paymentIntent() {
+        return (PaymentIntent)get("payment_intent");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }

@@ -99,6 +99,8 @@ public enum EventType {
     GIFT_CANCELLED,
     HIERARCHY_CREATED,
     HIERARCHY_DELETED,
+    PAYMENT_INTENT_CREATED,
+    PAYMENT_INTENT_UPDATED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }
