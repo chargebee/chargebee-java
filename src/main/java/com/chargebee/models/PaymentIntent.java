@@ -86,6 +86,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return reqEnum("status", Status.class);
     }
 
+    public String currencyCode() {
+        return optString("currency_code");
+    }
+
     public Integer amount() {
         return reqInteger("amount");
     }

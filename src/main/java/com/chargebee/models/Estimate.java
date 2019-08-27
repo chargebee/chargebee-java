@@ -165,6 +165,12 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+        public CreateSubscriptionRequest clientProfileId(String clientProfileId) {
+            params.addOpt("client_profile_id", clientProfileId);
+            return this;
+        }
+
+
         public CreateSubscriptionRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;

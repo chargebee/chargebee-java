@@ -784,6 +784,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+
+
+
+
+        public CreateRequest clientProfileId(String clientProfileId) {
+            params.addOpt("client_profile_id", clientProfileId);
+            return this;
+        }
+
+
         public CreateRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
@@ -2335,6 +2347,26 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ReactivateRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -2463,6 +2495,12 @@ public class Subscription extends Resource<Subscription> {
     
         public ImportSubscriptionRequest id(String id) {
             params.addOpt("id", id);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest clientProfileId(String clientProfileId) {
+            params.addOpt("client_profile_id", clientProfileId);
             return this;
         }
 
@@ -3395,6 +3433,26 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public ResumeRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public ResumeRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public ResumeRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public ResumeRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
 
         @Override
         public Params params() {

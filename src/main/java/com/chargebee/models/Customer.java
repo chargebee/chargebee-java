@@ -504,6 +504,10 @@ public class Customer extends Resource<Customer> {
         return optEnum("customer_type", CustomerType.class);
     }
 
+    public String clientProfileId() {
+        return optString("client_profile_id");
+    }
+
     public Customer.Relationship relationship() {
         return optSubResource("relationship", Customer.Relationship.class);
     }
@@ -730,6 +734,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest customerType(com.chargebee.models.enums.CustomerType customerType) {
             params.addOpt("customer_type", customerType);
+            return this;
+        }
+
+
+        public CreateRequest clientProfileId(String clientProfileId) {
+            params.addOpt("client_profile_id", clientProfileId);
             return this;
         }
 
@@ -1237,6 +1247,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest customerType(com.chargebee.models.enums.CustomerType customerType) {
             params.addOpt("customer_type", customerType);
+            return this;
+        }
+
+
+        public UpdateRequest clientProfileId(String clientProfileId) {
+            params.addOpt("client_profile_id", clientProfileId);
             return this;
         }
 
