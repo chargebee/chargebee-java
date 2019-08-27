@@ -1315,6 +1315,26 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ReactivateRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

@@ -606,6 +606,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
         public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -668,6 +674,26 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
 
