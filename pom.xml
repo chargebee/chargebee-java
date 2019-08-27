@@ -4,7 +4,7 @@
 
     <groupId>com.chargebee</groupId>
     <artifactId>chargebee-java</artifactId>
-    <version>1.1.80</version>
+    <version>1.1.81-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
