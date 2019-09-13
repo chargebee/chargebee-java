@@ -103,6 +103,16 @@ public class Estimate extends Resource<Estimate> {
         return new ResumeSubscriptionRequest(Method.POST, uri);
     }
 
+    public static GiftSubscriptionRequest giftSubscription() {
+        String uri = uri("estimates", "gift_subscription");
+        return new GiftSubscriptionRequest(Method.POST, uri);
+    }
+
+    public static CreateInvoiceRequest createInvoice() {
+        String uri = uri("estimates", "create_invoice");
+        return new CreateInvoiceRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -1036,6 +1046,341 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class GiftSubscriptionRequest extends Request<GiftSubscriptionRequest> {
+
+        private GiftSubscriptionRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public GiftSubscriptionRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public GiftSubscriptionRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftScheduledAt(Timestamp giftScheduledAt) {
+            params.addOpt("gift[scheduled_at]", giftScheduledAt);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftAutoClaim(Boolean giftAutoClaim) {
+            params.addOpt("gift[auto_claim]", giftAutoClaim);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftClaimExpiryDate(Timestamp giftClaimExpiryDate) {
+            params.addOpt("gift[claim_expiry_date]", giftClaimExpiryDate);
+            return this;
+        }
+
+        public GiftSubscriptionRequest gifterCustomerId(String gifterCustomerId) {
+            params.add("gifter[customer_id]", gifterCustomerId);
+            return this;
+        }
+
+        public GiftSubscriptionRequest gifterSignature(String gifterSignature) {
+            params.add("gifter[signature]", gifterSignature);
+            return this;
+        }
+
+        public GiftSubscriptionRequest gifterNote(String gifterNote) {
+            params.addOpt("gifter[note]", gifterNote);
+            return this;
+        }
+
+        public GiftSubscriptionRequest gifterPaymentSrcId(String gifterPaymentSrcId) {
+            params.addOpt("gifter[payment_src_id]", gifterPaymentSrcId);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftReceiverCustomerId(String giftReceiverCustomerId) {
+            params.add("gift_receiver[customer_id]", giftReceiverCustomerId);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftReceiverFirstName(String giftReceiverFirstName) {
+            params.add("gift_receiver[first_name]", giftReceiverFirstName);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftReceiverLastName(String giftReceiverLastName) {
+            params.add("gift_receiver[last_name]", giftReceiverLastName);
+            return this;
+        }
+
+        public GiftSubscriptionRequest giftReceiverEmail(String giftReceiverEmail) {
+            params.add("gift_receiver[email]", giftReceiverEmail);
+            return this;
+        }
+
+        public GiftSubscriptionRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public GiftSubscriptionRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public GiftSubscriptionRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public GiftSubscriptionRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public GiftSubscriptionRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateInvoiceRequest extends Request<CreateInvoiceRequest> {
+
+        private CreateInvoiceRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateInvoiceRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest authorizationTransactionId(String authorizationTransactionId) {
+            params.addOpt("authorization_transaction_id", authorizationTransactionId);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest invoiceCustomerId(String invoiceCustomerId) {
+            params.add("invoice[customer_id]", invoiceCustomerId);
+            return this;
+        }
+
+        public CreateInvoiceRequest invoicePoNumber(String invoicePoNumber) {
+            params.addOpt("invoice[po_number]", invoicePoNumber);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateInvoiceRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateInvoiceRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public CreateInvoiceRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public CreateInvoiceRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateInvoiceRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CreateInvoiceRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateInvoiceRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateInvoiceRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateInvoiceRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

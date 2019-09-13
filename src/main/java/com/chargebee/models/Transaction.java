@@ -352,6 +352,11 @@ public class Transaction extends Resource<Transaction> {
         return new Request(Method.POST, uri);
     }
 
+    public static RecordRefundRequest recordRefund(String id) {
+        String uri = uri("transactions", nullCheck(id), "record_refund");
+        return new RecordRefundRequest(Method.POST, uri);
+    }
+
     public static TransactionListRequest list() {
         String uri = uri("transactions");
         return new TransactionListRequest(uri);
@@ -414,6 +419,48 @@ public class Transaction extends Resource<Transaction> {
 
         public CreateAuthorizationRequest amount(Integer amount) {
             params.add("amount", amount);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RecordRefundRequest extends Request<RecordRefundRequest> {
+
+        private RecordRefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RecordRefundRequest amount(Integer amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public RecordRefundRequest paymentMethod(com.chargebee.models.enums.PaymentMethod paymentMethod) {
+            params.add("payment_method", paymentMethod);
+            return this;
+        }
+
+
+        public RecordRefundRequest date(Timestamp date) {
+            params.add("date", date);
+            return this;
+        }
+
+
+        public RecordRefundRequest referenceNumber(String referenceNumber) {
+            params.addOpt("reference_number", referenceNumber);
+            return this;
+        }
+
+
+        public RecordRefundRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 

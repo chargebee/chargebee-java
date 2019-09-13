@@ -488,24 +488,6 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-        public CreateUsingPaymentIntentRequest gatewayAccountId(String gatewayAccountId) {
-            params.add("gateway_account_id", gatewayAccountId);
-            return this;
-        }
-
-
-        public CreateUsingPaymentIntentRequest gwToken(String gwToken) {
-            params.add("gw_token", gwToken);
-            return this;
-        }
-
-
-        public CreateUsingPaymentIntentRequest gwPaymentMethodId(String gwPaymentMethodId) {
-            params.addOpt("gw_payment_method_id", gwPaymentMethodId);
-            return this;
-        }
-
-
         public CreateUsingPaymentIntentRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
@@ -527,6 +509,12 @@ public class PaymentSource extends Resource<PaymentSource> {
             return this;
         }
 
+        public CreateUsingPaymentIntentRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
+            params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+            return this;
+        }
+
+        @Deprecated
         public CreateUsingPaymentIntentRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
