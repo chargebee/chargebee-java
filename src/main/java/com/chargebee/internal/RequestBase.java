@@ -22,6 +22,12 @@ public class RequestBase<U extends RequestBase> {
         headers.put(headerName, headerValue);
         return (U)this;
     }
-    
 
+    public String uri() {
+        return uri;
+    }
+
+    public Map<String, String> headers() {
+        return headers;
+    }
 }
