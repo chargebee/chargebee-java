@@ -744,6 +744,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest taxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory taxjarExemptionCategory) {
+            params.addOpt("taxjar_exemption_category", taxjarExemptionCategory);
+            return this;
+        }
+
+
         public CreateRequest locale(String locale) {
             params.addOpt("locale", locale);
             return this;
@@ -1259,6 +1265,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest clientProfileId(String clientProfileId) {
             params.addOpt("client_profile_id", clientProfileId);
+            return this;
+        }
+
+
+        public UpdateRequest taxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory taxjarExemptionCategory) {
+            params.addOpt("taxjar_exemption_category", taxjarExemptionCategory);
             return this;
         }
 

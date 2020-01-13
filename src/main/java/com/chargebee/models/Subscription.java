@@ -846,6 +846,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerTaxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory customerTaxjarExemptionCategory) {
+            params.addOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
+            return this;
+        }
+
         public CreateRequest customerPhone(String customerPhone) {
             params.addOpt("customer[phone]", customerPhone);
             return this;
@@ -2718,6 +2723,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest customerNetTermDays(Integer customerNetTermDays) {
             params.addOpt("customer[net_term_days]", customerNetTermDays);
+            return this;
+        }
+
+        public ImportSubscriptionRequest customerTaxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory customerTaxjarExemptionCategory) {
+            params.addOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
             return this;
         }
 

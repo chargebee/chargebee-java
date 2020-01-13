@@ -260,6 +260,10 @@ public class Plan extends Resource<Plan> {
         return optString("tax_code");
     }
 
+    public String taxjarProductCode() {
+        return optString("taxjar_product_code");
+    }
+
     public AvalaraSaleType avalaraSaleType() {
         return optEnum("avalara_sale_type", AvalaraSaleType.class);
     }
@@ -532,6 +536,12 @@ public class Plan extends Resource<Plan> {
 
         public CreateRequest taxCode(String taxCode) {
             params.addOpt("tax_code", taxCode);
+            return this;
+        }
+
+
+        public CreateRequest taxjarProductCode(String taxjarProductCode) {
+            params.addOpt("taxjar_product_code", taxjarProductCode);
             return this;
         }
 
@@ -816,6 +826,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest taxCode(String taxCode) {
             params.addOpt("tax_code", taxCode);
+            return this;
+        }
+
+
+        public UpdateRequest taxjarProductCode(String taxjarProductCode) {
+            params.addOpt("taxjar_product_code", taxjarProductCode);
             return this;
         }
 

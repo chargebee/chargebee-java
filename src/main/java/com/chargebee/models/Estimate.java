@@ -1078,6 +1078,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public GiftSubscriptionRequest giftNoExpiry(Boolean giftNoExpiry) {
+            params.addOpt("gift[no_expiry]", giftNoExpiry);
+            return this;
+        }
+
         public GiftSubscriptionRequest giftClaimExpiryDate(Timestamp giftClaimExpiryDate) {
             params.addOpt("gift[claim_expiry_date]", giftClaimExpiryDate);
             return this;
