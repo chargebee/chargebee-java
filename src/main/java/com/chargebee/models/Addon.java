@@ -156,6 +156,10 @@ public class Addon extends Resource<Addon> {
         return optString("tax_code");
     }
 
+    public String taxjarProductCode() {
+        return optString("taxjar_product_code");
+    }
+
     public AvalaraSaleType avalaraSaleType() {
         return optEnum("avalara_sale_type", AvalaraSaleType.class);
     }
@@ -387,6 +391,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest taxjarProductCode(String taxjarProductCode) {
+            params.addOpt("taxjar_product_code", taxjarProductCode);
+            return this;
+        }
+
+
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -576,6 +586,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest taxCode(String taxCode) {
             params.addOpt("tax_code", taxCode);
+            return this;
+        }
+
+
+        public UpdateRequest taxjarProductCode(String taxjarProductCode) {
+            params.addOpt("taxjar_product_code", taxjarProductCode);
             return this;
         }
 

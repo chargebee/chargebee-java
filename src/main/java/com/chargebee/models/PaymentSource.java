@@ -108,13 +108,13 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public static class BankAccount extends Resource<BankAccount> {
         public enum AccountType {
-             CHECKING,SAVINGS,
+             CHECKING,SAVINGS,BUSINESS_CHECKING,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
         public enum EcheckType {
-             WEB,PPD,
+             WEB,PPD,CCD,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

@@ -118,6 +118,10 @@ public class Gift extends Resource<Gift> {
         return reqBoolean("auto_claim");
     }
 
+    public Boolean noExpiry() {
+        return reqBoolean("no_expiry");
+    }
+
     public Timestamp claimExpiryDate() {
         return optTimestamp("claim_expiry_date");
     }
@@ -170,6 +174,11 @@ public class Gift extends Resource<Gift> {
         return new Request(Method.POST, uri);
     }
 
+    public static UpdateGiftRequest updateGift(String id) {
+        String uri = uri("gifts", nullCheck(id), "update_gift");
+        return new UpdateGiftRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -188,6 +197,12 @@ public class Gift extends Resource<Gift> {
 
         public CreateRequest autoClaim(Boolean autoClaim) {
             params.addOpt("auto_claim", autoClaim);
+            return this;
+        }
+
+
+        public CreateRequest noExpiry(Boolean noExpiry) {
+            params.addOpt("no_expiry", noExpiry);
             return this;
         }
 
@@ -390,6 +405,30 @@ public class Gift extends Resource<Gift> {
         public StringFilter<GiftListRequest> giftReceiverCustomerId() {
             return new StringFilter<GiftListRequest>("gift_receiver[customer_id]",this);        
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateGiftRequest extends Request<UpdateGiftRequest> {
+
+        private UpdateGiftRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateGiftRequest scheduledAt(Timestamp scheduledAt) {
+            params.add("scheduled_at", scheduledAt);
+            return this;
+        }
+
+
+        public UpdateGiftRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
 
         @Override
         public Params params() {
