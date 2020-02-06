@@ -2275,48 +2275,6 @@ public class Subscription extends Resource<Subscription> {
         }
     }
 
-    public static class CancelRequest extends Request<CancelRequest> {
-
-        private CancelRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public CancelRequest endOfTerm(Boolean endOfTerm) {
-            params.addOpt("end_of_term", endOfTerm);
-            return this;
-        }
-
-
-        public CancelRequest creditOptionForCurrentTermCharges(com.chargebee.models.enums.CreditOptionForCurrentTermCharges creditOptionForCurrentTermCharges) {
-            params.addOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
-            return this;
-        }
-
-
-        public CancelRequest unbilledChargesOption(com.chargebee.models.enums.UnbilledChargesOption unbilledChargesOption) {
-            params.addOpt("unbilled_charges_option", unbilledChargesOption);
-            return this;
-        }
-
-
-        public CancelRequest accountReceivablesHandling(com.chargebee.models.enums.AccountReceivablesHandling accountReceivablesHandling) {
-            params.addOpt("account_receivables_handling", accountReceivablesHandling);
-            return this;
-        }
-
-
-        public CancelRequest refundableCreditsHandling(com.chargebee.models.enums.RefundableCreditsHandling refundableCreditsHandling) {
-            params.addOpt("refundable_credits_handling", refundableCreditsHandling);
-            return this;
-        }
-
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
     public static class ReactivateRequest extends Request<ReactivateRequest> {
 
         private ReactivateRequest(Method httpMeth, String uri) {
@@ -3428,6 +3386,54 @@ public class Subscription extends Resource<Subscription> {
 
         public PauseRequest resumeDate(Timestamp resumeDate) {
             params.addOpt("resume_date", resumeDate);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CancelRequest extends Request<CancelRequest> {
+
+        private CancelRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CancelRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public CancelRequest cancelAt(Timestamp cancelAt) {
+            params.addOpt("cancel_at", cancelAt);
+            return this;
+        }
+
+
+        public CancelRequest creditOptionForCurrentTermCharges(com.chargebee.models.enums.CreditOptionForCurrentTermCharges creditOptionForCurrentTermCharges) {
+            params.addOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+            return this;
+        }
+
+
+        public CancelRequest unbilledChargesOption(com.chargebee.models.enums.UnbilledChargesOption unbilledChargesOption) {
+            params.addOpt("unbilled_charges_option", unbilledChargesOption);
+            return this;
+        }
+
+
+        public CancelRequest accountReceivablesHandling(com.chargebee.models.enums.AccountReceivablesHandling accountReceivablesHandling) {
+            params.addOpt("account_receivables_handling", accountReceivablesHandling);
+            return this;
+        }
+
+
+        public CancelRequest refundableCreditsHandling(com.chargebee.models.enums.RefundableCreditsHandling refundableCreditsHandling) {
+            params.addOpt("refundable_credits_handling", refundableCreditsHandling);
             return this;
         }
 

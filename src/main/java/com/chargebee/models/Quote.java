@@ -456,6 +456,14 @@ public class Quote extends Resource<Quote> {
         return optInteger("amount_due");
     }
 
+    public Long totalPayable() {
+        return optLong("total_payable");
+    }
+
+    public Integer chargeOnAcceptance() {
+        return optInteger("charge_on_acceptance");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }

@@ -52,5 +52,8 @@ public class Request<U extends Request> extends RequestBase<U>{
     public Params params() {
         return params;
     }
-    
+
+    public HttpUtil.Method httpMeth() {
+        return httpMeth;
+    }
 }
