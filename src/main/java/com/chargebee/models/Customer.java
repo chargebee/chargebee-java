@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -746,6 +746,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest taxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory taxjarExemptionCategory) {
             params.addOpt("taxjar_exemption_category", taxjarExemptionCategory);
+            return this;
+        }
+
+
+        public CreateRequest businessCustomerWithoutVatNumber(Boolean businessCustomerWithoutVatNumber) {
+            params.addOpt("business_customer_without_vat_number", businessCustomerWithoutVatNumber);
             return this;
         }
 
@@ -1380,6 +1386,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest registeredForGst(Boolean registeredForGst) {
             params.addOpt("registered_for_gst", registeredForGst);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest businessCustomerWithoutVatNumber(Boolean businessCustomerWithoutVatNumber) {
+            params.addOpt("business_customer_without_vat_number", businessCustomerWithoutVatNumber);
             return this;
         }
 

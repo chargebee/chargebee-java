@@ -536,6 +536,11 @@ public class Quote extends Resource<Quote> {
         return new QuoteListRequest(uri);
     }
 
+    public static ListRequest quoteLineGroupsForQuote(String id) {
+        String uri = uri("quotes", nullCheck(id), "quote_line_groups");
+        return new ListRequest(uri);
+    }
+
     public static ConvertRequest convert(String id) {
         String uri = uri("quotes", nullCheck(id), "convert");
         return new ConvertRequest(Method.POST, uri);
@@ -1274,12 +1279,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
-        public CreateForOnetimeChargesRequest addonDateFrom(int index, Timestamp addonDateFrom) {
-            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
-            return this;
-        }
-        public CreateForOnetimeChargesRequest addonDateTo(int index, Timestamp addonDateTo) {
-            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+        public CreateForOnetimeChargesRequest addonServicePeriod(int index, Integer addonServicePeriod) {
+            params.addOpt("addons[service_period][" + index + "]", addonServicePeriod);
             return this;
         }
         public CreateForOnetimeChargesRequest chargeAmount(int index, Integer chargeAmount) {
@@ -1302,12 +1303,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
             return this;
         }
-        public CreateForOnetimeChargesRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
-            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
-            return this;
-        }
-        public CreateForOnetimeChargesRequest chargeDateTo(int index, Timestamp chargeDateTo) {
-            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+        public CreateForOnetimeChargesRequest chargeServicePeriod(int index, Integer chargeServicePeriod) {
+            params.addOpt("charges[service_period][" + index + "]", chargeServicePeriod);
             return this;
         }
         @Override
@@ -1447,6 +1444,12 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
+        public PdfRequest consolidatedView(Boolean consolidatedView) {
+            params.addOpt("consolidated_view", consolidatedView);
+            return this;
+        }
+
+
         public PdfRequest dispositionType(com.chargebee.models.enums.DispositionType dispositionType) {
             params.addOpt("disposition_type", dispositionType);
             return this;

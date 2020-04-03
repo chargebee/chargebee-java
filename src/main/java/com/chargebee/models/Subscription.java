@@ -79,7 +79,7 @@ public class Subscription extends Resource<Subscription> {
 
     public static class EventBasedAddon extends Resource<EventBasedAddon> {
         public enum OnEvent {
-             SUBSCRIPTION_CREATION,SUBSCRIPTION_TRIAL_START,PLAN_ACTIVATION,SUBSCRIPTION_ACTIVATION,
+             SUBSCRIPTION_CREATION,SUBSCRIPTION_TRIAL_START,PLAN_ACTIVATION,SUBSCRIPTION_ACTIVATION,CONTRACT_TERMINATION,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -285,6 +285,69 @@ public class Subscription extends Resource<Subscription> {
 
     }
 
+    public static class ContractTerm extends Resource<ContractTerm> {
+        public enum Status {
+             ACTIVE,COMPLETED,CANCELLED,TERMINATED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum ActionAtTermEnd {
+             RENEW,EVERGREEN,CANCEL,RENEW_ONCE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ContractTerm(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public Timestamp contractStart() {
+            return reqTimestamp("contract_start");
+        }
+
+        public Timestamp contractEnd() {
+            return reqTimestamp("contract_end");
+        }
+
+        public Integer billingCycle() {
+            return reqInteger("billing_cycle");
+        }
+
+        public ActionAtTermEnd actionAtTermEnd() {
+            return reqEnum("action_at_term_end", ActionAtTermEnd.class);
+        }
+
+        public Long totalContractValue() {
+            return reqLong("total_contract_value");
+        }
+
+        public Integer cancellationCutoffPeriod() {
+            return optInteger("cancellation_cutoff_period");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public String subscriptionId() {
+            return reqString("subscription_id");
+        }
+
+        public Integer remainingBillingCycles() {
+            return optInteger("remaining_billing_cycles");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -393,6 +456,10 @@ public class Subscription extends Resource<Subscription> {
 
     public String giftId() {
         return optString("gift_id");
+    }
+
+    public Integer contractTermBillingCycleOnRenewal() {
+        return optInteger("contract_term_billing_cycle_on_renewal");
     }
 
     public Boolean overrideRelationship() {
@@ -508,6 +575,10 @@ public class Subscription extends Resource<Subscription> {
         return reqBoolean("deleted");
     }
 
+    public Subscription.ContractTerm contractTerm() {
+        return optSubResource("contract_term", Subscription.ContractTerm.class);
+    }
+
     // Operations
     //===========
 
@@ -529,6 +600,11 @@ public class Subscription extends Resource<Subscription> {
     @Deprecated
     public static ListRequest subscriptionsForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "subscriptions");
+        return new ListRequest(uri);
+    }
+
+    public static ListRequest contractTermsForSubscription(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "contract_terms");
         return new ListRequest(uri);
     }
 
@@ -788,6 +864,12 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
+        public CreateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
 
 
         public CreateRequest clientProfileId(String clientProfileId) {
@@ -1241,6 +1323,21 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerBusinessCustomerWithoutVatNumber(Boolean customerBusinessCustomerWithoutVatNumber) {
+            params.addOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
+            return this;
+        }
+
+        public CreateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public CreateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
         public CreateRequest customerExemptionDetails(JSONArray customerExemptionDetails) {
             params.addOpt("customer[exemption_details]", customerExemptionDetails);
             return this;
@@ -1446,6 +1543,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+
+
+
+
+        public CreateForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
         public CreateForCustomerRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -1539,6 +1648,16 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public CreateForCustomerRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateForCustomerRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public CreateForCustomerRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
             return this;
         }
 
@@ -1896,6 +2015,22 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+
+
+        public UpdateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+
+
+
+
+
+
         @Deprecated
         public UpdateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -2186,8 +2321,23 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest customerBusinessCustomerWithoutVatNumber(Boolean customerBusinessCustomerWithoutVatNumber) {
+            params.addOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
+            return this;
+        }
+
         public UpdateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
+            return this;
+        }
+
+        public UpdateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public UpdateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
             return this;
         }
 
@@ -2327,6 +2477,22 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public ReactivateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+        public ReactivateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public ReactivateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
 
         public ReactivateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
@@ -3437,6 +3603,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CancelRequest contractTermCancelOption(com.chargebee.models.enums.ContractTermCancelOption contractTermCancelOption) {
+            params.addOpt("contract_term_cancel_option", contractTermCancelOption);
+            return this;
+        }
 
         @Override
         public Params params() {

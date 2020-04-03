@@ -87,6 +87,69 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
 
     }
 
+    public static class ContractTerm extends Resource<ContractTerm> {
+        public enum Status {
+             ACTIVE,COMPLETED,CANCELLED,TERMINATED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum ActionAtTermEnd {
+             RENEW,EVERGREEN,CANCEL,RENEW_ONCE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ContractTerm(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public Timestamp contractStart() {
+            return reqTimestamp("contract_start");
+        }
+
+        public Timestamp contractEnd() {
+            return reqTimestamp("contract_end");
+        }
+
+        public Integer billingCycle() {
+            return reqInteger("billing_cycle");
+        }
+
+        public ActionAtTermEnd actionAtTermEnd() {
+            return reqEnum("action_at_term_end", ActionAtTermEnd.class);
+        }
+
+        public Long totalContractValue() {
+            return reqLong("total_contract_value");
+        }
+
+        public Integer cancellationCutoffPeriod() {
+            return optInteger("cancellation_cutoff_period");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public String subscriptionId() {
+            return reqString("subscription_id");
+        }
+
+        public Integer remainingBillingCycles() {
+            return optInteger("remaining_billing_cycles");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -127,6 +190,10 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
 
     public SubscriptionEstimate.ShippingAddress shippingAddress() {
         return optSubResource("shipping_address", SubscriptionEstimate.ShippingAddress.class);
+    }
+
+    public SubscriptionEstimate.ContractTerm contractTerm() {
+        return optSubResource("contract_term", SubscriptionEstimate.ContractTerm.class);
     }
 
     // Operations

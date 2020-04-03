@@ -102,6 +102,11 @@ public enum EventType {
     HIERARCHY_DELETED,
     PAYMENT_INTENT_CREATED,
     PAYMENT_INTENT_UPDATED,
+    CONTRACT_TERM_CREATED,
+    CONTRACT_TERM_RENEWED,
+    CONTRACT_TERM_TERMINATED,
+    CONTRACT_TERM_COMPLETED,
+    CONTRACT_TERM_CANCELLED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

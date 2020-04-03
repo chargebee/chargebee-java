@@ -516,6 +516,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new PdfRequest(Method.POST, uri);
     }
 
+    public static RefundRequest refund(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "refund");
+        return new RefundRequest(Method.POST, uri);
+    }
+
     public static RecordRefundRequest recordRefund(String id) {
         String uri = uri("credit_notes", nullCheck(id), "record_refund");
         return new RecordRefundRequest(Method.POST, uri);
@@ -636,6 +641,30 @@ public class CreditNote extends Resource<CreditNote> {
     
         public PdfRequest dispositionType(com.chargebee.models.enums.DispositionType dispositionType) {
             params.addOpt("disposition_type", dispositionType);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RefundRequest extends Request<RefundRequest> {
+
+        private RefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RefundRequest refundAmount(Integer refundAmount) {
+            params.addOpt("refund_amount", refundAmount);
+            return this;
+        }
+
+
+        public RefundRequest customerNotes(String customerNotes) {
+            params.addOpt("customer_notes", customerNotes);
             return this;
         }
 

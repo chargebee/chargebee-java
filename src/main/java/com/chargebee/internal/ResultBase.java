@@ -20,6 +20,10 @@ public class ResultBase {
         return (Subscription)get("subscription");
     }
 
+    public ContractTerm contractTerm() {
+        return (ContractTerm)get("contract_term");
+    }
+
     public Customer customer() {
         return (Customer)get("customer");
     }
@@ -90,6 +94,10 @@ public class ResultBase {
 
     public Quote quote() {
         return (Quote)get("quote");
+    }
+
+    public QuoteLineGroup quoteLineGroup() {
+        return (QuoteLineGroup)get("quote_line_group");
     }
 
     public Plan plan() {
