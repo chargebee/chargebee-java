@@ -579,6 +579,10 @@ public class Subscription extends Resource<Subscription> {
         return optSubResource("contract_term", Subscription.ContractTerm.class);
     }
 
+    public String cancelReasonCode() {
+        return optString("cancel_reason_code");
+    }
+
     // Operations
     //===========
 
@@ -1752,6 +1756,11 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public StringFilter<SubscriptionListRequest> cancelReasonCode() {
+            return new StringFilter<SubscriptionListRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
+        }
+
+
         public NumberFilter<Integer, SubscriptionListRequest> remainingBillingCycles() {
             return new NumberFilter<Integer, SubscriptionListRequest>("remaining_billing_cycles",this).supportsPresenceOperator(true);        
         }
@@ -2724,6 +2733,12 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
         public ImportSubscriptionRequest status(Subscription.Status status) {
             params.add("status", status);
             return this;
@@ -2872,6 +2887,41 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest customerAllowDirectDebit(Boolean customerAllowDirectDebit) {
             params.addOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermId(String contractTermId) {
+            params.addOpt("contract_term[id]", contractTermId);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermCreatedAt(Timestamp contractTermCreatedAt) {
+            params.addOpt("contract_term[created_at]", contractTermCreatedAt);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermTotalAmountRaised(Long contractTermTotalAmountRaised) {
+            params.addOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermBillingCycle(Integer contractTermBillingCycle) {
+            params.addOpt("contract_term[billing_cycle]", contractTermBillingCycle);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public ImportSubscriptionRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
             return this;
         }
 
@@ -3334,6 +3384,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
         public ImportForCustomerRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
@@ -3351,6 +3407,41 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public ImportForCustomerRequest contractTermId(String contractTermId) {
+            params.addOpt("contract_term[id]", contractTermId);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermCreatedAt(Timestamp contractTermCreatedAt) {
+            params.addOpt("contract_term[created_at]", contractTermCreatedAt);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermTotalAmountRaised(Long contractTermTotalAmountRaised) {
+            params.addOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermBillingCycle(Integer contractTermBillingCycle) {
+            params.addOpt("contract_term[billing_cycle]", contractTermBillingCycle);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public ImportForCustomerRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
 
         public ImportForCustomerRequest transactionAmount(Integer transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
@@ -3609,6 +3700,29 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public CancelRequest cancelReasonCode(String cancelReasonCode) {
+            params.addOpt("cancel_reason_code", cancelReasonCode);
+            return this;
+        }
+
+
+        public CancelRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public CancelRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CancelRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CancelRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

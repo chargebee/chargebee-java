@@ -98,6 +98,10 @@ public class Quote extends Resource<Quote> {
             return reqString("description");
         }
 
+        public String entityDescription() {
+            return reqString("entity_description");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
@@ -436,6 +440,14 @@ public class Quote extends Resource<Quote> {
         return reqTimestamp("date");
     }
 
+    public Long totalPayable() {
+        return optLong("total_payable");
+    }
+
+    public Integer chargeOnAcceptance() {
+        return optInteger("charge_on_acceptance");
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
@@ -456,12 +468,8 @@ public class Quote extends Resource<Quote> {
         return optInteger("amount_due");
     }
 
-    public Long totalPayable() {
-        return optLong("total_payable");
-    }
-
-    public Integer chargeOnAcceptance() {
-        return optInteger("charge_on_acceptance");
+    public Integer version() {
+        return optInteger("version");
     }
 
     public Long resourceVersion() {
@@ -508,6 +516,18 @@ public class Quote extends Resource<Quote> {
         return optSubResource("billing_address", Quote.BillingAddress.class);
     }
 
+    public Timestamp contractTermStart() {
+        return optTimestamp("contract_term_start");
+    }
+
+    public Timestamp contractTermEnd() {
+        return optTimestamp("contract_term_end");
+    }
+
+    public Integer contractTermTerminationFee() {
+        return optInteger("contract_term_termination_fee");
+    }
+
     // Operations
     //===========
 
@@ -521,14 +541,29 @@ public class Quote extends Resource<Quote> {
         return new CreateSubForCustomerQuoteRequest(Method.POST, uri);
     }
 
+    public static EditCreateSubForCustomerQuoteRequest editCreateSubForCustomerQuote(String id) {
+        String uri = uri("quotes", nullCheck(id), "edit_create_subscription_quote");
+        return new EditCreateSubForCustomerQuoteRequest(Method.POST, uri);
+    }
+
     public static UpdateSubscriptionQuoteRequest updateSubscriptionQuote() {
         String uri = uri("quotes", "update_subscription_quote");
         return new UpdateSubscriptionQuoteRequest(Method.POST, uri);
     }
 
+    public static EditUpdateSubscriptionQuoteRequest editUpdateSubscriptionQuote(String id) {
+        String uri = uri("quotes", nullCheck(id), "edit_update_subscription_quote");
+        return new EditUpdateSubscriptionQuoteRequest(Method.POST, uri);
+    }
+
     public static CreateForOnetimeChargesRequest createForOnetimeCharges() {
         String uri = uri("quotes", "create_for_onetime_charges");
         return new CreateForOnetimeChargesRequest(Method.POST, uri);
+    }
+
+    public static EditOneTimeQuoteRequest editOneTimeQuote(String id) {
+        String uri = uri("quotes", nullCheck(id), "edit_one_time_quote");
+        return new EditOneTimeQuoteRequest(Method.POST, uri);
     }
 
     public static QuoteListRequest list() {
@@ -549,6 +584,11 @@ public class Quote extends Resource<Quote> {
     public static UpdateStatusRequest updateStatus(String id) {
         String uri = uri("quotes", nullCheck(id), "update_status");
         return new UpdateStatusRequest(Method.POST, uri);
+    }
+
+    public static ExtendExpiryDateRequest extendExpiryDate(String id) {
+        String uri = uri("quotes", nullCheck(id), "extend_expiry_date");
+        return new ExtendExpiryDateRequest(Method.POST, uri);
     }
 
     public static DeleteRequest delete(String id) {
@@ -742,6 +782,21 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public CreateSubForCustomerQuoteRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public CreateSubForCustomerQuoteRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public CreateSubForCustomerQuoteRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
         public CreateSubForCustomerQuoteRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -796,6 +851,244 @@ public class Quote extends Resource<Quote> {
         }
     }
 
+    public static class EditCreateSubForCustomerQuoteRequest extends Request<EditCreateSubForCustomerQuoteRequest> {
+
+        private EditCreateSubForCustomerQuoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+
+
+        public EditCreateSubForCustomerQuoteRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public EditCreateSubForCustomerQuoteRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
+        public EditCreateSubForCustomerQuoteRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public EditCreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+
+
+
+
+        public EditCreateSubForCustomerQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
+        public EditCreateSubForCustomerQuoteRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class UpdateSubscriptionQuoteRequest extends Request<UpdateSubscriptionQuoteRequest> {
 
         private UpdateSubscriptionQuoteRequest(Method httpMeth, String uri) {
@@ -822,12 +1115,6 @@ public class Quote extends Resource<Quote> {
 
         public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
-            return this;
-        }
-
-
-        public UpdateSubscriptionQuoteRequest eventBasedAddons(String eventBasedAddons) {
-            params.addOpt("event_based_addons", eventBasedAddons);
             return this;
         }
 
@@ -1095,6 +1382,21 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public UpdateSubscriptionQuoteRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
         public UpdateSubscriptionQuoteRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -1149,12 +1451,367 @@ public class Quote extends Resource<Quote> {
         }
     }
 
+    public static class EditUpdateSubscriptionQuoteRequest extends Request<EditUpdateSubscriptionQuoteRequest> {
+
+        private EditUpdateSubscriptionQuoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public EditUpdateSubscriptionQuoteRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest replaceAddonList(Boolean replaceAddonList) {
+            params.addOpt("replace_addon_list", replaceAddonList);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest reactivateFrom(Timestamp reactivateFrom) {
+            params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+
+
+        public EditUpdateSubscriptionQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
+
+
+
+
+
+
+
+
+
+        public EditUpdateSubscriptionQuoteRequest forceTermReset(Boolean forceTermReset) {
+            params.addOpt("force_term_reset", forceTermReset);
+            return this;
+        }
+
+
+        public EditUpdateSubscriptionQuoteRequest reactivate(Boolean reactivate) {
+            params.addOpt("reactivate", reactivate);
+            return this;
+        }
+
+
+
+
+
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.addOpt("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+            params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+            return this;
+        }
+
+        @Deprecated
+        public EditUpdateSubscriptionQuoteRequest subscriptionCoupon(String subscriptionCoupon) {
+            params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
+            params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest addonBillingCycles(int index, Integer addonBillingCycles) {
+            params.addOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonId(int index, String eventBasedAddonId) {
+            params.addOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
+            params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+            params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
+            params.addOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
+            params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
+            params.addOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
+            params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
+            params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class CreateForOnetimeChargesRequest extends Request<CreateForOnetimeChargesRequest> {
 
         private CreateForOnetimeChargesRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-    
+
         public CreateForOnetimeChargesRequest customerId(String customerId) {
             params.add("customer_id", customerId);
             return this;
@@ -1313,6 +1970,158 @@ public class Quote extends Resource<Quote> {
         }
     }
 
+    public static class EditOneTimeQuoteRequest extends Request<EditOneTimeQuoteRequest> {
+
+        private EditOneTimeQuoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public EditOneTimeQuoteRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public EditOneTimeQuoteRequest notes(String notes) {
+            params.addOpt("notes", notes);
+            return this;
+        }
+
+
+        public EditOneTimeQuoteRequest expiresAt(Timestamp expiresAt) {
+            params.addOpt("expires_at", expiresAt);
+            return this;
+        }
+
+
+        public EditOneTimeQuoteRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public EditOneTimeQuoteRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public EditOneTimeQuoteRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public EditOneTimeQuoteRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public EditOneTimeQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public EditOneTimeQuoteRequest addonServicePeriod(int index, Integer addonServicePeriod) {
+            params.addOpt("addons[service_period][" + index + "]", addonServicePeriod);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeServicePeriod(int index, Integer chargeServicePeriod) {
+            params.addOpt("charges[service_period][" + index + "]", chargeServicePeriod);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class QuoteListRequest extends ListRequest<QuoteListRequest> {
 
         private QuoteListRequest(String uri) {
@@ -1410,6 +2219,24 @@ public class Quote extends Resource<Quote> {
 
         public UpdateStatusRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ExtendExpiryDateRequest extends Request<ExtendExpiryDateRequest> {
+
+        private ExtendExpiryDateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ExtendExpiryDateRequest validTill(Timestamp validTill) {
+            params.add("valid_till", validTill);
             return this;
         }
 

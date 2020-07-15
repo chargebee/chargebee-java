@@ -11,8 +11,8 @@ import org.json.*;
 
 public class PaymentException extends APIException{
 
-    public PaymentException(int httpStatusCode,JSONObject jsonObj) throws Exception {
-        super(httpStatusCode,jsonObj);
+    public PaymentException(int httpStatusCode, String message, JSONObject jsonObj) {
+        super(httpStatusCode, message, jsonObj);
     }
     
 }

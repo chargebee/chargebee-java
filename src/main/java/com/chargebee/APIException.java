@@ -33,17 +33,21 @@ public class APIException extends RuntimeException {
     public final String message;
     
 
-    public APIException(int httpStatusCode,JSONObject jsonObj) throws Exception {
-        super(jsonObj.getString("message"));
+    public APIException(int httpStatusCode, String message, JSONObject jsonObj) {
+        super(message);
         this.jsonObj = jsonObj;
         this.httpStatusCode = httpStatusCode;
-        this.apiErrorCode = jsonObj.getString("api_error_code");
+        try {
+            this.apiErrorCode = jsonObj.getString("api_error_code");
+            this.code = jsonObj.getString("error_code");
+            this.message = jsonObj.getString("error_msg");
+        } catch (JSONException ex) {
+            throw new RuntimeException("Error when parsing the error response. Probably not ChargeBee' error response.", ex);
+        }
         this.type = jsonObj.optString("type");
         this.param = jsonObj.optString("param");
 
         this.httpCode = httpStatusCode;
-        this.code = jsonObj.getString("error_code");
-        this.message = jsonObj.getString("error_msg");
     }
     
     

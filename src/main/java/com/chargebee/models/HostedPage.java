@@ -238,6 +238,15 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+        public CheckoutNewRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutNewRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
 
 
@@ -346,6 +355,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public CheckoutNewRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
@@ -640,6 +650,16 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutExistingRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CheckoutExistingRequest reactivate(Boolean reactivate) {
             params.addOpt("reactivate", reactivate);
             return this;
@@ -717,6 +737,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public CheckoutExistingRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;

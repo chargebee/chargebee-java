@@ -228,6 +228,14 @@ public class Addon extends Resource<Addon> {
         return optList("tiers", Addon.Tier.class);
     }
 
+    public Boolean showDescriptionInInvoices() {
+        return optBoolean("show_description_in_invoices");
+    }
+
+    public Boolean showDescriptionInQuotes() {
+        return optBoolean("show_description_in_quotes");
+    }
+
     // Operations
     //===========
 
@@ -451,6 +459,18 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public CreateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
+            return this;
+        }
+
+
         public CreateRequest status(Addon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -646,6 +666,18 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest shippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnit shippingFrequencyPeriodUnit) {
             params.addOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+            return this;
+        }
+
+
+        public UpdateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public UpdateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
 

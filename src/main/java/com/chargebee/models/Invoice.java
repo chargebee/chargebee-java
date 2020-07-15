@@ -100,6 +100,10 @@ public class Invoice extends Resource<Invoice> {
             return reqString("description");
         }
 
+        public String entityDescription() {
+            return reqString("entity_description");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
@@ -357,7 +361,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public CreditNote.ReasonCode cnReasonCode() {
-            return reqEnum("cn_reason_code", CreditNote.ReasonCode.class);
+            return optEnum("cn_reason_code", CreditNote.ReasonCode.class);
+        }
+
+        public String cnCreateReasonCode() {
+            return optString("cn_create_reason_code");
         }
 
         public Timestamp cnDate() {
@@ -380,7 +388,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public CreditNote.ReasonCode cnReasonCode() {
-            return reqEnum("cn_reason_code", CreditNote.ReasonCode.class);
+            return optEnum("cn_reason_code", CreditNote.ReasonCode.class);
+        }
+
+        public String cnCreateReasonCode() {
+            return optString("cn_create_reason_code");
         }
 
         public Timestamp cnDate() {
@@ -407,7 +419,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public CreditNote.ReasonCode cnReasonCode() {
-            return reqEnum("cn_reason_code", CreditNote.ReasonCode.class);
+            return optEnum("cn_reason_code", CreditNote.ReasonCode.class);
+        }
+
+        public String cnCreateReasonCode() {
+            return optString("cn_create_reason_code");
         }
 
         public Timestamp cnDate() {
@@ -848,6 +864,10 @@ public class Invoice extends Resource<Invoice> {
         return optString("payment_owner");
     }
 
+    public String voidReasonCode() {
+        return optString("void_reason_code");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
@@ -998,14 +1018,26 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
         public CreateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
             return this;
         }
 
 
-        public CreateRequest coupon(String coupon) {
-            params.addOpt("coupon", coupon);
+        public CreateRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
+        public CreateRequest removeGeneralNote(Boolean removeGeneralNote) {
+            params.addOpt("remove_general_note", removeGeneralNote);
             return this;
         }
 
@@ -1015,6 +1047,23 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
+        @Deprecated
+        public CreateRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
         public CreateRequest authorizationTransactionId(String authorizationTransactionId) {
             params.addOpt("authorization_transaction_id", authorizationTransactionId);
@@ -1182,6 +1231,30 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
+        public CreateRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
+            params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
+            return this;
+        }
+        public CreateRequest notesToRemoveEntityId(int index, String notesToRemoveEntityId) {
+            params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
         @Override
@@ -1939,6 +2012,11 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public StringFilter<InvoiceListRequest> voidReasonCode() {
+            return new StringFilter<InvoiceListRequest>("void_reason_code",this).supportsMultiOperators(true);        
+        }
+
+
         public InvoiceListRequest sortByDate(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
             return this;
@@ -2089,6 +2167,26 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CloseRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
+        public CloseRequest removeGeneralNote(Boolean removeGeneralNote) {
+            params.addOpt("remove_general_note", removeGeneralNote);
+            return this;
+        }
+
+
+        public CloseRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
+            params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
+            return this;
+        }
+        public CloseRequest notesToRemoveEntityId(int index, String notesToRemoveEntityId) {
+            params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2218,6 +2316,11 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public RefundRequest creditNoteCreateReasonCode(String creditNoteCreateReasonCode) {
+            params.addOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -2264,6 +2367,11 @@ public class Invoice extends Resource<Invoice> {
 
         public RecordRefundRequest creditNoteReasonCode(CreditNote.ReasonCode creditNoteReasonCode) {
             params.addOpt("credit_note[reason_code]", creditNoteReasonCode);
+            return this;
+        }
+
+        public RecordRefundRequest creditNoteCreateReasonCode(String creditNoteCreateReasonCode) {
+            params.addOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
             return this;
         }
 
@@ -2315,6 +2423,12 @@ public class Invoice extends Resource<Invoice> {
     
         public VoidInvoiceRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public VoidInvoiceRequest voidReasonCode(String voidReasonCode) {
+            params.addOpt("void_reason_code", voidReasonCode);
             return this;
         }
 

@@ -80,6 +80,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return reqString("description");
         }
 
+        public String entityDescription() {
+            return reqString("entity_description");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }

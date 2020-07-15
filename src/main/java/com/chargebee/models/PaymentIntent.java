@@ -23,6 +23,15 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PaymentMethodType {
+        CARD,
+        IDEAL,
+        SOFORT,
+        BANCONTACT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class PaymentAttempt extends Resource<PaymentAttempt> {
         public enum Status {
              INITED,REQUIRES_IDENTIFICATION,REQUIRES_CHALLENGE,REQUIRES_REDIRECTION,AUTHORIZED,REFUSED,
@@ -40,6 +49,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public Status status() {
             return reqEnum("status", Status.class);
+        }
+
+        public PaymentMethodType paymentMethodType() {
+            return optEnum("payment_method_type", PaymentMethodType.class);
         }
 
         public String idAtGateway() {
@@ -104,6 +117,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
     public String referenceId() {
         return optString("reference_id");
+    }
+
+    public PaymentMethodType paymentMethodType() {
+        return optEnum("payment_method_type", PaymentMethodType.class);
     }
 
     public Timestamp createdAt() {
@@ -184,6 +201,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         }
 
 
+        public CreateRequest paymentMethodType(PaymentIntent.PaymentMethodType paymentMethodType) {
+            params.addOpt("payment_method_type", paymentMethodType);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -210,6 +233,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public UpdateRequest gatewayAccountId(String gatewayAccountId) {
             params.addOpt("gateway_account_id", gatewayAccountId);
+            return this;
+        }
+
+
+        public UpdateRequest paymentMethodType(PaymentIntent.PaymentMethodType paymentMethodType) {
+            params.addOpt("payment_method_type", paymentMethodType);
             return this;
         }
 

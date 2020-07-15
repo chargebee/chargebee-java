@@ -102,7 +102,8 @@ public class TimeMachine extends Resource<TimeMachine> {
         if(timeTravelStatus() == TimeTravelStatus.FAILED){
             JSONObject errorJson = new JSONObject(errorJson());
             int httpStatusCode = errorJson.getInt("http_code");
-            throw new com.chargebee.exceptions.OperationFailedException(httpStatusCode, errorJson);
+            String exceptionMessage = errorJson.getString("message");
+            throw new com.chargebee.exceptions.OperationFailedException(httpStatusCode, exceptionMessage, errorJson);
         }
         if(timeTravelStatus() == TimeTravelStatus.NOT_ENABLED
                 || timeTravelStatus() == TimeTravelStatus._UNKNOWN){

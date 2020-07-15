@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -293,6 +293,84 @@ public class Customer extends Resource<Customer> {
 
         public String invoiceOwnerId() {
             return reqString("invoice_owner_id");
+        }
+
+    }
+
+    public static class ParentAccountAccess extends Resource<ParentAccountAccess> {
+        public enum PortalEditChildSubscriptions {
+             YES,VIEW_ONLY,NO,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum PortalDownloadChildInvoices {
+             YES,VIEW_ONLY,NO,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ParentAccountAccess(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public PortalEditChildSubscriptions portalEditChildSubscriptions() {
+            return optEnum("portal_edit_child_subscriptions", PortalEditChildSubscriptions.class);
+        }
+
+        public PortalDownloadChildInvoices portalDownloadChildInvoices() {
+            return optEnum("portal_download_child_invoices", PortalDownloadChildInvoices.class);
+        }
+
+        public Boolean sendSubscriptionEmails() {
+            return reqBoolean("send_subscription_emails");
+        }
+
+        public Boolean sendInvoiceEmails() {
+            return reqBoolean("send_invoice_emails");
+        }
+
+        public Boolean sendPaymentEmails() {
+            return reqBoolean("send_payment_emails");
+        }
+
+    }
+
+    public static class ChildAccountAccess extends Resource<ChildAccountAccess> {
+        public enum PortalEditSubscriptions {
+             YES,VIEW_ONLY,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum PortalDownloadInvoices {
+             YES,VIEW_ONLY,NO,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ChildAccountAccess(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public PortalEditSubscriptions portalEditSubscriptions() {
+            return optEnum("portal_edit_subscriptions", PortalEditSubscriptions.class);
+        }
+
+        public PortalDownloadInvoices portalDownloadInvoices() {
+            return optEnum("portal_download_invoices", PortalDownloadInvoices.class);
+        }
+
+        public Boolean sendSubscriptionEmails() {
+            return reqBoolean("send_subscription_emails");
+        }
+
+        public Boolean sendInvoiceEmails() {
+            return reqBoolean("send_invoice_emails");
+        }
+
+        public Boolean sendPaymentEmails() {
+            return reqBoolean("send_payment_emails");
         }
 
     }
@@ -512,6 +590,18 @@ public class Customer extends Resource<Customer> {
         return optSubResource("relationship", Customer.Relationship.class);
     }
 
+    public Boolean useDefaultHierarchySettings() {
+        return optBoolean("use_default_hierarchy_settings");
+    }
+
+    public Customer.ParentAccountAccess parentAccountAccess() {
+        return optSubResource("parent_account_access", Customer.ParentAccountAccess.class);
+    }
+
+    public Customer.ChildAccountAccess childAccountAccess() {
+        return optSubResource("child_account_access", Customer.ChildAccountAccess.class);
+    }
+
     // Operations
     //===========
 
@@ -636,6 +726,11 @@ public class Customer extends Resource<Customer> {
     public static HierarchyRequest hierarchy(String id) {
         String uri = uri("customers", nullCheck(id), "hierarchy");
         return new HierarchyRequest(Method.GET, uri);
+    }
+
+    public static UpdateHierarchySettingsRequest updateHierarchySettings(String id) {
+        String uri = uri("customers", nullCheck(id), "update_hierarchy_settings");
+        return new UpdateHierarchySettingsRequest(Method.POST, uri);
     }
 
 
@@ -2088,6 +2183,62 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public RelationshipsRequest useDefaultHierarchySettings(Boolean useDefaultHierarchySettings) {
+            params.addOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
+            return this;
+        }
+
+
+        public RelationshipsRequest parentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptions parentAccountAccessPortalEditChildSubscriptions) {
+            params.addOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
+            return this;
+        }
+
+        public RelationshipsRequest parentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoices parentAccountAccessPortalDownloadChildInvoices) {
+            params.addOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
+            return this;
+        }
+
+        public RelationshipsRequest parentAccountAccessSendSubscriptionEmails(Boolean parentAccountAccessSendSubscriptionEmails) {
+            params.addOpt("parent_account_access[send_subscription_emails]", parentAccountAccessSendSubscriptionEmails);
+            return this;
+        }
+
+        public RelationshipsRequest parentAccountAccessSendPaymentEmails(Boolean parentAccountAccessSendPaymentEmails) {
+            params.addOpt("parent_account_access[send_payment_emails]", parentAccountAccessSendPaymentEmails);
+            return this;
+        }
+
+        public RelationshipsRequest parentAccountAccessSendInvoiceEmails(Boolean parentAccountAccessSendInvoiceEmails) {
+            params.addOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
+            return this;
+        }
+
+        public RelationshipsRequest childAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptions childAccountAccessPortalEditSubscriptions) {
+            params.addOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
+            return this;
+        }
+
+        public RelationshipsRequest childAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoices childAccountAccessPortalDownloadInvoices) {
+            params.addOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
+            return this;
+        }
+
+        public RelationshipsRequest childAccountAccessSendSubscriptionEmails(Boolean childAccountAccessSendSubscriptionEmails) {
+            params.addOpt("child_account_access[send_subscription_emails]", childAccountAccessSendSubscriptionEmails);
+            return this;
+        }
+
+        public RelationshipsRequest childAccountAccessSendPaymentEmails(Boolean childAccountAccessSendPaymentEmails) {
+            params.addOpt("child_account_access[send_payment_emails]", childAccountAccessSendPaymentEmails);
+            return this;
+        }
+
+        public RelationshipsRequest childAccountAccessSendInvoiceEmails(Boolean childAccountAccessSendInvoiceEmails) {
+            params.addOpt("child_account_access[send_invoice_emails]", childAccountAccessSendInvoiceEmails);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -2105,6 +2256,74 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateHierarchySettingsRequest extends Request<UpdateHierarchySettingsRequest> {
+
+        private UpdateHierarchySettingsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateHierarchySettingsRequest useDefaultHierarchySettings(Boolean useDefaultHierarchySettings) {
+            params.addOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
+            return this;
+        }
+
+
+        public UpdateHierarchySettingsRequest parentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptions parentAccountAccessPortalEditChildSubscriptions) {
+            params.addOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest parentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoices parentAccountAccessPortalDownloadChildInvoices) {
+            params.addOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest parentAccountAccessSendSubscriptionEmails(Boolean parentAccountAccessSendSubscriptionEmails) {
+            params.addOpt("parent_account_access[send_subscription_emails]", parentAccountAccessSendSubscriptionEmails);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest parentAccountAccessSendPaymentEmails(Boolean parentAccountAccessSendPaymentEmails) {
+            params.addOpt("parent_account_access[send_payment_emails]", parentAccountAccessSendPaymentEmails);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest parentAccountAccessSendInvoiceEmails(Boolean parentAccountAccessSendInvoiceEmails) {
+            params.addOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest childAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptions childAccountAccessPortalEditSubscriptions) {
+            params.addOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest childAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoices childAccountAccessPortalDownloadInvoices) {
+            params.addOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest childAccountAccessSendSubscriptionEmails(Boolean childAccountAccessSendSubscriptionEmails) {
+            params.addOpt("child_account_access[send_subscription_emails]", childAccountAccessSendSubscriptionEmails);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest childAccountAccessSendPaymentEmails(Boolean childAccountAccessSendPaymentEmails) {
+            params.addOpt("child_account_access[send_payment_emails]", childAccountAccessSendPaymentEmails);
+            return this;
+        }
+
+        public UpdateHierarchySettingsRequest childAccountAccessSendInvoiceEmails(Boolean childAccountAccessSendInvoiceEmails) {
+            params.addOpt("child_account_access[send_invoice_emails]", childAccountAccessSendInvoiceEmails);
+            return this;
+        }
 
         @Override
         public Params params() {

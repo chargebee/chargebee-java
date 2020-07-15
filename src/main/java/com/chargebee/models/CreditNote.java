@@ -113,6 +113,10 @@ public class CreditNote extends Resource<CreditNote> {
             return reqString("description");
         }
 
+        public String entityDescription() {
+            return reqString("entity_description");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
@@ -319,6 +323,10 @@ public class CreditNote extends Resource<CreditNote> {
             return optInteger("txn_amount");
         }
 
+        public String refundReasonCode() {
+            return optString("refund_reason_code");
+        }
+
     }
 
     public static class Allocation extends Resource<Allocation> {
@@ -383,7 +391,7 @@ public class CreditNote extends Resource<CreditNote> {
     }
 
     public ReasonCode reasonCode() {
-        return reqEnum("reason_code", ReasonCode.class);
+        return optEnum("reason_code", ReasonCode.class);
     }
 
     public Status status() {
@@ -498,6 +506,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqBoolean("deleted");
     }
 
+    public String createReasonCode() {
+        return optString("create_reason_code");
+    }
+
     // Operations
     //===========
 
@@ -576,7 +588,13 @@ public class CreditNote extends Resource<CreditNote> {
 
 
         public CreateRequest reasonCode(CreditNote.ReasonCode reasonCode) {
-            params.add("reason_code", reasonCode);
+            params.addOpt("reason_code", reasonCode);
+            return this;
+        }
+
+
+        public CreateRequest createReasonCode(String createReasonCode) {
+            params.addOpt("create_reason_code", createReasonCode);
             return this;
         }
 
@@ -669,6 +687,12 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public RefundRequest refundReasonCode(String refundReasonCode) {
+            params.addOpt("refund_reason_code", refundReasonCode);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -681,6 +705,12 @@ public class CreditNote extends Resource<CreditNote> {
             super(httpMeth, uri);
         }
     
+        public RecordRefundRequest refundReasonCode(String refundReasonCode) {
+            params.addOpt("refund_reason_code", refundReasonCode);
+            return this;
+        }
+
+
         public RecordRefundRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
@@ -772,6 +802,11 @@ public class CreditNote extends Resource<CreditNote> {
 
         public EnumFilter<CreditNote.ReasonCode, CreditNoteListRequest> reasonCode() {
             return new EnumFilter<CreditNote.ReasonCode, CreditNoteListRequest>("reason_code",this);        
+        }
+
+
+        public StringFilter<CreditNoteListRequest> createReasonCode() {
+            return new StringFilter<CreditNoteListRequest>("create_reason_code",this).supportsMultiOperators(true);        
         }
 
 

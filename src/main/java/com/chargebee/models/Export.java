@@ -214,6 +214,11 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<RevenueRecognitionRequest> cancelReasonCode() {
+            return new StringFilter<RevenueRecognitionRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<RevenueRecognitionRequest> invoiceId() {
             return new StringFilter<RevenueRecognitionRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
@@ -422,6 +427,11 @@ public Export waitForExportCompletion()
 
         public StringFilter<DeferredRevenueRequest> paymentOwner() {
             return new StringFilter<DeferredRevenueRequest>("payment_owner",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<DeferredRevenueRequest> cancelReasonCode() {
+            return new StringFilter<DeferredRevenueRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
         }
 
 
@@ -797,6 +807,10 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<SubscriptionsRequest> cancelReasonCode() {
+            return new StringFilter<SubscriptionsRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
+        }
+
         public StringFilter<SubscriptionsRequest> subscriptionId() {
             return new StringFilter<SubscriptionsRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
@@ -956,6 +970,10 @@ public Export waitForExportCompletion()
 
         public EnumFilter<CreditNote.ReasonCode, CreditNotesRequest> creditNoteReasonCode() {
             return new EnumFilter<CreditNote.ReasonCode, CreditNotesRequest>("credit_note[reason_code]",this);        
+        }
+
+        public StringFilter<CreditNotesRequest> creditNoteCreateReasonCode() {
+            return new StringFilter<CreditNotesRequest>("credit_note[create_reason_code]",this).supportsMultiOperators(true);        
         }
 
         public EnumFilter<CreditNote.Status, CreditNotesRequest> creditNoteStatus() {

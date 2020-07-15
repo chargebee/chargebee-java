@@ -352,6 +352,14 @@ public class Plan extends Resource<Plan> {
         return optList("event_based_addons", Plan.EventBasedAddon.class);
     }
 
+    public Boolean showDescriptionInInvoices() {
+        return optBoolean("show_description_in_invoices");
+    }
+
+    public Boolean showDescriptionInQuotes() {
+        return optBoolean("show_description_in_quotes");
+    }
+
     // Operations
     //===========
 
@@ -614,6 +622,18 @@ public class Plan extends Resource<Plan> {
 
         public CreateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public CreateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public CreateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
 
@@ -906,6 +926,20 @@ public class Plan extends Resource<Plan> {
             params.addOpt("meta_data", metaData);
             return this;
         }
+
+
+        public UpdateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public UpdateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
+            return this;
+        }
+
+
 
 
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {

@@ -144,14 +144,15 @@ public class HttpUtil {
             try {
                 jsonResp.getString("api_error_code");
                 String type = jsonResp.optString("type");
+                String excpetionMessage = jsonResp.getString("message");
                 if ("payment".equals(type)) {
-                    throw new PaymentException(httpRespCode, jsonResp);
+                    throw new PaymentException(httpRespCode, excpetionMessage, jsonResp);
                 } else if ("operation_failed".equals(type)) {
-                    throw new OperationFailedException(httpRespCode, jsonResp);
+                    throw new OperationFailedException(httpRespCode, excpetionMessage, jsonResp);
                 } else if ("invalid_request".equals(type)) {
-                    throw new InvalidRequestException(httpRespCode, jsonResp);
+                    throw new InvalidRequestException(httpRespCode, excpetionMessage, jsonResp);
                 } else{
-                    throw new APIException(httpRespCode, jsonResp);
+                    throw new APIException(httpRespCode, excpetionMessage, jsonResp);
                 }
             }catch(APIException ex){
                 throw ex;            

@@ -104,7 +104,11 @@ public class Transaction extends Resource<Transaction> {
         }
 
         public CreditNote.ReasonCode cnReasonCode() {
-            return reqEnum("cn_reason_code", CreditNote.ReasonCode.class);
+            return optEnum("cn_reason_code", CreditNote.ReasonCode.class);
+        }
+
+        public String cnCreateReasonCode() {
+            return optString("cn_create_reason_code");
         }
 
         public Timestamp cnDate() {

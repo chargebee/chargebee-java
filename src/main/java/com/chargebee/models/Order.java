@@ -637,6 +637,11 @@ public class Order extends Resource<Order> {
         return new UpdateRequest(Method.POST, uri);
     }
 
+    public static ImportOrderRequest importOrder() {
+        String uri = uri("orders", "import_order");
+        return new ImportOrderRequest(Method.POST, uri);
+    }
+
     public static Request assignOrderNumber(String id) {
         String uri = uri("orders", nullCheck(id), "assign_order_number");
         return new Request(Method.POST, uri);
@@ -660,6 +665,11 @@ public class Order extends Resource<Order> {
     public static Request retrieve(String id) {
         String uri = uri("orders", nullCheck(id));
         return new Request(Method.GET, uri);
+    }
+
+    public static Request delete(String id) {
+        String uri = uri("orders", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
     }
 
     public static OrderListRequest list() {
@@ -909,6 +919,284 @@ public class Order extends Resource<Order> {
         }
     }
 
+    public static class ImportOrderRequest extends Request<ImportOrderRequest> {
+
+        private ImportOrderRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ImportOrderRequest id(String id) {
+            params.addOpt("id", id);
+            return this;
+        }
+
+
+        public ImportOrderRequest documentNumber(String documentNumber) {
+            params.addOpt("document_number", documentNumber);
+            return this;
+        }
+
+
+        public ImportOrderRequest invoiceId(String invoiceId) {
+            params.add("invoice_id", invoiceId);
+            return this;
+        }
+
+
+        public ImportOrderRequest status(Order.Status status) {
+            params.add("status", status);
+            return this;
+        }
+
+
+        public ImportOrderRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public ImportOrderRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
+        public ImportOrderRequest createdAt(Timestamp createdAt) {
+            params.add("created_at", createdAt);
+            return this;
+        }
+
+
+        public ImportOrderRequest orderDate(Timestamp orderDate) {
+            params.add("order_date", orderDate);
+            return this;
+        }
+
+
+        public ImportOrderRequest shippingDate(Timestamp shippingDate) {
+            params.add("shipping_date", shippingDate);
+            return this;
+        }
+
+
+        public ImportOrderRequest referenceId(String referenceId) {
+            params.addOpt("reference_id", referenceId);
+            return this;
+        }
+
+
+        public ImportOrderRequest fulfillmentStatus(String fulfillmentStatus) {
+            params.addOpt("fulfillment_status", fulfillmentStatus);
+            return this;
+        }
+
+
+        public ImportOrderRequest note(String note) {
+            params.addOpt("note", note);
+            return this;
+        }
+
+
+        public ImportOrderRequest trackingId(String trackingId) {
+            params.addOpt("tracking_id", trackingId);
+            return this;
+        }
+
+
+        public ImportOrderRequest batchId(String batchId) {
+            params.addOpt("batch_id", batchId);
+            return this;
+        }
+
+
+        public ImportOrderRequest shipmentCarrier(String shipmentCarrier) {
+            params.addOpt("shipment_carrier", shipmentCarrier);
+            return this;
+        }
+
+
+        public ImportOrderRequest shippingCutOffDate(Timestamp shippingCutOffDate) {
+            params.addOpt("shipping_cut_off_date", shippingCutOffDate);
+            return this;
+        }
+
+
+        public ImportOrderRequest deliveredAt(Timestamp deliveredAt) {
+            params.addOpt("delivered_at", deliveredAt);
+            return this;
+        }
+
+
+        public ImportOrderRequest shippedAt(Timestamp shippedAt) {
+            params.addOpt("shipped_at", shippedAt);
+            return this;
+        }
+
+
+        public ImportOrderRequest cancelledAt(Timestamp cancelledAt) {
+            params.addOpt("cancelled_at", cancelledAt);
+            return this;
+        }
+
+
+        public ImportOrderRequest cancellationReason(Order.CancellationReason cancellationReason) {
+            params.addOpt("cancellation_reason", cancellationReason);
+            return this;
+        }
+
+
+        public ImportOrderRequest refundableCreditsIssued(Integer refundableCreditsIssued) {
+            params.addOpt("refundable_credits_issued", refundableCreditsIssued);
+            return this;
+        }
+
+
+        public ImportOrderRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public ImportOrderRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public ImportOrderRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class CancelRequest extends Request<CancelRequest> {
 
         private CancelRequest(Method httpMeth, String uri) {
@@ -998,6 +1286,12 @@ public class Order extends Resource<Order> {
     
         public OrderListRequest includeDeleted(Boolean includeDeleted) {
             params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
+        public OrderListRequest excludeDeletedCreditNotes(Boolean excludeDeletedCreditNotes) {
+            params.addOpt("exclude_deleted_credit_notes", excludeDeletedCreditNotes);
             return this;
         }
 

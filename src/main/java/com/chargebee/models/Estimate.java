@@ -1264,11 +1264,28 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateInvoiceRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        @Deprecated
         public CreateInvoiceRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
         }
 
+
+        public CreateInvoiceRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateInvoiceRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
         public CreateInvoiceRequest authorizationTransactionId(String authorizationTransactionId) {
             params.addOpt("authorization_transaction_id", authorizationTransactionId);
@@ -1290,6 +1307,11 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateInvoiceRequest invoiceCustomerId(String invoiceCustomerId) {
             params.add("invoice[customer_id]", invoiceCustomerId);
+            return this;
+        }
+
+        public CreateInvoiceRequest invoiceSubscriptionId(String invoiceSubscriptionId) {
+            params.addOpt("invoice[subscription_id]", invoiceSubscriptionId);
             return this;
         }
 
@@ -1414,6 +1436,22 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceRequest chargeDateTo(int index, Timestamp chargeDateTo) {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateInvoiceRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateInvoiceRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateInvoiceRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
         }
         @Override

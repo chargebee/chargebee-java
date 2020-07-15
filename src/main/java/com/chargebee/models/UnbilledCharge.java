@@ -194,6 +194,12 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         }
 
 
+        public UnbilledChargeListRequest isVoided(Boolean isVoided) {
+            params.addOpt("is_voided", isVoided);
+            return this;
+        }
+
+
         public StringFilter<UnbilledChargeListRequest> subscriptionId() {
             return new StringFilter<UnbilledChargeListRequest>("subscription_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
