@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -574,12 +574,12 @@ public class Customer extends Resource<Customer> {
         return optBoolean("registered_for_gst");
     }
 
-    public Boolean businessCustomerWithoutVatNumber() {
-        return optBoolean("business_customer_without_vat_number");
-    }
-
     public CustomerType customerType() {
         return optEnum("customer_type", CustomerType.class);
+    }
+
+    public Boolean businessCustomerWithoutVatNumber() {
+        return optBoolean("business_customer_without_vat_number");
     }
 
     public String clientProfileId() {
@@ -879,6 +879,8 @@ public class Customer extends Resource<Customer> {
             params.addOpt("consolidated_invoicing", consolidatedInvoicing);
             return this;
         }
+
+
 
 
         public CreateRequest tokenId(String tokenId) {

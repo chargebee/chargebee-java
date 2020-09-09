@@ -117,6 +117,11 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
         return new VirtualBankAccountListRequest(uri);
     }
 
+    public static Request delete(String id) {
+        String uri = uri("virtual_bank_accounts", nullCheck(id), "delete");
+        return new Request(Method.POST, uri);
+    }
+
     public static Request deleteLocal(String id) {
         String uri = uri("virtual_bank_accounts", nullCheck(id), "delete_local");
         return new Request(Method.POST, uri);

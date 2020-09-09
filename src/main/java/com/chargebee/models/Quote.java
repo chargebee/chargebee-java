@@ -480,10 +480,6 @@ public class Quote extends Resource<Quote> {
         return optTimestamp("updated_at");
     }
 
-    public String currencyCode() {
-        return reqString("currency_code");
-    }
-
     public List<Quote.LineItem> lineItems() {
         return optList("line_items", Quote.LineItem.class);
     }
@@ -502,6 +498,10 @@ public class Quote extends Resource<Quote> {
 
     public List<Quote.LineItemTax> lineItemTaxes() {
         return optList("line_item_taxes", Quote.LineItemTax.class);
+    }
+
+    public String currencyCode() {
+        return reqString("currency_code");
     }
 
     public JSONArray notes() {
@@ -611,8 +611,6 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
-
-
         public CreateSubForCustomerQuoteRequest name(String name) {
             params.addOpt("name", name);
             return this;
@@ -633,11 +631,23 @@ public class Quote extends Resource<Quote> {
 
 
 
+
+
         public CreateSubForCustomerQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
 
+
+        public CreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
 
         public CreateSubForCustomerQuoteRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
@@ -654,16 +664,6 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-
-        public CreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
-
-        public CreateSubForCustomerQuoteRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
 
 
 
@@ -702,13 +702,13 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public CreateSubForCustomerQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
-            params.addOpt("subscription[start_date]", subscriptionStartDate);
+        public CreateSubForCustomerQuoteRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
         }
 
-        public CreateSubForCustomerQuoteRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
-            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+        public CreateSubForCustomerQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 
@@ -1113,12 +1113,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-        public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
-            params.addOpt("billing_cycles", billingCycles);
-            return this;
-        }
-
-
         public UpdateSubscriptionQuoteRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
@@ -1134,6 +1128,12 @@ public class Quote extends Resource<Quote> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+
+        public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
 
         public UpdateSubscriptionQuoteRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
@@ -1175,6 +1175,10 @@ public class Quote extends Resource<Quote> {
 
 
 
+
+
+
+
         public UpdateSubscriptionQuoteRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
             return this;
@@ -1185,6 +1189,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("reactivate", reactivate);
             return this;
         }
+
+
 
 
 
@@ -1811,6 +1817,12 @@ public class Quote extends Resource<Quote> {
         private CreateForOnetimeChargesRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
+    
+        public CreateForOnetimeChargesRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
 
         public CreateForOnetimeChargesRequest customerId(String customerId) {
             params.add("customer_id", customerId);
@@ -1820,12 +1832,6 @@ public class Quote extends Resource<Quote> {
 
         public CreateForOnetimeChargesRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
-            return this;
-        }
-
-
-        public CreateForOnetimeChargesRequest name(String name) {
-            params.addOpt("name", name);
             return this;
         }
 

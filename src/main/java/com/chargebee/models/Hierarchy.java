@@ -27,6 +27,10 @@ public class Hierarchy extends Resource<Hierarchy> {
     // Fields
     //=======
 
+    public String customerId() {
+        return reqString("customer_id");
+    }
+
     public String parentId() {
         return optString("parent_id");
     }
@@ -37,10 +41,6 @@ public class Hierarchy extends Resource<Hierarchy> {
 
     public String invoiceOwnerId() {
         return reqString("invoice_owner_id");
-    }
-
-    public String customerId() {
-        return reqString("customer_id");
     }
 
     public List<String> childrenIds() {

@@ -759,6 +759,11 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public StringFilter<AddonListRequest> currencyCode() {
+            return new StringFilter<AddonListRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         @Override
         public Params params() {
             return params;

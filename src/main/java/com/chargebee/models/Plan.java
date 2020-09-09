@@ -1068,6 +1068,11 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public StringFilter<PlanListRequest> currencyCode() {
+            return new StringFilter<PlanListRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         @Override
         public Params params() {
             return params;

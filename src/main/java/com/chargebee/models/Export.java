@@ -599,6 +599,11 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<PlansRequest> currencyCode() {
+            return new StringFilter<PlansRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<PlansRequest> planId() {
             return new StringFilter<PlansRequest>("plan[id]",this).supportsMultiOperators(true);        
         }
@@ -655,6 +660,11 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<AddonsRequest> currencyCode() {
+            return new StringFilter<AddonsRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<AddonsRequest> addonId() {
             return new StringFilter<AddonsRequest>("addon[id]",this).supportsMultiOperators(true);        
         }
@@ -699,6 +709,11 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<CouponsRequest> currencyCode() {
+            return new StringFilter<CouponsRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<CouponsRequest> couponId() {
             return new StringFilter<CouponsRequest>("coupon[id]",this).supportsMultiOperators(true);        
         }
@@ -806,10 +821,11 @@ public Export waitForExportCompletion()
         private SubscriptionsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-    
+
         public StringFilter<SubscriptionsRequest> cancelReasonCode() {
             return new StringFilter<SubscriptionsRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<SubscriptionsRequest> subscriptionId() {
             return new StringFilter<SubscriptionsRequest>("subscription[id]",this).supportsMultiOperators(true);        

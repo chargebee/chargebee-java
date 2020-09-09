@@ -44,6 +44,16 @@ public class Card extends Resource<Card> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PoweredBy {
+        IDEAL,
+        SOFORT,
+        BANCONTACT,
+        GIROPAY,
+        NOT_APPLICABLE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -156,6 +166,10 @@ public class Card extends Resource<Card> {
 
     public String ipAddress() {
         return optString("ip_address");
+    }
+
+    public PoweredBy poweredBy() {
+        return optEnum("powered_by", PoweredBy.class);
     }
 
     public String customerId() {

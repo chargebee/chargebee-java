@@ -129,6 +129,16 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateSubscriptionRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CreateSubscriptionRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
         public CreateSubscriptionRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
@@ -144,16 +154,6 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-
-        public CreateSubscriptionRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
-
-        public CreateSubscriptionRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
 
 
 
@@ -206,13 +206,13 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
-            params.addOpt("subscription[start_date]", subscriptionStartDate);
+        public CreateSubscriptionRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
         }
 
-        public CreateSubscriptionRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
-            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+        public CreateSubscriptionRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 
@@ -327,6 +327,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+
+        public CreateSubscriptionRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+            return this;
+        }
+
         public CreateSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
             return this;
@@ -430,6 +440,16 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateSubForCustomerEstimateRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
         public CreateSubForCustomerEstimateRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
@@ -445,16 +465,6 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-
-        public CreateSubForCustomerEstimateRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
-
-        public CreateSubForCustomerEstimateRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
 
 
 
@@ -495,13 +505,13 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
-            params.addOpt("subscription[start_date]", subscriptionStartDate);
+        public CreateSubForCustomerEstimateRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
-            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+        public CreateSubForCustomerEstimateRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 
@@ -542,6 +552,16 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubForCustomerEstimateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
             return this;
         }
 
@@ -620,10 +640,8 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
-        public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {
-            params.addOpt("billing_cycles", billingCycles);
-            return this;
-        }
+
+
 
 
         public UpdateSubscriptionRequest replaceAddonList(Boolean replaceAddonList) {
@@ -641,6 +659,12 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+
+        public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
 
         public UpdateSubscriptionRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
@@ -851,6 +875,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+            return this;
+        }
+
         @Deprecated
         public UpdateSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
@@ -987,6 +1021,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("end_of_term", endOfTerm);
             return this;
         }
+
+
 
 
         public CancelSubscriptionRequest creditOptionForCurrentTermCharges(com.chargebee.models.enums.CreditOptionForCurrentTermCharges creditOptionForCurrentTermCharges) {
@@ -1306,7 +1342,7 @@ public class Estimate extends Resource<Estimate> {
 
 
         public CreateInvoiceRequest invoiceCustomerId(String invoiceCustomerId) {
-            params.add("invoice[customer_id]", invoiceCustomerId);
+            params.addOpt("invoice[customer_id]", invoiceCustomerId);
             return this;
         }
 

@@ -301,38 +301,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public CreateRequest planConstraint(PlanConstraint planConstraint) {
-            params.addOpt("plan_constraint", planConstraint);
-            return this;
-        }
-
-
-        public CreateRequest addonConstraint(AddonConstraint addonConstraint) {
-            params.addOpt("addon_constraint", addonConstraint);
-            return this;
-        }
-
-
-        public CreateRequest planIds(List<String> planIds) {
-            params.addOpt("plan_ids", planIds);
-            return this;
-        }
-
-        public CreateRequest planIds(String... planIds) {
-            params.addOpt("plan_ids", planIds);
-            return this;
-        }
-
-        public CreateRequest addonIds(List<String> addonIds) {
-            params.addOpt("addon_ids", addonIds);
-            return this;
-        }
-
-        public CreateRequest addonIds(String... addonIds) {
-            params.addOpt("addon_ids", addonIds);
-            return this;
-        }
-
         public CreateRequest durationType(Coupon.DurationType durationType) {
             params.add("duration_type", durationType);
             return this;
@@ -368,6 +336,38 @@ public class Coupon extends Resource<Coupon> {
             return this;
         }
 
+
+        public CreateRequest planConstraint(PlanConstraint planConstraint) {
+            params.addOpt("plan_constraint", planConstraint);
+            return this;
+        }
+
+
+        public CreateRequest addonConstraint(AddonConstraint addonConstraint) {
+            params.addOpt("addon_constraint", addonConstraint);
+            return this;
+        }
+
+
+        public CreateRequest planIds(List<String> planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public CreateRequest planIds(String... planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public CreateRequest addonIds(List<String> addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public CreateRequest addonIds(String... addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
 
         public CreateRequest status(Coupon.Status status) {
             params.addOpt("status", status);
@@ -433,6 +433,11 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public StringFilter<CouponListRequest> currencyCode() {
+            return new StringFilter<CouponListRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -487,38 +492,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public UpdateRequest planConstraint(PlanConstraint planConstraint) {
-            params.addOpt("plan_constraint", planConstraint);
-            return this;
-        }
-
-
-        public UpdateRequest addonConstraint(AddonConstraint addonConstraint) {
-            params.addOpt("addon_constraint", addonConstraint);
-            return this;
-        }
-
-
-        public UpdateRequest planIds(List<String> planIds) {
-            params.addOpt("plan_ids", planIds);
-            return this;
-        }
-
-        public UpdateRequest planIds(String... planIds) {
-            params.addOpt("plan_ids", planIds);
-            return this;
-        }
-
-        public UpdateRequest addonIds(List<String> addonIds) {
-            params.addOpt("addon_ids", addonIds);
-            return this;
-        }
-
-        public UpdateRequest addonIds(String... addonIds) {
-            params.addOpt("addon_ids", addonIds);
-            return this;
-        }
-
         public UpdateRequest durationType(Coupon.DurationType durationType) {
             params.addOpt("duration_type", durationType);
             return this;
@@ -554,6 +527,38 @@ public class Coupon extends Resource<Coupon> {
             return this;
         }
 
+
+        public UpdateRequest planConstraint(PlanConstraint planConstraint) {
+            params.addOpt("plan_constraint", planConstraint);
+            return this;
+        }
+
+
+        public UpdateRequest addonConstraint(AddonConstraint addonConstraint) {
+            params.addOpt("addon_constraint", addonConstraint);
+            return this;
+        }
+
+
+        public UpdateRequest planIds(List<String> planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public UpdateRequest planIds(String... planIds) {
+            params.addOpt("plan_ids", planIds);
+            return this;
+        }
+
+        public UpdateRequest addonIds(List<String> addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
+
+        public UpdateRequest addonIds(String... addonIds) {
+            params.addOpt("addon_ids", addonIds);
+            return this;
+        }
 
         @Override
         public Params params() {

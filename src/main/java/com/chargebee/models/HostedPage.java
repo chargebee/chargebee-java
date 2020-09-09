@@ -213,6 +213,16 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
+        public CheckoutNewRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
+            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+            return this;
+        }
+
         public CheckoutNewRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
@@ -229,15 +239,8 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-        public CheckoutNewRequest mandatoryAddonsToRemove(List<String> mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
 
-        public CheckoutNewRequest mandatoryAddonsToRemove(String... mandatoryAddonsToRemove) {
-            params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-            return this;
-        }
+
         public CheckoutNewRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -247,8 +250,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
-
-
 
         public CheckoutNewRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
@@ -345,13 +346,13 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
-            params.addOpt("subscription[start_date]", subscriptionStartDate);
+        public CheckoutNewRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
             return this;
         }
 
-        public CheckoutNewRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
-            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+        public CheckoutNewRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
         }
 
@@ -608,12 +609,6 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
-        public CheckoutExistingRequest billingCycles(Integer billingCycles) {
-            params.addOpt("billing_cycles", billingCycles);
-            return this;
-        }
-
-
         public CheckoutExistingRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
@@ -629,6 +624,12 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+
+        public CheckoutExistingRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
 
         public CheckoutExistingRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);

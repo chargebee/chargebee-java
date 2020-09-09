@@ -390,6 +390,8 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+
+
         @Override
         public Params params() {
             return params;
@@ -544,6 +546,8 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+
+
         public CreateCardRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
@@ -642,6 +646,8 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
         }
+
+
 
 
         public CreateBankAccountRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {

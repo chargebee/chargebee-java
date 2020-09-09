@@ -168,15 +168,15 @@ public class Transaction extends Resource<Transaction> {
         }
 
         public Status status() {
-            return reqEnum("status", Status.class);
+            return optEnum("status", Status.class);
         }
 
         public Integer amount() {
-            return reqInteger("amount");
+            return optInteger("amount");
         }
 
         public Timestamp date() {
-            return reqTimestamp("date");
+            return optTimestamp("date");
         }
 
     }

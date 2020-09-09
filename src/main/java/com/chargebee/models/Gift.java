@@ -37,7 +37,7 @@ public class Gift extends Resource<Gift> {
         }
 
         public String signature() {
-            return reqString("signature");
+            return optString("signature");
         }
 
         public String note() {
@@ -60,15 +60,15 @@ public class Gift extends Resource<Gift> {
         }
 
         public String firstName() {
-            return reqString("first_name");
+            return optString("first_name");
         }
 
         public String lastName() {
-            return reqString("last_name");
+            return optString("last_name");
         }
 
         public String email() {
-            return reqString("email");
+            return optString("email");
         }
 
     }
@@ -83,7 +83,7 @@ public class Gift extends Resource<Gift> {
         }
 
         public Timestamp occurredAt() {
-            return reqTimestamp("occurred_at");
+            return optTimestamp("occurred_at");
         }
 
     }
@@ -111,7 +111,7 @@ public class Gift extends Resource<Gift> {
     }
 
     public Timestamp scheduledAt() {
-        return reqTimestamp("scheduled_at");
+        return optTimestamp("scheduled_at");
     }
 
     public Boolean autoClaim() {
@@ -143,7 +143,7 @@ public class Gift extends Resource<Gift> {
     }
 
     public List<Gift.GiftTimeline> giftTimelines() {
-        return reqList("gift_timelines", Gift.GiftTimeline.class);
+        return optList("gift_timelines", Gift.GiftTimeline.class);
     }
 
     // Operations

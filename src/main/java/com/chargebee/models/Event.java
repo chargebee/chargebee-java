@@ -158,6 +158,10 @@ public class Event extends Resource<Event> {
         }
 
 
+
+
+
+
         public StringFilter<EventListRequest> id() {
             return new StringFilter<EventListRequest>("id",this).supportsMultiOperators(true);        
         }

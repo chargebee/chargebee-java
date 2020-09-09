@@ -330,7 +330,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public Timestamp createdAt() {
-            return reqTimestamp("created_at");
+            return optTimestamp("created_at");
         }
 
         public Transaction.Status txnStatus() {
@@ -1013,7 +1013,7 @@ public class Invoice extends Resource<Invoice> {
         }
     
         public CreateRequest customerId(String customerId) {
-            params.add("customer_id", customerId);
+            params.addOpt("customer_id", customerId);
             return this;
         }
 
@@ -1923,6 +1923,12 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
+
+
+
+
+
+
 
 
 
