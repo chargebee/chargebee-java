@@ -319,6 +319,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest> subscriptionOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("subscription[offline_payment_method]",this);        
+        }
+
         public StringFilter<RevenueRecognitionRequest> customerId() {
             return new StringFilter<RevenueRecognitionRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
@@ -369,6 +373,10 @@ public Export waitForExportCompletion()
 
         public StringFilter<RevenueRecognitionRequest> relationshipInvoiceOwnerId() {
             return new StringFilter<RevenueRecognitionRequest>("relationship[invoice_owner_id]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest> customerOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("customer[offline_payment_method]",this);        
         }
 
         @Override
@@ -535,6 +543,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<DeferredRevenueRequest>("subscription[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest> subscriptionOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("subscription[offline_payment_method]",this);        
+        }
+
         public StringFilter<DeferredRevenueRequest> customerId() {
             return new StringFilter<DeferredRevenueRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
@@ -585,6 +597,10 @@ public Export waitForExportCompletion()
 
         public StringFilter<DeferredRevenueRequest> relationshipInvoiceOwnerId() {
             return new StringFilter<DeferredRevenueRequest>("relationship[invoice_owner_id]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest> customerOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("customer[offline_payment_method]",this);        
         }
 
         @Override
@@ -810,6 +826,10 @@ public Export waitForExportCompletion()
             return new StringFilter<CustomersRequest>("relationship[invoice_owner_id]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomersRequest> customerOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomersRequest>("customer[offline_payment_method]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -873,6 +893,10 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<SubscriptionsRequest> subscriptionUpdatedAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[updated_at]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest> subscriptionOfflinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest>("subscription[offline_payment_method]",this);        
         }
 
         @Override

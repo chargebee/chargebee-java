@@ -222,6 +222,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+            return this;
+        }
+
         public CreateSubscriptionRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
@@ -515,6 +520,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubForCustomerEstimateRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+            return this;
+        }
+
         public CreateSubForCustomerEstimateRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
@@ -782,6 +792,16 @@ public class Estimate extends Resource<Estimate> {
         @Deprecated
         public UpdateSubscriptionRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 

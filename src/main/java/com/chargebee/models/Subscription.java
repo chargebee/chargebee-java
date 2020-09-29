@@ -510,6 +510,10 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("auto_collection", AutoCollection.class);
     }
 
+    public OfflinePaymentMethod offlinePaymentMethod() {
+        return optEnum("offline_payment_method", OfflinePaymentMethod.class);
+    }
+
     public Integer dueInvoicesCount() {
         return optInteger("due_invoices_count");
     }
@@ -824,6 +828,12 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+        public CreateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
+            return this;
+        }
+
+
         public CreateRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -965,6 +975,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest customerAutoCollection(com.chargebee.models.enums.AutoCollection customerAutoCollection) {
             params.addOpt("customer[auto_collection]", customerAutoCollection);
+            return this;
+        }
+
+        public CreateRequest customerOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod customerOfflinePaymentMethod) {
+            params.addOpt("customer[offline_payment_method]", customerOfflinePaymentMethod);
             return this;
         }
 
@@ -1522,6 +1537,12 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+        public CreateForCustomerRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
+            return this;
+        }
+
+
         public CreateForCustomerRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
             return this;
@@ -1825,6 +1846,11 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionListRequest> offlinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionListRequest>("offline_payment_method",this);        
+        }
+
+
         public BooleanFilter<SubscriptionListRequest> overrideRelationship() {
             return new BooleanFilter<SubscriptionListRequest>("override_relationship",this);        
         }
@@ -1973,6 +1999,18 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+        public UpdateRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public UpdateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
             return this;
         }
 

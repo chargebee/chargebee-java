@@ -208,6 +208,10 @@ public class Addon extends Resource<Addon> {
         return optTimestamp("updated_at");
     }
 
+    public Boolean includedInMrr() {
+        return optBoolean("included_in_mrr");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -459,6 +463,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
         public CreateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
             params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
             return this;
@@ -666,6 +676,12 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest shippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnit shippingFrequencyPeriodUnit) {
             params.addOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+            return this;
+        }
+
+
+        public UpdateRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
             return this;
         }
 

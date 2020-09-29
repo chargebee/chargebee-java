@@ -281,6 +281,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutNewRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
+            params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
+            return this;
+        }
+
+
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;
@@ -364,6 +370,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
             params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -703,6 +714,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
+            params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
+            return this;
+        }
+
+
         public CheckoutExistingRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -741,6 +758,16 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         public CheckoutExistingRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 

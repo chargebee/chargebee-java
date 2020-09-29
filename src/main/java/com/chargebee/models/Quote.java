@@ -712,6 +712,11 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public CreateSubForCustomerQuoteRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+            return this;
+        }
+
         public CreateSubForCustomerQuoteRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -947,6 +952,11 @@ public class Quote extends Resource<Quote> {
 
         public EditCreateSubForCustomerQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -1235,6 +1245,16 @@ public class Quote extends Resource<Quote> {
         @Deprecated
         public UpdateSubscriptionQuoteRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -1590,6 +1610,16 @@ public class Quote extends Resource<Quote> {
         @Deprecated
         public EditUpdateSubscriptionQuoteRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 

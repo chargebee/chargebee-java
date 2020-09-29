@@ -421,6 +421,10 @@ public class Customer extends Resource<Customer> {
         return reqEnum("auto_collection", AutoCollection.class);
     }
 
+    public OfflinePaymentMethod offlinePaymentMethod() {
+        return optEnum("offline_payment_method", OfflinePaymentMethod.class);
+    }
+
     public Integer netTermDays() {
         return reqInteger("net_term_days");
     }
@@ -475,10 +479,6 @@ public class Customer extends Resource<Customer> {
 
     public String locale() {
         return optString("locale");
-    }
-
-    public Boolean consolidatedInvoicing() {
-        return optBoolean("consolidated_invoicing");
     }
 
     public Integer billingDate() {
@@ -572,6 +572,10 @@ public class Customer extends Resource<Customer> {
 
     public Boolean registeredForGst() {
         return optBoolean("registered_for_gst");
+    }
+
+    public Boolean consolidatedInvoicing() {
+        return optBoolean("consolidated_invoicing");
     }
 
     public CustomerType customerType() {
@@ -871,6 +875,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public CreateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
             return this;
         }
 
@@ -1260,6 +1270,11 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomerListRequest> offlinePaymentMethod() {
+            return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomerListRequest>("offline_payment_method",this);        
+        }
+
+
         public CustomerListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
@@ -1392,6 +1407,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest exemptNumber(String exemptNumber) {
             params.addOpt("exempt_number", exemptNumber);
+            return this;
+        }
+
+
+        public UpdateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
+            params.addOpt("offline_payment_method", offlinePaymentMethod);
             return this;
         }
 

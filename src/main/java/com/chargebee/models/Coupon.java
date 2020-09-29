@@ -178,6 +178,10 @@ public class Coupon extends Resource<Coupon> {
         return optTimestamp("updated_at");
     }
 
+    public Boolean includedInMrr() {
+        return optBoolean("included_in_mrr");
+    }
+
     public List<String> planIds() {
         return optList("plan_ids", String.class);
     }
@@ -333,6 +337,12 @@ public class Coupon extends Resource<Coupon> {
 
         public CreateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public CreateRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
             return this;
         }
 
@@ -524,6 +534,12 @@ public class Coupon extends Resource<Coupon> {
 
         public UpdateRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public UpdateRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
             return this;
         }
 
