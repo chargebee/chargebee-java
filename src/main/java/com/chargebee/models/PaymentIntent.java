@@ -134,6 +134,14 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return reqTimestamp("modified_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public String customerId() {
         return reqString("customer_id");
     }

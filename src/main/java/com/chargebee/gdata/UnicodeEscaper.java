@@ -30,7 +30,7 @@ import java.io.IOException;
  * the parser API will return this text as the original literal string {@code
  * "Foo<Bar>"}.
  *
- * <p><b>Note:</b> This class is similar to {@link CharEscaper} but with one
+ * <p><b>Note:</b> This class is similar to @see com.google.common.escape.CharEscaper but with one
  * very important difference. A CharEscaper can only process Java
  * <a href="http://en.wikipedia.org/wiki/UTF-16">UTF16</a> characters in
  * isolation and may not cope when it encounters surrogate pairs. This class
@@ -43,8 +43,8 @@ import java.io.IOException;
  * <p>A {@code UnicodeEscaper} instance is required to be stateless, and safe
  * when used concurrently by multiple threads.
  *
- * <p>Several popular escapers are defined as constants in the class {@link
- * CharEscapers}. To create your own escapers extend this class and implement
+ * <p>Several popular escapers are defined as constants in the class @see
+ * com.google.gdata.util.common.base.CharEscapers. To create your own escapers extend this class and implement
  * the {@link #escape(int)} method.
  *
  * 
@@ -129,7 +129,7 @@ public abstract class UnicodeEscaper implements Escaper {
    * this method for efficiency by inlining the implementation of
    * {@link #nextEscapeIndex(CharSequence, int, int)} directly. Doing this for
    * {@link PercentEscaper} more than doubled the performance for unescaped
-   * strings (as measured by {@link CharEscapersBenchmark}).
+   * strings (as measured by CharEscaperBenchmark).
    *
    * @param string the literal string to be escaped
    * @return the escaped form of {@code string}
@@ -148,7 +148,7 @@ public abstract class UnicodeEscaper implements Escaper {
    * index.  This method is called by the {@link #escape(String)} method when it
    * discovers that escaping is required.  It is protected to allow subclasses
    * to override the fastpath escaping function to inline their escaping test.
-   * See {@link CharEscaperBuilder} for an example usage.
+   * See @see com.google.common.escape.CharEscaperBuilder for an example usage.
    *
    * <p>This method is not reentrant and may only be invoked by the top level
    * {@link #escape(String)} method.

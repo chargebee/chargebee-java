@@ -1,3 +1,7 @@
+### v2.8.1 (2020-10-16)
+* * *
+* New optional attribute quoted_subscriptions has been added to the resource quote
+* New optional attributes resource_version and updated_at are added to the resource payment_intent
 ### v2.8.0 (2020-09-09)
 * * *
 
@@ -1769,4 +1773,3 @@ Support addedBy attribute as input while creating comment. This can be used to p
 * API to fetch multiple subscriptions of a customer.
 
 * Added support to get the list of events filtered by event type. Events can be fetched based on the event type eg., payment_succeeded.
-

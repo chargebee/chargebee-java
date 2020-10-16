@@ -5,7 +5,6 @@ import com.chargebee.internal.RequestBase;
 /**
  *
  * @author sangeetha
- * @param <T>
  * @param <U>
  */
 public class BooleanFilter<U extends RequestBase> {

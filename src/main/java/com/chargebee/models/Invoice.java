@@ -1815,7 +1815,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("taxes[description][" + index + "]", taxDescription);
             return this;
         }
-
         public ImportInvoiceRequest taxJurisType(int index, com.chargebee.models.enums.TaxJurisType taxJurisType) {
             params.addOpt("taxes[juris_type][" + index + "]", taxJurisType);
             return this;

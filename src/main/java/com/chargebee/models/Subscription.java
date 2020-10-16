@@ -366,10 +366,6 @@ public class Subscription extends Resource<Subscription> {
         return reqString("id");
     }
 
-    public String customerId() {
-        return reqString("customer_id");
-    }
-
     public String currencyCode() {
         return reqString("currency_code");
     }
@@ -390,16 +386,40 @@ public class Subscription extends Resource<Subscription> {
         return optInteger("setup_fee");
     }
 
-    public Integer planAmount() {
-        return optInteger("plan_amount");
-    }
-
     public Integer billingPeriod() {
         return optInteger("billing_period");
     }
 
     public BillingPeriodUnit billingPeriodUnit() {
         return optEnum("billing_period_unit", BillingPeriodUnit.class);
+    }
+
+    public Timestamp startDate() {
+        return optTimestamp("start_date");
+    }
+
+    public Timestamp trialEnd() {
+        return optTimestamp("trial_end");
+    }
+
+    public Integer remainingBillingCycles() {
+        return optInteger("remaining_billing_cycles");
+    }
+
+    public String poNumber() {
+        return optString("po_number");
+    }
+
+    public AutoCollection autoCollection() {
+        return optEnum("auto_collection", AutoCollection.class);
+    }
+
+    public String customerId() {
+        return reqString("customer_id");
+    }
+
+    public Integer planAmount() {
+        return optInteger("plan_amount");
     }
 
     public Integer planFreeQuantity() {
@@ -410,16 +430,8 @@ public class Subscription extends Resource<Subscription> {
         return reqEnum("status", Status.class);
     }
 
-    public Timestamp startDate() {
-        return optTimestamp("start_date");
-    }
-
     public Timestamp trialStart() {
         return optTimestamp("trial_start");
-    }
-
-    public Timestamp trialEnd() {
-        return optTimestamp("trial_end");
     }
 
     public Timestamp currentTermStart() {
@@ -432,14 +444,6 @@ public class Subscription extends Resource<Subscription> {
 
     public Timestamp nextBillingAt() {
         return optTimestamp("next_billing_at");
-    }
-
-    public Integer remainingBillingCycles() {
-        return optInteger("remaining_billing_cycles");
-    }
-
-    public String poNumber() {
-        return optString("po_number");
     }
 
     public Timestamp createdAt() {
@@ -504,10 +508,6 @@ public class Subscription extends Resource<Subscription> {
 
     public String paymentSourceId() {
         return optString("payment_source_id");
-    }
-
-    public AutoCollection autoCollection() {
-        return optEnum("auto_collection", AutoCollection.class);
     }
 
     public OfflinePaymentMethod offlinePaymentMethod() {
@@ -1796,6 +1796,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+
+
         public EnumFilter<Subscription.Status, SubscriptionListRequest> status() {
             return new EnumFilter<Subscription.Status, SubscriptionListRequest>("status",this);        
         }
@@ -1987,6 +1991,8 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
+
+
 
 
         public UpdateRequest reactivateFrom(Timestamp reactivateFrom) {
@@ -2716,6 +2722,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
+
+
+
+
 
 
         @Override

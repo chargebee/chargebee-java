@@ -214,6 +214,10 @@ public Export waitForExportCompletion()
         }
 
 
+
+
+
+
         public StringFilter<RevenueRecognitionRequest> cancelReasonCode() {
             return new StringFilter<RevenueRecognitionRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
         }
@@ -436,6 +440,10 @@ public Export waitForExportCompletion()
         public StringFilter<DeferredRevenueRequest> paymentOwner() {
             return new StringFilter<DeferredRevenueRequest>("payment_owner",this).supportsMultiOperators(true);        
         }
+
+
+
+
 
 
         public StringFilter<DeferredRevenueRequest> cancelReasonCode() {
@@ -841,6 +849,10 @@ public Export waitForExportCompletion()
         private SubscriptionsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
+    
+
+
+
 
         public StringFilter<SubscriptionsRequest> cancelReasonCode() {
             return new StringFilter<SubscriptionsRequest>("cancel_reason_code",this).supportsMultiOperators(true);        

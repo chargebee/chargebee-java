@@ -705,7 +705,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public CreateRequest status(Order.Status status) {
+        public CreateRequest status(Status status) {
             params.addOpt("status", status);
             return this;
         }

@@ -11,7 +11,6 @@ import java.util.concurrent.Callable;
  *
  * @author cb-ajit
  * @param <T>
- * @param <U>
  */
 public abstract class RequestWrap<T extends RequestBase> implements Callable<ApiResponse> {
 

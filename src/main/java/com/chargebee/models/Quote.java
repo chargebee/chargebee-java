@@ -1151,6 +1151,8 @@ public class Quote extends Resource<Quote> {
         }
 
 
+
+
         public UpdateSubscriptionQuoteRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
@@ -1521,6 +1523,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("terms_to_charge", termsToCharge);
             return this;
         }
+
+
 
 
         public EditUpdateSubscriptionQuoteRequest reactivateFrom(Timestamp reactivateFrom) {

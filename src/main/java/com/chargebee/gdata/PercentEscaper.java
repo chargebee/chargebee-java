@@ -26,8 +26,8 @@ package com.chargebee.gdata;
  *
  * <p>In most cases this class should not need to be used directly. If you
  * have no special requirements for escaping your URIs, you should use either
- * {@link CharEscapers#uriEscaper()} or
- * {@link CharEscapers#uriEscaper(boolean)}.
+ * CharEscapers#uriEscaper() or
+ * CharEscapers#uriEscaper(boolean).
  *
  * <p>When encoding a String, the following rules apply:
  * <ul>

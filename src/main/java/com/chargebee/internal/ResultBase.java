@@ -24,6 +24,10 @@ public class ResultBase {
         return (ContractTerm)get("contract_term");
     }
 
+    public AdvanceInvoiceSchedule advanceInvoiceSchedule() {
+        return (AdvanceInvoiceSchedule)get("advance_invoice_schedule");
+    }
+
     public Customer customer() {
         return (Customer)get("customer");
     }
@@ -96,6 +100,10 @@ public class ResultBase {
         return (Quote)get("quote");
     }
 
+    public QuotedSubscription quotedSubscription() {
+        return (QuotedSubscription)get("quoted_subscription");
+    }
+
     public QuoteLineGroup quoteLineGroup() {
         return (QuoteLineGroup)get("quote_line_group");
     }
@@ -166,6 +174,10 @@ public class ResultBase {
 
     public List<CreditNote> creditNotes() {
         return (List<CreditNote>) getList("credit_notes", "credit_note");
+    }
+
+    public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
+        return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }
 
     public List<Hierarchy> hierarchies() {

@@ -682,6 +682,8 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+
+
         public UpdateSubscriptionRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;

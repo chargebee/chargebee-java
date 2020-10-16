@@ -29,8 +29,8 @@
     </organization>
 
     <scm>
-        <connection>scm:git:git@github.com:chargebee/chargebee-java.git</connection>
-        <developerConnection>scm:git:git@github.com:chargebee/chargebee-java.git</developerConnection>
+        <connection>scm:git:https://github.com/chargebee/chargebee-java.git</connection>
+        <developerConnection>scm:git:https://github.com/chargebee/chargebee-java.git</developerConnection>
         <url>https://github.com/chargebee/chargebee-java.git</url>
     </scm>
 
