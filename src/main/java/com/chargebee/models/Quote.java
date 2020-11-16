@@ -86,6 +86,18 @@ public class Quote extends Resource<Quote> {
             return optDouble("tax_rate");
         }
 
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer discountAmount() {
             return optInteger("discount_amount");
         }
@@ -682,6 +694,16 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public CreateSubForCustomerQuoteRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
+        public CreateSubForCustomerQuoteRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateSubForCustomerQuoteRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -810,8 +832,16 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CreateSubForCustomerQuoteRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CreateSubForCustomerQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateSubForCustomerQuoteRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CreateSubForCustomerQuoteRequest addonBillingCycles(int index, Integer addonBillingCycles) {
@@ -828,6 +858,14 @@ public class Quote extends Resource<Quote> {
         }
         public CreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CreateSubForCustomerQuoteRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public CreateSubForCustomerQuoteRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public CreateSubForCustomerQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
@@ -922,6 +960,16 @@ public class Quote extends Resource<Quote> {
 
         public EditCreateSubForCustomerQuoteRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
             return this;
         }
 
@@ -1053,8 +1101,16 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public EditCreateSubForCustomerQuoteRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public EditCreateSubForCustomerQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public EditCreateSubForCustomerQuoteRequest addonBillingCycles(int index, Integer addonBillingCycles) {
@@ -1071,6 +1127,14 @@ public class Quote extends Resource<Quote> {
         }
         public EditCreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public EditCreateSubForCustomerQuoteRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
@@ -1231,6 +1295,16 @@ public class Quote extends Resource<Quote> {
 
         public UpdateSubscriptionQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
+        public UpdateSubscriptionQuoteRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -1469,6 +1543,22 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
             return this;
         }
+        public UpdateSubscriptionQuoteRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionQuoteRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionQuoteRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionQuoteRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
+            return this;
+        }
         public UpdateSubscriptionQuoteRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
@@ -1598,6 +1688,16 @@ public class Quote extends Resource<Quote> {
 
         public EditUpdateSubscriptionQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -1836,6 +1936,22 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
             return this;
         }
+        public EditUpdateSubscriptionQuoteRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
+            return this;
+        }
         public EditUpdateSubscriptionQuoteRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
@@ -1972,8 +2088,16 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CreateForOnetimeChargesRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CreateForOnetimeChargesRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CreateForOnetimeChargesRequest addonServicePeriod(int index, Integer addonServicePeriod) {
@@ -1982,6 +2106,10 @@ public class Quote extends Resource<Quote> {
         }
         public CreateForOnetimeChargesRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
             return this;
         }
         public CreateForOnetimeChargesRequest chargeDescription(int index, String chargeDescription) {
@@ -2124,8 +2252,16 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public EditOneTimeQuoteRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public EditOneTimeQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public EditOneTimeQuoteRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public EditOneTimeQuoteRequest addonServicePeriod(int index, Integer addonServicePeriod) {
@@ -2134,6 +2270,10 @@ public class Quote extends Resource<Quote> {
         }
         public EditOneTimeQuoteRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public EditOneTimeQuoteRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
             return this;
         }
         public EditOneTimeQuoteRequest chargeDescription(int index, String chargeDescription) {

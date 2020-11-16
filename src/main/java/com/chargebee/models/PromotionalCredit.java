@@ -46,6 +46,10 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         return reqEnum("type", Type.class);
     }
 
+    public String amountInDecimal() {
+        return optString("amount_in_decimal");
+    }
+
     public Integer amount() {
         return reqInteger("amount");
     }
@@ -123,7 +127,13 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
 
 
         public AddRequest amount(Integer amount) {
-            params.add("amount", amount);
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public AddRequest amountInDecimal(String amountInDecimal) {
+            params.addOpt("amount_in_decimal", amountInDecimal);
             return this;
         }
 
@@ -171,7 +181,13 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
 
 
         public DeductRequest amount(Integer amount) {
-            params.add("amount", amount);
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public DeductRequest amountInDecimal(String amountInDecimal) {
+            params.addOpt("amount_in_decimal", amountInDecimal);
             return this;
         }
 
@@ -219,7 +235,13 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
 
 
         public SetRequest amount(Integer amount) {
-            params.add("amount", amount);
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public SetRequest amountInDecimal(String amountInDecimal) {
+            params.addOpt("amount_in_decimal", amountInDecimal);
             return this;
         }
 

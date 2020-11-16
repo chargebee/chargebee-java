@@ -51,6 +51,18 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optInteger("remaining_billing_cycles");
         }
 
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String unitPriceInDecimal() {
+            return optString("unit_price_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
     }
 
     public static class EventBasedAddon extends Resource<EventBasedAddon> {
@@ -87,6 +99,14 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
 
         public Boolean chargeOnce() {
             return reqBoolean("charge_once");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String unitPriceInDecimal() {
+            return optString("unit_price_in_decimal");
         }
 
     }

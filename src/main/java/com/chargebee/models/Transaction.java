@@ -361,6 +361,11 @@ public class Transaction extends Resource<Transaction> {
         return new RecordRefundRequest(Method.POST, uri);
     }
 
+    public static RefundRequest refund(String id) {
+        String uri = uri("transactions", nullCheck(id), "refund");
+        return new RefundRequest(Method.POST, uri);
+    }
+
     public static TransactionListRequest list() {
         String uri = uri("transactions");
         return new TransactionListRequest(uri);
@@ -464,6 +469,30 @@ public class Transaction extends Resource<Transaction> {
 
 
         public RecordRefundRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RefundRequest extends Request<RefundRequest> {
+
+        private RefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RefundRequest amount(Integer amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public RefundRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
         }

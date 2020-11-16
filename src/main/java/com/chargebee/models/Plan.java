@@ -81,6 +81,18 @@ public class Plan extends Resource<Plan> {
             return reqInteger("price");
         }
 
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String priceInDecimal() {
+            return optString("price_in_decimal");
+        }
+
     }
 
     public static class ApplicableAddon extends Resource<ApplicableAddon> {
@@ -121,6 +133,10 @@ public class Plan extends Resource<Plan> {
             return reqEnum("type", Type.class);
         }
 
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
     }
 
     public static class EventBasedAddon extends Resource<EventBasedAddon> {
@@ -148,6 +164,10 @@ public class Plan extends Resource<Plan> {
 
         public Boolean chargeOnce() {
             return reqBoolean("charge_once");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
         }
 
     }
@@ -320,6 +340,14 @@ public class Plan extends Resource<Plan> {
         return optString("claim_url");
     }
 
+    public String freeQuantityInDecimal() {
+        return optString("free_quantity_in_decimal");
+    }
+
+    public String priceInDecimal() {
+        return optString("price_in_decimal");
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -468,6 +496,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
         public CreateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
             return this;
@@ -495,6 +529,12 @@ public class Plan extends Resource<Plan> {
 
         public CreateRequest freeQuantity(Integer freeQuantity) {
             params.addOpt("free_quantity", freeQuantity);
+            return this;
+        }
+
+
+        public CreateRequest freeQuantityInDecimal(String freeQuantityInDecimal) {
+            params.addOpt("free_quantity_in_decimal", freeQuantityInDecimal);
             return this;
         }
 
@@ -668,6 +708,18 @@ public class Plan extends Resource<Plan> {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
+        public CreateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
         public CreateRequest applicableAddonId(int index, String applicableAddonId) {
             params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
             return this;
@@ -678,6 +730,10 @@ public class Plan extends Resource<Plan> {
         }
         public CreateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public CreateRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
             return this;
         }
         public CreateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
@@ -694,6 +750,10 @@ public class Plan extends Resource<Plan> {
         }
         public CreateRequest attachedAddonQuantity(int index, Integer attachedAddonQuantity) {
             params.addOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+            return this;
+        }
+        public CreateRequest attachedAddonQuantityInDecimal(int index, String attachedAddonQuantityInDecimal) {
+            params.addOpt("attached_addons[quantity_in_decimal][" + index + "]", attachedAddonQuantityInDecimal);
             return this;
         }
         public CreateRequest attachedAddonBillingCycles(int index, Integer attachedAddonBillingCycles) {
@@ -770,6 +830,12 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public UpdateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
         public UpdateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
             return this;
@@ -797,6 +863,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest freeQuantity(Integer freeQuantity) {
             params.addOpt("free_quantity", freeQuantity);
+            return this;
+        }
+
+
+        public UpdateRequest freeQuantityInDecimal(String freeQuantityInDecimal) {
+            params.addOpt("free_quantity_in_decimal", freeQuantityInDecimal);
             return this;
         }
 
@@ -954,6 +1026,18 @@ public class Plan extends Resource<Plan> {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
+        public UpdateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
         public UpdateRequest applicableAddonId(int index, String applicableAddonId) {
             params.addOpt("applicable_addons[id][" + index + "]", applicableAddonId);
             return this;
@@ -964,6 +1048,10 @@ public class Plan extends Resource<Plan> {
         }
         public UpdateRequest eventBasedAddonQuantity(int index, Integer eventBasedAddonQuantity) {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+            return this;
+        }
+        public UpdateRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
             return this;
         }
         public UpdateRequest eventBasedAddonOnEvent(int index, com.chargebee.models.enums.OnEvent eventBasedAddonOnEvent) {
@@ -980,6 +1068,10 @@ public class Plan extends Resource<Plan> {
         }
         public UpdateRequest attachedAddonQuantity(int index, Integer attachedAddonQuantity) {
             params.addOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+            return this;
+        }
+        public UpdateRequest attachedAddonQuantityInDecimal(int index, String attachedAddonQuantityInDecimal) {
+            params.addOpt("attached_addons[quantity_in_decimal][" + index + "]", attachedAddonQuantityInDecimal);
             return this;
         }
         public UpdateRequest attachedAddonBillingCycles(int index, Integer attachedAddonBillingCycles) {

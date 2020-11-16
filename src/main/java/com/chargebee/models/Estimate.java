@@ -186,6 +186,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
+        public CreateSubscriptionRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateSubscriptionRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -375,8 +385,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CreateSubscriptionRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CreateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateSubscriptionRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CreateSubscriptionRequest addonBillingCycles(int index, Integer addonBillingCycles) {
@@ -393,6 +411,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CreateSubscriptionRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public CreateSubscriptionRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public CreateSubscriptionRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
@@ -487,6 +513,16 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubForCustomerEstimateRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
             return this;
         }
 
@@ -598,8 +634,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CreateSubForCustomerEstimateRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CreateSubForCustomerEstimateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateSubForCustomerEstimateRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CreateSubForCustomerEstimateRequest addonBillingCycles(int index, Integer addonBillingCycles) {
@@ -616,6 +660,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubForCustomerEstimateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CreateSubForCustomerEstimateRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public CreateSubForCustomerEstimateRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public CreateSubForCustomerEstimateRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
@@ -778,6 +830,16 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -955,6 +1017,22 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
             params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public UpdateSubscriptionRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public UpdateSubscriptionRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
@@ -1226,6 +1304,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public GiftSubscriptionRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public GiftSubscriptionRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -1302,6 +1385,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public GiftSubscriptionRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public GiftSubscriptionRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
         @Override
@@ -1456,8 +1543,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CreateInvoiceRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CreateInvoiceRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateInvoiceRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CreateInvoiceRequest addonDateFrom(int index, Timestamp addonDateFrom) {
@@ -1470,6 +1565,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
             return this;
         }
         public CreateInvoiceRequest chargeDescription(int index, String chargeDescription) {

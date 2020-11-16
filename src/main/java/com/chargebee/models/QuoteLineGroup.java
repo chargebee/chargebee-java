@@ -78,6 +78,18 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optDouble("tax_rate");
         }
 
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer discountAmount() {
             return optInteger("discount_amount");
         }

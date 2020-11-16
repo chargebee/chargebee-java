@@ -332,6 +332,16 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -572,8 +582,16 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
+        public CheckoutNewRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
         public CheckoutNewRequest addonUnitPrice(int index, Integer addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CheckoutNewRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
             return this;
         }
         public CheckoutNewRequest addonBillingCycles(int index, Integer addonBillingCycles) {
@@ -590,6 +608,14 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public CheckoutNewRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         public CheckoutNewRequest eventBasedAddonServicePeriodInDays(int index, Integer eventBasedAddonServicePeriodInDays) {
@@ -747,6 +773,16 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
+        public CheckoutExistingRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+            return this;
+        }
+
         public CheckoutExistingRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
             return this;
@@ -851,6 +887,22 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingRequest eventBasedAddonChargeOnce(int index, Boolean eventBasedAddonChargeOnce) {
             params.addOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+            return this;
+        }
+        public CheckoutExistingRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public CheckoutExistingRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonQuantityInDecimal(int index, String eventBasedAddonQuantityInDecimal) {
+            params.addOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+            return this;
+        }
+        public CheckoutExistingRequest eventBasedAddonUnitPriceInDecimal(int index, String eventBasedAddonUnitPriceInDecimal) {
+            params.addOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
             return this;
         }
         @Override
@@ -1139,6 +1191,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutGiftRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CheckoutGiftRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
@@ -1150,6 +1207,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutGiftRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public CheckoutGiftRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
         @Override

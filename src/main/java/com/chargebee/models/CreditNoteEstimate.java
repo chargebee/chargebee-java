@@ -75,6 +75,18 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optDouble("tax_rate");
         }
 
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer discountAmount() {
             return optInteger("discount_amount");
         }
@@ -264,6 +276,22 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
         public Integer unitAmount() {
             return reqInteger("unit_amount");
+        }
+
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
         }
 
     }

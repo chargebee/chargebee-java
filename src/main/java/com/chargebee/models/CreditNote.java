@@ -101,6 +101,18 @@ public class CreditNote extends Resource<CreditNote> {
             return optDouble("tax_rate");
         }
 
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer discountAmount() {
             return optInteger("discount_amount");
         }
@@ -216,6 +228,22 @@ public class CreditNote extends Resource<CreditNote> {
 
         public Integer unitAmount() {
             return reqInteger("unit_amount");
+        }
+
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
         }
 
     }
@@ -625,8 +653,16 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
+        public CreateRequest lineItemUnitAmountInDecimal(int index, String lineItemUnitAmountInDecimal) {
+            params.addOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+            return this;
+        }
         public CreateRequest lineItemQuantity(int index, Integer lineItemQuantity) {
             params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+            return this;
+        }
+        public CreateRequest lineItemQuantityInDecimal(int index, String lineItemQuantityInDecimal) {
+            params.addOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
             return this;
         }
         public CreateRequest lineItemAmount(int index, Integer lineItemAmount) {

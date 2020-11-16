@@ -43,6 +43,22 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             return reqInteger("unit_amount");
         }
 
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
     }
 
     //Constructors
@@ -121,6 +137,18 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
+    }
+
+    public String unitAmountInDecimal() {
+        return optString("unit_amount_in_decimal");
+    }
+
+    public String quantityInDecimal() {
+        return optString("quantity_in_decimal");
+    }
+
+    public String amountInDecimal() {
+        return optString("amount_in_decimal");
     }
 
     public List<UnbilledCharge.Tier> tiers() {

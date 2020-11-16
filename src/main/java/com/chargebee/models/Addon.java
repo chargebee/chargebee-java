@@ -75,6 +75,18 @@ public class Addon extends Resource<Addon> {
             return reqInteger("price");
         }
 
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String priceInDecimal() {
+            return optString("price_in_decimal");
+        }
+
     }
 
     //Constructors
@@ -206,6 +218,10 @@ public class Addon extends Resource<Addon> {
 
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
+    }
+
+    public String priceInDecimal() {
+        return optString("price_in_decimal");
     }
 
     public Boolean includedInMrr() {
@@ -481,6 +497,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
         public CreateRequest status(Addon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -497,6 +519,18 @@ public class Addon extends Resource<Addon> {
         }
         public CreateRequest tierPrice(int index, Integer tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
+        public CreateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
         @Override
@@ -698,6 +732,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public UpdateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
 
 
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
@@ -710,6 +750,18 @@ public class Addon extends Resource<Addon> {
         }
         public UpdateRequest tierPrice(int index, Integer tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
+        public UpdateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
         @Override

@@ -273,6 +273,11 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
+        public CreateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -375,6 +380,10 @@ public class Gift extends Resource<Gift> {
         }
         public CreateRequest addonQuantity(int index, Integer addonQuantity) {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public CreateRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
         @Override

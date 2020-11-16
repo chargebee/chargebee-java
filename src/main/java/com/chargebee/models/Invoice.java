@@ -88,6 +88,18 @@ public class Invoice extends Resource<Invoice> {
             return optDouble("tax_rate");
         }
 
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer discountAmount() {
             return optInteger("discount_amount");
         }
@@ -277,6 +289,22 @@ public class Invoice extends Resource<Invoice> {
 
         public Integer unitAmount() {
             return reqInteger("unit_amount");
+        }
+
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
         }
 
     }
@@ -1197,6 +1225,14 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
+        public CreateRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public CreateRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
         public CreateRequest addonDateFrom(int index, Timestamp addonDateFrom) {
             params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
             return this;
@@ -1207,6 +1243,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
             return this;
         }
         public CreateRequest chargeDescription(int index, String chargeDescription) {
@@ -1288,7 +1328,13 @@ public class Invoice extends Resource<Invoice> {
 
 
         public ChargeRequest amount(Integer amount) {
-            params.add("amount", amount);
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public ChargeRequest amountInDecimal(String amountInDecimal) {
+            params.addOpt("amount_in_decimal", amountInDecimal);
             return this;
         }
 
@@ -1385,6 +1431,18 @@ public class Invoice extends Resource<Invoice> {
 
         public ChargeAddonRequest addonUnitPrice(Integer addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
+            return this;
+        }
+
+
+        public ChargeAddonRequest addonQuantityInDecimal(String addonQuantityInDecimal) {
+            params.addOpt("addon_quantity_in_decimal", addonQuantityInDecimal);
+            return this;
+        }
+
+
+        public ChargeAddonRequest addonUnitPriceInDecimal(String addonUnitPriceInDecimal) {
+            params.addOpt("addon_unit_price_in_decimal", addonUnitPriceInDecimal);
             return this;
         }
 
@@ -1707,6 +1765,18 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
             return this;
         }
+        public ImportInvoiceRequest lineItemUnitAmountInDecimal(int index, String lineItemUnitAmountInDecimal) {
+            params.addOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemQuantityInDecimal(int index, String lineItemQuantityInDecimal) {
+            params.addOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAmountInDecimal(int index, String lineItemAmountInDecimal) {
+            params.addOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
+            return this;
+        }
         public ImportInvoiceRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
             params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
             return this;
@@ -1768,19 +1838,35 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
         public ImportInvoiceRequest lineItemTierStartingUnit(int index, Integer lineItemTierStartingUnit) {
-            params.add("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+            params.addOpt("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
             return this;
         }
         public ImportInvoiceRequest lineItemTierEndingUnit(int index, Integer lineItemTierEndingUnit) {
-            params.add("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+            params.addOpt("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
             return this;
         }
         public ImportInvoiceRequest lineItemTierQuantityUsed(int index, Integer lineItemTierQuantityUsed) {
-            params.add("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+            params.addOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
             return this;
         }
         public ImportInvoiceRequest lineItemTierUnitAmount(int index, Integer lineItemTierUnitAmount) {
-            params.add("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+            params.addOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierStartingUnitInDecimal(int index, String lineItemTierStartingUnitInDecimal) {
+            params.addOpt("line_item_tiers[starting_unit_in_decimal][" + index + "]", lineItemTierStartingUnitInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierEndingUnitInDecimal(int index, String lineItemTierEndingUnitInDecimal) {
+            params.addOpt("line_item_tiers[ending_unit_in_decimal][" + index + "]", lineItemTierEndingUnitInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierQuantityUsedInDecimal(int index, String lineItemTierQuantityUsedInDecimal) {
+            params.addOpt("line_item_tiers[quantity_used_in_decimal][" + index + "]", lineItemTierQuantityUsedInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTierUnitAmountInDecimal(int index, String lineItemTierUnitAmountInDecimal) {
+            params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
             return this;
         }
         public ImportInvoiceRequest discountEntityType(int index, Discount.EntityType discountEntityType) {
@@ -2138,6 +2224,18 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddAddonChargeRequest addonQuantityInDecimal(String addonQuantityInDecimal) {
+            params.addOpt("addon_quantity_in_decimal", addonQuantityInDecimal);
+            return this;
+        }
+
+
+        public AddAddonChargeRequest addonUnitPriceInDecimal(String addonUnitPriceInDecimal) {
+            params.addOpt("addon_unit_price_in_decimal", addonUnitPriceInDecimal);
+            return this;
+        }
+
+
         public AddAddonChargeRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
@@ -2180,6 +2278,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CloseRequest removeGeneralNote(Boolean removeGeneralNote) {
             params.addOpt("remove_general_note", removeGeneralNote);
+            return this;
+        }
+
+
+        public CloseRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
