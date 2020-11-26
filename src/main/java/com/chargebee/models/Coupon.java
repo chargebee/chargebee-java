@@ -78,6 +78,66 @@ public class Coupon extends Resource<Coupon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class ItemConstraint extends Resource<ItemConstraint> {
+        public enum ItemType {
+             PLAN,ADDON,CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum Constraint {
+             NONE,ALL,SPECIFIC,CRITERIA,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ItemConstraint(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public ItemType itemType() {
+            return reqEnum("item_type", ItemType.class);
+        }
+
+        public Constraint constraint() {
+            return reqEnum("constraint", Constraint.class);
+        }
+
+        public JSONArray itemPriceIds() {
+            return optJSONArray("item_price_ids");
+        }
+
+    }
+
+    public static class ItemConstraintCriteria extends Resource<ItemConstraintCriteria> {
+        public enum ItemType {
+             PLAN,ADDON,CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ItemConstraintCriteria(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public ItemType itemType() {
+            return reqEnum("item_type", ItemType.class);
+        }
+
+        public JSONArray currencies() {
+            return optJSONArray("currencies");
+        }
+
+        public JSONArray itemFamilyIds() {
+            return optJSONArray("item_family_ids");
+        }
+
+        public JSONArray itemPricePeriods() {
+            return optJSONArray("item_price_periods");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -190,6 +250,14 @@ public class Coupon extends Resource<Coupon> {
         return optList("addon_ids", String.class);
     }
 
+    public List<Coupon.ItemConstraint> itemConstraints() {
+        return optList("item_constraints", Coupon.ItemConstraint.class);
+    }
+
+    public List<Coupon.ItemConstraintCriteria> itemConstraintCriteria() {
+        return optList("item_constraint_criteria", Coupon.ItemConstraintCriteria.class);
+    }
+
     public Integer redemptions() {
         return optInteger("redemptions");
     }
@@ -208,6 +276,16 @@ public class Coupon extends Resource<Coupon> {
     public static CreateRequest create() {
         String uri = uri("coupons");
         return new CreateRequest(Method.POST, uri);
+    }
+
+    public static CreateForItemsRequest createForItems() {
+        String uri = uri("coupons", "create_for_items");
+        return new CreateForItemsRequest(Method.POST, uri);
+    }
+
+    public static UpdateForItemsRequest updateForItems(String id) {
+        String uri = uri("coupons", nullCheck(id), "update_for_items");
+        return new UpdateForItemsRequest(Method.POST, uri);
     }
 
     public static CouponListRequest list() {
@@ -385,6 +463,273 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateForItemsRequest extends Request<CreateForItemsRequest> {
+
+        private CreateForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateForItemsRequest id(String id) {
+            params.add("id", id);
+            return this;
+        }
+
+
+        public CreateForItemsRequest name(String name) {
+            params.add("name", name);
+            return this;
+        }
+
+
+        public CreateForItemsRequest invoiceName(String invoiceName) {
+            params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public CreateForItemsRequest discountType(Coupon.DiscountType discountType) {
+            params.add("discount_type", discountType);
+            return this;
+        }
+
+
+        public CreateForItemsRequest discountAmount(Integer discountAmount) {
+            params.addOpt("discount_amount", discountAmount);
+            return this;
+        }
+
+
+        public CreateForItemsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateForItemsRequest discountPercentage(Double discountPercentage) {
+            params.addOpt("discount_percentage", discountPercentage);
+            return this;
+        }
+
+
+        @Deprecated
+        public CreateForItemsRequest discountQuantity(Integer discountQuantity) {
+            params.addOpt("discount_quantity", discountQuantity);
+            return this;
+        }
+
+
+        public CreateForItemsRequest applyOn(Coupon.ApplyOn applyOn) {
+            params.add("apply_on", applyOn);
+            return this;
+        }
+
+
+        public CreateForItemsRequest durationType(Coupon.DurationType durationType) {
+            params.add("duration_type", durationType);
+            return this;
+        }
+
+
+        public CreateForItemsRequest durationMonth(Integer durationMonth) {
+            params.addOpt("duration_month", durationMonth);
+            return this;
+        }
+
+
+        public CreateForItemsRequest validTill(Timestamp validTill) {
+            params.addOpt("valid_till", validTill);
+            return this;
+        }
+
+
+        public CreateForItemsRequest maxRedemptions(Integer maxRedemptions) {
+            params.addOpt("max_redemptions", maxRedemptions);
+            return this;
+        }
+
+
+        public CreateForItemsRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateForItemsRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public CreateForItemsRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
+        public CreateForItemsRequest status(Coupon.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
+        public CreateForItemsRequest itemConstraintConstraint(int index, ItemConstraint.Constraint itemConstraintConstraint) {
+            params.add("item_constraints[constraint][" + index + "]", itemConstraintConstraint);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintItemType(int index, ItemConstraint.ItemType itemConstraintItemType) {
+            params.add("item_constraints[item_type][" + index + "]", itemConstraintItemType);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintItemPriceIds(int index, JSONArray itemConstraintItemPriceIds) {
+            params.addOpt("item_constraints[item_price_ids][" + index + "]", itemConstraintItemPriceIds);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintCriteriaItemType(int index, ItemConstraintCriteria.ItemType itemConstraintCriteriaItemType) {
+            params.addOpt("item_constraint_criteria[item_type][" + index + "]", itemConstraintCriteriaItemType);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintCriteriaItemFamilyIds(int index, JSONArray itemConstraintCriteriaItemFamilyIds) {
+            params.addOpt("item_constraint_criteria[item_family_ids][" + index + "]", itemConstraintCriteriaItemFamilyIds);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintCriteriaCurrencies(int index, JSONArray itemConstraintCriteriaCurrencies) {
+            params.addOpt("item_constraint_criteria[currencies][" + index + "]", itemConstraintCriteriaCurrencies);
+            return this;
+        }
+        public CreateForItemsRequest itemConstraintCriteriaItemPricePeriods(int index, JSONArray itemConstraintCriteriaItemPricePeriods) {
+            params.addOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateForItemsRequest extends Request<UpdateForItemsRequest> {
+
+        private UpdateForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateForItemsRequest name(String name) {
+            params.addOpt("name", name);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest invoiceName(String invoiceName) {
+            params.addOpt("invoice_name", invoiceName);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest discountType(Coupon.DiscountType discountType) {
+            params.addOpt("discount_type", discountType);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest discountAmount(Integer discountAmount) {
+            params.addOpt("discount_amount", discountAmount);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest discountPercentage(Double discountPercentage) {
+            params.addOpt("discount_percentage", discountPercentage);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest applyOn(Coupon.ApplyOn applyOn) {
+            params.addOpt("apply_on", applyOn);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest durationType(Coupon.DurationType durationType) {
+            params.addOpt("duration_type", durationType);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest durationMonth(Integer durationMonth) {
+            params.addOpt("duration_month", durationMonth);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest validTill(Timestamp validTill) {
+            params.addOpt("valid_till", validTill);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest maxRedemptions(Integer maxRedemptions) {
+            params.addOpt("max_redemptions", maxRedemptions);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest metaData(JSONObject metaData) {
+            params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest includedInMrr(Boolean includedInMrr) {
+            params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest itemConstraintConstraint(int index, ItemConstraint.Constraint itemConstraintConstraint) {
+            params.add("item_constraints[constraint][" + index + "]", itemConstraintConstraint);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintItemType(int index, ItemConstraint.ItemType itemConstraintItemType) {
+            params.add("item_constraints[item_type][" + index + "]", itemConstraintItemType);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintItemPriceIds(int index, JSONArray itemConstraintItemPriceIds) {
+            params.addOpt("item_constraints[item_price_ids][" + index + "]", itemConstraintItemPriceIds);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintCriteriaItemType(int index, ItemConstraintCriteria.ItemType itemConstraintCriteriaItemType) {
+            params.addOpt("item_constraint_criteria[item_type][" + index + "]", itemConstraintCriteriaItemType);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintCriteriaItemFamilyIds(int index, JSONArray itemConstraintCriteriaItemFamilyIds) {
+            params.addOpt("item_constraint_criteria[item_family_ids][" + index + "]", itemConstraintCriteriaItemFamilyIds);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintCriteriaCurrencies(int index, JSONArray itemConstraintCriteriaCurrencies) {
+            params.addOpt("item_constraint_criteria[currencies][" + index + "]", itemConstraintCriteriaCurrencies);
+            return this;
+        }
+        public UpdateForItemsRequest itemConstraintCriteriaItemPricePeriods(int index, JSONArray itemConstraintCriteriaItemPricePeriods) {
+            params.addOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

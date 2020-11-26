@@ -25,7 +25,7 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,
+             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

@@ -144,6 +144,31 @@ public class Export extends Resource<Export> {
         return new OrdersRequest(Method.POST, uri);
     }
 
+    public static ItemFamiliesRequest itemFamilies() {
+        String uri = uri("exports", "item_families");
+        return new ItemFamiliesRequest(Method.POST, uri);
+    }
+
+    public static ItemsRequest items() {
+        String uri = uri("exports", "items");
+        return new ItemsRequest(Method.POST, uri);
+    }
+
+    public static ItemPricesRequest itemPrices() {
+        String uri = uri("exports", "item_prices");
+        return new ItemPricesRequest(Method.POST, uri);
+    }
+
+    public static AttachedItemsRequest attachedItems() {
+        String uri = uri("exports", "attached_items");
+        return new AttachedItemsRequest(Method.POST, uri);
+    }
+
+    public static DifferentialPricesRequest differentialPrices() {
+        String uri = uri("exports", "differential_prices");
+        return new DifferentialPricesRequest(Method.POST, uri);
+    }
+
 public Export waitForExportCompletion() 
             throws Exception {
         int count = 0;
@@ -214,8 +239,14 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<RevenueRecognitionRequest> itemId() {
+            return new StringFilter<RevenueRecognitionRequest>("item_id",this).supportsMultiOperators(true);        
+        }
 
 
+        public StringFilter<RevenueRecognitionRequest> itemPriceId() {
+            return new StringFilter<RevenueRecognitionRequest>("item_price_id",this).supportsMultiOperators(true);        
+        }
 
 
         public StringFilter<RevenueRecognitionRequest> cancelReasonCode() {
@@ -442,8 +473,14 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<DeferredRevenueRequest> itemId() {
+            return new StringFilter<DeferredRevenueRequest>("item_id",this).supportsMultiOperators(true);        
+        }
 
 
+        public StringFilter<DeferredRevenueRequest> itemPriceId() {
+            return new StringFilter<DeferredRevenueRequest>("item_price_id",this).supportsMultiOperators(true);        
+        }
 
 
         public StringFilter<DeferredRevenueRequest> cancelReasonCode() {
@@ -850,8 +887,14 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<SubscriptionsRequest> itemId() {
+            return new StringFilter<SubscriptionsRequest>("item_id",this).supportsMultiOperators(true);        
+        }
 
 
+        public StringFilter<SubscriptionsRequest> itemPriceId() {
+            return new StringFilter<SubscriptionsRequest>("item_price_id",this).supportsMultiOperators(true);        
+        }
 
 
         public StringFilter<SubscriptionsRequest> cancelReasonCode() {
@@ -1207,6 +1250,211 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<OrdersRequest> orderUpdatedAt() {
             return new TimestampFilter<OrdersRequest>("order[updated_at]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ItemFamiliesRequest extends Request<ItemFamiliesRequest> {
+
+        private ItemFamiliesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<ItemFamiliesRequest> itemFamilyId() {
+            return new StringFilter<ItemFamiliesRequest>("item_family[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<ItemFamiliesRequest> itemFamilyName() {
+            return new StringFilter<ItemFamiliesRequest>("item_family[name]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ItemsRequest extends Request<ItemsRequest> {
+
+        private ItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<ItemsRequest> itemId() {
+            return new StringFilter<ItemsRequest>("item[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<ItemsRequest> itemItemFamilyId() {
+            return new StringFilter<ItemsRequest>("item[item_family_id]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<Item.Type, ItemsRequest> itemType() {
+            return new EnumFilter<Item.Type, ItemsRequest>("item[type]",this);        
+        }
+
+        public StringFilter<ItemsRequest> itemName() {
+            return new StringFilter<ItemsRequest>("item[name]",this);        
+        }
+
+        public EnumFilter<Item.ItemApplicability, ItemsRequest> itemItemApplicability() {
+            return new EnumFilter<Item.ItemApplicability, ItemsRequest>("item[item_applicability]",this);        
+        }
+
+        public EnumFilter<Item.Status, ItemsRequest> itemStatus() {
+            return new EnumFilter<Item.Status, ItemsRequest>("item[status]",this);        
+        }
+
+        public BooleanFilter<ItemsRequest> itemIsGiftable() {
+            return new BooleanFilter<ItemsRequest>("item[is_giftable]",this);        
+        }
+
+        public TimestampFilter<ItemsRequest> itemUpdatedAt() {
+            return new TimestampFilter<ItemsRequest>("item[updated_at]",this);        
+        }
+
+        public BooleanFilter<ItemsRequest> itemEnabledForCheckout() {
+            return new BooleanFilter<ItemsRequest>("item[enabled_for_checkout]",this);        
+        }
+
+        public BooleanFilter<ItemsRequest> itemEnabledInPortal() {
+            return new BooleanFilter<ItemsRequest>("item[enabled_in_portal]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ItemPricesRequest extends Request<ItemPricesRequest> {
+
+        private ItemPricesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<ItemPricesRequest> itemFamilyId() {
+            return new StringFilter<ItemPricesRequest>("item_family_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<com.chargebee.models.enums.ItemType, ItemPricesRequest> itemType() {
+            return new EnumFilter<com.chargebee.models.enums.ItemType, ItemPricesRequest>("item_type",this);        
+        }
+
+
+        public StringFilter<ItemPricesRequest> currencyCode() {
+            return new StringFilter<ItemPricesRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<ItemPricesRequest> itemPriceId() {
+            return new StringFilter<ItemPricesRequest>("item_price[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<ItemPricesRequest> itemPriceName() {
+            return new StringFilter<ItemPricesRequest>("item_price[name]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.PricingModel, ItemPricesRequest> itemPricePricingModel() {
+            return new EnumFilter<com.chargebee.models.enums.PricingModel, ItemPricesRequest>("item_price[pricing_model]",this);        
+        }
+
+        public StringFilter<ItemPricesRequest> itemPriceItemId() {
+            return new StringFilter<ItemPricesRequest>("item_price[item_id]",this).supportsMultiOperators(true);        
+        }
+
+        public NumberFilter<Integer, ItemPricesRequest> itemPriceTrialPeriod() {
+            return new NumberFilter<Integer, ItemPricesRequest>("item_price[trial_period]",this);        
+        }
+
+        public EnumFilter<ItemPrice.TrialPeriodUnit, ItemPricesRequest> itemPriceTrialPeriodUnit() {
+            return new EnumFilter<ItemPrice.TrialPeriodUnit, ItemPricesRequest>("item_price[trial_period_unit]",this);        
+        }
+
+        public EnumFilter<ItemPrice.Status, ItemPricesRequest> itemPriceStatus() {
+            return new EnumFilter<ItemPrice.Status, ItemPricesRequest>("item_price[status]",this);        
+        }
+
+        public TimestampFilter<ItemPricesRequest> itemPriceUpdatedAt() {
+            return new TimestampFilter<ItemPricesRequest>("item_price[updated_at]",this);        
+        }
+
+        public EnumFilter<ItemPrice.PeriodUnit, ItemPricesRequest> itemPricePeriodUnit() {
+            return new EnumFilter<ItemPrice.PeriodUnit, ItemPricesRequest>("item_price[period_unit]",this);        
+        }
+
+        public NumberFilter<Integer, ItemPricesRequest> itemPricePeriod() {
+            return new NumberFilter<Integer, ItemPricesRequest>("item_price[period]",this);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AttachedItemsRequest extends Request<AttachedItemsRequest> {
+
+        private AttachedItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public EnumFilter<com.chargebee.models.enums.ItemType, AttachedItemsRequest> itemType() {
+            return new EnumFilter<com.chargebee.models.enums.ItemType, AttachedItemsRequest>("item_type",this);        
+        }
+
+
+        public StringFilter<AttachedItemsRequest> attachedItemId() {
+            return new StringFilter<AttachedItemsRequest>("attached_item[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<AttachedItemsRequest> attachedItemItemId() {
+            return new StringFilter<AttachedItemsRequest>("attached_item[item_id]",this).supportsMultiOperators(true);        
+        }
+
+        public EnumFilter<AttachedItem.Type, AttachedItemsRequest> attachedItemType() {
+            return new EnumFilter<AttachedItem.Type, AttachedItemsRequest>("attached_item[type]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemsRequest> attachedItemChargeOnEvent() {
+            return new EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemsRequest>("attached_item[charge_on_event]",this);        
+        }
+
+        public StringFilter<AttachedItemsRequest> attachedItemParentItemId() {
+            return new StringFilter<AttachedItemsRequest>("attached_item[parent_item_id]",this).supportsMultiOperators(true);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DifferentialPricesRequest extends Request<DifferentialPricesRequest> {
+
+        private DifferentialPricesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<DifferentialPricesRequest> itemId() {
+            return new StringFilter<DifferentialPricesRequest>("item_id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<DifferentialPricesRequest> differentialPriceItemPriceId() {
+            return new StringFilter<DifferentialPricesRequest>("differential_price[item_price_id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<DifferentialPricesRequest> differentialPriceId() {
+            return new StringFilter<DifferentialPricesRequest>("differential_price[id]",this).supportsMultiOperators(true);        
+        }
+
+        public StringFilter<DifferentialPricesRequest> differentialPriceParentItemId() {
+            return new StringFilter<DifferentialPricesRequest>("differential_price[parent_item_id]",this).supportsMultiOperators(true);        
         }
 
         @Override

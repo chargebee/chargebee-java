@@ -114,6 +114,21 @@ public enum EventType {
     CONTRACT_TERM_TERMINATED,
     CONTRACT_TERM_COMPLETED,
     CONTRACT_TERM_CANCELLED,
+    ITEM_FAMILY_CREATED,
+    ITEM_FAMILY_UPDATED,
+    ITEM_FAMILY_DELETED,
+    ITEM_CREATED,
+    ITEM_UPDATED,
+    ITEM_DELETED,
+    ITEM_PRICE_CREATED,
+    ITEM_PRICE_UPDATED,
+    ITEM_PRICE_DELETED,
+    ATTACHED_ITEM_CREATED,
+    ATTACHED_ITEM_UPDATED,
+    ATTACHED_ITEM_DELETED,
+    DIFFERENTIAL_PRICE_CREATED,
+    DIFFERENTIAL_PRICE_UPDATED,
+    DIFFERENTIAL_PRICE_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

@@ -18,6 +18,9 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         PLAN,
         ADDON,
         ADHOC,
+        PLAN_ITEM_PRICE,
+        ADDON_ITEM_PRICE,
+        CHARGE_ITEM_PRICE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -162,6 +165,11 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
     // Operations
     //===========
 
+    public static CreateRequest create() {
+        String uri = uri("unbilled_charges");
+        return new CreateRequest(Method.POST, uri);
+    }
+
     public static InvoiceUnbilledChargesRequest invoiceUnbilledCharges() {
         String uri = uri("unbilled_charges", "invoice_unbilled_charges");
         return new InvoiceUnbilledChargesRequest(Method.POST, uri);
@@ -185,6 +193,102 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateRequest extends Request<CreateRequest> {
+
+        private CreateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
+            params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
+            return this;
+        }
+        public CreateRequest itemPriceQuantity(int index, Integer itemPriceQuantity) {
+            params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
+            return this;
+        }
+        public CreateRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+            params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CreateRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
+            params.addOpt("item_prices[date_from][" + index + "]", itemPriceDateFrom);
+            return this;
+        }
+        public CreateRequest itemPriceDateTo(int index, Timestamp itemPriceDateTo) {
+            params.addOpt("item_prices[date_to][" + index + "]", itemPriceDateTo);
+            return this;
+        }
+        public CreateRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CreateRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CreateRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CreateRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CreateRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class InvoiceUnbilledChargesRequest extends Request<InvoiceUnbilledChargesRequest> {
 

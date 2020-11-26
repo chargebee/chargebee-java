@@ -168,6 +168,26 @@ public class ResultBase {
         return (PaymentIntent)get("payment_intent");
     }
 
+    public ItemFamily itemFamily() {
+        return (ItemFamily)get("item_family");
+    }
+
+    public Item item() {
+        return (Item)get("item");
+    }
+
+    public ItemPrice itemPrice() {
+        return (ItemPrice)get("item_price");
+    }
+
+    public AttachedItem attachedItem() {
+        return (AttachedItem)get("attached_item");
+    }
+
+    public DifferentialPrice differentialPrice() {
+        return (DifferentialPrice)get("differential_price");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }
@@ -186,6 +206,10 @@ public class ResultBase {
 
     public List<Invoice> invoices() {
         return (List<Invoice>) getList("invoices", "invoice");
+    }
+
+    public List<DifferentialPrice> differentialPrices() {
+        return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
 
 

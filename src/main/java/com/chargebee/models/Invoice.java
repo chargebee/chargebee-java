@@ -35,7 +35,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,
+             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -521,7 +521,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Note extends Resource<Note> {
         public enum EntityType {
-             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,
+             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -908,6 +908,11 @@ public class Invoice extends Resource<Invoice> {
         return new CreateRequest(Method.POST, uri);
     }
 
+    public static CreateForChargeItemsAndChargesRequest createForChargeItemsAndCharges() {
+        String uri = uri("invoices", "create_for_charge_items_and_charges");
+        return new CreateForChargeItemsAndChargesRequest(Method.POST, uri);
+    }
+
     public static ChargeRequest charge() {
         String uri = uri("invoices", "charge");
         return new ChargeRequest(Method.POST, uri);
@@ -916,6 +921,11 @@ public class Invoice extends Resource<Invoice> {
     public static ChargeAddonRequest chargeAddon() {
         String uri = uri("invoices", "charge_addon");
         return new ChargeAddonRequest(Method.POST, uri);
+    }
+
+    public static CreateForChargeItemRequest createForChargeItem() {
+        String uri = uri("invoices", "create_for_charge_item");
+        return new CreateForChargeItemRequest(Method.POST, uri);
     }
 
     public static StopDunningRequest stopDunning(String id) {
@@ -973,6 +983,11 @@ public class Invoice extends Resource<Invoice> {
     public static AddAddonChargeRequest addAddonCharge(String id) {
         String uri = uri("invoices", nullCheck(id), "add_addon_charge");
         return new AddAddonChargeRequest(Method.POST, uri);
+    }
+
+    public static AddChargeItemRequest addChargeItem(String id) {
+        String uri = uri("invoices", nullCheck(id), "add_charge_item");
+        return new AddChargeItemRequest(Method.POST, uri);
     }
 
     public static CloseRequest close(String id) {
@@ -1303,6 +1318,269 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
+    public static class CreateForChargeItemsAndChargesRequest extends Request<CreateForChargeItemsAndChargesRequest> {
+
+        private CreateForChargeItemsAndChargesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateForChargeItemsAndChargesRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest invoiceNotes(String invoiceNotes) {
+            params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest authorizationTransactionId(String authorizationTransactionId) {
+            params.addOpt("authorization_transaction_id", authorizationTransactionId);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
+            params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+            return this;
+        }
+
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
+            params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceQuantity(int index, Integer itemPriceQuantity) {
+            params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+            params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
+            params.addOpt("item_prices[date_from][" + index + "]", itemPriceDateFrom);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemPriceDateTo(int index, Timestamp itemPriceDateTo) {
+            params.addOpt("item_prices[date_to][" + index + "]", itemPriceDateTo);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class ChargeRequest extends Request<ChargeRequest> {
 
         private ChargeRequest(Method httpMeth, String uri) {
@@ -1477,6 +1755,85 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateForChargeItemRequest extends Request<CreateForChargeItemRequest> {
+
+        private CreateForChargeItemRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateForChargeItemRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest poNumber(String poNumber) {
+            params.addOpt("po_number", poNumber);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest itemPriceItemPriceId(String itemPriceItemPriceId) {
+            params.add("item_price[item_price_id]", itemPriceItemPriceId);
+            return this;
+        }
+
+        public CreateForChargeItemRequest itemPriceQuantity(Integer itemPriceQuantity) {
+            params.addOpt("item_price[quantity]", itemPriceQuantity);
+            return this;
+        }
+
+        public CreateForChargeItemRequest itemPriceUnitPrice(Integer itemPriceUnitPrice) {
+            params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
+            return this;
+        }
+
+        public CreateForChargeItemRequest itemPriceDateFrom(Timestamp itemPriceDateFrom) {
+            params.addOpt("item_price[date_from]", itemPriceDateFrom);
+            return this;
+        }
+
+        public CreateForChargeItemRequest itemPriceDateTo(Timestamp itemPriceDateTo) {
+            params.addOpt("item_price[date_to]", itemPriceDateTo);
+            return this;
+        }
+
+        public CreateForChargeItemRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CreateForChargeItemRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CreateForChargeItemRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2252,6 +2609,61 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AddChargeItemRequest extends Request<AddChargeItemRequest> {
+
+        private AddChargeItemRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AddChargeItemRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public AddChargeItemRequest itemPriceItemPriceId(String itemPriceItemPriceId) {
+            params.add("item_price[item_price_id]", itemPriceItemPriceId);
+            return this;
+        }
+
+        public AddChargeItemRequest itemPriceQuantity(Integer itemPriceQuantity) {
+            params.addOpt("item_price[quantity]", itemPriceQuantity);
+            return this;
+        }
+
+        public AddChargeItemRequest itemPriceUnitPrice(Integer itemPriceUnitPrice) {
+            params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
+            return this;
+        }
+
+        public AddChargeItemRequest itemPriceDateFrom(Timestamp itemPriceDateFrom) {
+            params.addOpt("item_price[date_from]", itemPriceDateFrom);
+            return this;
+        }
+
+        public AddChargeItemRequest itemPriceDateTo(Timestamp itemPriceDateTo) {
+            params.addOpt("item_price[date_to]", itemPriceDateTo);
+            return this;
+        }
+
+        public AddChargeItemRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public AddChargeItemRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public AddChargeItemRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

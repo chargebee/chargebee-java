@@ -68,14 +68,29 @@ public class Estimate extends Resource<Estimate> {
         return new CreateSubForCustomerEstimateRequest(Method.GET, uri);
     }
 
+    public static CreateSubItemForCustomerEstimateRequest createSubItemForCustomerEstimate(String id) {
+        String uri = uri("customers", nullCheck(id), "create_subscription_for_items_estimate");
+        return new CreateSubItemForCustomerEstimateRequest(Method.POST, uri);
+    }
+
     public static UpdateSubscriptionRequest updateSubscription() {
         String uri = uri("estimates", "update_subscription");
         return new UpdateSubscriptionRequest(Method.POST, uri);
     }
 
+    public static UpdateSubscriptionForItemsRequest updateSubscriptionForItems() {
+        String uri = uri("estimates", "update_subscription_for_items");
+        return new UpdateSubscriptionForItemsRequest(Method.POST, uri);
+    }
+
     public static RenewalEstimateRequest renewalEstimate(String id) {
         String uri = uri("subscriptions", nullCheck(id), "renewal_estimate");
         return new RenewalEstimateRequest(Method.GET, uri);
+    }
+
+    public static AdvanceInvoiceEstimateRequest advanceInvoiceEstimate(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "advance_invoice_estimate");
+        return new AdvanceInvoiceEstimateRequest(Method.POST, uri);
     }
 
     public static Request upcomingInvoicesEstimate(String id) {
@@ -111,6 +126,11 @@ public class Estimate extends Resource<Estimate> {
     public static CreateInvoiceRequest createInvoice() {
         String uri = uri("estimates", "create_invoice");
         return new CreateInvoiceRequest(Method.POST, uri);
+    }
+
+    public static CreateInvoiceForItemsRequest createInvoiceForItems() {
+        String uri = uri("estimates", "create_invoice_for_items");
+        return new CreateInvoiceForItemsRequest(Method.POST, uri);
     }
 
 
@@ -696,6 +716,209 @@ public class Estimate extends Resource<Estimate> {
         }
     }
 
+    public static class CreateSubItemForCustomerEstimateRequest extends Request<CreateSubItemForCustomerEstimateRequest> {
+
+        private CreateSubItemForCustomerEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateSubItemForCustomerEstimateRequest useExistingBalances(Boolean useExistingBalances) {
+            params.addOpt("use_existing_balances", useExistingBalances);
+            return this;
+        }
+
+
+        public CreateSubItemForCustomerEstimateRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        public CreateSubItemForCustomerEstimateRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public CreateSubItemForCustomerEstimateRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
+            params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest mandatoryItemsToRemove(String... mandatoryItemsToRemove) {
+            params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+
+
+
+
+        public CreateSubItemForCustomerEstimateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+
+
+        public CreateSubItemForCustomerEstimateRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+            return this;
+        }
+
+        @Deprecated
+        public CreateSubItemForCustomerEstimateRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
+            params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemQuantity(int index, Integer subscriptionItemQuantity) {
+            params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+            params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
+            params.addOpt("subscription_items[billing_cycles][" + index + "]", subscriptionItemBillingCycles);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemTrialEnd(int index, Timestamp subscriptionItemTrialEnd) {
+            params.addOpt("subscription_items[trial_end][" + index + "]", subscriptionItemTrialEnd);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemServicePeriodDays(int index, Integer subscriptionItemServicePeriodDays) {
+            params.addOpt("subscription_items[service_period_days][" + index + "]", subscriptionItemServicePeriodDays);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent subscriptionItemChargeOnEvent) {
+            params.addOpt("subscription_items[charge_on_event][" + index + "]", subscriptionItemChargeOnEvent);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemChargeOnce(int index, Boolean subscriptionItemChargeOnce) {
+            params.addOpt("subscription_items[charge_once][" + index + "]", subscriptionItemChargeOnce);
+            return this;
+        }
+        @Deprecated
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
+            params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
+            params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class UpdateSubscriptionRequest extends Request<UpdateSubscriptionRequest> {
 
         private UpdateSubscriptionRequest(Method httpMeth, String uri) {
@@ -1045,6 +1268,324 @@ public class Estimate extends Resource<Estimate> {
         }
     }
 
+    public static class UpdateSubscriptionForItemsRequest extends Request<UpdateSubscriptionForItemsRequest> {
+
+        private UpdateSubscriptionForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+
+
+
+
+        public UpdateSubscriptionForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
+            params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest mandatoryItemsToRemove(String... mandatoryItemsToRemove) {
+            params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest replaceItemsList(Boolean replaceItemsList) {
+            params.addOpt("replace_items_list", replaceItemsList);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest billingCycles(Integer billingCycles) {
+            params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+
+
+        public UpdateSubscriptionForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
+            params.addOpt("reactivate_from", reactivateFrom);
+            return this;
+        }
+
+
+
+
+        public UpdateSubscriptionForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
+            params.addOpt("billing_alignment_mode", billingAlignmentMode);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest prorate(Boolean prorate) {
+            params.addOpt("prorate", prorate);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest endOfTerm(Boolean endOfTerm) {
+            params.addOpt("end_of_term", endOfTerm);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest forceTermReset(Boolean forceTermReset) {
+            params.addOpt("force_term_reset", forceTermReset);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest reactivate(Boolean reactivate) {
+            params.addOpt("reactivate", reactivate);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest includeDelayedCharges(Boolean includeDelayedCharges) {
+            params.addOpt("include_delayed_charges", includeDelayedCharges);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest useExistingBalances(Boolean useExistingBalances) {
+            params.addOpt("use_existing_balances", useExistingBalances);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        public UpdateSubscriptionForItemsRequest subscriptionId(String subscriptionId) {
+            params.add("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        @Deprecated
+        public UpdateSubscriptionForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+            params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
+            params.addOpt("subscription[start_date]", subscriptionStartDate);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionTrialEnd(Timestamp subscriptionTrialEnd) {
+            params.addOpt("subscription[trial_end]", subscriptionTrialEnd);
+            return this;
+        }
+
+        @Deprecated
+        public UpdateSubscriptionForItemsRequest subscriptionCoupon(String subscriptionCoupon) {
+            params.addOpt("subscription[coupon]", subscriptionCoupon);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
+            params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
+            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
+            params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionFreePeriod(Integer subscriptionFreePeriod) {
+            params.addOpt("subscription[free_period]", subscriptionFreePeriod);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionFreePeriodUnit(com.chargebee.models.enums.FreePeriodUnit subscriptionFreePeriodUnit) {
+            params.addOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+            return this;
+        }
+
+        @Deprecated
+        public UpdateSubscriptionForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
+            params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemQuantity(int index, Integer subscriptionItemQuantity) {
+            params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+            params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
+            params.addOpt("subscription_items[billing_cycles][" + index + "]", subscriptionItemBillingCycles);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemTrialEnd(int index, Timestamp subscriptionItemTrialEnd) {
+            params.addOpt("subscription_items[trial_end][" + index + "]", subscriptionItemTrialEnd);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemServicePeriodDays(int index, Integer subscriptionItemServicePeriodDays) {
+            params.addOpt("subscription_items[service_period_days][" + index + "]", subscriptionItemServicePeriodDays);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent subscriptionItemChargeOnEvent) {
+            params.addOpt("subscription_items[charge_on_event][" + index + "]", subscriptionItemChargeOnEvent);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemChargeOnce(int index, Boolean subscriptionItemChargeOnce) {
+            params.addOpt("subscription_items[charge_once][" + index + "]", subscriptionItemChargeOnce);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
+            params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
+            return this;
+        }
+        @Deprecated
+        public UpdateSubscriptionForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
+            params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class RenewalEstimateRequest extends Request<RenewalEstimateRequest> {
 
         private RenewalEstimateRequest(Method httpMeth, String uri) {
@@ -1075,6 +1616,64 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class AdvanceInvoiceEstimateRequest extends Request<AdvanceInvoiceEstimateRequest> {
+
+        private AdvanceInvoiceEstimateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public AdvanceInvoiceEstimateRequest termsToCharge(Integer termsToCharge) {
+            params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+        public AdvanceInvoiceEstimateRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
+        public AdvanceInvoiceEstimateRequest scheduleType(com.chargebee.models.enums.ScheduleType scheduleType) {
+            params.addOpt("schedule_type", scheduleType);
+            return this;
+        }
+
+
+        public AdvanceInvoiceEstimateRequest fixedIntervalScheduleNumberOfOccurrences(Integer fixedIntervalScheduleNumberOfOccurrences) {
+            params.addOpt("fixed_interval_schedule[number_of_occurrences]", fixedIntervalScheduleNumberOfOccurrences);
+            return this;
+        }
+
+        public AdvanceInvoiceEstimateRequest fixedIntervalScheduleDaysBeforeRenewal(Integer fixedIntervalScheduleDaysBeforeRenewal) {
+            params.addOpt("fixed_interval_schedule[days_before_renewal]", fixedIntervalScheduleDaysBeforeRenewal);
+            return this;
+        }
+
+        public AdvanceInvoiceEstimateRequest fixedIntervalScheduleEndScheduleOn(com.chargebee.models.enums.EndScheduleOn fixedIntervalScheduleEndScheduleOn) {
+            params.addOpt("fixed_interval_schedule[end_schedule_on]", fixedIntervalScheduleEndScheduleOn);
+            return this;
+        }
+
+        public AdvanceInvoiceEstimateRequest fixedIntervalScheduleEndDate(Timestamp fixedIntervalScheduleEndDate) {
+            params.addOpt("fixed_interval_schedule[end_date]", fixedIntervalScheduleEndDate);
+            return this;
+        }
+
+        public AdvanceInvoiceEstimateRequest specificDatesScheduleTermsToCharge(int index, Integer specificDatesScheduleTermsToCharge) {
+            params.addOpt("specific_dates_schedule[terms_to_charge][" + index + "]", specificDatesScheduleTermsToCharge);
+            return this;
+        }
+        public AdvanceInvoiceEstimateRequest specificDatesScheduleDate(int index, Timestamp specificDatesScheduleDate) {
+            params.addOpt("specific_dates_schedule[date][" + index + "]", specificDatesScheduleDate);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -1609,6 +2208,201 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateInvoiceForItemsRequest extends Request<CreateInvoiceForItemsRequest> {
+
+        private CreateInvoiceForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateInvoiceForItemsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest authorizationTransactionId(String authorizationTransactionId) {
+            params.addOpt("authorization_transaction_id", authorizationTransactionId);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
+            params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest invoiceCustomerId(String invoiceCustomerId) {
+            params.add("invoice[customer_id]", invoiceCustomerId);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest invoiceSubscriptionId(String invoiceSubscriptionId) {
+            params.addOpt("invoice[subscription_id]", invoiceSubscriptionId);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest invoicePoNumber(String invoicePoNumber) {
+            params.addOpt("invoice[po_number]", invoicePoNumber);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
+            params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceQuantity(int index, Integer itemPriceQuantity) {
+            params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+            params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
+            params.addOpt("item_prices[date_from][" + index + "]", itemPriceDateFrom);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceDateTo(int index, Timestamp itemPriceDateTo) {
+            params.addOpt("item_prices[date_to][" + index + "]", itemPriceDateTo);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
         @Override

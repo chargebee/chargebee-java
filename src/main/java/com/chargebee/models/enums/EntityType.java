@@ -10,6 +10,17 @@ public enum EntityType {
     PLAN,
     ADDON,
     COUPON,
+    ITEM_FAMILY,
+    ITEM,
+    ITEM_PRICE,
+    PLAN_ITEM,
+    ADDON_ITEM,
+    CHARGE_ITEM,
+    PLAN_PRICE,
+    ADDON_PRICE,
+    CHARGE_PRICE,
+    DIFFERENTIAL_PRICE,
+    ATTACHED_ITEM,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

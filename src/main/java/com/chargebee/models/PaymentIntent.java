@@ -126,6 +126,14 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return optEnum("payment_method_type", PaymentMethodType.class);
     }
 
+    public String successUrl() {
+        return optString("success_url");
+    }
+
+    public String failureUrl() {
+        return optString("failure_url");
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }
@@ -218,6 +226,18 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         }
 
 
+        public CreateRequest successUrl(String successUrl) {
+            params.addOpt("success_url", successUrl);
+            return this;
+        }
+
+
+        public CreateRequest failureUrl(String failureUrl) {
+            params.addOpt("failure_url", failureUrl);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -250,6 +270,18 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
         public UpdateRequest paymentMethodType(PaymentIntent.PaymentMethodType paymentMethodType) {
             params.addOpt("payment_method_type", paymentMethodType);
+            return this;
+        }
+
+
+        public UpdateRequest successUrl(String successUrl) {
+            params.addOpt("success_url", successUrl);
+            return this;
+        }
+
+
+        public UpdateRequest failureUrl(String failureUrl) {
+            params.addOpt("failure_url", failureUrl);
             return this;
         }
 
