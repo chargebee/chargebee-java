@@ -154,6 +154,11 @@ public class Gift extends Resource<Gift> {
         return new CreateRequest(Method.POST, uri);
     }
 
+    public static CreateForItemsRequest createForItems() {
+        String uri = uri("gifts", "create_for_items");
+        return new CreateForItemsRequest(Method.POST, uri);
+    }
+
     public static Request retrieve(String id) {
         String uri = uri("gifts", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -263,21 +268,6 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
-        public CreateRequest subscriptionPlanId(String subscriptionPlanId) {
-            params.add("subscription[plan_id]", subscriptionPlanId);
-            return this;
-        }
-
-        public CreateRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
-            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
-            return this;
-        }
-
-        public CreateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
-            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
-            return this;
-        }
-
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -301,6 +291,11 @@ public class Gift extends Resource<Gift> {
         @Deprecated
         public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -374,6 +369,21 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
+        public CreateRequest subscriptionPlanId(String subscriptionPlanId) {
+            params.add("subscription[plan_id]", subscriptionPlanId);
+            return this;
+        }
+
+        public CreateRequest subscriptionPlanQuantity(Integer subscriptionPlanQuantity) {
+            params.addOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+            return this;
+        }
+
+        public CreateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -384,6 +394,201 @@ public class Gift extends Resource<Gift> {
         }
         public CreateRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateForItemsRequest extends Request<CreateForItemsRequest> {
+
+        private CreateForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateForItemsRequest scheduledAt(Timestamp scheduledAt) {
+            params.addOpt("scheduled_at", scheduledAt);
+            return this;
+        }
+
+
+        public CreateForItemsRequest autoClaim(Boolean autoClaim) {
+            params.addOpt("auto_claim", autoClaim);
+            return this;
+        }
+
+
+        public CreateForItemsRequest noExpiry(Boolean noExpiry) {
+            params.addOpt("no_expiry", noExpiry);
+            return this;
+        }
+
+
+        public CreateForItemsRequest claimExpiryDate(Timestamp claimExpiryDate) {
+            params.addOpt("claim_expiry_date", claimExpiryDate);
+            return this;
+        }
+
+
+        public CreateForItemsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForItemsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForItemsRequest gifterCustomerId(String gifterCustomerId) {
+            params.add("gifter[customer_id]", gifterCustomerId);
+            return this;
+        }
+
+        public CreateForItemsRequest gifterSignature(String gifterSignature) {
+            params.add("gifter[signature]", gifterSignature);
+            return this;
+        }
+
+        public CreateForItemsRequest gifterNote(String gifterNote) {
+            params.addOpt("gifter[note]", gifterNote);
+            return this;
+        }
+
+        public CreateForItemsRequest gifterPaymentSrcId(String gifterPaymentSrcId) {
+            params.addOpt("gifter[payment_src_id]", gifterPaymentSrcId);
+            return this;
+        }
+
+        public CreateForItemsRequest giftReceiverCustomerId(String giftReceiverCustomerId) {
+            params.add("gift_receiver[customer_id]", giftReceiverCustomerId);
+            return this;
+        }
+
+        public CreateForItemsRequest giftReceiverFirstName(String giftReceiverFirstName) {
+            params.add("gift_receiver[first_name]", giftReceiverFirstName);
+            return this;
+        }
+
+        public CreateForItemsRequest giftReceiverLastName(String giftReceiverLastName) {
+            params.add("gift_receiver[last_name]", giftReceiverLastName);
+            return this;
+        }
+
+        public CreateForItemsRequest giftReceiverEmail(String giftReceiverEmail) {
+            params.add("gift_receiver[email]", giftReceiverEmail);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
+            params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+            return this;
+        }
+
+        @Deprecated
+        public CreateForItemsRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CreateForItemsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateForItemsRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
+            params.addOpt("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
+            return this;
+        }
+        public CreateForItemsRequest subscriptionItemQuantity(int index, Integer subscriptionItemQuantity) {
+            params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
         @Override

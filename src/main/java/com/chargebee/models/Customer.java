@@ -1132,6 +1132,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -2063,6 +2068,11 @@ public class Customer extends Resource<Customer> {
 
         public CollectPaymentRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 

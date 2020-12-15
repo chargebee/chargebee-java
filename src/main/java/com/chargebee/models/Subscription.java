@@ -880,6 +880,11 @@ public class Subscription extends Resource<Subscription> {
         return new RemoveAdvanceInvoiceScheduleRequest(Method.POST, uri);
     }
 
+    public static RegenerateInvoiceRequest regenerateInvoice(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "regenerate_invoice");
+        return new RegenerateInvoiceRequest(Method.POST, uri);
+    }
+
     public static ImportSubscriptionRequest importSubscription() {
         String uri = uri("subscriptions", "import_subscription");
         return new ImportSubscriptionRequest(Method.POST, uri);
@@ -1436,6 +1441,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
         public CreateRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -1840,6 +1850,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateForCustomerRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -1953,6 +1965,11 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public CreateForCustomerRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateForCustomerRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -2166,6 +2183,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateWithItemsRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -2279,6 +2298,11 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public CreateWithItemsRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateWithItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -2711,6 +2735,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public UpdateRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -2867,6 +2893,11 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public UpdateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -3279,6 +3310,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public UpdateForItemsRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -3435,6 +3468,11 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public UpdateForItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -3793,6 +3831,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ReactivateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -4037,6 +4080,42 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("specific_dates_schedule[id][" + index + "]", specificDatesScheduleId);
             return this;
         }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RegenerateInvoiceRequest extends Request<RegenerateInvoiceRequest> {
+
+        private RegenerateInvoiceRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RegenerateInvoiceRequest dateFrom(Timestamp dateFrom) {
+            params.addOpt("date_from", dateFrom);
+            return this;
+        }
+
+
+        public RegenerateInvoiceRequest dateTo(Timestamp dateTo) {
+            params.addOpt("date_to", dateTo);
+            return this;
+        }
+
+
+        public RegenerateInvoiceRequest prorate(Boolean prorate) {
+            params.addOpt("prorate", prorate);
+            return this;
+        }
+
+
+        public RegenerateInvoiceRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -5713,6 +5792,11 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public ResumeRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public ResumeRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 

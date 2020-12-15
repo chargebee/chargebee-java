@@ -63,6 +63,18 @@ public class ItemPrice extends Resource<ItemPrice> {
             return reqInteger("price");
         }
 
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String priceInDecimal() {
+            return optString("price_in_decimal");
+        }
+
     }
 
     public static class TaxDetail extends Resource<TaxDetail> {
@@ -265,6 +277,14 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optString("parent_item_id");
     }
 
+    public Boolean showDescriptionInInvoices() {
+        return optBoolean("show_description_in_invoices");
+    }
+
+    public Boolean showDescriptionInQuotes() {
+        return optBoolean("show_description_in_quotes");
+    }
+
     // Operations
     //===========
 
@@ -359,6 +379,18 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
+            return this;
+        }
+
+
+        public CreateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public CreateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
 
@@ -605,6 +637,18 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public UpdateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public UpdateRequest showDescriptionInInvoices(Boolean showDescriptionInInvoices) {
+            params.addOpt("show_description_in_invoices", showDescriptionInInvoices);
+            return this;
+        }
+
+
+        public UpdateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
+            params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
 

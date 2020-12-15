@@ -37,6 +37,18 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
             return reqInteger("price");
         }
 
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String priceInDecimal() {
+            return optString("price_in_decimal");
+        }
+
     }
 
     public static class ParentPeriod extends Resource<ParentPeriod> {

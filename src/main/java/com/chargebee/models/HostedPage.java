@@ -1728,6 +1728,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public AcceptQuoteRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
         public AcceptQuoteRequest quoteId(String quoteId) {
             params.add("quote[id]", quoteId);
             return this;

@@ -1126,8 +1126,20 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
+
+
         public CreateRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CreateRequest retainPaymentSource(Boolean retainPaymentSource) {
+            params.addOpt("retain_payment_source", retainPaymentSource);
             return this;
         }
 
@@ -1202,6 +1214,200 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        @Deprecated
+        public CreateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Deprecated
+        public CreateRequest cardTmpToken(String cardTmpToken) {
+            params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public CreateRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
+            params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest bankAccountIban(String bankAccountIban) {
+            params.addOpt("bank_account[iban]", bankAccountIban);
+            return this;
+        }
+
+        public CreateRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+
+        public CreateRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+
+        public CreateRequest bankAccountCompany(String bankAccountCompany) {
+            params.addOpt("bank_account[company]", bankAccountCompany);
+            return this;
+        }
+
+        public CreateRequest bankAccountEmail(String bankAccountEmail) {
+            params.addOpt("bank_account[email]", bankAccountEmail);
+            return this;
+        }
+
+        public CreateRequest bankAccountBankName(String bankAccountBankName) {
+            params.addOpt("bank_account[bank_name]", bankAccountBankName);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
+            params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
+            return this;
+        }
+
+        public CreateRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
+            params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+            return this;
+        }
+
+        public CreateRequest bankAccountBankCode(String bankAccountBankCode) {
+            params.addOpt("bank_account[bank_code]", bankAccountBankCode);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
+            params.addOpt("bank_account[account_type]", bankAccountAccountType);
+            return this;
+        }
+
+        public CreateRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
+            params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+            return this;
+        }
+
+        public CreateRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
+            params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
+            return this;
+        }
+
+        public CreateRequest bankAccountIssuingCountry(String bankAccountIssuingCountry) {
+            params.addOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+            return this;
+        }
+
+        public CreateRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
+            params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+            return this;
+        }
+
+        public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        @Deprecated
+        public CreateRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public CreateRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public CreateRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+            return this;
+        }
+
+        public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public CreateRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public CreateRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public CreateRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public CreateRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CreateRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CreateRequest cardCvv(String cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public CreateRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public CreateRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public CreateRequest cardBillingStateCode(String cardBillingStateCode) {
+            params.addOpt("card[billing_state_code]", cardBillingStateCode);
+            return this;
+        }
+
+        public CreateRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public CreateRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public CreateRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        @Deprecated
+        public CreateRequest cardIpAddress(String cardIpAddress) {
+            params.addOpt("card[ip_address]", cardIpAddress);
+            return this;
+        }
+
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -1225,6 +1431,11 @@ public class Invoice extends Resource<Invoice> {
         @Deprecated
         public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 
@@ -1389,8 +1600,20 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateForChargeItemsAndChargesRequest tokenId(String tokenId) {
+            params.addOpt("token_id", tokenId);
+            return this;
+        }
+
+
         public CreateForChargeItemsAndChargesRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest retainPaymentSource(Boolean retainPaymentSource) {
+            params.addOpt("retain_payment_source", retainPaymentSource);
             return this;
         }
 
@@ -1465,6 +1688,200 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest cardTmpToken(String cardTmpToken) {
+            params.addOpt("card[tmp_token]", cardTmpToken);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
+            params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountIban(String bankAccountIban) {
+            params.addOpt("bank_account[iban]", bankAccountIban);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountCompany(String bankAccountCompany) {
+            params.addOpt("bank_account[company]", bankAccountCompany);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountEmail(String bankAccountEmail) {
+            params.addOpt("bank_account[email]", bankAccountEmail);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountBankName(String bankAccountBankName) {
+            params.addOpt("bank_account[bank_name]", bankAccountBankName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
+            params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
+            params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountBankCode(String bankAccountBankCode) {
+            params.addOpt("bank_account[bank_code]", bankAccountBankCode);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
+            params.addOpt("bank_account[account_type]", bankAccountAccountType);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
+            params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
+            params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountIssuingCountry(String bankAccountIssuingCountry) {
+            params.addOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
+            params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
+            params.addOpt("payment_method[type]", paymentMethodType);
+            return this;
+        }
+
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
+            params.addOpt("payment_method[gateway]", paymentMethodGateway);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
+            params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
+            params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
+            params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
+            params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardFirstName(String cardFirstName) {
+            params.addOpt("card[first_name]", cardFirstName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardLastName(String cardLastName) {
+            params.addOpt("card[last_name]", cardLastName);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardNumber(String cardNumber) {
+            params.addOpt("card[number]", cardNumber);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardCvv(String cardCvv) {
+            params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingAddr1(String cardBillingAddr1) {
+            params.addOpt("card[billing_addr1]", cardBillingAddr1);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingAddr2(String cardBillingAddr2) {
+            params.addOpt("card[billing_addr2]", cardBillingAddr2);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingCity(String cardBillingCity) {
+            params.addOpt("card[billing_city]", cardBillingCity);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingStateCode(String cardBillingStateCode) {
+            params.addOpt("card[billing_state_code]", cardBillingStateCode);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingState(String cardBillingState) {
+            params.addOpt("card[billing_state]", cardBillingState);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingZip(String cardBillingZip) {
+            params.addOpt("card[billing_zip]", cardBillingZip);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardBillingCountry(String cardBillingCountry) {
+            params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        @Deprecated
+        public CreateForChargeItemsAndChargesRequest cardIpAddress(String cardIpAddress) {
+            params.addOpt("card[ip_address]", cardIpAddress);
+            return this;
+        }
+
         public CreateForChargeItemsAndChargesRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -1488,6 +1905,11 @@ public class Invoice extends Resource<Invoice> {
         @Deprecated
         public CreateForChargeItemsAndChargesRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
 

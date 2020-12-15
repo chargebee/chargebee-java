@@ -304,12 +304,6 @@ public class Item extends Resource<Item> {
         }
 
 
-        public UpdateRequest isGiftable(Boolean isGiftable) {
-            params.addOpt("is_giftable", isGiftable);
-            return this;
-        }
-
-
         public UpdateRequest itemFamilyId(String itemFamilyId) {
             params.addOpt("item_family_id", itemFamilyId);
             return this;

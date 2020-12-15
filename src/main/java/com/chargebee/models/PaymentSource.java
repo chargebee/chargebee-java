@@ -522,6 +522,11 @@ public class PaymentSource extends Resource<PaymentSource> {
             return this;
         }
 
+        public CreateUsingPaymentIntentRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
+            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
