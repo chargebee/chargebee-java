@@ -2963,6 +2963,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddChargeRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
         public AddChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
@@ -3021,6 +3027,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddAddonChargeRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
         public AddAddonChargeRequest lineItemDateFrom(Timestamp lineItemDateFrom) {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
@@ -3045,6 +3057,12 @@ public class Invoice extends Resource<Invoice> {
     
         public AddChargeItemRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public AddChargeItemRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
             return this;
         }
 

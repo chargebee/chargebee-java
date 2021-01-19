@@ -2708,6 +2708,8 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+
+
         public CreateInvoiceRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
             return this;
@@ -2934,6 +2936,16 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateInvoiceForItemsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CreateInvoiceForItemsRequest authorizationTransactionId(String authorizationTransactionId) {
             params.addOpt("authorization_transaction_id", authorizationTransactionId);
             return this;
@@ -2950,6 +2962,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("auto_collection", autoCollection);
             return this;
         }
+
+
 
 
         public CreateInvoiceForItemsRequest invoiceCustomerId(String invoiceCustomerId) {

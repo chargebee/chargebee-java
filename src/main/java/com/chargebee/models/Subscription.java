@@ -771,6 +771,14 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("free_period_unit", FreePeriodUnit.class);
     }
 
+    public Boolean createPendingInvoices() {
+        return optBoolean("create_pending_invoices");
+    }
+
+    public Boolean autoCloseInvoices() {
+        return optBoolean("auto_close_invoices");
+    }
+
     // Operations
     //===========
 
@@ -2205,6 +2213,24 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateWithItemsRequest createPendingInvoices(Boolean createPendingInvoices) {
+            params.addOpt("create_pending_invoices", createPendingInvoices);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest autoCloseInvoices(Boolean autoCloseInvoices) {
+            params.addOpt("auto_close_invoices", autoCloseInvoices);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest firstInvoicePending(Boolean firstInvoicePending) {
+            params.addOpt("first_invoice_pending", firstInvoicePending);
+            return this;
+        }
+
+
         public CreateWithItemsRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -2468,6 +2494,16 @@ public class Subscription extends Resource<Subscription> {
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionListRequest> offlinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionListRequest>("offline_payment_method",this);        
+        }
+
+
+        public BooleanFilter<SubscriptionListRequest> autoCloseInvoices() {
+            return new BooleanFilter<SubscriptionListRequest>("auto_close_invoices",this);        
+        }
+
+
+        public BooleanFilter<SubscriptionListRequest> createPendingInvoices() {
+            return new BooleanFilter<SubscriptionListRequest>("create_pending_invoices",this);        
         }
 
 
@@ -3324,6 +3360,18 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+        public UpdateForItemsRequest createPendingInvoices(Boolean createPendingInvoices) {
+            params.addOpt("create_pending_invoices", createPendingInvoices);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest autoCloseInvoices(Boolean autoCloseInvoices) {
+            params.addOpt("auto_close_invoices", autoCloseInvoices);
+            return this;
+        }
 
 
         @Deprecated
@@ -5325,6 +5373,18 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportForItemsRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
+            return this;
+        }
+
+
+        public ImportForItemsRequest createPendingInvoices(Boolean createPendingInvoices) {
+            params.addOpt("create_pending_invoices", createPendingInvoices);
+            return this;
+        }
+
+
+        public ImportForItemsRequest autoCloseInvoices(Boolean autoCloseInvoices) {
+            params.addOpt("auto_close_invoices", autoCloseInvoices);
             return this;
         }
 

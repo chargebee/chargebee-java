@@ -24,6 +24,7 @@ public class HostedPage extends Resource<HostedPage> {
         EXTEND_SUBSCRIPTION,
         CHECKOUT_GIFT,
         CLAIM_GIFT,
+        CHECKOUT_ONE_TIME,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -117,6 +118,11 @@ public class HostedPage extends Resource<HostedPage> {
     public static CheckoutNewRequest checkoutNew() {
         String uri = uri("hosted_pages", "checkout_new");
         return new CheckoutNewRequest(Method.POST, uri);
+    }
+
+    public static CheckoutOneTimeRequest checkoutOneTime() {
+        String uri = uri("hosted_pages", "checkout_one_time");
+        return new CheckoutOneTimeRequest(Method.POST, uri);
     }
 
     public static CheckoutNewForItemsRequest checkoutNewForItems() {
@@ -642,6 +648,330 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewRequest eventBasedAddonChargeOn(int index, com.chargebee.models.enums.ChargeOn eventBasedAddonChargeOn) {
             params.addOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CheckoutOneTimeRequest extends Request<CheckoutOneTimeRequest> {
+
+        private CheckoutOneTimeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CheckoutOneTimeRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest passThruContent(String passThruContent) {
+            params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest embed(Boolean embed) {
+            params.addOpt("embed", embed);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest iframeMessaging(Boolean iframeMessaging) {
+            params.addOpt("iframe_messaging", iframeMessaging);
+            return this;
+        }
+
+
+        public CheckoutOneTimeRequest customerId(String customerId) {
+            params.addOpt("customer[id]", customerId);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerEmail(String customerEmail) {
+            params.addOpt("customer[email]", customerEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerFirstName(String customerFirstName) {
+            params.addOpt("customer[first_name]", customerFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerLastName(String customerLastName) {
+            params.addOpt("customer[last_name]", customerLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerCompany(String customerCompany) {
+            params.addOpt("customer[company]", customerCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest invoicePoNumber(String invoicePoNumber) {
+            params.addOpt("invoice[po_number]", invoicePoNumber);
+            return this;
+        }
+
+        @Deprecated
+        public CheckoutOneTimeRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerConsolidatedInvoicing(Boolean customerConsolidatedInvoicing) {
+            params.addOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CheckoutOneTimeRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
         @Override

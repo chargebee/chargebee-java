@@ -358,6 +358,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("subscription[offline_payment_method]",this);        
         }
 
+        public BooleanFilter<RevenueRecognitionRequest> subscriptionAutoCloseInvoices() {
+            return new BooleanFilter<RevenueRecognitionRequest>("subscription[auto_close_invoices]",this);        
+        }
+
         public StringFilter<RevenueRecognitionRequest> customerId() {
             return new StringFilter<RevenueRecognitionRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
@@ -412,6 +416,10 @@ public Export waitForExportCompletion()
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest> customerOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("customer[offline_payment_method]",this);        
+        }
+
+        public BooleanFilter<RevenueRecognitionRequest> customerAutoCloseInvoices() {
+            return new BooleanFilter<RevenueRecognitionRequest>("customer[auto_close_invoices]",this);        
         }
 
         @Override
@@ -592,6 +600,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("subscription[offline_payment_method]",this);        
         }
 
+        public BooleanFilter<DeferredRevenueRequest> subscriptionAutoCloseInvoices() {
+            return new BooleanFilter<DeferredRevenueRequest>("subscription[auto_close_invoices]",this);        
+        }
+
         public StringFilter<DeferredRevenueRequest> customerId() {
             return new StringFilter<DeferredRevenueRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
@@ -646,6 +658,10 @@ public Export waitForExportCompletion()
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest> customerOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("customer[offline_payment_method]",this);        
+        }
+
+        public BooleanFilter<DeferredRevenueRequest> customerAutoCloseInvoices() {
+            return new BooleanFilter<DeferredRevenueRequest>("customer[auto_close_invoices]",this);        
         }
 
         @Override
@@ -875,6 +891,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomersRequest>("customer[offline_payment_method]",this);        
         }
 
+        public BooleanFilter<CustomersRequest> customerAutoCloseInvoices() {
+            return new BooleanFilter<CustomersRequest>("customer[auto_close_invoices]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -952,6 +972,10 @@ public Export waitForExportCompletion()
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest> subscriptionOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest>("subscription[offline_payment_method]",this);        
+        }
+
+        public BooleanFilter<SubscriptionsRequest> subscriptionAutoCloseInvoices() {
+            return new BooleanFilter<SubscriptionsRequest>("subscription[auto_close_invoices]",this);        
         }
 
         @Override
@@ -1322,6 +1346,14 @@ public Export waitForExportCompletion()
 
         public BooleanFilter<ItemsRequest> itemEnabledInPortal() {
             return new BooleanFilter<ItemsRequest>("item[enabled_in_portal]",this);        
+        }
+
+        public BooleanFilter<ItemsRequest> itemMetered() {
+            return new BooleanFilter<ItemsRequest>("item[metered]",this);        
+        }
+
+        public EnumFilter<Item.UsageCalculation, ItemsRequest> itemUsageCalculation() {
+            return new EnumFilter<Item.UsageCalculation, ItemsRequest>("item[usage_calculation]",this);        
         }
 
         @Override

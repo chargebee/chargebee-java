@@ -132,6 +132,10 @@ public class ResultBase {
         return (Address)get("address");
     }
 
+    public Usage usage() {
+        return (Usage)get("usage");
+    }
+
     public Event event() {
         return (Event)get("event");
     }

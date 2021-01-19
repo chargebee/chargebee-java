@@ -35,6 +35,13 @@ public class Item extends Resource<Item> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum UsageCalculation {
+        SUM_OF_USAGES,
+        LAST_USAGE,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class ApplicableItem extends Resource<ApplicableItem> {
         public ApplicableItem(JSONObject jsonObj) {
             super(jsonObj);
@@ -126,6 +133,14 @@ public class Item extends Resource<Item> {
 
     public String unit() {
         return optString("unit");
+    }
+
+    public Boolean metered() {
+        return reqBoolean("metered");
+    }
+
+    public UsageCalculation usageCalculation() {
+        return optEnum("usage_calculation", UsageCalculation.class);
     }
 
     public List<Item.ApplicableItem> applicableItems() {
@@ -264,6 +279,18 @@ public class Item extends Resource<Item> {
 
         public CreateRequest includedInMrr(Boolean includedInMrr) {
             params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
+        public CreateRequest metered(Boolean metered) {
+            params.addOpt("metered", metered);
+            return this;
+        }
+
+
+        public CreateRequest usageCalculation(Item.UsageCalculation usageCalculation) {
+            params.addOpt("usage_calculation", usageCalculation);
             return this;
         }
 
@@ -434,6 +461,16 @@ public class Item extends Resource<Item> {
 
         public BooleanFilter<ItemListRequest> enabledInPortal() {
             return new BooleanFilter<ItemListRequest>("enabled_in_portal",this);        
+        }
+
+
+        public BooleanFilter<ItemListRequest> metered() {
+            return new BooleanFilter<ItemListRequest>("metered",this);        
+        }
+
+
+        public EnumFilter<Item.UsageCalculation, ItemListRequest> usageCalculation() {
+            return new EnumFilter<Item.UsageCalculation, ItemListRequest>("usage_calculation",this);        
         }
 
 

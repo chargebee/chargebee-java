@@ -501,6 +501,10 @@ public class Customer extends Resource<Customer> {
         return optEnum("pii_cleared", PiiCleared.class);
     }
 
+    public Boolean autoCloseInvoices() {
+        return optBoolean("auto_close_invoices");
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -881,6 +885,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
             params.addOpt("offline_payment_method", offlinePaymentMethod);
+            return this;
+        }
+
+
+        public CreateRequest autoCloseInvoices(Boolean autoCloseInvoices) {
+            params.addOpt("auto_close_invoices", autoCloseInvoices);
             return this;
         }
 
@@ -1280,6 +1290,11 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public BooleanFilter<CustomerListRequest> autoCloseInvoices() {
+            return new BooleanFilter<CustomerListRequest>("auto_close_invoices",this);        
+        }
+
+
         public CustomerListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
@@ -1424,6 +1439,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public UpdateRequest autoCloseInvoices(Boolean autoCloseInvoices) {
+            params.addOpt("auto_close_invoices", autoCloseInvoices);
             return this;
         }
 
@@ -2077,7 +2098,7 @@ public class Customer extends Resource<Customer> {
         }
 
         public CollectPaymentRequest invoiceAllocationInvoiceId(int index, String invoiceAllocationInvoiceId) {
-            params.addOpt("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
+            params.add("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
             return this;
         }
         public CollectPaymentRequest invoiceAllocationAllocationAmount(int index, Integer invoiceAllocationAllocationAmount) {
