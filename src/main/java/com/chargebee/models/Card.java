@@ -28,6 +28,7 @@ public class Card extends Resource<Card> {
         DISCOVER,
         JCB,
         DINERS_CLUB,
+        BANCONTACT,
         OTHER,
         NOT_APPLICABLE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
@@ -49,6 +50,8 @@ public class Card extends Resource<Card> {
         SOFORT,
         BANCONTACT,
         GIROPAY,
+        CARD,
+        LATAM_LOCAL_CARD,
         NOT_APPLICABLE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */

@@ -220,8 +220,16 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
             return this;
         }
+        public CreateRequest itemPriceQuantityInDecimal(int index, String itemPriceQuantityInDecimal) {
+            params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
+            return this;
+        }
         public CreateRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CreateRequest itemPriceUnitPriceInDecimal(int index, String itemPriceUnitPriceInDecimal) {
+            params.addOpt("item_prices[unit_price_in_decimal][" + index + "]", itemPriceUnitPriceInDecimal);
             return this;
         }
         public CreateRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
@@ -248,6 +256,18 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
+        public CreateRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
         public CreateRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -258,6 +278,22 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         }
         public CreateRequest chargeDescription(int index, String chargeDescription) {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
         }
         public CreateRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
@@ -278,10 +314,6 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         }
         public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
-            return this;
-        }
-        public CreateRequest chargeTaxable(int index, Boolean chargeTaxable) {
-            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
             return this;
         }
         @Override

@@ -390,6 +390,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public CreateUsingTempTokenRequest additionalInformation(JSONObject additionalInformation) {
+            params.addOpt("additional_information", additionalInformation);
+            return this;
+        }
+
+
 
 
         @Override
@@ -440,6 +446,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+
+
+        public CreateUsingPermanentTokenRequest additionalInformation(JSONObject additionalInformation) {
+            params.addOpt("additional_information", additionalInformation);
+            return this;
+        }
 
 
         @Override
@@ -524,6 +536,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingPaymentIntentRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
             params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+            return this;
+        }
+
+        public CreateUsingPaymentIntentRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -620,6 +637,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public CreateCardRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
 
@@ -722,6 +744,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateBankAccountRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
             params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
+            params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
             return this;
         }
 
@@ -862,6 +889,16 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public TimestampFilter<PaymentSourceListRequest> createdAt() {
             return new TimestampFilter<PaymentSourceListRequest>("created_at",this);        
+        }
+
+
+        public PaymentSourceListRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
+        }
+        public PaymentSourceListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
         }
 
 

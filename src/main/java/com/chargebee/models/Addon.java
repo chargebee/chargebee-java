@@ -200,6 +200,14 @@ public class Addon extends Resource<Addon> {
         return optString("accounting_category2");
     }
 
+    public String accountingCategory3() {
+        return optString("accounting_category3");
+    }
+
+    public String accountingCategory4() {
+        return optString("accounting_category4");
+    }
+
     public Boolean isShippable() {
         return optBoolean("is_shippable");
     }
@@ -461,6 +469,18 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest accountingCategory3(String accountingCategory3) {
+            params.addOpt("accounting_category3", accountingCategory3);
+            return this;
+        }
+
+
+        public CreateRequest accountingCategory4(String accountingCategory4) {
+            params.addOpt("accounting_category4", accountingCategory4);
+            return this;
+        }
+
+
         public CreateRequest isShippable(Boolean isShippable) {
             params.addOpt("is_shippable", isShippable);
             return this;
@@ -692,6 +712,18 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest accountingCategory2(String accountingCategory2) {
             params.addOpt("accounting_category2", accountingCategory2);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCategory3(String accountingCategory3) {
+            params.addOpt("accounting_category3", accountingCategory3);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCategory4(String accountingCategory4) {
+            params.addOpt("accounting_category4", accountingCategory4);
             return this;
         }
 

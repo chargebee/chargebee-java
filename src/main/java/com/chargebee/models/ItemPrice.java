@@ -37,6 +37,14 @@ public class ItemPrice extends Resource<ItemPrice> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum TrialEndAction {
+        SITE_DEFAULT,
+        ACTIVATE_SUBSCRIPTION,
+        CANCEL_SUBSCRIPTION,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum ShippingPeriodUnit {
         DAY,
         WEEK,
@@ -129,6 +137,14 @@ public class ItemPrice extends Resource<ItemPrice> {
             return optString("accounting_category2");
         }
 
+        public String accountingCategory3() {
+            return optString("accounting_category3");
+        }
+
+        public String accountingCategory4() {
+            return optString("accounting_category4");
+        }
+
     }
 
     //Constructors
@@ -181,6 +197,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optInteger("price");
     }
 
+    public String priceInDecimal() {
+        return optString("price_in_decimal");
+    }
+
     public Integer period() {
         return optInteger("period");
     }
@@ -201,6 +221,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optEnum("trial_period_unit", TrialPeriodUnit.class);
     }
 
+    public TrialEndAction trialEndAction() {
+        return optEnum("trial_end_action", TrialEndAction.class);
+    }
+
     public Integer shippingPeriod() {
         return optInteger("shipping_period");
     }
@@ -217,14 +241,8 @@ public class ItemPrice extends Resource<ItemPrice> {
         return reqInteger("free_quantity");
     }
 
-    @Deprecated
     public String freeQuantityInDecimal() {
         return optString("free_quantity_in_decimal");
-    }
-
-    @Deprecated
-    public String priceInDecimal() {
-        return optString("price_in_decimal");
     }
 
     public Long resourceVersion() {
@@ -237,6 +255,10 @@ public class ItemPrice extends Resource<ItemPrice> {
 
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
+    }
+
+    public Timestamp archivedAt() {
+        return optTimestamp("archived_at");
     }
 
     public String invoiceNotes() {
@@ -377,6 +399,12 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public CreateRequest freeQuantityInDecimal(String freeQuantityInDecimal) {
+            params.addOpt("free_quantity_in_decimal", freeQuantityInDecimal);
+            return this;
+        }
+
+
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
             return this;
@@ -395,6 +423,8 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+
+
         public CreateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
             params.addOpt("pricing_model", pricingModel);
             return this;
@@ -403,6 +433,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest price(Integer price) {
             params.addOpt("price", price);
+            return this;
+        }
+
+
+        public CreateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
             return this;
         }
 
@@ -445,6 +481,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public CreateRequest trialEndAction(ItemPrice.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -521,6 +563,18 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
+        public CreateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -581,6 +635,14 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public UpdateRequest freeQuantityInDecimal(String freeQuantityInDecimal) {
+            params.addOpt("free_quantity_in_decimal", freeQuantityInDecimal);
+            return this;
+        }
+
+
+
+
         public UpdateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
             return this;
@@ -595,6 +657,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public UpdateRequest price(Integer price) {
             params.addOpt("price", price);
+            return this;
+        }
+
+
+        public UpdateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
             return this;
         }
 
@@ -637,6 +705,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public UpdateRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
+            return this;
+        }
+
+
+        public UpdateRequest trialEndAction(ItemPrice.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -725,6 +799,18 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
+        public UpdateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -799,6 +885,20 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public NumberFilter<Integer, ItemPriceListRequest> period() {
             return new NumberFilter<Integer, ItemPriceListRequest>("period",this);        
+        }
+
+
+        public ItemPriceListRequest sortByName(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","name");
+            return this;
+        }
+        public ItemPriceListRequest sortById(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","id");
+            return this;
+        }
+        public ItemPriceListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
         }
 
 

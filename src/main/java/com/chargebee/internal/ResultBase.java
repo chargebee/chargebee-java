@@ -216,7 +216,6 @@ public class ResultBase {
         return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
 
-
     private List<? extends Resource> getList(String pluralName, String singularName) {
         JSONArray listModels = jsonObj.optJSONArray(pluralName);
         if (listModels == null) {

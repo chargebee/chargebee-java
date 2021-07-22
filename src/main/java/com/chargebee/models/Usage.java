@@ -84,7 +84,7 @@ public class Usage extends Resource<Usage> {
     }
 
     public static RetrieveRequest retrieve(String id) {
-        String uri = uri("subscriptions", nullCheck(id), "usage");
+        String uri = uri("subscriptions", nullCheck(id), "usages");
         return new RetrieveRequest(Method.GET, uri);
     }
 
@@ -225,6 +225,12 @@ public class Usage extends Resource<Usage> {
 
         public EnumFilter<com.chargebee.models.enums.Source, UsageListRequest> source() {
             return new EnumFilter<com.chargebee.models.enums.Source, UsageListRequest>("source",this);        
+        }
+
+
+        public UsageListRequest sortByUsageDate(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","usage_date");
+            return this;
         }
 
 

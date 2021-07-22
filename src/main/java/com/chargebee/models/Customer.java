@@ -610,6 +610,10 @@ public class Customer extends Resource<Customer> {
         return optSubResource("child_account_access", Customer.ChildAccountAccess.class);
     }
 
+    public String vatNumberPrefix() {
+        return optString("vat_number_prefix");
+    }
+
     // Operations
     //===========
 
@@ -817,6 +821,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest vatNumberPrefix(String vatNumberPrefix) {
+            params.addOpt("vat_number_prefix", vatNumberPrefix);
+            return this;
+        }
+
+
         public CreateRequest registeredForGst(Boolean registeredForGst) {
             params.addOpt("registered_for_gst", registeredForGst);
             return this;
@@ -1014,6 +1024,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
+            params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
+            return this;
+        }
+
         public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
@@ -1042,6 +1057,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public CreateRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
 
@@ -1116,6 +1136,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -1142,8 +1167,8 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -1510,6 +1535,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public UpdatePaymentMethodRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1524,6 +1554,12 @@ public class Customer extends Resource<Customer> {
     
         public UpdateBillingInfoRequest vatNumber(String vatNumber) {
             params.addOpt("vat_number", vatNumber);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest vatNumberPrefix(String vatNumberPrefix) {
+            params.addOpt("vat_number_prefix", vatNumberPrefix);
             return this;
         }
 
@@ -1996,6 +2032,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CollectPaymentRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+            return this;
+        }
+
         public CollectPaymentRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
@@ -2066,6 +2107,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CollectPaymentRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+
         public CollectPaymentRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -2092,8 +2138,8 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-        public CollectPaymentRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CollectPaymentRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 

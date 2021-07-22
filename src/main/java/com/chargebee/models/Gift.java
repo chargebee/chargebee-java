@@ -294,8 +294,8 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
-        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -508,8 +508,8 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
-        public CreateForItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateForItemsRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -589,6 +589,10 @@ public class Gift extends Resource<Gift> {
         }
         public CreateForItemsRequest subscriptionItemQuantity(int index, Integer subscriptionItemQuantity) {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
+            return this;
+        }
+        public CreateForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
         @Override

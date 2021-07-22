@@ -29,6 +29,14 @@ public class Plan extends Resource<Plan> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum TrialEndAction {
+        SITE_DEFAULT,
+        ACTIVATE_SUBSCRIPTION,
+        CANCEL_SUBSCRIPTION,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     @Deprecated
     public enum ChargeModel {
         FLAT_FEE,
@@ -226,6 +234,10 @@ public class Plan extends Resource<Plan> {
         return optEnum("trial_period_unit", TrialPeriodUnit.class);
     }
 
+    public TrialEndAction trialEndAction() {
+        return optEnum("trial_end_action", TrialEndAction.class);
+    }
+
     public PricingModel pricingModel() {
         return reqEnum("pricing_model", PricingModel.class);
     }
@@ -310,6 +322,14 @@ public class Plan extends Resource<Plan> {
 
     public String accountingCategory2() {
         return optString("accounting_category2");
+    }
+
+    public String accountingCategory3() {
+        return optString("accounting_category3");
+    }
+
+    public String accountingCategory4() {
+        return optString("accounting_category4");
     }
 
     public Boolean isShippable() {
@@ -468,6 +488,12 @@ public class Plan extends Resource<Plan> {
 
         public CreateRequest trialPeriodUnit(Plan.TrialPeriodUnit trialPeriodUnit) {
             params.addOpt("trial_period_unit", trialPeriodUnit);
+            return this;
+        }
+
+
+        public CreateRequest trialEndAction(Plan.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -636,6 +662,18 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public CreateRequest accountingCategory3(String accountingCategory3) {
+            params.addOpt("accounting_category3", accountingCategory3);
+            return this;
+        }
+
+
+        public CreateRequest accountingCategory4(String accountingCategory4) {
+            params.addOpt("accounting_category4", accountingCategory4);
+            return this;
+        }
+
+
         public CreateRequest isShippable(Boolean isShippable) {
             params.addOpt("is_shippable", isShippable);
             return this;
@@ -676,6 +714,8 @@ public class Plan extends Resource<Plan> {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
+
+
 
 
         public CreateRequest giftable(Boolean giftable) {
@@ -802,6 +842,12 @@ public class Plan extends Resource<Plan> {
 
         public UpdateRequest trialPeriodUnit(Plan.TrialPeriodUnit trialPeriodUnit) {
             params.addOpt("trial_period_unit", trialPeriodUnit);
+            return this;
+        }
+
+
+        public UpdateRequest trialEndAction(Plan.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -970,6 +1016,18 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public UpdateRequest accountingCategory3(String accountingCategory3) {
+            params.addOpt("accounting_category3", accountingCategory3);
+            return this;
+        }
+
+
+        public UpdateRequest accountingCategory4(String accountingCategory4) {
+            params.addOpt("accounting_category4", accountingCategory4);
+            return this;
+        }
+
+
         public UpdateRequest isShippable(Boolean isShippable) {
             params.addOpt("is_shippable", isShippable);
             return this;
@@ -1010,6 +1068,8 @@ public class Plan extends Resource<Plan> {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
+
+
 
 
 

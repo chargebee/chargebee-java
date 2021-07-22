@@ -1276,6 +1276,18 @@ public Export waitForExportCompletion()
             return new TimestampFilter<OrdersRequest>("order[updated_at]",this);        
         }
 
+        public EnumFilter<Order.ResentStatus, OrdersRequest> orderResentStatus() {
+            return new EnumFilter<Order.ResentStatus, OrdersRequest>("order[resent_status]",this);        
+        }
+
+        public BooleanFilter<OrdersRequest> orderIsResent() {
+            return new BooleanFilter<OrdersRequest>("order[is_resent]",this);        
+        }
+
+        public StringFilter<OrdersRequest> orderOriginalOrderId() {
+            return new StringFilter<OrdersRequest>("order[original_order_id]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1294,6 +1306,10 @@ public Export waitForExportCompletion()
 
         public StringFilter<ItemFamiliesRequest> itemFamilyName() {
             return new StringFilter<ItemFamiliesRequest>("item_family[name]",this);        
+        }
+
+        public TimestampFilter<ItemFamiliesRequest> itemFamilyUpdatedAt() {
+            return new TimestampFilter<ItemFamiliesRequest>("item_family[updated_at]",this);        
         }
 
         @Override

@@ -189,6 +189,7 @@ public class Coupon extends Resource<Coupon> {
         return reqEnum("duration_type", DurationType.class);
     }
 
+    @Deprecated
     public Integer durationMonth() {
         return optInteger("duration_month");
     }
@@ -240,6 +241,14 @@ public class Coupon extends Resource<Coupon> {
 
     public Boolean includedInMrr() {
         return optBoolean("included_in_mrr");
+    }
+
+    public Integer period() {
+        return optInteger("period");
+    }
+
+    public PeriodUnit periodUnit() {
+        return optEnum("period_unit", PeriodUnit.class);
     }
 
     public List<String> planIds() {
@@ -425,6 +434,18 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public CreateRequest period(Integer period) {
+            params.addOpt("period", period);
+            return this;
+        }
+
+
+        public CreateRequest periodUnit(com.chargebee.models.enums.PeriodUnit periodUnit) {
+            params.addOpt("period_unit", periodUnit);
+            return this;
+        }
+
+
         public CreateRequest planConstraint(PlanConstraint planConstraint) {
             params.addOpt("plan_constraint", planConstraint);
             return this;
@@ -572,6 +593,18 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public CreateForItemsRequest period(Integer period) {
+            params.addOpt("period", period);
+            return this;
+        }
+
+
+        public CreateForItemsRequest periodUnit(com.chargebee.models.enums.PeriodUnit periodUnit) {
+            params.addOpt("period_unit", periodUnit);
+            return this;
+        }
+
+
         public CreateForItemsRequest status(Coupon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -698,6 +731,18 @@ public class Coupon extends Resource<Coupon> {
 
         public UpdateForItemsRequest includedInMrr(Boolean includedInMrr) {
             params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest period(Integer period) {
+            params.addOpt("period", period);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest periodUnit(com.chargebee.models.enums.PeriodUnit periodUnit) {
+            params.addOpt("period_unit", periodUnit);
             return this;
         }
 
@@ -889,6 +934,18 @@ public class Coupon extends Resource<Coupon> {
 
         public UpdateRequest includedInMrr(Boolean includedInMrr) {
             params.addOpt("included_in_mrr", includedInMrr);
+            return this;
+        }
+
+
+        public UpdateRequest period(Integer period) {
+            params.addOpt("period", period);
+            return this;
+        }
+
+
+        public UpdateRequest periodUnit(com.chargebee.models.enums.PeriodUnit periodUnit) {
+            params.addOpt("period_unit", periodUnit);
             return this;
         }
 

@@ -67,6 +67,10 @@ public class AttachedItem extends Resource<AttachedItem> {
         return optInteger("quantity");
     }
 
+    public String quantityInDecimal() {
+        return optString("quantity_in_decimal");
+    }
+
     public Integer billingCycles() {
         return optInteger("billing_cycles");
     }
@@ -159,6 +163,12 @@ public class AttachedItem extends Resource<AttachedItem> {
         }
 
 
+        public CreateRequest quantityInDecimal(String quantityInDecimal) {
+            params.addOpt("quantity_in_decimal", quantityInDecimal);
+            return this;
+        }
+
+
         public CreateRequest chargeOnEvent(com.chargebee.models.enums.ChargeOnEvent chargeOnEvent) {
             params.addOpt("charge_on_event", chargeOnEvent);
             return this;
@@ -203,6 +213,12 @@ public class AttachedItem extends Resource<AttachedItem> {
 
         public UpdateRequest quantity(Integer quantity) {
             params.addOpt("quantity", quantity);
+            return this;
+        }
+
+
+        public UpdateRequest quantityInDecimal(String quantityInDecimal) {
+            params.addOpt("quantity_in_decimal", quantityInDecimal);
             return this;
         }
 

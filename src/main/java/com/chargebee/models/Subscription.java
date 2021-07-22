@@ -75,16 +75,42 @@ public class Subscription extends Resource<Subscription> {
             return optInteger("quantity");
         }
 
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        @Deprecated
+        public String meteredQuantity() {
+            return optString("metered_quantity");
+        }
+
+        @Deprecated
+        public Timestamp lastCalculatedAt() {
+            return optTimestamp("last_calculated_at");
+        }
+
         public Integer unitPrice() {
             return optInteger("unit_price");
+        }
+
+        public String unitPriceInDecimal() {
+            return optString("unit_price_in_decimal");
         }
 
         public Integer amount() {
             return optInteger("amount");
         }
 
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer freeQuantity() {
             return optInteger("free_quantity");
+        }
+
+        public String freeQuantityInDecimal() {
+            return optString("free_quantity_in_decimal");
         }
 
         public Timestamp trialEnd() {
@@ -134,17 +160,14 @@ public class Subscription extends Resource<Subscription> {
             return reqInteger("price");
         }
 
-        @Deprecated
         public String startingUnitInDecimal() {
             return optString("starting_unit_in_decimal");
         }
 
-        @Deprecated
         public String endingUnitInDecimal() {
             return optString("ending_unit_in_decimal");
         }
 
-        @Deprecated
         public String priceInDecimal() {
             return optString("price_in_decimal");
         }
@@ -554,6 +577,14 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("auto_collection", AutoCollection.class);
     }
 
+    public String planQuantityInDecimal() {
+        return optString("plan_quantity_in_decimal");
+    }
+
+    public String planUnitPriceInDecimal() {
+        return optString("plan_unit_price_in_decimal");
+    }
+
     public String customerId() {
         return reqString("customer_id");
     }
@@ -572,6 +603,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Timestamp trialStart() {
         return optTimestamp("trial_start");
+    }
+
+    public TrialEndAction trialEndAction() {
+        return optEnum("trial_end_action", TrialEndAction.class);
     }
 
     public Timestamp currentTermStart() {
@@ -658,16 +693,12 @@ public class Subscription extends Resource<Subscription> {
         return optString("plan_free_quantity_in_decimal");
     }
 
-    public String planQuantityInDecimal() {
-        return optString("plan_quantity_in_decimal");
-    }
-
-    public String planUnitPriceInDecimal() {
-        return optString("plan_unit_price_in_decimal");
-    }
-
     public String planAmountInDecimal() {
         return optString("plan_amount_in_decimal");
+    }
+
+    public Timestamp cancelScheduleCreatedAt() {
+        return optTimestamp("cancel_schedule_created_at");
     }
 
     public OfflinePaymentMethod offlinePaymentMethod() {
@@ -815,6 +846,7 @@ public class Subscription extends Resource<Subscription> {
 
     public static Request retrieve(String id) {
         String uri = uri("subscriptions", nullCheck(id));
+
         return new Request(Method.GET, uri);
     }
 
@@ -969,18 +1001,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
-            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-            return this;
-        }
-
-
-        public CreateRequest planQuantityInDecimal(String planQuantityInDecimal) {
-            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-            return this;
-        }
-
-
         public CreateRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -993,8 +1013,20 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateRequest planQuantityInDecimal(String planQuantityInDecimal) {
+            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+            return this;
+        }
+
+
         public CreateRequest planUnitPrice(Integer planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public CreateRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
+            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
             return this;
         }
 
@@ -1117,6 +1149,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -1139,6 +1173,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
             params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+        public CreateRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -1321,6 +1361,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
+            params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
+            return this;
+        }
+
         public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
@@ -1349,6 +1394,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public CreateRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
 
@@ -1423,6 +1473,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -1449,8 +1504,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -1599,6 +1654,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public CreateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -1711,18 +1771,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateForCustomerRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
-            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-            return this;
-        }
-
-
-        public CreateForCustomerRequest planQuantityInDecimal(String planQuantityInDecimal) {
-            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-            return this;
-        }
-
-
         public CreateForCustomerRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -1735,8 +1783,20 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest planQuantityInDecimal(String planQuantityInDecimal) {
+            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+            return this;
+        }
+
+
         public CreateForCustomerRequest planUnitPrice(Integer planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public CreateForCustomerRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
+            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
             return this;
         }
 
@@ -1852,6 +1912,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateForCustomerRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -1876,6 +1938,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
             params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+        public CreateForCustomerRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -1976,8 +2044,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateForCustomerRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateForCustomerRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -2092,6 +2160,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateWithItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;
@@ -2185,6 +2255,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public CreateWithItemsRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -2227,6 +2299,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest firstInvoicePending(Boolean firstInvoicePending) {
             params.addOpt("first_invoice_pending", firstInvoicePending);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -2327,8 +2405,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateWithItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public CreateWithItemsRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -2350,8 +2428,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CreateWithItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CreateWithItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CreateWithItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CreateWithItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -2397,6 +2483,18 @@ public class Subscription extends Resource<Subscription> {
         }
         public CreateWithItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateWithItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateWithItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateWithItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -2773,6 +2871,10 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
+
+
         public UpdateRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -2785,6 +2887,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+        public UpdateRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
+            return this;
+        }
 
 
         @Deprecated
@@ -2832,6 +2940,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public UpdateRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
 
@@ -2906,6 +3019,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+
         public UpdateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -2932,8 +3050,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public UpdateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -3082,6 +3200,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public UpdateRequest customerBusinessCustomerWithoutVatNumber(Boolean customerBusinessCustomerWithoutVatNumber) {
             params.addOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
             return this;
@@ -3199,6 +3322,8 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
+
+
 
 
         public UpdateForItemsRequest startDate(Timestamp startDate) {
@@ -3348,6 +3473,10 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
+
+
         public UpdateForItemsRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -3370,6 +3499,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest autoCloseInvoices(Boolean autoCloseInvoices) {
             params.addOpt("auto_close_invoices", autoCloseInvoices);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
+            params.addOpt("trial_end_action", trialEndAction);
             return this;
         }
 
@@ -3419,6 +3554,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+            return this;
+        }
+
+        public UpdateForItemsRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
 
@@ -3493,6 +3633,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateForItemsRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
+            return this;
+        }
+
         public UpdateForItemsRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -3519,8 +3664,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateForItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public UpdateForItemsRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -3669,6 +3814,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public UpdateForItemsRequest customerBusinessCustomerWithoutVatNumber(Boolean customerBusinessCustomerWithoutVatNumber) {
             params.addOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
             return this;
@@ -3697,8 +3847,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public UpdateForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public UpdateForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public UpdateForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public UpdateForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -3744,6 +3902,18 @@ public class Subscription extends Resource<Subscription> {
         }
         public UpdateForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public UpdateForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -3879,8 +4049,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ReactivateRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public ReactivateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -4188,18 +4358,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportSubscriptionRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
-            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-            return this;
-        }
-
-
-        public ImportSubscriptionRequest planQuantityInDecimal(String planQuantityInDecimal) {
-            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-            return this;
-        }
-
-
         public ImportSubscriptionRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -4212,8 +4370,20 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportSubscriptionRequest planQuantityInDecimal(String planQuantityInDecimal) {
+            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+            return this;
+        }
+
+
         public ImportSubscriptionRequest planUnitPrice(Integer planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
+            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
             return this;
         }
 
@@ -4503,6 +4673,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
+            params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+            return this;
+        }
+
         public ImportSubscriptionRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
@@ -4565,6 +4740,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public ImportSubscriptionRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
 
@@ -4713,6 +4893,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public ImportSubscriptionRequest transactionAmount(Integer transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
@@ -4815,18 +5000,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportForCustomerRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
-            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-            return this;
-        }
-
-
-        public ImportForCustomerRequest planQuantityInDecimal(String planQuantityInDecimal) {
-            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-            return this;
-        }
-
-
         public ImportForCustomerRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -4839,8 +5012,20 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForCustomerRequest planQuantityInDecimal(String planQuantityInDecimal) {
+            params.addOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+            return this;
+        }
+
+
         public ImportForCustomerRequest planUnitPrice(Integer planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
+            return this;
+        }
+
+
+        public ImportForCustomerRequest planUnitPriceInDecimal(String planUnitPriceInDecimal) {
+            params.addOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
             return this;
         }
 
@@ -5267,6 +5452,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         public ImportForItemsRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
@@ -5522,8 +5709,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public ImportForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public ImportForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public ImportForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public ImportForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -5573,6 +5768,18 @@ public class Subscription extends Resource<Subscription> {
         }
         public ImportForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public ImportForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public ImportForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public ImportForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -5785,8 +5992,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CancelForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CancelForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CancelForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CancelForItemsRequest subscriptionItemServicePeriodDays(int index, Integer subscriptionItemServicePeriodDays) {
@@ -5855,8 +6070,8 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ResumeRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public ResumeRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 

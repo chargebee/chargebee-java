@@ -149,7 +149,7 @@ public class CreditNote extends Resource<CreditNote> {
 
     public static class Discount extends Resource<Discount> {
         public enum EntityType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -178,7 +178,7 @@ public class CreditNote extends Resource<CreditNote> {
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -195,8 +195,13 @@ public class CreditNote extends Resource<CreditNote> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
+        @Deprecated
         public String couponId() {
             return optString("coupon_id");
+        }
+
+        public String entityId() {
+            return optString("entity_id");
         }
 
         public Integer discountAmount() {
@@ -536,6 +541,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public String createReasonCode() {
         return optString("create_reason_code");
+    }
+
+    public String vatNumberPrefix() {
+        return optString("vat_number_prefix");
     }
 
     // Operations

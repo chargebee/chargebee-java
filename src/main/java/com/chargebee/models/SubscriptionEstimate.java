@@ -176,6 +176,10 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
         return optEnum("status", Status.class);
     }
 
+    public TrialEndAction trialEndAction() {
+        return optEnum("trial_end_action", TrialEndAction.class);
+    }
+
     public Timestamp nextBillingAt() {
         return optTimestamp("next_billing_at");
     }

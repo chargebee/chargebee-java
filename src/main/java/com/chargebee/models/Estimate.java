@@ -226,16 +226,6 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
-            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
-            return this;
-        }
-
-        public CreateSubscriptionRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
-            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
-            return this;
-        }
-
         public CreateSubscriptionRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -246,8 +236,18 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateSubscriptionRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CreateSubscriptionRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -362,6 +362,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubscriptionRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public CreateSubscriptionRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -404,6 +409,11 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubscriptionRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
             params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+        public CreateSubscriptionRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
             return this;
         }
 
@@ -497,6 +507,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
+
+
 
 
         public CreateSubItemEstimateRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -668,6 +680,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubItemEstimateRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public CreateSubItemEstimateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -723,6 +740,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubItemEstimateRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
+            return this;
+        }
+
         public CreateSubItemEstimateRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -731,8 +753,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CreateSubItemEstimateRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CreateSubItemEstimateRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CreateSubItemEstimateRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CreateSubItemEstimateRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -778,6 +808,18 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemEstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateSubItemEstimateRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateSubItemEstimateRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateSubItemEstimateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -855,16 +897,6 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
-            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
-            return this;
-        }
-
-        public CreateSubForCustomerEstimateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
-            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
-            return this;
-        }
-
         public CreateSubForCustomerEstimateRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -875,8 +907,18 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubForCustomerEstimateRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -962,6 +1004,11 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubForCustomerEstimateRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
             params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+        public CreateSubForCustomerEstimateRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
             return this;
         }
 
@@ -1057,6 +1104,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
+
+
 
 
         public CreateSubItemForCustomerEstimateRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -1190,6 +1239,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubItemForCustomerEstimateRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
+            return this;
+        }
+
         public CreateSubItemForCustomerEstimateRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -1198,8 +1252,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CreateSubItemForCustomerEstimateRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CreateSubItemForCustomerEstimateRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -1245,6 +1307,18 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemForCustomerEstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -1511,6 +1585,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public UpdateSubscriptionRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -1529,6 +1608,11 @@ public class Estimate extends Resource<Estimate> {
         @Deprecated
         public UpdateSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public UpdateSubscriptionRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
             return this;
         }
 
@@ -1626,6 +1710,8 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("replace_items_list", replaceItemsList);
             return this;
         }
+
+
 
 
         public UpdateSubscriptionForItemsRequest billingCycles(Integer billingCycles) {
@@ -1836,6 +1922,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         public UpdateSubscriptionForItemsRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -1857,6 +1948,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public UpdateSubscriptionForItemsRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
+            params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
+            return this;
+        }
+
         public UpdateSubscriptionForItemsRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -1865,8 +1961,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public UpdateSubscriptionForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public UpdateSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public UpdateSubscriptionForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -1912,6 +2016,18 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -2057,7 +2173,7 @@ public class Estimate extends Resource<Estimate> {
         }
     
         public ChangeTermEndRequest termEndsAt(Timestamp termEndsAt) {
-            params.addOpt("term_ends_at", termEndsAt);
+            params.add("term_ends_at", termEndsAt);
             return this;
         }
 
@@ -2218,8 +2334,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CancelSubscriptionForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CancelSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CancelSubscriptionForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CancelSubscriptionForItemsRequest subscriptionItemServicePeriodDays(int index, Integer subscriptionItemServicePeriodDays) {
@@ -2397,8 +2521,8 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public GiftSubscriptionRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public GiftSubscriptionRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -2607,8 +2731,8 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public GiftSubscriptionForItemsRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
-            params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+        public GiftSubscriptionForItemsRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
 
@@ -2690,6 +2814,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public GiftSubscriptionForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2710,8 +2838,14 @@ public class Estimate extends Resource<Estimate> {
 
 
 
-        public CreateInvoiceRequest invoiceNotes(String invoiceNotes) {
-            params.addOpt("invoice_notes", invoiceNotes);
+        public CreateInvoiceRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
+        public CreateInvoiceRequest removeGeneralNote(Boolean removeGeneralNote) {
+            params.addOpt("remove_general_note", removeGeneralNote);
             return this;
         }
 
@@ -2876,6 +3010,22 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
             return this;
         }
+        public CreateInvoiceRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateInvoiceRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateInvoiceRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateInvoiceRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
         public CreateInvoiceRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
             params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
             return this;
@@ -2896,20 +3046,12 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
-        public CreateInvoiceRequest chargeTaxable(int index, Boolean chargeTaxable) {
-            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+        public CreateInvoiceRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
+            params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
             return this;
         }
-        public CreateInvoiceRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
-            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
-            return this;
-        }
-        public CreateInvoiceRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
-            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
-            return this;
-        }
-        public CreateInvoiceRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
-            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+        public CreateInvoiceRequest notesToRemoveEntityId(int index, String notesToRemoveEntityId) {
+            params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
         @Override
@@ -2930,6 +3072,19 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateInvoiceForItemsRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest removeGeneralNote(Boolean removeGeneralNote) {
+            params.addOpt("remove_general_note", removeGeneralNote);
+            return this;
+        }
+
+
+        @Deprecated
         public CreateInvoiceForItemsRequest coupon(String coupon) {
             params.addOpt("coupon", coupon);
             return this;
@@ -3059,8 +3214,16 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
             return this;
         }
+        public CreateInvoiceForItemsRequest itemPriceQuantityInDecimal(int index, String itemPriceQuantityInDecimal) {
+            params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
+            return this;
+        }
         public CreateInvoiceForItemsRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemPriceUnitPriceInDecimal(int index, String itemPriceUnitPriceInDecimal) {
+            params.addOpt("item_prices[unit_price_in_decimal][" + index + "]", itemPriceUnitPriceInDecimal);
             return this;
         }
         public CreateInvoiceForItemsRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
@@ -3087,6 +3250,18 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
+        public CreateInvoiceForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
         public CreateInvoiceForItemsRequest chargeAmount(int index, Integer chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -3097,6 +3272,22 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest chargeDescription(int index, String chargeDescription) {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
         }
         public CreateInvoiceForItemsRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
@@ -3117,6 +3308,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest chargeDateTo(int index, Timestamp chargeDateTo) {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
+            params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest notesToRemoveEntityId(int index, String notesToRemoveEntityId) {
+            params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
         @Override

@@ -15,6 +15,7 @@ public class Item extends Resource<Item> {
 
     public enum Status {
         ACTIVE,
+        ARCHIVED,
         DELETED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -38,6 +39,7 @@ public class Item extends Resource<Item> {
     public enum UsageCalculation {
         SUM_OF_USAGES,
         LAST_USAGE,
+        MAX_USAGE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -141,6 +143,10 @@ public class Item extends Resource<Item> {
 
     public UsageCalculation usageCalculation() {
         return optEnum("usage_calculation", UsageCalculation.class);
+    }
+
+    public Timestamp archivedAt() {
+        return optTimestamp("archived_at");
     }
 
     public List<Item.ApplicableItem> applicableItems() {
@@ -295,6 +301,8 @@ public class Item extends Resource<Item> {
         }
 
 
+
+
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
             return this;
@@ -402,6 +410,14 @@ public class Item extends Resource<Item> {
         }
 
 
+        public UpdateRequest status(Item.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
+
+
         @Override
         public Params params() {
             return params;
@@ -471,6 +487,20 @@ public class Item extends Resource<Item> {
 
         public EnumFilter<Item.UsageCalculation, ItemListRequest> usageCalculation() {
             return new EnumFilter<Item.UsageCalculation, ItemListRequest>("usage_calculation",this);        
+        }
+
+
+        public ItemListRequest sortByName(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","name");
+            return this;
+        }
+        public ItemListRequest sortById(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","id");
+            return this;
+        }
+        public ItemListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
         }
 
 

@@ -10,6 +10,7 @@ import org.json.*;
 import java.io.*;
 import java.sql.Timestamp;
 import java.util.*;
+import java.math.BigDecimal;
 
 public class Transaction extends Resource<Transaction> {
 
@@ -239,6 +240,10 @@ public class Transaction extends Resource<Transaction> {
         return optTimestamp("settled_at");
     }
 
+    public BigDecimal exchangeRate() {
+        return optBigDecimal("exchange_rate");
+    }
+
     public String currencyCode() {
         return reqString("currency_code");
     }
@@ -341,6 +346,10 @@ public class Transaction extends Resource<Transaction> {
 
     public Boolean deleted() {
         return reqBoolean("deleted");
+    }
+
+    public String merchantReferenceId() {
+        return optString("merchant_reference_id");
     }
 
     // Operations

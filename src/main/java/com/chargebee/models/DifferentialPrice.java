@@ -102,6 +102,10 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         return optInteger("price");
     }
 
+    public String priceInDecimal() {
+        return optString("price_in_decimal");
+    }
+
     public Status status() {
         return optEnum("status", Status.class);
     }
@@ -184,6 +188,12 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
 
 
+        public CreateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
         public CreateRequest parentPeriodPeriodUnit(int index, ParentPeriod.PeriodUnit parentPeriodPeriodUnit) {
             params.add("parent_periods[period_unit][" + index + "]", parentPeriodPeriodUnit);
             return this;
@@ -202,6 +212,18 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
         public CreateRequest tierPrice(int index, Integer tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
+        public CreateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public CreateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
         @Override
@@ -246,6 +268,12 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
 
 
+        public UpdateRequest priceInDecimal(String priceInDecimal) {
+            params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
         public UpdateRequest parentPeriodPeriodUnit(int index, ParentPeriod.PeriodUnit parentPeriodPeriodUnit) {
             params.add("parent_periods[period_unit][" + index + "]", parentPeriodPeriodUnit);
             return this;
@@ -264,6 +292,18 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
         public UpdateRequest tierPrice(int index, Integer tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
+            return this;
+        }
+        public UpdateRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
+            params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
         @Override

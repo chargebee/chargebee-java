@@ -163,16 +163,42 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optInteger("quantity");
         }
 
+        public String quantityInDecimal() {
+            return optString("quantity_in_decimal");
+        }
+
+        @Deprecated
+        public String meteredQuantity() {
+            return optString("metered_quantity");
+        }
+
+        @Deprecated
+        public Timestamp lastCalculatedAt() {
+            return optTimestamp("last_calculated_at");
+        }
+
         public Integer unitPrice() {
             return optInteger("unit_price");
+        }
+
+        public String unitPriceInDecimal() {
+            return optString("unit_price_in_decimal");
         }
 
         public Integer amount() {
             return optInteger("amount");
         }
 
+        public String amountInDecimal() {
+            return optString("amount_in_decimal");
+        }
+
         public Integer freeQuantity() {
             return optInteger("free_quantity");
+        }
+
+        public String freeQuantityInDecimal() {
+            return optString("free_quantity_in_decimal");
         }
 
         public Timestamp trialEnd() {
@@ -222,19 +248,53 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return reqInteger("price");
         }
 
-        @Deprecated
         public String startingUnitInDecimal() {
             return optString("starting_unit_in_decimal");
         }
 
-        @Deprecated
         public String endingUnitInDecimal() {
             return optString("ending_unit_in_decimal");
         }
 
-        @Deprecated
         public String priceInDecimal() {
             return optString("price_in_decimal");
+        }
+
+    }
+
+    public static class QuotedContractTerm extends Resource<QuotedContractTerm> {
+        public enum ActionAtTermEnd {
+             RENEW,EVERGREEN,CANCEL,RENEW_ONCE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public QuotedContractTerm(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Timestamp contractStart() {
+            return reqTimestamp("contract_start");
+        }
+
+        public Timestamp contractEnd() {
+            return reqTimestamp("contract_end");
+        }
+
+        public Integer billingCycle() {
+            return reqInteger("billing_cycle");
+        }
+
+        public ActionAtTermEnd actionAtTermEnd() {
+            return reqEnum("action_at_term_end", ActionAtTermEnd.class);
+        }
+
+        public Long totalContractValue() {
+            return reqLong("total_contract_value");
+        }
+
+        public Integer cancellationCutoffPeriod() {
+            return optInteger("cancellation_cutoff_period");
         }
 
     }
@@ -301,6 +361,18 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
         return optEnum("auto_collection", AutoCollection.class);
     }
 
+    public String planQuantityInDecimal() {
+        return optString("plan_quantity_in_decimal");
+    }
+
+    public String planUnitPriceInDecimal() {
+        return optString("plan_unit_price_in_decimal");
+    }
+
+    public Integer contractTermBillingCycleOnRenewal() {
+        return optInteger("contract_term_billing_cycle_on_renewal");
+    }
+
     public List<QuotedSubscription.Addon> addons() {
         return optList("addons", QuotedSubscription.Addon.class);
     }
@@ -319,6 +391,10 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
 
     public List<QuotedSubscription.ItemTier> itemTiers() {
         return optList("item_tiers", QuotedSubscription.ItemTier.class);
+    }
+
+    public QuotedSubscription.QuotedContractTerm quotedContractTerm() {
+        return optSubResource("quoted_contract_term", QuotedSubscription.QuotedContractTerm.class);
     }
 
     // Operations

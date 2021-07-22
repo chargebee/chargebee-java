@@ -125,6 +125,11 @@ public class HostedPage extends Resource<HostedPage> {
         return new CheckoutOneTimeRequest(Method.POST, uri);
     }
 
+    public static CheckoutOneTimeForItemsRequest checkoutOneTimeForItems() {
+        String uri = uri("hosted_pages", "checkout_one_time_for_items");
+        return new CheckoutOneTimeForItemsRequest(Method.POST, uri);
+    }
+
     public static CheckoutNewForItemsRequest checkoutNewForItems() {
         String uri = uri("hosted_pages", "checkout_new_for_items");
         return new CheckoutNewForItemsRequest(Method.POST, uri);
@@ -174,6 +179,11 @@ public class HostedPage extends Resource<HostedPage> {
     public static CheckoutGiftRequest checkoutGift() {
         String uri = uri("hosted_pages", "checkout_gift");
         return new CheckoutGiftRequest(Method.POST, uri);
+    }
+
+    public static CheckoutGiftForItemsRequest checkoutGiftForItems() {
+        String uri = uri("hosted_pages", "checkout_gift_for_items");
+        return new CheckoutGiftForItemsRequest(Method.POST, uri);
     }
 
     public static ClaimGiftRequest claimGift() {
@@ -348,16 +358,6 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
-            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
-            return this;
-        }
-
-        public CheckoutNewRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
-            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
-            return this;
-        }
-
         public CheckoutNewRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -368,8 +368,18 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewRequest subscriptionPlanQuantityInDecimal(String subscriptionPlanQuantityInDecimal) {
+            params.addOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+            return this;
+        }
+
         public CheckoutNewRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+            return this;
+        }
+
+        public CheckoutNewRequest subscriptionPlanUnitPriceInDecimal(String subscriptionPlanUnitPriceInDecimal) {
+            params.addOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
             return this;
         }
 
@@ -422,6 +432,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutNewRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
 
@@ -668,6 +683,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutOneTimeRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
         public CheckoutOneTimeRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -766,6 +787,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutOneTimeRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutOneTimeRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
 
@@ -954,6 +980,22 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("charges[description][" + index + "]", chargeDescription);
             return this;
         }
+        public CheckoutOneTimeRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CheckoutOneTimeRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
         public CheckoutOneTimeRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
             params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
             return this;
@@ -980,6 +1022,373 @@ public class HostedPage extends Resource<HostedPage> {
         }
     }
 
+    public static class CheckoutOneTimeForItemsRequest extends Request<CheckoutOneTimeForItemsRequest> {
+
+        private CheckoutOneTimeForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CheckoutOneTimeForItemsRequest invoiceNote(String invoiceNote) {
+            params.addOpt("invoice_note", invoiceNote);
+            return this;
+        }
+
+
+        public CheckoutOneTimeForItemsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CheckoutOneTimeForItemsRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutOneTimeForItemsRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
+        public CheckoutOneTimeForItemsRequest passThruContent(String passThruContent) {
+            params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        public CheckoutOneTimeForItemsRequest customerId(String customerId) {
+            params.addOpt("customer[id]", customerId);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerEmail(String customerEmail) {
+            params.addOpt("customer[email]", customerEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerFirstName(String customerFirstName) {
+            params.addOpt("customer[first_name]", customerFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerLastName(String customerLastName) {
+            params.addOpt("customer[last_name]", customerLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerCompany(String customerCompany) {
+            params.addOpt("customer[company]", customerCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest invoicePoNumber(String invoicePoNumber) {
+            params.addOpt("invoice[po_number]", invoicePoNumber);
+            return this;
+        }
+
+        @Deprecated
+        public CheckoutOneTimeForItemsRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
+            params.addOpt("card[gateway]", cardGateway);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest cardGatewayAccountId(String cardGatewayAccountId) {
+            params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerVatNumber(String customerVatNumber) {
+            params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerConsolidatedInvoicing(Boolean customerConsolidatedInvoicing) {
+            params.addOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressCompany(String billingAddressCompany) {
+            params.addOpt("billing_address[company]", billingAddressCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressPhone(String billingAddressPhone) {
+            params.addOpt("billing_address[phone]", billingAddressPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressFirstName(String shippingAddressFirstName) {
+            params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressLastName(String shippingAddressLastName) {
+            params.addOpt("shipping_address[last_name]", shippingAddressLastName);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressEmail(String shippingAddressEmail) {
+            params.addOpt("shipping_address[email]", shippingAddressEmail);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressCompany(String shippingAddressCompany) {
+            params.addOpt("shipping_address[company]", shippingAddressCompany);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressPhone(String shippingAddressPhone) {
+            params.addOpt("shipping_address[phone]", shippingAddressPhone);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressLine1(String shippingAddressLine1) {
+            params.addOpt("shipping_address[line1]", shippingAddressLine1);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressLine2(String shippingAddressLine2) {
+            params.addOpt("shipping_address[line2]", shippingAddressLine2);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressLine3(String shippingAddressLine3) {
+            params.addOpt("shipping_address[line3]", shippingAddressLine3);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressCity(String shippingAddressCity) {
+            params.addOpt("shipping_address[city]", shippingAddressCity);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressStateCode(String shippingAddressStateCode) {
+            params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressState(String shippingAddressState) {
+            params.addOpt("shipping_address[state]", shippingAddressState);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressZip(String shippingAddressZip) {
+            params.addOpt("shipping_address[zip]", shippingAddressZip);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressCountry(String shippingAddressCountry) {
+            params.addOpt("shipping_address[country]", shippingAddressCountry);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
+            params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
+            params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceQuantity(int index, Integer itemPriceQuantity) {
+            params.addOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceQuantityInDecimal(int index, String itemPriceQuantityInDecimal) {
+            params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+            params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceUnitPriceInDecimal(int index, String itemPriceUnitPriceInDecimal) {
+            params.addOpt("item_prices[unit_price_in_decimal][" + index + "]", itemPriceUnitPriceInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceDateFrom(int index, Timestamp itemPriceDateFrom) {
+            params.addOpt("item_prices[date_from][" + index + "]", itemPriceDateFrom);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemPriceDateTo(int index, Timestamp itemPriceDateTo) {
+            params.addOpt("item_prices[date_to][" + index + "]", itemPriceDateTo);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class CheckoutNewForItemsRequest extends Request<CheckoutNewForItemsRequest> {
 
         private CheckoutNewForItemsRequest(Method httpMeth, String uri) {
@@ -990,6 +1399,8 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
+
+
 
 
         public CheckoutNewForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -1044,6 +1455,12 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        public CheckoutNewForItemsRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
+            params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
 
@@ -1142,6 +1559,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
 
@@ -1285,6 +1707,21 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewForItemsRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
+            return this;
+        }
+
         public CheckoutNewForItemsRequest subscriptionAffiliateToken(String subscriptionAffiliateToken) {
             params.addOpt("subscription[affiliate_token]", subscriptionAffiliateToken);
             return this;
@@ -1298,8 +1735,16 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CheckoutNewForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CheckoutNewForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CheckoutNewForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CheckoutNewForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -1345,6 +1790,18 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CheckoutNewForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CheckoutNewForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CheckoutNewForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -1532,6 +1989,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         @Deprecated
         public CheckoutExistingRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -1646,6 +2108,8 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+
+
         public CheckoutExistingForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1714,6 +2178,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingForItemsRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
+            params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
+            return this;
+        }
+
+
         public CheckoutExistingForItemsRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -1761,6 +2231,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
         @Deprecated
         public CheckoutExistingForItemsRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -1795,8 +2270,16 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
             return this;
         }
+        public CheckoutExistingForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+            return this;
+        }
         public CheckoutExistingForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
             return this;
         }
         public CheckoutExistingForItemsRequest subscriptionItemBillingCycles(int index, Integer subscriptionItemBillingCycles) {
@@ -1842,6 +2325,18 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
         @Override
@@ -1894,6 +2389,12 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         public UpdateCardRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        @Deprecated
+        public UpdateCardRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
 
@@ -1958,6 +2459,12 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         public UpdatePaymentMethodRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
+            return this;
+        }
+
+        @Deprecated
+        public UpdatePaymentMethodRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
+            params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
 
@@ -2156,6 +2663,56 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutGiftRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CheckoutGiftForItemsRequest extends Request<CheckoutGiftForItemsRequest> {
+
+        private CheckoutGiftForItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CheckoutGiftForItemsRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CheckoutGiftForItemsRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutGiftForItemsRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutGiftForItemsRequest gifterCustomerId(String gifterCustomerId) {
+            params.addOpt("gifter[customer_id]", gifterCustomerId);
+            return this;
+        }
+
+        public CheckoutGiftForItemsRequest gifterLocale(String gifterLocale) {
+            params.addOpt("gifter[locale]", gifterLocale);
+            return this;
+        }
+
+        public CheckoutGiftForItemsRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
+            params.addOpt("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest subscriptionItemQuantity(int index, Integer subscriptionItemQuantity) {
+            params.addOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest subscriptionItemQuantityInDecimal(int index, String subscriptionItemQuantityInDecimal) {
+            params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
         @Override

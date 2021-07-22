@@ -44,6 +44,7 @@ public class Order extends Resource<Order> {
         SUBSCRIPTION_CANCELLED,
         PRODUCT_NOT_AVAILABLE,
         OTHERS,
+        ORDER_RESENT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -62,6 +63,13 @@ public class Order extends Resource<Order> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum ResentStatus {
+        FULLY_RESENT,
+        PARTIALLY_RESENT,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class OrderLineItem extends Resource<OrderLineItem> {
         public enum Status {
              QUEUED,AWAITING_SHIPMENT,ON_HOLD,DELIVERED,SHIPPED,PARTIALLY_DELIVERED,RETURNED,CANCELLED,
@@ -70,7 +78,7 @@ public class Order extends Resource<Order> {
         }
 
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,
+             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -344,7 +352,7 @@ public class Order extends Resource<Order> {
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,CUSTOM_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -410,6 +418,25 @@ public class Order extends Resource<Order> {
 
         public Integer amountRefunded() {
             return optInteger("amount_refunded");
+        }
+
+    }
+
+    public static class ResentOrder extends Resource<ResentOrder> {
+        public ResentOrder(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String orderId() {
+            return reqString("order_id");
+        }
+
+        public String reason() {
+            return optString("reason");
+        }
+
+        public Integer amount() {
+            return optInteger("amount");
         }
 
     }
@@ -492,6 +519,10 @@ public class Order extends Resource<Order> {
         return optString("tracking_id");
     }
 
+    public String trackingUrl() {
+        return optString("tracking_url");
+    }
+
     public String batchId() {
         return optString("batch_id");
     }
@@ -568,6 +599,18 @@ public class Order extends Resource<Order> {
         return optTimestamp("cancelled_at");
     }
 
+    public ResentStatus resentStatus() {
+        return optEnum("resent_status", ResentStatus.class);
+    }
+
+    public Boolean isResent() {
+        return reqBoolean("is_resent");
+    }
+
+    public String originalOrderId() {
+        return optString("original_order_id");
+    }
+
     public List<Order.OrderLineItem> orderLineItems() {
         return optList("order_line_items", Order.OrderLineItem.class);
     }
@@ -622,6 +665,14 @@ public class Order extends Resource<Order> {
 
     public String giftId() {
         return optString("gift_id");
+    }
+
+    public String resendReason() {
+        return optString("resend_reason");
+    }
+
+    public List<Order.ResentOrder> resentOrders() {
+        return optList("resent_orders", Order.ResentOrder.class);
     }
 
     // Operations
@@ -683,6 +734,11 @@ public class Order extends Resource<Order> {
         return new ListRequest(uri);
     }
 
+    public static ResendRequest resend(String id) {
+        String uri = uri("orders", nullCheck(id), "resend");
+        return new ResendRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -705,7 +761,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public CreateRequest status(Status status) {
+        public CreateRequest status(com.chargebee.models.enums.Status status) {
             params.addOpt("status", status);
             return this;
         }
@@ -731,6 +787,12 @@ public class Order extends Resource<Order> {
 
         public CreateRequest trackingId(String trackingId) {
             params.addOpt("tracking_id", trackingId);
+            return this;
+        }
+
+
+        public CreateRequest trackingUrl(String trackingUrl) {
+            params.addOpt("tracking_url", trackingUrl);
             return this;
         }
 
@@ -803,6 +865,12 @@ public class Order extends Resource<Order> {
 
         public UpdateRequest deliveredAt(Timestamp deliveredAt) {
             params.addOpt("delivered_at", deliveredAt);
+            return this;
+        }
+
+
+        public UpdateRequest trackingUrl(String trackingUrl) {
+            params.addOpt("tracking_url", trackingUrl);
             return this;
         }
 
@@ -999,6 +1067,12 @@ public class Order extends Resource<Order> {
 
         public ImportOrderRequest trackingId(String trackingId) {
             params.addOpt("tracking_id", trackingId);
+            return this;
+        }
+
+
+        public ImportOrderRequest trackingUrl(String trackingUrl) {
+            params.addOpt("tracking_url", trackingUrl);
             return this;
         }
 
@@ -1346,6 +1420,21 @@ public class Order extends Resource<Order> {
         }
 
 
+        public EnumFilter<Order.ResentStatus, OrderListRequest> resentStatus() {
+            return new EnumFilter<Order.ResentStatus, OrderListRequest>("resent_status",this);        
+        }
+
+
+        public BooleanFilter<OrderListRequest> isResent() {
+            return new BooleanFilter<OrderListRequest>("is_resent",this);        
+        }
+
+
+        public StringFilter<OrderListRequest> originalOrderId() {
+            return new StringFilter<OrderListRequest>("original_order_id",this);        
+        }
+
+
         public OrderListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
@@ -1356,6 +1445,38 @@ public class Order extends Resource<Order> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ResendRequest extends Request<ResendRequest> {
+
+        private ResendRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ResendRequest shippingDate(Timestamp shippingDate) {
+            params.addOpt("shipping_date", shippingDate);
+            return this;
+        }
+
+
+        public ResendRequest resendReason(String resendReason) {
+            params.addOpt("resend_reason", resendReason);
+            return this;
+        }
+
+
+        public ResendRequest orderLineItemId(int index, String orderLineItemId) {
+            params.addOpt("order_line_items[id][" + index + "]", orderLineItemId);
+            return this;
+        }
+        public ResendRequest orderLineItemFulfillmentQuantity(int index, Integer orderLineItemFulfillmentQuantity) {
+            params.addOpt("order_line_items[fulfillment_quantity][" + index + "]", orderLineItemFulfillmentQuantity);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
