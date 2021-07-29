@@ -1,6 +1,5 @@
 package com.chargebee.filters;
 
-import com.chargebee.internal.Request;
 import com.chargebee.internal.RequestBase;
 import java.util.Arrays;
 import org.json.JSONArray;
