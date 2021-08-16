@@ -215,6 +215,12 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+        public CreateSubscriptionRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateSubscriptionRequest clientProfileId(String clientProfileId) {
             params.addOpt("client_profile_id", clientProfileId);
             return this;
@@ -557,6 +563,12 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+        public CreateSubItemEstimateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateSubItemEstimateRequest clientProfileId(String clientProfileId) {
             params.addOpt("client_profile_id", clientProfileId);
             return this;
@@ -880,6 +892,12 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+        public CreateSubForCustomerEstimateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateSubForCustomerEstimateRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -1136,6 +1154,12 @@ public class Estimate extends Resource<Estimate> {
 
 
 
+        public CreateSubItemForCustomerEstimateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateSubItemForCustomerEstimateRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -1352,6 +1376,12 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+
+        public UpdateSubscriptionRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
 
         public UpdateSubscriptionRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
@@ -1712,6 +1742,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+
+
+        public UpdateSubscriptionForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
 
 
         public UpdateSubscriptionForItemsRequest billingCycles(Integer billingCycles) {
@@ -2244,6 +2280,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CancelSubscriptionRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CancelSubscriptionRequest cancelReasonCode(String cancelReasonCode) {
             params.addOpt("cancel_reason_code", cancelReasonCode);
             return this;
@@ -2316,6 +2358,12 @@ public class Estimate extends Resource<Estimate> {
 
         public CancelSubscriptionForItemsRequest contractTermCancelOption(com.chargebee.models.enums.ContractTermCancelOption contractTermCancelOption) {
             params.addOpt("contract_term_cancel_option", contractTermCancelOption);
+            return this;
+        }
+
+
+        public CancelSubscriptionForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -2885,6 +2933,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public CreateInvoiceRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateInvoiceRequest invoiceCustomerId(String invoiceCustomerId) {
             params.addOpt("invoice[customer_id]", invoiceCustomerId);
             return this;
@@ -3115,6 +3169,12 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateInvoiceForItemsRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateInvoiceForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 

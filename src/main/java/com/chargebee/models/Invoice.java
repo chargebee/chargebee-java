@@ -8,9 +8,9 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
-import java.math.BigDecimal;
 
 public class Invoice extends Resource<Invoice> {
 
@@ -830,6 +830,10 @@ public class Invoice extends Resource<Invoice> {
         return reqBoolean("is_gifted");
     }
 
+    public Timestamp generatedAt() {
+        return optTimestamp("generated_at");
+    }
+
     public Timestamp expectedPaymentDate() {
         return optTimestamp("expected_payment_date");
     }
@@ -1088,6 +1092,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -1640,6 +1650,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public CreateForChargeItemsAndChargesRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateForChargeItemsAndChargesRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
             return this;
@@ -2181,6 +2197,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public ChargeRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
             return this;
@@ -2276,6 +2298,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeAddonRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public ChargeAddonRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
             return this;
@@ -2320,6 +2348,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 

@@ -471,6 +471,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optTimestamp("voided_at");
     }
 
+    public Timestamp generatedAt() {
+        return optTimestamp("generated_at");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }

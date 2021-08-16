@@ -731,6 +731,12 @@ public class Quote extends Resource<Quote> {
 
 
 
+
+
+
+
+
+
         public CreateSubForCustomerQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1273,6 +1279,8 @@ public class Quote extends Resource<Quote> {
         }
 
 
+
+
         public UpdateSubscriptionQuoteRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
@@ -1288,6 +1296,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
             return this;
         }
+
+
 
         public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
@@ -1335,8 +1345,16 @@ public class Quote extends Resource<Quote> {
 
 
 
+        public UpdateSubscriptionQuoteRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
+        public UpdateSubscriptionQuoteRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
 
@@ -1694,6 +1712,8 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+
+
         public EditUpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1740,8 +1760,16 @@ public class Quote extends Resource<Quote> {
 
 
 
+        public EditUpdateSubscriptionQuoteRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
+        public EditUpdateSubscriptionQuoteRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
 
@@ -2106,6 +2134,16 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        public CreateForOnetimeChargesRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForOnetimeChargesRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CreateForOnetimeChargesRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -2270,6 +2308,16 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        public EditOneTimeQuoteRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditOneTimeQuoteRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public EditOneTimeQuoteRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -2420,6 +2468,12 @@ public class Quote extends Resource<Quote> {
             params.addOpt("expires_at", expiresAt);
             return this;
         }
+
+
+
+
+
+
 
 
 
@@ -2950,6 +3004,8 @@ public class Quote extends Resource<Quote> {
         }
 
 
+
+
         public UpdateSubscriptionQuoteForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;
@@ -2964,6 +3020,8 @@ public class Quote extends Resource<Quote> {
             params.addOpt("replace_items_list", replaceItemsList);
             return this;
         }
+
+
 
 
 
@@ -3014,8 +3072,16 @@ public class Quote extends Resource<Quote> {
 
 
 
+        public UpdateSubscriptionQuoteForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
+        public UpdateSubscriptionQuoteForItemsRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
 
@@ -3364,6 +3430,8 @@ public class Quote extends Resource<Quote> {
 
 
 
+
+
         public EditUpdateSubscriptionQuoteForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -3410,8 +3478,16 @@ public class Quote extends Resource<Quote> {
 
 
 
+        public EditUpdateSubscriptionQuoteForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
+        public EditUpdateSubscriptionQuoteForItemsRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
 
@@ -3765,6 +3841,16 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        public CreateForChargeItemsAndChargesRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CreateForChargeItemsAndChargesRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -3956,6 +4042,16 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+
+        public EditForChargeItemsAndChargesRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public EditForChargeItemsAndChargesRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
 
         public EditForChargeItemsAndChargesRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -4173,6 +4269,24 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
+        public ConvertRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
+
+
+        public ConvertRequest createPendingInvoices(Boolean createPendingInvoices) {
+            params.addOpt("create_pending_invoices", createPendingInvoices);
+            return this;
+        }
+
+
+        public ConvertRequest firstInvoicePending(Boolean firstInvoicePending) {
+            params.addOpt("first_invoice_pending", firstInvoicePending);
+            return this;
+        }
 
 
         public ConvertRequest subscriptionId(String subscriptionId) {
@@ -4187,6 +4301,11 @@ public class Quote extends Resource<Quote> {
 
         public ConvertRequest subscriptionPoNumber(String subscriptionPoNumber) {
             params.addOpt("subscription[po_number]", subscriptionPoNumber);
+            return this;
+        }
+
+        public ConvertRequest subscriptionAutoCloseInvoices(Boolean subscriptionAutoCloseInvoices) {
+            params.addOpt("subscription[auto_close_invoices]", subscriptionAutoCloseInvoices);
             return this;
         }
 

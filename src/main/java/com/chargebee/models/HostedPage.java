@@ -1832,6 +1832,12 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CheckoutExistingRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -2108,6 +2114,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+
+
+        public CheckoutExistingForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
 
 
         public CheckoutExistingForItemsRequest billingCycles(Integer billingCycles) {

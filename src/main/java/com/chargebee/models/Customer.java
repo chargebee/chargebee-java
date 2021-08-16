@@ -913,6 +913,8 @@ public class Customer extends Resource<Customer> {
 
 
 
+
+
         public CreateRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
             return this;
@@ -1490,6 +1492,8 @@ public class Customer extends Resource<Customer> {
             params.addOpt("consolidated_invoicing", consolidatedInvoicing);
             return this;
         }
+
+
 
 
         @Override

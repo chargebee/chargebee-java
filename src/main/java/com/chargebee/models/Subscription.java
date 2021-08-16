@@ -786,6 +786,10 @@ public class Subscription extends Resource<Subscription> {
         return reqBoolean("deleted");
     }
 
+    public Timestamp changesScheduledAt() {
+        return optTimestamp("changes_scheduled_at");
+    }
+
     public Subscription.ContractTerm contractTerm() {
         return optSubResource("contract_term", Subscription.ContractTerm.class);
     }
@@ -1139,6 +1143,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -1906,6 +1916,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CreateForCustomerRequest metaData(JSONObject metaData) {
             params.addOpt("meta_data", metaData);
             return this;
@@ -2245,6 +2261,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -2724,6 +2746,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public UpdateRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
@@ -2859,8 +2887,16 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
+        public UpdateRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
         public UpdateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -3326,6 +3362,12 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+        public UpdateForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public UpdateForItemsRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
@@ -3461,8 +3503,16 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateForItemsRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
+        public UpdateForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
         public UpdateForItemsRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -4003,6 +4053,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest termsToCharge(Integer termsToCharge) {
             params.addOpt("terms_to_charge", termsToCharge);
+            return this;
+        }
+
+
+        public ReactivateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -5902,6 +5958,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CancelRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public CancelRequest cancelReasonCode(String cancelReasonCode) {
             params.addOpt("cancel_reason_code", cancelReasonCode);
             return this;
@@ -5974,6 +6036,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CancelForItemsRequest contractTermCancelOption(com.chargebee.models.enums.ContractTermCancelOption contractTermCancelOption) {
             params.addOpt("contract_term_cancel_option", contractTermCancelOption);
+            return this;
+        }
+
+
+        public CancelForItemsRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 

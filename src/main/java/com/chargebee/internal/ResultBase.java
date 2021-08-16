@@ -104,6 +104,10 @@ public class ResultBase {
         return (QuotedSubscription)get("quoted_subscription");
     }
 
+    public QuotedCharge quotedCharge() {
+        return (QuotedCharge)get("quoted_charge");
+    }
+
     public QuoteLineGroup quoteLineGroup() {
         return (QuoteLineGroup)get("quote_line_group");
     }
@@ -215,6 +219,7 @@ public class ResultBase {
     public List<DifferentialPrice> differentialPrices() {
         return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
+
 
     private List<? extends Resource> getList(String pluralName, String singularName) {
         JSONArray listModels = jsonObj.optJSONArray(pluralName);

@@ -842,6 +842,8 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+
+
         @Override
         public Params params() {
             return params;

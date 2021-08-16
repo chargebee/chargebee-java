@@ -32,7 +32,7 @@ public class Environment {
 
     public static final String API_VERSION = "v2";
     
-    public static final String LIBRARY_VERSION = "2.8.6";
+    public static final String LIBRARY_VERSION = "2.9.0";
 
     private final String apiBaseUrl;
 
