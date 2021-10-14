@@ -195,7 +195,6 @@ public class CreditNote extends Resource<CreditNote> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }
@@ -908,6 +907,8 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
             return this;
         }
+
+
 
 
         @Override

@@ -173,7 +173,6 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }

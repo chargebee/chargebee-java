@@ -279,7 +279,6 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }

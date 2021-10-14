@@ -180,7 +180,6 @@ public class Quote extends Resource<Quote> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }

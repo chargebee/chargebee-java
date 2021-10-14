@@ -523,6 +523,8 @@ public class Addon extends Resource<Addon> {
         }
 
 
+
+
         public CreateRequest status(Addon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -772,6 +774,8 @@ public class Addon extends Resource<Addon> {
 
 
 
+
+
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
             params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
             return this;
@@ -862,6 +866,8 @@ public class Addon extends Resource<Addon> {
         public StringFilter<AddonListRequest> currencyCode() {
             return new StringFilter<AddonListRequest>("currency_code",this).supportsMultiOperators(true);        
         }
+
+
 
 
         @Override

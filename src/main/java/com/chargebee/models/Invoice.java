@@ -183,7 +183,6 @@ public class Invoice extends Resource<Invoice> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }
@@ -2779,6 +2778,54 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
             return this;
         }
+        public ImportInvoiceRequest lineItemTax5Name(int index, String lineItemTax5Name) {
+            params.addOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax5Amount(int index, Integer lineItemTax5Amount) {
+            params.addOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax6Name(int index, String lineItemTax6Name) {
+            params.addOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax6Amount(int index, Integer lineItemTax6Amount) {
+            params.addOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax7Name(int index, String lineItemTax7Name) {
+            params.addOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax7Amount(int index, Integer lineItemTax7Amount) {
+            params.addOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax8Name(int index, String lineItemTax8Name) {
+            params.addOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax8Amount(int index, Integer lineItemTax8Amount) {
+            params.addOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax9Name(int index, String lineItemTax9Name) {
+            params.addOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax9Amount(int index, Integer lineItemTax9Amount) {
+            params.addOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax10Name(int index, String lineItemTax10Name) {
+            params.addOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax10Amount(int index, Integer lineItemTax10Amount) {
+            params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
         public ImportInvoiceRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {
             params.add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
             return this;
@@ -2958,6 +3005,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
+
+
 
 
 

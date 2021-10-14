@@ -1322,6 +1322,8 @@ public class Customer extends Resource<Customer> {
         }
 
 
+
+
         public CustomerListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
@@ -1492,8 +1494,6 @@ public class Customer extends Resource<Customer> {
             params.addOpt("consolidated_invoicing", consolidatedInvoicing);
             return this;
         }
-
-
 
 
         @Override

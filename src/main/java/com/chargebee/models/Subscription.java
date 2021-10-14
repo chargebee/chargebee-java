@@ -1936,6 +1936,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
 
 
         public CreateForCustomerRequest freePeriod(Integer freePeriod) {
@@ -2285,6 +2289,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateWithItemsRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+            return this;
+        }
 
 
         public CreateWithItemsRequest freePeriod(Integer freePeriod) {
@@ -2909,8 +2917,6 @@ public class Subscription extends Resource<Subscription> {
 
 
 
-
-
         public UpdateRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -3519,8 +3525,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
             return this;
         }
-
-
 
 
 
@@ -4548,6 +4552,8 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
         public ImportSubscriptionRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
@@ -5190,6 +5196,8 @@ public class Subscription extends Resource<Subscription> {
 
 
 
+
+
         public ImportForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
             params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
             return this;
@@ -5592,6 +5600,8 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("resume_date", resumeDate);
             return this;
         }
+
+
 
 
 
