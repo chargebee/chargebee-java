@@ -137,6 +137,14 @@ public class PaymentSource extends Resource<PaymentSource> {
             return optString("name_on_account");
         }
 
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
         public String bankName() {
             return optString("bank_name");
         }
@@ -155,6 +163,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public AccountHolderType accountHolderType() {
             return optEnum("account_holder_type", AccountHolderType.class);
+        }
+
+        public String email() {
+            return optString("email");
         }
 
     }
@@ -307,6 +319,11 @@ public class PaymentSource extends Resource<PaymentSource> {
     public static UpdateCardRequest updateCard(String id) {
         String uri = uri("payment_sources", nullCheck(id), "update_card");
         return new UpdateCardRequest(Method.POST, uri);
+    }
+
+    public static UpdateBankAccountRequest updateBankAccount(String id) {
+        String uri = uri("payment_sources", nullCheck(id), "update_bank_account");
+        return new UpdateBankAccountRequest(Method.POST, uri);
     }
 
     public static VerifyBankAccountRequest verifyBankAccount(String id) {
@@ -828,6 +845,33 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public UpdateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class UpdateBankAccountRequest extends Request<UpdateBankAccountRequest> {
+
+        private UpdateBankAccountRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public UpdateBankAccountRequest bankAccountFirstName(String bankAccountFirstName) {
+            params.addOpt("bank_account[first_name]", bankAccountFirstName);
+            return this;
+        }
+
+        public UpdateBankAccountRequest bankAccountLastName(String bankAccountLastName) {
+            params.addOpt("bank_account[last_name]", bankAccountLastName);
+            return this;
+        }
+
+        public UpdateBankAccountRequest bankAccountEmail(String bankAccountEmail) {
+            params.addOpt("bank_account[email]", bankAccountEmail);
             return this;
         }
 

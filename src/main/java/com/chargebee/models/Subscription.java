@@ -850,7 +850,6 @@ public class Subscription extends Resource<Subscription> {
 
     public static Request retrieve(String id) {
         String uri = uri("subscriptions", nullCheck(id));
-
         return new Request(Method.GET, uri);
     }
 

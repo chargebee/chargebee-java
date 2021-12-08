@@ -292,6 +292,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CreateRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CreateRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;

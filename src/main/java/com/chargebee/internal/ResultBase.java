@@ -68,6 +68,10 @@ public class ResultBase {
         return (Invoice)get("invoice");
     }
 
+    public TaxWithheld taxWithheld() {
+        return (TaxWithheld)get("tax_withheld");
+    }
+
     public CreditNote creditNote() {
         return (CreditNote)get("credit_note");
     }

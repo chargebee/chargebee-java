@@ -1534,6 +1534,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CreateRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CreateRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -2061,6 +2065,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateForChargeItemsAndChargesRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
             return this;
         }
         public CreateForChargeItemsAndChargesRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {

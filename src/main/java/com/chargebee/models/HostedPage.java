@@ -992,6 +992,10 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CheckoutOneTimeRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CheckoutOneTimeRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -1028,6 +1032,8 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+
+
         public CheckoutOneTimeForItemsRequest invoiceNote(String invoiceNote) {
             params.addOpt("invoice_note", invoiceNote);
             return this;
@@ -1359,6 +1365,10 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CheckoutOneTimeForItemsRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CheckoutOneTimeForItemsRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -1395,6 +1405,8 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+
+
         public CheckoutNewForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -2098,6 +2110,8 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+
+
         public CheckoutExistingForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;

@@ -18,7 +18,7 @@ public class Environment {
      * established, a java.net.SocketTimeoutException is raised. A timeout of
      * zero is interpreted as an infinite timeout.
      */
-    public  int connectTimeout = Integer.getInteger("com.chargebee.api.http.timeout.connect", 15000);
+    public int connectTimeout = Integer.getInteger("com.chargebee.api.http.timeout.connect", 30000);
 
     /**
      * Timeout value, in milliseconds, to be used when reading response from the
@@ -26,13 +26,13 @@ public class Environment {
      * for read, a java.net.SocketTimeoutException is raised. A timeout of zero
      * is interpreted as an infinite timeout.
      */
-    public  int readTimeout = Integer.getInteger("com.chargebee.api.http.timeout.read", 60000);
+    public int readTimeout = Integer.getInteger("com.chargebee.api.http.timeout.read", 80000);
 
     public static final String CHARSET = "UTF-8";
 
     public static final String API_VERSION = "v2";
     
-    public static final String LIBRARY_VERSION = "2.10.0";
+    public static final String LIBRARY_VERSION = "2.11.0";
 
     private final String apiBaseUrl;
 
@@ -74,6 +74,14 @@ public class Environment {
 
     public String apiBaseUrl() {
         return this.apiBaseUrl;
+    }
+
+    public static void updateConnectTimeoutInMillis(int connectTimeout) {
+        Environment.defaultEnv.connectTimeout = connectTimeout;
+    }
+
+    public static void updateReadTimeoutInMillis(int readTimeout) {
+        Environment.defaultEnv.readTimeout = readTimeout;
     }
 
 }

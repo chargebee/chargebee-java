@@ -3076,6 +3076,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CreateInvoiceRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CreateInvoiceRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -3344,6 +3348,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
             return this;
         }
         public CreateInvoiceForItemsRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {

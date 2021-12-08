@@ -110,6 +110,10 @@ public class ItemPrice extends Resource<ItemPrice> {
             return optString("avalara_tax_code");
         }
 
+        public String hsnCode() {
+            return optString("hsn_code");
+        }
+
         public String taxjarProductCode() {
             return optString("taxjar_product_code");
         }
@@ -335,6 +339,16 @@ public class ItemPrice extends Resource<ItemPrice> {
         return new Request(Method.POST, uri);
     }
 
+    public static ItemPriceFindApplicableItemsRequest findApplicableItems(String id) {
+        String uri = uri("item_prices", nullCheck(id), "applicable_items");
+        return new ItemPriceFindApplicableItemsRequest(uri);
+    }
+
+    public static ItemPriceFindApplicableItemPricesRequest findApplicableItemPrices(String id) {
+        String uri = uri("item_prices", nullCheck(id), "applicable_item_prices");
+        return new ItemPriceFindApplicableItemPricesRequest(uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -498,6 +512,11 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest taxDetailAvalaraTaxCode(String taxDetailAvalaraTaxCode) {
             params.addOpt("tax_detail[avalara_tax_code]", taxDetailAvalaraTaxCode);
+            return this;
+        }
+
+        public CreateRequest taxDetailHsnCode(String taxDetailHsnCode) {
+            params.addOpt("tax_detail[hsn_code]", taxDetailHsnCode);
             return this;
         }
 
@@ -737,6 +756,11 @@ public class ItemPrice extends Resource<ItemPrice> {
             return this;
         }
 
+        public UpdateRequest taxDetailHsnCode(String taxDetailHsnCode) {
+            params.addOpt("tax_detail[hsn_code]", taxDetailHsnCode);
+            return this;
+        }
+
         public UpdateRequest taxDetailAvalaraSaleType(com.chargebee.models.enums.AvalaraSaleType taxDetailAvalaraSaleType) {
             params.addOpt("tax_detail[avalara_sale_type]", taxDetailAvalaraSaleType);
             return this;
@@ -899,6 +923,64 @@ public class ItemPrice extends Resource<ItemPrice> {
             return this;
         }
         public ItemPriceListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ItemPriceFindApplicableItemsRequest extends ListRequest<ItemPriceFindApplicableItemsRequest> {
+
+        private ItemPriceFindApplicableItemsRequest(String uri) {
+            super(uri);
+        }
+    
+        public ItemPriceFindApplicableItemsRequest sortByName(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","name");
+            return this;
+        }
+        public ItemPriceFindApplicableItemsRequest sortById(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","id");
+            return this;
+        }
+        public ItemPriceFindApplicableItemsRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ItemPriceFindApplicableItemPricesRequest extends ListRequest<ItemPriceFindApplicableItemPricesRequest> {
+
+        private ItemPriceFindApplicableItemPricesRequest(String uri) {
+            super(uri);
+        }
+    
+        public ItemPriceFindApplicableItemPricesRequest itemId(String itemId) {
+            params.addOpt("item_id", itemId);
+            return this;
+        }
+
+
+        public ItemPriceFindApplicableItemPricesRequest sortByName(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","name");
+            return this;
+        }
+        public ItemPriceFindApplicableItemPricesRequest sortById(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","id");
+            return this;
+        }
+        public ItemPriceFindApplicableItemPricesRequest sortByUpdatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
             return this;
         }
