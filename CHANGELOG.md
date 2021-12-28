@@ -1,3 +1,76 @@
+### v2.11.0 (2021-12-08)
+* * *
+
+### Fixes:
+* Exposed function Environment#updateConnectTimeoutInMillis and Environment#updateReadTimeoutInMillis to set custom connect and read timeout.
+* Updated default request connect and read timeout to 30000ms and 80000ms respectively.
+
+#### New endpoints:
+* payment_sources#update_bank_account have been added in payment_sources resource.
+* item_price#item_price_find_applicable_items and item_price#item_price_find_applicable_item_prices have been added in item_price resource.
+
+#### New Attributes:
+* hsn_code have been added to the resource addon, item_price and plan.
+* first_name, last_name and email have been added to the resource payment_sources.
+
+#### New Resource:
+* TaxWithheld has been added.Applicable only for API V2. 
+
+#### New Input parameters:
+* hsn_code have been added to addons#create_an_addon, addons#update_an_addon, plan#create_an_plan and plan#update_an_plan  apis.
+* bank_account[first_name],bank_account[last_name] and bank_account[email] have been added to payment_sources#update_bank_account api.
+* charges[hsn_code] have been added in estimate#Create_Invoice, estimate#Create_Invoice_For_Items, hosted_pages#Checkout_One_Time, hosted_pages#Checkout_One_Time_For_Items, invoice#create_an_invoice, invoice#Create_For_Charge_Items_And_Charges and unbilledCharge#create_an_unbilledCharge apis.
+* tax_detail[hsn_code] have been added in item_price#create_an_itemPrice and item_price#update_an_itemPrice apis.
+* include_deleted have been added in plan#plan_list and addon#addon_list apis.Applicable only for Product Catalog V1.
+
+#### New Enum values:
+* subscription_activated_with_backdating, tax_withheld_recorded, tax_withheld_deleted and tax_withheld_refunded has been added to event_type enum.
+
+### v2.10.0 (2021-10-14)
+* * *
+
+#### Fixes:
+* Updated junit lib from 4.10 to 4.13.1 version.
+
+#### New Attributes:
+* entity_id has been added in order_line_item_discounts resource.
+
+#### New Input parameters:
+* line_items[tax5_name], line_items[tax5_amount], line_items[tax6_name], line_items[tax6_amount], line_items[tax7_name], line_items[tax7_amount], line_items[tax8_name], line_items[tax8_amount], line_items[tax9_name],  line_items[tax9_amount], line_items[tax10_name], line_items[tax10_amount] have been added in import_invoice api.
+* replace_primary_payment_source has been added in create_subscription_for_customer and create_subscription_for_items apis.
+
+#### New Enum values:
+* coupon_expired has been added to event_type enum.
+* mollie has been added to gateway enum.
+* item_level_discount and document_level_discount has been added to discount_type.
+
+### v2.9.0 (2021-08-16)
+* * *
+
+#### New Attributes:
+* generated_at has been added in credit_note and invoice resources.
+* change_option have been added in quoted_subscription resource.
+* changes_scheduled_at has been added in subscription and quoted_subscription resources.
+* iin and last4 have been added in transaction resource.
+
+#### New Resource:
+* quoted_charge has been added. 
+
+#### New Input parameters:
+* invoice_date has been added in estimates##create_subscription_estimate, estimates#estimate_for_creating_a_customer_and_subscription, estimates#estimate_for_creating_a_subscription, estimates#create_subscription_for_a_customer_estimate, estimates#update_subscription_estimate, estimates#estimate_for_updating_a_subscription, estimates#cancel_subscription_estimate, estimates#cancel_subscription_for_items_estimate, estimates#create_invoice_for_items_estimate, estimates#create_invoice_estimate, hosted_pages#checkout_existing_subscription, hosted_pages#create_checkout_to_update_a_subscription, invoices#create_an_invoice, invoices#create_invoice_for_items_and_one-time_charges, subscriptions#create_a_subscription, subscriptions#create_subscription_for_customer, subscriptions#update_a_subscription, subscriptions#create_subscription_for_items, subscriptions#update_subscription_for_items, subscriptions#reactivate_a_subscription, subscriptions#cancel_subscription_for_items and subscriptions#cancel_a_subscription endpoints.
+* coupon_ids has been added to invoices#create_invoice_for_a_one-time_charge, invoice#create_invoice_for_a_non-recurring_addon, quotes#create_quote_for_one-time_charges, quotes#edit_quote_for_one-time_charges, quotes#create_a_quote_for_charge_and_charge_items, quotes#edit_quote_for_charge_items_and_charges endpoints.
+* change_option and changes_scheduled_at have been added in quotes#create_quote_for_updating_a_subscription, quotes#edit_quote_for_updating_a_subscription, quotes#create_a_quote_for_update_subscription_items, quotes#edit_update_subscription_quote_for_items, subscriptions#update_a_subscription and subscriptions#create_subscription_for_items endpoints.
+* invoice_date, create_pending_invoices and first_invoice_pending have been added in quotes#convert_a_quote endpoint.
+* subscription[auto_close_invoices] has been added in quotes#convert_a_quote endpoint.
+
+#### New Enum values:
+* subscription_cancel has been added to charge_event enum in quote_line_groups resource.
+* subscription_created_with_backdating, subscription_changed_with_backdating, subscription_canceled_with_backdating, subscription_reactivated_with_backdating, invoice_generated_with_backdating and credit_note_created_with_backdating have been added to event_type enum 
+* change_option enum has been added.
+
+#### Deprecated parameters:
+* coupon has been deprecated in invoices#create_invoice_for_a_one-time_charge and invoices#create_invoice_for_a_non-recurring_addon endpoints.
+
 ### v2.8.6 (2021-07-22)
 * * *
 #### New endpoints:

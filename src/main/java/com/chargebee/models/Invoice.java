@@ -8,9 +8,9 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
-import java.math.BigDecimal;
 
 public class Invoice extends Resource<Invoice> {
 
@@ -183,7 +183,6 @@ public class Invoice extends Resource<Invoice> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }
@@ -830,6 +829,10 @@ public class Invoice extends Resource<Invoice> {
         return reqBoolean("is_gifted");
     }
 
+    public Timestamp generatedAt() {
+        return optTimestamp("generated_at");
+    }
+
     public Timestamp expectedPaymentDate() {
         return optTimestamp("expected_payment_date");
     }
@@ -1088,6 +1091,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest currencyCode(String currencyCode) {
             params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -1525,6 +1534,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CreateRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CreateRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -1636,6 +1649,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
+            return this;
+        }
+
+
+        public CreateForChargeItemsAndChargesRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -2048,6 +2067,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
         public CreateForChargeItemsAndChargesRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
             params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
             return this;
@@ -2181,6 +2204,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public ChargeRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
             return this;
@@ -2276,6 +2305,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeAddonRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
+            return this;
+        }
+
+
         public ChargeAddonRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
             return this;
@@ -2320,6 +2355,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest invoiceDate(Timestamp invoiceDate) {
+            params.addOpt("invoice_date", invoiceDate);
             return this;
         }
 
@@ -2745,6 +2786,54 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
             return this;
         }
+        public ImportInvoiceRequest lineItemTax5Name(int index, String lineItemTax5Name) {
+            params.addOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax5Amount(int index, Integer lineItemTax5Amount) {
+            params.addOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax6Name(int index, String lineItemTax6Name) {
+            params.addOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax6Amount(int index, Integer lineItemTax6Amount) {
+            params.addOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax7Name(int index, String lineItemTax7Name) {
+            params.addOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax7Amount(int index, Integer lineItemTax7Amount) {
+            params.addOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax8Name(int index, String lineItemTax8Name) {
+            params.addOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax8Amount(int index, Integer lineItemTax8Amount) {
+            params.addOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax9Name(int index, String lineItemTax9Name) {
+            params.addOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax9Amount(int index, Integer lineItemTax9Amount) {
+            params.addOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax10Name(int index, String lineItemTax10Name) {
+            params.addOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemTax10Amount(int index, Integer lineItemTax10Amount) {
+            params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
         public ImportInvoiceRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {
             params.add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
             return this;
@@ -2924,6 +3013,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
+
+
 
 
 

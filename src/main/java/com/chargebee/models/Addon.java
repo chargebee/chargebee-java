@@ -165,6 +165,10 @@ public class Addon extends Resource<Addon> {
         return optString("tax_code");
     }
 
+    public String hsnCode() {
+        return optString("hsn_code");
+    }
+
     public String taxjarProductCode() {
         return optString("taxjar_product_code");
     }
@@ -424,6 +428,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public CreateRequest hsnCode(String hsnCode) {
+            params.addOpt("hsn_code", hsnCode);
+            return this;
+        }
+
+
         public CreateRequest taxjarProductCode(String taxjarProductCode) {
             params.addOpt("taxjar_product_code", taxjarProductCode);
             return this;
@@ -518,6 +528,8 @@ public class Addon extends Resource<Addon> {
             params.addOpt("price_in_decimal", priceInDecimal);
             return this;
         }
+
+
 
 
         public CreateRequest status(Addon.Status status) {
@@ -671,6 +683,12 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public UpdateRequest hsnCode(String hsnCode) {
+            params.addOpt("hsn_code", hsnCode);
+            return this;
+        }
+
+
         public UpdateRequest taxjarProductCode(String taxjarProductCode) {
             params.addOpt("taxjar_product_code", taxjarProductCode);
             return this;
@@ -769,6 +787,8 @@ public class Addon extends Resource<Addon> {
 
 
 
+
+
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
             params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
             return this;
@@ -858,6 +878,14 @@ public class Addon extends Resource<Addon> {
 
         public StringFilter<AddonListRequest> currencyCode() {
             return new StringFilter<AddonListRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
+
+
+        public AddonListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
         }
 
 

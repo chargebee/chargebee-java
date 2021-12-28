@@ -195,7 +195,6 @@ public class CreditNote extends Resource<CreditNote> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
-        @Deprecated
         public String couponId() {
             return optString("coupon_id");
         }
@@ -469,6 +468,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public Timestamp voidedAt() {
         return optTimestamp("voided_at");
+    }
+
+    public Timestamp generatedAt() {
+        return optTimestamp("generated_at");
     }
 
     public Long resourceVersion() {
@@ -904,6 +907,8 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","date");
             return this;
         }
+
+
 
 
         @Override

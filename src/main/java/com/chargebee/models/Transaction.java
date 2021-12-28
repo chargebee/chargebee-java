@@ -8,9 +8,9 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
-import java.math.BigDecimal;
 
 public class Transaction extends Resource<Transaction> {
 
@@ -346,6 +346,14 @@ public class Transaction extends Resource<Transaction> {
 
     public Boolean deleted() {
         return reqBoolean("deleted");
+    }
+
+    public String iin() {
+        return optString("iin");
+    }
+
+    public String last4() {
+        return optString("last4");
     }
 
     public String merchantReferenceId() {

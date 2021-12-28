@@ -1,19 +1,9 @@
 package com.chargebee.models.enums;
 
-public enum EntityType {
-    CUSTOMER,
-    SUBSCRIPTION,
-    INVOICE,
-    QUOTE,
-    CREDIT_NOTE,
-    TRANSACTION,
-    PLAN,
-    ADDON,
-    COUPON,
-    ORDER,
-    ITEM_FAMILY,
-    ITEM,
-    ITEM_PRICE,
+public enum ChangeOption {
+    IMMEDIATELY,
+    END_OF_TERM,
+    SPECIFIC_DATE,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

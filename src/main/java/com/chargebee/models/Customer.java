@@ -913,6 +913,8 @@ public class Customer extends Resource<Customer> {
 
 
 
+
+
         public CreateRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
             return this;
@@ -1318,6 +1320,8 @@ public class Customer extends Resource<Customer> {
         public BooleanFilter<CustomerListRequest> autoCloseInvoices() {
             return new BooleanFilter<CustomerListRequest>("auto_close_invoices",this);        
         }
+
+
 
 
         public CustomerListRequest sortByCreatedAt(SortOrder order) {

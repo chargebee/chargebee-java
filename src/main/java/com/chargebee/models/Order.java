@@ -352,7 +352,7 @@ public class Order extends Resource<Order> {
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,CUSTOM_DISCOUNT,
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,CUSTOM_DISCOUNT,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -369,8 +369,13 @@ public class Order extends Resource<Order> {
             return reqEnum("discount_type", DiscountType.class);
         }
 
+        @Deprecated
         public String couponId() {
             return optString("coupon_id");
+        }
+
+        public String entityId() {
+            return optString("entity_id");
         }
 
         public Integer discountAmount() {
@@ -1289,6 +1294,12 @@ public class Order extends Resource<Order> {
         }
 
 
+        public CancelRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
         public CancelRequest cancelledAt(Timestamp cancelledAt) {
             params.addOpt("cancelled_at", cancelledAt);
             return this;
@@ -1314,6 +1325,12 @@ public class Order extends Resource<Order> {
     
         public CreateRefundableCreditNoteRequest customerNotes(String customerNotes) {
             params.addOpt("customer_notes", customerNotes);
+            return this;
+        }
+
+
+        public CreateRefundableCreditNoteRequest comment(String comment) {
+            params.addOpt("comment", comment);
             return this;
         }
 

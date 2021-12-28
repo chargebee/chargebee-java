@@ -17,6 +17,14 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum ChangeOption {
+        END_OF_TERM,
+        SPECIFIC_DATE,
+        IMMEDIATELY,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class Addon extends Resource<Addon> {
         public Addon(JSONObject jsonObj) {
             super(jsonObj);
@@ -113,18 +121,6 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
 
         public String couponId() {
             return reqString("coupon_id");
-        }
-
-        public Timestamp applyTill() {
-            return optTimestamp("apply_till");
-        }
-
-        public Integer appliedCount() {
-            return reqInteger("applied_count");
-        }
-
-        public String couponCode() {
-            return optString("coupon_code");
         }
 
     }
@@ -362,6 +358,14 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
 
     public String planUnitPriceInDecimal() {
         return optString("plan_unit_price_in_decimal");
+    }
+
+    public Timestamp changesScheduledAt() {
+        return optTimestamp("changes_scheduled_at");
+    }
+
+    public ChangeOption changeOption() {
+        return optEnum("change_option", ChangeOption.class);
     }
 
     public Integer contractTermBillingCycleOnRenewal() {

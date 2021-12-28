@@ -119,12 +119,6 @@ public class AttachedItem extends Resource<AttachedItem> {
         return new AttachedItemListRequest(uri);
     }
 
-    @Deprecated
-    public static AttachedItemListInternalRequest listInternal() {
-        String uri = uri("attached_items", "list_internal");
-        return new AttachedItemListInternalRequest(uri);
-    }
-
 
     // Operation Request Classes
     //==========================
@@ -301,48 +295,6 @@ public class AttachedItem extends Resource<AttachedItem> {
 
         public EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemListRequest> chargeOnEvent() {
             return new EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemListRequest>("charge_on_event",this);        
-        }
-
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class AttachedItemListInternalRequest extends ListRequest<AttachedItemListInternalRequest> {
-
-        private AttachedItemListInternalRequest(String uri) {
-            super(uri);
-        }
-    
-        public StringFilter<AttachedItemListInternalRequest> id() {
-            return new StringFilter<AttachedItemListInternalRequest>("id",this).supportsMultiOperators(true);        
-        }
-
-
-        public StringFilter<AttachedItemListInternalRequest> itemId() {
-            return new StringFilter<AttachedItemListInternalRequest>("item_id",this).supportsMultiOperators(true);        
-        }
-
-
-        public EnumFilter<AttachedItem.Type, AttachedItemListInternalRequest> type() {
-            return new EnumFilter<AttachedItem.Type, AttachedItemListInternalRequest>("type",this);        
-        }
-
-
-        public EnumFilter<com.chargebee.models.enums.ItemType, AttachedItemListInternalRequest> itemType() {
-            return new EnumFilter<com.chargebee.models.enums.ItemType, AttachedItemListInternalRequest>("item_type",this);        
-        }
-
-
-        public EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemListInternalRequest> chargeOnEvent() {
-            return new EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemListInternalRequest>("charge_on_event",this);        
-        }
-
-
-        public StringFilter<AttachedItemListInternalRequest> parentItemId() {
-            return new StringFilter<AttachedItemListInternalRequest>("parent_item_id",this).supportsMultiOperators(true);        
         }
 
 

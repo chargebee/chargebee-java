@@ -68,6 +68,10 @@ public class ResultBase {
         return (Invoice)get("invoice");
     }
 
+    public TaxWithheld taxWithheld() {
+        return (TaxWithheld)get("tax_withheld");
+    }
+
     public CreditNote creditNote() {
         return (CreditNote)get("credit_note");
     }
@@ -102,6 +106,10 @@ public class ResultBase {
 
     public QuotedSubscription quotedSubscription() {
         return (QuotedSubscription)get("quoted_subscription");
+    }
+
+    public QuotedCharge quotedCharge() {
+        return (QuotedCharge)get("quoted_charge");
     }
 
     public QuoteLineGroup quoteLineGroup() {
@@ -215,6 +223,7 @@ public class ResultBase {
     public List<DifferentialPrice> differentialPrices() {
         return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
+
 
     private List<? extends Resource> getList(String pluralName, String singularName) {
         JSONArray listModels = jsonObj.optJSONArray(pluralName);
