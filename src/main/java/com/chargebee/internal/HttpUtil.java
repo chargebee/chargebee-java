@@ -203,7 +203,15 @@ public class HttpUtil {
         try {
             obj = new JSONObject(content);
         } catch (JSONException exp) {
-            throw new RuntimeException("Not in JSON format. Probably not a ChargeBee response. \n " + content,exp);
+            if (content.contains("503")){
+                 throw new RuntimeException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content,exp);
+            }
+            else if (content.contains("504")){
+                 throw new RuntimeException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content,exp);
+            }
+            else{
+                 throw new RuntimeException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n " + content,exp);
+            }
         }
         return obj;
     }
