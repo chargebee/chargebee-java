@@ -1668,6 +1668,21 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public CreateRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+            return this;
+        }
+
+        public CreateRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
         public CreateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -1698,6 +1713,22 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public CreateRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public CreateRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public CreateRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+            return this;
+        }
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -2629,11 +2660,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public BooleanFilter<SubscriptionListRequest> createPendingInvoices() {
-            return new BooleanFilter<SubscriptionListRequest>("create_pending_invoices",this);        
-        }
-
-
         public BooleanFilter<SubscriptionListRequest> overrideRelationship() {
             return new BooleanFilter<SubscriptionListRequest>("override_relationship",this);        
         }
@@ -3243,6 +3269,21 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
             params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
+        public UpdateRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public UpdateRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public UpdateRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
             return this;
         }
 
@@ -3869,6 +3910,21 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
             params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
+        public UpdateForItemsRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public UpdateForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public UpdateForItemsRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
             return this;
         }
 

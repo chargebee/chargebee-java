@@ -675,6 +675,31 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class Einvoice extends Resource<Einvoice> {
+        public enum Status {
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Einvoice(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public String message() {
+            return optString("message");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -905,6 +930,10 @@ public class Invoice extends Resource<Invoice> {
         return optSubResource("billing_address", Invoice.BillingAddress.class);
     }
 
+    public Invoice.Einvoice einvoice() {
+        return optSubResource("einvoice", Invoice.Einvoice.class);
+    }
+
     public String paymentOwner() {
         return optString("payment_owner");
     }
@@ -995,6 +1024,11 @@ public class Invoice extends Resource<Invoice> {
     public static PdfRequest pdf(String id) {
         String uri = uri("invoices", nullCheck(id), "pdf");
         return new PdfRequest(Method.POST, uri);
+    }
+
+    public static Request downloadEinvoice(String id) {
+        String uri = uri("invoices", nullCheck(id), "download_einvoice");
+        return new Request(Method.GET, uri);
     }
 
     public static AddChargeRequest addCharge(String id) {

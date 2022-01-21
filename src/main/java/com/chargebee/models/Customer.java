@@ -278,6 +278,29 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class EntityIdentifier extends Resource<EntityIdentifier> {
+        public EntityIdentifier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String value() {
+            return optString("value");
+        }
+
+        public String scheme() {
+            return reqString("scheme");
+        }
+
+        public String standard() {
+            return optString("standard");
+        }
+
+    }
+
     public static class Relationship extends Resource<Relationship> {
         public Relationship(JSONObject jsonObj) {
             super(jsonObj);
@@ -566,6 +589,14 @@ public class Customer extends Resource<Customer> {
         return optList("balances", Customer.Balance.class);
     }
 
+    public List<Customer.EntityIdentifier> entityIdentifiers() {
+        return optList("entity_identifiers", Customer.EntityIdentifier.class);
+    }
+
+    public Boolean isEinvoiceEnabled() {
+        return optBoolean("is_einvoice_enabled");
+    }
+
     public JSONObject metaData() {
         return optJSONObject("meta_data");
     }
@@ -612,6 +643,14 @@ public class Customer extends Resource<Customer> {
 
     public String vatNumberPrefix() {
         return optString("vat_number_prefix");
+    }
+
+    public String entityIdentifierScheme() {
+        return optString("entity_identifier_scheme");
+    }
+
+    public String entityIdentifierStandard() {
+        return optString("entity_identifier_standard");
     }
 
     // Operations
@@ -827,8 +866,26 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CreateRequest entityIdentifierScheme(String entityIdentifierScheme) {
+            params.addOpt("entity_identifier_scheme", entityIdentifierScheme);
+            return this;
+        }
+
+
+        public CreateRequest entityIdentifierStandard(String entityIdentifierStandard) {
+            params.addOpt("entity_identifier_standard", entityIdentifierStandard);
+            return this;
+        }
+
+
         public CreateRequest registeredForGst(Boolean registeredForGst) {
             params.addOpt("registered_for_gst", registeredForGst);
+            return this;
+        }
+
+
+        public CreateRequest isEinvoiceEnabled(Boolean isEinvoiceEnabled) {
+            params.addOpt("is_einvoice_enabled", isEinvoiceEnabled);
             return this;
         }
 
@@ -1244,6 +1301,22 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public CreateRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public CreateRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public CreateRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -1568,6 +1641,18 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public UpdateBillingInfoRequest entityIdentifierScheme(String entityIdentifierScheme) {
+            params.addOpt("entity_identifier_scheme", entityIdentifierScheme);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest entityIdentifierStandard(String entityIdentifierStandard) {
+            params.addOpt("entity_identifier_standard", entityIdentifierStandard);
+            return this;
+        }
+
+
         public UpdateBillingInfoRequest registeredForGst(Boolean registeredForGst) {
             params.addOpt("registered_for_gst", registeredForGst);
             return this;
@@ -1576,6 +1661,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest businessCustomerWithoutVatNumber(Boolean businessCustomerWithoutVatNumber) {
             params.addOpt("business_customer_without_vat_number", businessCustomerWithoutVatNumber);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest isEinvoiceEnabled(Boolean isEinvoiceEnabled) {
+            params.addOpt("is_einvoice_enabled", isEinvoiceEnabled);
             return this;
         }
 
@@ -1650,6 +1741,26 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public UpdateBillingInfoRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public UpdateBillingInfoRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public UpdateBillingInfoRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public UpdateBillingInfoRequest entityIdentifierOperation(int index, com.chargebee.models.enums.Operation entityIdentifierOperation) {
+            params.addOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+            return this;
+        }
+        public UpdateBillingInfoRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2356,7 +2467,7 @@ public class Customer extends Resource<Customer> {
         }
     
         public HierarchyRequest hierarchyOperationType(com.chargebee.models.enums.HierarchyOperationType hierarchyOperationType) {
-            params.addOpt("hierarchy_operation_type", hierarchyOperationType);
+            params.add("hierarchy_operation_type", hierarchyOperationType);
             return this;
         }
 

@@ -313,6 +313,8 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+
+
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
             return this;

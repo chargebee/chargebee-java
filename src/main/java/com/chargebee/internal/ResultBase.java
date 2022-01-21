@@ -216,6 +216,10 @@ public class ResultBase {
         return (List<Hierarchy>) getList("hierarchies", "hierarchy");
     }
 
+    public List<Download> downloads() {
+        return (List<Download>) getList("downloads", "download");
+    }
+
     public List<Invoice> invoices() {
         return (List<Invoice>) getList("invoices", "invoice");
     }

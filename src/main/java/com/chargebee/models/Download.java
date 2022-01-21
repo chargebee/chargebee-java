@@ -35,6 +35,10 @@ public class Download extends Resource<Download> {
         return reqTimestamp("valid_till");
     }
 
+    public String mimeType() {
+        return optString("mime_type");
+    }
+
     // Operations
     //===========
 

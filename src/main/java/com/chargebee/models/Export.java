@@ -41,6 +41,10 @@ public class Export extends Resource<Export> {
             return reqTimestamp("valid_till");
         }
 
+        public String mimeType() {
+            return optString("mime_type");
+        }
+
     }
 
     //Constructors

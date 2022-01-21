@@ -46,6 +46,31 @@ public class CreditNote extends Resource<CreditNote> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class Einvoice extends Resource<Einvoice> {
+        public enum Status {
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Einvoice(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public String message() {
+            return optString("message");
+        }
+
+    }
+
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
              PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
@@ -482,6 +507,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optTimestamp("updated_at");
     }
 
+    public CreditNote.Einvoice einvoice() {
+        return optSubResource("einvoice", CreditNote.Einvoice.class);
+    }
+
     public Integer subTotal() {
         return reqInteger("sub_total");
     }
@@ -566,6 +595,11 @@ public class CreditNote extends Resource<CreditNote> {
     public static PdfRequest pdf(String id) {
         String uri = uri("credit_notes", nullCheck(id), "pdf");
         return new PdfRequest(Method.POST, uri);
+    }
+
+    public static Request downloadEinvoice(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "download_einvoice");
+        return new Request(Method.GET, uri);
     }
 
     public static RefundRequest refund(String id) {
