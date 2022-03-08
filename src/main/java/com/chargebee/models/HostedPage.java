@@ -691,6 +691,13 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        @Deprecated
+        public CheckoutOneTimeRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
         public CheckoutOneTimeRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -1042,6 +1049,13 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        @Deprecated
+        public CheckoutOneTimeForItemsRequest coupon(String coupon) {
+            params.addOpt("coupon", coupon);
+            return this;
+        }
+
+
         public CheckoutOneTimeForItemsRequest couponIds(List<String> couponIds) {
             params.addOpt("coupon_ids", couponIds);
             return this;
@@ -1139,6 +1153,21 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutOneTimeForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
             params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public CheckoutOneTimeForItemsRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
             return this;
         }
 
@@ -1395,6 +1424,26 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        public CheckoutOneTimeForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest entityIdentifierOperation(int index, com.chargebee.models.enums.Operation entityIdentifierOperation) {
+            params.addOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -1578,6 +1627,21 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
             params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
             return this;
         }
 
@@ -1816,6 +1880,26 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutNewForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public CheckoutNewForItemsRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public CheckoutNewForItemsRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public CheckoutNewForItemsRequest entityIdentifierOperation(int index, com.chargebee.models.enums.Operation entityIdentifierOperation) {
+            params.addOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+            return this;
+        }
+        public CheckoutNewForItemsRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
             return this;
         }
         @Override
@@ -2264,6 +2348,21 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
+            params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public CheckoutExistingForItemsRequest customerEntityIdentifierScheme(String customerEntityIdentifierScheme) {
+            params.addOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+            return this;
+        }
+
+        public CheckoutExistingForItemsRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
+            params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+            return this;
+        }
+
         @Deprecated
         public CheckoutExistingForItemsRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -2365,6 +2464,26 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {
+            params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest entityIdentifierScheme(int index, String entityIdentifierScheme) {
+            params.addOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest entityIdentifierValue(int index, String entityIdentifierValue) {
+            params.addOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest entityIdentifierOperation(int index, com.chargebee.models.enums.Operation entityIdentifierOperation) {
+            params.addOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest entityIdentifierStandard(int index, String entityIdentifierStandard) {
+            params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
             return this;
         }
         @Override
@@ -2597,6 +2716,8 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("redirect_url", redirectUrl);
             return this;
         }
+
+
 
 
         public AcceptQuoteRequest quoteId(String quoteId) {

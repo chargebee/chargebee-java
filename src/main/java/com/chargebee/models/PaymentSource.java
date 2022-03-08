@@ -108,7 +108,7 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public static class BankAccount extends Resource<BankAccount> {
         public enum AccountType {
-             CHECKING,SAVINGS,BUSINESS_CHECKING,
+             CHECKING,SAVINGS,BUSINESS_CHECKING,CURRENT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -186,6 +186,17 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     }
 
+    public static class Upi extends Resource<Upi> {
+        public Upi(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String vpa() {
+            return optString("vpa");
+        }
+
+    }
+
     public static class Paypal extends Resource<Paypal> {
         public Paypal(JSONObject jsonObj) {
             super(jsonObj);
@@ -197,6 +208,25 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public String agreementId() {
             return optString("agreement_id");
+        }
+
+    }
+
+    public static class Mandate extends Resource<Mandate> {
+        public Mandate(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String subscriptionId() {
+            return reqString("subscription_id");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
         }
 
     }
@@ -275,8 +305,16 @@ public class PaymentSource extends Resource<PaymentSource> {
         return optSubResource("amazon_payment", PaymentSource.AmazonPayment.class);
     }
 
+    public PaymentSource.Upi upi() {
+        return optSubResource("upi", PaymentSource.Upi.class);
+    }
+
     public PaymentSource.Paypal paypal() {
         return optSubResource("paypal", PaymentSource.Paypal.class);
+    }
+
+    public List<PaymentSource.Mandate> mandates() {
+        return optList("mandates", PaymentSource.Mandate.class);
     }
 
     public Boolean deleted() {
@@ -540,6 +578,11 @@ public class PaymentSource extends Resource<PaymentSource> {
             return this;
         }
 
+        public CreateUsingPaymentIntentRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public CreateUsingPaymentIntentRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -721,6 +764,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateBankAccountRequest bankAccountEmail(String bankAccountEmail) {
             params.addOpt("bank_account[email]", bankAccountEmail);
+            return this;
+        }
+
+        public CreateBankAccountRequest bankAccountPhone(String bankAccountPhone) {
+            params.addOpt("bank_account[phone]", bankAccountPhone);
             return this;
         }
 
@@ -911,6 +959,12 @@ public class PaymentSource extends Resource<PaymentSource> {
             super(uri);
         }
     
+        public PaymentSourceListRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
         public StringFilter<PaymentSourceListRequest> customerId() {
             return new StringFilter<PaymentSourceListRequest>("customer_id",this).supportsMultiOperators(true);        
         }

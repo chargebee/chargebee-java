@@ -2558,6 +2558,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public GiftSubscriptionRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public GiftSubscriptionRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -2765,6 +2770,11 @@ public class Estimate extends Resource<Estimate> {
 
         public GiftSubscriptionForItemsRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public GiftSubscriptionForItemsRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 

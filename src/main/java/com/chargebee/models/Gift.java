@@ -283,6 +283,11 @@ public class Gift extends Resource<Gift> {
             return this;
         }
 
+        public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public CreateRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -494,6 +499,11 @@ public class Gift extends Resource<Gift> {
 
         public CreateForItemsRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateForItemsRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 

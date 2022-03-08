@@ -1323,6 +1323,11 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public CreateRequest bankAccountPhone(String bankAccountPhone) {
+            params.addOpt("bank_account[phone]", bankAccountPhone);
+            return this;
+        }
+
         public CreateRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
@@ -1497,6 +1502,11 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
@@ -1828,6 +1838,11 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public CreateForChargeItemsAndChargesRequest bankAccountPhone(String bankAccountPhone) {
+            params.addOpt("bank_account[phone]", bankAccountPhone);
+            return this;
+        }
+
         public CreateForChargeItemsAndChargesRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
@@ -2002,6 +2017,11 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 

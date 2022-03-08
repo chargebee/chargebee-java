@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -1038,6 +1038,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest bankAccountPhone(String bankAccountPhone) {
+            params.addOpt("bank_account[phone]", bankAccountPhone);
+            return this;
+        }
+
         public CreateRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
@@ -1212,6 +1217,11 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
@@ -2239,6 +2249,11 @@ public class Customer extends Resource<Customer> {
 
         public CollectPaymentRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CollectPaymentRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 

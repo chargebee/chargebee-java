@@ -1325,6 +1325,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest bankAccountPhone(String bankAccountPhone) {
+            params.addOpt("bank_account[phone]", bankAccountPhone);
+            return this;
+        }
+
         public CreateRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
@@ -1499,6 +1504,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
@@ -2083,6 +2093,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateForCustomerRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public CreateForCustomerRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -2451,6 +2466,11 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateWithItemsRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
@@ -3106,6 +3126,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public UpdateRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -3747,6 +3772,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateForItemsRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
         public UpdateForItemsRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
@@ -4150,6 +4180,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public ReactivateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
@@ -4589,6 +4624,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest startedAt(Timestamp startedAt) {
             params.addOpt("started_at", startedAt);
+            return this;
+        }
+
+
+        public ImportSubscriptionRequest activatedAt(Timestamp activatedAt) {
+            params.addOpt("activated_at", activatedAt);
             return this;
         }
 
@@ -5237,6 +5278,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForCustomerRequest activatedAt(Timestamp activatedAt) {
+            params.addOpt("activated_at", activatedAt);
+            return this;
+        }
+
+
         public ImportForCustomerRequest pauseDate(Timestamp pauseDate) {
             params.addOpt("pause_date", pauseDate);
             return this;
@@ -5641,6 +5688,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportForItemsRequest startedAt(Timestamp startedAt) {
             params.addOpt("started_at", startedAt);
+            return this;
+        }
+
+
+        public ImportForItemsRequest activatedAt(Timestamp activatedAt) {
+            params.addOpt("activated_at", activatedAt);
             return this;
         }
 
@@ -6189,6 +6242,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ResumeRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public ResumeRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
 
