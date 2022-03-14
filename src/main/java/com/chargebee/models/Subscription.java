@@ -705,6 +705,11 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("offline_payment_method", OfflinePaymentMethod.class);
     }
 
+
+    public Integer netTermDays() {
+        return optInteger("net_term_days");
+    }
+
     public List<Subscription.SubscriptionItem> subscriptionItems() {
         return optList("subscription_items", Subscription.SubscriptionItem.class);
     }
@@ -2237,6 +2242,12 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateWithItemsRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
+
+
         public CreateWithItemsRequest startDate(Timestamp startDate) {
             params.addOpt("start_date", startDate);
             return this;
@@ -3431,6 +3442,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+        public UpdateForItemsRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
 
 
         public UpdateForItemsRequest invoiceDate(Timestamp invoiceDate) {
@@ -5618,6 +5635,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
+        public ImportForItemsRequest netTermDays(Integer netTermDays) {
+            params.addOpt("net_term_days", netTermDays);
+            return this;
+        }
 
 
         public ImportForItemsRequest startDate(Timestamp startDate) {
