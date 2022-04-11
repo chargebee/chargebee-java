@@ -1,3 +1,9 @@
+### v2.14.1 (2022-04-11)
+* * *
+
+#### Fixes:
+* Updated all third-party libraries and plugins version.
+
 ### v2.14.0 (2022-03-14)
 * * *
 
