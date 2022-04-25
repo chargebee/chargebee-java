@@ -165,6 +165,11 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
     // Operations
     //===========
 
+    public static CreateUnbilledChargeRequest createUnbilledCharge() {
+        String uri = uri("unbilled_charges", "create");
+        return new CreateUnbilledChargeRequest(Method.POST, uri);
+    }
+
     public static CreateRequest create() {
         String uri = uri("unbilled_charges");
         return new CreateRequest(Method.POST, uri);
@@ -193,6 +198,110 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     // Operation Request Classes
     //==========================
+
+    public static class CreateUnbilledChargeRequest extends Request<CreateUnbilledChargeRequest> {
+
+        private CreateUnbilledChargeRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateUnbilledChargeRequest subscriptionId(String subscriptionId) {
+            params.add("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public CreateUnbilledChargeRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public CreateUnbilledChargeRequest addonId(int index, String addonId) {
+            params.addOpt("addons[id][" + index + "]", addonId);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonQuantity(int index, Integer addonQuantity) {
+            params.addOpt("addons[quantity][" + index + "]", addonQuantity);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+            params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonQuantityInDecimal(int index, String addonQuantityInDecimal) {
+            params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonUnitPriceInDecimal(int index, String addonUnitPriceInDecimal) {
+            params.addOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonDateFrom(int index, Timestamp addonDateFrom) {
+            params.addOpt("addons[date_from][" + index + "]", addonDateFrom);
+            return this;
+        }
+        public CreateUnbilledChargeRequest addonDateTo(int index, Timestamp addonDateTo) {
+            params.addOpt("addons[date_to][" + index + "]", addonDateTo);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAmount(int index, Integer chargeAmount) {
+            params.addOpt("charges[amount][" + index + "]", chargeAmount);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAmountInDecimal(int index, String chargeAmountInDecimal) {
+            params.addOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeDescription(int index, String chargeDescription) {
+            params.addOpt("charges[description][" + index + "]", chargeDescription);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeTaxable(int index, Boolean chargeTaxable) {
+            params.addOpt("charges[taxable][" + index + "]", chargeTaxable);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeTaxProfileId(int index, String chargeTaxProfileId) {
+            params.addOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAvalaraTaxCode(int index, String chargeAvalaraTaxCode) {
+            params.addOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeHsnCode(int index, String chargeHsnCode) {
+            params.addOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeTaxjarProductCode(int index, String chargeTaxjarProductCode) {
+            params.addOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAvalaraSaleType(int index, com.chargebee.models.enums.AvalaraSaleType chargeAvalaraSaleType) {
+            params.addOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAvalaraTransactionType(int index, Integer chargeAvalaraTransactionType) {
+            params.addOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeAvalaraServiceType(int index, Integer chargeAvalaraServiceType) {
+            params.addOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeDateFrom(int index, Timestamp chargeDateFrom) {
+            params.addOpt("charges[date_from][" + index + "]", chargeDateFrom);
+            return this;
+        }
+        public CreateUnbilledChargeRequest chargeDateTo(int index, Timestamp chargeDateTo) {
+            params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
     public static class CreateRequest extends Request<CreateRequest> {
 

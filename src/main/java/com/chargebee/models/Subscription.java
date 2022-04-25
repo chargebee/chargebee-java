@@ -705,6 +705,9 @@ public class Subscription extends Resource<Subscription> {
         return optEnum("offline_payment_method", OfflinePaymentMethod.class);
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
 
     public Integer netTermDays() {
         return optInteger("net_term_days");
@@ -2705,6 +2708,10 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+
+        public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest>("channel",this);        
+        }
 
         @Override
         public Params params() {

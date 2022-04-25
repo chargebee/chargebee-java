@@ -507,6 +507,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optTimestamp("updated_at");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     public CreditNote.Einvoice einvoice() {
         return optSubResource("einvoice", CreditNote.Einvoice.class);
     }
@@ -943,6 +947,9 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, CreditNoteListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, CreditNoteListRequest>("channel",this);        
+        }
 
 
         @Override

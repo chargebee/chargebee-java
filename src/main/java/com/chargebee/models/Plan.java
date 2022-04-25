@@ -372,6 +372,10 @@ public class Plan extends Resource<Plan> {
         return optString("price_in_decimal");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -1241,6 +1245,9 @@ public class Plan extends Resource<Plan> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, PlanListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, PlanListRequest>("channel",this);        
+        }
 
 
         public PlanListRequest includeDeleted(Boolean includeDeleted) {

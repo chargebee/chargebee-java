@@ -528,6 +528,10 @@ public class Customer extends Resource<Customer> {
         return optBoolean("auto_close_invoices");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     @Deprecated
     public CardStatus cardStatus() {
         return optEnum("card_status", CardStatus.class);
@@ -1405,6 +1409,9 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, CustomerListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, CustomerListRequest>("channel",this);        
+        }
 
 
         public CustomerListRequest sortByCreatedAt(SortOrder order) {

@@ -77,6 +77,10 @@ public class Item extends Resource<Item> {
         return reqString("name");
     }
 
+    public String externalName() {
+        return optString("external_name");
+    }
+
     public String description() {
         return optString("description");
     }
@@ -147,6 +151,10 @@ public class Item extends Resource<Item> {
 
     public Timestamp archivedAt() {
         return optTimestamp("archived_at");
+    }
+
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
     }
 
     public List<Item.ApplicableItem> applicableItems() {
@@ -220,7 +228,7 @@ public class Item extends Resource<Item> {
 
 
         public CreateRequest itemFamilyId(String itemFamilyId) {
-            params.addOpt("item_family_id", itemFamilyId);
+            params.add("item_family_id", itemFamilyId);
             return this;
         }
 
@@ -233,6 +241,12 @@ public class Item extends Resource<Item> {
 
         public CreateRequest isShippable(Boolean isShippable) {
             params.addOpt("is_shippable", isShippable);
+            return this;
+        }
+
+
+        public CreateRequest externalName(String externalName) {
+            params.addOpt("external_name", externalName);
             return this;
         }
 
@@ -335,6 +349,12 @@ public class Item extends Resource<Item> {
 
         public UpdateRequest isShippable(Boolean isShippable) {
             params.addOpt("is_shippable", isShippable);
+            return this;
+        }
+
+
+        public UpdateRequest externalName(String externalName) {
+            params.addOpt("external_name", externalName);
             return this;
         }
 
@@ -490,6 +510,9 @@ public class Item extends Resource<Item> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, ItemListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, ItemListRequest>("channel",this);        
+        }
 
 
         public ItemListRequest sortByName(SortOrder order) {

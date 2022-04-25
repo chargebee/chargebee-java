@@ -950,6 +950,10 @@ public class Invoice extends Resource<Invoice> {
         return optString("vat_number_prefix");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     // Operations
     //===========
 
@@ -3156,6 +3160,11 @@ public class Invoice extends Resource<Invoice> {
 
         public TimestampFilter<InvoiceListRequest> updatedAt() {
             return new TimestampFilter<InvoiceListRequest>("updated_at",this);        
+        }
+
+
+        public EnumFilter<com.chargebee.models.enums.Channel, InvoiceListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, InvoiceListRequest>("channel",this);        
         }
 
 

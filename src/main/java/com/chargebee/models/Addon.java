@@ -240,6 +240,10 @@ public class Addon extends Resource<Addon> {
         return optBoolean("included_in_mrr");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     public String invoiceNotes() {
         return optString("invoice_notes");
     }
@@ -884,6 +888,9 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, AddonListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, AddonListRequest>("channel",this);        
+        }
 
 
         public AddonListRequest includeDeleted(Boolean includeDeleted) {

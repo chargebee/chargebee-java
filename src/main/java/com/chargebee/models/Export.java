@@ -310,6 +310,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<RevenueRecognitionRequest>("invoice[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> invoiceChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("invoice[channel]",this);        
+        }
+
         public StringFilter<RevenueRecognitionRequest> subscriptionId() {
             return new StringFilter<RevenueRecognitionRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
@@ -364,6 +368,10 @@ public Export waitForExportCompletion()
 
         public BooleanFilter<RevenueRecognitionRequest> subscriptionAutoCloseInvoices() {
             return new BooleanFilter<RevenueRecognitionRequest>("subscription[auto_close_invoices]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> subscriptionChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("subscription[channel]",this);        
         }
 
         public StringFilter<RevenueRecognitionRequest> customerId() {
@@ -424,6 +432,10 @@ public Export waitForExportCompletion()
 
         public BooleanFilter<RevenueRecognitionRequest> customerAutoCloseInvoices() {
             return new BooleanFilter<RevenueRecognitionRequest>("customer[auto_close_invoices]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> customerChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("customer[channel]",this);        
         }
 
         @Override
@@ -552,6 +564,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<DeferredRevenueRequest>("invoice[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> invoiceChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("invoice[channel]",this);        
+        }
+
         public StringFilter<DeferredRevenueRequest> subscriptionId() {
             return new StringFilter<DeferredRevenueRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
@@ -606,6 +622,10 @@ public Export waitForExportCompletion()
 
         public BooleanFilter<DeferredRevenueRequest> subscriptionAutoCloseInvoices() {
             return new BooleanFilter<DeferredRevenueRequest>("subscription[auto_close_invoices]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> subscriptionChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("subscription[channel]",this);        
         }
 
         public StringFilter<DeferredRevenueRequest> customerId() {
@@ -666,6 +686,10 @@ public Export waitForExportCompletion()
 
         public BooleanFilter<DeferredRevenueRequest> customerAutoCloseInvoices() {
             return new BooleanFilter<DeferredRevenueRequest>("customer[auto_close_invoices]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> customerChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("customer[channel]",this);        
         }
 
         @Override
@@ -729,6 +753,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<PlansRequest>("plan[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, PlansRequest> planChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, PlansRequest>("plan[channel]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -776,6 +804,10 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<AddonsRequest> addonUpdatedAt() {
             return new TimestampFilter<AddonsRequest>("addon[updated_at]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, AddonsRequest> addonChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, AddonsRequest>("addon[channel]",this);        
         }
 
         @Override
@@ -899,6 +931,10 @@ public Export waitForExportCompletion()
             return new BooleanFilter<CustomersRequest>("customer[auto_close_invoices]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, CustomersRequest> customerChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, CustomersRequest>("customer[channel]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -982,6 +1018,10 @@ public Export waitForExportCompletion()
             return new BooleanFilter<SubscriptionsRequest>("subscription[auto_close_invoices]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionsRequest> subscriptionChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionsRequest>("subscription[channel]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1059,6 +1099,10 @@ public Export waitForExportCompletion()
             return new TimestampFilter<InvoicesRequest>("invoice[updated_at]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, InvoicesRequest> invoiceChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, InvoicesRequest>("invoice[channel]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1133,6 +1177,10 @@ public Export waitForExportCompletion()
 
         public TimestampFilter<CreditNotesRequest> creditNoteUpdatedAt() {
             return new TimestampFilter<CreditNotesRequest>("credit_note[updated_at]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, CreditNotesRequest> creditNoteChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, CreditNotesRequest>("credit_note[channel]",this);        
         }
 
         @Override
@@ -1376,6 +1424,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<Item.UsageCalculation, ItemsRequest>("item[usage_calculation]",this);        
         }
 
+        public EnumFilter<com.chargebee.models.enums.Channel, ItemsRequest> itemChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, ItemsRequest>("item[channel]",this);        
+        }
+
         @Override
         public Params params() {
             return params;
@@ -1441,6 +1493,10 @@ public Export waitForExportCompletion()
 
         public NumberFilter<Integer, ItemPricesRequest> itemPricePeriod() {
             return new NumberFilter<Integer, ItemPricesRequest>("item_price[period]",this);        
+        }
+
+        public EnumFilter<com.chargebee.models.enums.Channel, ItemPricesRequest> itemPriceChannel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, ItemPricesRequest>("item_price[channel]",this);        
         }
 
         @Override

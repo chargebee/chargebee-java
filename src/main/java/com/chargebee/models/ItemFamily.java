@@ -58,6 +58,10 @@ public class ItemFamily extends Resource<ItemFamily> {
         return optTimestamp("updated_at");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     // Operations
     //===========
 

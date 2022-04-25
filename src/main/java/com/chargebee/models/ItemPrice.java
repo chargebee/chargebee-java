@@ -249,6 +249,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optString("free_quantity_in_decimal");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
@@ -912,6 +916,9 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public EnumFilter<com.chargebee.models.enums.Channel, ItemPriceListRequest> channel() {
+            return new EnumFilter<com.chargebee.models.enums.Channel, ItemPriceListRequest>("channel",this);        
+        }
 
 
         public ItemPriceListRequest sortByName(SortOrder order) {

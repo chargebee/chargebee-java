@@ -95,6 +95,10 @@ public class AttachedItem extends Resource<AttachedItem> {
         return optTimestamp("updated_at");
     }
 
+    public Channel channel() {
+        return optEnum("channel", Channel.class);
+    }
+
     // Operations
     //===========
 
