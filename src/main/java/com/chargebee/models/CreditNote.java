@@ -637,6 +637,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new DeleteRequest(Method.POST, uri);
     }
 
+    public static Request resendEinvoice(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "resend_einvoice");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -951,6 +956,10 @@ public class CreditNote extends Resource<CreditNote> {
             return new EnumFilter<com.chargebee.models.enums.Channel, CreditNoteListRequest>("channel",this);        
         }
 
+
+        public EnumFilter<Einvoice.Status, CreditNoteListRequest> einvoiceStatus() {
+            return new EnumFilter<Einvoice.Status, CreditNoteListRequest>("einvoice[status]",this);        
+        }
 
         @Override
         public Params params() {

@@ -998,6 +998,11 @@ public class Invoice extends Resource<Invoice> {
         return new ApplyPaymentsRequest(Method.POST, uri);
     }
 
+    public static Request syncUsages(String id) {
+        String uri = uri("invoices", nullCheck(id), "sync_usages");
+        return new Request(Method.POST, uri);
+    }
+
     public static ApplyCreditsRequest applyCredits(String id) {
         String uri = uri("invoices", nullCheck(id), "apply_credits");
         return new ApplyCreditsRequest(Method.POST, uri);
@@ -1105,6 +1110,11 @@ public class Invoice extends Resource<Invoice> {
         return new UpdateDetailsRequest(Method.POST, uri);
     }
 
+    public static Request resendEinvoice(String id) {
+        String uri = uri("invoices", nullCheck(id), "resend_einvoice");
+        return new Request(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -1208,6 +1218,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("retain_payment_source", retainPaymentSource);
             return this;
         }
+
+
 
 
         public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
@@ -3187,6 +3199,10 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+
+        public EnumFilter<Einvoice.Status, InvoiceListRequest> einvoiceStatus() {
+            return new EnumFilter<Einvoice.Status, InvoiceListRequest>("einvoice[status]",this);        
+        }
 
         @Override
         public Params params() {

@@ -200,6 +200,22 @@ public class ResultBase {
         return (DifferentialPrice)get("differential_price");
     }
 
+    public Feature feature() {
+        return (Feature)get("feature");
+    }
+
+    public SubscriptionEntitlement subscriptionEntitlement() {
+        return (SubscriptionEntitlement)get("subscription_entitlement");
+    }
+
+    public ItemEntitlement itemEntitlement() {
+        return (ItemEntitlement)get("item_entitlement");
+    }
+
+    public EntitlementOverride entitlementOverride() {
+        return (EntitlementOverride)get("entitlement_override");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }

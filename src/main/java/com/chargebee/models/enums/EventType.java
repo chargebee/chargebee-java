@@ -142,6 +142,17 @@ public enum EventType {
     DIFFERENTIAL_PRICE_CREATED,
     DIFFERENTIAL_PRICE_UPDATED,
     DIFFERENTIAL_PRICE_DELETED,
+    FEATURE_CREATED,
+    FEATURE_UPDATED,
+    FEATURE_DELETED,
+    FEATURE_ACTIVATED,
+    FEATURE_REACTIVATED,
+    FEATURE_ARCHIVED,
+    ITEM_ENTITLEMENTS_UPDATED,
+    ENTITLEMENT_OVERRIDES_UPDATED,
+    ENTITLEMENT_OVERRIDES_REMOVED,
+    ITEM_ENTITLEMENTS_REMOVED,
+    ENTITLEMENT_OVERRIDES_AUTO_REMOVED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }
