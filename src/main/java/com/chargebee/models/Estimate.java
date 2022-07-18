@@ -35,6 +35,11 @@ public class Estimate extends Resource<Estimate> {
         return optSubResource("subscription_estimate", SubscriptionEstimate.class);
     }
 
+    @Deprecated
+    public List<SubscriptionEstimate> subscriptionEstimates() {
+        return optList("subscription_estimates", SubscriptionEstimate.class);
+    }
+
     public InvoiceEstimate invoiceEstimate() {
         return optSubResource("invoice_estimate", InvoiceEstimate.class);
     }
@@ -3196,7 +3201,7 @@ public class Estimate extends Resource<Estimate> {
 
 
         public CreateInvoiceForItemsRequest invoiceCustomerId(String invoiceCustomerId) {
-            params.add("invoice[customer_id]", invoiceCustomerId);
+            params.addOpt("invoice[customer_id]", invoiceCustomerId);
             return this;
         }
 

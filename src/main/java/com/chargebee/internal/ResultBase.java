@@ -204,6 +204,14 @@ public class ResultBase {
         return (Feature)get("feature");
     }
 
+    public ImpactedSubscription impactedSubscription() {
+        return (ImpactedSubscription)get("impacted_subscription");
+    }
+
+    public ImpactedItem impactedItem() {
+        return (ImpactedItem)get("impacted_item");
+    }
+
     public SubscriptionEntitlement subscriptionEntitlement() {
         return (SubscriptionEntitlement)get("subscription_entitlement");
     }
@@ -214,6 +222,10 @@ public class ResultBase {
 
     public EntitlementOverride entitlementOverride() {
         return (EntitlementOverride)get("entitlement_override");
+    }
+
+    public Purchase purchase() {
+        return (Purchase)get("purchase");
     }
 
     public List<UnbilledCharge> unbilledCharges() {

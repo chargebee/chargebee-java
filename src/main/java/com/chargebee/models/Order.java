@@ -766,7 +766,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public CreateRequest status(com.chargebee.models.enums.Status status) {
+        public CreateRequest status(Status status) {
             params.addOpt("status", status);
             return this;
         }

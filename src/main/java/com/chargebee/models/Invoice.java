@@ -162,6 +162,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
@@ -954,6 +958,10 @@ public class Invoice extends Resource<Invoice> {
         return optEnum("channel", Channel.class);
     }
 
+    public String businessEntityId() {
+        return reqString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -1141,6 +1149,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("currency_code", currencyCode);
             return this;
         }
+
+
 
 
         public CreateRequest invoiceDate(Timestamp invoiceDate) {
@@ -1737,6 +1747,10 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+
+
+
+
         public CreateForChargeItemsAndChargesRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -2286,6 +2300,8 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+
+
         @Override
         public Params params() {
             return params;
@@ -2387,6 +2403,8 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+
+
         @Override
         public Params params() {
             return params;
@@ -2433,6 +2451,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("invoice_date", invoiceDate);
             return this;
         }
+
+
 
 
         public CreateForChargeItemRequest itemPriceItemPriceId(String itemPriceItemPriceId) {
@@ -2618,6 +2638,8 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("use_for_proration", useForProration);
             return this;
         }
+
+
 
 
         public ImportInvoiceRequest billingAddressFirstName(String billingAddressFirstName) {

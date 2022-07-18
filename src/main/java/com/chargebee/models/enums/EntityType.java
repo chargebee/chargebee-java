@@ -11,6 +11,7 @@ public enum EntityType {
     ADDON,
     COUPON,
     ORDER,
+    BUSINESS_ENTITY,
     ITEM_FAMILY,
     ITEM,
     ITEM_PRICE,

@@ -152,6 +152,10 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {

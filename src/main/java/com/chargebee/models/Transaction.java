@@ -360,6 +360,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("merchant_reference_id");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 

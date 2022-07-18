@@ -18,11 +18,8 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
             super(jsonObj);
         }
 
-    }
-
-    public static class EmbeddedResource extends Resource<EmbeddedResource> {
-        public EmbeddedResource(JSONObject jsonObj) {
-            super(jsonObj);
+        public EntitlementOverride entitlementOverrides() {
+            return optSubResource("entitlement_overrides", EntitlementOverride.class);
         }
 
     }
@@ -83,11 +80,6 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
 
     public SubscriptionEntitlement.Component components() {
         return optSubResource("components", SubscriptionEntitlement.Component.class);
-    }
-
-    @Deprecated
-    public SubscriptionEntitlement.EmbeddedResource embedded() {
-        return optSubResource("embedded", SubscriptionEntitlement.EmbeddedResource.class);
     }
 
     // Operations

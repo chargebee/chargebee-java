@@ -2,6 +2,7 @@ package com.chargebee.models.enums;
 
 public enum Gateway {
     CHARGEBEE,
+    CHARGEBEE_PAYMENTS,
     STRIPE,
     WEPAY,
     BRAINTREE,

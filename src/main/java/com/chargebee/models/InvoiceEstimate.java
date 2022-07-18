@@ -141,6 +141,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class Tax extends Resource<Tax> {

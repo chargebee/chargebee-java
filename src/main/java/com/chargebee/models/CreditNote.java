@@ -199,6 +199,10 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
@@ -581,6 +585,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public String vatNumberPrefix() {
         return optString("vat_number_prefix");
+    }
+
+    public String businessEntityId() {
+        return reqString("business_entity_id");
     }
 
     // Operations

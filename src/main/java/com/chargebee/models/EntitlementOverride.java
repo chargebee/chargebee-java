@@ -13,13 +13,6 @@ import java.util.*;
 
 public class EntitlementOverride extends Resource<EntitlementOverride> {
 
-    public static class EmbeddedResource extends Resource<EmbeddedResource> {
-        public EmbeddedResource(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -64,11 +57,6 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
 
     public Timestamp expiresAt() {
         return optTimestamp("expires_at");
-    }
-
-    @Deprecated
-    public EntitlementOverride.EmbeddedResource embedded() {
-        return optSubResource("embedded", EntitlementOverride.EmbeddedResource.class);
     }
 
     // Operations

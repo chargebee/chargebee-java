@@ -25,7 +25,7 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public static class Card extends Resource<Card> {
         public enum Brand {
-             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,
+             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,BANCONTACT,NOT_APPLICABLE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -319,6 +319,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public Boolean deleted() {
         return reqBoolean("deleted");
+    }
+
+    public String businessEntityId() {
+        return optString("business_entity_id");
     }
 
     // Operations

@@ -35,6 +35,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         UPI,
         NETBANKING_EMANDATES,
         PAYPAL_EXPRESS_CHECKOUT,
+        DIRECT_DEBIT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -166,6 +167,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return optSubResource("active_payment_attempt", PaymentIntent.PaymentAttempt.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -194,6 +199,12 @@ public class PaymentIntent extends Resource<PaymentIntent> {
             super(httpMeth, uri);
         }
     
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         public CreateRequest customerId(String customerId) {
             params.addOpt("customer_id", customerId);
             return this;

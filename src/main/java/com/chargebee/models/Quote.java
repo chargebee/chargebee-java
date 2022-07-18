@@ -159,6 +159,10 @@ public class Quote extends Resource<Quote> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
@@ -593,6 +597,10 @@ public class Quote extends Resource<Quote> {
 
     public Integer contractTermTerminationFee() {
         return optInteger("contract_term_termination_fee");
+    }
+
+    public String businessEntityId() {
+        return reqString("business_entity_id");
     }
 
     // Operations

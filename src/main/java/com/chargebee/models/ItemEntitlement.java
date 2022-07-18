@@ -23,13 +23,6 @@ public class ItemEntitlement extends Resource<ItemEntitlement> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public static class EmbeddedResource extends Resource<EmbeddedResource> {
-        public EmbeddedResource(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -70,11 +63,6 @@ public class ItemEntitlement extends Resource<ItemEntitlement> {
 
     public String name() {
         return optString("name");
-    }
-
-    @Deprecated
-    public ItemEntitlement.EmbeddedResource embedded() {
-        return optSubResource("embedded", ItemEntitlement.EmbeddedResource.class);
     }
 
     // Operations

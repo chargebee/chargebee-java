@@ -822,6 +822,10 @@ public class Subscription extends Resource<Subscription> {
         return optBoolean("auto_close_invoices");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -1008,6 +1012,12 @@ public class Subscription extends Resource<Subscription> {
     
         public CreateRequest id(String id) {
             params.addOpt("id", id);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -1829,6 +1839,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         public CreateForCustomerRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -2210,6 +2226,12 @@ public class Subscription extends Resource<Subscription> {
     
         public CreateWithItemsRequest id(String id) {
             params.addOpt("id", id);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -2712,6 +2734,9 @@ public class Subscription extends Resource<Subscription> {
         public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest> channel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest>("channel",this);        
         }
+
+
+
 
         @Override
         public Params params() {
@@ -4418,7 +4443,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public EditAdvanceInvoiceScheduleRequest scheduleType(ScheduleType scheduleType) {
+        public EditAdvanceInvoiceScheduleRequest scheduleType(com.chargebee.models.enums.ScheduleType scheduleType) {
             params.addOpt("schedule_type", scheduleType);
             return this;
         }

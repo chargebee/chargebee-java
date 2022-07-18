@@ -569,6 +569,10 @@ public class Customer extends Resource<Customer> {
         return optString("invoice_notes");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     public String preferredCurrencyCode() {
         return optString("preferred_currency_code");
     }
@@ -978,6 +982,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 

@@ -25,6 +25,7 @@ public class HostedPage extends Resource<HostedPage> {
         CHECKOUT_GIFT,
         CLAIM_GIFT,
         CHECKOUT_ONE_TIME,
+        PRE_CANCEL,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -110,6 +111,10 @@ public class HostedPage extends Resource<HostedPage> {
 
     public JSONObject checkoutInfo() {
         return optJSONObject("checkout_info");
+    }
+
+    public String businessEntityId() {
+        return optString("business_entity_id");
     }
 
     // Operations
@@ -209,6 +214,11 @@ public class HostedPage extends Resource<HostedPage> {
     public static HostedPageListRequest list() {
         String uri = uri("hosted_pages");
         return new HostedPageListRequest(uri);
+    }
+
+    public static PreCancelRequest preCancel() {
+        String uri = uri("hosted_pages", "pre_cancel");
+        return new PreCancelRequest(Method.POST, uri);
     }
 
     public static class Content extends ResultBase{
@@ -311,6 +321,8 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
+
+
 
 
 
@@ -1041,6 +1053,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CheckoutOneTimeForItemsRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
 
 
         public CheckoutOneTimeForItemsRequest invoiceNote(String invoiceNote) {
@@ -1458,6 +1476,12 @@ public class HostedPage extends Resource<HostedPage> {
     
 
 
+        public CheckoutNewForItemsRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         public CheckoutNewForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1526,6 +1550,8 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
+
+
 
 
         public CheckoutNewForItemsRequest subscriptionId(String subscriptionId) {
@@ -2022,6 +2048,8 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+
+
         public CheckoutExistingRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;
@@ -2294,6 +2322,8 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
+
+
 
 
         public CheckoutExistingForItemsRequest subscriptionId(String subscriptionId) {
@@ -2826,6 +2856,12 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CheckoutGiftForItemsRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         public CheckoutGiftForItemsRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
@@ -2941,6 +2977,41 @@ public class HostedPage extends Resource<HostedPage> {
             return new TimestampFilter<HostedPageListRequest>("updated_at",this);        
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PreCancelRequest extends Request<PreCancelRequest> {
+
+        private PreCancelRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PreCancelRequest passThruContent(String passThruContent) {
+            params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        public PreCancelRequest cancelUrl(String cancelUrl) {
+            params.addOpt("cancel_url", cancelUrl);
+            return this;
+        }
+
+
+        public PreCancelRequest redirectUrl(String redirectUrl) {
+            params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public PreCancelRequest subscriptionId(String subscriptionId) {
+            params.add("subscription[id]", subscriptionId);
+            return this;
+        }
 
         @Override
         public Params params() {

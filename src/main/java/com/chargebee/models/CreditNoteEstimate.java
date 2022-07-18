@@ -148,6 +148,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("entity_id");
         }
 
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
     }
 
     public static class Tax extends Resource<Tax> {
