@@ -59,6 +59,12 @@ public class Purchase extends Resource<Purchase> {
         return new CreateRequest(Method.POST, uri);
     }
 
+    @Deprecated
+    public static Request retrieve(String id) {
+        String uri = uri("purchases", nullCheck(id));
+        return new Request(Method.GET, uri);
+    }
+
     public static EstimateRequest estimate() {
         String uri = uri("purchases", "estimate");
         return new EstimateRequest(Method.POST, uri);
@@ -74,12 +80,6 @@ public class Purchase extends Resource<Purchase> {
             super(httpMeth, uri);
         }
     
-        public CreateRequest businessEntityId(String businessEntityId) {
-            params.addOpt("business_entity_id", businessEntityId);
-            return this;
-        }
-
-
         public CreateRequest customerId(String customerId) {
             params.add("customer_id", customerId);
             return this;
@@ -252,12 +252,6 @@ public class Purchase extends Resource<Purchase> {
             super(httpMeth, uri);
         }
     
-        public EstimateRequest businessEntityId(String businessEntityId) {
-            params.addOpt("business_entity_id", businessEntityId);
-            return this;
-        }
-
-
         public EstimateRequest clientProfileId(String clientProfileId) {
             params.addOpt("client_profile_id", clientProfileId);
             return this;

@@ -364,6 +364,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("business_entity_id");
     }
 
+    public String paymentMethodDetails() {
+        return optString("payment_method_details");
+    }
+
     // Operations
     //===========
 

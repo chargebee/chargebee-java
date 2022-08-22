@@ -95,6 +95,10 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optInteger("item_level_discount_amount");
         }
 
+        public String referenceLineItemId() {
+            return optString("reference_line_item_id");
+        }
+
         public String description() {
             return reqString("description");
         }

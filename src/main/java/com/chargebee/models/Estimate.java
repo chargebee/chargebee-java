@@ -35,7 +35,6 @@ public class Estimate extends Resource<Estimate> {
         return optSubResource("subscription_estimate", SubscriptionEstimate.class);
     }
 
-    @Deprecated
     public List<SubscriptionEstimate> subscriptionEstimates() {
         return optList("subscription_estimates", SubscriptionEstimate.class);
     }

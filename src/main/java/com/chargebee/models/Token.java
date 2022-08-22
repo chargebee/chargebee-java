@@ -74,6 +74,14 @@ public class Token extends Resource<Token> {
         return optString("ip_address");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     public Timestamp createdAt() {
         return reqTimestamp("created_at");
     }

@@ -109,6 +109,10 @@ public class Invoice extends Resource<Invoice> {
             return optInteger("item_level_discount_amount");
         }
 
+        public String referenceLineItemId() {
+            return optString("reference_line_item_id");
+        }
+
         public String description() {
             return reqString("description");
         }
@@ -612,6 +616,10 @@ public class Invoice extends Resource<Invoice> {
 
         public ValidationStatus validationStatus() {
             return optEnum("validation_status", ValidationStatus.class);
+        }
+
+        public Integer index() {
+            return reqInteger("index");
         }
 
     }
@@ -3741,6 +3749,13 @@ public class Invoice extends Resource<Invoice> {
 
         public VoidInvoiceRequest voidReasonCode(String voidReasonCode) {
             params.addOpt("void_reason_code", voidReasonCode);
+            return this;
+        }
+
+
+        @Deprecated
+        public VoidInvoiceRequest voidWithCreditNote(Boolean voidWithCreditNote) {
+            params.addOpt("void_with_credit_note", voidWithCreditNote);
             return this;
         }
 

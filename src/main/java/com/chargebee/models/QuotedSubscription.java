@@ -256,6 +256,10 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optString("price_in_decimal");
         }
 
+        public Integer index() {
+            return reqInteger("index");
+        }
+
     }
 
     public static class QuotedContractTerm extends Resource<QuotedContractTerm> {

@@ -106,6 +106,10 @@ public class Quote extends Resource<Quote> {
             return optInteger("item_level_discount_amount");
         }
 
+        public String referenceLineItemId() {
+            return optString("reference_line_item_id");
+        }
+
         public String description() {
             return reqString("description");
         }
@@ -374,6 +378,10 @@ public class Quote extends Resource<Quote> {
 
         public ValidationStatus validationStatus() {
             return optEnum("validation_status", ValidationStatus.class);
+        }
+
+        public Integer index() {
+            return reqInteger("index");
         }
 
     }

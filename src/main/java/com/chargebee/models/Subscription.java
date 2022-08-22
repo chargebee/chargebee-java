@@ -172,6 +172,10 @@ public class Subscription extends Resource<Subscription> {
             return optString("price_in_decimal");
         }
 
+        public Integer index() {
+            return reqInteger("index");
+        }
+
     }
 
     public static class ChargedItem extends Resource<ChargedItem> {
@@ -375,6 +379,10 @@ public class Subscription extends Resource<Subscription> {
 
         public ValidationStatus validationStatus() {
             return optEnum("validation_status", ValidationStatus.class);
+        }
+
+        public Integer index() {
+            return reqInteger("index");
         }
 
     }

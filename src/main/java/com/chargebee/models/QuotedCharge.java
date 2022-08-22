@@ -143,6 +143,10 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optString("price_in_decimal");
         }
 
+        public Integer index() {
+            return reqInteger("index");
+        }
+
     }
 
     public static class Coupon extends Resource<Coupon> {

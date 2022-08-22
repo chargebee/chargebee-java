@@ -230,6 +230,10 @@ public class Order extends Resource<Order> {
             return optEnum("validation_status", ValidationStatus.class);
         }
 
+        public Integer index() {
+            return reqInteger("index");
+        }
+
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {

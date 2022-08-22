@@ -220,6 +220,10 @@ public class ResultBase {
         return (ItemEntitlement)get("item_entitlement");
     }
 
+    public InAppSubscription inAppSubscription() {
+        return (InAppSubscription)get("in_app_subscription");
+    }
+
     public EntitlementOverride entitlementOverride() {
         return (EntitlementOverride)get("entitlement_override");
     }
@@ -254,6 +258,10 @@ public class ResultBase {
 
     public List<DifferentialPrice> differentialPrices() {
         return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
+    }
+
+    public List<InAppSubscription> inAppSubscriptions() {
+        return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
     }
 
 

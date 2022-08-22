@@ -154,6 +154,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optString("amount_in_decimal");
     }
 
+    public Timestamp updatedAt() {
+        return reqTimestamp("updated_at");
+    }
+
     public List<UnbilledCharge.Tier> tiers() {
         return optList("tiers", UnbilledCharge.Tier.class);
     }
