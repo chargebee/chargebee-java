@@ -1,3 +1,10 @@
+### v2.18.1 (2022-09-01)
+* * *
+
+#### Fixes:
+* Fixed RNF issue for the id having special character. Applicable only on PC1.0.
+
+
 ### v2.18.0 (2022-08-22)
 * * *
 
