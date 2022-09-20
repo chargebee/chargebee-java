@@ -1059,6 +1059,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutOneTimeForItemsRequest layout(com.chargebee.models.enums.Layout layout) {
+            params.addOpt("layout", layout);
+            return this;
+        }
 
 
         public CheckoutOneTimeForItemsRequest invoiceNote(String invoiceNote) {
@@ -1442,6 +1446,22 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        public CheckoutOneTimeForItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
         public CheckoutOneTimeForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {
             params.addOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
             return this;
@@ -1474,6 +1494,10 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CheckoutNewForItemsRequest layout(com.chargebee.models.enums.Layout layout) {
+            params.addOpt("layout", layout);
+            return this;
+        }
 
 
         public CheckoutNewForItemsRequest businessEntityId(String businessEntityId) {
@@ -1486,8 +1510,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("billing_cycles", billingCycles);
             return this;
         }
-
-
 
 
         public CheckoutNewForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -1876,6 +1898,38 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
             return this;
         }
+        public CheckoutNewForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
         public CheckoutNewForItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
             params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
             return this;
@@ -2224,6 +2278,10 @@ public class HostedPage extends Resource<HostedPage> {
             super(httpMeth, uri);
         }
     
+        public CheckoutExistingForItemsRequest layout(com.chargebee.models.enums.Layout layout) {
+            params.addOpt("layout", layout);
+            return this;
+        }
 
 
         public CheckoutExistingForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -2240,8 +2298,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("replace_items_list", replaceItemsList);
             return this;
         }
-
-
 
 
         public CheckoutExistingForItemsRequest invoiceDate(Timestamp invoiceDate) {
@@ -2466,6 +2522,46 @@ public class HostedPage extends Resource<HostedPage> {
         @Deprecated
         public CheckoutExistingForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
+            params.add("discounts[operation_type][" + index + "]", discountOperationType);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountId(int index, String discountId) {
+            params.addOpt("discounts[id][" + index + "]", discountId);
             return this;
         }
         public CheckoutExistingForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {

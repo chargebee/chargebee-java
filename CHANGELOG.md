@@ -1,9 +1,32 @@
+### v2.19.0 (2022-09-20)
+* * *
+
+#### New endpoints:
+* subscriptions#list_discounts has been added to the subscriptions resource.
+
+#### New Resource:
+* discount has been added.
+
+#### New attributes:
+* billing_month has been added to the customer resource.
+
+#### Added input parameters:
+* billing_month has been added to the customers#change_billing_date API.
+* line_items[subscription_id] has been added to the invoices#import_invoice API.
+* layout has been added to hosted_pages#checkout_onetime_for_items, hosted_pages#checkout_new_for_items and hosted_pages#checkout_existing_for_items APIs.
+* discounts[apply_on], discounts[percentage], discounts[amount] and discounts[item_price_id] have been added to estimates#create_subscription_for_items, estimates#create_subscription_for_items_estimate, estimates#update_subscription_for_items, hosted_pages#checkout_onetime_for_items, hosted_pages#checkout_new_for_items, hosted_pages#checkout_existing_for_items, invoices#create_for_charge_items_and_charges, quotes#create_subscription_for_items, quotes#edit_create_subscription_quote_for_items, quotes#update_subscription_quote_for_items, quotes#edit_update_subscription_quote_for_items, quotes#create_for_charge_items_and_charges, quotes#edit_for_charge_items_and_charges, subscriptions#create_subscription_for_items, subscriptions#update_subscription_for_items and subscriptions#import_subscription_for_items APIs.
+* discounts[duration_type], discounts[period], discounts[period_unit] and discounts[included_in_mrr] have been added to estimates#create_subscription_for_items, estimates#create_subscription_for_items_estimate, estimates#update_subscription_for_items, hosted_pages#checkout_new_for_items, hosted_pages#checkout_existing_for_items, quotes#create_subscription_for_items, quotes#edit_create_subscription_quote_for_items, quotes#update_subscription_quote_for_items, quotes#edit_update_subscription_quote_for_items, subscriptions#create_subscription_for_items, subscriptions#update_subscription_for_items and subscriptions#import_subscription_for_items APIs.
+* discounts[operation_type] and discounts[id] have been added to estimates#update_subscription_for_items, quotes#update_subscription_quote_for_items, hosted_pages#checkout_existing_for_items, quotes#edit_update_subscription_quote_for_items, subscriptions#update_subscription_for_items and subscriptions#import_subscription_for_items APIs.
+
+#### New Enum values:
+* global_payments has been added to gateway enum.
+* layout, apply_on, duration_type and operation_type enumshave been added.
+
 ### v2.18.1 (2022-09-01)
 * * *
 
-#### Fixes:
-* Fixed RNF issue for the id having special character. Applicable only on PC1.0.
-
+### Fixes:
+* Fixed RNF issue for the id having special character.Applicable only on PC1.0.
 
 ### v2.18.0 (2022-08-22)
 * * *
@@ -22,7 +45,7 @@
 #### New Resource:
 * InAppSubscription have been added.
 
-### Removed input parameters:
+#### Removed input parameters:
 * BusinessEntityId has been removed from Purchase#CreateRequest and Purchase#EstimateRequest.
 
 

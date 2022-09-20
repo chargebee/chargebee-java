@@ -2195,6 +2195,22 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2800,6 +2816,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public ImportInvoiceRequest lineItemDateTo(int index, Timestamp lineItemDateTo) {
             params.addOpt("line_items[date_to][" + index + "]", lineItemDateTo);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemSubscriptionId(int index, String lineItemSubscriptionId) {
+            params.addOpt("line_items[subscription_id][" + index + "]", lineItemSubscriptionId);
             return this;
         }
         public ImportInvoiceRequest lineItemDescription(int index, String lineItemDescription) {

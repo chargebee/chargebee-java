@@ -519,6 +519,89 @@ public class Subscription extends Resource<Subscription> {
 
     }
 
+    public static class Discount extends Resource<Discount> {
+        public enum DurationType {
+             ONE_TIME,FOREVER,LIMITED_PERIOD,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum ApplyOn {
+             INVOICE_AMOUNT,SPECIFIC_ITEM_PRICE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String invoiceName() {
+            return optString("invoice_name");
+        }
+
+        public Double percentage() {
+            return optDouble("percentage");
+        }
+
+        public Integer amount() {
+            return optInteger("amount");
+        }
+
+        public String currencyCode() {
+            return optString("currency_code");
+        }
+
+        public DurationType durationType() {
+            return reqEnum("duration_type", DurationType.class);
+        }
+
+        public Integer period() {
+            return optInteger("period");
+        }
+
+        public PeriodUnit periodUnit() {
+            return optEnum("period_unit", PeriodUnit.class);
+        }
+
+        public Boolean includedInMrr() {
+            return reqBoolean("included_in_mrr");
+        }
+
+        public ApplyOn applyOn() {
+            return reqEnum("apply_on", ApplyOn.class);
+        }
+
+        public String itemPriceId() {
+            return optString("item_price_id");
+        }
+
+        public Timestamp createdAt() {
+            return reqTimestamp("created_at");
+        }
+
+        public Timestamp applyTill() {
+            return optTimestamp("apply_till");
+        }
+
+        public Integer appliedCount() {
+            return optInteger("applied_count");
+        }
+
+        public String couponId() {
+            return reqString("coupon_id");
+        }
+
+        public Integer index() {
+            return reqInteger("index");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -830,6 +913,10 @@ public class Subscription extends Resource<Subscription> {
         return optBoolean("auto_close_invoices");
     }
 
+    public List<Subscription.Discount> discounts() {
+        return optList("discounts", Subscription.Discount.class);
+    }
+
     public String businessEntityId() {
         return optString("business_entity_id");
     }
@@ -865,6 +952,11 @@ public class Subscription extends Resource<Subscription> {
 
     public static ListRequest contractTermsForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "contract_terms");
+        return new ListRequest(uri);
+    }
+
+    public static ListRequest listDiscounts(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "discounts");
         return new ListRequest(uri);
     }
 
@@ -2263,8 +2355,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public CreateWithItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;
@@ -2589,6 +2679,38 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
             return this;
         }
+        public CreateWithItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CreateWithItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public CreateWithItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CreateWithItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CreateWithItemsRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public CreateWithItemsRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public CreateWithItemsRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public CreateWithItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
         public CreateWithItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
             params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
             return this;
@@ -2742,8 +2864,6 @@ public class Subscription extends Resource<Subscription> {
         public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest> channel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest>("channel",this);        
         }
-
-
 
 
         @Override
@@ -3482,8 +3602,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public UpdateForItemsRequest netTermDays(Integer netTermDays) {
             params.addOpt("net_term_days", netTermDays);
             return this;
@@ -4082,6 +4200,46 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public UpdateForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public UpdateForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public UpdateForItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public UpdateForItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public UpdateForItemsRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public UpdateForItemsRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public UpdateForItemsRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public UpdateForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public UpdateForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
+            params.add("discounts[operation_type][" + index + "]", discountOperationType);
+            return this;
+        }
+        public UpdateForItemsRequest discountId(int index, String discountId) {
+            params.addOpt("discounts[id][" + index + "]", discountId);
             return this;
         }
         public UpdateForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
@@ -5675,8 +5833,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public ImportForItemsRequest netTermDays(Integer netTermDays) {
             params.addOpt("net_term_days", netTermDays);
             return this;
@@ -5981,6 +6137,38 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public ImportForItemsRequest subscriptionItemItemType(int index, com.chargebee.models.enums.ItemType subscriptionItemItemType) {
             params.addOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+            return this;
+        }
+        public ImportForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public ImportForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public ImportForItemsRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public ImportForItemsRequest discountAmount(int index, Integer discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public ImportForItemsRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public ImportForItemsRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public ImportForItemsRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public ImportForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
         public ImportForItemsRequest chargedItemItemPriceId(int index, String chargedItemItemPriceId) {

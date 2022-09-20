@@ -508,6 +508,10 @@ public class Customer extends Resource<Customer> {
         return optInteger("billing_date");
     }
 
+    public Integer billingMonth() {
+        return optInteger("billing_month");
+    }
+
     public BillingDateMode billingDateMode() {
         return optEnum("billing_date_mode", BillingDateMode.class);
     }
@@ -2354,6 +2358,12 @@ public class Customer extends Resource<Customer> {
     
         public ChangeBillingDateRequest billingDate(Integer billingDate) {
             params.addOpt("billing_date", billingDate);
+            return this;
+        }
+
+
+        public ChangeBillingDateRequest billingMonth(Integer billingMonth) {
+            params.addOpt("billing_month", billingMonth);
             return this;
         }
 

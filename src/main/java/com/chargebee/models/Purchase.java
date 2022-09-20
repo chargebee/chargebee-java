@@ -59,12 +59,6 @@ public class Purchase extends Resource<Purchase> {
         return new CreateRequest(Method.POST, uri);
     }
 
-    @Deprecated
-    public static Request retrieve(String id) {
-        String uri = uri("purchases", nullCheck(id));
-        return new Request(Method.GET, uri);
-    }
-
     public static EstimateRequest estimate() {
         String uri = uri("purchases", "estimate");
         return new EstimateRequest(Method.POST, uri);
