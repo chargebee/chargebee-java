@@ -24,10 +24,6 @@ public class ResultBase {
         return (ContractTerm)get("contract_term");
     }
 
-    public Discount discount() {
-        return (Discount)get("discount");
-    }
-
     public AdvanceInvoiceSchedule advanceInvoiceSchedule() {
         return (AdvanceInvoiceSchedule)get("advance_invoice_schedule");
     }

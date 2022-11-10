@@ -684,6 +684,10 @@ public class Order extends Resource<Order> {
         return optList("resent_orders", Order.ResentOrder.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -1413,6 +1417,11 @@ public class Order extends Resource<Order> {
 
         public TimestampFilter<OrderListRequest> shippingDate() {
             return new TimestampFilter<OrderListRequest>("shipping_date",this);        
+        }
+
+
+        public TimestampFilter<OrderListRequest> shippedAt() {
+            return new TimestampFilter<OrderListRequest>("shipped_at",this);        
         }
 
 

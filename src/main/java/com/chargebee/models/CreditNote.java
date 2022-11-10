@@ -48,7 +48,7 @@ public class CreditNote extends Resource<CreditNote> {
 
     public static class Einvoice extends Resource<Einvoice> {
         public enum Status {
-             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -654,6 +654,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new Request(Method.POST, uri);
     }
 
+    public static ImportCreditNoteRequest importCreditNote() {
+        String uri = uri("credit_notes", "import_credit_note");
+        return new ImportCreditNoteRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -991,6 +996,378 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ImportCreditNoteRequest extends Request<ImportCreditNoteRequest> {
+
+        private ImportCreditNoteRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ImportCreditNoteRequest id(String id) {
+            params.add("id", id);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest subscriptionId(String subscriptionId) {
+            params.addOpt("subscription_id", subscriptionId);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest referenceInvoiceId(String referenceInvoiceId) {
+            params.add("reference_invoice_id", referenceInvoiceId);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest type(CreditNote.Type type) {
+            params.add("type", type);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest createReasonCode(String createReasonCode) {
+            params.add("create_reason_code", createReasonCode);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest date(Timestamp date) {
+            params.addOpt("date", date);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest status(CreditNote.Status status) {
+            params.addOpt("status", status);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest total(Integer total) {
+            params.addOpt("total", total);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest refundedAt(Timestamp refundedAt) {
+            params.addOpt("refunded_at", refundedAt);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest voidedAt(Timestamp voidedAt) {
+            params.addOpt("voided_at", voidedAt);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest subTotal(Integer subTotal) {
+            params.addOpt("sub_total", subTotal);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest roundOffAmount(Integer roundOffAmount) {
+            params.addOpt("round_off_amount", roundOffAmount);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest fractionalCorrection(Integer fractionalCorrection) {
+            params.addOpt("fractional_correction", fractionalCorrection);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest vatNumberPrefix(String vatNumberPrefix) {
+            params.addOpt("vat_number_prefix", vatNumberPrefix);
+            return this;
+        }
+
+
+        public ImportCreditNoteRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
+            params.addOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemId(int index, String lineItemId) {
+            params.addOpt("line_items[id][" + index + "]", lineItemId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemDateFrom(int index, Timestamp lineItemDateFrom) {
+            params.addOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemDateTo(int index, Timestamp lineItemDateTo) {
+            params.addOpt("line_items[date_to][" + index + "]", lineItemDateTo);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemSubscriptionId(int index, String lineItemSubscriptionId) {
+            params.addOpt("line_items[subscription_id][" + index + "]", lineItemSubscriptionId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemDescription(int index, String lineItemDescription) {
+            params.add("line_items[description][" + index + "]", lineItemDescription);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
+            params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemQuantity(int index, Integer lineItemQuantity) {
+            params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemAmount(int index, Integer lineItemAmount) {
+            params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemUnitAmountInDecimal(int index, String lineItemUnitAmountInDecimal) {
+            params.addOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemQuantityInDecimal(int index, String lineItemQuantityInDecimal) {
+            params.addOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemAmountInDecimal(int index, String lineItemAmountInDecimal) {
+            params.addOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
+            params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemEntityId(int index, String lineItemEntityId) {
+            params.addOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemItemLevelDiscount1EntityId(int index, String lineItemItemLevelDiscount1EntityId) {
+            params.addOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemItemLevelDiscount1Amount(int index, Integer lineItemItemLevelDiscount1Amount) {
+            params.addOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemItemLevelDiscount2EntityId(int index, String lineItemItemLevelDiscount2EntityId) {
+            params.addOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemItemLevelDiscount2Amount(int index, Integer lineItemItemLevelDiscount2Amount) {
+            params.addOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax1Name(int index, String lineItemTax1Name) {
+            params.addOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax1Amount(int index, Integer lineItemTax1Amount) {
+            params.addOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax2Name(int index, String lineItemTax2Name) {
+            params.addOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax2Amount(int index, Integer lineItemTax2Amount) {
+            params.addOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax3Name(int index, String lineItemTax3Name) {
+            params.addOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax3Amount(int index, Integer lineItemTax3Amount) {
+            params.addOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax4Name(int index, String lineItemTax4Name) {
+            params.addOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax4Amount(int index, Integer lineItemTax4Amount) {
+            params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax5Name(int index, String lineItemTax5Name) {
+            params.addOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax5Amount(int index, Integer lineItemTax5Amount) {
+            params.addOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax6Name(int index, String lineItemTax6Name) {
+            params.addOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax6Amount(int index, Integer lineItemTax6Amount) {
+            params.addOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax7Name(int index, String lineItemTax7Name) {
+            params.addOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax7Amount(int index, Integer lineItemTax7Amount) {
+            params.addOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax8Name(int index, String lineItemTax8Name) {
+            params.addOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax8Amount(int index, Integer lineItemTax8Amount) {
+            params.addOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax9Name(int index, String lineItemTax9Name) {
+            params.addOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax9Amount(int index, Integer lineItemTax9Amount) {
+            params.addOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax10Name(int index, String lineItemTax10Name) {
+            params.addOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTax10Amount(int index, Integer lineItemTax10Amount) {
+            params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {
+            params.add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierStartingUnit(int index, Integer lineItemTierStartingUnit) {
+            params.addOpt("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierEndingUnit(int index, Integer lineItemTierEndingUnit) {
+            params.addOpt("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierQuantityUsed(int index, Integer lineItemTierQuantityUsed) {
+            params.addOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierUnitAmount(int index, Integer lineItemTierUnitAmount) {
+            params.addOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierStartingUnitInDecimal(int index, String lineItemTierStartingUnitInDecimal) {
+            params.addOpt("line_item_tiers[starting_unit_in_decimal][" + index + "]", lineItemTierStartingUnitInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierEndingUnitInDecimal(int index, String lineItemTierEndingUnitInDecimal) {
+            params.addOpt("line_item_tiers[ending_unit_in_decimal][" + index + "]", lineItemTierEndingUnitInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierQuantityUsedInDecimal(int index, String lineItemTierQuantityUsedInDecimal) {
+            params.addOpt("line_item_tiers[quantity_used_in_decimal][" + index + "]", lineItemTierQuantityUsedInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest lineItemTierUnitAmountInDecimal(int index, String lineItemTierUnitAmountInDecimal) {
+            params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest discountLineItemId(int index, String discountLineItemId) {
+            params.addOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
+            return this;
+        }
+        public ImportCreditNoteRequest discountEntityType(int index, Discount.EntityType discountEntityType) {
+            params.add("discounts[entity_type][" + index + "]", discountEntityType);
+            return this;
+        }
+        public ImportCreditNoteRequest discountEntityId(int index, String discountEntityId) {
+            params.addOpt("discounts[entity_id][" + index + "]", discountEntityId);
+            return this;
+        }
+        public ImportCreditNoteRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
+            return this;
+        }
+        public ImportCreditNoteRequest discountAmount(int index, Integer discountAmount) {
+            params.add("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest taxName(int index, String taxName) {
+            params.add("taxes[name][" + index + "]", taxName);
+            return this;
+        }
+        public ImportCreditNoteRequest taxRate(int index, Double taxRate) {
+            params.add("taxes[rate][" + index + "]", taxRate);
+            return this;
+        }
+        public ImportCreditNoteRequest taxAmount(int index, Integer taxAmount) {
+            params.addOpt("taxes[amount][" + index + "]", taxAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest taxDescription(int index, String taxDescription) {
+            params.addOpt("taxes[description][" + index + "]", taxDescription);
+            return this;
+        }
+        public ImportCreditNoteRequest taxJurisType(int index, com.chargebee.models.enums.TaxJurisType taxJurisType) {
+            params.addOpt("taxes[juris_type][" + index + "]", taxJurisType);
+            return this;
+        }
+        public ImportCreditNoteRequest taxJurisName(int index, String taxJurisName) {
+            params.addOpt("taxes[juris_name][" + index + "]", taxJurisName);
+            return this;
+        }
+        public ImportCreditNoteRequest taxJurisCode(int index, String taxJurisCode) {
+            params.addOpt("taxes[juris_code][" + index + "]", taxJurisCode);
+            return this;
+        }
+        public ImportCreditNoteRequest allocationInvoiceId(int index, String allocationInvoiceId) {
+            params.add("allocations[invoice_id][" + index + "]", allocationInvoiceId);
+            return this;
+        }
+        public ImportCreditNoteRequest allocationAllocatedAmount(int index, Integer allocationAllocatedAmount) {
+            params.add("allocations[allocated_amount][" + index + "]", allocationAllocatedAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest allocationAllocatedAt(int index, Timestamp allocationAllocatedAt) {
+            params.add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
+            return this;
+        }
+        public ImportCreditNoteRequest linkedRefundAmount(int index, Integer linkedRefundAmount) {
+            params.add("linked_refunds[amount][" + index + "]", linkedRefundAmount);
+            return this;
+        }
+        public ImportCreditNoteRequest linkedRefundPaymentMethod(int index, com.chargebee.models.enums.PaymentMethod linkedRefundPaymentMethod) {
+            params.add("linked_refunds[payment_method][" + index + "]", linkedRefundPaymentMethod);
+            return this;
+        }
+        public ImportCreditNoteRequest linkedRefundDate(int index, Timestamp linkedRefundDate) {
+            params.add("linked_refunds[date][" + index + "]", linkedRefundDate);
+            return this;
+        }
+        public ImportCreditNoteRequest linkedRefundReferenceNumber(int index, String linkedRefundReferenceNumber) {
+            params.addOpt("linked_refunds[reference_number][" + index + "]", linkedRefundReferenceNumber);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

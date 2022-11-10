@@ -689,7 +689,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Einvoice extends Resource<Einvoice> {
         public enum Status {
-             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -2646,6 +2646,18 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ImportInvoiceRequest voidedAt(Timestamp voidedAt) {
+            params.addOpt("voided_at", voidedAt);
+            return this;
+        }
+
+
+        public ImportInvoiceRequest voidReasonCode(String voidReasonCode) {
+            params.addOpt("void_reason_code", voidReasonCode);
+            return this;
+        }
+
+
         public ImportInvoiceRequest dueDate(Timestamp dueDate) {
             params.addOpt("due_date", dueDate);
             return this;
@@ -3774,8 +3786,8 @@ public class Invoice extends Resource<Invoice> {
 
 
         @Deprecated
-        public VoidInvoiceRequest voidWithCreditNote(Boolean voidWithCreditNote) {
-            params.addOpt("void_with_credit_note", voidWithCreditNote);
+        public VoidInvoiceRequest createCreditNote(Boolean createCreditNote) {
+            params.addOpt("create_credit_note", createCreditNote);
             return this;
         }
 

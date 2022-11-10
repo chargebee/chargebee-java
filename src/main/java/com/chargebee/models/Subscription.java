@@ -520,6 +520,12 @@ public class Subscription extends Resource<Subscription> {
     }
 
     public static class Discount extends Resource<Discount> {
+        public enum Type {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public enum DurationType {
              ONE_TIME,FOREVER,LIMITED_PERIOD,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
@@ -542,6 +548,10 @@ public class Subscription extends Resource<Subscription> {
 
         public String invoiceName() {
             return optString("invoice_name");
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
         }
 
         public Double percentage() {
@@ -1053,6 +1063,11 @@ public class Subscription extends Resource<Subscription> {
     public static ImportContractTermRequest importContractTerm(String id) {
         String uri = uri("subscriptions", nullCheck(id), "import_contract_term");
         return new ImportContractTermRequest(Method.POST, uri);
+    }
+
+    public static ImportUnbilledChargesRequest importUnbilledCharges(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "import_unbilled_charges");
+        return new ImportUnbilledChargesRequest(Method.POST, uri);
     }
 
     public static ImportForItemsRequest importForItems(String id) {
@@ -4300,6 +4315,8 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+
+
         @Override
         public Params params() {
             return params;
@@ -5796,6 +5813,130 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ImportUnbilledChargesRequest extends Request<ImportUnbilledChargesRequest> {
+
+        private ImportUnbilledChargesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ImportUnbilledChargesRequest unbilledChargeId(int index, String unbilledChargeId) {
+            params.addOpt("unbilled_charges[id][" + index + "]", unbilledChargeId);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeDateFrom(int index, Timestamp unbilledChargeDateFrom) {
+            params.add("unbilled_charges[date_from][" + index + "]", unbilledChargeDateFrom);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeDateTo(int index, Timestamp unbilledChargeDateTo) {
+            params.add("unbilled_charges[date_to][" + index + "]", unbilledChargeDateTo);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeEntityType(int index, UnbilledCharge.EntityType unbilledChargeEntityType) {
+            params.add("unbilled_charges[entity_type][" + index + "]", unbilledChargeEntityType);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeEntityId(int index, String unbilledChargeEntityId) {
+            params.addOpt("unbilled_charges[entity_id][" + index + "]", unbilledChargeEntityId);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeDescription(int index, String unbilledChargeDescription) {
+            params.addOpt("unbilled_charges[description][" + index + "]", unbilledChargeDescription);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeUnitAmount(int index, Integer unbilledChargeUnitAmount) {
+            params.addOpt("unbilled_charges[unit_amount][" + index + "]", unbilledChargeUnitAmount);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeQuantity(int index, Integer unbilledChargeQuantity) {
+            params.addOpt("unbilled_charges[quantity][" + index + "]", unbilledChargeQuantity);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeAmount(int index, Integer unbilledChargeAmount) {
+            params.addOpt("unbilled_charges[amount][" + index + "]", unbilledChargeAmount);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeUnitAmountInDecimal(int index, String unbilledChargeUnitAmountInDecimal) {
+            params.addOpt("unbilled_charges[unit_amount_in_decimal][" + index + "]", unbilledChargeUnitAmountInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeQuantityInDecimal(int index, String unbilledChargeQuantityInDecimal) {
+            params.addOpt("unbilled_charges[quantity_in_decimal][" + index + "]", unbilledChargeQuantityInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeAmountInDecimal(int index, String unbilledChargeAmountInDecimal) {
+            params.addOpt("unbilled_charges[amount_in_decimal][" + index + "]", unbilledChargeAmountInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeDiscountAmount(int index, Integer unbilledChargeDiscountAmount) {
+            params.addOpt("unbilled_charges[discount_amount][" + index + "]", unbilledChargeDiscountAmount);
+            return this;
+        }
+        public ImportUnbilledChargesRequest unbilledChargeUseForProration(int index, Boolean unbilledChargeUseForProration) {
+            params.addOpt("unbilled_charges[use_for_proration][" + index + "]", unbilledChargeUseForProration);
+            return this;
+        }
+        public ImportUnbilledChargesRequest discountUnbilledChargeId(int index, String discountUnbilledChargeId) {
+            params.addOpt("discounts[unbilled_charge_id][" + index + "]", discountUnbilledChargeId);
+            return this;
+        }
+        public ImportUnbilledChargesRequest discountEntityType(int index, Invoice.Discount.EntityType discountEntityType) {
+            params.addOpt("discounts[entity_type][" + index + "]", discountEntityType);
+            return this;
+        }
+        public ImportUnbilledChargesRequest discountEntityId(int index, String discountEntityId) {
+            params.addOpt("discounts[entity_id][" + index + "]", discountEntityId);
+            return this;
+        }
+        public ImportUnbilledChargesRequest discountDescription(int index, String discountDescription) {
+            params.addOpt("discounts[description][" + index + "]", discountDescription);
+            return this;
+        }
+        public ImportUnbilledChargesRequest discountAmount(int index, Integer discountAmount) {
+            params.add("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierUnbilledChargeId(int index, String tierUnbilledChargeId) {
+            params.add("tiers[unbilled_charge_id][" + index + "]", tierUnbilledChargeId);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierStartingUnit(int index, Integer tierStartingUnit) {
+            params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierEndingUnit(int index, Integer tierEndingUnit) {
+            params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierQuantityUsed(int index, Integer tierQuantityUsed) {
+            params.addOpt("tiers[quantity_used][" + index + "]", tierQuantityUsed);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierUnitAmount(int index, Integer tierUnitAmount) {
+            params.addOpt("tiers[unit_amount][" + index + "]", tierUnitAmount);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierStartingUnitInDecimal(int index, String tierStartingUnitInDecimal) {
+            params.addOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierEndingUnitInDecimal(int index, String tierEndingUnitInDecimal) {
+            params.addOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierQuantityUsedInDecimal(int index, String tierQuantityUsedInDecimal) {
+            params.addOpt("tiers[quantity_used_in_decimal][" + index + "]", tierQuantityUsedInDecimal);
+            return this;
+        }
+        public ImportUnbilledChargesRequest tierUnitAmountInDecimal(int index, String tierUnitAmountInDecimal) {
+            params.addOpt("tiers[unit_amount_in_decimal][" + index + "]", tierUnitAmountInDecimal);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
