@@ -41,7 +41,7 @@ You can install any release of beta library version by adding the below dependen
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>[beta-version-number]</version>
+  <version>{MAJOR}.{MINOR}.{PATCH}</version>
 </dependency>
 ```
 For example, the following are valid:
