@@ -1,45 +1,109 @@
-# Chargebee Java Client Library - API V2
+# Java Client Library for Chargebee API
+***
+This is the source code for the Java client library for [Chargebee APIs](https://apidocs.chargebee.com/docs/api?lang=java).
 
-The java library for integrating with Chargebee Recurring Billing and Subscription Management solution.
+## Library versions
 
-Chargebee now supports two API versions - [V1](https://apidocs.chargebee.com/docs/api/v1) and [V2](https://apidocs.chargebee.com/docs/api), of which V2 is the latest release and all future developments will happen in V2. 
+The versioning scheme of this library is inspired by [SemVer](https://semver.org/). For example, `v3.0.0.beta.1` and `v2.5.1` are valid library versions.
 
-This library is for our <b>API version V2</b>. The library for V1 can be found in [chargebee-v1 branch](https://github.com/chargebee/chargebee-java/tree/chargebee-v1). 
+The following table provides some details for each major version:
 
-## Installation
+| Library major version | Status        | Compatible API versions                                                                                               | **Branch**            |
+|-----------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------|
+| v3.x                  | Active (Beta) | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `high-value-currency` |
+| v2.x                  | Active        | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)   | `master`              |
+| v1.x                  | Inactive      | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                               | `chargebee-v1`        |
 
-### Maven users
-Add the below dependency to your ```pom.xml```:
+A couple of terms used in the above table are explained below:
+- **Status**: The current development status for the library version. 
+  - An **Active** major version is currently being maintained and continues to get backward-compatible changes. 
+  - **Inactive** versions no longer receive any updates. 
+  - **Beta** versions are pre-release versions and are subject to certain [terms and conditions](https://www.chargebee.com/company/terms/#your_rights).  
+- **Branch**: The branch in this repository containing the source code for the latest release of the library version. Every version of the library has been [tagged](https://github.com/chargebee/chargebee-java/tags). You can check out the source code for any version using its tag.
 
-    <dependency>
-      <groupId>com.chargebee</groupId>
-      <artifactId>chargebee-java</artifactId>
-      <version>[latest-2.x.x-release-version]</version>
-    </dependency>
+**Note:** 
+- See the [changelog](CHANGELOG.md) for a history of changes. 
+- Follow the [Migration Guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) to upgrade from v2 to v3 (beta).
 
+## Install the library
+***
 
-### To get the latest jar
+### Requirement
+***
+ * Java 1.8 or later.
 
-ChargeBee java jar is distributed as part of the release under the ```dist``` directory. Just checkout the latest version for 2.x.x by ```git checkout [latest 2.x.x release tag]```
+### Install using Maven
+***
 
+You can install any release of beta library version by adding the below dependency to `pom.xml`:
+
+```xml
+<dependency>
+  <groupId>com.chargebee</groupId>
+  <artifactId>chargebee-java</artifactId>
+  <version>[beta-version-number]</version>
+</dependency>
+```
+For example, the following are valid:
+
+- Install the latest beta version:
+```xml
+<dependency>
+    <groupId>com.chargebee</groupId>
+    <artifactId>chargebee-java</artifactId>
+    <version>3.0.0-beta.1</version>
+</dependency>
+```
+
+- Install a stable version, say v2.5.1:
+```xml
+<dependency>
+    <groupId>com.chargebee</groupId>
+    <artifactId>chargebee-java</artifactId>
+    <version>2.5.1</version>
+</dependency>
+```
+
+### Install JAR files
+***
+
+#### Obtain pre-built JAR files
+***
+
+You can find the JAR files for the library in the [`dist`](dist) directory. To obtain the JAR files for a specific library version, check the `dist` directory within the source tree of the appropriate [tag](https://github.com/chargebee/chargebee-java/tags).
+
+#### Build JAR files
+***
+
+Alternatively, you can build the JAR files by following the steps below:
+
+1. Checkout the appropriate version of the library source code.
+```shell
+git checkout {tagname}
+```
+For example, the following are valid:
+
+```shell
+git checkout v3.0.0-beta.1
+```
 or
+```shell
+git checkout v2.5.1
+```
 
-Build the jar by running maven as follows in latest release tag for 2.x.x: 
-
-<pre><code>git checkout [latest 2.x.x release tag]
-mvn clean package</code></pre> 
-
-## Documentation
-
-<a href="https://apidocs.chargebee.com/docs/api?lang=java" target="_blank">API Reference</a>
-
-## Usage
-You can also copy the below code snippet from our
-<a href="https://apidocs.chargebee.com/docs/api?lang=java" target="_blank">API Reference</a>
-documentation. We have provided downloadable code for each API operation.
+2. Clean and build using Maven.
+```shell
+mvn clean package
+```
 
 
-<pre><code>import java.io.IOException;
+## Use the library
+***
+
+### Create a subscription
+
+```java
+import java.io.IOException;
 import com.chargebee.*;
 import com.chargebee.models.*;
 import com.chargebee.models.enums.*;
@@ -59,9 +123,21 @@ public class Sample{
     Card card = result.card();
     System.out.println(result);
   }
-}</code></pre>
+}
+```
+## Contribution
+***
+You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions).
+
+If you find something amiss, you are welcome to create an [issue](https://github.com/chargebee/chargebee-java/issues).
+
+## API documentation
+***
+
+The API documentation for the Java library can be found in our [API reference](https://apidocs.chargebee.com/docs/api?lang=java).
+
 
 ## License
+***
 
-See the LICENSE file.
-
+See the [LICENSE](LICENSE).
