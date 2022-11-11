@@ -51,16 +51,16 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return reqTimestamp("date_to");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public Integer quantity() {
             return optInteger("quantity");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public PricingModel pricingModel() {
@@ -71,8 +71,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return reqBoolean("is_taxed");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
         public Double taxRate() {
@@ -91,12 +91,12 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optString("amount_in_decimal");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
         public String referenceLineItemId() {
@@ -140,8 +140,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -189,8 +189,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -204,8 +204,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return reqString("name");
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -239,12 +239,12 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -259,8 +259,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -291,24 +291,24 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
         return optString("id");
     }
 
-    public Integer subTotal() {
-        return reqInteger("sub_total");
+    public Long subTotal() {
+        return reqLong("sub_total");
     }
 
-    public Integer total() {
-        return optInteger("total");
+    public Long total() {
+        return optLong("total");
     }
 
-    public Integer creditsApplied() {
-        return optInteger("credits_applied");
+    public Long creditsApplied() {
+        return optLong("credits_applied");
     }
 
-    public Integer amountPaid() {
-        return optInteger("amount_paid");
+    public Long amountPaid() {
+        return optLong("amount_paid");
     }
 
-    public Integer amountDue() {
-        return optInteger("amount_due");
+    public Long amountDue() {
+        return optLong("amount_due");
     }
 
     public ChargeEvent chargeEvent() {

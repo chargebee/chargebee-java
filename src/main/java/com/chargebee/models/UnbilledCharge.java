@@ -42,8 +42,8 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             return reqInteger("quantity_used");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public String startingUnitInDecimal() {
@@ -98,8 +98,8 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optTimestamp("date_to");
     }
 
-    public Integer unitAmount() {
-        return optInteger("unit_amount");
+    public Long unitAmount() {
+        return optLong("unit_amount");
     }
 
     public PricingModel pricingModel() {
@@ -110,16 +110,16 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optInteger("quantity");
     }
 
-    public Integer amount() {
-        return optInteger("amount");
+    public Long amount() {
+        return optLong("amount");
     }
 
     public String currencyCode() {
         return reqString("currency_code");
     }
 
-    public Integer discountAmount() {
-        return optInteger("discount_amount");
+    public Long discountAmount() {
+        return optLong("discount_amount");
     }
 
     public String description() {
@@ -229,7 +229,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public CreateUnbilledChargeRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateUnbilledChargeRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -249,7 +249,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("addons[date_to][" + index + "]", addonDateTo);
             return this;
         }
-        public CreateUnbilledChargeRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateUnbilledChargeRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -337,7 +337,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public CreateRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public CreateRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -365,7 +365,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -381,7 +381,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public CreateRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }

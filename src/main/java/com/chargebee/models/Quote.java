@@ -58,16 +58,16 @@ public class Quote extends Resource<Quote> {
             return reqTimestamp("date_to");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public Integer quantity() {
             return optInteger("quantity");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public PricingModel pricingModel() {
@@ -78,8 +78,8 @@ public class Quote extends Resource<Quote> {
             return reqBoolean("is_taxed");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
         public Double taxRate() {
@@ -98,12 +98,12 @@ public class Quote extends Resource<Quote> {
             return optString("amount_in_decimal");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
         public String referenceLineItemId() {
@@ -147,8 +147,8 @@ public class Quote extends Resource<Quote> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -196,8 +196,8 @@ public class Quote extends Resource<Quote> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -211,8 +211,8 @@ public class Quote extends Resource<Quote> {
             return reqString("name");
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -246,12 +246,12 @@ public class Quote extends Resource<Quote> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -266,8 +266,8 @@ public class Quote extends Resource<Quote> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -297,8 +297,8 @@ public class Quote extends Resource<Quote> {
             return reqInteger("quantity_used");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public String startingUnitInDecimal() {
@@ -515,28 +515,28 @@ public class Quote extends Resource<Quote> {
         return optLong("total_payable");
     }
 
-    public Integer chargeOnAcceptance() {
-        return optInteger("charge_on_acceptance");
+    public Long chargeOnAcceptance() {
+        return optLong("charge_on_acceptance");
     }
 
-    public Integer subTotal() {
-        return reqInteger("sub_total");
+    public Long subTotal() {
+        return reqLong("sub_total");
     }
 
-    public Integer total() {
-        return optInteger("total");
+    public Long total() {
+        return optLong("total");
     }
 
-    public Integer creditsApplied() {
-        return optInteger("credits_applied");
+    public Long creditsApplied() {
+        return optLong("credits_applied");
     }
 
-    public Integer amountPaid() {
-        return optInteger("amount_paid");
+    public Long amountPaid() {
+        return optLong("amount_paid");
     }
 
-    public Integer amountDue() {
-        return optInteger("amount_due");
+    public Long amountDue() {
+        return optLong("amount_due");
     }
 
     public Integer version() {
@@ -603,8 +603,8 @@ public class Quote extends Resource<Quote> {
         return optTimestamp("contract_term_end");
     }
 
-    public Integer contractTermTerminationFee() {
-        return optInteger("contract_term_termination_fee");
+    public Long contractTermTerminationFee() {
+        return optLong("contract_term_termination_fee");
     }
 
     public String businessEntityId() {
@@ -816,7 +816,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public CreateSubForCustomerQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public CreateSubForCustomerQuoteRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
@@ -826,7 +826,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public CreateSubForCustomerQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubForCustomerQuoteRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -943,7 +943,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateSubForCustomerQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateSubForCustomerQuoteRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -963,7 +963,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1085,7 +1085,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public EditCreateSubForCustomerQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public EditCreateSubForCustomerQuoteRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
@@ -1095,7 +1095,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public EditCreateSubForCustomerQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public EditCreateSubForCustomerQuoteRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1212,7 +1212,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public EditCreateSubForCustomerQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public EditCreateSubForCustomerQuoteRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1232,7 +1232,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public EditCreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public EditCreateSubForCustomerQuoteRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1407,12 +1407,12 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public UpdateSubscriptionQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public UpdateSubscriptionQuoteRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
 
-        public UpdateSubscriptionQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public UpdateSubscriptionQuoteRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1631,7 +1631,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public UpdateSubscriptionQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public UpdateSubscriptionQuoteRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1647,7 +1647,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public UpdateSubscriptionQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public UpdateSubscriptionQuoteRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1815,12 +1815,12 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-        public EditUpdateSubscriptionQuoteRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public EditUpdateSubscriptionQuoteRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
 
-        public EditUpdateSubscriptionQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public EditUpdateSubscriptionQuoteRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2039,7 +2039,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public EditUpdateSubscriptionQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public EditUpdateSubscriptionQuoteRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -2055,7 +2055,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public EditUpdateSubscriptionQuoteRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public EditUpdateSubscriptionQuoteRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -2241,7 +2241,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateForOnetimeChargesRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateForOnetimeChargesRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -2253,7 +2253,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[service_period][" + index + "]", addonServicePeriod);
             return this;
         }
-        public CreateForOnetimeChargesRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateForOnetimeChargesRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -2415,7 +2415,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public EditOneTimeQuoteRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public EditOneTimeQuoteRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -2427,7 +2427,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("addons[service_period][" + index + "]", addonServicePeriod);
             return this;
         }
-        public EditOneTimeQuoteRequest chargeAmount(int index, Integer chargeAmount) {
+        public EditOneTimeQuoteRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -2550,7 +2550,7 @@ public class Quote extends Resource<Quote> {
         }
 
         @Deprecated
-        public CreateSubItemsForCustomerQuoteRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubItemsForCustomerQuoteRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2662,7 +2662,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CreateSubItemsForCustomerQuoteRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CreateSubItemsForCustomerQuoteRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -2707,7 +2707,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateSubItemsForCustomerQuoteRequest discountAmount(int index, Integer discountAmount) {
+        public CreateSubItemsForCustomerQuoteRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -2743,7 +2743,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateSubItemsForCustomerQuoteRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateSubItemsForCustomerQuoteRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2840,7 +2840,7 @@ public class Quote extends Resource<Quote> {
         }
 
         @Deprecated
-        public EditCreateSubCustomerQuoteForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public EditCreateSubCustomerQuoteForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2952,7 +2952,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public EditCreateSubCustomerQuoteForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public EditCreateSubCustomerQuoteForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -2997,7 +2997,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public EditCreateSubCustomerQuoteForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public EditCreateSubCustomerQuoteForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -3033,7 +3033,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public EditCreateSubCustomerQuoteForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public EditCreateSubCustomerQuoteForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -3183,7 +3183,7 @@ public class Quote extends Resource<Quote> {
         }
 
         @Deprecated
-        public UpdateSubscriptionQuoteForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public UpdateSubscriptionQuoteForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -3396,7 +3396,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public UpdateSubscriptionQuoteForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public UpdateSubscriptionQuoteForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -3445,7 +3445,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public UpdateSubscriptionQuoteForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public UpdateSubscriptionQuoteForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -3485,7 +3485,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public UpdateSubscriptionQuoteForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public UpdateSubscriptionQuoteForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -3620,7 +3620,7 @@ public class Quote extends Resource<Quote> {
 
 
         @Deprecated
-        public EditUpdateSubscriptionQuoteForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public EditUpdateSubscriptionQuoteForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -3833,7 +3833,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public EditUpdateSubscriptionQuoteForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public EditUpdateSubscriptionQuoteForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -3882,7 +3882,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public EditUpdateSubscriptionQuoteForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public EditUpdateSubscriptionQuoteForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -3922,7 +3922,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public EditUpdateSubscriptionQuoteForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public EditUpdateSubscriptionQuoteForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -4084,7 +4084,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public CreateForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -4108,7 +4108,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateForChargeItemsAndChargesRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -4124,7 +4124,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -4156,7 +4156,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest discountAmount(int index, Integer discountAmount) {
+        public CreateForChargeItemsAndChargesRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -4302,7 +4302,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public EditForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public EditForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -4326,7 +4326,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public EditForChargeItemsAndChargesRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public EditForChargeItemsAndChargesRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -4342,7 +4342,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public EditForChargeItemsAndChargesRequest chargeAmount(int index, Integer chargeAmount) {
+        public EditForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -4374,7 +4374,7 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public EditForChargeItemsAndChargesRequest discountAmount(int index, Integer discountAmount) {
+        public EditForChargeItemsAndChargesRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }

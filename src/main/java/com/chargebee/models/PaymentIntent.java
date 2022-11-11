@@ -111,8 +111,8 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         return optString("currency_code");
     }
 
-    public Integer amount() {
-        return reqInteger("amount");
+    public Long amount() {
+        return reqLong("amount");
     }
 
     public String gatewayAccountId() {
@@ -211,7 +211,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         }
 
 
-        public CreateRequest amount(Integer amount) {
+        public CreateRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -265,7 +265,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
             super(httpMeth, uri);
         }
     
-        public UpdateRequest amount(Integer amount) {
+        public UpdateRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }

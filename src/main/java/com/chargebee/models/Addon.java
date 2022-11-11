@@ -71,8 +71,8 @@ public class Addon extends Resource<Addon> {
             return optInteger("ending_unit");
         }
 
-        public Integer price() {
-            return reqInteger("price");
+        public Long price() {
+            return reqLong("price");
         }
 
         public String startingUnitInDecimal() {
@@ -132,8 +132,8 @@ public class Addon extends Resource<Addon> {
         return reqEnum("charge_type", ChargeType.class);
     }
 
-    public Integer price() {
-        return optInteger("price");
+    public Long price() {
+        return optLong("price");
     }
 
     public String currencyCode() {
@@ -350,7 +350,7 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public CreateRequest price(Integer price) {
+        public CreateRequest price(Long price) {
             params.addOpt("price", price);
             return this;
         }
@@ -553,7 +553,7 @@ public class Addon extends Resource<Addon> {
             params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
             return this;
         }
-        public CreateRequest tierPrice(int index, Integer tierPrice) {
+        public CreateRequest tierPrice(int index, Long tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
@@ -605,7 +605,7 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public UpdateRequest price(Integer price) {
+        public UpdateRequest price(Long price) {
             params.addOpt("price", price);
             return this;
         }
@@ -804,7 +804,7 @@ public class Addon extends Resource<Addon> {
             params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
             return this;
         }
-        public UpdateRequest tierPrice(int index, Integer tierPrice) {
+        public UpdateRequest tierPrice(int index, Long tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
@@ -858,8 +858,8 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        public NumberFilter<Integer, AddonListRequest> price() {
-            return new NumberFilter<Integer, AddonListRequest>("price",this);        
+        public NumberFilter<Long, AddonListRequest> price() {
+            return new NumberFilter<Long, AddonListRequest>("price",this);        
         }
 
 

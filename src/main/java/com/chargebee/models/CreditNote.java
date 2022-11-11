@@ -98,16 +98,16 @@ public class CreditNote extends Resource<CreditNote> {
             return reqTimestamp("date_to");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public Integer quantity() {
             return optInteger("quantity");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public PricingModel pricingModel() {
@@ -118,8 +118,8 @@ public class CreditNote extends Resource<CreditNote> {
             return reqBoolean("is_taxed");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
         public Double taxRate() {
@@ -138,12 +138,12 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("amount_in_decimal");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
         public String referenceLineItemId() {
@@ -187,8 +187,8 @@ public class CreditNote extends Resource<CreditNote> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -236,8 +236,8 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -263,8 +263,8 @@ public class CreditNote extends Resource<CreditNote> {
             return reqInteger("quantity_used");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public String startingUnitInDecimal() {
@@ -294,8 +294,8 @@ public class CreditNote extends Resource<CreditNote> {
             return reqString("name");
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -329,12 +329,12 @@ public class CreditNote extends Resource<CreditNote> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -349,8 +349,8 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -368,8 +368,8 @@ public class CreditNote extends Resource<CreditNote> {
             return reqString("txn_id");
         }
 
-        public Integer appliedAmount() {
-            return reqInteger("applied_amount");
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
         }
 
         public Timestamp appliedAt() {
@@ -384,8 +384,8 @@ public class CreditNote extends Resource<CreditNote> {
             return optTimestamp("txn_date");
         }
 
-        public Integer txnAmount() {
-            return optInteger("txn_amount");
+        public Long txnAmount() {
+            return optLong("txn_amount");
         }
 
         public String refundReasonCode() {
@@ -403,8 +403,8 @@ public class CreditNote extends Resource<CreditNote> {
             return reqString("invoice_id");
         }
 
-        public Integer allocatedAmount() {
-            return reqInteger("allocated_amount");
+        public Long allocatedAmount() {
+            return reqLong("allocated_amount");
         }
 
         public Timestamp allocatedAt() {
@@ -479,20 +479,20 @@ public class CreditNote extends Resource<CreditNote> {
         return reqString("currency_code");
     }
 
-    public Integer total() {
-        return optInteger("total");
+    public Long total() {
+        return optLong("total");
     }
 
-    public Integer amountAllocated() {
-        return optInteger("amount_allocated");
+    public Long amountAllocated() {
+        return optLong("amount_allocated");
     }
 
-    public Integer amountRefunded() {
-        return optInteger("amount_refunded");
+    public Long amountRefunded() {
+        return optLong("amount_refunded");
     }
 
-    public Integer amountAvailable() {
-        return optInteger("amount_available");
+    public Long amountAvailable() {
+        return optLong("amount_available");
     }
 
     public Timestamp refundedAt() {
@@ -523,28 +523,28 @@ public class CreditNote extends Resource<CreditNote> {
         return optSubResource("einvoice", CreditNote.Einvoice.class);
     }
 
-    public Integer subTotal() {
-        return reqInteger("sub_total");
+    public Long subTotal() {
+        return reqLong("sub_total");
     }
 
-    public Integer subTotalInLocalCurrency() {
-        return optInteger("sub_total_in_local_currency");
+    public Long subTotalInLocalCurrency() {
+        return optLong("sub_total_in_local_currency");
     }
 
-    public Integer totalInLocalCurrency() {
-        return optInteger("total_in_local_currency");
+    public Long totalInLocalCurrency() {
+        return optLong("total_in_local_currency");
     }
 
     public String localCurrencyCode() {
         return optString("local_currency_code");
     }
 
-    public Integer roundOffAmount() {
-        return optInteger("round_off_amount");
+    public Long roundOffAmount() {
+        return optLong("round_off_amount");
     }
 
-    public Integer fractionalCorrection() {
-        return optInteger("fractional_correction");
+    public Long fractionalCorrection() {
+        return optLong("fractional_correction");
     }
 
     public List<CreditNote.LineItem> lineItems() {
@@ -675,7 +675,7 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public CreateRequest total(Integer total) {
+        public CreateRequest total(Long total) {
             params.addOpt("total", total);
             return this;
         }
@@ -721,7 +721,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
             return this;
         }
-        public CreateRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
+        public CreateRequest lineItemUnitAmount(int index, Long lineItemUnitAmount) {
             params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
@@ -737,7 +737,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
             return this;
         }
-        public CreateRequest lineItemAmount(int index, Integer lineItemAmount) {
+        public CreateRequest lineItemAmount(int index, Long lineItemAmount) {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
             return this;
         }
@@ -783,7 +783,7 @@ public class CreditNote extends Resource<CreditNote> {
             super(httpMeth, uri);
         }
     
-        public RefundRequest refundAmount(Integer refundAmount) {
+        public RefundRequest refundAmount(Long refundAmount) {
             params.addOpt("refund_amount", refundAmount);
             return this;
         }
@@ -825,7 +825,7 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public RecordRefundRequest transactionAmount(Integer transactionAmount) {
+        public RecordRefundRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
@@ -928,8 +928,8 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public NumberFilter<Integer, CreditNoteListRequest> total() {
-            return new NumberFilter<Integer, CreditNoteListRequest>("total",this);        
+        public NumberFilter<Long, CreditNoteListRequest> total() {
+            return new NumberFilter<Long, CreditNoteListRequest>("total",this);        
         }
 
 
@@ -938,18 +938,18 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public NumberFilter<Integer, CreditNoteListRequest> amountAllocated() {
-            return new NumberFilter<Integer, CreditNoteListRequest>("amount_allocated",this);        
+        public NumberFilter<Long, CreditNoteListRequest> amountAllocated() {
+            return new NumberFilter<Long, CreditNoteListRequest>("amount_allocated",this);        
         }
 
 
-        public NumberFilter<Integer, CreditNoteListRequest> amountRefunded() {
-            return new NumberFilter<Integer, CreditNoteListRequest>("amount_refunded",this);        
+        public NumberFilter<Long, CreditNoteListRequest> amountRefunded() {
+            return new NumberFilter<Long, CreditNoteListRequest>("amount_refunded",this);        
         }
 
 
-        public NumberFilter<Integer, CreditNoteListRequest> amountAvailable() {
-            return new NumberFilter<Integer, CreditNoteListRequest>("amount_available",this);        
+        public NumberFilter<Long, CreditNoteListRequest> amountAvailable() {
+            return new NumberFilter<Long, CreditNoteListRequest>("amount_available",this);        
         }
 
 
@@ -1062,7 +1062,7 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public ImportCreditNoteRequest total(Integer total) {
+        public ImportCreditNoteRequest total(Long total) {
             params.addOpt("total", total);
             return this;
         }
@@ -1080,19 +1080,19 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
-        public ImportCreditNoteRequest subTotal(Integer subTotal) {
+        public ImportCreditNoteRequest subTotal(Long subTotal) {
             params.addOpt("sub_total", subTotal);
             return this;
         }
 
 
-        public ImportCreditNoteRequest roundOffAmount(Integer roundOffAmount) {
+        public ImportCreditNoteRequest roundOffAmount(Long roundOffAmount) {
             params.addOpt("round_off_amount", roundOffAmount);
             return this;
         }
 
 
-        public ImportCreditNoteRequest fractionalCorrection(Integer fractionalCorrection) {
+        public ImportCreditNoteRequest fractionalCorrection(Long fractionalCorrection) {
             params.addOpt("fractional_correction", fractionalCorrection);
             return this;
         }
@@ -1128,7 +1128,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
-        public ImportCreditNoteRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
+        public ImportCreditNoteRequest lineItemUnitAmount(int index, Long lineItemUnitAmount) {
             params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
@@ -1136,7 +1136,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
             return this;
         }
-        public ImportCreditNoteRequest lineItemAmount(int index, Integer lineItemAmount) {
+        public ImportCreditNoteRequest lineItemAmount(int index, Long lineItemAmount) {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
             return this;
         }
@@ -1164,7 +1164,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
             return this;
         }
-        public ImportCreditNoteRequest lineItemItemLevelDiscount1Amount(int index, Integer lineItemItemLevelDiscount1Amount) {
+        public ImportCreditNoteRequest lineItemItemLevelDiscount1Amount(int index, Long lineItemItemLevelDiscount1Amount) {
             params.addOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
             return this;
         }
@@ -1172,7 +1172,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
             return this;
         }
-        public ImportCreditNoteRequest lineItemItemLevelDiscount2Amount(int index, Integer lineItemItemLevelDiscount2Amount) {
+        public ImportCreditNoteRequest lineItemItemLevelDiscount2Amount(int index, Long lineItemItemLevelDiscount2Amount) {
             params.addOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
             return this;
         }
@@ -1180,7 +1180,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax1Amount(int index, Integer lineItemTax1Amount) {
+        public ImportCreditNoteRequest lineItemTax1Amount(int index, Long lineItemTax1Amount) {
             params.addOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
             return this;
         }
@@ -1188,7 +1188,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax2Amount(int index, Integer lineItemTax2Amount) {
+        public ImportCreditNoteRequest lineItemTax2Amount(int index, Long lineItemTax2Amount) {
             params.addOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
             return this;
         }
@@ -1196,7 +1196,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax3Amount(int index, Integer lineItemTax3Amount) {
+        public ImportCreditNoteRequest lineItemTax3Amount(int index, Long lineItemTax3Amount) {
             params.addOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
             return this;
         }
@@ -1204,7 +1204,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax4Amount(int index, Integer lineItemTax4Amount) {
+        public ImportCreditNoteRequest lineItemTax4Amount(int index, Long lineItemTax4Amount) {
             params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
             return this;
         }
@@ -1212,7 +1212,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax5Amount(int index, Integer lineItemTax5Amount) {
+        public ImportCreditNoteRequest lineItemTax5Amount(int index, Long lineItemTax5Amount) {
             params.addOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
             return this;
         }
@@ -1220,7 +1220,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax6Amount(int index, Integer lineItemTax6Amount) {
+        public ImportCreditNoteRequest lineItemTax6Amount(int index, Long lineItemTax6Amount) {
             params.addOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
             return this;
         }
@@ -1228,7 +1228,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax7Amount(int index, Integer lineItemTax7Amount) {
+        public ImportCreditNoteRequest lineItemTax7Amount(int index, Long lineItemTax7Amount) {
             params.addOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
             return this;
         }
@@ -1236,7 +1236,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax8Amount(int index, Integer lineItemTax8Amount) {
+        public ImportCreditNoteRequest lineItemTax8Amount(int index, Long lineItemTax8Amount) {
             params.addOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
             return this;
         }
@@ -1244,7 +1244,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax9Amount(int index, Integer lineItemTax9Amount) {
+        public ImportCreditNoteRequest lineItemTax9Amount(int index, Long lineItemTax9Amount) {
             params.addOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
             return this;
         }
@@ -1252,7 +1252,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTax10Amount(int index, Integer lineItemTax10Amount) {
+        public ImportCreditNoteRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
             return this;
         }
@@ -1272,7 +1272,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
             return this;
         }
-        public ImportCreditNoteRequest lineItemTierUnitAmount(int index, Integer lineItemTierUnitAmount) {
+        public ImportCreditNoteRequest lineItemTierUnitAmount(int index, Long lineItemTierUnitAmount) {
             params.addOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
             return this;
         }
@@ -1308,7 +1308,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
-        public ImportCreditNoteRequest discountAmount(int index, Integer discountAmount) {
+        public ImportCreditNoteRequest discountAmount(int index, Long discountAmount) {
             params.add("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -1320,7 +1320,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("taxes[rate][" + index + "]", taxRate);
             return this;
         }
-        public ImportCreditNoteRequest taxAmount(int index, Integer taxAmount) {
+        public ImportCreditNoteRequest taxAmount(int index, Long taxAmount) {
             params.addOpt("taxes[amount][" + index + "]", taxAmount);
             return this;
         }
@@ -1344,7 +1344,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("allocations[invoice_id][" + index + "]", allocationInvoiceId);
             return this;
         }
-        public ImportCreditNoteRequest allocationAllocatedAmount(int index, Integer allocationAllocatedAmount) {
+        public ImportCreditNoteRequest allocationAllocatedAmount(int index, Long allocationAllocatedAmount) {
             params.add("allocations[allocated_amount][" + index + "]", allocationAllocatedAmount);
             return this;
         }
@@ -1352,7 +1352,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
             return this;
         }
-        public ImportCreditNoteRequest linkedRefundAmount(int index, Integer linkedRefundAmount) {
+        public ImportCreditNoteRequest linkedRefundAmount(int index, Long linkedRefundAmount) {
             params.add("linked_refunds[amount][" + index + "]", linkedRefundAmount);
             return this;
         }

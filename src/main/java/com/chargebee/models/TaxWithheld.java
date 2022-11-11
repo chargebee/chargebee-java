@@ -83,8 +83,8 @@ public class TaxWithheld extends Resource<TaxWithheld> {
         return reqString("currency_code");
     }
 
-    public Integer amount() {
-        return optInteger("amount");
+    public Long amount() {
+        return optLong("amount");
     }
 
     @Deprecated

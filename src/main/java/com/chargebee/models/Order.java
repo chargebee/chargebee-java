@@ -99,44 +99,44 @@ public class Order extends Resource<Order> {
             return reqString("invoice_line_item_id");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
         public String description() {
             return optString("description");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public Integer fulfillmentQuantity() {
             return optInteger("fulfillment_quantity");
         }
 
-        public Integer fulfillmentAmount() {
-            return optInteger("fulfillment_amount");
+        public Long fulfillmentAmount() {
+            return optLong("fulfillment_amount");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
-        public Integer amountPaid() {
-            return optInteger("amount_paid");
+        public Long amountPaid() {
+            return optLong("amount_paid");
         }
 
-        public Integer amountAdjusted() {
-            return optInteger("amount_adjusted");
+        public Long amountAdjusted() {
+            return optLong("amount_adjusted");
         }
 
-        public Integer refundableCreditsIssued() {
-            return optInteger("refundable_credits_issued");
+        public Long refundableCreditsIssued() {
+            return optLong("refundable_credits_issued");
         }
 
-        public Integer refundableCredits() {
-            return optInteger("refundable_credits");
+        public Long refundableCredits() {
+            return optLong("refundable_credits");
         }
 
         public Boolean isShippable() {
@@ -155,12 +155,12 @@ public class Order extends Resource<Order> {
             return reqEnum("entity_type", EntityType.class);
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
         public String entityId() {
@@ -324,12 +324,12 @@ public class Order extends Resource<Order> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -344,8 +344,8 @@ public class Order extends Resource<Order> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -382,8 +382,8 @@ public class Order extends Resource<Order> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -405,8 +405,8 @@ public class Order extends Resource<Order> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public Type type() {
@@ -421,12 +421,12 @@ public class Order extends Resource<Order> {
             return reqEnum("status", Status.class);
         }
 
-        public Integer amountAdjusted() {
-            return optInteger("amount_adjusted");
+        public Long amountAdjusted() {
+            return optLong("amount_adjusted");
         }
 
-        public Integer amountRefunded() {
-            return optInteger("amount_refunded");
+        public Long amountRefunded() {
+            return optLong("amount_refunded");
         }
 
     }
@@ -444,8 +444,8 @@ public class Order extends Resource<Order> {
             return optString("reason");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
     }
@@ -544,32 +544,32 @@ public class Order extends Resource<Order> {
         return optString("shipment_carrier");
     }
 
-    public Integer invoiceRoundOffAmount() {
-        return optInteger("invoice_round_off_amount");
+    public Long invoiceRoundOffAmount() {
+        return optLong("invoice_round_off_amount");
     }
 
-    public Integer tax() {
-        return optInteger("tax");
+    public Long tax() {
+        return optLong("tax");
     }
 
-    public Integer amountPaid() {
-        return optInteger("amount_paid");
+    public Long amountPaid() {
+        return optLong("amount_paid");
     }
 
-    public Integer amountAdjusted() {
-        return optInteger("amount_adjusted");
+    public Long amountAdjusted() {
+        return optLong("amount_adjusted");
     }
 
-    public Integer refundableCreditsIssued() {
-        return optInteger("refundable_credits_issued");
+    public Long refundableCreditsIssued() {
+        return optLong("refundable_credits_issued");
     }
 
-    public Integer refundableCredits() {
-        return optInteger("refundable_credits");
+    public Long refundableCredits() {
+        return optLong("refundable_credits");
     }
 
-    public Integer roundingAdjustement() {
-        return optInteger("rounding_adjustement");
+    public Long roundingAdjustement() {
+        return optLong("rounding_adjustement");
     }
 
     public Timestamp paidOn() {
@@ -632,16 +632,16 @@ public class Order extends Resource<Order> {
         return optSubResource("billing_address", Order.BillingAddress.class);
     }
 
-    public Integer discount() {
-        return optInteger("discount");
+    public Long discount() {
+        return optLong("discount");
     }
 
-    public Integer subTotal() {
-        return optInteger("sub_total");
+    public Long subTotal() {
+        return optLong("sub_total");
     }
 
-    public Integer total() {
-        return optInteger("total");
+    public Long total() {
+        return optLong("total");
     }
 
     public List<Order.LineItemTax> lineItemTaxes() {
@@ -1132,7 +1132,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public ImportOrderRequest refundableCreditsIssued(Integer refundableCreditsIssued) {
+        public ImportOrderRequest refundableCreditsIssued(Long refundableCreditsIssued) {
             params.addOpt("refundable_credits_issued", refundableCreditsIssued);
             return this;
         }
@@ -1314,7 +1314,7 @@ public class Order extends Resource<Order> {
         }
 
 
-        public CancelRequest creditNoteTotal(Integer creditNoteTotal) {
+        public CancelRequest creditNoteTotal(Long creditNoteTotal) {
             params.addOpt("credit_note[total]", creditNoteTotal);
             return this;
         }
@@ -1348,7 +1348,7 @@ public class Order extends Resource<Order> {
             return this;
         }
 
-        public CreateRefundableCreditNoteRequest creditNoteTotal(Integer creditNoteTotal) {
+        public CreateRefundableCreditNoteRequest creditNoteTotal(Long creditNoteTotal) {
             params.add("credit_note[total]", creditNoteTotal);
             return this;
         }

@@ -43,12 +43,12 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optInteger("quantity");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public Timestamp trialEnd() {
@@ -92,8 +92,8 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return reqInteger("quantity");
         }
 
-        public Integer unitPrice() {
-            return reqInteger("unit_price");
+        public Long unitPrice() {
+            return reqLong("unit_price");
         }
 
         @Deprecated
@@ -173,16 +173,16 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optTimestamp("last_calculated_at");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
         public String unitPriceInDecimal() {
             return optString("unit_price_in_decimal");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public String amountInDecimal() {
@@ -240,8 +240,8 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optInteger("ending_unit");
         }
 
-        public Integer price() {
-            return reqInteger("price");
+        public Long price() {
+            return reqLong("price");
         }
 
         public String startingUnitInDecimal() {
@@ -325,12 +325,12 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
         return reqInteger("plan_quantity");
     }
 
-    public Integer planUnitPrice() {
-        return optInteger("plan_unit_price");
+    public Long planUnitPrice() {
+        return optLong("plan_unit_price");
     }
 
-    public Integer setupFee() {
-        return optInteger("setup_fee");
+    public Long setupFee() {
+        return optLong("setup_fee");
     }
 
     public Integer billingPeriod() {

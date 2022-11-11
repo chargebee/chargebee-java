@@ -387,7 +387,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public CheckoutNewRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
@@ -397,7 +397,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CheckoutNewRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -631,7 +631,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CheckoutNewRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CheckoutNewRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -651,7 +651,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CheckoutNewRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CheckoutNewRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -969,7 +969,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public CheckoutOneTimeRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CheckoutOneTimeRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -989,7 +989,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[date_to][" + index + "]", addonDateTo);
             return this;
         }
-        public CheckoutOneTimeRequest chargeAmount(int index, Integer chargeAmount) {
+        public CheckoutOneTimeRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -1350,7 +1350,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public CheckoutOneTimeForItemsRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public CheckoutOneTimeForItemsRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -1378,7 +1378,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CheckoutOneTimeForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CheckoutOneTimeForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -1394,7 +1394,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public CheckoutOneTimeForItemsRequest chargeAmount(int index, Integer chargeAmount) {
+        public CheckoutOneTimeForItemsRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -1450,7 +1450,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CheckoutOneTimeForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public CheckoutOneTimeForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -1627,7 +1627,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public CheckoutNewForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CheckoutNewForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1865,7 +1865,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CheckoutNewForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CheckoutNewForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -1910,7 +1910,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CheckoutNewForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public CheckoutNewForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -1946,7 +1946,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CheckoutNewForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CheckoutNewForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2119,12 +2119,12 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutExistingRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public CheckoutExistingRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
 
-        public CheckoutExistingRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CheckoutExistingRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2214,7 +2214,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public CheckoutExistingRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CheckoutExistingRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -2230,7 +2230,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CheckoutExistingRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CheckoutExistingRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -2388,7 +2388,7 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
         @Deprecated
-        public CheckoutExistingForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CheckoutExistingForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2487,7 +2487,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CheckoutExistingForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CheckoutExistingForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -2536,7 +2536,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CheckoutExistingForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public CheckoutExistingForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -2576,7 +2576,7 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CheckoutExistingForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CheckoutExistingForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
