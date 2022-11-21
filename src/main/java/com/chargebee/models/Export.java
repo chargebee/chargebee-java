@@ -258,6 +258,11 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<RevenueRecognitionRequest> businessEntityId() {
+            return new StringFilter<RevenueRecognitionRequest>("business_entity_id",this);        
+        }
+
+
         public StringFilter<RevenueRecognitionRequest> invoiceId() {
             return new StringFilter<RevenueRecognitionRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
@@ -509,6 +514,11 @@ public Export waitForExportCompletion()
 
         public StringFilter<DeferredRevenueRequest> cancelReasonCode() {
             return new StringFilter<DeferredRevenueRequest>("cancel_reason_code",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<DeferredRevenueRequest> businessEntityId() {
+            return new StringFilter<DeferredRevenueRequest>("business_entity_id",this);        
         }
 
 
@@ -871,6 +881,11 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<CustomersRequest> businessEntityId() {
+            return new StringFilter<CustomersRequest>("business_entity_id",this);        
+        }
+
+
         public StringFilter<CustomersRequest> customerId() {
             return new StringFilter<CustomersRequest>("customer[id]",this).supportsMultiOperators(true);        
         }

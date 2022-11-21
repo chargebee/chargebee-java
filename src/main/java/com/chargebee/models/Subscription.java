@@ -2876,6 +2876,11 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public StringFilter<SubscriptionListRequest> businessEntityId() {
+            return new StringFilter<SubscriptionListRequest>("business_entity_id",this);        
+        }
+
+
         public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest> channel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest>("channel",this);        
         }
@@ -6404,6 +6409,12 @@ public class Subscription extends Resource<Subscription> {
 
         public PauseRequest invoiceDunningHandling(com.chargebee.models.enums.InvoiceDunningHandling invoiceDunningHandling) {
             params.addOpt("invoice_dunning_handling", invoiceDunningHandling);
+            return this;
+        }
+
+
+        public PauseRequest skipBillingCycles(Integer skipBillingCycles) {
+            params.addOpt("skip_billing_cycles", skipBillingCycles);
             return this;
         }
 

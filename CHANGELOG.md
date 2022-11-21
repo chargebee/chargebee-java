@@ -1,3 +1,16 @@
+### v2.21.0 (2022-11-21)
+* * *
+
+#### Added input parameters:
+* business_entity_id filter parameter has been added to the Customer#CustomerListRequest, Export#RevenueRecognitionRequest, Export#DeferredRevenueRequest, Export#CustomersRequest and Subscription#SubscriptionListRequest API.
+* subscription[skip_billing_cycles] parameter has been added to the Estimate#PauseSubscriptionRequest API.
+* skip_billing_cycles parameter has been added to the  Subscription#PauseRequest.
+* is_written_off, write_off_amount, write_off_date and credit_note[id] have been added to the Invoices#import_invoice API.
+
+#### New Enum values:
+* billing_cycles has been added to PauseOptionEnum.
+
+
 ### v2.20.0 (2022-11-10)
 * * *
 

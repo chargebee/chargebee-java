@@ -2658,6 +2658,24 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ImportInvoiceRequest isWrittenOff(Boolean isWrittenOff) {
+            params.addOpt("is_written_off", isWrittenOff);
+            return this;
+        }
+
+
+        public ImportInvoiceRequest writeOffAmount(Integer writeOffAmount) {
+            params.addOpt("write_off_amount", writeOffAmount);
+            return this;
+        }
+
+
+        public ImportInvoiceRequest writeOffDate(Timestamp writeOffDate) {
+            params.addOpt("write_off_date", writeOffDate);
+            return this;
+        }
+
+
         public ImportInvoiceRequest dueDate(Timestamp dueDate) {
             params.addOpt("due_date", dueDate);
             return this;
@@ -2677,6 +2695,11 @@ public class Invoice extends Resource<Invoice> {
 
 
 
+
+        public ImportInvoiceRequest creditNoteId(String creditNoteId) {
+            params.addOpt("credit_note[id]", creditNoteId);
+            return this;
+        }
 
         public ImportInvoiceRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);

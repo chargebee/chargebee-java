@@ -2534,6 +2534,11 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public PauseSubscriptionRequest subscriptionSkipBillingCycles(Integer subscriptionSkipBillingCycles) {
+            params.addOpt("subscription[skip_billing_cycles]", subscriptionSkipBillingCycles);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

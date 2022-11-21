@@ -1413,6 +1413,11 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public StringFilter<CustomerListRequest> businessEntityId() {
+            return new StringFilter<CustomerListRequest>("business_entity_id",this);        
+        }
+
+
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomerListRequest> offlinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomerListRequest>("offline_payment_method",this);        
         }
