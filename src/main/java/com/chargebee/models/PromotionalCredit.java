@@ -50,8 +50,8 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         return optString("amount_in_decimal");
     }
 
-    public Integer amount() {
-        return reqInteger("amount");
+    public Long amount() {
+        return reqLong("amount");
     }
 
     public String currencyCode() {
@@ -70,8 +70,8 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         return optString("reference");
     }
 
-    public Integer closingBalance() {
-        return reqInteger("closing_balance");
+    public Long closingBalance() {
+        return reqLong("closing_balance");
     }
 
     public String doneBy() {
@@ -126,7 +126,7 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         }
 
 
-        public AddRequest amount(Integer amount) {
+        public AddRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -180,7 +180,7 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         }
 
 
-        public DeductRequest amount(Integer amount) {
+        public DeductRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -234,7 +234,7 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         }
 
 
-        public SetRequest amount(Integer amount) {
+        public SetRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }

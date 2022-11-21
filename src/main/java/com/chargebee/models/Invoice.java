@@ -61,16 +61,16 @@ public class Invoice extends Resource<Invoice> {
             return reqTimestamp("date_to");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public Integer quantity() {
             return optInteger("quantity");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public PricingModel pricingModel() {
@@ -81,8 +81,8 @@ public class Invoice extends Resource<Invoice> {
             return reqBoolean("is_taxed");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
         public Double taxRate() {
@@ -101,12 +101,12 @@ public class Invoice extends Resource<Invoice> {
             return optString("amount_in_decimal");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
         public String referenceLineItemId() {
@@ -150,8 +150,8 @@ public class Invoice extends Resource<Invoice> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -199,8 +199,8 @@ public class Invoice extends Resource<Invoice> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -214,8 +214,8 @@ public class Invoice extends Resource<Invoice> {
             return reqString("name");
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -249,12 +249,12 @@ public class Invoice extends Resource<Invoice> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -269,8 +269,8 @@ public class Invoice extends Resource<Invoice> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -300,8 +300,8 @@ public class Invoice extends Resource<Invoice> {
             return reqInteger("quantity_used");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public String startingUnitInDecimal() {
@@ -331,8 +331,8 @@ public class Invoice extends Resource<Invoice> {
             return reqString("txn_id");
         }
 
-        public Integer appliedAmount() {
-            return reqInteger("applied_amount");
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
         }
 
         public Timestamp appliedAt() {
@@ -347,8 +347,8 @@ public class Invoice extends Resource<Invoice> {
             return optTimestamp("txn_date");
         }
 
-        public Integer txnAmount() {
-            return optInteger("txn_amount");
+        public Long txnAmount() {
+            return optLong("txn_amount");
         }
 
     }
@@ -378,8 +378,8 @@ public class Invoice extends Resource<Invoice> {
             return optEnum("txn_status", Transaction.Status.class);
         }
 
-        public Integer txnAmount() {
-            return optInteger("txn_amount");
+        public Long txnAmount() {
+            return optLong("txn_amount");
         }
 
     }
@@ -393,8 +393,8 @@ public class Invoice extends Resource<Invoice> {
             return reqString("cn_id");
         }
 
-        public Integer appliedAmount() {
-            return reqInteger("applied_amount");
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
         }
 
         public Timestamp appliedAt() {
@@ -440,8 +440,8 @@ public class Invoice extends Resource<Invoice> {
             return optTimestamp("cn_date");
         }
 
-        public Integer cnTotal() {
-            return optInteger("cn_total");
+        public Long cnTotal() {
+            return optLong("cn_total");
         }
 
         public CreditNote.Status cnStatus() {
@@ -471,8 +471,8 @@ public class Invoice extends Resource<Invoice> {
             return optTimestamp("cn_date");
         }
 
-        public Integer cnTotal() {
-            return optInteger("cn_total");
+        public Long cnTotal() {
+            return optLong("cn_total");
         }
 
         public CreditNote.Status cnStatus() {
@@ -778,28 +778,28 @@ public class Invoice extends Resource<Invoice> {
         return reqString("currency_code");
     }
 
-    public Integer total() {
-        return optInteger("total");
+    public Long total() {
+        return optLong("total");
     }
 
-    public Integer amountPaid() {
-        return optInteger("amount_paid");
+    public Long amountPaid() {
+        return optLong("amount_paid");
     }
 
-    public Integer amountAdjusted() {
-        return optInteger("amount_adjusted");
+    public Long amountAdjusted() {
+        return optLong("amount_adjusted");
     }
 
-    public Integer writeOffAmount() {
-        return optInteger("write_off_amount");
+    public Long writeOffAmount() {
+        return optLong("write_off_amount");
     }
 
-    public Integer creditsApplied() {
-        return optInteger("credits_applied");
+    public Long creditsApplied() {
+        return optLong("credits_applied");
     }
 
-    public Integer amountDue() {
-        return optInteger("amount_due");
+    public Long amountDue() {
+        return optLong("amount_due");
     }
 
     public Timestamp paidAt() {
@@ -826,32 +826,32 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("updated_at");
     }
 
-    public Integer subTotal() {
-        return reqInteger("sub_total");
+    public Long subTotal() {
+        return reqLong("sub_total");
     }
 
-    public Integer subTotalInLocalCurrency() {
-        return optInteger("sub_total_in_local_currency");
+    public Long subTotalInLocalCurrency() {
+        return optLong("sub_total_in_local_currency");
     }
 
-    public Integer totalInLocalCurrency() {
-        return optInteger("total_in_local_currency");
+    public Long totalInLocalCurrency() {
+        return optLong("total_in_local_currency");
     }
 
     public String localCurrencyCode() {
         return optString("local_currency_code");
     }
 
-    public Integer tax() {
-        return reqInteger("tax");
+    public Long tax() {
+        return reqLong("tax");
     }
 
     public Boolean firstInvoice() {
         return optBoolean("first_invoice");
     }
 
-    public Integer newSalesAmount() {
-        return optInteger("new_sales_amount");
+    public Long newSalesAmount() {
+        return optLong("new_sales_amount");
     }
 
     public Boolean hasAdvanceCharges() {
@@ -874,12 +874,12 @@ public class Invoice extends Resource<Invoice> {
         return optTimestamp("expected_payment_date");
     }
 
-    public Integer amountToCollect() {
-        return optInteger("amount_to_collect");
+    public Long amountToCollect() {
+        return optLong("amount_to_collect");
     }
 
-    public Integer roundOffAmount() {
-        return optInteger("round_off_amount");
+    public Long roundOffAmount() {
+        return optLong("round_off_amount");
     }
 
     public List<Invoice.LineItem> lineItems() {
@@ -1568,7 +1568,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1588,7 +1588,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("addons[date_to][" + index + "]", addonDateTo);
             return this;
         }
-        public CreateRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -2091,7 +2091,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public CreateForChargeItemsAndChargesRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -2119,7 +2119,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateForChargeItemsAndChargesRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2135,7 +2135,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -2199,7 +2199,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateForChargeItemsAndChargesRequest discountAmount(int index, Integer discountAmount) {
+        public CreateForChargeItemsAndChargesRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -2241,7 +2241,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ChargeRequest amount(Integer amount) {
+        public ChargeRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -2362,7 +2362,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ChargeAddonRequest addonUnitPrice(Integer addonUnitPrice) {
+        public ChargeAddonRequest addonUnitPrice(Long addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
             return this;
         }
@@ -2494,7 +2494,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public CreateForChargeItemRequest itemPriceUnitPrice(Integer itemPriceUnitPrice) {
+        public CreateForChargeItemRequest itemPriceUnitPrice(Long itemPriceUnitPrice) {
             params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
             return this;
         }
@@ -2522,7 +2522,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateForChargeItemRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateForChargeItemRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2628,13 +2628,13 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ImportInvoiceRequest total(Integer total) {
+        public ImportInvoiceRequest total(Long total) {
             params.add("total", total);
             return this;
         }
 
 
-        public ImportInvoiceRequest roundOff(Integer roundOff) {
+        public ImportInvoiceRequest roundOff(Long roundOff) {
             params.addOpt("round_off", roundOff);
             return this;
         }
@@ -2664,7 +2664,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public ImportInvoiceRequest writeOffAmount(Integer writeOffAmount) {
+        public ImportInvoiceRequest writeOffAmount(Long writeOffAmount) {
             params.addOpt("write_off_amount", writeOffAmount);
             return this;
         }
@@ -2861,7 +2861,7 @@ public class Invoice extends Resource<Invoice> {
             params.add("line_items[description][" + index + "]", lineItemDescription);
             return this;
         }
-        public ImportInvoiceRequest lineItemUnitAmount(int index, Integer lineItemUnitAmount) {
+        public ImportInvoiceRequest lineItemUnitAmount(int index, Long lineItemUnitAmount) {
             params.addOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
             return this;
         }
@@ -2869,7 +2869,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[quantity][" + index + "]", lineItemQuantity);
             return this;
         }
-        public ImportInvoiceRequest lineItemAmount(int index, Integer lineItemAmount) {
+        public ImportInvoiceRequest lineItemAmount(int index, Long lineItemAmount) {
             params.addOpt("line_items[amount][" + index + "]", lineItemAmount);
             return this;
         }
@@ -2897,7 +2897,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
             return this;
         }
-        public ImportInvoiceRequest lineItemItemLevelDiscount1Amount(int index, Integer lineItemItemLevelDiscount1Amount) {
+        public ImportInvoiceRequest lineItemItemLevelDiscount1Amount(int index, Long lineItemItemLevelDiscount1Amount) {
             params.addOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
             return this;
         }
@@ -2905,7 +2905,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
             return this;
         }
-        public ImportInvoiceRequest lineItemItemLevelDiscount2Amount(int index, Integer lineItemItemLevelDiscount2Amount) {
+        public ImportInvoiceRequest lineItemItemLevelDiscount2Amount(int index, Long lineItemItemLevelDiscount2Amount) {
             params.addOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
             return this;
         }
@@ -2913,7 +2913,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax1Amount(int index, Integer lineItemTax1Amount) {
+        public ImportInvoiceRequest lineItemTax1Amount(int index, Long lineItemTax1Amount) {
             params.addOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
             return this;
         }
@@ -2921,7 +2921,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax2Amount(int index, Integer lineItemTax2Amount) {
+        public ImportInvoiceRequest lineItemTax2Amount(int index, Long lineItemTax2Amount) {
             params.addOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
             return this;
         }
@@ -2929,7 +2929,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax3Amount(int index, Integer lineItemTax3Amount) {
+        public ImportInvoiceRequest lineItemTax3Amount(int index, Long lineItemTax3Amount) {
             params.addOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
             return this;
         }
@@ -2937,7 +2937,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax4Amount(int index, Integer lineItemTax4Amount) {
+        public ImportInvoiceRequest lineItemTax4Amount(int index, Long lineItemTax4Amount) {
             params.addOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
             return this;
         }
@@ -2945,7 +2945,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax5Amount(int index, Integer lineItemTax5Amount) {
+        public ImportInvoiceRequest lineItemTax5Amount(int index, Long lineItemTax5Amount) {
             params.addOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
             return this;
         }
@@ -2953,7 +2953,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax6Amount(int index, Integer lineItemTax6Amount) {
+        public ImportInvoiceRequest lineItemTax6Amount(int index, Long lineItemTax6Amount) {
             params.addOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
             return this;
         }
@@ -2961,7 +2961,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax7Amount(int index, Integer lineItemTax7Amount) {
+        public ImportInvoiceRequest lineItemTax7Amount(int index, Long lineItemTax7Amount) {
             params.addOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
             return this;
         }
@@ -2969,7 +2969,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax8Amount(int index, Integer lineItemTax8Amount) {
+        public ImportInvoiceRequest lineItemTax8Amount(int index, Long lineItemTax8Amount) {
             params.addOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
             return this;
         }
@@ -2977,7 +2977,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax9Amount(int index, Integer lineItemTax9Amount) {
+        public ImportInvoiceRequest lineItemTax9Amount(int index, Long lineItemTax9Amount) {
             params.addOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
             return this;
         }
@@ -2985,7 +2985,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
             return this;
         }
-        public ImportInvoiceRequest lineItemTax10Amount(int index, Integer lineItemTax10Amount) {
+        public ImportInvoiceRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
             return this;
         }
@@ -3005,7 +3005,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
             return this;
         }
-        public ImportInvoiceRequest lineItemTierUnitAmount(int index, Integer lineItemTierUnitAmount) {
+        public ImportInvoiceRequest lineItemTierUnitAmount(int index, Long lineItemTierUnitAmount) {
             params.addOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
             return this;
         }
@@ -3041,7 +3041,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
-        public ImportInvoiceRequest discountAmount(int index, Integer discountAmount) {
+        public ImportInvoiceRequest discountAmount(int index, Long discountAmount) {
             params.add("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -3053,7 +3053,7 @@ public class Invoice extends Resource<Invoice> {
             params.add("taxes[rate][" + index + "]", taxRate);
             return this;
         }
-        public ImportInvoiceRequest taxAmount(int index, Integer taxAmount) {
+        public ImportInvoiceRequest taxAmount(int index, Long taxAmount) {
             params.addOpt("taxes[amount][" + index + "]", taxAmount);
             return this;
         }
@@ -3073,7 +3073,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("taxes[juris_code][" + index + "]", taxJurisCode);
             return this;
         }
-        public ImportInvoiceRequest paymentAmount(int index, Integer paymentAmount) {
+        public ImportInvoiceRequest paymentAmount(int index, Long paymentAmount) {
             params.add("payments[amount][" + index + "]", paymentAmount);
             return this;
         }
@@ -3220,28 +3220,28 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public NumberFilter<Integer, InvoiceListRequest> total() {
-            return new NumberFilter<Integer, InvoiceListRequest>("total",this);        
+        public NumberFilter<Long, InvoiceListRequest> total() {
+            return new NumberFilter<Long, InvoiceListRequest>("total",this);        
         }
 
 
-        public NumberFilter<Integer, InvoiceListRequest> amountPaid() {
-            return new NumberFilter<Integer, InvoiceListRequest>("amount_paid",this);        
+        public NumberFilter<Long, InvoiceListRequest> amountPaid() {
+            return new NumberFilter<Long, InvoiceListRequest>("amount_paid",this);        
         }
 
 
-        public NumberFilter<Integer, InvoiceListRequest> amountAdjusted() {
-            return new NumberFilter<Integer, InvoiceListRequest>("amount_adjusted",this);        
+        public NumberFilter<Long, InvoiceListRequest> amountAdjusted() {
+            return new NumberFilter<Long, InvoiceListRequest>("amount_adjusted",this);        
         }
 
 
-        public NumberFilter<Integer, InvoiceListRequest> creditsApplied() {
-            return new NumberFilter<Integer, InvoiceListRequest>("credits_applied",this);        
+        public NumberFilter<Long, InvoiceListRequest> creditsApplied() {
+            return new NumberFilter<Long, InvoiceListRequest>("credits_applied",this);        
         }
 
 
-        public NumberFilter<Integer, InvoiceListRequest> amountDue() {
-            return new NumberFilter<Integer, InvoiceListRequest>("amount_due",this);        
+        public NumberFilter<Long, InvoiceListRequest> amountDue() {
+            return new NumberFilter<Long, InvoiceListRequest>("amount_due",this);        
         }
 
 
@@ -3319,7 +3319,7 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
-        public AddChargeRequest amount(Integer amount) {
+        public AddChargeRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -3395,7 +3395,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public AddAddonChargeRequest addonUnitPrice(Integer addonUnitPrice) {
+        public AddAddonChargeRequest addonUnitPrice(Long addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
             return this;
         }
@@ -3474,7 +3474,7 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public AddChargeItemRequest itemPriceUnitPrice(Integer itemPriceUnitPrice) {
+        public AddChargeItemRequest itemPriceUnitPrice(Long itemPriceUnitPrice) {
             params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
             return this;
         }
@@ -3502,7 +3502,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public AddChargeItemRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public AddChargeItemRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -3574,7 +3574,7 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
-        public CollectPaymentRequest amount(Integer amount) {
+        public CollectPaymentRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -3616,7 +3616,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public RecordPaymentRequest transactionAmount(Integer transactionAmount) {
+        public RecordPaymentRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
@@ -3668,7 +3668,7 @@ public class Invoice extends Resource<Invoice> {
             super(httpMeth, uri);
         }
     
-        public RefundRequest refundAmount(Integer refundAmount) {
+        public RefundRequest refundAmount(Long refundAmount) {
             params.addOpt("refund_amount", refundAmount);
             return this;
         }
@@ -3720,7 +3720,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public RecordRefundRequest transactionAmount(Integer transactionAmount) {
+        public RecordRefundRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }

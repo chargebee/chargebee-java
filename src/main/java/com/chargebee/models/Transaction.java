@@ -65,8 +65,8 @@ public class Transaction extends Resource<Transaction> {
             return reqString("invoice_id");
         }
 
-        public Integer appliedAmount() {
-            return reqInteger("applied_amount");
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
         }
 
         public Timestamp appliedAt() {
@@ -77,8 +77,8 @@ public class Transaction extends Resource<Transaction> {
             return optTimestamp("invoice_date");
         }
 
-        public Integer invoiceTotal() {
-            return optInteger("invoice_total");
+        public Long invoiceTotal() {
+            return optLong("invoice_total");
         }
 
         public Invoice.Status invoiceStatus() {
@@ -96,8 +96,8 @@ public class Transaction extends Resource<Transaction> {
             return reqString("cn_id");
         }
 
-        public Integer appliedAmount() {
-            return reqInteger("applied_amount");
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
         }
 
         public Timestamp appliedAt() {
@@ -116,8 +116,8 @@ public class Transaction extends Resource<Transaction> {
             return optTimestamp("cn_date");
         }
 
-        public Integer cnTotal() {
-            return optInteger("cn_total");
+        public Long cnTotal() {
+            return optLong("cn_total");
         }
 
         public CreditNote.Status cnStatus() {
@@ -147,8 +147,8 @@ public class Transaction extends Resource<Transaction> {
             return reqTimestamp("txn_date");
         }
 
-        public Integer txnAmount() {
-            return reqInteger("txn_amount");
+        public Long txnAmount() {
+            return reqLong("txn_amount");
         }
 
     }
@@ -172,8 +172,8 @@ public class Transaction extends Resource<Transaction> {
             return optEnum("status", Status.class);
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public Timestamp date() {
@@ -248,8 +248,8 @@ public class Transaction extends Resource<Transaction> {
         return reqString("currency_code");
     }
 
-    public Integer amount() {
-        return optInteger("amount");
+    public Long amount() {
+        return optLong("amount");
     }
 
     public String idAtGateway() {
@@ -300,8 +300,8 @@ public class Transaction extends Resource<Transaction> {
         return optString("fraud_reason");
     }
 
-    public Integer amountUnused() {
-        return optInteger("amount_unused");
+    public Long amountUnused() {
+        return optLong("amount_unused");
     }
 
     public String maskedCardNumber() {
@@ -320,8 +320,8 @@ public class Transaction extends Resource<Transaction> {
         return optString("reference_authorization_id");
     }
 
-    public Integer amountCapturable() {
-        return optInteger("amount_capturable");
+    public Long amountCapturable() {
+        return optLong("amount_capturable");
     }
 
     public String reversalTransactionId() {
@@ -451,7 +451,7 @@ public class Transaction extends Resource<Transaction> {
         }
 
 
-        public CreateAuthorizationRequest amount(Integer amount) {
+        public CreateAuthorizationRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -469,7 +469,7 @@ public class Transaction extends Resource<Transaction> {
             super(httpMeth, uri);
         }
     
-        public RecordRefundRequest amount(Integer amount) {
+        public RecordRefundRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -511,7 +511,7 @@ public class Transaction extends Resource<Transaction> {
             super(httpMeth, uri);
         }
     
-        public RefundRequest amount(Integer amount) {
+        public RefundRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -596,13 +596,13 @@ public class Transaction extends Resource<Transaction> {
         }
 
 
-        public NumberFilter<Integer, TransactionListRequest> amount() {
-            return new NumberFilter<Integer, TransactionListRequest>("amount",this);        
+        public NumberFilter<Long, TransactionListRequest> amount() {
+            return new NumberFilter<Long, TransactionListRequest>("amount",this);        
         }
 
 
-        public NumberFilter<Integer, TransactionListRequest> amountCapturable() {
-            return new NumberFilter<Integer, TransactionListRequest>("amount_capturable",this);        
+        public NumberFilter<Long, TransactionListRequest> amountCapturable() {
+            return new NumberFilter<Long, TransactionListRequest>("amount_capturable",this);        
         }
 
 

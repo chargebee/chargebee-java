@@ -172,8 +172,8 @@ public class Coupon extends Resource<Coupon> {
         return optDouble("discount_percentage");
     }
 
-    public Integer discountAmount() {
-        return optInteger("discount_amount");
+    public Long discountAmount() {
+        return optLong("discount_amount");
     }
 
     @Deprecated
@@ -361,7 +361,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public CreateRequest discountAmount(Integer discountAmount) {
+        public CreateRequest discountAmount(Long discountAmount) {
             params.addOpt("discount_amount", discountAmount);
             return this;
         }
@@ -520,7 +520,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public CreateForItemsRequest discountAmount(Integer discountAmount) {
+        public CreateForItemsRequest discountAmount(Long discountAmount) {
             params.addOpt("discount_amount", discountAmount);
             return this;
         }
@@ -669,7 +669,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public UpdateForItemsRequest discountAmount(Integer discountAmount) {
+        public UpdateForItemsRequest discountAmount(Long discountAmount) {
             params.addOpt("discount_amount", discountAmount);
             return this;
         }
@@ -874,7 +874,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        public UpdateRequest discountAmount(Integer discountAmount) {
+        public UpdateRequest discountAmount(Long discountAmount) {
             params.addOpt("discount_amount", discountAmount);
             return this;
         }

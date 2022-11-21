@@ -251,7 +251,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public CreateSubscriptionRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
@@ -261,7 +261,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubscriptionRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubscriptionRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -449,7 +449,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateSubscriptionRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -469,7 +469,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CreateSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CreateSubscriptionRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -588,7 +588,7 @@ public class Estimate extends Resource<Estimate> {
         }
 
         @Deprecated
-        public CreateSubItemEstimateRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubItemEstimateRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -771,7 +771,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CreateSubItemEstimateRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CreateSubItemEstimateRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -816,7 +816,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateSubItemEstimateRequest discountAmount(int index, Integer discountAmount) {
+        public CreateSubItemEstimateRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -852,7 +852,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateSubItemEstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateSubItemEstimateRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -964,7 +964,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public CreateSubForCustomerEstimateRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
@@ -974,7 +974,7 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public CreateSubForCustomerEstimateRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubForCustomerEstimateRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1076,7 +1076,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateSubForCustomerEstimateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateSubForCustomerEstimateRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1096,7 +1096,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CreateSubForCustomerEstimateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CreateSubForCustomerEstimateRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1215,7 +1215,7 @@ public class Estimate extends Resource<Estimate> {
         }
 
         @Deprecated
-        public CreateSubItemForCustomerEstimateRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public CreateSubItemForCustomerEstimateRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1312,7 +1312,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CreateSubItemForCustomerEstimateRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CreateSubItemForCustomerEstimateRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -1357,7 +1357,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateSubItemForCustomerEstimateRequest discountAmount(int index, Integer discountAmount) {
+        public CreateSubItemForCustomerEstimateRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -1393,7 +1393,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateSubItemForCustomerEstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateSubItemForCustomerEstimateRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -1548,12 +1548,12 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
-        public UpdateSubscriptionRequest subscriptionPlanUnitPrice(Integer subscriptionPlanUnitPrice) {
+        public UpdateSubscriptionRequest subscriptionPlanUnitPrice(Long subscriptionPlanUnitPrice) {
             params.addOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
             return this;
         }
 
-        public UpdateSubscriptionRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public UpdateSubscriptionRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -1718,7 +1718,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public UpdateSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public UpdateSubscriptionRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1734,7 +1734,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public UpdateSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public UpdateSubscriptionRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1904,7 +1904,7 @@ public class Estimate extends Resource<Estimate> {
         }
 
         @Deprecated
-        public UpdateSubscriptionForItemsRequest subscriptionSetupFee(Integer subscriptionSetupFee) {
+        public UpdateSubscriptionForItemsRequest subscriptionSetupFee(Long subscriptionSetupFee) {
             params.addOpt("subscription[setup_fee]", subscriptionSetupFee);
             return this;
         }
@@ -2063,7 +2063,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public UpdateSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public UpdateSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -2112,7 +2112,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public UpdateSubscriptionForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public UpdateSubscriptionForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -2152,7 +2152,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public UpdateSubscriptionForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public UpdateSubscriptionForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2402,7 +2402,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CancelSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CancelSubscriptionRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -2488,7 +2488,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CancelSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CancelSubscriptionForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -3153,7 +3153,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateInvoiceRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateInvoiceRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -3169,7 +3169,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[date_to][" + index + "]", addonDateTo);
             return this;
         }
-        public CreateInvoiceRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateInvoiceRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -3399,7 +3399,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
             return this;
         }
-        public CreateInvoiceForItemsRequest itemPriceUnitPrice(int index, Integer itemPriceUnitPrice) {
+        public CreateInvoiceForItemsRequest itemPriceUnitPrice(int index, Long itemPriceUnitPrice) {
             params.addOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
             return this;
         }
@@ -3427,7 +3427,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateInvoiceForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateInvoiceForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -3443,7 +3443,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
-        public CreateInvoiceForItemsRequest chargeAmount(int index, Integer chargeAmount) {
+        public CreateInvoiceForItemsRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
         }
@@ -3507,7 +3507,7 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateInvoiceForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public CreateInvoiceForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }

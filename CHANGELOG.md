@@ -1,3 +1,13 @@
+### v3.0.0 (2022-11-21)
+* * *
+
+⚠️ **Breaking changes**: 
+* This version of the client library requires Java 8 or later.
+* The data types for all numerical currency fields have been changed from `int` to `long`. Numerical currency fields can be identified as those with their data type specified in the [API docs](https://apidocs.chargebee.com/docs/api?prod_cat_ver=2) as `in cents`. 
+  
+See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) for details.
+
+
 ### v2.21.0 (2022-11-21)
 * * *
 
@@ -9,7 +19,6 @@
 
 #### New Enum values:
 * billing_cycles has been added to PauseOptionEnum.
-
 
 ### v2.20.0 (2022-11-10)
 * * *
@@ -31,7 +40,6 @@
 * registered has been added to the status enum in credit_note_einvoice and invoice_einvoice subresources.
 * type enum has been added to the subscription_discount subresource.
 * subscription_entitlements_created has been added to the event_type enum.
-
 
 ### v2.19.0 (2022-09-20)
 * * *

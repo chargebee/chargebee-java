@@ -33,8 +33,8 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
             return optInteger("ending_unit");
         }
 
-        public Integer price() {
-            return reqInteger("price");
+        public Long price() {
+            return reqLong("price");
         }
 
         public String startingUnitInDecimal() {
@@ -98,8 +98,8 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         return reqString("parent_item_id");
     }
 
-    public Integer price() {
-        return optInteger("price");
+    public Long price() {
+        return optLong("price");
     }
 
     public String priceInDecimal() {
@@ -182,7 +182,7 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
 
 
-        public CreateRequest price(Integer price) {
+        public CreateRequest price(Long price) {
             params.addOpt("price", price);
             return this;
         }
@@ -210,7 +210,7 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
             params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
             return this;
         }
-        public CreateRequest tierPrice(int index, Integer tierPrice) {
+        public CreateRequest tierPrice(int index, Long tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }
@@ -262,7 +262,7 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
 
 
-        public UpdateRequest price(Integer price) {
+        public UpdateRequest price(Long price) {
             params.addOpt("price", price);
             return this;
         }
@@ -290,7 +290,7 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
             params.addOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
             return this;
         }
-        public UpdateRequest tierPrice(int index, Integer tierPrice) {
+        public UpdateRequest tierPrice(int index, Long tierPrice) {
             params.addOpt("tiers[price][" + index + "]", tierPrice);
             return this;
         }

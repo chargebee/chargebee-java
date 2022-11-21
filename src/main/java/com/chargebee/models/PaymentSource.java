@@ -939,13 +939,13 @@ public class PaymentSource extends Resource<PaymentSource> {
             super(httpMeth, uri);
         }
     
-        public VerifyBankAccountRequest amount1(Integer amount1) {
+        public VerifyBankAccountRequest amount1(Long amount1) {
             params.add("amount1", amount1);
             return this;
         }
 
 
-        public VerifyBankAccountRequest amount2(Integer amount2) {
+        public VerifyBankAccountRequest amount2(Long amount2) {
             params.add("amount2", amount2);
             return this;
         }

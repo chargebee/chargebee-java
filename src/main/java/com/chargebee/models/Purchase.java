@@ -102,7 +102,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("purchase_items[quantity][" + index + "]", purchaseItemQuantity);
             return this;
         }
-        public CreateRequest purchaseItemUnitAmount(int index, Integer purchaseItemUnitAmount) {
+        public CreateRequest purchaseItemUnitAmount(int index, Long purchaseItemUnitAmount) {
             params.addOpt("purchase_items[unit_amount][" + index + "]", purchaseItemUnitAmount);
             return this;
         }
@@ -130,7 +130,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -214,7 +214,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateRequest discountAmount(int index, Integer discountAmount) {
+        public CreateRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -360,7 +360,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("purchase_items[quantity][" + index + "]", purchaseItemQuantity);
             return this;
         }
-        public EstimateRequest purchaseItemUnitAmount(int index, Integer purchaseItemUnitAmount) {
+        public EstimateRequest purchaseItemUnitAmount(int index, Long purchaseItemUnitAmount) {
             params.addOpt("purchase_items[unit_amount][" + index + "]", purchaseItemUnitAmount);
             return this;
         }
@@ -388,7 +388,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public EstimateRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public EstimateRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -472,7 +472,7 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public EstimateRequest discountAmount(int index, Integer discountAmount) {
+        public EstimateRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }

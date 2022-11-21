@@ -47,16 +47,16 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return reqTimestamp("date_to");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public Integer quantity() {
             return optInteger("quantity");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public PricingModel pricingModel() {
@@ -67,8 +67,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return reqBoolean("is_taxed");
         }
 
-        public Integer taxAmount() {
-            return optInteger("tax_amount");
+        public Long taxAmount() {
+            return optLong("tax_amount");
         }
 
         public Double taxRate() {
@@ -87,12 +87,12 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("amount_in_decimal");
         }
 
-        public Integer discountAmount() {
-            return optInteger("discount_amount");
+        public Long discountAmount() {
+            return optLong("discount_amount");
         }
 
-        public Integer itemLevelDiscountAmount() {
-            return optInteger("item_level_discount_amount");
+        public Long itemLevelDiscountAmount() {
+            return optLong("item_level_discount_amount");
         }
 
         public String referenceLineItemId() {
@@ -136,8 +136,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -167,8 +167,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return reqString("name");
         }
 
-        public Integer amount() {
-            return reqInteger("amount");
+        public Long amount() {
+            return reqLong("amount");
         }
 
         public String description() {
@@ -202,12 +202,12 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optBoolean("is_non_compliance_tax");
         }
 
-        public Integer taxableAmount() {
-            return reqInteger("taxable_amount");
+        public Long taxableAmount() {
+            return reqLong("taxable_amount");
         }
 
-        public Integer taxAmount() {
-            return reqInteger("tax_amount");
+        public Long taxAmount() {
+            return reqLong("tax_amount");
         }
 
         public TaxJurisType taxJurisType() {
@@ -222,8 +222,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("tax_juris_code");
         }
 
-        public Integer taxAmountInLocalCurrency() {
-            return optInteger("tax_amount_in_local_currency");
+        public Long taxAmountInLocalCurrency() {
+            return optLong("tax_amount_in_local_currency");
         }
 
         public String localCurrencyCode() {
@@ -259,8 +259,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optString("entity_id");
         }
 
-        public Integer discountAmount() {
-            return reqInteger("discount_amount");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -286,8 +286,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return reqInteger("quantity_used");
         }
 
-        public Integer unitAmount() {
-            return reqInteger("unit_amount");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
         public String startingUnitInDecimal() {
@@ -338,20 +338,20 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return reqString("currency_code");
     }
 
-    public Integer subTotal() {
-        return reqInteger("sub_total");
+    public Long subTotal() {
+        return reqLong("sub_total");
     }
 
-    public Integer total() {
-        return reqInteger("total");
+    public Long total() {
+        return reqLong("total");
     }
 
-    public Integer amountAllocated() {
-        return reqInteger("amount_allocated");
+    public Long amountAllocated() {
+        return reqLong("amount_allocated");
     }
 
-    public Integer amountAvailable() {
-        return reqInteger("amount_available");
+    public Long amountAvailable() {
+        return reqLong("amount_available");
     }
 
     public List<CreditNoteEstimate.LineItem> lineItems() {
@@ -378,8 +378,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return optList("line_item_tiers", CreditNoteEstimate.LineItemTier.class);
     }
 
-    public Integer roundOffAmount() {
-        return optInteger("round_off_amount");
+    public Long roundOffAmount() {
+        return optLong("round_off_amount");
     }
 
     public String customerId() {

@@ -89,16 +89,16 @@ public class Subscription extends Resource<Subscription> {
             return optTimestamp("last_calculated_at");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
         public String unitPriceInDecimal() {
             return optString("unit_price_in_decimal");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public String amountInDecimal() {
@@ -156,8 +156,8 @@ public class Subscription extends Resource<Subscription> {
             return optInteger("ending_unit");
         }
 
-        public Integer price() {
-            return reqInteger("price");
+        public Long price() {
+            return reqLong("price");
         }
 
         public String startingUnitInDecimal() {
@@ -206,12 +206,12 @@ public class Subscription extends Resource<Subscription> {
             return optInteger("quantity");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public Timestamp trialEnd() {
@@ -255,8 +255,8 @@ public class Subscription extends Resource<Subscription> {
             return reqInteger("quantity");
         }
 
-        public Integer unitPrice() {
-            return reqInteger("unit_price");
+        public Long unitPrice() {
+            return reqLong("unit_price");
         }
 
         @Deprecated
@@ -558,8 +558,8 @@ public class Subscription extends Resource<Subscription> {
             return optDouble("percentage");
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public String currencyCode() {
@@ -642,12 +642,12 @@ public class Subscription extends Resource<Subscription> {
         return reqInteger("plan_quantity");
     }
 
-    public Integer planUnitPrice() {
-        return optInteger("plan_unit_price");
+    public Long planUnitPrice() {
+        return optLong("plan_unit_price");
     }
 
-    public Integer setupFee() {
-        return optInteger("setup_fee");
+    public Long setupFee() {
+        return optLong("setup_fee");
     }
 
     public Integer billingPeriod() {
@@ -690,8 +690,8 @@ public class Subscription extends Resource<Subscription> {
         return reqString("customer_id");
     }
 
-    public Integer planAmount() {
-        return optInteger("plan_amount");
+    public Long planAmount() {
+        return optLong("plan_amount");
     }
 
     public Integer planFreeQuantity() {
@@ -834,12 +834,12 @@ public class Subscription extends Resource<Subscription> {
         return optTimestamp("due_since");
     }
 
-    public Integer totalDues() {
-        return optInteger("total_dues");
+    public Long totalDues() {
+        return optLong("total_dues");
     }
 
-    public Integer mrr() {
-        return optInteger("mrr");
+    public Long mrr() {
+        return optLong("mrr");
     }
 
     public BigDecimal exchangeRate() {
@@ -1155,7 +1155,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateRequest planUnitPrice(Integer planUnitPrice) {
+        public CreateRequest planUnitPrice(Long planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
             return this;
         }
@@ -1167,7 +1167,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateRequest setupFee(Integer setupFee) {
+        public CreateRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -1884,7 +1884,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -1904,7 +1904,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CreateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CreateRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -1978,7 +1978,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateForCustomerRequest planUnitPrice(Integer planUnitPrice) {
+        public CreateForCustomerRequest planUnitPrice(Long planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
             return this;
         }
@@ -1990,7 +1990,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateForCustomerRequest setupFee(Integer setupFee) {
+        public CreateForCustomerRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -2275,7 +2275,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public CreateForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public CreateForCustomerRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -2295,7 +2295,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CreateForCustomerRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CreateForCustomerRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -2364,7 +2364,7 @@ public class Subscription extends Resource<Subscription> {
 
 
         @Deprecated
-        public CreateWithItemsRequest setupFee(Integer setupFee) {
+        public CreateWithItemsRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -2661,7 +2661,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CreateWithItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CreateWithItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -2706,7 +2706,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public CreateWithItemsRequest discountAmount(int index, Integer discountAmount) {
+        public CreateWithItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -2742,7 +2742,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public CreateWithItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public CreateWithItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -2950,13 +2950,13 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public UpdateRequest planUnitPrice(Integer planUnitPrice) {
+        public UpdateRequest planUnitPrice(Long planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
             return this;
         }
 
 
-        public UpdateRequest setupFee(Integer setupFee) {
+        public UpdateRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -3531,7 +3531,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity][" + index + "]", addonQuantity);
             return this;
         }
-        public UpdateRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public UpdateRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -3547,7 +3547,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public UpdateRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public UpdateRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -3616,7 +3616,7 @@ public class Subscription extends Resource<Subscription> {
 
 
         @Deprecated
-        public UpdateForItemsRequest setupFee(Integer setupFee) {
+        public UpdateForItemsRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -4185,7 +4185,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public UpdateForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public UpdateForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -4234,7 +4234,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public UpdateForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public UpdateForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -4274,7 +4274,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public UpdateForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public UpdateForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -4453,7 +4453,7 @@ public class Subscription extends Resource<Subscription> {
             super(httpMeth, uri);
         }
     
-        public AddChargeAtTermEndRequest amount(Integer amount) {
+        public AddChargeAtTermEndRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -4525,7 +4525,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ChargeAddonAtTermEndRequest addonUnitPrice(Integer addonUnitPrice) {
+        public ChargeAddonAtTermEndRequest addonUnitPrice(Long addonUnitPrice) {
             params.addOpt("addon_unit_price", addonUnitPrice);
             return this;
         }
@@ -4763,7 +4763,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportSubscriptionRequest planUnitPrice(Integer planUnitPrice) {
+        public ImportSubscriptionRequest planUnitPrice(Long planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
             return this;
         }
@@ -4775,7 +4775,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportSubscriptionRequest setupFee(Integer setupFee) {
+        public ImportSubscriptionRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -5293,7 +5293,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest transactionAmount(Integer transactionAmount) {
+        public ImportSubscriptionRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
@@ -5325,7 +5325,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public ImportSubscriptionRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public ImportSubscriptionRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -5345,7 +5345,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public ImportSubscriptionRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public ImportSubscriptionRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -5413,7 +5413,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportForCustomerRequest planUnitPrice(Integer planUnitPrice) {
+        public ImportForCustomerRequest planUnitPrice(Long planUnitPrice) {
             params.addOpt("plan_unit_price", planUnitPrice);
             return this;
         }
@@ -5425,7 +5425,7 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public ImportForCustomerRequest setupFee(Integer setupFee) {
+        public ImportForCustomerRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -5596,7 +5596,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportForCustomerRequest transactionAmount(Integer transactionAmount) {
+        public ImportForCustomerRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
@@ -5698,7 +5698,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
             return this;
         }
-        public ImportForCustomerRequest addonUnitPrice(int index, Integer addonUnitPrice) {
+        public ImportForCustomerRequest addonUnitPrice(int index, Long addonUnitPrice) {
             params.addOpt("addons[unit_price][" + index + "]", addonUnitPrice);
             return this;
         }
@@ -5718,7 +5718,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public ImportForCustomerRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public ImportForCustomerRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -5854,7 +5854,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("unbilled_charges[description][" + index + "]", unbilledChargeDescription);
             return this;
         }
-        public ImportUnbilledChargesRequest unbilledChargeUnitAmount(int index, Integer unbilledChargeUnitAmount) {
+        public ImportUnbilledChargesRequest unbilledChargeUnitAmount(int index, Long unbilledChargeUnitAmount) {
             params.addOpt("unbilled_charges[unit_amount][" + index + "]", unbilledChargeUnitAmount);
             return this;
         }
@@ -5862,7 +5862,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("unbilled_charges[quantity][" + index + "]", unbilledChargeQuantity);
             return this;
         }
-        public ImportUnbilledChargesRequest unbilledChargeAmount(int index, Integer unbilledChargeAmount) {
+        public ImportUnbilledChargesRequest unbilledChargeAmount(int index, Long unbilledChargeAmount) {
             params.addOpt("unbilled_charges[amount][" + index + "]", unbilledChargeAmount);
             return this;
         }
@@ -5878,7 +5878,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("unbilled_charges[amount_in_decimal][" + index + "]", unbilledChargeAmountInDecimal);
             return this;
         }
-        public ImportUnbilledChargesRequest unbilledChargeDiscountAmount(int index, Integer unbilledChargeDiscountAmount) {
+        public ImportUnbilledChargesRequest unbilledChargeDiscountAmount(int index, Long unbilledChargeDiscountAmount) {
             params.addOpt("unbilled_charges[discount_amount][" + index + "]", unbilledChargeDiscountAmount);
             return this;
         }
@@ -5902,7 +5902,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("discounts[description][" + index + "]", discountDescription);
             return this;
         }
-        public ImportUnbilledChargesRequest discountAmount(int index, Integer discountAmount) {
+        public ImportUnbilledChargesRequest discountAmount(int index, Long discountAmount) {
             params.add("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -5922,7 +5922,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("tiers[quantity_used][" + index + "]", tierQuantityUsed);
             return this;
         }
-        public ImportUnbilledChargesRequest tierUnitAmount(int index, Integer tierUnitAmount) {
+        public ImportUnbilledChargesRequest tierUnitAmount(int index, Long tierUnitAmount) {
             params.addOpt("tiers[unit_amount][" + index + "]", tierUnitAmount);
             return this;
         }
@@ -5973,7 +5973,7 @@ public class Subscription extends Resource<Subscription> {
 
 
         @Deprecated
-        public ImportForItemsRequest setupFee(Integer setupFee) {
+        public ImportForItemsRequest setupFee(Long setupFee) {
             params.addOpt("setup_fee", setupFee);
             return this;
         }
@@ -6150,7 +6150,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportForItemsRequest transactionAmount(Integer transactionAmount) {
+        public ImportForItemsRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
@@ -6252,7 +6252,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public ImportForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public ImportForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }
@@ -6297,7 +6297,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
-        public ImportForItemsRequest discountAmount(int index, Integer discountAmount) {
+        public ImportForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
@@ -6337,7 +6337,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
             return this;
         }
-        public ImportForItemsRequest itemTierPrice(int index, Integer itemTierPrice) {
+        public ImportForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
             params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
             return this;
         }
@@ -6499,7 +6499,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
             return this;
         }
-        public CancelRequest eventBasedAddonUnitPrice(int index, Integer eventBasedAddonUnitPrice) {
+        public CancelRequest eventBasedAddonUnitPrice(int index, Long eventBasedAddonUnitPrice) {
             params.addOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
             return this;
         }
@@ -6585,7 +6585,7 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
-        public CancelForItemsRequest subscriptionItemUnitPrice(int index, Integer subscriptionItemUnitPrice) {
+        public CancelForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
             params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
             return this;
         }

@@ -287,24 +287,24 @@ public Export waitForExportCompletion()
             return new TimestampFilter<RevenueRecognitionRequest>("invoice[paid_at]",this);        
         }
 
-        public NumberFilter<Integer, RevenueRecognitionRequest> invoiceTotal() {
-            return new NumberFilter<Integer, RevenueRecognitionRequest>("invoice[total]",this);        
+        public NumberFilter<Long, RevenueRecognitionRequest> invoiceTotal() {
+            return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[total]",this);        
         }
 
-        public NumberFilter<Integer, RevenueRecognitionRequest> invoiceAmountPaid() {
-            return new NumberFilter<Integer, RevenueRecognitionRequest>("invoice[amount_paid]",this);        
+        public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountPaid() {
+            return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_paid]",this);        
         }
 
-        public NumberFilter<Integer, RevenueRecognitionRequest> invoiceAmountAdjusted() {
-            return new NumberFilter<Integer, RevenueRecognitionRequest>("invoice[amount_adjusted]",this);        
+        public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountAdjusted() {
+            return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_adjusted]",this);        
         }
 
-        public NumberFilter<Integer, RevenueRecognitionRequest> invoiceCreditsApplied() {
-            return new NumberFilter<Integer, RevenueRecognitionRequest>("invoice[credits_applied]",this);        
+        public NumberFilter<Long, RevenueRecognitionRequest> invoiceCreditsApplied() {
+            return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[credits_applied]",this);        
         }
 
-        public NumberFilter<Integer, RevenueRecognitionRequest> invoiceAmountDue() {
-            return new NumberFilter<Integer, RevenueRecognitionRequest>("invoice[amount_due]",this);        
+        public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountDue() {
+            return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_due]",this);        
         }
 
         public EnumFilter<Invoice.DunningStatus, RevenueRecognitionRequest> invoiceDunningStatus() {
@@ -546,24 +546,24 @@ public Export waitForExportCompletion()
             return new TimestampFilter<DeferredRevenueRequest>("invoice[paid_at]",this);        
         }
 
-        public NumberFilter<Integer, DeferredRevenueRequest> invoiceTotal() {
-            return new NumberFilter<Integer, DeferredRevenueRequest>("invoice[total]",this);        
+        public NumberFilter<Long, DeferredRevenueRequest> invoiceTotal() {
+            return new NumberFilter<Long, DeferredRevenueRequest>("invoice[total]",this);        
         }
 
-        public NumberFilter<Integer, DeferredRevenueRequest> invoiceAmountPaid() {
-            return new NumberFilter<Integer, DeferredRevenueRequest>("invoice[amount_paid]",this);        
+        public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountPaid() {
+            return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_paid]",this);        
         }
 
-        public NumberFilter<Integer, DeferredRevenueRequest> invoiceAmountAdjusted() {
-            return new NumberFilter<Integer, DeferredRevenueRequest>("invoice[amount_adjusted]",this);        
+        public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountAdjusted() {
+            return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_adjusted]",this);        
         }
 
-        public NumberFilter<Integer, DeferredRevenueRequest> invoiceCreditsApplied() {
-            return new NumberFilter<Integer, DeferredRevenueRequest>("invoice[credits_applied]",this);        
+        public NumberFilter<Long, DeferredRevenueRequest> invoiceCreditsApplied() {
+            return new NumberFilter<Long, DeferredRevenueRequest>("invoice[credits_applied]",this);        
         }
 
-        public NumberFilter<Integer, DeferredRevenueRequest> invoiceAmountDue() {
-            return new NumberFilter<Integer, DeferredRevenueRequest>("invoice[amount_due]",this);        
+        public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountDue() {
+            return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_due]",this);        
         }
 
         public EnumFilter<Invoice.DunningStatus, DeferredRevenueRequest> invoiceDunningStatus() {
@@ -727,8 +727,8 @@ public Export waitForExportCompletion()
             return new StringFilter<PlansRequest>("plan[name]",this).supportsMultiOperators(true);        
         }
 
-        public NumberFilter<Integer, PlansRequest> planPrice() {
-            return new NumberFilter<Integer, PlansRequest>("plan[price]",this);        
+        public NumberFilter<Long, PlansRequest> planPrice() {
+            return new NumberFilter<Long, PlansRequest>("plan[price]",this);        
         }
 
         public NumberFilter<Integer, PlansRequest> planPeriod() {
@@ -796,8 +796,8 @@ public Export waitForExportCompletion()
             return new EnumFilter<Addon.ChargeType, AddonsRequest>("addon[charge_type]",this);        
         }
 
-        public NumberFilter<Integer, AddonsRequest> addonPrice() {
-            return new NumberFilter<Integer, AddonsRequest>("addon[price]",this);        
+        public NumberFilter<Long, AddonsRequest> addonPrice() {
+            return new NumberFilter<Long, AddonsRequest>("addon[price]",this);        
         }
 
         public NumberFilter<Integer, AddonsRequest> addonPeriod() {
@@ -1086,24 +1086,24 @@ public Export waitForExportCompletion()
             return new TimestampFilter<InvoicesRequest>("invoice[paid_at]",this);        
         }
 
-        public NumberFilter<Integer, InvoicesRequest> invoiceTotal() {
-            return new NumberFilter<Integer, InvoicesRequest>("invoice[total]",this);        
+        public NumberFilter<Long, InvoicesRequest> invoiceTotal() {
+            return new NumberFilter<Long, InvoicesRequest>("invoice[total]",this);        
         }
 
-        public NumberFilter<Integer, InvoicesRequest> invoiceAmountPaid() {
-            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_paid]",this);        
+        public NumberFilter<Long, InvoicesRequest> invoiceAmountPaid() {
+            return new NumberFilter<Long, InvoicesRequest>("invoice[amount_paid]",this);        
         }
 
-        public NumberFilter<Integer, InvoicesRequest> invoiceAmountAdjusted() {
-            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_adjusted]",this);        
+        public NumberFilter<Long, InvoicesRequest> invoiceAmountAdjusted() {
+            return new NumberFilter<Long, InvoicesRequest>("invoice[amount_adjusted]",this);        
         }
 
-        public NumberFilter<Integer, InvoicesRequest> invoiceCreditsApplied() {
-            return new NumberFilter<Integer, InvoicesRequest>("invoice[credits_applied]",this);        
+        public NumberFilter<Long, InvoicesRequest> invoiceCreditsApplied() {
+            return new NumberFilter<Long, InvoicesRequest>("invoice[credits_applied]",this);        
         }
 
-        public NumberFilter<Integer, InvoicesRequest> invoiceAmountDue() {
-            return new NumberFilter<Integer, InvoicesRequest>("invoice[amount_due]",this);        
+        public NumberFilter<Long, InvoicesRequest> invoiceAmountDue() {
+            return new NumberFilter<Long, InvoicesRequest>("invoice[amount_due]",this);        
         }
 
         public EnumFilter<Invoice.DunningStatus, InvoicesRequest> invoiceDunningStatus() {
@@ -1166,24 +1166,24 @@ public Export waitForExportCompletion()
             return new TimestampFilter<CreditNotesRequest>("credit_note[date]",this);        
         }
 
-        public NumberFilter<Integer, CreditNotesRequest> creditNoteTotal() {
-            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[total]",this);        
+        public NumberFilter<Long, CreditNotesRequest> creditNoteTotal() {
+            return new NumberFilter<Long, CreditNotesRequest>("credit_note[total]",this);        
         }
 
         public EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest> creditNotePriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest>("credit_note[price_type]",this);        
         }
 
-        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountAllocated() {
-            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_allocated]",this);        
+        public NumberFilter<Long, CreditNotesRequest> creditNoteAmountAllocated() {
+            return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_allocated]",this);        
         }
 
-        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountRefunded() {
-            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_refunded]",this);        
+        public NumberFilter<Long, CreditNotesRequest> creditNoteAmountRefunded() {
+            return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_refunded]",this);        
         }
 
-        public NumberFilter<Integer, CreditNotesRequest> creditNoteAmountAvailable() {
-            return new NumberFilter<Integer, CreditNotesRequest>("credit_note[amount_available]",this);        
+        public NumberFilter<Long, CreditNotesRequest> creditNoteAmountAvailable() {
+            return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_available]",this);        
         }
 
         public TimestampFilter<CreditNotesRequest> creditNoteVoidedAt() {
@@ -1254,12 +1254,12 @@ public Export waitForExportCompletion()
             return new TimestampFilter<TransactionsRequest>("transaction[date]",this);        
         }
 
-        public NumberFilter<Integer, TransactionsRequest> transactionAmount() {
-            return new NumberFilter<Integer, TransactionsRequest>("transaction[amount]",this);        
+        public NumberFilter<Long, TransactionsRequest> transactionAmount() {
+            return new NumberFilter<Long, TransactionsRequest>("transaction[amount]",this);        
         }
 
-        public NumberFilter<Integer, TransactionsRequest> transactionAmountCapturable() {
-            return new NumberFilter<Integer, TransactionsRequest>("transaction[amount_capturable]",this);        
+        public NumberFilter<Long, TransactionsRequest> transactionAmountCapturable() {
+            return new NumberFilter<Long, TransactionsRequest>("transaction[amount_capturable]",this);        
         }
 
         public EnumFilter<Transaction.Status, TransactionsRequest> transactionStatus() {
@@ -1282,8 +1282,8 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
-        public NumberFilter<Integer, OrdersRequest> total() {
-            return new NumberFilter<Integer, OrdersRequest>("total",this);        
+        public NumberFilter<Long, OrdersRequest> total() {
+            return new NumberFilter<Long, OrdersRequest>("total",this);        
         }
 
 
@@ -1327,16 +1327,16 @@ public Export waitForExportCompletion()
             return new TimestampFilter<OrdersRequest>("order[cancelled_at]",this);        
         }
 
-        public NumberFilter<Integer, OrdersRequest> orderAmountPaid() {
-            return new NumberFilter<Integer, OrdersRequest>("order[amount_paid]",this);        
+        public NumberFilter<Long, OrdersRequest> orderAmountPaid() {
+            return new NumberFilter<Long, OrdersRequest>("order[amount_paid]",this);        
         }
 
-        public NumberFilter<Integer, OrdersRequest> orderRefundableCredits() {
-            return new NumberFilter<Integer, OrdersRequest>("order[refundable_credits]",this);        
+        public NumberFilter<Long, OrdersRequest> orderRefundableCredits() {
+            return new NumberFilter<Long, OrdersRequest>("order[refundable_credits]",this);        
         }
 
-        public NumberFilter<Integer, OrdersRequest> orderRefundableCreditsIssued() {
-            return new NumberFilter<Integer, OrdersRequest>("order[refundable_credits_issued]",this);        
+        public NumberFilter<Long, OrdersRequest> orderRefundableCreditsIssued() {
+            return new NumberFilter<Long, OrdersRequest>("order[refundable_credits_issued]",this);        
         }
 
         public TimestampFilter<OrdersRequest> orderUpdatedAt() {

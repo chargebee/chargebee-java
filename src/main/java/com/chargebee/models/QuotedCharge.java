@@ -18,8 +18,8 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             super(jsonObj);
         }
 
-        public Integer amount() {
-            return optInteger("amount");
+        public Long amount() {
+            return optLong("amount");
         }
 
         public String amountInDecimal() {
@@ -61,8 +61,8 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optInteger("quantity");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
         public String quantityInDecimal() {
@@ -96,8 +96,8 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optString("quantity_in_decimal");
         }
 
-        public Integer unitPrice() {
-            return optInteger("unit_price");
+        public Long unitPrice() {
+            return optLong("unit_price");
         }
 
         public String unitPriceInDecimal() {
@@ -127,8 +127,8 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optInteger("ending_unit");
         }
 
-        public Integer price() {
-            return reqInteger("price");
+        public Long price() {
+            return reqLong("price");
         }
 
         public String startingUnitInDecimal() {

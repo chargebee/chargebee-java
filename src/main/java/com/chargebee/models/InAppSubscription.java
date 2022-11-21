@@ -88,7 +88,7 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             return this;
         }
 
-        public ProcessReceiptRequest productPrice(Integer productPrice) {
+        public ProcessReceiptRequest productPrice(Long productPrice) {
             params.add("product[price]", productPrice);
             return this;
         }

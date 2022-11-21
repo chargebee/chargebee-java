@@ -251,20 +251,20 @@ public class Customer extends Resource<Customer> {
             super(jsonObj);
         }
 
-        public Integer promotionalCredits() {
-            return reqInteger("promotional_credits");
+        public Long promotionalCredits() {
+            return reqLong("promotional_credits");
         }
 
-        public Integer excessPayments() {
-            return reqInteger("excess_payments");
+        public Long excessPayments() {
+            return reqLong("excess_payments");
         }
 
-        public Integer refundableCredits() {
-            return reqInteger("refundable_credits");
+        public Long refundableCredits() {
+            return reqLong("refundable_credits");
         }
 
-        public Integer unbilledCharges() {
-            return reqInteger("unbilled_charges");
+        public Long unbilledCharges() {
+            return reqLong("unbilled_charges");
         }
 
         public String currencyCode() {
@@ -581,20 +581,20 @@ public class Customer extends Resource<Customer> {
         return optString("preferred_currency_code");
     }
 
-    public Integer promotionalCredits() {
-        return reqInteger("promotional_credits");
+    public Long promotionalCredits() {
+        return reqLong("promotional_credits");
     }
 
-    public Integer unbilledCharges() {
-        return reqInteger("unbilled_charges");
+    public Long unbilledCharges() {
+        return reqLong("unbilled_charges");
     }
 
-    public Integer refundableCredits() {
-        return reqInteger("refundable_credits");
+    public Long refundableCredits() {
+        return reqLong("refundable_credits");
     }
 
-    public Integer excessPayments() {
-        return reqInteger("excess_payments");
+    public Long excessPayments() {
+        return reqLong("excess_payments");
     }
 
     public List<Customer.Balance> balances() {
@@ -1964,7 +1964,7 @@ public class Customer extends Resource<Customer> {
             super(httpMeth, uri);
         }
     
-        public AddPromotionalCreditsRequest amount(Integer amount) {
+        public AddPromotionalCreditsRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -2006,7 +2006,7 @@ public class Customer extends Resource<Customer> {
             super(httpMeth, uri);
         }
     
-        public DeductPromotionalCreditsRequest amount(Integer amount) {
+        public DeductPromotionalCreditsRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -2048,7 +2048,7 @@ public class Customer extends Resource<Customer> {
             super(httpMeth, uri);
         }
     
-        public SetPromotionalCreditsRequest amount(Integer amount) {
+        public SetPromotionalCreditsRequest amount(Long amount) {
             params.add("amount", amount);
             return this;
         }
@@ -2096,7 +2096,7 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public RecordExcessPaymentRequest transactionAmount(Integer transactionAmount) {
+        public RecordExcessPaymentRequest transactionAmount(Long transactionAmount) {
             params.add("transaction[amount]", transactionAmount);
             return this;
         }
@@ -2133,7 +2133,7 @@ public class Customer extends Resource<Customer> {
             super(httpMeth, uri);
         }
     
-        public CollectPaymentRequest amount(Integer amount) {
+        public CollectPaymentRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }
@@ -2303,7 +2303,7 @@ public class Customer extends Resource<Customer> {
             params.add("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
             return this;
         }
-        public CollectPaymentRequest invoiceAllocationAllocationAmount(int index, Integer invoiceAllocationAllocationAmount) {
+        public CollectPaymentRequest invoiceAllocationAllocationAmount(int index, Long invoiceAllocationAllocationAmount) {
             params.addOpt("invoice_allocations[allocation_amount][" + index + "]", invoiceAllocationAllocationAmount);
             return this;
         }
