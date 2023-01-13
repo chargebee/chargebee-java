@@ -421,6 +421,136 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class ShippingAddress extends Resource<ShippingAddress> {
+        public ShippingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+        public Integer index() {
+            return reqInteger("index");
+        }
+
+    }
+
+    public static class BillingAddress extends Resource<BillingAddress> {
+        public BillingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -593,6 +723,14 @@ public class CreditNote extends Resource<CreditNote> {
 
     public String businessEntityId() {
         return reqString("business_entity_id");
+    }
+
+    public CreditNote.ShippingAddress shippingAddress() {
+        return optSubResource("shipping_address", CreditNote.ShippingAddress.class);
+    }
+
+    public CreditNote.BillingAddress billingAddress() {
+        return optSubResource("billing_address", CreditNote.BillingAddress.class);
     }
 
     // Operations

@@ -5886,6 +5886,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("unbilled_charges[use_for_proration][" + index + "]", unbilledChargeUseForProration);
             return this;
         }
+        public ImportUnbilledChargesRequest unbilledChargeIsAdvanceCharge(int index, Boolean unbilledChargeIsAdvanceCharge) {
+            params.addOpt("unbilled_charges[is_advance_charge][" + index + "]", unbilledChargeIsAdvanceCharge);
+            return this;
+        }
         public ImportUnbilledChargesRequest discountUnbilledChargeId(int index, String discountUnbilledChargeId) {
             params.addOpt("discounts[unbilled_charge_id][" + index + "]", discountUnbilledChargeId);
             return this;

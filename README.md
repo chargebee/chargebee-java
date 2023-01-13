@@ -2,40 +2,39 @@
 ***
 This is the source code for the Java client library for [Chargebee APIs](https://apidocs.chargebee.com/docs/api?lang=java).
 
-## Library versions
 
-The versioning scheme of this library is inspired by [SemVer](https://semver.org/). For example, `v3.0.0.beta.1` and `v2.5.1` are valid library versions.
+## Library versions
+***
+
+The versioning scheme of this library is inspired by [SemVer](https://semver.org/) and the format is `v{MAJOR}.{MINOR}.{PATCH}`. For example, `v3.0.0` and `v2.5.1` are valid library versions.
 
 The following table provides some details for each major version:
 
-| Library major version | Status        | Compatible API versions                                                                                               | **Branch**            |
-|-----------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------|
-| v3.x                  | Active (Beta) | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `high-value-currency` |
-| v2.x                  | Active        | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)   | `master`              |
-| v1.x                  | Inactive      | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                               | `chargebee-v1`        |
+| Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
+|----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
+| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`      |
+| v2                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)   | `chargebee-v2`|
+| v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                               | `chargebee-v1`|
 
 A couple of terms used in the above table are explained below:
-- **Status**: The current development status for the library version. 
-  - An **Active** major version is currently being maintained and continues to get backward-compatible changes. 
-  - **Inactive** versions no longer receive any updates. 
-  - **Beta** versions are pre-release versions and are subject to certain [terms and conditions](https://www.chargebee.com/company/terms/#your_rights).  
+- **Status**: The current development status for the library version. An **Active** major version is currently being maintained and continues to get backward-compatible changes. **Inactive** versions no longer receive any updates.
 - **Branch**: The branch in this repository containing the source code for the latest release of the library version. Every version of the library has been [tagged](https://github.com/chargebee/chargebee-java/tags). You can check out the source code for any version using its tag.
 
-**Note:** 
-- See the [changelog](CHANGELOG.md) for a history of changes. 
-- Follow the [Migration Guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) to upgrade from v2 to v3 (beta).
+🔴 **Alert!** Eventually, v2 will become **inactive**, after which it will no longer receive any new updates. We encourage you to [upgrade to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) at the earliest.
+
+**Note:** See the [changelog](CHANGELOG.md) for a history of changes.
 
 ## Install the library
 ***
 
 ### Requirement
 ***
- * Java 1.8 or later.
+* Java 1.8 or later.
 
 ### Install using Maven
 ***
 
-You can install any release of beta library version by adding the below dependency to `pom.xml`:
+You can install any release of an **active** library version by adding the below dependency to `pom.xml`:
 
 ```xml
 <dependency>
@@ -44,23 +43,24 @@ You can install any release of beta library version by adding the below dependen
   <version>{MAJOR}.{MINOR}.{PATCH}</version>
 </dependency>
 ```
+
 For example, the following are valid:
 
-- Install the latest beta version:
+- Install the latest version:
 ```xml
 <dependency>
-    <groupId>com.chargebee</groupId>
-    <artifactId>chargebee-java</artifactId>
-    <version>3.0.0-beta.1</version>
+  <groupId>com.chargebee</groupId>
+  <artifactId>chargebee-java</artifactId>
+  <version>3.0.0</version>
 </dependency>
 ```
 
-- Install a stable version, say v2.5.1:
+- Install an earlier version, say v2.5.1:
 ```xml
 <dependency>
-    <groupId>com.chargebee</groupId>
-    <artifactId>chargebee-java</artifactId>
-    <version>2.5.1</version>
+  <groupId>com.chargebee</groupId>
+  <artifactId>chargebee-java</artifactId>
+  <version>2.5.1</version>
 </dependency>
 ```
 
@@ -81,14 +81,9 @@ Alternatively, you can build the JAR files by following the steps below:
 ```shell
 git checkout {tagname}
 ```
-For example, the following are valid:
-
+For example, the following is valid:
 ```shell
-git checkout v3.0.0-beta.1
-```
-or
-```shell
-git checkout v2.5.1
+git checkout v3.0.0
 ```
 
 2. Clean and build using Maven.
@@ -125,9 +120,10 @@ public class Sample{
   }
 }
 ```
+
 ## Contribution
 ***
-You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions).
+You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions). 
 
 If you find something amiss, you are welcome to create an [issue](https://github.com/chargebee/chargebee-java/issues).
 
@@ -141,3 +137,4 @@ The API documentation for the Java library can be found in our [API reference](h
 ***
 
 See the [LICENSE](LICENSE).
+

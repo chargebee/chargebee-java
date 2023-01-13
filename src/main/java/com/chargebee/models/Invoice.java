@@ -1019,6 +1019,11 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.POST, uri);
     }
 
+    public static DeleteLineItemsRequest deleteLineItems(String id) {
+        String uri = uri("invoices", nullCheck(id), "delete_line_items");
+        return new DeleteLineItemsRequest(Method.POST, uri);
+    }
+
     public static ApplyCreditsRequest applyCredits(String id) {
         String uri = uri("invoices", nullCheck(id), "apply_credits");
         return new ApplyCreditsRequest(Method.POST, uri);
@@ -2688,6 +2693,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ImportInvoiceRequest hasAdvanceCharges(Boolean hasAdvanceCharges) {
+            params.addOpt("has_advance_charges", hasAdvanceCharges);
+            return this;
+        }
+
+
         public ImportInvoiceRequest useForProration(Boolean useForProration) {
             params.addOpt("use_for_proration", useForProration);
             return this;
@@ -3121,6 +3132,22 @@ public class Invoice extends Resource<Invoice> {
 
         public ApplyPaymentsRequest transactionId(int index, String transactionId) {
             params.addOpt("transactions[id][" + index + "]", transactionId);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class DeleteLineItemsRequest extends Request<DeleteLineItemsRequest> {
+
+        private DeleteLineItemsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public DeleteLineItemsRequest lineItemId(int index, String lineItemId) {
+            params.addOpt("line_items[id][" + index + "]", lineItemId);
             return this;
         }
         @Override

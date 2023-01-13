@@ -801,6 +801,11 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
+        public CreateSubForCustomerQuoteRequest subscriptionPoNumber(String subscriptionPoNumber) {
+            params.addOpt("subscription[po_number]", subscriptionPoNumber);
+            return this;
+        }
+
         public CreateSubForCustomerQuoteRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -2541,6 +2546,11 @@ public class Quote extends Resource<Quote> {
 
         public CreateSubItemsForCustomerQuoteRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
+            return this;
+        }
+
+        public CreateSubItemsForCustomerQuoteRequest subscriptionPoNumber(String subscriptionPoNumber) {
+            params.addOpt("subscription[po_number]", subscriptionPoNumber);
             return this;
         }
 
