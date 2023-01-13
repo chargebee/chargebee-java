@@ -162,6 +162,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optList("tiers", UnbilledCharge.Tier.class);
     }
 
+    public Boolean isAdvanceCharge() {
+        return optBoolean("is_advance_charge");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }

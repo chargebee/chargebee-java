@@ -1,3 +1,24 @@
+### v3.1.0 (2023-01-13)
+* * *
+
+#### New Attributes:
+* shipping_address and billing_address parameter has been added to the CreditNote.
+* is_advance_charge has been added to the UnbilledCharge.
+
+#### Added input parameters:
+* CreateSubForCustomerQuoteRequest#subscription[po_number] and CreateSubItemsForCustomerQuoteRequest#subscription[po_number] parameter has been added to Quote resource.
+* ImportUnbilledChargesRequest#unbilled_charges[is_advance_charge] parameter has been added to Subscription resource.
+* ImportInvoiceRequest#has_advance_charges parameter has been added to Invoice resource.
+
+#### New endpoints:
+* Invoice#DeleteLineItemsRequest has been added to the Invoice resource.
+
+#### New Enum values:
+* SUBSCRIPTION_TRIAL_EXTENDED has been added to EventTypeEnum.
+* ZERO_VALUE_ITEM has been added to TaxExemptReasonEnum.
+* BANK_OF_AMERICA has been added to GatewayEnum.
+
+
 ### v3.0.0 (2022-11-21)
 * * *
 
@@ -6,6 +27,28 @@
 * The data types for all numerical currency fields have been changed from `int` to `long`. Numerical currency fields can be identified as those with their data type specified in the [API docs](https://apidocs.chargebee.com/docs/api?prod_cat_ver=2) as `in cents`. 
   
 See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) for details.
+
+### v2.22.0 (2023-01-13)
+* * *
+
+🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
+
+#### New Attributes:
+* shipping_address and billing_address parameter has been added to the CreditNote.
+* is_advance_charge has been added to the UnbilledCharge.
+
+#### Added input parameters:
+* CreateSubForCustomerQuoteRequest#subscription[po_number] and CreateSubItemsForCustomerQuoteRequest#subscription[po_number] parameter has been added to Quote resource.
+* ImportUnbilledChargesRequest#unbilled_charges[is_advance_charge] parameter has been added to Subscription resource.
+* ImportInvoiceRequest#has_advance_charges parameter has been added to Invoice resource.
+
+#### New endpoints:
+* Invoice#DeleteLineItemsRequest has been added to the Invoice resource.
+
+#### New Enum values:
+* SUBSCRIPTION_TRIAL_EXTENDED has been added to EventTypeEnum.
+* ZERO_VALUE_ITEM has been added to TaxExemptReasonEnum.
+* BANK_OF_AMERICA has been added to GatewayEnum.
 
 
 ### v2.21.0 (2022-11-21)
