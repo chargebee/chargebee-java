@@ -150,7 +150,7 @@ public class Resource<T> {
     }
 
     public Timestamp optTimestamp(String key) {
-        Integer unxTime = optional(key, Integer.class);
+        Long unxTime = optLong(key);
         return (unxTime != null)? new Timestamp(unxTime * 1000l) : null;
     }
 

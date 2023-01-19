@@ -1,5 +1,12 @@
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
 
+### v2.22.1 (2023-01-19)
+* * *
+
+### Fixes:
+* Fixed Y2K38 timestamp issue.
+
+
 ### v2.22.0 (2023-01-13)
 * * *
 
