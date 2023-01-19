@@ -1,3 +1,10 @@
+### v3.1.1 (2023-01-19)
+* * *
+
+### Fixes:
+* Fixed Y2K38 timestamp issue.
+
+
 ### v3.1.0 (2023-01-13)
 * * *
 
@@ -28,10 +35,18 @@
   
 See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) for details.
 
-### v2.22.0 (2023-01-13)
+
+### v2.22.1 (2023-01-19)
 * * *
 
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
+
+### Fixes:
+* Fixed Y2K38 timestamp issue.
+
+
+### v2.22.0 (2023-01-13)
+* * *
 
 #### New Attributes:
 * shipping_address and billing_address parameter has been added to the CreditNote.
