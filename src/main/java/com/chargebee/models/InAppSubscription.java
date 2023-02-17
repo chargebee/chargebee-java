@@ -113,6 +113,21 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             return this;
         }
 
+        public ProcessReceiptRequest customerEmail(String customerEmail) {
+            params.addOpt("customer[email]", customerEmail);
+            return this;
+        }
+
+        public ProcessReceiptRequest customerFirstName(String customerFirstName) {
+            params.addOpt("customer[first_name]", customerFirstName);
+            return this;
+        }
+
+        public ProcessReceiptRequest customerLastName(String customerLastName) {
+            params.addOpt("customer[last_name]", customerLastName);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

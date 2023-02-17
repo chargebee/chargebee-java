@@ -104,7 +104,7 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         }
 
         public String entityDescription() {
-            return reqString("entity_description");
+            return optString("entity_description");
         }
 
         public EntityType entityType() {

@@ -2898,6 +2898,16 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutGiftRequest couponIds(List<String> couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
+        public CheckoutGiftRequest couponIds(String... couponIds) {
+            params.addOpt("coupon_ids", couponIds);
+            return this;
+        }
+
         public CheckoutGiftRequest gifterCustomerId(String gifterCustomerId) {
             params.addOpt("gifter[customer_id]", gifterCustomerId);
             return this;
@@ -2923,6 +2933,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        @Deprecated
         public CheckoutGiftRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
             return this;
