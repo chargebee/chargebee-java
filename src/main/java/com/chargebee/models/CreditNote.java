@@ -155,7 +155,7 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
         public String entityDescription() {
-            return reqString("entity_description");
+            return optString("entity_description");
         }
 
         public EntityType entityType() {
@@ -787,6 +787,11 @@ public class CreditNote extends Resource<CreditNote> {
         return new DeleteRequest(Method.POST, uri);
     }
 
+    public static RemoveTaxWithheldRefundRequest removeTaxWithheldRefund(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "remove_tax_withheld_refund");
+        return new RemoveTaxWithheldRefundRequest(Method.POST, uri);
+    }
+
     public static Request resendEinvoice(String id) {
         String uri = uri("credit_notes", nullCheck(id), "resend_einvoice");
         return new Request(Method.POST, uri);
@@ -1133,6 +1138,23 @@ public class CreditNote extends Resource<CreditNote> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemoveTaxWithheldRefundRequest extends Request<RemoveTaxWithheldRefundRequest> {
+
+        private RemoveTaxWithheldRefundRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemoveTaxWithheldRefundRequest taxWithheldId(String taxWithheldId) {
+            params.add("tax_withheld[id]", taxWithheldId);
+            return this;
+        }
 
         @Override
         public Params params() {

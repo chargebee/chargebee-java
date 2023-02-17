@@ -1,3 +1,32 @@
+### v3.2.0 (2023-02-17)
+* * *
+
+#### Fixes:
+* Fixed Serialization issue for Invoice#business_entity_id, CreditNoteLineItem#entity_description  CreditNoteEstimateLineItem#entity_description, InvoiceLineItem#entity_description, InvoiceEstimateLineItem#entity_description, QuoteLineItem#entity_description and QuoteLineGroupLineItem#entity_description attributes.
+
+#### New Attributes:
+* resource_version and updated_at parameter has been added to the TaxWithheld resource.
+
+#### Added input parameters:
+* AttachedItemListRequest#updated_at parameter has been added to AttachedItem resource.
+* AttachedItemsRequest#attached_item[updated_at] parameter has been added to Export resource.
+* CheckoutGiftRequest#coupon_ids[n] parameter has been added to HostedPage resource.
+* ProcessReceiptRequest#customerEmail, ProcessReceiptRequest#customerFirstName and  ProcessReceiptRequest#customerLastName parameters has been added to InAppSubscription resource.
+
+#### New endpoints:
+* Invoice#RecordTaxWithheldRequest and Invoice#RemoveTaxWithheldRequest has been added to the Invoice resource.
+* CreditNote#RemoveTaxWithheldRefundRequest has been added to the CreditNote resource.
+
+#### New Enum values:
+* custom has been added to PaymentMethodEnum.
+* ecentric has been added to GatewayEnum.
+
+#### Removed input parameters:
+* EstimateRequest#invoice_info[po_number] and EstimateRequest#invoice_info[notes] parameters has been removed from Purchase resource.
+
+#### Deprecated input parameters:
+* CheckoutGiftRequest#subscription[coupon] parameter have been deprecated in hosted_page resource.
+
 ### v3.1.1 (2023-01-19)
 * * *
 
@@ -35,11 +64,41 @@
   
 See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) for details.
 
+* * *
 
-### v2.22.1 (2023-01-19)
+### v2.23.0 (2023-02-17)
 * * *
 
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
+
+#### Fixes:
+* Fixed Serialization issue for Invoice#business_entity_id, CreditNoteLineItem#entity_description  CreditNoteEstimateLineItem#entity_description, InvoiceLineItem#entity_description, InvoiceEstimateLineItem#entity_description, QuoteLineItem#entity_description and QuoteLineGroupLineItem#entity_description attributes.
+
+#### New Attributes:
+* resource_version and updated_at parameter has been added to the TaxWithheld resource.
+
+#### Added input parameters:
+* AttachedItemListRequest#updated_at parameter has been added to AttachedItem resource.
+* AttachedItemsRequest#attached_item[updated_at] parameter has been added to Export resource.
+* CheckoutGiftRequest#coupon_ids[n] parameter has been added to HostedPage resource.
+* ProcessReceiptRequest#customerEmail, ProcessReceiptRequest#customerFirstName and  ProcessReceiptRequest#customerLastName parameters has been added to InAppSubscription resource.
+
+#### New endpoints:
+* Invoice#RecordTaxWithheldRequest and Invoice#RemoveTaxWithheldRequest has been added to the Invoice resource.
+* CreditNote#RemoveTaxWithheldRefundRequest has been added to the CreditNote resource.
+
+#### New Enum values:
+* custom has been added to PaymentMethodEnum.
+* ecentric has been added to GatewayEnum.
+
+#### Removed input parameters:
+* EstimateRequest#invoice_info[po_number] and EstimateRequest#invoice_info[notes] parameters has been removed from Purchase resource.
+
+#### Deprecated input parameters:
+* CheckoutGiftRequest#subscription[coupon] parameter have been deprecated in HostedPage resource.
+
+### v2.22.1 (2023-01-19)
+* * *
 
 ### Fixes:
 * Fixed Y2K38 timestamp issue.

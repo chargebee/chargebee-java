@@ -87,6 +87,14 @@ public class TaxWithheld extends Resource<TaxWithheld> {
         return optLong("amount");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public Timestamp updatedAt() {
+        return optTimestamp("updated_at");
+    }
+
     @Deprecated
     public BigDecimal exchangeRate() {
         return optBigDecimal("exchange_rate");

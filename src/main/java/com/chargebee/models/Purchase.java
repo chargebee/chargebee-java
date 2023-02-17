@@ -258,16 +258,6 @@ public class Purchase extends Resource<Purchase> {
         }
 
 
-        public EstimateRequest invoiceInfoPoNumber(String invoiceInfoPoNumber) {
-            params.addOpt("invoice_info[po_number]", invoiceInfoPoNumber);
-            return this;
-        }
-
-        public EstimateRequest invoiceInfoNotes(String invoiceInfoNotes) {
-            params.addOpt("invoice_info[notes]", invoiceInfoNotes);
-            return this;
-        }
-
         public EstimateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;

@@ -118,7 +118,7 @@ public class Invoice extends Resource<Invoice> {
         }
 
         public String entityDescription() {
-            return reqString("entity_description");
+            return optString("entity_description");
         }
 
         public EntityType entityType() {
@@ -967,7 +967,7 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public String businessEntityId() {
-        return reqString("business_entity_id");
+        return optString("business_entity_id");
     }
 
     // Operations
@@ -1089,6 +1089,16 @@ public class Invoice extends Resource<Invoice> {
     public static RecordPaymentRequest recordPayment(String id) {
         String uri = uri("invoices", nullCheck(id), "record_payment");
         return new RecordPaymentRequest(Method.POST, uri);
+    }
+
+    public static RecordTaxWithheldRequest recordTaxWithheld(String id) {
+        String uri = uri("invoices", nullCheck(id), "record_tax_withheld");
+        return new RecordTaxWithheldRequest(Method.POST, uri);
+    }
+
+    public static RemoveTaxWithheldRequest removeTaxWithheld(String id) {
+        String uri = uri("invoices", nullCheck(id), "remove_tax_withheld");
+        return new RemoveTaxWithheldRequest(Method.POST, uri);
     }
 
     public static RefundRequest refund(String id) {
@@ -3680,6 +3690,55 @@ public class Invoice extends Resource<Invoice> {
 
         public RecordPaymentRequest transactionErrorText(String transactionErrorText) {
             params.addOpt("transaction[error_text]", transactionErrorText);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RecordTaxWithheldRequest extends Request<RecordTaxWithheldRequest> {
+
+        private RecordTaxWithheldRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RecordTaxWithheldRequest taxWithheldAmount(Long taxWithheldAmount) {
+            params.add("tax_withheld[amount]", taxWithheldAmount);
+            return this;
+        }
+
+        public RecordTaxWithheldRequest taxWithheldReferenceNumber(String taxWithheldReferenceNumber) {
+            params.addOpt("tax_withheld[reference_number]", taxWithheldReferenceNumber);
+            return this;
+        }
+
+        public RecordTaxWithheldRequest taxWithheldDate(Timestamp taxWithheldDate) {
+            params.addOpt("tax_withheld[date]", taxWithheldDate);
+            return this;
+        }
+
+        public RecordTaxWithheldRequest taxWithheldDescription(String taxWithheldDescription) {
+            params.addOpt("tax_withheld[description]", taxWithheldDescription);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RemoveTaxWithheldRequest extends Request<RemoveTaxWithheldRequest> {
+
+        private RemoveTaxWithheldRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public RemoveTaxWithheldRequest taxWithheldId(String taxWithheldId) {
+            params.add("tax_withheld[id]", taxWithheldId);
             return this;
         }
 

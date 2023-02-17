@@ -306,6 +306,11 @@ public class AttachedItem extends Resource<AttachedItem> {
         }
 
 
+        public TimestampFilter<AttachedItemListRequest> updatedAt() {
+            return new TimestampFilter<AttachedItemListRequest>("updated_at",this);        
+        }
+
+
         @Override
         public Params params() {
             return params;

@@ -1547,6 +1547,10 @@ public Export waitForExportCompletion()
             return new EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemsRequest>("attached_item[charge_on_event]",this);        
         }
 
+        public TimestampFilter<AttachedItemsRequest> attachedItemUpdatedAt() {
+            return new TimestampFilter<AttachedItemsRequest>("attached_item[updated_at]",this);        
+        }
+
         public StringFilter<AttachedItemsRequest> attachedItemParentItemId() {
             return new StringFilter<AttachedItemsRequest>("attached_item[parent_item_id]",this).supportsMultiOperators(true);        
         }
