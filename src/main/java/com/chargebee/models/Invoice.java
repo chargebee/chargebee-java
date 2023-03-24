@@ -702,6 +702,10 @@ public class Invoice extends Resource<Invoice> {
             return reqString("id");
         }
 
+        public String referenceNumber() {
+            return optString("reference_number");
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
         }
@@ -1143,6 +1147,11 @@ public class Invoice extends Resource<Invoice> {
 
     public static Request resendEinvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "resend_einvoice");
+        return new Request(Method.POST, uri);
+    }
+
+    public static Request sendEinvoice(String id) {
+        String uri = uri("invoices", nullCheck(id), "send_einvoice");
         return new Request(Method.POST, uri);
     }
 

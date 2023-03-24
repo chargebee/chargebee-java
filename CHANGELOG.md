@@ -1,5 +1,36 @@
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
 
+* * * 
+
+### v2.24.0 (2023-03-24)
+* * *
+
+#### Fixes:
+* Fixed list_discounts subscriptions API error.
+* Updated third party library and maven plugins as per latest version.
+
+#### New Attributes: 
+* CreditNoteEinvoice#ReferenceNumber has been added to the CreditNote resource.
+* InvoiceEinvoice#ReferenceNumber has been added to the Invoice resource.
+* einvoicing_method has been added to the Customer resource.
+* StoreStatus and InvoiceId have been addded to the InAppSubscription resource.
+
+#### Added Input Parameters:
+* UpdateForItemsRequest#discount_quantity and UpdateRequest#discount_quantity parameter has been added to the Coupon resource.
+* UpdateBillingInfoRequest#einvoicing_method and CreateRequest#einvoicing_method parameter has been added to the Customer resource.
+* CreateRequest#customer[einvoicing_method] , UpdateRequest#customer[einvoicing_method] and  UpdateForItemsRequest#customer[einvoicing_method] parameter has been added to the Subscription resource.
+* CreateRequest#subscription_info[meta_data] parameter has been added to the Purchase resource.
+
+#### New Endpoints:
+* CreditNote#SendEinvoice has been added to the CreditNote resource. 
+* Invoice#SendEinvoice has been added to the Invoice resource.
+* InAppSubscription#ImportSubscriptionRequest and InAppSubscription#RetrieveStoreSubsRequest Api Requests have been added to the InAppSubscription resource.
+
+#### New Enum Class:
+* EinvoicingMethodEnum has been added.
+* StoreStatus has been added in the InAppSubscription resource.
+
+
 ### v2.23.0 (2023-02-17)
 * * *
 

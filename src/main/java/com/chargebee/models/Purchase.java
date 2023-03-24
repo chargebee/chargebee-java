@@ -234,6 +234,10 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
             return this;
         }
+        public CreateRequest subscriptionInfoMetaData(int index, JSONObject subscriptionInfoMetaData) {
+            params.addOpt("subscription_info[meta_data][" + index + "]", subscriptionInfoMetaData);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
