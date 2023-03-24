@@ -687,6 +687,13 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        @Deprecated
+        public UpdateForItemsRequest discountQuantity(Integer discountQuantity) {
+            params.addOpt("discount_quantity", discountQuantity);
+            return this;
+        }
+
+
         public UpdateForItemsRequest applyOn(Coupon.ApplyOn applyOn) {
             params.addOpt("apply_on", applyOn);
             return this;
@@ -888,6 +895,13 @@ public class Coupon extends Resource<Coupon> {
 
         public UpdateRequest discountPercentage(Double discountPercentage) {
             params.addOpt("discount_percentage", discountPercentage);
+            return this;
+        }
+
+
+        @Deprecated
+        public UpdateRequest discountQuantity(Integer discountQuantity) {
+            params.addOpt("discount_quantity", discountQuantity);
             return this;
         }
 

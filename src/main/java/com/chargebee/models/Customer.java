@@ -609,6 +609,10 @@ public class Customer extends Resource<Customer> {
         return optBoolean("is_einvoice_enabled");
     }
 
+    public EinvoicingMethod einvoicingMethod() {
+        return optEnum("einvoicing_method", EinvoicingMethod.class);
+    }
+
     public JSONObject metaData() {
         return optJSONObject("meta_data");
     }
@@ -898,6 +902,12 @@ public class Customer extends Resource<Customer> {
 
         public CreateRequest isEinvoiceEnabled(Boolean isEinvoiceEnabled) {
             params.addOpt("is_einvoice_enabled", isEinvoiceEnabled);
+            return this;
+        }
+
+
+        public CreateRequest einvoicingMethod(com.chargebee.models.enums.EinvoicingMethod einvoicingMethod) {
+            params.addOpt("einvoicing_method", einvoicingMethod);
             return this;
         }
 
@@ -1703,6 +1713,12 @@ public class Customer extends Resource<Customer> {
 
         public UpdateBillingInfoRequest isEinvoiceEnabled(Boolean isEinvoiceEnabled) {
             params.addOpt("is_einvoice_enabled", isEinvoiceEnabled);
+            return this;
+        }
+
+
+        public UpdateBillingInfoRequest einvoicingMethod(com.chargebee.models.enums.EinvoicingMethod einvoicingMethod) {
+            params.addOpt("einvoicing_method", einvoicingMethod);
             return this;
         }
 

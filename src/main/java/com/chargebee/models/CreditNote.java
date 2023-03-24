@@ -61,6 +61,10 @@ public class CreditNote extends Resource<CreditNote> {
             return reqString("id");
         }
 
+        public String referenceNumber() {
+            return optString("reference_number");
+        }
+
         public Status status() {
             return reqEnum("status", Status.class);
         }
@@ -794,6 +798,11 @@ public class CreditNote extends Resource<CreditNote> {
 
     public static Request resendEinvoice(String id) {
         String uri = uri("credit_notes", nullCheck(id), "resend_einvoice");
+        return new Request(Method.POST, uri);
+    }
+
+    public static Request sendEinvoice(String id) {
+        String uri = uri("credit_notes", nullCheck(id), "send_einvoice");
         return new Request(Method.POST, uri);
     }
 

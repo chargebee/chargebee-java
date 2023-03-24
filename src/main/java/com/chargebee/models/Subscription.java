@@ -1826,6 +1826,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest customerEinvoicingMethod(com.chargebee.models.enums.EinvoicingMethod customerEinvoicingMethod) {
+            params.addOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+            return this;
+        }
+
         public CreateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
@@ -3498,6 +3503,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest customerEinvoicingMethod(com.chargebee.models.enums.EinvoicingMethod customerEinvoicingMethod) {
+            params.addOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+            return this;
+        }
+
         public UpdateRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
             params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
             return this;
@@ -4145,6 +4155,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
             params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+            return this;
+        }
+
+        public UpdateForItemsRequest customerEinvoicingMethod(com.chargebee.models.enums.EinvoicingMethod customerEinvoicingMethod) {
+            params.addOpt("customer[einvoicing_method]", customerEinvoicingMethod);
             return this;
         }
 
