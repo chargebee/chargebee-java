@@ -138,6 +138,37 @@ public class Coupon extends Resource<Coupon> {
 
     }
 
+    public static class CouponConstraint extends Resource<CouponConstraint> {
+        public enum EntityType {
+             CUSTOMER,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum Type {
+             MAX_REDEMPTIONS,UNIQUE_BY,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public CouponConstraint(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public Type type() {
+            return reqEnum("type", Type.class);
+        }
+
+        public String value() {
+            return optString("value");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -277,6 +308,10 @@ public class Coupon extends Resource<Coupon> {
 
     public JSONObject metaData() {
         return optJSONObject("meta_data");
+    }
+
+    public List<Coupon.CouponConstraint> couponConstraints() {
+        return optList("coupon_constraints", Coupon.CouponConstraint.class);
     }
 
     // Operations
@@ -639,6 +674,18 @@ public class Coupon extends Resource<Coupon> {
             params.addOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
             return this;
         }
+        public CreateForItemsRequest couponConstraintEntityType(int index, CouponConstraint.EntityType couponConstraintEntityType) {
+            params.add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+            return this;
+        }
+        public CreateForItemsRequest couponConstraintType(int index, CouponConstraint.Type couponConstraintType) {
+            params.add("coupon_constraints[type][" + index + "]", couponConstraintType);
+            return this;
+        }
+        public CreateForItemsRequest couponConstraintValue(int index, String couponConstraintValue) {
+            params.addOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -780,6 +827,18 @@ public class Coupon extends Resource<Coupon> {
         }
         public UpdateForItemsRequest itemConstraintCriteriaItemPricePeriods(int index, JSONArray itemConstraintCriteriaItemPricePeriods) {
             params.addOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
+            return this;
+        }
+        public UpdateForItemsRequest couponConstraintEntityType(int index, CouponConstraint.EntityType couponConstraintEntityType) {
+            params.add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+            return this;
+        }
+        public UpdateForItemsRequest couponConstraintType(int index, CouponConstraint.Type couponConstraintType) {
+            params.add("coupon_constraints[type][" + index + "]", couponConstraintType);
+            return this;
+        }
+        public UpdateForItemsRequest couponConstraintValue(int index, String couponConstraintValue) {
+            params.addOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
             return this;
         }
         @Override

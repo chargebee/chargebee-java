@@ -41,7 +41,7 @@ public class InAppSubscription extends Resource<InAppSubscription> {
     }
 
     public String subscriptionId() {
-        return optString("subscription_id");
+        return reqString("subscription_id");
     }
 
     public String customerId() {
@@ -104,11 +104,6 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             return this;
         }
 
-        public ProcessReceiptRequest productName(String productName) {
-            params.addOpt("product[name]", productName);
-            return this;
-        }
-
         public ProcessReceiptRequest productCurrencyCode(String productCurrencyCode) {
             params.add("product[currency_code]", productCurrencyCode);
             return this;
@@ -116,6 +111,11 @@ public class InAppSubscription extends Resource<InAppSubscription> {
 
         public ProcessReceiptRequest productPrice(Long productPrice) {
             params.add("product[price]", productPrice);
+            return this;
+        }
+
+        public ProcessReceiptRequest productName(String productName) {
+            params.addOpt("product[name]", productName);
             return this;
         }
 

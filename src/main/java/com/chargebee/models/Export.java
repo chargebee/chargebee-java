@@ -881,6 +881,12 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public CustomersRequest exportType(com.chargebee.models.enums.ExportType exportType) {
+            params.addOpt("export_type", exportType);
+            return this;
+        }
+
+
         public StringFilter<CustomersRequest> businessEntityId() {
             return new StringFilter<CustomersRequest>("business_entity_id",this);        
         }
@@ -962,6 +968,12 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public SubscriptionsRequest exportType(com.chargebee.models.enums.ExportType exportType) {
+            params.addOpt("export_type", exportType);
+            return this;
+        }
+
+
         public StringFilter<SubscriptionsRequest> itemId() {
             return new StringFilter<SubscriptionsRequest>("item_id",this).supportsMultiOperators(true);        
         }
