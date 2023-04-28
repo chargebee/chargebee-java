@@ -42,7 +42,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
     public static class PaymentAttempt extends Resource<PaymentAttempt> {
         public enum Status {
-             INITED,REQUIRES_IDENTIFICATION,REQUIRES_CHALLENGE,REQUIRES_REDIRECTION,AUTHORIZED,REFUSED,
+             INITED,REQUIRES_IDENTIFICATION,REQUIRES_CHALLENGE,REQUIRES_REDIRECTION,AUTHORIZED,REFUSED,PENDING_AUTHORIZATION,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

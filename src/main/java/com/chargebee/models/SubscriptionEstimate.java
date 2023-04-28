@@ -136,6 +136,10 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
             return reqLong("total_contract_value");
         }
 
+        public Long totalContractValueBeforeTax() {
+            return reqLong("total_contract_value_before_tax");
+        }
+
         public Integer cancellationCutoffPeriod() {
             return optInteger("cancellation_cutoff_period");
         }

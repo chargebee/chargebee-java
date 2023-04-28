@@ -38,10 +38,6 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
     // Fields
     //=======
 
-    public String id() {
-        return reqString("id");
-    }
-
     public String subscriptionId() {
         return reqString("subscription_id");
     }

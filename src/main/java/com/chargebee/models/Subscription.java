@@ -501,6 +501,10 @@ public class Subscription extends Resource<Subscription> {
             return reqLong("total_contract_value");
         }
 
+        public Long totalContractValueBeforeTax() {
+            return reqLong("total_contract_value_before_tax");
+        }
+
         public Integer cancellationCutoffPeriod() {
             return optInteger("cancellation_cutoff_period");
         }
@@ -5030,6 +5034,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportSubscriptionRequest contractTermTotalAmountRaisedBeforeTax(Long contractTermTotalAmountRaisedBeforeTax) {
+            params.addOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+            return this;
+        }
+
         public ImportSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
             return this;
@@ -5601,6 +5610,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportForCustomerRequest contractTermTotalAmountRaisedBeforeTax(Long contractTermTotalAmountRaisedBeforeTax) {
+            params.addOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+            return this;
+        }
+
         public ImportForCustomerRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
             return this;
@@ -5813,8 +5827,18 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public ImportContractTermRequest contractTermTotalAmountRaisedBeforeTax(Long contractTermTotalAmountRaisedBeforeTax) {
+            params.addOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+            return this;
+        }
+
         public ImportContractTermRequest contractTermTotalContractValue(Long contractTermTotalContractValue) {
             params.addOpt("contract_term[total_contract_value]", contractTermTotalContractValue);
+            return this;
+        }
+
+        public ImportContractTermRequest contractTermTotalContractValueBeforeTax(Long contractTermTotalContractValueBeforeTax) {
+            params.addOpt("contract_term[total_contract_value_before_tax]", contractTermTotalContractValueBeforeTax);
             return this;
         }
 
@@ -6156,6 +6180,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportForItemsRequest contractTermTotalAmountRaised(Long contractTermTotalAmountRaised) {
             params.addOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+            return this;
+        }
+
+        public ImportForItemsRequest contractTermTotalAmountRaisedBeforeTax(Long contractTermTotalAmountRaisedBeforeTax) {
+            params.addOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
             return this;
         }
 

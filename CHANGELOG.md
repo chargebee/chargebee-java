@@ -1,6 +1,32 @@
-🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
+🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.25.0 (2023-04-28)
+* * *
+
+#### Fixes:
+* SubscriptionId attribute has been maid as required in InAppSubscription resource.
+
+#### New Attributes: 
+* total_contract_value_before_tax has been added to the ContractTerm resource.
+* total_contract_value_before_tax#SubscriptionContractTerm has been added to the Subscription resource.
+* total_contract_value_before_tax#SubscriptionEstimateContractTerm has been addded to the SubscriptionEstimate resource.
+* coupon_constraints has been added to the Coupon resource.
+
+#### Added Input Parameters:
+* contract_term[total_amount_raised_before_tax]#ImportSubscriptionRequest, contract_term[total_amount_raised_before_tax]#ImportForItemsRequest, contract_term[total_amount_raised_before_tax]#ImportContractTermRequest and contract_term[total_amount_raised_before_tax]#ImportForCustomerRequest parameter has been added to Subscription resource.
+* contract_term[total_contract_value_before_tax]#ImportContractTermRequest parameter has been added to Subscription resource.
+* coupon_constraints[entity_type]#CreateForItemsRequest, coupon_constraints[type]#CreateForItemsRequest and coupon_constraints[value]#CreateForItemsRequest parameter has been added to the Coupon resource.
+* coupon_constraints[entity_type]#UpdateForItemsRequest, coupon_constraints[type]#UpdateForItemsRequest and coupon_constraints[value]#UpdateForItemsRequest parameter has been added to the Coupon resource.
+* export_type#CustomersRequest and export_type#SubscriptionsRequest parameter has been added to the Export resource.
+
+#### New Enum Class:
+* ExportTypeEnum has been added.
+
+#### New Enum values:
+* pending_authorization has been added to StatusEnum#PaymentIntentPaymentAttempt to the PaymentIntent resource.
+
 
 ### v2.24.0 (2023-03-24)
 * * *
