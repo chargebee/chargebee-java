@@ -1,3 +1,12 @@
+### v3.5.0 (2023-05-16)
+* * *
+
+#### New Feature:
+* Added setIdempotencyKey("UUID") utility to pass **Idempotency key** along with request headers to allow a safe retry of POST requests.
+* Added isIdempotencyReplayed() utility to differentiate between original and replayed requests.
+* Added getResponseHeaders() to fetch the response headers.
+
+
 ### v3.4.0 (2023-04-28)
 * * *
 
@@ -124,6 +133,15 @@ See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migra
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.26.0 (2023-05-16)
+* * *
+
+#### New Feature:
+* Added setIdempotencyKey("UUID") utility to pass **Idempotency key** along with request headers to allow a safe retry of POST requests.
+* Added isIdempotencyReplayed() utility to differentiate between original and replayed requests.
+* Added getResponseHeaders() to fetch the response headers.
+
 
 ### v2.25.0 (2023-04-28)
 * * *

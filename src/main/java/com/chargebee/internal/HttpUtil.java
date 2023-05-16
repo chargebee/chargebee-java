@@ -21,18 +21,20 @@ public class HttpUtil {
     private static class Resp {
         int httpCode;
         JSONObject jsonContent;
+        Map<String, List<String>> responseHeaders;
 
-        private Resp(int httpCode, JSONObject jsonContent) {
+        private Resp(int httpCode, JSONObject jsonContent, Map<String, List<String>> responseHeaders) {
             this.httpCode = httpCode;
             this.jsonContent = jsonContent;
+            this.responseHeaders = responseHeaders;
         }
 
         private Result toResult() {
-            return new Result(httpCode, jsonContent);
+            return new Result(httpCode, jsonContent, responseHeaders);
         }
 
         private ListResult toListResult() {
-            return new ListResult(httpCode, jsonContent);
+            return new ListResult(httpCode, jsonContent, responseHeaders);
         }
     }
 
@@ -134,6 +136,7 @@ public class HttpUtil {
 
     private static Resp sendRequest(HttpURLConnection conn) throws IOException {
         int httpRespCode = conn.getResponseCode();
+        Map<String, List<String>> responseHeaders = conn.getHeaderFields();
         if (httpRespCode == HttpURLConnection.HTTP_NO_CONTENT) {
             throw new RuntimeException("Got http_no_content response");
         }
@@ -160,7 +163,7 @@ public class HttpUtil {
                 throw new RuntimeException("Error when parsing the error response. Probably not ChargeBee' error response. The content is \n " + content, ex);
             }
         }
-        return new Resp(httpRespCode, jsonResp);
+        return new Resp(httpRespCode, jsonResp, responseHeaders);
     }
 
     private static void setTimeouts(URLConnection conn, Environment config) {

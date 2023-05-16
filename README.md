@@ -121,6 +121,36 @@ public class Sample{
 }
 ```
 
+### Create an idempotent request
+[Idempotency keys](https://apidocs.chargebee.com/docs/api) are passed along with request headers to allow a safe retry of POST requests. 
+
+```java
+import com.chargebee.models.Card;
+import com.chargebee.models.Contact;
+import com.chargebee.models.Customer;
+import com.chargebee.models.Subscription;
+import org.json.JSONObject;
+
+public class Sample {
+    public static void main(String[] args) throws Exception {
+        Environment.configure("{site}", "{site_api_key}");
+        Result result = Customer.create()
+                .firstName("John")
+                .lastName("Dove")
+                .email("john@test.com")
+                .setIdempotencyKey("<<UUID>>") // Replace <<UUID>> with a unique string
+                .request();
+        Customer customer = result.customer();
+        System.out.println(result.customer());
+        Map<String, List<String>> responseHeaders = result.getResponseHeaders(); // Retrieves response headers
+        System.out.println(responseHeaders);
+        String idempotencyReplayedHeader = result.isIdempotencyReplayed();// Retrieves idempotency replayed header value 
+        System.out.println(idempotencyReplayedHeader);
+    }
+}
+```
+`isIdempotencyReplayed()` method can be accessed to differentiate between original and replayed requests.
+
 ## Contribution
 ***
 You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions). 
