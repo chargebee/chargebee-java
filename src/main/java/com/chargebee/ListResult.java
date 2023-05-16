@@ -20,11 +20,19 @@ public class ListResult extends ArrayList<ListResult.Entry> implements ApiRespon
     }
 
     public final int httpCode;
+
+    public Map<String, List<String>> responseHeaders;
+
     private JSONObject respJson; // the entire json-response
 
     public ListResult(int httpCode, JSONObject respJson) {
+        this(httpCode, respJson, null);
+    }
+
+    public ListResult(int httpCode, JSONObject respJson,Map<String, List<String>> responseHeaders) {
         this.httpCode = httpCode;
         this.respJson = respJson;
+        this.responseHeaders = responseHeaders;
         initEntries();
     }
 
@@ -32,10 +40,14 @@ public class ListResult extends ArrayList<ListResult.Entry> implements ApiRespon
         return httpCode;
     }
 
+    public Map<String, List<String>> getResponseHeaders() {
+        return this.responseHeaders;
+    }
+
     public JSONObject jsonResponse() {
         return respJson;
     }
-    
+
     private void initEntries() {
         try {
             JSONArray arr = respJson.getJSONArray("list");
