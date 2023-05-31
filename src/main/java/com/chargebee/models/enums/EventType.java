@@ -159,6 +159,15 @@ public enum EventType {
     BUSINESS_ENTITY_UPDATED,
     BUSINESS_ENTITY_DELETED,
     PURCHASE_CREATED,
+    VOUCHER_CREATED,
+    VOUCHER_EXPIRED,
+    VOUCHER_CREATE_FAILED,
+    PRODUCT_CREATED,
+    PRODUCT_UPDATED,
+    PRODUCT_DELETED,
+    VARIANT_CREATED,
+    VARIANT_UPDATED,
+    VARIANT_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

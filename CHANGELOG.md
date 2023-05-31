@@ -1,3 +1,29 @@
+### v3.6.0 (2023-05-31)
+* * *
+
+#### New endpoints:
+* PaymentSource#CreateVoucherPaymentSourceRequest has been added to the PaymentSource resource.
+* EventsRequest#HostedPage has been added to the PaymentSource resource.
+
+#### New Resource:
+* PaymentVoucher has been added.
+
+#### New attributes:
+* boleto and billing_address has been added to the PaymentSource resource.
+* product_id has been added to the ItemPrice resource.
+
+#### New Enum Class:
+* EventNameEnum has been added.
+* PaymentVoucherTypeEnum has been added.
+* VoucherTypeEnum has been added.
+
+#### New Enum values:
+* product and variant has been added to EntityType enum.
+* product_created, product_updated, product_deleted, variant_created, variant_updated and variant_deleted enums have been added in EventType enum.
+* voucher_created, voucher_expired and voucher_create_failed have been added in EventType enum.
+* boleto has been added in PaymentMethod and OfflinePaymentMethod  and PaymentMethodTypeEnum#PaymentIntent.
+
+
 ### v3.5.0 (2023-05-16)
 * * *
 
@@ -133,6 +159,32 @@ See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migra
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.27.0 (2023-05-31)
+* * *
+
+#### New endpoints:
+* PaymentSource#CreateVoucherPaymentSourceRequest has been added to the PaymentSource resource.
+* EventsRequest#HostedPage has been added to the PaymentSource resource.
+
+#### New Resource:
+* PaymentVoucher has been added.
+
+#### New attributes:
+* boleto and billing_address has been added to the PaymentSource resource.
+* product_id has been added to the ItemPrice resource.
+
+#### New Enum Class:
+* EventNameEnum has been added.
+* PaymentVoucherTypeEnum has been added.
+* VoucherTypeEnum has been added.
+
+#### New Enum values:
+* product and variant has been added to EntityType enum.
+* product_created, product_updated, product_deleted, variant_created, variant_updated and variant_deleted enums have been added in EventType enum.
+* voucher_created, voucher_expired and voucher_create_failed have been added in EventType enum.
+* boleto has been added in PaymentMethod and OfflinePaymentMethod  and PaymentMethodTypeEnum#PaymentIntent.
+
 
 ### v2.26.0 (2023-05-16)
 * * *

@@ -221,6 +221,11 @@ public class HostedPage extends Resource<HostedPage> {
         return new PreCancelRequest(Method.POST, uri);
     }
 
+    public static EventsRequest events() {
+        String uri = uri("hosted_pages", "events");
+        return new EventsRequest(Method.POST, uri);
+    }
+
     public static class Content extends ResultBase{
 
         public Content(JSONObject jsonObj) {
@@ -3119,6 +3124,36 @@ public class HostedPage extends Resource<HostedPage> {
             params.add("subscription[id]", subscriptionId);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class EventsRequest extends Request<EventsRequest> {
+
+        private EventsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public EventsRequest eventName(com.chargebee.models.enums.EventName eventName) {
+            params.add("event_name", eventName);
+            return this;
+        }
+
+
+        public EventsRequest occurredAt(Timestamp occurredAt) {
+            params.addOpt("occurred_at", occurredAt);
+            return this;
+        }
+
+
+        public EventsRequest eventData(JSONObject eventData) {
+            params.add("event_data", eventData);
+            return this;
+        }
+
 
         @Override
         public Params params() {
