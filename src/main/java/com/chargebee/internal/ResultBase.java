@@ -236,6 +236,10 @@ public class ResultBase {
         return (Purchase)get("purchase");
     }
 
+    public PaymentVoucher paymentVoucher() {
+        return (PaymentVoucher)get("payment_voucher");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }

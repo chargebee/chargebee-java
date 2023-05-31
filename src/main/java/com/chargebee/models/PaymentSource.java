@@ -171,6 +171,92 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     }
 
+    public static class CustVoucherSource extends Resource<CustVoucherSource> {
+        public CustVoucherSource(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String last4() {
+            return reqString("last4");
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+    }
+
+    public static class BillingAddress extends Resource<BillingAddress> {
+        public BillingAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
     public static class AmazonPayment extends Resource<AmazonPayment> {
         public AmazonPayment(JSONObject jsonObj) {
             super(jsonObj);
@@ -301,6 +387,14 @@ public class PaymentSource extends Resource<PaymentSource> {
         return optSubResource("bank_account", PaymentSource.BankAccount.class);
     }
 
+    public PaymentSource.CustVoucherSource boleto() {
+        return optSubResource("boleto", PaymentSource.CustVoucherSource.class);
+    }
+
+    public PaymentSource.BillingAddress billingAddress() {
+        return optSubResource("billing_address", PaymentSource.BillingAddress.class);
+    }
+
     public PaymentSource.AmazonPayment amazonPayment() {
         return optSubResource("amazon_payment", PaymentSource.AmazonPayment.class);
     }
@@ -346,6 +440,11 @@ public class PaymentSource extends Resource<PaymentSource> {
     public static CreateUsingPaymentIntentRequest createUsingPaymentIntent() {
         String uri = uri("payment_sources", "create_using_payment_intent");
         return new CreateUsingPaymentIntentRequest(Method.POST, uri);
+    }
+
+    public static CreateVoucherPaymentSourceRequest createVoucherPaymentSource() {
+        String uri = uri("payment_sources", "create_voucher_payment_source");
+        return new CreateVoucherPaymentSourceRequest(Method.POST, uri);
     }
 
     public static CreateCardRequest createCard() {
@@ -605,6 +704,44 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateUsingPaymentIntentRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
+            return this;
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CreateVoucherPaymentSourceRequest extends Request<CreateVoucherPaymentSourceRequest> {
+
+        private CreateVoucherPaymentSourceRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public CreateVoucherPaymentSourceRequest customerId(String customerId) {
+            params.add("customer_id", customerId);
+            return this;
+        }
+
+
+        public CreateVoucherPaymentSourceRequest voucherPaymentSourceVoucherType(com.chargebee.models.enums.VoucherType voucherPaymentSourceVoucherType) {
+            params.add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
+            return this;
+        }
+
+        public CreateVoucherPaymentSourceRequest voucherPaymentSourceGatewayAccountId(String voucherPaymentSourceGatewayAccountId) {
+            params.addOpt("voucher_payment_source[gateway_account_id]", voucherPaymentSourceGatewayAccountId);
+            return this;
+        }
+
+        public CreateVoucherPaymentSourceRequest voucherPaymentSourceTaxId(String voucherPaymentSourceTaxId) {
+            params.addOpt("voucher_payment_source[tax_id]", voucherPaymentSourceTaxId);
+            return this;
+        }
+
+        public CreateVoucherPaymentSourceRequest voucherPaymentSourceBillingAddress(JSONObject voucherPaymentSourceBillingAddress) {
+            params.addOpt("voucher_payment_source[billing_address]", voucherPaymentSourceBillingAddress);
             return this;
         }
 
