@@ -2179,6 +2179,12 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public CollectPaymentRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
         public CollectPaymentRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;

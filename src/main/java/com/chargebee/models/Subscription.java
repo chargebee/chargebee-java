@@ -1335,6 +1335,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
         public CreateRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
@@ -2156,6 +2162,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public CreateForCustomerRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
         public CreateForCustomerRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
@@ -2538,6 +2550,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
             params.addOpt("trial_end_action", trialEndAction);
+            return this;
+        }
+
+
+        public CreateWithItemsRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
             return this;
         }
 
@@ -3837,6 +3855,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateForItemsRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
         @Deprecated
         public UpdateForItemsRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
@@ -4410,6 +4434,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
             params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+        public ReactivateRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
             return this;
         }
 
@@ -6677,6 +6707,12 @@ public class Subscription extends Resource<Subscription> {
 
         public ResumeRequest unpaidInvoicesHandling(com.chargebee.models.enums.UnpaidInvoicesHandling unpaidInvoicesHandling) {
             params.addOpt("unpaid_invoices_handling", unpaidInvoicesHandling);
+            return this;
+        }
+
+
+        public ResumeRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
             return this;
         }
 

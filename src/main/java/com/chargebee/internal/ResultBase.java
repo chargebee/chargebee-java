@@ -72,6 +72,10 @@ public class ResultBase {
         return (Invoice)get("invoice");
     }
 
+    public PaymentReferenceNumber paymentReferenceNumber() {
+        return (PaymentReferenceNumber)get("payment_reference_number");
+    }
+
     public TaxWithheld taxWithheld() {
         return (TaxWithheld)get("tax_withheld");
     }

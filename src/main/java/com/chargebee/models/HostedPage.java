@@ -26,6 +26,7 @@ public class HostedPage extends Resource<HostedPage> {
         CLAIM_GIFT,
         CHECKOUT_ONE_TIME,
         PRE_CANCEL,
+        VIEW_VOUCHER,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -224,6 +225,11 @@ public class HostedPage extends Resource<HostedPage> {
     public static EventsRequest events() {
         String uri = uri("hosted_pages", "events");
         return new EventsRequest(Method.POST, uri);
+    }
+
+    public static ViewVoucherRequest viewVoucher() {
+        String uri = uri("hosted_pages", "view_voucher");
+        return new ViewVoucherRequest(Method.POST, uri);
     }
 
     public static class Content extends ResultBase{
@@ -3154,6 +3160,28 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ViewVoucherRequest extends Request<ViewVoucherRequest> {
+
+        private ViewVoucherRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ViewVoucherRequest paymentVoucherId(String paymentVoucherId) {
+            params.add("payment_voucher[id]", paymentVoucherId);
+            return this;
+        }
+
+        public ViewVoucherRequest customerLocale(String customerLocale) {
+            params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
 
         @Override
         public Params params() {
