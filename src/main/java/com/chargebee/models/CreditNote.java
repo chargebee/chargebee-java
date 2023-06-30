@@ -8,6 +8,7 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -717,6 +718,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqBoolean("deleted");
     }
 
+    public BigDecimal localCurrencyExchangeRate() {
+        return optBigDecimal("local_currency_exchange_rate");
+    }
+
     public String createReasonCode() {
         return optString("create_reason_code");
     }
@@ -1220,7 +1225,7 @@ public class CreditNote extends Resource<CreditNote> {
 
 
         public ImportCreditNoteRequest date(Timestamp date) {
-            params.addOpt("date", date);
+            params.add("date", date);
             return this;
         }
 

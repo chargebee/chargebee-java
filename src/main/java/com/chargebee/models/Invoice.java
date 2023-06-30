@@ -850,6 +850,10 @@ public class Invoice extends Resource<Invoice> {
         return reqInteger("tax");
     }
 
+    public BigDecimal localCurrencyExchangeRate() {
+        return optBigDecimal("local_currency_exchange_rate");
+    }
+
     public Boolean firstInvoice() {
         return optBoolean("first_invoice");
     }
@@ -1065,6 +1069,11 @@ public class Invoice extends Resource<Invoice> {
         return new Request(Method.GET, uri);
     }
 
+    public static InvoiceListPaymentReferenceNumbersRequest listPaymentReferenceNumbers() {
+        String uri = uri("invoices", "payment_reference_numbers");
+        return new InvoiceListPaymentReferenceNumbersRequest(uri);
+    }
+
     public static AddChargeRequest addCharge(String id) {
         String uri = uri("invoices", nullCheck(id), "add_charge");
         return new AddChargeRequest(Method.POST, uri);
@@ -1262,6 +1271,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+
+
+        public CreateRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
 
 
         public CreateRequest shippingAddressFirstName(String shippingAddressFirstName) {
@@ -2350,6 +2365,12 @@ public class Invoice extends Resource<Invoice> {
 
 
 
+        public ChargeRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -2451,6 +2472,12 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeAddonRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
+            return this;
+        }
+
+
 
 
         @Override
@@ -2491,6 +2518,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateForChargeItemRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
             return this;
         }
 
@@ -3019,6 +3052,18 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
             return this;
         }
+        public ImportInvoiceRequest paymentReferenceNumberId(int index, String paymentReferenceNumberId) {
+            params.addOpt("payment_reference_numbers[id][" + index + "]", paymentReferenceNumberId);
+            return this;
+        }
+        public ImportInvoiceRequest paymentReferenceNumberType(int index, PaymentReferenceNumber.Type paymentReferenceNumberType) {
+            params.add("payment_reference_numbers[type][" + index + "]", paymentReferenceNumberType);
+            return this;
+        }
+        public ImportInvoiceRequest paymentReferenceNumberNumber(int index, String paymentReferenceNumberNumber) {
+            params.add("payment_reference_numbers[number][" + index + "]", paymentReferenceNumberNumber);
+            return this;
+        }
         public ImportInvoiceRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {
             params.add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
             return this;
@@ -3359,6 +3404,27 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
+    public static class InvoiceListPaymentReferenceNumbersRequest extends ListRequest<InvoiceListPaymentReferenceNumbersRequest> {
+
+        private InvoiceListPaymentReferenceNumbersRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<InvoiceListPaymentReferenceNumbersRequest> id() {
+            return new StringFilter<InvoiceListPaymentReferenceNumbersRequest>("id",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<InvoiceListPaymentReferenceNumbersRequest> paymentReferenceNumberNumber() {
+            return new StringFilter<InvoiceListPaymentReferenceNumbersRequest>("payment_reference_number[number]",this).supportsMultiOperators(true);        
+        }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class AddChargeRequest extends Request<AddChargeRequest> {
 
         private AddChargeRequest(Method httpMeth, String uri) {
@@ -3640,6 +3706,12 @@ public class Invoice extends Resource<Invoice> {
 
         public CollectPaymentRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        public CollectPaymentRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
+            params.addOpt("payment_initiator", paymentInitiator);
             return this;
         }
 
