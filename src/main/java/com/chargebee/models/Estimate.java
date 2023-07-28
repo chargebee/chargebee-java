@@ -1774,6 +1774,11 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
+        @Deprecated
+        public UpdateSubscriptionRequest addonProrationType(int index, com.chargebee.models.enums.ProrationType addonProrationType) {
+            params.addOpt("addons[proration_type][" + index + "]", addonProrationType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

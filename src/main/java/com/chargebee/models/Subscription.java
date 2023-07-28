@@ -1951,6 +1951,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
+        @Deprecated
+        public CreateRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public CreateRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2346,6 +2356,16 @@ public class Subscription extends Resource<Subscription> {
         }
         public CreateForCustomerRequest addonTrialEnd(int index, Timestamp addonTrialEnd) {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+            return this;
+        }
+        @Deprecated
+        public CreateForCustomerRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public CreateForCustomerRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
         @Override
@@ -2783,6 +2803,16 @@ public class Subscription extends Resource<Subscription> {
         }
         public CreateWithItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        @Deprecated
+        public CreateWithItemsRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public CreateWithItemsRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
         @Override
@@ -3619,6 +3649,21 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
+        @Deprecated
+        public UpdateRequest addonProrationType(int index, com.chargebee.models.enums.ProrationType addonProrationType) {
+            params.addOpt("addons[proration_type][" + index + "]", addonProrationType);
+            return this;
+        }
+        @Deprecated
+        public UpdateRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public UpdateRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -4331,6 +4376,16 @@ public class Subscription extends Resource<Subscription> {
         }
         public UpdateForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        @Deprecated
+        public UpdateForItemsRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public UpdateForItemsRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
         @Override
@@ -5431,6 +5486,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
             return this;
         }
+        @Deprecated
+        public ImportSubscriptionRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public ImportSubscriptionRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -5809,6 +5874,16 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
             return this;
         }
+        @Deprecated
+        public ImportForCustomerRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public ImportForCustomerRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -6176,6 +6251,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public ImportForItemsRequest cancelReasonCode(String cancelReasonCode) {
+            params.addOpt("cancel_reason_code", cancelReasonCode);
+            return this;
+        }
+
+
         public ImportForItemsRequest createPendingInvoices(Boolean createPendingInvoices) {
             params.addOpt("create_pending_invoices", createPendingInvoices);
             return this;
@@ -6429,6 +6510,16 @@ public class Subscription extends Resource<Subscription> {
         }
         public ImportForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        @Deprecated
+        public ImportForItemsRequest couponCouponId(int index, String couponCouponId) {
+            params.addOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+            return this;
+        }
+        @Deprecated
+        public ImportForItemsRequest couponApplyTill(int index, Timestamp couponApplyTill) {
+            params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
         @Override
