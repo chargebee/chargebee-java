@@ -58,6 +58,15 @@ public class Addon extends Resource<Addon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    @Deprecated
+    public enum ProrationType {
+        SITE_DEFAULT,
+        PARTIAL_TERM,
+        FULL_TERM,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class Tier extends Resource<Tier> {
         public Tier(JSONObject jsonObj) {
             super(jsonObj);
@@ -242,6 +251,11 @@ public class Addon extends Resource<Addon> {
 
     public Channel channel() {
         return optEnum("channel", Channel.class);
+    }
+
+    @Deprecated
+    public ProrationType prorationType() {
+        return optEnum("proration_type", ProrationType.class);
     }
 
     public String invoiceNotes() {
@@ -537,6 +551,13 @@ public class Addon extends Resource<Addon> {
         }
 
 
+        @Deprecated
+        public CreateRequest prorationType(Addon.ProrationType prorationType) {
+            params.addOpt("proration_type", prorationType);
+            return this;
+        }
+
+
 
 
         public CreateRequest status(Addon.Status status) {
@@ -788,6 +809,13 @@ public class Addon extends Resource<Addon> {
 
         public UpdateRequest priceInDecimal(String priceInDecimal) {
             params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
+        @Deprecated
+        public UpdateRequest prorationType(Addon.ProrationType prorationType) {
+            params.addOpt("proration_type", prorationType);
             return this;
         }
 

@@ -579,6 +579,10 @@ public class Quote extends Resource<Quote> {
         return optList("line_item_tiers", Quote.LineItemTier.class);
     }
 
+    public String taxCategory() {
+        return optString("tax_category");
+    }
+
     public String currencyCode() {
         return reqString("currency_code");
     }

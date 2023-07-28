@@ -718,6 +718,10 @@ public class CreditNote extends Resource<CreditNote> {
         return reqBoolean("deleted");
     }
 
+    public String taxCategory() {
+        return optString("tax_category");
+    }
+
     public BigDecimal localCurrencyExchangeRate() {
         return optBigDecimal("local_currency_exchange_rate");
     }

@@ -534,7 +534,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Note extends Resource<Note> {
         public enum EntityType {
-             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
+             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,TAX,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -964,6 +964,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Boolean deleted() {
         return reqBoolean("deleted");
+    }
+
+    public String taxCategory() {
+        return optString("tax_category");
     }
 
     public String vatNumberPrefix() {
