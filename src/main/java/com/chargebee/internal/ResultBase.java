@@ -244,6 +244,10 @@ public class ResultBase {
         return (PaymentVoucher)get("payment_voucher");
     }
 
+    public CsvTaxRule csvTaxRule() {
+        return (CsvTaxRule)get("csv_tax_rule");
+    }
+
     public List<UnbilledCharge> unbilledCharges() {
         return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
     }

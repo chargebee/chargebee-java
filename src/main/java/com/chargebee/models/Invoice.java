@@ -3465,6 +3465,24 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public AddChargeRequest avalaraTaxCode(String avalaraTaxCode) {
+            params.addOpt("avalara_tax_code", avalaraTaxCode);
+            return this;
+        }
+
+
+        public AddChargeRequest hsnCode(String hsnCode) {
+            params.addOpt("hsn_code", hsnCode);
+            return this;
+        }
+
+
+        public AddChargeRequest taxjarProductCode(String taxjarProductCode) {
+            params.addOpt("taxjar_product_code", taxjarProductCode);
+            return this;
+        }
+
+
         public AddChargeRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;

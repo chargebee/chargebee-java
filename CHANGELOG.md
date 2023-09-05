@@ -1,3 +1,22 @@
+### v3.9.0 (2023-09-05)
+* * *
+
+#### New Resource:
+* CsvTaxRule has been added.
+
+#### New attributes:
+* direct_debit_scheme has been added to the PaymentSource#PaymentSourceBankAccount resource. 
+
+#### New Enum :
+* DirectDebitSchemeEnum has been added.
+* Tax1JurisTypeEnum has been added.
+* Tax2JurisTypeEnum has been added.
+* Tax3JurisTypeEnum has been added.
+* Tax4JurisTypeEnum has been added.
+
+#### New Input parameters:
+* avalara_tax_code, hsn_code, taxjar_product_code has been added to Invoice#AddChargeRequest. 
+
 ### v3.8.0 (2023-07-28)
 * * *
 
@@ -227,6 +246,26 @@ See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migra
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.30.0 (2023-09-05)
+* * *
+
+#### New Resource:
+* CsvTaxRule has been added.
+
+#### New attributes:
+* direct_debit_scheme has been added to the PaymentSource#PaymentSourceBankAccount resource. 
+
+#### New Enum :
+* DirectDebitSchemeEnum has been added.
+* Tax1JurisTypeEnum has been added.
+* Tax2JurisTypeEnum has been added.
+* Tax3JurisTypeEnum has been added.
+* Tax4JurisTypeEnum has been added.
+
+#### New Input parameters:
+* avalara_tax_code, hsn_code, taxjar_product_code has been added to Invoice#AddChargeRequest. 
+
 
 ### v2.29.0 (2023-07-28)
 * * *
