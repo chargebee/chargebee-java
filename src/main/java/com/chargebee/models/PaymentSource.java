@@ -145,6 +145,10 @@ public class PaymentSource extends Resource<PaymentSource> {
             return optString("last_name");
         }
 
+        public DirectDebitScheme directDebitScheme() {
+            return optEnum("direct_debit_scheme", DirectDebitScheme.class);
+        }
+
         public String bankName() {
             return optString("bank_name");
         }
