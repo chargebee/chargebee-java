@@ -302,6 +302,17 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     }
 
+    public static class Venmo extends Resource<Venmo> {
+        public Venmo(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String userName() {
+            return optString("user_name");
+        }
+
+    }
+
     public static class Mandate extends Resource<Mandate> {
         public Mandate(JSONObject jsonObj) {
             super(jsonObj);
@@ -409,6 +420,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public PaymentSource.Paypal paypal() {
         return optSubResource("paypal", PaymentSource.Paypal.class);
+    }
+
+    public PaymentSource.Venmo venmo() {
+        return optSubResource("venmo", PaymentSource.Venmo.class);
     }
 
     public List<PaymentSource.Mandate> mandates() {
@@ -1038,6 +1053,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public UpdateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
+            return this;
+        }
+
+        public UpdateCardRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
+            params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
 

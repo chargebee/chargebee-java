@@ -26,6 +26,7 @@ public enum PaymentMethod {
     NETBANKING_EMANDATES,
     CUSTOM,
     BOLETO,
+    VENMO,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

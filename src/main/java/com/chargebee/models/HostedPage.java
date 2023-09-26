@@ -1189,6 +1189,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutOneTimeForItemsRequest customerEinvoicingMethod(com.chargebee.models.enums.EinvoicingMethod customerEinvoicingMethod) {
+            params.addOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+            return this;
+        }
+
         public CheckoutOneTimeForItemsRequest customerIsEinvoiceEnabled(Boolean customerIsEinvoiceEnabled) {
             params.addOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
             return this;
@@ -1701,6 +1706,11 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest customerEntityIdentifierStandard(String customerEntityIdentifierStandard) {
             params.addOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+            return this;
+        }
+
+        public CheckoutNewForItemsRequest customerEinvoicingMethod(com.chargebee.models.enums.EinvoicingMethod customerEinvoicingMethod) {
+            params.addOpt("customer[einvoicing_method]", customerEinvoicingMethod);
             return this;
         }
 

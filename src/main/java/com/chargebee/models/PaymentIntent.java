@@ -37,6 +37,7 @@ public class PaymentIntent extends Resource<PaymentIntent> {
         PAYPAL_EXPRESS_CHECKOUT,
         DIRECT_DEBIT,
         BOLETO,
+        VENMO,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

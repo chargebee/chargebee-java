@@ -73,6 +73,10 @@ public class QuotedCharge extends Resource<QuotedCharge> {
             return optString("unit_price_in_decimal");
         }
 
+        public ProrationType prorationType() {
+            return optEnum("proration_type", ProrationType.class);
+        }
+
         public Integer servicePeriod() {
             return optInteger("service_period");
         }
