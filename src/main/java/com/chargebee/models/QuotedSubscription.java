@@ -71,6 +71,10 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optString("amount_in_decimal");
         }
 
+        public ProrationType prorationType() {
+            return optEnum("proration_type", ProrationType.class);
+        }
+
     }
 
     public static class EventBasedAddon extends Resource<EventBasedAddon> {
