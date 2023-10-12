@@ -4,11 +4,6 @@ labels:
   - Bug
 
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thank you for taking the time to submit this bug report!
-
   - type: textarea
     id: what-happened
     attributes:
@@ -78,3 +73,8 @@ body:
       description: Provide any other relevant information about the problem.
     validations:
       required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to submit this bug report!
