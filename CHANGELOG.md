@@ -2,6 +2,13 @@
 
 * * * 
 
+### v2.31.1 (2023-10-17)
+* * *
+
+#### Fixes:
+* Added source attribute to Hosted Pages endpoint
+
+
 ### v2.31.0 (2023-09-26)
 * * *
 

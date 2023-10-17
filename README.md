@@ -12,9 +12,9 @@ The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`      |
-| v2                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/v2?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)   | `chargebee-v2`|
-| v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                               | `chargebee-v1`|
+| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`      |
+| v2                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
+| v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
 
 A couple of terms used in the above table are explained below:
 - **Status**: The current development status for the library version. An **Active** major version is currently being maintained and continues to get backward-compatible changes. **Inactive** versions no longer receive any updates.
