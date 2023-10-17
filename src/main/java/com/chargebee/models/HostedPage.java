@@ -1123,6 +1123,13 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        @Deprecated
+        public CheckoutOneTimeForItemsRequest source(String source) {
+            params.addOpt("source", source);
+            return this;
+        }
+
+
         public CheckoutOneTimeForItemsRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
@@ -1580,6 +1587,13 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        @Deprecated
+        public CheckoutNewForItemsRequest source(String source) {
+            params.addOpt("source", source);
             return this;
         }
 
@@ -2391,6 +2405,13 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingForItemsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
+            return this;
+        }
+
+
+        @Deprecated
+        public CheckoutExistingForItemsRequest source(String source) {
+            params.addOpt("source", source);
             return this;
         }
 

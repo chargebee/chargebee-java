@@ -1,3 +1,9 @@
+### v3.10.1 (2023-10-17)
+* * *
+
+#### Fixes:
+* Added source attribute to Hosted Pages endpoint
+
 ### v3.10.0 (2023-09-26)
 * * *
 
@@ -267,6 +273,12 @@ See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migra
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.31.1 (2023-10-17)
+* * *
+
+#### Fixes:
+* Added source attribute to Hosted Pages endpoint
 
 ### v2.31.0 (2023-09-26)
 * * *
