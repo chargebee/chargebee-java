@@ -624,6 +624,25 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class StatementDescriptor extends Resource<StatementDescriptor> {
+        public StatementDescriptor(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String descriptor() {
+            return optString("descriptor");
+        }
+
+        public String additionalInfo() {
+            return optString("additional_info");
+        }
+
+    }
+
     public static class BillingAddress extends Resource<BillingAddress> {
         public BillingAddress(JSONObject jsonObj) {
             super(jsonObj);
@@ -944,6 +963,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Invoice.ShippingAddress shippingAddress() {
         return optSubResource("shipping_address", Invoice.ShippingAddress.class);
+    }
+
+    public Invoice.StatementDescriptor statementDescriptor() {
+        return optSubResource("statement_descriptor", Invoice.StatementDescriptor.class);
     }
 
     public Invoice.BillingAddress billingAddress() {
@@ -1350,6 +1373,16 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public CreateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -1869,6 +1902,16 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -4219,6 +4262,16 @@ public class Invoice extends Resource<Invoice> {
 
         public UpdateDetailsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public UpdateDetailsRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public UpdateDetailsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 

@@ -1815,6 +1815,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public CreateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+            return this;
+        }
+
         public CreateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -2252,6 +2262,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateForCustomerRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public CreateForCustomerRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+            return this;
+        }
+
         public CreateForCustomerRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -2651,6 +2671,16 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+            return this;
+        }
+
+        public CreateWithItemsRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public CreateWithItemsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -3539,6 +3569,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public UpdateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+            return this;
+        }
+
         public UpdateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -3653,7 +3693,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
-        @Deprecated
         public UpdateRequest addonProrationType(int index, com.chargebee.models.enums.ProrationType addonProrationType) {
             params.addOpt("addons[proration_type][" + index + "]", addonProrationType);
             return this;
@@ -4215,6 +4254,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateForItemsRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public UpdateForItemsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+            return this;
+        }
+
         public UpdateForItemsRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -4510,6 +4559,16 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
             params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        public ReactivateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
+        public ReactivateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
+            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
