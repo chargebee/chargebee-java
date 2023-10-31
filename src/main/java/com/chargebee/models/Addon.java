@@ -58,7 +58,6 @@ public class Addon extends Resource<Addon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    @Deprecated
     public enum ProrationType {
         SITE_DEFAULT,
         PARTIAL_TERM,
@@ -253,7 +252,6 @@ public class Addon extends Resource<Addon> {
         return optEnum("channel", Channel.class);
     }
 
-    @Deprecated
     public ProrationType prorationType() {
         return optEnum("proration_type", ProrationType.class);
     }
@@ -551,7 +549,6 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        @Deprecated
         public CreateRequest prorationType(Addon.ProrationType prorationType) {
             params.addOpt("proration_type", prorationType);
             return this;
@@ -813,7 +810,6 @@ public class Addon extends Resource<Addon> {
         }
 
 
-        @Deprecated
         public UpdateRequest prorationType(Addon.ProrationType prorationType) {
             params.addOpt("proration_type", prorationType);
             return this;

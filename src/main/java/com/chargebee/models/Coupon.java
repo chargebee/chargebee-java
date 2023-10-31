@@ -391,7 +391,7 @@ public class Coupon extends Resource<Coupon> {
 
 
         public CreateRequest discountType(Coupon.DiscountType discountType) {
-            params.add("discount_type", discountType);
+            params.addOpt("discount_type", discountType);
             return this;
         }
 
@@ -428,7 +428,7 @@ public class Coupon extends Resource<Coupon> {
 
 
         public CreateRequest durationType(Coupon.DurationType durationType) {
-            params.add("duration_type", durationType);
+            params.addOpt("duration_type", durationType);
             return this;
         }
 
@@ -550,7 +550,7 @@ public class Coupon extends Resource<Coupon> {
 
 
         public CreateForItemsRequest discountType(Coupon.DiscountType discountType) {
-            params.add("discount_type", discountType);
+            params.addOpt("discount_type", discountType);
             return this;
         }
 
@@ -587,7 +587,7 @@ public class Coupon extends Resource<Coupon> {
 
 
         public CreateForItemsRequest durationType(Coupon.DurationType durationType) {
-            params.add("duration_type", durationType);
+            params.addOpt("duration_type", durationType);
             return this;
         }
 
