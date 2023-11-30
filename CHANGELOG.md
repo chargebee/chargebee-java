@@ -1,3 +1,15 @@
+### v3.12.0 (2023-11-30)
+* * *
+
+#### New Enum values:
+* swiss_reference has been added to PaymentReferenceNumber#TypeEnum.
+
+#### New Input parameters:
+* subscription[po_number] has been added to Quote#EditCreateSubForCustomerQuoteRequest in Quote resource. 
+* subscription[po_number] has been added to Quote#EditCreateSubCustomerQuoteForItemsRequest in Quote resource.
+
+* * *
+
 ### v3.11.0 (2023-10-31)
 * * *
 
@@ -321,6 +333,18 @@ See the [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migra
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * * 
+
+### v2.33.0 (2023-11-30)
+* * *
+
+#### New Enum values:
+* swiss_reference has been added to PaymentReferenceNumber#TypeEnum.
+
+#### New Input parameters:
+* subscription[po_number] has been added to Quote#EditCreateSubForCustomerQuoteRequest in Quote resource. 
+* subscription[po_number] has been added to Quote#EditCreateSubCustomerQuoteForItemsRequest in Quote resource.
+
+* * *
 
 ### v2.32.0 (2023-10-31)
 * * *
