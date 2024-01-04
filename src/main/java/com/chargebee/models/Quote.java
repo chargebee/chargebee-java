@@ -8,6 +8,7 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -236,6 +237,18 @@ public class Quote extends Resource<Quote> {
 
         public Double taxRate() {
             return reqDouble("tax_rate");
+        }
+
+        public Timestamp dateTo() {
+            return optTimestamp("date_to");
+        }
+
+        public Timestamp dateFrom() {
+            return optTimestamp("date_from");
+        }
+
+        public BigDecimal proratedTaxableAmount() {
+            return optBigDecimal("prorated_taxable_amount");
         }
 
         public Boolean isPartialTaxApplied() {

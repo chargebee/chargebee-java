@@ -2172,6 +2172,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public UpdateSubscriptionForItemsRequest subscriptionItemProrationType(int index, com.chargebee.models.enums.ProrationType subscriptionItemProrationType) {
+            params.addOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

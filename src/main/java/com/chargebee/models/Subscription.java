@@ -30,6 +30,7 @@ public class Subscription extends Resource<Subscription> {
         NON_RENEWING,
         PAUSED,
         CANCELLED,
+        TRANSFERRED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -820,6 +821,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Integer netTermDays() {
         return optInteger("net_term_days");
+    }
+
+    public String activeId() {
+        return optString("active_id");
     }
 
     public List<Subscription.SubscriptionItem> subscriptionItems() {
@@ -4429,6 +4434,10 @@ public class Subscription extends Resource<Subscription> {
         }
         public UpdateForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public UpdateForItemsRequest subscriptionItemProrationType(int index, com.chargebee.models.enums.ProrationType subscriptionItemProrationType) {
+            params.addOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
             return this;
         }
         @Deprecated

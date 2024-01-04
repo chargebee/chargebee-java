@@ -12,7 +12,7 @@ import static com.chargebee.IdempotencyConstants.IDEMPOTENCY_HEADER;
 public class RequestBase<U extends RequestBase> {
 
     protected String uri;
-    protected Params params = new Params();   
+    protected Params params = new Params();
     protected Map<String,String> headers = new HashMap();
 
     public U setIdempotencyKey(String idempotencyKey){
@@ -24,7 +24,7 @@ public class RequestBase<U extends RequestBase> {
         return params;
     }
 
-    public U header(String headerName,String headerValue){        
+    public U header(String headerName,String headerValue){
         headers.put(headerName, headerValue);
         return (U)this;
     }

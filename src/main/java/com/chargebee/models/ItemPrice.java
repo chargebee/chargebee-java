@@ -21,6 +21,14 @@ public class ItemPrice extends Resource<ItemPrice> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum ProrationType {
+        SITE_DEFAULT,
+        PARTIAL_TERM,
+        FULL_TERM,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum PeriodUnit {
         DAY,
         WEEK,
@@ -195,6 +203,10 @@ public class ItemPrice extends Resource<ItemPrice> {
 
     public String externalName() {
         return optString("external_name");
+    }
+
+    public ProrationType prorationType() {
+        return optEnum("proration_type", ProrationType.class);
     }
 
     public PricingModel pricingModel() {
@@ -393,6 +405,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest invoiceNotes(String invoiceNotes) {
             params.addOpt("invoice_notes", invoiceNotes);
+            return this;
+        }
+
+
+        public CreateRequest prorationType(ItemPrice.ProrationType prorationType) {
+            params.addOpt("proration_type", prorationType);
             return this;
         }
 
@@ -622,6 +640,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public UpdateRequest description(String description) {
             params.addOpt("description", description);
+            return this;
+        }
+
+
+        public UpdateRequest prorationType(ItemPrice.ProrationType prorationType) {
+            params.addOpt("proration_type", prorationType);
             return this;
         }
 

@@ -47,7 +47,7 @@ public class ListResult extends ArrayList<ListResult.Entry> implements ApiRespon
     public JSONObject jsonResponse() {
         return respJson;
     }
-    
+
     private void initEntries() {
         try {
             JSONArray arr = respJson.getJSONArray("list");

@@ -182,6 +182,49 @@ public class Transaction extends Resource<Transaction> {
 
     }
 
+    public static class GatewayErrorDetail extends Resource<GatewayErrorDetail> {
+        public GatewayErrorDetail(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String requestId() {
+            return optString("request_id");
+        }
+
+        public String errorCategory() {
+            return optString("error_category");
+        }
+
+        public String errorCode() {
+            return optString("error_code");
+        }
+
+        public String errorMessage() {
+            return optString("error_message");
+        }
+
+        public String declineCode() {
+            return optString("decline_code");
+        }
+
+        public String declineMessage() {
+            return optString("decline_message");
+        }
+
+        public String networkErrorCode() {
+            return optString("network_error_code");
+        }
+
+        public String errorField() {
+            return optString("error_field");
+        }
+
+        public String recommendationCode() {
+            return optString("recommendation_code");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -300,6 +343,10 @@ public class Transaction extends Resource<Transaction> {
         return optString("fraud_reason");
     }
 
+    public String customPaymentMethodId() {
+        return optString("custom_payment_method_id");
+    }
+
     public Long amountUnused() {
         return optLong("amount_unused");
     }
@@ -366,6 +413,14 @@ public class Transaction extends Resource<Transaction> {
 
     public String paymentMethodDetails() {
         return optString("payment_method_details");
+    }
+
+    public Transaction.GatewayErrorDetail errorDetail() {
+        return optSubResource("error_detail", Transaction.GatewayErrorDetail.class);
+    }
+
+    public String customPaymentMethodName() {
+        return optString("custom_payment_method_name");
     }
 
     // Operations
@@ -489,6 +544,12 @@ public class Transaction extends Resource<Transaction> {
 
         public RecordRefundRequest referenceNumber(String referenceNumber) {
             params.addOpt("reference_number", referenceNumber);
+            return this;
+        }
+
+
+        public RecordRefundRequest customPaymentMethodId(String customPaymentMethodId) {
+            params.addOpt("custom_payment_method_id", customPaymentMethodId);
             return this;
         }
 

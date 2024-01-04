@@ -326,6 +326,18 @@ public class CreditNote extends Resource<CreditNote> {
             return reqDouble("tax_rate");
         }
 
+        public Timestamp dateTo() {
+            return optTimestamp("date_to");
+        }
+
+        public Timestamp dateFrom() {
+            return optTimestamp("date_from");
+        }
+
+        public BigDecimal proratedTaxableAmount() {
+            return optBigDecimal("prorated_taxable_amount");
+        }
+
         public Boolean isPartialTaxApplied() {
             return optBoolean("is_partial_tax_applied");
         }
@@ -998,6 +1010,11 @@ public class CreditNote extends Resource<CreditNote> {
 
         public RecordRefundRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        public RecordRefundRequest transactionCustomPaymentMethodId(String transactionCustomPaymentMethodId) {
+            params.addOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
             return this;
         }
 

@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,AUTOMATED_BANK_TRANSFER,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -534,6 +534,10 @@ public class Customer extends Resource<Customer> {
 
     public Channel channel() {
         return optEnum("channel", Channel.class);
+    }
+
+    public String activeId() {
+        return optString("active_id");
     }
 
     @Deprecated
@@ -2134,6 +2138,11 @@ public class Customer extends Resource<Customer> {
 
         public RecordExcessPaymentRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
+            return this;
+        }
+
+        public RecordExcessPaymentRequest transactionCustomPaymentMethodId(String transactionCustomPaymentMethodId) {
+            params.addOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
             return this;
         }
 

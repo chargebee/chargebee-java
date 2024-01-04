@@ -16,6 +16,11 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
     public enum Scheme {
         ACH_CREDIT,
         SEPA_CREDIT,
+        US_AUTOMATED_BANK_TRANSFER,
+        GB_AUTOMATED_BANK_TRANSFER,
+        EU_AUTOMATED_BANK_TRANSFER,
+        JP_AUTOMATED_BANK_TRANSFER,
+        MX_AUTOMATED_BANK_TRANSFER,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

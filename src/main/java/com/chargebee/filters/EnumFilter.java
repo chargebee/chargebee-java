@@ -17,6 +17,7 @@ public class EnumFilter<T, U extends RequestBase> {
     private U req;
     private String paramName;
     private boolean supportsPresenceOperator;
+    private boolean supportsMultiOperators = true;
 
     public EnumFilter(String paramName, U req) {
         this.paramName = paramName;
@@ -25,6 +26,11 @@ public class EnumFilter<T, U extends RequestBase> {
 
     public EnumFilter<T, U> supportsPresenceOperator(boolean supportsPresenceOperator) {
         this.supportsPresenceOperator = supportsPresenceOperator;
+        return this;
+    }
+
+    public EnumFilter<T, U> supportsMultiOperators(boolean supportsMultiOperators) {
+        this.supportsMultiOperators = supportsMultiOperators;
         return this;
     }
 
@@ -39,12 +45,18 @@ public class EnumFilter<T, U extends RequestBase> {
     }
 
     public U in(T... value) {
+        if (!supportsMultiOperators) {
+            throw new UnsupportedOperationException("operator '[in]' is not supported for this filter-parameter");
+        }
         JSONArray jArr = serialize(Arrays.asList(value));
         req.params().addOpt(paramName + "[in]", jArr);
         return req;
     }
 
     public U notIn(T... value) {
+        if (!supportsMultiOperators) {
+            throw new UnsupportedOperationException("operator '[not_in]' is not supported for this filter-parameter");
+        }
         JSONArray jArr = serialize(Arrays.asList(value));
         req.params().addOpt(paramName + "[not_in]", jArr);
         return req;

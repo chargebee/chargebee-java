@@ -25,7 +25,7 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public static class Card extends Resource<Card> {
         public enum Brand {
-             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,BANCONTACT,NOT_APPLICABLE,
+             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,BANCONTACT,CMR_FALABELLA,TARJETA_NARANJA,NATIVA,CENCOSUD,CABAL,ARGENCARD,ELO,HIPERCARD,CARNET,RUPAY,MAESTRO,NOT_APPLICABLE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -606,7 +606,7 @@ public class PaymentSource extends Resource<PaymentSource> {
 
 
         public CreateUsingPermanentTokenRequest referenceId(String referenceId) {
-            params.add("reference_id", referenceId);
+            params.addOpt("reference_id", referenceId);
             return this;
         }
 
@@ -625,11 +625,126 @@ public class PaymentSource extends Resource<PaymentSource> {
 
 
 
+        public CreateUsingPermanentTokenRequest paymentMethodToken(String paymentMethodToken) {
+            params.addOpt("payment_method_token", paymentMethodToken);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest customerProfileToken(String customerProfileToken) {
+            params.addOpt("customer_profile_token", customerProfileToken);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest networkTransactionId(String networkTransactionId) {
+            params.addOpt("network_transaction_id", networkTransactionId);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest mandateId(String mandateId) {
+            params.addOpt("mandate_id", mandateId);
+            return this;
+        }
+
+
+        public CreateUsingPermanentTokenRequest skipRetrieval(Boolean skipRetrieval) {
+            params.addOpt("skip_retrieval", skipRetrieval);
+            return this;
+        }
+
+
         public CreateUsingPermanentTokenRequest additionalInformation(JSONObject additionalInformation) {
             params.addOpt("additional_information", additionalInformation);
             return this;
         }
 
+
+        public CreateUsingPermanentTokenRequest cardLast4(String cardLast4) {
+            params.addOpt("card[last4]", cardLast4);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest cardIin(String cardIin) {
+            params.addOpt("card[iin]", cardIin);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest cardExpiryMonth(Integer cardExpiryMonth) {
+            params.addOpt("card[expiry_month]", cardExpiryMonth);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest cardExpiryYear(Integer cardExpiryYear) {
+            params.addOpt("card[expiry_year]", cardExpiryYear);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest cardBrand(Card.Brand cardBrand) {
+            params.addOpt("card[brand]", cardBrand);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest cardFundingType(Card.FundingType cardFundingType) {
+            params.addOpt("card[funding_type]", cardFundingType);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressFirstName(String billingAddressFirstName) {
+            params.addOpt("billing_address[first_name]", billingAddressFirstName);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressLastName(String billingAddressLastName) {
+            params.addOpt("billing_address[last_name]", billingAddressLastName);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressEmail(String billingAddressEmail) {
+            params.addOpt("billing_address[email]", billingAddressEmail);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressState(String billingAddressState) {
+            params.addOpt("billing_address[state]", billingAddressState);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CreateUsingPermanentTokenRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
 
         @Override
         public Params params() {
