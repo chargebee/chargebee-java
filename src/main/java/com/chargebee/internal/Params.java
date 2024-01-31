@@ -6,6 +6,7 @@ import java.util.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import java.math.BigDecimal;
 
 public class Params {
 
@@ -40,7 +41,7 @@ public class Params {
 
     public static Object toValStr(Object value) {
         Class c = value.getClass();
-        if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class) {
+        if(c == String.class || c == Integer.class || c == Long.class || c == Boolean.class || c == Double.class || c == BigDecimal.class) {
             return value.toString();
         } else if (c == Date.class) {
             return new SimpleDateFormat("yyyy-MM-dd").format((Date)value);

@@ -241,6 +241,14 @@ public class Resource<T> {
             if(Float.class == type && val instanceof Number){
                 return (T) new Float(((Number)val).floatValue());
             }
+            if(BigDecimal.class == type) {
+                if (val instanceof Number) {
+                    return (T) new BigDecimal(((Number)val).doubleValue());
+                }
+                if (val instanceof String) {
+                    return (T) new BigDecimal(((String)val));
+                }
+            }
             throw new RuntimeException("Type mismatch for property " + key
                     + " . Expected " + type.getName() + " but contains " + val.getClass().getName());
         }

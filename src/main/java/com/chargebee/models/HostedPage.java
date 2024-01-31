@@ -2888,6 +2888,12 @@ public class HostedPage extends Resource<HostedPage> {
 
 
 
+        public AcceptQuoteRequest layout(com.chargebee.models.enums.Layout layout) {
+            params.addOpt("layout", layout);
+            return this;
+        }
+
+
         public AcceptQuoteRequest quoteId(String quoteId) {
             params.add("quote[id]", quoteId);
             return this;
