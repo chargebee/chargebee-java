@@ -89,6 +89,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
             return reqTimestamp("modified_at");
         }
 
+        public GatewayErrorDetail errorDetail() {
+            return optSubResource("error_detail", GatewayErrorDetail.class);
+        }
+
     }
 
     //Constructors

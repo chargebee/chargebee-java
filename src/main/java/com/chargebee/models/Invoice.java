@@ -109,6 +109,11 @@ public class Invoice extends Resource<Invoice> {
             return optLong("item_level_discount_amount");
         }
 
+        @Deprecated
+        public String usagePercentage() {
+            return optString("usage_percentage");
+        }
+
         public String referenceLineItemId() {
             return optString("reference_line_item_id");
         }
@@ -3261,6 +3266,10 @@ public class Invoice extends Resource<Invoice> {
 
         public ApplyPaymentsRequest transactionId(int index, String transactionId) {
             params.addOpt("transactions[id][" + index + "]", transactionId);
+            return this;
+        }
+        public ApplyPaymentsRequest transactionAmount(int index, Long transactionAmount) {
+            params.addOpt("transactions[amount][" + index + "]", transactionAmount);
             return this;
         }
         @Override

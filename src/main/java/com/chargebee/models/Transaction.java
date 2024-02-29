@@ -215,12 +215,28 @@ public class Transaction extends Resource<Transaction> {
             return optString("network_error_code");
         }
 
+        public String networkErrorMessage() {
+            return optString("network_error_message");
+        }
+
         public String errorField() {
             return optString("error_field");
         }
 
         public String recommendationCode() {
             return optString("recommendation_code");
+        }
+
+        public String recommendationMessage() {
+            return optString("recommendation_message");
+        }
+
+        public String processorErrorCode() {
+            return optString("processor_error_code");
+        }
+
+        public String processorErrorMessage() {
+            return optString("processor_error_message");
         }
 
     }

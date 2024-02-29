@@ -111,6 +111,10 @@ public class Event extends Resource<Event> {
         return optEnum("api_version", ApiVersion.class);
     }
 
+    public String originUser() {
+        return optString("origin_user");
+    }
+
     // Operations
     //===========
 

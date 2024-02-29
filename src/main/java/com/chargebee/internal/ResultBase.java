@@ -188,6 +188,10 @@ public class ResultBase {
         return (PaymentIntent)get("payment_intent");
     }
 
+    public GatewayErrorDetail gatewayErrorDetail() {
+        return (GatewayErrorDetail)get("gateway_error_detail");
+    }
+
     public ItemFamily itemFamily() {
         return (ItemFamily)get("item_family");
     }

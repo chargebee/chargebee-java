@@ -138,6 +138,10 @@ public class Subscription extends Resource<Subscription> {
             return optEnum("charge_on_option", ChargeOnOption.class);
         }
 
+        public ProrationType prorationType() {
+            return optEnum("proration_type", ProrationType.class);
+        }
+
     }
 
     public static class ItemTier extends Resource<ItemTier> {

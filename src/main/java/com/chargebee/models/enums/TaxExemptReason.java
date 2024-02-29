@@ -10,6 +10,7 @@ public enum TaxExemptReason {
     REVERSE_CHARGE,
     HIGH_VALUE_PHYSICAL_GOODS,
     ZERO_VALUE_ITEM,
+    TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

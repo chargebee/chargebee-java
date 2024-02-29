@@ -151,6 +151,11 @@ public class CreditNote extends Resource<CreditNote> {
             return optLong("item_level_discount_amount");
         }
 
+        @Deprecated
+        public String usagePercentage() {
+            return optString("usage_percentage");
+        }
+
         public String referenceLineItemId() {
             return optString("reference_line_item_id");
         }
