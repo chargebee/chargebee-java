@@ -80,6 +80,12 @@ public class Purchase extends Resource<Purchase> {
         }
 
 
+        public CreateRequest paymentSourceId(String paymentSourceId) {
+            params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
         public CreateRequest invoiceInfoPoNumber(String invoiceInfoPoNumber) {
             params.addOpt("invoice_info[po_number]", invoiceInfoPoNumber);
             return this;
@@ -87,6 +93,16 @@ public class Purchase extends Resource<Purchase> {
 
         public CreateRequest invoiceInfoNotes(String invoiceInfoNotes) {
             params.addOpt("invoice_info[notes]", invoiceInfoNotes);
+            return this;
+        }
+
+        public CreateRequest installmentInfoConfigId(String installmentInfoConfigId) {
+            params.addOpt("installment_info[config_id]", installmentInfoConfigId);
+            return this;
+        }
+
+        public CreateRequest installmentInfoAmount(Long installmentInfoAmount) {
+            params.addOpt("installment_info[amount]", installmentInfoAmount);
             return this;
         }
 
@@ -232,6 +248,22 @@ public class Purchase extends Resource<Purchase> {
         }
         public CreateRequest subscriptionInfoBillingCycles(int index, Integer subscriptionInfoBillingCycles) {
             params.addOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
+            return this;
+        }
+        public CreateRequest subscriptionInfoContractTermBillingCycleOnRenewal(int index, Integer subscriptionInfoContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+            return this;
+        }
+        public CreateRequest contractTermIndex(int index, Integer contractTermIndex) {
+            params.add("contract_terms[index][" + index + "]", contractTermIndex);
+            return this;
+        }
+        public CreateRequest contractTermActionAtTermEnd(int index, ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_terms[action_at_term_end][" + index + "]", contractTermActionAtTermEnd);
+            return this;
+        }
+        public CreateRequest contractTermCancellationCutoffPeriod(int index, Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_terms[cancellation_cutoff_period][" + index + "]", contractTermCancellationCutoffPeriod);
             return this;
         }
         public CreateRequest subscriptionInfoMetaData(int index, JSONObject subscriptionInfoMetaData) {
@@ -484,6 +516,22 @@ public class Purchase extends Resource<Purchase> {
         }
         public EstimateRequest subscriptionInfoBillingCycles(int index, Integer subscriptionInfoBillingCycles) {
             params.addOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
+            return this;
+        }
+        public EstimateRequest subscriptionInfoContractTermBillingCycleOnRenewal(int index, Integer subscriptionInfoContractTermBillingCycleOnRenewal) {
+            params.addOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+            return this;
+        }
+        public EstimateRequest contractTermIndex(int index, Integer contractTermIndex) {
+            params.add("contract_terms[index][" + index + "]", contractTermIndex);
+            return this;
+        }
+        public EstimateRequest contractTermActionAtTermEnd(int index, ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_terms[action_at_term_end][" + index + "]", contractTermActionAtTermEnd);
+            return this;
+        }
+        public EstimateRequest contractTermCancellationCutoffPeriod(int index, Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_terms[cancellation_cutoff_period][" + index + "]", contractTermCancellationCutoffPeriod);
             return this;
         }
         @Override

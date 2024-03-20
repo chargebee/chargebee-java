@@ -165,14 +165,23 @@ public enum EventType {
     VOUCHER_CREATED,
     VOUCHER_EXPIRED,
     VOUCHER_CREATE_FAILED,
+    @Deprecated
     PRODUCT_CREATED,
+    @Deprecated
     PRODUCT_UPDATED,
+    @Deprecated
     PRODUCT_DELETED,
+    @Deprecated
     VARIANT_CREATED,
+    @Deprecated
     VARIANT_UPDATED,
+    @Deprecated
     VARIANT_DELETED,
     ITEM_PRICE_ENTITLEMENTS_UPDATED,
     ITEM_PRICE_ENTITLEMENTS_REMOVED,
+    PRICE_VARIANT_CREATED,
+    PRICE_VARIANT_UPDATED,
+    PRICE_VARIANT_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

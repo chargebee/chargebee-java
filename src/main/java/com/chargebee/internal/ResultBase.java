@@ -200,6 +200,10 @@ public class ResultBase {
         return (Item)get("item");
     }
 
+    public Attribute attribute() {
+        return (Attribute)get("attribute");
+    }
+
     public ItemPrice itemPrice() {
         return (ItemPrice)get("item_price");
     }
@@ -222,6 +226,10 @@ public class ResultBase {
 
     public ImpactedItem impactedItem() {
         return (ImpactedItem)get("impacted_item");
+    }
+
+    public ImpactedItemPrice impactedItemPrice() {
+        return (ImpactedItemPrice)get("impacted_item_price");
     }
 
     public SubscriptionEntitlement subscriptionEntitlement() {
@@ -250,6 +258,14 @@ public class ResultBase {
 
     public PaymentVoucher paymentVoucher() {
         return (PaymentVoucher)get("payment_voucher");
+    }
+
+    public InstallmentConfig installmentConfig() {
+        return (InstallmentConfig)get("installment_config");
+    }
+
+    public Installment installment() {
+        return (Installment)get("installment");
     }
 
     public List<UnbilledCharge> unbilledCharges() {

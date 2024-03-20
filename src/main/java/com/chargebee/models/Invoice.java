@@ -1198,6 +1198,11 @@ public class Invoice extends Resource<Invoice> {
         return new UpdateDetailsRequest(Method.POST, uri);
     }
 
+    public static InstallmentsRequest installments(String id) {
+        String uri = uri("invoices", nullCheck(id), "installments");
+        return new InstallmentsRequest(Method.POST, uri);
+    }
+
     public static Request resendEinvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "resend_einvoice");
         return new Request(Method.POST, uri);
@@ -4311,6 +4316,30 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class InstallmentsRequest extends Request<InstallmentsRequest> {
+
+        private InstallmentsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+
+        public InstallmentsRequest configId(String configId) {
+            params.add("config_id", configId);
+            return this;
+        }
+
+
+        public InstallmentsRequest amount(Long amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
 
         @Override
         public Params params() {

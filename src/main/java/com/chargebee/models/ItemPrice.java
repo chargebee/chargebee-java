@@ -185,10 +185,6 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optString("item_family_id");
     }
 
-    public String productId() {
-        return optString("product_id");
-    }
-
     public String itemId() {
         return optString("item_id");
     }

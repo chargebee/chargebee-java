@@ -23,6 +23,7 @@ public enum Type {
     FASTER_PAYMENTS,
     SEPA_INSTANT_TRANSFER,
     AUTOMATED_BANK_TRANSFER,
+    KLARNA_PAY_NOW,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }
