@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ResultBase {
 
     private JSONObject jsonObj;
-    
+
     public ResultBase(JSONObject jsonObj) {
         this.jsonObj = jsonObj;
     }
@@ -298,6 +298,10 @@ public class ResultBase {
 
     public List<InAppSubscription> inAppSubscriptions() {
         return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
+    }
+
+    public List<Subscription> subscriptions() {
+        return (List<Subscription>) getList("subscriptions", "subscription");
     }
 
 
