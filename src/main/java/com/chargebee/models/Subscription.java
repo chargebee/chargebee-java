@@ -1132,6 +1132,11 @@ public class Subscription extends Resource<Subscription> {
         return new Request(Method.POST, uri);
     }
 
+    public static MoveRequest move(String id) {
+        String uri = uri("subscriptions", nullCheck(id), "move");
+        return new MoveRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -6919,6 +6924,30 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class MoveRequest extends Request<MoveRequest> {
+
+        private MoveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+
+        public MoveRequest toCustomerId(String toCustomerId) {
+            params.add("to_customer_id", toCustomerId);
+            return this;
+        }
+
+
+        public MoveRequest copyPaymentSource(Boolean copyPaymentSource) {
+            params.addOpt("copy_payment_source", copyPaymentSource);
+            return this;
+        }
+
 
         @Override
         public Params params() {
