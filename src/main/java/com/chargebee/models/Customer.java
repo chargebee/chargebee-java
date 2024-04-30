@@ -301,6 +301,25 @@ public class Customer extends Resource<Customer> {
 
     }
 
+    public static class TaxProvidersField extends Resource<TaxProvidersField> {
+        public TaxProvidersField(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String providerName() {
+            return reqString("provider_name");
+        }
+
+        public String fieldId() {
+            return reqString("field_id");
+        }
+
+        public String fieldValue() {
+            return reqString("field_value");
+        }
+
+    }
+
     public static class Relationship extends Resource<Relationship> {
         public Relationship(JSONObject jsonObj) {
             super(jsonObj);
@@ -607,6 +626,10 @@ public class Customer extends Resource<Customer> {
 
     public List<Customer.EntityIdentifier> entityIdentifiers() {
         return optList("entity_identifiers", Customer.EntityIdentifier.class);
+    }
+
+    public List<Customer.TaxProvidersField> taxProvidersFields() {
+        return optList("tax_providers_fields", Customer.TaxProvidersField.class);
     }
 
     public Boolean isEinvoiceEnabled() {
@@ -994,10 +1017,6 @@ public class Customer extends Resource<Customer> {
         }
 
 
-
-
-
-
         public CreateRequest tokenId(String tokenId) {
             params.addOpt("token_id", tokenId);
             return this;
@@ -1371,6 +1390,21 @@ public class Customer extends Resource<Customer> {
             super(uri);
         }
     
+        public StringFilter<CustomerListRequest> relationshipParentId() {
+            return new StringFilter<CustomerListRequest>("relationship[parent_id]",this);        
+        }
+
+
+        public StringFilter<CustomerListRequest> relationshipPaymentOwnerId() {
+            return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]",this);        
+        }
+
+
+        public StringFilter<CustomerListRequest> relationshipInvoiceOwnerId() {
+            return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]",this);        
+        }
+
+
         public CustomerListRequest includeDeleted(Boolean includeDeleted) {
             params.addOpt("include_deleted", includeDeleted);
             return this;
@@ -1456,18 +1490,6 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
-
-        public StringFilter<CustomerListRequest> relationshipParentId() {
-            return new StringFilter<CustomerListRequest>("relationship[parent_id]",this);        
-        }
-
-        public StringFilter<CustomerListRequest> relationshipPaymentOwnerId() {
-            return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]",this);        
-        }
-
-        public StringFilter<CustomerListRequest> relationshipInvoiceOwnerId() {
-            return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]",this);        
-        }
 
         @Override
         public Params params() {

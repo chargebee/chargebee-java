@@ -189,16 +189,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
-
-
         public CreateSubscriptionRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubscriptionRequest couponIds(List<String> couponIds) {
@@ -215,8 +209,6 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
         }
-
-
 
 
         public CreateSubscriptionRequest invoiceDate(Timestamp invoiceDate) {
@@ -535,16 +527,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
-
-
         public CreateSubItemEstimateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubItemEstimateRequest couponIds(List<String> couponIds) {
@@ -561,8 +547,6 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
         }
-
-
 
 
         public CreateSubItemEstimateRequest invoiceDate(Timestamp invoiceDate) {
@@ -744,6 +728,12 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        @Deprecated
+        public CreateSubItemEstimateRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
+            return this;
+        }
+
         public CreateSubItemEstimateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
             params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
             return this;
@@ -914,16 +904,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
-
-
         public CreateSubForCustomerEstimateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubForCustomerEstimateRequest invoiceDate(Timestamp invoiceDate) {
@@ -941,8 +925,6 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
-
-
 
         public CreateSubForCustomerEstimateRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
@@ -1174,16 +1156,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
-
-
         public CreateSubItemForCustomerEstimateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubItemForCustomerEstimateRequest invoiceDate(Timestamp invoiceDate) {
@@ -1201,8 +1177,6 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
-
-
 
         public CreateSubItemForCustomerEstimateRequest subscriptionId(String subscriptionId) {
             params.addOpt("subscription[id]", subscriptionId);
@@ -1322,6 +1296,12 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubItemForCustomerEstimateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        @Deprecated
+        public CreateSubItemForCustomerEstimateRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
             return this;
         }
 
@@ -1461,8 +1441,16 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
+        public UpdateSubscriptionRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
+        public UpdateSubscriptionRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
         public UpdateSubscriptionRequest replaceAddonList(Boolean replaceAddonList) {
@@ -1499,14 +1487,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
         public UpdateSubscriptionRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateSubscriptionRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -1830,8 +1814,16 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
+        public UpdateSubscriptionForItemsRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
 
 
+        public UpdateSubscriptionForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
 
 
         public UpdateSubscriptionForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
@@ -1868,14 +1860,10 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
         public UpdateSubscriptionForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateSubscriptionForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -3049,8 +3037,6 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
-
-
         public CreateInvoiceRequest invoiceNote(String invoiceNote) {
             params.addOpt("invoice_note", invoiceNote);
             return this;
@@ -3346,8 +3332,6 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("invoice_date", invoiceDate);
             return this;
         }
-
-
 
 
         public CreateInvoiceForItemsRequest invoiceCustomerId(String invoiceCustomerId) {

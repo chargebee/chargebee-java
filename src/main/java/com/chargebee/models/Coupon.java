@@ -893,10 +893,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-
-
-
-
         public CouponListRequest sortByCreatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
             return this;
@@ -906,8 +902,6 @@ public class Coupon extends Resource<Coupon> {
         public StringFilter<CouponListRequest> currencyCode() {
             return new StringFilter<CouponListRequest>("currency_code",this).supportsMultiOperators(true);        
         }
-
-
 
 
         @Override

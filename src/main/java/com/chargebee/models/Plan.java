@@ -103,6 +103,25 @@ public class Plan extends Resource<Plan> {
 
     }
 
+    public static class TaxProvidersField extends Resource<TaxProvidersField> {
+        public TaxProvidersField(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String providerName() {
+            return reqString("provider_name");
+        }
+
+        public String fieldId() {
+            return reqString("field_id");
+        }
+
+        public String fieldValue() {
+            return reqString("field_value");
+        }
+
+    }
+
     public static class ApplicableAddon extends Resource<ApplicableAddon> {
         public ApplicableAddon(JSONObject jsonObj) {
             super(jsonObj);
@@ -394,6 +413,10 @@ public class Plan extends Resource<Plan> {
 
     public List<Plan.Tier> tiers() {
         return optList("tiers", Plan.Tier.class);
+    }
+
+    public List<Plan.TaxProvidersField> taxProvidersFields() {
+        return optList("tax_providers_fields", Plan.TaxProvidersField.class);
     }
 
     public List<Plan.ApplicableAddon> applicableAddons() {
@@ -728,8 +751,6 @@ public class Plan extends Resource<Plan> {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
-
-
 
 
         public CreateRequest giftable(Boolean giftable) {
@@ -1088,10 +1109,6 @@ public class Plan extends Resource<Plan> {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
-
-
-
-
 
 
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {

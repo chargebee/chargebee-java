@@ -313,6 +313,17 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     }
 
+    public static class KlarnaPayNow extends Resource<KlarnaPayNow> {
+        public KlarnaPayNow(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+    }
+
     public static class Mandate extends Resource<Mandate> {
         public Mandate(JSONObject jsonObj) {
             super(jsonObj);
@@ -424,6 +435,10 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public PaymentSource.Venmo venmo() {
         return optSubResource("venmo", PaymentSource.Venmo.class);
+    }
+
+    public PaymentSource.KlarnaPayNow klarnaPayNow() {
+        return optSubResource("klarna_pay_now", PaymentSource.KlarnaPayNow.class);
     }
 
     public List<PaymentSource.Mandate> mandates() {
@@ -573,8 +588,6 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-
-
         @Override
         public Params params() {
             return params;
@@ -621,8 +634,6 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
         }
-
-
 
 
         public CreateUsingPermanentTokenRequest paymentMethodToken(String paymentMethodToken) {
@@ -903,8 +914,6 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
-
-
         public CreateCardRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
@@ -1008,8 +1017,6 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
         }
-
-
 
 
         public CreateBankAccountRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {

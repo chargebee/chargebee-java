@@ -276,16 +276,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-
-
-
-
         public CheckoutNewRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CheckoutNewRequest couponIds(List<String> couponIds) {
@@ -332,10 +326,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
-
-
-
-
 
 
         public CheckoutNewRequest subscriptionId(String subscriptionId) {
@@ -1551,16 +1541,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-
-
-
-
         public CheckoutNewForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CheckoutNewForItemsRequest couponIds(List<String> couponIds) {
@@ -1602,8 +1586,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
-
-
 
 
         public CheckoutNewForItemsRequest subscriptionId(String subscriptionId) {
@@ -2063,14 +2045,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-
-
         public CheckoutExistingRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public CheckoutExistingRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -2135,8 +2113,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
-
-
 
 
         public CheckoutExistingRequest subscriptionId(String subscriptionId) {
@@ -2353,14 +2329,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-
-
         public CheckoutExistingForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public CheckoutExistingForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -2420,8 +2392,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
         }
-
-
 
 
         public CheckoutExistingForItemsRequest subscriptionId(String subscriptionId) {
@@ -2884,8 +2854,6 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("redirect_url", redirectUrl);
             return this;
         }
-
-
 
 
         public AcceptQuoteRequest layout(com.chargebee.models.enums.Layout layout) {

@@ -764,16 +764,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
-
-
-
-
-
-
         public CreateSubForCustomerQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -796,16 +786,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
         public CreateSubForCustomerQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubForCustomerQuoteRequest couponIds(List<String> couponIds) {
@@ -1034,8 +1018,6 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
-
-
         public EditCreateSubForCustomerQuoteRequest notes(String notes) {
             params.addOpt("notes", notes);
             return this;
@@ -1070,16 +1052,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
         public EditCreateSubForCustomerQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public EditCreateSubForCustomerQuoteRequest couponIds(List<String> couponIds) {
@@ -1326,8 +1302,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteRequest replaceAddonList(Boolean replaceAddonList) {
             params.addOpt("replace_addon_list", replaceAddonList);
             return this;
@@ -1344,8 +1318,6 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-
-
         public UpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1358,14 +1330,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateSubscriptionQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -1390,8 +1358,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
             params.addOpt("change_option", changeOption);
             return this;
@@ -1404,8 +1370,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
             return this;
@@ -1416,12 +1380,6 @@ public class Quote extends Resource<Quote> {
             params.addOpt("reactivate", reactivate);
             return this;
         }
-
-
-
-
-
-
 
 
         public UpdateSubscriptionQuoteRequest subscriptionId(String subscriptionId) {
@@ -1759,8 +1717,6 @@ public class Quote extends Resource<Quote> {
             return this;
         }
 
-
-
         public EditUpdateSubscriptionQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -1773,14 +1729,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public EditUpdateSubscriptionQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -1805,8 +1757,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
             params.addOpt("change_option", changeOption);
             return this;
@@ -1819,8 +1769,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
             return this;
@@ -1831,10 +1779,6 @@ public class Quote extends Resource<Quote> {
             params.addOpt("reactivate", reactivate);
             return this;
         }
-
-
-
-
 
 
         public EditUpdateSubscriptionQuoteRequest subscriptionPlanId(String subscriptionPlanId) {
@@ -2517,16 +2461,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
-
-
-
-
-
-
         public CreateSubItemsForCustomerQuoteRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -2549,16 +2483,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
         public CreateSubItemsForCustomerQuoteRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateSubItemsForCustomerQuoteRequest couponIds(List<String> couponIds) {
@@ -2808,8 +2736,6 @@ public class Quote extends Resource<Quote> {
             super(httpMeth, uri);
         }
     
-
-
         public EditCreateSubCustomerQuoteForItemsRequest notes(String notes) {
             params.addOpt("notes", notes);
             return this;
@@ -2844,16 +2770,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
-
-
         public EditCreateSubCustomerQuoteForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public EditCreateSubCustomerQuoteForItemsRequest couponIds(List<String> couponIds) {
@@ -3121,8 +3041,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteForItemsRequest mandatoryItemsToRemove(List<String> mandatoryItemsToRemove) {
             params.addOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
             return this;
@@ -3139,8 +3057,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -3153,14 +3069,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateSubscriptionQuoteForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -3185,8 +3097,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
             params.addOpt("change_option", changeOption);
             return this;
@@ -3199,8 +3109,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public UpdateSubscriptionQuoteForItemsRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
             return this;
@@ -3211,12 +3119,6 @@ public class Quote extends Resource<Quote> {
             params.addOpt("reactivate", reactivate);
             return this;
         }
-
-
-
-
-
-
 
 
         public UpdateSubscriptionQuoteForItemsRequest subscriptionId(String subscriptionId) {
@@ -3583,8 +3485,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteForItemsRequest billingCycles(Integer billingCycles) {
             params.addOpt("billing_cycles", billingCycles);
             return this;
@@ -3597,14 +3497,10 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public EditUpdateSubscriptionQuoteForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -3629,8 +3525,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
             params.addOpt("change_option", changeOption);
             return this;
@@ -3643,8 +3537,6 @@ public class Quote extends Resource<Quote> {
         }
 
 
-
-
         public EditUpdateSubscriptionQuoteForItemsRequest forceTermReset(Boolean forceTermReset) {
             params.addOpt("force_term_reset", forceTermReset);
             return this;
@@ -3655,10 +3547,6 @@ public class Quote extends Resource<Quote> {
             params.addOpt("reactivate", reactivate);
             return this;
         }
-
-
-
-
 
 
         @Deprecated
@@ -4498,8 +4386,6 @@ public class Quote extends Resource<Quote> {
             params.addOpt("invoice_date", invoiceDate);
             return this;
         }
-
-
 
 
         public ConvertRequest createPendingInvoices(Boolean createPendingInvoices) {

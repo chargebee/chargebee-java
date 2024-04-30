@@ -173,7 +173,12 @@ public class Export extends Resource<Export> {
         return new DifferentialPricesRequest(Method.POST, uri);
     }
 
-public Export waitForExportCompletion() 
+    public static PriceVariantsRequest priceVariants() {
+        String uri = uri("exports", "price_variants");
+        return new PriceVariantsRequest(Method.POST, uri);
+    }
+
+public Export waitForExportCompletion()
             throws Exception {
         int count = 0;
         int sleepTime = Integer.getInteger("cb.java.export.sleep.millis", 10000);
@@ -267,181 +272,226 @@ public Export waitForExportCompletion()
             return new StringFilter<RevenueRecognitionRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
 
+
         public BooleanFilter<RevenueRecognitionRequest> invoiceRecurring() {
             return new BooleanFilter<RevenueRecognitionRequest>("invoice[recurring]",this);        
         }
+
 
         public EnumFilter<Invoice.Status, RevenueRecognitionRequest> invoiceStatus() {
             return new EnumFilter<Invoice.Status, RevenueRecognitionRequest>("invoice[status]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.PriceType, RevenueRecognitionRequest> invoicePriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, RevenueRecognitionRequest>("invoice[price_type]",this);        
         }
+
 
         public TimestampFilter<RevenueRecognitionRequest> invoiceDate() {
             return new TimestampFilter<RevenueRecognitionRequest>("invoice[date]",this);        
         }
 
+
         public TimestampFilter<RevenueRecognitionRequest> invoicePaidAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("invoice[paid_at]",this);        
         }
+
 
         public NumberFilter<Long, RevenueRecognitionRequest> invoiceTotal() {
             return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[total]",this);        
         }
 
+
         public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountPaid() {
             return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_paid]",this);        
         }
+
 
         public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountAdjusted() {
             return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_adjusted]",this);        
         }
 
+
         public NumberFilter<Long, RevenueRecognitionRequest> invoiceCreditsApplied() {
             return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[credits_applied]",this);        
         }
+
 
         public NumberFilter<Long, RevenueRecognitionRequest> invoiceAmountDue() {
             return new NumberFilter<Long, RevenueRecognitionRequest>("invoice[amount_due]",this);        
         }
 
+
         public EnumFilter<Invoice.DunningStatus, RevenueRecognitionRequest> invoiceDunningStatus() {
             return new EnumFilter<Invoice.DunningStatus, RevenueRecognitionRequest>("invoice[dunning_status]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<RevenueRecognitionRequest> invoiceUpdatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("invoice[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> invoiceChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("invoice[channel]",this);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> subscriptionId() {
             return new StringFilter<RevenueRecognitionRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> subscriptionCustomerId() {
             return new StringFilter<RevenueRecognitionRequest>("subscription[customer_id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> subscriptionPlanId() {
             return new StringFilter<RevenueRecognitionRequest>("subscription[plan_id]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<Subscription.Status, RevenueRecognitionRequest> subscriptionStatus() {
             return new EnumFilter<Subscription.Status, RevenueRecognitionRequest>("subscription[status]",this);        
         }
+
 
         public EnumFilter<Subscription.CancelReason, RevenueRecognitionRequest> subscriptionCancelReason() {
             return new EnumFilter<Subscription.CancelReason, RevenueRecognitionRequest>("subscription[cancel_reason]",this).supportsPresenceOperator(true);        
         }
 
+
         public NumberFilter<Integer, RevenueRecognitionRequest> subscriptionRemainingBillingCycles() {
             return new NumberFilter<Integer, RevenueRecognitionRequest>("subscription[remaining_billing_cycles]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<RevenueRecognitionRequest> subscriptionCreatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[created_at]",this);        
         }
 
+
         public TimestampFilter<RevenueRecognitionRequest> subscriptionActivatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[activated_at]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<RevenueRecognitionRequest> subscriptionNextBillingAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[next_billing_at]",this);        
         }
 
+
         public TimestampFilter<RevenueRecognitionRequest> subscriptionCancelledAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[cancelled_at]",this);        
         }
+
 
         public BooleanFilter<RevenueRecognitionRequest> subscriptionHasScheduledChanges() {
             return new BooleanFilter<RevenueRecognitionRequest>("subscription[has_scheduled_changes]",this);        
         }
 
+
         public TimestampFilter<RevenueRecognitionRequest> subscriptionUpdatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("subscription[updated_at]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest> subscriptionOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("subscription[offline_payment_method]",this);        
         }
 
+
         public BooleanFilter<RevenueRecognitionRequest> subscriptionAutoCloseInvoices() {
             return new BooleanFilter<RevenueRecognitionRequest>("subscription[auto_close_invoices]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> subscriptionChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("subscription[channel]",this);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> customerId() {
             return new StringFilter<RevenueRecognitionRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> customerFirstName() {
             return new StringFilter<RevenueRecognitionRequest>("customer[first_name]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> customerLastName() {
             return new StringFilter<RevenueRecognitionRequest>("customer[last_name]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> customerEmail() {
             return new StringFilter<RevenueRecognitionRequest>("customer[email]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> customerCompany() {
             return new StringFilter<RevenueRecognitionRequest>("customer[company]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> customerPhone() {
             return new StringFilter<RevenueRecognitionRequest>("customer[phone]",this).supportsPresenceOperator(true);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.AutoCollection, RevenueRecognitionRequest> customerAutoCollection() {
             return new EnumFilter<com.chargebee.models.enums.AutoCollection, RevenueRecognitionRequest>("customer[auto_collection]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.Taxability, RevenueRecognitionRequest> customerTaxability() {
             return new EnumFilter<com.chargebee.models.enums.Taxability, RevenueRecognitionRequest>("customer[taxability]",this);        
         }
 
+
         public TimestampFilter<RevenueRecognitionRequest> customerCreatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("customer[created_at]",this);        
         }
+
 
         public TimestampFilter<RevenueRecognitionRequest> customerUpdatedAt() {
             return new TimestampFilter<RevenueRecognitionRequest>("customer[updated_at]",this);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> relationshipParentId() {
             return new StringFilter<RevenueRecognitionRequest>("relationship[parent_id]",this);        
         }
+
 
         public StringFilter<RevenueRecognitionRequest> relationshipPaymentOwnerId() {
             return new StringFilter<RevenueRecognitionRequest>("relationship[payment_owner_id]",this);        
         }
 
+
         public StringFilter<RevenueRecognitionRequest> relationshipInvoiceOwnerId() {
             return new StringFilter<RevenueRecognitionRequest>("relationship[invoice_owner_id]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest> customerOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, RevenueRecognitionRequest>("customer[offline_payment_method]",this);        
         }
 
+
         public BooleanFilter<RevenueRecognitionRequest> customerAutoCloseInvoices() {
             return new BooleanFilter<RevenueRecognitionRequest>("customer[auto_close_invoices]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest> customerChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, RevenueRecognitionRequest>("customer[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -526,181 +576,226 @@ public Export waitForExportCompletion()
             return new StringFilter<DeferredRevenueRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
 
+
         public BooleanFilter<DeferredRevenueRequest> invoiceRecurring() {
             return new BooleanFilter<DeferredRevenueRequest>("invoice[recurring]",this);        
         }
+
 
         public EnumFilter<Invoice.Status, DeferredRevenueRequest> invoiceStatus() {
             return new EnumFilter<Invoice.Status, DeferredRevenueRequest>("invoice[status]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.PriceType, DeferredRevenueRequest> invoicePriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, DeferredRevenueRequest>("invoice[price_type]",this);        
         }
+
 
         public TimestampFilter<DeferredRevenueRequest> invoiceDate() {
             return new TimestampFilter<DeferredRevenueRequest>("invoice[date]",this);        
         }
 
+
         public TimestampFilter<DeferredRevenueRequest> invoicePaidAt() {
             return new TimestampFilter<DeferredRevenueRequest>("invoice[paid_at]",this);        
         }
+
 
         public NumberFilter<Long, DeferredRevenueRequest> invoiceTotal() {
             return new NumberFilter<Long, DeferredRevenueRequest>("invoice[total]",this);        
         }
 
+
         public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountPaid() {
             return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_paid]",this);        
         }
+
 
         public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountAdjusted() {
             return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_adjusted]",this);        
         }
 
+
         public NumberFilter<Long, DeferredRevenueRequest> invoiceCreditsApplied() {
             return new NumberFilter<Long, DeferredRevenueRequest>("invoice[credits_applied]",this);        
         }
+
 
         public NumberFilter<Long, DeferredRevenueRequest> invoiceAmountDue() {
             return new NumberFilter<Long, DeferredRevenueRequest>("invoice[amount_due]",this);        
         }
 
+
         public EnumFilter<Invoice.DunningStatus, DeferredRevenueRequest> invoiceDunningStatus() {
             return new EnumFilter<Invoice.DunningStatus, DeferredRevenueRequest>("invoice[dunning_status]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<DeferredRevenueRequest> invoiceUpdatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("invoice[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> invoiceChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("invoice[channel]",this);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> subscriptionId() {
             return new StringFilter<DeferredRevenueRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> subscriptionCustomerId() {
             return new StringFilter<DeferredRevenueRequest>("subscription[customer_id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> subscriptionPlanId() {
             return new StringFilter<DeferredRevenueRequest>("subscription[plan_id]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<Subscription.Status, DeferredRevenueRequest> subscriptionStatus() {
             return new EnumFilter<Subscription.Status, DeferredRevenueRequest>("subscription[status]",this);        
         }
+
 
         public EnumFilter<Subscription.CancelReason, DeferredRevenueRequest> subscriptionCancelReason() {
             return new EnumFilter<Subscription.CancelReason, DeferredRevenueRequest>("subscription[cancel_reason]",this).supportsPresenceOperator(true);        
         }
 
+
         public NumberFilter<Integer, DeferredRevenueRequest> subscriptionRemainingBillingCycles() {
             return new NumberFilter<Integer, DeferredRevenueRequest>("subscription[remaining_billing_cycles]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<DeferredRevenueRequest> subscriptionCreatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("subscription[created_at]",this);        
         }
 
+
         public TimestampFilter<DeferredRevenueRequest> subscriptionActivatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("subscription[activated_at]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<DeferredRevenueRequest> subscriptionNextBillingAt() {
             return new TimestampFilter<DeferredRevenueRequest>("subscription[next_billing_at]",this);        
         }
 
+
         public TimestampFilter<DeferredRevenueRequest> subscriptionCancelledAt() {
             return new TimestampFilter<DeferredRevenueRequest>("subscription[cancelled_at]",this);        
         }
+
 
         public BooleanFilter<DeferredRevenueRequest> subscriptionHasScheduledChanges() {
             return new BooleanFilter<DeferredRevenueRequest>("subscription[has_scheduled_changes]",this);        
         }
 
+
         public TimestampFilter<DeferredRevenueRequest> subscriptionUpdatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("subscription[updated_at]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest> subscriptionOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("subscription[offline_payment_method]",this);        
         }
 
+
         public BooleanFilter<DeferredRevenueRequest> subscriptionAutoCloseInvoices() {
             return new BooleanFilter<DeferredRevenueRequest>("subscription[auto_close_invoices]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> subscriptionChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("subscription[channel]",this);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> customerId() {
             return new StringFilter<DeferredRevenueRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> customerFirstName() {
             return new StringFilter<DeferredRevenueRequest>("customer[first_name]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> customerLastName() {
             return new StringFilter<DeferredRevenueRequest>("customer[last_name]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> customerEmail() {
             return new StringFilter<DeferredRevenueRequest>("customer[email]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> customerCompany() {
             return new StringFilter<DeferredRevenueRequest>("customer[company]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> customerPhone() {
             return new StringFilter<DeferredRevenueRequest>("customer[phone]",this).supportsPresenceOperator(true);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.AutoCollection, DeferredRevenueRequest> customerAutoCollection() {
             return new EnumFilter<com.chargebee.models.enums.AutoCollection, DeferredRevenueRequest>("customer[auto_collection]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.Taxability, DeferredRevenueRequest> customerTaxability() {
             return new EnumFilter<com.chargebee.models.enums.Taxability, DeferredRevenueRequest>("customer[taxability]",this);        
         }
 
+
         public TimestampFilter<DeferredRevenueRequest> customerCreatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("customer[created_at]",this);        
         }
+
 
         public TimestampFilter<DeferredRevenueRequest> customerUpdatedAt() {
             return new TimestampFilter<DeferredRevenueRequest>("customer[updated_at]",this);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> relationshipParentId() {
             return new StringFilter<DeferredRevenueRequest>("relationship[parent_id]",this);        
         }
+
 
         public StringFilter<DeferredRevenueRequest> relationshipPaymentOwnerId() {
             return new StringFilter<DeferredRevenueRequest>("relationship[payment_owner_id]",this);        
         }
 
+
         public StringFilter<DeferredRevenueRequest> relationshipInvoiceOwnerId() {
             return new StringFilter<DeferredRevenueRequest>("relationship[invoice_owner_id]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest> customerOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, DeferredRevenueRequest>("customer[offline_payment_method]",this);        
         }
 
+
         public BooleanFilter<DeferredRevenueRequest> customerAutoCloseInvoices() {
             return new BooleanFilter<DeferredRevenueRequest>("customer[auto_close_invoices]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest> customerChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, DeferredRevenueRequest>("customer[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -723,49 +818,61 @@ public Export waitForExportCompletion()
             return new StringFilter<PlansRequest>("plan[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<PlansRequest> planName() {
             return new StringFilter<PlansRequest>("plan[name]",this).supportsMultiOperators(true);        
         }
+
 
         public NumberFilter<Long, PlansRequest> planPrice() {
             return new NumberFilter<Long, PlansRequest>("plan[price]",this);        
         }
 
+
         public NumberFilter<Integer, PlansRequest> planPeriod() {
             return new NumberFilter<Integer, PlansRequest>("plan[period]",this);        
         }
+
 
         public EnumFilter<Plan.PeriodUnit, PlansRequest> planPeriodUnit() {
             return new EnumFilter<Plan.PeriodUnit, PlansRequest>("plan[period_unit]",this);        
         }
 
+
         public NumberFilter<Integer, PlansRequest> planTrialPeriod() {
             return new NumberFilter<Integer, PlansRequest>("plan[trial_period]",this).supportsPresenceOperator(true);        
         }
+
 
         public EnumFilter<Plan.TrialPeriodUnit, PlansRequest> planTrialPeriodUnit() {
             return new EnumFilter<Plan.TrialPeriodUnit, PlansRequest>("plan[trial_period_unit]",this);        
         }
 
+
         public EnumFilter<Plan.AddonApplicability, PlansRequest> planAddonApplicability() {
             return new EnumFilter<Plan.AddonApplicability, PlansRequest>("plan[addon_applicability]",this);        
         }
+
 
         public BooleanFilter<PlansRequest> planGiftable() {
             return new BooleanFilter<PlansRequest>("plan[giftable]",this);        
         }
 
+
         public EnumFilter<Plan.Status, PlansRequest> planStatus() {
             return new EnumFilter<Plan.Status, PlansRequest>("plan[status]",this);        
         }
+
 
         public TimestampFilter<PlansRequest> planUpdatedAt() {
             return new TimestampFilter<PlansRequest>("plan[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, PlansRequest> planChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, PlansRequest>("plan[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -788,37 +895,46 @@ public Export waitForExportCompletion()
             return new StringFilter<AddonsRequest>("addon[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<AddonsRequest> addonName() {
             return new StringFilter<AddonsRequest>("addon[name]",this).supportsMultiOperators(true);        
         }
+
 
         public EnumFilter<Addon.ChargeType, AddonsRequest> addonChargeType() {
             return new EnumFilter<Addon.ChargeType, AddonsRequest>("addon[charge_type]",this);        
         }
 
+
         public NumberFilter<Long, AddonsRequest> addonPrice() {
             return new NumberFilter<Long, AddonsRequest>("addon[price]",this);        
         }
+
 
         public NumberFilter<Integer, AddonsRequest> addonPeriod() {
             return new NumberFilter<Integer, AddonsRequest>("addon[period]",this);        
         }
 
+
         public EnumFilter<Addon.PeriodUnit, AddonsRequest> addonPeriodUnit() {
             return new EnumFilter<Addon.PeriodUnit, AddonsRequest>("addon[period_unit]",this);        
         }
+
 
         public EnumFilter<Addon.Status, AddonsRequest> addonStatus() {
             return new EnumFilter<Addon.Status, AddonsRequest>("addon[status]",this);        
         }
 
+
         public TimestampFilter<AddonsRequest> addonUpdatedAt() {
             return new TimestampFilter<AddonsRequest>("addon[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, AddonsRequest> addonChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, AddonsRequest>("addon[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -841,33 +957,41 @@ public Export waitForExportCompletion()
             return new StringFilter<CouponsRequest>("coupon[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<CouponsRequest> couponName() {
             return new StringFilter<CouponsRequest>("coupon[name]",this).supportsMultiOperators(true);        
         }
+
 
         public EnumFilter<Coupon.DiscountType, CouponsRequest> couponDiscountType() {
             return new EnumFilter<Coupon.DiscountType, CouponsRequest>("coupon[discount_type]",this);        
         }
 
+
         public EnumFilter<Coupon.DurationType, CouponsRequest> couponDurationType() {
             return new EnumFilter<Coupon.DurationType, CouponsRequest>("coupon[duration_type]",this);        
         }
+
 
         public EnumFilter<Coupon.Status, CouponsRequest> couponStatus() {
             return new EnumFilter<Coupon.Status, CouponsRequest>("coupon[status]",this);        
         }
 
+
         public EnumFilter<Coupon.ApplyOn, CouponsRequest> couponApplyOn() {
             return new EnumFilter<Coupon.ApplyOn, CouponsRequest>("coupon[apply_on]",this);        
         }
+
 
         public TimestampFilter<CouponsRequest> couponCreatedAt() {
             return new TimestampFilter<CouponsRequest>("coupon[created_at]",this);        
         }
 
+
         public TimestampFilter<CouponsRequest> couponUpdatedAt() {
             return new TimestampFilter<CouponsRequest>("coupon[updated_at]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -896,65 +1020,81 @@ public Export waitForExportCompletion()
             return new StringFilter<CustomersRequest>("customer[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<CustomersRequest> customerFirstName() {
             return new StringFilter<CustomersRequest>("customer[first_name]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<CustomersRequest> customerLastName() {
             return new StringFilter<CustomersRequest>("customer[last_name]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<CustomersRequest> customerEmail() {
             return new StringFilter<CustomersRequest>("customer[email]",this).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<CustomersRequest> customerCompany() {
             return new StringFilter<CustomersRequest>("customer[company]",this).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<CustomersRequest> customerPhone() {
             return new StringFilter<CustomersRequest>("customer[phone]",this).supportsPresenceOperator(true);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.AutoCollection, CustomersRequest> customerAutoCollection() {
             return new EnumFilter<com.chargebee.models.enums.AutoCollection, CustomersRequest>("customer[auto_collection]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Taxability, CustomersRequest> customerTaxability() {
             return new EnumFilter<com.chargebee.models.enums.Taxability, CustomersRequest>("customer[taxability]",this);        
         }
+
 
         public TimestampFilter<CustomersRequest> customerCreatedAt() {
             return new TimestampFilter<CustomersRequest>("customer[created_at]",this);        
         }
 
+
         public TimestampFilter<CustomersRequest> customerUpdatedAt() {
             return new TimestampFilter<CustomersRequest>("customer[updated_at]",this);        
         }
+
 
         public StringFilter<CustomersRequest> relationshipParentId() {
             return new StringFilter<CustomersRequest>("relationship[parent_id]",this);        
         }
 
+
         public StringFilter<CustomersRequest> relationshipPaymentOwnerId() {
             return new StringFilter<CustomersRequest>("relationship[payment_owner_id]",this);        
         }
+
 
         public StringFilter<CustomersRequest> relationshipInvoiceOwnerId() {
             return new StringFilter<CustomersRequest>("relationship[invoice_owner_id]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomersRequest> customerOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, CustomersRequest>("customer[offline_payment_method]",this);        
         }
+
 
         public BooleanFilter<CustomersRequest> customerAutoCloseInvoices() {
             return new BooleanFilter<CustomersRequest>("customer[auto_close_invoices]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, CustomersRequest> customerChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, CustomersRequest>("customer[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -993,61 +1133,76 @@ public Export waitForExportCompletion()
             return new StringFilter<SubscriptionsRequest>("subscription[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<SubscriptionsRequest> subscriptionCustomerId() {
             return new StringFilter<SubscriptionsRequest>("subscription[customer_id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<SubscriptionsRequest> subscriptionPlanId() {
             return new StringFilter<SubscriptionsRequest>("subscription[plan_id]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<Subscription.Status, SubscriptionsRequest> subscriptionStatus() {
             return new EnumFilter<Subscription.Status, SubscriptionsRequest>("subscription[status]",this);        
         }
+
 
         public EnumFilter<Subscription.CancelReason, SubscriptionsRequest> subscriptionCancelReason() {
             return new EnumFilter<Subscription.CancelReason, SubscriptionsRequest>("subscription[cancel_reason]",this).supportsPresenceOperator(true);        
         }
 
+
         public NumberFilter<Integer, SubscriptionsRequest> subscriptionRemainingBillingCycles() {
             return new NumberFilter<Integer, SubscriptionsRequest>("subscription[remaining_billing_cycles]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<SubscriptionsRequest> subscriptionCreatedAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[created_at]",this);        
         }
 
+
         public TimestampFilter<SubscriptionsRequest> subscriptionActivatedAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[activated_at]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<SubscriptionsRequest> subscriptionNextBillingAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[next_billing_at]",this);        
         }
 
+
         public TimestampFilter<SubscriptionsRequest> subscriptionCancelledAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[cancelled_at]",this);        
         }
+
 
         public BooleanFilter<SubscriptionsRequest> subscriptionHasScheduledChanges() {
             return new BooleanFilter<SubscriptionsRequest>("subscription[has_scheduled_changes]",this);        
         }
 
+
         public TimestampFilter<SubscriptionsRequest> subscriptionUpdatedAt() {
             return new TimestampFilter<SubscriptionsRequest>("subscription[updated_at]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest> subscriptionOfflinePaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.OfflinePaymentMethod, SubscriptionsRequest>("subscription[offline_payment_method]",this);        
         }
 
+
         public BooleanFilter<SubscriptionsRequest> subscriptionAutoCloseInvoices() {
             return new BooleanFilter<SubscriptionsRequest>("subscription[auto_close_invoices]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionsRequest> subscriptionChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionsRequest>("subscription[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1070,65 +1225,81 @@ public Export waitForExportCompletion()
             return new StringFilter<InvoicesRequest>("invoice[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<InvoicesRequest> invoiceSubscriptionId() {
             return new StringFilter<InvoicesRequest>("invoice[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<InvoicesRequest> invoiceCustomerId() {
             return new StringFilter<InvoicesRequest>("invoice[customer_id]",this).supportsMultiOperators(true);        
         }
 
+
         public BooleanFilter<InvoicesRequest> invoiceRecurring() {
             return new BooleanFilter<InvoicesRequest>("invoice[recurring]",this);        
         }
+
 
         public EnumFilter<Invoice.Status, InvoicesRequest> invoiceStatus() {
             return new EnumFilter<Invoice.Status, InvoicesRequest>("invoice[status]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.PriceType, InvoicesRequest> invoicePriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, InvoicesRequest>("invoice[price_type]",this);        
         }
+
 
         public TimestampFilter<InvoicesRequest> invoiceDate() {
             return new TimestampFilter<InvoicesRequest>("invoice[date]",this);        
         }
 
+
         public TimestampFilter<InvoicesRequest> invoicePaidAt() {
             return new TimestampFilter<InvoicesRequest>("invoice[paid_at]",this);        
         }
+
 
         public NumberFilter<Long, InvoicesRequest> invoiceTotal() {
             return new NumberFilter<Long, InvoicesRequest>("invoice[total]",this);        
         }
 
+
         public NumberFilter<Long, InvoicesRequest> invoiceAmountPaid() {
             return new NumberFilter<Long, InvoicesRequest>("invoice[amount_paid]",this);        
         }
+
 
         public NumberFilter<Long, InvoicesRequest> invoiceAmountAdjusted() {
             return new NumberFilter<Long, InvoicesRequest>("invoice[amount_adjusted]",this);        
         }
 
+
         public NumberFilter<Long, InvoicesRequest> invoiceCreditsApplied() {
             return new NumberFilter<Long, InvoicesRequest>("invoice[credits_applied]",this);        
         }
+
 
         public NumberFilter<Long, InvoicesRequest> invoiceAmountDue() {
             return new NumberFilter<Long, InvoicesRequest>("invoice[amount_due]",this);        
         }
 
+
         public EnumFilter<Invoice.DunningStatus, InvoicesRequest> invoiceDunningStatus() {
             return new EnumFilter<Invoice.DunningStatus, InvoicesRequest>("invoice[dunning_status]",this).supportsPresenceOperator(true);        
         }
+
 
         public TimestampFilter<InvoicesRequest> invoiceUpdatedAt() {
             return new TimestampFilter<InvoicesRequest>("invoice[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, InvoicesRequest> invoiceChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, InvoicesRequest>("invoice[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1146,69 +1317,86 @@ public Export waitForExportCompletion()
             return new StringFilter<CreditNotesRequest>("credit_note[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<CreditNotesRequest> creditNoteCustomerId() {
             return new StringFilter<CreditNotesRequest>("credit_note[customer_id]",this).supportsMultiOperators(true);        
         }
+
 
         public StringFilter<CreditNotesRequest> creditNoteSubscriptionId() {
             return new StringFilter<CreditNotesRequest>("credit_note[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<CreditNotesRequest> creditNoteReferenceInvoiceId() {
-            return new StringFilter<CreditNotesRequest>("credit_note[reference_invoice_id]",this).supportsMultiOperators(true);        
+            return new StringFilter<CreditNotesRequest>("credit_note[reference_invoice_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
+
 
         public EnumFilter<CreditNote.Type, CreditNotesRequest> creditNoteType() {
             return new EnumFilter<CreditNote.Type, CreditNotesRequest>("credit_note[type]",this);        
         }
 
+
         public EnumFilter<CreditNote.ReasonCode, CreditNotesRequest> creditNoteReasonCode() {
             return new EnumFilter<CreditNote.ReasonCode, CreditNotesRequest>("credit_note[reason_code]",this);        
         }
+
 
         public StringFilter<CreditNotesRequest> creditNoteCreateReasonCode() {
             return new StringFilter<CreditNotesRequest>("credit_note[create_reason_code]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<CreditNote.Status, CreditNotesRequest> creditNoteStatus() {
             return new EnumFilter<CreditNote.Status, CreditNotesRequest>("credit_note[status]",this);        
         }
+
 
         public TimestampFilter<CreditNotesRequest> creditNoteDate() {
             return new TimestampFilter<CreditNotesRequest>("credit_note[date]",this);        
         }
 
+
         public NumberFilter<Long, CreditNotesRequest> creditNoteTotal() {
             return new NumberFilter<Long, CreditNotesRequest>("credit_note[total]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest> creditNotePriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, CreditNotesRequest>("credit_note[price_type]",this);        
         }
 
+
         public NumberFilter<Long, CreditNotesRequest> creditNoteAmountAllocated() {
             return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_allocated]",this);        
         }
+
 
         public NumberFilter<Long, CreditNotesRequest> creditNoteAmountRefunded() {
             return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_refunded]",this);        
         }
 
+
         public NumberFilter<Long, CreditNotesRequest> creditNoteAmountAvailable() {
             return new NumberFilter<Long, CreditNotesRequest>("credit_note[amount_available]",this);        
         }
+
 
         public TimestampFilter<CreditNotesRequest> creditNoteVoidedAt() {
             return new TimestampFilter<CreditNotesRequest>("credit_note[voided_at]",this);        
         }
 
+
         public TimestampFilter<CreditNotesRequest> creditNoteUpdatedAt() {
             return new TimestampFilter<CreditNotesRequest>("credit_note[updated_at]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, CreditNotesRequest> creditNoteChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, CreditNotesRequest>("credit_note[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1226,61 +1414,76 @@ public Export waitForExportCompletion()
             return new StringFilter<TransactionsRequest>("transaction[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<TransactionsRequest> transactionCustomerId() {
             return new StringFilter<TransactionsRequest>("transaction[customer_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<TransactionsRequest> transactionSubscriptionId() {
             return new StringFilter<TransactionsRequest>("transaction[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
 
+
         public StringFilter<TransactionsRequest> transactionPaymentSourceId() {
             return new StringFilter<TransactionsRequest>("transaction[payment_source_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionsRequest> transactionPaymentMethod() {
             return new EnumFilter<com.chargebee.models.enums.PaymentMethod, TransactionsRequest>("transaction[payment_method]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Gateway, TransactionsRequest> transactionGateway() {
             return new EnumFilter<com.chargebee.models.enums.Gateway, TransactionsRequest>("transaction[gateway]",this);        
         }
+
 
         public StringFilter<TransactionsRequest> transactionGatewayAccountId() {
             return new StringFilter<TransactionsRequest>("transaction[gateway_account_id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<TransactionsRequest> transactionIdAtGateway() {
             return new StringFilter<TransactionsRequest>("transaction[id_at_gateway]",this);        
         }
+
 
         public StringFilter<TransactionsRequest> transactionReferenceNumber() {
             return new StringFilter<TransactionsRequest>("transaction[reference_number]",this).supportsPresenceOperator(true);        
         }
 
+
         public EnumFilter<Transaction.Type, TransactionsRequest> transactionType() {
             return new EnumFilter<Transaction.Type, TransactionsRequest>("transaction[type]",this);        
         }
+
 
         public TimestampFilter<TransactionsRequest> transactionDate() {
             return new TimestampFilter<TransactionsRequest>("transaction[date]",this);        
         }
 
+
         public NumberFilter<Long, TransactionsRequest> transactionAmount() {
             return new NumberFilter<Long, TransactionsRequest>("transaction[amount]",this);        
         }
+
 
         public NumberFilter<Long, TransactionsRequest> transactionAmountCapturable() {
             return new NumberFilter<Long, TransactionsRequest>("transaction[amount_capturable]",this);        
         }
 
+
         public EnumFilter<Transaction.Status, TransactionsRequest> transactionStatus() {
             return new EnumFilter<Transaction.Status, TransactionsRequest>("transaction[status]",this);        
         }
 
+
         public TimestampFilter<TransactionsRequest> transactionUpdatedAt() {
             return new TimestampFilter<TransactionsRequest>("transaction[updated_at]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1303,69 +1506,86 @@ public Export waitForExportCompletion()
             return new StringFilter<OrdersRequest>("order[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<OrdersRequest> orderSubscriptionId() {
             return new StringFilter<OrdersRequest>("order[subscription_id]",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
+
 
         public StringFilter<OrdersRequest> orderCustomerId() {
             return new StringFilter<OrdersRequest>("order[customer_id]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<Order.Status, OrdersRequest> orderStatus() {
             return new EnumFilter<Order.Status, OrdersRequest>("order[status]",this);        
         }
+
 
         public EnumFilter<com.chargebee.models.enums.PriceType, OrdersRequest> orderPriceType() {
             return new EnumFilter<com.chargebee.models.enums.PriceType, OrdersRequest>("order[price_type]",this);        
         }
 
+
         public TimestampFilter<OrdersRequest> orderOrderDate() {
             return new TimestampFilter<OrdersRequest>("order[order_date]",this);        
         }
+
 
         public TimestampFilter<OrdersRequest> orderShippingDate() {
             return new TimestampFilter<OrdersRequest>("order[shipping_date]",this);        
         }
 
+
         public TimestampFilter<OrdersRequest> orderShippedAt() {
             return new TimestampFilter<OrdersRequest>("order[shipped_at]",this);        
         }
+
 
         public TimestampFilter<OrdersRequest> orderDeliveredAt() {
             return new TimestampFilter<OrdersRequest>("order[delivered_at]",this);        
         }
 
+
         public TimestampFilter<OrdersRequest> orderCancelledAt() {
             return new TimestampFilter<OrdersRequest>("order[cancelled_at]",this);        
         }
+
 
         public NumberFilter<Long, OrdersRequest> orderAmountPaid() {
             return new NumberFilter<Long, OrdersRequest>("order[amount_paid]",this);        
         }
 
+
         public NumberFilter<Long, OrdersRequest> orderRefundableCredits() {
             return new NumberFilter<Long, OrdersRequest>("order[refundable_credits]",this);        
         }
+
 
         public NumberFilter<Long, OrdersRequest> orderRefundableCreditsIssued() {
             return new NumberFilter<Long, OrdersRequest>("order[refundable_credits_issued]",this);        
         }
 
+
         public TimestampFilter<OrdersRequest> orderUpdatedAt() {
             return new TimestampFilter<OrdersRequest>("order[updated_at]",this);        
         }
+
 
         public EnumFilter<Order.ResentStatus, OrdersRequest> orderResentStatus() {
             return new EnumFilter<Order.ResentStatus, OrdersRequest>("order[resent_status]",this);        
         }
 
+
         public BooleanFilter<OrdersRequest> orderIsResent() {
             return new BooleanFilter<OrdersRequest>("order[is_resent]",this);        
         }
 
+
         public StringFilter<OrdersRequest> orderOriginalOrderId() {
             return new StringFilter<OrdersRequest>("order[original_order_id]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1383,13 +1603,16 @@ public Export waitForExportCompletion()
             return new StringFilter<ItemFamiliesRequest>("item_family[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<ItemFamiliesRequest> itemFamilyName() {
             return new StringFilter<ItemFamiliesRequest>("item_family[name]",this);        
         }
 
+
         public TimestampFilter<ItemFamiliesRequest> itemFamilyUpdatedAt() {
             return new TimestampFilter<ItemFamiliesRequest>("item_family[updated_at]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1407,53 +1630,66 @@ public Export waitForExportCompletion()
             return new StringFilter<ItemsRequest>("item[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<ItemsRequest> itemItemFamilyId() {
             return new StringFilter<ItemsRequest>("item[item_family_id]",this).supportsMultiOperators(true);        
         }
+
 
         public EnumFilter<Item.Type, ItemsRequest> itemType() {
             return new EnumFilter<Item.Type, ItemsRequest>("item[type]",this);        
         }
 
+
         public StringFilter<ItemsRequest> itemName() {
             return new StringFilter<ItemsRequest>("item[name]",this);        
         }
+
 
         public EnumFilter<Item.ItemApplicability, ItemsRequest> itemItemApplicability() {
             return new EnumFilter<Item.ItemApplicability, ItemsRequest>("item[item_applicability]",this);        
         }
 
+
         public EnumFilter<Item.Status, ItemsRequest> itemStatus() {
             return new EnumFilter<Item.Status, ItemsRequest>("item[status]",this);        
         }
+
 
         public BooleanFilter<ItemsRequest> itemIsGiftable() {
             return new BooleanFilter<ItemsRequest>("item[is_giftable]",this);        
         }
 
+
         public TimestampFilter<ItemsRequest> itemUpdatedAt() {
             return new TimestampFilter<ItemsRequest>("item[updated_at]",this);        
         }
+
 
         public BooleanFilter<ItemsRequest> itemEnabledForCheckout() {
             return new BooleanFilter<ItemsRequest>("item[enabled_for_checkout]",this);        
         }
 
+
         public BooleanFilter<ItemsRequest> itemEnabledInPortal() {
             return new BooleanFilter<ItemsRequest>("item[enabled_in_portal]",this);        
         }
+
 
         public BooleanFilter<ItemsRequest> itemMetered() {
             return new BooleanFilter<ItemsRequest>("item[metered]",this);        
         }
 
+
         public EnumFilter<Item.UsageCalculation, ItemsRequest> itemUsageCalculation() {
             return new EnumFilter<Item.UsageCalculation, ItemsRequest>("item[usage_calculation]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, ItemsRequest> itemChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, ItemsRequest>("item[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1486,13 +1722,16 @@ public Export waitForExportCompletion()
             return new StringFilter<ItemPricesRequest>("item_price[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<ItemPricesRequest> itemPriceName() {
             return new StringFilter<ItemPricesRequest>("item_price[name]",this).supportsMultiOperators(true);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.PricingModel, ItemPricesRequest> itemPricePricingModel() {
             return new EnumFilter<com.chargebee.models.enums.PricingModel, ItemPricesRequest>("item_price[pricing_model]",this);        
         }
+
 
         public StringFilter<ItemPricesRequest> itemPriceItemId() {
             return new StringFilter<ItemPricesRequest>("item_price[item_id]",this).supportsMultiOperators(true);        
@@ -1502,29 +1741,36 @@ public Export waitForExportCompletion()
             return new NumberFilter<Integer, ItemPricesRequest>("item_price[trial_period]",this);        
         }
 
+
         public EnumFilter<ItemPrice.TrialPeriodUnit, ItemPricesRequest> itemPriceTrialPeriodUnit() {
             return new EnumFilter<ItemPrice.TrialPeriodUnit, ItemPricesRequest>("item_price[trial_period_unit]",this);        
         }
+
 
         public EnumFilter<ItemPrice.Status, ItemPricesRequest> itemPriceStatus() {
             return new EnumFilter<ItemPrice.Status, ItemPricesRequest>("item_price[status]",this);        
         }
 
+
         public TimestampFilter<ItemPricesRequest> itemPriceUpdatedAt() {
             return new TimestampFilter<ItemPricesRequest>("item_price[updated_at]",this);        
         }
+
 
         public EnumFilter<ItemPrice.PeriodUnit, ItemPricesRequest> itemPricePeriodUnit() {
             return new EnumFilter<ItemPrice.PeriodUnit, ItemPricesRequest>("item_price[period_unit]",this);        
         }
 
+
         public NumberFilter<Integer, ItemPricesRequest> itemPricePeriod() {
             return new NumberFilter<Integer, ItemPricesRequest>("item_price[period]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.Channel, ItemPricesRequest> itemPriceChannel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, ItemPricesRequest>("item_price[channel]",this);        
         }
+
 
         @Override
         public Params params() {
@@ -1547,25 +1793,31 @@ public Export waitForExportCompletion()
             return new StringFilter<AttachedItemsRequest>("attached_item[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<AttachedItemsRequest> attachedItemItemId() {
             return new StringFilter<AttachedItemsRequest>("attached_item[item_id]",this).supportsMultiOperators(true);        
         }
+
 
         public EnumFilter<AttachedItem.Type, AttachedItemsRequest> attachedItemType() {
             return new EnumFilter<AttachedItem.Type, AttachedItemsRequest>("attached_item[type]",this);        
         }
 
+
         public EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemsRequest> attachedItemChargeOnEvent() {
             return new EnumFilter<com.chargebee.models.enums.ChargeOnEvent, AttachedItemsRequest>("attached_item[charge_on_event]",this);        
         }
+
 
         public TimestampFilter<AttachedItemsRequest> attachedItemUpdatedAt() {
             return new TimestampFilter<AttachedItemsRequest>("attached_item[updated_at]",this);        
         }
 
+
         public StringFilter<AttachedItemsRequest> attachedItemParentItemId() {
             return new StringFilter<AttachedItemsRequest>("attached_item[parent_item_id]",this).supportsMultiOperators(true);        
         }
+
 
         @Override
         public Params params() {
@@ -1588,13 +1840,53 @@ public Export waitForExportCompletion()
             return new StringFilter<DifferentialPricesRequest>("differential_price[item_price_id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<DifferentialPricesRequest> differentialPriceId() {
             return new StringFilter<DifferentialPricesRequest>("differential_price[id]",this).supportsMultiOperators(true);        
         }
 
+
         public StringFilter<DifferentialPricesRequest> differentialPriceParentItemId() {
             return new StringFilter<DifferentialPricesRequest>("differential_price[parent_item_id]",this).supportsMultiOperators(true);        
         }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PriceVariantsRequest extends Request<PriceVariantsRequest> {
+
+        private PriceVariantsRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<PriceVariantsRequest> priceVariantId() {
+            return new StringFilter<PriceVariantsRequest>("price_variant[id]",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<PriceVariantsRequest> priceVariantName() {
+            return new StringFilter<PriceVariantsRequest>("price_variant[name]",this).supportsMultiOperators(true);        
+        }
+
+
+        public EnumFilter<PriceVariant.Status, PriceVariantsRequest> priceVariantStatus() {
+            return new EnumFilter<PriceVariant.Status, PriceVariantsRequest>("price_variant[status]",this);        
+        }
+
+
+        public TimestampFilter<PriceVariantsRequest> priceVariantUpdatedAt() {
+            return new TimestampFilter<PriceVariantsRequest>("price_variant[updated_at]",this);        
+        }
+
+
+        public TimestampFilter<PriceVariantsRequest> priceVariantCreatedAt() {
+            return new TimestampFilter<PriceVariantsRequest>("price_variant[created_at]",this);        
+        }
+
 
         @Override
         public Params params() {

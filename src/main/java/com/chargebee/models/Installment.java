@@ -59,6 +59,10 @@ public class Installment extends Resource<Installment> {
         return reqTimestamp("created_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
     }
@@ -85,7 +89,7 @@ public class Installment extends Resource<Installment> {
         private InstallmentListRequest(String uri) {
             super(uri);
         }
-
+    
         public InstallmentListRequest sortBy(String sortBy) {
             params.addOpt("sort_by", sortBy);
             return this;
@@ -93,7 +97,7 @@ public class Installment extends Resource<Installment> {
 
 
         public StringFilter<InstallmentListRequest> invoiceId() {
-            return new StringFilter<InstallmentListRequest>("invoice_id",this).supportsMultiOperators(true);
+            return new StringFilter<InstallmentListRequest>("invoice_id",this).supportsMultiOperators(true);        
         }
 
 

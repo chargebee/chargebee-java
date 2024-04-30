@@ -315,8 +315,6 @@ public class Item extends Resource<Item> {
         }
 
 
-
-
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
             return this;
@@ -434,8 +432,6 @@ public class Item extends Resource<Item> {
             params.addOpt("status", status);
             return this;
         }
-
-
 
 
         @Override

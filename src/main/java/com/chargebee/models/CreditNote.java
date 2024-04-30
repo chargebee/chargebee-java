@@ -1058,6 +1058,9 @@ public class CreditNote extends Resource<CreditNote> {
             super(uri);
         }
     
+        public EnumFilter<Einvoice.Status, CreditNoteListRequest> einvoiceStatus() {
+            return new EnumFilter<Einvoice.Status, CreditNoteListRequest>("einvoice[status]",this);        
+        }
 
 
         public CreditNoteListRequest includeDeleted(Boolean includeDeleted) {
@@ -1156,10 +1159,6 @@ public class CreditNote extends Resource<CreditNote> {
             return new EnumFilter<com.chargebee.models.enums.Channel, CreditNoteListRequest>("channel",this);        
         }
 
-
-        public EnumFilter<Einvoice.Status, CreditNoteListRequest> einvoiceStatus() {
-            return new EnumFilter<Einvoice.Status, CreditNoteListRequest>("einvoice[status]",this);        
-        }
 
         @Override
         public Params params() {
@@ -1304,6 +1303,10 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public ImportCreditNoteRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
+            params.addOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+            return this;
+        }
         public ImportCreditNoteRequest lineItemId(int index, String lineItemId) {
             params.addOpt("line_items[id][" + index + "]", lineItemId);
             return this;
@@ -1450,10 +1453,6 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public ImportCreditNoteRequest lineItemTax10Amount(int index, Long lineItemTax10Amount) {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
-            return this;
-        }
-        public ImportCreditNoteRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
-            params.addOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
             return this;
         }
         public ImportCreditNoteRequest lineItemTierLineItemId(int index, String lineItemTierLineItemId) {

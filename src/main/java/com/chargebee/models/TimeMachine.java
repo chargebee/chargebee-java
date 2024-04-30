@@ -82,12 +82,12 @@ public class TimeMachine extends Resource<TimeMachine> {
         return new TravelForwardRequest(Method.POST, uri);
     }
 
-    public TimeMachine waitForTimeTravelCompletion() 
-            throws Exception{ 
+    public TimeMachine waitForTimeTravelCompletion()
+            throws Exception{
         return waitForTimeTravelCompletion(null);
     }
 
-    public TimeMachine waitForTimeTravelCompletion(Environment env) 
+    public TimeMachine waitForTimeTravelCompletion(Environment env)
             throws Exception {
         int count = 0;
         int sleepTime = Integer.getInteger("cb.java.time_travel.sleep.millis", 3000);

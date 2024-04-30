@@ -289,6 +289,14 @@ public class Resource<T> {
         return id;
     }
 
+    protected static String nullCheckWithoutEncoding(String id) {
+        //encoding not needed when we are considering this param to be sent in body
+        if(id == null || id.isEmpty()) {
+            throw new RuntimeException("id cannot be null/empty");
+        }
+        return id;
+    }
+
     protected static String uri(String ... paths){
         StringBuilder strBuf = new StringBuilder();
         for (String path : paths) {

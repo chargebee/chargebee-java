@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ResultBase {
 
     private JSONObject jsonObj;
-    
+
     public ResultBase(JSONObject jsonObj) {
         this.jsonObj = jsonObj;
     }
@@ -200,6 +200,10 @@ public class ResultBase {
         return (Item)get("item");
     }
 
+    public PriceVariant priceVariant() {
+        return (PriceVariant)get("price_variant");
+    }
+
     public Attribute attribute() {
         return (Attribute)get("attribute");
     }
@@ -260,6 +264,10 @@ public class ResultBase {
         return (PaymentVoucher)get("payment_voucher");
     }
 
+    public Ramp ramp() {
+        return (Ramp)get("ramp");
+    }
+
     public InstallmentConfig installmentConfig() {
         return (InstallmentConfig)get("installment_config");
     }
@@ -268,12 +276,12 @@ public class ResultBase {
         return (Installment)get("installment");
     }
 
-    public List<UnbilledCharge> unbilledCharges() {
-        return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
+    public InstallmentDetail installmentDetail() {
+        return (InstallmentDetail)get("installment_detail");
     }
 
-    public List<CreditNote> creditNotes() {
-        return (List<CreditNote>) getList("credit_notes", "credit_note");
+    public Session session() {
+        return (Session)get("session");
     }
 
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
@@ -284,20 +292,28 @@ public class ResultBase {
         return (List<Hierarchy>) getList("hierarchies", "hierarchy");
     }
 
-    public List<Download> downloads() {
-        return (List<Download>) getList("downloads", "download");
-    }
-
     public List<Invoice> invoices() {
         return (List<Invoice>) getList("invoices", "invoice");
     }
 
-    public List<DifferentialPrice> differentialPrices() {
-        return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
+    public List<CreditNote> creditNotes() {
+        return (List<CreditNote>) getList("credit_notes", "credit_note");
+    }
+
+    public List<UnbilledCharge> unbilledCharges() {
+        return (List<UnbilledCharge>) getList("unbilled_charges", "unbilled_charge");
+    }
+
+    public List<Download> downloads() {
+        return (List<Download>) getList("downloads", "download");
     }
 
     public List<InAppSubscription> inAppSubscriptions() {
         return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
+    }
+
+    public List<DifferentialPrice> differentialPrices() {
+        return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
 
 

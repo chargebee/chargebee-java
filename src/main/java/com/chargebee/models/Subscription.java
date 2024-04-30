@@ -14,15 +14,6 @@ import java.util.*;
 
 public class Subscription extends Resource<Subscription> {
 
-    public enum BillingPeriodUnit {
-        DAY,
-        WEEK,
-        MONTH,
-        YEAR,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
     public enum Status {
         FUTURE,
         IN_TRIAL,
@@ -43,6 +34,15 @@ public class Subscription extends Resource<Subscription> {
         TAX_CALCULATION_FAILED,
         CURRENCY_INCOMPATIBLE_WITH_GATEWAY,
         NON_COMPLIANT_CUSTOMER,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public enum BillingPeriodUnit {
+        DAY,
+        WEEK,
+        MONTH,
+        YEAR,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -1242,16 +1242,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public CreateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
@@ -1313,8 +1307,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public CreateRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -1331,8 +1323,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("free_period_unit", freePeriodUnit);
             return this;
         }
-
-
 
 
         public CreateRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -1834,11 +1824,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
-            return this;
-        }
-
         public CreateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -2096,16 +2081,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public CreateForCustomerRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
-
-
 
 
         public CreateForCustomerRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
@@ -2160,8 +2139,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public CreateForCustomerRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -2184,8 +2161,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("free_period_unit", freePeriodUnit);
             return this;
         }
-
-
 
 
         public CreateForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -2278,11 +2253,6 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateForCustomerRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
-            return this;
-        }
-
-        public CreateForCustomerRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -2490,23 +2460,15 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public CreateWithItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
             params.addOpt("billing_alignment_mode", billingAlignmentMode);
             return this;
         }
 
-
-
-
         public CreateWithItemsRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
             params.addOpt("offline_payment_method", offlinePaymentMethod);
             return this;
         }
-
 
         public CreateWithItemsRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);
@@ -2554,8 +2516,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public CreateWithItemsRequest invoiceImmediately(Boolean invoiceImmediately) {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
@@ -2578,8 +2538,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("free_period_unit", freePeriodUnit);
             return this;
         }
-
-
 
 
         public CreateWithItemsRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -2693,11 +2651,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateWithItemsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
-            return this;
-        }
-
         public CreateWithItemsRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
@@ -2736,6 +2689,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateWithItemsRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
             params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        @Deprecated
+        public CreateWithItemsRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
             return this;
         }
 
@@ -3132,14 +3091,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public UpdateRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -3254,10 +3209,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public UpdateRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -3268,8 +3219,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("free_period_unit", freePeriodUnit);
             return this;
         }
-
-
 
 
         public UpdateRequest trialEndAction(com.chargebee.models.enums.TrialEndAction trialEndAction) {
@@ -3588,11 +3537,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
-            return this;
-        }
-
         public UpdateRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -3799,14 +3743,10 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public UpdateForItemsRequest reactivateFrom(Timestamp reactivateFrom) {
             params.addOpt("reactivate_from", reactivateFrom);
             return this;
         }
-
-
 
 
         public UpdateForItemsRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -3921,10 +3861,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public UpdateForItemsRequest freePeriod(Integer freePeriod) {
             params.addOpt("free_period", freePeriod);
             return this;
@@ -3935,8 +3871,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("free_period_unit", freePeriodUnit);
             return this;
         }
-
-
 
 
         public UpdateForItemsRequest createPendingInvoices(Boolean createPendingInvoices) {
@@ -4273,11 +4207,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public UpdateForItemsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
-            return this;
-        }
-
         public UpdateForItemsRequest customerVatNumber(String customerVatNumber) {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
@@ -4325,6 +4254,12 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
             params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
+        @Deprecated
+        public UpdateForItemsRequest contractTermContractStart(Timestamp contractTermContractStart) {
+            params.addOpt("contract_term[contract_start]", contractTermContractStart);
             return this;
         }
 
@@ -4489,8 +4424,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         @Override
         public Params params() {
             return params;
@@ -4515,8 +4448,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         @Deprecated
         public ReactivateRequest trialPeriodDays(Integer trialPeriodDays) {
             params.addOpt("trial_period_days", trialPeriodDays);
@@ -4534,10 +4465,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("invoice_immediately", invoiceImmediately);
             return this;
         }
-
-
-
-
 
 
         public ReactivateRequest billingAlignmentMode(com.chargebee.models.enums.BillingAlignmentMode billingAlignmentMode) {
@@ -4582,11 +4509,6 @@ public class Subscription extends Resource<Subscription> {
 
         public ReactivateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
-            return this;
-        }
-
-        public ReactivateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -4984,8 +4906,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public ImportSubscriptionRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
@@ -5068,24 +4988,16 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
-
-
         public ImportSubscriptionRequest createCurrentTermInvoice(Boolean createCurrentTermInvoice) {
             params.addOpt("create_current_term_invoice", createCurrentTermInvoice);
             return this;
         }
 
 
-
-
         public ImportSubscriptionRequest affiliateToken(String affiliateToken) {
             params.addOpt("affiliate_token", affiliateToken);
             return this;
         }
-
-
 
 
         public ImportSubscriptionRequest invoiceNotes(String invoiceNotes) {
@@ -5649,8 +5561,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public ImportForCustomerRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
@@ -5731,10 +5641,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("resume_date", resumeDate);
             return this;
         }
-
-
-
-
 
 
         public ImportForCustomerRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -6220,8 +6126,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-
-
         public ImportForItemsRequest autoCollection(com.chargebee.models.enums.AutoCollection autoCollection) {
             params.addOpt("auto_collection", autoCollection);
             return this;
@@ -6302,10 +6206,6 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("resume_date", resumeDate);
             return this;
         }
-
-
-
-
 
 
         public ImportForItemsRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
@@ -6936,7 +6836,7 @@ public class Subscription extends Resource<Subscription> {
         private MoveRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-
+    
         public MoveRequest toCustomerId(String toCustomerId) {
             params.add("to_customer_id", toCustomerId);
             return this;

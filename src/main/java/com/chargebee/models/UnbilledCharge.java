@@ -166,6 +166,10 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         return optBoolean("is_advance_charge");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     public Boolean deleted() {
         return reqBoolean("deleted");
     }

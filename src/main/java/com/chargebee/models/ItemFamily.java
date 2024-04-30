@@ -118,8 +118,6 @@ public class ItemFamily extends Resource<ItemFamily> {
         }
 
 
-
-
         @Override
         public Params params() {
             return params;
@@ -169,8 +167,6 @@ public class ItemFamily extends Resource<ItemFamily> {
             params.addOpt("description", description);
             return this;
         }
-
-
 
 
         @Override

@@ -617,22 +617,25 @@ public class Gift extends Resource<Gift> {
             super(uri);
         }
     
-        public EnumFilter<Gift.Status, GiftListRequest> status() {
-            return new EnumFilter<Gift.Status, GiftListRequest>("status",this);        
-        }
-
-
         public StringFilter<GiftListRequest> giftReceiverEmail() {
             return new StringFilter<GiftListRequest>("gift_receiver[email]",this);        
         }
+
+
+        public StringFilter<GiftListRequest> giftReceiverCustomerId() {
+            return new StringFilter<GiftListRequest>("gift_receiver[customer_id]",this);        
+        }
+
 
         public StringFilter<GiftListRequest> gifterCustomerId() {
             return new StringFilter<GiftListRequest>("gifter[customer_id]",this);        
         }
 
-        public StringFilter<GiftListRequest> giftReceiverCustomerId() {
-            return new StringFilter<GiftListRequest>("gift_receiver[customer_id]",this);        
+
+        public EnumFilter<Gift.Status, GiftListRequest> status() {
+            return new EnumFilter<Gift.Status, GiftListRequest>("status",this);        
         }
+
 
         @Override
         public Params params() {

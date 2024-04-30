@@ -654,10 +654,6 @@ public class Invoice extends Resource<Invoice> {
             return optString("descriptor");
         }
 
-        public String additionalInfo() {
-            return optString("additional_info");
-        }
-
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {
@@ -1241,8 +1237,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-
-
         public CreateRequest invoiceDate(Timestamp invoiceDate) {
             params.addOpt("invoice_date", invoiceDate);
             return this;
@@ -1318,8 +1312,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("retain_payment_source", retainPaymentSource);
             return this;
         }
-
-
 
 
         public CreateRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
@@ -1400,11 +1392,6 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
-            return this;
-        }
-
-        public CreateRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -1853,10 +1840,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-
-
-
-
         public CreateForChargeItemsAndChargesRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
             params.addOpt("payment_initiator", paymentInitiator);
             return this;
@@ -1935,11 +1918,6 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
-            return this;
-        }
-
-        public CreateForChargeItemsAndChargesRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
             return this;
         }
 
@@ -2438,8 +2416,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-
-
         public ChargeRequest paymentInitiator(com.chargebee.models.enums.PaymentInitiator paymentInitiator) {
             params.addOpt("payment_initiator", paymentInitiator);
             return this;
@@ -2553,8 +2529,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-
-
         @Override
         public Params params() {
             return params;
@@ -2607,8 +2581,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("invoice_date", invoiceDate);
             return this;
         }
-
-
 
 
         public CreateForChargeItemRequest itemPriceItemPriceId(String itemPriceItemPriceId) {
@@ -2830,8 +2802,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("use_for_proration", useForProration);
             return this;
         }
-
-
 
 
         public ImportInvoiceRequest creditNoteId(String creditNoteId) {
@@ -3327,6 +3297,11 @@ public class Invoice extends Resource<Invoice> {
             super(uri);
         }
     
+        public EnumFilter<Einvoice.Status, InvoiceListRequest> einvoiceStatus() {
+            return new EnumFilter<Einvoice.Status, InvoiceListRequest>("einvoice[status]",this);        
+        }
+
+
         @Deprecated
         public InvoiceListRequest paidOnAfter(Timestamp paidOnAfter) {
             params.addOpt("paid_on_after", paidOnAfter);
@@ -3338,16 +3313,6 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("include_deleted", includeDeleted);
             return this;
         }
-
-
-
-
-
-
-
-
-
-
 
 
         public StringFilter<InvoiceListRequest> id() {
@@ -3455,10 +3420,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        public EnumFilter<Einvoice.Status, InvoiceListRequest> einvoiceStatus() {
-            return new EnumFilter<Einvoice.Status, InvoiceListRequest>("einvoice[status]",this);        
-        }
-
         @Override
         public Params params() {
             return params;
@@ -3489,14 +3450,15 @@ public class Invoice extends Resource<Invoice> {
             super(uri);
         }
     
+        public StringFilter<InvoiceListPaymentReferenceNumbersRequest> paymentReferenceNumberNumber() {
+            return new StringFilter<InvoiceListPaymentReferenceNumbersRequest>("payment_reference_number[number]",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<InvoiceListPaymentReferenceNumbersRequest> id() {
             return new StringFilter<InvoiceListPaymentReferenceNumbersRequest>("id",this).supportsMultiOperators(true);        
         }
 
-
-        public StringFilter<InvoiceListPaymentReferenceNumbersRequest> paymentReferenceNumberNumber() {
-            return new StringFilter<InvoiceListPaymentReferenceNumbersRequest>("payment_reference_number[number]",this).supportsMultiOperators(true);        
-        }
 
         @Override
         public Params params() {
@@ -4312,11 +4274,6 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
-        public UpdateDetailsRequest statementDescriptorAdditionalInfo(String statementDescriptorAdditionalInfo) {
-            params.addOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
-            return this;
-        }
-
         @Override
         public Params params() {
             return params;
@@ -4328,7 +4285,7 @@ public class Invoice extends Resource<Invoice> {
         private InstallmentsRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-
+    
         public InstallmentsRequest configId(String configId) {
             params.add("config_id", configId);
             return this;

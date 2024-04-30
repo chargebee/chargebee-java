@@ -15,13 +15,16 @@ public class HttpUtil {
         GET, POST;
     }
 
+    public static final String CONTENT_TYPE_HEADER_NAME = "Content-Type";
+
     /**
      * To temporarily capture the http response
      */
     private static class Resp {
         int httpCode;
         JSONObject jsonContent;
-        Map<String, List<String>> responseHeaders;
+        public Map<String, List<String>> responseHeaders;
+
 
         private Resp(int httpCode, JSONObject jsonContent, Map<String, List<String>> responseHeaders) {
             this.httpCode = httpCode;
@@ -60,6 +63,9 @@ public class HttpUtil {
         return doFormSubmit(url,Method.POST, toQueryStr(params), headers,env);
     }
 
+    public static Result post(String url, String content, Map<String,String> headers, Environment env) throws IOException {
+        return doFormSubmit(url, Method.POST, content, headers, env);
+    }
 
     public static String toQueryStr(Params map) {
         return toQueryStr(map, false);
@@ -126,7 +132,7 @@ public class HttpUtil {
         setTimeouts(conn, config);
         addHeaders(conn, config);
         addCustomHeaders(conn,headers);
-        setContentType(conn, m);
+        setContentType(conn, m, headers);
         if (m == Method.POST) {
             conn.setDoOutput(true);
         }
@@ -147,15 +153,18 @@ public class HttpUtil {
             try {
                 jsonResp.getString("api_error_code");
                 String type = jsonResp.optString("type");
-                String excpetionMessage = jsonResp.getString("message");
-                if ("payment".equals(type)) {
-                    throw new PaymentException(httpRespCode, excpetionMessage, jsonResp);
+                String exceptionMessage = jsonResp.getString("message");
+                if(isBatchApi(conn)) {
+                    throw new BatchAPIException(httpRespCode, exceptionMessage, jsonResp);
+                }
+                else if ("payment".equals(type)) {
+                    throw new PaymentException(httpRespCode, exceptionMessage, jsonResp);
                 } else if ("operation_failed".equals(type)) {
-                    throw new OperationFailedException(httpRespCode, excpetionMessage, jsonResp);
+                    throw new OperationFailedException(httpRespCode, exceptionMessage, jsonResp);
                 } else if ("invalid_request".equals(type)) {
-                    throw new InvalidRequestException(httpRespCode, excpetionMessage, jsonResp);
+                    throw new InvalidRequestException(httpRespCode, exceptionMessage, jsonResp);
                 } else{
-                    throw new APIException(httpRespCode, excpetionMessage, jsonResp);
+                    throw new APIException(httpRespCode, exceptionMessage, jsonResp);
                 }
             }catch(APIException ex){
                 throw ex;            
@@ -169,6 +178,18 @@ public class HttpUtil {
     private static void setTimeouts(URLConnection conn, Environment config) {
         conn.setConnectTimeout(config.connectTimeout);
         conn.setReadTimeout(config.readTimeout);
+    }
+
+    private static boolean isBatchApi(HttpURLConnection connection) {
+        return connection.getURL().toString().contains("/batch/");
+    }
+
+    private static void setContentType(HttpURLConnection conn, Method m, Map<String,String> headers) {
+        if(!(headers.containsKey(CONTENT_TYPE_HEADER_NAME))) {
+            if (m == Method.POST) {
+                addHeader(conn, "Content-Type", "application/x-www-form-urlencoded;charset=" + Environment.CHARSET);
+            }
+        }
     }
 
     private static void setContentType(HttpURLConnection conn, Method m) {

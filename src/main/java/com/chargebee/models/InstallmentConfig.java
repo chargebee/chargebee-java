@@ -79,6 +79,10 @@ public class InstallmentConfig extends Resource<InstallmentConfig> {
         return reqTimestamp("created_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
     }
@@ -114,7 +118,7 @@ public class InstallmentConfig extends Resource<InstallmentConfig> {
         private CreateRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-
+    
         public CreateRequest numberOfInstallments(Integer numberOfInstallments) {
             params.add("number_of_installments", numberOfInstallments);
             return this;

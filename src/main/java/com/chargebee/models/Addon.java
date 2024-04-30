@@ -97,6 +97,25 @@ public class Addon extends Resource<Addon> {
 
     }
 
+    public static class TaxProvidersField extends Resource<TaxProvidersField> {
+        public TaxProvidersField(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String providerName() {
+            return reqString("provider_name");
+        }
+
+        public String fieldId() {
+            return reqString("field_id");
+        }
+
+        public String fieldValue() {
+            return reqString("field_value");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -274,6 +293,10 @@ public class Addon extends Resource<Addon> {
 
     public List<Addon.Tier> tiers() {
         return optList("tiers", Addon.Tier.class);
+    }
+
+    public List<Addon.TaxProvidersField> taxProvidersFields() {
+        return optList("tax_providers_fields", Addon.TaxProvidersField.class);
     }
 
     public Boolean showDescriptionInInvoices() {
@@ -555,8 +578,6 @@ public class Addon extends Resource<Addon> {
         }
 
 
-
-
         public CreateRequest status(Addon.Status status) {
             params.addOpt("status", status);
             return this;
@@ -814,10 +835,6 @@ public class Addon extends Resource<Addon> {
             params.addOpt("proration_type", prorationType);
             return this;
         }
-
-
-
-
 
 
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {

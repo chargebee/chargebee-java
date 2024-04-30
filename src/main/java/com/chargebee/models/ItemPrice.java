@@ -128,6 +128,25 @@ public class ItemPrice extends Resource<ItemPrice> {
 
     }
 
+    public static class TaxProvidersField extends Resource<TaxProvidersField> {
+        public TaxProvidersField(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String providerName() {
+            return reqString("provider_name");
+        }
+
+        public String fieldId() {
+            return reqString("field_id");
+        }
+
+        public String fieldValue() {
+            return reqString("field_value");
+        }
+
+    }
+
     public static class AccountingDetail extends Resource<AccountingDetail> {
         public AccountingDetail(JSONObject jsonObj) {
             super(jsonObj);
@@ -199,6 +218,10 @@ public class ItemPrice extends Resource<ItemPrice> {
 
     public String externalName() {
         return optString("external_name");
+    }
+
+    public String priceVariantId() {
+        return optString("price_variant_id");
     }
 
     public ProrationType prorationType() {
@@ -295,6 +318,10 @@ public class ItemPrice extends Resource<ItemPrice> {
 
     public ItemPrice.TaxDetail taxDetail() {
         return optSubResource("tax_detail", ItemPrice.TaxDetail.class);
+    }
+
+    public List<ItemPrice.TaxProvidersField> taxProvidersFields() {
+        return optList("tax_providers_fields", ItemPrice.TaxProvidersField.class);
     }
 
     public ItemPrice.AccountingDetail accountingDetail() {
@@ -423,6 +450,12 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public CreateRequest priceVariantId(String priceVariantId) {
+            params.addOpt("price_variant_id", priceVariantId);
+            return this;
+        }
+
+
         public CreateRequest isTaxable(Boolean isTaxable) {
             params.addOpt("is_taxable", isTaxable);
             return this;
@@ -457,8 +490,6 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
             return this;
         }
-
-
 
 
         public CreateRequest pricingModel(com.chargebee.models.enums.PricingModel pricingModel) {
@@ -646,6 +677,12 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public UpdateRequest priceVariantId(String priceVariantId) {
+            params.addOpt("price_variant_id", priceVariantId);
+            return this;
+        }
+
+
         public UpdateRequest status(ItemPrice.Status status) {
             params.addOpt("status", status);
             return this;
@@ -686,8 +723,6 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("free_quantity_in_decimal", freeQuantityInDecimal);
             return this;
         }
-
-
 
 
         public UpdateRequest metadata(JSONObject metadata) {
@@ -907,6 +942,11 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public StringFilter<ItemPriceListRequest> currencyCode() {
             return new StringFilter<ItemPriceListRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<ItemPriceListRequest> priceVariantId() {
+            return new StringFilter<ItemPriceListRequest>("price_variant_id",this).supportsMultiOperators(true);        
         }
 
 

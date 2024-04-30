@@ -13,19 +13,19 @@ import java.util.*;
 
 public class QuotedSubscription extends Resource<QuotedSubscription> {
 
+    public enum ChangeOption {
+        END_OF_TERM,
+        SPECIFIC_DATE,
+        IMMEDIATELY,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum BillingPeriodUnit {
         DAY,
         WEEK,
         MONTH,
         YEAR,
-        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-        java-client version incompatibility. We suggest you to upgrade to the latest version */
-    }
-
-    public enum ChangeOption {
-        END_OF_TERM,
-        SPECIFIC_DATE,
-        IMMEDIATELY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

@@ -2,15 +2,21 @@ package com.chargebee.internal;
 
 import com.chargebee.*;
 import com.chargebee.internal.HttpUtil.Method;
+
 import java.io.*;
 
 public class Request<U extends Request> extends RequestBase<U>{
 
     private final HttpUtil.Method httpMeth;
-    
+    private String pathParam = null;
     public Request(Method httpMeth, String uri) {
         this.uri = uri;
         this.httpMeth = httpMeth;
+    }
+
+    public Request(Method httpMeth, String uri, String pathParam) {
+        this(httpMeth, uri);
+        this.pathParam = pathParam;
     }
 
     public U param(String paramName, Object value){
@@ -18,11 +24,11 @@ public class Request<U extends Request> extends RequestBase<U>{
         return (U)this;
     }
         
-    public final Result request() throws Exception {
+    public Result request() throws Exception {
         return request(Environment.defaultConfig());
     }
 
-    public final Result request(Environment env) throws Exception {
+    public Result request(Environment env) throws Exception {
         RequestWrap c = new RequestWrap<Request>(env, this) {
 
             @Override
@@ -42,7 +48,11 @@ public class Request<U extends Request> extends RequestBase<U>{
             case GET:
                 return HttpUtil.get(url, req.params(), req.headers, env);
             case POST:
-                return HttpUtil.post(url, req.params(), req.headers, env);
+                if(req instanceof BatchRequest) {
+                    return HttpUtil.post(url, ((BatchRequest<?>) req).buildRequest(), req.headers, env);
+                } else {
+                    return HttpUtil.post(url, req.params(), req.headers, env);
+                }
             default:
                 throw new RuntimeException("Not handled type [" + req.httpMeth + "]");
         }
@@ -55,5 +65,9 @@ public class Request<U extends Request> extends RequestBase<U>{
 
     public HttpUtil.Method httpMeth() {
         return httpMeth;
+    }
+
+    public String pathParam() {
+        return pathParam;
     }
 }
