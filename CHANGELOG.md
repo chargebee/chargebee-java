@@ -1,3 +1,9 @@
+### v3.17.1 (2024-05-02)
+* * *
+
+#### Removed resources:
+* Session has been removed.
+
 ### v3.17.0 (2024-04-30)
 * * *
 

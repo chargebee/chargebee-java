@@ -280,10 +280,6 @@ public class ResultBase {
         return (InstallmentDetail)get("installment_detail");
     }
 
-    public Session session() {
-        return (Session)get("session");
-    }
-
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
         return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }
