@@ -34,7 +34,7 @@ public class Quote extends Resource<Quote> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
+             ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,PLAN_SETUP,PLAN,ADDON,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -2257,6 +2257,18 @@ public class Quote extends Resource<Quote> {
             params.addOpt("charges[service_period][" + index + "]", chargeServicePeriod);
             return this;
         }
+        public CreateForOnetimeChargesRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateForOnetimeChargesRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2431,6 +2443,18 @@ public class Quote extends Resource<Quote> {
             params.addOpt("charges[service_period][" + index + "]", chargeServicePeriod);
             return this;
         }
+        public EditOneTimeQuoteRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public EditOneTimeQuoteRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public EditOneTimeQuoteRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2522,11 +2546,6 @@ public class Quote extends Resource<Quote> {
 
         public CreateSubItemsForCustomerQuoteRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
-            return this;
-        }
-
-        public CreateSubItemsForCustomerQuoteRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
-            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -2809,11 +2828,6 @@ public class Quote extends Resource<Quote> {
 
         public EditCreateSubCustomerQuoteForItemsRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
-            return this;
-        }
-
-        public EditCreateSubCustomerQuoteForItemsRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
-            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -4098,6 +4112,18 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -4314,6 +4340,18 @@ public class Quote extends Resource<Quote> {
         }
         public EditForChargeItemsAndChargesRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
         @Override

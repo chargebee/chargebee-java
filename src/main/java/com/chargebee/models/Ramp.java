@@ -375,7 +375,7 @@ public class Ramp extends Resource<Ramp> {
 
     public static Request delete(String id) {
         String uri = uri("ramps", nullCheck(id), "delete");
-        return new Request(Method.POST, uri);
+        return new Request(Method.POST, uri, nullCheckWithoutEncoding(id));
     }
 
     public static RampListRequest list() {
@@ -392,10 +392,10 @@ public class Ramp extends Resource<Ramp> {
         private CreateForSubscriptionRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
-
-       private CreateForSubscriptionRequest(Method httpMeth, String uri, String pathParam) {
-           super(httpMeth, uri, pathParam);
-       }
+        private CreateForSubscriptionRequest(Method httpMeth, String uri, String pathParam) {
+            super(httpMeth, uri, pathParam);
+        }
+    
         public CreateForSubscriptionRequest effectiveFrom(Timestamp effectiveFrom) {
             params.add("effective_from", effectiveFrom);
             paramsV2.add(new PrimitiveParameter("effective_from"), effectiveFrom);
@@ -605,10 +605,10 @@ public class Ramp extends Resource<Ramp> {
         public Params params() {
             return params;
         }
-        @Override
-        public ParamsV2 paramsV2() {
-            return paramsV2;
-        }
+            @Override
+            public ParamsV2 paramsV2() {
+                return paramsV2;
+            }
     }
 
     public static class RampListRequest extends ListRequest<RampListRequest> {
@@ -616,7 +616,7 @@ public class Ramp extends Resource<Ramp> {
         private RampListRequest(String uri) {
             super(uri);
         }
-
+    
         public RampListRequest includeDeleted(Boolean includeDeleted) {
             params.addOpt("include_deleted", includeDeleted);
             return this;
@@ -624,22 +624,22 @@ public class Ramp extends Resource<Ramp> {
 
 
         public EnumFilter<Ramp.Status, RampListRequest> status() {
-            return new EnumFilter<Ramp.Status, RampListRequest>("status",this);
+            return new EnumFilter<Ramp.Status, RampListRequest>("status",this);        
         }
 
 
         public StringFilter<RampListRequest> subscriptionId() {
-            return new StringFilter<RampListRequest>("subscription_id",this).supportsMultiOperators(true);
+            return new StringFilter<RampListRequest>("subscription_id",this).supportsMultiOperators(true);        
         }
 
 
         public TimestampFilter<RampListRequest> effectiveFrom() {
-            return new TimestampFilter<RampListRequest>("effective_from",this);
+            return new TimestampFilter<RampListRequest>("effective_from",this);        
         }
 
 
         public TimestampFilter<RampListRequest> updatedAt() {
-            return new TimestampFilter<RampListRequest>("updated_at",this);
+            return new TimestampFilter<RampListRequest>("updated_at",this);        
         }
 
 

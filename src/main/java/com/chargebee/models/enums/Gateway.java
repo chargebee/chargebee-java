@@ -28,7 +28,6 @@ public enum Gateway {
     WIRECARD,
     AMAZON_PAYMENTS,
     PAYPAL_EXPRESS_CHECKOUT,
-    GOCARDLESS,
     ADYEN,
     ORBITAL,
     MONERIS_US,
@@ -51,6 +50,8 @@ public enum Gateway {
     PAY_COM,
     EBANX,
     DLOCAL,
+    NUVEI,
+    GOCARDLESS,
     NOT_APPLICABLE,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */

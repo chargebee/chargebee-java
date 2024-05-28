@@ -78,7 +78,7 @@ public class CreditNote extends Resource<CreditNote> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
+             ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,PLAN_SETUP,PLAN,ADDON,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -573,6 +573,21 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class SiteDetailsAtCreation extends Resource<SiteDetailsAtCreation> {
+        public SiteDetailsAtCreation(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String timezone() {
+            return optString("timezone");
+        }
+
+        public JSONObject organizationAddress() {
+            return optJSONObject("organization_address");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -600,7 +615,7 @@ public class CreditNote extends Resource<CreditNote> {
     }
 
     public String referenceInvoiceId() {
-        return reqString("reference_invoice_id");
+        return optString("reference_invoice_id");
     }
 
     public Type type() {
@@ -763,6 +778,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optSubResource("billing_address", CreditNote.BillingAddress.class);
     }
 
+    public CreditNote.SiteDetailsAtCreation siteDetailsAtCreation() {
+        return optSubResource("site_details_at_creation", CreditNote.SiteDetailsAtCreation.class);
+    }
+
     // Operations
     //===========
 
@@ -848,7 +867,13 @@ public class CreditNote extends Resource<CreditNote> {
         }
     
         public CreateRequest referenceInvoiceId(String referenceInvoiceId) {
-            params.add("reference_invoice_id", referenceInvoiceId);
+            params.addOpt("reference_invoice_id", referenceInvoiceId);
+            return this;
+        }
+
+
+        public CreateRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
             return this;
         }
 
@@ -889,6 +914,12 @@ public class CreditNote extends Resource<CreditNote> {
         }
 
 
+        public CreateRequest currencyCode(String currencyCode) {
+            params.addOpt("currency_code", currencyCode);
+            return this;
+        }
+
+
         public CreateRequest comment(String comment) {
             params.addOpt("comment", comment);
             return this;
@@ -896,7 +927,7 @@ public class CreditNote extends Resource<CreditNote> {
 
 
         public CreateRequest lineItemReferenceLineItemId(int index, String lineItemReferenceLineItemId) {
-            params.add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+            params.addOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
             return this;
         }
         public CreateRequest lineItemUnitAmount(int index, Long lineItemUnitAmount) {
@@ -929,6 +960,14 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public CreateRequest lineItemDescription(int index, String lineItemDescription) {
             params.addOpt("line_items[description][" + index + "]", lineItemDescription);
+            return this;
+        }
+        public CreateRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
+            params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
+            return this;
+        }
+        public CreateRequest lineItemEntityId(int index, String lineItemEntityId) {
+            params.addOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
             return this;
         }
         @Override
@@ -1085,7 +1124,7 @@ public class CreditNote extends Resource<CreditNote> {
 
 
         public StringFilter<CreditNoteListRequest> referenceInvoiceId() {
-            return new StringFilter<CreditNoteListRequest>("reference_invoice_id",this).supportsMultiOperators(true);        
+            return new StringFilter<CreditNoteListRequest>("reference_invoice_id",this).supportsMultiOperators(true).supportsPresenceOperator(true);        
         }
 
 
@@ -1351,7 +1390,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
             return this;
         }
-        public ImportCreditNoteRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
+        public ImportCreditNoteRequest lineItemEntityType(int index, Invoice.LineItem.EntityType lineItemEntityType) {
             params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
             return this;
         }
@@ -1491,11 +1530,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
             return this;
         }
-        public ImportCreditNoteRequest discountLineItemId(int index, String discountLineItemId) {
-            params.addOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
-            return this;
-        }
-        public ImportCreditNoteRequest discountEntityType(int index, Discount.EntityType discountEntityType) {
+        public ImportCreditNoteRequest discountEntityType(int index, Invoice.Discount.EntityType discountEntityType) {
             params.add("discounts[entity_type][" + index + "]", discountEntityType);
             return this;
         }

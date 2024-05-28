@@ -1153,12 +1153,6 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
-        public CreateRequest businessEntityId(String businessEntityId) {
-            params.addOpt("business_entity_id", businessEntityId);
-            return this;
-        }
-
-
         public CreateRequest planId(String planId) {
             params.add("plan_id", planId);
             return this;
@@ -1900,6 +1894,18 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
             return this;
         }
+        public CreateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -1988,12 +1994,6 @@ public class Subscription extends Resource<Subscription> {
     
         public CreateForCustomerRequest id(String id) {
             params.addOpt("id", id);
-            return this;
-        }
-
-
-        public CreateForCustomerRequest businessEntityId(String businessEntityId) {
-            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -2465,10 +2465,6 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateWithItemsRequest offlinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod offlinePaymentMethod) {
-            params.addOpt("offline_payment_method", offlinePaymentMethod);
-            return this;
-        }
 
         public CreateWithItemsRequest poNumber(String poNumber) {
             params.addOpt("po_number", poNumber);

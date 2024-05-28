@@ -60,7 +60,7 @@ public class Coupon extends Resource<Coupon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public enum PlanConstraint {
+    public enum AddonConstraint {
         NONE,
         ALL,
         SPECIFIC,
@@ -69,7 +69,7 @@ public class Coupon extends Resource<Coupon> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public enum AddonConstraint {
+    public enum PlanConstraint {
         NONE,
         ALL,
         SPECIFIC,

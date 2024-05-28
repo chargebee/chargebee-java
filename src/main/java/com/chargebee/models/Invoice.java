@@ -36,7 +36,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
-             PLAN_SETUP,PLAN,ADDON,ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,
+             ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,PLAN_SETUP,PLAN,ADDON,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -551,7 +551,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Note extends Resource<Note> {
         public enum EntityType {
-             PLAN,ADDON,COUPON,SUBSCRIPTION,CUSTOMER,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,TAX,
+             COUPON,SUBSCRIPTION,CUSTOMER,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,TAX,PLAN,ADDON,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -744,6 +744,21 @@ public class Invoice extends Resource<Invoice> {
 
         public String message() {
             return optString("message");
+        }
+
+    }
+
+    public static class SiteDetailsAtCreation extends Resource<SiteDetailsAtCreation> {
+        public SiteDetailsAtCreation(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String timezone() {
+            return optString("timezone");
+        }
+
+        public JSONObject organizationAddress() {
+            return optJSONObject("organization_address");
         }
 
     }
@@ -1016,6 +1031,10 @@ public class Invoice extends Resource<Invoice> {
 
     public String businessEntityId() {
         return optString("business_entity_id");
+    }
+
+    public Invoice.SiteDetailsAtCreation siteDetailsAtCreation() {
+        return optSubResource("site_details_at_creation", Invoice.SiteDetailsAtCreation.class);
     }
 
     // Operations
@@ -1725,6 +1744,18 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        public CreateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         public CreateRequest notesToRemoveEntityType(int index, com.chargebee.models.enums.EntityType notesToRemoveEntityType) {
             params.addOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
             return this;
@@ -2287,6 +2318,18 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         public CreateForChargeItemsAndChargesRequest discountPercentage(int index, Double discountPercentage) {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
@@ -2422,6 +2465,18 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
+        public ChargeRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public ChargeRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public ChargeRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -2993,7 +3048,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
             return this;
         }
-        public ImportInvoiceRequest lineItemEntityType(int index, LineItem.EntityType lineItemEntityType) {
+        public ImportInvoiceRequest lineItemEntityType(int index, Invoice.LineItem.EntityType lineItemEntityType) {
             params.addOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
             return this;
         }
@@ -3145,11 +3200,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
             return this;
         }
-        public ImportInvoiceRequest discountLineItemId(int index, String discountLineItemId) {
-            params.addOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
-            return this;
-        }
-        public ImportInvoiceRequest discountEntityType(int index, Discount.EntityType discountEntityType) {
+        public ImportInvoiceRequest discountEntityType(int index, Invoice.Discount.EntityType discountEntityType) {
             params.add("discounts[entity_type][" + index + "]", discountEntityType);
             return this;
         }
@@ -3209,7 +3260,7 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("payments[reference_number][" + index + "]", paymentReferenceNumber);
             return this;
         }
-        public ImportInvoiceRequest noteEntityType(int index, Note.EntityType noteEntityType) {
+        public ImportInvoiceRequest noteEntityType(int index, Invoice.Note.EntityType noteEntityType) {
             params.addOpt("notes[entity_type][" + index + "]", noteEntityType);
             return this;
         }
@@ -4044,13 +4095,6 @@ public class Invoice extends Resource<Invoice> {
         }
 
 
-        @Deprecated
-        public VoidInvoiceRequest createCreditNote(Boolean createCreditNote) {
-            params.addOpt("create_credit_note", createCreditNote);
-            return this;
-        }
-
-
         @Override
         public Params params() {
             return params;
@@ -4083,12 +4127,6 @@ public class Invoice extends Resource<Invoice> {
     
         public DeleteRequest comment(String comment) {
             params.addOpt("comment", comment);
-            return this;
-        }
-
-
-        public DeleteRequest claimCredits(Boolean claimCredits) {
-            params.addOpt("claim_credits", claimCredits);
             return this;
         }
 

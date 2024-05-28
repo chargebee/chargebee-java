@@ -44,6 +44,10 @@ public class ResultBase {
         return (Contact)get("contact");
     }
 
+    public BusinessEntityTransfer businessEntityTransfer() {
+        return (BusinessEntityTransfer)get("business_entity_transfer");
+    }
+
     public Token token() {
         return (Token)get("token");
     }
@@ -254,6 +258,10 @@ public class ResultBase {
 
     public EntitlementOverride entitlementOverride() {
         return (EntitlementOverride)get("entitlement_override");
+    }
+
+    public BusinessEntity businessEntity() {
+        return (BusinessEntity)get("business_entity");
     }
 
     public Purchase purchase() {

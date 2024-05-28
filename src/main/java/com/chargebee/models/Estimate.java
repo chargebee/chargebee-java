@@ -493,6 +493,18 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("addons[trial_end][" + index + "]", addonTrialEnd);
             return this;
         }
+        public CreateSubscriptionRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateSubscriptionRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateSubscriptionRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -585,11 +597,6 @@ public class Estimate extends Resource<Estimate> {
         @Deprecated
         public CreateSubItemEstimateRequest subscriptionCoupon(String subscriptionCoupon) {
             params.addOpt("subscription[coupon]", subscriptionCoupon);
-            return this;
-        }
-
-        public CreateSubItemEstimateRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
-            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -856,6 +863,18 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemEstimateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateSubItemEstimateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateSubItemEstimateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateSubItemEstimateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
         @Override
@@ -1196,11 +1215,6 @@ public class Estimate extends Resource<Estimate> {
 
         public CreateSubItemForCustomerEstimateRequest subscriptionStartDate(Timestamp subscriptionStartDate) {
             params.addOpt("subscription[start_date]", subscriptionStartDate);
-            return this;
-        }
-
-        public CreateSubItemForCustomerEstimateRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
-            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -3263,6 +3277,18 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
             return this;
         }
+        public CreateInvoiceRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateInvoiceRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateInvoiceRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -3549,6 +3575,18 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
         @Override

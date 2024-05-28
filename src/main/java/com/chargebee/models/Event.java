@@ -170,20 +170,10 @@ public class Event extends Resource<Event> {
         public EnumFilter<WebhookStatus, EventListRequest> webhookStatus() {
             return new EnumFilter<WebhookStatus, EventListRequest>("webhook_status",this);        
         }
-        @Deprecated
-        public EventListRequest webhookStatus(WebhookStatus webhookStatus) {
-            params.addOpt("webhook_status", webhookStatus);
-            return this;
-        }
 
 
         public EnumFilter<com.chargebee.models.enums.EventType, EventListRequest> eventType() {
             return new EnumFilter<com.chargebee.models.enums.EventType, EventListRequest>("event_type",this);        
-        }
-        @Deprecated
-        public EventListRequest eventType(com.chargebee.models.enums.EventType eventType) {
-            params.addOpt("event_type", eventType);
-            return this;
         }
 
 

@@ -1,12 +1,20 @@
 package com.chargebee.models.enums;
 
 public enum EventType {
-    PLAN_CREATED,
-    PLAN_UPDATED,
-    PLAN_DELETED,
-    ADDON_CREATED,
-    ADDON_UPDATED,
-    ADDON_DELETED,
+    @Deprecated
+    NETD_PAYMENT_DUE_REMINDER,
+    @Deprecated
+    PRODUCT_CREATED,
+    @Deprecated
+    PRODUCT_UPDATED,
+    @Deprecated
+    PRODUCT_DELETED,
+    @Deprecated
+    VARIANT_CREATED,
+    @Deprecated
+    VARIANT_UPDATED,
+    @Deprecated
+    VARIANT_DELETED,
     COUPON_CREATED,
     COUPON_UPDATED,
     COUPON_DELETED,
@@ -78,8 +86,6 @@ public enum EventType {
     PAYMENT_REFUNDED,
     PAYMENT_INITIATED,
     REFUND_INITIATED,
-    @Deprecated
-    NETD_PAYMENT_DUE_REMINDER,
     AUTHORIZATION_SUCCEEDED,
     AUTHORIZATION_VOIDED,
     CARD_ADDED,
@@ -169,18 +175,6 @@ public enum EventType {
     VOUCHER_CREATED,
     VOUCHER_EXPIRED,
     VOUCHER_CREATE_FAILED,
-    @Deprecated
-    PRODUCT_CREATED,
-    @Deprecated
-    PRODUCT_UPDATED,
-    @Deprecated
-    PRODUCT_DELETED,
-    @Deprecated
-    VARIANT_CREATED,
-    @Deprecated
-    VARIANT_UPDATED,
-    @Deprecated
-    VARIANT_DELETED,
     ITEM_PRICE_ENTITLEMENTS_UPDATED,
     ITEM_PRICE_ENTITLEMENTS_REMOVED,
     RAMP_CREATED,
@@ -189,6 +183,12 @@ public enum EventType {
     PRICE_VARIANT_CREATED,
     PRICE_VARIANT_UPDATED,
     PRICE_VARIANT_DELETED,
+    PLAN_CREATED,
+    PLAN_UPDATED,
+    PLAN_DELETED,
+    ADDON_CREATED,
+    ADDON_UPDATED,
+    ADDON_DELETED,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

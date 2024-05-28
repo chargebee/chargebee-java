@@ -1,11 +1,13 @@
 package com.chargebee.models.enums;
 
 public enum PaymentMethod {
-    CARD,
     CASH,
     CHECK,
-    CHARGEBACK,
     BANK_TRANSFER,
+    OTHER,
+    CUSTOM,
+    CHARGEBACK,
+    CARD,
     AMAZON_PAYMENTS,
     PAYPAL_EXPRESS_CHECKOUT,
     DIRECT_DEBIT,
@@ -21,10 +23,8 @@ public enum PaymentMethod {
     BANCONTACT,
     GIROPAY,
     DOTPAY,
-    OTHER,
     UPI,
     NETBANKING_EMANDATES,
-    CUSTOM,
     BOLETO,
     VENMO,
     PAY_TO,

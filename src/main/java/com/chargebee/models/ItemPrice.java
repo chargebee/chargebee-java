@@ -647,6 +647,18 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
+        public CreateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.add("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.add("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.add("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -896,6 +908,18 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
         public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
             params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.add("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public UpdateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.add("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public UpdateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.add("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
         @Override

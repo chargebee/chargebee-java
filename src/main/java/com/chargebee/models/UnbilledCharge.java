@@ -14,13 +14,13 @@ import java.util.*;
 public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     public enum EntityType {
-        PLAN_SETUP,
-        PLAN,
-        ADDON,
         ADHOC,
         PLAN_ITEM_PRICE,
         ADDON_ITEM_PRICE,
         CHARGE_ITEM_PRICE,
+        PLAN_SETUP,
+        PLAN,
+        ADDON,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -309,6 +309,18 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
             return this;
         }
+        public CreateUnbilledChargeRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateUnbilledChargeRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateUnbilledChargeRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -439,6 +451,18 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         }
         public CreateRequest chargeDateTo(int index, Timestamp chargeDateTo) {
             params.addOpt("charges[date_to][" + index + "]", chargeDateTo);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
+            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
+            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+            return this;
+        }
+        public CreateRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
+            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
         @Override

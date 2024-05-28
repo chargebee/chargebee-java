@@ -216,12 +216,6 @@ public class Feature extends Resource<Feature> {
         }
 
 
-        public CreateRequest status(Status status) {
-            params.addOpt("status", status);
-            return this;
-        }
-
-
         public CreateRequest unit(String unit) {
             params.addOpt("unit", unit);
             return this;
@@ -264,12 +258,6 @@ public class Feature extends Resource<Feature> {
 
         public UpdateRequest description(String description) {
             params.addOpt("description", description);
-            return this;
-        }
-
-
-        public UpdateRequest status(Status status) {
-            params.addOpt("status", status);
             return this;
         }
 

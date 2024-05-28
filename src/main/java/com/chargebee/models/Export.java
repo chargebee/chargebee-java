@@ -1737,6 +1737,12 @@ public Export waitForExportCompletion()
             return new StringFilter<ItemPricesRequest>("item_price[item_id]",this).supportsMultiOperators(true);        
         }
 
+
+        public StringFilter<ItemPricesRequest> itemPricePriceVariantId() {
+            return new StringFilter<ItemPricesRequest>("item_price[price_variant_id]",this).supportsMultiOperators(true);        
+        }
+
+
         public NumberFilter<Integer, ItemPricesRequest> itemPriceTrialPeriod() {
             return new NumberFilter<Integer, ItemPricesRequest>("item_price[trial_period]",this);        
         }

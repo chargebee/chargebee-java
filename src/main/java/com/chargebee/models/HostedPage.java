@@ -22,11 +22,11 @@ public class HostedPage extends Resource<HostedPage> {
         MANAGE_PAYMENT_SOURCES,
         COLLECT_NOW,
         EXTEND_SUBSCRIPTION,
-        CHECKOUT_GIFT,
-        CLAIM_GIFT,
         CHECKOUT_ONE_TIME,
         PRE_CANCEL,
         VIEW_VOUCHER,
+        CHECKOUT_GIFT,
+        CLAIM_GIFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -1113,13 +1113,6 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-        @Deprecated
-        public CheckoutOneTimeForItemsRequest source(String source) {
-            params.addOpt("source", source);
-            return this;
-        }
-
-
         public CheckoutOneTimeForItemsRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
@@ -1575,13 +1568,6 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
-        @Deprecated
-        public CheckoutNewForItemsRequest source(String source) {
-            params.addOpt("source", source);
-            return this;
-        }
-
-
         public CheckoutNewForItemsRequest allowOfflinePaymentMethods(Boolean allowOfflinePaymentMethods) {
             params.addOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
             return this;
@@ -1656,11 +1642,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest subscriptionAutoCollection(com.chargebee.models.enums.AutoCollection subscriptionAutoCollection) {
             params.addOpt("subscription[auto_collection]", subscriptionAutoCollection);
-            return this;
-        }
-
-        public CheckoutNewForItemsRequest subscriptionOfflinePaymentMethod(com.chargebee.models.enums.OfflinePaymentMethod subscriptionOfflinePaymentMethod) {
-            params.addOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
             return this;
         }
 
@@ -1862,11 +1843,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutNewForItemsRequest subscriptionContractTermBillingCycleOnRenewal(Integer subscriptionContractTermBillingCycleOnRenewal) {
             params.addOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
-            return this;
-        }
-
-        public CheckoutNewForItemsRequest subscriptionAffiliateToken(String subscriptionAffiliateToken) {
-            params.addOpt("subscription[affiliate_token]", subscriptionAffiliateToken);
             return this;
         }
 
@@ -2377,13 +2353,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutExistingForItemsRequest passThruContent(String passThruContent) {
             params.addOpt("pass_thru_content", passThruContent);
-            return this;
-        }
-
-
-        @Deprecated
-        public CheckoutExistingForItemsRequest source(String source) {
-            params.addOpt("source", source);
             return this;
         }
 
@@ -2929,11 +2898,6 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutGiftRequest gifterLocale(String gifterLocale) {
-            params.addOpt("gifter[locale]", gifterLocale);
-            return this;
-        }
-
         public CheckoutGiftRequest subscriptionPlanId(String subscriptionPlanId) {
             params.add("subscription[plan_id]", subscriptionPlanId);
             return this;
@@ -3003,11 +2967,6 @@ public class HostedPage extends Resource<HostedPage> {
 
         public CheckoutGiftForItemsRequest gifterCustomerId(String gifterCustomerId) {
             params.addOpt("gifter[customer_id]", gifterCustomerId);
-            return this;
-        }
-
-        public CheckoutGiftForItemsRequest gifterLocale(String gifterLocale) {
-            params.addOpt("gifter[locale]", gifterLocale);
             return this;
         }
 
