@@ -588,6 +588,21 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class TaxOrigin extends Resource<TaxOrigin> {
+        public TaxOrigin(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String registrationNumber() {
+            return optString("registration_number");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -780,6 +795,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public CreditNote.SiteDetailsAtCreation siteDetailsAtCreation() {
         return optSubResource("site_details_at_creation", CreditNote.SiteDetailsAtCreation.class);
+    }
+
+    public CreditNote.TaxOrigin taxOrigin() {
+        return optSubResource("tax_origin", CreditNote.TaxOrigin.class);
     }
 
     // Operations

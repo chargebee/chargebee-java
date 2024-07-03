@@ -358,8 +358,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public CheckoutNewRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -368,8 +368,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
+        public CheckoutNewRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
@@ -776,8 +776,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutOneTimeRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public CheckoutOneTimeRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -786,8 +786,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutOneTimeRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
+        public CheckoutOneTimeRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
@@ -1138,8 +1138,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutOneTimeForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public CheckoutOneTimeForItemsRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -1148,8 +1148,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutOneTimeForItemsRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
+        public CheckoutOneTimeForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
@@ -1604,8 +1604,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public CheckoutNewForItemsRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -1614,8 +1614,8 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
-        public CheckoutNewForItemsRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
+        public CheckoutNewForItemsRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 

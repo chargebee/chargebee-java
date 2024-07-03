@@ -17,6 +17,8 @@ public class Ramp extends Resource<Ramp> {
         SCHEDULED,
         SUCCEEDED,
         FAILED,
+        @Deprecated
+        DRAFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }

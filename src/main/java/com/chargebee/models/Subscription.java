@@ -1368,13 +1368,18 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public CreateRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public CreateRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
         public CreateRequest customerLocale(String customerLocale) {
             params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
+
+        public CreateRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
@@ -1395,11 +1400,6 @@ public class Subscription extends Resource<Subscription> {
 
         public CreateRequest customerTaxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory customerTaxjarExemptionCategory) {
             params.addOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
-            return this;
-        }
-
-        public CreateRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -5033,13 +5033,18 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
-        public ImportSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
-            params.addOpt("customer[taxability]", customerTaxability);
+        public ImportSubscriptionRequest customerPhone(String customerPhone) {
+            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
         public ImportSubscriptionRequest customerLocale(String customerLocale) {
             params.addOpt("customer[locale]", customerLocale);
+            return this;
+        }
+
+        public ImportSubscriptionRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
+            params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
 
@@ -5060,11 +5065,6 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest customerTaxjarExemptionCategory(com.chargebee.models.enums.TaxjarExemptionCategory customerTaxjarExemptionCategory) {
             params.addOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
-            return this;
-        }
-
-        public ImportSubscriptionRequest customerPhone(String customerPhone) {
-            params.addOpt("customer[phone]", customerPhone);
             return this;
         }
 
@@ -6583,6 +6583,12 @@ public class Subscription extends Resource<Subscription> {
             super(httpMeth, uri);
         }
     
+        public CancelRequest cancelOption(com.chargebee.models.enums.CancelOption cancelOption) {
+            params.addOpt("cancel_option", cancelOption);
+            return this;
+        }
+
+
         public CancelRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
@@ -6665,6 +6671,12 @@ public class Subscription extends Resource<Subscription> {
             super(httpMeth, uri);
         }
     
+        public CancelForItemsRequest cancelOption(com.chargebee.models.enums.CancelOption cancelOption) {
+            params.addOpt("cancel_option", cancelOption);
+            return this;
+        }
+
+
         public CancelForItemsRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;

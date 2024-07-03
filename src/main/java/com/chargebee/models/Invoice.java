@@ -763,6 +763,21 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class TaxOrigin extends Resource<TaxOrigin> {
+        public TaxOrigin(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String registrationNumber() {
+            return optString("registration_number");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -1035,6 +1050,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Invoice.SiteDetailsAtCreation siteDetailsAtCreation() {
         return optSubResource("site_details_at_creation", Invoice.SiteDetailsAtCreation.class);
+    }
+
+    public Invoice.TaxOrigin taxOrigin() {
+        return optSubResource("tax_origin", Invoice.TaxOrigin.class);
     }
 
     // Operations

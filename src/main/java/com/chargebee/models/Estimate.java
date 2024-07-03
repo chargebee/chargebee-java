@@ -2390,6 +2390,12 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
+        public CancelSubscriptionRequest cancelOption(com.chargebee.models.enums.CancelOption cancelOption) {
+            params.addOpt("cancel_option", cancelOption);
+            return this;
+        }
+
+
         public CancelSubscriptionRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;
@@ -2472,6 +2478,12 @@ public class Estimate extends Resource<Estimate> {
             super(httpMeth, uri);
         }
     
+        public CancelSubscriptionForItemsRequest cancelOption(com.chargebee.models.enums.CancelOption cancelOption) {
+            params.addOpt("cancel_option", cancelOption);
+            return this;
+        }
+
+
         public CancelSubscriptionForItemsRequest endOfTerm(Boolean endOfTerm) {
             params.addOpt("end_of_term", endOfTerm);
             return this;

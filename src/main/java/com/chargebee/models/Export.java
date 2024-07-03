@@ -178,6 +178,7 @@ public class Export extends Resource<Export> {
         return new PriceVariantsRequest(Method.POST, uri);
     }
 
+
 public Export waitForExportCompletion()
             throws Exception {
         int count = 0;

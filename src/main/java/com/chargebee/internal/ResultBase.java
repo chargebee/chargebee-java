@@ -272,6 +272,10 @@ public class ResultBase {
         return (PaymentVoucher)get("payment_voucher");
     }
 
+    public Currency currency() {
+        return (Currency)get("currency");
+    }
+
     public Ramp ramp() {
         return (Ramp)get("ramp");
     }
@@ -286,6 +290,10 @@ public class ResultBase {
 
     public InstallmentDetail installmentDetail() {
         return (InstallmentDetail)get("installment_detail");
+    }
+
+    public PricingPageSession pricingPageSession() {
+        return (PricingPageSession)get("pricing_page_session");
     }
 
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {

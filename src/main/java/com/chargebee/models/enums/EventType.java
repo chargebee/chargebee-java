@@ -15,6 +15,8 @@ public enum EventType {
     VARIANT_UPDATED,
     @Deprecated
     VARIANT_DELETED,
+    @Deprecated
+    SUBSCRIPTION_RAMP_DRAFTED,
     COUPON_CREATED,
     COUPON_UPDATED,
     COUPON_DELETED,

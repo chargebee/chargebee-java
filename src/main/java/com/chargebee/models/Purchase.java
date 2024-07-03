@@ -96,6 +96,11 @@ public class Purchase extends Resource<Purchase> {
             return this;
         }
 
+        public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
+            params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+            return this;
+        }
+
         public CreateRequest installmentInfoConfigId(String installmentInfoConfigId) {
             params.addOpt("installment_info[config_id]", installmentInfoConfigId);
             return this;
