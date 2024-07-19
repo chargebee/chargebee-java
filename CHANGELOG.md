@@ -1,3 +1,10 @@
+### v3.20.0 (2024-07-19)
+* * *
+
+#### New Input parameters:
+* change_option has been added to HostedPage#CheckoutExistingForItemsRequest.
+* changes_scheduled_at has been added to HostedPage#CheckoutExistingForItemsRequest.
+
 ### v3.19.0 (2024-07-03)
 * * *
 

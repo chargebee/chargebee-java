@@ -2339,6 +2339,18 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingForItemsRequest changeOption(com.chargebee.models.enums.ChangeOption changeOption) {
+            params.addOpt("change_option", changeOption);
+            return this;
+        }
+
+
+        public CheckoutExistingForItemsRequest changesScheduledAt(Timestamp changesScheduledAt) {
+            params.addOpt("changes_scheduled_at", changesScheduledAt);
+            return this;
+        }
+
+
         public CheckoutExistingForItemsRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
