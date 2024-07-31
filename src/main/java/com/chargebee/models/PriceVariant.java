@@ -62,6 +62,10 @@ public class PriceVariant extends Resource<PriceVariant> {
         return optString("external_name");
     }
 
+    public String variantGroup() {
+        return optString("variant_group");
+    }
+
     public String description() {
         return optString("description");
     }
@@ -152,6 +156,12 @@ public class PriceVariant extends Resource<PriceVariant> {
         }
 
 
+        public CreateRequest variantGroup(String variantGroup) {
+            params.addOpt("variant_group", variantGroup);
+            return this;
+        }
+
+
         public CreateRequest attributeName(int index, String attributeName) {
             params.add("attributes[name][" + index + "]", attributeName);
             return this;
@@ -186,6 +196,12 @@ public class PriceVariant extends Resource<PriceVariant> {
 
         public UpdateRequest description(String description) {
             params.addOpt("description", description);
+            return this;
+        }
+
+
+        public UpdateRequest variantGroup(String variantGroup) {
+            params.addOpt("variant_group", variantGroup);
             return this;
         }
 

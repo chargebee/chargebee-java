@@ -148,11 +148,21 @@ public class PaymentVoucher extends Resource<PaymentVoucher> {
         return new Request(Method.GET, uri);
     }
 
+    @Deprecated
+    public static PaymentVoucherPaymentVouchersForInvoiceRequest payment_vouchersForInvoice(String id) {
+    String uri = uri("invoices", nullCheck(id), "payment_vouchers");
+    return new PaymentVoucherPaymentVouchersForInvoiceRequest(uri);
+    }
     public static PaymentVoucherPaymentVouchersForInvoiceRequest paymentVouchersForInvoice(String id) {
         String uri = uri("invoices", nullCheck(id), "payment_vouchers");
         return new PaymentVoucherPaymentVouchersForInvoiceRequest(uri);
     }
 
+    @Deprecated
+    public static PaymentVoucherPaymentVouchersForCustomerRequest payment_vouchersForCustomer(String id) {
+    String uri = uri("customers", nullCheck(id), "payment_vouchers");
+    return new PaymentVoucherPaymentVouchersForCustomerRequest(uri);
+    }
     public static PaymentVoucherPaymentVouchersForCustomerRequest paymentVouchersForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "payment_vouchers");
         return new PaymentVoucherPaymentVouchersForCustomerRequest(uri);

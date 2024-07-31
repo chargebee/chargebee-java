@@ -213,6 +213,11 @@ public class Usage extends Resource<Usage> {
         }
 
 
+        public TimestampFilter<UsageListRequest> updatedAt() {
+            return new TimestampFilter<UsageListRequest>("updated_at",this);        
+        }
+
+
         public StringFilter<UsageListRequest> itemPriceId() {
             return new StringFilter<UsageListRequest>("item_price_id",this);        
         }
@@ -230,6 +235,10 @@ public class Usage extends Resource<Usage> {
 
         public UsageListRequest sortByUsageDate(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","usage_date");
+            return this;
+        }
+        public UsageListRequest sortByUpdatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
             return this;
         }
 

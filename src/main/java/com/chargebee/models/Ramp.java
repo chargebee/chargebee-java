@@ -17,7 +17,6 @@ public class Ramp extends Resource<Ramp> {
         SCHEDULED,
         SUCCEEDED,
         FAILED,
-        @Deprecated
         DRAFT,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
@@ -280,6 +279,21 @@ public class Ramp extends Resource<Ramp> {
 
     }
 
+    public static class StatusTransitionReason extends Resource<StatusTransitionReason> {
+        public StatusTransitionReason(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String code() {
+            return optString("code");
+        }
+
+        public String message() {
+            return optString("message");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -360,6 +374,10 @@ public class Ramp extends Resource<Ramp> {
 
     public Boolean deleted() {
         return reqBoolean("deleted");
+    }
+
+    public Ramp.StatusTransitionReason statusTransitionReason() {
+        return optSubResource("status_transition_reason", Ramp.StatusTransitionReason.class);
     }
 
     // Operations

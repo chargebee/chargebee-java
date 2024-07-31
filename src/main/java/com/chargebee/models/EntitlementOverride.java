@@ -13,6 +13,15 @@ import java.util.*;
 
 public class EntitlementOverride extends Resource<EntitlementOverride> {
 
+    @Deprecated
+    public enum ScheduleStatus {
+        ACTIVATED,
+        SCHEDULED,
+        FAILED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -59,6 +68,15 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
         return optTimestamp("expires_at");
     }
 
+    public Timestamp effectiveFrom() {
+        return optTimestamp("effective_from");
+    }
+
+    @Deprecated
+    public ScheduleStatus scheduleStatus() {
+        return optEnum("schedule_status", ScheduleStatus.class);
+    }
+
     // Operations
     //===========
 
@@ -100,6 +118,10 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
             params.addOpt("entitlement_overrides[expires_at][" + index + "]", entitlementOverrideExpiresAt);
             return this;
         }
+        public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideEffectiveFrom(int index, Timestamp entitlementOverrideEffectiveFrom) {
+            params.addOpt("entitlement_overrides[effective_from][" + index + "]", entitlementOverrideEffectiveFrom);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -122,6 +144,13 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
         @Deprecated
         public EntitlementOverrideListEntitlementOverrideForSubscriptionRequest includeDrafts(Boolean includeDrafts) {
             params.addOpt("include_drafts", includeDrafts);
+            return this;
+        }
+
+
+        @Deprecated
+        public EntitlementOverrideListEntitlementOverrideForSubscriptionRequest includeScheduledOverrides(Boolean includeScheduledOverrides) {
+            params.addOpt("include_scheduled_overrides", includeScheduledOverrides);
             return this;
         }
 

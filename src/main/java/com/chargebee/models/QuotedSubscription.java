@@ -193,6 +193,14 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optString("amount_in_decimal");
         }
 
+        public Integer billingPeriod() {
+            return optInteger("billing_period");
+        }
+
+        public BillingPeriodUnit billingPeriodUnit() {
+            return optEnum("billing_period_unit", BillingPeriodUnit.class);
+        }
+
         public Integer freeQuantity() {
             return optInteger("free_quantity");
         }

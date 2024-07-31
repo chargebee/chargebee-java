@@ -240,6 +240,10 @@ public class ResultBase {
         return (ImpactedItemPrice)get("impacted_item_price");
     }
 
+    public Metadata metadata() {
+        return (Metadata)get("metadata");
+    }
+
     public SubscriptionEntitlement subscriptionEntitlement() {
         return (SubscriptionEntitlement)get("subscription_entitlement");
     }

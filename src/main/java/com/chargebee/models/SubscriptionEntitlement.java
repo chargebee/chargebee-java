@@ -13,6 +13,15 @@ import java.util.*;
 
 public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
 
+    @Deprecated
+    public enum ScheduleStatus {
+        ACTIVATED,
+        SCHEDULED,
+        FAILED,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public static class Component extends Resource<Component> {
         public Component(JSONObject jsonObj) {
             super(jsonObj);
@@ -70,6 +79,16 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
         return reqBoolean("is_enabled");
     }
 
+    @Deprecated
+    public Timestamp effectiveFrom() {
+        return optTimestamp("effective_from");
+    }
+
+    @Deprecated
+    public ScheduleStatus scheduleStatus() {
+        return optEnum("schedule_status", ScheduleStatus.class);
+    }
+
     public Timestamp expiresAt() {
         return optTimestamp("expires_at");
     }
@@ -111,6 +130,13 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
         @Deprecated
         public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest embed(String embed) {
             params.addOpt("embed", embed);
+            return this;
+        }
+
+
+        @Deprecated
+        public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest includeScheduledOverrides(Boolean includeScheduledOverrides) {
+            params.addOpt("include_scheduled_overrides", includeScheduledOverrides);
             return this;
         }
 
