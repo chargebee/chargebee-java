@@ -1944,6 +1944,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public UpdateSubscriptionForItemsRequest invoiceUsages(Boolean invoiceUsages) {
+            params.addOpt("invoice_usages", invoiceUsages);
+            return this;
+        }
+
+
         public UpdateSubscriptionForItemsRequest subscriptionId(String subscriptionId) {
             params.add("subscription[id]", subscriptionId);
             return this;

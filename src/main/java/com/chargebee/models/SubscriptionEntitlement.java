@@ -63,6 +63,10 @@ public class SubscriptionEntitlement extends Resource<SubscriptionEntitlement> {
         return optString("feature_unit");
     }
 
+    public String featureType() {
+        return optString("feature_type");
+    }
+
     public String value() {
         return optString("value");
     }

@@ -3901,6 +3901,12 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public UpdateForItemsRequest invoiceUsages(Boolean invoiceUsages) {
+            params.addOpt("invoice_usages", invoiceUsages);
+            return this;
+        }
+
+
         @Deprecated
         public UpdateForItemsRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);

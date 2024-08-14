@@ -782,7 +782,7 @@ public class CreditNote extends Resource<CreditNote> {
     }
 
     public String businessEntityId() {
-        return reqString("business_entity_id");
+        return optString("business_entity_id");
     }
 
     public CreditNote.ShippingAddress shippingAddress() {

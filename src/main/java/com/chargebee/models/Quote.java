@@ -630,7 +630,7 @@ public class Quote extends Resource<Quote> {
     }
 
     public String businessEntityId() {
-        return reqString("business_entity_id");
+        return optString("business_entity_id");
     }
 
     // Operations
