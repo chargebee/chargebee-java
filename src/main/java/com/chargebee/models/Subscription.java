@@ -867,6 +867,11 @@ public class Subscription extends Resource<Subscription> {
         return optLong("mrr");
     }
 
+    @Deprecated
+    public Long arr() {
+        return optLong("arr");
+    }
+
     public BigDecimal exchangeRate() {
         return optBigDecimal("exchange_rate");
     }

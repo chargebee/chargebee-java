@@ -248,6 +248,10 @@ public class ResultBase {
         return (SubscriptionEntitlement)get("subscription_entitlement");
     }
 
+    public CustomerEntitlement customerEntitlement() {
+        return (CustomerEntitlement)get("customer_entitlement");
+    }
+
     public ItemEntitlement itemEntitlement() {
         return (ItemEntitlement)get("item_entitlement");
     }

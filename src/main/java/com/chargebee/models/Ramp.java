@@ -388,6 +388,11 @@ public class Ramp extends Resource<Ramp> {
         return new CreateForSubscriptionRequest(Method.POST, uri, nullCheckWithoutEncoding(id));
     }
 
+    public static UpdateRequest update(String id) {
+        String uri = uri("ramps", nullCheck(id), "update");
+        return new UpdateRequest(Method.POST, uri, nullCheckWithoutEncoding(id));
+    }
+
     public static Request retrieve(String id) {
         String uri = uri("ramps", nullCheck(id));
         return new Request(Method.GET, uri);
@@ -617,6 +622,230 @@ public class Ramp extends Resource<Ramp> {
             return this;
         }
         public CreateForSubscriptionRequest discountsToAddItemPriceId(int index, String discountsToAddItemPriceId) {
+            params.addOpt("discounts_to_add[item_price_id][" + index + "]", discountsToAddItemPriceId);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "item_price_id", index), discountsToAddItemPriceId);
+            return this;
+        }
+        @Override
+        public Params params() {
+            return params;
+        }
+            @Override
+            public ParamsV2 paramsV2() {
+                return paramsV2;
+            }
+    }
+
+    public static class UpdateRequest extends Request<UpdateRequest> {
+
+        private UpdateRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+        private UpdateRequest(Method httpMeth, String uri, String pathParam) {
+            super(httpMeth, uri, pathParam);
+        }
+    
+        public UpdateRequest effectiveFrom(Timestamp effectiveFrom) {
+            params.add("effective_from", effectiveFrom);
+            paramsV2.add(new PrimitiveParameter("effective_from"), effectiveFrom);
+            return this;
+        }
+
+
+        public UpdateRequest description(String description) {
+            params.addOpt("description", description);
+            paramsV2.addOpt(new PrimitiveParameter("description"), description);
+            return this;
+        }
+
+
+        public UpdateRequest couponsToRemove(List<String> couponsToRemove) {
+            params.addOpt("coupons_to_remove", couponsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("coupons_to_remove"), couponsToRemove);
+            return this;
+        }
+
+        public UpdateRequest couponsToRemove(String... couponsToRemove) {
+            params.addOpt("coupons_to_remove", couponsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("coupons_to_remove"), couponsToRemove);
+            return this;
+        }
+
+        public UpdateRequest discountsToRemove(List<String> discountsToRemove) {
+            params.addOpt("discounts_to_remove", discountsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("discounts_to_remove"), discountsToRemove);
+            return this;
+        }
+
+        public UpdateRequest discountsToRemove(String... discountsToRemove) {
+            params.addOpt("discounts_to_remove", discountsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("discounts_to_remove"), discountsToRemove);
+            return this;
+        }
+
+        public UpdateRequest itemsToRemove(List<String> itemsToRemove) {
+            params.addOpt("items_to_remove", itemsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("items_to_remove"), itemsToRemove);
+            return this;
+        }
+
+        public UpdateRequest itemsToRemove(String... itemsToRemove) {
+            params.addOpt("items_to_remove", itemsToRemove);
+            paramsV2.addOpt(new PrimitiveParameter("items_to_remove"), itemsToRemove);
+            return this;
+        }
+
+        public UpdateRequest itemsToAddItemPriceId(int index, String itemsToAddItemPriceId) {
+            params.add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
+            paramsV2.add(new CompositeArrayParameter("items_to_add", "item_price_id", index), itemsToAddItemPriceId);
+            return this;
+        }
+        public UpdateRequest itemsToAddQuantity(int index, Integer itemsToAddQuantity) {
+            params.addOpt("items_to_add[quantity][" + index + "]", itemsToAddQuantity);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "quantity", index), itemsToAddQuantity);
+            return this;
+        }
+        public UpdateRequest itemsToAddQuantityInDecimal(int index, String itemsToAddQuantityInDecimal) {
+            params.addOpt("items_to_add[quantity_in_decimal][" + index + "]", itemsToAddQuantityInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "quantity_in_decimal", index), itemsToAddQuantityInDecimal);
+            return this;
+        }
+        public UpdateRequest itemsToAddUnitPrice(int index, Long itemsToAddUnitPrice) {
+            params.addOpt("items_to_add[unit_price][" + index + "]", itemsToAddUnitPrice);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "unit_price", index), itemsToAddUnitPrice);
+            return this;
+        }
+        public UpdateRequest itemsToAddUnitPriceInDecimal(int index, String itemsToAddUnitPriceInDecimal) {
+            params.addOpt("items_to_add[unit_price_in_decimal][" + index + "]", itemsToAddUnitPriceInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "unit_price_in_decimal", index), itemsToAddUnitPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest itemsToAddBillingCycles(int index, Integer itemsToAddBillingCycles) {
+            params.addOpt("items_to_add[billing_cycles][" + index + "]", itemsToAddBillingCycles);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "billing_cycles", index), itemsToAddBillingCycles);
+            return this;
+        }
+        public UpdateRequest itemsToAddServicePeriodDays(int index, Integer itemsToAddServicePeriodDays) {
+            params.addOpt("items_to_add[service_period_days][" + index + "]", itemsToAddServicePeriodDays);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "service_period_days", index), itemsToAddServicePeriodDays);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateItemPriceId(int index, String itemsToUpdateItemPriceId) {
+            params.add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
+            paramsV2.add(new CompositeArrayParameter("items_to_update", "item_price_id", index), itemsToUpdateItemPriceId);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateQuantity(int index, Integer itemsToUpdateQuantity) {
+            params.addOpt("items_to_update[quantity][" + index + "]", itemsToUpdateQuantity);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "quantity", index), itemsToUpdateQuantity);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateQuantityInDecimal(int index, String itemsToUpdateQuantityInDecimal) {
+            params.addOpt("items_to_update[quantity_in_decimal][" + index + "]", itemsToUpdateQuantityInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "quantity_in_decimal", index), itemsToUpdateQuantityInDecimal);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateUnitPrice(int index, Long itemsToUpdateUnitPrice) {
+            params.addOpt("items_to_update[unit_price][" + index + "]", itemsToUpdateUnitPrice);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "unit_price", index), itemsToUpdateUnitPrice);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateUnitPriceInDecimal(int index, String itemsToUpdateUnitPriceInDecimal) {
+            params.addOpt("items_to_update[unit_price_in_decimal][" + index + "]", itemsToUpdateUnitPriceInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "unit_price_in_decimal", index), itemsToUpdateUnitPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateBillingCycles(int index, Integer itemsToUpdateBillingCycles) {
+            params.addOpt("items_to_update[billing_cycles][" + index + "]", itemsToUpdateBillingCycles);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "billing_cycles", index), itemsToUpdateBillingCycles);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateServicePeriodDays(int index, Integer itemsToUpdateServicePeriodDays) {
+            params.addOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "service_period_days", index), itemsToUpdateServicePeriodDays);
+            return this;
+        }
+        public UpdateRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "item_price_id", index), itemTierItemPriceId);
+            return this;
+        }
+        public UpdateRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "starting_unit", index), itemTierStartingUnit);
+            return this;
+        }
+        public UpdateRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "ending_unit", index), itemTierEndingUnit);
+            return this;
+        }
+        public UpdateRequest itemTierPrice(int index, Long itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "price", index), itemTierPrice);
+            return this;
+        }
+        public UpdateRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "starting_unit_in_decimal", index), itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "ending_unit_in_decimal", index), itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public UpdateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "price_in_decimal", index), itemTierPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest couponsToAddCouponId(int index, String couponsToAddCouponId) {
+            params.addOpt("coupons_to_add[coupon_id][" + index + "]", couponsToAddCouponId);
+            paramsV2.addOpt(new CompositeArrayParameter("coupons_to_add", "coupon_id", index), couponsToAddCouponId);
+            return this;
+        }
+        public UpdateRequest couponsToAddApplyTill(int index, Timestamp couponsToAddApplyTill) {
+            params.addOpt("coupons_to_add[apply_till][" + index + "]", couponsToAddApplyTill);
+            paramsV2.addOpt(new CompositeArrayParameter("coupons_to_add", "apply_till", index), couponsToAddApplyTill);
+            return this;
+        }
+        public UpdateRequest discountsToAddApplyOn(int index, com.chargebee.models.enums.ApplyOn discountsToAddApplyOn) {
+            params.add("discounts_to_add[apply_on][" + index + "]", discountsToAddApplyOn);
+            paramsV2.add(new CompositeArrayParameter("discounts_to_add", "apply_on", index), discountsToAddApplyOn);
+            return this;
+        }
+        public UpdateRequest discountsToAddDurationType(int index, com.chargebee.models.enums.DurationType discountsToAddDurationType) {
+            params.add("discounts_to_add[duration_type][" + index + "]", discountsToAddDurationType);
+            paramsV2.add(new CompositeArrayParameter("discounts_to_add", "duration_type", index), discountsToAddDurationType);
+            return this;
+        }
+        public UpdateRequest discountsToAddPercentage(int index, Double discountsToAddPercentage) {
+            params.addOpt("discounts_to_add[percentage][" + index + "]", discountsToAddPercentage);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "percentage", index), discountsToAddPercentage);
+            return this;
+        }
+        public UpdateRequest discountsToAddAmount(int index, Long discountsToAddAmount) {
+            params.addOpt("discounts_to_add[amount][" + index + "]", discountsToAddAmount);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "amount", index), discountsToAddAmount);
+            return this;
+        }
+        public UpdateRequest discountsToAddPeriod(int index, Integer discountsToAddPeriod) {
+            params.addOpt("discounts_to_add[period][" + index + "]", discountsToAddPeriod);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "period", index), discountsToAddPeriod);
+            return this;
+        }
+        public UpdateRequest discountsToAddPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountsToAddPeriodUnit) {
+            params.addOpt("discounts_to_add[period_unit][" + index + "]", discountsToAddPeriodUnit);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "period_unit", index), discountsToAddPeriodUnit);
+            return this;
+        }
+        public UpdateRequest discountsToAddIncludedInMrr(int index, Boolean discountsToAddIncludedInMrr) {
+            params.addOpt("discounts_to_add[included_in_mrr][" + index + "]", discountsToAddIncludedInMrr);
+            paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "included_in_mrr", index), discountsToAddIncludedInMrr);
+            return this;
+        }
+        public UpdateRequest discountsToAddItemPriceId(int index, String discountsToAddItemPriceId) {
             params.addOpt("discounts_to_add[item_price_id][" + index + "]", discountsToAddItemPriceId);
             paramsV2.addOpt(new CompositeArrayParameter("discounts_to_add", "item_price_id", index), discountsToAddItemPriceId);
             return this;

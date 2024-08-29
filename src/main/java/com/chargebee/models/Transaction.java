@@ -457,6 +457,11 @@ public class Transaction extends Resource<Transaction> {
         return new RecordRefundRequest(Method.POST, uri);
     }
 
+    public static ReconcileRequest reconcile(String id) {
+        String uri = uri("transactions", nullCheck(id), "reconcile");
+        return new ReconcileRequest(Method.POST, uri);
+    }
+
     public static RefundRequest refund(String id) {
         String uri = uri("transactions", nullCheck(id), "refund");
         return new RefundRequest(Method.POST, uri);
@@ -572,6 +577,36 @@ public class Transaction extends Resource<Transaction> {
 
         public RecordRefundRequest comment(String comment) {
             params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ReconcileRequest extends Request<ReconcileRequest> {
+
+        private ReconcileRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ReconcileRequest idAtGateway(String idAtGateway) {
+            params.addOpt("id_at_gateway", idAtGateway);
+            return this;
+        }
+
+
+        public ReconcileRequest customerId(String customerId) {
+            params.addOpt("customer_id", customerId);
+            return this;
+        }
+
+
+        public ReconcileRequest status(Status status) {
+            params.addOpt("status", status);
             return this;
         }
 
