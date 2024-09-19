@@ -96,18 +96,18 @@ public class Purchase extends Resource<Purchase> {
             return this;
         }
 
+        public CreateRequest paymentScheduleSchemeId(String paymentScheduleSchemeId) {
+            params.addOpt("payment_schedule[scheme_id]", paymentScheduleSchemeId);
+            return this;
+        }
+
+        public CreateRequest paymentScheduleAmount(Long paymentScheduleAmount) {
+            params.addOpt("payment_schedule[amount]", paymentScheduleAmount);
+            return this;
+        }
+
         public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
-            return this;
-        }
-
-        public CreateRequest installmentInfoConfigId(String installmentInfoConfigId) {
-            params.addOpt("installment_info[config_id]", installmentInfoConfigId);
-            return this;
-        }
-
-        public CreateRequest installmentInfoAmount(Long installmentInfoAmount) {
-            params.addOpt("installment_info[amount]", installmentInfoAmount);
             return this;
         }
 

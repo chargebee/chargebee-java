@@ -8,6 +8,7 @@ import com.chargebee.internal.HttpUtil.Method;
 import com.chargebee.models.enums.*;
 import org.json.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -51,6 +52,52 @@ public class Item extends Resource<Item> {
 
         public String id() {
             return optString("id");
+        }
+
+    }
+
+    public static class BundleItem extends Resource<BundleItem> {
+        public enum ItemType {
+             PLAN,ADDON,CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public BundleItem(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String itemId() {
+            return reqString("item_id");
+        }
+
+        public ItemType itemType() {
+            return optEnum("item_type", ItemType.class);
+        }
+
+        public Integer quantity() {
+            return optInteger("quantity");
+        }
+
+        public BigDecimal priceAllocation() {
+            return optBigDecimal("price_allocation");
+        }
+
+    }
+
+    public static class BundleConfiguration extends Resource<BundleConfiguration> {
+        public enum Type {
+             FIXED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public BundleConfiguration(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Type type() {
+            return optEnum("type", Type.class);
         }
 
     }
@@ -159,6 +206,14 @@ public class Item extends Resource<Item> {
 
     public List<Item.ApplicableItem> applicableItems() {
         return optList("applicable_items", Item.ApplicableItem.class);
+    }
+
+    public List<Item.BundleItem> bundleItems() {
+        return optList("bundle_items", Item.BundleItem.class);
+    }
+
+    public Item.BundleConfiguration bundleConfiguration() {
+        return optSubResource("bundle_configuration", Item.BundleConfiguration.class);
     }
 
     public JSONObject metadata() {
@@ -321,6 +376,27 @@ public class Item extends Resource<Item> {
         }
 
 
+        public CreateRequest bundleConfigurationType(BundleConfiguration.Type bundleConfigurationType) {
+            params.addOpt("bundle_configuration[type]", bundleConfigurationType);
+            return this;
+        }
+
+        public CreateRequest bundleItemsToAddItemId(int index, String bundleItemsToAddItemId) {
+            params.addOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
+            return this;
+        }
+        public CreateRequest bundleItemsToAddItemType(int index, com.chargebee.models.enums.ItemType bundleItemsToAddItemType) {
+            params.addOpt("bundle_items_to_add[item_type][" + index + "]", bundleItemsToAddItemType);
+            return this;
+        }
+        public CreateRequest bundleItemsToAddQuantity(int index, Integer bundleItemsToAddQuantity) {
+            params.addOpt("bundle_items_to_add[quantity][" + index + "]", bundleItemsToAddQuantity);
+            return this;
+        }
+        public CreateRequest bundleItemsToAddPriceAllocation(int index, BigDecimal bundleItemsToAddPriceAllocation) {
+            params.addOpt("bundle_items_to_add[price_allocation][" + index + "]", bundleItemsToAddPriceAllocation);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -434,6 +510,51 @@ public class Item extends Resource<Item> {
         }
 
 
+        public UpdateRequest bundleConfigurationType(BundleConfiguration.Type bundleConfigurationType) {
+            params.addOpt("bundle_configuration[type]", bundleConfigurationType);
+            return this;
+        }
+
+        public UpdateRequest bundleItemsToAddItemId(int index, String bundleItemsToAddItemId) {
+            params.addOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
+            return this;
+        }
+        public UpdateRequest bundleItemsToAddItemType(int index, com.chargebee.models.enums.ItemType bundleItemsToAddItemType) {
+            params.addOpt("bundle_items_to_add[item_type][" + index + "]", bundleItemsToAddItemType);
+            return this;
+        }
+        public UpdateRequest bundleItemsToAddQuantity(int index, Integer bundleItemsToAddQuantity) {
+            params.addOpt("bundle_items_to_add[quantity][" + index + "]", bundleItemsToAddQuantity);
+            return this;
+        }
+        public UpdateRequest bundleItemsToAddPriceAllocation(int index, BigDecimal bundleItemsToAddPriceAllocation) {
+            params.addOpt("bundle_items_to_add[price_allocation][" + index + "]", bundleItemsToAddPriceAllocation);
+            return this;
+        }
+        public UpdateRequest bundleItemsToUpdateItemId(int index, String bundleItemsToUpdateItemId) {
+            params.addOpt("bundle_items_to_update[item_id][" + index + "]", bundleItemsToUpdateItemId);
+            return this;
+        }
+        public UpdateRequest bundleItemsToUpdateItemType(int index, com.chargebee.models.enums.ItemType bundleItemsToUpdateItemType) {
+            params.addOpt("bundle_items_to_update[item_type][" + index + "]", bundleItemsToUpdateItemType);
+            return this;
+        }
+        public UpdateRequest bundleItemsToUpdateQuantity(int index, Integer bundleItemsToUpdateQuantity) {
+            params.addOpt("bundle_items_to_update[quantity][" + index + "]", bundleItemsToUpdateQuantity);
+            return this;
+        }
+        public UpdateRequest bundleItemsToUpdatePriceAllocation(int index, BigDecimal bundleItemsToUpdatePriceAllocation) {
+            params.addOpt("bundle_items_to_update[price_allocation][" + index + "]", bundleItemsToUpdatePriceAllocation);
+            return this;
+        }
+        public UpdateRequest bundleItemsToRemoveItemId(int index, String bundleItemsToRemoveItemId) {
+            params.addOpt("bundle_items_to_remove[item_id][" + index + "]", bundleItemsToRemoveItemId);
+            return this;
+        }
+        public UpdateRequest bundleItemsToRemoveItemType(int index, com.chargebee.models.enums.ItemType bundleItemsToRemoveItemType) {
+            params.addOpt("bundle_items_to_remove[item_type][" + index + "]", bundleItemsToRemoveItemType);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -446,6 +567,11 @@ public class Item extends Resource<Item> {
             super(uri);
         }
     
+        public EnumFilter<BundleConfiguration.Type, ItemListRequest> bundleConfigurationType() {
+            return new EnumFilter<BundleConfiguration.Type, ItemListRequest>("bundle_configuration[type]",this);        
+        }
+
+
         public StringFilter<ItemListRequest> id() {
             return new StringFilter<ItemListRequest>("id",this).supportsMultiOperators(true);        
         }

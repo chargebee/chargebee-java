@@ -1232,9 +1232,14 @@ public class Invoice extends Resource<Invoice> {
         return new UpdateDetailsRequest(Method.POST, uri);
     }
 
-    public static InstallmentsRequest installments(String id) {
-        String uri = uri("invoices", nullCheck(id), "installments");
-        return new InstallmentsRequest(Method.POST, uri);
+    public static ApplyPaymentScheduleSchemeRequest applyPaymentScheduleScheme(String id) {
+        String uri = uri("invoices", nullCheck(id), "apply_payment_schedule_scheme");
+        return new ApplyPaymentScheduleSchemeRequest(Method.POST, uri);
+    }
+
+    public static Request paymentSchedules(String id) {
+        String uri = uri("invoices", nullCheck(id), "payment_schedules");
+        return new Request(Method.GET, uri);
     }
 
     public static Request resendEinvoice(String id) {
@@ -4337,19 +4342,19 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
-    public static class InstallmentsRequest extends Request<InstallmentsRequest> {
+    public static class ApplyPaymentScheduleSchemeRequest extends Request<ApplyPaymentScheduleSchemeRequest> {
 
-        private InstallmentsRequest(Method httpMeth, String uri) {
+        private ApplyPaymentScheduleSchemeRequest(Method httpMeth, String uri) {
             super(httpMeth, uri);
         }
     
-        public InstallmentsRequest configId(String configId) {
-            params.add("config_id", configId);
+        public ApplyPaymentScheduleSchemeRequest schemeId(String schemeId) {
+            params.add("scheme_id", schemeId);
             return this;
         }
 
 
-        public InstallmentsRequest amount(Long amount) {
+        public ApplyPaymentScheduleSchemeRequest amount(Long amount) {
             params.addOpt("amount", amount);
             return this;
         }

@@ -80,6 +80,10 @@ public class ResultBase {
         return (PaymentReferenceNumber)get("payment_reference_number");
     }
 
+    public PaymentSchedule paymentSchedule() {
+        return (PaymentSchedule)get("payment_schedule");
+    }
+
     public TaxWithheld taxWithheld() {
         return (TaxWithheld)get("tax_withheld");
     }
@@ -288,16 +292,8 @@ public class ResultBase {
         return (Ramp)get("ramp");
     }
 
-    public InstallmentConfig installmentConfig() {
-        return (InstallmentConfig)get("installment_config");
-    }
-
-    public Installment installment() {
-        return (Installment)get("installment");
-    }
-
-    public InstallmentDetail installmentDetail() {
-        return (InstallmentDetail)get("installment_detail");
+    public PaymentScheduleScheme paymentScheduleScheme() {
+        return (PaymentScheduleScheme)get("payment_schedule_scheme");
     }
 
     public PricingPageSession pricingPageSession() {
@@ -314,6 +310,10 @@ public class ResultBase {
 
     public List<Invoice> invoices() {
         return (List<Invoice>) getList("invoices", "invoice");
+    }
+
+    public List<PaymentSchedule> paymentSchedules() {
+        return (List<PaymentSchedule>) getList("payment_schedules", "payment_schedule");
     }
 
     public List<CreditNote> creditNotes() {
