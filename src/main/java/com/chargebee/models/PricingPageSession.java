@@ -263,6 +263,42 @@ public class PricingPageSession extends Resource<PricingPageSession> {
             return this;
         }
 
+        public CreateForNewSubscriptionRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountAmount(int index, Long discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CreateForNewSubscriptionRequest discountLabel(int index, String discountLabel) {
+            params.addOpt("discounts[label][" + index + "]", discountLabel);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -291,6 +327,42 @@ public class PricingPageSession extends Resource<PricingPageSession> {
             return this;
         }
 
+        public CreateForExistingSubscriptionRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
+            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
+            params.add("discounts[duration_type][" + index + "]", discountDurationType);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountPercentage(int index, Double discountPercentage) {
+            params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountAmount(int index, Long discountAmount) {
+            params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountPeriod(int index, Integer discountPeriod) {
+            params.addOpt("discounts[period][" + index + "]", discountPeriod);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountPeriodUnit(int index, com.chargebee.models.enums.PeriodUnit discountPeriodUnit) {
+            params.addOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountIncludedInMrr(int index, Boolean discountIncludedInMrr) {
+            params.addOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountItemPriceId(int index, String discountItemPriceId) {
+            params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountLabel(int index, String discountLabel) {
+            params.addOpt("discounts[label][" + index + "]", discountLabel);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

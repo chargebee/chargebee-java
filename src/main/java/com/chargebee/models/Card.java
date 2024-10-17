@@ -40,6 +40,8 @@ public class Card extends Resource<Card> {
         CARNET,
         RUPAY,
         MAESTRO,
+        DANKORT,
+        CARTES_BANCAIRES,
         OTHER,
         NOT_APPLICABLE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a

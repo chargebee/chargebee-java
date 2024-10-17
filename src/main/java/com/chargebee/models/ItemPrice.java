@@ -300,6 +300,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return reqTimestamp("created_at");
     }
 
+    public UsageAccumulationResetFrequency usageAccumulationResetFrequency() {
+        return optEnum("usage_accumulation_reset_frequency", UsageAccumulationResetFrequency.class);
+    }
+
     public Timestamp archivedAt() {
         return optTimestamp("archived_at");
     }
@@ -488,6 +492,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest showDescriptionInQuotes(Boolean showDescriptionInQuotes) {
             params.addOpt("show_description_in_quotes", showDescriptionInQuotes);
+            return this;
+        }
+
+
+        public CreateRequest usageAccumulationResetFrequency(com.chargebee.models.enums.UsageAccumulationResetFrequency usageAccumulationResetFrequency) {
+            params.addOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
             return this;
         }
 
@@ -703,6 +713,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public UpdateRequest externalName(String externalName) {
             params.addOpt("external_name", externalName);
+            return this;
+        }
+
+
+        public UpdateRequest usageAccumulationResetFrequency(com.chargebee.models.enums.UsageAccumulationResetFrequency usageAccumulationResetFrequency) {
+            params.addOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
             return this;
         }
 

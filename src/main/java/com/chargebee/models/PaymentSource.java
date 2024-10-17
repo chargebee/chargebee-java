@@ -25,7 +25,7 @@ public class PaymentSource extends Resource<PaymentSource> {
 
     public static class Card extends Resource<Card> {
         public enum Brand {
-             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,BANCONTACT,CMR_FALABELLA,TARJETA_NARANJA,NATIVA,CENCOSUD,CABAL,ARGENCARD,ELO,HIPERCARD,CARNET,RUPAY,MAESTRO,NOT_APPLICABLE,
+             VISA,MASTERCARD,AMERICAN_EXPRESS,DISCOVER,JCB,DINERS_CLUB,OTHER,BANCONTACT,CMR_FALABELLA,TARJETA_NARANJA,NATIVA,CENCOSUD,CABAL,ARGENCARD,ELO,HIPERCARD,CARNET,RUPAY,MAESTRO,DANKORT,CARTES_BANCAIRES,NOT_APPLICABLE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

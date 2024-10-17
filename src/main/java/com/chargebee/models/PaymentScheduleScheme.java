@@ -55,6 +55,10 @@ public class PaymentScheduleScheme extends Resource<PaymentScheduleScheme> {
         return reqString("id");
     }
 
+    public String name() {
+        return optString("name");
+    }
+
     public String description() {
         return optString("description");
     }

@@ -150,6 +150,10 @@ public class Subscription extends Resource<Subscription> {
             return optEnum("proration_type", ProrationType.class);
         }
 
+        public UsageAccumulationResetFrequency usageAccumulationResetFrequency() {
+            return optEnum("usage_accumulation_reset_frequency", UsageAccumulationResetFrequency.class);
+        }
+
     }
 
     public static class ItemTier extends Resource<ItemTier> {
@@ -2831,6 +2835,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
             return this;
         }
+        public CreateWithItemsRequest subscriptionItemUsageAccumulationResetFrequency(int index, com.chargebee.models.enums.UsageAccumulationResetFrequency subscriptionItemUsageAccumulationResetFrequency) {
+            params.addOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -4407,6 +4415,10 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest couponApplyTill(int index, Timestamp couponApplyTill) {
             params.addOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+            return this;
+        }
+        public UpdateForItemsRequest subscriptionItemUsageAccumulationResetFrequency(int index, com.chargebee.models.enums.UsageAccumulationResetFrequency subscriptionItemUsageAccumulationResetFrequency) {
+            params.addOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
             return this;
         }
         @Override

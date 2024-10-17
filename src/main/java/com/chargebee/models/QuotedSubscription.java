@@ -237,6 +237,10 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optEnum("proration_type", ProrationType.class);
         }
 
+        public UsageAccumulationResetFrequency usageAccumulationResetFrequency() {
+            return optEnum("usage_accumulation_reset_frequency", UsageAccumulationResetFrequency.class);
+        }
+
     }
 
     public static class ItemTier extends Resource<ItemTier> {

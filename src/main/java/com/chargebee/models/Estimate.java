@@ -47,6 +47,10 @@ public class Estimate extends Resource<Estimate> {
         return optList("invoice_estimates", InvoiceEstimate.class);
     }
 
+    public List<PaymentScheduleEstimate> paymentScheduleEstimates() {
+        return optList("payment_schedule_estimates", PaymentScheduleEstimate.class);
+    }
+
     public InvoiceEstimate nextInvoiceEstimate() {
         return optSubResource("next_invoice_estimate", InvoiceEstimate.class);
     }
@@ -155,6 +159,11 @@ public class Estimate extends Resource<Estimate> {
     public static CreateInvoiceForItemsRequest createInvoiceForItems() {
         String uri = uri("estimates", "create_invoice_for_items");
         return new CreateInvoiceForItemsRequest(Method.POST, uri);
+    }
+
+    public static PaymentSchedulesRequest paymentSchedules() {
+        String uri = uri("estimates", "payment_schedules");
+        return new PaymentSchedulesRequest(Method.POST, uri);
     }
 
 
@@ -3607,6 +3616,42 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
             return this;
         }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class PaymentSchedulesRequest extends Request<PaymentSchedulesRequest> {
+
+        private PaymentSchedulesRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PaymentSchedulesRequest schemeId(String schemeId) {
+            params.add("scheme_id", schemeId);
+            return this;
+        }
+
+
+        public PaymentSchedulesRequest amount(Long amount) {
+            params.addOpt("amount", amount);
+            return this;
+        }
+
+
+        public PaymentSchedulesRequest invoiceId(String invoiceId) {
+            params.addOpt("invoice_id", invoiceId);
+            return this;
+        }
+
+
+        public PaymentSchedulesRequest paymentScheduleStartDate(Timestamp paymentScheduleStartDate) {
+            params.addOpt("payment_schedule_start_date", paymentScheduleStartDate);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

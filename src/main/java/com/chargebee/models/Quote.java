@@ -4426,6 +4426,12 @@ public class Quote extends Resource<Quote> {
         }
 
 
+        public ConvertRequest invoiceImmediately(Boolean invoiceImmediately) {
+            params.addOpt("invoice_immediately", invoiceImmediately);
+            return this;
+        }
+
+
         public ConvertRequest createPendingInvoices(Boolean createPendingInvoices) {
             params.addOpt("create_pending_invoices", createPendingInvoices);
             return this;
