@@ -138,6 +138,10 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         return optList("parent_periods", DifferentialPrice.ParentPeriod.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -190,6 +194,12 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
 
         public CreateRequest priceInDecimal(String priceInDecimal) {
             params.addOpt("price_in_decimal", priceInDecimal);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 

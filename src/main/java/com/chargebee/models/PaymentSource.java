@@ -36,6 +36,12 @@ public class PaymentSource extends Resource<PaymentSource> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum PreferredScheme {
+            CARTES_BANCAIRES,MASTERCARD,VISA,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public Card(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -946,6 +952,11 @@ public class PaymentSource extends Resource<PaymentSource> {
 
         public CreateCardRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateCardRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
 

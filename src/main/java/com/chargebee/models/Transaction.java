@@ -30,6 +30,7 @@ public class Transaction extends Resource<Transaction> {
         FAILURE,
         TIMEOUT,
         NEEDS_ATTENTION,
+        LATE_FAILURE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -125,7 +126,7 @@ public class Transaction extends Resource<Transaction> {
         }
 
         public String cnReferenceInvoiceId() {
-            return reqString("cn_reference_invoice_id");
+            return optString("cn_reference_invoice_id");
         }
 
     }
@@ -155,7 +156,7 @@ public class Transaction extends Resource<Transaction> {
 
     public static class LinkedPayment extends Resource<LinkedPayment> {
         public enum Status {
-             IN_PROGRESS,SUCCESS,VOIDED,FAILURE,TIMEOUT,NEEDS_ATTENTION,
+             IN_PROGRESS,SUCCESS,VOIDED,FAILURE,TIMEOUT,NEEDS_ATTENTION,LATE_FAILURE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

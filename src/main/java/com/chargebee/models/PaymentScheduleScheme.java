@@ -138,12 +138,20 @@ public class PaymentScheduleScheme extends Resource<PaymentScheduleScheme> {
         }
 
 
-        public CreateRequest description(String description) {
-            params.addOpt("description", description);
+        public CreateRequest name(String name) {
+            params.add("name", name);
             return this;
         }
 
 
+        public CreateRequest flexibleSchedulePeriod(int index, Integer flexibleSchedulePeriod) {
+            params.addOpt("flexible_schedules[period][" + index + "]", flexibleSchedulePeriod);
+            return this;
+        }
+        public CreateRequest flexibleScheduleAmountPercentage(int index, BigDecimal flexibleScheduleAmountPercentage) {
+            params.addOpt("flexible_schedules[amount_percentage][" + index + "]", flexibleScheduleAmountPercentage);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

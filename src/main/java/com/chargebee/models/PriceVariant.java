@@ -94,6 +94,10 @@ public class PriceVariant extends Resource<PriceVariant> {
         return optList("attributes", PriceVariant.Attribute.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -158,6 +162,12 @@ public class PriceVariant extends Resource<PriceVariant> {
 
         public CreateRequest variantGroup(String variantGroup) {
             params.addOpt("variant_group", variantGroup);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -254,6 +264,16 @@ public class PriceVariant extends Resource<PriceVariant> {
 
         public TimestampFilter<PriceVariantListRequest> createdAt() {
             return new TimestampFilter<PriceVariantListRequest>("created_at",this);        
+        }
+
+
+        public StringFilter<PriceVariantListRequest> businessEntityId() {
+            return new StringFilter<PriceVariantListRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<PriceVariantListRequest> includeSiteLevelResources() {
+            return new BooleanFilter<PriceVariantListRequest>("include_site_level_resources",this);        
         }
 
 

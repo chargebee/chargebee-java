@@ -34,6 +34,7 @@ public class Coupon extends Resource<Coupon> {
         EXPIRED,
         ARCHIVED,
         DELETED,
+        FUTURE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -145,7 +146,7 @@ public class Coupon extends Resource<Coupon> {
         }
 
         public enum Type {
-             MAX_REDEMPTIONS,UNIQUE_BY,
+             MAX_REDEMPTIONS,UNIQUE_BY,EXISTING_CUSTOMER,NEW_CUSTOMER,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -222,6 +223,10 @@ public class Coupon extends Resource<Coupon> {
     @Deprecated
     public Integer durationMonth() {
         return optInteger("duration_month");
+    }
+
+    public Timestamp validFrom() {
+        return optTimestamp("valid_from");
     }
 
     public Timestamp validTill() {
@@ -597,6 +602,12 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public CreateForItemsRequest validFrom(Timestamp validFrom) {
+            params.addOpt("valid_from", validFrom);
+            return this;
+        }
+
+
         public CreateForItemsRequest validTill(Timestamp validTill) {
             params.addOpt("valid_till", validTill);
             return this;
@@ -754,6 +765,12 @@ public class Coupon extends Resource<Coupon> {
 
         public UpdateForItemsRequest durationMonth(Integer durationMonth) {
             params.addOpt("duration_month", durationMonth);
+            return this;
+        }
+
+
+        public UpdateForItemsRequest validFrom(Timestamp validFrom) {
+            params.addOpt("valid_from", validFrom);
             return this;
         }
 

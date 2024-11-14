@@ -62,6 +62,10 @@ public class ItemFamily extends Resource<ItemFamily> {
         return optEnum("channel", Channel.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -118,6 +122,12 @@ public class ItemFamily extends Resource<ItemFamily> {
         }
 
 
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
@@ -142,6 +152,16 @@ public class ItemFamily extends Resource<ItemFamily> {
 
         public TimestampFilter<ItemFamilyListRequest> updatedAt() {
             return new TimestampFilter<ItemFamilyListRequest>("updated_at",this);        
+        }
+
+
+        public StringFilter<ItemFamilyListRequest> businessEntityId() {
+            return new StringFilter<ItemFamilyListRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemFamilyListRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemFamilyListRequest>("include_site_level_resources",this);        
         }
 
 

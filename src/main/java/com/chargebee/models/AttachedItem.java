@@ -99,6 +99,10 @@ public class AttachedItem extends Resource<AttachedItem> {
         return optEnum("channel", Channel.class);
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -175,6 +179,12 @@ public class AttachedItem extends Resource<AttachedItem> {
 
         public CreateRequest chargeOnce(Boolean chargeOnce) {
             params.addOpt("charge_once", chargeOnce);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 

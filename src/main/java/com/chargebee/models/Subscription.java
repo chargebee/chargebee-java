@@ -1608,6 +1608,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
+            return this;
+        }
+
         public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
@@ -3327,6 +3332,11 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public UpdateRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
+            return this;
+        }
+
         public UpdateRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
@@ -4000,6 +4010,11 @@ public class Subscription extends Resource<Subscription> {
 
         public UpdateForItemsRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public UpdateForItemsRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
 
@@ -5229,6 +5244,11 @@ public class Subscription extends Resource<Subscription> {
 
         public ImportSubscriptionRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public ImportSubscriptionRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
 

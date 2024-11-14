@@ -358,6 +358,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optBoolean("show_description_in_quotes");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -498,6 +502,12 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public CreateRequest usageAccumulationResetFrequency(com.chargebee.models.enums.UsageAccumulationResetFrequency usageAccumulationResetFrequency) {
             params.addOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -1007,6 +1017,16 @@ public class ItemPrice extends Resource<ItemPrice> {
 
         public TimestampFilter<ItemPriceListRequest> updatedAt() {
             return new TimestampFilter<ItemPriceListRequest>("updated_at",this);        
+        }
+
+
+        public StringFilter<ItemPriceListRequest> businessEntityId() {
+            return new StringFilter<ItemPriceListRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemPriceListRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemPriceListRequest>("include_site_level_resources",this);        
         }
 
 

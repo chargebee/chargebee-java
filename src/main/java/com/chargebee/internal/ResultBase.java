@@ -300,6 +300,18 @@ public class ResultBase {
         return (PricingPageSession)get("pricing_page_session");
     }
 
+    public OmnichannelSubscription omnichannelSubscription() {
+        return (OmnichannelSubscription)get("omnichannel_subscription");
+    }
+
+    public OmnichannelTransaction omnichannelTransaction() {
+        return (OmnichannelTransaction)get("omnichannel_transaction");
+    }
+
+    public RecordedPurchase recordedPurchase() {
+        return (RecordedPurchase)get("recorded_purchase");
+    }
+
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
         return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }

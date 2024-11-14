@@ -30,6 +30,9 @@ public enum EntityType {
     ITEM_ENTITLEMENT,
     BUSINESS_ENTITY,
     PRICE_VARIANT,
+    OMNICHANNEL_SUBSCRIPTION,
+    OMNICHANNEL_SUBSCRIPTION_ITEM,
+    OMNICHANNEL_TRANSACTION,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

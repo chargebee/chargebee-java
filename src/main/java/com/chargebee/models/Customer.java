@@ -1210,6 +1210,11 @@ public class Customer extends Resource<Customer> {
             return this;
         }
 
+        public CreateRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
+            return this;
+        }
+
         public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
@@ -2309,6 +2314,11 @@ public class Customer extends Resource<Customer> {
 
         public CollectPaymentRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CollectPaymentRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
 

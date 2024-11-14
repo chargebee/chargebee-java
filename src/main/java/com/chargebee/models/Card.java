@@ -70,6 +70,14 @@ public class Card extends Resource<Card> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum PreferredScheme {
+        CARTES_BANCAIRES,
+        MASTERCARD,
+        VISA,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     //Constructors
     //============
 
@@ -285,6 +293,12 @@ public class Card extends Resource<Card> {
 
         public UpdateCardForCustomerRequest cvv(String cvv) {
             params.addOpt("cvv", cvv);
+            return this;
+        }
+
+
+        public UpdateCardForCustomerRequest preferredScheme(Card.PreferredScheme preferredScheme) {
+            params.addOpt("preferred_scheme", preferredScheme);
             return this;
         }
 

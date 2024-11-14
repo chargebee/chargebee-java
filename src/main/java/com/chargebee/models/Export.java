@@ -1600,6 +1600,16 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<ItemFamiliesRequest> businessEntityId() {
+            return new StringFilter<ItemFamiliesRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemFamiliesRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemFamiliesRequest>("include_site_level_resources",this);        
+        }
+
+
         public StringFilter<ItemFamiliesRequest> itemFamilyId() {
             return new StringFilter<ItemFamiliesRequest>("item_family[id]",this).supportsMultiOperators(true);        
         }
@@ -1627,6 +1637,16 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<ItemsRequest> businessEntityId() {
+            return new StringFilter<ItemsRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemsRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemsRequest>("include_site_level_resources",this);        
+        }
+
+
         public StringFilter<ItemsRequest> itemId() {
             return new StringFilter<ItemsRequest>("item[id]",this).supportsMultiOperators(true);        
         }
@@ -1716,6 +1736,16 @@ public Export waitForExportCompletion()
 
         public StringFilter<ItemPricesRequest> currencyCode() {
             return new StringFilter<ItemPricesRequest>("currency_code",this).supportsMultiOperators(true);        
+        }
+
+
+        public StringFilter<ItemPricesRequest> businessEntityId() {
+            return new StringFilter<ItemPricesRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemPricesRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemPricesRequest>("include_site_level_resources",this);        
         }
 
 
@@ -1870,6 +1900,16 @@ public Export waitForExportCompletion()
             super(httpMeth, uri);
         }
     
+        public StringFilter<PriceVariantsRequest> businessEntityId() {
+            return new StringFilter<PriceVariantsRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<PriceVariantsRequest> includeSiteLevelResources() {
+            return new BooleanFilter<PriceVariantsRequest>("include_site_level_resources",this);        
+        }
+
+
         public StringFilter<PriceVariantsRequest> priceVariantId() {
             return new StringFilter<PriceVariantsRequest>("price_variant[id]",this).supportsMultiOperators(true);        
         }

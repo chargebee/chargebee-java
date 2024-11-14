@@ -1606,6 +1606,11 @@ public class Invoice extends Resource<Invoice> {
             return this;
         }
 
+        public CreateRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
+            return this;
+        }
+
         public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
@@ -2141,6 +2146,11 @@ public class Invoice extends Resource<Invoice> {
 
         public CreateForChargeItemsAndChargesRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
+            return this;
+        }
+
+        public CreateForChargeItemsAndChargesRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
+            params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
 

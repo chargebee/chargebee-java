@@ -220,6 +220,10 @@ public class Item extends Resource<Item> {
         return optJSONObject("metadata");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
@@ -372,6 +376,12 @@ public class Item extends Resource<Item> {
 
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
+            return this;
+        }
+
+
+        public CreateRequest businessEntityId(String businessEntityId) {
+            params.addOpt("business_entity_id", businessEntityId);
             return this;
         }
 
@@ -634,6 +644,16 @@ public class Item extends Resource<Item> {
 
         public EnumFilter<com.chargebee.models.enums.Channel, ItemListRequest> channel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, ItemListRequest>("channel",this);        
+        }
+
+
+        public StringFilter<ItemListRequest> businessEntityId() {
+            return new StringFilter<ItemListRequest>("business_entity_id",this).supportsPresenceOperator(true);        
+        }
+
+
+        public BooleanFilter<ItemListRequest> includeSiteLevelResources() {
+            return new BooleanFilter<ItemListRequest>("include_site_level_resources",this);        
         }
 
 
