@@ -19,67 +19,6 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public static class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptionItem> {
-        public enum Status {
-             ACTIVE,EXPIRED,CANCELLED,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public enum ExpirationReason {
-             BILLING_ERROR,PRODUCT_NOT_AVAILABLE,OTHER,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public enum CancellationReason {
-             CUSTOMER_CANCELLED,CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public OmnichannelSubscriptionItem(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String id() {
-            return reqString("id");
-        }
-
-        public String idAtSource() {
-            return reqString("id_at_source");
-        }
-
-        public Status status() {
-            return reqEnum("status", Status.class);
-        }
-
-        public Timestamp currentTermStart() {
-            return optTimestamp("current_term_start");
-        }
-
-        public Timestamp currentTermEnd() {
-            return optTimestamp("current_term_end");
-        }
-
-        public Timestamp expiredAt() {
-            return optTimestamp("expired_at");
-        }
-
-        public ExpirationReason expirationReason() {
-            return optEnum("expiration_reason", ExpirationReason.class);
-        }
-
-        public Timestamp cancelledAt() {
-            return optTimestamp("cancelled_at");
-        }
-
-        public CancellationReason cancellationReason() {
-            return optEnum("cancellation_reason", CancellationReason.class);
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -118,8 +57,12 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return reqTimestamp("created_at");
     }
 
-    public List<OmnichannelSubscription.OmnichannelSubscriptionItem> omnichannelSubscriptionItems() {
-        return reqList("omnichannel_subscription_items", OmnichannelSubscription.OmnichannelSubscriptionItem.class);
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
+    public List<OmnichannelSubscriptionItem> omnichannelSubscriptionItems() {
+        return reqList("omnichannel_subscription_items", OmnichannelSubscriptionItem.class);
     }
 
     // Operations
@@ -130,9 +73,9 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return new Request(Method.GET, uri);
     }
 
-    public static ListRequest list() {
+    public static OmnichannelSubscriptionListRequest list() {
         String uri = uri("omnichannel_subscriptions");
-        return new ListRequest(uri);
+        return new OmnichannelSubscriptionListRequest(uri);
     }
 
     public static ListRequest omnichannelTransactionsForOmnichannelSubscription(String id) {
@@ -140,5 +83,25 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return new ListRequest(uri);
     }
 
+
+    // Operation Request Classes
+    //==========================
+
+    public static class OmnichannelSubscriptionListRequest extends ListRequest<OmnichannelSubscriptionListRequest> {
+
+        private OmnichannelSubscriptionListRequest(String uri) {
+            super(uri);
+        }
+    
+        public StringFilter<OmnichannelSubscriptionListRequest> customerId() {
+            return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

@@ -70,6 +70,10 @@ public class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
         return reqTimestamp("created_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
     // Operations
     //===========
 

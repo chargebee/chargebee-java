@@ -308,6 +308,10 @@ public class ResultBase {
         return (OmnichannelTransaction)get("omnichannel_transaction");
     }
 
+    public OmnichannelSubscriptionItem omnichannelSubscriptionItem() {
+        return (OmnichannelSubscriptionItem)get("omnichannel_subscription_item");
+    }
+
     public RecordedPurchase recordedPurchase() {
         return (RecordedPurchase)get("recorded_purchase");
     }

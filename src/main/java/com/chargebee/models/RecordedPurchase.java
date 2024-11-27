@@ -91,6 +91,10 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
         return reqTimestamp("created_at");
     }
 
+    public Long resourceVersion() {
+        return optLong("resource_version");
+    }
+
     public List<RecordedPurchase.LinkedOmnichannelSubscription> linkedOmnichannelSubscriptions() {
         return optList("linked_omnichannel_subscriptions", RecordedPurchase.LinkedOmnichannelSubscription.class);
     }

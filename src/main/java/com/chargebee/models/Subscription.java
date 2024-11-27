@@ -921,10 +921,6 @@ public class Subscription extends Resource<Subscription> {
         return optJSONObject("meta_data");
     }
 
-    public JSONObject metadata() {
-        return optJSONObject("metadata");
-    }
-
     public Boolean deleted() {
         return reqBoolean("deleted");
     }
@@ -965,6 +961,10 @@ public class Subscription extends Resource<Subscription> {
         return optString("business_entity_id");
     }
 
+    @Deprecated
+    public JSONObject metadata(){
+        return optJSONObject("metadata");
+    }
     // Operations
     //===========
 

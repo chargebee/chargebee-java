@@ -1691,6 +1691,11 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutNewForItemsRequest subscriptionPoNumber(String subscriptionPoNumber) {
+            params.addOpt("subscription[po_number]", subscriptionPoNumber);
+            return this;
+        }
+
         public CheckoutNewForItemsRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
@@ -2043,6 +2048,12 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
 
+        public CheckoutExistingRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
+
         public CheckoutExistingRequest reactivate(Boolean reactivate) {
             params.addOpt("reactivate", reactivate);
             return this;
@@ -2326,6 +2337,12 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("coupon_ids", couponIds);
             return this;
         }
+
+        public CheckoutExistingForItemsRequest replaceCouponList(Boolean replaceCouponList) {
+            params.addOpt("replace_coupon_list", replaceCouponList);
+            return this;
+        }
+
 
         public CheckoutExistingForItemsRequest reactivate(Boolean reactivate) {
             params.addOpt("reactivate", reactivate);
