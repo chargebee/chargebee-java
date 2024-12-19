@@ -17,6 +17,8 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         ACTIVE,
         EXPIRED,
         CANCELLED,
+        IN_DUNNING,
+        IN_GRACE_PERIOD,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -84,6 +86,10 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
 
     public CancellationReason cancellationReason() {
         return optEnum("cancellation_reason", CancellationReason.class);
+    }
+
+    public Timestamp gracePeriodExpiresAt() {
+        return optTimestamp("grace_period_expires_at");
     }
 
     public Long resourceVersion() {

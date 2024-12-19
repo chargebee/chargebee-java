@@ -228,6 +228,10 @@ public class ResultBase {
         return (DifferentialPrice)get("differential_price");
     }
 
+    public Configuration configuration() {
+        return (Configuration)get("configuration");
+    }
+
     public Feature feature() {
         return (Feature)get("feature");
     }
@@ -342,6 +346,10 @@ public class ResultBase {
 
     public List<Download> downloads() {
         return (List<Download>) getList("downloads", "download");
+    }
+
+    public List<Configuration> configurations() {
+        return (List<Configuration>) getList("configurations", "configuration");
     }
 
     public List<InAppSubscription> inAppSubscriptions() {

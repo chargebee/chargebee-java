@@ -79,6 +79,10 @@ public class GatewayErrorDetail extends Resource<GatewayErrorDetail> {
         return optString("processor_error_message");
     }
 
+    public String errorCauseId() {
+        return optString("error_cause_id");
+    }
+
     // Operations
     //===========
 

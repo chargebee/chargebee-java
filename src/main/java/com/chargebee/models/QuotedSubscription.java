@@ -189,6 +189,18 @@ public class QuotedSubscription extends Resource<QuotedSubscription> {
             return optLong("amount");
         }
 
+        public Timestamp currentTermStart() {
+            return optTimestamp("current_term_start");
+        }
+
+        public Timestamp currentTermEnd() {
+            return optTimestamp("current_term_end");
+        }
+
+        public Timestamp nextBillingAt() {
+            return optTimestamp("next_billing_at");
+        }
+
         public String amountInDecimal() {
             return optString("amount_in_decimal");
         }

@@ -102,6 +102,18 @@ public class Subscription extends Resource<Subscription> {
             return optLong("amount");
         }
 
+        public Timestamp currentTermStart() {
+            return optTimestamp("current_term_start");
+        }
+
+        public Timestamp currentTermEnd() {
+            return optTimestamp("current_term_end");
+        }
+
+        public Timestamp nextBillingAt() {
+            return optTimestamp("next_billing_at");
+        }
+
         public String amountInDecimal() {
             return optString("amount_in_decimal");
         }
@@ -473,6 +485,21 @@ public class Subscription extends Resource<Subscription> {
 
         public Boolean postPurchaseWidgetEnabled() {
             return reqBoolean("post_purchase_widget_enabled");
+        }
+
+    }
+
+    public static class BillingOverride extends Resource<BillingOverride> {
+        public BillingOverride(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Long maxExcessPaymentUsage() {
+            return optLong("max_excess_payment_usage");
+        }
+
+        public Long maxRefundableCreditsUsage() {
+            return optLong("max_refundable_credits_usage");
         }
 
     }
@@ -911,6 +938,10 @@ public class Subscription extends Resource<Subscription> {
 
     public Subscription.ReferralInfo referralInfo() {
         return optSubResource("referral_info", Subscription.ReferralInfo.class);
+    }
+
+    public Subscription.BillingOverride billingOverride() {
+        return optSubResource("billing_override", Subscription.BillingOverride.class);
     }
 
     public String invoiceNotes() {
@@ -2721,6 +2752,16 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
 
+        public CreateWithItemsRequest billingOverrideMaxExcessPaymentUsage(Long billingOverrideMaxExcessPaymentUsage) {
+            params.addOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+            return this;
+        }
+
+        public CreateWithItemsRequest billingOverrideMaxRefundableCreditsUsage(Long billingOverrideMaxRefundableCreditsUsage) {
+            params.addOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
+            return this;
+        }
+
         public CreateWithItemsRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -4298,6 +4339,16 @@ public class Subscription extends Resource<Subscription> {
         @Deprecated
         public UpdateForItemsRequest contractTermContractStart(Timestamp contractTermContractStart) {
             params.addOpt("contract_term[contract_start]", contractTermContractStart);
+            return this;
+        }
+
+        public UpdateForItemsRequest billingOverrideMaxExcessPaymentUsage(Long billingOverrideMaxExcessPaymentUsage) {
+            params.addOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+            return this;
+        }
+
+        public UpdateForItemsRequest billingOverrideMaxRefundableCreditsUsage(Long billingOverrideMaxRefundableCreditsUsage) {
+            params.addOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
             return this;
         }
 

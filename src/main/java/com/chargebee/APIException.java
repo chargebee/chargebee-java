@@ -10,6 +10,7 @@ public class APIException extends RuntimeException {
     public final String type;
     public final String param;
     public final String apiErrorCode;
+    public final String errorCauseId;
 
     
     /**
@@ -46,7 +47,7 @@ public class APIException extends RuntimeException {
         }
         this.type = jsonObj.optString("type");
         this.param = jsonObj.optString("param");
-
+        this.errorCauseId = jsonObj.optString("error_cause_id");
         this.httpCode = httpStatusCode;
     }
     

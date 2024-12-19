@@ -193,6 +193,12 @@ public class CreditNote extends Resource<CreditNote> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum DiscountType {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public Discount(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -207,6 +213,10 @@ public class CreditNote extends Resource<CreditNote> {
 
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
+        }
+
+        public DiscountType discountType() {
+            return optEnum("discount_type", DiscountType.class);
         }
 
         public String entityId() {

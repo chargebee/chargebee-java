@@ -240,6 +240,10 @@ public class Transaction extends Resource<Transaction> {
             return optString("processor_error_message");
         }
 
+        public String errorCauseId() {
+            return optString("error_cause_id");
+        }
+
     }
 
     //Constructors
