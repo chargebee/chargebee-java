@@ -103,6 +103,10 @@ public class AttachedItem extends Resource<AttachedItem> {
         return optString("business_entity_id");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 

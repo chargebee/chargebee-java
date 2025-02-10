@@ -220,6 +220,10 @@ public class Item extends Resource<Item> {
         return optJSONObject("metadata");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     public String businessEntityId() {
         return optString("business_entity_id");
     }

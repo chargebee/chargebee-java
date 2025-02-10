@@ -16,6 +16,8 @@ public class RequestBase<U extends RequestBase> {
     protected Params params = new Params();
     protected ParamsV2 paramsV2 = new ParamsV2();
     protected Map<String,String> headers = new HashMap();
+    protected String subDomain;
+    protected boolean isJsonRequest;
 
     public U setIdempotencyKey(String idempotencyKey){
         headers.put(IDEMPOTENCY_HEADER, idempotencyKey);

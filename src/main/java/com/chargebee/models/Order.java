@@ -403,7 +403,7 @@ public class Order extends Resource<Order> {
 
     public static class LinkedCreditNote extends Resource<LinkedCreditNote> {
         public enum Type {
-             ADJUSTMENT,REFUNDABLE,
+             ADJUSTMENT,REFUNDABLE,STORE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }

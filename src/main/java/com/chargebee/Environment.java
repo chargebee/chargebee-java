@@ -32,7 +32,7 @@ public class Environment {
 
     public static final String API_VERSION = "v2";
     
-    public static final String LIBRARY_VERSION = "3.28.0";
+    public static final String LIBRARY_VERSION = "3.29.0";
 
     private final String apiBaseUrl;
 
@@ -74,6 +74,12 @@ public class Environment {
 
     public String apiBaseUrl() {
         return this.apiBaseUrl;
+    }
+
+    public String apiBaseUrlWithSubDomain(String subDomain) {
+        String domainSuffix = System.getProperty("com.chargebee.api.domain.suffix", "chargebee.com");
+        String proto = System.getProperty("com.chargebee.api.protocol", "https");
+        return proto + "://" + siteName + "." + subDomain + "." + domainSuffix + "/api/" + API_VERSION;
     }
 
     public static void updateConnectTimeoutInMillis(int connectTimeout) {

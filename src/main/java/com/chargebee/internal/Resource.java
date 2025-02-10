@@ -145,6 +145,21 @@ public class Resource<T> {
         return optional(key,JSONArray.class);
     }
 
+    public Map<String, Object> reqMap(String key) {
+        Object value = jsonObj.get(key);
+        
+        if (value == null) {
+            throw new IllegalArgumentException(
+                    "Required field '" + key + "' is missing or not a valid Map<String, Object>.");
+        }
+        return (Map<String, Object>) value;
+    }
+
+    public Map<String, Object> optMap(String key) {
+        Object value = jsonObj.get(key);
+        return (value instanceof Map) ? (Map<String, Object>) value : null;
+    }
+
     public Timestamp reqTimestamp(String key) {
         return assertReqProp(key, optTimestamp( key));
     }

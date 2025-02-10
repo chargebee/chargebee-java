@@ -68,7 +68,9 @@ public class Params {
             return value.toString();
         } else if(value instanceof JSONArray) {
             return value.toString();
-        } else {
+        } else if(value instanceof Map<?, ?>){
+            return value.toString();
+        }else {
             throw new RuntimeException("Type [" + c.getName() + "] not handled");
         }
     }

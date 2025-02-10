@@ -142,6 +142,10 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         return optString("business_entity_id");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 

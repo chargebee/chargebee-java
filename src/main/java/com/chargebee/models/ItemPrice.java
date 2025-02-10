@@ -358,6 +358,10 @@ public class ItemPrice extends Resource<ItemPrice> {
         return optBoolean("show_description_in_quotes");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     public String businessEntityId() {
         return optString("business_entity_id");
     }

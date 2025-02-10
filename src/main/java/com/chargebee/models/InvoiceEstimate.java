@@ -296,6 +296,25 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
     }
 
+    public static class LineItemCredit extends Resource<LineItemCredit> {
+        public LineItemCredit(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String cnId() {
+            return reqString("cn_id");
+        }
+
+        public Double appliedAmount() {
+            return reqDouble("applied_amount");
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+    }
+
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
              ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
@@ -393,6 +412,10 @@ public class InvoiceEstimate extends Resource<InvoiceEstimate> {
 
     public List<InvoiceEstimate.LineItemTier> lineItemTiers() {
         return optList("line_item_tiers", InvoiceEstimate.LineItemTier.class);
+    }
+
+    public List<InvoiceEstimate.LineItemCredit> lineItemCredits() {
+        return optList("line_item_credits", InvoiceEstimate.LineItemCredit.class);
     }
 
     public List<InvoiceEstimate.LineItemDiscount> lineItemDiscounts() {

@@ -6187,6 +6187,16 @@ public class Subscription extends Resource<Subscription> {
             super(httpMeth, uri);
         }
     
+        public ImportForItemsRequest exhaustedCouponIds(List<String> exhaustedCouponIds) {
+            params.addOpt("exhausted_coupon_ids", exhaustedCouponIds);
+            return this;
+        }
+
+        public ImportForItemsRequest exhaustedCouponIds(String... exhaustedCouponIds) {
+            params.addOpt("exhausted_coupon_ids", exhaustedCouponIds);
+            return this;
+        }
+
         public ImportForItemsRequest id(String id) {
             params.addOpt("id", id);
             return this;

@@ -306,6 +306,25 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class LineItemCredit extends Resource<LineItemCredit> {
+        public LineItemCredit(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String cnId() {
+            return reqString("cn_id");
+        }
+
+        public Double appliedAmount() {
+            return reqDouble("applied_amount");
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+    }
+
     public static class LineItemTier extends Resource<LineItemTier> {
         public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
@@ -412,6 +431,12 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class AppliedCredit extends Resource<AppliedCredit> {
+        public enum TaxApplication {
+             PRE_TAX,POST_TAX,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public AppliedCredit(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -442,6 +467,10 @@ public class Invoice extends Resource<Invoice> {
 
         public CreditNote.Status cnStatus() {
             return reqEnum("cn_status", CreditNote.Status.class);
+        }
+
+        public TaxApplication taxApplication() {
+            return optEnum("tax_application", TaxApplication.class);
         }
 
     }
@@ -980,6 +1009,10 @@ public class Invoice extends Resource<Invoice> {
 
     public List<Invoice.LineItemTax> lineItemTaxes() {
         return optList("line_item_taxes", Invoice.LineItemTax.class);
+    }
+
+    public List<Invoice.LineItemCredit> lineItemCredits() {
+        return optList("line_item_credits", Invoice.LineItemCredit.class);
     }
 
     public List<Invoice.LineItemTier> lineItemTiers() {

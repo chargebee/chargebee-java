@@ -320,6 +320,14 @@ public class ResultBase {
         return (RecordedPurchase)get("recorded_purchase");
     }
 
+    public Rule rule() {
+        return (Rule)get("rule");
+    }
+
+    public UsageEvent usageEvent() {
+        return (UsageEvent)get("usage_event");
+    }
+
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
         return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }

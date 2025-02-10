@@ -207,7 +207,6 @@ public class Coupon extends Resource<Coupon> {
         return optLong("discount_amount");
     }
 
-    @Deprecated
     public Integer discountQuantity() {
         return optInteger("discount_quantity");
     }
@@ -318,6 +317,10 @@ public class Coupon extends Resource<Coupon> {
         return optList("coupon_constraints", Coupon.CouponConstraint.class);
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 
@@ -418,7 +421,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        @Deprecated
         public CreateRequest discountQuantity(Integer discountQuantity) {
             params.addOpt("discount_quantity", discountQuantity);
             return this;
@@ -577,7 +579,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        @Deprecated
         public CreateForItemsRequest discountQuantity(Integer discountQuantity) {
             params.addOpt("discount_quantity", discountQuantity);
             return this;
@@ -744,7 +745,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        @Deprecated
         public UpdateForItemsRequest discountQuantity(Integer discountQuantity) {
             params.addOpt("discount_quantity", discountQuantity);
             return this;
@@ -968,7 +968,6 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
-        @Deprecated
         public UpdateRequest discountQuantity(Integer discountQuantity) {
             params.addOpt("discount_quantity", discountQuantity);
             return this;

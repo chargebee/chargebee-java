@@ -17,6 +17,7 @@ public class CreditNote extends Resource<CreditNote> {
     public enum Type {
         ADJUSTMENT,
         REFUNDABLE,
+        STORE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -427,6 +428,12 @@ public class CreditNote extends Resource<CreditNote> {
     }
 
     public static class Allocation extends Resource<Allocation> {
+        public enum TaxApplication {
+             PRE_TAX,POST_TAX,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public Allocation(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -449,6 +456,10 @@ public class CreditNote extends Resource<CreditNote> {
 
         public Invoice.Status invoiceStatus() {
             return reqEnum("invoice_status", Invoice.Status.class);
+        }
+
+        public TaxApplication taxApplication() {
+            return optEnum("tax_application", TaxApplication.class);
         }
 
     }

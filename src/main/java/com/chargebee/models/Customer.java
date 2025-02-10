@@ -2448,18 +2448,6 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public MoveRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
-            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
-            return this;
-        }
-        public MoveRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
-            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
-            return this;
-        }
-        public MoveRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
-            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
-            return this;
-        }
         @Override
         public Params params() {
             return params;
@@ -2526,18 +2514,6 @@ public class Customer extends Resource<Customer> {
         }
 
 
-        public MergeRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
-            params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
-            return this;
-        }
-        public MergeRequest taxProvidersFieldFieldId(int index, String taxProvidersFieldFieldId) {
-            params.addOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
-            return this;
-        }
-        public MergeRequest taxProvidersFieldFieldValue(int index, String taxProvidersFieldFieldValue) {
-            params.addOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
-            return this;
-        }
         @Override
         public Params params() {
             return params;

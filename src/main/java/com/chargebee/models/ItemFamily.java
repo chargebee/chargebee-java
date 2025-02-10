@@ -66,6 +66,10 @@ public class ItemFamily extends Resource<ItemFamily> {
         return optString("business_entity_id");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 

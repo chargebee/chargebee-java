@@ -17,6 +17,21 @@ public class Request<U extends Request> extends RequestBase<U>{
     public Request(Method httpMeth, String uri, String pathParam) {
         this(httpMeth, uri);
         this.pathParam = pathParam;
+        this.isJsonRequest = false;
+    }
+
+    public Request(Method httpMeth, String uri, String pathParam, String subDomain) {
+        this(httpMeth, uri);
+        this.pathParam = pathParam;
+        this.subDomain = subDomain;
+        this.isJsonRequest = false;
+    }
+
+    public Request(Method httpMethod, String uri, String pathParam, String subDomain, boolean isContentTypeJson){
+        this(httpMethod, uri);
+        this.pathParam = pathParam;
+        this.subDomain = subDomain;
+        this.isJsonRequest = isContentTypeJson;
     }
 
     public U param(String paramName, Object value){
@@ -43,14 +58,23 @@ public class Request<U extends Request> extends RequestBase<U>{
         if (env == null) {
             throw new RuntimeException("Environment cannot be null");
         }
-        String url = new StringBuilder(env.apiBaseUrl()).append(req.uri).toString();
+        String baseUrl;
+        if(req.subDomain != null) {
+            baseUrl = env.apiBaseUrlWithSubDomain(req.subDomain);
+        } else {
+            baseUrl = env.apiBaseUrl();
+        }
+        String url = new StringBuilder(baseUrl).append(req.uri).toString();
         switch (req.httpMeth) {
             case GET:
                 return HttpUtil.get(url, req.params(), req.headers, env);
             case POST:
                 if(req instanceof BatchRequest) {
                     return HttpUtil.post(url, ((BatchRequest<?>) req).buildRequest(), req.headers, env);
-                } else {
+                } else if(req.isJsonRequest){
+                    req.headers.put(HttpUtil.CONTENT_TYPE_HEADER_NAME, "application/json;charset=" + Environment.CHARSET);
+                    return HttpUtil.post(url, req.params.toString(), req.headers, env);
+                }else {
                     return HttpUtil.post(url, req.params(), req.headers, env);
                 }
             default:

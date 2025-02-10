@@ -98,6 +98,10 @@ public class PriceVariant extends Resource<PriceVariant> {
         return optString("business_entity_id");
     }
 
+    public Boolean deleted() {
+        return reqBoolean("deleted");
+    }
+
     // Operations
     //===========
 

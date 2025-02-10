@@ -14,6 +14,11 @@ public class ListRequest<U extends ListRequest> extends RequestBase<U>{
         this.uri = uri;
     }
 
+    public ListRequest(String uri, String subDomain) {
+        this.uri = uri;
+        this.subDomain = subDomain;
+    }
+
     public U limit(int limit) {
         params.addOpt("limit", limit);
         return (U)this;
@@ -64,7 +69,13 @@ public class ListRequest<U extends ListRequest> extends RequestBase<U>{
         if (env == null) {
             throw new RuntimeException("Environment cannot be null");
         }
-        String url = new StringBuilder(env.apiBaseUrl()).append(req.uri).toString();
+        String baseUrl;
+        if(req.subDomain != null) {
+            baseUrl = env.apiBaseUrlWithSubDomain(req.subDomain);
+        } else {
+            baseUrl = env.apiBaseUrl();
+        }
+        String url = new StringBuilder(baseUrl).append(req.uri).toString();
         return HttpUtil.getList(url, req.params(), req.headers, env);
     }
     
