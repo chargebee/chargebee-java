@@ -3,6 +3,7 @@ package com.chargebee.models.enums;
 public enum Gateway {
     CHARGEBEE,
     CHARGEBEE_PAYMENTS,
+    ADYEN,
     STRIPE,
     WEPAY,
     BRAINTREE,
@@ -28,7 +29,6 @@ public enum Gateway {
     WIRECARD,
     AMAZON_PAYMENTS,
     PAYPAL_EXPRESS_CHECKOUT,
-    ADYEN,
     ORBITAL,
     MONERIS_US,
     MONERIS,

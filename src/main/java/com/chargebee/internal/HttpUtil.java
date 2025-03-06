@@ -155,16 +155,16 @@ public class HttpUtil {
                 String type = jsonResp.optString("type");
                 String exceptionMessage = jsonResp.getString("message");
                 if(isBatchApi(conn)) {
-                    throw new BatchAPIException(httpRespCode, exceptionMessage, jsonResp);
+                    throw new BatchAPIException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 }
                 else if ("payment".equals(type)) {
-                    throw new PaymentException(httpRespCode, exceptionMessage, jsonResp);
+                    throw new PaymentException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 } else if ("operation_failed".equals(type)) {
-                    throw new OperationFailedException(httpRespCode, exceptionMessage, jsonResp);
+                    throw new OperationFailedException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 } else if ("invalid_request".equals(type)) {
-                    throw new InvalidRequestException(httpRespCode, exceptionMessage, jsonResp);
+                    throw new InvalidRequestException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 } else{
-                    throw new APIException(httpRespCode, exceptionMessage, jsonResp);
+                    throw new APIException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 }
             }catch(APIException ex){
                 throw ex;            

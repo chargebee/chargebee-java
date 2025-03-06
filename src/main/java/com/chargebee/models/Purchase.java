@@ -111,6 +111,42 @@ public class Purchase extends Resource<Purchase> {
             return this;
         }
 
+        public CreateRequest paymentIntentId(String paymentIntentId) {
+            params.addOpt("payment_intent[id]", paymentIntentId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
+            params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
+            params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
+            return this;
+        }
+
+        public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
+            params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+            return this;
+        }
+
+        public CreateRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
+            params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+            return this;
+        }
+
+        @Deprecated
+        public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
+            params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+            return this;
+        }
+
+        public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
+            params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
+            return this;
+        }
+
         public CreateRequest purchaseItemIndex(int index, Integer purchaseItemIndex) {
             params.add("purchase_items[index][" + index + "]", purchaseItemIndex);
             return this;

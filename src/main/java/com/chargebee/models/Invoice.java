@@ -3229,6 +3229,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
             return this;
         }
+        public ImportInvoiceRequest lineItemCreatedAt(int index, Timestamp lineItemCreatedAt) {
+            params.addOpt("line_items[created_at][" + index + "]", lineItemCreatedAt);
+            return this;
+        }
         public ImportInvoiceRequest paymentReferenceNumberId(int index, String paymentReferenceNumberId) {
             params.addOpt("payment_reference_numbers[id][" + index + "]", paymentReferenceNumberId);
             return this;
