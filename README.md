@@ -1,6 +1,9 @@
-# Java Client Library for Chargebee API
-***
-This is the source code for the Java client library for [Chargebee APIs](https://apidocs.chargebee.com/docs/api?lang=java).
+# Chargebee Java Client Library
+
+This is the official Java library for integrating with Chargebee.
+
+- 📘 For a complete reference of available APIs, check out our [API Documentation](https://apidocs.chargebee.com/docs/api/?lang=java).  
+- 🧪 To explore and test API capabilities interactively, head over to our [API Explorer](https://api-explorer.chargebee.com).
 
 
 ## Library versions
