@@ -47,15 +47,15 @@ public class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
     }
 
     public String priceCurrency() {
-        return reqString("price_currency");
+        return optString("price_currency");
     }
 
     public Long priceUnits() {
-        return reqLong("price_units");
+        return optLong("price_units");
     }
 
     public Long priceNanos() {
-        return reqLong("price_nanos");
+        return optLong("price_nanos");
     }
 
     public Type type() {
@@ -63,7 +63,7 @@ public class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
     }
 
     public Timestamp transactedAt() {
-        return reqTimestamp("transacted_at");
+        return optTimestamp("transacted_at");
     }
 
     public Timestamp createdAt() {

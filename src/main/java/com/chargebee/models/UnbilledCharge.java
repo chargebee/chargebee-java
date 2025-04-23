@@ -26,6 +26,12 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
     }
 
     public static class Tier extends Resource<Tier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public Tier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -60,6 +66,14 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
         public String unitAmountInDecimal() {
             return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -399,6 +413,14 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
         }
         public CreateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public CreateRequest chargeAmount(int index, Long chargeAmount) {

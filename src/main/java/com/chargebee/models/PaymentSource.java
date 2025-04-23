@@ -1263,6 +1263,12 @@ public class PaymentSource extends Resource<PaymentSource> {
         }
 
 
+        public PaymentSourceListRequest includeDeleted(Boolean includeDeleted) {
+            params.addOpt("include_deleted", includeDeleted);
+            return this;
+        }
+
+
         public StringFilter<PaymentSourceListRequest> customerId() {
             return new StringFilter<PaymentSourceListRequest>("customer_id",this).supportsMultiOperators(true);        
         }

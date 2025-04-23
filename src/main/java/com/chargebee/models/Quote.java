@@ -20,6 +20,16 @@ public class Quote extends Resource<Quote> {
         DECLINED,
         INVOICED,
         CLOSED,
+        @Deprecated
+        PENDING_APPROVAL,
+        @Deprecated
+        APPROVAL_REJECTED,
+        @Deprecated
+        PROPOSED,
+        @Deprecated
+        VOIDED,
+        @Deprecated
+        EXPIRED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -28,6 +38,8 @@ public class Quote extends Resource<Quote> {
         CREATE_SUBSCRIPTION_FOR_CUSTOMER,
         CHANGE_SUBSCRIPTION,
         ONETIME_INVOICE,
+        @Deprecated
+        RENEW_SUBSCRIPTION,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -107,9 +119,12 @@ public class Quote extends Resource<Quote> {
             return optLong("item_level_discount_amount");
         }
 
-        @Deprecated
-        public String usagePercentage() {
-            return optString("usage_percentage");
+        public Boolean metered() {
+            return optBoolean("metered");
+        }
+
+        public String percentage() {
+            return optString("percentage");
         }
 
         public String referenceLineItemId() {
@@ -305,6 +320,12 @@ public class Quote extends Resource<Quote> {
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -343,6 +364,14 @@ public class Quote extends Resource<Quote> {
 
         public String unitAmountInDecimal() {
             return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -2757,6 +2786,14 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public CreateSubItemsForCustomerQuoteRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateSubItemsForCustomerQuoteRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -3037,6 +3074,14 @@ public class Quote extends Resource<Quote> {
         }
         public EditCreateSubCustomerQuoteForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         @Override
@@ -3473,6 +3518,14 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public UpdateSubscriptionQuoteForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public UpdateSubscriptionQuoteForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -3896,6 +3949,14 @@ public class Quote extends Resource<Quote> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public EditUpdateSubscriptionQuoteForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public EditUpdateSubscriptionQuoteForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -4080,6 +4141,14 @@ public class Quote extends Resource<Quote> {
         }
         public CreateForChargeItemsAndChargesRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
@@ -4310,6 +4379,14 @@ public class Quote extends Resource<Quote> {
         }
         public EditForChargeItemsAndChargesRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public EditForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {

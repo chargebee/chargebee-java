@@ -109,9 +109,12 @@ public class Invoice extends Resource<Invoice> {
             return optLong("item_level_discount_amount");
         }
 
-        @Deprecated
-        public String usagePercentage() {
-            return optString("usage_percentage");
+        public Boolean metered() {
+            return optBoolean("metered");
+        }
+
+        public String percentage() {
+            return optString("percentage");
         }
 
         public String referenceLineItemId() {
@@ -326,6 +329,12 @@ public class Invoice extends Resource<Invoice> {
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -364,6 +373,14 @@ public class Invoice extends Resource<Invoice> {
 
         public String unitAmountInDecimal() {
             return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -817,6 +834,73 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class LineItemAddress extends Resource<LineItemAddress> {
+        public LineItemAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -1097,6 +1181,10 @@ public class Invoice extends Resource<Invoice> {
 
     public Invoice.TaxOrigin taxOrigin() {
         return optSubResource("tax_origin", Invoice.TaxOrigin.class);
+    }
+
+    public List<Invoice.LineItemAddress> lineItemAddresses() {
+        return optList("line_item_addresses", Invoice.LineItemAddress.class);
     }
 
     // Operations
@@ -2335,6 +2423,14 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateForChargeItemsAndChargesRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         public CreateForChargeItemsAndChargesRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -2772,6 +2868,14 @@ public class Invoice extends Resource<Invoice> {
         }
         public CreateForChargeItemRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateForChargeItemRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateForChargeItemRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         @Override
@@ -3819,6 +3923,14 @@ public class Invoice extends Resource<Invoice> {
         }
         public AddChargeItemRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public AddChargeItemRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public AddChargeItemRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         @Override

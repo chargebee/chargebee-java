@@ -21,6 +21,12 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
     }
 
     public static class Tier extends Resource<Tier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public Tier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -47,6 +53,14 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
 
         public String priceInDecimal() {
             return optString("price_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -240,6 +254,14 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
             params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
             return this;
         }
+        public CreateRequest tierPricingType(int index, com.chargebee.models.enums.PricingType tierPricingType) {
+            params.addOpt("tiers[pricing_type][" + index + "]", tierPricingType);
+            return this;
+        }
+        public CreateRequest tierPackageSize(int index, Integer tierPackageSize) {
+            params.addOpt("tiers[package_size][" + index + "]", tierPackageSize);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
@@ -318,6 +340,14 @@ public class DifferentialPrice extends Resource<DifferentialPrice> {
         }
         public UpdateRequest tierPriceInDecimal(int index, String tierPriceInDecimal) {
             params.addOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest tierPricingType(int index, com.chargebee.models.enums.PricingType tierPricingType) {
+            params.addOpt("tiers[pricing_type][" + index + "]", tierPricingType);
+            return this;
+        }
+        public UpdateRequest tierPackageSize(int index, Integer tierPackageSize) {
+            params.addOpt("tiers[package_size][" + index + "]", tierPackageSize);
             return this;
         }
         @Override

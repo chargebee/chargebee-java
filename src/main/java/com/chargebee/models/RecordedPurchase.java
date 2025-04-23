@@ -15,6 +15,7 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
 
     public enum Source {
         APPLE_APP_STORE,
+        GOOGLE_PLAY_STORE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -140,6 +141,21 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
 
         public CreateRequest appleAppStoreTransactionId(String appleAppStoreTransactionId) {
             params.addOpt("apple_app_store[transaction_id]", appleAppStoreTransactionId);
+            return this;
+        }
+
+        public CreateRequest appleAppStoreReceipt(String appleAppStoreReceipt) {
+            params.addOpt("apple_app_store[receipt]", appleAppStoreReceipt);
+            return this;
+        }
+
+        public CreateRequest appleAppStoreProductId(String appleAppStoreProductId) {
+            params.addOpt("apple_app_store[product_id]", appleAppStoreProductId);
+            return this;
+        }
+
+        public CreateRequest googlePlayStorePurchaseToken(String googlePlayStorePurchaseToken) {
+            params.addOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
             return this;
         }
 

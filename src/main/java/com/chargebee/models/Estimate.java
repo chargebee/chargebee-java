@@ -874,6 +874,14 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public CreateSubItemEstimateRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateSubItemEstimateRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         public CreateSubItemEstimateRequest taxProvidersFieldProviderName(int index, String taxProvidersFieldProviderName) {
             params.addOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
             return this;
@@ -1450,6 +1458,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemForCustomerEstimateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         @Override
@@ -2227,6 +2243,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public UpdateSubscriptionForItemsRequest subscriptionItemProrationType(int index, com.chargebee.models.enums.ProrationType subscriptionItemProrationType) {
@@ -3472,6 +3496,46 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateInvoiceForItemsRequest billingAddressLine1(String billingAddressLine1) {
+            params.addOpt("billing_address[line1]", billingAddressLine1);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressLine2(String billingAddressLine2) {
+            params.addOpt("billing_address[line2]", billingAddressLine2);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressLine3(String billingAddressLine3) {
+            params.addOpt("billing_address[line3]", billingAddressLine3);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressCity(String billingAddressCity) {
+            params.addOpt("billing_address[city]", billingAddressCity);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressStateCode(String billingAddressStateCode) {
+            params.addOpt("billing_address[state_code]", billingAddressStateCode);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressZip(String billingAddressZip) {
+            params.addOpt("billing_address[zip]", billingAddressZip);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressCountry(String billingAddressCountry) {
+            params.addOpt("billing_address[country]", billingAddressCountry);
+            return this;
+        }
+
+        public CreateInvoiceForItemsRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
+            params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
+            return this;
+        }
+
         public CreateInvoiceForItemsRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
             params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
             return this;
@@ -3526,6 +3590,14 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public CreateInvoiceForItemsRequest chargeAmount(int index, Long chargeAmount) {

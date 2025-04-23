@@ -1400,6 +1400,14 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             return this;
         }
+        public CheckoutOneTimeForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CheckoutOneTimeForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            return this;
+        }
         public CheckoutOneTimeForItemsRequest chargeAmount(int index, Long chargeAmount) {
             params.addOpt("charges[amount][" + index + "]", chargeAmount);
             return this;
@@ -1958,6 +1966,14 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutNewForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CheckoutNewForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public CheckoutNewForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {
@@ -2600,6 +2616,14 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
             return this;
         }
         public CheckoutExistingForItemsRequest entityIdentifierId(int index, String entityIdentifierId) {

@@ -152,9 +152,12 @@ public class CreditNote extends Resource<CreditNote> {
             return optLong("item_level_discount_amount");
         }
 
-        @Deprecated
-        public String usagePercentage() {
-            return optString("usage_percentage");
+        public Boolean metered() {
+            return optBoolean("metered");
+        }
+
+        public String percentage() {
+            return optString("percentage");
         }
 
         public String referenceLineItemId() {
@@ -264,6 +267,12 @@ public class CreditNote extends Resource<CreditNote> {
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -302,6 +311,14 @@ public class CreditNote extends Resource<CreditNote> {
 
         public String unitAmountInDecimal() {
             return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -624,6 +641,73 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class LineItemAddress extends Resource<LineItemAddress> {
+        public LineItemAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -820,6 +904,10 @@ public class CreditNote extends Resource<CreditNote> {
 
     public CreditNote.TaxOrigin taxOrigin() {
         return optSubResource("tax_origin", CreditNote.TaxOrigin.class);
+    }
+
+    public List<CreditNote.LineItemAddress> lineItemAddresses() {
+        return optList("line_item_addresses", CreditNote.LineItemAddress.class);
     }
 
     // Operations

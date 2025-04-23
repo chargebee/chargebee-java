@@ -34,6 +34,8 @@ public enum EntityType {
     OMNICHANNEL_SUBSCRIPTION_ITEM,
     OMNICHANNEL_TRANSACTION,
     RECORDED_PURCHASE,
+    OMNICHANNEL_SUBSCRIPTION_ITEM_SCHEDULED_CHANGE,
+    SALES_ORDER,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

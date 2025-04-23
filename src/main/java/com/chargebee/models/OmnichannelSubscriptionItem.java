@@ -23,6 +23,13 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public enum AutoRenewStatus {
+        OFF,
+        ON,
+        _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+        java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
     public enum ExpirationReason {
         BILLING_ERROR,
         PRODUCT_NOT_AVAILABLE,
@@ -34,8 +41,29 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
     public enum CancellationReason {
         CUSTOMER_CANCELLED,
         CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE,
+        REFUNDED_DUE_TO_APP_ISSUE,
+        REFUNDED_FOR_OTHER_REASON,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
+    }
+
+    public static class UpcomingRenewal extends Resource<UpcomingRenewal> {
+        public UpcomingRenewal(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String priceCurrency() {
+            return optString("price_currency");
+        }
+
+        public Long priceUnits() {
+            return optLong("price_units");
+        }
+
+        public Long priceNanos() {
+            return optLong("price_nanos");
+        }
+
     }
 
     //Constructors
@@ -60,8 +88,16 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return reqString("item_id_at_source");
     }
 
+    public String itemParentIdAtSource() {
+        return optString("item_parent_id_at_source");
+    }
+
     public Status status() {
         return reqEnum("status", Status.class);
+    }
+
+    public AutoRenewStatus autoRenewStatus() {
+        return optEnum("auto_renew_status", AutoRenewStatus.class);
     }
 
     public Timestamp currentTermStart() {
@@ -92,12 +128,25 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return optTimestamp("grace_period_expires_at");
     }
 
+    public Boolean hasScheduledChanges() {
+        return reqBoolean("has_scheduled_changes");
+    }
+
     public Long resourceVersion() {
         return optLong("resource_version");
     }
 
+    public OmnichannelSubscriptionItem.UpcomingRenewal upcomingRenewal() {
+        return optSubResource("upcoming_renewal", OmnichannelSubscriptionItem.UpcomingRenewal.class);
+    }
+
     // Operations
     //===========
+
+    public static ListRequest listOmniSubItemScheduleChanges(String id) {
+        String uri = uri("omnichannel_subscription_items", nullCheck(id), "scheduled_changes");
+        return new ListRequest(uri);
+    }
 
 
 }

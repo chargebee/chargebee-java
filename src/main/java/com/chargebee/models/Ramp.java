@@ -241,6 +241,12 @@ public class Ramp extends Resource<Ramp> {
     }
 
     public static class ItemTier extends Resource<ItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public ItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -271,6 +277,14 @@ public class Ramp extends Resource<Ramp> {
 
         public String priceInDecimal() {
             return optString("price_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
         public Integer index() {
@@ -576,6 +590,16 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "price_in_decimal", index), itemTierPriceInDecimal);
             return this;
         }
+        public CreateForSubscriptionRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "pricing_type", index), itemTierPricingType);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "package_size", index), itemTierPackageSize);
+            return this;
+        }
         public CreateForSubscriptionRequest couponsToAddCouponId(int index, String couponsToAddCouponId) {
             params.addOpt("coupons_to_add[coupon_id][" + index + "]", couponsToAddCouponId);
             paramsV2.addOpt(new CompositeArrayParameter("coupons_to_add", "coupon_id", index), couponsToAddCouponId);
@@ -798,6 +822,16 @@ public class Ramp extends Resource<Ramp> {
         public UpdateRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
             params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
             paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "price_in_decimal", index), itemTierPriceInDecimal);
+            return this;
+        }
+        public UpdateRequest itemTierPricingType(int index, com.chargebee.models.enums.PricingType itemTierPricingType) {
+            params.addOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "pricing_type", index), itemTierPricingType);
+            return this;
+        }
+        public UpdateRequest itemTierPackageSize(int index, Integer itemTierPackageSize) {
+            params.addOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+            paramsV2.addOpt(new CompositeArrayParameter("item_tiers", "package_size", index), itemTierPackageSize);
             return this;
         }
         public UpdateRequest couponsToAddCouponId(int index, String couponsToAddCouponId) {

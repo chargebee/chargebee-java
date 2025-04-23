@@ -115,6 +115,12 @@ public class QuotedCharge extends Resource<QuotedCharge> {
     }
 
     public static class ItemTier extends Resource<ItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public ItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -145,6 +151,14 @@ public class QuotedCharge extends Resource<QuotedCharge> {
 
         public String priceInDecimal() {
             return optString("price_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
         public Integer index() {

@@ -328,6 +328,10 @@ public class ResultBase {
         return (UsageEvent)get("usage_event");
     }
 
+    public OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange() {
+        return (OmnichannelSubscriptionItemScheduledChange)get("omnichannel_subscription_item_scheduled_change");
+    }
+
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
         return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }

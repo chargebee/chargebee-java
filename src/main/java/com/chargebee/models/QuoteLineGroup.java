@@ -100,9 +100,12 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optLong("item_level_discount_amount");
         }
 
-        @Deprecated
-        public String usagePercentage() {
-            return optString("usage_percentage");
+        public Boolean metered() {
+            return optBoolean("metered");
+        }
+
+        public String percentage() {
+            return optString("percentage");
         }
 
         public String referenceLineItemId() {

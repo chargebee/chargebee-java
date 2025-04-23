@@ -97,9 +97,12 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optLong("item_level_discount_amount");
         }
 
-        @Deprecated
-        public String usagePercentage() {
-            return optString("usage_percentage");
+        public Boolean metered() {
+            return optBoolean("metered");
+        }
+
+        public String percentage() {
+            return optString("percentage");
         }
 
         public String referenceLineItemId() {
@@ -295,6 +298,12 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
     }
 
     public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -333,6 +342,14 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
         public String unitAmountInDecimal() {
             return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }

@@ -196,6 +196,10 @@ public class Item extends Resource<Item> {
         return optEnum("usage_calculation", UsageCalculation.class);
     }
 
+    public Boolean isPercentagePricing() {
+        return reqBoolean("is_percentage_pricing");
+    }
+
     public Timestamp archivedAt() {
         return optTimestamp("archived_at");
     }
@@ -386,6 +390,12 @@ public class Item extends Resource<Item> {
 
         public CreateRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
+            return this;
+        }
+
+
+        public CreateRequest isPercentagePricing(Boolean isPercentagePricing) {
+            params.addOpt("is_percentage_pricing", isPercentagePricing);
             return this;
         }
 

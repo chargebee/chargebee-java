@@ -15,6 +15,7 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
 
     public enum Source {
         APPLE_APP_STORE,
+        GOOGLE_PLAY_STORE,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -43,15 +44,15 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         }
 
         public String priceCurrency() {
-            return reqString("price_currency");
+            return optString("price_currency");
         }
 
         public Long priceUnits() {
-            return reqLong("price_units");
+            return optLong("price_units");
         }
 
         public Long priceNanos() {
-            return reqLong("price_nanos");
+            return optLong("price_nanos");
         }
 
         public Type type() {
@@ -59,7 +60,7 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         }
 
         public Timestamp transactedAt() {
-            return reqTimestamp("transacted_at");
+            return optTimestamp("transacted_at");
         }
 
         public Timestamp createdAt() {
