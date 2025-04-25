@@ -177,7 +177,7 @@ public class Item extends Resource<Item> {
     }
 
     public ItemApplicability itemApplicability() {
-        return reqEnum("item_applicability", ItemApplicability.class);
+        return optEnum("item_applicability", ItemApplicability.class);
     }
 
     public String giftClaimRedirectUrl() {
@@ -197,7 +197,7 @@ public class Item extends Resource<Item> {
     }
 
     public Boolean isPercentagePricing() {
-        return reqBoolean("is_percentage_pricing");
+        return optBoolean("is_percentage_pricing");
     }
 
     public Timestamp archivedAt() {
