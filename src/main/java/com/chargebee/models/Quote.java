@@ -2723,7 +2723,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
         public CreateSubItemsForCustomerQuoteRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CreateSubItemsForCustomerQuoteRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -3013,7 +3013,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
         public EditCreateSubCustomerQuoteForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public EditCreateSubCustomerQuoteForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -3451,7 +3451,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
         public UpdateSubscriptionQuoteForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public UpdateSubscriptionQuoteForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -3882,7 +3882,7 @@ public class Quote extends Resource<Quote> {
             return this;
         }
         public EditUpdateSubscriptionQuoteForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public EditUpdateSubscriptionQuoteForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {

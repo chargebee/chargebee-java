@@ -264,7 +264,7 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         }
 
         public CreateForNewSubscriptionRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CreateForNewSubscriptionRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -328,7 +328,7 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         }
 
         public CreateForExistingSubscriptionRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CreateForExistingSubscriptionRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {

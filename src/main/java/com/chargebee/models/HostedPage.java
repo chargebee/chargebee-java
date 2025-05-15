@@ -1905,7 +1905,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
         public CheckoutNewForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CheckoutNewForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -2551,7 +2551,7 @@ public class HostedPage extends Resource<HostedPage> {
             return this;
         }
         public CheckoutExistingForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CheckoutExistingForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {

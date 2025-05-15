@@ -3457,6 +3457,66 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("notes[note][" + index + "]", noteNote);
             return this;
         }
+        public ImportInvoiceRequest lineItemAddressLineItemId(int index, String lineItemAddressLineItemId) {
+            params.addOpt("line_item_addresses[line_item_id][" + index + "]", lineItemAddressLineItemId);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressFirstName(int index, String lineItemAddressFirstName) {
+            params.addOpt("line_item_addresses[first_name][" + index + "]", lineItemAddressFirstName);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressLastName(int index, String lineItemAddressLastName) {
+            params.addOpt("line_item_addresses[last_name][" + index + "]", lineItemAddressLastName);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressEmail(int index, String lineItemAddressEmail) {
+            params.addOpt("line_item_addresses[email][" + index + "]", lineItemAddressEmail);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressCompany(int index, String lineItemAddressCompany) {
+            params.addOpt("line_item_addresses[company][" + index + "]", lineItemAddressCompany);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressPhone(int index, String lineItemAddressPhone) {
+            params.addOpt("line_item_addresses[phone][" + index + "]", lineItemAddressPhone);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressLine1(int index, String lineItemAddressLine1) {
+            params.addOpt("line_item_addresses[line1][" + index + "]", lineItemAddressLine1);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressLine2(int index, String lineItemAddressLine2) {
+            params.addOpt("line_item_addresses[line2][" + index + "]", lineItemAddressLine2);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressLine3(int index, String lineItemAddressLine3) {
+            params.addOpt("line_item_addresses[line3][" + index + "]", lineItemAddressLine3);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressCity(int index, String lineItemAddressCity) {
+            params.addOpt("line_item_addresses[city][" + index + "]", lineItemAddressCity);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressStateCode(int index, String lineItemAddressStateCode) {
+            params.addOpt("line_item_addresses[state_code][" + index + "]", lineItemAddressStateCode);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressState(int index, String lineItemAddressState) {
+            params.addOpt("line_item_addresses[state][" + index + "]", lineItemAddressState);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressZip(int index, String lineItemAddressZip) {
+            params.addOpt("line_item_addresses[zip][" + index + "]", lineItemAddressZip);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressCountry(int index, String lineItemAddressCountry) {
+            params.addOpt("line_item_addresses[country][" + index + "]", lineItemAddressCountry);
+            return this;
+        }
+        public ImportInvoiceRequest lineItemAddressValidationStatus(int index, com.chargebee.models.enums.ValidationStatus lineItemAddressValidationStatus) {
+            params.addOpt("line_item_addresses[validation_status][" + index + "]", lineItemAddressValidationStatus);
+            return this;
+        }
         @Override
         public Params params() {
             return params;

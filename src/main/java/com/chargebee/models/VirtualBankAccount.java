@@ -68,7 +68,7 @@ public class VirtualBankAccount extends Resource<VirtualBankAccount> {
     }
 
     public String swiftCode() {
-        return reqString("swift_code");
+        return optString("swift_code");
     }
 
     public Gateway gateway() {

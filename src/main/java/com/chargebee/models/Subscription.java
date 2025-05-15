@@ -2822,7 +2822,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
         public CreateWithItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public CreateWithItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -4424,7 +4424,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
         public UpdateForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public UpdateForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {
@@ -6564,7 +6564,7 @@ public class Subscription extends Resource<Subscription> {
             return this;
         }
         public ImportForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
-            params.add("discounts[apply_on][" + index + "]", discountApplyOn);
+            params.addOpt("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
         }
         public ImportForItemsRequest discountDurationType(int index, com.chargebee.models.enums.DurationType discountDurationType) {

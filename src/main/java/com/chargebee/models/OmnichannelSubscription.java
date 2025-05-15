@@ -151,6 +151,11 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
             super(uri);
         }
     
+        public EnumFilter<OmnichannelSubscription.Source, OmnichannelSubscriptionListRequest> source() {
+            return new EnumFilter<OmnichannelSubscription.Source, OmnichannelSubscriptionListRequest>("source",this);        
+        }
+
+
         public StringFilter<OmnichannelSubscriptionListRequest> customerId() {
             return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id",this);        
         }

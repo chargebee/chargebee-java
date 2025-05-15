@@ -19,6 +19,7 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         CANCELLED,
         IN_DUNNING,
         IN_GRACE_PERIOD,
+        PAUSED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -43,6 +44,7 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE,
         REFUNDED_DUE_TO_APP_ISSUE,
         REFUNDED_FOR_OTHER_REASON,
+        MERCHANT_REVOKED,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
