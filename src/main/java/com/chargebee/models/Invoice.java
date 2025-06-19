@@ -113,8 +113,8 @@ public class Invoice extends Resource<Invoice> {
             return optBoolean("metered");
         }
 
-        public String percentage() {
-            return optString("percentage");
+        public Boolean isPercentagePricing() {
+            return optBoolean("is_percentage_pricing");
         }
 
         public String referenceLineItemId() {
@@ -616,16 +616,16 @@ public class Invoice extends Resource<Invoice> {
             super(jsonObj);
         }
 
-        public EntityType entityType() {
-            return reqEnum("entity_type", EntityType.class);
-        }
-
         public String note() {
             return reqString("note");
         }
 
         public String entityId() {
             return optString("entity_id");
+        }
+
+        public EntityType entityType() {
+            return optEnum("entity_type", EntityType.class);
         }
 
     }
@@ -1221,6 +1221,16 @@ public class Invoice extends Resource<Invoice> {
         return new StopDunningRequest(Method.POST, uri);
     }
 
+    public static PauseDunningRequest pauseDunning(String id) {
+        String uri = uri("invoices", nullCheck(id), "pause_dunning");
+        return new PauseDunningRequest(Method.POST, uri);
+    }
+
+    public static ResumeDunningRequest resumeDunning(String id) {
+        String uri = uri("invoices", nullCheck(id), "resume_dunning");
+        return new ResumeDunningRequest(Method.POST, uri);
+    }
+
     public static ImportInvoiceRequest importInvoice() {
         String uri = uri("invoices", "import_invoice");
         return new ImportInvoiceRequest(Method.POST, uri);
@@ -1263,9 +1273,9 @@ public class Invoice extends Resource<Invoice> {
         return new ListRequest(uri);
     }
 
-    public static Request retrieve(String id) {
+    public static RetrieveRequest retrieve(String id) {
         String uri = uri("invoices", nullCheck(id));
-        return new Request(Method.GET, uri);
+        return new RetrieveRequest(Method.GET, uri);
     }
 
     public static PdfRequest pdf(String id) {
@@ -2902,6 +2912,48 @@ public class Invoice extends Resource<Invoice> {
         }
     }
 
+    public static class PauseDunningRequest extends Request<PauseDunningRequest> {
+
+        private PauseDunningRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public PauseDunningRequest expectedPaymentDate(Timestamp expectedPaymentDate) {
+            params.add("expected_payment_date", expectedPaymentDate);
+            return this;
+        }
+
+
+        public PauseDunningRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class ResumeDunningRequest extends Request<ResumeDunningRequest> {
+
+        private ResumeDunningRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public ResumeDunningRequest comment(String comment) {
+            params.addOpt("comment", comment);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
     public static class ImportInvoiceRequest extends Request<ImportInvoiceRequest> {
 
         private ImportInvoiceRequest(Method httpMeth, String uri) {
@@ -3713,6 +3765,28 @@ public class Invoice extends Resource<Invoice> {
         public InvoiceListRequest sortByUpdatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
             return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RetrieveRequest extends Request<RetrieveRequest> {
+
+        private RetrieveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<RetrieveRequest> lineItemSubscriptionId() {
+            return new StringFilter<RetrieveRequest>("line_item[subscription_id]",this);        
+        }
+
+
+        public StringFilter<RetrieveRequest> lineItemCustomerId() {
+            return new StringFilter<RetrieveRequest>("line_item[customer_id]",this);        
         }
 
 

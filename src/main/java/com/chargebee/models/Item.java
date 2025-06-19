@@ -382,6 +382,12 @@ public class Item extends Resource<Item> {
         }
 
 
+        public CreateRequest isPercentagePricing(Boolean isPercentagePricing) {
+            params.addOpt("is_percentage_pricing", isPercentagePricing);
+            return this;
+        }
+
+
         public CreateRequest metadata(JSONObject metadata) {
             params.addOpt("metadata", metadata);
             return this;
@@ -390,12 +396,6 @@ public class Item extends Resource<Item> {
 
         public CreateRequest businessEntityId(String businessEntityId) {
             params.addOpt("business_entity_id", businessEntityId);
-            return this;
-        }
-
-
-        public CreateRequest isPercentagePricing(Boolean isPercentagePricing) {
-            params.addOpt("is_percentage_pricing", isPercentagePricing);
             return this;
         }
 
@@ -530,6 +530,12 @@ public class Item extends Resource<Item> {
 
         public UpdateRequest status(Item.Status status) {
             params.addOpt("status", status);
+            return this;
+        }
+
+
+        public UpdateRequest isPercentagePricing(Boolean isPercentagePricing) {
+            params.addOpt("is_percentage_pricing", isPercentagePricing);
             return this;
         }
 

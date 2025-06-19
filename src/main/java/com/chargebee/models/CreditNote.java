@@ -156,8 +156,8 @@ public class CreditNote extends Resource<CreditNote> {
             return optBoolean("metered");
         }
 
-        public String percentage() {
-            return optString("percentage");
+        public Boolean isPercentagePricing() {
+            return optBoolean("is_percentage_pricing");
         }
 
         public String referenceLineItemId() {
@@ -918,9 +918,9 @@ public class CreditNote extends Resource<CreditNote> {
         return new CreateRequest(Method.POST, uri);
     }
 
-    public static Request retrieve(String id) {
+    public static RetrieveRequest retrieve(String id) {
         String uri = uri("credit_notes", nullCheck(id));
-        return new Request(Method.GET, uri);
+        return new RetrieveRequest(Method.GET, uri);
     }
 
     public static PdfRequest pdf(String id) {
@@ -1098,6 +1098,28 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
             return this;
         }
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class RetrieveRequest extends Request<RetrieveRequest> {
+
+        private RetrieveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public StringFilter<RetrieveRequest> lineItemSubscriptionId() {
+            return new StringFilter<RetrieveRequest>("line_item[subscription_id]",this);        
+        }
+
+
+        public StringFilter<RetrieveRequest> lineItemCustomerId() {
+            return new StringFilter<RetrieveRequest>("line_item[customer_id]",this);        
+        }
+
+
         @Override
         public Params params() {
             return params;

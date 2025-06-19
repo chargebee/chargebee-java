@@ -101,8 +101,8 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
             return optBoolean("metered");
         }
 
-        public String percentage() {
-            return optString("percentage");
+        public Boolean isPercentagePricing() {
+            return optBoolean("is_percentage_pricing");
         }
 
         public String referenceLineItemId() {

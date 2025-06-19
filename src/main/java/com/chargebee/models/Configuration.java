@@ -35,6 +35,10 @@ public class Configuration extends Resource<Configuration> {
         return optEnum("product_catalog_version", ProductCatalogVersion.class);
     }
 
+    public ChargebeeResponseSchemaType chargebeeResponseSchemaType() {
+        return optEnum("chargebee_response_schema_type", ChargebeeResponseSchemaType.class);
+    }
+
     // Operations
     //===========
 

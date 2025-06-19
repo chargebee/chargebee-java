@@ -104,8 +104,8 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optBoolean("metered");
         }
 
-        public String percentage() {
-            return optString("percentage");
+        public Boolean isPercentagePricing() {
+            return optBoolean("is_percentage_pricing");
         }
 
         public String referenceLineItemId() {

@@ -128,6 +128,10 @@ public class ResultBase {
         return (QuotedCharge)get("quoted_charge");
     }
 
+    public QuotedRamp quotedRamp() {
+        return (QuotedRamp)get("quoted_ramp");
+    }
+
     public QuoteLineGroup quoteLineGroup() {
         return (QuoteLineGroup)get("quote_line_group");
     }

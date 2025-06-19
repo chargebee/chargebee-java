@@ -1039,9 +1039,9 @@ public class Subscription extends Resource<Subscription> {
         return new ListRequest(uri);
     }
 
-    public static ListRequest contractTermsForSubscription(String id) {
+    public static SubscriptionContractTermsForSubscriptionRequest contractTermsForSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "contract_terms");
-        return new ListRequest(uri);
+        return new SubscriptionContractTermsForSubscriptionRequest(uri);
     }
 
     public static ListRequest listDiscounts(String id) {
@@ -3032,6 +3032,24 @@ public class Subscription extends Resource<Subscription> {
 
         public EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest> channel() {
             return new EnumFilter<com.chargebee.models.enums.Channel, SubscriptionListRequest>("channel",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class SubscriptionContractTermsForSubscriptionRequest extends ListRequest<SubscriptionContractTermsForSubscriptionRequest> {
+
+        private SubscriptionContractTermsForSubscriptionRequest(String uri) {
+            super(uri);
+        }
+    
+        public SubscriptionContractTermsForSubscriptionRequest sortByCreatedAt(SortOrder order) {
+            params.addOpt("sort_by["+order.name().toLowerCase()+"]","created_at");
+            return this;
         }
 
 

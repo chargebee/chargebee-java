@@ -68,6 +68,21 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
 
     }
 
+    public static class LinkedItem extends Resource<LinkedItem> {
+        public LinkedItem(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public Timestamp linkedAt() {
+            return optTimestamp("linked_at");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -130,6 +145,10 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return optTimestamp("grace_period_expires_at");
     }
 
+    public Timestamp resumesAt() {
+        return optTimestamp("resumes_at");
+    }
+
     public Boolean hasScheduledChanges() {
         return reqBoolean("has_scheduled_changes");
     }
@@ -140,6 +159,10 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
 
     public OmnichannelSubscriptionItem.UpcomingRenewal upcomingRenewal() {
         return optSubResource("upcoming_renewal", OmnichannelSubscriptionItem.UpcomingRenewal.class);
+    }
+
+    public OmnichannelSubscriptionItem.LinkedItem linkedItem() {
+        return optSubResource("linked_item", OmnichannelSubscriptionItem.LinkedItem.class);
     }
 
     // Operations

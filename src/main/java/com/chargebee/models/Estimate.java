@@ -1351,6 +1351,16 @@ public class Estimate extends Resource<Estimate> {
             return this;
         }
 
+        public CreateSubItemForCustomerEstimateRequest billingOverrideMaxExcessPaymentUsage(Long billingOverrideMaxExcessPaymentUsage) {
+            params.addOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+            return this;
+        }
+
+        public CreateSubItemForCustomerEstimateRequest billingOverrideMaxRefundableCreditsUsage(Long billingOverrideMaxRefundableCreditsUsage) {
+            params.addOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
+            return this;
+        }
+
         public CreateSubItemForCustomerEstimateRequest subscriptionItemItemPriceId(int index, String subscriptionItemItemPriceId) {
             params.add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
             return this;
@@ -2125,6 +2135,16 @@ public class Estimate extends Resource<Estimate> {
 
         public UpdateSubscriptionForItemsRequest subscriptionTrialEndAction(com.chargebee.models.enums.TrialEndAction subscriptionTrialEndAction) {
             params.addOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingOverrideMaxExcessPaymentUsage(Long billingOverrideMaxExcessPaymentUsage) {
+            params.addOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+            return this;
+        }
+
+        public UpdateSubscriptionForItemsRequest billingOverrideMaxRefundableCreditsUsage(Long billingOverrideMaxRefundableCreditsUsage) {
+            params.addOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
             return this;
         }
 
