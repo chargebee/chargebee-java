@@ -1,5 +1,7 @@
 package com.chargebee;
 
+import com.chargebee.internal.RetryConfig;
+
 public class Environment {
 
     /**
@@ -28,11 +30,15 @@ public class Environment {
      */
     public int readTimeout = Integer.getInteger("com.chargebee.api.http.timeout.read", 80000);
 
+    public RetryConfig retryConfig;
+
+    public boolean enableDebugLogging = false;
+
     public static final String CHARSET = "UTF-8";
 
     public static final String API_VERSION = "v2";
     
-    public static final String LIBRARY_VERSION = "3.33.0";
+    public static final String LIBRARY_VERSION = "3.34.0";
 
     private final String apiBaseUrl;
 
@@ -51,6 +57,7 @@ public class Environment {
         String domainSuffix = System.getProperty("com.chargebee.api.domain.suffix", "chargebee.com");
         String proto = System.getProperty("com.chargebee.api.protocol", "https");
         this.apiBaseUrl = proto + "://" + siteName + "." + domainSuffix + "/api/" + API_VERSION;
+        this.retryConfig = RetryConfig.defaultConfig();
     }
     
     public static void configure(String siteName, String apikey) {
@@ -88,6 +95,14 @@ public class Environment {
 
     public static void updateReadTimeoutInMillis(int readTimeout) {
         Environment.defaultEnv.readTimeout = readTimeout;
+    }
+
+    public void updateRetryConfig(RetryConfig retryConfig) {
+       this.retryConfig = retryConfig;
+    }
+
+    public void updateEnableDebugLogging(boolean enableDebugLogging) {
+        this.enableDebugLogging = enableDebugLogging;
     }
 
 }
