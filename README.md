@@ -154,6 +154,64 @@ public class Sample {
 ```
 `isIdempotencyReplayed()` method can be accessed to differentiate between original and replayed requests.
 
+
+### Retry HandlingAdd commentMore actions
+
+Chargebee's SDK includes built-in retry logic to handle temporary network issues and server-side errors. This feature is **disabled by default** but can be **enabled when needed**.
+
+#### Key features include:
+
+- **Automatic retries for specific HTTP status codes**: Retries are automatically triggered for status codes `500`, `502`, `503`, and `504`.
+- **Exponential backoff**: Retry delays increase exponentially to prevent overwhelming the server.
+- **Rate limit management**: If a `429 Too Many Requests` response is received with a `Retry-After` header, the SDK waits for the specified duration before retrying.
+  > *Note: Exponential backoff and max retries do not apply in this case.*
+- **Customizable retry behavior**: Retry logic can be configured using the `retryConfig` parameter in the environment configuration.
+
+#### Example: Customizing Retry Logic
+
+You can enable and configure the retry logic by passing a `retryConfig` object when initializing the Chargebee environment:
+
+```java
+import com.chargebee.Environment;
+public class Sample {
+    public static void main(String[] args) throws Exception {
+        Environment.configure("{site}", "{site_api_key}");
+        Environment.defaultConfig().updateRetryConfig(
+            new com.chargebee.internal.RetryConfig(
+                true,
+                3,
+                500,
+                new java.util.HashSet<>(java.util.Arrays.asList(500))
+            )
+        );
+        // ... your Chargebee API operations ...
+    }
+ }
+ 
+```
+
+#### Example: Rate Limit retry logic
+
+You can enable and configure the retry logic for rate-limit by passing a `retryConfig` object when initializing the Chargebee environment:
+
+```java
+import com.chargebee.Environment;
+public class Sample {
+    public static void main(String[] args) throws Exception {
+        Environment.configure("{site}", "{site_api_key}");
+        Environment.defaultConfig().updateRetryConfig(
+            new com.chargebee.internal.RetryConfig(
+                true,
+                3,
+                500,
+                new java.util.HashSet<>(java.util.Arrays.asList(429))
+            )
+        );
+        // ... your Chargebee API operations ...
+    }
+ }
+```
+
 ## Contribution
 ***
 You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions). 

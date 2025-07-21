@@ -135,6 +135,12 @@ public class Entitlement extends Resource<Entitlement> {
         }
 
 
+        public CreateRequest changeReason(String changeReason) {
+            params.addOpt("change_reason", changeReason);
+            return this;
+        }
+
+
         public CreateRequest entitlementEntityId(int index, String entitlementEntityId) {
             params.add("entitlements[entity_id][" + index + "]", entitlementEntityId);
             return this;
@@ -149,6 +155,10 @@ public class Entitlement extends Resource<Entitlement> {
         }
         public CreateRequest entitlementValue(int index, String entitlementValue) {
             params.addOpt("entitlements[value][" + index + "]", entitlementValue);
+            return this;
+        }
+        public CreateRequest entitlementApplyGrandfathering(int index, Boolean entitlementApplyGrandfathering) {
+            params.addOpt("entitlements[apply_grandfathering][" + index + "]", entitlementApplyGrandfathering);
             return this;
         }
         @Override

@@ -25,6 +25,6 @@ public class RetryConfig {
     }
 
     public static RetryConfig defaultConfig() {
-        return new RetryConfig(false, 3, 500, new HashSet<>(Arrays.asList(500)));
+        return new RetryConfig(false, 3, 500, new HashSet<>(Arrays.asList(500, 502, 503, 504)));
     }
 }

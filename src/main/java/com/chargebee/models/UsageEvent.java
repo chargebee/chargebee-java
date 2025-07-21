@@ -48,12 +48,12 @@ public class UsageEvent extends Resource<UsageEvent> {
 
     public static CreateRequest create() {
         String uri = uri("usage_events");
-        return new CreateRequest(Method.POST, uri);
+        return new CreateRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static BatchIngestRequest batchIngest() {
         String uri = uri("batch", "usage_events");
-        return new BatchIngestRequest(Method.POST, uri);
+        return new BatchIngestRequest(Method.POST, uri).setIdempotency(false);
     }
 
 

@@ -162,7 +162,7 @@ public class HttpUtilRetryTest {
             mockedHttpUtil.when(() -> HttpUtil.createConnection(eq(url), eq(HttpUtil.Method.POST), eq(headers), eq(env)))
                 .thenAnswer(invocation -> callCount.getAndIncrement() == 0 ? mockConn1 : mockConn2);
 
-            assertDoesNotThrow(() -> HttpUtil.post(url, params, headers, env));
+            assertDoesNotThrow(() -> HttpUtil.post(url, params, headers, env, true));
         }
     }
 

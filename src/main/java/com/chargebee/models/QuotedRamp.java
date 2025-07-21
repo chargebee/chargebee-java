@@ -115,22 +115,6 @@ public class QuotedRamp extends Resource<QuotedRamp> {
             return optString("ramp_tier_id");
         }
 
-        public Long discountAmount() {
-            return optLong("discount_amount");
-        }
-
-        public String mdDiscountAmount() {
-            return optString("md_discount_amount");
-        }
-
-        public Long itemLevelDiscountAmount() {
-            return optLong("item_level_discount_amount");
-        }
-
-        public String mdItemLevelDiscountAmount() {
-            return optString("md_item_level_discount_amount");
-        }
-
         public Long discountPerBillingCycle() {
             return optLong("discount_per_billing_cycle");
         }
@@ -145,14 +129,6 @@ public class QuotedRamp extends Resource<QuotedRamp> {
 
         public String itemLevelDiscountPerBillingCycleInDecimal() {
             return optString("item_level_discount_per_billing_cycle_in_decimal");
-        }
-
-        public Long netAmount() {
-            return optLong("net_amount");
-        }
-
-        public String mdNetAmount() {
-            return optString("md_net_amount");
         }
 
         public Long amountPerBillingCycle() {
@@ -198,22 +174,12 @@ public class QuotedRamp extends Resource<QuotedRamp> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
-        public enum ApplyOnItemType {
-             PLAN,ADDON,CHARGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
         public Discount(JSONObject jsonObj) {
             super(jsonObj);
         }
 
         public String id() {
             return reqString("id");
-        }
-
-        public String name() {
-            return reqString("name");
         }
 
         public String invoiceName() {
@@ -260,10 +226,6 @@ public class QuotedRamp extends Resource<QuotedRamp> {
             return reqEnum("apply_on", ApplyOn.class);
         }
 
-        public ApplyOnItemType applyOnItemType() {
-            return optEnum("apply_on_item_type", ApplyOnItemType.class);
-        }
-
         public String itemPriceId() {
             return optString("item_price_id");
         }
@@ -287,6 +249,12 @@ public class QuotedRamp extends Resource<QuotedRamp> {
     }
 
     public static class ItemTier extends Resource<ItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public ItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -323,6 +291,29 @@ public class QuotedRamp extends Resource<QuotedRamp> {
             return optString("ramp_tier_id");
         }
 
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
+        }
+
+    }
+
+    public static class CouponApplicabilityMapping extends Resource<CouponApplicabilityMapping> {
+        public CouponApplicabilityMapping(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String couponId() {
+            return optString("coupon_id");
+        }
+
+        public List<String> applicableItemPriceIds() {
+            return optList("applicable_item_price_ids", String.class);
+        }
+
     }
 
     //Constructors
@@ -353,6 +344,10 @@ public class QuotedRamp extends Resource<QuotedRamp> {
 
     public List<QuotedRamp.ItemTier> itemTiers() {
         return optList("item_tiers", QuotedRamp.ItemTier.class);
+    }
+
+    public List<QuotedRamp.CouponApplicabilityMapping> couponApplicabilityMappings() {
+        return optList("coupon_applicability_mappings", QuotedRamp.CouponApplicabilityMapping.class);
     }
 
     // Operations
