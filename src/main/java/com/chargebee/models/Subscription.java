@@ -3071,6 +3071,22 @@ public class Subscription extends Resource<Subscription> {
         }
 
 
+        public RemoveScheduledCancellationRequest contractTermBillingCycleOnRenewal(Integer contractTermBillingCycleOnRenewal) {
+            params.addOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+            return this;
+        }
+
+
+        public RemoveScheduledCancellationRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            return this;
+        }
+
+        public RemoveScheduledCancellationRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

@@ -45,7 +45,7 @@ public class HttpUtil {
             url = url + '?' + toQueryStr(params); // fixme: what about url size restrictions ??
         }
         HttpURLConnection conn = createConnection(url, Method.GET, headers, env);
-        Resp resp = sendRequestWithRetry(conn, env);
+        Resp resp = sendRequestWithRetry(conn, env, false);
         return resp.toResult();
     }
 
@@ -54,16 +54,22 @@ public class HttpUtil {
             url = url + '?' + toQueryStr(params, true); // fixme: what about url size restrictions ??
         }
         HttpURLConnection conn = createConnection(url, Method.GET, headers, env);
-        Resp resp = sendRequestWithRetry(conn, env);
+        Resp resp = sendRequestWithRetry(conn, env, false);
         return resp.toListResult();
+    }
+    public static Result post(String url, Params params, Map<String,String> headers, Environment env, boolean isIdempotent) throws IOException {
+        return doFormSubmit(url, Method.POST, toQueryStr(params), headers, env, isIdempotent);
     }
 
     public static Result post(String url, Params params, Map<String,String> headers, Environment env) throws IOException {
-        return doFormSubmit(url, Method.POST, toQueryStr(params), headers, env);
+        return doFormSubmit(url, Method.POST, toQueryStr(params), headers, env, false);
+    }
+    public static Result post(String url, String content, Map<String,String> headers, Environment env) throws IOException {
+        return doFormSubmit(url, Method.POST, content, headers, env, false);
     }
 
-    public static Result post(String url, String content, Map<String,String> headers, Environment env) throws IOException {
-        return doFormSubmit(url, Method.POST, content, headers, env);
+    public static Result post(String url, String content, Map<String,String> headers, Environment env, boolean isIdempotent) throws IOException {
+        return doFormSubmit(url, Method.POST, content, headers, env, isIdempotent);
     }
 
 
@@ -100,10 +106,10 @@ public class HttpUtil {
         }
     }
 
-    private static Result doFormSubmit(String url, Method m, String queryStr, Map<String,String> headers, Environment env) throws IOException {
+    private static Result doFormSubmit(String url, Method m, String queryStr, Map<String,String> headers, Environment env, boolean isIdempotent) throws IOException {
         HttpURLConnection conn = createConnection(url, m, headers, env);
         writeContent(conn, queryStr);
-        Resp resp = sendRequestWithRetry(conn, env);
+        Resp resp = sendRequestWithRetry(conn, env,isIdempotent);
         return resp.toResult();
     }
 
@@ -129,11 +135,17 @@ public class HttpUtil {
         return conn;
     }
 
-    private static Resp sendRequestWithRetry(HttpURLConnection conn, Environment env) throws IOException {
+    private static Resp sendRequestWithRetry(HttpURLConnection conn, Environment env, boolean isIdempotent) throws IOException {
         int attempt = 0;
         int lastRetryAfterDelay = 0;
         while (true) {
             try {
+                if (attempt > 0) {
+                    conn.setRequestProperty("X-CB-Retry-Attempt", String.valueOf(attempt));
+                    if (isIdempotent && conn.getRequestProperty("X-CB-Idempotency-Key") == null) {
+                        conn.setRequestProperty("X-CB-Idempotency-Key", UUID.randomUUID().toString());
+                    }
+                }
                 return sendRequest(conn);
             } catch (Exception e) {
                 int statusCode = extractStatusCode(e);

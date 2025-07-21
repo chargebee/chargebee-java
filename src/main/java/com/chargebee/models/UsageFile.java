@@ -117,7 +117,7 @@ public class UsageFile extends Resource<UsageFile> {
 
     public static UploadRequest upload() {
         String uri = uri("usage_files", "upload");
-        return new UploadRequest(Method.POST, uri);
+        return new UploadRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static Request status(String id) {
