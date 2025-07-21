@@ -51,6 +51,7 @@ public enum Gateway {
     EBANX,
     DLOCAL,
     NUVEI,
+    SOLIDGATE,
     PAYSTACK,
     JP_MORGAN,
     GOCARDLESS,

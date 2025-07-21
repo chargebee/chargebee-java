@@ -209,7 +209,7 @@ public class Customer extends Resource<Customer> {
 
     public static class PaymentMethod extends Resource<PaymentMethod> {
         public enum Type {
-             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,AUTOMATED_BANK_TRANSFER,KLARNA_PAY_NOW,ONLINE_BANKING_POLAND,
+             CARD,PAYPAL_EXPRESS_CHECKOUT,AMAZON_PAYMENTS,DIRECT_DEBIT,GENERIC,ALIPAY,UNIONPAY,APPLE_PAY,WECHAT_PAY,IDEAL,GOOGLE_PAY,SOFORT,BANCONTACT,GIROPAY,DOTPAY,UPI,NETBANKING_EMANDATES,VENMO,PAY_TO,FASTER_PAYMENTS,SEPA_INSTANT_TRANSFER,AUTOMATED_BANK_TRANSFER,KLARNA_PAY_NOW,ONLINE_BANKING_POLAND,PAYCONIQ_BY_BANCONTACT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -820,6 +820,11 @@ public class Customer extends Resource<Customer> {
     public static HierarchyRequest hierarchy(String id) {
         String uri = uri("customers", nullCheck(id), "hierarchy");
         return new HierarchyRequest(Method.GET, uri);
+    }
+
+    public static CustomerListHierarchyDetailRequest listHierarchyDetail(String id) {
+        String uri = uri("customers", nullCheck(id), "hierarchy_detail");
+        return new CustomerListHierarchyDetailRequest(uri);
     }
 
     public static UpdateHierarchySettingsRequest updateHierarchySettings(String id) {
@@ -2613,6 +2618,24 @@ public class Customer extends Resource<Customer> {
         }
     
         public HierarchyRequest hierarchyOperationType(com.chargebee.models.enums.HierarchyOperationType hierarchyOperationType) {
+            params.add("hierarchy_operation_type", hierarchyOperationType);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class CustomerListHierarchyDetailRequest extends ListRequest<CustomerListHierarchyDetailRequest> {
+
+        private CustomerListHierarchyDetailRequest(String uri) {
+            super(uri);
+        }
+    
+        public CustomerListHierarchyDetailRequest hierarchyOperationType(com.chargebee.models.enums.HierarchyOperationType hierarchyOperationType) {
             params.add("hierarchy_operation_type", hierarchyOperationType);
             return this;
         }

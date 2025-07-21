@@ -159,6 +159,11 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
             return this;
         }
 
+        public CreateRequest omnichannelSubscriptionId(String omnichannelSubscriptionId) {
+            params.addOpt("omnichannel_subscription[id]", omnichannelSubscriptionId);
+            return this;
+        }
+
         @Override
         public Params params() {
             return params;

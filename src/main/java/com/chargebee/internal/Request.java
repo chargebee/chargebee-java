@@ -34,6 +34,11 @@ public class Request<U extends Request> extends RequestBase<U>{
         this.isJsonRequest = isContentTypeJson;
     }
 
+    public U setIdempotency(boolean isIdempotent) {
+        this.isIdempotent = isIdempotent;
+        return (U) this;
+    }
+
     public U param(String paramName, Object value){
         params.add(paramName, value);
         return (U)this;
@@ -42,6 +47,7 @@ public class Request<U extends Request> extends RequestBase<U>{
     public Result request() throws Exception {
         return request(Environment.defaultConfig());
     }
+
 
     public Result request(Environment env) throws Exception {
         RequestWrap c = new RequestWrap<Request>(env, this) {
@@ -70,12 +76,12 @@ public class Request<U extends Request> extends RequestBase<U>{
                 return HttpUtil.get(url, req.params(), req.headers, env);
             case POST:
                 if(req instanceof BatchRequest) {
-                    return HttpUtil.post(url, ((BatchRequest<?>) req).buildRequest(), req.headers, env);
+                    return HttpUtil.post(url, ((BatchRequest<?>) req).buildRequest(), req.headers, env, req.isIdempotent);
                 } else if(req.isJsonRequest){
                     req.headers.put(HttpUtil.CONTENT_TYPE_HEADER_NAME, "application/json;charset=" + Environment.CHARSET);
-                    return HttpUtil.post(url, req.params.toString(), req.headers, env);
+                    return HttpUtil.post(url, req.params.toString(), req.headers, env, req.isIdempotent);
                 }else {
-                    return HttpUtil.post(url, req.params(), req.headers, env);
+                    return HttpUtil.post(url, req.params(), req.headers, env, req.isIdempotent);
                 }
             default:
                 throw new RuntimeException("Not handled type [" + req.httpMeth + "]");

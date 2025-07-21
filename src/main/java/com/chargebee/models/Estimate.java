@@ -68,12 +68,12 @@ public class Estimate extends Resource<Estimate> {
 
     public static CreateSubscriptionRequest createSubscription() {
         String uri = uri("estimates", "create_subscription");
-        return new CreateSubscriptionRequest(Method.POST, uri);
+        return new CreateSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CreateSubItemEstimateRequest createSubItemEstimate() {
         String uri = uri("estimates", "create_subscription_for_items");
-        return new CreateSubItemEstimateRequest(Method.POST, uri);
+        return new CreateSubItemEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CreateSubForCustomerEstimateRequest createSubForCustomerEstimate(String id) {
@@ -83,17 +83,17 @@ public class Estimate extends Resource<Estimate> {
 
     public static CreateSubItemForCustomerEstimateRequest createSubItemForCustomerEstimate(String id) {
         String uri = uri("customers", nullCheck(id), "create_subscription_for_items_estimate");
-        return new CreateSubItemForCustomerEstimateRequest(Method.POST, uri);
+        return new CreateSubItemForCustomerEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static UpdateSubscriptionRequest updateSubscription() {
         String uri = uri("estimates", "update_subscription");
-        return new UpdateSubscriptionRequest(Method.POST, uri);
+        return new UpdateSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static UpdateSubscriptionForItemsRequest updateSubscriptionForItems() {
         String uri = uri("estimates", "update_subscription_for_items");
-        return new UpdateSubscriptionForItemsRequest(Method.POST, uri);
+        return new UpdateSubscriptionForItemsRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static RenewalEstimateRequest renewalEstimate(String id) {
@@ -103,12 +103,12 @@ public class Estimate extends Resource<Estimate> {
 
     public static AdvanceInvoiceEstimateRequest advanceInvoiceEstimate(String id) {
         String uri = uri("subscriptions", nullCheck(id), "advance_invoice_estimate");
-        return new AdvanceInvoiceEstimateRequest(Method.POST, uri);
+        return new AdvanceInvoiceEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static RegenerateInvoiceEstimateRequest regenerateInvoiceEstimate(String id) {
         String uri = uri("subscriptions", nullCheck(id), "regenerate_invoice_estimate");
-        return new RegenerateInvoiceEstimateRequest(Method.POST, uri);
+        return new RegenerateInvoiceEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static Request upcomingInvoicesEstimate(String id) {
@@ -118,47 +118,47 @@ public class Estimate extends Resource<Estimate> {
 
     public static ChangeTermEndRequest changeTermEnd(String id) {
         String uri = uri("subscriptions", nullCheck(id), "change_term_end_estimate");
-        return new ChangeTermEndRequest(Method.POST, uri);
+        return new ChangeTermEndRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CancelSubscriptionRequest cancelSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "cancel_subscription_estimate");
-        return new CancelSubscriptionRequest(Method.POST, uri);
+        return new CancelSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CancelSubscriptionForItemsRequest cancelSubscriptionForItems(String id) {
         String uri = uri("subscriptions", nullCheck(id), "cancel_subscription_for_items_estimate");
-        return new CancelSubscriptionForItemsRequest(Method.POST, uri);
+        return new CancelSubscriptionForItemsRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static PauseSubscriptionRequest pauseSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "pause_subscription_estimate");
-        return new PauseSubscriptionRequest(Method.POST, uri);
+        return new PauseSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static ResumeSubscriptionRequest resumeSubscription(String id) {
         String uri = uri("subscriptions", nullCheck(id), "resume_subscription_estimate");
-        return new ResumeSubscriptionRequest(Method.POST, uri);
+        return new ResumeSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static GiftSubscriptionRequest giftSubscription() {
         String uri = uri("estimates", "gift_subscription");
-        return new GiftSubscriptionRequest(Method.POST, uri);
+        return new GiftSubscriptionRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static GiftSubscriptionForItemsRequest giftSubscriptionForItems() {
         String uri = uri("estimates", "gift_subscription_for_items");
-        return new GiftSubscriptionForItemsRequest(Method.POST, uri);
+        return new GiftSubscriptionForItemsRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CreateInvoiceRequest createInvoice() {
         String uri = uri("estimates", "create_invoice");
-        return new CreateInvoiceRequest(Method.POST, uri);
+        return new CreateInvoiceRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static CreateInvoiceForItemsRequest createInvoiceForItems() {
         String uri = uri("estimates", "create_invoice_for_items");
-        return new CreateInvoiceForItemsRequest(Method.POST, uri);
+        return new CreateInvoiceForItemsRequest(Method.POST, uri).setIdempotency(false);
     }
 
     public static PaymentSchedulesRequest paymentSchedules() {
