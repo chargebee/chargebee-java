@@ -1110,11 +1110,13 @@ public class CreditNote extends Resource<CreditNote> {
             super(httpMeth, uri);
         }
     
+        @Deprecated
         public StringFilter<RetrieveRequest> lineItemSubscriptionId() {
             return new StringFilter<RetrieveRequest>("line_item[subscription_id]",this);        
         }
 
 
+        @Deprecated
         public StringFilter<RetrieveRequest> lineItemCustomerId() {
             return new StringFilter<RetrieveRequest>("line_item[customer_id]",this);        
         }

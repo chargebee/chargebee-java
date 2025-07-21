@@ -43,6 +43,10 @@ public class Hierarchy extends Resource<Hierarchy> {
         return reqString("invoice_owner_id");
     }
 
+    public Boolean hasChildren() {
+        return optBoolean("has_children");
+    }
+
     public List<String> childrenIds() {
         return optList("children_ids", String.class);
     }

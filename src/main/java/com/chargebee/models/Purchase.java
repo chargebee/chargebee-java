@@ -61,7 +61,7 @@ public class Purchase extends Resource<Purchase> {
 
     public static EstimateRequest estimate() {
         String uri = uri("purchases", "estimate");
-        return new EstimateRequest(Method.POST, uri);
+        return new EstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
 
@@ -82,6 +82,12 @@ public class Purchase extends Resource<Purchase> {
 
         public CreateRequest paymentSourceId(String paymentSourceId) {
             params.addOpt("payment_source_id", paymentSourceId);
+            return this;
+        }
+
+
+        public CreateRequest replacePrimaryPaymentSource(Boolean replacePrimaryPaymentSource) {
+            params.addOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
             return this;
         }
 

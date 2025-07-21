@@ -132,6 +132,10 @@ public class ResultBase {
         return (QuotedRamp)get("quoted_ramp");
     }
 
+    public BillingConfiguration billingConfiguration() {
+        return (BillingConfiguration)get("billing_configuration");
+    }
+
     public QuoteLineGroup quoteLineGroup() {
         return (QuoteLineGroup)get("quote_line_group");
     }
@@ -340,6 +344,10 @@ public class ResultBase {
         return (UsageFile)get("usage_file");
     }
 
+    public Brand brand() {
+        return (Brand)get("brand");
+    }
+
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {
         return (List<AdvanceInvoiceSchedule>) getList("advance_invoice_schedules", "advance_invoice_schedule");
     }
@@ -374,10 +382,6 @@ public class ResultBase {
 
     public List<InAppSubscription> inAppSubscriptions() {
         return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
-    }
-
-    public List<DifferentialPrice> differentialPrices() {
-        return (List<DifferentialPrice>) getList("differential_prices", "differential_price");
     }
 
 

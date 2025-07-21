@@ -218,7 +218,7 @@ public class UnbilledCharge extends Resource<UnbilledCharge> {
 
     public static InvoiceNowEstimateRequest invoiceNowEstimate() {
         String uri = uri("unbilled_charges", "invoice_now_estimate");
-        return new InvoiceNowEstimateRequest(Method.POST, uri);
+        return new InvoiceNowEstimateRequest(Method.POST, uri).setIdempotency(false);
     }
 
 
