@@ -328,6 +328,14 @@ public class ResultBase {
         return (RecordedPurchase)get("recorded_purchase");
     }
 
+    public OmnichannelOneTimeOrder omnichannelOneTimeOrder() {
+        return (OmnichannelOneTimeOrder)get("omnichannel_one_time_order");
+    }
+
+    public OmnichannelOneTimeOrderItem omnichannelOneTimeOrderItem() {
+        return (OmnichannelOneTimeOrderItem)get("omnichannel_one_time_order_item");
+    }
+
     public Rule rule() {
         return (Rule)get("rule");
     }
@@ -346,6 +354,22 @@ public class ResultBase {
 
     public Brand brand() {
         return (Brand)get("brand");
+    }
+
+    public WebhookEndpoint webhookEndpoint() {
+        return (WebhookEndpoint)get("webhook_endpoint");
+    }
+
+    public ImpactedCustomer impactedCustomer() {
+        return (ImpactedCustomer)get("impacted_customer");
+    }
+
+    public SubscriptionEntitlementsUpdatedDetail subscriptionEntitlementsUpdatedDetail() {
+        return (SubscriptionEntitlementsUpdatedDetail)get("subscription_entitlements_updated_detail");
+    }
+
+    public SubscriptionEntitlementsCreatedDetail subscriptionEntitlementsCreatedDetail() {
+        return (SubscriptionEntitlementsCreatedDetail)get("subscription_entitlements_created_detail");
     }
 
     public List<AdvanceInvoiceSchedule> advanceInvoiceSchedules() {

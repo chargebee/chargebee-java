@@ -277,6 +277,10 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
+        public CreateRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
@@ -543,6 +547,10 @@ public class Purchase extends Resource<Purchase> {
         }
         public EstimateRequest discountPercentage(int index, Double discountPercentage) {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public EstimateRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public EstimateRequest discountAmount(int index, Long discountAmount) {

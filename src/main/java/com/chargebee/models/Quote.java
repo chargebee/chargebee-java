@@ -2838,6 +2838,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public CreateSubItemsForCustomerQuoteRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateSubItemsForCustomerQuoteRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
             params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
             return this;
@@ -3244,6 +3248,10 @@ public class Quote extends Resource<Quote> {
         }
         public EditCreateSubCustomerQuoteForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public EditCreateSubCustomerQuoteForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public EditCreateSubCustomerQuoteForItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
@@ -3726,6 +3734,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public UpdateSubscriptionQuoteForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public UpdateSubscriptionQuoteForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
             params.add("discounts[operation_type][" + index + "]", discountOperationType);
             return this;
@@ -4199,6 +4211,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public EditUpdateSubscriptionQuoteForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public EditUpdateSubscriptionQuoteForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
             params.add("discounts[operation_type][" + index + "]", discountOperationType);
             return this;
@@ -4575,6 +4591,10 @@ public class Quote extends Resource<Quote> {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateForChargeItemsAndChargesRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
@@ -4881,6 +4901,10 @@ public class Quote extends Resource<Quote> {
         }
         public EditForChargeItemsAndChargesRequest discountPercentage(int index, Double discountPercentage) {
             params.addOpt("discounts[percentage][" + index + "]", discountPercentage);
+            return this;
+        }
+        public EditForChargeItemsAndChargesRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public EditForChargeItemsAndChargesRequest discountAmount(int index, Long discountAmount) {

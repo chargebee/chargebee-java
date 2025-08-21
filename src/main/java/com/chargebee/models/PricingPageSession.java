@@ -295,6 +295,10 @@ public class PricingPageSession extends Resource<PricingPageSession> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public CreateForNewSubscriptionRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateForNewSubscriptionRequest discountLabel(int index, String discountLabel) {
             params.addOpt("discounts[label][" + index + "]", discountLabel);
             return this;
@@ -357,6 +361,10 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         }
         public CreateForExistingSubscriptionRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CreateForExistingSubscriptionRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public CreateForExistingSubscriptionRequest discountLabel(int index, String discountLabel) {

@@ -587,7 +587,7 @@ public class Subscription extends Resource<Subscription> {
 
     public static class Discount extends Resource<Discount> {
         public enum Type {
-             FIXED_AMOUNT,PERCENTAGE,
+             FIXED_AMOUNT,PERCENTAGE,OFFER_QUANTITY,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -626,6 +626,10 @@ public class Subscription extends Resource<Subscription> {
 
         public Long amount() {
             return optLong("amount");
+        }
+
+        public Integer quantity() {
+            return optInteger("quantity");
         }
 
         public String currencyCode() {
@@ -2853,6 +2857,10 @@ public class Subscription extends Resource<Subscription> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public CreateWithItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateWithItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
             params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
             return this;
@@ -4487,6 +4495,10 @@ public class Subscription extends Resource<Subscription> {
         }
         public UpdateForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public UpdateForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public UpdateForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
@@ -6627,6 +6639,10 @@ public class Subscription extends Resource<Subscription> {
         }
         public ImportForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public ImportForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public ImportForItemsRequest chargedItemItemPriceId(int index, String chargedItemItemPriceId) {

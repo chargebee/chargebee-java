@@ -82,6 +82,10 @@ public class PromotionalCredit extends Resource<PromotionalCredit> {
         return reqTimestamp("created_at");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 

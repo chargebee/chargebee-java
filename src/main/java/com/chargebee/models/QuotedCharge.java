@@ -178,6 +178,21 @@ public class QuotedCharge extends Resource<QuotedCharge> {
 
     }
 
+    public static class CouponApplicabilityMapping extends Resource<CouponApplicabilityMapping> {
+        public CouponApplicabilityMapping(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String couponId() {
+            return optString("coupon_id");
+        }
+
+        public List<String> applicableItemPriceIds() {
+            return optList("applicable_item_price_ids", String.class);
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -210,6 +225,10 @@ public class QuotedCharge extends Resource<QuotedCharge> {
 
     public List<QuotedCharge.Coupon> coupons() {
         return optList("coupons", QuotedCharge.Coupon.class);
+    }
+
+    public List<QuotedCharge.CouponApplicabilityMapping> couponApplicabilityMappings() {
+        return optList("coupon_applicability_mappings", QuotedCharge.CouponApplicabilityMapping.class);
     }
 
     // Operations

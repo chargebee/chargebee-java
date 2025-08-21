@@ -842,6 +842,10 @@ public class Estimate extends Resource<Estimate> {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
             return this;
         }
+        public CreateSubItemEstimateRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateSubItemEstimateRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
             params.addOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
             return this;
@@ -1436,6 +1440,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateSubItemForCustomerEstimateRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CreateSubItemForCustomerEstimateRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public CreateSubItemForCustomerEstimateRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
@@ -2227,6 +2235,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public UpdateSubscriptionForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public UpdateSubscriptionForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public UpdateSubscriptionForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {
@@ -3686,6 +3698,10 @@ public class Estimate extends Resource<Estimate> {
         }
         public CreateInvoiceForItemsRequest discountAmount(int index, Long discountAmount) {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
+            return this;
+        }
+        public CreateInvoiceForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public CreateInvoiceForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {

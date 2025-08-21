@@ -147,45 +147,59 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
-    public static class Discount extends Resource<Discount> {
-        public enum EntityType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
-        public enum DiscountType {
-             FIXED_AMOUNT,PERCENTAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public Discount(JSONObject jsonObj) {
+        public LineItemTier(JSONObject jsonObj) {
             super(jsonObj);
         }
 
-        public Long amount() {
-            return reqLong("amount");
+        public String lineItemId() {
+            return optString("line_item_id");
         }
 
-        public String description() {
-            return optString("description");
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
         }
 
-        public EntityType entityType() {
-            return reqEnum("entity_type", EntityType.class);
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
         }
 
-        public DiscountType discountType() {
-            return optEnum("discount_type", DiscountType.class);
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
         }
 
-        public String entityId() {
-            return optString("entity_id");
+        public Long unitAmount() {
+            return reqLong("unit_amount");
         }
 
-        public String couponSetCode() {
-            return optString("coupon_set_code");
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
         }
 
     }
@@ -219,25 +233,6 @@ public class Invoice extends Resource<Invoice> {
 
         public Long discountAmount() {
             return reqLong("discount_amount");
-        }
-
-    }
-
-    public static class Tax extends Resource<Tax> {
-        public Tax(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String name() {
-            return reqString("name");
-        }
-
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
         }
 
     }
@@ -328,14 +323,8 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
-    public static class LineItemTier extends Resource<LineItemTier> {
-        public enum PricingType {
-             PER_UNIT,FLAT_FEE,PACKAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public LineItemTier(JSONObject jsonObj) {
+    public static class LineItemAddress extends Resource<LineItemAddress> {
+        public LineItemAddress(JSONObject jsonObj) {
             super(jsonObj);
         }
 
@@ -343,44 +332,137 @@ public class Invoice extends Resource<Invoice> {
             return optString("line_item_id");
         }
 
-        public Integer startingUnit() {
-            return reqInteger("starting_unit");
+        public String firstName() {
+            return optString("first_name");
         }
 
-        public Integer endingUnit() {
-            return optInteger("ending_unit");
+        public String lastName() {
+            return optString("last_name");
         }
 
-        public Integer quantityUsed() {
-            return reqInteger("quantity_used");
+        public String email() {
+            return optString("email");
         }
 
-        public Long unitAmount() {
-            return reqLong("unit_amount");
+        public String company() {
+            return optString("company");
         }
 
-        public String startingUnitInDecimal() {
-            return optString("starting_unit_in_decimal");
+        public String phone() {
+            return optString("phone");
         }
 
-        public String endingUnitInDecimal() {
-            return optString("ending_unit_in_decimal");
+        public String line1() {
+            return optString("line1");
         }
 
-        public String quantityUsedInDecimal() {
-            return optString("quantity_used_in_decimal");
+        public String line2() {
+            return optString("line2");
         }
 
-        public String unitAmountInDecimal() {
-            return optString("unit_amount_in_decimal");
+        public String line3() {
+            return optString("line3");
         }
 
-        public PricingType pricingType() {
-            return optEnum("pricing_type", PricingType.class);
+        public String city() {
+            return optString("city");
         }
 
-        public Integer packageSize() {
-            return optInteger("package_size");
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
+    public static class Discount extends Resource<Discount> {
+        public enum EntityType {
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum DiscountType {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public DiscountType discountType() {
+            return optEnum("discount_type", DiscountType.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
+    }
+
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String name() {
+            return reqString("name");
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+    }
+
+    public static class TaxOrigin extends Resource<TaxOrigin> {
+        public TaxOrigin(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String registrationNumber() {
+            return optString("registration_number");
         }
 
     }
@@ -697,21 +779,6 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
-    public static class StatementDescriptor extends Resource<StatementDescriptor> {
-        public StatementDescriptor(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String id() {
-            return reqString("id");
-        }
-
-        public String descriptor() {
-            return optString("descriptor");
-        }
-
-    }
-
     public static class BillingAddress extends Resource<BillingAddress> {
         public BillingAddress(JSONObject jsonObj) {
             super(jsonObj);
@@ -775,6 +842,21 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
+    public static class StatementDescriptor extends Resource<StatementDescriptor> {
+        public StatementDescriptor(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String descriptor() {
+            return optString("descriptor");
+        }
+
+    }
+
     public static class Einvoice extends Resource<Einvoice> {
         public enum Status {
              SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
@@ -819,88 +901,6 @@ public class Invoice extends Resource<Invoice> {
 
     }
 
-    public static class TaxOrigin extends Resource<TaxOrigin> {
-        public TaxOrigin(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String country() {
-            return optString("country");
-        }
-
-        public String registrationNumber() {
-            return optString("registration_number");
-        }
-
-    }
-
-    public static class LineItemAddress extends Resource<LineItemAddress> {
-        public LineItemAddress(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String lineItemId() {
-            return optString("line_item_id");
-        }
-
-        public String firstName() {
-            return optString("first_name");
-        }
-
-        public String lastName() {
-            return optString("last_name");
-        }
-
-        public String email() {
-            return optString("email");
-        }
-
-        public String company() {
-            return optString("company");
-        }
-
-        public String phone() {
-            return optString("phone");
-        }
-
-        public String line1() {
-            return optString("line1");
-        }
-
-        public String line2() {
-            return optString("line2");
-        }
-
-        public String line3() {
-            return optString("line3");
-        }
-
-        public String city() {
-            return optString("city");
-        }
-
-        public String stateCode() {
-            return optString("state_code");
-        }
-
-        public String state() {
-            return optString("state");
-        }
-
-        public String country() {
-            return optString("country");
-        }
-
-        public String zip() {
-            return optString("zip");
-        }
-
-        public ValidationStatus validationStatus() {
-            return optEnum("validation_status", ValidationStatus.class);
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -919,12 +919,12 @@ public class Invoice extends Resource<Invoice> {
         return reqString("id");
     }
 
-    public String poNumber() {
-        return optString("po_number");
-    }
-
     public String customerId() {
         return reqString("customer_id");
+    }
+
+    public String paymentOwner() {
+        return optString("payment_owner");
     }
 
     public String subscriptionId() {
@@ -939,14 +939,6 @@ public class Invoice extends Resource<Invoice> {
         return reqEnum("status", Status.class);
     }
 
-    public String vatNumber() {
-        return optString("vat_number");
-    }
-
-    public PriceType priceType() {
-        return reqEnum("price_type", PriceType.class);
-    }
-
     public Timestamp date() {
         return optTimestamp("date");
     }
@@ -959,24 +951,68 @@ public class Invoice extends Resource<Invoice> {
         return optInteger("net_term_days");
     }
 
+    public String poNumber() {
+        return optString("po_number");
+    }
+
+    public String vatNumber() {
+        return optString("vat_number");
+    }
+
+    public PriceType priceType() {
+        return reqEnum("price_type", PriceType.class);
+    }
+
     public BigDecimal exchangeRate() {
         return optBigDecimal("exchange_rate");
+    }
+
+    public BigDecimal localCurrencyExchangeRate() {
+        return optBigDecimal("local_currency_exchange_rate");
     }
 
     public String currencyCode() {
         return reqString("currency_code");
     }
 
+    public String localCurrencyCode() {
+        return optString("local_currency_code");
+    }
+
+    public Long tax() {
+        return reqLong("tax");
+    }
+
+    public Long subTotal() {
+        return reqLong("sub_total");
+    }
+
+    public Long subTotalInLocalCurrency() {
+        return optLong("sub_total_in_local_currency");
+    }
+
     public Long total() {
         return optLong("total");
+    }
+
+    public Long totalInLocalCurrency() {
+        return optLong("total_in_local_currency");
+    }
+
+    public Long amountDue() {
+        return optLong("amount_due");
+    }
+
+    public Long amountAdjusted() {
+        return optLong("amount_adjusted");
     }
 
     public Long amountPaid() {
         return optLong("amount_paid");
     }
 
-    public Long amountAdjusted() {
-        return optLong("amount_adjusted");
+    public Timestamp paidAt() {
+        return optTimestamp("paid_at");
     }
 
     public Long writeOffAmount() {
@@ -985,14 +1021,6 @@ public class Invoice extends Resource<Invoice> {
 
     public Long creditsApplied() {
         return optLong("credits_applied");
-    }
-
-    public Long amountDue() {
-        return optLong("amount_due");
-    }
-
-    public Timestamp paidAt() {
-        return optTimestamp("paid_at");
     }
 
     public DunningStatus dunningStatus() {
@@ -1013,30 +1041,6 @@ public class Invoice extends Resource<Invoice> {
 
     public Timestamp updatedAt() {
         return optTimestamp("updated_at");
-    }
-
-    public Long subTotal() {
-        return reqLong("sub_total");
-    }
-
-    public Long subTotalInLocalCurrency() {
-        return optLong("sub_total_in_local_currency");
-    }
-
-    public Long totalInLocalCurrency() {
-        return optLong("total_in_local_currency");
-    }
-
-    public String localCurrencyCode() {
-        return optString("local_currency_code");
-    }
-
-    public Long tax() {
-        return reqLong("tax");
-    }
-
-    public BigDecimal localCurrencyExchangeRate() {
-        return optBigDecimal("local_currency_exchange_rate");
     }
 
     public Boolean firstInvoice() {
@@ -1079,16 +1083,12 @@ public class Invoice extends Resource<Invoice> {
         return optList("line_items", Invoice.LineItem.class);
     }
 
-    public List<Invoice.Discount> discounts() {
-        return optList("discounts", Invoice.Discount.class);
+    public List<Invoice.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", Invoice.LineItemTier.class);
     }
 
     public List<Invoice.LineItemDiscount> lineItemDiscounts() {
         return optList("line_item_discounts", Invoice.LineItemDiscount.class);
-    }
-
-    public List<Invoice.Tax> taxes() {
-        return optList("taxes", Invoice.Tax.class);
     }
 
     public List<Invoice.LineItemTax> lineItemTaxes() {
@@ -1099,8 +1099,20 @@ public class Invoice extends Resource<Invoice> {
         return optList("line_item_credits", Invoice.LineItemCredit.class);
     }
 
-    public List<Invoice.LineItemTier> lineItemTiers() {
-        return optList("line_item_tiers", Invoice.LineItemTier.class);
+    public List<Invoice.LineItemAddress> lineItemAddresses() {
+        return optList("line_item_addresses", Invoice.LineItemAddress.class);
+    }
+
+    public List<Invoice.Discount> discounts() {
+        return optList("discounts", Invoice.Discount.class);
+    }
+
+    public List<Invoice.Tax> taxes() {
+        return optList("taxes", Invoice.Tax.class);
+    }
+
+    public Invoice.TaxOrigin taxOrigin() {
+        return optSubResource("tax_origin", Invoice.TaxOrigin.class);
     }
 
     public List<Invoice.LinkedPayment> linkedPayments() {
@@ -1135,20 +1147,16 @@ public class Invoice extends Resource<Invoice> {
         return optSubResource("shipping_address", Invoice.ShippingAddress.class);
     }
 
-    public Invoice.StatementDescriptor statementDescriptor() {
-        return optSubResource("statement_descriptor", Invoice.StatementDescriptor.class);
-    }
-
     public Invoice.BillingAddress billingAddress() {
         return optSubResource("billing_address", Invoice.BillingAddress.class);
     }
 
-    public Invoice.Einvoice einvoice() {
-        return optSubResource("einvoice", Invoice.Einvoice.class);
+    public Invoice.StatementDescriptor statementDescriptor() {
+        return optSubResource("statement_descriptor", Invoice.StatementDescriptor.class);
     }
 
-    public String paymentOwner() {
-        return optString("payment_owner");
+    public Invoice.Einvoice einvoice() {
+        return optSubResource("einvoice", Invoice.Einvoice.class);
     }
 
     public String voidReasonCode() {
@@ -1177,14 +1185,6 @@ public class Invoice extends Resource<Invoice> {
 
     public Invoice.SiteDetailsAtCreation siteDetailsAtCreation() {
         return optSubResource("site_details_at_creation", Invoice.SiteDetailsAtCreation.class);
-    }
-
-    public Invoice.TaxOrigin taxOrigin() {
-        return optSubResource("tax_origin", Invoice.TaxOrigin.class);
-    }
-
-    public List<Invoice.LineItemAddress> lineItemAddresses() {
-        return optList("line_item_addresses", Invoice.LineItemAddress.class);
     }
 
     // Operations
@@ -2521,6 +2521,10 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
+        public CreateForChargeItemsAndChargesRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CreateForChargeItemsAndChargesRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
             params.add("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
@@ -3479,6 +3483,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public ImportInvoiceRequest taxJurisCode(int index, String taxJurisCode) {
             params.addOpt("taxes[juris_code][" + index + "]", taxJurisCode);
+            return this;
+        }
+        public ImportInvoiceRequest paymentId(int index, String paymentId) {
+            params.addOpt("payments[id][" + index + "]", paymentId);
             return this;
         }
         public ImportInvoiceRequest paymentAmount(int index, Long paymentAmount) {

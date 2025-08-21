@@ -54,10 +54,31 @@ public class CustomerEntitlement extends Resource<CustomerEntitlement> {
     // Operations
     //===========
 
-    public static ListRequest entitlementsForCustomer(String id) {
+    public static CustomerEntitlementEntitlementsForCustomerRequest entitlementsForCustomer(String id) {
         String uri = uri("customers", nullCheck(id), "customer_entitlements");
-        return new ListRequest(uri);
+        return new CustomerEntitlementEntitlementsForCustomerRequest(uri);
     }
 
+
+    // Operation Request Classes
+    //==========================
+
+    public static class CustomerEntitlementEntitlementsForCustomerRequest extends ListRequest<CustomerEntitlementEntitlementsForCustomerRequest> {
+
+        private CustomerEntitlementEntitlementsForCustomerRequest(String uri) {
+            super(uri);
+        }
+    
+        public CustomerEntitlementEntitlementsForCustomerRequest consolidateEntitlements(Boolean consolidateEntitlements) {
+            params.addOpt("consolidate_entitlements", consolidateEntitlements);
+            return this;
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
 
 }

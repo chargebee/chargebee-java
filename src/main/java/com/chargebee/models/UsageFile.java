@@ -115,13 +115,13 @@ public class UsageFile extends Resource<UsageFile> {
     // Operations
     //===========
 
-    public static UploadRequest upload() {
-        String uri = uri("usage_files", "upload");
-        return new UploadRequest(Method.POST, uri).setIdempotency(false);
+    public static UploadUrlRequest uploadUrl() {
+        String uri = uri("usage_files", "upload_url");
+        return new UploadUrlRequest(Method.POST, uri).setIdempotency(false);
     }
 
-    public static Request status(String id) {
-        String uri = uri("usage_files", nullCheck(id), "status");
+    public static Request processingStatus(String id) {
+        String uri = uri("usage_files", nullCheck(id), "processing_status");
         return new Request(Method.GET, uri);
     }
 
@@ -129,19 +129,19 @@ public class UsageFile extends Resource<UsageFile> {
     // Operation Request Classes
     //==========================
 
-    public static class UploadRequest extends Request<UploadRequest> {
+    public static class UploadUrlRequest extends Request<UploadUrlRequest> {
 
-        private UploadRequest(Method httpMeth, String uri) {
+        private UploadUrlRequest(Method httpMeth, String uri) {
             super(httpMeth, uri, null, "file-ingest");
         }
     
-        public UploadRequest fileName(String fileName) {
+        public UploadUrlRequest fileName(String fileName) {
             params.add("file_name", fileName);
             return this;
         }
 
 
-        public UploadRequest mimeType(String mimeType) {
+        public UploadUrlRequest mimeType(String mimeType) {
             params.add("mime_type", mimeType);
             return this;
         }
