@@ -40,6 +40,17 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
 
     }
 
+    public static class LinkedOmnichannelOneTimeOrder extends Resource<LinkedOmnichannelOneTimeOrder> {
+        public LinkedOmnichannelOneTimeOrder(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String omnichannelOneTimeOrderId() {
+            return optString("omnichannel_one_time_order_id");
+        }
+
+    }
+
     public static class ErrorDetail extends Resource<ErrorDetail> {
         public ErrorDetail(JSONObject jsonObj) {
             super(jsonObj);
@@ -101,6 +112,10 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
         return optList("linked_omnichannel_subscriptions", RecordedPurchase.LinkedOmnichannelSubscription.class);
     }
 
+    public List<RecordedPurchase.LinkedOmnichannelOneTimeOrder> linkedOmnichannelOneTimeOrders() {
+        return optList("linked_omnichannel_one_time_orders", RecordedPurchase.LinkedOmnichannelOneTimeOrder.class);
+    }
+
     public RecordedPurchase.ErrorDetail errorDetail() {
         return optSubResource("error_detail", RecordedPurchase.ErrorDetail.class);
     }
@@ -156,6 +171,16 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
 
         public CreateRequest googlePlayStorePurchaseToken(String googlePlayStorePurchaseToken) {
             params.addOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
+            return this;
+        }
+
+        public CreateRequest googlePlayStoreProductId(String googlePlayStoreProductId) {
+            params.addOpt("google_play_store[product_id]", googlePlayStoreProductId);
+            return this;
+        }
+
+        public CreateRequest googlePlayStoreOrderId(String googlePlayStoreOrderId) {
+            params.addOpt("google_play_store[order_id]", googlePlayStoreOrderId);
             return this;
         }
 

@@ -2184,6 +2184,11 @@ public class Customer extends Resource<Customer> {
         }
 
 
+        public RecordExcessPaymentRequest transactionId(String transactionId) {
+            params.addOpt("transaction[id]", transactionId);
+            return this;
+        }
+
         public RecordExcessPaymentRequest transactionAmount(Long transactionAmount) {
             params.add("transaction[amount]", transactionAmount);
             return this;

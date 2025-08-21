@@ -16,6 +16,7 @@ public class Discount extends Resource<Discount> {
     public enum Type {
         FIXED_AMOUNT,
         PERCENTAGE,
+        OFFER_QUANTITY,
         _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
@@ -52,6 +53,10 @@ public class Discount extends Resource<Discount> {
 
     public Long amount() {
         return optLong("amount");
+    }
+
+    public Integer quantity() {
+        return optInteger("quantity");
     }
 
     public String currencyCode() {

@@ -1468,6 +1468,10 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("discounts[amount][" + index + "]", discountAmount);
             return this;
         }
+        public CheckoutOneTimeForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
+            return this;
+        }
         public CheckoutOneTimeForItemsRequest discountApplyOn(int index, com.chargebee.models.enums.ApplyOn discountApplyOn) {
             params.add("discounts[apply_on][" + index + "]", discountApplyOn);
             return this;
@@ -1934,6 +1938,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutNewForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CheckoutNewForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public CheckoutNewForItemsRequest subscriptionItemChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption subscriptionItemChargeOnOption) {
@@ -2580,6 +2588,10 @@ public class HostedPage extends Resource<HostedPage> {
         }
         public CheckoutExistingForItemsRequest discountItemPriceId(int index, String discountItemPriceId) {
             params.addOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+            return this;
+        }
+        public CheckoutExistingForItemsRequest discountQuantity(int index, Integer discountQuantity) {
+            params.addOpt("discounts[quantity][" + index + "]", discountQuantity);
             return this;
         }
         public CheckoutExistingForItemsRequest discountOperationType(int index, com.chargebee.models.enums.OperationType discountOperationType) {

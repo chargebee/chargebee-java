@@ -48,35 +48,6 @@ public class CreditNote extends Resource<CreditNote> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public static class Einvoice extends Resource<Einvoice> {
-        public enum Status {
-             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public Einvoice(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String id() {
-            return reqString("id");
-        }
-
-        public String referenceNumber() {
-            return optString("reference_number");
-        }
-
-        public Status status() {
-            return reqEnum("status", Status.class);
-        }
-
-        public String message() {
-            return optString("message");
-        }
-
-    }
-
     public static class LineItem extends Resource<LineItem> {
         public enum EntityType {
              ADHOC,PLAN_ITEM_PRICE,ADDON_ITEM_PRICE,CHARGE_ITEM_PRICE,PLAN_SETUP,PLAN,ADDON,
@@ -190,82 +161,6 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
-    public static class Discount extends Resource<Discount> {
-        public enum EntityType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public enum DiscountType {
-             FIXED_AMOUNT,PERCENTAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public Discount(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
-        }
-
-        public EntityType entityType() {
-            return reqEnum("entity_type", EntityType.class);
-        }
-
-        public DiscountType discountType() {
-            return optEnum("discount_type", DiscountType.class);
-        }
-
-        public String entityId() {
-            return optString("entity_id");
-        }
-
-        public String couponSetCode() {
-            return optString("coupon_set_code");
-        }
-
-    }
-
-    public static class LineItemDiscount extends Resource<LineItemDiscount> {
-        public enum DiscountType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public LineItemDiscount(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String lineItemId() {
-            return reqString("line_item_id");
-        }
-
-        public DiscountType discountType() {
-            return reqEnum("discount_type", DiscountType.class);
-        }
-
-        public String couponId() {
-            return optString("coupon_id");
-        }
-
-        public String entityId() {
-            return optString("entity_id");
-        }
-
-        public Long discountAmount() {
-            return reqLong("discount_amount");
-        }
-
-    }
-
     public static class LineItemTier extends Resource<LineItemTier> {
         public enum PricingType {
              PER_UNIT,FLAT_FEE,PACKAGE,
@@ -323,21 +218,35 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
-    public static class Tax extends Resource<Tax> {
-        public Tax(JSONObject jsonObj) {
+    public static class LineItemDiscount extends Resource<LineItemDiscount> {
+        public enum DiscountType {
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public LineItemDiscount(JSONObject jsonObj) {
             super(jsonObj);
         }
 
-        public String name() {
-            return reqString("name");
+        public String lineItemId() {
+            return reqString("line_item_id");
         }
 
-        public Long amount() {
-            return reqLong("amount");
+        public DiscountType discountType() {
+            return reqEnum("discount_type", DiscountType.class);
         }
 
-        public String description() {
-            return optString("description");
+        public String couponId() {
+            return optString("coupon_id");
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -405,6 +314,150 @@ public class CreditNote extends Resource<CreditNote> {
 
         public String localCurrencyCode() {
             return optString("local_currency_code");
+        }
+
+    }
+
+    public static class LineItemAddress extends Resource<LineItemAddress> {
+        public LineItemAddress(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public String firstName() {
+            return optString("first_name");
+        }
+
+        public String lastName() {
+            return optString("last_name");
+        }
+
+        public String email() {
+            return optString("email");
+        }
+
+        public String company() {
+            return optString("company");
+        }
+
+        public String phone() {
+            return optString("phone");
+        }
+
+        public String line1() {
+            return optString("line1");
+        }
+
+        public String line2() {
+            return optString("line2");
+        }
+
+        public String line3() {
+            return optString("line3");
+        }
+
+        public String city() {
+            return optString("city");
+        }
+
+        public String stateCode() {
+            return optString("state_code");
+        }
+
+        public String state() {
+            return optString("state");
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String zip() {
+            return optString("zip");
+        }
+
+        public ValidationStatus validationStatus() {
+            return optEnum("validation_status", ValidationStatus.class);
+        }
+
+    }
+
+    public static class Discount extends Resource<Discount> {
+        public enum EntityType {
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum DiscountType {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public DiscountType discountType() {
+            return optEnum("discount_type", DiscountType.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
+    }
+
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String name() {
+            return reqString("name");
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+    }
+
+    public static class TaxOrigin extends Resource<TaxOrigin> {
+        public TaxOrigin(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String country() {
+            return optString("country");
+        }
+
+        public String registrationNumber() {
+            return optString("registration_number");
         }
 
     }
@@ -611,6 +664,35 @@ public class CreditNote extends Resource<CreditNote> {
 
     }
 
+    public static class Einvoice extends Resource<Einvoice> {
+        public enum Status {
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Einvoice(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String id() {
+            return reqString("id");
+        }
+
+        public String referenceNumber() {
+            return optString("reference_number");
+        }
+
+        public Status status() {
+            return reqEnum("status", Status.class);
+        }
+
+        public String message() {
+            return optString("message");
+        }
+
+    }
+
     public static class SiteDetailsAtCreation extends Resource<SiteDetailsAtCreation> {
         public SiteDetailsAtCreation(JSONObject jsonObj) {
             super(jsonObj);
@@ -622,88 +704,6 @@ public class CreditNote extends Resource<CreditNote> {
 
         public JSONObject organizationAddress() {
             return optJSONObject("organization_address");
-        }
-
-    }
-
-    public static class TaxOrigin extends Resource<TaxOrigin> {
-        public TaxOrigin(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String country() {
-            return optString("country");
-        }
-
-        public String registrationNumber() {
-            return optString("registration_number");
-        }
-
-    }
-
-    public static class LineItemAddress extends Resource<LineItemAddress> {
-        public LineItemAddress(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String lineItemId() {
-            return optString("line_item_id");
-        }
-
-        public String firstName() {
-            return optString("first_name");
-        }
-
-        public String lastName() {
-            return optString("last_name");
-        }
-
-        public String email() {
-            return optString("email");
-        }
-
-        public String company() {
-            return optString("company");
-        }
-
-        public String phone() {
-            return optString("phone");
-        }
-
-        public String line1() {
-            return optString("line1");
-        }
-
-        public String line2() {
-            return optString("line2");
-        }
-
-        public String line3() {
-            return optString("line3");
-        }
-
-        public String city() {
-            return optString("city");
-        }
-
-        public String stateCode() {
-            return optString("state_code");
-        }
-
-        public String state() {
-            return optString("state");
-        }
-
-        public String country() {
-            return optString("country");
-        }
-
-        public String zip() {
-            return optString("zip");
-        }
-
-        public ValidationStatus validationStatus() {
-            return optEnum("validation_status", ValidationStatus.class);
         }
 
     }
@@ -806,10 +806,6 @@ public class CreditNote extends Resource<CreditNote> {
         return optEnum("channel", Channel.class);
     }
 
-    public CreditNote.Einvoice einvoice() {
-        return optSubResource("einvoice", CreditNote.Einvoice.class);
-    }
-
     public Long subTotal() {
         return reqLong("sub_total");
     }
@@ -838,24 +834,32 @@ public class CreditNote extends Resource<CreditNote> {
         return optList("line_items", CreditNote.LineItem.class);
     }
 
-    public List<CreditNote.Discount> discounts() {
-        return optList("discounts", CreditNote.Discount.class);
+    public List<CreditNote.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", CreditNote.LineItemTier.class);
     }
 
     public List<CreditNote.LineItemDiscount> lineItemDiscounts() {
         return optList("line_item_discounts", CreditNote.LineItemDiscount.class);
     }
 
-    public List<CreditNote.LineItemTier> lineItemTiers() {
-        return optList("line_item_tiers", CreditNote.LineItemTier.class);
+    public List<CreditNote.LineItemTax> lineItemTaxes() {
+        return optList("line_item_taxes", CreditNote.LineItemTax.class);
+    }
+
+    public List<CreditNote.LineItemAddress> lineItemAddresses() {
+        return optList("line_item_addresses", CreditNote.LineItemAddress.class);
+    }
+
+    public List<CreditNote.Discount> discounts() {
+        return optList("discounts", CreditNote.Discount.class);
     }
 
     public List<CreditNote.Tax> taxes() {
         return optList("taxes", CreditNote.Tax.class);
     }
 
-    public List<CreditNote.LineItemTax> lineItemTaxes() {
-        return optList("line_item_taxes", CreditNote.LineItemTax.class);
+    public CreditNote.TaxOrigin taxOrigin() {
+        return optSubResource("tax_origin", CreditNote.TaxOrigin.class);
     }
 
     public List<CreditNote.LinkedRefund> linkedRefunds() {
@@ -898,16 +902,12 @@ public class CreditNote extends Resource<CreditNote> {
         return optSubResource("billing_address", CreditNote.BillingAddress.class);
     }
 
+    public CreditNote.Einvoice einvoice() {
+        return optSubResource("einvoice", CreditNote.Einvoice.class);
+    }
+
     public CreditNote.SiteDetailsAtCreation siteDetailsAtCreation() {
         return optSubResource("site_details_at_creation", CreditNote.SiteDetailsAtCreation.class);
-    }
-
-    public CreditNote.TaxOrigin taxOrigin() {
-        return optSubResource("tax_origin", CreditNote.TaxOrigin.class);
-    }
-
-    public List<CreditNote.LineItemAddress> lineItemAddresses() {
-        return optList("line_item_addresses", CreditNote.LineItemAddress.class);
     }
 
     // Operations
@@ -1193,6 +1193,11 @@ public class CreditNote extends Resource<CreditNote> {
             return this;
         }
 
+
+        public RecordRefundRequest transactionId(String transactionId) {
+            params.addOpt("transaction[id]", transactionId);
+            return this;
+        }
 
         public RecordRefundRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
@@ -1746,6 +1751,10 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public ImportCreditNoteRequest allocationAllocatedAt(int index, Timestamp allocationAllocatedAt) {
             params.add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
+            return this;
+        }
+        public ImportCreditNoteRequest linkedRefundId(int index, String linkedRefundId) {
+            params.addOpt("linked_refunds[id][" + index + "]", linkedRefundId);
             return this;
         }
         public ImportCreditNoteRequest linkedRefundAmount(int index, Long linkedRefundAmount) {

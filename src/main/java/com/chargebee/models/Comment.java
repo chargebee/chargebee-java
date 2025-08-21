@@ -62,6 +62,10 @@ public class Comment extends Resource<Comment> {
         return reqString("entity_id");
     }
 
+    public String businessEntityId() {
+        return optString("business_entity_id");
+    }
+
     // Operations
     //===========
 
