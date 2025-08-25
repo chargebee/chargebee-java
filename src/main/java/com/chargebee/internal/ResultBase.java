@@ -408,6 +408,10 @@ public class ResultBase {
         return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
     }
 
+    public List<Subscription> subscriptions() {
+        return (List<Subscription>) getList("subscriptions", "subscription");
+    }
+
 
     private List<? extends Resource> getList(String pluralName, String singularName) {
         JSONArray listModels = jsonObj.optJSONArray(pluralName);
