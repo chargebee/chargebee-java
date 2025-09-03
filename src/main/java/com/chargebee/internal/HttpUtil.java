@@ -213,6 +213,7 @@ public class HttpUtil {
 
     private static Resp sendRequest(HttpURLConnection conn) throws IOException {
         int httpRespCode = conn.getResponseCode();
+        final String UBB_BATCH_INGESTION_INVALID_REQUEST = "ubb_batch_ingestion_invalid_request";
         Map<String, List<String>> responseHeaders = conn.getHeaderFields();
         if (httpRespCode == HttpURLConnection.HTTP_NO_CONTENT) {
             throw new RuntimeException("Got http_no_content response");
@@ -225,7 +226,10 @@ public class HttpUtil {
                 jsonResp.getString("api_error_code");
                 String type = jsonResp.optString("type");
                 String exceptionMessage = jsonResp.getString("message");
-                if (isBatchApi(conn)) {
+                if (UBB_BATCH_INGESTION_INVALID_REQUEST.equals(type)) {
+                    throw new UbbBatchIngestionInvalidRequestException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
+                } 
+                else if (isBatchApi(conn)) {
                     throw new BatchAPIException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
                 } else if ("payment".equals(type)) {
                     throw new PaymentException(httpRespCode, exceptionMessage, jsonResp, responseHeaders);
