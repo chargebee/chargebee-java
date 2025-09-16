@@ -1,0 +1,55 @@
+name: Publish v3 Java SDK to Maven Central
+on:
+    push:
+        tags:
+            - 'v3*'
+
+jobs:
+    release:
+        if: startsWith(github.ref, 'refs/tags/v3')
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Set up JDK 17
+              uses: actions/setup-java@v4
+              with:
+                  java-version: '17'
+                  distribution: 'temurin'
+                  server-id: central
+                  server-username: MAVEN_USERNAME
+                  server-password: MAVEN_PASSWORD
+                  gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+                  gpg-passphrase: MAVEN_GPG_PASSPHRASE
+
+            - name: Cache Maven dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.m2
+                  key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+                  restore-keys: ${{ runner.os }}-m2
+
+            - name: Ensure pom.xml version matches tag
+              run: |
+                  VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+                  TAG=${GITHUB_REF#refs/tags/}
+                  echo "Detected pom.xml version: $VERSION"
+                  echo "Detected git tag: $TAG"
+
+                  if [ "$VERSION" = "${TAG#v}" ]; then
+                    echo "✅ OK: pom.xml version matches the tag"
+                  else
+                    echo "❌ ERROR: pom.xml version ($VERSION) does not match tag ($TAG)"
+                    exit 1
+                  fi
+
+            - name: Run tests
+              run: mvn clean test
+
+            - name: Deploy to Maven Central
+              run: mvn clean deploy
+              env:
+                  MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+                  MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+                  MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
