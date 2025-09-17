@@ -31,12 +31,8 @@ public class APIException extends RuntimeException {
      */
     @Deprecated
     public final String code;
-    /**
-     * Use {@link #getMessage()} instead.
-     * @deprecated
-     */
-    @Deprecated
-    public final String message;
+
+    private final String message;
     
 
     public APIException(int httpStatusCode, String message, JSONObject jsonObj) {

@@ -1,3 +1,13 @@
+### v3.36.1 (2025-09-16) 
+* * * 
+
+### Deprecated Attribute: 
+* The `message` field has been made private in APIException, as it has long been deprecated.
+* Users should use the `getMessage()` method instead, as documented in the comments.
+
+### New Exception
+* New `APIException` `UbbBatchIngestionInvalidRequestException` has been added. 
+
 ### v3.36.0 (2025-08-19) 
 * * * 
 
