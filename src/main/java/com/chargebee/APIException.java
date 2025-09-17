@@ -31,9 +31,7 @@ public class APIException extends RuntimeException {
      */
     @Deprecated
     public final String code;
-    /**
-     * Use {@link #getMessage()} instead.
-     */
+
     private final String message;
     
 
