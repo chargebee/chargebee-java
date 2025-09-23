@@ -20,59 +20,6 @@ public class OmnichannelOneTimeOrder extends Resource<OmnichannelOneTimeOrder> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public static class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
-        public enum Type {
-             PURCHASE,RENEWAL,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public OmnichannelTransaction(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String id() {
-            return reqString("id");
-        }
-
-        public String idAtSource() {
-            return reqString("id_at_source");
-        }
-
-        public String appId() {
-            return reqString("app_id");
-        }
-
-        public String priceCurrency() {
-            return optString("price_currency");
-        }
-
-        public Long priceUnits() {
-            return optLong("price_units");
-        }
-
-        public Long priceNanos() {
-            return optLong("price_nanos");
-        }
-
-        public Type type() {
-            return reqEnum("type", Type.class);
-        }
-
-        public Timestamp transactedAt() {
-            return optTimestamp("transacted_at");
-        }
-
-        public Timestamp createdAt() {
-            return reqTimestamp("created_at");
-        }
-
-        public Long resourceVersion() {
-            return optLong("resource_version");
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -123,8 +70,8 @@ public class OmnichannelOneTimeOrder extends Resource<OmnichannelOneTimeOrder> {
         return reqList("omnichannel_one_time_order_items", OmnichannelOneTimeOrderItem.class);
     }
 
-    public OmnichannelOneTimeOrder.OmnichannelTransaction purchaseTransaction() {
-        return optSubResource("purchase_transaction", OmnichannelOneTimeOrder.OmnichannelTransaction.class);
+    public OmnichannelTransaction purchaseTransaction() {
+        return optSubResource("purchase_transaction", OmnichannelTransaction.class);
     }
 
     // Operations

@@ -404,7 +404,7 @@ public class Item extends Resource<Item> {
             params.addOpt("bundle_configuration[type]", bundleConfigurationType);
             return this;
         }
-
+        
         public CreateRequest bundleItemsToAddItemId(int index, String bundleItemsToAddItemId) {
             params.addOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
             return this;
@@ -544,7 +544,7 @@ public class Item extends Resource<Item> {
             params.addOpt("bundle_configuration[type]", bundleConfigurationType);
             return this;
         }
-
+        
         public UpdateRequest bundleItemsToAddItemId(int index, String bundleItemsToAddItemId) {
             params.addOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
             return this;

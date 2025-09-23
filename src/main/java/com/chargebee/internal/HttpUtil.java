@@ -215,12 +215,9 @@ public class HttpUtil {
         int httpRespCode = conn.getResponseCode();
         final String UBB_BATCH_INGESTION_INVALID_REQUEST = "ubb_batch_ingestion_invalid_request";
         Map<String, List<String>> responseHeaders = conn.getHeaderFields();
-        if (httpRespCode == HttpURLConnection.HTTP_NO_CONTENT) {
-            throw new RuntimeException("Got http_no_content response");
-        }
         boolean error = httpRespCode < 200 || httpRespCode > 299;
         String content = getContentAsString(conn, error);
-        JSONObject jsonResp = getContentAsJSON(content);
+        JSONObject jsonResp = getContentAsJSON(content, httpRespCode);
         if (error) {
             try {
                 jsonResp.getString("api_error_code");
@@ -297,8 +294,11 @@ public class HttpUtil {
                 .replaceAll("\r?", "").replaceAll("\n?", "");
     }
 
-    private static JSONObject getContentAsJSON(String content) throws IOException {
+    private static JSONObject getContentAsJSON(String content, int httpRespCode) throws IOException {
         try {
+            if(httpRespCode == 204) {
+                return null;
+            }
             return new JSONObject(content);
         } catch (JSONException exp) {
             if (content.contains("503")){

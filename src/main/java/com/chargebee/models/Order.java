@@ -231,10 +231,6 @@ public class Order extends Resource<Order> {
             return optEnum("validation_status", ValidationStatus.class);
         }
 
-        public Integer index() {
-            return reqInteger("index");
-        }
-
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {
@@ -929,72 +925,72 @@ public class Order extends Resource<Order> {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public UpdateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public UpdateRequest orderLineItemId(int index, String orderLineItemId) {
             params.addOpt("order_line_items[id][" + index + "]", orderLineItemId);
             return this;
@@ -1155,142 +1151,142 @@ public class Order extends Resource<Order> {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public ImportOrderRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressLastName(String billingAddressLastName) {
             params.addOpt("billing_address[last_name]", billingAddressLastName);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressEmail(String billingAddressEmail) {
             params.addOpt("billing_address[email]", billingAddressEmail);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressCompany(String billingAddressCompany) {
             params.addOpt("billing_address[company]", billingAddressCompany);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressPhone(String billingAddressPhone) {
             params.addOpt("billing_address[phone]", billingAddressPhone);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressLine3(String billingAddressLine3) {
             params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressStateCode(String billingAddressStateCode) {
             params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressState(String billingAddressState) {
             params.addOpt("billing_address[state]", billingAddressState);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressZip(String billingAddressZip) {
             params.addOpt("billing_address[zip]", billingAddressZip);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
-
+        
         public ImportOrderRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1331,7 +1327,7 @@ public class Order extends Resource<Order> {
             params.addOpt("credit_note[total]", creditNoteTotal);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1360,12 +1356,12 @@ public class Order extends Resource<Order> {
             params.add("credit_note[reason_code]", creditNoteReasonCode);
             return this;
         }
-
+        
         public CreateRefundableCreditNoteRequest creditNoteTotal(Long creditNoteTotal) {
             params.add("credit_note[total]", creditNoteTotal);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

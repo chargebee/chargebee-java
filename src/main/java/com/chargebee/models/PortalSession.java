@@ -165,7 +165,7 @@ public class PortalSession extends Resource<PortalSession> {
             params.add("customer[id]", customerId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

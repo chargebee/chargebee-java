@@ -244,6 +244,10 @@ public class Transaction extends Resource<Transaction> {
             return optString("error_cause_id");
         }
 
+        public String processorAdviceCode() {
+            return optString("processor_advice_code");
+        }
+
     }
 
     //Constructors

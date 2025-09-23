@@ -682,87 +682,87 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("card[last4]", cardLast4);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest cardIin(String cardIin) {
             params.addOpt("card[iin]", cardIin);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest cardExpiryMonth(Integer cardExpiryMonth) {
             params.addOpt("card[expiry_month]", cardExpiryMonth);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest cardExpiryYear(Integer cardExpiryYear) {
             params.addOpt("card[expiry_year]", cardExpiryYear);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest cardBrand(Card.Brand cardBrand) {
             params.addOpt("card[brand]", cardBrand);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest cardFundingType(Card.FundingType cardFundingType) {
             params.addOpt("card[funding_type]", cardFundingType);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressLastName(String billingAddressLastName) {
             params.addOpt("billing_address[last_name]", billingAddressLastName);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressEmail(String billingAddressEmail) {
             params.addOpt("billing_address[email]", billingAddressEmail);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressLine3(String billingAddressLine3) {
             params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressStateCode(String billingAddressStateCode) {
             params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressState(String billingAddressState) {
             params.addOpt("billing_address[state]", billingAddressState);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressZip(String billingAddressZip) {
             params.addOpt("billing_address[zip]", billingAddressZip);
             return this;
         }
-
+        
         public CreateUsingPermanentTokenRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -821,43 +821,43 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
             params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
             params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
         }
-
+        
         @Deprecated
         public CreateUsingPaymentIntentRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentAdditionalInfo(JSONObject paymentIntentAdditionalInfo) {
             params.addOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
             return this;
         }
-
+        
         public CreateUsingPaymentIntentRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -880,22 +880,22 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
             return this;
         }
-
+        
         public CreateVoucherPaymentSourceRequest voucherPaymentSourceGatewayAccountId(String voucherPaymentSourceGatewayAccountId) {
             params.addOpt("voucher_payment_source[gateway_account_id]", voucherPaymentSourceGatewayAccountId);
             return this;
         }
-
+        
         public CreateVoucherPaymentSourceRequest voucherPaymentSourceTaxId(String voucherPaymentSourceTaxId) {
             params.addOpt("voucher_payment_source[tax_id]", voucherPaymentSourceTaxId);
             return this;
         }
-
+        
         public CreateVoucherPaymentSourceRequest voucherPaymentSourceBillingAddress(JSONObject voucherPaymentSourceBillingAddress) {
             params.addOpt("voucher_payment_source[billing_address]", voucherPaymentSourceBillingAddress);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -924,82 +924,82 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
-
+        
         public CreateCardRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
         }
-
+        
         public CreateCardRequest cardLastName(String cardLastName) {
             params.addOpt("card[last_name]", cardLastName);
             return this;
         }
-
+        
         public CreateCardRequest cardNumber(String cardNumber) {
             params.add("card[number]", cardNumber);
             return this;
         }
-
+        
         public CreateCardRequest cardExpiryMonth(Integer cardExpiryMonth) {
             params.add("card[expiry_month]", cardExpiryMonth);
             return this;
         }
-
+        
         public CreateCardRequest cardExpiryYear(Integer cardExpiryYear) {
             params.add("card[expiry_year]", cardExpiryYear);
             return this;
         }
-
+        
         public CreateCardRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
             return this;
         }
-
+        
         public CreateCardRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
             params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingAddr2(String cardBillingAddr2) {
             params.addOpt("card[billing_addr2]", cardBillingAddr2);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingCity(String cardBillingCity) {
             params.addOpt("card[billing_city]", cardBillingCity);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingStateCode(String cardBillingStateCode) {
             params.addOpt("card[billing_state_code]", cardBillingStateCode);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingState(String cardBillingState) {
             params.addOpt("card[billing_state]", cardBillingState);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingZip(String cardBillingZip) {
             params.addOpt("card[billing_zip]", cardBillingZip);
             return this;
         }
-
+        
         public CreateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
-
+        
         public CreateCardRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
             params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1034,82 +1034,82 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountIban(String bankAccountIban) {
             params.addOpt("bank_account[iban]", bankAccountIban);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountFirstName(String bankAccountFirstName) {
             params.addOpt("bank_account[first_name]", bankAccountFirstName);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountLastName(String bankAccountLastName) {
             params.addOpt("bank_account[last_name]", bankAccountLastName);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountCompany(String bankAccountCompany) {
             params.addOpt("bank_account[company]", bankAccountCompany);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountEmail(String bankAccountEmail) {
             params.addOpt("bank_account[email]", bankAccountEmail);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountPhone(String bankAccountPhone) {
             params.addOpt("bank_account[phone]", bankAccountPhone);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
             params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
             params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountBankCode(String bankAccountBankCode) {
             params.addOpt("bank_account[bank_code]", bankAccountBankCode);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
             params.addOpt("bank_account[account_type]", bankAccountAccountType);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
             params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
             params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
             params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
             return this;
         }
-
+        
         public CreateBankAccountRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
             params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1138,62 +1138,62 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
         }
-
+        
         public UpdateCardRequest cardLastName(String cardLastName) {
             params.addOpt("card[last_name]", cardLastName);
             return this;
         }
-
+        
         public UpdateCardRequest cardExpiryMonth(Integer cardExpiryMonth) {
             params.addOpt("card[expiry_month]", cardExpiryMonth);
             return this;
         }
-
+        
         public UpdateCardRequest cardExpiryYear(Integer cardExpiryYear) {
             params.addOpt("card[expiry_year]", cardExpiryYear);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingAddr2(String cardBillingAddr2) {
             params.addOpt("card[billing_addr2]", cardBillingAddr2);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingCity(String cardBillingCity) {
             params.addOpt("card[billing_city]", cardBillingCity);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingZip(String cardBillingZip) {
             params.addOpt("card[billing_zip]", cardBillingZip);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingStateCode(String cardBillingStateCode) {
             params.addOpt("card[billing_state_code]", cardBillingStateCode);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingState(String cardBillingState) {
             params.addOpt("card[billing_state]", cardBillingState);
             return this;
         }
-
+        
         public UpdateCardRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
-
+        
         public UpdateCardRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
             params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1210,17 +1210,17 @@ public class PaymentSource extends Resource<PaymentSource> {
             params.addOpt("bank_account[first_name]", bankAccountFirstName);
             return this;
         }
-
+        
         public UpdateBankAccountRequest bankAccountLastName(String bankAccountLastName) {
             params.addOpt("bank_account[last_name]", bankAccountLastName);
             return this;
         }
-
+        
         public UpdateBankAccountRequest bankAccountEmail(String bankAccountEmail) {
             params.addOpt("bank_account[email]", bankAccountEmail);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

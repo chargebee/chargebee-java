@@ -26,6 +26,9 @@ public enum Type {
     KLARNA_PAY_NOW,
     ONLINE_BANKING_POLAND,
     PAYCONIQ_BY_BANCONTACT,
+    FREE_TRIAL,
+    PAY_UP_FRONT,
+    PAY_AS_YOU_GO,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

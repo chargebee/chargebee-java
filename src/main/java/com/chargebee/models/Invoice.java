@@ -773,10 +773,6 @@ public class Invoice extends Resource<Invoice> {
             return optEnum("validation_status", ValidationStatus.class);
         }
 
-        public Integer index() {
-            return reqInteger("index");
-        }
-
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {
@@ -1508,332 +1504,332 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public CreateRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public CreateRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public CreateRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public CreateRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public CreateRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public CreateRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public CreateRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public CreateRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public CreateRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public CreateRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public CreateRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public CreateRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public CreateRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
-
+        
         public CreateRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;
         }
-
+        
         public CreateRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
             params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
             return this;
         }
-
+        
         public CreateRequest bankAccountIban(String bankAccountIban) {
             params.addOpt("bank_account[iban]", bankAccountIban);
             return this;
         }
-
+        
         public CreateRequest bankAccountFirstName(String bankAccountFirstName) {
             params.addOpt("bank_account[first_name]", bankAccountFirstName);
             return this;
         }
-
+        
         public CreateRequest bankAccountLastName(String bankAccountLastName) {
             params.addOpt("bank_account[last_name]", bankAccountLastName);
             return this;
         }
-
+        
         public CreateRequest bankAccountCompany(String bankAccountCompany) {
             params.addOpt("bank_account[company]", bankAccountCompany);
             return this;
         }
-
+        
         public CreateRequest bankAccountEmail(String bankAccountEmail) {
             params.addOpt("bank_account[email]", bankAccountEmail);
             return this;
         }
-
+        
         public CreateRequest bankAccountPhone(String bankAccountPhone) {
             params.addOpt("bank_account[phone]", bankAccountPhone);
             return this;
         }
-
+        
         public CreateRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
         }
-
+        
         public CreateRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
             params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
             return this;
         }
-
+        
         public CreateRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
             params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
             return this;
         }
-
+        
         public CreateRequest bankAccountBankCode(String bankAccountBankCode) {
             params.addOpt("bank_account[bank_code]", bankAccountBankCode);
             return this;
         }
-
+        
         public CreateRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
             params.addOpt("bank_account[account_type]", bankAccountAccountType);
             return this;
         }
-
+        
         public CreateRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
             params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
             return this;
         }
-
+        
         public CreateRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
             params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
             return this;
         }
-
+        
         public CreateRequest bankAccountIssuingCountry(String bankAccountIssuingCountry) {
             params.addOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
             return this;
         }
-
+        
         public CreateRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
             params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
             return this;
         }
-
+        
         public CreateRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
             params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
             return this;
         }
-
+        
         public CreateRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
-
+        
         public CreateRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
             params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
-
+        
         public CreateRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
         }
-
+        
         public CreateRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
             params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
             return this;
         }
-
+        
         public CreateRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
             return this;
         }
-
+        
         public CreateRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
             params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
-
+        
         public CreateRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
         }
-
+        
         public CreateRequest cardLastName(String cardLastName) {
             params.addOpt("card[last_name]", cardLastName);
             return this;
         }
-
+        
         public CreateRequest cardNumber(String cardNumber) {
             params.addOpt("card[number]", cardNumber);
             return this;
         }
-
+        
         public CreateRequest cardExpiryMonth(Integer cardExpiryMonth) {
             params.addOpt("card[expiry_month]", cardExpiryMonth);
             return this;
         }
-
+        
         public CreateRequest cardExpiryYear(Integer cardExpiryYear) {
             params.addOpt("card[expiry_year]", cardExpiryYear);
             return this;
         }
-
+        
         public CreateRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
             return this;
         }
-
+        
         public CreateRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
             params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
-
+        
         public CreateRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
         }
-
+        
         public CreateRequest cardBillingAddr2(String cardBillingAddr2) {
             params.addOpt("card[billing_addr2]", cardBillingAddr2);
             return this;
         }
-
+        
         public CreateRequest cardBillingCity(String cardBillingCity) {
             params.addOpt("card[billing_city]", cardBillingCity);
             return this;
         }
-
+        
         public CreateRequest cardBillingStateCode(String cardBillingStateCode) {
             params.addOpt("card[billing_state_code]", cardBillingStateCode);
             return this;
         }
-
+        
         public CreateRequest cardBillingState(String cardBillingState) {
             params.addOpt("card[billing_state]", cardBillingState);
             return this;
         }
-
+        
         public CreateRequest cardBillingZip(String cardBillingZip) {
             params.addOpt("card[billing_zip]", cardBillingZip);
             return this;
         }
-
+        
         public CreateRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest cardIpAddress(String cardIpAddress) {
             params.addOpt("card[ip_address]", cardIpAddress);
             return this;
         }
-
+        
         public CreateRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
             params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
-
+        
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
             params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
-
+        
         public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
             params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
-
+        
         public CreateRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
-
+        
         public CreateRequest addonId(int index, String addonId) {
             params.addOpt("addons[id][" + index + "]", addonId);
             return this;
@@ -2051,332 +2047,332 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
             return this;
         }
-
+        
         @Deprecated
         public CreateForChargeItemsAndChargesRequest cardGateway(com.chargebee.models.enums.Gateway cardGateway) {
             params.addOpt("card[gateway]", cardGateway);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardGatewayAccountId(String cardGatewayAccountId) {
             params.addOpt("card[gateway_account_id]", cardGatewayAccountId);
             return this;
         }
-
+        
         @Deprecated
         public CreateForChargeItemsAndChargesRequest cardTmpToken(String cardTmpToken) {
             params.addOpt("card[tmp_token]", cardTmpToken);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountGatewayAccountId(String bankAccountGatewayAccountId) {
             params.addOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountIban(String bankAccountIban) {
             params.addOpt("bank_account[iban]", bankAccountIban);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountFirstName(String bankAccountFirstName) {
             params.addOpt("bank_account[first_name]", bankAccountFirstName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountLastName(String bankAccountLastName) {
             params.addOpt("bank_account[last_name]", bankAccountLastName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountCompany(String bankAccountCompany) {
             params.addOpt("bank_account[company]", bankAccountCompany);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountEmail(String bankAccountEmail) {
             params.addOpt("bank_account[email]", bankAccountEmail);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountPhone(String bankAccountPhone) {
             params.addOpt("bank_account[phone]", bankAccountPhone);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountBankName(String bankAccountBankName) {
             params.addOpt("bank_account[bank_name]", bankAccountBankName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountAccountNumber(String bankAccountAccountNumber) {
             params.addOpt("bank_account[account_number]", bankAccountAccountNumber);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountRoutingNumber(String bankAccountRoutingNumber) {
             params.addOpt("bank_account[routing_number]", bankAccountRoutingNumber);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountBankCode(String bankAccountBankCode) {
             params.addOpt("bank_account[bank_code]", bankAccountBankCode);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountAccountType(com.chargebee.models.enums.AccountType bankAccountAccountType) {
             params.addOpt("bank_account[account_type]", bankAccountAccountType);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountAccountHolderType(com.chargebee.models.enums.AccountHolderType bankAccountAccountHolderType) {
             params.addOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountEcheckType(com.chargebee.models.enums.EcheckType bankAccountEcheckType) {
             params.addOpt("bank_account[echeck_type]", bankAccountEcheckType);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountIssuingCountry(String bankAccountIssuingCountry) {
             params.addOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountSwedishIdentityNumber(String bankAccountSwedishIdentityNumber) {
             params.addOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest bankAccountBillingAddress(JSONObject bankAccountBillingAddress) {
             params.addOpt("bank_account[billing_address]", bankAccountBillingAddress);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodType(com.chargebee.models.enums.Type paymentMethodType) {
             params.addOpt("payment_method[type]", paymentMethodType);
             return this;
         }
-
+        
         @Deprecated
         public CreateForChargeItemsAndChargesRequest paymentMethodGateway(com.chargebee.models.enums.Gateway paymentMethodGateway) {
             params.addOpt("payment_method[gateway]", paymentMethodGateway);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodGatewayAccountId(String paymentMethodGatewayAccountId) {
             params.addOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodReferenceId(String paymentMethodReferenceId) {
             params.addOpt("payment_method[reference_id]", paymentMethodReferenceId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodTmpToken(String paymentMethodTmpToken) {
             params.addOpt("payment_method[tmp_token]", paymentMethodTmpToken);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodIssuingCountry(String paymentMethodIssuingCountry) {
             params.addOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentMethodAdditionalInformation(JSONObject paymentMethodAdditionalInformation) {
             params.addOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardFirstName(String cardFirstName) {
             params.addOpt("card[first_name]", cardFirstName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardLastName(String cardLastName) {
             params.addOpt("card[last_name]", cardLastName);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardNumber(String cardNumber) {
             params.addOpt("card[number]", cardNumber);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardExpiryMonth(Integer cardExpiryMonth) {
             params.addOpt("card[expiry_month]", cardExpiryMonth);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardExpiryYear(Integer cardExpiryYear) {
             params.addOpt("card[expiry_year]", cardExpiryYear);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardCvv(String cardCvv) {
             params.addOpt("card[cvv]", cardCvv);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardPreferredScheme(Card.PreferredScheme cardPreferredScheme) {
             params.addOpt("card[preferred_scheme]", cardPreferredScheme);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingAddr1(String cardBillingAddr1) {
             params.addOpt("card[billing_addr1]", cardBillingAddr1);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingAddr2(String cardBillingAddr2) {
             params.addOpt("card[billing_addr2]", cardBillingAddr2);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingCity(String cardBillingCity) {
             params.addOpt("card[billing_city]", cardBillingCity);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingStateCode(String cardBillingStateCode) {
             params.addOpt("card[billing_state_code]", cardBillingStateCode);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingState(String cardBillingState) {
             params.addOpt("card[billing_state]", cardBillingState);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingZip(String cardBillingZip) {
             params.addOpt("card[billing_zip]", cardBillingZip);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardBillingCountry(String cardBillingCountry) {
             params.addOpt("card[billing_country]", cardBillingCountry);
             return this;
         }
-
+        
         @Deprecated
         public CreateForChargeItemsAndChargesRequest cardIpAddress(String cardIpAddress) {
             params.addOpt("card[ip_address]", cardIpAddress);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest cardAdditionalInformation(JSONObject cardAdditionalInformation) {
             params.addOpt("card[additional_information]", cardAdditionalInformation);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
             params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
             params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
         }
-
+        
         @Deprecated
         public CreateForChargeItemsAndChargesRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
-
+        
         public CreateForChargeItemsAndChargesRequest itemPriceItemPriceId(int index, String itemPriceItemPriceId) {
             params.addOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
             return this;
@@ -2829,37 +2825,37 @@ public class Invoice extends Resource<Invoice> {
             params.add("item_price[item_price_id]", itemPriceItemPriceId);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceQuantity(Integer itemPriceQuantity) {
             params.addOpt("item_price[quantity]", itemPriceQuantity);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceQuantityInDecimal(String itemPriceQuantityInDecimal) {
             params.addOpt("item_price[quantity_in_decimal]", itemPriceQuantityInDecimal);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceUnitPrice(Long itemPriceUnitPrice) {
             params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceUnitPriceInDecimal(String itemPriceUnitPriceInDecimal) {
             params.addOpt("item_price[unit_price_in_decimal]", itemPriceUnitPriceInDecimal);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceDateFrom(Timestamp itemPriceDateFrom) {
             params.addOpt("item_price[date_from]", itemPriceDateFrom);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemPriceDateTo(Timestamp itemPriceDateTo) {
             params.addOpt("item_price[date_to]", itemPriceDateTo);
             return this;
         }
-
+        
         public CreateForChargeItemRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
             params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
             return this;
@@ -3100,147 +3096,147 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("credit_note[id]", creditNoteId);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressFirstName(String billingAddressFirstName) {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressLastName(String billingAddressLastName) {
             params.addOpt("billing_address[last_name]", billingAddressLastName);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressEmail(String billingAddressEmail) {
             params.addOpt("billing_address[email]", billingAddressEmail);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressCompany(String billingAddressCompany) {
             params.addOpt("billing_address[company]", billingAddressCompany);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressPhone(String billingAddressPhone) {
             params.addOpt("billing_address[phone]", billingAddressPhone);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressLine3(String billingAddressLine3) {
             params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressStateCode(String billingAddressStateCode) {
             params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressState(String billingAddressState) {
             params.addOpt("billing_address[state]", billingAddressState);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressZip(String billingAddressZip) {
             params.addOpt("billing_address[zip]", billingAddressZip);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
-
+        
         public ImportInvoiceRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public ImportInvoiceRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public ImportInvoiceRequest lineItemId(int index, String lineItemId) {
             params.addOpt("line_items[id][" + index + "]", lineItemId);
             return this;
@@ -3916,12 +3912,12 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
         }
-
+        
         public AddChargeRequest lineItemDateTo(Timestamp lineItemDateTo) {
             params.addOpt("line_item[date_to]", lineItemDateTo);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -3980,12 +3976,12 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("line_item[date_from]", lineItemDateFrom);
             return this;
         }
-
+        
         public AddAddonChargeRequest lineItemDateTo(Timestamp lineItemDateTo) {
             params.addOpt("line_item[date_to]", lineItemDateTo);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4014,37 +4010,37 @@ public class Invoice extends Resource<Invoice> {
             params.add("item_price[item_price_id]", itemPriceItemPriceId);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceQuantity(Integer itemPriceQuantity) {
             params.addOpt("item_price[quantity]", itemPriceQuantity);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceQuantityInDecimal(String itemPriceQuantityInDecimal) {
             params.addOpt("item_price[quantity_in_decimal]", itemPriceQuantityInDecimal);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceUnitPrice(Long itemPriceUnitPrice) {
             params.addOpt("item_price[unit_price]", itemPriceUnitPrice);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceUnitPriceInDecimal(String itemPriceUnitPriceInDecimal) {
             params.addOpt("item_price[unit_price_in_decimal]", itemPriceUnitPriceInDecimal);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceDateFrom(Timestamp itemPriceDateFrom) {
             params.addOpt("item_price[date_from]", itemPriceDateFrom);
             return this;
         }
-
+        
         public AddChargeItemRequest itemPriceDateTo(Timestamp itemPriceDateTo) {
             params.addOpt("item_price[date_to]", itemPriceDateTo);
             return this;
         }
-
+        
         public AddChargeItemRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
             params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
             return this;
@@ -4185,47 +4181,47 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
             params.add("transaction[payment_method]", transactionPaymentMethod);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionCustomPaymentMethodId(String transactionCustomPaymentMethodId) {
             params.addOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionIdAtGateway(String transactionIdAtGateway) {
             params.addOpt("transaction[id_at_gateway]", transactionIdAtGateway);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionStatus(Transaction.Status transactionStatus) {
             params.addOpt("transaction[status]", transactionStatus);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionDate(Timestamp transactionDate) {
             params.addOpt("transaction[date]", transactionDate);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionErrorCode(String transactionErrorCode) {
             params.addOpt("transaction[error_code]", transactionErrorCode);
             return this;
         }
-
+        
         public RecordPaymentRequest transactionErrorText(String transactionErrorText) {
             params.addOpt("transaction[error_text]", transactionErrorText);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4242,22 +4238,22 @@ public class Invoice extends Resource<Invoice> {
             params.add("tax_withheld[amount]", taxWithheldAmount);
             return this;
         }
-
+        
         public RecordTaxWithheldRequest taxWithheldReferenceNumber(String taxWithheldReferenceNumber) {
             params.addOpt("tax_withheld[reference_number]", taxWithheldReferenceNumber);
             return this;
         }
-
+        
         public RecordTaxWithheldRequest taxWithheldDate(Timestamp taxWithheldDate) {
             params.addOpt("tax_withheld[date]", taxWithheldDate);
             return this;
         }
-
+        
         public RecordTaxWithheldRequest taxWithheldDescription(String taxWithheldDescription) {
             params.addOpt("tax_withheld[description]", taxWithheldDescription);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4274,7 +4270,7 @@ public class Invoice extends Resource<Invoice> {
             params.add("tax_withheld[id]", taxWithheldId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4309,12 +4305,12 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("credit_note[reason_code]", creditNoteReasonCode);
             return this;
         }
-
+        
         public RefundRequest creditNoteCreateReasonCode(String creditNoteCreateReasonCode) {
             params.addOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4343,37 +4339,37 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
-
+        
         public RecordRefundRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
             params.add("transaction[payment_method]", transactionPaymentMethod);
             return this;
         }
-
+        
         public RecordRefundRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
             return this;
         }
-
+        
         public RecordRefundRequest transactionCustomPaymentMethodId(String transactionCustomPaymentMethodId) {
             params.addOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
             return this;
         }
-
+        
         public RecordRefundRequest transactionDate(Timestamp transactionDate) {
             params.add("transaction[date]", transactionDate);
             return this;
         }
-
+        
         public RecordRefundRequest creditNoteReasonCode(CreditNote.ReasonCode creditNoteReasonCode) {
             params.addOpt("credit_note[reason_code]", creditNoteReasonCode);
             return this;
         }
-
+        
         public RecordRefundRequest creditNoteCreateReasonCode(String creditNoteCreateReasonCode) {
             params.addOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4390,7 +4386,7 @@ public class Invoice extends Resource<Invoice> {
             params.add("transaction[id]", transactionId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4407,7 +4403,7 @@ public class Invoice extends Resource<Invoice> {
             params.add("credit_note[id]", creditNoteId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -4508,147 +4504,147 @@ public class Invoice extends Resource<Invoice> {
             params.addOpt("billing_address[first_name]", billingAddressFirstName);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressLastName(String billingAddressLastName) {
             params.addOpt("billing_address[last_name]", billingAddressLastName);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressEmail(String billingAddressEmail) {
             params.addOpt("billing_address[email]", billingAddressEmail);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressCompany(String billingAddressCompany) {
             params.addOpt("billing_address[company]", billingAddressCompany);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressPhone(String billingAddressPhone) {
             params.addOpt("billing_address[phone]", billingAddressPhone);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressLine3(String billingAddressLine3) {
             params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressStateCode(String billingAddressStateCode) {
             params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressState(String billingAddressState) {
             params.addOpt("billing_address[state]", billingAddressState);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressZip(String billingAddressZip) {
             params.addOpt("billing_address[zip]", billingAddressZip);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
-
+        
         public UpdateDetailsRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressFirstName(String shippingAddressFirstName) {
             params.addOpt("shipping_address[first_name]", shippingAddressFirstName);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressLastName(String shippingAddressLastName) {
             params.addOpt("shipping_address[last_name]", shippingAddressLastName);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressEmail(String shippingAddressEmail) {
             params.addOpt("shipping_address[email]", shippingAddressEmail);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressCompany(String shippingAddressCompany) {
             params.addOpt("shipping_address[company]", shippingAddressCompany);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressPhone(String shippingAddressPhone) {
             params.addOpt("shipping_address[phone]", shippingAddressPhone);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressLine1(String shippingAddressLine1) {
             params.addOpt("shipping_address[line1]", shippingAddressLine1);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressLine2(String shippingAddressLine2) {
             params.addOpt("shipping_address[line2]", shippingAddressLine2);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressLine3(String shippingAddressLine3) {
             params.addOpt("shipping_address[line3]", shippingAddressLine3);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressCity(String shippingAddressCity) {
             params.addOpt("shipping_address[city]", shippingAddressCity);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressStateCode(String shippingAddressStateCode) {
             params.addOpt("shipping_address[state_code]", shippingAddressStateCode);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressState(String shippingAddressState) {
             params.addOpt("shipping_address[state]", shippingAddressState);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressZip(String shippingAddressZip) {
             params.addOpt("shipping_address[zip]", shippingAddressZip);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressCountry(String shippingAddressCountry) {
             params.addOpt("shipping_address[country]", shippingAddressCountry);
             return this;
         }
-
+        
         public UpdateDetailsRequest shippingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus shippingAddressValidationStatus) {
             params.addOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
             return this;
         }
-
+        
         public UpdateDetailsRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

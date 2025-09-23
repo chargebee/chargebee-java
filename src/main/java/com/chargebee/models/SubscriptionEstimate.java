@@ -86,10 +86,6 @@ public class SubscriptionEstimate extends Resource<SubscriptionEstimate> {
             return optEnum("validation_status", ValidationStatus.class);
         }
 
-        public Integer index() {
-            return reqInteger("index");
-        }
-
     }
 
     public static class ContractTerm extends Resource<ContractTerm> {

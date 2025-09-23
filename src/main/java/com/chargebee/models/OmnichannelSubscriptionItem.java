@@ -157,6 +157,10 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
         return optLong("resource_version");
     }
 
+    public List<OmnichannelSubscriptionItemOffer> omnichannelSubscriptionItemOffers() {
+        return reqList("omnichannel_subscription_item_offers", OmnichannelSubscriptionItemOffer.class);
+    }
+
     public OmnichannelSubscriptionItem.UpcomingRenewal upcomingRenewal() {
         return optSubResource("upcoming_renewal", OmnichannelSubscriptionItem.UpcomingRenewal.class);
     }
