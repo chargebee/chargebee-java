@@ -595,10 +595,6 @@ public class CreditNote extends Resource<CreditNote> {
             return optEnum("validation_status", ValidationStatus.class);
         }
 
-        public Integer index() {
-            return reqInteger("index");
-        }
-
     }
 
     public static class BillingAddress extends Resource<BillingAddress> {
@@ -1198,32 +1194,32 @@ public class CreditNote extends Resource<CreditNote> {
             params.addOpt("transaction[id]", transactionId);
             return this;
         }
-
+        
         public RecordRefundRequest transactionAmount(Long transactionAmount) {
             params.addOpt("transaction[amount]", transactionAmount);
             return this;
         }
-
+        
         public RecordRefundRequest transactionPaymentMethod(com.chargebee.models.enums.PaymentMethod transactionPaymentMethod) {
             params.add("transaction[payment_method]", transactionPaymentMethod);
             return this;
         }
-
+        
         public RecordRefundRequest transactionReferenceNumber(String transactionReferenceNumber) {
             params.addOpt("transaction[reference_number]", transactionReferenceNumber);
             return this;
         }
-
+        
         public RecordRefundRequest transactionCustomPaymentMethodId(String transactionCustomPaymentMethodId) {
             params.addOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
             return this;
         }
-
+        
         public RecordRefundRequest transactionDate(Timestamp transactionDate) {
             params.add("transaction[date]", transactionDate);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -1390,7 +1386,7 @@ public class CreditNote extends Resource<CreditNote> {
             params.add("tax_withheld[id]", taxWithheldId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

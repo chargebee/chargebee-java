@@ -35,7 +35,7 @@ public class Currency extends Resource<Currency> {
     //=======
 
     public String id() {
-        return optString("id");
+        return reqString("id");
     }
 
     public Boolean enabled() {
@@ -47,11 +47,11 @@ public class Currency extends Resource<Currency> {
     }
 
     public String currencyCode() {
-        return optString("currency_code");
+        return reqString("currency_code");
     }
 
     public Boolean isBaseCurrency() {
-        return optBoolean("is_base_currency");
+        return reqBoolean("is_base_currency");
     }
 
     public String manualExchangeRate() {
@@ -61,9 +61,9 @@ public class Currency extends Resource<Currency> {
     // Operations
     //===========
 
-    public static Request list() {
+    public static ListRequest list() {
         String uri = uri("currencies", "list");
-        return new Request(Method.GET, uri);
+        return new ListRequest(uri);
     }
 
     public static Request retrieve(String id) {

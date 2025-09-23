@@ -20,59 +20,6 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
-    public static class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
-        public enum Type {
-             PURCHASE,RENEWAL,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public OmnichannelTransaction(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String id() {
-            return reqString("id");
-        }
-
-        public String idAtSource() {
-            return reqString("id_at_source");
-        }
-
-        public String appId() {
-            return reqString("app_id");
-        }
-
-        public String priceCurrency() {
-            return optString("price_currency");
-        }
-
-        public Long priceUnits() {
-            return optLong("price_units");
-        }
-
-        public Long priceNanos() {
-            return optLong("price_nanos");
-        }
-
-        public Type type() {
-            return reqEnum("type", Type.class);
-        }
-
-        public Timestamp transactedAt() {
-            return optTimestamp("transacted_at");
-        }
-
-        public Timestamp createdAt() {
-            return reqTimestamp("created_at");
-        }
-
-        public Long resourceVersion() {
-            return optLong("resource_version");
-        }
-
-    }
-
     //Constructors
     //============
 
@@ -119,8 +66,8 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return reqList("omnichannel_subscription_items", OmnichannelSubscriptionItem.class);
     }
 
-    public OmnichannelSubscription.OmnichannelTransaction initialPurchaseTransaction() {
-        return optSubResource("initial_purchase_transaction", OmnichannelSubscription.OmnichannelTransaction.class);
+    public OmnichannelTransaction initialPurchaseTransaction() {
+        return optSubResource("initial_purchase_transaction", OmnichannelTransaction.class);
     }
 
     // Operations
@@ -141,6 +88,11 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
         return new ListRequest(uri);
     }
 
+    public static MoveRequest move(String id) {
+        String uri = uri("omnichannel_subscriptions", nullCheck(id), "move");
+        return new MoveRequest(Method.POST, uri);
+    }
+
 
     // Operation Request Classes
     //==========================
@@ -158,6 +110,24 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
 
         public StringFilter<OmnichannelSubscriptionListRequest> customerId() {
             return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id",this);        
+        }
+
+
+        @Override
+        public Params params() {
+            return params;
+        }
+    }
+
+    public static class MoveRequest extends Request<MoveRequest> {
+
+        private MoveRequest(Method httpMeth, String uri) {
+            super(httpMeth, uri);
+        }
+    
+        public MoveRequest toCustomerId(String toCustomerId) {
+            params.add("to_customer_id", toCustomerId);
+            return this;
         }
 
 

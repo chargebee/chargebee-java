@@ -20,6 +20,28 @@ public class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
         java-client version incompatibility. We suggest you to upgrade to the latest version */
     }
 
+    public static class LinkedOmnichannelSubscription extends Resource<LinkedOmnichannelSubscription> {
+        public LinkedOmnichannelSubscription(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String omnichannelSubscriptionId() {
+            return optString("omnichannel_subscription_id");
+        }
+
+    }
+
+    public static class LinkedOmnichannelOneTimeOrder extends Resource<LinkedOmnichannelOneTimeOrder> {
+        public LinkedOmnichannelOneTimeOrder(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String omnichannelOneTimeOrderId() {
+            return optString("omnichannel_one_time_order_id");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -72,6 +94,14 @@ public class OmnichannelTransaction extends Resource<OmnichannelTransaction> {
 
     public Long resourceVersion() {
         return optLong("resource_version");
+    }
+
+    public List<OmnichannelTransaction.LinkedOmnichannelSubscription> linkedOmnichannelSubscriptions() {
+        return optList("linked_omnichannel_subscriptions", OmnichannelTransaction.LinkedOmnichannelSubscription.class);
+    }
+
+    public List<OmnichannelTransaction.LinkedOmnichannelOneTimeOrder> linkedOmnichannelOneTimeOrders() {
+        return optList("linked_omnichannel_one_time_orders", OmnichannelTransaction.LinkedOmnichannelOneTimeOrder.class);
     }
 
     // Operations

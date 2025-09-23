@@ -153,42 +153,42 @@ public class RecordedPurchase extends Resource<RecordedPurchase> {
             params.add("customer[id]", customerId);
             return this;
         }
-
+        
         public CreateRequest appleAppStoreTransactionId(String appleAppStoreTransactionId) {
             params.addOpt("apple_app_store[transaction_id]", appleAppStoreTransactionId);
             return this;
         }
-
+        
         public CreateRequest appleAppStoreReceipt(String appleAppStoreReceipt) {
             params.addOpt("apple_app_store[receipt]", appleAppStoreReceipt);
             return this;
         }
-
+        
         public CreateRequest appleAppStoreProductId(String appleAppStoreProductId) {
             params.addOpt("apple_app_store[product_id]", appleAppStoreProductId);
             return this;
         }
-
+        
         public CreateRequest googlePlayStorePurchaseToken(String googlePlayStorePurchaseToken) {
             params.addOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
             return this;
         }
-
+        
         public CreateRequest googlePlayStoreProductId(String googlePlayStoreProductId) {
             params.addOpt("google_play_store[product_id]", googlePlayStoreProductId);
             return this;
         }
-
+        
         public CreateRequest googlePlayStoreOrderId(String googlePlayStoreOrderId) {
             params.addOpt("google_play_store[order_id]", googlePlayStoreOrderId);
             return this;
         }
-
+        
         public CreateRequest omnichannelSubscriptionId(String omnichannelSubscriptionId) {
             params.addOpt("omnichannel_subscription[id]", omnichannelSubscriptionId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

@@ -108,6 +108,14 @@ public class UsageFile extends Resource<UsageFile> {
         return optTimestamp("uploaded_at");
     }
 
+    public String errorFilePath() {
+        return optString("error_file_path");
+    }
+
+    public String errorFileUrl() {
+        return optString("error_file_url");
+    }
+
     public UsageFile.UploadDetail uploadDetails() {
         return optSubResource("upload_details", UsageFile.UploadDetail.class);
     }

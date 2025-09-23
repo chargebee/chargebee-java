@@ -29,6 +29,12 @@ public class Ramp extends Resource<Ramp> {
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
+        public enum ChargeOnOption {
+             IMMEDIATELY,ON_EVENT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
         public ItemsToAdd(JSONObject jsonObj) {
             super(jsonObj);
         }
@@ -85,11 +91,29 @@ public class Ramp extends Resource<Ramp> {
             return optString("metered_quantity");
         }
 
+        public Boolean chargeOnce() {
+            return optBoolean("charge_once");
+        }
+
+        public ChargeOnOption chargeOnOption() {
+            return optEnum("charge_on_option", ChargeOnOption.class);
+        }
+
+        public ChargeOnEvent chargeOnEvent() {
+            return optEnum("charge_on_event", ChargeOnEvent.class);
+        }
+
     }
 
     public static class ItemsToUpdate extends Resource<ItemsToUpdate> {
         public enum ItemType {
              PLAN,ADDON,CHARGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum ChargeOnOption {
+             IMMEDIATELY,ON_EVENT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
@@ -148,6 +172,18 @@ public class Ramp extends Resource<Ramp> {
 
         public String meteredQuantity() {
             return optString("metered_quantity");
+        }
+
+        public Boolean chargeOnce() {
+            return optBoolean("charge_once");
+        }
+
+        public ChargeOnOption chargeOnOption() {
+            return optEnum("charge_on_option", ChargeOnOption.class);
+        }
+
+        public ChargeOnEvent chargeOnEvent() {
+            return optEnum("charge_on_event", ChargeOnEvent.class);
         }
 
     }
@@ -293,6 +329,31 @@ public class Ramp extends Resource<Ramp> {
 
     }
 
+    public static class ContractTerm extends Resource<ContractTerm> {
+        public enum ActionAtTermEnd {
+             RENEW,EVERGREEN,CANCEL,RENEW_ONCE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public ContractTerm(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Integer cancellationCutoffPeriod() {
+            return optInteger("cancellation_cutoff_period");
+        }
+
+        public Integer renewalBillingCycles() {
+            return optInteger("renewal_billing_cycles");
+        }
+
+        public ActionAtTermEnd actionAtTermEnd() {
+            return reqEnum("action_at_term_end", ActionAtTermEnd.class);
+        }
+
+    }
+
     public static class StatusTransitionReason extends Resource<StatusTransitionReason> {
         public StatusTransitionReason(JSONObject jsonObj) {
             super(jsonObj);
@@ -384,6 +445,10 @@ public class Ramp extends Resource<Ramp> {
 
     public List<String> discountsToRemove() {
         return optList("discounts_to_remove", String.class);
+    }
+
+    public Ramp.ContractTerm contractTerm() {
+        return optSubResource("contract_term", Ramp.ContractTerm.class);
     }
 
     public Boolean deleted() {
@@ -485,6 +550,24 @@ public class Ramp extends Resource<Ramp> {
             return this;
         }
 
+        public CreateForSubscriptionRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "action_at_term_end"), contractTermActionAtTermEnd);
+            return this;
+        }
+        
+        public CreateForSubscriptionRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "cancellation_cutoff_period"), contractTermCancellationCutoffPeriod);
+            return this;
+        }
+        
+        public CreateForSubscriptionRequest contractTermRenewalBillingCycles(Integer contractTermRenewalBillingCycles) {
+            params.addOpt("contract_term[renewal_billing_cycles]", contractTermRenewalBillingCycles);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "renewal_billing_cycles"), contractTermRenewalBillingCycles);
+            return this;
+        }
+        
         public CreateForSubscriptionRequest itemsToAddItemPriceId(int index, String itemsToAddItemPriceId) {
             params.add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_add", "item_price_id", index), itemsToAddItemPriceId);
@@ -520,6 +603,21 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "service_period_days", index), itemsToAddServicePeriodDays);
             return this;
         }
+        public CreateForSubscriptionRequest itemsToAddChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent itemsToAddChargeOnEvent) {
+            params.addOpt("items_to_add[charge_on_event][" + index + "]", itemsToAddChargeOnEvent);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_event", index), itemsToAddChargeOnEvent);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToAddChargeOnce(int index, Boolean itemsToAddChargeOnce) {
+            params.addOpt("items_to_add[charge_once][" + index + "]", itemsToAddChargeOnce);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_once", index), itemsToAddChargeOnce);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToAddChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToAddChargeOnOption) {
+            params.addOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_option", index), itemsToAddChargeOnOption);
+            return this;
+        }
         public CreateForSubscriptionRequest itemsToUpdateItemPriceId(int index, String itemsToUpdateItemPriceId) {
             params.add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_update", "item_price_id", index), itemsToUpdateItemPriceId);
@@ -553,6 +651,21 @@ public class Ramp extends Resource<Ramp> {
         public CreateForSubscriptionRequest itemsToUpdateServicePeriodDays(int index, Integer itemsToUpdateServicePeriodDays) {
             params.addOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
             paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "service_period_days", index), itemsToUpdateServicePeriodDays);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToUpdateChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent itemsToUpdateChargeOnEvent) {
+            params.addOpt("items_to_update[charge_on_event][" + index + "]", itemsToUpdateChargeOnEvent);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_event", index), itemsToUpdateChargeOnEvent);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToUpdateChargeOnce(int index, Boolean itemsToUpdateChargeOnce) {
+            params.addOpt("items_to_update[charge_once][" + index + "]", itemsToUpdateChargeOnce);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_once", index), itemsToUpdateChargeOnce);
+            return this;
+        }
+        public CreateForSubscriptionRequest itemsToUpdateChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToUpdateChargeOnOption) {
+            params.addOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_option", index), itemsToUpdateChargeOnOption);
             return this;
         }
         public CreateForSubscriptionRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
@@ -719,6 +832,24 @@ public class Ramp extends Resource<Ramp> {
             return this;
         }
 
+        public UpdateRequest contractTermActionAtTermEnd(ContractTerm.ActionAtTermEnd contractTermActionAtTermEnd) {
+            params.addOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "action_at_term_end"), contractTermActionAtTermEnd);
+            return this;
+        }
+        
+        public UpdateRequest contractTermCancellationCutoffPeriod(Integer contractTermCancellationCutoffPeriod) {
+            params.addOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "cancellation_cutoff_period"), contractTermCancellationCutoffPeriod);
+            return this;
+        }
+        
+        public UpdateRequest contractTermRenewalBillingCycles(Integer contractTermRenewalBillingCycles) {
+            params.addOpt("contract_term[renewal_billing_cycles]", contractTermRenewalBillingCycles);
+            paramsV2.addOpt(new CompositeParameter("contract_term", "renewal_billing_cycles"), contractTermRenewalBillingCycles);
+            return this;
+        }
+        
         public UpdateRequest itemsToAddItemPriceId(int index, String itemsToAddItemPriceId) {
             params.add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_add", "item_price_id", index), itemsToAddItemPriceId);
@@ -754,6 +885,21 @@ public class Ramp extends Resource<Ramp> {
             paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "service_period_days", index), itemsToAddServicePeriodDays);
             return this;
         }
+        public UpdateRequest itemsToAddChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent itemsToAddChargeOnEvent) {
+            params.addOpt("items_to_add[charge_on_event][" + index + "]", itemsToAddChargeOnEvent);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_event", index), itemsToAddChargeOnEvent);
+            return this;
+        }
+        public UpdateRequest itemsToAddChargeOnce(int index, Boolean itemsToAddChargeOnce) {
+            params.addOpt("items_to_add[charge_once][" + index + "]", itemsToAddChargeOnce);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_once", index), itemsToAddChargeOnce);
+            return this;
+        }
+        public UpdateRequest itemsToAddChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToAddChargeOnOption) {
+            params.addOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_add", "charge_on_option", index), itemsToAddChargeOnOption);
+            return this;
+        }
         public UpdateRequest itemsToUpdateItemPriceId(int index, String itemsToUpdateItemPriceId) {
             params.add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
             paramsV2.add(new CompositeArrayParameter("items_to_update", "item_price_id", index), itemsToUpdateItemPriceId);
@@ -787,6 +933,21 @@ public class Ramp extends Resource<Ramp> {
         public UpdateRequest itemsToUpdateServicePeriodDays(int index, Integer itemsToUpdateServicePeriodDays) {
             params.addOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
             paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "service_period_days", index), itemsToUpdateServicePeriodDays);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateChargeOnEvent(int index, com.chargebee.models.enums.ChargeOnEvent itemsToUpdateChargeOnEvent) {
+            params.addOpt("items_to_update[charge_on_event][" + index + "]", itemsToUpdateChargeOnEvent);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_event", index), itemsToUpdateChargeOnEvent);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateChargeOnce(int index, Boolean itemsToUpdateChargeOnce) {
+            params.addOpt("items_to_update[charge_once][" + index + "]", itemsToUpdateChargeOnce);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_once", index), itemsToUpdateChargeOnce);
+            return this;
+        }
+        public UpdateRequest itemsToUpdateChargeOnOption(int index, com.chargebee.models.enums.ChargeOnOption itemsToUpdateChargeOnOption) {
+            params.addOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
+            paramsV2.addOpt(new CompositeArrayParameter("items_to_update", "charge_on_option", index), itemsToUpdateChargeOnOption);
             return this;
         }
         public UpdateRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {

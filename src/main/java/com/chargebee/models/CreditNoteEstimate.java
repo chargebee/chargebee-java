@@ -135,64 +135,92 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     }
 
-    public static class Discount extends Resource<Discount> {
-        public enum EntityType {
+    public static class LineItemTier extends Resource<LineItemTier> {
+        public enum PricingType {
+             PER_UNIT,FLAT_FEE,PACKAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public LineItemTier(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
+        public Integer startingUnit() {
+            return reqInteger("starting_unit");
+        }
+
+        public Integer endingUnit() {
+            return optInteger("ending_unit");
+        }
+
+        public Integer quantityUsed() {
+            return reqInteger("quantity_used");
+        }
+
+        public Long unitAmount() {
+            return reqLong("unit_amount");
+        }
+
+        public String startingUnitInDecimal() {
+            return optString("starting_unit_in_decimal");
+        }
+
+        public String endingUnitInDecimal() {
+            return optString("ending_unit_in_decimal");
+        }
+
+        public String quantityUsedInDecimal() {
+            return optString("quantity_used_in_decimal");
+        }
+
+        public String unitAmountInDecimal() {
+            return optString("unit_amount_in_decimal");
+        }
+
+        public PricingType pricingType() {
+            return optEnum("pricing_type", PricingType.class);
+        }
+
+        public Integer packageSize() {
+            return optInteger("package_size");
+        }
+
+    }
+
+    public static class LineItemDiscount extends Resource<LineItemDiscount> {
+        public enum DiscountType {
              ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
-        public enum DiscountType {
-             FIXED_AMOUNT,PERCENTAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public Discount(JSONObject jsonObj) {
+        public LineItemDiscount(JSONObject jsonObj) {
             super(jsonObj);
         }
 
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
-        }
-
-        public EntityType entityType() {
-            return reqEnum("entity_type", EntityType.class);
+        public String lineItemId() {
+            return reqString("line_item_id");
         }
 
         public DiscountType discountType() {
-            return optEnum("discount_type", DiscountType.class);
+            return reqEnum("discount_type", DiscountType.class);
+        }
+
+        public String couponId() {
+            return optString("coupon_id");
         }
 
         public String entityId() {
             return optString("entity_id");
         }
 
-        public String couponSetCode() {
-            return optString("coupon_set_code");
-        }
-
-    }
-
-    public static class Tax extends Resource<Tax> {
-        public Tax(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String name() {
-            return reqString("name");
-        }
-
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
+        public Long discountAmount() {
+            return reqLong("discount_amount");
         }
 
     }
@@ -264,92 +292,64 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
 
     }
 
-    public static class LineItemDiscount extends Resource<LineItemDiscount> {
-        public enum DiscountType {
+    public static class Discount extends Resource<Discount> {
+        public enum EntityType {
              ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
 
-        public LineItemDiscount(JSONObject jsonObj) {
+        public enum DiscountType {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
             super(jsonObj);
         }
 
-        public String lineItemId() {
-            return reqString("line_item_id");
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
         }
 
         public DiscountType discountType() {
-            return reqEnum("discount_type", DiscountType.class);
-        }
-
-        public String couponId() {
-            return optString("coupon_id");
+            return optEnum("discount_type", DiscountType.class);
         }
 
         public String entityId() {
             return optString("entity_id");
         }
 
-        public Long discountAmount() {
-            return reqLong("discount_amount");
+        public String couponSetCode() {
+            return optString("coupon_set_code");
         }
 
     }
 
-    public static class LineItemTier extends Resource<LineItemTier> {
-        public enum PricingType {
-             PER_UNIT,FLAT_FEE,PACKAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public LineItemTier(JSONObject jsonObj) {
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
             super(jsonObj);
         }
 
-        public String lineItemId() {
-            return optString("line_item_id");
+        public String name() {
+            return reqString("name");
         }
 
-        public Integer startingUnit() {
-            return reqInteger("starting_unit");
+        public Long amount() {
+            return reqLong("amount");
         }
 
-        public Integer endingUnit() {
-            return optInteger("ending_unit");
-        }
-
-        public Integer quantityUsed() {
-            return reqInteger("quantity_used");
-        }
-
-        public Long unitAmount() {
-            return reqLong("unit_amount");
-        }
-
-        public String startingUnitInDecimal() {
-            return optString("starting_unit_in_decimal");
-        }
-
-        public String endingUnitInDecimal() {
-            return optString("ending_unit_in_decimal");
-        }
-
-        public String quantityUsedInDecimal() {
-            return optString("quantity_used_in_decimal");
-        }
-
-        public String unitAmountInDecimal() {
-            return optString("unit_amount_in_decimal");
-        }
-
-        public PricingType pricingType() {
-            return optEnum("pricing_type", PricingType.class);
-        }
-
-        public Integer packageSize() {
-            return optInteger("package_size");
+        public String description() {
+            return optString("description");
         }
 
     }
@@ -404,24 +404,24 @@ public class CreditNoteEstimate extends Resource<CreditNoteEstimate> {
         return optList("line_items", CreditNoteEstimate.LineItem.class);
     }
 
-    public List<CreditNoteEstimate.Discount> discounts() {
-        return optList("discounts", CreditNoteEstimate.Discount.class);
-    }
-
-    public List<CreditNoteEstimate.Tax> taxes() {
-        return optList("taxes", CreditNoteEstimate.Tax.class);
-    }
-
-    public List<CreditNoteEstimate.LineItemTax> lineItemTaxes() {
-        return optList("line_item_taxes", CreditNoteEstimate.LineItemTax.class);
+    public List<CreditNoteEstimate.LineItemTier> lineItemTiers() {
+        return optList("line_item_tiers", CreditNoteEstimate.LineItemTier.class);
     }
 
     public List<CreditNoteEstimate.LineItemDiscount> lineItemDiscounts() {
         return optList("line_item_discounts", CreditNoteEstimate.LineItemDiscount.class);
     }
 
-    public List<CreditNoteEstimate.LineItemTier> lineItemTiers() {
-        return optList("line_item_tiers", CreditNoteEstimate.LineItemTier.class);
+    public List<CreditNoteEstimate.LineItemTax> lineItemTaxes() {
+        return optList("line_item_taxes", CreditNoteEstimate.LineItemTax.class);
+    }
+
+    public List<CreditNoteEstimate.Discount> discounts() {
+        return optList("discounts", CreditNoteEstimate.Discount.class);
+    }
+
+    public List<CreditNoteEstimate.Tax> taxes() {
+        return optList("taxes", CreditNoteEstimate.Tax.class);
     }
 
     public Long roundOffAmount() {

@@ -194,7 +194,7 @@ public class PaymentVoucher extends Resource<PaymentVoucher> {
             params.add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
             return this;
         }
-
+        
         public CreateRequest invoiceAllocationInvoiceId(int index, String invoiceAllocationInvoiceId) {
             params.add("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
             return this;

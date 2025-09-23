@@ -265,7 +265,7 @@ public class Usage extends Resource<Usage> {
             params.add("invoice[id]", invoiceId);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

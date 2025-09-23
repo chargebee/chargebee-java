@@ -90,6 +90,7 @@ public class UsageEvent extends Resource<UsageEvent> {
         }
 
 
+
         @Override
         public Params params() {
             return params;
@@ -109,7 +110,8 @@ public class UsageEvent extends Resource<UsageEvent> {
             }
             params.add("events", jarray);
             return this;}
-        
+
+
         @Override
         public Params params() {
             return params;

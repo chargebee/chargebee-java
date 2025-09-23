@@ -96,63 +96,63 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("invoice_info[po_number]", invoiceInfoPoNumber);
             return this;
         }
-
+        
         public CreateRequest invoiceInfoNotes(String invoiceInfoNotes) {
             params.addOpt("invoice_info[notes]", invoiceInfoNotes);
             return this;
         }
-
+        
         public CreateRequest paymentScheduleSchemeId(String paymentScheduleSchemeId) {
             params.addOpt("payment_schedule[scheme_id]", paymentScheduleSchemeId);
             return this;
         }
-
+        
         public CreateRequest paymentScheduleAmount(Long paymentScheduleAmount) {
             params.addOpt("payment_schedule[amount]", paymentScheduleAmount);
             return this;
         }
-
+        
         public CreateRequest statementDescriptorDescriptor(String statementDescriptorDescriptor) {
             params.addOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
             return this;
         }
-
+        
         public CreateRequest paymentIntentId(String paymentIntentId) {
             params.addOpt("payment_intent[id]", paymentIntentId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentGatewayAccountId(String paymentIntentGatewayAccountId) {
             params.addOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentGwToken(String paymentIntentGwToken) {
             params.addOpt("payment_intent[gw_token]", paymentIntentGwToken);
             return this;
         }
-
+        
         public CreateRequest paymentIntentPaymentMethodType(PaymentIntent.PaymentMethodType paymentIntentPaymentMethodType) {
             params.addOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
             return this;
         }
-
+        
         public CreateRequest paymentIntentReferenceId(String paymentIntentReferenceId) {
             params.addOpt("payment_intent[reference_id]", paymentIntentReferenceId);
             return this;
         }
-
+        
         @Deprecated
         public CreateRequest paymentIntentGwPaymentMethodId(String paymentIntentGwPaymentMethodId) {
             params.addOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
             return this;
         }
-
+        
         public CreateRequest paymentIntentAdditionalInformation(JSONObject paymentIntentAdditionalInformation) {
             params.addOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
             return this;
         }
-
+        
         public CreateRequest purchaseItemIndex(int index, Integer purchaseItemIndex) {
             params.add("purchase_items[index][" + index + "]", purchaseItemIndex);
             return this;
@@ -349,82 +349,82 @@ public class Purchase extends Resource<Purchase> {
             params.addOpt("customer[vat_number]", customerVatNumber);
             return this;
         }
-
+        
         public EstimateRequest customerVatNumberPrefix(String customerVatNumberPrefix) {
             params.addOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
             return this;
         }
-
+        
         public EstimateRequest customerRegisteredForGst(Boolean customerRegisteredForGst) {
             params.addOpt("customer[registered_for_gst]", customerRegisteredForGst);
             return this;
         }
-
+        
         public EstimateRequest billingAddressLine1(String billingAddressLine1) {
             params.addOpt("billing_address[line1]", billingAddressLine1);
             return this;
         }
-
+        
         public EstimateRequest billingAddressLine2(String billingAddressLine2) {
             params.addOpt("billing_address[line2]", billingAddressLine2);
             return this;
         }
-
+        
         public EstimateRequest billingAddressLine3(String billingAddressLine3) {
             params.addOpt("billing_address[line3]", billingAddressLine3);
             return this;
         }
-
+        
         public EstimateRequest billingAddressCity(String billingAddressCity) {
             params.addOpt("billing_address[city]", billingAddressCity);
             return this;
         }
-
+        
         public EstimateRequest billingAddressStateCode(String billingAddressStateCode) {
             params.addOpt("billing_address[state_code]", billingAddressStateCode);
             return this;
         }
-
+        
         public EstimateRequest billingAddressZip(String billingAddressZip) {
             params.addOpt("billing_address[zip]", billingAddressZip);
             return this;
         }
-
+        
         public EstimateRequest billingAddressCountry(String billingAddressCountry) {
             params.addOpt("billing_address[country]", billingAddressCountry);
             return this;
         }
-
+        
         public EstimateRequest billingAddressValidationStatus(com.chargebee.models.enums.ValidationStatus billingAddressValidationStatus) {
             params.addOpt("billing_address[validation_status]", billingAddressValidationStatus);
             return this;
         }
-
+        
         public EstimateRequest customerTaxability(com.chargebee.models.enums.Taxability customerTaxability) {
             params.addOpt("customer[taxability]", customerTaxability);
             return this;
         }
-
+        
         public EstimateRequest customerEntityCode(com.chargebee.models.enums.EntityCode customerEntityCode) {
             params.addOpt("customer[entity_code]", customerEntityCode);
             return this;
         }
-
+        
         public EstimateRequest customerExemptNumber(String customerExemptNumber) {
             params.addOpt("customer[exempt_number]", customerExemptNumber);
             return this;
         }
-
+        
         public EstimateRequest customerExemptionDetails(JSONArray customerExemptionDetails) {
             params.addOpt("customer[exemption_details]", customerExemptionDetails);
             return this;
         }
-
+        
         public EstimateRequest customerCustomerType(com.chargebee.models.enums.CustomerType customerCustomerType) {
             params.addOpt("customer[customer_type]", customerCustomerType);
             return this;
         }
-
+        
         public EstimateRequest purchaseItemIndex(int index, Integer purchaseItemIndex) {
             params.add("purchase_items[index][" + index + "]", purchaseItemIndex);
             return this;

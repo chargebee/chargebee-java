@@ -352,8 +352,20 @@ public class ResultBase {
         return (UsageFile)get("usage_file");
     }
 
+    public PersonalizedOffer personalizedOffer() {
+        return (PersonalizedOffer)get("personalized_offer");
+    }
+
     public Brand brand() {
         return (Brand)get("brand");
+    }
+
+    public OfferFulfillment offerFulfillment() {
+        return (OfferFulfillment)get("offer_fulfillment");
+    }
+
+    public OfferEvent offerEvent() {
+        return (OfferEvent)get("offer_event");
     }
 
     public WebhookEndpoint webhookEndpoint() {
@@ -408,6 +420,10 @@ public class ResultBase {
         return (List<InAppSubscription>) getList("in_app_subscriptions", "in_app_subscription");
     }
 
+    public List<PersonalizedOffer> personalizedOffers() {
+        return (List<PersonalizedOffer>) getList("personalized_offers", "personalized_offer");
+    }
+
 
     private List<? extends Resource> getList(String pluralName, String singularName) {
         JSONArray listModels = jsonObj.optJSONArray(pluralName);
@@ -446,6 +462,9 @@ public class ResultBase {
     @Override
     public String toString() {
         try {
+            if(jsonObj == null){
+                return null;
+            }
             return jsonObj.toString(2);
         } catch (JSONException ex) {
             throw new RuntimeException(ex);

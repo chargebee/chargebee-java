@@ -600,67 +600,67 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("tax_detail[tax_profile_id]", taxDetailTaxProfileId);
             return this;
         }
-
+        
         public CreateRequest taxDetailAvalaraTaxCode(String taxDetailAvalaraTaxCode) {
             params.addOpt("tax_detail[avalara_tax_code]", taxDetailAvalaraTaxCode);
             return this;
         }
-
+        
         public CreateRequest taxDetailHsnCode(String taxDetailHsnCode) {
             params.addOpt("tax_detail[hsn_code]", taxDetailHsnCode);
             return this;
         }
-
+        
         public CreateRequest taxDetailAvalaraSaleType(com.chargebee.models.enums.AvalaraSaleType taxDetailAvalaraSaleType) {
             params.addOpt("tax_detail[avalara_sale_type]", taxDetailAvalaraSaleType);
             return this;
         }
-
+        
         public CreateRequest taxDetailAvalaraTransactionType(Integer taxDetailAvalaraTransactionType) {
             params.addOpt("tax_detail[avalara_transaction_type]", taxDetailAvalaraTransactionType);
             return this;
         }
-
+        
         public CreateRequest taxDetailAvalaraServiceType(Integer taxDetailAvalaraServiceType) {
             params.addOpt("tax_detail[avalara_service_type]", taxDetailAvalaraServiceType);
             return this;
         }
-
+        
         public CreateRequest taxDetailTaxjarProductCode(String taxDetailTaxjarProductCode) {
             params.addOpt("tax_detail[taxjar_product_code]", taxDetailTaxjarProductCode);
             return this;
         }
-
+        
         public CreateRequest accountingDetailSku(String accountingDetailSku) {
             params.addOpt("accounting_detail[sku]", accountingDetailSku);
             return this;
         }
-
+        
         public CreateRequest accountingDetailAccountingCode(String accountingDetailAccountingCode) {
             params.addOpt("accounting_detail[accounting_code]", accountingDetailAccountingCode);
             return this;
         }
-
+        
         public CreateRequest accountingDetailAccountingCategory1(String accountingDetailAccountingCategory1) {
             params.addOpt("accounting_detail[accounting_category1]", accountingDetailAccountingCategory1);
             return this;
         }
-
+        
         public CreateRequest accountingDetailAccountingCategory2(String accountingDetailAccountingCategory2) {
             params.addOpt("accounting_detail[accounting_category2]", accountingDetailAccountingCategory2);
             return this;
         }
-
+        
         public CreateRequest accountingDetailAccountingCategory3(String accountingDetailAccountingCategory3) {
             params.addOpt("accounting_detail[accounting_category3]", accountingDetailAccountingCategory3);
             return this;
         }
-
+        
         public CreateRequest accountingDetailAccountingCategory4(String accountingDetailAccountingCategory4) {
             params.addOpt("accounting_detail[accounting_category4]", accountingDetailAccountingCategory4);
             return this;
         }
-
+        
         public CreateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
             params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
             return this;
@@ -877,67 +877,67 @@ public class ItemPrice extends Resource<ItemPrice> {
             params.addOpt("tax_detail[tax_profile_id]", taxDetailTaxProfileId);
             return this;
         }
-
+        
         public UpdateRequest taxDetailAvalaraTaxCode(String taxDetailAvalaraTaxCode) {
             params.addOpt("tax_detail[avalara_tax_code]", taxDetailAvalaraTaxCode);
             return this;
         }
-
+        
         public UpdateRequest taxDetailHsnCode(String taxDetailHsnCode) {
             params.addOpt("tax_detail[hsn_code]", taxDetailHsnCode);
             return this;
         }
-
+        
         public UpdateRequest taxDetailAvalaraSaleType(com.chargebee.models.enums.AvalaraSaleType taxDetailAvalaraSaleType) {
             params.addOpt("tax_detail[avalara_sale_type]", taxDetailAvalaraSaleType);
             return this;
         }
-
+        
         public UpdateRequest taxDetailAvalaraTransactionType(Integer taxDetailAvalaraTransactionType) {
             params.addOpt("tax_detail[avalara_transaction_type]", taxDetailAvalaraTransactionType);
             return this;
         }
-
+        
         public UpdateRequest taxDetailAvalaraServiceType(Integer taxDetailAvalaraServiceType) {
             params.addOpt("tax_detail[avalara_service_type]", taxDetailAvalaraServiceType);
             return this;
         }
-
+        
         public UpdateRequest taxDetailTaxjarProductCode(String taxDetailTaxjarProductCode) {
             params.addOpt("tax_detail[taxjar_product_code]", taxDetailTaxjarProductCode);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailSku(String accountingDetailSku) {
             params.addOpt("accounting_detail[sku]", accountingDetailSku);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailAccountingCode(String accountingDetailAccountingCode) {
             params.addOpt("accounting_detail[accounting_code]", accountingDetailAccountingCode);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailAccountingCategory1(String accountingDetailAccountingCategory1) {
             params.addOpt("accounting_detail[accounting_category1]", accountingDetailAccountingCategory1);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailAccountingCategory2(String accountingDetailAccountingCategory2) {
             params.addOpt("accounting_detail[accounting_category2]", accountingDetailAccountingCategory2);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailAccountingCategory3(String accountingDetailAccountingCategory3) {
             params.addOpt("accounting_detail[accounting_category3]", accountingDetailAccountingCategory3);
             return this;
         }
-
+        
         public UpdateRequest accountingDetailAccountingCategory4(String accountingDetailAccountingCategory4) {
             params.addOpt("accounting_detail[accounting_category4]", accountingDetailAccountingCategory4);
             return this;
         }
-
+        
         public UpdateRequest tierStartingUnit(int index, Integer tierStartingUnit) {
             params.addOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
             return this;

@@ -104,57 +104,57 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             params.add("product[id]", productId);
             return this;
         }
-
+        
         public ProcessReceiptRequest productCurrencyCode(String productCurrencyCode) {
             params.add("product[currency_code]", productCurrencyCode);
             return this;
         }
-
+        
         public ProcessReceiptRequest productPrice(Long productPrice) {
             params.add("product[price]", productPrice);
             return this;
         }
-
+        
         public ProcessReceiptRequest productName(String productName) {
             params.addOpt("product[name]", productName);
             return this;
         }
-
+        
         public ProcessReceiptRequest productPriceInDecimal(String productPriceInDecimal) {
             params.addOpt("product[price_in_decimal]", productPriceInDecimal);
             return this;
         }
-
+        
         public ProcessReceiptRequest productPeriod(String productPeriod) {
             params.addOpt("product[period]", productPeriod);
             return this;
         }
-
+        
         public ProcessReceiptRequest productPeriodUnit(String productPeriodUnit) {
             params.addOpt("product[period_unit]", productPeriodUnit);
             return this;
         }
-
+        
         public ProcessReceiptRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
         }
-
+        
         public ProcessReceiptRequest customerEmail(String customerEmail) {
             params.addOpt("customer[email]", customerEmail);
             return this;
         }
-
+        
         public ProcessReceiptRequest customerFirstName(String customerFirstName) {
             params.addOpt("customer[first_name]", customerFirstName);
             return this;
         }
-
+        
         public ProcessReceiptRequest customerLastName(String customerLastName) {
             params.addOpt("customer[last_name]", customerLastName);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -177,17 +177,17 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             params.add("product[currency_code]", productCurrencyCode);
             return this;
         }
-
+        
         public ImportReceiptRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
         }
-
+        
         public ImportReceiptRequest customerEmail(String customerEmail) {
             params.addOpt("customer[email]", customerEmail);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;
@@ -204,52 +204,52 @@ public class InAppSubscription extends Resource<InAppSubscription> {
             params.add("subscription[id]", subscriptionId);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionStartedAt(Timestamp subscriptionStartedAt) {
             params.add("subscription[started_at]", subscriptionStartedAt);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionTermStart(Timestamp subscriptionTermStart) {
             params.add("subscription[term_start]", subscriptionTermStart);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionTermEnd(Timestamp subscriptionTermEnd) {
             params.add("subscription[term_end]", subscriptionTermEnd);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionProductId(String subscriptionProductId) {
             params.add("subscription[product_id]", subscriptionProductId);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionCurrencyCode(String subscriptionCurrencyCode) {
             params.add("subscription[currency_code]", subscriptionCurrencyCode);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionTransactionId(String subscriptionTransactionId) {
             params.add("subscription[transaction_id]", subscriptionTransactionId);
             return this;
         }
-
+        
         public ImportSubscriptionRequest subscriptionIsTrial(Boolean subscriptionIsTrial) {
             params.addOpt("subscription[is_trial]", subscriptionIsTrial);
             return this;
         }
-
+        
         public ImportSubscriptionRequest customerId(String customerId) {
             params.addOpt("customer[id]", customerId);
             return this;
         }
-
+        
         public ImportSubscriptionRequest customerEmail(String customerEmail) {
             params.addOpt("customer[email]", customerEmail);
             return this;
         }
-
+        
         @Override
         public Params params() {
             return params;

@@ -138,49 +138,6 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
 
     }
 
-    public static class Discount extends Resource<Discount> {
-        public enum EntityType {
-             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public enum DiscountType {
-             FIXED_AMOUNT,PERCENTAGE,
-            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
-            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
-        }
-
-        public Discount(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
-        }
-
-        public EntityType entityType() {
-            return reqEnum("entity_type", EntityType.class);
-        }
-
-        public DiscountType discountType() {
-            return optEnum("discount_type", DiscountType.class);
-        }
-
-        public String entityId() {
-            return optString("entity_id");
-        }
-
-        public String couponSetCode() {
-            return optString("coupon_set_code");
-        }
-
-    }
-
     public static class LineItemDiscount extends Resource<LineItemDiscount> {
         public enum DiscountType {
              ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
@@ -210,25 +167,6 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
 
         public Long discountAmount() {
             return reqLong("discount_amount");
-        }
-
-    }
-
-    public static class Tax extends Resource<Tax> {
-        public Tax(JSONObject jsonObj) {
-            super(jsonObj);
-        }
-
-        public String name() {
-            return reqString("name");
-        }
-
-        public Long amount() {
-            return reqLong("amount");
-        }
-
-        public String description() {
-            return optString("description");
         }
 
     }
@@ -300,6 +238,68 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
 
     }
 
+    public static class Discount extends Resource<Discount> {
+        public enum EntityType {
+             ITEM_LEVEL_COUPON,DOCUMENT_LEVEL_COUPON,PROMOTIONAL_CREDITS,PRORATED_CREDITS,ITEM_LEVEL_DISCOUNT,DOCUMENT_LEVEL_DISCOUNT,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public enum DiscountType {
+             FIXED_AMOUNT,PERCENTAGE,
+            _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
+            java-client version incompatibility. We suggest you to upgrade to the latest version */ 
+        }
+
+        public Discount(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+        public EntityType entityType() {
+            return reqEnum("entity_type", EntityType.class);
+        }
+
+        public DiscountType discountType() {
+            return optEnum("discount_type", DiscountType.class);
+        }
+
+        public String entityId() {
+            return optString("entity_id");
+        }
+
+        public String couponSetCode() {
+            return optString("coupon_set_code");
+        }
+
+    }
+
+    public static class Tax extends Resource<Tax> {
+        public Tax(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public String name() {
+            return reqString("name");
+        }
+
+        public Long amount() {
+            return reqLong("amount");
+        }
+
+        public String description() {
+            return optString("description");
+        }
+
+    }
+
     //Constructors
     //============
 
@@ -354,20 +354,20 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
         return optList("line_items", QuoteLineGroup.LineItem.class);
     }
 
-    public List<QuoteLineGroup.Discount> discounts() {
-        return optList("discounts", QuoteLineGroup.Discount.class);
-    }
-
     public List<QuoteLineGroup.LineItemDiscount> lineItemDiscounts() {
         return optList("line_item_discounts", QuoteLineGroup.LineItemDiscount.class);
     }
 
-    public List<QuoteLineGroup.Tax> taxes() {
-        return optList("taxes", QuoteLineGroup.Tax.class);
-    }
-
     public List<QuoteLineGroup.LineItemTax> lineItemTaxes() {
         return optList("line_item_taxes", QuoteLineGroup.LineItemTax.class);
+    }
+
+    public List<QuoteLineGroup.Discount> discounts() {
+        return optList("discounts", QuoteLineGroup.Discount.class);
+    }
+
+    public List<QuoteLineGroup.Tax> taxes() {
+        return optList("taxes", QuoteLineGroup.Tax.class);
     }
 
     // Operations
