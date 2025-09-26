@@ -1,0 +1,81 @@
+package com.chargebee.core.responses.currency;
+
+import com.chargebee.core.models.currency.Currency;
+
+import com.chargebee.internal.JsonUtil;
+import java.sql.Timestamp;
+
+/**
+ * Immutable response object for CurrencyRemoveSchedule operation. Contains the response data from
+ * the API.
+ */
+public final class CurrencyRemoveScheduleResponse {
+
+  private final Timestamp scheduledAt;
+
+  private final Currency currency;
+
+  private CurrencyRemoveScheduleResponse(Builder builder) {
+
+    this.scheduledAt = builder.scheduledAt;
+
+    this.currency = builder.currency;
+  }
+
+  /** Parse JSON response into CurrencyRemoveScheduleResponse object. */
+  public static CurrencyRemoveScheduleResponse fromJson(String json) {
+    try {
+      Builder builder = builder();
+
+      builder.scheduledAt(JsonUtil.getTimestamp(json, "scheduled_at"));
+
+      String __currencyJson = JsonUtil.getObject(json, "currency");
+      if (__currencyJson != null) {
+        builder.currency(Currency.fromJson(__currencyJson));
+      }
+
+      return builder.build();
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to parse CurrencyRemoveScheduleResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CurrencyRemoveScheduleResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CurrencyRemoveScheduleResponse. */
+  public static class Builder {
+
+    private Timestamp scheduledAt;
+
+    private Currency currency;
+
+    private Builder() {}
+
+    public Builder scheduledAt(Timestamp scheduledAt) {
+      this.scheduledAt = scheduledAt;
+      return this;
+    }
+
+    public Builder currency(Currency currency) {
+      this.currency = currency;
+      return this;
+    }
+
+    public CurrencyRemoveScheduleResponse build() {
+      return new CurrencyRemoveScheduleResponse(this);
+    }
+  }
+
+  /** Get the scheduledAt from the response. */
+  public Timestamp getScheduledAt() {
+    return scheduledAt;
+  }
+
+  /** Get the currency from the response. */
+  public Currency getCurrency() {
+    return currency;
+  }
+}
