@@ -1,5 +1,6 @@
 package com.chargebee.internal;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -51,7 +52,7 @@ public class RetryConfig {
         private boolean enabled = false;
         private int maxRetries = 3;
         private int baseDelayMs = 500;
-        private Set<Integer> retryOnStatus = new HashSet<>(Set.of(500, 502, 503, 504));
+        private Set<Integer> retryOnStatus = new HashSet<>(Arrays.asList(500, 502, 503, 504));
 
         public Builder enabled(boolean enabled) { this.enabled = enabled; return this; }
         public Builder maxRetries(int maxRetries) { this.maxRetries = maxRetries; return this; }

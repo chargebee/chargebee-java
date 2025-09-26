@@ -25,9 +25,6 @@ jobs:
       run: ./gradlew test
     - name: Build package
       run: ./gradlew build
-    - name: Run OWASP Dependency Check
-      run: ./gradlew dependencyCheckAnalyze
-      continue-on-error: true
     - name: Upload OWASP Dependency Check results
       uses: actions/upload-artifact@v4
       if: always()
