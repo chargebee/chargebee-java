@@ -54,7 +54,7 @@ jobs:
               continue-on-error: true
 
             - name: Build and publish to Maven Central
-              run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository
+              run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository  -Dorg.gradle.project.NEXUS_USERNAME=$MAVEN_USERNAME -Dorg.gradle.project.MAVEN_PASSWORD=$NEXUS_PASSWORD -Dorg.gradle.project.signing.gnupg.keyName=$MAVEN_GPG_PRIVATE_KEY -Dorg.gradle.project.signing.gnupg.passphrase=$MAVEN_GPG_PASSPHRASE
               env:
                   ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.MAVEN_USERNAME }}
                   ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.MAVEN_PASSWORD }}
