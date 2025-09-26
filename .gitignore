@@ -9,7 +9,6 @@ gradle-app.setting
 # Java
 *.class
 *.log
-*.jar
 *.war
 *.nar
 *.ear
