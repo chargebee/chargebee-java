@@ -19,8 +19,8 @@ The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v4                         | Beta     | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`      |
-| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v3`|
+| v4                         | Beta     | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `next`      |
+| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`|
 | v2                         | Inactive | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
 | v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
 
@@ -361,9 +361,6 @@ If you find something amiss, you are welcome to create an [issue](https://github
 ***
 
 - [Migration Guide](docs/MIGRATION_GUIDE.md) - Upgrade instructions between versions
-- [Async Support](docs/ASYNC_SUPPORT.md) - Asynchronous API usage
-- [Interceptors](docs/INTERCEPTOR_REQUIREMENTS.md) - Request/response interceptors
-- [Transport](docs/TRANSPORT_REQUIREMENTS.md) - HTTP transport layer details
 
 The API documentation for the Java library can be found in our [API reference](https://apidocs.chargebee.com/docs/api?lang=java).
 
