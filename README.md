@@ -128,7 +128,7 @@ mvn clean package
 
 #### Create a client
 ```java
-import com.chargebee.client.ChargebeeClient;
+import com.chargebee.v4.client.ChargebeeClient;
 
 ChargebeeClient client = ChargebeeClient.builder()
     .apiKey("cb_test_...")
@@ -173,7 +173,7 @@ CustomerListResponse list = customers.list(
 
 #### Configure client with retries and timeouts
 ```java
-import com.chargebee.internal.RetryConfig;
+import com.chargebee.v4.internal.RetryConfig;
 
 ChargebeeClient client = ChargebeeClient.builder()
     .apiKey("cb_test_...")
@@ -192,7 +192,7 @@ ChargebeeClient client = ChargebeeClient.builder()
 
 #### Per-request options
 ```java
-import com.chargebee.client.request.RequestOptions;
+import com.chargebee.v4.client.request.RequestOptions;
 
 CustomerService scoped = customers.withOptions(
     RequestOptions.builder()
@@ -205,7 +205,7 @@ CustomerService scoped = customers.withOptions(
 #### Async support
 ```java
 import java.util.concurrent.CompletableFuture;
-import com.chargebee.transport.Response;
+import com.chargebee.v4.transport.Response;
 
 CompletableFuture<Response> future = client.getAsync("/customers");
 future.thenAccept(resp -> {

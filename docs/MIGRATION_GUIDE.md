@@ -49,7 +49,7 @@ Environment.configure("your-site", "your-api-key");
 
 **v4 SDK:**
 ```java
-import com.chargebee.client.ChargebeeClient;
+import com.chargebee.v4.client.ChargebeeClient;
 
 ChargebeeClient client = ChargebeeClient.builder()
     .apiKey("your-api-key")
@@ -93,7 +93,7 @@ CustomerCreateResponse response = customers.create(
 **v3 SDK:**
 ```java
 import com.chargebee.Environment;
-import com.chargebee.internal.RetryConfig;
+import com.chargebee.v4.internal.RetryConfig;
 
 Environment.configure("site", "key");
 Environment.defaultConfig().updateRetryConfig(
@@ -103,7 +103,7 @@ Environment.defaultConfig().updateRetryConfig(
 
 **v4 SDK:**
 ```java
-import com.chargebee.internal.RetryConfig;
+import com.chargebee.v4.internal.RetryConfig;
 
 ChargebeeClient client = ChargebeeClient.builder()
     .apiKey("key")

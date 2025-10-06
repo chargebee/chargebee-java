@@ -1,8 +1,8 @@
 package com.chargebee;
 
-import com.chargebee.client.ChargebeeClient;
-import com.chargebee.client.request.RequestInterceptor;
-import com.chargebee.transport.*;
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.client.request.RequestInterceptor;
+import com.chargebee.v4.transport.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
