@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.subscription;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.subscription.Subscription;
 
@@ -14,12 +12,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.SubscriptionService;
 import com.chargebee.core.models.subscription.params.SubscriptionListParams;
 
-/**
- * Immutable response object for SubscriptionList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class SubscriptionListResponse
-    implements Iterable<SubscriptionListResponse.SubscriptionListItem> {
+/** Immutable response object for SubscriptionList operation. Contains paginated list data. */
+public final class SubscriptionListResponse {
 
   private final List<SubscriptionListItem> list;
 
@@ -27,7 +21,6 @@ public final class SubscriptionListResponse
 
   private final SubscriptionService service;
   private final SubscriptionListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private SubscriptionListResponse(
       List<SubscriptionListItem> list,
@@ -41,23 +34,6 @@ public final class SubscriptionListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private SubscriptionListResponse(
-      List<SubscriptionListItem> list,
-      String nextOffset,
-      SubscriptionService service,
-      SubscriptionListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -82,7 +58,7 @@ public final class SubscriptionListResponse
 
   /**
    * Parse JSON response into SubscriptionListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static SubscriptionListResponse fromJson(
       String json, SubscriptionService service, SubscriptionListParams originalParams) {
@@ -139,58 +115,6 @@ public final class SubscriptionListResponse
     SubscriptionListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public SubscriptionListResponse autoPaginate() {
-    return new SubscriptionListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<SubscriptionListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<SubscriptionListItem> {
-    private SubscriptionListResponse currentPage = SubscriptionListResponse.this;
-    private Iterator<SubscriptionListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public SubscriptionListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class SubscriptionListItem {

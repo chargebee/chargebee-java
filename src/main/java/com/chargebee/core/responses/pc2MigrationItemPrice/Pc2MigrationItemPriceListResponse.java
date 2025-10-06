@@ -2,18 +2,15 @@ package com.chargebee.core.responses.pc2MigrationItemPrice;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.Pc2MigrationItemPriceService;
 import com.chargebee.core.models.pc2MigrationItemPrice.params.Pc2MigrationItemPriceListParams;
 
 /**
- * Immutable response object for Pc2MigrationItemPriceList operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for Pc2MigrationItemPriceList operation. Contains paginated list data.
  */
-public final class Pc2MigrationItemPriceListResponse implements Iterable<Object> {
+public final class Pc2MigrationItemPriceListResponse {
 
   private final List<Object> list;
 
@@ -21,7 +18,6 @@ public final class Pc2MigrationItemPriceListResponse implements Iterable<Object>
 
   private final Pc2MigrationItemPriceService service;
   private final Pc2MigrationItemPriceListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private Pc2MigrationItemPriceListResponse(
       List<Object> list,
@@ -35,23 +31,6 @@ public final class Pc2MigrationItemPriceListResponse implements Iterable<Object>
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private Pc2MigrationItemPriceListResponse(
-      List<Object> list,
-      String nextOffset,
-      Pc2MigrationItemPriceService service,
-      Pc2MigrationItemPriceListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -74,7 +53,7 @@ public final class Pc2MigrationItemPriceListResponse implements Iterable<Object>
 
   /**
    * Parse JSON response into Pc2MigrationItemPriceListResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static Pc2MigrationItemPriceListResponse fromJson(
       String json,
@@ -132,57 +111,5 @@ public final class Pc2MigrationItemPriceListResponse implements Iterable<Object>
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public Pc2MigrationItemPriceListResponse autoPaginate() {
-    return new Pc2MigrationItemPriceListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<Object> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<Object> {
-    private Pc2MigrationItemPriceListResponse currentPage = Pc2MigrationItemPriceListResponse.this;
-    private Iterator<Object> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public Object next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 }

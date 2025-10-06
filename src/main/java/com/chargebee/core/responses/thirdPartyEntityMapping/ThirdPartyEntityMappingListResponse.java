@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.thirdPartyEntityMapping;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.thirdPartyEntityMapping.ThirdPartyEntityMapping;
 
@@ -11,11 +9,10 @@ import com.chargebee.core.services.ThirdPartyEntityMappingService;
 import com.chargebee.core.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingListParams;
 
 /**
- * Immutable response object for ThirdPartyEntityMappingList operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for ThirdPartyEntityMappingList operation. Contains paginated list
+ * data.
  */
-public final class ThirdPartyEntityMappingListResponse
-    implements Iterable<ThirdPartyEntityMappingListResponse.ThirdPartyEntityMappingListItem> {
+public final class ThirdPartyEntityMappingListResponse {
 
   private final List<ThirdPartyEntityMappingListItem> list;
 
@@ -23,7 +20,6 @@ public final class ThirdPartyEntityMappingListResponse
 
   private final ThirdPartyEntityMappingService service;
   private final ThirdPartyEntityMappingListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private ThirdPartyEntityMappingListResponse(
       List<ThirdPartyEntityMappingListItem> list,
@@ -37,23 +33,6 @@ public final class ThirdPartyEntityMappingListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private ThirdPartyEntityMappingListResponse(
-      List<ThirdPartyEntityMappingListItem> list,
-      String nextOffset,
-      ThirdPartyEntityMappingService service,
-      ThirdPartyEntityMappingListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -79,7 +58,7 @@ public final class ThirdPartyEntityMappingListResponse
 
   /**
    * Parse JSON response into ThirdPartyEntityMappingListResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static ThirdPartyEntityMappingListResponse fromJson(
       String json,
@@ -140,59 +119,6 @@ public final class ThirdPartyEntityMappingListResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public ThirdPartyEntityMappingListResponse autoPaginate() {
-    return new ThirdPartyEntityMappingListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<ThirdPartyEntityMappingListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<ThirdPartyEntityMappingListItem> {
-    private ThirdPartyEntityMappingListResponse currentPage =
-        ThirdPartyEntityMappingListResponse.this;
-    private Iterator<ThirdPartyEntityMappingListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public ThirdPartyEntityMappingListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class ThirdPartyEntityMappingListItem {

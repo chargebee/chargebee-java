@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.addon;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.addon.Addon;
 
@@ -10,11 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.AddonService;
 import com.chargebee.core.models.addon.params.AddonListParams;
 
-/**
- * Immutable response object for AddonList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class AddonListResponse implements Iterable<AddonListResponse.AddonListItem> {
+/** Immutable response object for AddonList operation. Contains paginated list data. */
+public final class AddonListResponse {
 
   private final List<AddonListItem> list;
 
@@ -22,7 +17,6 @@ public final class AddonListResponse implements Iterable<AddonListResponse.Addon
 
   private final AddonService service;
   private final AddonListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private AddonListResponse(
       List<AddonListItem> list,
@@ -36,23 +30,6 @@ public final class AddonListResponse implements Iterable<AddonListResponse.Addon
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private AddonListResponse(
-      List<AddonListItem> list,
-      String nextOffset,
-      AddonService service,
-      AddonListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -77,7 +54,7 @@ public final class AddonListResponse implements Iterable<AddonListResponse.Addon
 
   /**
    * Parse JSON response into AddonListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static AddonListResponse fromJson(
       String json, AddonService service, AddonListParams originalParams) {
@@ -134,58 +111,6 @@ public final class AddonListResponse implements Iterable<AddonListResponse.Addon
     AddonListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public AddonListResponse autoPaginate() {
-    return new AddonListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<AddonListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<AddonListItem> {
-    private AddonListResponse currentPage = AddonListResponse.this;
-    private Iterator<AddonListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public AddonListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class AddonListItem {

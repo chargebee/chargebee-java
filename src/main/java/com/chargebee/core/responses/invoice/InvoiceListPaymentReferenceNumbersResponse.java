@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.invoice;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.paymentReferenceNumber.PaymentReferenceNumber;
 
@@ -12,11 +10,9 @@ import com.chargebee.core.models.invoice.params.InvoiceListPaymentReferenceNumbe
 
 /**
  * Immutable response object for InvoiceListPaymentReferenceNumbers operation. Contains paginated
- * list data with auto-pagination support.
+ * list data.
  */
-public final class InvoiceListPaymentReferenceNumbersResponse
-    implements Iterable<
-        InvoiceListPaymentReferenceNumbersResponse.InvoiceListPaymentReferenceNumbersItem> {
+public final class InvoiceListPaymentReferenceNumbersResponse {
 
   private final List<InvoiceListPaymentReferenceNumbersItem> list;
 
@@ -24,7 +20,6 @@ public final class InvoiceListPaymentReferenceNumbersResponse
 
   private final InvoiceService service;
   private final InvoiceListPaymentReferenceNumbersParams originalParams;
-  private final boolean isAutoPaginate;
 
   private InvoiceListPaymentReferenceNumbersResponse(
       List<InvoiceListPaymentReferenceNumbersItem> list,
@@ -38,23 +33,6 @@ public final class InvoiceListPaymentReferenceNumbersResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private InvoiceListPaymentReferenceNumbersResponse(
-      List<InvoiceListPaymentReferenceNumbersItem> list,
-      String nextOffset,
-      InvoiceService service,
-      InvoiceListPaymentReferenceNumbersParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -80,7 +58,7 @@ public final class InvoiceListPaymentReferenceNumbersResponse
 
   /**
    * Parse JSON response into InvoiceListPaymentReferenceNumbersResponse object with service context
-   * for pagination (enables nextPage(), autoPaginate()).
+   * for pagination (enables nextPage()).
    */
   public static InvoiceListPaymentReferenceNumbersResponse fromJson(
       String json,
@@ -142,61 +120,6 @@ public final class InvoiceListPaymentReferenceNumbersResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.listPaymentReferenceNumbers(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public InvoiceListPaymentReferenceNumbersResponse autoPaginate() {
-    return new InvoiceListPaymentReferenceNumbersResponse(
-        list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<InvoiceListPaymentReferenceNumbersItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<InvoiceListPaymentReferenceNumbersItem> {
-    private InvoiceListPaymentReferenceNumbersResponse currentPage =
-        InvoiceListPaymentReferenceNumbersResponse.this;
-    private Iterator<InvoiceListPaymentReferenceNumbersItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public InvoiceListPaymentReferenceNumbersItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class InvoiceListPaymentReferenceNumbersItem {

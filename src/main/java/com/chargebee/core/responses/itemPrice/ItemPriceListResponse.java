@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.itemPrice;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.itemPrice.ItemPrice;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.ItemPriceService;
 import com.chargebee.core.models.itemPrice.params.ItemPriceListParams;
 
-/**
- * Immutable response object for ItemPriceList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class ItemPriceListResponse
-    implements Iterable<ItemPriceListResponse.ItemPriceListItem> {
+/** Immutable response object for ItemPriceList operation. Contains paginated list data. */
+public final class ItemPriceListResponse {
 
   private final List<ItemPriceListItem> list;
 
@@ -23,7 +17,6 @@ public final class ItemPriceListResponse
 
   private final ItemPriceService service;
   private final ItemPriceListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private ItemPriceListResponse(
       List<ItemPriceListItem> list,
@@ -37,23 +30,6 @@ public final class ItemPriceListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private ItemPriceListResponse(
-      List<ItemPriceListItem> list,
-      String nextOffset,
-      ItemPriceService service,
-      ItemPriceListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class ItemPriceListResponse
 
   /**
    * Parse JSON response into ItemPriceListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static ItemPriceListResponse fromJson(
       String json, ItemPriceService service, ItemPriceListParams originalParams) {
@@ -135,58 +111,6 @@ public final class ItemPriceListResponse
     ItemPriceListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public ItemPriceListResponse autoPaginate() {
-    return new ItemPriceListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<ItemPriceListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<ItemPriceListItem> {
-    private ItemPriceListResponse currentPage = ItemPriceListResponse.this;
-    private Iterator<ItemPriceListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public ItemPriceListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class ItemPriceListItem {

@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.quote;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.quote.Quote;
 
@@ -14,11 +12,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.QuoteService;
 import com.chargebee.core.models.quote.params.QuoteListParams;
 
-/**
- * Immutable response object for QuoteList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class QuoteListResponse implements Iterable<QuoteListResponse.QuoteListItem> {
+/** Immutable response object for QuoteList operation. Contains paginated list data. */
+public final class QuoteListResponse {
 
   private final List<QuoteListItem> list;
 
@@ -26,7 +21,6 @@ public final class QuoteListResponse implements Iterable<QuoteListResponse.Quote
 
   private final QuoteService service;
   private final QuoteListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private QuoteListResponse(
       List<QuoteListItem> list,
@@ -40,23 +34,6 @@ public final class QuoteListResponse implements Iterable<QuoteListResponse.Quote
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private QuoteListResponse(
-      List<QuoteListItem> list,
-      String nextOffset,
-      QuoteService service,
-      QuoteListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -81,7 +58,7 @@ public final class QuoteListResponse implements Iterable<QuoteListResponse.Quote
 
   /**
    * Parse JSON response into QuoteListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static QuoteListResponse fromJson(
       String json, QuoteService service, QuoteListParams originalParams) {
@@ -138,58 +115,6 @@ public final class QuoteListResponse implements Iterable<QuoteListResponse.Quote
     QuoteListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public QuoteListResponse autoPaginate() {
-    return new QuoteListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<QuoteListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<QuoteListItem> {
-    private QuoteListResponse currentPage = QuoteListResponse.this;
-    private Iterator<QuoteListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public QuoteListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class QuoteListItem {

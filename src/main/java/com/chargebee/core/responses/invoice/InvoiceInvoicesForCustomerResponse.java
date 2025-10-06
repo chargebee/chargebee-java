@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.invoice;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.invoice.Invoice;
 
@@ -11,11 +9,9 @@ import com.chargebee.core.services.InvoiceService;
 import com.chargebee.core.models.invoice.params.InvoiceInvoicesForCustomerParams;
 
 /**
- * Immutable response object for InvoiceInvoicesForCustomer operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for InvoiceInvoicesForCustomer operation. Contains paginated list data.
  */
-public final class InvoiceInvoicesForCustomerResponse
-    implements Iterable<InvoiceInvoicesForCustomerResponse.InvoiceInvoicesForCustomerItem> {
+public final class InvoiceInvoicesForCustomerResponse {
 
   private final List<InvoiceInvoicesForCustomerItem> list;
 
@@ -25,7 +21,6 @@ public final class InvoiceInvoicesForCustomerResponse
 
   private final InvoiceService service;
   private final InvoiceInvoicesForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private InvoiceInvoicesForCustomerResponse(
       List<InvoiceInvoicesForCustomerItem> list,
@@ -42,26 +37,6 @@ public final class InvoiceInvoicesForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private InvoiceInvoicesForCustomerResponse(
-      List<InvoiceInvoicesForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      InvoiceService service,
-      InvoiceInvoicesForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -86,7 +61,7 @@ public final class InvoiceInvoicesForCustomerResponse
 
   /**
    * Parse JSON response into InvoiceInvoicesForCustomerResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static InvoiceInvoicesForCustomerResponse fromJson(
       String json,
@@ -148,60 +123,6 @@ public final class InvoiceInvoicesForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.invoicesForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public InvoiceInvoicesForCustomerResponse autoPaginate() {
-    return new InvoiceInvoicesForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<InvoiceInvoicesForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<InvoiceInvoicesForCustomerItem> {
-    private InvoiceInvoicesForCustomerResponse currentPage =
-        InvoiceInvoicesForCustomerResponse.this;
-    private Iterator<InvoiceInvoicesForCustomerItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public InvoiceInvoicesForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class InvoiceInvoicesForCustomerItem {

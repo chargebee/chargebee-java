@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.gift;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.gift.Gift;
 
@@ -12,11 +10,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.GiftService;
 import com.chargebee.core.models.gift.params.GiftListParams;
 
-/**
- * Immutable response object for GiftList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class GiftListResponse implements Iterable<GiftListResponse.GiftListItem> {
+/** Immutable response object for GiftList operation. Contains paginated list data. */
+public final class GiftListResponse {
 
   private final List<GiftListItem> list;
 
@@ -24,7 +19,6 @@ public final class GiftListResponse implements Iterable<GiftListResponse.GiftLis
 
   private final GiftService service;
   private final GiftListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private GiftListResponse(
       List<GiftListItem> list,
@@ -38,23 +32,6 @@ public final class GiftListResponse implements Iterable<GiftListResponse.GiftLis
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private GiftListResponse(
-      List<GiftListItem> list,
-      String nextOffset,
-      GiftService service,
-      GiftListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -79,7 +56,7 @@ public final class GiftListResponse implements Iterable<GiftListResponse.GiftLis
 
   /**
    * Parse JSON response into GiftListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static GiftListResponse fromJson(
       String json, GiftService service, GiftListParams originalParams) {
@@ -136,58 +113,6 @@ public final class GiftListResponse implements Iterable<GiftListResponse.GiftLis
     GiftListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public GiftListResponse autoPaginate() {
-    return new GiftListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<GiftListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<GiftListItem> {
-    private GiftListResponse currentPage = GiftListResponse.this;
-    private Iterator<GiftListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public GiftListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class GiftListItem {

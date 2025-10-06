@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.omnichannelSubscriptionItem;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.omnichannelSubscriptionItemScheduledChange.OmnichannelSubscriptionItemScheduledChange;
 
@@ -12,12 +10,9 @@ import com.chargebee.core.models.omnichannelSubscriptionItem.params.OmnichannelS
 
 /**
  * Immutable response object for OmnichannelSubscriptionItemListOmniSubItemScheduleChanges
- * operation. Contains paginated list data with auto-pagination support.
+ * operation. Contains paginated list data.
  */
-public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse
-    implements Iterable<
-        OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse
-            .OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> {
+public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse {
 
   private final List<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> list;
 
@@ -27,7 +22,6 @@ public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResp
 
   private final OmnichannelSubscriptionItemService service;
   private final OmnichannelSubscriptionItemListOmniSubItemScheduleChangesParams originalParams;
-  private final boolean isAutoPaginate;
 
   private OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse(
       List<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> list,
@@ -44,26 +38,6 @@ public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResp
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse(
-      List<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> list,
-      String nextOffset,
-      String omnichannelSubscriptionItemId,
-      OmnichannelSubscriptionItemService service,
-      OmnichannelSubscriptionItemListOmniSubItemScheduleChangesParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.omnichannelSubscriptionItemId = omnichannelSubscriptionItemId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -92,7 +66,7 @@ public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResp
 
   /**
    * Parse JSON response into OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse
-   * object with service context for pagination (enables nextPage(), autoPaginate()).
+   * object with service context for pagination (enables nextPage()).
    */
   public static OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse fromJson(
       String json,
@@ -157,62 +131,6 @@ public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResp
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.listOmniSubItemScheduleChanges(omnichannelSubscriptionItemId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse autoPaginate() {
-    return new OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse(
-        list, nextOffset, omnichannelSubscriptionItemId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem> {
-    private OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse currentPage =
-        OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse.this;
-    private Iterator<OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem>
-        currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesItem {

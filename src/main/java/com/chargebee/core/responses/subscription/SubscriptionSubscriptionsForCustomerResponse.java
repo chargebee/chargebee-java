@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.subscription;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.subscription.Subscription;
 
@@ -12,11 +10,9 @@ import com.chargebee.core.models.subscription.params.SubscriptionSubscriptionsFo
 
 /**
  * Immutable response object for SubscriptionSubscriptionsForCustomer operation. Contains paginated
- * list data with auto-pagination support.
+ * list data.
  */
-public final class SubscriptionSubscriptionsForCustomerResponse
-    implements Iterable<
-        SubscriptionSubscriptionsForCustomerResponse.SubscriptionSubscriptionsForCustomerItem> {
+public final class SubscriptionSubscriptionsForCustomerResponse {
 
   private final List<SubscriptionSubscriptionsForCustomerItem> list;
 
@@ -26,7 +22,6 @@ public final class SubscriptionSubscriptionsForCustomerResponse
 
   private final SubscriptionService service;
   private final SubscriptionSubscriptionsForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private SubscriptionSubscriptionsForCustomerResponse(
       List<SubscriptionSubscriptionsForCustomerItem> list,
@@ -43,26 +38,6 @@ public final class SubscriptionSubscriptionsForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private SubscriptionSubscriptionsForCustomerResponse(
-      List<SubscriptionSubscriptionsForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      SubscriptionService service,
-      SubscriptionSubscriptionsForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -88,7 +63,7 @@ public final class SubscriptionSubscriptionsForCustomerResponse
 
   /**
    * Parse JSON response into SubscriptionSubscriptionsForCustomerResponse object with service
-   * context for pagination (enables nextPage(), autoPaginate()).
+   * context for pagination (enables nextPage()).
    */
   public static SubscriptionSubscriptionsForCustomerResponse fromJson(
       String json,
@@ -151,61 +126,6 @@ public final class SubscriptionSubscriptionsForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.subscriptionsForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public SubscriptionSubscriptionsForCustomerResponse autoPaginate() {
-    return new SubscriptionSubscriptionsForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<SubscriptionSubscriptionsForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<SubscriptionSubscriptionsForCustomerItem> {
-    private SubscriptionSubscriptionsForCustomerResponse currentPage =
-        SubscriptionSubscriptionsForCustomerResponse.this;
-    private Iterator<SubscriptionSubscriptionsForCustomerItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public SubscriptionSubscriptionsForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class SubscriptionSubscriptionsForCustomerItem {

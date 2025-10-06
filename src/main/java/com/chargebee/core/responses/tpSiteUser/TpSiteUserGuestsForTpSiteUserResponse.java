@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.tpSiteUser;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.tpSiteUser.TpSiteUser;
 
@@ -12,10 +10,9 @@ import com.chargebee.core.models.tpSiteUser.params.TpSiteUserGuestsForTpSiteUser
 
 /**
  * Immutable response object for TpSiteUserGuestsForTpSiteUser operation. Contains paginated list
- * data with auto-pagination support.
+ * data.
  */
-public final class TpSiteUserGuestsForTpSiteUserResponse
-    implements Iterable<TpSiteUserGuestsForTpSiteUserResponse.TpSiteUserGuestsForTpSiteUserItem> {
+public final class TpSiteUserGuestsForTpSiteUserResponse {
 
   private final List<TpSiteUserGuestsForTpSiteUserItem> list;
 
@@ -25,7 +22,6 @@ public final class TpSiteUserGuestsForTpSiteUserResponse
 
   private final TpSiteUserService service;
   private final TpSiteUserGuestsForTpSiteUserParams originalParams;
-  private final boolean isAutoPaginate;
 
   private TpSiteUserGuestsForTpSiteUserResponse(
       List<TpSiteUserGuestsForTpSiteUserItem> list,
@@ -42,26 +38,6 @@ public final class TpSiteUserGuestsForTpSiteUserResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private TpSiteUserGuestsForTpSiteUserResponse(
-      List<TpSiteUserGuestsForTpSiteUserItem> list,
-      String nextOffset,
-      String tpSiteUserDomain,
-      TpSiteUserService service,
-      TpSiteUserGuestsForTpSiteUserParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.tpSiteUserDomain = tpSiteUserDomain;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -87,7 +63,7 @@ public final class TpSiteUserGuestsForTpSiteUserResponse
 
   /**
    * Parse JSON response into TpSiteUserGuestsForTpSiteUserResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static TpSiteUserGuestsForTpSiteUserResponse fromJson(
       String json,
@@ -150,61 +126,6 @@ public final class TpSiteUserGuestsForTpSiteUserResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.guestsForTpSiteUser(tpSiteUserDomain, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public TpSiteUserGuestsForTpSiteUserResponse autoPaginate() {
-    return new TpSiteUserGuestsForTpSiteUserResponse(
-        list, nextOffset, tpSiteUserDomain, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<TpSiteUserGuestsForTpSiteUserItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<TpSiteUserGuestsForTpSiteUserItem> {
-    private TpSiteUserGuestsForTpSiteUserResponse currentPage =
-        TpSiteUserGuestsForTpSiteUserResponse.this;
-    private Iterator<TpSiteUserGuestsForTpSiteUserItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public TpSiteUserGuestsForTpSiteUserItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class TpSiteUserGuestsForTpSiteUserItem {

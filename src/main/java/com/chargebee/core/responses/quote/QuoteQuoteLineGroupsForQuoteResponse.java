@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.quote;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.quoteLineGroup.QuoteLineGroup;
 
@@ -12,10 +10,9 @@ import com.chargebee.core.models.quote.params.QuoteQuoteLineGroupsForQuoteParams
 
 /**
  * Immutable response object for QuoteQuoteLineGroupsForQuote operation. Contains paginated list
- * data with auto-pagination support.
+ * data.
  */
-public final class QuoteQuoteLineGroupsForQuoteResponse
-    implements Iterable<QuoteQuoteLineGroupsForQuoteResponse.QuoteQuoteLineGroupsForQuoteItem> {
+public final class QuoteQuoteLineGroupsForQuoteResponse {
 
   private final List<QuoteQuoteLineGroupsForQuoteItem> list;
 
@@ -25,7 +22,6 @@ public final class QuoteQuoteLineGroupsForQuoteResponse
 
   private final QuoteService service;
   private final QuoteQuoteLineGroupsForQuoteParams originalParams;
-  private final boolean isAutoPaginate;
 
   private QuoteQuoteLineGroupsForQuoteResponse(
       List<QuoteQuoteLineGroupsForQuoteItem> list,
@@ -42,26 +38,6 @@ public final class QuoteQuoteLineGroupsForQuoteResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private QuoteQuoteLineGroupsForQuoteResponse(
-      List<QuoteQuoteLineGroupsForQuoteItem> list,
-      String nextOffset,
-      String quoteId,
-      QuoteService service,
-      QuoteQuoteLineGroupsForQuoteParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.quoteId = quoteId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -87,7 +63,7 @@ public final class QuoteQuoteLineGroupsForQuoteResponse
 
   /**
    * Parse JSON response into QuoteQuoteLineGroupsForQuoteResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static QuoteQuoteLineGroupsForQuoteResponse fromJson(
       String json,
@@ -150,61 +126,6 @@ public final class QuoteQuoteLineGroupsForQuoteResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.quoteLineGroupsForQuote(quoteId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public QuoteQuoteLineGroupsForQuoteResponse autoPaginate() {
-    return new QuoteQuoteLineGroupsForQuoteResponse(
-        list, nextOffset, quoteId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<QuoteQuoteLineGroupsForQuoteItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<QuoteQuoteLineGroupsForQuoteItem> {
-    private QuoteQuoteLineGroupsForQuoteResponse currentPage =
-        QuoteQuoteLineGroupsForQuoteResponse.this;
-    private Iterator<QuoteQuoteLineGroupsForQuoteItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public QuoteQuoteLineGroupsForQuoteItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class QuoteQuoteLineGroupsForQuoteItem {

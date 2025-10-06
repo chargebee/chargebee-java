@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.subscription;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.discount.Discount;
 
@@ -11,11 +9,9 @@ import com.chargebee.core.services.SubscriptionService;
 import com.chargebee.core.models.subscription.params.SubscriptionListDiscountsParams;
 
 /**
- * Immutable response object for SubscriptionListDiscounts operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for SubscriptionListDiscounts operation. Contains paginated list data.
  */
-public final class SubscriptionListDiscountsResponse
-    implements Iterable<SubscriptionListDiscountsResponse.SubscriptionListDiscountsItem> {
+public final class SubscriptionListDiscountsResponse {
 
   private final List<SubscriptionListDiscountsItem> list;
 
@@ -25,7 +21,6 @@ public final class SubscriptionListDiscountsResponse
 
   private final SubscriptionService service;
   private final SubscriptionListDiscountsParams originalParams;
-  private final boolean isAutoPaginate;
 
   private SubscriptionListDiscountsResponse(
       List<SubscriptionListDiscountsItem> list,
@@ -42,26 +37,6 @@ public final class SubscriptionListDiscountsResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private SubscriptionListDiscountsResponse(
-      List<SubscriptionListDiscountsItem> list,
-      String nextOffset,
-      String subscriptionId,
-      SubscriptionService service,
-      SubscriptionListDiscountsParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.subscriptionId = subscriptionId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -86,7 +61,7 @@ public final class SubscriptionListDiscountsResponse
 
   /**
    * Parse JSON response into SubscriptionListDiscountsResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static SubscriptionListDiscountsResponse fromJson(
       String json,
@@ -148,59 +123,6 @@ public final class SubscriptionListDiscountsResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.listDiscounts(subscriptionId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public SubscriptionListDiscountsResponse autoPaginate() {
-    return new SubscriptionListDiscountsResponse(
-        list, nextOffset, subscriptionId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<SubscriptionListDiscountsItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<SubscriptionListDiscountsItem> {
-    private SubscriptionListDiscountsResponse currentPage = SubscriptionListDiscountsResponse.this;
-    private Iterator<SubscriptionListDiscountsItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public SubscriptionListDiscountsItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class SubscriptionListDiscountsItem {

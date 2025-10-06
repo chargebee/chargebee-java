@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.transaction;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.transaction.Transaction;
 
@@ -12,11 +10,9 @@ import com.chargebee.core.models.transaction.params.TransactionTransactionsForSu
 
 /**
  * Immutable response object for TransactionTransactionsForSubscription operation. Contains
- * paginated list data with auto-pagination support.
+ * paginated list data.
  */
-public final class TransactionTransactionsForSubscriptionResponse
-    implements Iterable<
-        TransactionTransactionsForSubscriptionResponse.TransactionTransactionsForSubscriptionItem> {
+public final class TransactionTransactionsForSubscriptionResponse {
 
   private final List<TransactionTransactionsForSubscriptionItem> list;
 
@@ -26,7 +22,6 @@ public final class TransactionTransactionsForSubscriptionResponse
 
   private final TransactionService service;
   private final TransactionTransactionsForSubscriptionParams originalParams;
-  private final boolean isAutoPaginate;
 
   private TransactionTransactionsForSubscriptionResponse(
       List<TransactionTransactionsForSubscriptionItem> list,
@@ -43,26 +38,6 @@ public final class TransactionTransactionsForSubscriptionResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private TransactionTransactionsForSubscriptionResponse(
-      List<TransactionTransactionsForSubscriptionItem> list,
-      String nextOffset,
-      String subscriptionId,
-      TransactionService service,
-      TransactionTransactionsForSubscriptionParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.subscriptionId = subscriptionId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -88,7 +63,7 @@ public final class TransactionTransactionsForSubscriptionResponse
 
   /**
    * Parse JSON response into TransactionTransactionsForSubscriptionResponse object with service
-   * context for pagination (enables nextPage(), autoPaginate()).
+   * context for pagination (enables nextPage()).
    */
   public static TransactionTransactionsForSubscriptionResponse fromJson(
       String json,
@@ -151,62 +126,6 @@ public final class TransactionTransactionsForSubscriptionResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.transactionsForSubscription(subscriptionId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public TransactionTransactionsForSubscriptionResponse autoPaginate() {
-    return new TransactionTransactionsForSubscriptionResponse(
-        list, nextOffset, subscriptionId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<TransactionTransactionsForSubscriptionItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<TransactionTransactionsForSubscriptionItem> {
-    private TransactionTransactionsForSubscriptionResponse currentPage =
-        TransactionTransactionsForSubscriptionResponse.this;
-    private Iterator<TransactionTransactionsForSubscriptionItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public TransactionTransactionsForSubscriptionItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class TransactionTransactionsForSubscriptionItem {

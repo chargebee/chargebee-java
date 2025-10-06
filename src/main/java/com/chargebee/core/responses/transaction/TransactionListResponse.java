@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.transaction;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.transaction.Transaction;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.TransactionService;
 import com.chargebee.core.models.transaction.params.TransactionListParams;
 
-/**
- * Immutable response object for TransactionList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class TransactionListResponse
-    implements Iterable<TransactionListResponse.TransactionListItem> {
+/** Immutable response object for TransactionList operation. Contains paginated list data. */
+public final class TransactionListResponse {
 
   private final List<TransactionListItem> list;
 
@@ -23,7 +17,6 @@ public final class TransactionListResponse
 
   private final TransactionService service;
   private final TransactionListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private TransactionListResponse(
       List<TransactionListItem> list,
@@ -37,23 +30,6 @@ public final class TransactionListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private TransactionListResponse(
-      List<TransactionListItem> list,
-      String nextOffset,
-      TransactionService service,
-      TransactionListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class TransactionListResponse
 
   /**
    * Parse JSON response into TransactionListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static TransactionListResponse fromJson(
       String json, TransactionService service, TransactionListParams originalParams) {
@@ -135,58 +111,6 @@ public final class TransactionListResponse
     TransactionListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public TransactionListResponse autoPaginate() {
-    return new TransactionListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<TransactionListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<TransactionListItem> {
-    private TransactionListResponse currentPage = TransactionListResponse.this;
-    private Iterator<TransactionListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public TransactionListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class TransactionListItem {

@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.webhookEndpoint;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.webhookEndpoint.WebhookEndpoint;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.WebhookEndpointService;
 import com.chargebee.core.models.webhookEndpoint.params.WebhookEndpointListParams;
 
-/**
- * Immutable response object for WebhookEndpointList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class WebhookEndpointListResponse
-    implements Iterable<WebhookEndpointListResponse.WebhookEndpointListItem> {
+/** Immutable response object for WebhookEndpointList operation. Contains paginated list data. */
+public final class WebhookEndpointListResponse {
 
   private final List<WebhookEndpointListItem> list;
 
@@ -23,7 +17,6 @@ public final class WebhookEndpointListResponse
 
   private final WebhookEndpointService service;
   private final WebhookEndpointListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private WebhookEndpointListResponse(
       List<WebhookEndpointListItem> list,
@@ -37,23 +30,6 @@ public final class WebhookEndpointListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private WebhookEndpointListResponse(
-      List<WebhookEndpointListItem> list,
-      String nextOffset,
-      WebhookEndpointService service,
-      WebhookEndpointListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class WebhookEndpointListResponse
 
   /**
    * Parse JSON response into WebhookEndpointListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static WebhookEndpointListResponse fromJson(
       String json, WebhookEndpointService service, WebhookEndpointListParams originalParams) {
@@ -135,58 +111,6 @@ public final class WebhookEndpointListResponse
     WebhookEndpointListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public WebhookEndpointListResponse autoPaginate() {
-    return new WebhookEndpointListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<WebhookEndpointListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<WebhookEndpointListItem> {
-    private WebhookEndpointListResponse currentPage = WebhookEndpointListResponse.this;
-    private Iterator<WebhookEndpointListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public WebhookEndpointListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class WebhookEndpointListItem {

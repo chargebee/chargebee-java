@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.customer;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.contact.Contact;
 
@@ -11,11 +9,10 @@ import com.chargebee.core.services.CustomerService;
 import com.chargebee.core.models.customer.params.CustomerContactsForCustomerParams;
 
 /**
- * Immutable response object for CustomerContactsForCustomer operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for CustomerContactsForCustomer operation. Contains paginated list
+ * data.
  */
-public final class CustomerContactsForCustomerResponse
-    implements Iterable<CustomerContactsForCustomerResponse.CustomerContactsForCustomerItem> {
+public final class CustomerContactsForCustomerResponse {
 
   private final List<CustomerContactsForCustomerItem> list;
 
@@ -25,7 +22,6 @@ public final class CustomerContactsForCustomerResponse
 
   private final CustomerService service;
   private final CustomerContactsForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CustomerContactsForCustomerResponse(
       List<CustomerContactsForCustomerItem> list,
@@ -42,26 +38,6 @@ public final class CustomerContactsForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CustomerContactsForCustomerResponse(
-      List<CustomerContactsForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      CustomerService service,
-      CustomerContactsForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -87,7 +63,7 @@ public final class CustomerContactsForCustomerResponse
 
   /**
    * Parse JSON response into CustomerContactsForCustomerResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static CustomerContactsForCustomerResponse fromJson(
       String json,
@@ -150,60 +126,6 @@ public final class CustomerContactsForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.contactsForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CustomerContactsForCustomerResponse autoPaginate() {
-    return new CustomerContactsForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CustomerContactsForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CustomerContactsForCustomerItem> {
-    private CustomerContactsForCustomerResponse currentPage =
-        CustomerContactsForCustomerResponse.this;
-    private Iterator<CustomerContactsForCustomerItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CustomerContactsForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CustomerContactsForCustomerItem {

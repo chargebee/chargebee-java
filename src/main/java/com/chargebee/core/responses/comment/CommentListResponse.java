@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.comment;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.comment.Comment;
 
@@ -10,11 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.CommentService;
 import com.chargebee.core.models.comment.params.CommentListParams;
 
-/**
- * Immutable response object for CommentList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class CommentListResponse implements Iterable<CommentListResponse.CommentListItem> {
+/** Immutable response object for CommentList operation. Contains paginated list data. */
+public final class CommentListResponse {
 
   private final List<CommentListItem> list;
 
@@ -22,7 +17,6 @@ public final class CommentListResponse implements Iterable<CommentListResponse.C
 
   private final CommentService service;
   private final CommentListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CommentListResponse(
       List<CommentListItem> list,
@@ -36,23 +30,6 @@ public final class CommentListResponse implements Iterable<CommentListResponse.C
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CommentListResponse(
-      List<CommentListItem> list,
-      String nextOffset,
-      CommentService service,
-      CommentListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -77,7 +54,7 @@ public final class CommentListResponse implements Iterable<CommentListResponse.C
 
   /**
    * Parse JSON response into CommentListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static CommentListResponse fromJson(
       String json, CommentService service, CommentListParams originalParams) {
@@ -134,58 +111,6 @@ public final class CommentListResponse implements Iterable<CommentListResponse.C
     CommentListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CommentListResponse autoPaginate() {
-    return new CommentListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CommentListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CommentListItem> {
-    private CommentListResponse currentPage = CommentListResponse.this;
-    private Iterator<CommentListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CommentListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CommentListItem {

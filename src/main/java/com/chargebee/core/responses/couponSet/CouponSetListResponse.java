@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.couponSet;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.couponSet.CouponSet;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.CouponSetService;
 import com.chargebee.core.models.couponSet.params.CouponSetListParams;
 
-/**
- * Immutable response object for CouponSetList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class CouponSetListResponse
-    implements Iterable<CouponSetListResponse.CouponSetListItem> {
+/** Immutable response object for CouponSetList operation. Contains paginated list data. */
+public final class CouponSetListResponse {
 
   private final List<CouponSetListItem> list;
 
@@ -23,7 +17,6 @@ public final class CouponSetListResponse
 
   private final CouponSetService service;
   private final CouponSetListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CouponSetListResponse(
       List<CouponSetListItem> list,
@@ -37,23 +30,6 @@ public final class CouponSetListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CouponSetListResponse(
-      List<CouponSetListItem> list,
-      String nextOffset,
-      CouponSetService service,
-      CouponSetListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class CouponSetListResponse
 
   /**
    * Parse JSON response into CouponSetListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static CouponSetListResponse fromJson(
       String json, CouponSetService service, CouponSetListParams originalParams) {
@@ -135,58 +111,6 @@ public final class CouponSetListResponse
     CouponSetListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CouponSetListResponse autoPaginate() {
-    return new CouponSetListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CouponSetListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CouponSetListItem> {
-    private CouponSetListResponse currentPage = CouponSetListResponse.this;
-    private Iterator<CouponSetListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CouponSetListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CouponSetListItem {

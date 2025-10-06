@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.paymentSource;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.paymentSource.PaymentSource;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.PaymentSourceService;
 import com.chargebee.core.models.paymentSource.params.PaymentSourceListParams;
 
-/**
- * Immutable response object for PaymentSourceList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class PaymentSourceListResponse
-    implements Iterable<PaymentSourceListResponse.PaymentSourceListItem> {
+/** Immutable response object for PaymentSourceList operation. Contains paginated list data. */
+public final class PaymentSourceListResponse {
 
   private final List<PaymentSourceListItem> list;
 
@@ -23,7 +17,6 @@ public final class PaymentSourceListResponse
 
   private final PaymentSourceService service;
   private final PaymentSourceListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private PaymentSourceListResponse(
       List<PaymentSourceListItem> list,
@@ -37,23 +30,6 @@ public final class PaymentSourceListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private PaymentSourceListResponse(
-      List<PaymentSourceListItem> list,
-      String nextOffset,
-      PaymentSourceService service,
-      PaymentSourceListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class PaymentSourceListResponse
 
   /**
    * Parse JSON response into PaymentSourceListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static PaymentSourceListResponse fromJson(
       String json, PaymentSourceService service, PaymentSourceListParams originalParams) {
@@ -135,58 +111,6 @@ public final class PaymentSourceListResponse
     PaymentSourceListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public PaymentSourceListResponse autoPaginate() {
-    return new PaymentSourceListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<PaymentSourceListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<PaymentSourceListItem> {
-    private PaymentSourceListResponse currentPage = PaymentSourceListResponse.this;
-    private Iterator<PaymentSourceListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public PaymentSourceListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class PaymentSourceListItem {

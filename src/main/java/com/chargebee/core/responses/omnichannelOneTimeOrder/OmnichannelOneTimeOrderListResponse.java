@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.omnichannelOneTimeOrder;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.omnichannelOneTimeOrder.OmnichannelOneTimeOrder;
 
@@ -11,11 +9,10 @@ import com.chargebee.core.services.OmnichannelOneTimeOrderService;
 import com.chargebee.core.models.omnichannelOneTimeOrder.params.OmnichannelOneTimeOrderListParams;
 
 /**
- * Immutable response object for OmnichannelOneTimeOrderList operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for OmnichannelOneTimeOrderList operation. Contains paginated list
+ * data.
  */
-public final class OmnichannelOneTimeOrderListResponse
-    implements Iterable<OmnichannelOneTimeOrderListResponse.OmnichannelOneTimeOrderListItem> {
+public final class OmnichannelOneTimeOrderListResponse {
 
   private final List<OmnichannelOneTimeOrderListItem> list;
 
@@ -23,7 +20,6 @@ public final class OmnichannelOneTimeOrderListResponse
 
   private final OmnichannelOneTimeOrderService service;
   private final OmnichannelOneTimeOrderListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private OmnichannelOneTimeOrderListResponse(
       List<OmnichannelOneTimeOrderListItem> list,
@@ -37,23 +33,6 @@ public final class OmnichannelOneTimeOrderListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private OmnichannelOneTimeOrderListResponse(
-      List<OmnichannelOneTimeOrderListItem> list,
-      String nextOffset,
-      OmnichannelOneTimeOrderService service,
-      OmnichannelOneTimeOrderListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -79,7 +58,7 @@ public final class OmnichannelOneTimeOrderListResponse
 
   /**
    * Parse JSON response into OmnichannelOneTimeOrderListResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static OmnichannelOneTimeOrderListResponse fromJson(
       String json,
@@ -140,59 +119,6 @@ public final class OmnichannelOneTimeOrderListResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public OmnichannelOneTimeOrderListResponse autoPaginate() {
-    return new OmnichannelOneTimeOrderListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<OmnichannelOneTimeOrderListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<OmnichannelOneTimeOrderListItem> {
-    private OmnichannelOneTimeOrderListResponse currentPage =
-        OmnichannelOneTimeOrderListResponse.this;
-    private Iterator<OmnichannelOneTimeOrderListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public OmnichannelOneTimeOrderListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class OmnichannelOneTimeOrderListItem {

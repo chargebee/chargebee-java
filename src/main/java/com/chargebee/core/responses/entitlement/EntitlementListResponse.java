@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.entitlement;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.entitlement.Entitlement;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.EntitlementService;
 import com.chargebee.core.models.entitlement.params.EntitlementListParams;
 
-/**
- * Immutable response object for EntitlementList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class EntitlementListResponse
-    implements Iterable<EntitlementListResponse.EntitlementListItem> {
+/** Immutable response object for EntitlementList operation. Contains paginated list data. */
+public final class EntitlementListResponse {
 
   private final List<EntitlementListItem> list;
 
@@ -23,7 +17,6 @@ public final class EntitlementListResponse
 
   private final EntitlementService service;
   private final EntitlementListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private EntitlementListResponse(
       List<EntitlementListItem> list,
@@ -37,23 +30,6 @@ public final class EntitlementListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private EntitlementListResponse(
-      List<EntitlementListItem> list,
-      String nextOffset,
-      EntitlementService service,
-      EntitlementListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class EntitlementListResponse
 
   /**
    * Parse JSON response into EntitlementListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static EntitlementListResponse fromJson(
       String json, EntitlementService service, EntitlementListParams originalParams) {
@@ -135,58 +111,6 @@ public final class EntitlementListResponse
     EntitlementListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public EntitlementListResponse autoPaginate() {
-    return new EntitlementListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<EntitlementListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<EntitlementListItem> {
-    private EntitlementListResponse currentPage = EntitlementListResponse.this;
-    private Iterator<EntitlementListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public EntitlementListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class EntitlementListItem {

@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.creditNote;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.creditNote.CreditNote;
 
@@ -12,11 +10,9 @@ import com.chargebee.core.models.creditNote.params.CreditNoteCreditNotesForCusto
 
 /**
  * Immutable response object for CreditNoteCreditNotesForCustomer operation. Contains paginated list
- * data with auto-pagination support.
+ * data.
  */
-public final class CreditNoteCreditNotesForCustomerResponse
-    implements Iterable<
-        CreditNoteCreditNotesForCustomerResponse.CreditNoteCreditNotesForCustomerItem> {
+public final class CreditNoteCreditNotesForCustomerResponse {
 
   private final List<CreditNoteCreditNotesForCustomerItem> list;
 
@@ -26,7 +22,6 @@ public final class CreditNoteCreditNotesForCustomerResponse
 
   private final CreditNoteService service;
   private final CreditNoteCreditNotesForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CreditNoteCreditNotesForCustomerResponse(
       List<CreditNoteCreditNotesForCustomerItem> list,
@@ -43,26 +38,6 @@ public final class CreditNoteCreditNotesForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CreditNoteCreditNotesForCustomerResponse(
-      List<CreditNoteCreditNotesForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      CreditNoteService service,
-      CreditNoteCreditNotesForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -88,7 +63,7 @@ public final class CreditNoteCreditNotesForCustomerResponse
 
   /**
    * Parse JSON response into CreditNoteCreditNotesForCustomerResponse object with service context
-   * for pagination (enables nextPage(), autoPaginate()).
+   * for pagination (enables nextPage()).
    */
   public static CreditNoteCreditNotesForCustomerResponse fromJson(
       String json,
@@ -151,61 +126,6 @@ public final class CreditNoteCreditNotesForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.creditNotesForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CreditNoteCreditNotesForCustomerResponse autoPaginate() {
-    return new CreditNoteCreditNotesForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CreditNoteCreditNotesForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CreditNoteCreditNotesForCustomerItem> {
-    private CreditNoteCreditNotesForCustomerResponse currentPage =
-        CreditNoteCreditNotesForCustomerResponse.this;
-    private Iterator<CreditNoteCreditNotesForCustomerItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CreditNoteCreditNotesForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CreditNoteCreditNotesForCustomerItem {

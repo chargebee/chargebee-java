@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.siteMigrationDetail;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.siteMigrationDetail.SiteMigrationDetail;
 
@@ -11,11 +9,9 @@ import com.chargebee.core.services.SiteMigrationDetailService;
 import com.chargebee.core.models.siteMigrationDetail.params.SiteMigrationDetailListParams;
 
 /**
- * Immutable response object for SiteMigrationDetailList operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for SiteMigrationDetailList operation. Contains paginated list data.
  */
-public final class SiteMigrationDetailListResponse
-    implements Iterable<SiteMigrationDetailListResponse.SiteMigrationDetailListItem> {
+public final class SiteMigrationDetailListResponse {
 
   private final List<SiteMigrationDetailListItem> list;
 
@@ -23,7 +19,6 @@ public final class SiteMigrationDetailListResponse
 
   private final SiteMigrationDetailService service;
   private final SiteMigrationDetailListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private SiteMigrationDetailListResponse(
       List<SiteMigrationDetailListItem> list,
@@ -37,23 +32,6 @@ public final class SiteMigrationDetailListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private SiteMigrationDetailListResponse(
-      List<SiteMigrationDetailListItem> list,
-      String nextOffset,
-      SiteMigrationDetailService service,
-      SiteMigrationDetailListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +56,7 @@ public final class SiteMigrationDetailListResponse
 
   /**
    * Parse JSON response into SiteMigrationDetailListResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static SiteMigrationDetailListResponse fromJson(
       String json,
@@ -138,58 +116,6 @@ public final class SiteMigrationDetailListResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public SiteMigrationDetailListResponse autoPaginate() {
-    return new SiteMigrationDetailListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<SiteMigrationDetailListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<SiteMigrationDetailListItem> {
-    private SiteMigrationDetailListResponse currentPage = SiteMigrationDetailListResponse.this;
-    private Iterator<SiteMigrationDetailListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public SiteMigrationDetailListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class SiteMigrationDetailListItem {

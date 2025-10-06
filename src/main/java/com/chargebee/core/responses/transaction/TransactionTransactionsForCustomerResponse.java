@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.transaction;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.transaction.Transaction;
 
@@ -12,11 +10,9 @@ import com.chargebee.core.models.transaction.params.TransactionTransactionsForCu
 
 /**
  * Immutable response object for TransactionTransactionsForCustomer operation. Contains paginated
- * list data with auto-pagination support.
+ * list data.
  */
-public final class TransactionTransactionsForCustomerResponse
-    implements Iterable<
-        TransactionTransactionsForCustomerResponse.TransactionTransactionsForCustomerItem> {
+public final class TransactionTransactionsForCustomerResponse {
 
   private final List<TransactionTransactionsForCustomerItem> list;
 
@@ -26,7 +22,6 @@ public final class TransactionTransactionsForCustomerResponse
 
   private final TransactionService service;
   private final TransactionTransactionsForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private TransactionTransactionsForCustomerResponse(
       List<TransactionTransactionsForCustomerItem> list,
@@ -43,26 +38,6 @@ public final class TransactionTransactionsForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private TransactionTransactionsForCustomerResponse(
-      List<TransactionTransactionsForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      TransactionService service,
-      TransactionTransactionsForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -88,7 +63,7 @@ public final class TransactionTransactionsForCustomerResponse
 
   /**
    * Parse JSON response into TransactionTransactionsForCustomerResponse object with service context
-   * for pagination (enables nextPage(), autoPaginate()).
+   * for pagination (enables nextPage()).
    */
   public static TransactionTransactionsForCustomerResponse fromJson(
       String json,
@@ -151,61 +126,6 @@ public final class TransactionTransactionsForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.transactionsForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public TransactionTransactionsForCustomerResponse autoPaginate() {
-    return new TransactionTransactionsForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<TransactionTransactionsForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<TransactionTransactionsForCustomerItem> {
-    private TransactionTransactionsForCustomerResponse currentPage =
-        TransactionTransactionsForCustomerResponse.this;
-    private Iterator<TransactionTransactionsForCustomerItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public TransactionTransactionsForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class TransactionTransactionsForCustomerItem {

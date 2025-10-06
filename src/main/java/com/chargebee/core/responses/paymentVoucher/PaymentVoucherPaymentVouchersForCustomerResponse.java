@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.paymentVoucher;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.paymentVoucher.PaymentVoucher;
 
@@ -12,12 +10,9 @@ import com.chargebee.core.models.paymentVoucher.params.PaymentVoucherPaymentVouc
 
 /**
  * Immutable response object for PaymentVoucherPaymentVouchersForCustomer operation. Contains
- * paginated list data with auto-pagination support.
+ * paginated list data.
  */
-public final class PaymentVoucherPaymentVouchersForCustomerResponse
-    implements Iterable<
-        PaymentVoucherPaymentVouchersForCustomerResponse
-            .PaymentVoucherPaymentVouchersForCustomerItem> {
+public final class PaymentVoucherPaymentVouchersForCustomerResponse {
 
   private final List<PaymentVoucherPaymentVouchersForCustomerItem> list;
 
@@ -27,7 +22,6 @@ public final class PaymentVoucherPaymentVouchersForCustomerResponse
 
   private final PaymentVoucherService service;
   private final PaymentVoucherPaymentVouchersForCustomerParams originalParams;
-  private final boolean isAutoPaginate;
 
   private PaymentVoucherPaymentVouchersForCustomerResponse(
       List<PaymentVoucherPaymentVouchersForCustomerItem> list,
@@ -44,26 +38,6 @@ public final class PaymentVoucherPaymentVouchersForCustomerResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private PaymentVoucherPaymentVouchersForCustomerResponse(
-      List<PaymentVoucherPaymentVouchersForCustomerItem> list,
-      String nextOffset,
-      String customerId,
-      PaymentVoucherService service,
-      PaymentVoucherPaymentVouchersForCustomerParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -90,7 +64,7 @@ public final class PaymentVoucherPaymentVouchersForCustomerResponse
 
   /**
    * Parse JSON response into PaymentVoucherPaymentVouchersForCustomerResponse object with service
-   * context for pagination (enables nextPage(), autoPaginate()).
+   * context for pagination (enables nextPage()).
    */
   public static PaymentVoucherPaymentVouchersForCustomerResponse fromJson(
       String json,
@@ -153,62 +127,6 @@ public final class PaymentVoucherPaymentVouchersForCustomerResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.payment_vouchersForCustomer(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public PaymentVoucherPaymentVouchersForCustomerResponse autoPaginate() {
-    return new PaymentVoucherPaymentVouchersForCustomerResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<PaymentVoucherPaymentVouchersForCustomerItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<PaymentVoucherPaymentVouchersForCustomerItem> {
-    private PaymentVoucherPaymentVouchersForCustomerResponse currentPage =
-        PaymentVoucherPaymentVouchersForCustomerResponse.this;
-    private Iterator<PaymentVoucherPaymentVouchersForCustomerItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public PaymentVoucherPaymentVouchersForCustomerItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class PaymentVoucherPaymentVouchersForCustomerItem {

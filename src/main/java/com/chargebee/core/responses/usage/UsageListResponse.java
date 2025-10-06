@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.usage;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.usage.Usage;
 
@@ -10,11 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.UsageService;
 import com.chargebee.core.models.usage.params.UsageListParams;
 
-/**
- * Immutable response object for UsageList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class UsageListResponse implements Iterable<UsageListResponse.UsageListItem> {
+/** Immutable response object for UsageList operation. Contains paginated list data. */
+public final class UsageListResponse {
 
   private final List<UsageListItem> list;
 
@@ -22,7 +17,6 @@ public final class UsageListResponse implements Iterable<UsageListResponse.Usage
 
   private final UsageService service;
   private final UsageListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private UsageListResponse(
       List<UsageListItem> list,
@@ -36,23 +30,6 @@ public final class UsageListResponse implements Iterable<UsageListResponse.Usage
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private UsageListResponse(
-      List<UsageListItem> list,
-      String nextOffset,
-      UsageService service,
-      UsageListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -77,7 +54,7 @@ public final class UsageListResponse implements Iterable<UsageListResponse.Usage
 
   /**
    * Parse JSON response into UsageListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static UsageListResponse fromJson(
       String json, UsageService service, UsageListParams originalParams) {
@@ -134,58 +111,6 @@ public final class UsageListResponse implements Iterable<UsageListResponse.Usage
     UsageListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public UsageListResponse autoPaginate() {
-    return new UsageListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<UsageListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<UsageListItem> {
-    private UsageListResponse currentPage = UsageListResponse.this;
-    private Iterator<UsageListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public UsageListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class UsageListItem {

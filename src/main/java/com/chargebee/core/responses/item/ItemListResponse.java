@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.item;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.item.Item;
 
@@ -10,11 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.ItemService;
 import com.chargebee.core.models.item.params.ItemListParams;
 
-/**
- * Immutable response object for ItemList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class ItemListResponse implements Iterable<ItemListResponse.ItemListItem> {
+/** Immutable response object for ItemList operation. Contains paginated list data. */
+public final class ItemListResponse {
 
   private final List<ItemListItem> list;
 
@@ -22,7 +17,6 @@ public final class ItemListResponse implements Iterable<ItemListResponse.ItemLis
 
   private final ItemService service;
   private final ItemListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private ItemListResponse(
       List<ItemListItem> list,
@@ -36,23 +30,6 @@ public final class ItemListResponse implements Iterable<ItemListResponse.ItemLis
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private ItemListResponse(
-      List<ItemListItem> list,
-      String nextOffset,
-      ItemService service,
-      ItemListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -77,7 +54,7 @@ public final class ItemListResponse implements Iterable<ItemListResponse.ItemLis
 
   /**
    * Parse JSON response into ItemListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static ItemListResponse fromJson(
       String json, ItemService service, ItemListParams originalParams) {
@@ -134,58 +111,6 @@ public final class ItemListResponse implements Iterable<ItemListResponse.ItemLis
     ItemListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public ItemListResponse autoPaginate() {
-    return new ItemListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<ItemListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<ItemListItem> {
-    private ItemListResponse currentPage = ItemListResponse.this;
-    private Iterator<ItemListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public ItemListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class ItemListItem {

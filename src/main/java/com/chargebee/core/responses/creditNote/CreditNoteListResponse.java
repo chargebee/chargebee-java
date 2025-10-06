@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.creditNote;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.creditNote.CreditNote;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.CreditNoteService;
 import com.chargebee.core.models.creditNote.params.CreditNoteListParams;
 
-/**
- * Immutable response object for CreditNoteList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class CreditNoteListResponse
-    implements Iterable<CreditNoteListResponse.CreditNoteListItem> {
+/** Immutable response object for CreditNoteList operation. Contains paginated list data. */
+public final class CreditNoteListResponse {
 
   private final List<CreditNoteListItem> list;
 
@@ -23,7 +17,6 @@ public final class CreditNoteListResponse
 
   private final CreditNoteService service;
   private final CreditNoteListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CreditNoteListResponse(
       List<CreditNoteListItem> list,
@@ -37,23 +30,6 @@ public final class CreditNoteListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CreditNoteListResponse(
-      List<CreditNoteListItem> list,
-      String nextOffset,
-      CreditNoteService service,
-      CreditNoteListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +54,7 @@ public final class CreditNoteListResponse
 
   /**
    * Parse JSON response into CreditNoteListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static CreditNoteListResponse fromJson(
       String json, CreditNoteService service, CreditNoteListParams originalParams) {
@@ -135,58 +111,6 @@ public final class CreditNoteListResponse
     CreditNoteListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CreditNoteListResponse autoPaginate() {
-    return new CreditNoteListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CreditNoteListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CreditNoteListItem> {
-    private CreditNoteListResponse currentPage = CreditNoteListResponse.this;
-    private Iterator<CreditNoteListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CreditNoteListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CreditNoteListItem {

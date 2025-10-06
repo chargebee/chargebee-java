@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.customer;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.hierarchy.Hierarchy;
 
@@ -11,11 +9,10 @@ import com.chargebee.core.services.CustomerService;
 import com.chargebee.core.models.customer.params.CustomerListHierarchyDetailParams;
 
 /**
- * Immutable response object for CustomerListHierarchyDetail operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for CustomerListHierarchyDetail operation. Contains paginated list
+ * data.
  */
-public final class CustomerListHierarchyDetailResponse
-    implements Iterable<CustomerListHierarchyDetailResponse.CustomerListHierarchyDetailItem> {
+public final class CustomerListHierarchyDetailResponse {
 
   private final List<CustomerListHierarchyDetailItem> list;
 
@@ -25,7 +22,6 @@ public final class CustomerListHierarchyDetailResponse
 
   private final CustomerService service;
   private final CustomerListHierarchyDetailParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CustomerListHierarchyDetailResponse(
       List<CustomerListHierarchyDetailItem> list,
@@ -42,26 +38,6 @@ public final class CustomerListHierarchyDetailResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CustomerListHierarchyDetailResponse(
-      List<CustomerListHierarchyDetailItem> list,
-      String nextOffset,
-      String customerId,
-      CustomerService service,
-      CustomerListHierarchyDetailParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.customerId = customerId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -87,7 +63,7 @@ public final class CustomerListHierarchyDetailResponse
 
   /**
    * Parse JSON response into CustomerListHierarchyDetailResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static CustomerListHierarchyDetailResponse fromJson(
       String json,
@@ -150,60 +126,6 @@ public final class CustomerListHierarchyDetailResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.listHierarchyDetail(customerId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CustomerListHierarchyDetailResponse autoPaginate() {
-    return new CustomerListHierarchyDetailResponse(
-        list, nextOffset, customerId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CustomerListHierarchyDetailItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CustomerListHierarchyDetailItem> {
-    private CustomerListHierarchyDetailResponse currentPage =
-        CustomerListHierarchyDetailResponse.this;
-    private Iterator<CustomerListHierarchyDetailItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CustomerListHierarchyDetailItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CustomerListHierarchyDetailItem {

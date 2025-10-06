@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.entitlementOverride;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.entitlementOverride.EntitlementOverride;
 
@@ -12,12 +10,9 @@ import com.chargebee.core.models.entitlementOverride.params.EntitlementOverrideL
 
 /**
  * Immutable response object for EntitlementOverrideListEntitlementOverrideForSubscription
- * operation. Contains paginated list data with auto-pagination support.
+ * operation. Contains paginated list data.
  */
-public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResponse
-    implements Iterable<
-        EntitlementOverrideListEntitlementOverrideForSubscriptionResponse
-            .EntitlementOverrideListEntitlementOverrideForSubscriptionItem> {
+public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResponse {
 
   private final List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list;
 
@@ -27,7 +22,6 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
 
   private final EntitlementOverrideService service;
   private final EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams;
-  private final boolean isAutoPaginate;
 
   private EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
       List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list,
@@ -44,26 +38,6 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
-      List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list,
-      String nextOffset,
-      String subscriptionId,
-      EntitlementOverrideService service,
-      EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.subscriptionId = subscriptionId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -92,7 +66,7 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
 
   /**
    * Parse JSON response into EntitlementOverrideListEntitlementOverrideForSubscriptionResponse
-   * object with service context for pagination (enables nextPage(), autoPaginate()).
+   * object with service context for pagination (enables nextPage()).
    */
   public static EntitlementOverrideListEntitlementOverrideForSubscriptionResponse fromJson(
       String json,
@@ -157,62 +131,6 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.listEntitlementOverrideForSubscription(subscriptionId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public EntitlementOverrideListEntitlementOverrideForSubscriptionResponse autoPaginate() {
-    return new EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
-        list, nextOffset, subscriptionId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> {
-    private EntitlementOverrideListEntitlementOverrideForSubscriptionResponse currentPage =
-        EntitlementOverrideListEntitlementOverrideForSubscriptionResponse.this;
-    private Iterator<EntitlementOverrideListEntitlementOverrideForSubscriptionItem>
-        currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public EntitlementOverrideListEntitlementOverrideForSubscriptionItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class EntitlementOverrideListEntitlementOverrideForSubscriptionItem {

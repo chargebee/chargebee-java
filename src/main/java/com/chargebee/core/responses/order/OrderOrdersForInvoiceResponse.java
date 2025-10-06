@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.order;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.order.Order;
 
@@ -10,12 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.OrderService;
 import com.chargebee.core.models.order.params.OrderOrdersForInvoiceParams;
 
-/**
- * Immutable response object for OrderOrdersForInvoice operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class OrderOrdersForInvoiceResponse
-    implements Iterable<OrderOrdersForInvoiceResponse.OrderOrdersForInvoiceItem> {
+/** Immutable response object for OrderOrdersForInvoice operation. Contains paginated list data. */
+public final class OrderOrdersForInvoiceResponse {
 
   private final List<OrderOrdersForInvoiceItem> list;
 
@@ -25,7 +19,6 @@ public final class OrderOrdersForInvoiceResponse
 
   private final OrderService service;
   private final OrderOrdersForInvoiceParams originalParams;
-  private final boolean isAutoPaginate;
 
   private OrderOrdersForInvoiceResponse(
       List<OrderOrdersForInvoiceItem> list,
@@ -42,26 +35,6 @@ public final class OrderOrdersForInvoiceResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private OrderOrdersForInvoiceResponse(
-      List<OrderOrdersForInvoiceItem> list,
-      String nextOffset,
-      String invoiceId,
-      OrderService service,
-      OrderOrdersForInvoiceParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.invoiceId = invoiceId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -86,7 +59,7 @@ public final class OrderOrdersForInvoiceResponse
 
   /**
    * Parse JSON response into OrderOrdersForInvoiceResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static OrderOrdersForInvoiceResponse fromJson(
       String json,
@@ -147,59 +120,6 @@ public final class OrderOrdersForInvoiceResponse
     OrderOrdersForInvoiceParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.ordersForInvoice(invoiceId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public OrderOrdersForInvoiceResponse autoPaginate() {
-    return new OrderOrdersForInvoiceResponse(
-        list, nextOffset, invoiceId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<OrderOrdersForInvoiceItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<OrderOrdersForInvoiceItem> {
-    private OrderOrdersForInvoiceResponse currentPage = OrderOrdersForInvoiceResponse.this;
-    private Iterator<OrderOrdersForInvoiceItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public OrderOrdersForInvoiceItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class OrderOrdersForInvoiceItem {

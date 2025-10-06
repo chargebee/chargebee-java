@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.subscriptionEntitlement;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.subscriptionEntitlement.SubscriptionEntitlement;
 
@@ -12,12 +10,9 @@ import com.chargebee.core.models.subscriptionEntitlement.params.SubscriptionEnti
 
 /**
  * Immutable response object for SubscriptionEntitlementSubscriptionEntitlementsForSubscription
- * operation. Contains paginated list data with auto-pagination support.
+ * operation. Contains paginated list data.
  */
-public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse
-    implements Iterable<
-        SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse
-            .SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> {
+public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse {
 
   private final List<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> list;
 
@@ -27,7 +22,6 @@ public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptio
 
   private final SubscriptionEntitlementService service;
   private final SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionParams originalParams;
-  private final boolean isAutoPaginate;
 
   private SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse(
       List<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> list,
@@ -44,26 +38,6 @@ public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptio
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse(
-      List<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> list,
-      String nextOffset,
-      String subscriptionId,
-      SubscriptionEntitlementService service,
-      SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.subscriptionId = subscriptionId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -92,7 +66,7 @@ public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptio
 
   /**
    * Parse JSON response into SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse
-   * object with service context for pagination (enables nextPage(), autoPaginate()).
+   * object with service context for pagination (enables nextPage()).
    */
   public static SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse fromJson(
       String json,
@@ -157,62 +131,6 @@ public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptio
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.subscriptionEntitlementsForSubscription(subscriptionId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse autoPaginate() {
-    return new SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse(
-        list, nextOffset, subscriptionId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> {
-    private SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse currentPage =
-        SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse.this;
-    private Iterator<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem>
-        currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem {

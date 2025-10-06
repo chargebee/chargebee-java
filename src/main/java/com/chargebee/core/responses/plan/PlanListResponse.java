@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.plan;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.plan.Plan;
 
@@ -10,11 +8,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.PlanService;
 import com.chargebee.core.models.plan.params.PlanListParams;
 
-/**
- * Immutable response object for PlanList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class PlanListResponse implements Iterable<PlanListResponse.PlanListItem> {
+/** Immutable response object for PlanList operation. Contains paginated list data. */
+public final class PlanListResponse {
 
   private final List<PlanListItem> list;
 
@@ -22,7 +17,6 @@ public final class PlanListResponse implements Iterable<PlanListResponse.PlanLis
 
   private final PlanService service;
   private final PlanListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private PlanListResponse(
       List<PlanListItem> list,
@@ -36,23 +30,6 @@ public final class PlanListResponse implements Iterable<PlanListResponse.PlanLis
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private PlanListResponse(
-      List<PlanListItem> list,
-      String nextOffset,
-      PlanService service,
-      PlanListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -77,7 +54,7 @@ public final class PlanListResponse implements Iterable<PlanListResponse.PlanLis
 
   /**
    * Parse JSON response into PlanListResponse object with service context for pagination (enables
-   * nextPage(), autoPaginate()).
+   * nextPage()).
    */
   public static PlanListResponse fromJson(
       String json, PlanService service, PlanListParams originalParams) {
@@ -134,58 +111,6 @@ public final class PlanListResponse implements Iterable<PlanListResponse.PlanLis
     PlanListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public PlanListResponse autoPaginate() {
-    return new PlanListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<PlanListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<PlanListItem> {
-    private PlanListResponse currentPage = PlanListResponse.this;
-    private Iterator<PlanListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public PlanListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class PlanListItem {

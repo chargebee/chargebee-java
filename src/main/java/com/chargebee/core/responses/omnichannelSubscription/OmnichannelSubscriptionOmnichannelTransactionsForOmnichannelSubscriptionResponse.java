@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.omnichannelSubscription;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.omnichannelTransaction.OmnichannelTransaction;
 
@@ -13,12 +11,10 @@ import com.chargebee.core.models.omnichannelSubscription.params.OmnichannelSubsc
 /**
  * Immutable response object for
  * OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscription operation. Contains
- * paginated list data with auto-pagination support.
+ * paginated list data.
  */
-public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-    implements Iterable<
-        OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-            .OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> {
+public final
+class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse {
 
   private final List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem>
       list;
@@ -30,7 +26,6 @@ public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelS
   private final OmnichannelSubscriptionService service;
   private final OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams
       originalParams;
-  private final boolean isAutoPaginate;
 
   private OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
       List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list,
@@ -48,26 +43,6 @@ public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelS
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
-      List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list,
-      String nextOffset,
-      String omnichannelSubscriptionId,
-      OmnichannelSubscriptionService service,
-      OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.omnichannelSubscriptionId = omnichannelSubscriptionId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -100,7 +75,7 @@ public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelS
   /**
    * Parse JSON response into
    * OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse object with
-   * service context for pagination (enables nextPage(), autoPaginate()).
+   * service context for pagination (enables nextPage()).
    */
   public static OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
       fromJson(
@@ -172,66 +147,6 @@ public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelS
 
     return service.omnichannel_transactionsForOmnichannelSubscription(
         omnichannelSubscriptionId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-      autoPaginate() {
-    return new OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
-        list, nextOffset, omnichannelSubscriptionId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem>
-      iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<
-          OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> {
-    private OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-        currentPage =
-            OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse.this;
-    private Iterator<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem>
-        currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem {

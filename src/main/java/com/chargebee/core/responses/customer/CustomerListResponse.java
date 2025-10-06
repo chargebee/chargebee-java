@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.customer;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.customer.Customer;
 
@@ -12,11 +10,8 @@ import com.chargebee.internal.JsonUtil;
 import com.chargebee.core.services.CustomerService;
 import com.chargebee.core.models.customer.params.CustomerListParams;
 
-/**
- * Immutable response object for CustomerList operation. Contains paginated list data with
- * auto-pagination support.
- */
-public final class CustomerListResponse implements Iterable<CustomerListResponse.CustomerListItem> {
+/** Immutable response object for CustomerList operation. Contains paginated list data. */
+public final class CustomerListResponse {
 
   private final List<CustomerListItem> list;
 
@@ -24,7 +19,6 @@ public final class CustomerListResponse implements Iterable<CustomerListResponse
 
   private final CustomerService service;
   private final CustomerListParams originalParams;
-  private final boolean isAutoPaginate;
 
   private CustomerListResponse(
       List<CustomerListItem> list,
@@ -38,23 +32,6 @@ public final class CustomerListResponse implements Iterable<CustomerListResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private CustomerListResponse(
-      List<CustomerListItem> list,
-      String nextOffset,
-      CustomerService service,
-      CustomerListParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -79,7 +56,7 @@ public final class CustomerListResponse implements Iterable<CustomerListResponse
 
   /**
    * Parse JSON response into CustomerListResponse object with service context for pagination
-   * (enables nextPage(), autoPaginate()).
+   * (enables nextPage()).
    */
   public static CustomerListResponse fromJson(
       String json, CustomerService service, CustomerListParams originalParams) {
@@ -136,58 +113,6 @@ public final class CustomerListResponse implements Iterable<CustomerListResponse
     CustomerListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
 
     return service.list(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public CustomerListResponse autoPaginate() {
-    return new CustomerListResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<CustomerListItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<CustomerListItem> {
-    private CustomerListResponse currentPage = CustomerListResponse.this;
-    private Iterator<CustomerListItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public CustomerListItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class CustomerListItem {

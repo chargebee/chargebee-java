@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.itemEntitlement;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.itemEntitlement.ItemEntitlement;
 
@@ -12,12 +10,9 @@ import com.chargebee.core.models.itemEntitlement.params.ItemEntitlementItemEntit
 
 /**
  * Immutable response object for ItemEntitlementItemEntitlementsForFeature operation. Contains
- * paginated list data with auto-pagination support.
+ * paginated list data.
  */
-public final class ItemEntitlementItemEntitlementsForFeatureResponse
-    implements Iterable<
-        ItemEntitlementItemEntitlementsForFeatureResponse
-            .ItemEntitlementItemEntitlementsForFeatureItem> {
+public final class ItemEntitlementItemEntitlementsForFeatureResponse {
 
   private final List<ItemEntitlementItemEntitlementsForFeatureItem> list;
 
@@ -27,7 +22,6 @@ public final class ItemEntitlementItemEntitlementsForFeatureResponse
 
   private final ItemEntitlementService service;
   private final ItemEntitlementItemEntitlementsForFeatureParams originalParams;
-  private final boolean isAutoPaginate;
 
   private ItemEntitlementItemEntitlementsForFeatureResponse(
       List<ItemEntitlementItemEntitlementsForFeatureItem> list,
@@ -44,26 +38,6 @@ public final class ItemEntitlementItemEntitlementsForFeatureResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private ItemEntitlementItemEntitlementsForFeatureResponse(
-      List<ItemEntitlementItemEntitlementsForFeatureItem> list,
-      String nextOffset,
-      String featureId,
-      ItemEntitlementService service,
-      ItemEntitlementItemEntitlementsForFeatureParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.featureId = featureId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -90,7 +64,7 @@ public final class ItemEntitlementItemEntitlementsForFeatureResponse
 
   /**
    * Parse JSON response into ItemEntitlementItemEntitlementsForFeatureResponse object with service
-   * context for pagination (enables nextPage(), autoPaginate()).
+   * context for pagination (enables nextPage()).
    */
   public static ItemEntitlementItemEntitlementsForFeatureResponse fromJson(
       String json,
@@ -153,62 +127,6 @@ public final class ItemEntitlementItemEntitlementsForFeatureResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.itemEntitlementsForFeature(featureId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public ItemEntitlementItemEntitlementsForFeatureResponse autoPaginate() {
-    return new ItemEntitlementItemEntitlementsForFeatureResponse(
-        list, nextOffset, featureId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<ItemEntitlementItemEntitlementsForFeatureItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator
-      implements Iterator<ItemEntitlementItemEntitlementsForFeatureItem> {
-    private ItemEntitlementItemEntitlementsForFeatureResponse currentPage =
-        ItemEntitlementItemEntitlementsForFeatureResponse.this;
-    private Iterator<ItemEntitlementItemEntitlementsForFeatureItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public ItemEntitlementItemEntitlementsForFeatureItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class ItemEntitlementItemEntitlementsForFeatureItem {

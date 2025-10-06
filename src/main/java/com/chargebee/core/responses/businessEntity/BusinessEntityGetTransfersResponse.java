@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.businessEntity;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.businessEntityTransfer.BusinessEntityTransfer;
 
@@ -11,11 +9,9 @@ import com.chargebee.core.services.BusinessEntityService;
 import com.chargebee.core.models.businessEntity.params.BusinessEntityGetTransfersParams;
 
 /**
- * Immutable response object for BusinessEntityGetTransfers operation. Contains paginated list data
- * with auto-pagination support.
+ * Immutable response object for BusinessEntityGetTransfers operation. Contains paginated list data.
  */
-public final class BusinessEntityGetTransfersResponse
-    implements Iterable<BusinessEntityGetTransfersResponse.BusinessEntityGetTransfersItem> {
+public final class BusinessEntityGetTransfersResponse {
 
   private final List<BusinessEntityGetTransfersItem> list;
 
@@ -23,7 +19,6 @@ public final class BusinessEntityGetTransfersResponse
 
   private final BusinessEntityService service;
   private final BusinessEntityGetTransfersParams originalParams;
-  private final boolean isAutoPaginate;
 
   private BusinessEntityGetTransfersResponse(
       List<BusinessEntityGetTransfersItem> list,
@@ -37,23 +32,6 @@ public final class BusinessEntityGetTransfersResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private BusinessEntityGetTransfersResponse(
-      List<BusinessEntityGetTransfersItem> list,
-      String nextOffset,
-      BusinessEntityService service,
-      BusinessEntityGetTransfersParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -78,7 +56,7 @@ public final class BusinessEntityGetTransfersResponse
 
   /**
    * Parse JSON response into BusinessEntityGetTransfersResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static BusinessEntityGetTransfersResponse fromJson(
       String json, BusinessEntityService service, BusinessEntityGetTransfersParams originalParams) {
@@ -136,59 +114,6 @@ public final class BusinessEntityGetTransfersResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.getTransfers(nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public BusinessEntityGetTransfersResponse autoPaginate() {
-    return new BusinessEntityGetTransfersResponse(list, nextOffset, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<BusinessEntityGetTransfersItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<BusinessEntityGetTransfersItem> {
-    private BusinessEntityGetTransfersResponse currentPage =
-        BusinessEntityGetTransfersResponse.this;
-    private Iterator<BusinessEntityGetTransfersItem> currentIterator = currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public BusinessEntityGetTransfersItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class BusinessEntityGetTransfersItem {

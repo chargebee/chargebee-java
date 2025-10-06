@@ -1,8 +1,6 @@
 package com.chargebee.core.responses.transaction;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import com.chargebee.core.models.transaction.Transaction;
 
@@ -12,10 +10,9 @@ import com.chargebee.core.models.transaction.params.TransactionPaymentsForInvoic
 
 /**
  * Immutable response object for TransactionPaymentsForInvoice operation. Contains paginated list
- * data with auto-pagination support.
+ * data.
  */
-public final class TransactionPaymentsForInvoiceResponse
-    implements Iterable<TransactionPaymentsForInvoiceResponse.TransactionPaymentsForInvoiceItem> {
+public final class TransactionPaymentsForInvoiceResponse {
 
   private final List<TransactionPaymentsForInvoiceItem> list;
 
@@ -25,7 +22,6 @@ public final class TransactionPaymentsForInvoiceResponse
 
   private final TransactionService service;
   private final TransactionPaymentsForInvoiceParams originalParams;
-  private final boolean isAutoPaginate;
 
   private TransactionPaymentsForInvoiceResponse(
       List<TransactionPaymentsForInvoiceItem> list,
@@ -42,26 +38,6 @@ public final class TransactionPaymentsForInvoiceResponse
 
     this.service = service;
     this.originalParams = originalParams;
-    this.isAutoPaginate = false;
-  }
-
-  private TransactionPaymentsForInvoiceResponse(
-      List<TransactionPaymentsForInvoiceItem> list,
-      String nextOffset,
-      String invoiceId,
-      TransactionService service,
-      TransactionPaymentsForInvoiceParams originalParams,
-      boolean isAutoPaginate) {
-
-    this.list = list;
-
-    this.nextOffset = nextOffset;
-
-    this.invoiceId = invoiceId;
-
-    this.service = service;
-    this.originalParams = originalParams;
-    this.isAutoPaginate = isAutoPaginate;
   }
 
   /**
@@ -87,7 +63,7 @@ public final class TransactionPaymentsForInvoiceResponse
 
   /**
    * Parse JSON response into TransactionPaymentsForInvoiceResponse object with service context for
-   * pagination (enables nextPage(), autoPaginate()).
+   * pagination (enables nextPage()).
    */
   public static TransactionPaymentsForInvoiceResponse fromJson(
       String json,
@@ -150,61 +126,6 @@ public final class TransactionPaymentsForInvoiceResponse
         originalParams.toBuilder().offset(nextOffset).build();
 
     return service.paymentsForInvoice(invoiceId, nextParams);
-  }
-
-  /**
-   * Enable auto-pagination for this response. Returns a new response that will automatically
-   * iterate through all pages.
-   */
-  public TransactionPaymentsForInvoiceResponse autoPaginate() {
-    return new TransactionPaymentsForInvoiceResponse(
-        list, nextOffset, invoiceId, service, originalParams, true);
-  }
-
-  /** Iterator implementation for auto-pagination support. */
-  @Override
-  public Iterator<TransactionPaymentsForInvoiceItem> iterator() {
-    if (isAutoPaginate) {
-      return new AutoPaginateIterator();
-    } else {
-      return list.iterator();
-    }
-  }
-
-  /** Internal iterator class for auto-pagination. */
-  private class AutoPaginateIterator implements Iterator<TransactionPaymentsForInvoiceItem> {
-    private TransactionPaymentsForInvoiceResponse currentPage =
-        TransactionPaymentsForInvoiceResponse.this;
-    private Iterator<TransactionPaymentsForInvoiceItem> currentIterator =
-        currentPage.list.iterator();
-
-    @Override
-    public boolean hasNext() {
-      if (currentIterator.hasNext()) {
-        return true;
-      }
-
-      // Try to load next page if available
-      if (currentPage.hasNextPage()) {
-        try {
-          currentPage = currentPage.nextPage();
-          currentIterator = currentPage.list.iterator();
-          return currentIterator.hasNext();
-        } catch (Exception e) {
-          throw new RuntimeException("Failed to fetch next page", e);
-        }
-      }
-
-      return false;
-    }
-
-    @Override
-    public TransactionPaymentsForInvoiceItem next() {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      return currentIterator.next();
-    }
   }
 
   public static class TransactionPaymentsForInvoiceItem {
