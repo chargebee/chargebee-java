@@ -68,7 +68,7 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   public UsageEventCreateResponse create(UsageEventCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, UsageEventCreateResponse.class);
+    return UsageEventCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -91,6 +91,6 @@ public final class UsageEventService extends BaseService<UsageEventService> {
       throws Exception {
     Response response = batchIngestRaw(params);
 
-    return parseResponse(response, UsageEventBatchIngestResponse.class);
+    return UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response);
   }
 }

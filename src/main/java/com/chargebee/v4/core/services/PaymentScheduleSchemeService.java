@@ -68,7 +68,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
   public PaymentScheduleSchemeRetrieveResponse retrieve(String paymentScheduleSchemeId)
       throws Exception {
     Response response = retrieveRaw(paymentScheduleSchemeId);
-    return parseResponse(response, PaymentScheduleSchemeRetrieveResponse.class);
+    return PaymentScheduleSchemeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -93,7 +93,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PaymentScheduleSchemeCreateResponse.class);
+    return PaymentScheduleSchemeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a paymentScheduleScheme (executes immediately) - returns raw Response. */
@@ -110,6 +110,6 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
   public PaymentScheduleSchemeDeleteResponse delete(String paymentScheduleSchemeId)
       throws Exception {
     Response response = deleteRaw(paymentScheduleSchemeId);
-    return parseResponse(response, PaymentScheduleSchemeDeleteResponse.class);
+    return PaymentScheduleSchemeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

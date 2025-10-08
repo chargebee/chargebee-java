@@ -96,12 +96,12 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponListResponse list(CouponListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CouponListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CouponListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CouponListResponse list() throws Exception {
     Response response = listRaw();
-    return CouponListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CouponListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a coupon using immutable params (executes immediately) - returns raw Response. */
@@ -119,7 +119,7 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponCreateResponse create(CouponCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CouponCreateResponse.class);
+    return CouponCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateForItems a coupon (executes immediately) - returns raw Response. */
@@ -151,7 +151,7 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponUpdateForItemsResponse updateForItems(
       String couponId, CouponUpdateForItemsParams params) throws Exception {
     Response response = updateForItemsRaw(couponId, params);
-    return parseResponse(response, CouponUpdateForItemsResponse.class);
+    return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** unarchive a coupon (executes immediately) - returns raw Response. */
@@ -163,7 +163,7 @@ public final class CouponService extends BaseService<CouponService> {
 
   public CouponUnarchiveResponse unarchive(String couponId) throws Exception {
     Response response = unarchiveRaw(couponId);
-    return parseResponse(response, CouponUnarchiveResponse.class);
+    return CouponUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a coupon (executes immediately) - returns raw Response. */
@@ -175,7 +175,7 @@ public final class CouponService extends BaseService<CouponService> {
 
   public CouponDeleteResponse delete(String couponId) throws Exception {
     Response response = deleteRaw(couponId);
-    return parseResponse(response, CouponDeleteResponse.class);
+    return CouponDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** copy a coupon using immutable params (executes immediately) - returns raw Response. */
@@ -193,7 +193,7 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponCopyResponse copy(CouponCopyParams params) throws Exception {
     Response response = copyRaw(params);
 
-    return parseResponse(response, CouponCopyResponse.class);
+    return CouponCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a coupon (executes immediately) - returns raw Response. */
@@ -205,7 +205,7 @@ public final class CouponService extends BaseService<CouponService> {
 
   public CouponRetrieveResponse retrieve(String couponId) throws Exception {
     Response response = retrieveRaw(couponId);
-    return parseResponse(response, CouponRetrieveResponse.class);
+    return CouponRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a coupon (executes immediately) - returns raw Response. */
@@ -229,7 +229,7 @@ public final class CouponService extends BaseService<CouponService> {
 
   public CouponUpdateResponse update(String couponId, CouponUpdateParams params) throws Exception {
     Response response = updateRaw(couponId, params);
-    return parseResponse(response, CouponUpdateResponse.class);
+    return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -252,6 +252,6 @@ public final class CouponService extends BaseService<CouponService> {
       throws Exception {
     Response response = createForItemsRaw(params);
 
-    return parseResponse(response, CouponCreateForItemsResponse.class);
+    return CouponCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 }

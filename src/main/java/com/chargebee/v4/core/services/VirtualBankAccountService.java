@@ -80,7 +80,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
   public VirtualBankAccountDeleteLocalResponse deleteLocal(String virtualBankAccountId)
       throws Exception {
     Response response = deleteLocalRaw(virtualBankAccountId);
-    return parseResponse(response, VirtualBankAccountDeleteLocalResponse.class);
+    return VirtualBankAccountDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a virtualBankAccount (executes immediately) - returns raw Response. */
@@ -96,7 +96,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
   public VirtualBankAccountDeleteResponse delete(String virtualBankAccountId) throws Exception {
     Response response = deleteRaw(virtualBankAccountId);
-    return parseResponse(response, VirtualBankAccountDeleteResponse.class);
+    return VirtualBankAccountDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -124,12 +124,14 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
   public VirtualBankAccountListResponse list(VirtualBankAccountListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return VirtualBankAccountListResponse.fromJson(response.getBodyAsString(), this, params);
+    return VirtualBankAccountListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public VirtualBankAccountListResponse list() throws Exception {
     Response response = listRaw();
-    return VirtualBankAccountListResponse.fromJson(response.getBodyAsString(), this, null);
+    return VirtualBankAccountListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -154,7 +156,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, VirtualBankAccountCreateResponse.class);
+    return VirtualBankAccountCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** syncFund a virtualBankAccount (executes immediately) - returns raw Response. */
@@ -170,7 +172,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
   public VirtualBankAccountSyncFundResponse syncFund(String virtualBankAccountId) throws Exception {
     Response response = syncFundRaw(virtualBankAccountId);
-    return parseResponse(response, VirtualBankAccountSyncFundResponse.class);
+    return VirtualBankAccountSyncFundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a virtualBankAccount (executes immediately) - returns raw Response. */
@@ -186,7 +188,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
   public VirtualBankAccountRetrieveResponse retrieve(String virtualBankAccountId) throws Exception {
     Response response = retrieveRaw(virtualBankAccountId);
-    return parseResponse(response, VirtualBankAccountRetrieveResponse.class);
+    return VirtualBankAccountRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -214,6 +216,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
       VirtualBankAccountCreateUsingPermanentTokenParams params) throws Exception {
     Response response = createUsingPermanentTokenRaw(params);
 
-    return parseResponse(response, VirtualBankAccountCreateUsingPermanentTokenResponse.class);
+    return VirtualBankAccountCreateUsingPermanentTokenResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

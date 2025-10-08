@@ -227,7 +227,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceDeleteLineItemsResponse deleteLineItems(
       String invoiceId, InvoiceDeleteLineItemsParams params) throws Exception {
     Response response = deleteLineItemsRaw(invoiceId, params);
-    return parseResponse(response, InvoiceDeleteLineItemsResponse.class);
+    return InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeCreditNote a invoice (executes immediately) - returns raw Response. */
@@ -262,7 +262,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRemoveCreditNoteResponse removeCreditNote(
       String invoiceId, InvoiceRemoveCreditNoteParams params) throws Exception {
     Response response = removeCreditNoteRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRemoveCreditNoteResponse.class);
+    return InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removePayment a invoice (executes immediately) - returns raw Response. */
@@ -294,7 +294,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRemovePaymentResponse removePayment(
       String invoiceId, InvoiceRemovePaymentParams params) throws Exception {
     Response response = removePaymentRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRemovePaymentResponse.class);
+    return InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** stopDunning a invoice (executes immediately) - returns raw Response. */
@@ -322,7 +322,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceStopDunningResponse stopDunning(String invoiceId, InvoiceStopDunningParams params)
       throws Exception {
     Response response = stopDunningRaw(invoiceId, params);
-    return parseResponse(response, InvoiceStopDunningResponse.class);
+    return InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** applyPayments a invoice (executes immediately) - returns raw Response. */
@@ -354,7 +354,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceApplyPaymentsResponse applyPayments(
       String invoiceId, InvoiceApplyPaymentsParams params) throws Exception {
     Response response = applyPaymentsRaw(invoiceId, params);
-    return parseResponse(response, InvoiceApplyPaymentsResponse.class);
+    return InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** applyPaymentScheduleScheme a invoice (executes immediately) - returns raw Response. */
@@ -392,7 +392,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceApplyPaymentScheduleSchemeResponse applyPaymentScheduleScheme(
       String invoiceId, InvoiceApplyPaymentScheduleSchemeParams params) throws Exception {
     Response response = applyPaymentScheduleSchemeRaw(invoiceId, params);
-    return parseResponse(response, InvoiceApplyPaymentScheduleSchemeResponse.class);
+    return InvoiceApplyPaymentScheduleSchemeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** voidInvoice a invoice (executes immediately) - returns raw Response. */
@@ -417,7 +417,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceVoidInvoiceResponse voidInvoice(String invoiceId, InvoiceVoidInvoiceParams params)
       throws Exception {
     Response response = voidInvoiceRaw(invoiceId, params);
-    return parseResponse(response, InvoiceVoidInvoiceResponse.class);
+    return InvoiceVoidInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addCharge a invoice (executes immediately) - returns raw Response. */
@@ -442,7 +442,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceAddChargeResponse addCharge(String invoiceId, InvoiceAddChargeParams params)
       throws Exception {
     Response response = addChargeRaw(invoiceId, params);
-    return parseResponse(response, InvoiceAddChargeResponse.class);
+    return InvoiceAddChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** sendEinvoice a invoice (executes immediately) - returns raw Response. */
@@ -455,7 +455,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceSendEinvoiceResponse sendEinvoice(String invoiceId) throws Exception {
     Response response = sendEinvoiceRaw(invoiceId);
-    return parseResponse(response, InvoiceSendEinvoiceResponse.class);
+    return InvoiceSendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** paymentSchedules a invoice (executes immediately) - returns raw Response. */
@@ -468,7 +468,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoicePaymentSchedulesResponse paymentSchedules(String invoiceId) throws Exception {
     Response response = paymentSchedulesRaw(invoiceId);
-    return parseResponse(response, InvoicePaymentSchedulesResponse.class);
+    return InvoicePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** writeOff a invoice (executes immediately) - returns raw Response. */
@@ -493,7 +493,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceWriteOffResponse writeOff(String invoiceId, InvoiceWriteOffParams params)
       throws Exception {
     Response response = writeOffRaw(invoiceId, params);
-    return parseResponse(response, InvoiceWriteOffResponse.class);
+    return InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addChargeItem a invoice (executes immediately) - returns raw Response. */
@@ -525,7 +525,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceAddChargeItemResponse addChargeItem(
       String invoiceId, InvoiceAddChargeItemParams params) throws Exception {
     Response response = addChargeItemRaw(invoiceId, params);
-    return parseResponse(response, InvoiceAddChargeItemResponse.class);
+    return InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** pauseDunning a invoice (executes immediately) - returns raw Response. */
@@ -557,7 +557,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoicePauseDunningResponse pauseDunning(
       String invoiceId, InvoicePauseDunningParams params) throws Exception {
     Response response = pauseDunningRaw(invoiceId, params);
-    return parseResponse(response, InvoicePauseDunningResponse.class);
+    return InvoicePauseDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a invoice using immutable params (executes immediately) - returns raw Response. */
@@ -581,12 +581,12 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceListResponse list(InvoiceListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return InvoiceListResponse.fromJson(response.getBodyAsString(), this, params);
+    return InvoiceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public InvoiceListResponse list() throws Exception {
     Response response = listRaw();
-    return InvoiceListResponse.fromJson(response.getBodyAsString(), this, null);
+    return InvoiceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a invoice using immutable params (executes immediately) - returns raw Response. */
@@ -604,7 +604,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceCreateResponse create(InvoiceCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, InvoiceCreateResponse.class);
+    return InvoiceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** close a invoice (executes immediately) - returns raw Response. */
@@ -628,7 +628,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceCloseResponse close(String invoiceId, InvoiceCloseParams params) throws Exception {
     Response response = closeRaw(invoiceId, params);
-    return parseResponse(response, InvoiceCloseResponse.class);
+    return InvoiceCloseResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** applyCredits a invoice (executes immediately) - returns raw Response. */
@@ -660,7 +660,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceApplyCreditsResponse applyCredits(
       String invoiceId, InvoiceApplyCreditsParams params) throws Exception {
     Response response = applyCreditsRaw(invoiceId, params);
-    return parseResponse(response, InvoiceApplyCreditsResponse.class);
+    return InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a invoice (executes immediately) - returns raw Response. */
@@ -672,7 +672,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceRetrieveResponse retrieve(String invoiceId) throws Exception {
     Response response = retrieveRaw(invoiceId);
-    return parseResponse(response, InvoiceRetrieveResponse.class);
+    return InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -697,7 +697,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       InvoiceCreateForChargeItemParams params) throws Exception {
     Response response = createForChargeItemRaw(params);
 
-    return parseResponse(response, InvoiceCreateForChargeItemResponse.class);
+    return InvoiceCreateForChargeItemResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -725,7 +725,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       InvoiceCreateForChargeItemsAndChargesParams params) throws Exception {
     Response response = createForChargeItemsAndChargesRaw(params);
 
-    return parseResponse(response, InvoiceCreateForChargeItemsAndChargesResponse.class);
+    return InvoiceCreateForChargeItemsAndChargesResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** deleteImported a invoice (executes immediately) - returns raw Response. */
@@ -758,7 +759,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceDeleteImportedResponse deleteImported(
       String invoiceId, InvoiceDeleteImportedParams params) throws Exception {
     Response response = deleteImportedRaw(invoiceId, params);
-    return parseResponse(response, InvoiceDeleteImportedResponse.class);
+    return InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateDetails a invoice (executes immediately) - returns raw Response. */
@@ -790,7 +791,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceUpdateDetailsResponse updateDetails(
       String invoiceId, InvoiceUpdateDetailsParams params) throws Exception {
     Response response = updateDetailsRaw(invoiceId, params);
-    return parseResponse(response, InvoiceUpdateDetailsResponse.class);
+    return InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -825,14 +826,14 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String customerId, InvoiceInvoicesForCustomerParams params) throws Exception {
     Response response = invoicesForCustomerRaw(customerId, params);
     return InvoiceInvoicesForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public InvoiceInvoicesForCustomerResponse invoicesForCustomer(String customerId)
       throws Exception {
     Response response = invoicesForCustomerRaw(customerId);
     return InvoiceInvoicesForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** recordPayment a invoice (executes immediately) - returns raw Response. */
@@ -864,7 +865,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRecordPaymentResponse recordPayment(
       String invoiceId, InvoiceRecordPaymentParams params) throws Exception {
     Response response = recordPaymentRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRecordPaymentResponse.class);
+    return InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a invoice (executes immediately) - returns raw Response. */
@@ -889,7 +890,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceDeleteResponse delete(String invoiceId, InvoiceDeleteParams params)
       throws Exception {
     Response response = deleteRaw(invoiceId, params);
-    return parseResponse(response, InvoiceDeleteResponse.class);
+    return InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -912,7 +913,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       throws Exception {
     Response response = importInvoiceRaw(params);
 
-    return parseResponse(response, InvoiceImportInvoiceResponse.class);
+    return InvoiceImportInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resumeDunning a invoice (executes immediately) - returns raw Response. */
@@ -944,7 +945,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceResumeDunningResponse resumeDunning(
       String invoiceId, InvoiceResumeDunningParams params) throws Exception {
     Response response = resumeDunningRaw(invoiceId, params);
-    return parseResponse(response, InvoiceResumeDunningResponse.class);
+    return InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** recordTaxWithheld a invoice (executes immediately) - returns raw Response. */
@@ -979,7 +980,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRecordTaxWithheldResponse recordTaxWithheld(
       String invoiceId, InvoiceRecordTaxWithheldParams params) throws Exception {
     Response response = recordTaxWithheldRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRecordTaxWithheldResponse.class);
+    return InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resendEinvoice a invoice (executes immediately) - returns raw Response. */
@@ -992,7 +993,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceResendEinvoiceResponse resendEinvoice(String invoiceId) throws Exception {
     Response response = resendEinvoiceRaw(invoiceId);
-    return parseResponse(response, InvoiceResendEinvoiceResponse.class);
+    return InvoiceResendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeTaxWithheld a invoice (executes immediately) - returns raw Response. */
@@ -1027,7 +1028,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRemoveTaxWithheldResponse removeTaxWithheld(
       String invoiceId, InvoiceRemoveTaxWithheldParams params) throws Exception {
     Response response = removeTaxWithheldRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRemoveTaxWithheldResponse.class);
+    return InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -1064,13 +1065,13 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     Response response = listPaymentReferenceNumbersRaw(params);
 
     return InvoiceListPaymentReferenceNumbersResponse.fromJson(
-        response.getBodyAsString(), this, params);
+        response.getBodyAsString(), this, params, response);
   }
 
   public InvoiceListPaymentReferenceNumbersResponse listPaymentReferenceNumbers() throws Exception {
     Response response = listPaymentReferenceNumbersRaw();
     return InvoiceListPaymentReferenceNumbersResponse.fromJson(
-        response.getBodyAsString(), this, null);
+        response.getBodyAsString(), this, null, response);
   }
 
   /** collectPayment a invoice (executes immediately) - returns raw Response. */
@@ -1103,7 +1104,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceCollectPaymentResponse collectPayment(
       String invoiceId, InvoiceCollectPaymentParams params) throws Exception {
     Response response = collectPaymentRaw(invoiceId, params);
-    return parseResponse(response, InvoiceCollectPaymentResponse.class);
+    return InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** syncUsages a invoice (executes immediately) - returns raw Response. */
@@ -1116,7 +1117,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceSyncUsagesResponse syncUsages(String invoiceId) throws Exception {
     Response response = syncUsagesRaw(invoiceId);
-    return parseResponse(response, InvoiceSyncUsagesResponse.class);
+    return InvoiceSyncUsagesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** refund a invoice (executes immediately) - returns raw Response. */
@@ -1141,7 +1142,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRefundResponse refund(String invoiceId, InvoiceRefundParams params)
       throws Exception {
     Response response = refundRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRefundResponse.class);
+    return InvoiceRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** recordRefund a invoice (executes immediately) - returns raw Response. */
@@ -1173,7 +1174,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRecordRefundResponse recordRefund(
       String invoiceId, InvoiceRecordRefundParams params) throws Exception {
     Response response = recordRefundRaw(invoiceId, params);
-    return parseResponse(response, InvoiceRecordRefundResponse.class);
+    return InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** pdf a invoice (executes immediately) - returns raw Response. */
@@ -1197,7 +1198,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoicePdfResponse pdf(String invoiceId, InvoicePdfParams params) throws Exception {
     Response response = pdfRaw(invoiceId, params);
-    return parseResponse(response, InvoicePdfResponse.class);
+    return InvoicePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -1237,14 +1238,14 @@ public final class InvoiceService extends BaseService<InvoiceService> {
       String subscriptionId, InvoiceInvoicesForSubscriptionParams params) throws Exception {
     Response response = invoicesForSubscriptionRaw(subscriptionId, params);
     return InvoiceInvoicesForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public InvoiceInvoicesForSubscriptionResponse invoicesForSubscription(String subscriptionId)
       throws Exception {
     Response response = invoicesForSubscriptionRaw(subscriptionId);
     return InvoiceInvoicesForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /** downloadEinvoice a invoice (executes immediately) - returns raw Response. */
@@ -1257,7 +1258,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceDownloadEinvoiceResponse downloadEinvoice(String invoiceId) throws Exception {
     Response response = downloadEinvoiceRaw(invoiceId);
-    return parseResponse(response, InvoiceDownloadEinvoiceResponse.class);
+    return InvoiceDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** chargeAddon a invoice using immutable params (executes immediately) - returns raw Response. */
@@ -1275,7 +1276,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceChargeAddonResponse chargeAddon(InvoiceChargeAddonParams params) throws Exception {
     Response response = chargeAddonRaw(params);
 
-    return parseResponse(response, InvoiceChargeAddonResponse.class);
+    return InvoiceChargeAddonResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addAddonCharge a invoice (executes immediately) - returns raw Response. */
@@ -1308,7 +1309,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceAddAddonChargeResponse addAddonCharge(
       String invoiceId, InvoiceAddAddonChargeParams params) throws Exception {
     Response response = addAddonChargeRaw(invoiceId, params);
-    return parseResponse(response, InvoiceAddAddonChargeResponse.class);
+    return InvoiceAddAddonChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** charge a invoice using immutable params (executes immediately) - returns raw Response. */
@@ -1326,6 +1327,6 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceChargeResponse charge(InvoiceChargeParams params) throws Exception {
     Response response = chargeRaw(params);
 
-    return parseResponse(response, InvoiceChargeResponse.class);
+    return InvoiceChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 }

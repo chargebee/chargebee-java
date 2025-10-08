@@ -86,7 +86,8 @@ public final class ThirdPartyEntityMappingService
       ThirdPartyEntityMappingRetrieveEntityParams params) throws Exception {
     Response response = retrieveEntityRaw(params);
 
-    return parseResponse(response, ThirdPartyEntityMappingRetrieveEntityResponse.class);
+    return ThirdPartyEntityMappingRetrieveEntityResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -112,7 +113,7 @@ public final class ThirdPartyEntityMappingService
       throws Exception {
     Response response = listAllRaw(params);
 
-    return parseResponse(response, ThirdPartyEntityMappingListAllResponse.class);
+    return ThirdPartyEntityMappingListAllResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -138,7 +139,8 @@ public final class ThirdPartyEntityMappingService
       ThirdPartyEntityMappingUpdateEntityParams params) throws Exception {
     Response response = updateEntityRaw(params);
 
-    return parseResponse(response, ThirdPartyEntityMappingUpdateEntityResponse.class);
+    return ThirdPartyEntityMappingUpdateEntityResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -171,11 +173,13 @@ public final class ThirdPartyEntityMappingService
       throws Exception {
     Response response = listRaw(params);
 
-    return ThirdPartyEntityMappingListResponse.fromJson(response.getBodyAsString(), this, params);
+    return ThirdPartyEntityMappingListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public ThirdPartyEntityMappingListResponse list() throws Exception {
     Response response = listRaw();
-    return ThirdPartyEntityMappingListResponse.fromJson(response.getBodyAsString(), this, null);
+    return ThirdPartyEntityMappingListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 }

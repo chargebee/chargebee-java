@@ -153,7 +153,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutOneTimeForItemsParams params) throws Exception {
     Response response = checkoutOneTimeForItemsRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutOneTimeForItemsResponse.class);
+    return HostedPageCheckoutOneTimeForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -178,7 +178,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageUpdatePaymentMethodParams params) throws Exception {
     Response response = updatePaymentMethodRaw(params);
 
-    return parseResponse(response, HostedPageUpdatePaymentMethodResponse.class);
+    return HostedPageUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -201,7 +201,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = updateCardRaw(params);
 
-    return parseResponse(response, HostedPageUpdateCardResponse.class);
+    return HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -226,7 +226,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageExtendSubscriptionParams params) throws Exception {
     Response response = extendSubscriptionRaw(params);
 
-    return parseResponse(response, HostedPageExtendSubscriptionResponse.class);
+    return HostedPageExtendSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** events a hostedPage using immutable params (executes immediately) - returns raw Response. */
@@ -244,7 +244,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPageEventsResponse events(HostedPageEventsParams params) throws Exception {
     Response response = eventsRaw(params);
 
-    return parseResponse(response, HostedPageEventsResponse.class);
+    return HostedPageEventsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -270,7 +270,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutGiftForItemsParams params) throws Exception {
     Response response = checkoutGiftForItemsRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutGiftForItemsResponse.class);
+    return HostedPageCheckoutGiftForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a hostedPage using immutable params (executes immediately) - returns raw Response. */
@@ -294,12 +294,12 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPageListResponse list(HostedPageListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return HostedPageListResponse.fromJson(response.getBodyAsString(), this, params);
+    return HostedPageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public HostedPageListResponse list() throws Exception {
     Response response = listRaw();
-    return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null);
+    return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -322,7 +322,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = viewVoucherRaw(params);
 
-    return parseResponse(response, HostedPageViewVoucherResponse.class);
+    return HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -345,7 +345,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = collectNowRaw(params);
 
-    return parseResponse(response, HostedPageCollectNowResponse.class);
+    return HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -368,7 +368,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = acceptQuoteRaw(params);
 
-    return parseResponse(response, HostedPageAcceptQuoteResponse.class);
+    return HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -394,7 +394,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutNewForItemsParams params) throws Exception {
     Response response = checkoutNewForItemsRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutNewForItemsResponse.class);
+    return HostedPageCheckoutNewForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -416,7 +416,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPageClaimGiftResponse claimGift(HostedPageClaimGiftParams params) throws Exception {
     Response response = claimGiftRaw(params);
 
-    return parseResponse(response, HostedPageClaimGiftResponse.class);
+    return HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -443,7 +443,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutExistingForItemsParams params) throws Exception {
     Response response = checkoutExistingForItemsRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutExistingForItemsResponse.class);
+    return HostedPageCheckoutExistingForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -465,7 +466,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPagePreCancelResponse preCancel(HostedPagePreCancelParams params) throws Exception {
     Response response = preCancelRaw(params);
 
-    return parseResponse(response, HostedPagePreCancelResponse.class);
+    return HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** acknowledge a hostedPage (executes immediately) - returns raw Response. */
@@ -479,7 +480,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
 
   public HostedPageAcknowledgeResponse acknowledge(String hostedPageId) throws Exception {
     Response response = acknowledgeRaw(hostedPageId);
-    return parseResponse(response, HostedPageAcknowledgeResponse.class);
+    return HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -505,7 +506,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageRetrieveAgreementPdfParams params) throws Exception {
     Response response = retrieveAgreementPdfRaw(params);
 
-    return parseResponse(response, HostedPageRetrieveAgreementPdfResponse.class);
+    return HostedPageRetrieveAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a hostedPage (executes immediately) - returns raw Response. */
@@ -518,7 +519,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
 
   public HostedPageRetrieveResponse retrieve(String hostedPageId) throws Exception {
     Response response = retrieveRaw(hostedPageId);
-    return parseResponse(response, HostedPageRetrieveResponse.class);
+    return HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -544,7 +545,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageManagePaymentSourcesParams params) throws Exception {
     Response response = managePaymentSourcesRaw(params);
 
-    return parseResponse(response, HostedPageManagePaymentSourcesResponse.class);
+    return HostedPageManagePaymentSourcesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -569,7 +570,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = checkoutOneTimeRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutOneTimeResponse.class);
+    return HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -592,7 +593,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = checkoutNewRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutNewResponse.class);
+    return HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -615,7 +616,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       throws Exception {
     Response response = checkoutGiftRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutGiftResponse.class);
+    return HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -640,6 +641,6 @@ public final class HostedPageService extends BaseService<HostedPageService> {
       HostedPageCheckoutExistingParams params) throws Exception {
     Response response = checkoutExistingRaw(params);
 
-    return parseResponse(response, HostedPageCheckoutExistingResponse.class);
+    return HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response);
   }
 }

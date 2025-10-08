@@ -72,12 +72,12 @@ public final class EventService extends BaseService<EventService> {
   public EventListResponse list(EventListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return EventListResponse.fromJson(response.getBodyAsString(), this, params);
+    return EventListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public EventListResponse list() throws Exception {
     Response response = listRaw();
-    return EventListResponse.fromJson(response.getBodyAsString(), this, null);
+    return EventListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** retrieve a event (executes immediately) - returns raw Response. */
@@ -89,6 +89,6 @@ public final class EventService extends BaseService<EventService> {
 
   public EventRetrieveResponse retrieve(String eventId) throws Exception {
     Response response = retrieveRaw(eventId);
-    return parseResponse(response, EventRetrieveResponse.class);
+    return EventRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

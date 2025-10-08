@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.thirdPartyEntityMapping.ThirdPartyEntityMapping;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.ThirdPartyEntityMappingService;
 import com.chargebee.v4.core.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingListParams;
 
@@ -20,12 +21,14 @@ public final class ThirdPartyEntityMappingListResponse {
 
   private final ThirdPartyEntityMappingService service;
   private final ThirdPartyEntityMappingListParams originalParams;
+  private final Response httpResponse;
 
   private ThirdPartyEntityMappingListResponse(
       List<ThirdPartyEntityMappingListItem> list,
       String nextOffset,
       ThirdPartyEntityMappingService service,
-      ThirdPartyEntityMappingListParams originalParams) {
+      ThirdPartyEntityMappingListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -33,6 +36,7 @@ public final class ThirdPartyEntityMappingListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -49,7 +53,7 @@ public final class ThirdPartyEntityMappingListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new ThirdPartyEntityMappingListResponse(list, nextOffset, null, null);
+      return new ThirdPartyEntityMappingListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ThirdPartyEntityMappingListResponse from JSON", e);
@@ -63,7 +67,8 @@ public final class ThirdPartyEntityMappingListResponse {
   public static ThirdPartyEntityMappingListResponse fromJson(
       String json,
       ThirdPartyEntityMappingService service,
-      ThirdPartyEntityMappingListParams originalParams) {
+      ThirdPartyEntityMappingListParams originalParams,
+      Response httpResponse) {
     try {
 
       List<ThirdPartyEntityMappingListItem> list =
@@ -73,7 +78,8 @@ public final class ThirdPartyEntityMappingListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new ThirdPartyEntityMappingListResponse(list, nextOffset, service, originalParams);
+      return new ThirdPartyEntityMappingListResponse(
+          list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ThirdPartyEntityMappingListResponse from JSON", e);
@@ -109,16 +115,45 @@ public final class ThirdPartyEntityMappingListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     ThirdPartyEntityMappingListParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : ThirdPartyEntityMappingListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class ThirdPartyEntityMappingListItem {

@@ -53,8 +53,8 @@ public final class CurlFormatter {
             }
         }
         
-        // Add URL (always last)
-        curl.append(" \\\n  '").append(escapeForShell(request.getUrl())).append("'");
+        // Add URL (always last, with decoded query params for readability)
+        curl.append(" \\\n  '").append(escapeForShell(decodeUrlQueryParams(request.getUrl()))).append("'");
         
         return curl.toString();
     }
@@ -101,8 +101,8 @@ public final class CurlFormatter {
             }
         }
         
-        // Add URL
-        curl.append(" '").append(escapeForShell(request.getUrl())).append("'");
+        // Add URL (with decoded query params for readability)
+        curl.append(" '").append(escapeForShell(decodeUrlQueryParams(request.getUrl()))).append("'");
         
         return curl.toString();
     }
@@ -137,6 +137,33 @@ public final class CurlFormatter {
         } catch (Exception e) {
             // If decoding fails, return the original string
             return input;
+        }
+    }
+    
+    /**
+     * Decode query parameters in a URL for better readability.
+     * Keeps the base URL and path intact, only decodes the query string.
+     */
+    private static String decodeUrlQueryParams(String url) {
+        if (url == null || url.isEmpty()) {
+            return url;
+        }
+        
+        int queryStart = url.indexOf('?');
+        if (queryStart == -1) {
+            // No query string, return as-is
+            return url;
+        }
+        
+        String baseUrl = url.substring(0, queryStart);
+        String queryString = url.substring(queryStart + 1);
+        
+        try {
+            String decodedQuery = java.net.URLDecoder.decode(queryString, "UTF-8");
+            return baseUrl + "?" + decodedQuery;
+        } catch (Exception e) {
+            // If decoding fails, return the original URL
+            return url;
         }
     }
     

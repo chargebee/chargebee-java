@@ -73,7 +73,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
 
   public PriceVariantDeleteResponse delete(String priceVariantId) throws Exception {
     Response response = deleteRaw(priceVariantId);
-    return parseResponse(response, PriceVariantDeleteResponse.class);
+    return PriceVariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a priceVariant using immutable params (executes immediately) - returns raw Response. */
@@ -97,12 +97,12 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   public PriceVariantListResponse list(PriceVariantListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, params);
+    return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public PriceVariantListResponse list() throws Exception {
     Response response = listRaw();
-    return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, null);
+    return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a priceVariant using immutable params (executes immediately) - returns raw Response. */
@@ -120,7 +120,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   public PriceVariantCreateResponse create(PriceVariantCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PriceVariantCreateResponse.class);
+    return PriceVariantCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a priceVariant (executes immediately) - returns raw Response. */
@@ -134,7 +134,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
 
   public PriceVariantRetrieveResponse retrieve(String priceVariantId) throws Exception {
     Response response = retrieveRaw(priceVariantId);
-    return parseResponse(response, PriceVariantRetrieveResponse.class);
+    return PriceVariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a priceVariant (executes immediately) - returns raw Response. */
@@ -165,6 +165,6 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   public PriceVariantUpdateResponse update(String priceVariantId, PriceVariantUpdateParams params)
       throws Exception {
     Response response = updateRaw(priceVariantId, params);
-    return parseResponse(response, PriceVariantUpdateResponse.class);
+    return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

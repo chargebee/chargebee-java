@@ -64,6 +64,6 @@ public final class FullExportService extends BaseService<FullExportService> {
   public FullExportStatusResponse status(FullExportStatusParams params) throws Exception {
     Response response = statusRaw(params);
 
-    return parseResponse(response, FullExportStatusResponse.class);
+    return FullExportStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 }

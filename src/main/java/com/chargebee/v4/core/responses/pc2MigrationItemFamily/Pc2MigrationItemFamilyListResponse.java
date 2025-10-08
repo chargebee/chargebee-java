@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.Pc2MigrationItemFamilyService;
 import com.chargebee.v4.core.models.pc2MigrationItemFamily.params.Pc2MigrationItemFamilyListParams;
 
@@ -18,12 +19,14 @@ public final class Pc2MigrationItemFamilyListResponse {
 
   private final Pc2MigrationItemFamilyService service;
   private final Pc2MigrationItemFamilyListParams originalParams;
+  private final Response httpResponse;
 
   private Pc2MigrationItemFamilyListResponse(
       List<Object> list,
       String nextOffset,
       Pc2MigrationItemFamilyService service,
-      Pc2MigrationItemFamilyListParams originalParams) {
+      Pc2MigrationItemFamilyListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -31,6 +34,7 @@ public final class Pc2MigrationItemFamilyListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -45,7 +49,7 @@ public final class Pc2MigrationItemFamilyListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new Pc2MigrationItemFamilyListResponse(list, nextOffset, null, null);
+      return new Pc2MigrationItemFamilyListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse Pc2MigrationItemFamilyListResponse from JSON", e);
     }
@@ -58,7 +62,8 @@ public final class Pc2MigrationItemFamilyListResponse {
   public static Pc2MigrationItemFamilyListResponse fromJson(
       String json,
       Pc2MigrationItemFamilyService service,
-      Pc2MigrationItemFamilyListParams originalParams) {
+      Pc2MigrationItemFamilyListParams originalParams,
+      Response httpResponse) {
     try {
 
       List<Object> list =
@@ -66,7 +71,8 @@ public final class Pc2MigrationItemFamilyListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new Pc2MigrationItemFamilyListResponse(list, nextOffset, service, originalParams);
+      return new Pc2MigrationItemFamilyListResponse(
+          list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse Pc2MigrationItemFamilyListResponse from JSON", e);
     }
@@ -101,15 +107,44 @@ public final class Pc2MigrationItemFamilyListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     Pc2MigrationItemFamilyListParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : Pc2MigrationItemFamilyListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

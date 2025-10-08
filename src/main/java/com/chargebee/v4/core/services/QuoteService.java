@@ -165,7 +165,8 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteCreateSubItemsForCustomerQuoteResponse createSubItemsForCustomerQuote(
       String customerId, QuoteCreateSubItemsForCustomerQuoteParams params) throws Exception {
     Response response = createSubItemsForCustomerQuoteRaw(customerId, params);
-    return parseResponse(response, QuoteCreateSubItemsForCustomerQuoteResponse.class);
+    return QuoteCreateSubItemsForCustomerQuoteResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** retrieve a quote (executes immediately) - returns raw Response. */
@@ -177,7 +178,7 @@ public final class QuoteService extends BaseService<QuoteService> {
 
   public QuoteRetrieveResponse retrieve(String quoteId) throws Exception {
     Response response = retrieveRaw(quoteId);
-    return parseResponse(response, QuoteRetrieveResponse.class);
+    return QuoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editCreateSubCustomerQuoteForItems a quote (executes immediately) - returns raw Response. */
@@ -216,7 +217,8 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditCreateSubCustomerQuoteForItemsResponse editCreateSubCustomerQuoteForItems(
       String quoteId, QuoteEditCreateSubCustomerQuoteForItemsParams params) throws Exception {
     Response response = editCreateSubCustomerQuoteForItemsRaw(quoteId, params);
-    return parseResponse(response, QuoteEditCreateSubCustomerQuoteForItemsResponse.class);
+    return QuoteEditCreateSubCustomerQuoteForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** updateStatus a quote (executes immediately) - returns raw Response. */
@@ -241,7 +243,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteUpdateStatusResponse updateStatus(String quoteId, QuoteUpdateStatusParams params)
       throws Exception {
     Response response = updateStatusRaw(quoteId, params);
-    return parseResponse(response, QuoteUpdateStatusResponse.class);
+    return QuoteUpdateStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -268,7 +270,8 @@ public final class QuoteService extends BaseService<QuoteService> {
       QuoteUpdateSubscriptionQuoteForItemsParams params) throws Exception {
     Response response = updateSubscriptionQuoteForItemsRaw(params);
 
-    return parseResponse(response, QuoteUpdateSubscriptionQuoteForItemsResponse.class);
+    return QuoteUpdateSubscriptionQuoteForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -302,14 +305,14 @@ public final class QuoteService extends BaseService<QuoteService> {
       String quoteId, QuoteQuoteLineGroupsForQuoteParams params) throws Exception {
     Response response = quoteLineGroupsForQuoteRaw(quoteId, params);
     return QuoteQuoteLineGroupsForQuoteResponse.fromJson(
-        response.getBodyAsString(), this, params, quoteId);
+        response.getBodyAsString(), this, params, quoteId, response);
   }
 
   public QuoteQuoteLineGroupsForQuoteResponse quoteLineGroupsForQuote(String quoteId)
       throws Exception {
     Response response = quoteLineGroupsForQuoteRaw(quoteId);
     return QuoteQuoteLineGroupsForQuoteResponse.fromJson(
-        response.getBodyAsString(), this, null, quoteId);
+        response.getBodyAsString(), this, null, quoteId, response);
   }
 
   /** extendExpiryDate a quote (executes immediately) - returns raw Response. */
@@ -339,7 +342,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteExtendExpiryDateResponse extendExpiryDate(
       String quoteId, QuoteExtendExpiryDateParams params) throws Exception {
     Response response = extendExpiryDateRaw(quoteId, params);
-    return parseResponse(response, QuoteExtendExpiryDateResponse.class);
+    return QuoteExtendExpiryDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editForChargeItemsAndCharges a quote (executes immediately) - returns raw Response. */
@@ -377,7 +380,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditForChargeItemsAndChargesResponse editForChargeItemsAndCharges(
       String quoteId, QuoteEditForChargeItemsAndChargesParams params) throws Exception {
     Response response = editForChargeItemsAndChargesRaw(quoteId, params);
-    return parseResponse(response, QuoteEditForChargeItemsAndChargesResponse.class);
+    return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editUpdateSubscriptionQuoteForItems a quote (executes immediately) - returns raw Response. */
@@ -416,7 +419,8 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditUpdateSubscriptionQuoteForItemsResponse editUpdateSubscriptionQuoteForItems(
       String quoteId, QuoteEditUpdateSubscriptionQuoteForItemsParams params) throws Exception {
     Response response = editUpdateSubscriptionQuoteForItemsRaw(quoteId, params);
-    return parseResponse(response, QuoteEditUpdateSubscriptionQuoteForItemsResponse.class);
+    return QuoteEditUpdateSubscriptionQuoteForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** list a quote using immutable params (executes immediately) - returns raw Response. */
@@ -440,12 +444,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteListResponse list(QuoteListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return QuoteListResponse.fromJson(response.getBodyAsString(), this, params);
+    return QuoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public QuoteListResponse list() throws Exception {
     Response response = listRaw();
-    return QuoteListResponse.fromJson(response.getBodyAsString(), this, null);
+    return QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** pdf a quote (executes immediately) - returns raw Response. */
@@ -469,7 +473,7 @@ public final class QuoteService extends BaseService<QuoteService> {
 
   public QuotePdfResponse pdf(String quoteId, QuotePdfParams params) throws Exception {
     Response response = pdfRaw(quoteId, params);
-    return parseResponse(response, QuotePdfResponse.class);
+    return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** convert a quote (executes immediately) - returns raw Response. */
@@ -493,7 +497,7 @@ public final class QuoteService extends BaseService<QuoteService> {
 
   public QuoteConvertResponse convert(String quoteId, QuoteConvertParams params) throws Exception {
     Response response = convertRaw(quoteId, params);
-    return parseResponse(response, QuoteConvertResponse.class);
+    return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -520,7 +524,8 @@ public final class QuoteService extends BaseService<QuoteService> {
       QuoteCreateForChargeItemsAndChargesParams params) throws Exception {
     Response response = createForChargeItemsAndChargesRaw(params);
 
-    return parseResponse(response, QuoteCreateForChargeItemsAndChargesResponse.class);
+    return QuoteCreateForChargeItemsAndChargesResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** delete a quote (executes immediately) - returns raw Response. */
@@ -544,7 +549,7 @@ public final class QuoteService extends BaseService<QuoteService> {
 
   public QuoteDeleteResponse delete(String quoteId, QuoteDeleteParams params) throws Exception {
     Response response = deleteRaw(quoteId, params);
-    return parseResponse(response, QuoteDeleteResponse.class);
+    return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editOneTimeQuote a quote (executes immediately) - returns raw Response. */
@@ -577,7 +582,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditOneTimeQuoteResponse editOneTimeQuote(
       String quoteId, QuoteEditOneTimeQuoteParams params) throws Exception {
     Response response = editOneTimeQuoteRaw(quoteId, params);
-    return parseResponse(response, QuoteEditOneTimeQuoteResponse.class);
+    return QuoteEditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -602,7 +607,7 @@ public final class QuoteService extends BaseService<QuoteService> {
       QuoteUpdateSubscriptionQuoteParams params) throws Exception {
     Response response = updateSubscriptionQuoteRaw(params);
 
-    return parseResponse(response, QuoteUpdateSubscriptionQuoteResponse.class);
+    return QuoteUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -627,7 +632,7 @@ public final class QuoteService extends BaseService<QuoteService> {
       QuoteCreateForOnetimeChargesParams params) throws Exception {
     Response response = createForOnetimeChargesRaw(params);
 
-    return parseResponse(response, QuoteCreateForOnetimeChargesResponse.class);
+    return QuoteCreateForOnetimeChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createSubForCustomerQuote a quote (executes immediately) - returns raw Response. */
@@ -665,7 +670,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteCreateSubForCustomerQuoteResponse createSubForCustomerQuote(
       String customerId, QuoteCreateSubForCustomerQuoteParams params) throws Exception {
     Response response = createSubForCustomerQuoteRaw(customerId, params);
-    return parseResponse(response, QuoteCreateSubForCustomerQuoteResponse.class);
+    return QuoteCreateSubForCustomerQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editUpdateSubscriptionQuote a quote (executes immediately) - returns raw Response. */
@@ -703,7 +708,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditUpdateSubscriptionQuoteResponse editUpdateSubscriptionQuote(
       String quoteId, QuoteEditUpdateSubscriptionQuoteParams params) throws Exception {
     Response response = editUpdateSubscriptionQuoteRaw(quoteId, params);
-    return parseResponse(response, QuoteEditUpdateSubscriptionQuoteResponse.class);
+    return QuoteEditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editCreateSubForCustomerQuote a quote (executes immediately) - returns raw Response. */
@@ -741,6 +746,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteEditCreateSubForCustomerQuoteResponse editCreateSubForCustomerQuote(
       String quoteId, QuoteEditCreateSubForCustomerQuoteParams params) throws Exception {
     Response response = editCreateSubForCustomerQuoteRaw(quoteId, params);
-    return parseResponse(response, QuoteEditCreateSubForCustomerQuoteResponse.class);
+    return QuoteEditCreateSubForCustomerQuoteResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

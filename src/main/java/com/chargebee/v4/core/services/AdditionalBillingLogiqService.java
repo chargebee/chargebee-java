@@ -73,6 +73,6 @@ public final class AdditionalBillingLogiqService
       AdditionalBillingLogiqRetrieveParams params) throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, AdditionalBillingLogiqRetrieveResponse.class);
+    return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

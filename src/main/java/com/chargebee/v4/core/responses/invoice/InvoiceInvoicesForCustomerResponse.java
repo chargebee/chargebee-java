@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.invoice.Invoice;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.InvoiceService;
 import com.chargebee.v4.core.models.invoice.params.InvoiceInvoicesForCustomerParams;
 
@@ -21,13 +22,15 @@ public final class InvoiceInvoicesForCustomerResponse {
 
   private final InvoiceService service;
   private final InvoiceInvoicesForCustomerParams originalParams;
+  private final Response httpResponse;
 
   private InvoiceInvoicesForCustomerResponse(
       List<InvoiceInvoicesForCustomerItem> list,
       String nextOffset,
       String customerId,
       InvoiceService service,
-      InvoiceInvoicesForCustomerParams originalParams) {
+      InvoiceInvoicesForCustomerParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -37,6 +40,7 @@ public final class InvoiceInvoicesForCustomerResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -53,7 +57,7 @@ public final class InvoiceInvoicesForCustomerResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new InvoiceInvoicesForCustomerResponse(list, nextOffset, null, null, null);
+      return new InvoiceInvoicesForCustomerResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse InvoiceInvoicesForCustomerResponse from JSON", e);
     }
@@ -67,7 +71,8 @@ public final class InvoiceInvoicesForCustomerResponse {
       String json,
       InvoiceService service,
       InvoiceInvoicesForCustomerParams originalParams,
-      String customerId) {
+      String customerId,
+      Response httpResponse) {
     try {
 
       List<InvoiceInvoicesForCustomerItem> list =
@@ -78,7 +83,7 @@ public final class InvoiceInvoicesForCustomerResponse {
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new InvoiceInvoicesForCustomerResponse(
-          list, nextOffset, customerId, service, originalParams);
+          list, nextOffset, customerId, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse InvoiceInvoicesForCustomerResponse from JSON", e);
     }
@@ -113,16 +118,45 @@ public final class InvoiceInvoicesForCustomerResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     InvoiceInvoicesForCustomerParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : InvoiceInvoicesForCustomerParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.invoicesForCustomer(customerId, nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class InvoiceInvoicesForCustomerItem {

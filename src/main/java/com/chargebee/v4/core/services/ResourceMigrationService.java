@@ -73,6 +73,6 @@ public final class ResourceMigrationService extends BaseService<ResourceMigratio
       ResourceMigrationRetrieveLatestParams params) throws Exception {
     Response response = retrieveLatestRaw(params);
 
-    return parseResponse(response, ResourceMigrationRetrieveLatestResponse.class);
+    return ResourceMigrationRetrieveLatestResponse.fromJson(response.getBodyAsString(), response);
   }
 }

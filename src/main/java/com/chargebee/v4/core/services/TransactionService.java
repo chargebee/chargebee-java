@@ -108,12 +108,12 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionListResponse list(TransactionListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return TransactionListResponse.fromJson(response.getBodyAsString(), this, params);
+    return TransactionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public TransactionListResponse list() throws Exception {
     Response response = listRaw();
-    return TransactionListResponse.fromJson(response.getBodyAsString(), this, null);
+    return TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** reconcile a transaction (executes immediately) - returns raw Response. */
@@ -148,7 +148,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionReconcileResponse reconcile(
       String transactionId, TransactionReconcileParams params) throws Exception {
     Response response = reconcileRaw(transactionId, params);
-    return parseResponse(response, TransactionReconcileResponse.class);
+    return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a transaction (executes immediately) - returns raw Response. */
@@ -161,7 +161,7 @@ public final class TransactionService extends BaseService<TransactionService> {
 
   public TransactionRetrieveResponse retrieve(String transactionId) throws Exception {
     Response response = retrieveRaw(transactionId);
-    return parseResponse(response, TransactionRetrieveResponse.class);
+    return TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** refund a transaction (executes immediately) - returns raw Response. */
@@ -192,7 +192,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionRefundResponse refund(String transactionId, TransactionRefundParams params)
       throws Exception {
     Response response = refundRaw(transactionId, params);
-    return parseResponse(response, TransactionRefundResponse.class);
+    return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -230,14 +230,14 @@ public final class TransactionService extends BaseService<TransactionService> {
       String customerId, TransactionTransactionsForCustomerParams params) throws Exception {
     Response response = transactionsForCustomerRaw(customerId, params);
     return TransactionTransactionsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public TransactionTransactionsForCustomerResponse transactionsForCustomer(String customerId)
       throws Exception {
     Response response = transactionsForCustomerRaw(customerId);
     return TransactionTransactionsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** recordRefund a transaction (executes immediately) - returns raw Response. */
@@ -275,7 +275,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionRecordRefundResponse recordRefund(
       String transactionId, TransactionRecordRefundParams params) throws Exception {
     Response response = recordRefundRaw(transactionId, params);
-    return parseResponse(response, TransactionRecordRefundResponse.class);
+    return TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -317,14 +317,14 @@ public final class TransactionService extends BaseService<TransactionService> {
       String subscriptionId, TransactionTransactionsForSubscriptionParams params) throws Exception {
     Response response = transactionsForSubscriptionRaw(subscriptionId, params);
     return TransactionTransactionsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public TransactionTransactionsForSubscriptionResponse transactionsForSubscription(
       String subscriptionId) throws Exception {
     Response response = transactionsForSubscriptionRaw(subscriptionId);
     return TransactionTransactionsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /** voidTransaction a transaction (executes immediately) - returns raw Response. */
@@ -337,7 +337,7 @@ public final class TransactionService extends BaseService<TransactionService> {
 
   public TransactionVoidTransactionResponse voidTransaction(String transactionId) throws Exception {
     Response response = voidTransactionRaw(transactionId);
-    return parseResponse(response, TransactionVoidTransactionResponse.class);
+    return TransactionVoidTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** syncTransaction a transaction (executes immediately) - returns raw Response. */
@@ -350,7 +350,7 @@ public final class TransactionService extends BaseService<TransactionService> {
 
   public TransactionSyncTransactionResponse syncTransaction(String transactionId) throws Exception {
     Response response = syncTransactionRaw(transactionId);
-    return parseResponse(response, TransactionSyncTransactionResponse.class);
+    return TransactionSyncTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -375,7 +375,7 @@ public final class TransactionService extends BaseService<TransactionService> {
       TransactionCreateAuthorizationParams params) throws Exception {
     Response response = createAuthorizationRaw(params);
 
-    return parseResponse(response, TransactionCreateAuthorizationResponse.class);
+    return TransactionCreateAuthorizationResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -409,14 +409,14 @@ public final class TransactionService extends BaseService<TransactionService> {
       String invoiceId, TransactionPaymentsForInvoiceParams params) throws Exception {
     Response response = paymentsForInvoiceRaw(invoiceId, params);
     return TransactionPaymentsForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, params, invoiceId);
+        response.getBodyAsString(), this, params, invoiceId, response);
   }
 
   public TransactionPaymentsForInvoiceResponse paymentsForInvoice(String invoiceId)
       throws Exception {
     Response response = paymentsForInvoiceRaw(invoiceId);
     return TransactionPaymentsForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, null, invoiceId);
+        response.getBodyAsString(), this, null, invoiceId, response);
   }
 
   /** deleteOfflineTransaction a transaction (executes immediately) - returns raw Response. */
@@ -460,6 +460,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionDeleteOfflineTransactionResponse deleteOfflineTransaction(
       String transactionId, TransactionDeleteOfflineTransactionParams params) throws Exception {
     Response response = deleteOfflineTransactionRaw(transactionId, params);
-    return parseResponse(response, TransactionDeleteOfflineTransactionResponse.class);
+    return TransactionDeleteOfflineTransactionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

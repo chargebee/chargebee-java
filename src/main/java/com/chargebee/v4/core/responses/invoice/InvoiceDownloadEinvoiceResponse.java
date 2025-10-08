@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.invoice;
 import com.chargebee.v4.core.models.download.Download;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import java.util.List;
 
 /**
@@ -13,13 +14,22 @@ public final class InvoiceDownloadEinvoiceResponse {
 
   private final List<Download> downloads;
 
-  private InvoiceDownloadEinvoiceResponse(List<Download> downloads) {
+  private final Response httpResponse;
+
+  private InvoiceDownloadEinvoiceResponse(List<Download> downloads, Response httpResponse) {
 
     this.downloads = downloads;
+
+    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into InvoiceDownloadEinvoiceResponse object. */
   public static InvoiceDownloadEinvoiceResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into InvoiceDownloadEinvoiceResponse object with HTTP response. */
+  public static InvoiceDownloadEinvoiceResponse fromJson(String json, Response httpResponse) {
     try {
 
       List<Download> downloads =
@@ -27,7 +37,7 @@ public final class InvoiceDownloadEinvoiceResponse {
               .map(Download::fromJson)
               .collect(java.util.stream.Collectors.toList());
 
-      return new InvoiceDownloadEinvoiceResponse(downloads);
+      return new InvoiceDownloadEinvoiceResponse(downloads, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse InvoiceDownloadEinvoiceResponse from JSON", e);
     }
@@ -36,5 +46,30 @@ public final class InvoiceDownloadEinvoiceResponse {
   /** Get the downloads from the response. */
   public List<Download> getDownloads() {
     return downloads;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

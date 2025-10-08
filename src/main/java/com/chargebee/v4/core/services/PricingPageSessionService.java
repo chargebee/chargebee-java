@@ -79,7 +79,8 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
       PricingPageSessionCreateForExistingSubscriptionParams params) throws Exception {
     Response response = createForExistingSubscriptionRaw(params);
 
-    return parseResponse(response, PricingPageSessionCreateForExistingSubscriptionResponse.class);
+    return PricingPageSessionCreateForExistingSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -107,6 +108,7 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
       PricingPageSessionCreateForNewSubscriptionParams params) throws Exception {
     Response response = createForNewSubscriptionRaw(params);
 
-    return parseResponse(response, PricingPageSessionCreateForNewSubscriptionResponse.class);
+    return PricingPageSessionCreateForNewSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

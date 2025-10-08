@@ -75,7 +75,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
 
   public AttachedItemRetrieveResponse retrieve(String attachedItemId) throws Exception {
     Response response = retrieveRaw(attachedItemId);
-    return parseResponse(response, AttachedItemRetrieveResponse.class);
+    return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a attachedItem (executes immediately) - returns raw Response. */
@@ -106,7 +106,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public AttachedItemUpdateResponse update(String attachedItemId, AttachedItemUpdateParams params)
       throws Exception {
     Response response = updateRaw(attachedItemId, params);
-    return parseResponse(response, AttachedItemUpdateResponse.class);
+    return AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a attachedItem using immutable params (executes immediately) - returns raw Response. */
@@ -130,12 +130,14 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public AttachedItemListResponse list(String itemId, AttachedItemListParams params)
       throws Exception {
     Response response = listRaw(itemId, params);
-    return AttachedItemListResponse.fromJson(response.getBodyAsString(), this, params, itemId);
+    return AttachedItemListResponse.fromJson(
+        response.getBodyAsString(), this, params, itemId, response);
   }
 
   public AttachedItemListResponse list(String itemId) throws Exception {
     Response response = listRaw(itemId);
-    return AttachedItemListResponse.fromJson(response.getBodyAsString(), this, null, itemId);
+    return AttachedItemListResponse.fromJson(
+        response.getBodyAsString(), this, null, itemId, response);
   }
 
   /** create a attachedItem (executes immediately) - returns raw Response. */
@@ -160,7 +162,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public AttachedItemCreateResponse create(String itemId, AttachedItemCreateParams params)
       throws Exception {
     Response response = createRaw(itemId, params);
-    return parseResponse(response, AttachedItemCreateResponse.class);
+    return AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a attachedItem (executes immediately) - returns raw Response. */
@@ -191,6 +193,6 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   public AttachedItemDeleteResponse delete(String attachedItemId, AttachedItemDeleteParams params)
       throws Exception {
     Response response = deleteRaw(attachedItemId, params);
-    return parseResponse(response, AttachedItemDeleteResponse.class);
+    return AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

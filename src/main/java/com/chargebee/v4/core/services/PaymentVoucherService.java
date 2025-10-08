@@ -95,14 +95,14 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String customerId, PaymentVoucherPaymentVouchersForCustomerParams params) throws Exception {
     Response response = payment_vouchersForCustomerRaw(customerId, params);
     return PaymentVoucherPaymentVouchersForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public PaymentVoucherPaymentVouchersForCustomerResponse payment_vouchersForCustomer(
       String customerId) throws Exception {
     Response response = payment_vouchersForCustomerRaw(customerId);
     return PaymentVoucherPaymentVouchersForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /**
@@ -140,14 +140,14 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       String invoiceId, PaymentVoucherPaymentVouchersForInvoiceParams params) throws Exception {
     Response response = payment_vouchersForInvoiceRaw(invoiceId, params);
     return PaymentVoucherPaymentVouchersForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, params, invoiceId);
+        response.getBodyAsString(), this, params, invoiceId, response);
   }
 
   public PaymentVoucherPaymentVouchersForInvoiceResponse payment_vouchersForInvoice(
       String invoiceId) throws Exception {
     Response response = payment_vouchersForInvoiceRaw(invoiceId);
     return PaymentVoucherPaymentVouchersForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, null, invoiceId);
+        response.getBodyAsString(), this, null, invoiceId, response);
   }
 
   /** retrieve a paymentVoucher (executes immediately) - returns raw Response. */
@@ -161,7 +161,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
 
   public PaymentVoucherRetrieveResponse retrieve(String paymentVoucherId) throws Exception {
     Response response = retrieveRaw(paymentVoucherId);
-    return parseResponse(response, PaymentVoucherRetrieveResponse.class);
+    return PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -183,6 +183,6 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   public PaymentVoucherCreateResponse create(PaymentVoucherCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PaymentVoucherCreateResponse.class);
+    return PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

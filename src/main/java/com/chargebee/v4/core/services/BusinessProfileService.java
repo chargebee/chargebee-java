@@ -72,6 +72,6 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
       throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, BusinessProfileRetrieveResponse.class);
+    return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -125,7 +125,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteVoidCreditNoteResponse voidCreditNote(
       String creditNoteId, CreditNoteVoidCreditNoteParams params) throws Exception {
     Response response = voidCreditNoteRaw(creditNoteId, params);
-    return parseResponse(response, CreditNoteVoidCreditNoteResponse.class);
+    return CreditNoteVoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** refund a creditNote (executes immediately) - returns raw Response. */
@@ -156,7 +156,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteRefundResponse refund(String creditNoteId, CreditNoteRefundParams params)
       throws Exception {
     Response response = refundRaw(creditNoteId, params);
-    return parseResponse(response, CreditNoteRefundResponse.class);
+    return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -180,12 +180,12 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteListResponse list(CreditNoteListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CreditNoteListResponse list() throws Exception {
     Response response = listRaw();
-    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -203,7 +203,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteCreateResponse create(CreditNoteCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CreditNoteCreateResponse.class);
+    return CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** recordRefund a creditNote (executes immediately) - returns raw Response. */
@@ -239,7 +239,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteRecordRefundResponse recordRefund(
       String creditNoteId, CreditNoteRecordRefundParams params) throws Exception {
     Response response = recordRefundRaw(creditNoteId, params);
-    return parseResponse(response, CreditNoteRecordRefundResponse.class);
+    return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -264,7 +264,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       CreditNoteImportCreditNoteParams params) throws Exception {
     Response response = importCreditNoteRaw(params);
 
-    return parseResponse(response, CreditNoteImportCreditNoteResponse.class);
+    return CreditNoteImportCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a creditNote (executes immediately) - returns raw Response. */
@@ -295,7 +295,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteDeleteResponse delete(String creditNoteId, CreditNoteDeleteParams params)
       throws Exception {
     Response response = deleteRaw(creditNoteId, params);
-    return parseResponse(response, CreditNoteDeleteResponse.class);
+    return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -333,14 +333,14 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String customerId, CreditNoteCreditNotesForCustomerParams params) throws Exception {
     Response response = creditNotesForCustomerRaw(customerId, params);
     return CreditNoteCreditNotesForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public CreditNoteCreditNotesForCustomerResponse creditNotesForCustomer(String customerId)
       throws Exception {
     Response response = creditNotesForCustomerRaw(customerId);
     return CreditNoteCreditNotesForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** downloadEinvoice a creditNote (executes immediately) - returns raw Response. */
@@ -354,7 +354,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   public CreditNoteDownloadEinvoiceResponse downloadEinvoice(String creditNoteId) throws Exception {
     Response response = downloadEinvoiceRaw(creditNoteId);
-    return parseResponse(response, CreditNoteDownloadEinvoiceResponse.class);
+    return CreditNoteDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** pdf a creditNote (executes immediately) - returns raw Response. */
@@ -382,7 +382,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNotePdfResponse pdf(String creditNoteId, CreditNotePdfParams params)
       throws Exception {
     Response response = pdfRaw(creditNoteId, params);
-    return parseResponse(response, CreditNotePdfResponse.class);
+    return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resendEinvoice a creditNote (executes immediately) - returns raw Response. */
@@ -396,7 +396,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   public CreditNoteResendEinvoiceResponse resendEinvoice(String creditNoteId) throws Exception {
     Response response = resendEinvoiceRaw(creditNoteId);
-    return parseResponse(response, CreditNoteResendEinvoiceResponse.class);
+    return CreditNoteResendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeTaxWithheldRefund a creditNote (executes immediately) - returns raw Response. */
@@ -440,7 +440,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteRemoveTaxWithheldRefundResponse removeTaxWithheldRefund(
       String creditNoteId, CreditNoteRemoveTaxWithheldRefundParams params) throws Exception {
     Response response = removeTaxWithheldRefundRaw(creditNoteId, params);
-    return parseResponse(response, CreditNoteRemoveTaxWithheldRefundResponse.class);
+    return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a creditNote (executes immediately) - returns raw Response. */
@@ -453,7 +453,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   public CreditNoteRetrieveResponse retrieve(String creditNoteId) throws Exception {
     Response response = retrieveRaw(creditNoteId);
-    return parseResponse(response, CreditNoteRetrieveResponse.class);
+    return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** sendEinvoice a creditNote (executes immediately) - returns raw Response. */
@@ -467,6 +467,6 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   public CreditNoteSendEinvoiceResponse sendEinvoice(String creditNoteId) throws Exception {
     Response response = sendEinvoiceRaw(creditNoteId);
-    return parseResponse(response, CreditNoteSendEinvoiceResponse.class);
+    return CreditNoteSendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 }

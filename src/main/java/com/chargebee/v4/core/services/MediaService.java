@@ -78,6 +78,6 @@ public final class MediaService extends BaseService<MediaService> {
   public MediaCreateMediaAndAttachToItemResponse createMediaAndAttachToItem(
       String itemId, MediaCreateMediaAndAttachToItemParams params) throws Exception {
     Response response = createMediaAndAttachToItemRaw(itemId, params);
-    return parseResponse(response, MediaCreateMediaAndAttachToItemResponse.class);
+    return MediaCreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response);
   }
 }

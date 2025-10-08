@@ -75,7 +75,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
 
   public WebhookEndpointDeleteResponse delete(String webhookEndpointId) throws Exception {
     Response response = deleteRaw(webhookEndpointId);
-    return parseResponse(response, WebhookEndpointDeleteResponse.class);
+    return WebhookEndpointDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a webhookEndpoint (executes immediately) - returns raw Response. */
@@ -89,7 +89,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
 
   public WebhookEndpointRetrieveResponse retrieve(String webhookEndpointId) throws Exception {
     Response response = retrieveRaw(webhookEndpointId);
-    return parseResponse(response, WebhookEndpointRetrieveResponse.class);
+    return WebhookEndpointRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a webhookEndpoint (executes immediately) - returns raw Response. */
@@ -125,7 +125,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   public WebhookEndpointUpdateResponse update(
       String webhookEndpointId, WebhookEndpointUpdateParams params) throws Exception {
     Response response = updateRaw(webhookEndpointId, params);
-    return parseResponse(response, WebhookEndpointUpdateResponse.class);
+    return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -153,12 +153,12 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   public WebhookEndpointListResponse list(WebhookEndpointListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, params);
+    return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public WebhookEndpointListResponse list() throws Exception {
     Response response = listRaw();
-    return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null);
+    return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -180,6 +180,6 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   public WebhookEndpointCreateResponse create(WebhookEndpointCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, WebhookEndpointCreateResponse.class);
+    return WebhookEndpointCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

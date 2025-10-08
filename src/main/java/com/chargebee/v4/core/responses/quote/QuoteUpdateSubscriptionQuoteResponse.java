@@ -5,6 +5,7 @@ import com.chargebee.v4.core.models.quote.Quote;
 import com.chargebee.v4.core.models.quotedSubscription.QuotedSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for QuoteUpdateSubscriptionQuote operation. Contains the response data
@@ -16,15 +17,24 @@ public final class QuoteUpdateSubscriptionQuoteResponse {
 
   private final QuotedSubscription quotedSubscription;
 
+  private final Response httpResponse;
+
   private QuoteUpdateSubscriptionQuoteResponse(Builder builder) {
 
     this.quote = builder.quote;
 
     this.quotedSubscription = builder.quotedSubscription;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into QuoteUpdateSubscriptionQuoteResponse object. */
   public static QuoteUpdateSubscriptionQuoteResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into QuoteUpdateSubscriptionQuoteResponse object with HTTP response. */
+  public static QuoteUpdateSubscriptionQuoteResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -38,6 +48,7 @@ public final class QuoteUpdateSubscriptionQuoteResponse {
         builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -57,6 +68,8 @@ public final class QuoteUpdateSubscriptionQuoteResponse {
 
     private QuotedSubscription quotedSubscription;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder quote(Quote quote) {
@@ -66,6 +79,11 @@ public final class QuoteUpdateSubscriptionQuoteResponse {
 
     public Builder quotedSubscription(QuotedSubscription quotedSubscription) {
       this.quotedSubscription = quotedSubscription;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -82,5 +100,30 @@ public final class QuoteUpdateSubscriptionQuoteResponse {
   /** Get the quotedSubscription from the response. */
   public QuotedSubscription getQuotedSubscription() {
     return quotedSubscription;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

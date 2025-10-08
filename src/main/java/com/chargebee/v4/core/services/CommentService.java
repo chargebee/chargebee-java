@@ -66,7 +66,7 @@ public final class CommentService extends BaseService<CommentService> {
 
   public CommentDeleteResponse delete(String commentId) throws Exception {
     Response response = deleteRaw(commentId);
-    return parseResponse(response, CommentDeleteResponse.class);
+    return CommentDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a comment (executes immediately) - returns raw Response. */
@@ -78,7 +78,7 @@ public final class CommentService extends BaseService<CommentService> {
 
   public CommentRetrieveResponse retrieve(String commentId) throws Exception {
     Response response = retrieveRaw(commentId);
-    return parseResponse(response, CommentRetrieveResponse.class);
+    return CommentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a comment using immutable params (executes immediately) - returns raw Response. */
@@ -102,12 +102,12 @@ public final class CommentService extends BaseService<CommentService> {
   public CommentListResponse list(CommentListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CommentListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CommentListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CommentListResponse list() throws Exception {
     Response response = listRaw();
-    return CommentListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CommentListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a comment using immutable params (executes immediately) - returns raw Response. */
@@ -125,6 +125,6 @@ public final class CommentService extends BaseService<CommentService> {
   public CommentCreateResponse create(CommentCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CommentCreateResponse.class);
+    return CommentCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

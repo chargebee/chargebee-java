@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.hostedPage.HostedPage;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.HostedPageService;
 import com.chargebee.v4.core.models.hostedPage.params.HostedPageListParams;
 
@@ -17,12 +18,14 @@ public final class HostedPageListResponse {
 
   private final HostedPageService service;
   private final HostedPageListParams originalParams;
+  private final Response httpResponse;
 
   private HostedPageListResponse(
       List<HostedPageListItem> list,
       String nextOffset,
       HostedPageService service,
-      HostedPageListParams originalParams) {
+      HostedPageListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -30,6 +33,7 @@ public final class HostedPageListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -46,7 +50,7 @@ public final class HostedPageListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new HostedPageListResponse(list, nextOffset, null, null);
+      return new HostedPageListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse HostedPageListResponse from JSON", e);
     }
@@ -57,7 +61,10 @@ public final class HostedPageListResponse {
    * (enables nextPage()).
    */
   public static HostedPageListResponse fromJson(
-      String json, HostedPageService service, HostedPageListParams originalParams) {
+      String json,
+      HostedPageService service,
+      HostedPageListParams originalParams,
+      Response httpResponse) {
     try {
 
       List<HostedPageListItem> list =
@@ -67,7 +74,7 @@ public final class HostedPageListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new HostedPageListResponse(list, nextOffset, service, originalParams);
+      return new HostedPageListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse HostedPageListResponse from JSON", e);
     }
@@ -102,15 +109,43 @@ public final class HostedPageListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
-    HostedPageListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
+    HostedPageListParams nextParams =
+        (originalParams != null ? originalParams.toBuilder() : HostedPageListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class HostedPageListItem {

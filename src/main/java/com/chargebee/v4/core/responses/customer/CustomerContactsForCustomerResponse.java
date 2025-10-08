@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.contact.Contact;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.CustomerService;
 import com.chargebee.v4.core.models.customer.params.CustomerContactsForCustomerParams;
 
@@ -22,13 +23,15 @@ public final class CustomerContactsForCustomerResponse {
 
   private final CustomerService service;
   private final CustomerContactsForCustomerParams originalParams;
+  private final Response httpResponse;
 
   private CustomerContactsForCustomerResponse(
       List<CustomerContactsForCustomerItem> list,
       String nextOffset,
       String customerId,
       CustomerService service,
-      CustomerContactsForCustomerParams originalParams) {
+      CustomerContactsForCustomerParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -38,6 +41,7 @@ public final class CustomerContactsForCustomerResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -54,7 +58,7 @@ public final class CustomerContactsForCustomerResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new CustomerContactsForCustomerResponse(list, nextOffset, null, null, null);
+      return new CustomerContactsForCustomerResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse CustomerContactsForCustomerResponse from JSON", e);
@@ -69,7 +73,8 @@ public final class CustomerContactsForCustomerResponse {
       String json,
       CustomerService service,
       CustomerContactsForCustomerParams originalParams,
-      String customerId) {
+      String customerId,
+      Response httpResponse) {
     try {
 
       List<CustomerContactsForCustomerItem> list =
@@ -80,7 +85,7 @@ public final class CustomerContactsForCustomerResponse {
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new CustomerContactsForCustomerResponse(
-          list, nextOffset, customerId, service, originalParams);
+          list, nextOffset, customerId, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse CustomerContactsForCustomerResponse from JSON", e);
@@ -116,16 +121,45 @@ public final class CustomerContactsForCustomerResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     CustomerContactsForCustomerParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : CustomerContactsForCustomerParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.contactsForCustomer(customerId, nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class CustomerContactsForCustomerItem {

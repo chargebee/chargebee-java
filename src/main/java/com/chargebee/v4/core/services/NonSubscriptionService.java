@@ -91,6 +91,6 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
   public NonSubscriptionProcessReceiptResponse processReceipt(
       String nonSubscriptionAppId, NonSubscriptionProcessReceiptParams params) throws Exception {
     Response response = processReceiptRaw(nonSubscriptionAppId, params);
-    return parseResponse(response, NonSubscriptionProcessReceiptResponse.class);
+    return NonSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 }

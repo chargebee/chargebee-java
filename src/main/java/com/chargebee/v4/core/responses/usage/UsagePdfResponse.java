@@ -3,19 +3,29 @@ package com.chargebee.v4.core.responses.usage;
 import com.chargebee.v4.core.models.download.Download;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for UsagePdf operation. Contains the response data from the API. */
 public final class UsagePdfResponse {
 
   private final Download download;
 
+  private final Response httpResponse;
+
   private UsagePdfResponse(Builder builder) {
 
     this.download = builder.download;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into UsagePdfResponse object. */
   public static UsagePdfResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into UsagePdfResponse object with HTTP response. */
+  public static UsagePdfResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -24,6 +34,7 @@ public final class UsagePdfResponse {
         builder.download(Download.fromJson(__downloadJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse UsagePdfResponse from JSON", e);
@@ -40,10 +51,17 @@ public final class UsagePdfResponse {
 
     private Download download;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder download(Download download) {
       this.download = download;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -55,5 +73,30 @@ public final class UsagePdfResponse {
   /** Get the download from the response. */
   public Download getDownload() {
     return download;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

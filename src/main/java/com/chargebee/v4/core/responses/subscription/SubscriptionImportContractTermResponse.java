@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.subscription;
 import com.chargebee.v4.core.models.contractTerm.ContractTerm;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for SubscriptionImportContractTerm operation. Contains the response
@@ -12,13 +13,23 @@ public final class SubscriptionImportContractTermResponse {
 
   private final ContractTerm contractTerm;
 
+  private final Response httpResponse;
+
   private SubscriptionImportContractTermResponse(Builder builder) {
 
     this.contractTerm = builder.contractTerm;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into SubscriptionImportContractTermResponse object. */
   public static SubscriptionImportContractTermResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into SubscriptionImportContractTermResponse object with HTTP response. */
+  public static SubscriptionImportContractTermResponse fromJson(
+      String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -27,6 +38,7 @@ public final class SubscriptionImportContractTermResponse {
         builder.contractTerm(ContractTerm.fromJson(__contractTermJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -44,10 +56,17 @@ public final class SubscriptionImportContractTermResponse {
 
     private ContractTerm contractTerm;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder contractTerm(ContractTerm contractTerm) {
       this.contractTerm = contractTerm;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -59,5 +78,30 @@ public final class SubscriptionImportContractTermResponse {
   /** Get the contractTerm from the response. */
   public ContractTerm getContractTerm() {
     return contractTerm;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

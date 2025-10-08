@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.plan.Plan;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.PlanService;
 import com.chargebee.v4.core.models.plan.params.PlanListParams;
 
@@ -17,12 +18,14 @@ public final class PlanListResponse {
 
   private final PlanService service;
   private final PlanListParams originalParams;
+  private final Response httpResponse;
 
   private PlanListResponse(
       List<PlanListItem> list,
       String nextOffset,
       PlanService service,
-      PlanListParams originalParams) {
+      PlanListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -30,6 +33,7 @@ public final class PlanListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -46,7 +50,7 @@ public final class PlanListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new PlanListResponse(list, nextOffset, null, null);
+      return new PlanListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PlanListResponse from JSON", e);
     }
@@ -57,7 +61,7 @@ public final class PlanListResponse {
    * nextPage()).
    */
   public static PlanListResponse fromJson(
-      String json, PlanService service, PlanListParams originalParams) {
+      String json, PlanService service, PlanListParams originalParams, Response httpResponse) {
     try {
 
       List<PlanListItem> list =
@@ -67,7 +71,7 @@ public final class PlanListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new PlanListResponse(list, nextOffset, service, originalParams);
+      return new PlanListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PlanListResponse from JSON", e);
     }
@@ -102,15 +106,43 @@ public final class PlanListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
-    PlanListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
+    PlanListParams nextParams =
+        (originalParams != null ? originalParams.toBuilder() : PlanListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class PlanListItem {

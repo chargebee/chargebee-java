@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.paymentSource;
 import com.chargebee.v4.core.models.paymentSource.PaymentSource;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for PaymentSourceVerifyBankAccount operation. Contains the response
@@ -12,13 +13,23 @@ public final class PaymentSourceVerifyBankAccountResponse {
 
   private final PaymentSource paymentSource;
 
+  private final Response httpResponse;
+
   private PaymentSourceVerifyBankAccountResponse(Builder builder) {
 
     this.paymentSource = builder.paymentSource;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into PaymentSourceVerifyBankAccountResponse object. */
   public static PaymentSourceVerifyBankAccountResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into PaymentSourceVerifyBankAccountResponse object with HTTP response. */
+  public static PaymentSourceVerifyBankAccountResponse fromJson(
+      String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -27,6 +38,7 @@ public final class PaymentSourceVerifyBankAccountResponse {
         builder.paymentSource(PaymentSource.fromJson(__paymentSourceJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -44,10 +56,17 @@ public final class PaymentSourceVerifyBankAccountResponse {
 
     private PaymentSource paymentSource;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder paymentSource(PaymentSource paymentSource) {
       this.paymentSource = paymentSource;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -59,5 +78,30 @@ public final class PaymentSourceVerifyBankAccountResponse {
   /** Get the paymentSource from the response. */
   public PaymentSource getPaymentSource() {
     return paymentSource;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

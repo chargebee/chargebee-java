@@ -69,7 +69,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
 
   public Pc2MigrationContactSupportResponse contactSupport(String pc2MigrationId) throws Exception {
     Response response = contactSupportRaw(pc2MigrationId);
-    return parseResponse(response, Pc2MigrationContactSupportResponse.class);
+    return Pc2MigrationContactSupportResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a pc2Migration (executes immediately) - returns raw Response. */
@@ -83,7 +83,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
 
   public Pc2MigrationRetrieveResponse retrieve(String pc2MigrationId) throws Exception {
     Response response = retrieveRaw(pc2MigrationId);
-    return parseResponse(response, Pc2MigrationRetrieveResponse.class);
+    return Pc2MigrationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** create a pc2Migration using immutable params (executes immediately) - returns raw Response. */
@@ -101,7 +101,7 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
   public Pc2MigrationCreateResponse create(Pc2MigrationCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, Pc2MigrationCreateResponse.class);
+    return Pc2MigrationCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** initiate a pc2Migration (executes immediately) - returns raw Response. */
@@ -115,6 +115,6 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
 
   public Pc2MigrationInitiateResponse initiate(String pc2MigrationId) throws Exception {
     Response response = initiateRaw(pc2MigrationId);
-    return parseResponse(response, Pc2MigrationInitiateResponse.class);
+    return Pc2MigrationInitiateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

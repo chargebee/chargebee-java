@@ -78,7 +78,7 @@ public final class UsageService extends BaseService<UsageService> {
   public UsagePdfResponse pdf(UsagePdfParams params) throws Exception {
     Response response = pdfRaw(params);
 
-    return parseResponse(response, UsagePdfResponse.class);
+    return UsagePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a usage (executes immediately) - returns raw Response. */
@@ -92,7 +92,7 @@ public final class UsageService extends BaseService<UsageService> {
 
   public UsageRetrieveResponse retrieve(String subscriptionId) throws Exception {
     Response response = retrieveRaw(subscriptionId);
-    return parseResponse(response, UsageRetrieveResponse.class);
+    return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** create a usage (executes immediately) - returns raw Response. */
@@ -123,7 +123,7 @@ public final class UsageService extends BaseService<UsageService> {
   public UsageCreateResponse create(String subscriptionId, UsageCreateParams params)
       throws Exception {
     Response response = createRaw(subscriptionId, params);
-    return parseResponse(response, UsageCreateResponse.class);
+    return UsageCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a usage (executes immediately) - returns raw Response. */
@@ -154,7 +154,7 @@ public final class UsageService extends BaseService<UsageService> {
   public UsageDeleteResponse delete(String subscriptionId, UsageDeleteParams params)
       throws Exception {
     Response response = deleteRaw(subscriptionId, params);
-    return parseResponse(response, UsageDeleteResponse.class);
+    return UsageDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a usage using immutable params (executes immediately) - returns raw Response. */
@@ -178,11 +178,11 @@ public final class UsageService extends BaseService<UsageService> {
   public UsageListResponse list(UsageListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return UsageListResponse.fromJson(response.getBodyAsString(), this, params);
+    return UsageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public UsageListResponse list() throws Exception {
     Response response = listRaw();
-    return UsageListResponse.fromJson(response.getBodyAsString(), this, null);
+    return UsageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 }

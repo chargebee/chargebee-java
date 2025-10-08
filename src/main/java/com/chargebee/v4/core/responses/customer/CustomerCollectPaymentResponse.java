@@ -5,6 +5,7 @@ import com.chargebee.v4.core.models.transaction.Transaction;
 import com.chargebee.v4.core.models.customer.Customer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for CustomerCollectPayment operation. Contains the response data from
@@ -16,15 +17,24 @@ public final class CustomerCollectPaymentResponse {
 
   private final Transaction transaction;
 
+  private final Response httpResponse;
+
   private CustomerCollectPaymentResponse(Builder builder) {
 
     this.customer = builder.customer;
 
     this.transaction = builder.transaction;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into CustomerCollectPaymentResponse object. */
   public static CustomerCollectPaymentResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into CustomerCollectPaymentResponse object with HTTP response. */
+  public static CustomerCollectPaymentResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -38,6 +48,7 @@ public final class CustomerCollectPaymentResponse {
         builder.transaction(Transaction.fromJson(__transactionJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CustomerCollectPaymentResponse from JSON", e);
@@ -56,6 +67,8 @@ public final class CustomerCollectPaymentResponse {
 
     private Transaction transaction;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder customer(Customer customer) {
@@ -65,6 +78,11 @@ public final class CustomerCollectPaymentResponse {
 
     public Builder transaction(Transaction transaction) {
       this.transaction = transaction;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -81,5 +99,30 @@ public final class CustomerCollectPaymentResponse {
   /** Get the transaction from the response. */
   public Transaction getTransaction() {
     return transaction;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

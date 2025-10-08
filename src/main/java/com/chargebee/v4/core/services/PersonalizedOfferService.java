@@ -73,6 +73,7 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
       PersonalizedOfferPersonalizedOffersParams params) throws Exception {
     Response response = personalizedOffersRaw(params);
 
-    return parseResponse(response, PersonalizedOfferPersonalizedOffersResponse.class);
+    return PersonalizedOfferPersonalizedOffersResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

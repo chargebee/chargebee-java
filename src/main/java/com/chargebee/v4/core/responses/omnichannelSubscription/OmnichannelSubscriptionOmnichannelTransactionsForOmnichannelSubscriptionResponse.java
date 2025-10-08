@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.omnichannelTransaction.OmnichannelTransaction;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.OmnichannelSubscriptionService;
 import com.chargebee.v4.core.models.omnichannelSubscription.params.OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams;
 
@@ -26,14 +27,15 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
   private final OmnichannelSubscriptionService service;
   private final OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams
       originalParams;
+  private final Response httpResponse;
 
   private OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
       List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list,
       String nextOffset,
       String omnichannelSubscriptionId,
       OmnichannelSubscriptionService service,
-      OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams
-          originalParams) {
+      OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -43,6 +45,7 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -64,7 +67,7 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
-          list, nextOffset, null, null, null);
+          list, nextOffset, null, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse from JSON",
@@ -83,7 +86,8 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
           OmnichannelSubscriptionService service,
           OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams
               originalParams,
-          String omnichannelSubscriptionId) {
+          String omnichannelSubscriptionId,
+          Response httpResponse) {
     try {
 
       List<OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem> list =
@@ -96,7 +100,7 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse(
-          list, nextOffset, omnichannelSubscriptionId, service, originalParams);
+          list, nextOffset, omnichannelSubscriptionId, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse from JSON",
@@ -136,17 +140,47 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams
+                    .builder())
+            .offset(nextOffset)
+            .build();
 
     return service.omnichannel_transactionsForOmnichannelSubscription(
         omnichannelSubscriptionId, nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem {

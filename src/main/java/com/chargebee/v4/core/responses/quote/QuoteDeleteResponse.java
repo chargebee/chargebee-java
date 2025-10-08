@@ -9,6 +9,7 @@ import com.chargebee.v4.core.models.quotedSubscription.QuotedSubscription;
 import com.chargebee.v4.core.models.quotedCharge.QuotedCharge;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for QuoteDelete operation. Contains the response data from the API. */
 public final class QuoteDeleteResponse {
@@ -21,6 +22,8 @@ public final class QuoteDeleteResponse {
 
   private final QuotedRamp quotedRamp;
 
+  private final Response httpResponse;
+
   private QuoteDeleteResponse(Builder builder) {
 
     this.quote = builder.quote;
@@ -30,10 +33,17 @@ public final class QuoteDeleteResponse {
     this.quotedCharge = builder.quotedCharge;
 
     this.quotedRamp = builder.quotedRamp;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into QuoteDeleteResponse object. */
   public static QuoteDeleteResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into QuoteDeleteResponse object with HTTP response. */
+  public static QuoteDeleteResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -57,6 +67,7 @@ public final class QuoteDeleteResponse {
         builder.quotedRamp(QuotedRamp.fromJson(__quotedRampJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse QuoteDeleteResponse from JSON", e);
@@ -79,6 +90,8 @@ public final class QuoteDeleteResponse {
 
     private QuotedRamp quotedRamp;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder quote(Quote quote) {
@@ -98,6 +111,11 @@ public final class QuoteDeleteResponse {
 
     public Builder quotedRamp(QuotedRamp quotedRamp) {
       this.quotedRamp = quotedRamp;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -124,5 +142,30 @@ public final class QuoteDeleteResponse {
   /** Get the quotedRamp from the response. */
   public QuotedRamp getQuotedRamp() {
     return quotedRamp;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

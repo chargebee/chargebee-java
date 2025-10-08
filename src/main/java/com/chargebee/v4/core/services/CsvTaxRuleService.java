@@ -64,6 +64,6 @@ public final class CsvTaxRuleService extends BaseService<CsvTaxRuleService> {
   public CsvTaxRuleCreateResponse create(CsvTaxRuleCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CsvTaxRuleCreateResponse.class);
+    return CsvTaxRuleCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

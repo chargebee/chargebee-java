@@ -163,7 +163,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerDeleteResponse delete(String customerId, CustomerDeleteParams params)
       throws Exception {
     Response response = deleteRaw(customerId, params);
-    return parseResponse(response, CustomerDeleteResponse.class);
+    return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addPromotionalCredits a customer (executes immediately) - returns raw Response. */
@@ -201,7 +201,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerAddPromotionalCreditsResponse addPromotionalCredits(
       String customerId, CustomerAddPromotionalCreditsParams params) throws Exception {
     Response response = addPromotionalCreditsRaw(customerId, params);
-    return parseResponse(response, CustomerAddPromotionalCreditsResponse.class);
+    return CustomerAddPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** relationships a customer (executes immediately) - returns raw Response. */
@@ -234,7 +234,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerRelationshipsResponse relationships(
       String customerId, CustomerRelationshipsParams params) throws Exception {
     Response response = relationshipsRaw(customerId, params);
-    return parseResponse(response, CustomerRelationshipsResponse.class);
+    return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteRelationship a customer (executes immediately) - returns raw Response. */
@@ -248,7 +248,7 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   public CustomerDeleteRelationshipResponse deleteRelationship(String customerId) throws Exception {
     Response response = deleteRelationshipRaw(customerId);
-    return parseResponse(response, CustomerDeleteRelationshipResponse.class);
+    return CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteContact a customer (executes immediately) - returns raw Response. */
@@ -281,7 +281,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerDeleteContactResponse deleteContact(
       String customerId, CustomerDeleteContactParams params) throws Exception {
     Response response = deleteContactRaw(customerId, params);
-    return parseResponse(response, CustomerDeleteContactResponse.class);
+    return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** assignPaymentRole a customer (executes immediately) - returns raw Response. */
@@ -319,7 +319,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerAssignPaymentRoleResponse assignPaymentRole(
       String customerId, CustomerAssignPaymentRoleParams params) throws Exception {
     Response response = assignPaymentRoleRaw(customerId, params);
-    return parseResponse(response, CustomerAssignPaymentRoleResponse.class);
+    return CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** move a customer using immutable params (executes immediately) - returns raw Response. */
@@ -337,7 +337,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerMoveResponse move(CustomerMoveParams params) throws Exception {
     Response response = moveRaw(params);
 
-    return parseResponse(response, CustomerMoveResponse.class);
+    return CustomerMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** hierarchy a customer (executes immediately) - returns raw Response. */
@@ -350,7 +350,7 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   public CustomerHierarchyResponse hierarchy(String customerId) throws Exception {
     Response response = hierarchyRaw(customerId);
-    return parseResponse(response, CustomerHierarchyResponse.class);
+    return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updatePaymentMethod a customer (executes immediately) - returns raw Response. */
@@ -388,7 +388,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdatePaymentMethodResponse updatePaymentMethod(
       String customerId, CustomerUpdatePaymentMethodParams params) throws Exception {
     Response response = updatePaymentMethodRaw(customerId, params);
-    return parseResponse(response, CustomerUpdatePaymentMethodResponse.class);
+    return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a customer (executes immediately) - returns raw Response. */
@@ -400,7 +400,7 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   public CustomerRetrieveResponse retrieve(String customerId) throws Exception {
     Response response = retrieveRaw(customerId);
-    return parseResponse(response, CustomerRetrieveResponse.class);
+    return CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a customer (executes immediately) - returns raw Response. */
@@ -425,7 +425,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateResponse update(String customerId, CustomerUpdateParams params)
       throws Exception {
     Response response = updateRaw(customerId, params);
-    return parseResponse(response, CustomerUpdateResponse.class);
+    return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -462,14 +462,14 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerListHierarchyDetailParams params) throws Exception {
     Response response = listHierarchyDetailRaw(customerId, params);
     return CustomerListHierarchyDetailResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public CustomerListHierarchyDetailResponse listHierarchyDetail(String customerId)
       throws Exception {
     Response response = listHierarchyDetailRaw(customerId);
     return CustomerListHierarchyDetailResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** changeBillingDate a customer (executes immediately) - returns raw Response. */
@@ -507,7 +507,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerChangeBillingDateResponse changeBillingDate(
       String customerId, CustomerChangeBillingDateParams params) throws Exception {
     Response response = changeBillingDateRaw(customerId, params);
-    return parseResponse(response, CustomerChangeBillingDateResponse.class);
+    return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a customer using immutable params (executes immediately) - returns raw Response. */
@@ -531,12 +531,12 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerListResponse list(CustomerListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CustomerListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CustomerListResponse list() throws Exception {
     Response response = listRaw();
-    return CustomerListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a customer using immutable params (executes immediately) - returns raw Response. */
@@ -554,7 +554,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerCreateResponse create(CustomerCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CustomerCreateResponse.class);
+    return CustomerCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addContact a customer (executes immediately) - returns raw Response. */
@@ -582,7 +582,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerAddContactResponse addContact(String customerId, CustomerAddContactParams params)
       throws Exception {
     Response response = addContactRaw(customerId, params);
-    return parseResponse(response, CustomerAddContactResponse.class);
+    return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -619,14 +619,14 @@ public final class CustomerService extends BaseService<CustomerService> {
       String customerId, CustomerContactsForCustomerParams params) throws Exception {
     Response response = contactsForCustomerRaw(customerId, params);
     return CustomerContactsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public CustomerContactsForCustomerResponse contactsForCustomer(String customerId)
       throws Exception {
     Response response = contactsForCustomerRaw(customerId);
     return CustomerContactsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** deductPromotionalCredits a customer (executes immediately) - returns raw Response. */
@@ -664,7 +664,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerDeductPromotionalCreditsResponse deductPromotionalCredits(
       String customerId, CustomerDeductPromotionalCreditsParams params) throws Exception {
     Response response = deductPromotionalCreditsRaw(customerId, params);
-    return parseResponse(response, CustomerDeductPromotionalCreditsResponse.class);
+    return CustomerDeductPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** clearPersonalData a customer (executes immediately) - returns raw Response. */
@@ -678,7 +678,7 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   public CustomerClearPersonalDataResponse clearPersonalData(String customerId) throws Exception {
     Response response = clearPersonalDataRaw(customerId);
-    return parseResponse(response, CustomerClearPersonalDataResponse.class);
+    return CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** merge a customer using immutable params (executes immediately) - returns raw Response. */
@@ -696,7 +696,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerMergeResponse merge(CustomerMergeParams params) throws Exception {
     Response response = mergeRaw(params);
 
-    return parseResponse(response, CustomerMergeResponse.class);
+    return CustomerMergeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** collectPayment a customer (executes immediately) - returns raw Response. */
@@ -729,7 +729,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerCollectPaymentResponse collectPayment(
       String customerId, CustomerCollectPaymentParams params) throws Exception {
     Response response = collectPaymentRaw(customerId, params);
-    return parseResponse(response, CustomerCollectPaymentResponse.class);
+    return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** recordExcessPayment a customer (executes immediately) - returns raw Response. */
@@ -767,7 +767,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerRecordExcessPaymentResponse recordExcessPayment(
       String customerId, CustomerRecordExcessPaymentParams params) throws Exception {
     Response response = recordExcessPaymentRaw(customerId, params);
-    return parseResponse(response, CustomerRecordExcessPaymentResponse.class);
+    return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** setPromotionalCredits a customer (executes immediately) - returns raw Response. */
@@ -805,7 +805,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerSetPromotionalCreditsResponse setPromotionalCredits(
       String customerId, CustomerSetPromotionalCreditsParams params) throws Exception {
     Response response = setPromotionalCreditsRaw(customerId, params);
-    return parseResponse(response, CustomerSetPromotionalCreditsResponse.class);
+    return CustomerSetPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateContact a customer (executes immediately) - returns raw Response. */
@@ -838,7 +838,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateContactResponse updateContact(
       String customerId, CustomerUpdateContactParams params) throws Exception {
     Response response = updateContactRaw(customerId, params);
-    return parseResponse(response, CustomerUpdateContactResponse.class);
+    return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateHierarchySettings a customer (executes immediately) - returns raw Response. */
@@ -876,7 +876,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateHierarchySettingsResponse updateHierarchySettings(
       String customerId, CustomerUpdateHierarchySettingsParams params) throws Exception {
     Response response = updateHierarchySettingsRaw(customerId, params);
-    return parseResponse(response, CustomerUpdateHierarchySettingsResponse.class);
+    return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateBillingInfo a customer (executes immediately) - returns raw Response. */
@@ -914,6 +914,6 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateBillingInfoResponse updateBillingInfo(
       String customerId, CustomerUpdateBillingInfoParams params) throws Exception {
     Response response = updateBillingInfoRaw(customerId, params);
-    return parseResponse(response, CustomerUpdateBillingInfoResponse.class);
+    return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 }

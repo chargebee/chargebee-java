@@ -72,6 +72,6 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
       throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, BrandConfigurationRetrieveResponse.class);
+    return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

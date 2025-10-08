@@ -77,7 +77,7 @@ public final class Pc2MigrationItemFamilyService
   public Pc2MigrationItemFamilyDeleteResponse delete(String pc2MigrationItemFamilyId)
       throws Exception {
     Response response = deleteRaw(pc2MigrationItemFamilyId);
-    return parseResponse(response, Pc2MigrationItemFamilyDeleteResponse.class);
+    return Pc2MigrationItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
@@ -94,7 +94,7 @@ public final class Pc2MigrationItemFamilyService
   public Pc2MigrationItemFamilyRetrieveResponse retrieve(String pc2MigrationItemFamilyId)
       throws Exception {
     Response response = retrieveRaw(pc2MigrationItemFamilyId);
-    return parseResponse(response, Pc2MigrationItemFamilyRetrieveResponse.class);
+    return Pc2MigrationItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
@@ -138,7 +138,7 @@ public final class Pc2MigrationItemFamilyService
   public Pc2MigrationItemFamilyUpdateResponse update(
       String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params) throws Exception {
     Response response = updateRaw(pc2MigrationItemFamilyId, params);
-    return parseResponse(response, Pc2MigrationItemFamilyUpdateResponse.class);
+    return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -169,12 +169,14 @@ public final class Pc2MigrationItemFamilyService
       throws Exception {
     Response response = listRaw(params);
 
-    return Pc2MigrationItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params);
+    return Pc2MigrationItemFamilyListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public Pc2MigrationItemFamilyListResponse list() throws Exception {
     Response response = listRaw();
-    return Pc2MigrationItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null);
+    return Pc2MigrationItemFamilyListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -199,6 +201,6 @@ public final class Pc2MigrationItemFamilyService
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, Pc2MigrationItemFamilyCreateResponse.class);
+    return Pc2MigrationItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

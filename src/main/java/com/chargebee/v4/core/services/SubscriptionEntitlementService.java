@@ -105,8 +105,8 @@ public final class SubscriptionEntitlementService
           SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityParams params)
           throws Exception {
     Response response = setSubscriptionEntitlementAvailabilityRaw(subscriptionId, params);
-    return parseResponse(
-        response, SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityResponse.class);
+    return SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -159,13 +159,13 @@ public final class SubscriptionEntitlementService
           throws Exception {
     Response response = subscriptionEntitlementsForSubscriptionRaw(subscriptionId, params);
     return SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse
       subscriptionEntitlementsForSubscription(String subscriptionId) throws Exception {
     Response response = subscriptionEntitlementsForSubscriptionRaw(subscriptionId);
     return SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 }

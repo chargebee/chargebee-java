@@ -131,7 +131,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingPermanentTokenParams params) throws Exception {
     Response response = createUsingPermanentTokenRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateUsingPermanentTokenResponse.class);
+    return PaymentSourceCreateUsingPermanentTokenResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** delete a paymentSource (executes immediately) - returns raw Response. */
@@ -147,7 +148,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
 
   public PaymentSourceDeleteResponse delete(String custPaymentSourceId) throws Exception {
     Response response = deleteRaw(custPaymentSourceId);
-    return parseResponse(response, PaymentSourceDeleteResponse.class);
+    return PaymentSourceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -172,7 +173,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws Exception {
     Response response = createCardRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateCardResponse.class);
+    return PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** verifyBankAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -216,7 +217,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceVerifyBankAccountResponse verifyBankAccount(
       String custPaymentSourceId, PaymentSourceVerifyBankAccountParams params) throws Exception {
     Response response = verifyBankAccountRaw(custPaymentSourceId, params);
-    return parseResponse(response, PaymentSourceVerifyBankAccountResponse.class);
+    return PaymentSourceVerifyBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a paymentSource using immutable params (executes immediately) - returns raw Response. */
@@ -240,12 +241,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceListResponse list(PaymentSourceListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, params);
+    return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public PaymentSourceListResponse list() throws Exception {
     Response response = listRaw();
-    return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, null);
+    return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** exportPaymentSource a paymentSource (executes immediately) - returns raw Response. */
@@ -289,7 +290,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceExportPaymentSourceResponse exportPaymentSource(
       String custPaymentSourceId, PaymentSourceExportPaymentSourceParams params) throws Exception {
     Response response = exportPaymentSourceRaw(custPaymentSourceId, params);
-    return parseResponse(response, PaymentSourceExportPaymentSourceResponse.class);
+    return PaymentSourceExportPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -317,7 +318,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingPaymentIntentParams params) throws Exception {
     Response response = createUsingPaymentIntentRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateUsingPaymentIntentResponse.class);
+    return PaymentSourceCreateUsingPaymentIntentResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** agreementPdf a paymentSource (executes immediately) - returns raw Response. */
@@ -334,7 +336,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceAgreementPdfResponse agreementPdf(String custPaymentSourceId)
       throws Exception {
     Response response = agreementPdfRaw(custPaymentSourceId);
-    return parseResponse(response, PaymentSourceAgreementPdfResponse.class);
+    return PaymentSourceAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a paymentSource (executes immediately) - returns raw Response. */
@@ -350,7 +352,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
 
   public PaymentSourceRetrieveResponse retrieve(String custPaymentSourceId) throws Exception {
     Response response = retrieveRaw(custPaymentSourceId);
-    return parseResponse(response, PaymentSourceRetrieveResponse.class);
+    return PaymentSourceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -378,7 +380,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateVoucherPaymentSourceParams params) throws Exception {
     Response response = createVoucherPaymentSourceRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateVoucherPaymentSourceResponse.class);
+    return PaymentSourceCreateVoucherPaymentSourceResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -405,7 +408,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingTempTokenParams params) throws Exception {
     Response response = createUsingTempTokenRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateUsingTempTokenResponse.class);
+    return PaymentSourceCreateUsingTempTokenResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateCard a paymentSource (executes immediately) - returns raw Response. */
@@ -449,7 +452,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceUpdateCardResponse updateCard(
       String custPaymentSourceId, PaymentSourceUpdateCardParams params) throws Exception {
     Response response = updateCardRaw(custPaymentSourceId, params);
-    return parseResponse(response, PaymentSourceUpdateCardResponse.class);
+    return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** switchGatewayAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -494,7 +497,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceSwitchGatewayAccountResponse switchGatewayAccount(
       String custPaymentSourceId, PaymentSourceSwitchGatewayAccountParams params) throws Exception {
     Response response = switchGatewayAccountRaw(custPaymentSourceId, params);
-    return parseResponse(response, PaymentSourceSwitchGatewayAccountResponse.class);
+    return PaymentSourceSwitchGatewayAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -519,7 +522,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateUsingTokenParams params) throws Exception {
     Response response = createUsingTokenRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateUsingTokenResponse.class);
+    return PaymentSourceCreateUsingTokenResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteLocal a paymentSource (executes immediately) - returns raw Response. */
@@ -535,7 +538,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
 
   public PaymentSourceDeleteLocalResponse deleteLocal(String custPaymentSourceId) throws Exception {
     Response response = deleteLocalRaw(custPaymentSourceId);
-    return parseResponse(response, PaymentSourceDeleteLocalResponse.class);
+    return PaymentSourceDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -561,7 +564,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       PaymentSourceCreateBankAccountParams params) throws Exception {
     Response response = createBankAccountRaw(params);
 
-    return parseResponse(response, PaymentSourceCreateBankAccountResponse.class);
+    return PaymentSourceCreateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateBankAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -605,6 +608,6 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceUpdateBankAccountResponse updateBankAccount(
       String custPaymentSourceId, PaymentSourceUpdateBankAccountParams params) throws Exception {
     Response response = updateBankAccountRaw(custPaymentSourceId, params);
-    return parseResponse(response, PaymentSourceUpdateBankAccountResponse.class);
+    return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 }

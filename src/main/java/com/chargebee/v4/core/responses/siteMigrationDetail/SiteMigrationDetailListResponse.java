@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.siteMigrationDetail.SiteMigrationDetail;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.SiteMigrationDetailService;
 import com.chargebee.v4.core.models.siteMigrationDetail.params.SiteMigrationDetailListParams;
 
@@ -19,12 +20,14 @@ public final class SiteMigrationDetailListResponse {
 
   private final SiteMigrationDetailService service;
   private final SiteMigrationDetailListParams originalParams;
+  private final Response httpResponse;
 
   private SiteMigrationDetailListResponse(
       List<SiteMigrationDetailListItem> list,
       String nextOffset,
       SiteMigrationDetailService service,
-      SiteMigrationDetailListParams originalParams) {
+      SiteMigrationDetailListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -32,6 +35,7 @@ public final class SiteMigrationDetailListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -48,7 +52,7 @@ public final class SiteMigrationDetailListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new SiteMigrationDetailListResponse(list, nextOffset, null, null);
+      return new SiteMigrationDetailListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse SiteMigrationDetailListResponse from JSON", e);
     }
@@ -61,7 +65,8 @@ public final class SiteMigrationDetailListResponse {
   public static SiteMigrationDetailListResponse fromJson(
       String json,
       SiteMigrationDetailService service,
-      SiteMigrationDetailListParams originalParams) {
+      SiteMigrationDetailListParams originalParams,
+      Response httpResponse) {
     try {
 
       List<SiteMigrationDetailListItem> list =
@@ -71,7 +76,8 @@ public final class SiteMigrationDetailListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new SiteMigrationDetailListResponse(list, nextOffset, service, originalParams);
+      return new SiteMigrationDetailListResponse(
+          list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse SiteMigrationDetailListResponse from JSON", e);
     }
@@ -106,16 +112,45 @@ public final class SiteMigrationDetailListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     SiteMigrationDetailListParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : SiteMigrationDetailListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class SiteMigrationDetailListItem {

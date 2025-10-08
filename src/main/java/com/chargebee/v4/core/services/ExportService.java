@@ -130,7 +130,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportCustomersResponse customers(ExportCustomersParams params) throws Exception {
     Response response = customersRaw(params);
 
-    return parseResponse(response, ExportCustomersResponse.class);
+    return ExportCustomersResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -153,7 +153,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = attachedItemsRaw(params);
 
-    return parseResponse(response, ExportAttachedItemsResponse.class);
+    return ExportAttachedItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** transactions a export using immutable params (executes immediately) - returns raw Response. */
@@ -171,7 +171,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportTransactionsResponse transactions(ExportTransactionsParams params) throws Exception {
     Response response = transactionsRaw(params);
 
-    return parseResponse(response, ExportTransactionsResponse.class);
+    return ExportTransactionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -196,7 +196,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = differentialPricesRaw(params);
 
-    return parseResponse(response, ExportDifferentialPricesResponse.class);
+    return ExportDifferentialPricesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** itemFamilies a export using immutable params (executes immediately) - returns raw Response. */
@@ -214,7 +214,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportItemFamiliesResponse itemFamilies(ExportItemFamiliesParams params) throws Exception {
     Response response = itemFamiliesRaw(params);
 
-    return parseResponse(response, ExportItemFamiliesResponse.class);
+    return ExportItemFamiliesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** invoices a export using immutable params (executes immediately) - returns raw Response. */
@@ -232,7 +232,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportInvoicesResponse invoices(ExportInvoicesParams params) throws Exception {
     Response response = invoicesRaw(params);
 
-    return parseResponse(response, ExportInvoicesResponse.class);
+    return ExportInvoicesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a export (executes immediately) - returns raw Response. */
@@ -244,7 +244,7 @@ public final class ExportService extends BaseService<ExportService> {
 
   public ExportRetrieveResponse retrieve(String exportId) throws Exception {
     Response response = retrieveRaw(exportId);
-    return parseResponse(response, ExportRetrieveResponse.class);
+    return ExportRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -267,7 +267,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = priceVariantsRaw(params);
 
-    return parseResponse(response, ExportPriceVariantsResponse.class);
+    return ExportPriceVariantsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** items a export using immutable params (executes immediately) - returns raw Response. */
@@ -285,7 +285,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportItemsResponse items(ExportItemsParams params) throws Exception {
     Response response = itemsRaw(params);
 
-    return parseResponse(response, ExportItemsResponse.class);
+    return ExportItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -308,7 +308,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = deferredRevenueRaw(params);
 
-    return parseResponse(response, ExportDeferredRevenueResponse.class);
+    return ExportDeferredRevenueResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -333,7 +333,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = revenueRecognitionRaw(params);
 
-    return parseResponse(response, ExportRevenueRecognitionResponse.class);
+    return ExportRevenueRecognitionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** creditNotes a export using immutable params (executes immediately) - returns raw Response. */
@@ -351,7 +351,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportCreditNotesResponse creditNotes(ExportCreditNotesParams params) throws Exception {
     Response response = creditNotesRaw(params);
 
-    return parseResponse(response, ExportCreditNotesResponse.class);
+    return ExportCreditNotesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** coupons a export using immutable params (executes immediately) - returns raw Response. */
@@ -369,7 +369,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportCouponsResponse coupons(ExportCouponsParams params) throws Exception {
     Response response = couponsRaw(params);
 
-    return parseResponse(response, ExportCouponsResponse.class);
+    return ExportCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** orders a export using immutable params (executes immediately) - returns raw Response. */
@@ -387,7 +387,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportOrdersResponse orders(ExportOrdersParams params) throws Exception {
     Response response = ordersRaw(params);
 
-    return parseResponse(response, ExportOrdersResponse.class);
+    return ExportOrdersResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** itemPrices a export using immutable params (executes immediately) - returns raw Response. */
@@ -405,7 +405,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportItemPricesResponse itemPrices(ExportItemPricesParams params) throws Exception {
     Response response = itemPricesRaw(params);
 
-    return parseResponse(response, ExportItemPricesResponse.class);
+    return ExportItemPricesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -428,7 +428,7 @@ public final class ExportService extends BaseService<ExportService> {
       throws Exception {
     Response response = subscriptionsRaw(params);
 
-    return parseResponse(response, ExportSubscriptionsResponse.class);
+    return ExportSubscriptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addons a export using immutable params (executes immediately) - returns raw Response. */
@@ -446,7 +446,7 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportAddonsResponse addons(ExportAddonsParams params) throws Exception {
     Response response = addonsRaw(params);
 
-    return parseResponse(response, ExportAddonsResponse.class);
+    return ExportAddonsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** plans a export using immutable params (executes immediately) - returns raw Response. */
@@ -464,6 +464,6 @@ public final class ExportService extends BaseService<ExportService> {
   public ExportPlansResponse plans(ExportPlansParams params) throws Exception {
     Response response = plansRaw(params);
 
-    return parseResponse(response, ExportPlansResponse.class);
+    return ExportPlansResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -68,7 +68,7 @@ public final class AddressService extends BaseService<AddressService> {
   public AddressRetrieveResponse retrieve(AddressRetrieveParams params) throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, AddressRetrieveResponse.class);
+    return AddressRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a address using immutable params (executes immediately) - returns raw Response. */
@@ -86,6 +86,6 @@ public final class AddressService extends BaseService<AddressService> {
   public AddressUpdateResponse update(AddressUpdateParams params) throws Exception {
     Response response = updateRaw(params);
 
-    return parseResponse(response, AddressUpdateResponse.class);
+    return AddressUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

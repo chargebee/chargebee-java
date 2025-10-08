@@ -81,7 +81,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
 
   public UnbilledChargeDeleteResponse delete(String unbilledChargeId) throws Exception {
     Response response = deleteRaw(unbilledChargeId);
-    return parseResponse(response, UnbilledChargeDeleteResponse.class);
+    return UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -107,7 +107,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       UnbilledChargeInvoiceNowEstimateParams params) throws Exception {
     Response response = invoiceNowEstimateRaw(params);
 
-    return parseResponse(response, UnbilledChargeInvoiceNowEstimateResponse.class);
+    return UnbilledChargeInvoiceNowEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -134,7 +134,8 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       UnbilledChargeInvoiceUnbilledChargesParams params) throws Exception {
     Response response = invoiceUnbilledChargesRaw(params);
 
-    return parseResponse(response, UnbilledChargeInvoiceUnbilledChargesResponse.class);
+    return UnbilledChargeInvoiceUnbilledChargesResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** list a unbilledCharge using immutable params (executes immediately) - returns raw Response. */
@@ -158,12 +159,12 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   public UnbilledChargeListResponse list(UnbilledChargeListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, params);
+    return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public UnbilledChargeListResponse list() throws Exception {
     Response response = listRaw();
-    return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null);
+    return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -185,7 +186,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   public UnbilledChargeCreateResponse create(UnbilledChargeCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, UnbilledChargeCreateResponse.class);
+    return UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -211,6 +212,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
       UnbilledChargeCreateUnbilledChargeParams params) throws Exception {
     Response response = createUnbilledChargeRaw(params);
 
-    return parseResponse(response, UnbilledChargeCreateUnbilledChargeResponse.class);
+    return UnbilledChargeCreateUnbilledChargeResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

@@ -79,7 +79,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
 
   public Pc2MigrationItemRetrieveResponse retrieve(String pc2MigrationItemId) throws Exception {
     Response response = retrieveRaw(pc2MigrationItemId);
-    return parseResponse(response, Pc2MigrationItemRetrieveResponse.class);
+    return Pc2MigrationItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItem (executes immediately) - returns raw Response. */
@@ -121,7 +121,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public Pc2MigrationItemUpdateResponse update(
       String pc2MigrationItemId, Pc2MigrationItemUpdateParams params) throws Exception {
     Response response = updateRaw(pc2MigrationItemId, params);
-    return parseResponse(response, Pc2MigrationItemUpdateResponse.class);
+    return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a pc2MigrationItem (executes immediately) - returns raw Response. */
@@ -137,7 +137,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
 
   public Pc2MigrationItemDeleteResponse delete(String pc2MigrationItemId) throws Exception {
     Response response = deleteRaw(pc2MigrationItemId);
-    return parseResponse(response, Pc2MigrationItemDeleteResponse.class);
+    return Pc2MigrationItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -165,12 +165,13 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public Pc2MigrationItemListResponse list(Pc2MigrationItemListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, params);
+    return Pc2MigrationItemListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public Pc2MigrationItemListResponse list() throws Exception {
     Response response = listRaw();
-    return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, null);
+    return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -193,7 +194,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, Pc2MigrationItemCreateResponse.class);
+    return Pc2MigrationItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -230,12 +231,12 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     Response response = listApplicableAddonsRaw(params);
 
     return Pc2MigrationItemListApplicableAddonsResponse.fromJson(
-        response.getBodyAsString(), this, params);
+        response.getBodyAsString(), this, params, response);
   }
 
   public Pc2MigrationItemListApplicableAddonsResponse listApplicableAddons() throws Exception {
     Response response = listApplicableAddonsRaw();
     return Pc2MigrationItemListApplicableAddonsResponse.fromJson(
-        response.getBodyAsString(), this, null);
+        response.getBodyAsString(), this, null, response);
   }
 }

@@ -72,7 +72,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
 
   public ItemFamilyDeleteResponse delete(String itemFamilyId) throws Exception {
     Response response = deleteRaw(itemFamilyId);
-    return parseResponse(response, ItemFamilyDeleteResponse.class);
+    return ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a itemFamily using immutable params (executes immediately) - returns raw Response. */
@@ -96,12 +96,12 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   public ItemFamilyListResponse list(ItemFamilyListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params);
+    return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public ItemFamilyListResponse list() throws Exception {
     Response response = listRaw();
-    return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null);
+    return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a itemFamily using immutable params (executes immediately) - returns raw Response. */
@@ -119,7 +119,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   public ItemFamilyCreateResponse create(ItemFamilyCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, ItemFamilyCreateResponse.class);
+    return ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a itemFamily (executes immediately) - returns raw Response. */
@@ -132,7 +132,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
 
   public ItemFamilyRetrieveResponse retrieve(String itemFamilyId) throws Exception {
     Response response = retrieveRaw(itemFamilyId);
-    return parseResponse(response, ItemFamilyRetrieveResponse.class);
+    return ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a itemFamily (executes immediately) - returns raw Response. */
@@ -160,6 +160,6 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   public ItemFamilyUpdateResponse update(String itemFamilyId, ItemFamilyUpdateParams params)
       throws Exception {
     Response response = updateRaw(itemFamilyId, params);
-    return parseResponse(response, ItemFamilyUpdateResponse.class);
+    return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

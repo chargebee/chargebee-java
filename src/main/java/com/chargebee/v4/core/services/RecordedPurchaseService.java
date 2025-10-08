@@ -65,7 +65,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
 
   public RecordedPurchaseRetrieveResponse retrieve(String recordedPurchaseId) throws Exception {
     Response response = retrieveRaw(recordedPurchaseId);
-    return parseResponse(response, RecordedPurchaseRetrieveResponse.class);
+    return RecordedPurchaseRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -88,6 +88,6 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, RecordedPurchaseCreateResponse.class);
+    return RecordedPurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

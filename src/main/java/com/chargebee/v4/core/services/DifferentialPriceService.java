@@ -105,7 +105,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   public DifferentialPriceDeleteResponse delete(
       String differentialPriceId, DifferentialPriceDeleteParams params) throws Exception {
     Response response = deleteRaw(differentialPriceId, params);
-    return parseResponse(response, DifferentialPriceDeleteResponse.class);
+    return DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** create a differentialPrice (executes immediately) - returns raw Response. */
@@ -142,7 +142,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   public DifferentialPriceCreateResponse create(
       String itemPriceId, DifferentialPriceCreateParams params) throws Exception {
     Response response = createRaw(itemPriceId, params);
-    return parseResponse(response, DifferentialPriceCreateResponse.class);
+    return DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -170,12 +170,13 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   public DifferentialPriceListResponse list(DifferentialPriceListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, params);
+    return DifferentialPriceListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public DifferentialPriceListResponse list() throws Exception {
     Response response = listRaw();
-    return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null);
+    return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** retrieve a differentialPrice (executes immediately) - returns raw Response. */
@@ -191,7 +192,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
 
   public DifferentialPriceRetrieveResponse retrieve(String differentialPriceId) throws Exception {
     Response response = retrieveRaw(differentialPriceId);
-    return parseResponse(response, DifferentialPriceRetrieveResponse.class);
+    return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a differentialPrice (executes immediately) - returns raw Response. */
@@ -235,6 +236,6 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   public DifferentialPriceUpdateResponse update(
       String differentialPriceId, DifferentialPriceUpdateParams params) throws Exception {
     Response response = updateRaw(differentialPriceId, params);
-    return parseResponse(response, DifferentialPriceUpdateResponse.class);
+    return DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

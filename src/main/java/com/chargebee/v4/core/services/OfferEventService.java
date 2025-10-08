@@ -69,6 +69,6 @@ public final class OfferEventService extends BaseService<OfferEventService> {
       throws Exception {
     Response response = offerEventsRaw(params);
 
-    return parseResponse(response, OfferEventOfferEventsResponse.class);
+    return OfferEventOfferEventsResponse.fromJson(response.getBodyAsString(), response);
   }
 }

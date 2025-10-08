@@ -83,7 +83,8 @@ public final class ThirdPartyConfigurationService
       ThirdPartyConfigurationConfigurationsParams params) throws Exception {
     Response response = configurationsRaw(params);
 
-    return parseResponse(response, ThirdPartyConfigurationConfigurationsResponse.class);
+    return ThirdPartyConfigurationConfigurationsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -108,7 +109,7 @@ public final class ThirdPartyConfigurationService
       ThirdPartyConfigurationRetrieveParams params) throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, ThirdPartyConfigurationRetrieveResponse.class);
+    return ThirdPartyConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -133,6 +134,6 @@ public final class ThirdPartyConfigurationService
       throws Exception {
     Response response = updateRaw(params);
 
-    return parseResponse(response, ThirdPartyConfigurationUpdateResponse.class);
+    return ThirdPartyConfigurationUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

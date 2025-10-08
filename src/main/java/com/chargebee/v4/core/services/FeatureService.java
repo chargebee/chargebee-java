@@ -88,12 +88,12 @@ public final class FeatureService extends BaseService<FeatureService> {
   public FeatureListResponse list(FeatureListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return FeatureListResponse.fromJson(response.getBodyAsString(), this, params);
+    return FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public FeatureListResponse list() throws Exception {
     Response response = listRaw();
-    return FeatureListResponse.fromJson(response.getBodyAsString(), this, null);
+    return FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a feature using immutable params (executes immediately) - returns raw Response. */
@@ -111,7 +111,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public FeatureCreateResponse create(FeatureCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, FeatureCreateResponse.class);
+    return FeatureCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a feature (executes immediately) - returns raw Response. */
@@ -123,7 +123,7 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureDeleteResponse delete(String featureId) throws Exception {
     Response response = deleteRaw(featureId);
-    return parseResponse(response, FeatureDeleteResponse.class);
+    return FeatureDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a feature (executes immediately) - returns raw Response. */
@@ -135,7 +135,7 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureRetrieveResponse retrieve(String featureId) throws Exception {
     Response response = retrieveRaw(featureId);
-    return parseResponse(response, FeatureRetrieveResponse.class);
+    return FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a feature (executes immediately) - returns raw Response. */
@@ -160,7 +160,7 @@ public final class FeatureService extends BaseService<FeatureService> {
   public FeatureUpdateResponse update(String featureId, FeatureUpdateParams params)
       throws Exception {
     Response response = updateRaw(featureId, params);
-    return parseResponse(response, FeatureUpdateResponse.class);
+    return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** archive a feature (executes immediately) - returns raw Response. */
@@ -173,7 +173,7 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureArchiveResponse archive(String featureId) throws Exception {
     Response response = archiveRaw(featureId);
-    return parseResponse(response, FeatureArchiveResponse.class);
+    return FeatureArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** activate a feature (executes immediately) - returns raw Response. */
@@ -186,7 +186,7 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureActivateResponse activate(String featureId) throws Exception {
     Response response = activateRaw(featureId);
-    return parseResponse(response, FeatureActivateResponse.class);
+    return FeatureActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** reactivate a feature (executes immediately) - returns raw Response. */
@@ -199,6 +199,6 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureReactivateResponse reactivate(String featureId) throws Exception {
     Response response = reactivateRaw(featureId);
-    return parseResponse(response, FeatureReactivateResponse.class);
+    return FeatureReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

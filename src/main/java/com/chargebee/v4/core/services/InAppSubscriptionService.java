@@ -106,7 +106,8 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
       String inAppSubscriptionAppId, InAppSubscriptionRetrieveStoreSubsParams params)
       throws Exception {
     Response response = retrieveStoreSubsRaw(inAppSubscriptionAppId, params);
-    return parseResponse(response, InAppSubscriptionRetrieveStoreSubsResponse.class);
+    return InAppSubscriptionRetrieveStoreSubsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** importReceipt a inAppSubscription (executes immediately) - returns raw Response. */
@@ -150,7 +151,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   public InAppSubscriptionImportReceiptResponse importReceipt(
       String inAppSubscriptionAppId, InAppSubscriptionImportReceiptParams params) throws Exception {
     Response response = importReceiptRaw(inAppSubscriptionAppId, params);
-    return parseResponse(response, InAppSubscriptionImportReceiptResponse.class);
+    return InAppSubscriptionImportReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importSubscription a inAppSubscription (executes immediately) - returns raw Response. */
@@ -197,7 +198,8 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
       String inAppSubscriptionAppId, InAppSubscriptionImportSubscriptionParams params)
       throws Exception {
     Response response = importSubscriptionRaw(inAppSubscriptionAppId, params);
-    return parseResponse(response, InAppSubscriptionImportSubscriptionResponse.class);
+    return InAppSubscriptionImportSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** processReceipt a inAppSubscription (executes immediately) - returns raw Response. */
@@ -243,6 +245,6 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
       String inAppSubscriptionAppId, InAppSubscriptionProcessReceiptParams params)
       throws Exception {
     Response response = processReceiptRaw(inAppSubscriptionAppId, params);
-    return parseResponse(response, InAppSubscriptionProcessReceiptResponse.class);
+    return InAppSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 }

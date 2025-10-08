@@ -76,7 +76,7 @@ public final class PlanService extends BaseService<PlanService> {
 
   public PlanUnarchiveResponse unarchive(String planId) throws Exception {
     Response response = unarchiveRaw(planId);
-    return parseResponse(response, PlanUnarchiveResponse.class);
+    return PlanUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a plan (executes immediately) - returns raw Response. */
@@ -88,7 +88,7 @@ public final class PlanService extends BaseService<PlanService> {
 
   public PlanDeleteResponse delete(String planId) throws Exception {
     Response response = deleteRaw(planId);
-    return parseResponse(response, PlanDeleteResponse.class);
+    return PlanDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** copy a plan using immutable params (executes immediately) - returns raw Response. */
@@ -106,7 +106,7 @@ public final class PlanService extends BaseService<PlanService> {
   public PlanCopyResponse copy(PlanCopyParams params) throws Exception {
     Response response = copyRaw(params);
 
-    return parseResponse(response, PlanCopyResponse.class);
+    return PlanCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a plan using immutable params (executes immediately) - returns raw Response. */
@@ -130,12 +130,12 @@ public final class PlanService extends BaseService<PlanService> {
   public PlanListResponse list(PlanListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return PlanListResponse.fromJson(response.getBodyAsString(), this, params);
+    return PlanListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public PlanListResponse list() throws Exception {
     Response response = listRaw();
-    return PlanListResponse.fromJson(response.getBodyAsString(), this, null);
+    return PlanListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a plan using immutable params (executes immediately) - returns raw Response. */
@@ -153,7 +153,7 @@ public final class PlanService extends BaseService<PlanService> {
   public PlanCreateResponse create(PlanCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PlanCreateResponse.class);
+    return PlanCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a plan (executes immediately) - returns raw Response. */
@@ -165,7 +165,7 @@ public final class PlanService extends BaseService<PlanService> {
 
   public PlanRetrieveResponse retrieve(String planId) throws Exception {
     Response response = retrieveRaw(planId);
-    return parseResponse(response, PlanRetrieveResponse.class);
+    return PlanRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a plan (executes immediately) - returns raw Response. */
@@ -189,6 +189,6 @@ public final class PlanService extends BaseService<PlanService> {
 
   public PlanUpdateResponse update(String planId, PlanUpdateParams params) throws Exception {
     Response response = updateRaw(planId, params);
-    return parseResponse(response, PlanUpdateResponse.class);
+    return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

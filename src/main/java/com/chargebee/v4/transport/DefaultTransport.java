@@ -201,7 +201,7 @@ public class DefaultTransport implements Transport {
         
         // Standard Chargebee headers
         builder.header("Accept-Charset", "UTF-8");
-        builder.header("User-Agent", "Chargebee-Java-Client v2.0");
+        builder.header("User-Agent", "Chargebee-Java-Client v4.0");
         builder.header("Accept", "application/json");
         builder.header("OS-Version", String.format("%s %s %s", 
             System.getProperty("os.name"),

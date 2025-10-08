@@ -77,7 +77,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
   public PortalSessionCreateResponse create(PortalSessionCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PortalSessionCreateResponse.class);
+    return PortalSessionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** activate a portalSession (executes immediately) - returns raw Response. */
@@ -113,7 +113,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
   public PortalSessionActivateResponse activate(
       String portalSessionId, PortalSessionActivateParams params) throws Exception {
     Response response = activateRaw(portalSessionId, params);
-    return parseResponse(response, PortalSessionActivateResponse.class);
+    return PortalSessionActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** logout a portalSession (executes immediately) - returns raw Response. */
@@ -127,7 +127,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
 
   public PortalSessionLogoutResponse logout(String portalSessionId) throws Exception {
     Response response = logoutRaw(portalSessionId);
-    return parseResponse(response, PortalSessionLogoutResponse.class);
+    return PortalSessionLogoutResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a portalSession (executes immediately) - returns raw Response. */
@@ -141,6 +141,6 @@ public final class PortalSessionService extends BaseService<PortalSessionService
 
   public PortalSessionRetrieveResponse retrieve(String portalSessionId) throws Exception {
     Response response = retrieveRaw(portalSessionId);
-    return parseResponse(response, PortalSessionRetrieveResponse.class);
+    return PortalSessionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

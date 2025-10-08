@@ -86,12 +86,14 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
       throws Exception {
     Response response = listRaw(params);
 
-    return Pc2MigrationItemPriceListResponse.fromJson(response.getBodyAsString(), this, params);
+    return Pc2MigrationItemPriceListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public Pc2MigrationItemPriceListResponse list() throws Exception {
     Response response = listRaw();
-    return Pc2MigrationItemPriceListResponse.fromJson(response.getBodyAsString(), this, null);
+    return Pc2MigrationItemPriceListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 
   /** delete a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
@@ -108,7 +110,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   public Pc2MigrationItemPriceDeleteResponse delete(String pc2MigrationItemPriceId)
       throws Exception {
     Response response = deleteRaw(pc2MigrationItemPriceId);
-    return parseResponse(response, Pc2MigrationItemPriceDeleteResponse.class);
+    return Pc2MigrationItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
@@ -125,7 +127,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   public Pc2MigrationItemPriceRetrieveResponse retrieve(String pc2MigrationItemPriceId)
       throws Exception {
     Response response = retrieveRaw(pc2MigrationItemPriceId);
-    return parseResponse(response, Pc2MigrationItemPriceRetrieveResponse.class);
+    return Pc2MigrationItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
@@ -169,6 +171,6 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   public Pc2MigrationItemPriceUpdateResponse update(
       String pc2MigrationItemPriceId, Pc2MigrationItemPriceUpdateParams params) throws Exception {
     Response response = updateRaw(pc2MigrationItemPriceId, params);
-    return parseResponse(response, Pc2MigrationItemPriceUpdateResponse.class);
+    return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

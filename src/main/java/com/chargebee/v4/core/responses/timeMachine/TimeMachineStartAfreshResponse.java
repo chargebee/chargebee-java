@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.timeMachine;
 import com.chargebee.v4.core.models.timeMachine.TimeMachine;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for TimeMachineStartAfresh operation. Contains the response data from
@@ -12,13 +13,22 @@ public final class TimeMachineStartAfreshResponse {
 
   private final TimeMachine timeMachine;
 
+  private final Response httpResponse;
+
   private TimeMachineStartAfreshResponse(Builder builder) {
 
     this.timeMachine = builder.timeMachine;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into TimeMachineStartAfreshResponse object. */
   public static TimeMachineStartAfreshResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into TimeMachineStartAfreshResponse object with HTTP response. */
+  public static TimeMachineStartAfreshResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -27,6 +37,7 @@ public final class TimeMachineStartAfreshResponse {
         builder.timeMachine(TimeMachine.fromJson(__timeMachineJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse TimeMachineStartAfreshResponse from JSON", e);
@@ -43,10 +54,17 @@ public final class TimeMachineStartAfreshResponse {
 
     private TimeMachine timeMachine;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder timeMachine(TimeMachine timeMachine) {
       this.timeMachine = timeMachine;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -58,5 +76,30 @@ public final class TimeMachineStartAfreshResponse {
   /** Get the timeMachine from the response. */
   public TimeMachine getTimeMachine() {
     return timeMachine;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

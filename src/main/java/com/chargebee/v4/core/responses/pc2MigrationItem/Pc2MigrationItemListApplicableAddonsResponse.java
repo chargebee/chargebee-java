@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.Pc2MigrationItemService;
 import com.chargebee.v4.core.models.pc2MigrationItem.params.Pc2MigrationItemListApplicableAddonsParams;
 
@@ -19,12 +20,14 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
 
   private final Pc2MigrationItemService service;
   private final Pc2MigrationItemListApplicableAddonsParams originalParams;
+  private final Response httpResponse;
 
   private Pc2MigrationItemListApplicableAddonsResponse(
       List<Object> list,
       String nextOffset,
       Pc2MigrationItemService service,
-      Pc2MigrationItemListApplicableAddonsParams originalParams) {
+      Pc2MigrationItemListApplicableAddonsParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -32,6 +35,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -46,7 +50,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new Pc2MigrationItemListApplicableAddonsResponse(list, nextOffset, null, null);
+      return new Pc2MigrationItemListApplicableAddonsResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemListApplicableAddonsResponse from JSON", e);
@@ -60,7 +64,8 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   public static Pc2MigrationItemListApplicableAddonsResponse fromJson(
       String json,
       Pc2MigrationItemService service,
-      Pc2MigrationItemListApplicableAddonsParams originalParams) {
+      Pc2MigrationItemListApplicableAddonsParams originalParams,
+      Response httpResponse) {
     try {
 
       List<Object> list =
@@ -69,7 +74,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new Pc2MigrationItemListApplicableAddonsResponse(
-          list, nextOffset, service, originalParams);
+          list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemListApplicableAddonsResponse from JSON", e);
@@ -105,15 +110,44 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     Pc2MigrationItemListApplicableAddonsParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : Pc2MigrationItemListApplicableAddonsParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.listApplicableAddons(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

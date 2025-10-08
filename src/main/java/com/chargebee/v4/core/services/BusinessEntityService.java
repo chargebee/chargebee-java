@@ -82,12 +82,14 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
       throws Exception {
     Response response = getTransfersRaw(params);
 
-    return BusinessEntityGetTransfersResponse.fromJson(response.getBodyAsString(), this, params);
+    return BusinessEntityGetTransfersResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public BusinessEntityGetTransfersResponse getTransfers() throws Exception {
     Response response = getTransfersRaw();
-    return BusinessEntityGetTransfersResponse.fromJson(response.getBodyAsString(), this, null);
+    return BusinessEntityGetTransfersResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -112,6 +114,6 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
       BusinessEntityCreateTransfersParams params) throws Exception {
     Response response = createTransfersRaw(params);
 
-    return parseResponse(response, BusinessEntityCreateTransfersResponse.class);
+    return BusinessEntityCreateTransfersResponse.fromJson(response.getBodyAsString(), response);
   }
 }

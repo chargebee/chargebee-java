@@ -102,13 +102,13 @@ public final class OmnichannelSubscriptionItemService
           throws Exception {
     Response response = listOmniSubItemScheduleChangesRaw(omnichannelSubscriptionItemId, params);
     return OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse.fromJson(
-        response.getBodyAsString(), this, params, omnichannelSubscriptionItemId);
+        response.getBodyAsString(), this, params, omnichannelSubscriptionItemId, response);
   }
 
   public OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse
       listOmniSubItemScheduleChanges(String omnichannelSubscriptionItemId) throws Exception {
     Response response = listOmniSubItemScheduleChangesRaw(omnichannelSubscriptionItemId);
     return OmnichannelSubscriptionItemListOmniSubItemScheduleChangesResponse.fromJson(
-        response.getBodyAsString(), this, null, omnichannelSubscriptionItemId);
+        response.getBodyAsString(), this, null, omnichannelSubscriptionItemId, response);
   }
 }

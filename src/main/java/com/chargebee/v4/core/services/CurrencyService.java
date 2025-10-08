@@ -98,7 +98,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   public CurrencyAddScheduleResponse addSchedule(
       String siteCurrencyId, CurrencyAddScheduleParams params) throws Exception {
     Response response = addScheduleRaw(siteCurrencyId, params);
-    return parseResponse(response, CurrencyAddScheduleResponse.class);
+    return CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** create a currency using immutable params (executes immediately) - returns raw Response. */
@@ -116,7 +116,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   public CurrencyCreateResponse create(CurrencyCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CurrencyCreateResponse.class);
+    return CurrencyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a currency (executes immediately) - returns raw Response. */
@@ -129,7 +129,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
 
   public CurrencyRetrieveResponse retrieve(String siteCurrencyId) throws Exception {
     Response response = retrieveRaw(siteCurrencyId);
-    return parseResponse(response, CurrencyRetrieveResponse.class);
+    return CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a currency (executes immediately) - returns raw Response. */
@@ -157,7 +157,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   public CurrencyUpdateResponse update(String siteCurrencyId, CurrencyUpdateParams params)
       throws Exception {
     Response response = updateRaw(siteCurrencyId, params);
-    return parseResponse(response, CurrencyUpdateResponse.class);
+    return CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeSchedule a currency (executes immediately) - returns raw Response. */
@@ -171,7 +171,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
 
   public CurrencyRemoveScheduleResponse removeSchedule(String siteCurrencyId) throws Exception {
     Response response = removeScheduleRaw(siteCurrencyId);
-    return parseResponse(response, CurrencyRemoveScheduleResponse.class);
+    return CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a currency using immutable params (executes immediately) - returns raw Response. */
@@ -195,11 +195,11 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   public CurrencyListResponse list(CurrencyListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CurrencyListResponse list() throws Exception {
     Response response = listRaw();
-    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 }

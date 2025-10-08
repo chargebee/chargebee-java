@@ -224,7 +224,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionRemoveAdvanceInvoiceScheduleParams params)
       throws Exception {
     Response response = removeAdvanceInvoiceScheduleRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionRemoveAdvanceInvoiceScheduleResponse.class);
+    return SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** updateForItems a subscription (executes immediately) - returns raw Response. */
@@ -262,7 +263,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionUpdateForItemsResponse updateForItems(
       String subscriptionId, SubscriptionUpdateForItemsParams params) throws Exception {
     Response response = updateForItemsRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionUpdateForItemsResponse.class);
+    return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeCoupons a subscription (executes immediately) - returns raw Response. */
@@ -300,7 +301,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRemoveCouponsResponse removeCoupons(
       String subscriptionId, SubscriptionRemoveCouponsParams params) throws Exception {
     Response response = removeCouponsRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionRemoveCouponsResponse.class);
+    return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resume a subscription (executes immediately) - returns raw Response. */
@@ -331,7 +332,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionResumeResponse resume(String subscriptionId, SubscriptionResumeParams params)
       throws Exception {
     Response response = resumeRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionResumeResponse.class);
+    return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** cancelForItems a subscription (executes immediately) - returns raw Response. */
@@ -369,7 +370,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCancelForItemsResponse cancelForItems(
       String subscriptionId, SubscriptionCancelForItemsParams params) throws Exception {
     Response response = cancelForItemsRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionCancelForItemsResponse.class);
+    return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** regenerateInvoice a subscription (executes immediately) - returns raw Response. */
@@ -413,7 +414,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRegenerateInvoiceResponse regenerateInvoice(
       String subscriptionId, SubscriptionRegenerateInvoiceParams params) throws Exception {
     Response response = regenerateInvoiceRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionRegenerateInvoiceResponse.class);
+    return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -437,12 +438,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionListResponse list(SubscriptionListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, params);
+    return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public SubscriptionListResponse list() throws Exception {
     Response response = listRaw();
-    return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null);
+    return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -460,7 +461,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCreateResponse create(SubscriptionCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, SubscriptionCreateResponse.class);
+    return SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** move a subscription (executes immediately) - returns raw Response. */
@@ -491,7 +492,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionMoveResponse move(String subscriptionId, SubscriptionMoveParams params)
       throws Exception {
     Response response = moveRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionMoveResponse.class);
+    return SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -529,14 +530,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId, SubscriptionSubscriptionsForCustomerParams params) throws Exception {
     Response response = subscriptionsForCustomerRaw(customerId, params);
     return SubscriptionSubscriptionsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public SubscriptionSubscriptionsForCustomerResponse subscriptionsForCustomer(String customerId)
       throws Exception {
     Response response = subscriptionsForCustomerRaw(customerId);
     return SubscriptionSubscriptionsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 
   /** createForCustomer a subscription (executes immediately) - returns raw Response. */
@@ -571,7 +572,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCreateForCustomerResponse createForCustomer(
       String customerId, SubscriptionCreateForCustomerParams params) throws Exception {
     Response response = createForCustomerRaw(customerId, params);
-    return parseResponse(response, SubscriptionCreateForCustomerResponse.class);
+    return SubscriptionCreateForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importForItems a subscription (executes immediately) - returns raw Response. */
@@ -606,7 +607,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionImportForItemsResponse importForItems(
       String customerId, SubscriptionImportForItemsParams params) throws Exception {
     Response response = importForItemsRaw(customerId, params);
-    return parseResponse(response, SubscriptionImportForItemsResponse.class);
+    return SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -625,7 +626,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRetrieveAdvanceInvoiceScheduleResponse retrieveAdvanceInvoiceSchedule(
       String subscriptionId) throws Exception {
     Response response = retrieveAdvanceInvoiceScheduleRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRetrieveAdvanceInvoiceScheduleResponse.class);
+    return SubscriptionRetrieveAdvanceInvoiceScheduleResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** removeScheduledCancellation a subscription (executes immediately) - returns raw Response. */
@@ -672,7 +674,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionRemoveScheduledCancellationParams params)
       throws Exception {
     Response response = removeScheduledCancellationRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionRemoveScheduledCancellationResponse.class);
+    return SubscriptionRemoveScheduledCancellationResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** retrieveWithScheduledChanges a subscription (executes immediately) - returns raw Response. */
@@ -689,7 +692,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRetrieveWithScheduledChangesResponse retrieveWithScheduledChanges(
       String subscriptionId) throws Exception {
     Response response = retrieveWithScheduledChangesRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRetrieveWithScheduledChangesResponse.class);
+    return SubscriptionRetrieveWithScheduledChangesResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** reactivate a subscription (executes immediately) - returns raw Response. */
@@ -725,7 +729,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionReactivateResponse reactivate(
       String subscriptionId, SubscriptionReactivateParams params) throws Exception {
     Response response = reactivateRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionReactivateResponse.class);
+    return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** chargeFutureRenewals a subscription (executes immediately) - returns raw Response. */
@@ -769,7 +773,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionChargeFutureRenewalsResponse chargeFutureRenewals(
       String subscriptionId, SubscriptionChargeFutureRenewalsParams params) throws Exception {
     Response response = chargeFutureRenewalsRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionChargeFutureRenewalsResponse.class);
+    return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addChargeAtTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -813,7 +817,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionAddChargeAtTermEndResponse addChargeAtTermEnd(
       String subscriptionId, SubscriptionAddChargeAtTermEndParams params) throws Exception {
     Response response = addChargeAtTermEndRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionAddChargeAtTermEndResponse.class);
+    return SubscriptionAddChargeAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeScheduledChanges a subscription (executes immediately) - returns raw Response. */
@@ -830,7 +834,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRemoveScheduledChangesResponse removeScheduledChanges(String subscriptionId)
       throws Exception {
     Response response = removeScheduledChangesRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRemoveScheduledChangesResponse.class);
+    return SubscriptionRemoveScheduledChangesResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** changeTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -868,7 +873,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionChangeTermEndResponse changeTermEnd(
       String subscriptionId, SubscriptionChangeTermEndParams params) throws Exception {
     Response response = changeTermEndRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionChangeTermEndResponse.class);
+    return SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a subscription (executes immediately) - returns raw Response. */
@@ -882,7 +887,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
 
   public SubscriptionDeleteResponse delete(String subscriptionId) throws Exception {
     Response response = deleteRaw(subscriptionId);
-    return parseResponse(response, SubscriptionDeleteResponse.class);
+    return SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createWithItems a subscription (executes immediately) - returns raw Response. */
@@ -920,7 +925,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCreateWithItemsResponse createWithItems(
       String customerId, SubscriptionCreateWithItemsParams params) throws Exception {
     Response response = createWithItemsRaw(customerId, params);
-    return parseResponse(response, SubscriptionCreateWithItemsResponse.class);
+    return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importUnbilledCharges a subscription (executes immediately) - returns raw Response. */
@@ -964,7 +969,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionImportUnbilledChargesResponse importUnbilledCharges(
       String subscriptionId, SubscriptionImportUnbilledChargesParams params) throws Exception {
     Response response = importUnbilledChargesRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionImportUnbilledChargesResponse.class);
+    return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** removeScheduledResumption a subscription (executes immediately) - returns raw Response. */
@@ -981,7 +986,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRemoveScheduledResumptionResponse removeScheduledResumption(
       String subscriptionId) throws Exception {
     Response response = removeScheduledResumptionRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRemoveScheduledResumptionResponse.class);
+    return SubscriptionRemoveScheduledResumptionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** retrieve a subscription (executes immediately) - returns raw Response. */
@@ -994,7 +1000,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
 
   public SubscriptionRetrieveResponse retrieve(String subscriptionId) throws Exception {
     Response response = retrieveRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRetrieveResponse.class);
+    return SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a subscription (executes immediately) - returns raw Response. */
@@ -1022,7 +1028,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionUpdateResponse update(String subscriptionId, SubscriptionUpdateParams params)
       throws Exception {
     Response response = updateRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionUpdateResponse.class);
+    return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importContractTerm a subscription (executes immediately) - returns raw Response. */
@@ -1066,7 +1072,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionImportContractTermResponse importContractTerm(
       String subscriptionId, SubscriptionImportContractTermParams params) throws Exception {
     Response response = importContractTermRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionImportContractTermResponse.class);
+    return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** overrideBillingProfile a subscription (executes immediately) - returns raw Response. */
@@ -1110,7 +1116,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionOverrideBillingProfileResponse overrideBillingProfile(
       String subscriptionId, SubscriptionOverrideBillingProfileParams params) throws Exception {
     Response response = overrideBillingProfileRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionOverrideBillingProfileResponse.class);
+    return SubscriptionOverrideBillingProfileResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** removeScheduledPause a subscription (executes immediately) - returns raw Response. */
@@ -1127,7 +1134,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRemoveScheduledPauseResponse removeScheduledPause(String subscriptionId)
       throws Exception {
     Response response = removeScheduledPauseRaw(subscriptionId);
-    return parseResponse(response, SubscriptionRemoveScheduledPauseResponse.class);
+    return SubscriptionRemoveScheduledPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** editAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response. */
@@ -1172,7 +1179,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionEditAdvanceInvoiceScheduleResponse editAdvanceInvoiceSchedule(
       String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params) throws Exception {
     Response response = editAdvanceInvoiceScheduleRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionEditAdvanceInvoiceScheduleResponse.class);
+    return SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -1210,13 +1218,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionListDiscountsParams params) throws Exception {
     Response response = listDiscountsRaw(subscriptionId, params);
     return SubscriptionListDiscountsResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public SubscriptionListDiscountsResponse listDiscounts(String subscriptionId) throws Exception {
     Response response = listDiscountsRaw(subscriptionId);
     return SubscriptionListDiscountsResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /**
@@ -1260,14 +1268,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws Exception {
     Response response = contractTermsForSubscriptionRaw(subscriptionId, params);
     return SubscriptionContractTermsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public SubscriptionContractTermsForSubscriptionResponse contractTermsForSubscription(
       String subscriptionId) throws Exception {
     Response response = contractTermsForSubscriptionRaw(subscriptionId);
     return SubscriptionContractTermsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /** pause a subscription (executes immediately) - returns raw Response. */
@@ -1298,7 +1306,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionPauseResponse pause(String subscriptionId, SubscriptionPauseParams params)
       throws Exception {
     Response response = pauseRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionPauseResponse.class);
+    return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importForCustomer a subscription (executes immediately) - returns raw Response. */
@@ -1336,7 +1344,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionImportForCustomerResponse importForCustomer(
       String customerId, SubscriptionImportForCustomerParams params) throws Exception {
     Response response = importForCustomerRaw(customerId, params);
-    return parseResponse(response, SubscriptionImportForCustomerResponse.class);
+    return SubscriptionImportForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -1361,7 +1369,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       SubscriptionImportSubscriptionParams params) throws Exception {
     Response response = importSubscriptionRaw(params);
 
-    return parseResponse(response, SubscriptionImportSubscriptionResponse.class);
+    return SubscriptionImportSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** cancel a subscription (executes immediately) - returns raw Response. */
@@ -1392,7 +1400,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCancelResponse cancel(String subscriptionId, SubscriptionCancelParams params)
       throws Exception {
     Response response = cancelRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionCancelResponse.class);
+    return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** chargeAddonAtTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -1436,6 +1444,6 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionChargeAddonAtTermEndResponse chargeAddonAtTermEnd(
       String subscriptionId, SubscriptionChargeAddonAtTermEndParams params) throws Exception {
     Response response = chargeAddonAtTermEndRaw(subscriptionId, params);
-    return parseResponse(response, SubscriptionChargeAddonAtTermEndResponse.class);
+    return SubscriptionChargeAddonAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 }

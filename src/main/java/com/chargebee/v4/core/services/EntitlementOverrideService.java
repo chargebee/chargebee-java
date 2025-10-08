@@ -103,14 +103,14 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
           throws Exception {
     Response response = listEntitlementOverrideForSubscriptionRaw(subscriptionId, params);
     return EntitlementOverrideListEntitlementOverrideForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, params, subscriptionId);
+        response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public EntitlementOverrideListEntitlementOverrideForSubscriptionResponse
       listEntitlementOverrideForSubscription(String subscriptionId) throws Exception {
     Response response = listEntitlementOverrideForSubscriptionRaw(subscriptionId);
     return EntitlementOverrideListEntitlementOverrideForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), this, null, subscriptionId);
+        response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /**
@@ -162,7 +162,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
           EntitlementOverrideAddEntitlementOverrideForSubscriptionParams params)
           throws Exception {
     Response response = addEntitlementOverrideForSubscriptionRaw(subscriptionId, params);
-    return parseResponse(
-        response, EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse.class);
+    return EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

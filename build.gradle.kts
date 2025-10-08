@@ -3,7 +3,6 @@ plugins {
     `maven-publish`
     signing
     id("org.owasp.dependencycheck") version "9.2.0"
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
 }
 
 group = "com.chargebee"
@@ -15,11 +14,14 @@ val projectUrl = "https://github.com/chargebee/chargebee-java"
 val projectLicense = "MIT License"
 val projectLicenseUrl = "https://opensource.org/licenses/MIT"
 
-// Team details
-data class Developer(val id: String, val name: String, val email: String, val timezone: String = "+5:30")
-
+// Team details (stored as maps for use in publish.gradle.kts)
 val teamMembers = listOf(
-    Developer("dx", "DX Team", "dx@chargebee.com")
+    mapOf(
+        "id" to "dx",
+        "name" to "DX Team",
+        "email" to "dx@chargebee.com",
+        "timezone" to "+5:30"
+    )
 )
 
 extra["projectUrl"] = projectUrl
@@ -67,61 +69,5 @@ dependencyCheck {
     failBuildOnCVSS = 7.0f
 }
 
-// Publishing configuration
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-            
-            pom {
-                name.set(project.name)
-                description.set(project.description)
-                url.set(extra["projectUrl"] as String)
-                
-                licenses {
-                    license {
-                        name.set(extra["projectLicense"] as String)
-                        url.set(extra["projectLicenseUrl"] as String)
-                    }
-                }
-                
-                developers {
-                    @Suppress("UNCHECKED_CAST")
-                    val developers = extra["teamMembers"] as List<Developer>
-                    developers.forEach { dev ->
-                        developer {
-                            id.set(dev.id)
-                            name.set(dev.name)
-                            email.set(dev.email)
-                            timezone.set(dev.timezone)
-                        }
-                    }
-                }
-                
-                scm {
-                    connection.set("scm:git:git://github.com/chargebee/chargebee-java.git")
-                    developerConnection.set("scm:git:ssh://github.com:chargebee/chargebee-java.git")
-                    url.set(extra["projectUrl"] as String)
-                }
-            }
-        }
-    }
-}
-
-// Signing configuration
-signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign(publishing.publications["maven"])
-}
-
-// Nexus publishing configuration
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-        }
-    }
-}
+// Apply publishing and deployment configuration
+apply(from = "publish.gradle.kts")

@@ -88,13 +88,13 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
       String customerId, CustomerEntitlementEntitlementsForCustomerParams params) throws Exception {
     Response response = entitlementsForCustomerRaw(customerId, params);
     return CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, params, customerId);
+        response.getBodyAsString(), this, params, customerId, response);
   }
 
   public CustomerEntitlementEntitlementsForCustomerResponse entitlementsForCustomer(
       String customerId) throws Exception {
     Response response = entitlementsForCustomerRaw(customerId);
     return CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
-        response.getBodyAsString(), this, null, customerId);
+        response.getBodyAsString(), this, null, customerId, response);
   }
 }

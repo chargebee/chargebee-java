@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.entitlementOverride;
 import com.chargebee.v4.core.models.entitlementOverride.EntitlementOverride;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for EntitlementOverrideAddEntitlementOverrideForSubscription operation.
@@ -12,9 +13,13 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
 
   private final EntitlementOverride entitlementOverride;
 
+  private final Response httpResponse;
+
   private EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse(Builder builder) {
 
     this.entitlementOverride = builder.entitlementOverride;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /**
@@ -23,6 +28,15 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
    */
   public static EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse fromJson(
       String json) {
+    return fromJson(json, null);
+  }
+
+  /**
+   * Parse JSON response into EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse
+   * object with HTTP response.
+   */
+  public static EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse fromJson(
+      String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -31,6 +45,7 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
         builder.entitlementOverride(EntitlementOverride.fromJson(__entitlementOverrideJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -49,10 +64,17 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
 
     private EntitlementOverride entitlementOverride;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder entitlementOverride(EntitlementOverride entitlementOverride) {
       this.entitlementOverride = entitlementOverride;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -64,5 +86,30 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
   /** Get the entitlementOverride from the response. */
   public EntitlementOverride getEntitlementOverride() {
     return entitlementOverride;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

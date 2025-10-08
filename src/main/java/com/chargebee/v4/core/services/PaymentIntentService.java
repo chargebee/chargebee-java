@@ -67,7 +67,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
 
   public PaymentIntentRetrieveResponse retrieve(String paymentIntentId) throws Exception {
     Response response = retrieveRaw(paymentIntentId);
-    return parseResponse(response, PaymentIntentRetrieveResponse.class);
+    return PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a paymentIntent (executes immediately) - returns raw Response. */
@@ -102,7 +102,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   public PaymentIntentUpdateResponse update(
       String paymentIntentId, PaymentIntentUpdateParams params) throws Exception {
     Response response = updateRaw(paymentIntentId, params);
-    return parseResponse(response, PaymentIntentUpdateResponse.class);
+    return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -124,6 +124,6 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   public PaymentIntentCreateResponse create(PaymentIntentCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PaymentIntentCreateResponse.class);
+    return PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

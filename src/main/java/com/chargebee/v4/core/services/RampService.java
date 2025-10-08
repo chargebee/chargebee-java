@@ -70,7 +70,7 @@ public final class RampService extends BaseService<RampService> {
 
   public RampRetrieveResponse retrieve(String rampId) throws Exception {
     Response response = retrieveRaw(rampId);
-    return parseResponse(response, RampRetrieveResponse.class);
+    return RampRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createForSubscription a ramp (executes immediately) - returns raw Response. */
@@ -108,7 +108,7 @@ public final class RampService extends BaseService<RampService> {
   public RampCreateForSubscriptionResponse createForSubscription(
       String subscriptionId, RampCreateForSubscriptionParams params) throws Exception {
     Response response = createForSubscriptionRaw(subscriptionId, params);
-    return parseResponse(response, RampCreateForSubscriptionResponse.class);
+    return RampCreateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a ramp using immutable params (executes immediately) - returns raw Response. */
@@ -132,12 +132,12 @@ public final class RampService extends BaseService<RampService> {
   public RampListResponse list(RampListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return RampListResponse.fromJson(response.getBodyAsString(), this, params);
+    return RampListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public RampListResponse list() throws Exception {
     Response response = listRaw();
-    return RampListResponse.fromJson(response.getBodyAsString(), this, null);
+    return RampListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** update a ramp (executes immediately) - returns raw Response. */
@@ -161,7 +161,7 @@ public final class RampService extends BaseService<RampService> {
 
   public RampUpdateResponse update(String rampId, RampUpdateParams params) throws Exception {
     Response response = updateRaw(rampId, params);
-    return parseResponse(response, RampUpdateResponse.class);
+    return RampUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a ramp (executes immediately) - returns raw Response. */
@@ -173,6 +173,6 @@ public final class RampService extends BaseService<RampService> {
 
   public RampDeleteResponse delete(String rampId) throws Exception {
     Response response = deleteRaw(rampId);
-    return parseResponse(response, RampDeleteResponse.class);
+    return RampDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

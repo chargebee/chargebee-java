@@ -74,7 +74,7 @@ public final class ProductService extends BaseService<ProductService> {
 
   public ProductRetrieveResponse retrieve(String productId) throws Exception {
     Response response = retrieveRaw(productId);
-    return parseResponse(response, ProductRetrieveResponse.class);
+    return ProductRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a product (executes immediately) - returns raw Response. */
@@ -99,7 +99,7 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductUpdateResponse update(String productId, ProductUpdateParams params)
       throws Exception {
     Response response = updateRaw(productId, params);
-    return parseResponse(response, ProductUpdateResponse.class);
+    return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a product (executes immediately) - returns raw Response. */
@@ -111,7 +111,7 @@ public final class ProductService extends BaseService<ProductService> {
 
   public ProductDeleteResponse delete(String productId) throws Exception {
     Response response = deleteRaw(productId);
-    return parseResponse(response, ProductDeleteResponse.class);
+    return ProductDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateOptions a product (executes immediately) - returns raw Response. */
@@ -143,7 +143,7 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductUpdateOptionsResponse updateOptions(
       String productId, ProductUpdateOptionsParams params) throws Exception {
     Response response = updateOptionsRaw(productId, params);
-    return parseResponse(response, ProductUpdateOptionsResponse.class);
+    return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a product using immutable params (executes immediately) - returns raw Response. */
@@ -167,12 +167,12 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductListResponse list(ProductListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return ProductListResponse.fromJson(response.getBodyAsString(), this, params);
+    return ProductListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public ProductListResponse list() throws Exception {
     Response response = listRaw();
-    return ProductListResponse.fromJson(response.getBodyAsString(), this, null);
+    return ProductListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a product using immutable params (executes immediately) - returns raw Response. */
@@ -190,6 +190,6 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductCreateResponse create(ProductCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, ProductCreateResponse.class);
+    return ProductCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

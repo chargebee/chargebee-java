@@ -78,12 +78,12 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
   public CouponCodeListResponse list(CouponCodeListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CouponCodeListResponse list() throws Exception {
     Response response = listRaw();
-    return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a couponCode using immutable params (executes immediately) - returns raw Response. */
@@ -101,7 +101,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
   public CouponCodeCreateResponse create(CouponCodeCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CouponCodeCreateResponse.class);
+    return CouponCodeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a couponCode (executes immediately) - returns raw Response. */
@@ -114,7 +114,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
 
   public CouponCodeRetrieveResponse retrieve(String couponCodeCode) throws Exception {
     Response response = retrieveRaw(couponCodeCode);
-    return parseResponse(response, CouponCodeRetrieveResponse.class);
+    return CouponCodeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** archive a couponCode (executes immediately) - returns raw Response. */
@@ -128,6 +128,6 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
 
   public CouponCodeArchiveResponse archive(String couponCodeCode) throws Exception {
     Response response = archiveRaw(couponCodeCode);
-    return parseResponse(response, CouponCodeArchiveResponse.class);
+    return CouponCodeArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

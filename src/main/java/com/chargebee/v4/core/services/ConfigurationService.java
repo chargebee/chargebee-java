@@ -65,6 +65,6 @@ public final class ConfigurationService extends BaseService<ConfigurationService
   public ConfigurationListResponse list(ConfigurationListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return parseResponse(response, ConfigurationListResponse.class);
+    return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }
 }

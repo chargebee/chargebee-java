@@ -102,7 +102,7 @@ public final class OmnichannelSubscriptionService
   public OmnichannelSubscriptionMoveResponse move(
       String omnichannelSubscriptionId, OmnichannelSubscriptionMoveParams params) throws Exception {
     Response response = moveRaw(omnichannelSubscriptionId, params);
-    return parseResponse(response, OmnichannelSubscriptionMoveResponse.class);
+    return OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a omnichannelSubscription (executes immediately) - returns raw Response. */
@@ -119,7 +119,7 @@ public final class OmnichannelSubscriptionService
   public OmnichannelSubscriptionRetrieveResponse retrieve(String omnichannelSubscriptionId)
       throws Exception {
     Response response = retrieveRaw(omnichannelSubscriptionId);
-    return parseResponse(response, OmnichannelSubscriptionRetrieveResponse.class);
+    return OmnichannelSubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -174,7 +174,7 @@ public final class OmnichannelSubscriptionService
     Response response =
         omnichannel_transactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId, params);
     return OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-        .fromJson(response.getBodyAsString(), this, params, omnichannelSubscriptionId);
+        .fromJson(response.getBodyAsString(), this, params, omnichannelSubscriptionId, response);
   }
 
   public OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
@@ -183,7 +183,7 @@ public final class OmnichannelSubscriptionService
     Response response =
         omnichannel_transactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId);
     return OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-        .fromJson(response.getBodyAsString(), this, null, omnichannelSubscriptionId);
+        .fromJson(response.getBodyAsString(), this, null, omnichannelSubscriptionId, response);
   }
 
   /**
@@ -216,11 +216,13 @@ public final class OmnichannelSubscriptionService
       throws Exception {
     Response response = listRaw(params);
 
-    return OmnichannelSubscriptionListResponse.fromJson(response.getBodyAsString(), this, params);
+    return OmnichannelSubscriptionListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public OmnichannelSubscriptionListResponse list() throws Exception {
     Response response = listRaw();
-    return OmnichannelSubscriptionListResponse.fromJson(response.getBodyAsString(), this, null);
+    return OmnichannelSubscriptionListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 }

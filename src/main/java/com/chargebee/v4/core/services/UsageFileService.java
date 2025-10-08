@@ -62,7 +62,7 @@ public final class UsageFileService extends BaseService<UsageFileService> {
 
   public UsageFileProcessingStatusResponse processingStatus(String usageFileId) throws Exception {
     Response response = processingStatusRaw(usageFileId);
-    return parseResponse(response, UsageFileProcessingStatusResponse.class);
+    return UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** uploadUrl a usageFile using immutable params (executes immediately) - returns raw Response. */
@@ -80,6 +80,6 @@ public final class UsageFileService extends BaseService<UsageFileService> {
   public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params) throws Exception {
     Response response = uploadUrlRaw(params);
 
-    return parseResponse(response, UsageFileUploadUrlResponse.class);
+    return UsageFileUploadUrlResponse.fromJson(response.getBodyAsString(), response);
   }
 }

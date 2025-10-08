@@ -73,6 +73,6 @@ public final class UnbilledChargesSettingService
       UnbilledChargesSettingRetrieveParams params) throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, UnbilledChargesSettingRetrieveResponse.class);
+    return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

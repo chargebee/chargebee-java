@@ -72,6 +72,6 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
       throws Exception {
     Response response = retrieveRaw(params);
 
-    return parseResponse(response, SubscriptionSettingRetrieveResponse.class);
+    return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

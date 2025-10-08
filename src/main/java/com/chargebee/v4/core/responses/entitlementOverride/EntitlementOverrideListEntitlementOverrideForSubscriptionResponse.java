@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.entitlementOverride.EntitlementOverride;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.EntitlementOverrideService;
 import com.chargebee.v4.core.models.entitlementOverride.params.EntitlementOverrideListEntitlementOverrideForSubscriptionParams;
 
@@ -22,13 +23,15 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
 
   private final EntitlementOverrideService service;
   private final EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams;
+  private final Response httpResponse;
 
   private EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
       List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list,
       String nextOffset,
       String subscriptionId,
       EntitlementOverrideService service,
-      EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams) {
+      EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -38,6 +41,7 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -56,7 +60,7 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
-          list, nextOffset, null, null, null);
+          list, nextOffset, null, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse EntitlementOverrideListEntitlementOverrideForSubscriptionResponse from JSON",
@@ -72,7 +76,8 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
       String json,
       EntitlementOverrideService service,
       EntitlementOverrideListEntitlementOverrideForSubscriptionParams originalParams,
-      String subscriptionId) {
+      String subscriptionId,
+      Response httpResponse) {
     try {
 
       List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list =
@@ -83,7 +88,7 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new EntitlementOverrideListEntitlementOverrideForSubscriptionResponse(
-          list, nextOffset, subscriptionId, service, originalParams);
+          list, nextOffset, subscriptionId, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse EntitlementOverrideListEntitlementOverrideForSubscriptionResponse from JSON",
@@ -121,16 +126,45 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     EntitlementOverrideListEntitlementOverrideForSubscriptionParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : EntitlementOverrideListEntitlementOverrideForSubscriptionParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.listEntitlementOverrideForSubscription(subscriptionId, nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class EntitlementOverrideListEntitlementOverrideForSubscriptionItem {

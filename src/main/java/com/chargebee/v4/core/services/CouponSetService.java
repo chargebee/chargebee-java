@@ -88,12 +88,12 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetListResponse list(CouponSetListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return CouponSetListResponse.fromJson(response.getBodyAsString(), this, params);
+    return CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public CouponSetListResponse list() throws Exception {
     Response response = listRaw();
-    return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null);
+    return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a couponSet using immutable params (executes immediately) - returns raw Response. */
@@ -111,7 +111,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetCreateResponse create(CouponSetCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, CouponSetCreateResponse.class);
+    return CouponSetCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a couponSet (executes immediately) - returns raw Response. */
@@ -139,7 +139,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetUpdateResponse update(String couponSetId, CouponSetUpdateParams params)
       throws Exception {
     Response response = updateRaw(couponSetId, params);
-    return parseResponse(response, CouponSetUpdateResponse.class);
+    return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a couponSet (executes immediately) - returns raw Response. */
@@ -151,7 +151,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
 
   public CouponSetRetrieveResponse retrieve(String couponSetId) throws Exception {
     Response response = retrieveRaw(couponSetId);
-    return parseResponse(response, CouponSetRetrieveResponse.class);
+    return CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addCouponCodes a couponSet (executes immediately) - returns raw Response. */
@@ -189,7 +189,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetAddCouponCodesResponse addCouponCodes(
       String couponSetId, CouponSetAddCouponCodesParams params) throws Exception {
     Response response = addCouponCodesRaw(couponSetId, params);
-    return parseResponse(response, CouponSetAddCouponCodesResponse.class);
+    return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteUnusedCouponCodes a couponSet (executes immediately) - returns raw Response. */
@@ -206,7 +206,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetDeleteUnusedCouponCodesResponse deleteUnusedCouponCodes(String couponSetId)
       throws Exception {
     Response response = deleteUnusedCouponCodesRaw(couponSetId);
-    return parseResponse(response, CouponSetDeleteUnusedCouponCodesResponse.class);
+    return CouponSetDeleteUnusedCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a couponSet (executes immediately) - returns raw Response. */
@@ -219,6 +219,6 @@ public final class CouponSetService extends BaseService<CouponSetService> {
 
   public CouponSetDeleteResponse delete(String couponSetId) throws Exception {
     Response response = deleteRaw(couponSetId);
-    return parseResponse(response, CouponSetDeleteResponse.class);
+    return CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

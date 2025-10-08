@@ -68,7 +68,7 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   public PurchaseCreateResponse create(PurchaseCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, PurchaseCreateResponse.class);
+    return PurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** estimate a purchase using immutable params (executes immediately) - returns raw Response. */
@@ -86,6 +86,6 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   public PurchaseEstimateResponse estimate(PurchaseEstimateParams params) throws Exception {
     Response response = estimateRaw(params);
 
-    return parseResponse(response, PurchaseEstimateResponse.class);
+    return PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

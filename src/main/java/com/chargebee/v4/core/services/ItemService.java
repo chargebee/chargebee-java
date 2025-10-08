@@ -82,12 +82,12 @@ public final class ItemService extends BaseService<ItemService> {
   public ItemListResponse list(ItemListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return ItemListResponse.fromJson(response.getBodyAsString(), this, params);
+    return ItemListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public ItemListResponse list() throws Exception {
     Response response = listRaw();
-    return ItemListResponse.fromJson(response.getBodyAsString(), this, null);
+    return ItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a item using immutable params (executes immediately) - returns raw Response. */
@@ -105,7 +105,7 @@ public final class ItemService extends BaseService<ItemService> {
   public ItemCreateResponse create(ItemCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, ItemCreateResponse.class);
+    return ItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a item (executes immediately) - returns raw Response. */
@@ -117,7 +117,7 @@ public final class ItemService extends BaseService<ItemService> {
 
   public ItemDeleteResponse delete(String itemId) throws Exception {
     Response response = deleteRaw(itemId);
-    return parseResponse(response, ItemDeleteResponse.class);
+    return ItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a item (executes immediately) - returns raw Response. */
@@ -129,7 +129,7 @@ public final class ItemService extends BaseService<ItemService> {
 
   public ItemRetrieveResponse retrieve(String itemId) throws Exception {
     Response response = retrieveRaw(itemId);
-    return parseResponse(response, ItemRetrieveResponse.class);
+    return ItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a item (executes immediately) - returns raw Response. */
@@ -153,6 +153,6 @@ public final class ItemService extends BaseService<ItemService> {
 
   public ItemUpdateResponse update(String itemId, ItemUpdateParams params) throws Exception {
     Response response = updateRaw(itemId, params);
-    return parseResponse(response, ItemUpdateResponse.class);
+    return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

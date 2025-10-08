@@ -90,13 +90,13 @@ public final class VariantService extends BaseService<VariantService> {
       String productId, VariantListProductVariantsParams params) throws Exception {
     Response response = listProductVariantsRaw(productId, params);
     return VariantListProductVariantsResponse.fromJson(
-        response.getBodyAsString(), this, params, productId);
+        response.getBodyAsString(), this, params, productId, response);
   }
 
   public VariantListProductVariantsResponse listProductVariants(String productId) throws Exception {
     Response response = listProductVariantsRaw(productId);
     return VariantListProductVariantsResponse.fromJson(
-        response.getBodyAsString(), this, null, productId);
+        response.getBodyAsString(), this, null, productId, response);
   }
 
   /** createProductVariant a variant (executes immediately) - returns raw Response. */
@@ -128,7 +128,7 @@ public final class VariantService extends BaseService<VariantService> {
   public VariantCreateProductVariantResponse createProductVariant(
       String productId, VariantCreateProductVariantParams params) throws Exception {
     Response response = createProductVariantRaw(productId, params);
-    return parseResponse(response, VariantCreateProductVariantResponse.class);
+    return VariantCreateProductVariantResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a variant (executes immediately) - returns raw Response. */
@@ -142,7 +142,7 @@ public final class VariantService extends BaseService<VariantService> {
 
   public VariantRetrieveResponse retrieve(String productVariantId) throws Exception {
     Response response = retrieveRaw(productVariantId);
-    return parseResponse(response, VariantRetrieveResponse.class);
+    return VariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a variant (executes immediately) - returns raw Response. */
@@ -173,7 +173,7 @@ public final class VariantService extends BaseService<VariantService> {
   public VariantUpdateResponse update(String productVariantId, VariantUpdateParams params)
       throws Exception {
     Response response = updateRaw(productVariantId, params);
-    return parseResponse(response, VariantUpdateResponse.class);
+    return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a variant (executes immediately) - returns raw Response. */
@@ -187,6 +187,6 @@ public final class VariantService extends BaseService<VariantService> {
 
   public VariantDeleteResponse delete(String productVariantId) throws Exception {
     Response response = deleteRaw(productVariantId);
-    return parseResponse(response, VariantDeleteResponse.class);
+    return VariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

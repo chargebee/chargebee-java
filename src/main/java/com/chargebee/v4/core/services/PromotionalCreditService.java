@@ -75,7 +75,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
 
   public PromotionalCreditRetrieveResponse retrieve(String accountCreditId) throws Exception {
     Response response = retrieveRaw(accountCreditId);
-    return parseResponse(response, PromotionalCreditRetrieveResponse.class);
+    return PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -103,12 +103,13 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public PromotionalCreditListResponse list(PromotionalCreditListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, params);
+    return PromotionalCreditListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public PromotionalCreditListResponse list() throws Exception {
     Response response = listRaw();
-    return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null);
+    return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /**
@@ -133,7 +134,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
       throws Exception {
     Response response = deductRaw(params);
 
-    return parseResponse(response, PromotionalCreditDeductResponse.class);
+    return PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -155,7 +156,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public PromotionalCreditSetResponse set(PromotionalCreditSetParams params) throws Exception {
     Response response = setRaw(params);
 
-    return parseResponse(response, PromotionalCreditSetResponse.class);
+    return PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -177,6 +178,6 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   public PromotionalCreditAddResponse add(PromotionalCreditAddParams params) throws Exception {
     Response response = addRaw(params);
 
-    return parseResponse(response, PromotionalCreditAddResponse.class);
+    return PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response);
   }
 }

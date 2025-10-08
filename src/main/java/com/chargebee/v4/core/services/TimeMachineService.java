@@ -66,7 +66,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
 
   public TimeMachineRetrieveResponse retrieve(String timeMachineName) throws Exception {
     Response response = retrieveRaw(timeMachineName);
-    return parseResponse(response, TimeMachineRetrieveResponse.class);
+    return TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** travelForward a timeMachine (executes immediately) - returns raw Response. */
@@ -110,7 +110,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   public TimeMachineTravelForwardResponse travelForward(
       String timeMachineName, TimeMachineTravelForwardParams params) throws Exception {
     Response response = travelForwardRaw(timeMachineName, params);
-    return parseResponse(response, TimeMachineTravelForwardResponse.class);
+    return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** startAfresh a timeMachine (executes immediately) - returns raw Response. */
@@ -152,6 +152,6 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   public TimeMachineStartAfreshResponse startAfresh(
       String timeMachineName, TimeMachineStartAfreshParams params) throws Exception {
     Response response = startAfreshRaw(timeMachineName, params);
-    return parseResponse(response, TimeMachineStartAfreshResponse.class);
+    return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 }

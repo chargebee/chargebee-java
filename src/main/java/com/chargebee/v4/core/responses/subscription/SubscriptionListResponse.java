@@ -9,6 +9,7 @@ import com.chargebee.v4.core.models.customer.Customer;
 import com.chargebee.v4.core.models.card.Card;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.SubscriptionService;
 import com.chargebee.v4.core.models.subscription.params.SubscriptionListParams;
 
@@ -21,12 +22,14 @@ public final class SubscriptionListResponse {
 
   private final SubscriptionService service;
   private final SubscriptionListParams originalParams;
+  private final Response httpResponse;
 
   private SubscriptionListResponse(
       List<SubscriptionListItem> list,
       String nextOffset,
       SubscriptionService service,
-      SubscriptionListParams originalParams) {
+      SubscriptionListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -34,6 +37,7 @@ public final class SubscriptionListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -50,7 +54,7 @@ public final class SubscriptionListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new SubscriptionListResponse(list, nextOffset, null, null);
+      return new SubscriptionListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse SubscriptionListResponse from JSON", e);
     }
@@ -61,7 +65,10 @@ public final class SubscriptionListResponse {
    * (enables nextPage()).
    */
   public static SubscriptionListResponse fromJson(
-      String json, SubscriptionService service, SubscriptionListParams originalParams) {
+      String json,
+      SubscriptionService service,
+      SubscriptionListParams originalParams,
+      Response httpResponse) {
     try {
 
       List<SubscriptionListItem> list =
@@ -71,7 +78,7 @@ public final class SubscriptionListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new SubscriptionListResponse(list, nextOffset, service, originalParams);
+      return new SubscriptionListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse SubscriptionListResponse from JSON", e);
     }
@@ -106,15 +113,43 @@ public final class SubscriptionListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
-    SubscriptionListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
+    SubscriptionListParams nextParams =
+        (originalParams != null ? originalParams.toBuilder() : SubscriptionListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class SubscriptionListItem {

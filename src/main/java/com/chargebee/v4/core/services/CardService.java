@@ -93,7 +93,7 @@ public final class CardService extends BaseService<CardService> {
   public CardCopyCardForCustomerResponse copyCardForCustomer(
       String customerId, CardCopyCardForCustomerParams params) throws Exception {
     Response response = copyCardForCustomerRaw(customerId, params);
-    return parseResponse(response, CardCopyCardForCustomerResponse.class);
+    return CardCopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a card (executes immediately) - returns raw Response. */
@@ -105,7 +105,7 @@ public final class CardService extends BaseService<CardService> {
 
   public CardRetrieveResponse retrieve(String customerId) throws Exception {
     Response response = retrieveRaw(customerId);
-    return parseResponse(response, CardRetrieveResponse.class);
+    return CardRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** switchGatewayForCustomer a card (executes immediately) - returns raw Response. */
@@ -140,7 +140,7 @@ public final class CardService extends BaseService<CardService> {
   public CardSwitchGatewayForCustomerResponse switchGatewayForCustomer(
       String customerId, CardSwitchGatewayForCustomerParams params) throws Exception {
     Response response = switchGatewayForCustomerRaw(customerId, params);
-    return parseResponse(response, CardSwitchGatewayForCustomerResponse.class);
+    return CardSwitchGatewayForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteCardForCustomer a card (executes immediately) - returns raw Response. */
@@ -154,7 +154,7 @@ public final class CardService extends BaseService<CardService> {
   public CardDeleteCardForCustomerResponse deleteCardForCustomer(String customerId)
       throws Exception {
     Response response = deleteCardForCustomerRaw(customerId);
-    return parseResponse(response, CardDeleteCardForCustomerResponse.class);
+    return CardDeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateCardForCustomer a card (executes immediately) - returns raw Response. */
@@ -189,6 +189,6 @@ public final class CardService extends BaseService<CardService> {
   public CardUpdateCardForCustomerResponse updateCardForCustomer(
       String customerId, CardUpdateCardForCustomerParams params) throws Exception {
     Response response = updateCardForCustomerRaw(customerId, params);
-    return parseResponse(response, CardUpdateCardForCustomerResponse.class);
+    return CardUpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -82,7 +82,7 @@ public final class AddonService extends BaseService<AddonService> {
   public AddonCopyResponse copy(AddonCopyParams params) throws Exception {
     Response response = copyRaw(params);
 
-    return parseResponse(response, AddonCopyResponse.class);
+    return AddonCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** unarchive a addon (executes immediately) - returns raw Response. */
@@ -94,7 +94,7 @@ public final class AddonService extends BaseService<AddonService> {
 
   public AddonUnarchiveResponse unarchive(String addonId) throws Exception {
     Response response = unarchiveRaw(addonId);
-    return parseResponse(response, AddonUnarchiveResponse.class);
+    return AddonUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a addon (executes immediately) - returns raw Response. */
@@ -106,7 +106,7 @@ public final class AddonService extends BaseService<AddonService> {
 
   public AddonRetrieveResponse retrieve(String addonId) throws Exception {
     Response response = retrieveRaw(addonId);
-    return parseResponse(response, AddonRetrieveResponse.class);
+    return AddonRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a addon (executes immediately) - returns raw Response. */
@@ -130,7 +130,7 @@ public final class AddonService extends BaseService<AddonService> {
 
   public AddonUpdateResponse update(String addonId, AddonUpdateParams params) throws Exception {
     Response response = updateRaw(addonId, params);
-    return parseResponse(response, AddonUpdateResponse.class);
+    return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a addon using immutable params (executes immediately) - returns raw Response. */
@@ -154,12 +154,12 @@ public final class AddonService extends BaseService<AddonService> {
   public AddonListResponse list(AddonListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return AddonListResponse.fromJson(response.getBodyAsString(), this, params);
+    return AddonListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public AddonListResponse list() throws Exception {
     Response response = listRaw();
-    return AddonListResponse.fromJson(response.getBodyAsString(), this, null);
+    return AddonListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a addon using immutable params (executes immediately) - returns raw Response. */
@@ -177,7 +177,7 @@ public final class AddonService extends BaseService<AddonService> {
   public AddonCreateResponse create(AddonCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, AddonCreateResponse.class);
+    return AddonCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a addon (executes immediately) - returns raw Response. */
@@ -189,6 +189,6 @@ public final class AddonService extends BaseService<AddonService> {
 
   public AddonDeleteResponse delete(String addonId) throws Exception {
     Response response = deleteRaw(addonId);
-    return parseResponse(response, AddonDeleteResponse.class);
+    return AddonDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

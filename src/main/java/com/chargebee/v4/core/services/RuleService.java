@@ -56,6 +56,6 @@ public final class RuleService extends BaseService<RuleService> {
 
   public RuleRetrieveResponse retrieve(String ruleId) throws Exception {
     Response response = retrieveRaw(ruleId);
-    return parseResponse(response, RuleRetrieveResponse.class);
+    return RuleRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

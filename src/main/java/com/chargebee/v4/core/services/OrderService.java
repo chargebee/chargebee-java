@@ -108,12 +108,12 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderListResponse list(OrderListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return OrderListResponse.fromJson(response.getBodyAsString(), this, params);
+    return OrderListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public OrderListResponse list() throws Exception {
     Response response = listRaw();
-    return OrderListResponse.fromJson(response.getBodyAsString(), this, null);
+    return OrderListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a order using immutable params (executes immediately) - returns raw Response. */
@@ -131,7 +131,7 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderCreateResponse create(OrderCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, OrderCreateResponse.class);
+    return OrderCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importOrder a order using immutable params (executes immediately) - returns raw Response. */
@@ -149,7 +149,7 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderImportOrderResponse importOrder(OrderImportOrderParams params) throws Exception {
     Response response = importOrderRaw(params);
 
-    return parseResponse(response, OrderImportOrderResponse.class);
+    return OrderImportOrderResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** assignOrderNumber a order (executes immediately) - returns raw Response. */
@@ -162,7 +162,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderAssignOrderNumberResponse assignOrderNumber(String orderId) throws Exception {
     Response response = assignOrderNumberRaw(orderId);
-    return parseResponse(response, OrderAssignOrderNumberResponse.class);
+    return OrderAssignOrderNumberResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resend a order (executes immediately) - returns raw Response. */
@@ -186,7 +186,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderResendResponse resend(String orderId, OrderResendParams params) throws Exception {
     Response response = resendRaw(orderId, params);
-    return parseResponse(response, OrderResendResponse.class);
+    return OrderResendResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** reopen a order (executes immediately) - returns raw Response. */
@@ -210,7 +210,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderReopenResponse reopen(String orderId, OrderReopenParams params) throws Exception {
     Response response = reopenRaw(orderId, params);
-    return parseResponse(response, OrderReopenResponse.class);
+    return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -240,13 +240,13 @@ public final class OrderService extends BaseService<OrderService> {
       String invoiceId, OrderOrdersForInvoiceParams params) throws Exception {
     Response response = ordersForInvoiceRaw(invoiceId, params);
     return OrderOrdersForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, params, invoiceId);
+        response.getBodyAsString(), this, params, invoiceId, response);
   }
 
   public OrderOrdersForInvoiceResponse ordersForInvoice(String invoiceId) throws Exception {
     Response response = ordersForInvoiceRaw(invoiceId);
     return OrderOrdersForInvoiceResponse.fromJson(
-        response.getBodyAsString(), this, null, invoiceId);
+        response.getBodyAsString(), this, null, invoiceId, response);
   }
 
   /** cancel a order (executes immediately) - returns raw Response. */
@@ -270,7 +270,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderCancelResponse cancel(String orderId, OrderCancelParams params) throws Exception {
     Response response = cancelRaw(orderId, params);
-    return parseResponse(response, OrderCancelResponse.class);
+    return OrderCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a order (executes immediately) - returns raw Response. */
@@ -282,7 +282,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderRetrieveResponse retrieve(String orderId) throws Exception {
     Response response = retrieveRaw(orderId);
-    return parseResponse(response, OrderRetrieveResponse.class);
+    return OrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a order (executes immediately) - returns raw Response. */
@@ -306,7 +306,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderUpdateResponse update(String orderId, OrderUpdateParams params) throws Exception {
     Response response = updateRaw(orderId, params);
-    return parseResponse(response, OrderUpdateResponse.class);
+    return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a order (executes immediately) - returns raw Response. */
@@ -318,7 +318,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderDeleteResponse delete(String orderId) throws Exception {
     Response response = deleteRaw(orderId);
-    return parseResponse(response, OrderDeleteResponse.class);
+    return OrderDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createRefundableCreditNote a order (executes immediately) - returns raw Response. */
@@ -356,6 +356,6 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderCreateRefundableCreditNoteResponse createRefundableCreditNote(
       String orderId, OrderCreateRefundableCreditNoteParams params) throws Exception {
     Response response = createRefundableCreditNoteRaw(orderId, params);
-    return parseResponse(response, OrderCreateRefundableCreditNoteResponse.class);
+    return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

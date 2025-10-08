@@ -9,6 +9,7 @@ import com.chargebee.v4.core.models.quotedSubscription.QuotedSubscription;
 import com.chargebee.v4.core.models.quotedRamp.QuotedRamp;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.QuoteService;
 import com.chargebee.v4.core.models.quote.params.QuoteListParams;
 
@@ -21,12 +22,14 @@ public final class QuoteListResponse {
 
   private final QuoteService service;
   private final QuoteListParams originalParams;
+  private final Response httpResponse;
 
   private QuoteListResponse(
       List<QuoteListItem> list,
       String nextOffset,
       QuoteService service,
-      QuoteListParams originalParams) {
+      QuoteListParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -34,6 +37,7 @@ public final class QuoteListResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -50,7 +54,7 @@ public final class QuoteListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new QuoteListResponse(list, nextOffset, null, null);
+      return new QuoteListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse QuoteListResponse from JSON", e);
     }
@@ -61,7 +65,7 @@ public final class QuoteListResponse {
    * nextPage()).
    */
   public static QuoteListResponse fromJson(
-      String json, QuoteService service, QuoteListParams originalParams) {
+      String json, QuoteService service, QuoteListParams originalParams, Response httpResponse) {
     try {
 
       List<QuoteListItem> list =
@@ -71,7 +75,7 @@ public final class QuoteListResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new QuoteListResponse(list, nextOffset, service, originalParams);
+      return new QuoteListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse QuoteListResponse from JSON", e);
     }
@@ -106,15 +110,43 @@ public final class QuoteListResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
-    QuoteListParams nextParams = originalParams.toBuilder().offset(nextOffset).build();
+    QuoteListParams nextParams =
+        (originalParams != null ? originalParams.toBuilder() : QuoteListParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.list(nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class QuoteListItem {

@@ -5,6 +5,7 @@ import com.chargebee.v4.core.models.customer.Customer;
 import com.chargebee.v4.core.models.card.Card;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for CustomerUpdate operation. Contains the response data from the API.
@@ -15,15 +16,24 @@ public final class CustomerUpdateResponse {
 
   private final Card card;
 
+  private final Response httpResponse;
+
   private CustomerUpdateResponse(Builder builder) {
 
     this.customer = builder.customer;
 
     this.card = builder.card;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into CustomerUpdateResponse object. */
   public static CustomerUpdateResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into CustomerUpdateResponse object with HTTP response. */
+  public static CustomerUpdateResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -37,6 +47,7 @@ public final class CustomerUpdateResponse {
         builder.card(Card.fromJson(__cardJson));
       }
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CustomerUpdateResponse from JSON", e);
@@ -55,6 +66,8 @@ public final class CustomerUpdateResponse {
 
     private Card card;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder customer(Customer customer) {
@@ -64,6 +77,11 @@ public final class CustomerUpdateResponse {
 
     public Builder card(Card card) {
       this.card = card;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -80,5 +98,30 @@ public final class CustomerUpdateResponse {
   /** Get the card from the response. */
   public Card getCard() {
     return card;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

@@ -74,7 +74,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   public ThirdPartySyncDetailRetrieveResponse retrieve(String tpIntegSyncDetailId)
       throws Exception {
     Response response = retrieveRaw(tpIntegSyncDetailId);
-    return parseResponse(response, ThirdPartySyncDetailRetrieveResponse.class);
+    return ThirdPartySyncDetailRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a thirdPartySyncDetail (executes immediately) - returns raw Response. */
@@ -118,7 +118,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   public ThirdPartySyncDetailUpdateResponse update(
       String tpIntegSyncDetailId, ThirdPartySyncDetailUpdateParams params) throws Exception {
     Response response = updateRaw(tpIntegSyncDetailId, params);
-    return parseResponse(response, ThirdPartySyncDetailUpdateResponse.class);
+    return ThirdPartySyncDetailUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -143,7 +143,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
       throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, ThirdPartySyncDetailCreateResponse.class);
+    return ThirdPartySyncDetailCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -171,6 +171,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
       ThirdPartySyncDetailRetrieveLatestSyncParams params) throws Exception {
     Response response = retrieveLatestSyncRaw(params);
 
-    return parseResponse(response, ThirdPartySyncDetailRetrieveLatestSyncResponse.class);
+    return ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

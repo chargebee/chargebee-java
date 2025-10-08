@@ -74,12 +74,12 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   public EntitlementListResponse list(EntitlementListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return EntitlementListResponse.fromJson(response.getBodyAsString(), this, params);
+    return EntitlementListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public EntitlementListResponse list() throws Exception {
     Response response = listRaw();
-    return EntitlementListResponse.fromJson(response.getBodyAsString(), this, null);
+    return EntitlementListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a entitlement using immutable params (executes immediately) - returns raw Response. */
@@ -97,6 +97,6 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   public EntitlementCreateResponse create(EntitlementCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, EntitlementCreateResponse.class);
+    return EntitlementCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

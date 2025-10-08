@@ -7,6 +7,7 @@ import com.chargebee.v4.core.models.invoice.Invoice;
 import com.chargebee.v4.core.models.unbilledCharge.UnbilledCharge;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for SubscriptionRegenerateInvoice operation. Contains the response data
@@ -18,15 +19,24 @@ public final class SubscriptionRegenerateInvoiceResponse {
 
   private final List<UnbilledCharge> unbilledCharges;
 
+  private final Response httpResponse;
+
   private SubscriptionRegenerateInvoiceResponse(Builder builder) {
 
     this.invoice = builder.invoice;
 
     this.unbilledCharges = builder.unbilledCharges;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into SubscriptionRegenerateInvoiceResponse object. */
   public static SubscriptionRegenerateInvoiceResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into SubscriptionRegenerateInvoiceResponse object with HTTP response. */
+  public static SubscriptionRegenerateInvoiceResponse fromJson(String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -40,6 +50,7 @@ public final class SubscriptionRegenerateInvoiceResponse {
               .map(UnbilledCharge::fromJson)
               .collect(java.util.stream.Collectors.toList()));
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -59,6 +70,8 @@ public final class SubscriptionRegenerateInvoiceResponse {
 
     private List<UnbilledCharge> unbilledCharges;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder invoice(Invoice invoice) {
@@ -68,6 +81,11 @@ public final class SubscriptionRegenerateInvoiceResponse {
 
     public Builder unbilledCharges(List<UnbilledCharge> unbilledCharges) {
       this.unbilledCharges = unbilledCharges;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -84,5 +102,30 @@ public final class SubscriptionRegenerateInvoiceResponse {
   /** Get the unbilledCharges from the response. */
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

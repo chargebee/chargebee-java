@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.inAppSubscription.InAppSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for InAppSubscriptionRetrieveStoreSubs operation. Contains the response
@@ -14,13 +15,25 @@ public final class InAppSubscriptionRetrieveStoreSubsResponse {
 
   private final List<InAppSubscription> inAppSubscriptions;
 
+  private final Response httpResponse;
+
   private InAppSubscriptionRetrieveStoreSubsResponse(Builder builder) {
 
     this.inAppSubscriptions = builder.inAppSubscriptions;
+
+    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into InAppSubscriptionRetrieveStoreSubsResponse object. */
   public static InAppSubscriptionRetrieveStoreSubsResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /**
+   * Parse JSON response into InAppSubscriptionRetrieveStoreSubsResponse object with HTTP response.
+   */
+  public static InAppSubscriptionRetrieveStoreSubsResponse fromJson(
+      String json, Response httpResponse) {
     try {
       Builder builder = builder();
 
@@ -29,6 +42,7 @@ public final class InAppSubscriptionRetrieveStoreSubsResponse {
               .map(InAppSubscription::fromJson)
               .collect(java.util.stream.Collectors.toList()));
 
+      builder.httpResponse(httpResponse);
       return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
@@ -46,10 +60,17 @@ public final class InAppSubscriptionRetrieveStoreSubsResponse {
 
     private List<InAppSubscription> inAppSubscriptions;
 
+    private Response httpResponse;
+
     private Builder() {}
 
     public Builder inAppSubscriptions(List<InAppSubscription> inAppSubscriptions) {
       this.inAppSubscriptions = inAppSubscriptions;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
       return this;
     }
 
@@ -61,5 +82,30 @@ public final class InAppSubscriptionRetrieveStoreSubsResponse {
   /** Get the inAppSubscriptions from the response. */
   public List<InAppSubscription> getInAppSubscriptions() {
     return inAppSubscriptions;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }

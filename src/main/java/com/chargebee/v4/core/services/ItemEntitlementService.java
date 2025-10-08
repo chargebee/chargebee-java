@@ -97,14 +97,14 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String featureId, ItemEntitlementItemEntitlementsForFeatureParams params) throws Exception {
     Response response = itemEntitlementsForFeatureRaw(featureId, params);
     return ItemEntitlementItemEntitlementsForFeatureResponse.fromJson(
-        response.getBodyAsString(), this, params, featureId);
+        response.getBodyAsString(), this, params, featureId, response);
   }
 
   public ItemEntitlementItemEntitlementsForFeatureResponse itemEntitlementsForFeature(
       String featureId) throws Exception {
     Response response = itemEntitlementsForFeatureRaw(featureId);
     return ItemEntitlementItemEntitlementsForFeatureResponse.fromJson(
-        response.getBodyAsString(), this, null, featureId);
+        response.getBodyAsString(), this, null, featureId, response);
   }
 
   /** addItemEntitlements a itemEntitlement (executes immediately) - returns raw Response. */
@@ -139,7 +139,8 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   public ItemEntitlementAddItemEntitlementsResponse addItemEntitlements(
       String featureId, ItemEntitlementAddItemEntitlementsParams params) throws Exception {
     Response response = addItemEntitlementsRaw(featureId, params);
-    return parseResponse(response, ItemEntitlementAddItemEntitlementsResponse.class);
+    return ItemEntitlementAddItemEntitlementsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -174,14 +175,14 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String itemId, ItemEntitlementItemEntitlementsForItemParams params) throws Exception {
     Response response = itemEntitlementsForItemRaw(itemId, params);
     return ItemEntitlementItemEntitlementsForItemResponse.fromJson(
-        response.getBodyAsString(), this, params, itemId);
+        response.getBodyAsString(), this, params, itemId, response);
   }
 
   public ItemEntitlementItemEntitlementsForItemResponse itemEntitlementsForItem(String itemId)
       throws Exception {
     Response response = itemEntitlementsForItemRaw(itemId);
     return ItemEntitlementItemEntitlementsForItemResponse.fromJson(
-        response.getBodyAsString(), this, null, itemId);
+        response.getBodyAsString(), this, null, itemId, response);
   }
 
   /**
@@ -220,7 +221,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
           String itemId, ItemEntitlementUpsertOrRemoveItemEntitlementsForItemParams params)
           throws Exception {
     Response response = upsertOrRemoveItemEntitlementsForItemRaw(itemId, params);
-    return parseResponse(
-        response, ItemEntitlementUpsertOrRemoveItemEntitlementsForItemResponse.class);
+    return ItemEntitlementUpsertOrRemoveItemEntitlementsForItemResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

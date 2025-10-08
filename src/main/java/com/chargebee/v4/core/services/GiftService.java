@@ -83,7 +83,7 @@ public final class GiftService extends BaseService<GiftService> {
       throws Exception {
     Response response = createForItemsRaw(params);
 
-    return parseResponse(response, GiftCreateForItemsResponse.class);
+    return GiftCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** cancel a gift (executes immediately) - returns raw Response. */
@@ -95,7 +95,7 @@ public final class GiftService extends BaseService<GiftService> {
 
   public GiftCancelResponse cancel(String giftId) throws Exception {
     Response response = cancelRaw(giftId);
-    return parseResponse(response, GiftCancelResponse.class);
+    return GiftCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** updateGift a gift (executes immediately) - returns raw Response. */
@@ -120,7 +120,7 @@ public final class GiftService extends BaseService<GiftService> {
   public GiftUpdateGiftResponse updateGift(String giftId, GiftUpdateGiftParams params)
       throws Exception {
     Response response = updateGiftRaw(giftId, params);
-    return parseResponse(response, GiftUpdateGiftResponse.class);
+    return GiftUpdateGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a gift using immutable params (executes immediately) - returns raw Response. */
@@ -144,12 +144,12 @@ public final class GiftService extends BaseService<GiftService> {
   public GiftListResponse list(GiftListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return GiftListResponse.fromJson(response.getBodyAsString(), this, params);
+    return GiftListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public GiftListResponse list() throws Exception {
     Response response = listRaw();
-    return GiftListResponse.fromJson(response.getBodyAsString(), this, null);
+    return GiftListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a gift using immutable params (executes immediately) - returns raw Response. */
@@ -167,7 +167,7 @@ public final class GiftService extends BaseService<GiftService> {
   public GiftCreateResponse create(GiftCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, GiftCreateResponse.class);
+    return GiftCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a gift (executes immediately) - returns raw Response. */
@@ -179,7 +179,7 @@ public final class GiftService extends BaseService<GiftService> {
 
   public GiftRetrieveResponse retrieve(String giftId) throws Exception {
     Response response = retrieveRaw(giftId);
-    return parseResponse(response, GiftRetrieveResponse.class);
+    return GiftRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** claim a gift (executes immediately) - returns raw Response. */
@@ -191,6 +191,6 @@ public final class GiftService extends BaseService<GiftService> {
 
   public GiftClaimResponse claim(String giftId) throws Exception {
     Response response = claimRaw(giftId);
-    return parseResponse(response, GiftClaimResponse.class);
+    return GiftClaimResponse.fromJson(response.getBodyAsString(), response);
   }
 }

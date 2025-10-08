@@ -5,6 +5,7 @@ import java.util.List;
 import com.chargebee.v4.core.models.quoteLineGroup.QuoteLineGroup;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.core.services.QuoteService;
 import com.chargebee.v4.core.models.quote.params.QuoteQuoteLineGroupsForQuoteParams;
 
@@ -22,13 +23,15 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
 
   private final QuoteService service;
   private final QuoteQuoteLineGroupsForQuoteParams originalParams;
+  private final Response httpResponse;
 
   private QuoteQuoteLineGroupsForQuoteResponse(
       List<QuoteQuoteLineGroupsForQuoteItem> list,
       String nextOffset,
       String quoteId,
       QuoteService service,
-      QuoteQuoteLineGroupsForQuoteParams originalParams) {
+      QuoteQuoteLineGroupsForQuoteParams originalParams,
+      Response httpResponse) {
 
     this.list = list;
 
@@ -38,6 +41,7 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
 
     this.service = service;
     this.originalParams = originalParams;
+    this.httpResponse = httpResponse;
   }
 
   /**
@@ -54,7 +58,7 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
-      return new QuoteQuoteLineGroupsForQuoteResponse(list, nextOffset, null, null, null);
+      return new QuoteQuoteLineGroupsForQuoteResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse QuoteQuoteLineGroupsForQuoteResponse from JSON", e);
@@ -69,7 +73,8 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
       String json,
       QuoteService service,
       QuoteQuoteLineGroupsForQuoteParams originalParams,
-      String quoteId) {
+      String quoteId,
+      Response httpResponse) {
     try {
 
       List<QuoteQuoteLineGroupsForQuoteItem> list =
@@ -80,7 +85,7 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
       return new QuoteQuoteLineGroupsForQuoteResponse(
-          list, nextOffset, quoteId, service, originalParams);
+          list, nextOffset, quoteId, service, originalParams, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse QuoteQuoteLineGroupsForQuoteResponse from JSON", e);
@@ -116,16 +121,45 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }
-    if (service == null || originalParams == null) {
+    if (service == null) {
       throw new UnsupportedOperationException(
-          "nextPage() requires service context. Use fromJson(json, service, originalParams).");
+          "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
     // Create new params with the next offset
     QuoteQuoteLineGroupsForQuoteParams nextParams =
-        originalParams.toBuilder().offset(nextOffset).build();
+        (originalParams != null
+                ? originalParams.toBuilder()
+                : QuoteQuoteLineGroupsForQuoteParams.builder())
+            .offset(nextOffset)
+            .build();
 
     return service.quoteLineGroupsForQuote(quoteId, nextParams);
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 
   public static class QuoteQuoteLineGroupsForQuoteItem {

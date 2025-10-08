@@ -83,12 +83,14 @@ public final class OmnichannelOneTimeOrderService
       throws Exception {
     Response response = listRaw(params);
 
-    return OmnichannelOneTimeOrderListResponse.fromJson(response.getBodyAsString(), this, params);
+    return OmnichannelOneTimeOrderListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public OmnichannelOneTimeOrderListResponse list() throws Exception {
     Response response = listRaw();
-    return OmnichannelOneTimeOrderListResponse.fromJson(response.getBodyAsString(), this, null);
+    return OmnichannelOneTimeOrderListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 
   /** retrieve a omnichannelOneTimeOrder (executes immediately) - returns raw Response. */
@@ -105,6 +107,6 @@ public final class OmnichannelOneTimeOrderService
   public OmnichannelOneTimeOrderRetrieveResponse retrieve(String omnichannelOneTimeOrderId)
       throws Exception {
     Response response = retrieveRaw(omnichannelOneTimeOrderId);
-    return parseResponse(response, OmnichannelOneTimeOrderRetrieveResponse.class);
+    return OmnichannelOneTimeOrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

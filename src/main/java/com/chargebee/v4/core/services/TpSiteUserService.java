@@ -94,14 +94,14 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
       String tpSiteUserDomain, TpSiteUserUsersForTpSiteUserParams params) throws Exception {
     Response response = usersForTpSiteUserRaw(tpSiteUserDomain, params);
     return TpSiteUserUsersForTpSiteUserResponse.fromJson(
-        response.getBodyAsString(), this, params, tpSiteUserDomain);
+        response.getBodyAsString(), this, params, tpSiteUserDomain, response);
   }
 
   public TpSiteUserUsersForTpSiteUserResponse usersForTpSiteUser(String tpSiteUserDomain)
       throws Exception {
     Response response = usersForTpSiteUserRaw(tpSiteUserDomain);
     return TpSiteUserUsersForTpSiteUserResponse.fromJson(
-        response.getBodyAsString(), this, null, tpSiteUserDomain);
+        response.getBodyAsString(), this, null, tpSiteUserDomain, response);
   }
 
   /**
@@ -126,7 +126,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
       TpSiteUserPayNowEnableLiveParams params) throws Exception {
     Response response = payNowEnableLiveRaw(params);
 
-    return parseResponse(response, TpSiteUserPayNowEnableLiveResponse.class);
+    return TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -166,13 +166,13 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
       String tpSiteUserDomain, TpSiteUserGuestsForTpSiteUserParams params) throws Exception {
     Response response = guestsForTpSiteUserRaw(tpSiteUserDomain, params);
     return TpSiteUserGuestsForTpSiteUserResponse.fromJson(
-        response.getBodyAsString(), this, params, tpSiteUserDomain);
+        response.getBodyAsString(), this, params, tpSiteUserDomain, response);
   }
 
   public TpSiteUserGuestsForTpSiteUserResponse guestsForTpSiteUser(String tpSiteUserDomain)
       throws Exception {
     Response response = guestsForTpSiteUserRaw(tpSiteUserDomain);
     return TpSiteUserGuestsForTpSiteUserResponse.fromJson(
-        response.getBodyAsString(), this, null, tpSiteUserDomain);
+        response.getBodyAsString(), this, null, tpSiteUserDomain, response);
   }
 }

@@ -78,11 +78,13 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
       throws Exception {
     Response response = listRaw(params);
 
-    return SiteMigrationDetailListResponse.fromJson(response.getBodyAsString(), this, params);
+    return SiteMigrationDetailListResponse.fromJson(
+        response.getBodyAsString(), this, params, response);
   }
 
   public SiteMigrationDetailListResponse list() throws Exception {
     Response response = listRaw();
-    return SiteMigrationDetailListResponse.fromJson(response.getBodyAsString(), this, null);
+    return SiteMigrationDetailListResponse.fromJson(
+        response.getBodyAsString(), this, null, response);
   }
 }

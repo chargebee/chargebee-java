@@ -106,14 +106,14 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
       String itemPriceId, ItemPriceFindApplicableItemsParams params) throws Exception {
     Response response = findApplicableItemsRaw(itemPriceId, params);
     return ItemPriceFindApplicableItemsResponse.fromJson(
-        response.getBodyAsString(), this, params, itemPriceId);
+        response.getBodyAsString(), this, params, itemPriceId, response);
   }
 
   public ItemPriceFindApplicableItemsResponse findApplicableItems(String itemPriceId)
       throws Exception {
     Response response = findApplicableItemsRaw(itemPriceId);
     return ItemPriceFindApplicableItemsResponse.fromJson(
-        response.getBodyAsString(), this, null, itemPriceId);
+        response.getBodyAsString(), this, null, itemPriceId, response);
   }
 
   /** retrieve a itemPrice (executes immediately) - returns raw Response. */
@@ -125,7 +125,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
 
   public ItemPriceRetrieveResponse retrieve(String itemPriceId) throws Exception {
     Response response = retrieveRaw(itemPriceId);
-    return parseResponse(response, ItemPriceRetrieveResponse.class);
+    return ItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a itemPrice (executes immediately) - returns raw Response. */
@@ -150,7 +150,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public ItemPriceUpdateResponse update(String itemPriceId, ItemPriceUpdateParams params)
       throws Exception {
     Response response = updateRaw(itemPriceId, params);
-    return parseResponse(response, ItemPriceUpdateResponse.class);
+    return ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** delete a itemPrice (executes immediately) - returns raw Response. */
@@ -163,7 +163,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
 
   public ItemPriceDeleteResponse delete(String itemPriceId) throws Exception {
     Response response = deleteRaw(itemPriceId);
-    return parseResponse(response, ItemPriceDeleteResponse.class);
+    return ItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -204,14 +204,14 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
       String itemPriceId, ItemPriceFindApplicableItemPricesParams params) throws Exception {
     Response response = findApplicableItemPricesRaw(itemPriceId, params);
     return ItemPriceFindApplicableItemPricesResponse.fromJson(
-        response.getBodyAsString(), this, params, itemPriceId);
+        response.getBodyAsString(), this, params, itemPriceId, response);
   }
 
   public ItemPriceFindApplicableItemPricesResponse findApplicableItemPrices(String itemPriceId)
       throws Exception {
     Response response = findApplicableItemPricesRaw(itemPriceId);
     return ItemPriceFindApplicableItemPricesResponse.fromJson(
-        response.getBodyAsString(), this, null, itemPriceId);
+        response.getBodyAsString(), this, null, itemPriceId, response);
   }
 
   /** list a itemPrice using immutable params (executes immediately) - returns raw Response. */
@@ -235,12 +235,12 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public ItemPriceListResponse list(ItemPriceListParams params) throws Exception {
     Response response = listRaw(params);
 
-    return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, params);
+    return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
   public ItemPriceListResponse list() throws Exception {
     Response response = listRaw();
-    return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, null);
+    return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a itemPrice using immutable params (executes immediately) - returns raw Response. */
@@ -258,6 +258,6 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   public ItemPriceCreateResponse create(ItemPriceCreateParams params) throws Exception {
     Response response = createRaw(params);
 
-    return parseResponse(response, ItemPriceCreateResponse.class);
+    return ItemPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

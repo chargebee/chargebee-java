@@ -130,7 +130,7 @@ public final class EstimateService extends BaseService<EstimateService> {
 
   public EstimateRenewalEstimateResponse renewalEstimate(String subscriptionId) throws Exception {
     Response response = renewalEstimateRaw(subscriptionId);
-    return parseResponse(response, EstimateRenewalEstimateResponse.class);
+    return EstimateRenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -156,7 +156,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateCreateSubItemEstimateParams params) throws Exception {
     Response response = createSubItemEstimateRaw(params);
 
-    return parseResponse(response, EstimateCreateSubItemEstimateResponse.class);
+    return EstimateCreateSubItemEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -181,7 +181,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws Exception {
     Response response = paymentSchedulesRaw(params);
 
-    return parseResponse(response, EstimatePaymentSchedulesResponse.class);
+    return EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** cancelSubscriptionForItems a estimate (executes immediately) - returns raw Response. */
@@ -226,7 +226,8 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateCancelSubscriptionForItemsResponse cancelSubscriptionForItems(
       String subscriptionId, EstimateCancelSubscriptionForItemsParams params) throws Exception {
     Response response = cancelSubscriptionForItemsRaw(subscriptionId, params);
-    return parseResponse(response, EstimateCancelSubscriptionForItemsResponse.class);
+    return EstimateCancelSubscriptionForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** resumeSubscription a estimate (executes immediately) - returns raw Response. */
@@ -270,7 +271,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateResumeSubscriptionResponse resumeSubscription(
       String subscriptionId, EstimateResumeSubscriptionParams params) throws Exception {
     Response response = resumeSubscriptionRaw(subscriptionId, params);
-    return parseResponse(response, EstimateResumeSubscriptionResponse.class);
+    return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -295,7 +296,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateCreateInvoiceForItemsParams params) throws Exception {
     Response response = createInvoiceForItemsRaw(params);
 
-    return parseResponse(response, EstimateCreateInvoiceForItemsResponse.class);
+    return EstimateCreateInvoiceForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -322,7 +323,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateGiftSubscriptionForItemsParams params) throws Exception {
     Response response = giftSubscriptionForItemsRaw(params);
 
-    return parseResponse(response, EstimateGiftSubscriptionForItemsResponse.class);
+    return EstimateGiftSubscriptionForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -349,7 +350,8 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateUpdateSubscriptionForItemsParams params) throws Exception {
     Response response = updateSubscriptionForItemsRaw(params);
 
-    return parseResponse(response, EstimateUpdateSubscriptionForItemsResponse.class);
+    return EstimateUpdateSubscriptionForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** upcomingInvoicesEstimate a estimate (executes immediately) - returns raw Response. */
@@ -364,7 +366,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateUpcomingInvoicesEstimateResponse upcomingInvoicesEstimate(String customerId)
       throws Exception {
     Response response = upcomingInvoicesEstimateRaw(customerId);
-    return parseResponse(response, EstimateUpcomingInvoicesEstimateResponse.class);
+    return EstimateUpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** regenerateInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
@@ -409,7 +411,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateRegenerateInvoiceEstimateResponse regenerateInvoiceEstimate(
       String subscriptionId, EstimateRegenerateInvoiceEstimateParams params) throws Exception {
     Response response = regenerateInvoiceEstimateRaw(subscriptionId, params);
-    return parseResponse(response, EstimateRegenerateInvoiceEstimateResponse.class);
+    return EstimateRegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createSubItemForCustomerEstimate a estimate (executes immediately) - returns raw Response. */
@@ -454,7 +456,8 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateCreateSubItemForCustomerEstimateResponse createSubItemForCustomerEstimate(
       String customerId, EstimateCreateSubItemForCustomerEstimateParams params) throws Exception {
     Response response = createSubItemForCustomerEstimateRaw(customerId, params);
-    return parseResponse(response, EstimateCreateSubItemForCustomerEstimateResponse.class);
+    return EstimateCreateSubItemForCustomerEstimateResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** changeTermEnd a estimate (executes immediately) - returns raw Response. */
@@ -496,7 +499,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateChangeTermEndResponse changeTermEnd(
       String subscriptionId, EstimateChangeTermEndParams params) throws Exception {
     Response response = changeTermEndRaw(subscriptionId, params);
-    return parseResponse(response, EstimateChangeTermEndResponse.class);
+    return EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** pauseSubscription a estimate (executes immediately) - returns raw Response. */
@@ -540,7 +543,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimatePauseSubscriptionResponse pauseSubscription(
       String subscriptionId, EstimatePauseSubscriptionParams params) throws Exception {
     Response response = pauseSubscriptionRaw(subscriptionId, params);
-    return parseResponse(response, EstimatePauseSubscriptionResponse.class);
+    return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** advanceInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
@@ -584,7 +587,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateAdvanceInvoiceEstimateResponse advanceInvoiceEstimate(
       String subscriptionId, EstimateAdvanceInvoiceEstimateParams params) throws Exception {
     Response response = advanceInvoiceEstimateRaw(subscriptionId, params);
-    return parseResponse(response, EstimateAdvanceInvoiceEstimateResponse.class);
+    return EstimateAdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -609,7 +612,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateUpdateSubscriptionParams params) throws Exception {
     Response response = updateSubscriptionRaw(params);
 
-    return parseResponse(response, EstimateUpdateSubscriptionResponse.class);
+    return EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -634,7 +637,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws Exception {
     Response response = giftSubscriptionRaw(params);
 
-    return parseResponse(response, EstimateGiftSubscriptionResponse.class);
+    return EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** createSubForCustomerEstimate a estimate (executes immediately) - returns raw Response. */
@@ -649,7 +652,8 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateCreateSubForCustomerEstimateResponse createSubForCustomerEstimate(
       String customerId) throws Exception {
     Response response = createSubForCustomerEstimateRaw(customerId);
-    return parseResponse(response, EstimateCreateSubForCustomerEstimateResponse.class);
+    return EstimateCreateSubForCustomerEstimateResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
@@ -674,7 +678,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       EstimateCreateSubscriptionParams params) throws Exception {
     Response response = createSubscriptionRaw(params);
 
-    return parseResponse(response, EstimateCreateSubscriptionResponse.class);
+    return EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -697,7 +701,7 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws Exception {
     Response response = createInvoiceRaw(params);
 
-    return parseResponse(response, EstimateCreateInvoiceResponse.class);
+    return EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** cancelSubscription a estimate (executes immediately) - returns raw Response. */
@@ -741,6 +745,6 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateCancelSubscriptionResponse cancelSubscription(
       String subscriptionId, EstimateCancelSubscriptionParams params) throws Exception {
     Response response = cancelSubscriptionRaw(subscriptionId, params);
-    return parseResponse(response, EstimateCancelSubscriptionResponse.class);
+    return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 }

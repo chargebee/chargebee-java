@@ -78,7 +78,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
       OfferFulfillmentOfferFulfillmentsParams params) throws Exception {
     Response response = offerFulfillmentsRaw(params);
 
-    return parseResponse(response, OfferFulfillmentOfferFulfillmentsResponse.class);
+    return OfferFulfillmentOfferFulfillmentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** offerFulfillmentsGet a offerFulfillment (executes immediately) - returns raw Response. */
@@ -95,7 +95,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
   public OfferFulfillmentOfferFulfillmentsGetResponse offerFulfillmentsGet(
       String offerFulfillmentId) throws Exception {
     Response response = offerFulfillmentsGetRaw(offerFulfillmentId);
-    return parseResponse(response, OfferFulfillmentOfferFulfillmentsGetResponse.class);
+    return OfferFulfillmentOfferFulfillmentsGetResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /** offerFulfillmentsUpdate a offerFulfillment (executes immediately) - returns raw Response. */
@@ -142,6 +143,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
       String offerFulfillmentId, OfferFulfillmentOfferFulfillmentsUpdateParams params)
       throws Exception {
     Response response = offerFulfillmentsUpdateRaw(offerFulfillmentId, params);
-    return parseResponse(response, OfferFulfillmentOfferFulfillmentsUpdateResponse.class);
+    return OfferFulfillmentOfferFulfillmentsUpdateResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

@@ -3,6 +3,7 @@ package com.chargebee.v4.core.responses.plan;
 import com.chargebee.v4.core.models.plan.Plan;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for PlanRetrieve operation. Contains the response data from a single
@@ -12,18 +13,27 @@ public final class PlanRetrieveResponse {
 
   private final Plan plan;
 
-  private PlanRetrieveResponse(Plan plan) {
+  private final Response httpResponse;
+
+  private PlanRetrieveResponse(Plan plan, Response httpResponse) {
 
     this.plan = plan;
+
+    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into PlanRetrieveResponse object. */
   public static PlanRetrieveResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into PlanRetrieveResponse object with HTTP response. */
+  public static PlanRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
 
       Plan plan = Plan.fromJson(JsonUtil.getObject(json, "plan"));
 
-      return new PlanRetrieveResponse(plan);
+      return new PlanRetrieveResponse(plan, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PlanRetrieveResponse from JSON", e);
     }
@@ -32,5 +42,30 @@ public final class PlanRetrieveResponse {
   /** Get the plan from the response. */
   public Plan getPlan() {
     return plan;
+  }
+
+  /** Get the raw response payload as JSON string. */
+  public String responsePayload() {
+    return httpResponse != null ? httpResponse.getBodyAsString() : null;
+  }
+
+  /** Get the HTTP status code. */
+  public int httpStatus() {
+    return httpResponse != null ? httpResponse.getStatusCode() : 0;
+  }
+
+  /** Get response headers. */
+  public java.util.Map<String, java.util.List<String>> headers() {
+    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
+  }
+
+  /** Get a specific header value. */
+  public java.util.List<String> header(String name) {
+    if (httpResponse == null) return null;
+    return httpResponse.getHeaders().entrySet().stream()
+        .filter(e -> e.getKey().equalsIgnoreCase(name))
+        .map(java.util.Map.Entry::getValue)
+        .findFirst()
+        .orElse(null);
   }
 }
