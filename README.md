@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0-beta.1</version>
+  <version>4.0.0-beta.2</version>
 </dependency>
 ```
 
