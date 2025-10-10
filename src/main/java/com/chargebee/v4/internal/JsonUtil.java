@@ -341,6 +341,203 @@ public class JsonUtil {
     }
 
     /**
+     * Parse a JSON object into a Map<String, Object>.
+     * Values are kept as their raw types (String, Long, Double, Boolean, or nested JSON strings).
+     */
+    public static java.util.Map<String, Object> parseJsonObjectToMap(String json) {
+        java.util.Map<String, Object> map = new java.util.HashMap<>();
+        if (json == null || json.trim().isEmpty() || json.trim().equals("{}")) {
+            return map;
+        }
+        
+        // Remove outer braces and trim
+        String content = json.trim();
+        if (content.startsWith("{")) {
+            content = content.substring(1);
+        }
+        if (content.endsWith("}")) {
+            content = content.substring(0, content.length() - 1);
+        }
+        content = content.trim();
+        
+        if (content.isEmpty()) {
+            return map;
+        }
+        
+        // Parse key-value pairs
+        int i = 0;
+        while (i < content.length()) {
+            // Skip whitespace
+            while (i < content.length() && Character.isWhitespace(content.charAt(i))) {
+                i++;
+            }
+            if (i >= content.length()) break;
+            
+            // Parse key (must be quoted)
+            if (content.charAt(i) != '"') {
+                break; // Invalid JSON
+            }
+            i++; // Skip opening quote
+            
+            StringBuilder keyBuilder = new StringBuilder();
+            boolean escaped = false;
+            while (i < content.length()) {
+                char c = content.charAt(i);
+                if (escaped) {
+                    keyBuilder.append(c);
+                    escaped = false;
+                } else if (c == '\\') {
+                    escaped = true;
+                } else if (c == '"') {
+                    i++; // Skip closing quote
+                    break;
+                } else {
+                    keyBuilder.append(c);
+                }
+                i++;
+            }
+            String key = keyBuilder.toString();
+            
+            // Skip whitespace and colon
+            while (i < content.length() && (Character.isWhitespace(content.charAt(i)) || content.charAt(i) == ':')) {
+                i++;
+            }
+            
+            // Parse value
+            Object value = null;
+            if (i < content.length()) {
+                char c = content.charAt(i);
+                
+                if (c == '"') {
+                    // String value
+                    i++; // Skip opening quote
+                    StringBuilder valueBuilder = new StringBuilder();
+                    escaped = false;
+                    while (i < content.length()) {
+                        c = content.charAt(i);
+                        if (escaped) {
+                            valueBuilder.append(c);
+                            escaped = false;
+                        } else if (c == '\\') {
+                            escaped = true;
+                        } else if (c == '"') {
+                            i++; // Skip closing quote
+                            break;
+                        } else {
+                            valueBuilder.append(c);
+                        }
+                        i++;
+                    }
+                    value = unescapeJsonString(valueBuilder.toString());
+                    
+                } else if (c == '{') {
+                    // Nested object - extract as JSON string
+                    int depth = 0;
+                    int start = i;
+                    boolean inString = false;
+                    escaped = false;
+                    while (i < content.length()) {
+                        c = content.charAt(i);
+                        if (escaped) {
+                            escaped = false;
+                        } else if (c == '\\' && inString) {
+                            escaped = true;
+                        } else if (c == '"') {
+                            inString = !inString;
+                        } else if (!inString) {
+                            if (c == '{') depth++;
+                            else if (c == '}') {
+                                depth--;
+                                if (depth == 0) {
+                                    i++;
+                                    break;
+                                }
+                            }
+                        }
+                        i++;
+                    }
+                    value = content.substring(start, i);
+                    
+                } else if (c == '[') {
+                    // Array - extract as JSON string
+                    int depth = 0;
+                    int start = i;
+                    boolean inString = false;
+                    escaped = false;
+                    while (i < content.length()) {
+                        c = content.charAt(i);
+                        if (escaped) {
+                            escaped = false;
+                        } else if (c == '\\' && inString) {
+                            escaped = true;
+                        } else if (c == '"') {
+                            inString = !inString;
+                        } else if (!inString) {
+                            if (c == '[') depth++;
+                            else if (c == ']') {
+                                depth--;
+                                if (depth == 0) {
+                                    i++;
+                                    break;
+                                }
+                            }
+                        }
+                        i++;
+                    }
+                    value = content.substring(start, i);
+                    
+                } else if (c == 't' && content.substring(i).startsWith("true")) {
+                    // Boolean true
+                    value = Boolean.TRUE;
+                    i += 4;
+                    
+                } else if (c == 'f' && content.substring(i).startsWith("false")) {
+                    // Boolean false
+                    value = Boolean.FALSE;
+                    i += 5;
+                    
+                } else if (c == 'n' && content.substring(i).startsWith("null")) {
+                    // null
+                    value = null;
+                    i += 4;
+                    
+                } else if (c == '-' || Character.isDigit(c)) {
+                    // Number
+                    StringBuilder numBuilder = new StringBuilder();
+                    while (i < content.length()) {
+                        c = content.charAt(i);
+                        if (c == '-' || c == '+' || c == '.' || c == 'e' || c == 'E' || Character.isDigit(c)) {
+                            numBuilder.append(c);
+                            i++;
+                        } else {
+                            break;
+                        }
+                    }
+                    String numStr = numBuilder.toString();
+                    try {
+                        if (numStr.contains(".") || numStr.contains("e") || numStr.contains("E")) {
+                            value = Double.parseDouble(numStr);
+                        } else {
+                            value = Long.parseLong(numStr);
+                        }
+                    } catch (NumberFormatException e) {
+                        value = numStr; // Fallback to string
+                    }
+                }
+            }
+            
+            map.put(key, value);
+            
+            // Skip comma and whitespace
+            while (i < content.length() && (Character.isWhitespace(content.charAt(i)) || content.charAt(i) == ',')) {
+                i++;
+            }
+        }
+        
+        return map;
+    }
+
+    /**
      * Unescape JSON string.
      */
     private static String unescapeJsonString(String escaped) {
