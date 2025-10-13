@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,37 +39,52 @@ public final class PaymentSourceCreateUsingTempTokenParams {
     private PaymentSourceCreateUsingTempTokenBuilder() {}
 
     public PaymentSourceCreateUsingTempTokenBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTempTokenBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTempTokenBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTempTokenBuilder tmpToken(String value) {
+
       formData.put("tmp_token", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTempTokenBuilder issuingCountry(String value) {
+
       formData.put("issuing_country", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTempTokenBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
-    public PaymentSourceCreateUsingTempTokenBuilder additionalInformation(Object value) {
-      formData.put("additional_information", value);
+    public PaymentSourceCreateUsingTempTokenBuilder additionalInformation(
+        java.util.Map<String, Object> value) {
+
+      formData.put("additional_information", JsonUtil.toJson(value));
+
       return this;
     }
 

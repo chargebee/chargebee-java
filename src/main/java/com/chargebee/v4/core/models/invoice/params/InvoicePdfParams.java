@@ -37,7 +37,9 @@ public final class InvoicePdfParams {
     private InvoicePdfBuilder() {}
 
     public InvoicePdfBuilder dispositionType(DispositionType value) {
+
       formData.put("disposition_type", value);
+
       return this;
     }
 

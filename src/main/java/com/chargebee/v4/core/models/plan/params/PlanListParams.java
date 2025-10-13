@@ -122,8 +122,6 @@ public final class PlanListParams {
       return new PlanListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final PlanListBuilder builder;
@@ -563,8 +561,6 @@ public final class PlanListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum PeriodUnitIs {
       Day("day"),

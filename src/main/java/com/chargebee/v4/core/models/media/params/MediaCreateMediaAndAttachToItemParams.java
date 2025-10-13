@@ -37,17 +37,23 @@ public final class MediaCreateMediaAndAttachToItemParams {
     private MediaCreateMediaAndAttachToItemBuilder() {}
 
     public MediaCreateMediaAndAttachToItemBuilder url(String value) {
+
       formData.put("url", value);
+
       return this;
     }
 
     public MediaCreateMediaAndAttachToItemBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public MediaCreateMediaAndAttachToItemBuilder altText(String value) {
+
       formData.put("alt_text", value);
+
       return this;
     }
 

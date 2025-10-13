@@ -38,7 +38,9 @@ public final class InvoiceRecordPaymentParams {
     private InvoiceRecordPaymentBuilder() {}
 
     public InvoiceRecordPaymentBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
@@ -77,47 +79,65 @@ public final class InvoiceRecordPaymentParams {
       private TransactionBuilder() {}
 
       public TransactionBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public TransactionBuilder paymentMethod(PaymentMethod value) {
+
         formData.put("payment_method", value);
+
         return this;
       }
 
       public TransactionBuilder referenceNumber(String value) {
+
         formData.put("reference_number", value);
+
         return this;
       }
 
       public TransactionBuilder customPaymentMethodId(String value) {
+
         formData.put("custom_payment_method_id", value);
+
         return this;
       }
 
       public TransactionBuilder idAtGateway(String value) {
+
         formData.put("id_at_gateway", value);
+
         return this;
       }
 
       public TransactionBuilder status(Status value) {
+
         formData.put("status", value);
+
         return this;
       }
 
       public TransactionBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 
       public TransactionBuilder errorCode(String value) {
+
         formData.put("error_code", value);
+
         return this;
       }
 
       public TransactionBuilder errorText(String value) {
+
         formData.put("error_text", value);
+
         return this;
       }
 

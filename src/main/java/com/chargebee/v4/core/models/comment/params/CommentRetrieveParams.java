@@ -46,10 +46,5 @@ public final class CommentRetrieveParams {
     public CommentRetrieveParams build() {
       return new CommentRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

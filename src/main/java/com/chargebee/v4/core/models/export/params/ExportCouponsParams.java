@@ -76,27 +76,37 @@ public final class ExportCouponsParams {
       private CurrencyCodeBuilder() {}
 
       public CurrencyCodeBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -201,27 +211,37 @@ public final class ExportCouponsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -256,27 +276,37 @@ public final class ExportCouponsParams {
       private NameBuilder() {}
 
       public NameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public NameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public NameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public NameBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public NameBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -311,22 +341,30 @@ public final class ExportCouponsParams {
       private DiscountTypeBuilder() {}
 
       public DiscountTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public DiscountTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public DiscountTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public DiscountTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -421,22 +459,30 @@ public final class ExportCouponsParams {
       private DurationTypeBuilder() {}
 
       public DurationTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public DurationTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public DurationTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public DurationTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -531,22 +577,30 @@ public final class ExportCouponsParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -649,22 +703,30 @@ public final class ExportCouponsParams {
       private ApplyOnBuilder() {}
 
       public ApplyOnBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ApplyOnBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ApplyOnBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ApplyOnBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -763,22 +825,30 @@ public final class ExportCouponsParams {
       private CreatedAtBuilder() {}
 
       public CreatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CreatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CreatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CreatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -813,22 +883,30 @@ public final class ExportCouponsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 

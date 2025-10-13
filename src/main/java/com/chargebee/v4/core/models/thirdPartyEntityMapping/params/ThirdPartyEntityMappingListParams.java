@@ -74,8 +74,6 @@ public final class ThirdPartyEntityMappingListParams {
       return new ThirdPartyEntityMappingListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class EntityTypeFilter {
       private final String fieldName;
       private final ThirdPartyEntityMappingListBuilder builder;
@@ -165,8 +163,6 @@ public final class ThirdPartyEntityMappingListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum EntityTypeIs {
       Customer("customer"),

@@ -37,12 +37,16 @@ public final class InvoiceVoidInvoiceParams {
     private InvoiceVoidInvoiceBuilder() {}
 
     public InvoiceVoidInvoiceBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceVoidInvoiceBuilder voidReasonCode(String value) {
+
       formData.put("void_reason_code", value);
+
       return this;
     }
 

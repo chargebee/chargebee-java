@@ -40,93 +40,129 @@ public final class HostedPageCheckoutExistingForItemsParams {
     private HostedPageCheckoutExistingForItemsBuilder() {}
 
     public HostedPageCheckoutExistingForItemsBuilder layout(Layout value) {
+
       formData.put("layout", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder mandatoryItemsToRemove(List<String> value) {
+
       formData.put("mandatory_items_to_remove", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder replaceItemsList(Boolean value) {
+
       formData.put("replace_items_list", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder reactivateFrom(Timestamp value) {
+
       formData.put("reactivate_from", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder billingAlignmentMode(
         BillingAlignmentMode value) {
+
       formData.put("billing_alignment_mode", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder replaceCouponList(Boolean value) {
+
       formData.put("replace_coupon_list", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder reactivate(Boolean value) {
+
       formData.put("reactivate", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder forceTermReset(Boolean value) {
+
       formData.put("force_term_reset", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder changeOption(ChangeOption value) {
+
       formData.put("change_option", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder changesScheduledAt(Timestamp value) {
+
       formData.put("changes_scheduled_at", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder cancelUrl(String value) {
+
       formData.put("cancel_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder passThruContent(String value) {
+
       formData.put("pass_thru_content", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingForItemsBuilder allowOfflinePaymentMethods(Boolean value) {
+
       formData.put("allow_offline_payment_methods", value);
+
       return this;
     }
 
@@ -152,7 +188,6 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     public HostedPageCheckoutExistingForItemsBuilder subscriptionItems(
         List<SubscriptionItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionItemsParams item = value.get(i);
@@ -169,7 +204,6 @@ public final class HostedPageCheckoutExistingForItemsParams {
     }
 
     public HostedPageCheckoutExistingForItemsBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -186,7 +220,6 @@ public final class HostedPageCheckoutExistingForItemsParams {
     }
 
     public HostedPageCheckoutExistingForItemsBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -204,7 +237,6 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     public HostedPageCheckoutExistingForItemsBuilder entityIdentifiers(
         List<EntityIdentifiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EntityIdentifiersParams item = value.get(i);
@@ -338,49 +370,67 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder setupFee(Long value) {
+
         formData.put("setup_fee", value);
+
         return this;
       }
 
       public SubscriptionBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder coupon(String value) {
+
         formData.put("coupon", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCollection(AutoCollection value) {
+
         formData.put("auto_collection", value);
+
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
         formData.put("offline_payment_method", value);
+
         return this;
       }
 
       public SubscriptionBuilder invoiceNotes(String value) {
+
         formData.put("invoice_notes", value);
+
         return this;
       }
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
         formData.put("contract_term_billing_cycle_on_renewal", value);
+
         return this;
       }
 
@@ -496,27 +546,37 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
       public CustomerBuilder isEinvoiceEnabled(Boolean value) {
+
         formData.put("is_einvoice_enabled", value);
+
         return this;
       }
 
       public CustomerBuilder entityIdentifierScheme(String value) {
+
         formData.put("entity_identifier_scheme", value);
+
         return this;
       }
 
       public CustomerBuilder entityIdentifierStandard(String value) {
+
         formData.put("entity_identifier_standard", value);
+
         return this;
       }
 
@@ -552,12 +612,16 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
@@ -722,12 +786,16 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 
@@ -794,62 +862,86 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private SubscriptionItemsBuilder() {}
 
       public SubscriptionItemsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnEvent(ChargeOnEvent value) {
+
         formData.put("charge_on_event", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnOption(ChargeOnOption value) {
+
         formData.put("charge_on_option", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
@@ -976,57 +1068,79 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsBuilder durationType(DurationType value) {
+
         formData.put("duration_type", value);
+
         return this;
       }
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public DiscountsBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
       public DiscountsBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
       public DiscountsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder operationType(OperationType value) {
+
         formData.put("operation_type", value);
+
         return this;
       }
 
       public DiscountsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -1179,47 +1293,65 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
@@ -1284,27 +1416,37 @@ public final class HostedPageCheckoutExistingForItemsParams {
       private EntityIdentifiersBuilder() {}
 
       public EntityIdentifiersBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder scheme(String value) {
+
         formData.put("scheme", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder operation(Operation value) {
+
         formData.put("operation", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder standard(String value) {
+
         formData.put("standard", value);
+
         return this;
       }
 

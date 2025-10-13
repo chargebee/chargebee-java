@@ -46,10 +46,5 @@ public final class AddonRetrieveParams {
     public AddonRetrieveParams build() {
       return new AddonRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

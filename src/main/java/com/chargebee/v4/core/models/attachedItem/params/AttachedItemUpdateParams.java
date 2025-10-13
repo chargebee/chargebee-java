@@ -37,37 +37,51 @@ public final class AttachedItemUpdateParams {
     private AttachedItemUpdateBuilder() {}
 
     public AttachedItemUpdateBuilder parentItemId(String value) {
+
       formData.put("parent_item_id", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder quantity(Integer value) {
+
       formData.put("quantity", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder quantityInDecimal(String value) {
+
       formData.put("quantity_in_decimal", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder chargeOnEvent(ChargeOnEvent value) {
+
       formData.put("charge_on_event", value);
+
       return this;
     }
 
     public AttachedItemUpdateBuilder chargeOnce(Boolean value) {
+
       formData.put("charge_once", value);
+
       return this;
     }
 

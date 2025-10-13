@@ -64,10 +64,5 @@ public final class CustomerEntitlementEntitlementsForCustomerParams {
     public CustomerEntitlementEntitlementsForCustomerParams build() {
       return new CustomerEntitlementEntitlementsForCustomerParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

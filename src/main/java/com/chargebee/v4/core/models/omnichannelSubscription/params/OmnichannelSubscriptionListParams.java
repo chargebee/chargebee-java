@@ -65,8 +65,6 @@ public final class OmnichannelSubscriptionListParams {
       return new OmnichannelSubscriptionListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class SourceFilter {
       private final String fieldName;
       private final OmnichannelSubscriptionListBuilder builder;
@@ -121,8 +119,6 @@ public final class OmnichannelSubscriptionListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum SourceIs {
       AppleAppStore("apple_app_store"),

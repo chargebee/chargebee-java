@@ -39,58 +39,77 @@ public final class SubscriptionCancelParams {
     private SubscriptionCancelBuilder() {}
 
     public SubscriptionCancelBuilder cancelOption(CancelOption value) {
+
       formData.put("cancel_option", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder endOfTerm(Boolean value) {
+
       formData.put("end_of_term", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder cancelAt(Timestamp value) {
+
       formData.put("cancel_at", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder creditOptionForCurrentTermCharges(
         CreditOptionForCurrentTermCharges value) {
+
       formData.put("credit_option_for_current_term_charges", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder unbilledChargesOption(UnbilledChargesOption value) {
+
       formData.put("unbilled_charges_option", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder accountReceivablesHandling(AccountReceivablesHandling value) {
+
       formData.put("account_receivables_handling", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder refundableCreditsHandling(RefundableCreditsHandling value) {
+
       formData.put("refundable_credits_handling", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder contractTermCancelOption(ContractTermCancelOption value) {
+
       formData.put("contract_term_cancel_option", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder cancelReasonCode(String value) {
+
       formData.put("cancel_reason_code", value);
+
       return this;
     }
 
     public SubscriptionCancelBuilder eventBasedAddons(List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -332,22 +351,30 @@ public final class SubscriptionCancelParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder servicePeriodInDays(Integer value) {
+
         formData.put("service_period_in_days", value);
+
         return this;
       }
 

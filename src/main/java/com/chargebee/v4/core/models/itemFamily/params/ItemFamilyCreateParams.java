@@ -37,22 +37,30 @@ public final class ItemFamilyCreateParams {
     private ItemFamilyCreateBuilder() {}
 
     public ItemFamilyCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public ItemFamilyCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ItemFamilyCreateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public ItemFamilyCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 

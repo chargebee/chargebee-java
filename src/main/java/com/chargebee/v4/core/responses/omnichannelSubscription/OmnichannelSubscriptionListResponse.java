@@ -120,7 +120,6 @@ public final class OmnichannelSubscriptionListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     OmnichannelSubscriptionListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

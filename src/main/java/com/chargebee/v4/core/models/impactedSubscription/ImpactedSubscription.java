@@ -14,14 +14,14 @@ import java.util.List;
 public class ImpactedSubscription {
 
   private Integer count;
-  private List<String> subscriptionIds;
+  private List<java.util.Map<String, Object>> subscriptionIds;
   private Download download;
 
   public Integer getCount() {
     return count;
   }
 
-  public List<String> getSubscriptionIds() {
+  public List<java.util.Map<String, Object>> getSubscriptionIds() {
     return subscriptionIds;
   }
 
@@ -34,7 +34,13 @@ public class ImpactedSubscription {
 
     obj.count = JsonUtil.getInteger(json, "count");
 
-    obj.subscriptionIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "subscription_ids"));
+    String __subscriptionIdsJson = JsonUtil.getArray(json, "subscription_ids");
+    obj.subscriptionIds =
+        __subscriptionIdsJson != null
+            ? JsonUtil.parseObjectArray(__subscriptionIdsJson).stream()
+                .map(JsonUtil::parseJsonObjectToMap)
+                .collect(java.util.stream.Collectors.toList())
+            : null;
 
     String __downloadJson = JsonUtil.getObject(json, "download");
     if (__downloadJson != null) {

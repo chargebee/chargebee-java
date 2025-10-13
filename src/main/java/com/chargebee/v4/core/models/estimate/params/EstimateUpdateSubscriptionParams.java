@@ -39,92 +39,128 @@ public final class EstimateUpdateSubscriptionParams {
     private EstimateUpdateSubscriptionBuilder() {}
 
     public EstimateUpdateSubscriptionBuilder changesScheduledAt(Timestamp value) {
+
       formData.put("changes_scheduled_at", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder changeOption(ChangeOption value) {
+
       formData.put("change_option", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder replaceAddonList(Boolean value) {
+
       formData.put("replace_addon_list", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder mandatoryAddonsToRemove(List<String> value) {
+
       formData.put("mandatory_addons_to_remove", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder reactivateFrom(Timestamp value) {
+
       formData.put("reactivate_from", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder billingAlignmentMode(BillingAlignmentMode value) {
+
       formData.put("billing_alignment_mode", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder replaceCouponList(Boolean value) {
+
       formData.put("replace_coupon_list", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder prorate(Boolean value) {
+
       formData.put("prorate", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder endOfTerm(Boolean value) {
+
       formData.put("end_of_term", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder forceTermReset(Boolean value) {
+
       formData.put("force_term_reset", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder reactivate(Boolean value) {
+
       formData.put("reactivate", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder includeDelayedCharges(Boolean value) {
+
       formData.put("include_delayed_charges", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder useExistingBalances(Boolean value) {
+
       formData.put("use_existing_balances", value);
+
       return this;
     }
 
     public EstimateUpdateSubscriptionBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 
@@ -149,7 +185,6 @@ public final class EstimateUpdateSubscriptionParams {
     }
 
     public EstimateUpdateSubscriptionBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -166,7 +201,6 @@ public final class EstimateUpdateSubscriptionParams {
     }
 
     public EstimateUpdateSubscriptionBuilder eventBasedAddons(List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -272,78 +306,108 @@ public final class EstimateUpdateSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planId(String value) {
+
         formData.put("plan_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantity(Integer value) {
+
         formData.put("plan_quantity", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPrice(Long value) {
+
         formData.put("plan_unit_price", value);
+
         return this;
       }
 
       public SubscriptionBuilder setupFee(Long value) {
+
         formData.put("setup_fee", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantityInDecimal(String value) {
+
         formData.put("plan_quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPriceInDecimal(String value) {
+
         formData.put("plan_unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder coupon(String value) {
+
         formData.put("coupon", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCollection(AutoCollection value) {
+
         formData.put("auto_collection", value);
+
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
         formData.put("offline_payment_method", value);
+
         return this;
       }
 
       public SubscriptionBuilder freePeriod(Integer value) {
+
         formData.put("free_period", value);
+
         return this;
       }
 
       public SubscriptionBuilder freePeriodUnit(FreePeriodUnit value) {
+
         formData.put("free_period_unit", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEndAction(TrialEndAction value) {
+
         formData.put("trial_end_action", value);
+
         return this;
       }
 
@@ -523,42 +587,58 @@ public final class EstimateUpdateSubscriptionParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -627,42 +707,58 @@ public final class EstimateUpdateSubscriptionParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -731,23 +827,31 @@ public final class EstimateUpdateSubscriptionParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
       public CustomerBuilder registeredForGst(Boolean value) {
+
         formData.put("registered_for_gst", value);
+
         return this;
       }
 
       @Deprecated
       public CustomerBuilder taxability(Taxability value) {
+
         formData.put("taxability", value);
+
         return this;
       }
 
@@ -810,42 +914,58 @@ public final class EstimateUpdateSubscriptionParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       public AddonsBuilder prorationType(ProrationType value) {
+
         formData.put("proration_type", value);
+
         return this;
       }
 
@@ -910,47 +1030,65 @@ public final class EstimateUpdateSubscriptionParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder servicePeriodInDays(Integer value) {
+
         formData.put("service_period_in_days", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOn(ChargeOn value) {
+
         formData.put("charge_on", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder onEvent(OnEvent value) {
+
         formData.put("on_event", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 

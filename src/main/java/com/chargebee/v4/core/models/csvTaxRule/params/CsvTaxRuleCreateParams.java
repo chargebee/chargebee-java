@@ -38,157 +38,219 @@ public final class CsvTaxRuleCreateParams {
     private CsvTaxRuleCreateBuilder() {}
 
     public CsvTaxRuleCreateBuilder taxProfileName(String value) {
+
       formData.put("tax_profile_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder country(String value) {
+
       formData.put("country", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder state(String value) {
+
       formData.put("state", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder zipCode(String value) {
+
       formData.put("zip_code", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder zipCodeStart(Integer value) {
+
       formData.put("zip_code_start", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder zipCodeEnd(Integer value) {
+
       formData.put("zip_code_end", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax1Name(String value) {
+
       formData.put("tax1_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax1Rate(Number value) {
+
       formData.put("tax1_rate", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax1JurisType(Tax1JurisType value) {
+
       formData.put("tax1_juris_type", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax1JurisName(String value) {
+
       formData.put("tax1_juris_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax1JurisCode(String value) {
+
       formData.put("tax1_juris_code", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax2Name(String value) {
+
       formData.put("tax2_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax2Rate(Number value) {
+
       formData.put("tax2_rate", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax2JurisType(Tax2JurisType value) {
+
       formData.put("tax2_juris_type", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax2JurisName(String value) {
+
       formData.put("tax2_juris_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax2JurisCode(String value) {
+
       formData.put("tax2_juris_code", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax3Name(String value) {
+
       formData.put("tax3_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax3Rate(Number value) {
+
       formData.put("tax3_rate", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax3JurisType(Tax3JurisType value) {
+
       formData.put("tax3_juris_type", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax3JurisName(String value) {
+
       formData.put("tax3_juris_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax3JurisCode(String value) {
+
       formData.put("tax3_juris_code", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax4Name(String value) {
+
       formData.put("tax4_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax4Rate(Number value) {
+
       formData.put("tax4_rate", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax4JurisType(Tax4JurisType value) {
+
       formData.put("tax4_juris_type", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax4JurisName(String value) {
+
       formData.put("tax4_juris_name", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder tax4JurisCode(String value) {
+
       formData.put("tax4_juris_code", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder serviceType(ServiceType value) {
+
       formData.put("service_type", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder timeZone(String value) {
+
       formData.put("time_zone", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder validFrom(Timestamp value) {
+
       formData.put("valid_from", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder validTill(Timestamp value) {
+
       formData.put("valid_till", value);
+
       return this;
     }
 
     public CsvTaxRuleCreateBuilder overwrite(Boolean value) {
+
       formData.put("overwrite", value);
+
       return this;
     }
 

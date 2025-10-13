@@ -71,47 +71,65 @@ public final class CustomerUpdateContactParams {
       private ContactBuilder() {}
 
       public ContactBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public ContactBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ContactBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ContactBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ContactBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ContactBuilder label(String value) {
+
         formData.put("label", value);
+
         return this;
       }
 
       public ContactBuilder enabled(Boolean value) {
+
         formData.put("enabled", value);
+
         return this;
       }
 
       public ContactBuilder sendBillingEmail(Boolean value) {
+
         formData.put("send_billing_email", value);
+
         return this;
       }
 
       public ContactBuilder sendAccountEmail(Boolean value) {
+
         formData.put("send_account_email", value);
+
         return this;
       }
 

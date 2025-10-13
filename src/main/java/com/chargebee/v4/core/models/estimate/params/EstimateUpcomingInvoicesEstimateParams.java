@@ -46,10 +46,5 @@ public final class EstimateUpcomingInvoicesEstimateParams {
     public EstimateUpcomingInvoicesEstimateParams build() {
       return new EstimateUpcomingInvoicesEstimateParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

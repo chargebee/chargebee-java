@@ -37,17 +37,23 @@ public final class CurrencyCreateParams {
     private CurrencyCreateBuilder() {}
 
     public CurrencyCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CurrencyCreateBuilder forexType(ForexType value) {
+
       formData.put("forex_type", value);
+
       return this;
     }
 
     public CurrencyCreateBuilder manualExchangeRate(String value) {
+
       formData.put("manual_exchange_rate", value);
+
       return this;
     }
 

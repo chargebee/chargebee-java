@@ -39,72 +39,100 @@ public final class OrderUpdateParams {
     private OrderUpdateBuilder() {}
 
     public OrderUpdateBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public OrderUpdateBuilder batchId(String value) {
+
       formData.put("batch_id", value);
+
       return this;
     }
 
     public OrderUpdateBuilder note(String value) {
+
       formData.put("note", value);
+
       return this;
     }
 
     public OrderUpdateBuilder shippingDate(Timestamp value) {
+
       formData.put("shipping_date", value);
+
       return this;
     }
 
     public OrderUpdateBuilder orderDate(Timestamp value) {
+
       formData.put("order_date", value);
+
       return this;
     }
 
     public OrderUpdateBuilder cancelledAt(Timestamp value) {
+
       formData.put("cancelled_at", value);
+
       return this;
     }
 
     public OrderUpdateBuilder cancellationReason(CancellationReason value) {
+
       formData.put("cancellation_reason", value);
+
       return this;
     }
 
     public OrderUpdateBuilder shippedAt(Timestamp value) {
+
       formData.put("shipped_at", value);
+
       return this;
     }
 
     public OrderUpdateBuilder deliveredAt(Timestamp value) {
+
       formData.put("delivered_at", value);
+
       return this;
     }
 
     public OrderUpdateBuilder trackingUrl(String value) {
+
       formData.put("tracking_url", value);
+
       return this;
     }
 
     public OrderUpdateBuilder trackingId(String value) {
+
       formData.put("tracking_id", value);
+
       return this;
     }
 
     public OrderUpdateBuilder shipmentCarrier(String value) {
+
       formData.put("shipment_carrier", value);
+
       return this;
     }
 
     public OrderUpdateBuilder fulfillmentStatus(String value) {
+
       formData.put("fulfillment_status", value);
+
       return this;
     }
 
     public OrderUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
@@ -114,7 +142,6 @@ public final class OrderUpdateParams {
     }
 
     public OrderUpdateBuilder orderLineItems(List<OrderLineItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           OrderLineItemsParams item = value.get(i);
@@ -262,72 +289,100 @@ public final class OrderUpdateParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -396,17 +451,23 @@ public final class OrderUpdateParams {
       private OrderLineItemsBuilder() {}
 
       public OrderLineItemsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public OrderLineItemsBuilder status(Status value) {
+
         formData.put("status", value);
+
         return this;
       }
 
       public OrderLineItemsBuilder sku(String value) {
+
         formData.put("sku", value);
+
         return this;
       }
 

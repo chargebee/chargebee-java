@@ -39,37 +39,51 @@ public final class InvoiceCreateForChargeItemParams {
     private InvoiceCreateForChargeItemBuilder() {}
 
     public InvoiceCreateForChargeItemBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 
     public InvoiceCreateForChargeItemBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
@@ -79,7 +93,6 @@ public final class InvoiceCreateForChargeItemParams {
     }
 
     public InvoiceCreateForChargeItemBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -153,37 +166,51 @@ public final class InvoiceCreateForChargeItemParams {
       private ItemPriceBuilder() {}
 
       public ItemPriceBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemPriceBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemPriceBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemPriceBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemPriceBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemPriceBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ItemPriceBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -218,42 +245,58 @@ public final class InvoiceCreateForChargeItemParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 

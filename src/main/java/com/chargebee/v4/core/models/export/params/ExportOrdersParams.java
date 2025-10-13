@@ -76,37 +76,51 @@ public final class ExportOrdersParams {
       private TotalBuilder() {}
 
       public TotalBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TotalBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TotalBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public TotalBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public TotalBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public TotalBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public TotalBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -256,27 +270,37 @@ public final class ExportOrdersParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -311,32 +335,44 @@ public final class ExportOrdersParams {
       private SubscriptionIdBuilder() {}
 
       public SubscriptionIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -399,27 +435,37 @@ public final class ExportOrdersParams {
       private CustomerIdBuilder() {}
 
       public CustomerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CustomerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CustomerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CustomerIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CustomerIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -454,22 +500,30 @@ public final class ExportOrdersParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -600,22 +654,30 @@ public final class ExportOrdersParams {
       private PriceTypeBuilder() {}
 
       public PriceTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PriceTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PriceTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PriceTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -706,22 +768,30 @@ public final class ExportOrdersParams {
       private OrderDateBuilder() {}
 
       public OrderDateBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public OrderDateBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public OrderDateBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public OrderDateBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -756,22 +826,30 @@ public final class ExportOrdersParams {
       private ShippingDateBuilder() {}
 
       public ShippingDateBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ShippingDateBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ShippingDateBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ShippingDateBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -806,22 +884,30 @@ public final class ExportOrdersParams {
       private ShippedAtBuilder() {}
 
       public ShippedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ShippedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ShippedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ShippedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -856,22 +942,30 @@ public final class ExportOrdersParams {
       private DeliveredAtBuilder() {}
 
       public DeliveredAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public DeliveredAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public DeliveredAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public DeliveredAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -906,22 +1000,30 @@ public final class ExportOrdersParams {
       private CancelledAtBuilder() {}
 
       public CancelledAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CancelledAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CancelledAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CancelledAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -956,37 +1058,51 @@ public final class ExportOrdersParams {
       private AmountPaidBuilder() {}
 
       public AmountPaidBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountPaidBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountPaidBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountPaidBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountPaidBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountPaidBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountPaidBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1021,37 +1137,51 @@ public final class ExportOrdersParams {
       private RefundableCreditsBuilder() {}
 
       public RefundableCreditsBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public RefundableCreditsBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1086,37 +1216,51 @@ public final class ExportOrdersParams {
       private RefundableCreditsIssuedBuilder() {}
 
       public RefundableCreditsIssuedBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public RefundableCreditsIssuedBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1151,22 +1295,30 @@ public final class ExportOrdersParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1201,22 +1353,30 @@ public final class ExportOrdersParams {
       private ResentStatusBuilder() {}
 
       public ResentStatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ResentStatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ResentStatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ResentStatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1307,7 +1467,9 @@ public final class ExportOrdersParams {
       private IsResentBuilder() {}
 
       public IsResentBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -1370,17 +1532,23 @@ public final class ExportOrdersParams {
       private OriginalOrderIdBuilder() {}
 
       public OriginalOrderIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public OriginalOrderIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public OriginalOrderIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 

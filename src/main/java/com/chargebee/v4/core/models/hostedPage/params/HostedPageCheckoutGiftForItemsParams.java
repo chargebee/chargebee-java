@@ -38,17 +38,23 @@ public final class HostedPageCheckoutGiftForItemsParams {
     private HostedPageCheckoutGiftForItemsBuilder() {}
 
     public HostedPageCheckoutGiftForItemsBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
     public HostedPageCheckoutGiftForItemsBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutGiftForItemsBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -59,7 +65,6 @@ public final class HostedPageCheckoutGiftForItemsParams {
 
     public HostedPageCheckoutGiftForItemsBuilder subscriptionItems(
         List<SubscriptionItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionItemsParams item = value.get(i);
@@ -105,7 +110,9 @@ public final class HostedPageCheckoutGiftForItemsParams {
       private GifterBuilder() {}
 
       public GifterBuilder customerId(String value) {
+
         formData.put("customer_id", value);
+
         return this;
       }
 
@@ -140,17 +147,23 @@ public final class HostedPageCheckoutGiftForItemsParams {
       private SubscriptionItemsBuilder() {}
 
       public SubscriptionItemsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 

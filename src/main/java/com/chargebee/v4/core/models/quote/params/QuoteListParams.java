@@ -90,8 +90,6 @@ public final class QuoteListParams {
       return new QuoteListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final QuoteListBuilder builder;
@@ -291,8 +289,6 @@ public final class QuoteListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

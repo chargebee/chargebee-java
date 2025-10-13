@@ -58,10 +58,5 @@ public final class TransactionTransactionsForCustomerParams {
     public TransactionTransactionsForCustomerParams build() {
       return new TransactionTransactionsForCustomerParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

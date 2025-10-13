@@ -115,7 +115,6 @@ public final class PromotionalCreditListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     PromotionalCreditListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

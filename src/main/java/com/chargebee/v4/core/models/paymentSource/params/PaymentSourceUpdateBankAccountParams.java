@@ -71,17 +71,23 @@ public final class PaymentSourceUpdateBankAccountParams {
       private BankAccountBuilder() {}
 
       public BankAccountBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BankAccountBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BankAccountBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 

@@ -77,8 +77,6 @@ public final class SiteMigrationDetailListParams {
       return new SiteMigrationDetailListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class EntityIdAtOtherSiteFilter {
       private final String fieldName;
       private final SiteMigrationDetailListBuilder builder;
@@ -213,8 +211,6 @@ public final class SiteMigrationDetailListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum EntityTypeIs {
       Customer("customer"),

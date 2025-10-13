@@ -37,27 +37,37 @@ public final class InvoiceCollectPaymentParams {
     private InvoiceCollectPaymentBuilder() {}
 
     public InvoiceCollectPaymentBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public InvoiceCollectPaymentBuilder authorizationTransactionId(String value) {
+
       formData.put("authorization_transaction_id", value);
+
       return this;
     }
 
     public InvoiceCollectPaymentBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public InvoiceCollectPaymentBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceCollectPaymentBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 

@@ -24,7 +24,7 @@ public class Variant {
   private Timestamp createdAt;
   private Long resourceVersion;
   private Timestamp updatedAt;
-  private Object metadata;
+  private java.util.Map<String, Object> metadata;
   private List<OptionValues> optionValues;
 
   public String getId() {
@@ -71,7 +71,7 @@ public class Variant {
     return updatedAt;
   }
 
-  public Object getMetadata() {
+  public java.util.Map<String, Object> getMetadata() {
     return metadata;
   }
 
@@ -132,7 +132,11 @@ public class Variant {
 
     obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
 
-    obj.metadata = JsonUtil.getObject(json, "metadata");
+    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    obj.metadata =
+        __metadataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+            : new java.util.HashMap<>();
 
     obj.optionValues =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "option_values")).stream()

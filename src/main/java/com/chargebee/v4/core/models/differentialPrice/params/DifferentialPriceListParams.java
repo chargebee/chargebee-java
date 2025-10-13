@@ -73,8 +73,6 @@ public final class DifferentialPriceListParams {
       return new DifferentialPriceListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class ItemPriceIdFilter {
       private final String fieldName;
       private final DifferentialPriceListBuilder builder;
@@ -214,8 +212,5 @@ public final class DifferentialPriceListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
-
   }
 }

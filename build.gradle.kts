@@ -61,6 +61,12 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.processResources {
+    filesMatching("**/version.properties") {
+        expand(mapOf("version" to project.version))
+    }
+}
+
 // OWASP Dependency Check configuration
 dependencyCheck {
     format = org.owasp.dependencycheck.reporting.ReportGenerator.Format.ALL.toString()

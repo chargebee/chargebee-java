@@ -58,10 +58,5 @@ public final class SubscriptionSubscriptionsForCustomerParams {
     public SubscriptionSubscriptionsForCustomerParams build() {
       return new SubscriptionSubscriptionsForCustomerParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

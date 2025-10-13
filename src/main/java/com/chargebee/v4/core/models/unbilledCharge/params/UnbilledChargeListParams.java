@@ -75,8 +75,6 @@ public final class UnbilledChargeListParams {
       return new UnbilledChargeListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class SubscriptionIdFilter {
       private final String fieldName;
       private final UnbilledChargeListBuilder builder;
@@ -156,8 +154,6 @@ public final class UnbilledChargeListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum SubscriptionIdIsPresent {
       True("true"),

@@ -111,7 +111,6 @@ public final class AddonListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     AddonListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : AddonListParams.builder())
             .offset(nextOffset)

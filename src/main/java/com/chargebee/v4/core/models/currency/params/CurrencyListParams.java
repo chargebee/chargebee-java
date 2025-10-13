@@ -56,10 +56,5 @@ public final class CurrencyListParams {
     public CurrencyListParams build() {
       return new CurrencyListParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

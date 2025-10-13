@@ -46,10 +46,5 @@ public final class PaymentIntentRetrieveParams {
     public PaymentIntentRetrieveParams build() {
       return new PaymentIntentRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

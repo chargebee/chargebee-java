@@ -39,17 +39,23 @@ public final class EstimateAdvanceInvoiceEstimateParams {
     private EstimateAdvanceInvoiceEstimateBuilder() {}
 
     public EstimateAdvanceInvoiceEstimateBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public EstimateAdvanceInvoiceEstimateBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 
     public EstimateAdvanceInvoiceEstimateBuilder scheduleType(ScheduleType value) {
+
       formData.put("schedule_type", value);
+
       return this;
     }
 
@@ -61,7 +67,6 @@ public final class EstimateAdvanceInvoiceEstimateParams {
 
     public EstimateAdvanceInvoiceEstimateBuilder specificDatesSchedule(
         List<SpecificDatesScheduleParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SpecificDatesScheduleParams item = value.get(i);
@@ -137,22 +142,30 @@ public final class EstimateAdvanceInvoiceEstimateParams {
       private FixedIntervalScheduleBuilder() {}
 
       public FixedIntervalScheduleBuilder numberOfOccurrences(Integer value) {
+
         formData.put("number_of_occurrences", value);
+
         return this;
       }
 
       public FixedIntervalScheduleBuilder daysBeforeRenewal(Integer value) {
+
         formData.put("days_before_renewal", value);
+
         return this;
       }
 
       public FixedIntervalScheduleBuilder endScheduleOn(EndScheduleOn value) {
+
         formData.put("end_schedule_on", value);
+
         return this;
       }
 
       public FixedIntervalScheduleBuilder endDate(Timestamp value) {
+
         formData.put("end_date", value);
+
         return this;
       }
 
@@ -217,12 +230,16 @@ public final class EstimateAdvanceInvoiceEstimateParams {
       private SpecificDatesScheduleBuilder() {}
 
       public SpecificDatesScheduleBuilder termsToCharge(Integer value) {
+
         formData.put("terms_to_charge", value);
+
         return this;
       }
 
       public SpecificDatesScheduleBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 

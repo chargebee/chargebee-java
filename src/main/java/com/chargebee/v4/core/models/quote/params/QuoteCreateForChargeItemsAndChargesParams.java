@@ -40,42 +40,58 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
     private QuoteCreateForChargeItemsAndChargesBuilder() {}
 
     public QuoteCreateForChargeItemsAndChargesBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder notes(String value) {
+
       formData.put("notes", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder expiresAt(Timestamp value) {
+
       formData.put("expires_at", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -90,7 +106,6 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder itemPrices(List<ItemPricesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemPricesParams item = value.get(i);
@@ -107,7 +122,6 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -124,7 +138,6 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -141,7 +154,6 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
     }
 
     public QuoteCreateForChargeItemsAndChargesBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -159,7 +171,6 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
 
     public QuoteCreateForChargeItemsAndChargesBuilder taxProvidersFields(
         List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -205,72 +216,100 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -339,72 +378,100 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -473,32 +540,44 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private ItemPricesBuilder() {}
 
       public ItemPricesBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemPricesBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemPricesBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemPricesBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemPricesBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemPricesBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 
@@ -533,47 +612,65 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
@@ -638,37 +735,51 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder servicePeriod(Integer value) {
+
         formData.put("service_period", value);
+
         return this;
       }
 
@@ -737,27 +848,37 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
@@ -820,17 +941,23 @@ public final class QuoteCreateForChargeItemsAndChargesParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

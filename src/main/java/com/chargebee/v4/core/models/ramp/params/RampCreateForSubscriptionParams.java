@@ -39,27 +39,37 @@ public final class RampCreateForSubscriptionParams {
     private RampCreateForSubscriptionBuilder() {}
 
     public RampCreateForSubscriptionBuilder effectiveFrom(Timestamp value) {
+
       formData.put("effective_from", value);
+
       return this;
     }
 
     public RampCreateForSubscriptionBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public RampCreateForSubscriptionBuilder couponsToRemove(List<String> value) {
+
       formData.put("coupons_to_remove", value);
+
       return this;
     }
 
     public RampCreateForSubscriptionBuilder discountsToRemove(List<String> value) {
+
       formData.put("discounts_to_remove", value);
+
       return this;
     }
 
     public RampCreateForSubscriptionBuilder itemsToRemove(List<String> value) {
+
       formData.put("items_to_remove", value);
+
       return this;
     }
 
@@ -69,7 +79,6 @@ public final class RampCreateForSubscriptionParams {
     }
 
     public RampCreateForSubscriptionBuilder itemsToAdd(List<ItemsToAddParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemsToAddParams item = value.get(i);
@@ -86,7 +95,6 @@ public final class RampCreateForSubscriptionParams {
     }
 
     public RampCreateForSubscriptionBuilder itemsToUpdate(List<ItemsToUpdateParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemsToUpdateParams item = value.get(i);
@@ -103,7 +111,6 @@ public final class RampCreateForSubscriptionParams {
     }
 
     public RampCreateForSubscriptionBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -120,7 +127,6 @@ public final class RampCreateForSubscriptionParams {
     }
 
     public RampCreateForSubscriptionBuilder couponsToAdd(List<CouponsToAddParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           CouponsToAddParams item = value.get(i);
@@ -137,7 +143,6 @@ public final class RampCreateForSubscriptionParams {
     }
 
     public RampCreateForSubscriptionBuilder discountsToAdd(List<DiscountsToAddParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsToAddParams item = value.get(i);
@@ -183,17 +188,23 @@ public final class RampCreateForSubscriptionParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 
       public ContractTermBuilder renewalBillingCycles(Integer value) {
+
         formData.put("renewal_billing_cycles", value);
+
         return this;
       }
 
@@ -262,52 +273,72 @@ public final class RampCreateForSubscriptionParams {
       private ItemsToAddBuilder() {}
 
       public ItemsToAddBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemsToAddBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemsToAddBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemsToAddBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemsToAddBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemsToAddBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public ItemsToAddBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 
       public ItemsToAddBuilder chargeOnEvent(ChargeOnEvent value) {
+
         formData.put("charge_on_event", value);
+
         return this;
       }
 
       public ItemsToAddBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public ItemsToAddBuilder chargeOnOption(ChargeOnOption value) {
+
         formData.put("charge_on_option", value);
+
         return this;
       }
 
@@ -402,52 +433,72 @@ public final class RampCreateForSubscriptionParams {
       private ItemsToUpdateBuilder() {}
 
       public ItemsToUpdateBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder chargeOnEvent(ChargeOnEvent value) {
+
         formData.put("charge_on_event", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public ItemsToUpdateBuilder chargeOnOption(ChargeOnOption value) {
+
         formData.put("charge_on_option", value);
+
         return this;
       }
 
@@ -542,47 +593,65 @@ public final class RampCreateForSubscriptionParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
@@ -647,12 +716,16 @@ public final class RampCreateForSubscriptionParams {
       private CouponsToAddBuilder() {}
 
       public CouponsToAddBuilder couponId(String value) {
+
         formData.put("coupon_id", value);
+
         return this;
       }
 
       public CouponsToAddBuilder applyTill(Timestamp value) {
+
         formData.put("apply_till", value);
+
         return this;
       }
 
@@ -687,42 +760,58 @@ public final class RampCreateForSubscriptionParams {
       private DiscountsToAddBuilder() {}
 
       public DiscountsToAddBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder durationType(DurationType value) {
+
         formData.put("duration_type", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
       public DiscountsToAddBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 

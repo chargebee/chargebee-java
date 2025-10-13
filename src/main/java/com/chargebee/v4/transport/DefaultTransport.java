@@ -17,6 +17,22 @@ public class DefaultTransport implements Transport {
     private final TransportConfig config;
     private final Executor asyncExecutor;
     
+    private static final String VERSION;
+    
+    static {
+        String version = "unknown";
+        try (InputStream is = DefaultTransport.class.getClassLoader().getResourceAsStream("version.properties")) {
+            if (is != null) {
+                Properties props = new Properties();
+                props.load(is);
+                version = props.getProperty("version", "unknown");
+            }
+        } catch (IOException e) {
+            // Ignore and use default
+        }
+        VERSION = version;
+    }
+    
     public DefaultTransport(TransportConfig config) {
         this.config = Objects.requireNonNull(config, "TransportConfig cannot be null");
         this.asyncExecutor = ForkJoinPool.commonPool();
@@ -201,7 +217,7 @@ public class DefaultTransport implements Transport {
         
         // Standard Chargebee headers
         builder.header("Accept-Charset", "UTF-8");
-        builder.header("User-Agent", "Chargebee-Java-Client v4.0");
+        builder.header("User-Agent", "Chargebee-Java-Client v" + VERSION);
         builder.header("Accept", "application/json");
         builder.header("OS-Version", String.format("%s %s %s", 
             System.getProperty("os.name"),
@@ -261,7 +277,7 @@ public class DefaultTransport implements Transport {
         
         // Standard Chargebee headers (matching HttpUtil.java)
         connection.setRequestProperty("Accept-Charset", "UTF-8");
-        connection.setRequestProperty("User-Agent", "Chargebee-Java-Client v2.0"); // TODO: Make version dynamic
+        connection.setRequestProperty("User-Agent", "Chargebee-Java-Client v" + VERSION);
         connection.setRequestProperty("Accept", "application/json");
         connection.setRequestProperty("OS-Version", String.format("%s %s %s", 
             System.getProperty("os.name"),

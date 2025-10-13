@@ -115,7 +115,6 @@ public final class UnbilledChargeListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     UnbilledChargeListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : UnbilledChargeListParams.builder())
             .offset(nextOffset)

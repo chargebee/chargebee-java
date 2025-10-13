@@ -38,7 +38,9 @@ public final class PaymentSourceSwitchGatewayAccountParams {
     private PaymentSourceSwitchGatewayAccountBuilder() {}
 
     public PaymentSourceSwitchGatewayAccountBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 

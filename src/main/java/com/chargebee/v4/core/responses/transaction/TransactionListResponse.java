@@ -114,7 +114,6 @@ public final class TransactionListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     TransactionListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : TransactionListParams.builder())
             .offset(nextOffset)

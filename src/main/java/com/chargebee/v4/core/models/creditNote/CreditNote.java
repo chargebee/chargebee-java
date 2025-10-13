@@ -2105,13 +2105,13 @@ public class CreditNote {
   public static class SiteDetailsAtCreation {
 
     private String timezone;
-    private Object organizationAddress;
+    private java.util.Map<String, Object> organizationAddress;
 
     public String getTimezone() {
       return timezone;
     }
 
-    public Object getOrganizationAddress() {
+    public java.util.Map<String, Object> getOrganizationAddress() {
       return organizationAddress;
     }
 
@@ -2120,7 +2120,11 @@ public class CreditNote {
 
       obj.timezone = JsonUtil.getString(json, "timezone");
 
-      obj.organizationAddress = JsonUtil.getObject(json, "organization_address");
+      String __organizationAddressJson = JsonUtil.getObject(json, "organization_address");
+      obj.organizationAddress =
+          __organizationAddressJson != null
+              ? JsonUtil.parseJsonObjectToMap(__organizationAddressJson)
+              : new java.util.HashMap<>();
 
       return obj;
     }

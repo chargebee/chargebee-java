@@ -115,7 +115,6 @@ public final class WebhookEndpointListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     WebhookEndpointListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : WebhookEndpointListParams.builder())
             .offset(nextOffset)

@@ -114,7 +114,6 @@ public final class ItemFamilyListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     ItemFamilyListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : ItemFamilyListParams.builder())
             .offset(nextOffset)

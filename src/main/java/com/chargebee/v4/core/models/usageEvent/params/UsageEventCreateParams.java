@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.usageEvent.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,22 +38,30 @@ public final class UsageEventCreateParams {
     private UsageEventCreateBuilder() {}
 
     public UsageEventCreateBuilder deduplicationId(String value) {
+
       formData.put("deduplication_id", value);
+
       return this;
     }
 
     public UsageEventCreateBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public UsageEventCreateBuilder usageTimestamp(Long value) {
+
       formData.put("usage_timestamp", value);
+
       return this;
     }
 
-    public UsageEventCreateBuilder properties(Object value) {
-      formData.put("properties", value);
+    public UsageEventCreateBuilder properties(java.util.Map<String, Object> value) {
+
+      formData.put("properties", JsonUtil.toJson(value));
+
       return this;
     }
 

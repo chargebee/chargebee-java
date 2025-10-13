@@ -110,8 +110,6 @@ public final class AddonListParams {
       return new AddonListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final AddonListBuilder builder;
@@ -476,8 +474,6 @@ public final class AddonListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum PricingModelIs {
       FlatFee("flat_fee"),

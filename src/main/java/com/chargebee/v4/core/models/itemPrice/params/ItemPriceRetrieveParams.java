@@ -46,10 +46,5 @@ public final class ItemPriceRetrieveParams {
     public ItemPriceRetrieveParams build() {
       return new ItemPriceRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

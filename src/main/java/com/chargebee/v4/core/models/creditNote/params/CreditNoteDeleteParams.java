@@ -37,7 +37,9 @@ public final class CreditNoteDeleteParams {
     private CreditNoteDeleteBuilder() {}
 
     public CreditNoteDeleteBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

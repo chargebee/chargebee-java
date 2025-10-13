@@ -38,32 +38,41 @@ public final class PriceVariantUpdateParams {
     private PriceVariantUpdateBuilder() {}
 
     public PriceVariantUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public PriceVariantUpdateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public PriceVariantUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public PriceVariantUpdateBuilder variantGroup(String value) {
+
       formData.put("variant_group", value);
+
       return this;
     }
 
     public PriceVariantUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public PriceVariantUpdateBuilder attributes(List<AttributesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AttributesParams item = value.get(i);
@@ -137,12 +146,16 @@ public final class PriceVariantUpdateParams {
       private AttributesBuilder() {}
 
       public AttributesBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public AttributesBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 

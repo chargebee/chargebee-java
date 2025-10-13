@@ -36,7 +36,7 @@ public class Item {
   private Boolean isPercentagePricing;
   private Timestamp archivedAt;
   private Channel channel;
-  private Object metadata;
+  private java.util.Map<String, Object> metadata;
   private Boolean deleted;
   private String businessEntityId;
   private List<ApplicableItems> applicableItems;
@@ -135,7 +135,7 @@ public class Item {
     return channel;
   }
 
-  public Object getMetadata() {
+  public java.util.Map<String, Object> getMetadata() {
     return metadata;
   }
 
@@ -358,7 +358,11 @@ public class Item {
 
     obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
 
-    obj.metadata = JsonUtil.getObject(json, "metadata");
+    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    obj.metadata =
+        __metadataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+            : new java.util.HashMap<>();
 
     obj.deleted = JsonUtil.getBoolean(json, "deleted");
 

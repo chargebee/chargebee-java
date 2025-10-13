@@ -72,22 +72,30 @@ public final class InvoiceRecordTaxWithheldParams {
       private TaxWithheldBuilder() {}
 
       public TaxWithheldBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public TaxWithheldBuilder referenceNumber(String value) {
+
         formData.put("reference_number", value);
+
         return this;
       }
 
       public TaxWithheldBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 
       public TaxWithheldBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 

@@ -127,8 +127,6 @@ public final class CustomerListParams {
       return new CustomerListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final CustomerListBuilder builder;
@@ -523,8 +521,6 @@ public final class CustomerListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;
@@ -1121,8 +1117,6 @@ public final class CustomerListParams {
         return new RelationshipParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class ParentIdFilter {
         private final String fieldName;
         private final RelationshipBuilder builder;
@@ -1197,9 +1191,6 @@ public final class CustomerListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

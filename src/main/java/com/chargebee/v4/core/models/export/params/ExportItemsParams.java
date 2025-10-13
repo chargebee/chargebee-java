@@ -81,12 +81,16 @@ public final class ExportItemsParams {
       private BusinessEntityIdBuilder() {}
 
       public BusinessEntityIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public BusinessEntityIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -149,7 +153,9 @@ public final class ExportItemsParams {
       private IncludeSiteLevelResourcesBuilder() {}
 
       public IncludeSiteLevelResourcesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -307,27 +313,37 @@ public final class ExportItemsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -362,27 +378,37 @@ public final class ExportItemsParams {
       private ItemFamilyIdBuilder() {}
 
       public ItemFamilyIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemFamilyIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemFamilyIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemFamilyIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemFamilyIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -417,22 +443,30 @@ public final class ExportItemsParams {
       private TypeBuilder() {}
 
       public TypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public TypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -527,17 +561,23 @@ public final class ExportItemsParams {
       private NameBuilder() {}
 
       public NameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public NameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public NameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -572,22 +612,30 @@ public final class ExportItemsParams {
       private ItemApplicabilityBuilder() {}
 
       public ItemApplicabilityBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemApplicabilityBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemApplicabilityBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemApplicabilityBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -678,22 +726,30 @@ public final class ExportItemsParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -788,7 +844,9 @@ public final class ExportItemsParams {
       private IsGiftableBuilder() {}
 
       public IsGiftableBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -851,22 +909,30 @@ public final class ExportItemsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -901,7 +967,9 @@ public final class ExportItemsParams {
       private EnabledForCheckoutBuilder() {}
 
       public EnabledForCheckoutBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -964,7 +1032,9 @@ public final class ExportItemsParams {
       private EnabledInPortalBuilder() {}
 
       public EnabledInPortalBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -1027,7 +1097,9 @@ public final class ExportItemsParams {
       private MeteredBuilder() {}
 
       public MeteredBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -1090,22 +1162,30 @@ public final class ExportItemsParams {
       private UsageCalculationBuilder() {}
 
       public UsageCalculationBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public UsageCalculationBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public UsageCalculationBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public UsageCalculationBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1200,22 +1280,30 @@ public final class ExportItemsParams {
       private ChannelBuilder() {}
 
       public ChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

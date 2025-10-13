@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.customer.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -71,38 +72,52 @@ public final class CustomerUpdatePaymentMethodParams {
       private PaymentMethodBuilder() {}
 
       public PaymentMethodBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentMethodBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public PaymentMethodBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
       public PaymentMethodBuilder issuingCountry(String value) {
+
         formData.put("issuing_country", value);
+
         return this;
       }
 
-      public PaymentMethodBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentMethodBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 

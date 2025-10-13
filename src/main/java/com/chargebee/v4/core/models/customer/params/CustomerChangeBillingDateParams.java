@@ -37,27 +37,37 @@ public final class CustomerChangeBillingDateParams {
     private CustomerChangeBillingDateBuilder() {}
 
     public CustomerChangeBillingDateBuilder billingDate(Integer value) {
+
       formData.put("billing_date", value);
+
       return this;
     }
 
     public CustomerChangeBillingDateBuilder billingMonth(Integer value) {
+
       formData.put("billing_month", value);
+
       return this;
     }
 
     public CustomerChangeBillingDateBuilder billingDateMode(BillingDateMode value) {
+
       formData.put("billing_date_mode", value);
+
       return this;
     }
 
     public CustomerChangeBillingDateBuilder billingDayOfWeek(BillingDayOfWeek value) {
+
       formData.put("billing_day_of_week", value);
+
       return this;
     }
 
     public CustomerChangeBillingDateBuilder billingDayOfWeekMode(BillingDayOfWeekMode value) {
+
       formData.put("billing_day_of_week_mode", value);
+
       return this;
     }
 

@@ -14,14 +14,14 @@ import java.util.List;
 public class ImpactedItemPrice {
 
   private Integer count;
-  private List<String> itemPrices;
+  private List<java.util.Map<String, Object>> itemPrices;
   private Download download;
 
   public Integer getCount() {
     return count;
   }
 
-  public List<String> getItemPrices() {
+  public List<java.util.Map<String, Object>> getItemPrices() {
     return itemPrices;
   }
 
@@ -34,7 +34,13 @@ public class ImpactedItemPrice {
 
     obj.count = JsonUtil.getInteger(json, "count");
 
-    obj.itemPrices = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "item_prices"));
+    String __itemPricesJson = JsonUtil.getArray(json, "item_prices");
+    obj.itemPrices =
+        __itemPricesJson != null
+            ? JsonUtil.parseObjectArray(__itemPricesJson).stream()
+                .map(JsonUtil::parseJsonObjectToMap)
+                .collect(java.util.stream.Collectors.toList())
+            : null;
 
     String __downloadJson = JsonUtil.getObject(json, "download");
     if (__downloadJson != null) {

@@ -38,12 +38,16 @@ public final class HostedPageCheckoutGiftParams {
     private HostedPageCheckoutGiftBuilder() {}
 
     public HostedPageCheckoutGiftBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutGiftBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -58,7 +62,6 @@ public final class HostedPageCheckoutGiftParams {
     }
 
     public HostedPageCheckoutGiftBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -104,7 +107,9 @@ public final class HostedPageCheckoutGiftParams {
       private GifterBuilder() {}
 
       public GifterBuilder customerId(String value) {
+
         formData.put("customer_id", value);
+
         return this;
       }
 
@@ -139,23 +144,31 @@ public final class HostedPageCheckoutGiftParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder planId(String value) {
+
         formData.put("plan_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantity(Integer value) {
+
         formData.put("plan_quantity", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantityInDecimal(String value) {
+
         formData.put("plan_quantity_in_decimal", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder coupon(String value) {
+
         formData.put("coupon", value);
+
         return this;
       }
 
@@ -190,17 +203,23 @@ public final class HostedPageCheckoutGiftParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 

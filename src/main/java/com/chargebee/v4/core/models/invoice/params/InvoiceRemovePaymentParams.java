@@ -71,7 +71,9 @@ public final class InvoiceRemovePaymentParams {
       private TransactionBuilder() {}
 
       public TransactionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

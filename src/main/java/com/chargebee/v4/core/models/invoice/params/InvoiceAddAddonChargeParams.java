@@ -38,37 +38,51 @@ public final class InvoiceAddAddonChargeParams {
     private InvoiceAddAddonChargeBuilder() {}
 
     public InvoiceAddAddonChargeBuilder addonId(String value) {
+
       formData.put("addon_id", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder addonQuantity(Integer value) {
+
       formData.put("addon_quantity", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder addonUnitPrice(Long value) {
+
       formData.put("addon_unit_price", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder addonQuantityInDecimal(String value) {
+
       formData.put("addon_quantity_in_decimal", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder addonUnitPriceInDecimal(String value) {
+
       formData.put("addon_unit_price_in_decimal", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceAddAddonChargeBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
@@ -107,12 +121,16 @@ public final class InvoiceAddAddonChargeParams {
       private LineItemBuilder() {}
 
       public LineItemBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public LineItemBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 

@@ -117,7 +117,6 @@ public final class SiteMigrationDetailListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     SiteMigrationDetailListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

@@ -37,17 +37,23 @@ public final class InvoiceRefundParams {
     private InvoiceRefundBuilder() {}
 
     public InvoiceRefundBuilder refundAmount(Long value) {
+
       formData.put("refund_amount", value);
+
       return this;
     }
 
     public InvoiceRefundBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceRefundBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
@@ -86,12 +92,16 @@ public final class InvoiceRefundParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder reasonCode(ReasonCode value) {
+
         formData.put("reason_code", value);
+
         return this;
       }
 
       public CreditNoteBuilder createReasonCode(String value) {
+
         formData.put("create_reason_code", value);
+
         return this;
       }
 

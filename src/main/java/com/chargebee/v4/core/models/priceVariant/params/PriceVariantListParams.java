@@ -89,8 +89,6 @@ public final class PriceVariantListParams {
       return new PriceVariantListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final PriceVariantListBuilder builder;
@@ -285,8 +283,6 @@ public final class PriceVariantListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

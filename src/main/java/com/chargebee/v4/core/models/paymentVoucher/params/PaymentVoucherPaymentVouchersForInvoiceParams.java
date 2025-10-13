@@ -67,8 +67,6 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
       return new PaymentVoucherPaymentVouchersForInvoiceParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class StatusFilter {
       private final String fieldName;
       private final PaymentVoucherPaymentVouchersForInvoiceBuilder builder;
@@ -98,8 +96,6 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

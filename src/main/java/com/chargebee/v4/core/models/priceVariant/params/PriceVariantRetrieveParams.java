@@ -46,10 +46,5 @@ public final class PriceVariantRetrieveParams {
     public PriceVariantRetrieveParams build() {
       return new PriceVariantRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

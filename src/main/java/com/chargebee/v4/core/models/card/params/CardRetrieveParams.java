@@ -46,10 +46,5 @@ public final class CardRetrieveParams {
     public CardRetrieveParams build() {
       return new CardRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

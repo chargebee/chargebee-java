@@ -40,7 +40,6 @@ public final class SubscriptionRemoveAdvanceInvoiceScheduleParams {
 
     public SubscriptionRemoveAdvanceInvoiceScheduleBuilder specificDatesSchedule(
         List<SpecificDatesScheduleParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SpecificDatesScheduleParams item = value.get(i);
@@ -86,7 +85,9 @@ public final class SubscriptionRemoveAdvanceInvoiceScheduleParams {
       private SpecificDatesScheduleBuilder() {}
 
       public SpecificDatesScheduleBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

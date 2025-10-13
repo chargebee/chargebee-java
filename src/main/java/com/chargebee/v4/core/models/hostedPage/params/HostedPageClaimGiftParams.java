@@ -37,7 +37,9 @@ public final class HostedPageClaimGiftParams {
     private HostedPageClaimGiftBuilder() {}
 
     public HostedPageClaimGiftBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
@@ -81,7 +83,9 @@ public final class HostedPageClaimGiftParams {
       private GiftBuilder() {}
 
       public GiftBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -116,7 +120,9 @@ public final class HostedPageClaimGiftParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder locale(String value) {
+
         formData.put("locale", value);
+
         return this;
       }
 

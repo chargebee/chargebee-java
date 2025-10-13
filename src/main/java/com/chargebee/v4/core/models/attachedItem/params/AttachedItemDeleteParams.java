@@ -37,7 +37,9 @@ public final class AttachedItemDeleteParams {
     private AttachedItemDeleteBuilder() {}
 
     public AttachedItemDeleteBuilder parentItemId(String value) {
+
       formData.put("parent_item_id", value);
+
       return this;
     }
 

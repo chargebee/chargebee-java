@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.itemPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,133 +39,185 @@ public final class ItemPriceUpdateParams {
     private ItemPriceUpdateBuilder() {}
 
     public ItemPriceUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder prorationType(ProrationType value) {
+
       formData.put("proration_type", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder priceVariantId(String value) {
+
       formData.put("price_variant_id", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder usageAccumulationResetFrequency(
         UsageAccumulationResetFrequency value) {
+
       formData.put("usage_accumulation_reset_frequency", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder isTaxable(Boolean value) {
+
       formData.put("is_taxable", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder freeQuantity(Integer value) {
+
       formData.put("free_quantity", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder freeQuantityInDecimal(String value) {
+
       formData.put("free_quantity_in_decimal", value);
+
       return this;
     }
 
-    public ItemPriceUpdateBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public ItemPriceUpdateBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ItemPriceUpdateBuilder pricingModel(PricingModel value) {
+
       formData.put("pricing_model", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder price(Long value) {
+
       formData.put("price", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder priceInDecimal(String value) {
+
       formData.put("price_in_decimal", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder trialPeriodUnit(TrialPeriodUnit value) {
+
       formData.put("trial_period_unit", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder trialPeriod(Integer value) {
+
       formData.put("trial_period", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder shippingPeriod(Integer value) {
+
       formData.put("shipping_period", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder shippingPeriodUnit(ShippingPeriodUnit value) {
+
       formData.put("shipping_period_unit", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder trialEndAction(TrialEndAction value) {
+
       formData.put("trial_end_action", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder showDescriptionInInvoices(Boolean value) {
+
       formData.put("show_description_in_invoices", value);
+
       return this;
     }
 
     public ItemPriceUpdateBuilder showDescriptionInQuotes(Boolean value) {
+
       formData.put("show_description_in_quotes", value);
+
       return this;
     }
 
@@ -179,7 +232,6 @@ public final class ItemPriceUpdateParams {
     }
 
     public ItemPriceUpdateBuilder tiers(List<TiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TiersParams item = value.get(i);
@@ -196,7 +248,6 @@ public final class ItemPriceUpdateParams {
     }
 
     public ItemPriceUpdateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -489,37 +540,51 @@ public final class ItemPriceUpdateParams {
       private TaxDetailBuilder() {}
 
       public TaxDetailBuilder taxProfileId(String value) {
+
         formData.put("tax_profile_id", value);
+
         return this;
       }
 
       public TaxDetailBuilder avalaraTaxCode(String value) {
+
         formData.put("avalara_tax_code", value);
+
         return this;
       }
 
       public TaxDetailBuilder hsnCode(String value) {
+
         formData.put("hsn_code", value);
+
         return this;
       }
 
       public TaxDetailBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public TaxDetailBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public TaxDetailBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public TaxDetailBuilder taxjarProductCode(String value) {
+
         formData.put("taxjar_product_code", value);
+
         return this;
       }
 
@@ -588,32 +653,44 @@ public final class ItemPriceUpdateParams {
       private AccountingDetailBuilder() {}
 
       public AccountingDetailBuilder sku(String value) {
+
         formData.put("sku", value);
+
         return this;
       }
 
       public AccountingDetailBuilder accountingCode(String value) {
+
         formData.put("accounting_code", value);
+
         return this;
       }
 
       public AccountingDetailBuilder accountingCategory1(String value) {
+
         formData.put("accounting_category1", value);
+
         return this;
       }
 
       public AccountingDetailBuilder accountingCategory2(String value) {
+
         formData.put("accounting_category2", value);
+
         return this;
       }
 
       public AccountingDetailBuilder accountingCategory3(String value) {
+
         formData.put("accounting_category3", value);
+
         return this;
       }
 
       public AccountingDetailBuilder accountingCategory4(String value) {
+
         formData.put("accounting_category4", value);
+
         return this;
       }
 
@@ -648,42 +725,58 @@ public final class ItemPriceUpdateParams {
       private TiersBuilder() {}
 
       public TiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public TiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public TiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public TiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public TiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
@@ -748,17 +841,23 @@ public final class ItemPriceUpdateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

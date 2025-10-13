@@ -39,22 +39,30 @@ public final class EstimateRegenerateInvoiceEstimateParams {
     private EstimateRegenerateInvoiceEstimateBuilder() {}
 
     public EstimateRegenerateInvoiceEstimateBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public EstimateRegenerateInvoiceEstimateBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 
     public EstimateRegenerateInvoiceEstimateBuilder prorate(Boolean value) {
+
       formData.put("prorate", value);
+
       return this;
     }
 
     public EstimateRegenerateInvoiceEstimateBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 

@@ -38,7 +38,9 @@ public final class TimeMachineStartAfreshParams {
     private TimeMachineStartAfreshBuilder() {}
 
     public TimeMachineStartAfreshBuilder genesisTime(Timestamp value) {
+
       formData.put("genesis_time", value);
+
       return this;
     }
 

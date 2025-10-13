@@ -37,7 +37,9 @@ public final class CustomerUpdateHierarchySettingsParams {
     private CustomerUpdateHierarchySettingsBuilder() {}
 
     public CustomerUpdateHierarchySettingsBuilder useDefaultHierarchySettings(Boolean value) {
+
       formData.put("use_default_hierarchy_settings", value);
+
       return this;
     }
 
@@ -84,28 +86,38 @@ public final class CustomerUpdateHierarchySettingsParams {
 
       public ParentAccountAccessBuilder portalEditChildSubscriptions(
           PortalEditChildSubscriptions value) {
+
         formData.put("portal_edit_child_subscriptions", value);
+
         return this;
       }
 
       public ParentAccountAccessBuilder portalDownloadChildInvoices(
           PortalDownloadChildInvoices value) {
+
         formData.put("portal_download_child_invoices", value);
+
         return this;
       }
 
       public ParentAccountAccessBuilder sendSubscriptionEmails(Boolean value) {
+
         formData.put("send_subscription_emails", value);
+
         return this;
       }
 
       public ParentAccountAccessBuilder sendPaymentEmails(Boolean value) {
+
         formData.put("send_payment_emails", value);
+
         return this;
       }
 
       public ParentAccountAccessBuilder sendInvoiceEmails(Boolean value) {
+
         formData.put("send_invoice_emails", value);
+
         return this;
       }
 
@@ -206,27 +218,37 @@ public final class CustomerUpdateHierarchySettingsParams {
       private ChildAccountAccessBuilder() {}
 
       public ChildAccountAccessBuilder portalEditSubscriptions(PortalEditSubscriptions value) {
+
         formData.put("portal_edit_subscriptions", value);
+
         return this;
       }
 
       public ChildAccountAccessBuilder portalDownloadInvoices(PortalDownloadInvoices value) {
+
         formData.put("portal_download_invoices", value);
+
         return this;
       }
 
       public ChildAccountAccessBuilder sendSubscriptionEmails(Boolean value) {
+
         formData.put("send_subscription_emails", value);
+
         return this;
       }
 
       public ChildAccountAccessBuilder sendPaymentEmails(Boolean value) {
+
         formData.put("send_payment_emails", value);
+
         return this;
       }
 
       public ChildAccountAccessBuilder sendInvoiceEmails(Boolean value) {
+
         formData.put("send_invoice_emails", value);
+
         return this;
       }
 

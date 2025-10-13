@@ -46,10 +46,5 @@ public final class VariantRetrieveParams {
     public VariantRetrieveParams build() {
       return new VariantRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

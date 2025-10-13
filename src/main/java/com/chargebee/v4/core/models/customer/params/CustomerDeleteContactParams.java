@@ -71,7 +71,9 @@ public final class CustomerDeleteContactParams {
       private ContactBuilder() {}
 
       public ContactBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

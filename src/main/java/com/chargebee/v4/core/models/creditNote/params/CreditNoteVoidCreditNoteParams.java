@@ -37,7 +37,9 @@ public final class CreditNoteVoidCreditNoteParams {
     private CreditNoteVoidCreditNoteBuilder() {}
 
     public CreditNoteVoidCreditNoteBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

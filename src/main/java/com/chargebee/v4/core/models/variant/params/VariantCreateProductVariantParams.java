@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.variant.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,42 +39,55 @@ public final class VariantCreateProductVariantParams {
     private VariantCreateProductVariantBuilder() {}
 
     public VariantCreateProductVariantBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder sku(String value) {
+
       formData.put("sku", value);
+
       return this;
     }
 
-    public VariantCreateProductVariantBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public VariantCreateProductVariantBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public VariantCreateProductVariantBuilder optionValues(List<OptionValuesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           OptionValuesParams item = value.get(i);
@@ -147,12 +161,16 @@ public final class VariantCreateProductVariantParams {
       private OptionValuesBuilder() {}
 
       public OptionValuesBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public OptionValuesBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 

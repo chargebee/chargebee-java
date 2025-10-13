@@ -39,13 +39,14 @@ public final class ItemEntitlementUpsertOrRemoveItemEntitlementsForItemParams {
     private ItemEntitlementUpsertOrRemoveItemEntitlementsForItemBuilder() {}
 
     public ItemEntitlementUpsertOrRemoveItemEntitlementsForItemBuilder action(Action value) {
+
       formData.put("action", value);
+
       return this;
     }
 
     public ItemEntitlementUpsertOrRemoveItemEntitlementsForItemBuilder itemEntitlements(
         List<ItemEntitlementsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemEntitlementsParams item = value.get(i);
@@ -119,12 +120,16 @@ public final class ItemEntitlementUpsertOrRemoveItemEntitlementsForItemParams {
       private ItemEntitlementsBuilder() {}
 
       public ItemEntitlementsBuilder featureId(String value) {
+
         formData.put("feature_id", value);
+
         return this;
       }
 
       public ItemEntitlementsBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 

@@ -126,8 +126,6 @@ public final class ItemListParams {
       return new ItemListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final ItemListBuilder builder;
@@ -497,8 +495,6 @@ public final class ItemListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;
@@ -1125,8 +1121,6 @@ public final class ItemListParams {
         return new BundleConfigurationParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class TypeFilter {
         private final String fieldName;
         private final BundleConfigurationBuilder builder;
@@ -1156,9 +1150,6 @@ public final class ItemListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

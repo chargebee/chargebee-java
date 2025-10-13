@@ -38,22 +38,30 @@ public final class EstimatePaymentSchedulesParams {
     private EstimatePaymentSchedulesBuilder() {}
 
     public EstimatePaymentSchedulesBuilder schemeId(String value) {
+
       formData.put("scheme_id", value);
+
       return this;
     }
 
     public EstimatePaymentSchedulesBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public EstimatePaymentSchedulesBuilder invoiceId(String value) {
+
       formData.put("invoice_id", value);
+
       return this;
     }
 
     public EstimatePaymentSchedulesBuilder paymentScheduleStartDate(Timestamp value) {
+
       formData.put("payment_schedule_start_date", value);
+
       return this;
     }
 

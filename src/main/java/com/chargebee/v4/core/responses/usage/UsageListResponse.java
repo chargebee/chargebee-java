@@ -111,7 +111,6 @@ public final class UsageListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     UsageListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : UsageListParams.builder())
             .offset(nextOffset)

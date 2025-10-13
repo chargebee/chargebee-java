@@ -65,8 +65,6 @@ public final class OmnichannelOneTimeOrderListParams {
       return new OmnichannelOneTimeOrderListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class SourceFilter {
       private final String fieldName;
       private final OmnichannelOneTimeOrderListBuilder builder;
@@ -121,8 +119,6 @@ public final class OmnichannelOneTimeOrderListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum SourceIs {
       AppleAppStore("apple_app_store"),

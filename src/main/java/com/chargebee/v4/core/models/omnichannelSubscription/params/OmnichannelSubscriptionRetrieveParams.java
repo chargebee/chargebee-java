@@ -46,10 +46,5 @@ public final class OmnichannelSubscriptionRetrieveParams {
     public OmnichannelSubscriptionRetrieveParams build() {
       return new OmnichannelSubscriptionRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

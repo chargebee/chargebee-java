@@ -39,17 +39,20 @@ public final class OrderResendParams {
     private OrderResendBuilder() {}
 
     public OrderResendBuilder shippingDate(Timestamp value) {
+
       formData.put("shipping_date", value);
+
       return this;
     }
 
     public OrderResendBuilder resendReason(String value) {
+
       formData.put("resend_reason", value);
+
       return this;
     }
 
     public OrderResendBuilder orderLineItems(List<OrderLineItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           OrderLineItemsParams item = value.get(i);
@@ -95,12 +98,16 @@ public final class OrderResendParams {
       private OrderLineItemsBuilder() {}
 
       public OrderLineItemsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public OrderLineItemsBuilder fulfillmentQuantity(Integer value) {
+
         formData.put("fulfillment_quantity", value);
+
         return this;
       }
 

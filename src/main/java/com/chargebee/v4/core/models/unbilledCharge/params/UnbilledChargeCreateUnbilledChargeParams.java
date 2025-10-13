@@ -40,17 +40,20 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
     private UnbilledChargeCreateUnbilledChargeBuilder() {}
 
     public UnbilledChargeCreateUnbilledChargeBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public UnbilledChargeCreateUnbilledChargeBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public UnbilledChargeCreateUnbilledChargeBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -67,7 +70,6 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
     }
 
     public UnbilledChargeCreateUnbilledChargeBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -85,7 +87,6 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
 
     public UnbilledChargeCreateUnbilledChargeBuilder taxProvidersFields(
         List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -131,37 +132,51 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public AddonsBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -196,67 +211,93 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder taxable(Boolean value) {
+
         formData.put("taxable", value);
+
         return this;
       }
 
       public ChargesBuilder taxProfileId(String value) {
+
         formData.put("tax_profile_id", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTaxCode(String value) {
+
         formData.put("avalara_tax_code", value);
+
         return this;
       }
 
       public ChargesBuilder hsnCode(String value) {
+
         formData.put("hsn_code", value);
+
         return this;
       }
 
       public ChargesBuilder taxjarProductCode(String value) {
+
         formData.put("taxjar_product_code", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ChargesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -325,17 +366,23 @@ public final class UnbilledChargeCreateUnbilledChargeParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

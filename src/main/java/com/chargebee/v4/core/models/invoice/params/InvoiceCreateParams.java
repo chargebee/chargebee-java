@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.invoice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,83 +40,115 @@ public final class InvoiceCreateParams {
     private InvoiceCreateBuilder() {}
 
     public InvoiceCreateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder invoiceNote(String value) {
+
       formData.put("invoice_note", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder removeGeneralNote(Boolean value) {
+
       formData.put("remove_general_note", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     @Deprecated
     public InvoiceCreateBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder authorizationTransactionId(String value) {
+
       formData.put("authorization_transaction_id", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder autoCollection(AutoCollection value) {
+
       formData.put("auto_collection", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder tokenId(String value) {
+
       formData.put("token_id", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder retainPaymentSource(Boolean value) {
+
       formData.put("retain_payment_source", value);
+
       return this;
     }
 
     public InvoiceCreateBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 
@@ -150,7 +183,6 @@ public final class InvoiceCreateParams {
     }
 
     public InvoiceCreateBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -167,7 +199,6 @@ public final class InvoiceCreateParams {
     }
 
     public InvoiceCreateBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -184,7 +215,6 @@ public final class InvoiceCreateParams {
     }
 
     public InvoiceCreateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -201,7 +231,6 @@ public final class InvoiceCreateParams {
     }
 
     public InvoiceCreateBuilder notesToRemove(List<NotesToRemoveParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           NotesToRemoveParams item = value.get(i);
@@ -303,72 +332,100 @@ public final class InvoiceCreateParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -437,7 +494,9 @@ public final class InvoiceCreateParams {
       private StatementDescriptorBuilder() {}
 
       public StatementDescriptorBuilder descriptor(String value) {
+
         formData.put("descriptor", value);
+
         return this;
       }
 
@@ -473,99 +532,137 @@ public final class InvoiceCreateParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       @Deprecated
       public CardBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
       public CardBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CardBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CardBuilder number(String value) {
+
         formData.put("number", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder cvv(String value) {
+
         formData.put("cvv", value);
+
         return this;
       }
 
       public CardBuilder preferredScheme(PreferredScheme value) {
+
         formData.put("preferred_scheme", value);
+
         return this;
       }
 
       public CardBuilder billingAddr1(String value) {
+
         formData.put("billing_addr1", value);
+
         return this;
       }
 
       public CardBuilder billingAddr2(String value) {
+
         formData.put("billing_addr2", value);
+
         return this;
       }
 
       public CardBuilder billingCity(String value) {
+
         formData.put("billing_city", value);
+
         return this;
       }
 
       public CardBuilder billingStateCode(String value) {
+
         formData.put("billing_state_code", value);
+
         return this;
       }
 
       public CardBuilder billingState(String value) {
+
         formData.put("billing_state", value);
+
         return this;
       }
 
       public CardBuilder billingZip(String value) {
+
         formData.put("billing_zip", value);
+
         return this;
       }
 
       public CardBuilder billingCountry(String value) {
+
         formData.put("billing_country", value);
+
         return this;
       }
 
       @Deprecated
       public CardBuilder ipAddress(String value) {
+
         formData.put("ip_address", value);
+
         return this;
       }
 
-      public CardBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public CardBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -762,87 +859,121 @@ public final class InvoiceCreateParams {
       private BankAccountBuilder() {}
 
       public BankAccountBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public BankAccountBuilder iban(String value) {
+
         formData.put("iban", value);
+
         return this;
       }
 
       public BankAccountBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BankAccountBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BankAccountBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BankAccountBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BankAccountBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BankAccountBuilder bankName(String value) {
+
         formData.put("bank_name", value);
+
         return this;
       }
 
       public BankAccountBuilder accountNumber(String value) {
+
         formData.put("account_number", value);
+
         return this;
       }
 
       public BankAccountBuilder routingNumber(String value) {
+
         formData.put("routing_number", value);
+
         return this;
       }
 
       public BankAccountBuilder bankCode(String value) {
+
         formData.put("bank_code", value);
+
         return this;
       }
 
       public BankAccountBuilder accountType(AccountType value) {
+
         formData.put("account_type", value);
+
         return this;
       }
 
       public BankAccountBuilder accountHolderType(AccountHolderType value) {
+
         formData.put("account_holder_type", value);
+
         return this;
       }
 
       public BankAccountBuilder echeckType(EcheckType value) {
+
         formData.put("echeck_type", value);
+
         return this;
       }
 
       public BankAccountBuilder issuingCountry(String value) {
+
         formData.put("issuing_country", value);
+
         return this;
       }
 
       public BankAccountBuilder swedishIdentityNumber(String value) {
+
         formData.put("swedish_identity_number", value);
+
         return this;
       }
 
-      public BankAccountBuilder billingAddress(Object value) {
-        formData.put("billing_address", value);
+      public BankAccountBuilder billingAddress(java.util.Map<String, Object> value) {
+
+        formData.put("billing_address", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -969,38 +1100,52 @@ public final class InvoiceCreateParams {
       private PaymentMethodBuilder() {}
 
       public PaymentMethodBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentMethodBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public PaymentMethodBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
       public PaymentMethodBuilder issuingCountry(String value) {
+
         formData.put("issuing_country", value);
+
         return this;
       }
 
-      public PaymentMethodBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentMethodBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -1239,38 +1384,52 @@ public final class InvoiceCreateParams {
       private PaymentIntentBuilder() {}
 
       public PaymentIntentBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gwToken(String value) {
+
         formData.put("gw_token", value);
+
         return this;
       }
 
       public PaymentIntentBuilder paymentMethodType(PaymentMethodType value) {
+
         formData.put("payment_method_type", value);
+
         return this;
       }
 
       public PaymentIntentBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentIntentBuilder gwPaymentMethodId(String value) {
+
         formData.put("gw_payment_method_id", value);
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentIntentBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -1373,37 +1532,51 @@ public final class InvoiceCreateParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public AddonsBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -1438,67 +1611,93 @@ public final class InvoiceCreateParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder taxable(Boolean value) {
+
         formData.put("taxable", value);
+
         return this;
       }
 
       public ChargesBuilder taxProfileId(String value) {
+
         formData.put("tax_profile_id", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTaxCode(String value) {
+
         formData.put("avalara_tax_code", value);
+
         return this;
       }
 
       public ChargesBuilder hsnCode(String value) {
+
         formData.put("hsn_code", value);
+
         return this;
       }
 
       public ChargesBuilder taxjarProductCode(String value) {
+
         formData.put("taxjar_product_code", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ChargesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -1567,17 +1766,23 @@ public final class InvoiceCreateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 
@@ -1612,12 +1817,16 @@ public final class InvoiceCreateParams {
       private NotesToRemoveBuilder() {}
 
       public NotesToRemoveBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public NotesToRemoveBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 

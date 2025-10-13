@@ -37,7 +37,9 @@ public final class CreditNotePdfParams {
     private CreditNotePdfBuilder() {}
 
     public CreditNotePdfBuilder dispositionType(DispositionType value) {
+
       formData.put("disposition_type", value);
+
       return this;
     }
 

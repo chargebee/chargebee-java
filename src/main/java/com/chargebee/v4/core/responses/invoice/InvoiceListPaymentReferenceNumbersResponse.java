@@ -120,7 +120,6 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     InvoiceListPaymentReferenceNumbersParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

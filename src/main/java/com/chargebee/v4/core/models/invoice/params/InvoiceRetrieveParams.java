@@ -51,11 +51,6 @@ public final class InvoiceRetrieveParams {
     public InvoiceRetrieveParams build() {
       return new InvoiceRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 
   public static final class LineItemParams {
@@ -100,8 +95,6 @@ public final class InvoiceRetrieveParams {
         return new LineItemParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class SubscriptionIdFilter {
         private final String fieldName;
         private final LineItemBuilder builder;
@@ -131,9 +124,6 @@ public final class InvoiceRetrieveParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

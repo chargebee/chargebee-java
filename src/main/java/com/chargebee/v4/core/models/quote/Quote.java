@@ -38,7 +38,7 @@ public class Quote {
   private String vatNumberPrefix;
   private String taxCategory;
   private String currencyCode;
-  private List<String> notes;
+  private List<java.util.Map<String, Object>> notes;
   private Timestamp contractTermStart;
   private Timestamp contractTermEnd;
   private Long contractTermTerminationFee;
@@ -155,7 +155,7 @@ public class Quote {
     return currencyCode;
   }
 
-  public List<String> getNotes() {
+  public List<java.util.Map<String, Object>> getNotes() {
     return notes;
   }
 
@@ -376,7 +376,13 @@ public class Quote {
 
     obj.currencyCode = JsonUtil.getString(json, "currency_code");
 
-    obj.notes = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "notes"));
+    String __notesJson = JsonUtil.getArray(json, "notes");
+    obj.notes =
+        __notesJson != null
+            ? JsonUtil.parseObjectArray(__notesJson).stream()
+                .map(JsonUtil::parseJsonObjectToMap)
+                .collect(java.util.stream.Collectors.toList())
+            : null;
 
     obj.contractTermStart = JsonUtil.getTimestamp(json, "contract_term_start");
 

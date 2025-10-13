@@ -56,10 +56,5 @@ public final class AddressRetrieveParams {
     public AddressRetrieveParams build() {
       return new AddressRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

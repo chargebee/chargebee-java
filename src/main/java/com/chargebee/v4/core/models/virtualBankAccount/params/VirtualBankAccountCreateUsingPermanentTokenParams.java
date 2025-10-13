@@ -38,17 +38,23 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
     private VirtualBankAccountCreateUsingPermanentTokenBuilder() {}
 
     public VirtualBankAccountCreateUsingPermanentTokenBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public VirtualBankAccountCreateUsingPermanentTokenBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public VirtualBankAccountCreateUsingPermanentTokenBuilder scheme(Scheme value) {
+
       formData.put("scheme", value);
+
       return this;
     }
 

@@ -46,10 +46,5 @@ public final class CouponSetRetrieveParams {
     public CouponSetRetrieveParams build() {
       return new CouponSetRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

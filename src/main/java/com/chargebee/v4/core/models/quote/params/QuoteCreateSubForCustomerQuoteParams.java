@@ -39,42 +39,58 @@ public final class QuoteCreateSubForCustomerQuoteParams {
     private QuoteCreateSubForCustomerQuoteBuilder() {}
 
     public QuoteCreateSubForCustomerQuoteBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder notes(String value) {
+
       formData.put("notes", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder expiresAt(Timestamp value) {
+
       formData.put("expires_at", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder mandatoryAddonsToRemove(List<String> value) {
+
       formData.put("mandatory_addons_to_remove", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder billingAlignmentMode(BillingAlignmentMode value) {
+
       formData.put("billing_alignment_mode", value);
+
       return this;
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -94,7 +110,6 @@ public final class QuoteCreateSubForCustomerQuoteParams {
     }
 
     public QuoteCreateSubForCustomerQuoteBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -112,7 +127,6 @@ public final class QuoteCreateSubForCustomerQuoteParams {
 
     public QuoteCreateSubForCustomerQuoteBuilder eventBasedAddons(
         List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -188,62 +202,86 @@ public final class QuoteCreateSubForCustomerQuoteParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public SubscriptionBuilder poNumber(String value) {
+
         formData.put("po_number", value);
+
         return this;
       }
 
       public SubscriptionBuilder planId(String value) {
+
         formData.put("plan_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantity(Integer value) {
+
         formData.put("plan_quantity", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantityInDecimal(String value) {
+
         formData.put("plan_quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPrice(Long value) {
+
         formData.put("plan_unit_price", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPriceInDecimal(String value) {
+
         formData.put("plan_unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder setupFee(Long value) {
+
         formData.put("setup_fee", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       public SubscriptionBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
         formData.put("offline_payment_method", value);
+
         return this;
       }
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
         formData.put("contract_term_billing_cycle_on_renewal", value);
+
         return this;
       }
 
@@ -331,72 +369,100 @@ public final class QuoteCreateSubForCustomerQuoteParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -465,12 +531,16 @@ public final class QuoteCreateSubForCustomerQuoteParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 
@@ -537,37 +607,51 @@ public final class QuoteCreateSubForCustomerQuoteParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public AddonsBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
@@ -602,47 +686,65 @@ public final class QuoteCreateSubForCustomerQuoteParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder servicePeriodInDays(Integer value) {
+
         formData.put("service_period_in_days", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder onEvent(OnEvent value) {
+
         formData.put("on_event", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOn(ChargeOn value) {
+
         formData.put("charge_on", value);
+
         return this;
       }
 

@@ -42,13 +42,14 @@ public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailability
 
     public SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityBuilder isEnabled(
         Boolean value) {
+
       formData.put("is_enabled", value);
+
       return this;
     }
 
     public SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityBuilder
         subscriptionEntitlements(List<SubscriptionEntitlementsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionEntitlementsParams item = value.get(i);
@@ -94,7 +95,9 @@ public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailability
       private SubscriptionEntitlementsBuilder() {}
 
       public SubscriptionEntitlementsBuilder featureId(String value) {
+
         formData.put("feature_id", value);
+
         return this;
       }
 

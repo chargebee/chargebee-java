@@ -37,22 +37,30 @@ public final class TransactionCreateAuthorizationParams {
     private TransactionCreateAuthorizationBuilder() {}
 
     public TransactionCreateAuthorizationBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public TransactionCreateAuthorizationBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public TransactionCreateAuthorizationBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public TransactionCreateAuthorizationBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 

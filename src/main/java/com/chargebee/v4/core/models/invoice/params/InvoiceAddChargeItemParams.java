@@ -39,12 +39,16 @@ public final class InvoiceAddChargeItemParams {
     private InvoiceAddChargeItemBuilder() {}
 
     public InvoiceAddChargeItemBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceAddChargeItemBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
@@ -54,7 +58,6 @@ public final class InvoiceAddChargeItemParams {
     }
 
     public InvoiceAddChargeItemBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -100,37 +103,51 @@ public final class InvoiceAddChargeItemParams {
       private ItemPriceBuilder() {}
 
       public ItemPriceBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemPriceBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemPriceBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemPriceBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemPriceBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemPriceBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ItemPriceBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -165,42 +182,58 @@ public final class InvoiceAddChargeItemParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 

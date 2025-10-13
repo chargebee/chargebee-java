@@ -37,12 +37,16 @@ public final class HostedPageExtendSubscriptionParams {
     private HostedPageExtendSubscriptionBuilder() {}
 
     public HostedPageExtendSubscriptionBuilder expiry(Integer value) {
+
       formData.put("expiry", value);
+
       return this;
     }
 
     public HostedPageExtendSubscriptionBuilder billingCycle(Integer value) {
+
       formData.put("billing_cycle", value);
+
       return this;
     }
 
@@ -81,7 +85,9 @@ public final class HostedPageExtendSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

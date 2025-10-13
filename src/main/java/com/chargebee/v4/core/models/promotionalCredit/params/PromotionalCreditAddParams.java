@@ -37,37 +37,51 @@ public final class PromotionalCreditAddParams {
     private PromotionalCreditAddBuilder() {}
 
     public PromotionalCreditAddBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder amountInDecimal(String value) {
+
       formData.put("amount_in_decimal", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder creditType(CreditType value) {
+
       formData.put("credit_type", value);
+
       return this;
     }
 
     public PromotionalCreditAddBuilder reference(String value) {
+
       formData.put("reference", value);
+
       return this;
     }
 

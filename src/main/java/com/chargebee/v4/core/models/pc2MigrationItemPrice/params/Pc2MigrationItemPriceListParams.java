@@ -77,8 +77,6 @@ public final class Pc2MigrationItemPriceListParams {
       return new Pc2MigrationItemPriceListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class Pc2MigrationIdFilter {
       private final String fieldName;
       private final Pc2MigrationItemPriceListBuilder builder;
@@ -188,8 +186,6 @@ public final class Pc2MigrationItemPriceListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum IsInvalidPc1IdIs {
       True("true"),

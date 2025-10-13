@@ -39,61 +39,80 @@ public final class EstimateCancelSubscriptionParams {
     private EstimateCancelSubscriptionBuilder() {}
 
     public EstimateCancelSubscriptionBuilder cancelOption(CancelOption value) {
+
       formData.put("cancel_option", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder endOfTerm(Boolean value) {
+
       formData.put("end_of_term", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder cancelAt(Timestamp value) {
+
       formData.put("cancel_at", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder creditOptionForCurrentTermCharges(
         CreditOptionForCurrentTermCharges value) {
+
       formData.put("credit_option_for_current_term_charges", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder unbilledChargesOption(UnbilledChargesOption value) {
+
       formData.put("unbilled_charges_option", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder accountReceivablesHandling(
         AccountReceivablesHandling value) {
+
       formData.put("account_receivables_handling", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder refundableCreditsHandling(
         RefundableCreditsHandling value) {
+
       formData.put("refundable_credits_handling", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder contractTermCancelOption(
         ContractTermCancelOption value) {
+
       formData.put("contract_term_cancel_option", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder cancelReasonCode(String value) {
+
       formData.put("cancel_reason_code", value);
+
       return this;
     }
 
     public EstimateCancelSubscriptionBuilder eventBasedAddons(List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -335,22 +354,30 @@ public final class EstimateCancelSubscriptionParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder servicePeriodInDays(Integer value) {
+
         formData.put("service_period_in_days", value);
+
         return this;
       }
 

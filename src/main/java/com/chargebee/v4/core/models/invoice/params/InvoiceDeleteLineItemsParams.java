@@ -38,7 +38,6 @@ public final class InvoiceDeleteLineItemsParams {
     private InvoiceDeleteLineItemsBuilder() {}
 
     public InvoiceDeleteLineItemsBuilder lineItems(List<LineItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LineItemsParams item = value.get(i);
@@ -84,7 +83,9 @@ public final class InvoiceDeleteLineItemsParams {
       private LineItemsBuilder() {}
 
       public LineItemsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

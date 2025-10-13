@@ -37,7 +37,9 @@ public final class InvoiceDeleteImportedParams {
     private InvoiceDeleteImportedBuilder() {}
 
     public InvoiceDeleteImportedBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

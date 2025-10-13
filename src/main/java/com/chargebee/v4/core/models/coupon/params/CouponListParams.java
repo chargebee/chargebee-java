@@ -97,8 +97,6 @@ public final class CouponListParams {
       return new CouponListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final CouponListBuilder builder;
@@ -383,8 +381,6 @@ public final class CouponListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

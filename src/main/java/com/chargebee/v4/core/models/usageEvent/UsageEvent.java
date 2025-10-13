@@ -14,7 +14,7 @@ public class UsageEvent {
   private String subscriptionId;
   private String deduplicationId;
   private Long usageTimestamp;
-  private Object properties;
+  private java.util.Map<String, Object> properties;
 
   public String getSubscriptionId() {
     return subscriptionId;
@@ -28,7 +28,7 @@ public class UsageEvent {
     return usageTimestamp;
   }
 
-  public Object getProperties() {
+  public java.util.Map<String, Object> getProperties() {
     return properties;
   }
 
@@ -41,7 +41,11 @@ public class UsageEvent {
 
     obj.usageTimestamp = JsonUtil.getLong(json, "usage_timestamp");
 
-    obj.properties = JsonUtil.getObject(json, "properties");
+    String __propertiesJson = JsonUtil.getObject(json, "properties");
+    obj.properties =
+        __propertiesJson != null
+            ? JsonUtil.parseJsonObjectToMap(__propertiesJson)
+            : new java.util.HashMap<>();
 
     return obj;
   }

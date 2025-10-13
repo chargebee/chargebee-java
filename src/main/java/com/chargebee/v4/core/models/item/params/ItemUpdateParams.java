@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.item.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,88 +39,122 @@ public final class ItemUpdateParams {
     private ItemUpdateBuilder() {}
 
     public ItemUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ItemUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public ItemUpdateBuilder isShippable(Boolean value) {
+
       formData.put("is_shippable", value);
+
       return this;
     }
 
     public ItemUpdateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public ItemUpdateBuilder itemFamilyId(String value) {
+
       formData.put("item_family_id", value);
+
       return this;
     }
 
     public ItemUpdateBuilder enabledInPortal(Boolean value) {
+
       formData.put("enabled_in_portal", value);
+
       return this;
     }
 
     public ItemUpdateBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public ItemUpdateBuilder enabledForCheckout(Boolean value) {
+
       formData.put("enabled_for_checkout", value);
+
       return this;
     }
 
     public ItemUpdateBuilder itemApplicability(ItemApplicability value) {
+
       formData.put("item_applicability", value);
+
       return this;
     }
 
     @Deprecated
     public ItemUpdateBuilder clearApplicableItems(Boolean value) {
+
       formData.put("clear_applicable_items", value);
+
       return this;
     }
 
     public ItemUpdateBuilder applicableItems(List<String> value) {
+
       formData.put("applicable_items", value);
+
       return this;
     }
 
     public ItemUpdateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public ItemUpdateBuilder giftClaimRedirectUrl(String value) {
+
       formData.put("gift_claim_redirect_url", value);
+
       return this;
     }
 
-    public ItemUpdateBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public ItemUpdateBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ItemUpdateBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public ItemUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public ItemUpdateBuilder isPercentagePricing(Boolean value) {
+
       formData.put("is_percentage_pricing", value);
+
       return this;
     }
 
@@ -129,7 +164,6 @@ public final class ItemUpdateParams {
     }
 
     public ItemUpdateBuilder bundleItemsToAdd(List<BundleItemsToAddParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           BundleItemsToAddParams item = value.get(i);
@@ -146,7 +180,6 @@ public final class ItemUpdateParams {
     }
 
     public ItemUpdateBuilder bundleItemsToUpdate(List<BundleItemsToUpdateParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           BundleItemsToUpdateParams item = value.get(i);
@@ -163,7 +196,6 @@ public final class ItemUpdateParams {
     }
 
     public ItemUpdateBuilder bundleItemsToRemove(List<BundleItemsToRemoveParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           BundleItemsToRemoveParams item = value.get(i);
@@ -267,7 +299,9 @@ public final class ItemUpdateParams {
       private BundleConfigurationBuilder() {}
 
       public BundleConfigurationBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
@@ -328,22 +362,30 @@ public final class ItemUpdateParams {
       private BundleItemsToAddBuilder() {}
 
       public BundleItemsToAddBuilder itemId(String value) {
+
         formData.put("item_id", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder priceAllocation(Number value) {
+
         formData.put("price_allocation", value);
+
         return this;
       }
 
@@ -408,22 +450,30 @@ public final class ItemUpdateParams {
       private BundleItemsToUpdateBuilder() {}
 
       public BundleItemsToUpdateBuilder itemId(String value) {
+
         formData.put("item_id", value);
+
         return this;
       }
 
       public BundleItemsToUpdateBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
       public BundleItemsToUpdateBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public BundleItemsToUpdateBuilder priceAllocation(Number value) {
+
         formData.put("price_allocation", value);
+
         return this;
       }
 
@@ -488,12 +538,16 @@ public final class ItemUpdateParams {
       private BundleItemsToRemoveBuilder() {}
 
       public BundleItemsToRemoveBuilder itemId(String value) {
+
         formData.put("item_id", value);
+
         return this;
       }
 
       public BundleItemsToRemoveBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 

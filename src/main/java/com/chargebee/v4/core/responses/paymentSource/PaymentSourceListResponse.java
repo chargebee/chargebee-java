@@ -114,7 +114,6 @@ public final class PaymentSourceListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     PaymentSourceListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : PaymentSourceListParams.builder())
             .offset(nextOffset)

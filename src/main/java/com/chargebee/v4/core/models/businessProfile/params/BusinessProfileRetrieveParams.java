@@ -46,10 +46,5 @@ public final class BusinessProfileRetrieveParams {
     public BusinessProfileRetrieveParams build() {
       return new BusinessProfileRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

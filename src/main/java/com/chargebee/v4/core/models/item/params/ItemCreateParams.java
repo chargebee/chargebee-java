@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.item.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,107 +39,149 @@ public final class ItemCreateParams {
     private ItemCreateBuilder() {}
 
     public ItemCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public ItemCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ItemCreateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public ItemCreateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public ItemCreateBuilder itemFamilyId(String value) {
+
       formData.put("item_family_id", value);
+
       return this;
     }
 
     public ItemCreateBuilder isGiftable(Boolean value) {
+
       formData.put("is_giftable", value);
+
       return this;
     }
 
     public ItemCreateBuilder isShippable(Boolean value) {
+
       formData.put("is_shippable", value);
+
       return this;
     }
 
     public ItemCreateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public ItemCreateBuilder enabledInPortal(Boolean value) {
+
       formData.put("enabled_in_portal", value);
+
       return this;
     }
 
     public ItemCreateBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public ItemCreateBuilder enabledForCheckout(Boolean value) {
+
       formData.put("enabled_for_checkout", value);
+
       return this;
     }
 
     public ItemCreateBuilder itemApplicability(ItemApplicability value) {
+
       formData.put("item_applicability", value);
+
       return this;
     }
 
     public ItemCreateBuilder applicableItems(List<String> value) {
+
       formData.put("applicable_items", value);
+
       return this;
     }
 
     public ItemCreateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public ItemCreateBuilder giftClaimRedirectUrl(String value) {
+
       formData.put("gift_claim_redirect_url", value);
+
       return this;
     }
 
     public ItemCreateBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public ItemCreateBuilder metered(Boolean value) {
+
       formData.put("metered", value);
+
       return this;
     }
 
     public ItemCreateBuilder usageCalculation(UsageCalculation value) {
+
       formData.put("usage_calculation", value);
+
       return this;
     }
 
     public ItemCreateBuilder isPercentagePricing(Boolean value) {
+
       formData.put("is_percentage_pricing", value);
+
       return this;
     }
 
-    public ItemCreateBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public ItemCreateBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ItemCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
@@ -148,7 +191,6 @@ public final class ItemCreateParams {
     }
 
     public ItemCreateBuilder bundleItemsToAdd(List<BundleItemsToAddParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           BundleItemsToAddParams item = value.get(i);
@@ -284,7 +326,9 @@ public final class ItemCreateParams {
       private BundleConfigurationBuilder() {}
 
       public BundleConfigurationBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
@@ -345,22 +389,30 @@ public final class ItemCreateParams {
       private BundleItemsToAddBuilder() {}
 
       public BundleItemsToAddBuilder itemId(String value) {
+
         formData.put("item_id", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public BundleItemsToAddBuilder priceAllocation(Number value) {
+
         formData.put("price_allocation", value);
+
         return this;
       }
 

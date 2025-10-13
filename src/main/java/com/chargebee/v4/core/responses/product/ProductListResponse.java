@@ -114,7 +114,6 @@ public final class ProductListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     ProductListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : ProductListParams.builder())
             .offset(nextOffset)

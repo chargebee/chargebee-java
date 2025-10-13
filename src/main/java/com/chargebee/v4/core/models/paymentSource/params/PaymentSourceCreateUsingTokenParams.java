@@ -37,17 +37,23 @@ public final class PaymentSourceCreateUsingTokenParams {
     private PaymentSourceCreateUsingTokenBuilder() {}
 
     public PaymentSourceCreateUsingTokenBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTokenBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingTokenBuilder tokenId(String value) {
+
       formData.put("token_id", value);
+
       return this;
     }
 

@@ -37,7 +37,9 @@ public final class InAppSubscriptionProcessReceiptParams {
     private InAppSubscriptionProcessReceiptBuilder() {}
 
     public InAppSubscriptionProcessReceiptBuilder receipt(String value) {
+
       formData.put("receipt", value);
+
       return this;
     }
 
@@ -81,37 +83,51 @@ public final class InAppSubscriptionProcessReceiptParams {
       private ProductBuilder() {}
 
       public ProductBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public ProductBuilder currencyCode(String value) {
+
         formData.put("currency_code", value);
+
         return this;
       }
 
       public ProductBuilder price(Integer value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ProductBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public ProductBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ProductBuilder period(String value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public ProductBuilder periodUnit(String value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
@@ -146,22 +162,30 @@ public final class InAppSubscriptionProcessReceiptParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public CustomerBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CustomerBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 

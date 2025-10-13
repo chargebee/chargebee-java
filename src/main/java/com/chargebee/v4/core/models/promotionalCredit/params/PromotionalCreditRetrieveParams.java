@@ -46,10 +46,5 @@ public final class PromotionalCreditRetrieveParams {
     public PromotionalCreditRetrieveParams build() {
       return new PromotionalCreditRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

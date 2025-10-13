@@ -73,8 +73,6 @@ public final class HostedPageListParams {
       return new HostedPageListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final HostedPageListBuilder builder;
@@ -199,8 +197,6 @@ public final class HostedPageListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum TypeIs {
       CheckoutNew("checkout_new"),

@@ -51,10 +51,5 @@ public final class UsageRetrieveParams {
     public UsageRetrieveParams build() {
       return new UsageRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -127,7 +127,6 @@ public final class ItemEntitlementItemEntitlementsForItemResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     ItemEntitlementItemEntitlementsForItemParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

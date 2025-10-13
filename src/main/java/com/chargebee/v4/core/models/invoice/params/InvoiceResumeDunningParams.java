@@ -37,7 +37,9 @@ public final class InvoiceResumeDunningParams {
     private InvoiceResumeDunningBuilder() {}
 
     public InvoiceResumeDunningBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

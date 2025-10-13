@@ -114,7 +114,6 @@ public final class CurrencyListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     CurrencyListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : CurrencyListParams.builder())
             .offset(nextOffset)

@@ -56,10 +56,5 @@ public final class TransactionPaymentsForInvoiceParams {
     public TransactionPaymentsForInvoiceParams build() {
       return new TransactionPaymentsForInvoiceParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

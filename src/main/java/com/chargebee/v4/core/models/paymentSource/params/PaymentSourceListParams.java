@@ -91,8 +91,6 @@ public final class PaymentSourceListParams {
       return new PaymentSourceListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class CustomerIdFilter {
       private final String fieldName;
       private final PaymentSourceListBuilder builder;
@@ -247,8 +245,6 @@ public final class PaymentSourceListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

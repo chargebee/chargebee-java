@@ -37,17 +37,23 @@ public final class TransactionReconcileParams {
     private TransactionReconcileBuilder() {}
 
     public TransactionReconcileBuilder idAtGateway(String value) {
+
       formData.put("id_at_gateway", value);
+
       return this;
     }
 
     public TransactionReconcileBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public TransactionReconcileBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 

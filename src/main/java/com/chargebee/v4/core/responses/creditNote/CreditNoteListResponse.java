@@ -114,7 +114,6 @@ public final class CreditNoteListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     CreditNoteListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : CreditNoteListParams.builder())
             .offset(nextOffset)

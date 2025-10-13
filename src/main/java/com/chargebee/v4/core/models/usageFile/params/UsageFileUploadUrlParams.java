@@ -37,12 +37,16 @@ public final class UsageFileUploadUrlParams {
     private UsageFileUploadUrlBuilder() {}
 
     public UsageFileUploadUrlBuilder fileName(String value) {
+
       formData.put("file_name", value);
+
       return this;
     }
 
     public UsageFileUploadUrlBuilder mimeType(String value) {
+
       formData.put("mime_type", value);
+
       return this;
     }
 

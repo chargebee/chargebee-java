@@ -37,27 +37,37 @@ public final class Pc2MigrationItemFamilyCreateParams {
     private Pc2MigrationItemFamilyCreateBuilder() {}
 
     public Pc2MigrationItemFamilyCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyCreateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyCreateBuilder isDefault(Boolean value) {
+
       formData.put("is_default", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyCreateBuilder pc2MigrationId(String value) {
+
       formData.put("pc2_migration_id", value);
+
       return this;
     }
 

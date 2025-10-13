@@ -51,10 +51,5 @@ public final class AttachedItemRetrieveParams {
     public AttachedItemRetrieveParams build() {
       return new AttachedItemRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

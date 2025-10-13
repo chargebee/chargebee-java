@@ -37,7 +37,9 @@ public final class InvoiceStopDunningParams {
     private InvoiceStopDunningBuilder() {}
 
     public InvoiceStopDunningBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

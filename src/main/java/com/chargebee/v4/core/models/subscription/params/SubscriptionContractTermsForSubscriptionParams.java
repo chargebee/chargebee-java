@@ -63,10 +63,6 @@ public final class SubscriptionContractTermsForSubscriptionParams {
       return new SubscriptionContractTermsForSubscriptionParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public static final class SortBySortBuilder {
       private final String fieldName;
       private final SubscriptionContractTermsForSubscriptionBuilder builder;

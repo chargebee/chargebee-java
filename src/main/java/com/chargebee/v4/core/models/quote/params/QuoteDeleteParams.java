@@ -37,7 +37,9 @@ public final class QuoteDeleteParams {
     private QuoteDeleteBuilder() {}
 
     public QuoteDeleteBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

@@ -37,7 +37,9 @@ public final class UsageDeleteParams {
     private UsageDeleteBuilder() {}
 
     public UsageDeleteBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 

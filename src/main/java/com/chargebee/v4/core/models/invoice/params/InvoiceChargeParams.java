@@ -39,93 +39,126 @@ public final class InvoiceChargeParams {
     private InvoiceChargeBuilder() {}
 
     public InvoiceChargeBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder amountInDecimal(String value) {
+
       formData.put("amount_in_decimal", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     @Deprecated
     public InvoiceChargeBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder avalaraSaleType(AvalaraSaleType value) {
+
       formData.put("avalara_sale_type", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder avalaraTransactionType(Integer value) {
+
       formData.put("avalara_transaction_type", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder avalaraServiceType(Integer value) {
+
       formData.put("avalara_service_type", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 
     public InvoiceChargeBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -231,17 +264,23 @@ public final class InvoiceChargeParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

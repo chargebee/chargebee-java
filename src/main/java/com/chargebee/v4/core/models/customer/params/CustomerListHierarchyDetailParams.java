@@ -62,10 +62,6 @@ public final class CustomerListHierarchyDetailParams {
       return new CustomerListHierarchyDetailParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public enum HierarchyOperationType {
       CompleteHierarchy("complete_hierarchy"),
 

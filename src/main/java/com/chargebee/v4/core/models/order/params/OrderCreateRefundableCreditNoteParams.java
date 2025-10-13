@@ -37,12 +37,16 @@ public final class OrderCreateRefundableCreditNoteParams {
     private OrderCreateRefundableCreditNoteBuilder() {}
 
     public OrderCreateRefundableCreditNoteBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
     public OrderCreateRefundableCreditNoteBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
@@ -81,12 +85,16 @@ public final class OrderCreateRefundableCreditNoteParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder reasonCode(ReasonCode value) {
+
         formData.put("reason_code", value);
+
         return this;
       }
 
       public CreditNoteBuilder total(Long value) {
+
         formData.put("total", value);
+
         return this;
       }
 

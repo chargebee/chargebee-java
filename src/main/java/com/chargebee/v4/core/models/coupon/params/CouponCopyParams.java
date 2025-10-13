@@ -37,22 +37,30 @@ public final class CouponCopyParams {
     private CouponCopyBuilder() {}
 
     public CouponCopyBuilder fromSite(String value) {
+
       formData.put("from_site", value);
+
       return this;
     }
 
     public CouponCopyBuilder idAtFromSite(String value) {
+
       formData.put("id_at_from_site", value);
+
       return this;
     }
 
     public CouponCopyBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public CouponCopyBuilder forSiteMerging(Boolean value) {
+
       formData.put("for_site_merging", value);
+
       return this;
     }
 

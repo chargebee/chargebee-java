@@ -38,32 +38,41 @@ public final class FeatureCreateParams {
     private FeatureCreateBuilder() {}
 
     public FeatureCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public FeatureCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public FeatureCreateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public FeatureCreateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public FeatureCreateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public FeatureCreateBuilder levels(List<LevelsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LevelsParams item = value.get(i);
@@ -141,22 +150,30 @@ public final class FeatureCreateParams {
       private LevelsBuilder() {}
 
       public LevelsBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public LevelsBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public LevelsBuilder isUnlimited(Boolean value) {
+
         formData.put("is_unlimited", value);
+
         return this;
       }
 
       public LevelsBuilder level(Integer value) {
+
         formData.put("level", value);
+
         return this;
       }
 

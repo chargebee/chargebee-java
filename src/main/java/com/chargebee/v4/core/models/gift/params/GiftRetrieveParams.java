@@ -46,10 +46,5 @@ public final class GiftRetrieveParams {
     public GiftRetrieveParams build() {
       return new GiftRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

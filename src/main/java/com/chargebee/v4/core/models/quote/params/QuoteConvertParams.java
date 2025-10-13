@@ -38,22 +38,30 @@ public final class QuoteConvertParams {
     private QuoteConvertBuilder() {}
 
     public QuoteConvertBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public QuoteConvertBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 
     public QuoteConvertBuilder createPendingInvoices(Boolean value) {
+
       formData.put("create_pending_invoices", value);
+
       return this;
     }
 
     public QuoteConvertBuilder firstInvoicePending(Boolean value) {
+
       formData.put("first_invoice_pending", value);
+
       return this;
     }
 
@@ -92,22 +100,30 @@ public final class QuoteConvertParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCollection(AutoCollection value) {
+
         formData.put("auto_collection", value);
+
         return this;
       }
 
       public SubscriptionBuilder poNumber(String value) {
+
         formData.put("po_number", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCloseInvoices(Boolean value) {
+
         formData.put("auto_close_invoices", value);
+
         return this;
       }
 

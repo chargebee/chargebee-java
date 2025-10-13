@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,12 +39,16 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
     private PaymentSourceCreateUsingPaymentIntentBuilder() {}
 
     public PaymentSourceCreateUsingPaymentIntentBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPaymentIntentBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
@@ -82,43 +87,59 @@ public final class PaymentSourceCreateUsingPaymentIntentParams {
       private PaymentIntentBuilder() {}
 
       public PaymentIntentBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gwToken(String value) {
+
         formData.put("gw_token", value);
+
         return this;
       }
 
       public PaymentIntentBuilder paymentMethodType(PaymentMethodType value) {
+
         formData.put("payment_method_type", value);
+
         return this;
       }
 
       public PaymentIntentBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentIntentBuilder gwPaymentMethodId(String value) {
+
         formData.put("gw_payment_method_id", value);
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInfo(Object value) {
-        formData.put("additional_info", value);
+      public PaymentIntentBuilder additionalInfo(java.util.Map<String, Object> value) {
+
+        formData.put("additional_info", JsonUtil.toJson(value));
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentIntentBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 

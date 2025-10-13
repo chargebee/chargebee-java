@@ -126,7 +126,6 @@ public final class TpSiteUserGuestsForTpSiteUserResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     TpSiteUserGuestsForTpSiteUserParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

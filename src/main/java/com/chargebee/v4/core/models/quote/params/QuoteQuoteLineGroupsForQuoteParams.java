@@ -56,10 +56,5 @@ public final class QuoteQuoteLineGroupsForQuoteParams {
     public QuoteQuoteLineGroupsForQuoteParams build() {
       return new QuoteQuoteLineGroupsForQuoteParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

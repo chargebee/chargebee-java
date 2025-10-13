@@ -56,10 +56,5 @@ public final class InvoiceInvoicesForSubscriptionParams {
     public InvoiceInvoicesForSubscriptionParams build() {
       return new InvoiceInvoicesForSubscriptionParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

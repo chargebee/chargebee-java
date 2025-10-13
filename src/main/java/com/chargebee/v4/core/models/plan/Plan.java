@@ -61,7 +61,7 @@ public class Plan {
   private String invoiceNotes;
   private Boolean taxable;
   private String taxProfileId;
-  private Object metaData;
+  private java.util.Map<String, Object> metaData;
   private Boolean showDescriptionInInvoices;
   private Boolean showDescriptionInQuotes;
   private List<Tiers> tiers;
@@ -262,7 +262,7 @@ public class Plan {
     return taxProfileId;
   }
 
-  public Object getMetaData() {
+  public java.util.Map<String, Object> getMetaData() {
     return metaData;
   }
 
@@ -709,7 +709,11 @@ public class Plan {
 
     obj.taxProfileId = JsonUtil.getString(json, "tax_profile_id");
 
-    obj.metaData = JsonUtil.getObject(json, "meta_data");
+    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    obj.metaData =
+        __metaDataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+            : new java.util.HashMap<>();
 
     obj.showDescriptionInInvoices = JsonUtil.getBoolean(json, "show_description_in_invoices");
 

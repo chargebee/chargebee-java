@@ -38,17 +38,23 @@ public final class EstimateChangeTermEndParams {
     private EstimateChangeTermEndBuilder() {}
 
     public EstimateChangeTermEndBuilder termEndsAt(Timestamp value) {
+
       formData.put("term_ends_at", value);
+
       return this;
     }
 
     public EstimateChangeTermEndBuilder prorate(Boolean value) {
+
       formData.put("prorate", value);
+
       return this;
     }
 
     public EstimateChangeTermEndBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 

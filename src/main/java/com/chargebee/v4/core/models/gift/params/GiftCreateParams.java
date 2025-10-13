@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.gift.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,27 +40,37 @@ public final class GiftCreateParams {
     private GiftCreateBuilder() {}
 
     public GiftCreateBuilder scheduledAt(Timestamp value) {
+
       formData.put("scheduled_at", value);
+
       return this;
     }
 
     public GiftCreateBuilder autoClaim(Boolean value) {
+
       formData.put("auto_claim", value);
+
       return this;
     }
 
     public GiftCreateBuilder noExpiry(Boolean value) {
+
       formData.put("no_expiry", value);
+
       return this;
     }
 
     public GiftCreateBuilder claimExpiryDate(Timestamp value) {
+
       formData.put("claim_expiry_date", value);
+
       return this;
     }
 
     public GiftCreateBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -89,7 +100,6 @@ public final class GiftCreateParams {
     }
 
     public GiftCreateBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -135,22 +145,30 @@ public final class GiftCreateParams {
       private GifterBuilder() {}
 
       public GifterBuilder customerId(String value) {
+
         formData.put("customer_id", value);
+
         return this;
       }
 
       public GifterBuilder signature(String value) {
+
         formData.put("signature", value);
+
         return this;
       }
 
       public GifterBuilder note(String value) {
+
         formData.put("note", value);
+
         return this;
       }
 
       public GifterBuilder paymentSrcId(String value) {
+
         formData.put("payment_src_id", value);
+
         return this;
       }
 
@@ -185,22 +203,30 @@ public final class GiftCreateParams {
       private GiftReceiverBuilder() {}
 
       public GiftReceiverBuilder customerId(String value) {
+
         formData.put("customer_id", value);
+
         return this;
       }
 
       public GiftReceiverBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public GiftReceiverBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public GiftReceiverBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
@@ -235,38 +261,52 @@ public final class GiftCreateParams {
       private PaymentIntentBuilder() {}
 
       public PaymentIntentBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gwToken(String value) {
+
         formData.put("gw_token", value);
+
         return this;
       }
 
       public PaymentIntentBuilder paymentMethodType(PaymentMethodType value) {
+
         formData.put("payment_method_type", value);
+
         return this;
       }
 
       public PaymentIntentBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentIntentBuilder gwPaymentMethodId(String value) {
+
         formData.put("gw_payment_method_id", value);
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentIntentBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -369,72 +409,100 @@ public final class GiftCreateParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -503,17 +571,23 @@ public final class GiftCreateParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder planId(String value) {
+
         formData.put("plan_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantity(Integer value) {
+
         formData.put("plan_quantity", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantityInDecimal(String value) {
+
         formData.put("plan_quantity_in_decimal", value);
+
         return this;
       }
 
@@ -548,17 +622,23 @@ public final class GiftCreateParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 

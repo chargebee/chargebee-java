@@ -46,10 +46,5 @@ public final class PaymentSourceRetrieveParams {
     public PaymentSourceRetrieveParams build() {
       return new PaymentSourceRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -46,10 +46,5 @@ public final class UnbilledChargesSettingRetrieveParams {
     public UnbilledChargesSettingRetrieveParams build() {
       return new UnbilledChargesSettingRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

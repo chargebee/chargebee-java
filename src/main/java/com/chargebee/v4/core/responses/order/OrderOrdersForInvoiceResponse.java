@@ -121,7 +121,6 @@ public final class OrderOrdersForInvoiceResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     OrderOrdersForInvoiceParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

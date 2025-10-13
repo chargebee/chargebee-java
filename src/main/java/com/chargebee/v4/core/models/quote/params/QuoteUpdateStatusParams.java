@@ -37,12 +37,16 @@ public final class QuoteUpdateStatusParams {
     private QuoteUpdateStatusBuilder() {}
 
     public QuoteUpdateStatusBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public QuoteUpdateStatusBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

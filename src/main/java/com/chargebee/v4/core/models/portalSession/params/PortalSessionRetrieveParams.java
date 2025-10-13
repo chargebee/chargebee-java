@@ -46,10 +46,5 @@ public final class PortalSessionRetrieveParams {
     public PortalSessionRetrieveParams build() {
       return new PortalSessionRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

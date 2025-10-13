@@ -76,27 +76,37 @@ public final class ExportAddonsParams {
       private CurrencyCodeBuilder() {}
 
       public CurrencyCodeBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CurrencyCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -206,27 +216,37 @@ public final class ExportAddonsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -261,27 +281,37 @@ public final class ExportAddonsParams {
       private NameBuilder() {}
 
       public NameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public NameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public NameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public NameBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public NameBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -316,22 +346,30 @@ public final class ExportAddonsParams {
       private ChargeTypeBuilder() {}
 
       public ChargeTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChargeTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChargeTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChargeTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -422,37 +460,51 @@ public final class ExportAddonsParams {
       private PriceBuilder() {}
 
       public PriceBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PriceBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PriceBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public PriceBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public PriceBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public PriceBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public PriceBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -487,37 +539,51 @@ public final class ExportAddonsParams {
       private PeriodBuilder() {}
 
       public PeriodBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PeriodBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PeriodBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public PeriodBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public PeriodBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public PeriodBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public PeriodBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -552,22 +618,30 @@ public final class ExportAddonsParams {
       private PeriodUnitBuilder() {}
 
       public PeriodUnitBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PeriodUnitBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PeriodUnitBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PeriodUnitBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -670,22 +744,30 @@ public final class ExportAddonsParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -780,22 +862,30 @@ public final class ExportAddonsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -830,22 +920,30 @@ public final class ExportAddonsParams {
       private ChannelBuilder() {}
 
       public ChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

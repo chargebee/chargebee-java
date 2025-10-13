@@ -69,8 +69,6 @@ public final class VirtualBankAccountListParams {
       return new VirtualBankAccountListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class CustomerIdFilter {
       private final String fieldName;
       private final VirtualBankAccountListBuilder builder;
@@ -165,8 +163,5 @@ public final class VirtualBankAccountListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
-
   }
 }

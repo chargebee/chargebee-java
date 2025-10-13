@@ -46,10 +46,5 @@ public final class CustomerRetrieveParams {
     public CustomerRetrieveParams build() {
       return new CustomerRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

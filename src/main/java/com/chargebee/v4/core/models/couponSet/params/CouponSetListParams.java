@@ -81,8 +81,6 @@ public final class CouponSetListParams {
       return new CouponSetListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final CouponSetListBuilder builder;
@@ -262,8 +260,5 @@ public final class CouponSetListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
-
   }
 }

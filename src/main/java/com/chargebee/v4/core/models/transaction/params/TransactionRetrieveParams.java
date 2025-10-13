@@ -46,10 +46,5 @@ public final class TransactionRetrieveParams {
     public TransactionRetrieveParams build() {
       return new TransactionRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

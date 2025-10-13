@@ -39,87 +39,121 @@ public final class HostedPageCheckoutExistingParams {
     private HostedPageCheckoutExistingBuilder() {}
 
     public HostedPageCheckoutExistingBuilder replaceAddonList(Boolean value) {
+
       formData.put("replace_addon_list", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder mandatoryAddonsToRemove(List<String> value) {
+
       formData.put("mandatory_addons_to_remove", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder reactivateFrom(Timestamp value) {
+
       formData.put("reactivate_from", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder billingAlignmentMode(BillingAlignmentMode value) {
+
       formData.put("billing_alignment_mode", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder replaceCouponList(Boolean value) {
+
       formData.put("replace_coupon_list", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder reactivate(Boolean value) {
+
       formData.put("reactivate", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder forceTermReset(Boolean value) {
+
       formData.put("force_term_reset", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder cancelUrl(String value) {
+
       formData.put("cancel_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder passThruContent(String value) {
+
       formData.put("pass_thru_content", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder embed(Boolean value) {
+
       formData.put("embed", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder iframeMessaging(Boolean value) {
+
       formData.put("iframe_messaging", value);
+
       return this;
     }
 
     public HostedPageCheckoutExistingBuilder allowOfflinePaymentMethods(Boolean value) {
+
       formData.put("allow_offline_payment_methods", value);
+
       return this;
     }
 
@@ -144,7 +178,6 @@ public final class HostedPageCheckoutExistingParams {
     }
 
     public HostedPageCheckoutExistingBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -161,7 +194,6 @@ public final class HostedPageCheckoutExistingParams {
     }
 
     public HostedPageCheckoutExistingBuilder eventBasedAddons(List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -237,73 +269,101 @@ public final class HostedPageCheckoutExistingParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planId(String value) {
+
         formData.put("plan_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantity(Integer value) {
+
         formData.put("plan_quantity", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPrice(Long value) {
+
         formData.put("plan_unit_price", value);
+
         return this;
       }
 
       public SubscriptionBuilder setupFee(Long value) {
+
         formData.put("setup_fee", value);
+
         return this;
       }
 
       public SubscriptionBuilder planQuantityInDecimal(String value) {
+
         formData.put("plan_quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder planUnitPriceInDecimal(String value) {
+
         formData.put("plan_unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder coupon(String value) {
+
         formData.put("coupon", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCollection(AutoCollection value) {
+
         formData.put("auto_collection", value);
+
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
         formData.put("offline_payment_method", value);
+
         return this;
       }
 
       public SubscriptionBuilder invoiceNotes(String value) {
+
         formData.put("invoice_notes", value);
+
         return this;
       }
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
         formData.put("contract_term_billing_cycle_on_renewal", value);
+
         return this;
       }
 
@@ -419,12 +479,16 @@ public final class HostedPageCheckoutExistingParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
@@ -460,12 +524,16 @@ public final class HostedPageCheckoutExistingParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
@@ -630,12 +698,16 @@ public final class HostedPageCheckoutExistingParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 
@@ -702,32 +774,44 @@ public final class HostedPageCheckoutExistingParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
@@ -762,47 +846,65 @@ public final class HostedPageCheckoutExistingParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder servicePeriodInDays(Integer value) {
+
         formData.put("service_period_in_days", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOn(ChargeOn value) {
+
         formData.put("charge_on", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder onEvent(OnEvent value) {
+
         formData.put("on_event", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 

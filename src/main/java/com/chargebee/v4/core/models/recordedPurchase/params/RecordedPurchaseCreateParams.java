@@ -37,7 +37,9 @@ public final class RecordedPurchaseCreateParams {
     private RecordedPurchaseCreateBuilder() {}
 
     public RecordedPurchaseCreateBuilder appId(String value) {
+
       formData.put("app_id", value);
+
       return this;
     }
 
@@ -92,7 +94,9 @@ public final class RecordedPurchaseCreateParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -127,17 +131,23 @@ public final class RecordedPurchaseCreateParams {
       private AppleAppStoreBuilder() {}
 
       public AppleAppStoreBuilder transactionId(String value) {
+
         formData.put("transaction_id", value);
+
         return this;
       }
 
       public AppleAppStoreBuilder receipt(String value) {
+
         formData.put("receipt", value);
+
         return this;
       }
 
       public AppleAppStoreBuilder productId(String value) {
+
         formData.put("product_id", value);
+
         return this;
       }
 
@@ -172,17 +182,23 @@ public final class RecordedPurchaseCreateParams {
       private GooglePlayStoreBuilder() {}
 
       public GooglePlayStoreBuilder purchaseToken(String value) {
+
         formData.put("purchase_token", value);
+
         return this;
       }
 
       public GooglePlayStoreBuilder productId(String value) {
+
         formData.put("product_id", value);
+
         return this;
       }
 
       public GooglePlayStoreBuilder orderId(String value) {
+
         formData.put("order_id", value);
+
         return this;
       }
 
@@ -217,7 +233,9 @@ public final class RecordedPurchaseCreateParams {
       private OmnichannelSubscriptionBuilder() {}
 
       public OmnichannelSubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

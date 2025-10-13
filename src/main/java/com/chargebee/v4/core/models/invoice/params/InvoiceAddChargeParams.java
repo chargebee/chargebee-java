@@ -38,52 +38,72 @@ public final class InvoiceAddChargeParams {
     private InvoiceAddChargeBuilder() {}
 
     public InvoiceAddChargeBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder avalaraSaleType(AvalaraSaleType value) {
+
       formData.put("avalara_sale_type", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder avalaraTransactionType(Integer value) {
+
       formData.put("avalara_transaction_type", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder avalaraServiceType(Integer value) {
+
       formData.put("avalara_service_type", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder avalaraTaxCode(String value) {
+
       formData.put("avalara_tax_code", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder hsnCode(String value) {
+
       formData.put("hsn_code", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder taxjarProductCode(String value) {
+
       formData.put("taxjar_product_code", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceAddChargeBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
@@ -154,12 +174,16 @@ public final class InvoiceAddChargeParams {
       private LineItemBuilder() {}
 
       public LineItemBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public LineItemBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 

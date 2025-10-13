@@ -46,10 +46,5 @@ public final class ThirdPartySyncDetailRetrieveParams {
     public ThirdPartySyncDetailRetrieveParams build() {
       return new ThirdPartySyncDetailRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

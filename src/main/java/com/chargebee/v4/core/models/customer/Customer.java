@@ -29,7 +29,7 @@ public class Customer {
   private Boolean isLocationValid;
   private Timestamp createdAt;
   private String createdFromIp;
-  private List<String> exemptionDetails;
+  private List<java.util.Map<String, Object>> exemptionDetails;
   private Taxability taxability;
   private EntityCode entityCode;
   private String exemptNumber;
@@ -58,7 +58,7 @@ public class Customer {
   private Long excessPayments;
   private Boolean isEinvoiceEnabled;
   private EinvoicingMethod einvoicingMethod;
-  private Object metaData;
+  private java.util.Map<String, Object> metaData;
   private Boolean deleted;
   private Boolean registeredForGst;
   private Boolean consolidatedInvoicing;
@@ -144,7 +144,7 @@ public class Customer {
     return createdFromIp;
   }
 
-  public List<String> getExemptionDetails() {
+  public List<java.util.Map<String, Object>> getExemptionDetails() {
     return exemptionDetails;
   }
 
@@ -260,7 +260,7 @@ public class Customer {
     return einvoicingMethod;
   }
 
-  public Object getMetaData() {
+  public java.util.Map<String, Object> getMetaData() {
     return metaData;
   }
 
@@ -866,8 +866,13 @@ public class Customer {
 
     obj.createdFromIp = JsonUtil.getString(json, "created_from_ip");
 
+    String __exemptionDetailsJson = JsonUtil.getArray(json, "exemption_details");
     obj.exemptionDetails =
-        JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "exemption_details"));
+        __exemptionDetailsJson != null
+            ? JsonUtil.parseObjectArray(__exemptionDetailsJson).stream()
+                .map(JsonUtil::parseJsonObjectToMap)
+                .collect(java.util.stream.Collectors.toList())
+            : null;
 
     obj.taxability = Taxability.fromString(JsonUtil.getString(json, "taxability"));
 
@@ -928,7 +933,11 @@ public class Customer {
     obj.einvoicingMethod =
         EinvoicingMethod.fromString(JsonUtil.getString(json, "einvoicing_method"));
 
-    obj.metaData = JsonUtil.getObject(json, "meta_data");
+    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    obj.metaData =
+        __metaDataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+            : new java.util.HashMap<>();
 
     obj.deleted = JsonUtil.getBoolean(json, "deleted");
 

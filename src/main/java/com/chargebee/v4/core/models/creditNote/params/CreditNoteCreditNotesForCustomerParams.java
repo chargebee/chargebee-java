@@ -56,10 +56,5 @@ public final class CreditNoteCreditNotesForCustomerParams {
     public CreditNoteCreditNotesForCustomerParams build() {
       return new CreditNoteCreditNotesForCustomerParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

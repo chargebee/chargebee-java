@@ -38,17 +38,23 @@ public final class SubscriptionChangeTermEndParams {
     private SubscriptionChangeTermEndBuilder() {}
 
     public SubscriptionChangeTermEndBuilder termEndsAt(Timestamp value) {
+
       formData.put("term_ends_at", value);
+
       return this;
     }
 
     public SubscriptionChangeTermEndBuilder prorate(Boolean value) {
+
       formData.put("prorate", value);
+
       return this;
     }
 
     public SubscriptionChangeTermEndBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 

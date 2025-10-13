@@ -1,7 +1,6 @@
 package com.chargebee.v4.core.responses.pc2MigrationItemPrice;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
@@ -13,7 +12,7 @@ import com.chargebee.v4.core.models.pc2MigrationItemPrice.params.Pc2MigrationIte
  */
 public final class Pc2MigrationItemPriceListResponse {
 
-  private final List<Object> list;
+  private final List<java.util.Map<String, Object>> list;
 
   private final String nextOffset;
 
@@ -22,7 +21,7 @@ public final class Pc2MigrationItemPriceListResponse {
   private final Response httpResponse;
 
   private Pc2MigrationItemPriceListResponse(
-      List<Object> list,
+      List<java.util.Map<String, Object>> list,
       String nextOffset,
       Pc2MigrationItemPriceService service,
       Pc2MigrationItemPriceListParams originalParams,
@@ -44,8 +43,10 @@ public final class Pc2MigrationItemPriceListResponse {
   public static Pc2MigrationItemPriceListResponse fromJson(String json) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -66,8 +67,10 @@ public final class Pc2MigrationItemPriceListResponse {
       Response httpResponse) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -79,7 +82,7 @@ public final class Pc2MigrationItemPriceListResponse {
   }
 
   /** Get the list from the response. */
-  public List<Object> getList() {
+  public List<java.util.Map<String, Object>> getList() {
     return list;
   }
 
@@ -89,7 +92,7 @@ public final class Pc2MigrationItemPriceListResponse {
   }
 
   /** Get the list of items in this page (alias). */
-  public List<Object> items() {
+  public List<java.util.Map<String, Object>> items() {
     return list;
   }
 
@@ -112,7 +115,6 @@ public final class Pc2MigrationItemPriceListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     Pc2MigrationItemPriceListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

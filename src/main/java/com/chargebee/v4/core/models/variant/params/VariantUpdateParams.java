@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.variant.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,32 +38,44 @@ public final class VariantUpdateParams {
     private VariantUpdateBuilder() {}
 
     public VariantUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public VariantUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public VariantUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public VariantUpdateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public VariantUpdateBuilder sku(String value) {
+
       formData.put("sku", value);
+
       return this;
     }
 
-    public VariantUpdateBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public VariantUpdateBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 

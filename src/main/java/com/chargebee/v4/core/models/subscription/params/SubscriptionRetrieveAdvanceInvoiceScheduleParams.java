@@ -48,10 +48,5 @@ public final class SubscriptionRetrieveAdvanceInvoiceScheduleParams {
     public SubscriptionRetrieveAdvanceInvoiceScheduleParams build() {
       return new SubscriptionRetrieveAdvanceInvoiceScheduleParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

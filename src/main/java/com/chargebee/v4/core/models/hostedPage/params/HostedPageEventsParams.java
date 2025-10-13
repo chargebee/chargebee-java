@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.hostedPage.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,17 +39,23 @@ public final class HostedPageEventsParams {
     private HostedPageEventsBuilder() {}
 
     public HostedPageEventsBuilder eventName(EventName value) {
+
       formData.put("event_name", value);
+
       return this;
     }
 
     public HostedPageEventsBuilder occurredAt(Timestamp value) {
+
       formData.put("occurred_at", value);
+
       return this;
     }
 
-    public HostedPageEventsBuilder eventData(Object value) {
-      formData.put("event_data", value);
+    public HostedPageEventsBuilder eventData(java.util.Map<String, Object> value) {
+
+      formData.put("event_data", JsonUtil.toJson(value));
+
       return this;
     }
 

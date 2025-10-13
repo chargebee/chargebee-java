@@ -38,22 +38,30 @@ public final class OrderCancelParams {
     private OrderCancelBuilder() {}
 
     public OrderCancelBuilder cancellationReason(CancellationReason value) {
+
       formData.put("cancellation_reason", value);
+
       return this;
     }
 
     public OrderCancelBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
     public OrderCancelBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public OrderCancelBuilder cancelledAt(Timestamp value) {
+
       formData.put("cancelled_at", value);
+
       return this;
     }
 
@@ -146,7 +154,9 @@ public final class OrderCancelParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder total(Long value) {
+
         formData.put("total", value);
+
         return this;
       }
 

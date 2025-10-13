@@ -38,53 +38,73 @@ public final class WebhookEndpointCreateParams {
     private WebhookEndpointCreateBuilder() {}
 
     public WebhookEndpointCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder apiVersion(ApiVersion value) {
+
       formData.put("api_version", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder url(String value) {
+
       formData.put("url", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder primaryUrl(Boolean value) {
+
       formData.put("primary_url", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder disabled(Boolean value) {
+
       formData.put("disabled", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder basicAuthPassword(String value) {
+
       formData.put("basic_auth_password", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder basicAuthUsername(String value) {
+
       formData.put("basic_auth_username", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder sendCardResource(Boolean value) {
+
       formData.put("send_card_resource", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder chargebeeResponseSchemaType(
         ChargebeeResponseSchemaType value) {
+
       formData.put("chargebee_response_schema_type", value);
+
       return this;
     }
 
     public WebhookEndpointCreateBuilder enabledEvents(List<String> value) {
+
       formData.put("enabled_events", value);
+
       return this;
     }
 

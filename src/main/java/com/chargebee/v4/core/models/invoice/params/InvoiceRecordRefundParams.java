@@ -38,12 +38,16 @@ public final class InvoiceRecordRefundParams {
     private InvoiceRecordRefundBuilder() {}
 
     public InvoiceRecordRefundBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceRecordRefundBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
@@ -87,27 +91,37 @@ public final class InvoiceRecordRefundParams {
       private TransactionBuilder() {}
 
       public TransactionBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public TransactionBuilder paymentMethod(PaymentMethod value) {
+
         formData.put("payment_method", value);
+
         return this;
       }
 
       public TransactionBuilder referenceNumber(String value) {
+
         formData.put("reference_number", value);
+
         return this;
       }
 
       public TransactionBuilder customPaymentMethodId(String value) {
+
         formData.put("custom_payment_method_id", value);
+
         return this;
       }
 
       public TransactionBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 
@@ -182,12 +196,16 @@ public final class InvoiceRecordRefundParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder reasonCode(ReasonCode value) {
+
         formData.put("reason_code", value);
+
         return this;
       }
 
       public CreditNoteBuilder createReasonCode(String value) {
+
         formData.put("create_reason_code", value);
+
         return this;
       }
 

@@ -69,8 +69,6 @@ public final class InvoiceListPaymentReferenceNumbersParams {
       return new InvoiceListPaymentReferenceNumbersParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final InvoiceListPaymentReferenceNumbersBuilder builder;
@@ -90,9 +88,6 @@ public final class InvoiceListPaymentReferenceNumbersParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
-
   }
 
   public static final class PaymentReferenceNumberParams {
@@ -133,8 +128,6 @@ public final class InvoiceListPaymentReferenceNumbersParams {
         return new PaymentReferenceNumberParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class NumberFilter {
         private final String fieldName;
         private final PaymentReferenceNumberBuilder builder;
@@ -154,9 +147,6 @@ public final class InvoiceListPaymentReferenceNumbersParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

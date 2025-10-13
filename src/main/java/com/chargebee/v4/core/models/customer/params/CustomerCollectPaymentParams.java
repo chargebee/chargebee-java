@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.customer.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,32 +39,44 @@ public final class CustomerCollectPaymentParams {
     private CustomerCollectPaymentBuilder() {}
 
     public CustomerCollectPaymentBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public CustomerCollectPaymentBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public CustomerCollectPaymentBuilder tokenId(String value) {
+
       formData.put("token_id", value);
+
       return this;
     }
 
     public CustomerCollectPaymentBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
     public CustomerCollectPaymentBuilder retainPaymentSource(Boolean value) {
+
       formData.put("retain_payment_source", value);
+
       return this;
     }
 
     public CustomerCollectPaymentBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 
@@ -83,7 +96,6 @@ public final class CustomerCollectPaymentParams {
     }
 
     public CustomerCollectPaymentBuilder invoiceAllocations(List<InvoiceAllocationsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           InvoiceAllocationsParams item = value.get(i);
@@ -157,27 +169,37 @@ public final class CustomerCollectPaymentParams {
       private PaymentMethodBuilder() {}
 
       public PaymentMethodBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       public PaymentMethodBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
-      public PaymentMethodBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentMethodBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -286,82 +308,114 @@ public final class CustomerCollectPaymentParams {
       private CardBuilder() {}
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public CardBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CardBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CardBuilder number(String value) {
+
         formData.put("number", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder cvv(String value) {
+
         formData.put("cvv", value);
+
         return this;
       }
 
       public CardBuilder preferredScheme(PreferredScheme value) {
+
         formData.put("preferred_scheme", value);
+
         return this;
       }
 
       public CardBuilder billingAddr1(String value) {
+
         formData.put("billing_addr1", value);
+
         return this;
       }
 
       public CardBuilder billingAddr2(String value) {
+
         formData.put("billing_addr2", value);
+
         return this;
       }
 
       public CardBuilder billingCity(String value) {
+
         formData.put("billing_city", value);
+
         return this;
       }
 
       public CardBuilder billingStateCode(String value) {
+
         formData.put("billing_state_code", value);
+
         return this;
       }
 
       public CardBuilder billingState(String value) {
+
         formData.put("billing_state", value);
+
         return this;
       }
 
       public CardBuilder billingZip(String value) {
+
         formData.put("billing_zip", value);
+
         return this;
       }
 
       public CardBuilder billingCountry(String value) {
+
         formData.put("billing_country", value);
+
         return this;
       }
 
-      public CardBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public CardBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -428,38 +482,52 @@ public final class CustomerCollectPaymentParams {
       private PaymentIntentBuilder() {}
 
       public PaymentIntentBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gwToken(String value) {
+
         formData.put("gw_token", value);
+
         return this;
       }
 
       public PaymentIntentBuilder paymentMethodType(PaymentMethodType value) {
+
         formData.put("payment_method_type", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentIntentBuilder gwPaymentMethodId(String value) {
+
         formData.put("gw_payment_method_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentIntentBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -562,12 +630,16 @@ public final class CustomerCollectPaymentParams {
       private InvoiceAllocationsBuilder() {}
 
       public InvoiceAllocationsBuilder invoiceId(String value) {
+
         formData.put("invoice_id", value);
+
         return this;
       }
 
       public InvoiceAllocationsBuilder allocationAmount(Long value) {
+
         formData.put("allocation_amount", value);
+
         return this;
       }
 

@@ -56,10 +56,5 @@ public final class TpSiteUserUsersForTpSiteUserParams {
     public TpSiteUserUsersForTpSiteUserParams build() {
       return new TpSiteUserUsersForTpSiteUserParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

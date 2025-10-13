@@ -38,32 +38,44 @@ public final class TransactionRecordRefundParams {
     private TransactionRecordRefundBuilder() {}
 
     public TransactionRecordRefundBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public TransactionRecordRefundBuilder paymentMethod(PaymentMethod value) {
+
       formData.put("payment_method", value);
+
       return this;
     }
 
     public TransactionRecordRefundBuilder date(Timestamp value) {
+
       formData.put("date", value);
+
       return this;
     }
 
     public TransactionRecordRefundBuilder referenceNumber(String value) {
+
       formData.put("reference_number", value);
+
       return this;
     }
 
     public TransactionRecordRefundBuilder customPaymentMethodId(String value) {
+
       formData.put("custom_payment_method_id", value);
+
       return this;
     }
 
     public TransactionRecordRefundBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

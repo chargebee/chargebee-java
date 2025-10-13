@@ -139,8 +139,6 @@ public final class CreditNoteListParams {
       return new CreditNoteListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final CreditNoteListBuilder builder;
@@ -666,8 +664,6 @@ public final class CreditNoteListParams {
       }
     }
 
-    // Sort builder classes for fluent API
-
     public static final class SortBySortBuilder {
       private final String fieldName;
       private final CreditNoteListBuilder builder;
@@ -1191,8 +1187,6 @@ public final class CreditNoteListParams {
         return new EinvoiceParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class StatusFilter {
         private final String fieldName;
         private final EinvoiceBuilder builder;
@@ -1222,9 +1216,6 @@ public final class CreditNoteListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

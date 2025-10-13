@@ -38,12 +38,16 @@ public final class SubscriptionOverrideBillingProfileParams {
     private SubscriptionOverrideBillingProfileBuilder() {}
 
     public SubscriptionOverrideBillingProfileBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public SubscriptionOverrideBillingProfileBuilder autoCollection(AutoCollection value) {
+
       formData.put("auto_collection", value);
+
       return this;
     }
 

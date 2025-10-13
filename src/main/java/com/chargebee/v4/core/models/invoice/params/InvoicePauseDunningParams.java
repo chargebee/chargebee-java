@@ -38,12 +38,16 @@ public final class InvoicePauseDunningParams {
     private InvoicePauseDunningBuilder() {}
 
     public InvoicePauseDunningBuilder expectedPaymentDate(Timestamp value) {
+
       formData.put("expected_payment_date", value);
+
       return this;
     }
 
     public InvoicePauseDunningBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

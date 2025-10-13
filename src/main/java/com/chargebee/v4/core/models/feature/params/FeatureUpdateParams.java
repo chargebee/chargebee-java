@@ -38,22 +38,27 @@ public final class FeatureUpdateParams {
     private FeatureUpdateBuilder() {}
 
     public FeatureUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public FeatureUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public FeatureUpdateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public FeatureUpdateBuilder levels(List<LevelsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LevelsParams item = value.get(i);
@@ -99,22 +104,30 @@ public final class FeatureUpdateParams {
       private LevelsBuilder() {}
 
       public LevelsBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public LevelsBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public LevelsBuilder isUnlimited(Boolean value) {
+
         formData.put("is_unlimited", value);
+
         return this;
       }
 
       public LevelsBuilder level(Integer value) {
+
         formData.put("level", value);
+
         return this;
       }
 

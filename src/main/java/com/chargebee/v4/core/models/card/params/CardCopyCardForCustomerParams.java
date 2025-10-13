@@ -37,7 +37,9 @@ public final class CardCopyCardForCustomerParams {
     private CardCopyCardForCustomerBuilder() {}
 
     public CardCopyCardForCustomerBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 

@@ -37,22 +37,30 @@ public final class InvoiceUpdateDetailsParams {
     private InvoiceUpdateDetailsBuilder() {}
 
     public InvoiceUpdateDetailsBuilder vatNumber(String value) {
+
       formData.put("vat_number", value);
+
       return this;
     }
 
     public InvoiceUpdateDetailsBuilder vatNumberPrefix(String value) {
+
       formData.put("vat_number_prefix", value);
+
       return this;
     }
 
     public InvoiceUpdateDetailsBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public InvoiceUpdateDetailsBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
@@ -101,72 +109,100 @@ public final class InvoiceUpdateDetailsParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -235,72 +271,100 @@ public final class InvoiceUpdateDetailsParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -369,7 +433,9 @@ public final class InvoiceUpdateDetailsParams {
       private StatementDescriptorBuilder() {}
 
       public StatementDescriptorBuilder descriptor(String value) {
+
         formData.put("descriptor", value);
+
         return this;
       }
 

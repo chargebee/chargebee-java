@@ -46,10 +46,5 @@ public final class SubscriptionRetrieveParams {
     public SubscriptionRetrieveParams build() {
       return new SubscriptionRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

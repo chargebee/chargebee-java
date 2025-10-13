@@ -14,8 +14,8 @@ public class ThirdPartyConfiguration {
 
   private String integrationName;
   private Timestamp lastSyncAt;
-  private Object configJson;
-  private Object authJson;
+  private java.util.Map<String, Object> configJson;
+  private java.util.Map<String, Object> authJson;
 
   public String getIntegrationName() {
     return integrationName;
@@ -25,11 +25,11 @@ public class ThirdPartyConfiguration {
     return lastSyncAt;
   }
 
-  public Object getConfigJson() {
+  public java.util.Map<String, Object> getConfigJson() {
     return configJson;
   }
 
-  public Object getAuthJson() {
+  public java.util.Map<String, Object> getAuthJson() {
     return authJson;
   }
 
@@ -40,9 +40,17 @@ public class ThirdPartyConfiguration {
 
     obj.lastSyncAt = JsonUtil.getTimestamp(json, "last_sync_at");
 
-    obj.configJson = JsonUtil.getObject(json, "config_json");
+    String __configJsonJson = JsonUtil.getObject(json, "config_json");
+    obj.configJson =
+        __configJsonJson != null
+            ? JsonUtil.parseJsonObjectToMap(__configJsonJson)
+            : new java.util.HashMap<>();
 
-    obj.authJson = JsonUtil.getObject(json, "auth_json");
+    String __authJsonJson = JsonUtil.getObject(json, "auth_json");
+    obj.authJson =
+        __authJsonJson != null
+            ? JsonUtil.parseJsonObjectToMap(__authJsonJson)
+            : new java.util.HashMap<>();
 
     return obj;
   }

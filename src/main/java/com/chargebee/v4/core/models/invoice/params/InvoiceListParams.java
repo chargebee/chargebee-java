@@ -153,8 +153,6 @@ public final class InvoiceListParams {
       return new InvoiceListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final InvoiceListBuilder builder;
@@ -720,8 +718,6 @@ public final class InvoiceListParams {
       }
     }
 
-    // Sort builder classes for fluent API
-
     public static final class SortBySortBuilder {
       private final String fieldName;
       private final InvoiceListBuilder builder;
@@ -1199,8 +1195,6 @@ public final class InvoiceListParams {
         return new EinvoiceParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class StatusFilter {
         private final String fieldName;
         private final EinvoiceBuilder builder;
@@ -1230,9 +1224,6 @@ public final class InvoiceListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

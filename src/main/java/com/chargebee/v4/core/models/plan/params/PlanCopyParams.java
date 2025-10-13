@@ -37,22 +37,30 @@ public final class PlanCopyParams {
     private PlanCopyBuilder() {}
 
     public PlanCopyBuilder fromSite(String value) {
+
       formData.put("from_site", value);
+
       return this;
     }
 
     public PlanCopyBuilder idAtFromSite(String value) {
+
       formData.put("id_at_from_site", value);
+
       return this;
     }
 
     public PlanCopyBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public PlanCopyBuilder forSiteMerging(Boolean value) {
+
       formData.put("for_site_merging", value);
+
       return this;
     }
 

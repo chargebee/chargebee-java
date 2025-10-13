@@ -37,7 +37,9 @@ public final class InvoiceWriteOffParams {
     private InvoiceWriteOffBuilder() {}
 
     public InvoiceWriteOffBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

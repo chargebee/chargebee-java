@@ -72,7 +72,9 @@ public final class CreditNoteRemoveTaxWithheldRefundParams {
       private TaxWithheldBuilder() {}
 
       public TaxWithheldBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

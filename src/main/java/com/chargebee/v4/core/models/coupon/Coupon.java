@@ -37,7 +37,7 @@ public class Coupon {
   private PeriodUnit periodUnit;
   private Integer redemptions;
   private String invoiceNotes;
-  private Object metaData;
+  private java.util.Map<String, Object> metaData;
   private Boolean deleted;
   private List<ItemConstraints> itemConstraints;
   private List<ItemConstraintCriteria> itemConstraintCriteria;
@@ -144,7 +144,7 @@ public class Coupon {
     return invoiceNotes;
   }
 
-  public Object getMetaData() {
+  public java.util.Map<String, Object> getMetaData() {
     return metaData;
   }
 
@@ -489,7 +489,11 @@ public class Coupon {
 
     obj.invoiceNotes = JsonUtil.getString(json, "invoice_notes");
 
-    obj.metaData = JsonUtil.getObject(json, "meta_data");
+    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    obj.metaData =
+        __metaDataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+            : new java.util.HashMap<>();
 
     obj.deleted = JsonUtil.getBoolean(json, "deleted");
 
@@ -525,7 +529,7 @@ public class Coupon {
 
     private ItemType itemType;
     private Constraint constraint;
-    private List<String> itemPriceIds;
+    private List<java.util.Map<String, Object>> itemPriceIds;
 
     public ItemType getItemType() {
       return itemType;
@@ -535,7 +539,7 @@ public class Coupon {
       return constraint;
     }
 
-    public List<String> getItemPriceIds() {
+    public List<java.util.Map<String, Object>> getItemPriceIds() {
       return itemPriceIds;
     }
 
@@ -608,7 +612,13 @@ public class Coupon {
 
       obj.constraint = Constraint.fromString(JsonUtil.getString(json, "constraint"));
 
-      obj.itemPriceIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "item_price_ids"));
+      String __itemPriceIdsJson = JsonUtil.getArray(json, "item_price_ids");
+      obj.itemPriceIds =
+          __itemPriceIdsJson != null
+              ? JsonUtil.parseObjectArray(__itemPriceIdsJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
       return obj;
     }
@@ -617,23 +627,23 @@ public class Coupon {
   public static class ItemConstraintCriteria {
 
     private ItemType itemType;
-    private List<String> currencies;
-    private List<String> itemFamilyIds;
-    private List<String> itemPricePeriods;
+    private List<java.util.Map<String, Object>> currencies;
+    private List<java.util.Map<String, Object>> itemFamilyIds;
+    private List<java.util.Map<String, Object>> itemPricePeriods;
 
     public ItemType getItemType() {
       return itemType;
     }
 
-    public List<String> getCurrencies() {
+    public List<java.util.Map<String, Object>> getCurrencies() {
       return currencies;
     }
 
-    public List<String> getItemFamilyIds() {
+    public List<java.util.Map<String, Object>> getItemFamilyIds() {
       return itemFamilyIds;
     }
 
-    public List<String> getItemPricePeriods() {
+    public List<java.util.Map<String, Object>> getItemPricePeriods() {
       return itemPricePeriods;
     }
 
@@ -672,12 +682,29 @@ public class Coupon {
 
       obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
 
-      obj.currencies = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "currencies"));
+      String __currenciesJson = JsonUtil.getArray(json, "currencies");
+      obj.currencies =
+          __currenciesJson != null
+              ? JsonUtil.parseObjectArray(__currenciesJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
-      obj.itemFamilyIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "item_family_ids"));
+      String __itemFamilyIdsJson = JsonUtil.getArray(json, "item_family_ids");
+      obj.itemFamilyIds =
+          __itemFamilyIdsJson != null
+              ? JsonUtil.parseObjectArray(__itemFamilyIdsJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
+      String __itemPricePeriodsJson = JsonUtil.getArray(json, "item_price_periods");
       obj.itemPricePeriods =
-          JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "item_price_periods"));
+          __itemPricePeriodsJson != null
+              ? JsonUtil.parseObjectArray(__itemPricePeriodsJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
       return obj;
     }

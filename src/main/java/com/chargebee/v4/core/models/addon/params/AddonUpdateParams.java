@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.addon.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,188 +39,259 @@ public final class AddonUpdateParams {
     private AddonUpdateBuilder() {}
 
     public AddonUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public AddonUpdateBuilder invoiceName(String value) {
+
       formData.put("invoice_name", value);
+
       return this;
     }
 
     public AddonUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public AddonUpdateBuilder chargeType(ChargeType value) {
+
       formData.put("charge_type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder price(Long value) {
+
       formData.put("price", value);
+
       return this;
     }
 
     public AddonUpdateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public AddonUpdateBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public AddonUpdateBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public AddonUpdateBuilder pricingModel(PricingModel value) {
+
       formData.put("pricing_model", value);
+
       return this;
     }
 
     @Deprecated
     public AddonUpdateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public AddonUpdateBuilder enabledInPortal(Boolean value) {
+
       formData.put("enabled_in_portal", value);
+
       return this;
     }
 
     public AddonUpdateBuilder taxable(Boolean value) {
+
       formData.put("taxable", value);
+
       return this;
     }
 
     public AddonUpdateBuilder taxProfileId(String value) {
+
       formData.put("tax_profile_id", value);
+
       return this;
     }
 
     public AddonUpdateBuilder avalaraSaleType(AvalaraSaleType value) {
+
       formData.put("avalara_sale_type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder avalaraTransactionType(Integer value) {
+
       formData.put("avalara_transaction_type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder avalaraServiceType(Integer value) {
+
       formData.put("avalara_service_type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder taxCode(String value) {
+
       formData.put("tax_code", value);
+
       return this;
     }
 
     public AddonUpdateBuilder hsnCode(String value) {
+
       formData.put("hsn_code", value);
+
       return this;
     }
 
     public AddonUpdateBuilder taxjarProductCode(String value) {
+
       formData.put("taxjar_product_code", value);
+
       return this;
     }
 
     public AddonUpdateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
-    public AddonUpdateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public AddonUpdateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public AddonUpdateBuilder sku(String value) {
+
       formData.put("sku", value);
+
       return this;
     }
 
     public AddonUpdateBuilder accountingCode(String value) {
+
       formData.put("accounting_code", value);
+
       return this;
     }
 
     public AddonUpdateBuilder accountingCategory1(String value) {
+
       formData.put("accounting_category1", value);
+
       return this;
     }
 
     public AddonUpdateBuilder accountingCategory2(String value) {
+
       formData.put("accounting_category2", value);
+
       return this;
     }
 
     public AddonUpdateBuilder accountingCategory3(String value) {
+
       formData.put("accounting_category3", value);
+
       return this;
     }
 
     public AddonUpdateBuilder accountingCategory4(String value) {
+
       formData.put("accounting_category4", value);
+
       return this;
     }
 
     public AddonUpdateBuilder isShippable(Boolean value) {
+
       formData.put("is_shippable", value);
+
       return this;
     }
 
     public AddonUpdateBuilder shippingFrequencyPeriod(Integer value) {
+
       formData.put("shipping_frequency_period", value);
+
       return this;
     }
 
     public AddonUpdateBuilder shippingFrequencyPeriodUnit(ShippingFrequencyPeriodUnit value) {
+
       formData.put("shipping_frequency_period_unit", value);
+
       return this;
     }
 
     public AddonUpdateBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public AddonUpdateBuilder showDescriptionInInvoices(Boolean value) {
+
       formData.put("show_description_in_invoices", value);
+
       return this;
     }
 
     public AddonUpdateBuilder showDescriptionInQuotes(Boolean value) {
+
       formData.put("show_description_in_quotes", value);
+
       return this;
     }
 
     public AddonUpdateBuilder priceInDecimal(String value) {
+
       formData.put("price_in_decimal", value);
+
       return this;
     }
 
     public AddonUpdateBuilder prorationType(ProrationType value) {
+
       formData.put("proration_type", value);
+
       return this;
     }
 
     public AddonUpdateBuilder tiers(List<TiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TiersParams item = value.get(i);
@@ -236,7 +308,6 @@ public final class AddonUpdateParams {
     }
 
     public AddonUpdateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -509,32 +580,44 @@ public final class AddonUpdateParams {
       private TiersBuilder() {}
 
       public TiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public TiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public TiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public TiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
@@ -569,17 +652,23 @@ public final class AddonUpdateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

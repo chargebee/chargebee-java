@@ -127,7 +127,6 @@ public final class SubscriptionContractTermsForSubscriptionResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     SubscriptionContractTermsForSubscriptionParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

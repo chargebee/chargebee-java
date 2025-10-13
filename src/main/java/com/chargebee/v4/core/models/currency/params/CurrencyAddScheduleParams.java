@@ -38,12 +38,16 @@ public final class CurrencyAddScheduleParams {
     private CurrencyAddScheduleBuilder() {}
 
     public CurrencyAddScheduleBuilder manualExchangeRate(String value) {
+
       formData.put("manual_exchange_rate", value);
+
       return this;
     }
 
     public CurrencyAddScheduleBuilder scheduleAt(Timestamp value) {
+
       formData.put("schedule_at", value);
+
       return this;
     }
 

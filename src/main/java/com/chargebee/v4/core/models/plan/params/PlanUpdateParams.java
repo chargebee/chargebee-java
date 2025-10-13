@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.plan.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,224 +39,309 @@ public final class PlanUpdateParams {
     private PlanUpdateBuilder() {}
 
     public PlanUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public PlanUpdateBuilder invoiceName(String value) {
+
       formData.put("invoice_name", value);
+
       return this;
     }
 
     public PlanUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public PlanUpdateBuilder trialPeriod(Integer value) {
+
       formData.put("trial_period", value);
+
       return this;
     }
 
     public PlanUpdateBuilder trialPeriodUnit(TrialPeriodUnit value) {
+
       formData.put("trial_period_unit", value);
+
       return this;
     }
 
     public PlanUpdateBuilder trialEndAction(TrialEndAction value) {
+
       formData.put("trial_end_action", value);
+
       return this;
     }
 
     public PlanUpdateBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public PlanUpdateBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public PlanUpdateBuilder setupCost(Long value) {
+
       formData.put("setup_cost", value);
+
       return this;
     }
 
     public PlanUpdateBuilder price(Long value) {
+
       formData.put("price", value);
+
       return this;
     }
 
     public PlanUpdateBuilder priceInDecimal(String value) {
+
       formData.put("price_in_decimal", value);
+
       return this;
     }
 
     public PlanUpdateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public PlanUpdateBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public PlanUpdateBuilder pricingModel(PricingModel value) {
+
       formData.put("pricing_model", value);
+
       return this;
     }
 
     @Deprecated
     public PlanUpdateBuilder chargeModel(ChargeModel value) {
+
       formData.put("charge_model", value);
+
       return this;
     }
 
     public PlanUpdateBuilder freeQuantity(Integer value) {
+
       formData.put("free_quantity", value);
+
       return this;
     }
 
     public PlanUpdateBuilder freeQuantityInDecimal(String value) {
+
       formData.put("free_quantity_in_decimal", value);
+
       return this;
     }
 
     public PlanUpdateBuilder addonApplicability(AddonApplicability value) {
+
       formData.put("addon_applicability", value);
+
       return this;
     }
 
     @Deprecated
     public PlanUpdateBuilder downgradePenalty(Number value) {
+
       formData.put("downgrade_penalty", value);
+
       return this;
     }
 
     public PlanUpdateBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public PlanUpdateBuilder enabledInHostedPages(Boolean value) {
+
       formData.put("enabled_in_hosted_pages", value);
+
       return this;
     }
 
     public PlanUpdateBuilder enabledInPortal(Boolean value) {
+
       formData.put("enabled_in_portal", value);
+
       return this;
     }
 
     public PlanUpdateBuilder taxable(Boolean value) {
+
       formData.put("taxable", value);
+
       return this;
     }
 
     public PlanUpdateBuilder taxProfileId(String value) {
+
       formData.put("tax_profile_id", value);
+
       return this;
     }
 
     public PlanUpdateBuilder taxCode(String value) {
+
       formData.put("tax_code", value);
+
       return this;
     }
 
     public PlanUpdateBuilder hsnCode(String value) {
+
       formData.put("hsn_code", value);
+
       return this;
     }
 
     public PlanUpdateBuilder taxjarProductCode(String value) {
+
       formData.put("taxjar_product_code", value);
+
       return this;
     }
 
     public PlanUpdateBuilder avalaraSaleType(AvalaraSaleType value) {
+
       formData.put("avalara_sale_type", value);
+
       return this;
     }
 
     public PlanUpdateBuilder avalaraTransactionType(Integer value) {
+
       formData.put("avalara_transaction_type", value);
+
       return this;
     }
 
     public PlanUpdateBuilder avalaraServiceType(Integer value) {
+
       formData.put("avalara_service_type", value);
+
       return this;
     }
 
     public PlanUpdateBuilder sku(String value) {
+
       formData.put("sku", value);
+
       return this;
     }
 
     public PlanUpdateBuilder accountingCode(String value) {
+
       formData.put("accounting_code", value);
+
       return this;
     }
 
     public PlanUpdateBuilder accountingCategory1(String value) {
+
       formData.put("accounting_category1", value);
+
       return this;
     }
 
     public PlanUpdateBuilder accountingCategory2(String value) {
+
       formData.put("accounting_category2", value);
+
       return this;
     }
 
     public PlanUpdateBuilder accountingCategory3(String value) {
+
       formData.put("accounting_category3", value);
+
       return this;
     }
 
     public PlanUpdateBuilder accountingCategory4(String value) {
+
       formData.put("accounting_category4", value);
+
       return this;
     }
 
     public PlanUpdateBuilder isShippable(Boolean value) {
+
       formData.put("is_shippable", value);
+
       return this;
     }
 
     public PlanUpdateBuilder shippingFrequencyPeriod(Integer value) {
+
       formData.put("shipping_frequency_period", value);
+
       return this;
     }
 
     public PlanUpdateBuilder shippingFrequencyPeriodUnit(ShippingFrequencyPeriodUnit value) {
+
       formData.put("shipping_frequency_period_unit", value);
+
       return this;
     }
 
     public PlanUpdateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
-    public PlanUpdateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public PlanUpdateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public PlanUpdateBuilder showDescriptionInInvoices(Boolean value) {
+
       formData.put("show_description_in_invoices", value);
+
       return this;
     }
 
     public PlanUpdateBuilder showDescriptionInQuotes(Boolean value) {
+
       formData.put("show_description_in_quotes", value);
+
       return this;
     }
 
     public PlanUpdateBuilder tiers(List<TiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TiersParams item = value.get(i);
@@ -272,7 +358,6 @@ public final class PlanUpdateParams {
     }
 
     public PlanUpdateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -289,7 +374,6 @@ public final class PlanUpdateParams {
     }
 
     public PlanUpdateBuilder applicableAddons(List<ApplicableAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ApplicableAddonsParams item = value.get(i);
@@ -306,7 +390,6 @@ public final class PlanUpdateParams {
     }
 
     public PlanUpdateBuilder eventBasedAddons(List<EventBasedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventBasedAddonsParams item = value.get(i);
@@ -323,7 +406,6 @@ public final class PlanUpdateParams {
     }
 
     public PlanUpdateBuilder attachedAddons(List<AttachedAddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AttachedAddonsParams item = value.get(i);
@@ -624,32 +706,44 @@ public final class PlanUpdateParams {
       private TiersBuilder() {}
 
       public TiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public TiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public TiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public TiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
@@ -684,17 +778,23 @@ public final class PlanUpdateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 
@@ -729,7 +829,9 @@ public final class PlanUpdateParams {
       private ApplicableAddonsBuilder() {}
 
       public ApplicableAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -764,27 +866,37 @@ public final class PlanUpdateParams {
       private EventBasedAddonsBuilder() {}
 
       public EventBasedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder onEvent(OnEvent value) {
+
         formData.put("on_event", value);
+
         return this;
       }
 
       public EventBasedAddonsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
@@ -853,27 +965,37 @@ public final class PlanUpdateParams {
       private AttachedAddonsBuilder() {}
 
       public AttachedAddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AttachedAddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AttachedAddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AttachedAddonsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public AttachedAddonsBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 

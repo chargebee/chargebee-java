@@ -38,22 +38,30 @@ public final class SubscriptionRegenerateInvoiceParams {
     private SubscriptionRegenerateInvoiceBuilder() {}
 
     public SubscriptionRegenerateInvoiceBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public SubscriptionRegenerateInvoiceBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 
     public SubscriptionRegenerateInvoiceBuilder prorate(Boolean value) {
+
       formData.put("prorate", value);
+
       return this;
     }
 
     public SubscriptionRegenerateInvoiceBuilder invoiceImmediately(Boolean value) {
+
       formData.put("invoice_immediately", value);
+
       return this;
     }
 

@@ -38,33 +38,45 @@ public final class UsageCreateParams {
     private UsageCreateBuilder() {}
 
     public UsageCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public UsageCreateBuilder itemPriceId(String value) {
+
       formData.put("item_price_id", value);
+
       return this;
     }
 
     public UsageCreateBuilder quantity(String value) {
+
       formData.put("quantity", value);
+
       return this;
     }
 
     public UsageCreateBuilder usageDate(Timestamp value) {
+
       formData.put("usage_date", value);
+
       return this;
     }
 
     @Deprecated
     public UsageCreateBuilder dedupeOption(DedupeOption value) {
+
       formData.put("dedupe_option", value);
+
       return this;
     }
 
     public UsageCreateBuilder note(String value) {
+
       formData.put("note", value);
+
       return this;
     }
 

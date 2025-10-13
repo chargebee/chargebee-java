@@ -75,8 +75,6 @@ public final class CommentListParams {
       return new CommentListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class CreatedAtFilter {
       private final String fieldName;
       private final CommentListBuilder builder;
@@ -106,8 +104,6 @@ public final class CommentListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

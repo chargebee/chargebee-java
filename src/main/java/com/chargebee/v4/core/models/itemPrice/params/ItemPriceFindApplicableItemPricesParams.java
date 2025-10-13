@@ -68,10 +68,6 @@ public final class ItemPriceFindApplicableItemPricesParams {
       return new ItemPriceFindApplicableItemPricesParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public static final class SortBySortBuilder {
       private final String fieldName;
       private final ItemPriceFindApplicableItemPricesBuilder builder;

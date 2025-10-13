@@ -38,78 +38,105 @@ public final class Pc2MigrationItemUpdateParams {
     private Pc2MigrationItemUpdateBuilder() {}
 
     public Pc2MigrationItemUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder pc2MigrationItemFamilyId(String value) {
+
       formData.put("pc2_migration_item_family_id", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder metadata(String value) {
+
       formData.put("metadata", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder isGiftable(Boolean value) {
+
       formData.put("is_giftable", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder isShippable(Boolean value) {
+
       formData.put("is_shippable", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder enabledForCheckout(Boolean value) {
+
       formData.put("enabled_for_checkout", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder enabledInPortal(Boolean value) {
+
       formData.put("enabled_in_portal", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder isRecurring(Boolean value) {
+
       formData.put("is_recurring", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder giftClaimRedirectUrl(String value) {
+
       formData.put("gift_claim_redirect_url", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder unit(String value) {
+
       formData.put("unit", value);
+
       return this;
     }
 
     public Pc2MigrationItemUpdateBuilder pc2MigrationItemPrices(
         List<Pc2MigrationItemPricesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           Pc2MigrationItemPricesParams item = value.get(i);
@@ -155,27 +182,37 @@ public final class Pc2MigrationItemUpdateParams {
       private Pc2MigrationItemPricesBuilder() {}
 
       public Pc2MigrationItemPricesBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public Pc2MigrationItemPricesBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public Pc2MigrationItemPricesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public Pc2MigrationItemPricesBuilder metadata(String value) {
+
         formData.put("metadata", value);
+
         return this;
       }
 
       public Pc2MigrationItemPricesBuilder refEntityId(String value) {
+
         formData.put("ref_entity_id", value);
+
         return this;
       }
 

@@ -41,7 +41,6 @@ public final class SubscriptionImportUnbilledChargesParams {
 
     public SubscriptionImportUnbilledChargesBuilder unbilledCharges(
         List<UnbilledChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           UnbilledChargesParams item = value.get(i);
@@ -58,7 +57,6 @@ public final class SubscriptionImportUnbilledChargesParams {
     }
 
     public SubscriptionImportUnbilledChargesBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -75,7 +73,6 @@ public final class SubscriptionImportUnbilledChargesParams {
     }
 
     public SubscriptionImportUnbilledChargesBuilder tiers(List<TiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TiersParams item = value.get(i);
@@ -121,77 +118,107 @@ public final class SubscriptionImportUnbilledChargesParams {
       private UnbilledChargesBuilder() {}
 
       public UnbilledChargesBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder unitAmount(Long value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder discountAmount(Long value) {
+
         formData.put("discount_amount", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder useForProration(Boolean value) {
+
         formData.put("use_for_proration", value);
+
         return this;
       }
 
       public UnbilledChargesBuilder isAdvanceCharge(Boolean value) {
+
         formData.put("is_advance_charge", value);
+
         return this;
       }
 
@@ -264,27 +291,37 @@ public final class SubscriptionImportUnbilledChargesParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder unbilledChargeId(String value) {
+
         formData.put("unbilled_charge_id", value);
+
         return this;
       }
 
       public DiscountsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public DiscountsBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 
       public DiscountsBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
@@ -351,47 +388,65 @@ public final class SubscriptionImportUnbilledChargesParams {
       private TiersBuilder() {}
 
       public TiersBuilder unbilledChargeId(String value) {
+
         formData.put("unbilled_charge_id", value);
+
         return this;
       }
 
       public TiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public TiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public TiersBuilder quantityUsed(Integer value) {
+
         formData.put("quantity_used", value);
+
         return this;
       }
 
       public TiersBuilder unitAmount(Long value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public TiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder quantityUsedInDecimal(String value) {
+
         formData.put("quantity_used_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 

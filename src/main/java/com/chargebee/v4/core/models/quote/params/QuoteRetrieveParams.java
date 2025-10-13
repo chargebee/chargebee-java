@@ -46,10 +46,5 @@ public final class QuoteRetrieveParams {
     public QuoteRetrieveParams build() {
       return new QuoteRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

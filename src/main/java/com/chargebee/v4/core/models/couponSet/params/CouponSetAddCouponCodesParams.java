@@ -38,7 +38,9 @@ public final class CouponSetAddCouponCodesParams {
     private CouponSetAddCouponCodesBuilder() {}
 
     public CouponSetAddCouponCodesBuilder code(List<String> value) {
+
       formData.put("code", value);
+
       return this;
     }
 

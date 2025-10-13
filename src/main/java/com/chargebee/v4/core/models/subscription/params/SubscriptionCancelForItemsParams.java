@@ -39,62 +39,81 @@ public final class SubscriptionCancelForItemsParams {
     private SubscriptionCancelForItemsBuilder() {}
 
     public SubscriptionCancelForItemsBuilder cancelOption(CancelOption value) {
+
       formData.put("cancel_option", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder endOfTerm(Boolean value) {
+
       formData.put("end_of_term", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder cancelAt(Timestamp value) {
+
       formData.put("cancel_at", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder creditOptionForCurrentTermCharges(
         CreditOptionForCurrentTermCharges value) {
+
       formData.put("credit_option_for_current_term_charges", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder unbilledChargesOption(UnbilledChargesOption value) {
+
       formData.put("unbilled_charges_option", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder accountReceivablesHandling(
         AccountReceivablesHandling value) {
+
       formData.put("account_receivables_handling", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder refundableCreditsHandling(
         RefundableCreditsHandling value) {
+
       formData.put("refundable_credits_handling", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder contractTermCancelOption(
         ContractTermCancelOption value) {
+
       formData.put("contract_term_cancel_option", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder cancelReasonCode(String value) {
+
       formData.put("cancel_reason_code", value);
+
       return this;
     }
 
     public SubscriptionCancelForItemsBuilder subscriptionItems(
         List<SubscriptionItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionItemsParams item = value.get(i);
@@ -336,32 +355,44 @@ public final class SubscriptionCancelForItemsParams {
       private SubscriptionItemsBuilder() {}
 
       public SubscriptionItemsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 

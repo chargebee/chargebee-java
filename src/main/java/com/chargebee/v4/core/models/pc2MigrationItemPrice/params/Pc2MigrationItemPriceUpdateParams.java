@@ -37,32 +37,44 @@ public final class Pc2MigrationItemPriceUpdateParams {
     private Pc2MigrationItemPriceUpdateBuilder() {}
 
     public Pc2MigrationItemPriceUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public Pc2MigrationItemPriceUpdateBuilder pc2MigrationItemId(String value) {
+
       formData.put("pc2_migration_item_id", value);
+
       return this;
     }
 
     public Pc2MigrationItemPriceUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public Pc2MigrationItemPriceUpdateBuilder metadata(String value) {
+
       formData.put("metadata", value);
+
       return this;
     }
 
     public Pc2MigrationItemPriceUpdateBuilder sanitizedPc1Id(String value) {
+
       formData.put("sanitized_pc1_id", value);
+
       return this;
     }
 
     public Pc2MigrationItemPriceUpdateBuilder isPrimaryAttachedItem(Boolean value) {
+
       formData.put("is_primary_attached_item", value);
+
       return this;
     }
 

@@ -39,78 +39,108 @@ public final class InvoiceChargeAddonParams {
     private InvoiceChargeAddonBuilder() {}
 
     public InvoiceChargeAddonBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder addonId(String value) {
+
       formData.put("addon_id", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder addonQuantity(Integer value) {
+
       formData.put("addon_quantity", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder addonUnitPrice(Long value) {
+
       formData.put("addon_unit_price", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder addonQuantityInDecimal(String value) {
+
       formData.put("addon_quantity_in_decimal", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder addonUnitPriceInDecimal(String value) {
+
       formData.put("addon_unit_price_in_decimal", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     @Deprecated
     public InvoiceChargeAddonBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public InvoiceChargeAddonBuilder paymentInitiator(PaymentInitiator value) {
+
       formData.put("payment_initiator", value);
+
       return this;
     }
 

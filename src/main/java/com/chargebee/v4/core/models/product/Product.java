@@ -25,7 +25,7 @@ public class Product {
   private Long resourceVersion;
   private Timestamp updatedAt;
   private Boolean deleted;
-  private Object metadata;
+  private java.util.Map<String, Object> metadata;
   private List<Options> options;
 
   public String getId() {
@@ -76,7 +76,7 @@ public class Product {
     return deleted;
   }
 
-  public Object getMetadata() {
+  public java.util.Map<String, Object> getMetadata() {
     return metadata;
   }
 
@@ -139,7 +139,11 @@ public class Product {
 
     obj.deleted = JsonUtil.getBoolean(json, "deleted");
 
-    obj.metadata = JsonUtil.getObject(json, "metadata");
+    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    obj.metadata =
+        __metadataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+            : new java.util.HashMap<>();
 
     obj.options =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "options")).stream()
@@ -153,7 +157,7 @@ public class Product {
 
     private String id;
     private String name;
-    private List<String> values;
+    private List<java.util.Map<String, Object>> values;
     private String defaultValue;
     private Type type;
 
@@ -165,7 +169,7 @@ public class Product {
       return name;
     }
 
-    public List<String> getValues() {
+    public List<java.util.Map<String, Object>> getValues() {
       return values;
     }
 
@@ -210,7 +214,13 @@ public class Product {
 
       obj.name = JsonUtil.getString(json, "name");
 
-      obj.values = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "values"));
+      String __valuesJson = JsonUtil.getArray(json, "values");
+      obj.values =
+          __valuesJson != null
+              ? JsonUtil.parseObjectArray(__valuesJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
       obj.defaultValue = JsonUtil.getString(json, "default_value");
 

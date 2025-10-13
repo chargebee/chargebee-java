@@ -37,7 +37,9 @@ public final class OmnichannelSubscriptionMoveParams {
     private OmnichannelSubscriptionMoveBuilder() {}
 
     public OmnichannelSubscriptionMoveBuilder toCustomerId(String value) {
+
       formData.put("to_customer_id", value);
+
       return this;
     }
 

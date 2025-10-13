@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,12 +38,16 @@ public final class PaymentSourceCreateCardParams {
     private PaymentSourceCreateCardBuilder() {}
 
     public PaymentSourceCreateCardBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateCardBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
@@ -81,82 +86,114 @@ public final class PaymentSourceCreateCardParams {
       private CardBuilder() {}
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public CardBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CardBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CardBuilder number(String value) {
+
         formData.put("number", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder cvv(String value) {
+
         formData.put("cvv", value);
+
         return this;
       }
 
       public CardBuilder preferredScheme(PreferredScheme value) {
+
         formData.put("preferred_scheme", value);
+
         return this;
       }
 
       public CardBuilder billingAddr1(String value) {
+
         formData.put("billing_addr1", value);
+
         return this;
       }
 
       public CardBuilder billingAddr2(String value) {
+
         formData.put("billing_addr2", value);
+
         return this;
       }
 
       public CardBuilder billingCity(String value) {
+
         formData.put("billing_city", value);
+
         return this;
       }
 
       public CardBuilder billingStateCode(String value) {
+
         formData.put("billing_state_code", value);
+
         return this;
       }
 
       public CardBuilder billingState(String value) {
+
         formData.put("billing_state", value);
+
         return this;
       }
 
       public CardBuilder billingZip(String value) {
+
         formData.put("billing_zip", value);
+
         return this;
       }
 
       public CardBuilder billingCountry(String value) {
+
         formData.put("billing_country", value);
+
         return this;
       }
 
-      public CardBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public CardBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 

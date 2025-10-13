@@ -77,8 +77,6 @@ public final class ItemFamilyListParams {
       return new ItemFamilyListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final ItemFamilyListBuilder builder;
@@ -203,8 +201,6 @@ public final class ItemFamilyListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum BusinessEntityIdIsPresent {
       True("true"),

@@ -46,10 +46,5 @@ public final class HostedPageRetrieveParams {
     public HostedPageRetrieveParams build() {
       return new HostedPageRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

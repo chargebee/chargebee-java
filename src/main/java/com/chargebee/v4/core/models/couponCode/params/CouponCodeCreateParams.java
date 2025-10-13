@@ -37,17 +37,23 @@ public final class CouponCodeCreateParams {
     private CouponCodeCreateBuilder() {}
 
     public CouponCodeCreateBuilder couponId(String value) {
+
       formData.put("coupon_id", value);
+
       return this;
     }
 
     public CouponCodeCreateBuilder couponSetName(String value) {
+
       formData.put("coupon_set_name", value);
+
       return this;
     }
 
     public CouponCodeCreateBuilder code(String value) {
+
       formData.put("code", value);
+
       return this;
     }
 

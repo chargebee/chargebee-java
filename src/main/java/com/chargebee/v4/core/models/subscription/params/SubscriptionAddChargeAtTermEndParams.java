@@ -38,42 +38,58 @@ public final class SubscriptionAddChargeAtTermEndParams {
     private SubscriptionAddChargeAtTermEndBuilder() {}
 
     public SubscriptionAddChargeAtTermEndBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder amountInDecimal(String value) {
+
       formData.put("amount_in_decimal", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder avalaraSaleType(AvalaraSaleType value) {
+
       formData.put("avalara_sale_type", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder avalaraTransactionType(Integer value) {
+
       formData.put("avalara_transaction_type", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder avalaraServiceType(Integer value) {
+
       formData.put("avalara_service_type", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public SubscriptionAddChargeAtTermEndBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 

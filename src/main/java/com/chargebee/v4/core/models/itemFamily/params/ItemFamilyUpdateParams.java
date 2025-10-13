@@ -37,12 +37,16 @@ public final class ItemFamilyUpdateParams {
     private ItemFamilyUpdateBuilder() {}
 
     public ItemFamilyUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ItemFamilyUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 

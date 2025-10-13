@@ -39,12 +39,16 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     private PricingPageSessionCreateForNewSubscriptionBuilder() {}
 
     public PricingPageSessionCreateForNewSubscriptionBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public PricingPageSessionCreateForNewSubscriptionBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
@@ -78,7 +82,6 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     public PricingPageSessionCreateForNewSubscriptionBuilder discounts(
         List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -124,7 +127,9 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private PricingPageBuilder() {}
 
       public PricingPageBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -159,7 +164,9 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -194,37 +201,51 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public CustomerBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CustomerBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CustomerBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public CustomerBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public CustomerBuilder locale(String value) {
+
         formData.put("locale", value);
+
         return this;
       }
 
@@ -259,72 +280,100 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -393,72 +442,100 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -527,52 +604,72 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsBuilder durationType(DurationType value) {
+
         formData.put("duration_type", value);
+
         return this;
       }
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public DiscountsBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
       public DiscountsBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
       public DiscountsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder label(String value) {
+
         formData.put("label", value);
+
         return this;
       }
 

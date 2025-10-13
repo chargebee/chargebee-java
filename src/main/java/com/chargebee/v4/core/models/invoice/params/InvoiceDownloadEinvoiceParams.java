@@ -46,10 +46,5 @@ public final class InvoiceDownloadEinvoiceParams {
     public InvoiceDownloadEinvoiceParams build() {
       return new InvoiceDownloadEinvoiceParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

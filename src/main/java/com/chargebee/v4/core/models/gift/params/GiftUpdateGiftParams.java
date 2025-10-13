@@ -38,12 +38,16 @@ public final class GiftUpdateGiftParams {
     private GiftUpdateGiftBuilder() {}
 
     public GiftUpdateGiftBuilder scheduledAt(Timestamp value) {
+
       formData.put("scheduled_at", value);
+
       return this;
     }
 
     public GiftUpdateGiftBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

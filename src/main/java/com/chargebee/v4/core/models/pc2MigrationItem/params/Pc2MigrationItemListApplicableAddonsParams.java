@@ -63,8 +63,6 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
       return new Pc2MigrationItemListApplicableAddonsParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IsRecurringFilter {
       private final String fieldName;
       private final Pc2MigrationItemListApplicableAddonsBuilder builder;
@@ -79,8 +77,6 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum IsRecurringIs {
       True("true"),

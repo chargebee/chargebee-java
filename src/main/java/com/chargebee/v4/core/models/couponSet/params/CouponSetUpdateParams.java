@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.couponSet.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,12 +38,16 @@ public final class CouponSetUpdateParams {
     private CouponSetUpdateBuilder() {}
 
     public CouponSetUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
-    public CouponSetUpdateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public CouponSetUpdateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 

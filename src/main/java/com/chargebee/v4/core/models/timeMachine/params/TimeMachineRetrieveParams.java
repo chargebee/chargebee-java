@@ -46,10 +46,5 @@ public final class TimeMachineRetrieveParams {
     public TimeMachineRetrieveParams build() {
       return new TimeMachineRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

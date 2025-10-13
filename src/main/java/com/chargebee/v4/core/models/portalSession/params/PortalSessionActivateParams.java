@@ -37,7 +37,9 @@ public final class PortalSessionActivateParams {
     private PortalSessionActivateBuilder() {}
 
     public PortalSessionActivateBuilder token(String value) {
+
       formData.put("token", value);
+
       return this;
     }
 

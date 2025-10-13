@@ -20,10 +20,10 @@ public class HostedPage {
   private String passThruContent;
   private Timestamp createdAt;
   private Timestamp expiresAt;
-  private Object content;
+  private java.util.Map<String, Object> content;
   private Timestamp updatedAt;
   private Long resourceVersion;
-  private Object checkoutInfo;
+  private java.util.Map<String, Object> checkoutInfo;
   private String businessEntityId;
   private Boolean embed;
 
@@ -59,7 +59,7 @@ public class HostedPage {
     return expiresAt;
   }
 
-  public Object getContent() {
+  public java.util.Map<String, Object> getContent() {
     return content;
   }
 
@@ -71,7 +71,7 @@ public class HostedPage {
     return resourceVersion;
   }
 
-  public Object getCheckoutInfo() {
+  public java.util.Map<String, Object> getCheckoutInfo() {
     return checkoutInfo;
   }
 
@@ -216,13 +216,21 @@ public class HostedPage {
 
     obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
 
-    obj.content = JsonUtil.getObject(json, "content");
+    String __contentJson = JsonUtil.getObject(json, "content");
+    obj.content =
+        __contentJson != null
+            ? JsonUtil.parseJsonObjectToMap(__contentJson)
+            : new java.util.HashMap<>();
 
     obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
 
     obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
 
-    obj.checkoutInfo = JsonUtil.getObject(json, "checkout_info");
+    String __checkoutInfoJson = JsonUtil.getObject(json, "checkout_info");
+    obj.checkoutInfo =
+        __checkoutInfoJson != null
+            ? JsonUtil.parseJsonObjectToMap(__checkoutInfoJson)
+            : new java.util.HashMap<>();
 
     obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
 

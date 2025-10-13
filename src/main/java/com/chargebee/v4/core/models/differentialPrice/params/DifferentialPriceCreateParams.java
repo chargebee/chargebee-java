@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.differentialPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,27 +39,34 @@ public final class DifferentialPriceCreateParams {
     private DifferentialPriceCreateBuilder() {}
 
     public DifferentialPriceCreateBuilder parentItemId(String value) {
+
       formData.put("parent_item_id", value);
+
       return this;
     }
 
     public DifferentialPriceCreateBuilder price(Long value) {
+
       formData.put("price", value);
+
       return this;
     }
 
     public DifferentialPriceCreateBuilder priceInDecimal(String value) {
+
       formData.put("price_in_decimal", value);
+
       return this;
     }
 
     public DifferentialPriceCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
     public DifferentialPriceCreateBuilder parentPeriods(List<ParentPeriodsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ParentPeriodsParams item = value.get(i);
@@ -75,7 +83,6 @@ public final class DifferentialPriceCreateParams {
     }
 
     public DifferentialPriceCreateBuilder tiers(List<TiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TiersParams item = value.get(i);
@@ -121,12 +128,16 @@ public final class DifferentialPriceCreateParams {
       private ParentPeriodsBuilder() {}
 
       public ParentPeriodsBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
-      public ParentPeriodsBuilder period(List<String> value) {
-        formData.put("period", value);
+      public ParentPeriodsBuilder period(List<java.util.Map<String, Object>> value) {
+
+        formData.put("period", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -193,42 +204,58 @@ public final class DifferentialPriceCreateParams {
       private TiersBuilder() {}
 
       public TiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public TiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public TiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public TiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public TiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public TiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 

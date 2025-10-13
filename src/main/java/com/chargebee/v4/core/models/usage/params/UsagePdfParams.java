@@ -37,7 +37,9 @@ public final class UsagePdfParams {
     private UsagePdfBuilder() {}
 
     public UsagePdfBuilder dispositionType(DispositionType value) {
+
       formData.put("disposition_type", value);
+
       return this;
     }
 
@@ -104,7 +106,9 @@ public final class UsagePdfParams {
       private InvoiceBuilder() {}
 
       public InvoiceBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

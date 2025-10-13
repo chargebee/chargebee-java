@@ -37,47 +37,65 @@ public final class PaymentIntentCreateParams {
     private PaymentIntentCreateBuilder() {}
 
     public PaymentIntentCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder paymentMethodType(PaymentMethodType value) {
+
       formData.put("payment_method_type", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder successUrl(String value) {
+
       formData.put("success_url", value);
+
       return this;
     }
 
     public PaymentIntentCreateBuilder failureUrl(String value) {
+
       formData.put("failure_url", value);
+
       return this;
     }
 

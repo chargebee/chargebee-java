@@ -46,10 +46,5 @@ public final class BrandConfigurationRetrieveParams {
     public BrandConfigurationRetrieveParams build() {
       return new BrandConfigurationRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

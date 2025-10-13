@@ -14,7 +14,7 @@ public class ThirdPartySyncDetail {
   private String integrationName;
   private Status status;
   private String id;
-  private Object context;
+  private java.util.Map<String, Object> context;
 
   public String getIntegrationName() {
     return integrationName;
@@ -28,7 +28,7 @@ public class ThirdPartySyncDetail {
     return id;
   }
 
-  public Object getContext() {
+  public java.util.Map<String, Object> getContext() {
     return context;
   }
 
@@ -75,7 +75,11 @@ public class ThirdPartySyncDetail {
 
     obj.id = JsonUtil.getString(json, "id");
 
-    obj.context = JsonUtil.getObject(json, "context");
+    String __contextJson = JsonUtil.getObject(json, "context");
+    obj.context =
+        __contextJson != null
+            ? JsonUtil.parseJsonObjectToMap(__contextJson)
+            : new java.util.HashMap<>();
 
     return obj;
   }

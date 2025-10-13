@@ -46,10 +46,5 @@ public final class RampRetrieveParams {
     public RampRetrieveParams build() {
       return new RampRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -131,7 +131,6 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionResp
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     EntitlementOverrideListEntitlementOverrideForSubscriptionParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

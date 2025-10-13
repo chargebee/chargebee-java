@@ -113,7 +113,6 @@ public final class GiftListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     GiftListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : GiftListParams.builder())
             .offset(nextOffset)

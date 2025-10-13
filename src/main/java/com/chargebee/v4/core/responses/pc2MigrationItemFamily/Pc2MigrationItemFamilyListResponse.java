@@ -1,7 +1,6 @@
 package com.chargebee.v4.core.responses.pc2MigrationItemFamily;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
@@ -13,7 +12,7 @@ import com.chargebee.v4.core.models.pc2MigrationItemFamily.params.Pc2MigrationIt
  */
 public final class Pc2MigrationItemFamilyListResponse {
 
-  private final List<Object> list;
+  private final List<java.util.Map<String, Object>> list;
 
   private final String nextOffset;
 
@@ -22,7 +21,7 @@ public final class Pc2MigrationItemFamilyListResponse {
   private final Response httpResponse;
 
   private Pc2MigrationItemFamilyListResponse(
-      List<Object> list,
+      List<java.util.Map<String, Object>> list,
       String nextOffset,
       Pc2MigrationItemFamilyService service,
       Pc2MigrationItemFamilyListParams originalParams,
@@ -44,8 +43,10 @@ public final class Pc2MigrationItemFamilyListResponse {
   public static Pc2MigrationItemFamilyListResponse fromJson(String json) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -66,8 +67,10 @@ public final class Pc2MigrationItemFamilyListResponse {
       Response httpResponse) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -79,7 +82,7 @@ public final class Pc2MigrationItemFamilyListResponse {
   }
 
   /** Get the list from the response. */
-  public List<Object> getList() {
+  public List<java.util.Map<String, Object>> getList() {
     return list;
   }
 
@@ -89,7 +92,7 @@ public final class Pc2MigrationItemFamilyListResponse {
   }
 
   /** Get the list of items in this page (alias). */
-  public List<Object> items() {
+  public List<java.util.Map<String, Object>> items() {
     return list;
   }
 
@@ -112,7 +115,6 @@ public final class Pc2MigrationItemFamilyListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     Pc2MigrationItemFamilyListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

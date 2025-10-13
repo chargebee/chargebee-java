@@ -79,8 +79,6 @@ public final class EntitlementListParams {
       return new EntitlementListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class FeatureIdFilter {
       private final String fieldName;
       private final EntitlementListBuilder builder;
@@ -140,8 +138,6 @@ public final class EntitlementListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum EntityTypeIs {
       Plan("plan"),

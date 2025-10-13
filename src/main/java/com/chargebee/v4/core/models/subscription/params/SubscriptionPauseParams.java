@@ -38,32 +38,44 @@ public final class SubscriptionPauseParams {
     private SubscriptionPauseBuilder() {}
 
     public SubscriptionPauseBuilder pauseOption(PauseOption value) {
+
       formData.put("pause_option", value);
+
       return this;
     }
 
     public SubscriptionPauseBuilder pauseDate(Timestamp value) {
+
       formData.put("pause_date", value);
+
       return this;
     }
 
     public SubscriptionPauseBuilder unbilledChargesHandling(UnbilledChargesHandling value) {
+
       formData.put("unbilled_charges_handling", value);
+
       return this;
     }
 
     public SubscriptionPauseBuilder invoiceDunningHandling(InvoiceDunningHandling value) {
+
       formData.put("invoice_dunning_handling", value);
+
       return this;
     }
 
     public SubscriptionPauseBuilder skipBillingCycles(Integer value) {
+
       formData.put("skip_billing_cycles", value);
+
       return this;
     }
 
     public SubscriptionPauseBuilder resumeDate(Timestamp value) {
+
       formData.put("resume_date", value);
+
       return this;
     }
 

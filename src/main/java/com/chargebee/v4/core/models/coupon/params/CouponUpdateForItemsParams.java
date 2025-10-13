@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.coupon.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,97 +40,132 @@ public final class CouponUpdateForItemsParams {
     private CouponUpdateForItemsBuilder() {}
 
     public CouponUpdateForItemsBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder invoiceName(String value) {
+
       formData.put("invoice_name", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder discountType(DiscountType value) {
+
       formData.put("discount_type", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder discountAmount(Long value) {
+
       formData.put("discount_amount", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder discountPercentage(Number value) {
+
       formData.put("discount_percentage", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder discountQuantity(Integer value) {
+
       formData.put("discount_quantity", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder applyOn(ApplyOn value) {
+
       formData.put("apply_on", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder durationType(DurationType value) {
+
       formData.put("duration_type", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder durationMonth(Integer value) {
+
       formData.put("duration_month", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder validFrom(Timestamp value) {
+
       formData.put("valid_from", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder validTill(Timestamp value) {
+
       formData.put("valid_till", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder maxRedemptions(Integer value) {
+
       formData.put("max_redemptions", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
-    public CouponUpdateForItemsBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public CouponUpdateForItemsBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public CouponUpdateForItemsBuilder itemConstraints(List<ItemConstraintsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemConstraintsParams item = value.get(i);
@@ -147,7 +183,6 @@ public final class CouponUpdateForItemsParams {
 
     public CouponUpdateForItemsBuilder itemConstraintCriteria(
         List<ItemConstraintCriteriaParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemConstraintCriteriaParams item = value.get(i);
@@ -164,7 +199,6 @@ public final class CouponUpdateForItemsParams {
     }
 
     public CouponUpdateForItemsBuilder couponConstraints(List<CouponConstraintsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           CouponConstraintsParams item = value.get(i);
@@ -334,17 +368,23 @@ public final class CouponUpdateForItemsParams {
       private ItemConstraintsBuilder() {}
 
       public ItemConstraintsBuilder constraint(Constraint value) {
+
         formData.put("constraint", value);
+
         return this;
       }
 
       public ItemConstraintsBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
-      public ItemConstraintsBuilder itemPriceIds(List<String> value) {
-        formData.put("item_price_ids", value);
+      public ItemConstraintsBuilder itemPriceIds(List<java.util.Map<String, Object>> value) {
+
+        formData.put("item_price_ids", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -441,22 +481,32 @@ public final class CouponUpdateForItemsParams {
       private ItemConstraintCriteriaBuilder() {}
 
       public ItemConstraintCriteriaBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder itemFamilyIds(List<String> value) {
-        formData.put("item_family_ids", value);
+      public ItemConstraintCriteriaBuilder itemFamilyIds(
+          List<java.util.Map<String, Object>> value) {
+
+        formData.put("item_family_ids", JsonUtil.toJson(value));
+
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder currencies(List<String> value) {
-        formData.put("currencies", value);
+      public ItemConstraintCriteriaBuilder currencies(List<java.util.Map<String, Object>> value) {
+
+        formData.put("currencies", JsonUtil.toJson(value));
+
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder itemPricePeriods(List<String> value) {
-        formData.put("item_price_periods", value);
+      public ItemConstraintCriteriaBuilder itemPricePeriods(
+          List<java.util.Map<String, Object>> value) {
+
+        formData.put("item_price_periods", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -521,17 +571,23 @@ public final class CouponUpdateForItemsParams {
       private CouponConstraintsBuilder() {}
 
       public CouponConstraintsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public CouponConstraintsBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       public CouponConstraintsBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 

@@ -37,12 +37,16 @@ public final class OfferEventOfferEventsParams {
     private OfferEventOfferEventsBuilder() {}
 
     public OfferEventOfferEventsBuilder personalizedOfferId(String value) {
+
       formData.put("personalized_offer_id", value);
+
       return this;
     }
 
     public OfferEventOfferEventsBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 

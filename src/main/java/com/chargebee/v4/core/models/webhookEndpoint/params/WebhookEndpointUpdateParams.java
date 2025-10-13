@@ -38,47 +38,65 @@ public final class WebhookEndpointUpdateParams {
     private WebhookEndpointUpdateBuilder() {}
 
     public WebhookEndpointUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder apiVersion(ApiVersion value) {
+
       formData.put("api_version", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder url(String value) {
+
       formData.put("url", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder primaryUrl(Boolean value) {
+
       formData.put("primary_url", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder sendCardResource(Boolean value) {
+
       formData.put("send_card_resource", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder basicAuthPassword(String value) {
+
       formData.put("basic_auth_password", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder basicAuthUsername(String value) {
+
       formData.put("basic_auth_username", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder disabled(Boolean value) {
+
       formData.put("disabled", value);
+
       return this;
     }
 
     public WebhookEndpointUpdateBuilder enabledEvents(List<String> value) {
+
       formData.put("enabled_events", value);
+
       return this;
     }
 

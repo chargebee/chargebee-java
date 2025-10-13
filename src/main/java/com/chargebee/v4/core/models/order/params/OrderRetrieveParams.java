@@ -46,10 +46,5 @@ public final class OrderRetrieveParams {
     public OrderRetrieveParams build() {
       return new OrderRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

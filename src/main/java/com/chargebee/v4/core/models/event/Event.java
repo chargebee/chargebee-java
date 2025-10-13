@@ -21,7 +21,7 @@ public class Event {
   private String webhookFailureReason;
   private EventType eventType;
   private ApiVersion apiVersion;
-  private Object content;
+  private java.util.Map<String, Object> content;
   private String originUser;
   private List<Webhooks> webhooks;
 
@@ -57,7 +57,7 @@ public class Event {
     return apiVersion;
   }
 
-  public Object getContent() {
+  public java.util.Map<String, Object> getContent() {
     return content;
   }
 
@@ -679,7 +679,11 @@ public class Event {
 
     obj.apiVersion = ApiVersion.fromString(JsonUtil.getString(json, "api_version"));
 
-    obj.content = JsonUtil.getObject(json, "content");
+    String __contentJson = JsonUtil.getObject(json, "content");
+    obj.content =
+        __contentJson != null
+            ? JsonUtil.parseJsonObjectToMap(__contentJson)
+            : new java.util.HashMap<>();
 
     obj.originUser = JsonUtil.getString(json, "origin_user");
 

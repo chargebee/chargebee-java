@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -36,13 +37,17 @@ public final class PaymentSourceUpdateCardParams {
 
     private PaymentSourceUpdateCardBuilder() {}
 
-    public PaymentSourceUpdateCardBuilder gatewayMetaData(Object value) {
-      formData.put("gateway_meta_data", value);
+    public PaymentSourceUpdateCardBuilder gatewayMetaData(java.util.Map<String, Object> value) {
+
+      formData.put("gateway_meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public PaymentSourceUpdateCardBuilder referenceTransaction(String value) {
+
       formData.put("reference_transaction", value);
+
       return this;
     }
 
@@ -81,62 +86,86 @@ public final class PaymentSourceUpdateCardParams {
       private CardBuilder() {}
 
       public CardBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CardBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder billingAddr1(String value) {
+
         formData.put("billing_addr1", value);
+
         return this;
       }
 
       public CardBuilder billingAddr2(String value) {
+
         formData.put("billing_addr2", value);
+
         return this;
       }
 
       public CardBuilder billingCity(String value) {
+
         formData.put("billing_city", value);
+
         return this;
       }
 
       public CardBuilder billingZip(String value) {
+
         formData.put("billing_zip", value);
+
         return this;
       }
 
       public CardBuilder billingStateCode(String value) {
+
         formData.put("billing_state_code", value);
+
         return this;
       }
 
       public CardBuilder billingState(String value) {
+
         formData.put("billing_state", value);
+
         return this;
       }
 
       public CardBuilder billingCountry(String value) {
+
         formData.put("billing_country", value);
+
         return this;
       }
 
-      public CardBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public CardBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 

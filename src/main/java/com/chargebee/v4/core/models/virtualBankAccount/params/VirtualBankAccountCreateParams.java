@@ -37,17 +37,23 @@ public final class VirtualBankAccountCreateParams {
     private VirtualBankAccountCreateBuilder() {}
 
     public VirtualBankAccountCreateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public VirtualBankAccountCreateBuilder email(String value) {
+
       formData.put("email", value);
+
       return this;
     }
 
     public VirtualBankAccountCreateBuilder scheme(Scheme value) {
+
       formData.put("scheme", value);
+
       return this;
     }
 

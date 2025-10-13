@@ -38,12 +38,16 @@ public final class PaymentVoucherCreateParams {
     private PaymentVoucherCreateBuilder() {}
 
     public PaymentVoucherCreateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentVoucherCreateBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
@@ -53,7 +57,6 @@ public final class PaymentVoucherCreateParams {
     }
 
     public PaymentVoucherCreateBuilder invoiceAllocations(List<InvoiceAllocationsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           InvoiceAllocationsParams item = value.get(i);
@@ -99,7 +102,9 @@ public final class PaymentVoucherCreateParams {
       private VoucherPaymentSourceBuilder() {}
 
       public VoucherPaymentSourceBuilder voucherType(VoucherType value) {
+
         formData.put("voucher_type", value);
+
         return this;
       }
 
@@ -160,7 +165,9 @@ public final class PaymentVoucherCreateParams {
       private InvoiceAllocationsBuilder() {}
 
       public InvoiceAllocationsBuilder invoiceId(String value) {
+
         formData.put("invoice_id", value);
+
         return this;
       }
 

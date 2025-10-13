@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.personalizedOffer.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,42 +40,58 @@ public final class PersonalizedOfferPersonalizedOffersParams {
     private PersonalizedOfferPersonalizedOffersBuilder() {}
 
     public PersonalizedOfferPersonalizedOffersBuilder firstName(String value) {
+
       formData.put("first_name", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder lastName(String value) {
+
       formData.put("last_name", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder email(String value) {
+
       formData.put("email", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder roles(List<String> value) {
+
       formData.put("roles", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder externalUserId(String value) {
+
       formData.put("external_user_id", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public PersonalizedOfferPersonalizedOffersBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
-    public PersonalizedOfferPersonalizedOffersBuilder custom(Object value) {
-      formData.put("custom", value);
+    public PersonalizedOfferPersonalizedOffersBuilder custom(java.util.Map<String, Object> value) {
+
+      formData.put("custom", JsonUtil.toJson(value));
+
       return this;
     }
 
@@ -113,27 +130,37 @@ public final class PersonalizedOfferPersonalizedOffersParams {
       private RequestContextBuilder() {}
 
       public RequestContextBuilder userAgent(String value) {
+
         formData.put("user_agent", value);
+
         return this;
       }
 
       public RequestContextBuilder locale(String value) {
+
         formData.put("locale", value);
+
         return this;
       }
 
       public RequestContextBuilder timezone(String value) {
+
         formData.put("timezone", value);
+
         return this;
       }
 
       public RequestContextBuilder url(String value) {
+
         formData.put("url", value);
+
         return this;
       }
 
       public RequestContextBuilder referrerUrl(String value) {
+
         formData.put("referrer_url", value);
+
         return this;
       }
 

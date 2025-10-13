@@ -39,57 +39,76 @@ public final class CreditNoteCreateParams {
     private CreditNoteCreateBuilder() {}
 
     public CreditNoteCreateBuilder referenceInvoiceId(String value) {
+
       formData.put("reference_invoice_id", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder total(Long value) {
+
       formData.put("total", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder reasonCode(ReasonCode value) {
+
       formData.put("reason_code", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder createReasonCode(String value) {
+
       formData.put("create_reason_code", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder date(Timestamp value) {
+
       formData.put("date", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public CreditNoteCreateBuilder lineItems(List<LineItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LineItemsParams item = value.get(i);
@@ -201,57 +220,79 @@ public final class CreditNoteCreateParams {
       private LineItemsBuilder() {}
 
       public LineItemsBuilder referenceLineItemId(String value) {
+
         formData.put("reference_line_item_id", value);
+
         return this;
       }
 
       public LineItemsBuilder unitAmount(Long value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 
       public LineItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public LineItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public LineItemsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public LineItemsBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public LineItemsBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
       public LineItemsBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public LineItemsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public LineItemsBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 

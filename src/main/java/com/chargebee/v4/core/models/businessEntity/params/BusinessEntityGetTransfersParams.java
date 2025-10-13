@@ -77,8 +77,6 @@ public final class BusinessEntityGetTransfersParams {
       return new BusinessEntityGetTransfersParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class ResourceTypeFilter {
       private final String fieldName;
       private final BusinessEntityGetTransfersBuilder builder;
@@ -153,8 +151,6 @@ public final class BusinessEntityGetTransfersParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

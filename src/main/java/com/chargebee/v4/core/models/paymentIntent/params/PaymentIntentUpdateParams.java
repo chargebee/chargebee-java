@@ -37,32 +37,44 @@ public final class PaymentIntentUpdateParams {
     private PaymentIntentUpdateBuilder() {}
 
     public PaymentIntentUpdateBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public PaymentIntentUpdateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public PaymentIntentUpdateBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 
     public PaymentIntentUpdateBuilder paymentMethodType(PaymentMethodType value) {
+
       formData.put("payment_method_type", value);
+
       return this;
     }
 
     public PaymentIntentUpdateBuilder successUrl(String value) {
+
       formData.put("success_url", value);
+
       return this;
     }
 
     public PaymentIntentUpdateBuilder failureUrl(String value) {
+
       formData.put("failure_url", value);
+
       return this;
     }
 

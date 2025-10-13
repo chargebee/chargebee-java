@@ -127,8 +127,6 @@ public final class OrderListParams {
       return new OrderListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final OrderListBuilder builder;
@@ -533,8 +531,6 @@ public final class OrderListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

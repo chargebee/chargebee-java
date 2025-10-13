@@ -46,10 +46,5 @@ public final class PaymentScheduleSchemeRetrieveParams {
     public PaymentScheduleSchemeRetrieveParams build() {
       return new PaymentScheduleSchemeRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

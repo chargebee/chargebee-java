@@ -71,8 +71,6 @@ public final class GiftListParams {
       return new GiftListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class StatusFilter {
       private final String fieldName;
       private final GiftListBuilder builder;
@@ -102,8 +100,6 @@ public final class GiftListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum StatusIs {
       Scheduled("scheduled"),
@@ -216,8 +212,6 @@ public final class GiftListParams {
         return new GiftReceiverParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class EmailFilter {
         private final String fieldName;
         private final GiftReceiverBuilder builder;
@@ -267,9 +261,6 @@ public final class GiftListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 
@@ -311,8 +302,6 @@ public final class GiftListParams {
         return new GifterParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class CustomerIdFilter {
         private final String fieldName;
         private final GifterBuilder builder;
@@ -337,9 +326,6 @@ public final class GiftListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

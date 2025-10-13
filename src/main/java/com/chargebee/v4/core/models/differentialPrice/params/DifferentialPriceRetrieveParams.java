@@ -51,10 +51,5 @@ public final class DifferentialPriceRetrieveParams {
     public DifferentialPriceRetrieveParams build() {
       return new DifferentialPriceRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

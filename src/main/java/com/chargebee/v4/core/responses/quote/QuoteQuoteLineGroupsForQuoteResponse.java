@@ -126,7 +126,6 @@ public final class QuoteQuoteLineGroupsForQuoteResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     QuoteQuoteLineGroupsForQuoteParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

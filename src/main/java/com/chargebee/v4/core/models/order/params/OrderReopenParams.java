@@ -37,7 +37,9 @@ public final class OrderReopenParams {
     private OrderReopenBuilder() {}
 
     public OrderReopenBuilder voidCancellationCreditNotes(Boolean value) {
+
       formData.put("void_cancellation_credit_notes", value);
+
       return this;
     }
 

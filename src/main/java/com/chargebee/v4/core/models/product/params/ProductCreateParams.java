@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.product.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,42 +38,58 @@ public final class ProductCreateParams {
     private ProductCreateBuilder() {}
 
     public ProductCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public ProductCreateBuilder externalName(String value) {
+
       formData.put("external_name", value);
+
       return this;
     }
 
     public ProductCreateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public ProductCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public ProductCreateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public ProductCreateBuilder sku(String value) {
+
       formData.put("sku", value);
+
       return this;
     }
 
-    public ProductCreateBuilder metadata(Object value) {
-      formData.put("metadata", value);
+    public ProductCreateBuilder metadata(java.util.Map<String, Object> value) {
+
+      formData.put("metadata", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ProductCreateBuilder shippable(Boolean value) {
+
       formData.put("shippable", value);
+
       return this;
     }
 

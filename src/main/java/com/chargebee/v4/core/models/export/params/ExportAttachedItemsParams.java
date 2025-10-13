@@ -76,22 +76,30 @@ public final class ExportAttachedItemsParams {
       private ItemTypeBuilder() {}
 
       public ItemTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -246,27 +254,37 @@ public final class ExportAttachedItemsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -301,27 +319,37 @@ public final class ExportAttachedItemsParams {
       private ItemIdBuilder() {}
 
       public ItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -356,22 +384,30 @@ public final class ExportAttachedItemsParams {
       private TypeBuilder() {}
 
       public TypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public TypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -466,22 +502,30 @@ public final class ExportAttachedItemsParams {
       private ChargeOnEventBuilder() {}
 
       public ChargeOnEventBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChargeOnEventBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChargeOnEventBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChargeOnEventBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -588,22 +632,30 @@ public final class ExportAttachedItemsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -638,27 +690,37 @@ public final class ExportAttachedItemsParams {
       private ParentItemIdBuilder() {}
 
       public ParentItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ParentItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ParentItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ParentItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ParentItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

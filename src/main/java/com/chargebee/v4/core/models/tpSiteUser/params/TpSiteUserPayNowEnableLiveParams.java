@@ -37,12 +37,16 @@ public final class TpSiteUserPayNowEnableLiveParams {
     private TpSiteUserPayNowEnableLiveBuilder() {}
 
     public TpSiteUserPayNowEnableLiveBuilder domain(String value) {
+
       formData.put("domain", value);
+
       return this;
     }
 
     public TpSiteUserPayNowEnableLiveBuilder hostedPageToken(String value) {
+
       formData.put("hosted_page_token", value);
+
       return this;
     }
 

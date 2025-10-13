@@ -120,7 +120,6 @@ public final class ThirdPartyEntityMappingListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     ThirdPartyEntityMappingListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

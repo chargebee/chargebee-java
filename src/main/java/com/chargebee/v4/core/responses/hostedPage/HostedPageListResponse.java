@@ -114,7 +114,6 @@ public final class HostedPageListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     HostedPageListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : HostedPageListParams.builder())
             .offset(nextOffset)

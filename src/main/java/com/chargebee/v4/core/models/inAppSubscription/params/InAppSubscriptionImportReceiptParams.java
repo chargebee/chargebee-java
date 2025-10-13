@@ -37,7 +37,9 @@ public final class InAppSubscriptionImportReceiptParams {
     private InAppSubscriptionImportReceiptBuilder() {}
 
     public InAppSubscriptionImportReceiptBuilder receipt(String value) {
+
       formData.put("receipt", value);
+
       return this;
     }
 
@@ -81,7 +83,9 @@ public final class InAppSubscriptionImportReceiptParams {
       private ProductBuilder() {}
 
       public ProductBuilder currencyCode(String value) {
+
         formData.put("currency_code", value);
+
         return this;
       }
 
@@ -116,12 +120,16 @@ public final class InAppSubscriptionImportReceiptParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 

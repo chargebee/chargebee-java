@@ -38,93 +38,129 @@ public final class CardUpdateCardForCustomerParams {
 
     @Deprecated
     public CardUpdateCardForCustomerBuilder gateway(Gateway value) {
+
       formData.put("gateway", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder tmpToken(String value) {
+
       formData.put("tmp_token", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder firstName(String value) {
+
       formData.put("first_name", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder lastName(String value) {
+
       formData.put("last_name", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder number(String value) {
+
       formData.put("number", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder expiryMonth(Integer value) {
+
       formData.put("expiry_month", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder expiryYear(Integer value) {
+
       formData.put("expiry_year", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder cvv(String value) {
+
       formData.put("cvv", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder preferredScheme(PreferredScheme value) {
+
       formData.put("preferred_scheme", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingAddr1(String value) {
+
       formData.put("billing_addr1", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingAddr2(String value) {
+
       formData.put("billing_addr2", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingCity(String value) {
+
       formData.put("billing_city", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingStateCode(String value) {
+
       formData.put("billing_state_code", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingState(String value) {
+
       formData.put("billing_state", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingZip(String value) {
+
       formData.put("billing_zip", value);
+
       return this;
     }
 
     public CardUpdateCardForCustomerBuilder billingCountry(String value) {
+
       formData.put("billing_country", value);
+
       return this;
     }
 
     @Deprecated
     public CardUpdateCardForCustomerBuilder ipAddress(String value) {
+
       formData.put("ip_address", value);
+
       return this;
     }
 
@@ -325,7 +361,9 @@ public final class CardUpdateCardForCustomerParams {
 
       @Deprecated
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 

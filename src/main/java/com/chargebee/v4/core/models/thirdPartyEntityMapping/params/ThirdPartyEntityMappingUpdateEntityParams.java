@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.thirdPartyEntityMapping.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,58 +39,82 @@ public final class ThirdPartyEntityMappingUpdateEntityParams {
     private ThirdPartyEntityMappingUpdateEntityBuilder() {}
 
     public ThirdPartyEntityMappingUpdateEntityBuilder entityType(EntityType value) {
+
       formData.put("entity_type", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder entityId(String value) {
+
       formData.put("entity_id", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder thirdPartyEntityId(String value) {
+
       formData.put("third_party_entity_id", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder integrationName(String value) {
+
       formData.put("integration_name", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
-    public ThirdPartyEntityMappingUpdateEntityBuilder oldResource(Object value) {
-      formData.put("old_resource", value);
+    public ThirdPartyEntityMappingUpdateEntityBuilder oldResource(
+        java.util.Map<String, Object> value) {
+
+      formData.put("old_resource", JsonUtil.toJson(value));
+
       return this;
     }
 
-    public ThirdPartyEntityMappingUpdateEntityBuilder mappingMeta(Object value) {
-      formData.put("mapping_meta", value);
+    public ThirdPartyEntityMappingUpdateEntityBuilder mappingMeta(
+        java.util.Map<String, Object> value) {
+
+      formData.put("mapping_meta", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder failedDependentEntityId(String value) {
+
       formData.put("failed_dependent_entity_id", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder failedDependentEntityType(
         FailedDependentEntityType value) {
+
       formData.put("failed_dependent_entity_type", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder errorMessage(String value) {
+
       formData.put("error_message", value);
+
       return this;
     }
 
     public ThirdPartyEntityMappingUpdateEntityBuilder url(String value) {
+
       formData.put("url", value);
+
       return this;
     }
 

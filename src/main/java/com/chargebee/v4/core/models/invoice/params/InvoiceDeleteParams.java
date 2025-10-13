@@ -37,7 +37,9 @@ public final class InvoiceDeleteParams {
     private InvoiceDeleteBuilder() {}
 
     public InvoiceDeleteBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

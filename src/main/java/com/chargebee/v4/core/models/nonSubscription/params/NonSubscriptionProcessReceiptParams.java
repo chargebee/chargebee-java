@@ -37,7 +37,9 @@ public final class NonSubscriptionProcessReceiptParams {
     private NonSubscriptionProcessReceiptBuilder() {}
 
     public NonSubscriptionProcessReceiptBuilder receipt(String value) {
+
       formData.put("receipt", value);
+
       return this;
     }
 
@@ -81,32 +83,44 @@ public final class NonSubscriptionProcessReceiptParams {
       private ProductBuilder() {}
 
       public ProductBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public ProductBuilder currencyCode(String value) {
+
         formData.put("currency_code", value);
+
         return this;
       }
 
       public ProductBuilder price(Integer value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ProductBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       public ProductBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public ProductBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
@@ -171,22 +185,30 @@ public final class NonSubscriptionProcessReceiptParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public CustomerBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CustomerBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 

@@ -48,10 +48,5 @@ public final class SubscriptionRetrieveWithScheduledChangesParams {
     public SubscriptionRetrieveWithScheduledChangesParams build() {
       return new SubscriptionRetrieveWithScheduledChangesParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

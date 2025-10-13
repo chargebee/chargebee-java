@@ -37,42 +37,58 @@ public final class AttachedItemCreateParams {
     private AttachedItemCreateBuilder() {}
 
     public AttachedItemCreateBuilder itemId(String value) {
+
       formData.put("item_id", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder quantity(Integer value) {
+
       formData.put("quantity", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder quantityInDecimal(String value) {
+
       formData.put("quantity_in_decimal", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder chargeOnEvent(ChargeOnEvent value) {
+
       formData.put("charge_on_event", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder chargeOnce(Boolean value) {
+
       formData.put("charge_once", value);
+
       return this;
     }
 
     public AttachedItemCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 

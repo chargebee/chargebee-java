@@ -117,7 +117,6 @@ public final class BusinessEntityGetTransfersResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     BusinessEntityGetTransfersParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

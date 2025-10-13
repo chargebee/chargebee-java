@@ -126,8 +126,6 @@ public final class TransactionListParams {
       return new TransactionListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final TransactionListBuilder builder;
@@ -602,8 +600,6 @@ public final class TransactionListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

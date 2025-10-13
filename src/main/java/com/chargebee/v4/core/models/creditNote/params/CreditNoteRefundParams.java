@@ -37,17 +37,23 @@ public final class CreditNoteRefundParams {
     private CreditNoteRefundBuilder() {}
 
     public CreditNoteRefundBuilder refundAmount(Long value) {
+
       formData.put("refund_amount", value);
+
       return this;
     }
 
     public CreditNoteRefundBuilder customerNotes(String value) {
+
       formData.put("customer_notes", value);
+
       return this;
     }
 
     public CreditNoteRefundBuilder refundReasonCode(String value) {
+
       formData.put("refund_reason_code", value);
+
       return this;
     }
 

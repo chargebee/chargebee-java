@@ -40,83 +40,115 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
     private QuoteUpdateSubscriptionQuoteForItemsBuilder() {}
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder notes(String value) {
+
       formData.put("notes", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder expiresAt(Timestamp value) {
+
       formData.put("expires_at", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder mandatoryItemsToRemove(List<String> value) {
+
       formData.put("mandatory_items_to_remove", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder replaceItemsList(Boolean value) {
+
       formData.put("replace_items_list", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder termsToCharge(Integer value) {
+
       formData.put("terms_to_charge", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder reactivateFrom(Timestamp value) {
+
       formData.put("reactivate_from", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder billingAlignmentMode(
         BillingAlignmentMode value) {
+
       formData.put("billing_alignment_mode", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder replaceCouponList(Boolean value) {
+
       formData.put("replace_coupon_list", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder changeOption(ChangeOption value) {
+
       formData.put("change_option", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder changesScheduledAt(Timestamp value) {
+
       formData.put("changes_scheduled_at", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder forceTermReset(Boolean value) {
+
       formData.put("force_term_reset", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder reactivate(Boolean value) {
+
       formData.put("reactivate", value);
+
       return this;
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder netTermDays(Integer value) {
+
       formData.put("net_term_days", value);
+
       return this;
     }
 
@@ -148,7 +180,6 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder subscriptionItems(
         List<SubscriptionItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionItemsParams item = value.get(i);
@@ -165,7 +196,6 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -182,7 +212,6 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -199,7 +228,6 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
     }
 
     public QuoteUpdateSubscriptionQuoteForItemsBuilder coupons(List<CouponsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           CouponsParams item = value.get(i);
@@ -303,44 +331,60 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder setupFee(Long value) {
+
         formData.put("setup_fee", value);
+
         return this;
       }
 
       public SubscriptionBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       @Deprecated
       public SubscriptionBuilder coupon(String value) {
+
         formData.put("coupon", value);
+
         return this;
       }
 
       public SubscriptionBuilder autoCollection(AutoCollection value) {
+
         formData.put("auto_collection", value);
+
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
         formData.put("offline_payment_method", value);
+
         return this;
       }
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
         formData.put("contract_term_billing_cycle_on_renewal", value);
+
         return this;
       }
 
@@ -456,72 +500,100 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -590,72 +662,100 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -724,17 +824,23 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
       public CustomerBuilder registeredForGst(Boolean value) {
+
         formData.put("registered_for_gst", value);
+
         return this;
       }
 
@@ -769,12 +875,16 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 
@@ -843,77 +953,107 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private SubscriptionItemsBuilder() {}
 
       public SubscriptionItemsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder trialEnd(Timestamp value) {
+
         formData.put("trial_end", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder servicePeriodDays(Integer value) {
+
         formData.put("service_period_days", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnEvent(ChargeOnEvent value) {
+
         formData.put("charge_on_event", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnce(Boolean value) {
+
         formData.put("charge_once", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder chargeOnOption(ChargeOnOption value) {
+
         formData.put("charge_on_option", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder itemType(ItemType value) {
+
         formData.put("item_type", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder endDate(Timestamp value) {
+
         formData.put("end_date", value);
+
         return this;
       }
 
       public SubscriptionItemsBuilder rampTierId(String value) {
+
         formData.put("ramp_tier_id", value);
+
         return this;
       }
 
@@ -1040,67 +1180,93 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsBuilder durationType(DurationType value) {
+
         formData.put("duration_type", value);
+
         return this;
       }
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public DiscountsBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
       public DiscountsBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
       public DiscountsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder operationType(OperationType value) {
+
         formData.put("operation_type", value);
+
         return this;
       }
 
       public DiscountsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public DiscountsBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public DiscountsBuilder endDate(Timestamp value) {
+
         formData.put("end_date", value);
+
         return this;
       }
 
@@ -1253,52 +1419,72 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
       public ItemTiersBuilder rampTierId(String value) {
+
         formData.put("ramp_tier_id", value);
+
         return this;
       }
 
@@ -1363,17 +1549,23 @@ public final class QuoteUpdateSubscriptionQuoteForItemsParams {
       private CouponsBuilder() {}
 
       public CouponsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CouponsBuilder startDate(Timestamp value) {
+
         formData.put("start_date", value);
+
         return this;
       }
 
       public CouponsBuilder endDate(Timestamp value) {
+
         formData.put("end_date", value);
+
         return this;
       }
 

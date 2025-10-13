@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.thirdPartySyncDetail.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -36,8 +37,10 @@ public final class ThirdPartySyncDetailCreateParams {
 
     private ThirdPartySyncDetailCreateBuilder() {}
 
-    public ThirdPartySyncDetailCreateBuilder context(Object value) {
-      formData.put("context", value);
+    public ThirdPartySyncDetailCreateBuilder context(java.util.Map<String, Object> value) {
+
+      formData.put("context", JsonUtil.toJson(value));
+
       return this;
     }
 
@@ -77,7 +80,9 @@ public final class ThirdPartySyncDetailCreateParams {
       private ThirdPartyConfigurationBuilder() {}
 
       public ThirdPartyConfigurationBuilder integrationName(String value) {
+
         formData.put("integration_name", value);
+
         return this;
       }
 

@@ -82,12 +82,16 @@ public final class ExportItemFamiliesParams {
       private BusinessEntityIdBuilder() {}
 
       public BusinessEntityIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public BusinessEntityIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -150,7 +154,9 @@ public final class ExportItemFamiliesParams {
       private IncludeSiteLevelResourcesBuilder() {}
 
       public IncludeSiteLevelResourcesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -258,27 +264,37 @@ public final class ExportItemFamiliesParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -313,17 +329,23 @@ public final class ExportItemFamiliesParams {
       private NameBuilder() {}
 
       public NameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public NameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public NameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -358,22 +380,30 @@ public final class ExportItemFamiliesParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 

@@ -38,12 +38,16 @@ public final class UnbilledChargeInvoiceUnbilledChargesParams {
     private UnbilledChargeInvoiceUnbilledChargesBuilder() {}
 
     public UnbilledChargeInvoiceUnbilledChargesBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public UnbilledChargeInvoiceUnbilledChargesBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 

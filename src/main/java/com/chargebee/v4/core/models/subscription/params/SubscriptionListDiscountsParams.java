@@ -56,10 +56,5 @@ public final class SubscriptionListDiscountsParams {
     public SubscriptionListDiscountsParams build() {
       return new SubscriptionListDiscountsParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

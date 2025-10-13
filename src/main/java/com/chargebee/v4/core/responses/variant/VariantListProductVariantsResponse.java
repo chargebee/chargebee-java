@@ -123,7 +123,6 @@ public final class VariantListProductVariantsResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     VariantListProductVariantsParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

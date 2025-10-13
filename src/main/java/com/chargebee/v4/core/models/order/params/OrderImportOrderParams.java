@@ -38,112 +38,156 @@ public final class OrderImportOrderParams {
     private OrderImportOrderBuilder() {}
 
     public OrderImportOrderBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder documentNumber(String value) {
+
       formData.put("document_number", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder invoiceId(String value) {
+
       formData.put("invoice_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder createdAt(Timestamp value) {
+
       formData.put("created_at", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder orderDate(Timestamp value) {
+
       formData.put("order_date", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder shippingDate(Timestamp value) {
+
       formData.put("shipping_date", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder fulfillmentStatus(String value) {
+
       formData.put("fulfillment_status", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder note(String value) {
+
       formData.put("note", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder trackingId(String value) {
+
       formData.put("tracking_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder trackingUrl(String value) {
+
       formData.put("tracking_url", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder batchId(String value) {
+
       formData.put("batch_id", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder shipmentCarrier(String value) {
+
       formData.put("shipment_carrier", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder shippingCutOffDate(Timestamp value) {
+
       formData.put("shipping_cut_off_date", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder deliveredAt(Timestamp value) {
+
       formData.put("delivered_at", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder shippedAt(Timestamp value) {
+
       formData.put("shipped_at", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder cancelledAt(Timestamp value) {
+
       formData.put("cancelled_at", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder cancellationReason(CancellationReason value) {
+
       formData.put("cancellation_reason", value);
+
       return this;
     }
 
     public OrderImportOrderBuilder refundableCreditsIssued(Long value) {
+
       formData.put("refundable_credits_issued", value);
+
       return this;
     }
 
@@ -281,72 +325,100 @@ public final class OrderImportOrderParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -415,72 +487,100 @@ public final class OrderImportOrderParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 

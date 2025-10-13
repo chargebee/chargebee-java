@@ -37,12 +37,16 @@ public final class TransactionRefundParams {
     private TransactionRefundBuilder() {}
 
     public TransactionRefundBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public TransactionRefundBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

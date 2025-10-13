@@ -114,7 +114,6 @@ public final class PriceVariantListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     PriceVariantListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : PriceVariantListParams.builder())
             .offset(nextOffset)

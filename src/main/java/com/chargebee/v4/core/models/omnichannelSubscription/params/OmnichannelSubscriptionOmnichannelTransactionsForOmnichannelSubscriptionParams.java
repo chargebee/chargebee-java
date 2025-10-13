@@ -67,10 +67,5 @@ public final class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelS
       return new OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams(
           this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

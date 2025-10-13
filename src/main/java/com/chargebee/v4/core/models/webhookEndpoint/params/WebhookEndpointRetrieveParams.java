@@ -46,10 +46,5 @@ public final class WebhookEndpointRetrieveParams {
     public WebhookEndpointRetrieveParams build() {
       return new WebhookEndpointRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

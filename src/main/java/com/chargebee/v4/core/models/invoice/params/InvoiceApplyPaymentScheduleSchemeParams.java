@@ -38,12 +38,16 @@ public final class InvoiceApplyPaymentScheduleSchemeParams {
     private InvoiceApplyPaymentScheduleSchemeBuilder() {}
 
     public InvoiceApplyPaymentScheduleSchemeBuilder schemeId(String value) {
+
       formData.put("scheme_id", value);
+
       return this;
     }
 
     public InvoiceApplyPaymentScheduleSchemeBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 

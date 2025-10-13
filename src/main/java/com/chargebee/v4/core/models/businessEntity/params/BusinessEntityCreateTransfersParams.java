@@ -38,29 +38,39 @@ public final class BusinessEntityCreateTransfersParams {
     private BusinessEntityCreateTransfersBuilder() {}
 
     public BusinessEntityCreateTransfersBuilder activeResourceIds(List<String> value) {
+
       formData.put("active_resource_ids", value);
+
       return this;
     }
 
     public BusinessEntityCreateTransfersBuilder destinationBusinessEntityIds(List<String> value) {
+
       formData.put("destination_business_entity_ids", value);
+
       return this;
     }
 
     @Deprecated
     public BusinessEntityCreateTransfersBuilder sourceBusinessEntityIds(List<String> value) {
+
       formData.put("source_business_entity_ids", value);
+
       return this;
     }
 
     @Deprecated
     public BusinessEntityCreateTransfersBuilder resourceTypes(List<String> value) {
+
       formData.put("resource_types", value);
+
       return this;
     }
 
     public BusinessEntityCreateTransfersBuilder reasonCodes(List<String> value) {
+
       formData.put("reason_codes", value);
+
       return this;
     }
 

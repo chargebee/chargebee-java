@@ -37,37 +37,51 @@ public final class ExportDeferredRevenueParams {
     private ExportDeferredRevenueBuilder() {}
 
     public ExportDeferredRevenueBuilder reportBy(ReportBy value) {
+
       formData.put("report_by", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder reportFromMonth(Integer value) {
+
       formData.put("report_from_month", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder reportFromYear(Integer value) {
+
       formData.put("report_from_year", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder reportToMonth(Integer value) {
+
       formData.put("report_to_month", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder reportToYear(Integer value) {
+
       formData.put("report_to_year", value);
+
       return this;
     }
 
     public ExportDeferredRevenueBuilder includeDiscounts(Boolean value) {
+
       formData.put("include_discounts", value);
+
       return this;
     }
 
@@ -178,27 +192,37 @@ public final class ExportDeferredRevenueParams {
       private PaymentOwnerBuilder() {}
 
       public PaymentOwnerBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PaymentOwnerBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PaymentOwnerBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public PaymentOwnerBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PaymentOwnerBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -233,27 +257,37 @@ public final class ExportDeferredRevenueParams {
       private ItemIdBuilder() {}
 
       public ItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -288,27 +322,37 @@ public final class ExportDeferredRevenueParams {
       private ItemPriceIdBuilder() {}
 
       public ItemPriceIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -343,27 +387,37 @@ public final class ExportDeferredRevenueParams {
       private CancelReasonCodeBuilder() {}
 
       public CancelReasonCodeBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -398,17 +452,23 @@ public final class ExportDeferredRevenueParams {
       private BusinessEntityIdBuilder() {}
 
       public BusinessEntityIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public BusinessEntityIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public BusinessEntityIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -543,27 +603,37 @@ public final class ExportDeferredRevenueParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -598,7 +668,9 @@ public final class ExportDeferredRevenueParams {
       private RecurringBuilder() {}
 
       public RecurringBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -661,22 +733,30 @@ public final class ExportDeferredRevenueParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -783,22 +863,30 @@ public final class ExportDeferredRevenueParams {
       private PriceTypeBuilder() {}
 
       public PriceTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PriceTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PriceTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PriceTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -889,22 +977,30 @@ public final class ExportDeferredRevenueParams {
       private DateBuilder() {}
 
       public DateBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public DateBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public DateBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public DateBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -939,22 +1035,30 @@ public final class ExportDeferredRevenueParams {
       private PaidAtBuilder() {}
 
       public PaidAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public PaidAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public PaidAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public PaidAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -989,37 +1093,51 @@ public final class ExportDeferredRevenueParams {
       private TotalBuilder() {}
 
       public TotalBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TotalBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TotalBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public TotalBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public TotalBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public TotalBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public TotalBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1054,37 +1172,51 @@ public final class ExportDeferredRevenueParams {
       private AmountPaidBuilder() {}
 
       public AmountPaidBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountPaidBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountPaidBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountPaidBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountPaidBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountPaidBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountPaidBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1119,37 +1251,51 @@ public final class ExportDeferredRevenueParams {
       private AmountAdjustedBuilder() {}
 
       public AmountAdjustedBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountAdjustedBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1184,37 +1330,51 @@ public final class ExportDeferredRevenueParams {
       private CreditsAppliedBuilder() {}
 
       public CreditsAppliedBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public CreditsAppliedBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1249,37 +1409,51 @@ public final class ExportDeferredRevenueParams {
       private AmountDueBuilder() {}
 
       public AmountDueBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountDueBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountDueBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountDueBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountDueBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountDueBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountDueBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1314,27 +1488,37 @@ public final class ExportDeferredRevenueParams {
       private DunningStatusBuilder() {}
 
       public DunningStatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public DunningStatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public DunningStatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public DunningStatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
       public DunningStatusBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -1461,22 +1645,30 @@ public final class ExportDeferredRevenueParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1511,22 +1703,30 @@ public final class ExportDeferredRevenueParams {
       private ChannelBuilder() {}
 
       public ChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1726,27 +1926,37 @@ public final class ExportDeferredRevenueParams {
       private ExportIdBuilder() {}
 
       public ExportIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ExportIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1781,27 +1991,37 @@ public final class ExportDeferredRevenueParams {
       private CustomerIdBuilder() {}
 
       public CustomerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CustomerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CustomerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CustomerIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CustomerIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1836,22 +2056,30 @@ public final class ExportDeferredRevenueParams {
       private ExportStatusBuilder() {}
 
       public ExportStatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportStatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportStatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportStatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1962,27 +2190,37 @@ public final class ExportDeferredRevenueParams {
       private CancelReasonBuilder() {}
 
       public CancelReasonBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CancelReasonBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CancelReasonBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CancelReasonBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
       public CancelReasonBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -2121,42 +2359,58 @@ public final class ExportDeferredRevenueParams {
       private RemainingBillingCyclesBuilder() {}
 
       public RemainingBillingCyclesBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -2219,22 +2473,30 @@ public final class ExportDeferredRevenueParams {
       private CreatedAtBuilder() {}
 
       public CreatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CreatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CreatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CreatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -2269,27 +2531,37 @@ public final class ExportDeferredRevenueParams {
       private ActivatedAtBuilder() {}
 
       public ActivatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ActivatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ActivatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ActivatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
       public ActivatedAtBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -2352,22 +2624,30 @@ public final class ExportDeferredRevenueParams {
       private NextBillingAtBuilder() {}
 
       public NextBillingAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public NextBillingAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public NextBillingAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public NextBillingAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -2402,22 +2682,30 @@ public final class ExportDeferredRevenueParams {
       private CancelledAtBuilder() {}
 
       public CancelledAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CancelledAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CancelledAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CancelledAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -2452,7 +2740,9 @@ public final class ExportDeferredRevenueParams {
       private HasScheduledChangesBuilder() {}
 
       public HasScheduledChangesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -2515,22 +2805,30 @@ public final class ExportDeferredRevenueParams {
       private ExportUpdatedAtBuilder() {}
 
       public ExportUpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ExportUpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ExportUpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ExportUpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -2565,22 +2863,30 @@ public final class ExportDeferredRevenueParams {
       private OfflinePaymentMethodBuilder() {}
 
       public OfflinePaymentMethodBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -2715,7 +3021,9 @@ public final class ExportDeferredRevenueParams {
       private AutoCloseInvoicesBuilder() {}
 
       public AutoCloseInvoicesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -2778,22 +3086,30 @@ public final class ExportDeferredRevenueParams {
       private ExportChannelBuilder() {}
 
       public ExportChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -2888,27 +3204,37 @@ public final class ExportDeferredRevenueParams {
       private PlanIdBuilder() {}
 
       public PlanIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PlanIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PlanIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public PlanIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PlanIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -3038,27 +3364,37 @@ public final class ExportDeferredRevenueParams {
       private ExportId2Builder() {}
 
       public ExportId2Builder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportId2Builder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportId2Builder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ExportId2Builder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportId2Builder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -3093,22 +3429,30 @@ public final class ExportDeferredRevenueParams {
       private FirstNameBuilder() {}
 
       public FirstNameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public FirstNameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public FirstNameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public FirstNameBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -3171,22 +3515,30 @@ public final class ExportDeferredRevenueParams {
       private LastNameBuilder() {}
 
       public LastNameBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public LastNameBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public LastNameBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public LastNameBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -3249,22 +3601,30 @@ public final class ExportDeferredRevenueParams {
       private EmailBuilder() {}
 
       public EmailBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public EmailBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public EmailBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public EmailBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -3327,22 +3687,30 @@ public final class ExportDeferredRevenueParams {
       private CompanyBuilder() {}
 
       public CompanyBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CompanyBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CompanyBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CompanyBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -3405,22 +3773,30 @@ public final class ExportDeferredRevenueParams {
       private PhoneBuilder() {}
 
       public PhoneBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PhoneBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PhoneBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public PhoneBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -3483,22 +3859,30 @@ public final class ExportDeferredRevenueParams {
       private AutoCollectionBuilder() {}
 
       public AutoCollectionBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AutoCollectionBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AutoCollectionBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public AutoCollectionBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -3589,22 +3973,30 @@ public final class ExportDeferredRevenueParams {
       private TaxabilityBuilder() {}
 
       public TaxabilityBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TaxabilityBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TaxabilityBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public TaxabilityBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -3695,22 +4087,30 @@ public final class ExportDeferredRevenueParams {
       private ExportCreatedAtBuilder() {}
 
       public ExportCreatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ExportCreatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ExportCreatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ExportCreatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -3745,22 +4145,30 @@ public final class ExportDeferredRevenueParams {
       private ExportUpdatedAt2Builder() {}
 
       public ExportUpdatedAt2Builder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ExportUpdatedAt2Builder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ExportUpdatedAt2Builder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ExportUpdatedAt2Builder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -3795,22 +4203,30 @@ public final class ExportDeferredRevenueParams {
       private ExportOfflinePaymentMethodBuilder() {}
 
       public ExportOfflinePaymentMethodBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportOfflinePaymentMethodBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportOfflinePaymentMethodBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportOfflinePaymentMethodBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -3945,7 +4361,9 @@ public final class ExportDeferredRevenueParams {
       private ExportAutoCloseInvoicesBuilder() {}
 
       public ExportAutoCloseInvoicesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -4008,22 +4426,30 @@ public final class ExportDeferredRevenueParams {
       private ExportChannel2Builder() {}
 
       public ExportChannel2Builder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ExportChannel2Builder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ExportChannel2Builder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ExportChannel2Builder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -4163,17 +4589,23 @@ public final class ExportDeferredRevenueParams {
       private ParentIdBuilder() {}
 
       public ParentIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ParentIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ParentIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -4208,17 +4640,23 @@ public final class ExportDeferredRevenueParams {
       private PaymentOwnerIdBuilder() {}
 
       public PaymentOwnerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PaymentOwnerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PaymentOwnerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -4253,17 +4691,23 @@ public final class ExportDeferredRevenueParams {
       private InvoiceOwnerIdBuilder() {}
 
       public InvoiceOwnerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public InvoiceOwnerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public InvoiceOwnerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 

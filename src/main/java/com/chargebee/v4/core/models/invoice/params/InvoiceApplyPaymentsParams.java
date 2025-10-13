@@ -38,12 +38,13 @@ public final class InvoiceApplyPaymentsParams {
     private InvoiceApplyPaymentsBuilder() {}
 
     public InvoiceApplyPaymentsBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceApplyPaymentsBuilder transactions(List<TransactionsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TransactionsParams item = value.get(i);
@@ -89,12 +90,16 @@ public final class InvoiceApplyPaymentsParams {
       private TransactionsBuilder() {}
 
       public TransactionsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public TransactionsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 

@@ -115,7 +115,6 @@ public final class VirtualBankAccountListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     VirtualBankAccountListParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

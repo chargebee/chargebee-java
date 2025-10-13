@@ -38,28 +38,35 @@ public final class PaymentScheduleSchemeCreateParams {
     private PaymentScheduleSchemeCreateBuilder() {}
 
     public PaymentScheduleSchemeCreateBuilder numberOfSchedules(Integer value) {
+
       formData.put("number_of_schedules", value);
+
       return this;
     }
 
     public PaymentScheduleSchemeCreateBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public PaymentScheduleSchemeCreateBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public PaymentScheduleSchemeCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public PaymentScheduleSchemeCreateBuilder flexibleSchedules(
         List<FlexibleSchedulesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           FlexibleSchedulesParams item = value.get(i);
@@ -135,12 +142,16 @@ public final class PaymentScheduleSchemeCreateParams {
       private FlexibleSchedulesBuilder() {}
 
       public FlexibleSchedulesBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public FlexibleSchedulesBuilder amountPercentage(Number value) {
+
         formData.put("amount_percentage", value);
+
         return this;
       }
 

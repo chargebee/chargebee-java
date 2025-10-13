@@ -51,11 +51,6 @@ public final class CreditNoteRetrieveParams {
     public CreditNoteRetrieveParams build() {
       return new CreditNoteRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 
   public static final class LineItemParams {
@@ -100,8 +95,6 @@ public final class CreditNoteRetrieveParams {
         return new LineItemParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class SubscriptionIdFilter {
         private final String fieldName;
         private final LineItemBuilder builder;
@@ -131,9 +124,6 @@ public final class CreditNoteRetrieveParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

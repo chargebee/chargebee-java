@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.coupon.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -39,117 +40,163 @@ public final class CouponCreateParams {
     private CouponCreateBuilder() {}
 
     public CouponCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public CouponCreateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public CouponCreateBuilder invoiceName(String value) {
+
       formData.put("invoice_name", value);
+
       return this;
     }
 
     public CouponCreateBuilder discountType(DiscountType value) {
+
       formData.put("discount_type", value);
+
       return this;
     }
 
     public CouponCreateBuilder discountAmount(Long value) {
+
       formData.put("discount_amount", value);
+
       return this;
     }
 
     public CouponCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CouponCreateBuilder discountPercentage(Number value) {
+
       formData.put("discount_percentage", value);
+
       return this;
     }
 
     public CouponCreateBuilder discountQuantity(Integer value) {
+
       formData.put("discount_quantity", value);
+
       return this;
     }
 
     public CouponCreateBuilder applyOn(ApplyOn value) {
+
       formData.put("apply_on", value);
+
       return this;
     }
 
     public CouponCreateBuilder durationType(DurationType value) {
+
       formData.put("duration_type", value);
+
       return this;
     }
 
     public CouponCreateBuilder durationMonth(Integer value) {
+
       formData.put("duration_month", value);
+
       return this;
     }
 
     public CouponCreateBuilder validTill(Timestamp value) {
+
       formData.put("valid_till", value);
+
       return this;
     }
 
     public CouponCreateBuilder maxRedemptions(Integer value) {
+
       formData.put("max_redemptions", value);
+
       return this;
     }
 
     public CouponCreateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
-    public CouponCreateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public CouponCreateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CouponCreateBuilder includedInMrr(Boolean value) {
+
       formData.put("included_in_mrr", value);
+
       return this;
     }
 
     public CouponCreateBuilder period(Integer value) {
+
       formData.put("period", value);
+
       return this;
     }
 
     public CouponCreateBuilder periodUnit(PeriodUnit value) {
+
       formData.put("period_unit", value);
+
       return this;
     }
 
     public CouponCreateBuilder planConstraint(PlanConstraint value) {
+
       formData.put("plan_constraint", value);
+
       return this;
     }
 
     public CouponCreateBuilder addonConstraint(AddonConstraint value) {
+
       formData.put("addon_constraint", value);
+
       return this;
     }
 
     public CouponCreateBuilder planIds(List<String> value) {
+
       formData.put("plan_ids", value);
+
       return this;
     }
 
     public CouponCreateBuilder addonIds(List<String> value) {
+
       formData.put("addon_ids", value);
+
       return this;
     }
 
     public CouponCreateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 

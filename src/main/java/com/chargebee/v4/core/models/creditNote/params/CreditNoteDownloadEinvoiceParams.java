@@ -46,10 +46,5 @@ public final class CreditNoteDownloadEinvoiceParams {
     public CreditNoteDownloadEinvoiceParams build() {
       return new CreditNoteDownloadEinvoiceParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

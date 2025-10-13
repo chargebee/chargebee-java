@@ -17,7 +17,7 @@ public class CouponSet {
   private Integer totalCount;
   private Integer redeemedCount;
   private Integer archivedCount;
-  private Object metaData;
+  private java.util.Map<String, Object> metaData;
 
   public String getId() {
     return id;
@@ -43,7 +43,7 @@ public class CouponSet {
     return archivedCount;
   }
 
-  public Object getMetaData() {
+  public java.util.Map<String, Object> getMetaData() {
     return metaData;
   }
 
@@ -62,7 +62,11 @@ public class CouponSet {
 
     obj.archivedCount = JsonUtil.getInteger(json, "archived_count");
 
-    obj.metaData = JsonUtil.getObject(json, "meta_data");
+    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    obj.metaData =
+        __metaDataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+            : new java.util.HashMap<>();
 
     return obj;
   }

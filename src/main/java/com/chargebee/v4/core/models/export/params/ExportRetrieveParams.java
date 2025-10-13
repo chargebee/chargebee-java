@@ -46,10 +46,5 @@ public final class ExportRetrieveParams {
     public ExportRetrieveParams build() {
       return new ExportRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

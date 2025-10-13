@@ -76,27 +76,37 @@ public final class ExportDifferentialPricesParams {
       private ItemIdBuilder() {}
 
       public ItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -176,27 +186,37 @@ public final class ExportDifferentialPricesParams {
       private ItemPriceIdBuilder() {}
 
       public ItemPriceIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -231,27 +251,37 @@ public final class ExportDifferentialPricesParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -286,27 +316,37 @@ public final class ExportDifferentialPricesParams {
       private ParentItemIdBuilder() {}
 
       public ParentItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ParentItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ParentItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ParentItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ParentItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

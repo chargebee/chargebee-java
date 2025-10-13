@@ -37,82 +37,114 @@ public final class AddressUpdateParams {
     private AddressUpdateBuilder() {}
 
     public AddressUpdateBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public AddressUpdateBuilder label(String value) {
+
       formData.put("label", value);
+
       return this;
     }
 
     public AddressUpdateBuilder firstName(String value) {
+
       formData.put("first_name", value);
+
       return this;
     }
 
     public AddressUpdateBuilder lastName(String value) {
+
       formData.put("last_name", value);
+
       return this;
     }
 
     public AddressUpdateBuilder email(String value) {
+
       formData.put("email", value);
+
       return this;
     }
 
     public AddressUpdateBuilder company(String value) {
+
       formData.put("company", value);
+
       return this;
     }
 
     public AddressUpdateBuilder phone(String value) {
+
       formData.put("phone", value);
+
       return this;
     }
 
     public AddressUpdateBuilder addr(String value) {
+
       formData.put("addr", value);
+
       return this;
     }
 
     public AddressUpdateBuilder extendedAddr(String value) {
+
       formData.put("extended_addr", value);
+
       return this;
     }
 
     public AddressUpdateBuilder extendedAddr2(String value) {
+
       formData.put("extended_addr2", value);
+
       return this;
     }
 
     public AddressUpdateBuilder city(String value) {
+
       formData.put("city", value);
+
       return this;
     }
 
     public AddressUpdateBuilder stateCode(String value) {
+
       formData.put("state_code", value);
+
       return this;
     }
 
     public AddressUpdateBuilder state(String value) {
+
       formData.put("state", value);
+
       return this;
     }
 
     public AddressUpdateBuilder zip(String value) {
+
       formData.put("zip", value);
+
       return this;
     }
 
     public AddressUpdateBuilder country(String value) {
+
       formData.put("country", value);
+
       return this;
     }
 
     public AddressUpdateBuilder validationStatus(ValidationStatus value) {
+
       formData.put("validation_status", value);
+
       return this;
     }
 

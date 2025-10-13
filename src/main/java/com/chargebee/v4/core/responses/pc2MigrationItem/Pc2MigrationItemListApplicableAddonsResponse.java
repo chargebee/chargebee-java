@@ -1,7 +1,6 @@
 package com.chargebee.v4.core.responses.pc2MigrationItem;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
@@ -14,7 +13,7 @@ import com.chargebee.v4.core.models.pc2MigrationItem.params.Pc2MigrationItemList
  */
 public final class Pc2MigrationItemListApplicableAddonsResponse {
 
-  private final List<Object> list;
+  private final List<java.util.Map<String, Object>> list;
 
   private final String nextOffset;
 
@@ -23,7 +22,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   private final Response httpResponse;
 
   private Pc2MigrationItemListApplicableAddonsResponse(
-      List<Object> list,
+      List<java.util.Map<String, Object>> list,
       String nextOffset,
       Pc2MigrationItemService service,
       Pc2MigrationItemListApplicableAddonsParams originalParams,
@@ -45,8 +44,10 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   public static Pc2MigrationItemListApplicableAddonsResponse fromJson(String json) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -68,8 +69,10 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
       Response httpResponse) {
     try {
 
-      List<Object> list =
-          new ArrayList<>(JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")));
+      List<java.util.Map<String, Object>> list =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(JsonUtil::parseJsonObjectToMap)
+              .collect(java.util.stream.Collectors.toList());
 
       String nextOffset = JsonUtil.getString(json, "next_offset");
 
@@ -82,7 +85,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   }
 
   /** Get the list from the response. */
-  public List<Object> getList() {
+  public List<java.util.Map<String, Object>> getList() {
     return list;
   }
 
@@ -92,7 +95,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   }
 
   /** Get the list of items in this page (alias). */
-  public List<Object> items() {
+  public List<java.util.Map<String, Object>> items() {
     return list;
   }
 
@@ -115,7 +118,6 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     Pc2MigrationItemListApplicableAddonsParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()

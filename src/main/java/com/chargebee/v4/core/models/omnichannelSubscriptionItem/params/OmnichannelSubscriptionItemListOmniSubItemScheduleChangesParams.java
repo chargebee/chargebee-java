@@ -58,10 +58,5 @@ public final class OmnichannelSubscriptionItemListOmniSubItemScheduleChangesPara
     public OmnichannelSubscriptionItemListOmniSubItemScheduleChangesParams build() {
       return new OmnichannelSubscriptionItemListOmniSubItemScheduleChangesParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

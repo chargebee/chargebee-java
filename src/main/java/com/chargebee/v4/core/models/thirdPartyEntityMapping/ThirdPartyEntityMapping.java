@@ -24,9 +24,9 @@ public class ThirdPartyEntityMapping {
   private Timestamp createdAt;
   private Timestamp modifiedAt;
   private String entityId;
-  private Object newResource;
-  private Object oldResource;
-  private Object mappingMeta;
+  private java.util.Map<String, Object> newResource;
+  private java.util.Map<String, Object> oldResource;
+  private java.util.Map<String, Object> mappingMeta;
   private String failedDependentEntityId;
 
   public EntityType getEntityType() {
@@ -77,15 +77,15 @@ public class ThirdPartyEntityMapping {
     return entityId;
   }
 
-  public Object getNewResource() {
+  public java.util.Map<String, Object> getNewResource() {
     return newResource;
   }
 
-  public Object getOldResource() {
+  public java.util.Map<String, Object> getOldResource() {
     return oldResource;
   }
 
-  public Object getMappingMeta() {
+  public java.util.Map<String, Object> getMappingMeta() {
     return mappingMeta;
   }
 
@@ -283,11 +283,23 @@ public class ThirdPartyEntityMapping {
 
     obj.entityId = JsonUtil.getString(json, "entity_id");
 
-    obj.newResource = JsonUtil.getObject(json, "new_resource");
+    String __newResourceJson = JsonUtil.getObject(json, "new_resource");
+    obj.newResource =
+        __newResourceJson != null
+            ? JsonUtil.parseJsonObjectToMap(__newResourceJson)
+            : new java.util.HashMap<>();
 
-    obj.oldResource = JsonUtil.getObject(json, "old_resource");
+    String __oldResourceJson = JsonUtil.getObject(json, "old_resource");
+    obj.oldResource =
+        __oldResourceJson != null
+            ? JsonUtil.parseJsonObjectToMap(__oldResourceJson)
+            : new java.util.HashMap<>();
 
-    obj.mappingMeta = JsonUtil.getObject(json, "mapping_meta");
+    String __mappingMetaJson = JsonUtil.getObject(json, "mapping_meta");
+    obj.mappingMeta =
+        __mappingMetaJson != null
+            ? JsonUtil.parseJsonObjectToMap(__mappingMetaJson)
+            : new java.util.HashMap<>();
 
     obj.failedDependentEntityId = JsonUtil.getString(json, "failed_dependent_entity_id");
 

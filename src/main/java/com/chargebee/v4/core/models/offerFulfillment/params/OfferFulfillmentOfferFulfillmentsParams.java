@@ -38,12 +38,16 @@ public final class OfferFulfillmentOfferFulfillmentsParams {
     private OfferFulfillmentOfferFulfillmentsBuilder() {}
 
     public OfferFulfillmentOfferFulfillmentsBuilder personalizedOfferId(String value) {
+
       formData.put("personalized_offer_id", value);
+
       return this;
     }
 
     public OfferFulfillmentOfferFulfillmentsBuilder optionId(String value) {
+
       formData.put("option_id", value);
+
       return this;
     }
 

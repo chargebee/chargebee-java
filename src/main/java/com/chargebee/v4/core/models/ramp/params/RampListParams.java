@@ -82,8 +82,6 @@ public final class RampListParams {
       return new RampListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class StatusFilter {
       private final String fieldName;
       private final RampListBuilder builder;
@@ -183,8 +181,6 @@ public final class RampListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

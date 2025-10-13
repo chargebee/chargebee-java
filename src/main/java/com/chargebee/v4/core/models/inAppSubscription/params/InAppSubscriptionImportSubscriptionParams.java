@@ -78,42 +78,58 @@ public final class InAppSubscriptionImportSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public SubscriptionBuilder startedAt(Timestamp value) {
+
         formData.put("started_at", value);
+
         return this;
       }
 
       public SubscriptionBuilder termStart(Timestamp value) {
+
         formData.put("term_start", value);
+
         return this;
       }
 
       public SubscriptionBuilder termEnd(Timestamp value) {
+
         formData.put("term_end", value);
+
         return this;
       }
 
       public SubscriptionBuilder productId(String value) {
+
         formData.put("product_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder currencyCode(String value) {
+
         formData.put("currency_code", value);
+
         return this;
       }
 
       public SubscriptionBuilder transactionId(String value) {
+
         formData.put("transaction_id", value);
+
         return this;
       }
 
       public SubscriptionBuilder isTrial(Boolean value) {
+
         formData.put("is_trial", value);
+
         return this;
       }
 
@@ -148,12 +164,16 @@ public final class InAppSubscriptionImportSubscriptionParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 

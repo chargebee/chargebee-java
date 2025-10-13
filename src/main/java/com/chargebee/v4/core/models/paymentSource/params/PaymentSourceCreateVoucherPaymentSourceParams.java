@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,7 +39,9 @@ public final class PaymentSourceCreateVoucherPaymentSourceParams {
     private PaymentSourceCreateVoucherPaymentSourceBuilder() {}
 
     public PaymentSourceCreateVoucherPaymentSourceBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
@@ -78,22 +81,30 @@ public final class PaymentSourceCreateVoucherPaymentSourceParams {
       private VoucherPaymentSourceBuilder() {}
 
       public VoucherPaymentSourceBuilder voucherType(VoucherType value) {
+
         formData.put("voucher_type", value);
+
         return this;
       }
 
       public VoucherPaymentSourceBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public VoucherPaymentSourceBuilder taxId(String value) {
+
         formData.put("tax_id", value);
+
         return this;
       }
 
-      public VoucherPaymentSourceBuilder billingAddress(Object value) {
-        formData.put("billing_address", value);
+      public VoucherPaymentSourceBuilder billingAddress(java.util.Map<String, Object> value) {
+
+        formData.put("billing_address", JsonUtil.toJson(value));
+
         return this;
       }
 

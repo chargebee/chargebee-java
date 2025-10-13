@@ -73,8 +73,6 @@ public final class CouponCodeListParams {
       return new CouponCodeListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class CodeFilter {
       private final String fieldName;
       private final CouponCodeListBuilder builder;
@@ -199,8 +197,6 @@ public final class CouponCodeListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public enum StatusIs {
       NotRedeemed("not_redeemed"),

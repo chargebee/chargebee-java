@@ -37,22 +37,30 @@ public final class Pc2MigrationItemFamilyUpdateParams {
     private Pc2MigrationItemFamilyUpdateBuilder() {}
 
     public Pc2MigrationItemFamilyUpdateBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyUpdateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyUpdateBuilder isDefault(Boolean value) {
+
       formData.put("is_default", value);
+
       return this;
     }
 
     public Pc2MigrationItemFamilyUpdateBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 

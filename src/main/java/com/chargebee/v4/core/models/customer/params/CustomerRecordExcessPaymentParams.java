@@ -38,7 +38,9 @@ public final class CustomerRecordExcessPaymentParams {
     private CustomerRecordExcessPaymentBuilder() {}
 
     public CustomerRecordExcessPaymentBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
@@ -77,37 +79,51 @@ public final class CustomerRecordExcessPaymentParams {
       private TransactionBuilder() {}
 
       public TransactionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public TransactionBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public TransactionBuilder currencyCode(String value) {
+
         formData.put("currency_code", value);
+
         return this;
       }
 
       public TransactionBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 
       public TransactionBuilder paymentMethod(PaymentMethod value) {
+
         formData.put("payment_method", value);
+
         return this;
       }
 
       public TransactionBuilder referenceNumber(String value) {
+
         formData.put("reference_number", value);
+
         return this;
       }
 
       public TransactionBuilder customPaymentMethodId(String value) {
+
         formData.put("custom_payment_method_id", value);
+
         return this;
       }
 

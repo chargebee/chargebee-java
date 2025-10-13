@@ -46,10 +46,5 @@ public final class VirtualBankAccountRetrieveParams {
     public VirtualBankAccountRetrieveParams build() {
       return new VirtualBankAccountRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

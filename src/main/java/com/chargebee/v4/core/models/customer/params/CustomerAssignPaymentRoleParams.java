@@ -37,12 +37,16 @@ public final class CustomerAssignPaymentRoleParams {
     private CustomerAssignPaymentRoleBuilder() {}
 
     public CustomerAssignPaymentRoleBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 
     public CustomerAssignPaymentRoleBuilder role(Role value) {
+
       formData.put("role", value);
+
       return this;
     }
 

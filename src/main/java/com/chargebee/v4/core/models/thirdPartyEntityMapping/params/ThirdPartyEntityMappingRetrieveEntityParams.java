@@ -75,10 +75,6 @@ public final class ThirdPartyEntityMappingRetrieveEntityParams {
       return new ThirdPartyEntityMappingRetrieveEntityParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public enum EntityType {
       Customer("customer"),
 

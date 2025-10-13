@@ -37,7 +37,9 @@ public final class DifferentialPriceDeleteParams {
     private DifferentialPriceDeleteBuilder() {}
 
     public DifferentialPriceDeleteBuilder itemPriceId(String value) {
+
       formData.put("item_price_id", value);
+
       return this;
     }
 

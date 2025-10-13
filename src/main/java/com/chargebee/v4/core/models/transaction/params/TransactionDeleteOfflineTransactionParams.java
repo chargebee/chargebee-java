@@ -38,7 +38,9 @@ public final class TransactionDeleteOfflineTransactionParams {
     private TransactionDeleteOfflineTransactionBuilder() {}
 
     public TransactionDeleteOfflineTransactionBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 

@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,63 +39,88 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     private PaymentSourceCreateUsingPermanentTokenBuilder() {}
 
     public PaymentSourceCreateUsingPermanentTokenBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder issuingCountry(String value) {
+
       formData.put("issuing_country", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder replacePrimaryPaymentSource(
         Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder paymentMethodToken(String value) {
+
       formData.put("payment_method_token", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder customerProfileToken(String value) {
+
       formData.put("customer_profile_token", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder networkTransactionId(String value) {
+
       formData.put("network_transaction_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder mandateId(String value) {
+
       formData.put("mandate_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateUsingPermanentTokenBuilder skipRetrieval(Boolean value) {
+
       formData.put("skip_retrieval", value);
+
       return this;
     }
 
-    public PaymentSourceCreateUsingPermanentTokenBuilder additionalInformation(Object value) {
-      formData.put("additional_information", value);
+    public PaymentSourceCreateUsingPermanentTokenBuilder additionalInformation(
+        java.util.Map<String, Object> value) {
+
+      formData.put("additional_information", JsonUtil.toJson(value));
+
       return this;
     }
 
@@ -213,32 +239,44 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       private CardBuilder() {}
 
       public CardBuilder last4(String value) {
+
         formData.put("last4", value);
+
         return this;
       }
 
       public CardBuilder iin(String value) {
+
         formData.put("iin", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder brand(Brand value) {
+
         formData.put("brand", value);
+
         return this;
       }
 
       public CardBuilder fundingType(FundingType value) {
+
         formData.put("funding_type", value);
+
         return this;
       }
 
@@ -371,57 +409,79 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 

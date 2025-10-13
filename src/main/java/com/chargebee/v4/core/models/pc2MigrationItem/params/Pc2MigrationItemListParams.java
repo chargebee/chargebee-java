@@ -61,11 +61,6 @@ public final class Pc2MigrationItemListParams {
     public Pc2MigrationItemListParams build() {
       return new Pc2MigrationItemListParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 
   public static final class Pc2MigrationItemFamilyParams {
@@ -106,8 +101,6 @@ public final class Pc2MigrationItemListParams {
         return new Pc2MigrationItemFamilyParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
       public static final class Pc2MigrationIdFilter {
         private final String fieldName;
         private final Pc2MigrationItemFamilyBuilder builder;
@@ -132,9 +125,6 @@ public final class Pc2MigrationItemListParams {
           return builder;
         }
       }
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

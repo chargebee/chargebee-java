@@ -121,7 +121,6 @@ public final class AttachedItemListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     AttachedItemListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : AttachedItemListParams.builder())
             .offset(nextOffset)

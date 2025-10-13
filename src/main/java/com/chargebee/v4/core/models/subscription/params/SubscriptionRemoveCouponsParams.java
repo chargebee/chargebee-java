@@ -38,7 +38,9 @@ public final class SubscriptionRemoveCouponsParams {
     private SubscriptionRemoveCouponsBuilder() {}
 
     public SubscriptionRemoveCouponsBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 

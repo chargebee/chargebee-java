@@ -39,17 +39,20 @@ public final class UnbilledChargeCreateParams {
     private UnbilledChargeCreateBuilder() {}
 
     public UnbilledChargeCreateBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public UnbilledChargeCreateBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public UnbilledChargeCreateBuilder itemPrices(List<ItemPricesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemPricesParams item = value.get(i);
@@ -66,7 +69,6 @@ public final class UnbilledChargeCreateParams {
     }
 
     public UnbilledChargeCreateBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -83,7 +85,6 @@ public final class UnbilledChargeCreateParams {
     }
 
     public UnbilledChargeCreateBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -100,7 +101,6 @@ public final class UnbilledChargeCreateParams {
     }
 
     public UnbilledChargeCreateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -146,37 +146,51 @@ public final class UnbilledChargeCreateParams {
       private ItemPricesBuilder() {}
 
       public ItemPricesBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemPricesBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public ItemPricesBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public ItemPricesBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public ItemPricesBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public ItemPricesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ItemPricesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -211,47 +225,65 @@ public final class UnbilledChargeCreateParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder pricingType(PricingType value) {
+
         formData.put("pricing_type", value);
+
         return this;
       }
 
       public ItemTiersBuilder packageSize(Integer value) {
+
         formData.put("package_size", value);
+
         return this;
       }
 
@@ -316,67 +348,93 @@ public final class UnbilledChargeCreateParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder taxable(Boolean value) {
+
         formData.put("taxable", value);
+
         return this;
       }
 
       public ChargesBuilder taxProfileId(String value) {
+
         formData.put("tax_profile_id", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTaxCode(String value) {
+
         formData.put("avalara_tax_code", value);
+
         return this;
       }
 
       public ChargesBuilder hsnCode(String value) {
+
         formData.put("hsn_code", value);
+
         return this;
       }
 
       public ChargesBuilder taxjarProductCode(String value) {
+
         formData.put("taxjar_product_code", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ChargesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -445,17 +503,23 @@ public final class UnbilledChargeCreateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

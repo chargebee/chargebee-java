@@ -38,12 +38,16 @@ public final class EstimateResumeSubscriptionParams {
     private EstimateResumeSubscriptionBuilder() {}
 
     public EstimateResumeSubscriptionBuilder resumeOption(ResumeOption value) {
+
       formData.put("resume_option", value);
+
       return this;
     }
 
     public EstimateResumeSubscriptionBuilder chargesHandling(ChargesHandling value) {
+
       formData.put("charges_handling", value);
+
       return this;
     }
 
@@ -138,7 +142,9 @@ public final class EstimateResumeSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder resumeDate(Timestamp value) {
+
         formData.put("resume_date", value);
+
         return this;
       }
 

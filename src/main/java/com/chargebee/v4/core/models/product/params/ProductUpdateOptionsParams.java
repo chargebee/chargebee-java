@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.product.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,12 +39,13 @@ public final class ProductUpdateOptionsParams {
     private ProductUpdateOptionsBuilder() {}
 
     public ProductUpdateOptionsBuilder removeOptions(List<String> value) {
+
       formData.put("remove_options", value);
+
       return this;
     }
 
     public ProductUpdateOptionsBuilder options(List<OptionsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           OptionsParams item = value.get(i);
@@ -89,17 +91,23 @@ public final class ProductUpdateOptionsParams {
       private OptionsBuilder() {}
 
       public OptionsBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
-      public OptionsBuilder values(List<String> value) {
-        formData.put("values", value);
+      public OptionsBuilder values(List<java.util.Map<String, Object>> value) {
+
+        formData.put("values", JsonUtil.toJson(value));
+
         return this;
       }
 
       public OptionsBuilder defaultValue(String value) {
+
         formData.put("default_value", value);
+
         return this;
       }
 

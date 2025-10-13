@@ -37,12 +37,16 @@ public final class UnbilledChargeInvoiceNowEstimateParams {
     private UnbilledChargeInvoiceNowEstimateBuilder() {}
 
     public UnbilledChargeInvoiceNowEstimateBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public UnbilledChargeInvoiceNowEstimateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 

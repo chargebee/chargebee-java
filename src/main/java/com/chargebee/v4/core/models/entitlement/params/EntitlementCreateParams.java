@@ -38,17 +38,20 @@ public final class EntitlementCreateParams {
     private EntitlementCreateBuilder() {}
 
     public EntitlementCreateBuilder action(Action value) {
+
       formData.put("action", value);
+
       return this;
     }
 
     public EntitlementCreateBuilder changeReason(String value) {
+
       formData.put("change_reason", value);
+
       return this;
     }
 
     public EntitlementCreateBuilder entitlements(List<EntitlementsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EntitlementsParams item = value.get(i);
@@ -122,27 +125,37 @@ public final class EntitlementCreateParams {
       private EntitlementsBuilder() {}
 
       public EntitlementsBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 
       public EntitlementsBuilder featureId(String value) {
+
         formData.put("feature_id", value);
+
         return this;
       }
 
       public EntitlementsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public EntitlementsBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public EntitlementsBuilder applyGrandfathering(Boolean value) {
+
         formData.put("apply_grandfathering", value);
+
         return this;
       }
 

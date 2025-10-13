@@ -71,7 +71,9 @@ public final class InvoiceRemoveCreditNoteParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

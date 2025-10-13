@@ -48,10 +48,5 @@ public final class OfferFulfillmentOfferFulfillmentsGetParams {
     public OfferFulfillmentOfferFulfillmentsGetParams build() {
       return new OfferFulfillmentOfferFulfillmentsGetParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

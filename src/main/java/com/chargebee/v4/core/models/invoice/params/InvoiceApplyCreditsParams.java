@@ -38,12 +38,13 @@ public final class InvoiceApplyCreditsParams {
     private InvoiceApplyCreditsBuilder() {}
 
     public InvoiceApplyCreditsBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceApplyCreditsBuilder creditNotes(List<CreditNotesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           CreditNotesParams item = value.get(i);
@@ -89,7 +90,9 @@ public final class InvoiceApplyCreditsParams {
       private CreditNotesBuilder() {}
 
       public CreditNotesBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

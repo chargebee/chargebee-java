@@ -59,7 +59,7 @@ public class Subscription {
   private String baseCurrencyCode;
   private String coupon;
   private String invoiceNotes;
-  private Object metaData;
+  private java.util.Map<String, Object> metaData;
   private Boolean deleted;
   private Timestamp changesScheduledAt;
   private String cancelReasonCode;
@@ -276,7 +276,7 @@ public class Subscription {
     return invoiceNotes;
   }
 
-  public Object getMetaData() {
+  public java.util.Map<String, Object> getMetaData() {
     return metaData;
   }
 
@@ -783,7 +783,11 @@ public class Subscription {
 
     obj.invoiceNotes = JsonUtil.getString(json, "invoice_notes");
 
-    obj.metaData = JsonUtil.getObject(json, "meta_data");
+    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    obj.metaData =
+        __metaDataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+            : new java.util.HashMap<>();
 
     obj.deleted = JsonUtil.getBoolean(json, "deleted");
 

@@ -37,12 +37,16 @@ public final class SubscriptionMoveParams {
     private SubscriptionMoveBuilder() {}
 
     public SubscriptionMoveBuilder toCustomerId(String value) {
+
       formData.put("to_customer_id", value);
+
       return this;
     }
 
     public SubscriptionMoveBuilder copyPaymentSource(Boolean value) {
+
       formData.put("copy_payment_source", value);
+
       return this;
     }
 

@@ -44,7 +44,7 @@ public class ItemPrice {
   private Timestamp archivedAt;
   private String invoiceNotes;
   private Boolean isTaxable;
-  private Object metadata;
+  private java.util.Map<String, Object> metadata;
   private ItemType itemType;
   private Boolean archivable;
   private String parentItemId;
@@ -181,7 +181,7 @@ public class ItemPrice {
     return isTaxable;
   }
 
-  public Object getMetadata() {
+  public java.util.Map<String, Object> getMetadata() {
     return metadata;
   }
 
@@ -604,7 +604,11 @@ public class ItemPrice {
 
     obj.isTaxable = JsonUtil.getBoolean(json, "is_taxable");
 
-    obj.metadata = JsonUtil.getObject(json, "metadata");
+    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    obj.metadata =
+        __metadataJson != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+            : new java.util.HashMap<>();
 
     obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
 

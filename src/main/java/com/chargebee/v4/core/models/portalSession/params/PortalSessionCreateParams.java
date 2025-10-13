@@ -37,12 +37,16 @@ public final class PortalSessionCreateParams {
     private PortalSessionCreateBuilder() {}
 
     public PortalSessionCreateBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public PortalSessionCreateBuilder forwardUrl(String value) {
+
       formData.put("forward_url", value);
+
       return this;
     }
 
@@ -81,7 +85,9 @@ public final class PortalSessionCreateParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

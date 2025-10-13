@@ -61,8 +61,6 @@ public final class Pc2MigrationItemFamilyListParams {
       return new Pc2MigrationItemFamilyListParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class Pc2MigrationIdFilter {
       private final String fieldName;
       private final Pc2MigrationItemFamilyListBuilder builder;
@@ -87,8 +85,5 @@ public final class Pc2MigrationItemFamilyListParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
-
   }
 }

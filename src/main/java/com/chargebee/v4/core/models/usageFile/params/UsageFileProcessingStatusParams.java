@@ -46,10 +46,5 @@ public final class UsageFileProcessingStatusParams {
     public UsageFileProcessingStatusParams build() {
       return new UsageFileProcessingStatusParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

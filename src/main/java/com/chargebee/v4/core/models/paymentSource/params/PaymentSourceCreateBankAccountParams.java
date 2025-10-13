@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,17 +38,23 @@ public final class PaymentSourceCreateBankAccountParams {
     private PaymentSourceCreateBankAccountBuilder() {}
 
     public PaymentSourceCreateBankAccountBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public PaymentSourceCreateBankAccountBuilder issuingCountry(String value) {
+
       formData.put("issuing_country", value);
+
       return this;
     }
 
     public PaymentSourceCreateBankAccountBuilder replacePrimaryPaymentSource(Boolean value) {
+
       formData.put("replace_primary_payment_source", value);
+
       return this;
     }
 
@@ -86,82 +93,114 @@ public final class PaymentSourceCreateBankAccountParams {
       private BankAccountBuilder() {}
 
       public BankAccountBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public BankAccountBuilder iban(String value) {
+
         formData.put("iban", value);
+
         return this;
       }
 
       public BankAccountBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BankAccountBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BankAccountBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BankAccountBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BankAccountBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BankAccountBuilder bankName(String value) {
+
         formData.put("bank_name", value);
+
         return this;
       }
 
       public BankAccountBuilder accountNumber(String value) {
+
         formData.put("account_number", value);
+
         return this;
       }
 
       public BankAccountBuilder routingNumber(String value) {
+
         formData.put("routing_number", value);
+
         return this;
       }
 
       public BankAccountBuilder bankCode(String value) {
+
         formData.put("bank_code", value);
+
         return this;
       }
 
       public BankAccountBuilder accountType(AccountType value) {
+
         formData.put("account_type", value);
+
         return this;
       }
 
       public BankAccountBuilder accountHolderType(AccountHolderType value) {
+
         formData.put("account_holder_type", value);
+
         return this;
       }
 
       public BankAccountBuilder echeckType(EcheckType value) {
+
         formData.put("echeck_type", value);
+
         return this;
       }
 
       public BankAccountBuilder swedishIdentityNumber(String value) {
+
         formData.put("swedish_identity_number", value);
+
         return this;
       }
 
-      public BankAccountBuilder billingAddress(Object value) {
-        formData.put("billing_address", value);
+      public BankAccountBuilder billingAddress(java.util.Map<String, Object> value) {
+
+        formData.put("billing_address", JsonUtil.toJson(value));
+
         return this;
       }
 

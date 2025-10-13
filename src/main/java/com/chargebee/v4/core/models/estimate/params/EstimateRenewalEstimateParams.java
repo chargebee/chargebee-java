@@ -66,10 +66,5 @@ public final class EstimateRenewalEstimateParams {
     public EstimateRenewalEstimateParams build() {
       return new EstimateRenewalEstimateParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

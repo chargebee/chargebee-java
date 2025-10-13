@@ -39,7 +39,9 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
     private PricingPageSessionCreateForExistingSubscriptionBuilder() {}
 
     public PricingPageSessionCreateForExistingSubscriptionBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
@@ -57,7 +59,6 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
     public PricingPageSessionCreateForExistingSubscriptionBuilder discounts(
         List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -103,7 +104,9 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
       private PricingPageBuilder() {}
 
       public PricingPageBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -138,7 +141,9 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -173,52 +178,72 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder applyOn(ApplyOn value) {
+
         formData.put("apply_on", value);
+
         return this;
       }
 
       public DiscountsBuilder durationType(DurationType value) {
+
         formData.put("duration_type", value);
+
         return this;
       }
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder period(Integer value) {
+
         formData.put("period", value);
+
         return this;
       }
 
       public DiscountsBuilder periodUnit(PeriodUnit value) {
+
         formData.put("period_unit", value);
+
         return this;
       }
 
       public DiscountsBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
       public DiscountsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder label(String value) {
+
         formData.put("label", value);
+
         return this;
       }
 

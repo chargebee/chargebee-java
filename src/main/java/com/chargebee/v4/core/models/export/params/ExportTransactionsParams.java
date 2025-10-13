@@ -176,27 +176,37 @@ public final class ExportTransactionsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -231,32 +241,44 @@ public final class ExportTransactionsParams {
       private CustomerIdBuilder() {}
 
       public CustomerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CustomerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CustomerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CustomerIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public CustomerIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CustomerIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -319,32 +341,44 @@ public final class ExportTransactionsParams {
       private SubscriptionIdBuilder() {}
 
       public SubscriptionIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -407,32 +441,44 @@ public final class ExportTransactionsParams {
       private PaymentSourceIdBuilder() {}
 
       public PaymentSourceIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PaymentSourceIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PaymentSourceIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public PaymentSourceIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public PaymentSourceIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PaymentSourceIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -495,22 +541,30 @@ public final class ExportTransactionsParams {
       private PaymentMethodBuilder() {}
 
       public PaymentMethodBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PaymentMethodBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PaymentMethodBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PaymentMethodBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -733,22 +787,30 @@ public final class ExportTransactionsParams {
       private GatewayBuilder() {}
 
       public GatewayBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public GatewayBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public GatewayBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public GatewayBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1051,27 +1113,37 @@ public final class ExportTransactionsParams {
       private GatewayAccountIdBuilder() {}
 
       public GatewayAccountIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public GatewayAccountIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public GatewayAccountIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public GatewayAccountIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public GatewayAccountIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1106,17 +1178,23 @@ public final class ExportTransactionsParams {
       private IdAtGatewayBuilder() {}
 
       public IdAtGatewayBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdAtGatewayBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdAtGatewayBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
@@ -1151,22 +1229,30 @@ public final class ExportTransactionsParams {
       private ReferenceNumberBuilder() {}
 
       public ReferenceNumberBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ReferenceNumberBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ReferenceNumberBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ReferenceNumberBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -1229,22 +1315,30 @@ public final class ExportTransactionsParams {
       private TypeBuilder() {}
 
       public TypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public TypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1343,22 +1437,30 @@ public final class ExportTransactionsParams {
       private DateBuilder() {}
 
       public DateBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public DateBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public DateBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public DateBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1393,37 +1495,51 @@ public final class ExportTransactionsParams {
       private AmountBuilder() {}
 
       public AmountBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1458,37 +1574,51 @@ public final class ExportTransactionsParams {
       private AmountCapturableBuilder() {}
 
       public AmountCapturableBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountCapturableBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountCapturableBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountCapturableBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountCapturableBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountCapturableBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountCapturableBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1523,22 +1653,30 @@ public final class ExportTransactionsParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1649,22 +1787,30 @@ public final class ExportTransactionsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 

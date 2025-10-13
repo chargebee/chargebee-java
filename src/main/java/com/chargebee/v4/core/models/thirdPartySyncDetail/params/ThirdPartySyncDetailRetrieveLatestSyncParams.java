@@ -54,11 +54,6 @@ public final class ThirdPartySyncDetailRetrieveLatestSyncParams {
     public ThirdPartySyncDetailRetrieveLatestSyncParams build() {
       return new ThirdPartySyncDetailRetrieveLatestSyncParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 
   public static final class ThirdPartyConfigurationParams {
@@ -99,11 +94,6 @@ public final class ThirdPartySyncDetailRetrieveLatestSyncParams {
       public ThirdPartyConfigurationParams build() {
         return new ThirdPartyConfigurationParams(this);
       }
-
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

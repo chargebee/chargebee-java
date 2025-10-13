@@ -46,10 +46,5 @@ public final class Pc2MigrationItemRetrieveParams {
     public Pc2MigrationItemRetrieveParams build() {
       return new Pc2MigrationItemRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

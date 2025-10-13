@@ -63,10 +63,5 @@ public final class ItemEntitlementItemEntitlementsForFeatureParams {
     public ItemEntitlementItemEntitlementsForFeatureParams build() {
       return new ItemEntitlementItemEntitlementsForFeatureParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -62,10 +62,6 @@ public final class ResourceMigrationRetrieveLatestParams {
       return new ResourceMigrationRetrieveLatestParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public enum EntityType {
       Customer("customer"),
 

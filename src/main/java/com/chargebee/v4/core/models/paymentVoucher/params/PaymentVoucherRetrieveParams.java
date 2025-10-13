@@ -46,10 +46,5 @@ public final class PaymentVoucherRetrieveParams {
     public PaymentVoucherRetrieveParams build() {
       return new PaymentVoucherRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.customer.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,173 +39,241 @@ public final class CustomerCreateParams {
     private CustomerCreateBuilder() {}
 
     public CustomerCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public CustomerCreateBuilder firstName(String value) {
+
       formData.put("first_name", value);
+
       return this;
     }
 
     public CustomerCreateBuilder lastName(String value) {
+
       formData.put("last_name", value);
+
       return this;
     }
 
     public CustomerCreateBuilder email(String value) {
+
       formData.put("email", value);
+
       return this;
     }
 
     public CustomerCreateBuilder preferredCurrencyCode(String value) {
+
       formData.put("preferred_currency_code", value);
+
       return this;
     }
 
     public CustomerCreateBuilder phone(String value) {
+
       formData.put("phone", value);
+
       return this;
     }
 
     public CustomerCreateBuilder company(String value) {
+
       formData.put("company", value);
+
       return this;
     }
 
     public CustomerCreateBuilder autoCollection(AutoCollection value) {
+
       formData.put("auto_collection", value);
+
       return this;
     }
 
     public CustomerCreateBuilder netTermDays(Integer value) {
+
       formData.put("net_term_days", value);
+
       return this;
     }
 
     public CustomerCreateBuilder allowDirectDebit(Boolean value) {
+
       formData.put("allow_direct_debit", value);
+
       return this;
     }
 
     public CustomerCreateBuilder vatNumber(String value) {
+
       formData.put("vat_number", value);
+
       return this;
     }
 
     public CustomerCreateBuilder vatNumberPrefix(String value) {
+
       formData.put("vat_number_prefix", value);
+
       return this;
     }
 
     public CustomerCreateBuilder entityIdentifierScheme(String value) {
+
       formData.put("entity_identifier_scheme", value);
+
       return this;
     }
 
     public CustomerCreateBuilder entityIdentifierStandard(String value) {
+
       formData.put("entity_identifier_standard", value);
+
       return this;
     }
 
     public CustomerCreateBuilder registeredForGst(Boolean value) {
+
       formData.put("registered_for_gst", value);
+
       return this;
     }
 
     public CustomerCreateBuilder isEinvoiceEnabled(Boolean value) {
+
       formData.put("is_einvoice_enabled", value);
+
       return this;
     }
 
     public CustomerCreateBuilder einvoicingMethod(EinvoicingMethod value) {
+
       formData.put("einvoicing_method", value);
+
       return this;
     }
 
     public CustomerCreateBuilder taxability(Taxability value) {
+
       formData.put("taxability", value);
+
       return this;
     }
 
-    public CustomerCreateBuilder exemptionDetails(List<String> value) {
-      formData.put("exemption_details", value);
+    public CustomerCreateBuilder exemptionDetails(List<java.util.Map<String, Object>> value) {
+
+      formData.put("exemption_details", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CustomerCreateBuilder customerType(CustomerType value) {
+
       formData.put("customer_type", value);
+
       return this;
     }
 
     public CustomerCreateBuilder clientProfileId(String value) {
+
       formData.put("client_profile_id", value);
+
       return this;
     }
 
     public CustomerCreateBuilder taxjarExemptionCategory(TaxjarExemptionCategory value) {
+
       formData.put("taxjar_exemption_category", value);
+
       return this;
     }
 
     public CustomerCreateBuilder businessCustomerWithoutVatNumber(Boolean value) {
+
       formData.put("business_customer_without_vat_number", value);
+
       return this;
     }
 
     public CustomerCreateBuilder locale(String value) {
+
       formData.put("locale", value);
+
       return this;
     }
 
     public CustomerCreateBuilder entityCode(EntityCode value) {
+
       formData.put("entity_code", value);
+
       return this;
     }
 
     public CustomerCreateBuilder exemptNumber(String value) {
+
       formData.put("exempt_number", value);
+
       return this;
     }
 
-    public CustomerCreateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public CustomerCreateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CustomerCreateBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
       formData.put("offline_payment_method", value);
+
       return this;
     }
 
     public CustomerCreateBuilder autoCloseInvoices(Boolean value) {
+
       formData.put("auto_close_invoices", value);
+
       return this;
     }
 
     public CustomerCreateBuilder consolidatedInvoicing(Boolean value) {
+
       formData.put("consolidated_invoicing", value);
+
       return this;
     }
 
     public CustomerCreateBuilder tokenId(String value) {
+
       formData.put("token_id", value);
+
       return this;
     }
 
     public CustomerCreateBuilder businessEntityId(String value) {
+
       formData.put("business_entity_id", value);
+
       return this;
     }
 
     @Deprecated
     public CustomerCreateBuilder createdFromIp(String value) {
+
       formData.put("created_from_ip", value);
+
       return this;
     }
 
     public CustomerCreateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
@@ -234,7 +303,6 @@ public final class CustomerCreateParams {
     }
 
     public CustomerCreateBuilder entityIdentifiers(List<EntityIdentifiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EntityIdentifiersParams item = value.get(i);
@@ -251,7 +319,6 @@ public final class CustomerCreateParams {
     }
 
     public CustomerCreateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -563,99 +630,137 @@ public final class CustomerCreateParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       @Deprecated
       public CardBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
       public CardBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CardBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CardBuilder number(String value) {
+
         formData.put("number", value);
+
         return this;
       }
 
       public CardBuilder expiryMonth(Integer value) {
+
         formData.put("expiry_month", value);
+
         return this;
       }
 
       public CardBuilder expiryYear(Integer value) {
+
         formData.put("expiry_year", value);
+
         return this;
       }
 
       public CardBuilder cvv(String value) {
+
         formData.put("cvv", value);
+
         return this;
       }
 
       public CardBuilder preferredScheme(PreferredScheme value) {
+
         formData.put("preferred_scheme", value);
+
         return this;
       }
 
       public CardBuilder billingAddr1(String value) {
+
         formData.put("billing_addr1", value);
+
         return this;
       }
 
       public CardBuilder billingAddr2(String value) {
+
         formData.put("billing_addr2", value);
+
         return this;
       }
 
       public CardBuilder billingCity(String value) {
+
         formData.put("billing_city", value);
+
         return this;
       }
 
       public CardBuilder billingStateCode(String value) {
+
         formData.put("billing_state_code", value);
+
         return this;
       }
 
       public CardBuilder billingState(String value) {
+
         formData.put("billing_state", value);
+
         return this;
       }
 
       public CardBuilder billingZip(String value) {
+
         formData.put("billing_zip", value);
+
         return this;
       }
 
       public CardBuilder billingCountry(String value) {
+
         formData.put("billing_country", value);
+
         return this;
       }
 
       @Deprecated
       public CardBuilder ipAddress(String value) {
+
         formData.put("ip_address", value);
+
         return this;
       }
 
-      public CardBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public CardBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -852,87 +957,121 @@ public final class CustomerCreateParams {
       private BankAccountBuilder() {}
 
       public BankAccountBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public BankAccountBuilder iban(String value) {
+
         formData.put("iban", value);
+
         return this;
       }
 
       public BankAccountBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BankAccountBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BankAccountBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BankAccountBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BankAccountBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BankAccountBuilder bankName(String value) {
+
         formData.put("bank_name", value);
+
         return this;
       }
 
       public BankAccountBuilder accountNumber(String value) {
+
         formData.put("account_number", value);
+
         return this;
       }
 
       public BankAccountBuilder routingNumber(String value) {
+
         formData.put("routing_number", value);
+
         return this;
       }
 
       public BankAccountBuilder bankCode(String value) {
+
         formData.put("bank_code", value);
+
         return this;
       }
 
       public BankAccountBuilder accountType(AccountType value) {
+
         formData.put("account_type", value);
+
         return this;
       }
 
       public BankAccountBuilder accountHolderType(AccountHolderType value) {
+
         formData.put("account_holder_type", value);
+
         return this;
       }
 
       public BankAccountBuilder echeckType(EcheckType value) {
+
         formData.put("echeck_type", value);
+
         return this;
       }
 
       public BankAccountBuilder issuingCountry(String value) {
+
         formData.put("issuing_country", value);
+
         return this;
       }
 
       public BankAccountBuilder swedishIdentityNumber(String value) {
+
         formData.put("swedish_identity_number", value);
+
         return this;
       }
 
-      public BankAccountBuilder billingAddress(Object value) {
-        formData.put("billing_address", value);
+      public BankAccountBuilder billingAddress(java.util.Map<String, Object> value) {
+
+        formData.put("billing_address", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -1059,38 +1198,52 @@ public final class CustomerCreateParams {
       private PaymentMethodBuilder() {}
 
       public PaymentMethodBuilder type(Type value) {
+
         formData.put("type", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentMethodBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public PaymentMethodBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       public PaymentMethodBuilder tmpToken(String value) {
+
         formData.put("tmp_token", value);
+
         return this;
       }
 
       public PaymentMethodBuilder issuingCountry(String value) {
+
         formData.put("issuing_country", value);
+
         return this;
       }
 
-      public PaymentMethodBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentMethodBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -1329,38 +1482,52 @@ public final class CustomerCreateParams {
       private PaymentIntentBuilder() {}
 
       public PaymentIntentBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
       public PaymentIntentBuilder gwToken(String value) {
+
         formData.put("gw_token", value);
+
         return this;
       }
 
       public PaymentIntentBuilder paymentMethodType(PaymentMethodType value) {
+
         formData.put("payment_method_type", value);
+
         return this;
       }
 
       public PaymentIntentBuilder referenceId(String value) {
+
         formData.put("reference_id", value);
+
         return this;
       }
 
       @Deprecated
       public PaymentIntentBuilder gwPaymentMethodId(String value) {
+
         formData.put("gw_payment_method_id", value);
+
         return this;
       }
 
-      public PaymentIntentBuilder additionalInformation(Object value) {
-        formData.put("additional_information", value);
+      public PaymentIntentBuilder additionalInformation(java.util.Map<String, Object> value) {
+
+        formData.put("additional_information", JsonUtil.toJson(value));
+
         return this;
       }
 
@@ -1463,72 +1630,100 @@ public final class CustomerCreateParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -1597,22 +1792,30 @@ public final class CustomerCreateParams {
       private EntityIdentifiersBuilder() {}
 
       public EntityIdentifiersBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder scheme(String value) {
+
         formData.put("scheme", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public EntityIdentifiersBuilder standard(String value) {
+
         formData.put("standard", value);
+
         return this;
       }
 
@@ -1647,17 +1850,23 @@ public final class CustomerCreateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

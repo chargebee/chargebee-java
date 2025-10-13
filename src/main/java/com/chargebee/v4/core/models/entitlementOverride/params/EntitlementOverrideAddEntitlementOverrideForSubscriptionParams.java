@@ -40,13 +40,14 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionParam
     private EntitlementOverrideAddEntitlementOverrideForSubscriptionBuilder() {}
 
     public EntitlementOverrideAddEntitlementOverrideForSubscriptionBuilder action(Action value) {
+
       formData.put("action", value);
+
       return this;
     }
 
     public EntitlementOverrideAddEntitlementOverrideForSubscriptionBuilder entitlementOverrides(
         List<EntitlementOverridesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EntitlementOverridesParams item = value.get(i);
@@ -120,22 +121,30 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionParam
       private EntitlementOverridesBuilder() {}
 
       public EntitlementOverridesBuilder featureId(String value) {
+
         formData.put("feature_id", value);
+
         return this;
       }
 
       public EntitlementOverridesBuilder value(String value) {
+
         formData.put("value", value);
+
         return this;
       }
 
       public EntitlementOverridesBuilder expiresAt(Timestamp value) {
+
         formData.put("expires_at", value);
+
         return this;
       }
 
       public EntitlementOverridesBuilder effectiveFrom(Timestamp value) {
+
         formData.put("effective_from", value);
+
         return this;
       }
 

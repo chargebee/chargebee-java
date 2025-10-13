@@ -38,17 +38,23 @@ public final class OfferFulfillmentOfferFulfillmentsUpdateParams {
     private OfferFulfillmentOfferFulfillmentsUpdateBuilder() {}
 
     public OfferFulfillmentOfferFulfillmentsUpdateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public OfferFulfillmentOfferFulfillmentsUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public OfferFulfillmentOfferFulfillmentsUpdateBuilder failureReason(String value) {
+
       formData.put("failure_reason", value);
+
       return this;
     }
 

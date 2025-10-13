@@ -38,7 +38,9 @@ public final class SubscriptionImportContractTermParams {
     private SubscriptionImportContractTermBuilder() {}
 
     public SubscriptionImportContractTermBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
       formData.put("contract_term_billing_cycle_on_renewal", value);
+
       return this;
     }
 
@@ -77,62 +79,86 @@ public final class SubscriptionImportContractTermParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public ContractTermBuilder createdAt(Timestamp value) {
+
         formData.put("created_at", value);
+
         return this;
       }
 
       public ContractTermBuilder contractStart(Timestamp value) {
+
         formData.put("contract_start", value);
+
         return this;
       }
 
       public ContractTermBuilder contractEnd(Timestamp value) {
+
         formData.put("contract_end", value);
+
         return this;
       }
 
       public ContractTermBuilder status(Status value) {
+
         formData.put("status", value);
+
         return this;
       }
 
       public ContractTermBuilder totalAmountRaised(Long value) {
+
         formData.put("total_amount_raised", value);
+
         return this;
       }
 
       public ContractTermBuilder totalAmountRaisedBeforeTax(Long value) {
+
         formData.put("total_amount_raised_before_tax", value);
+
         return this;
       }
 
       public ContractTermBuilder totalContractValue(Long value) {
+
         formData.put("total_contract_value", value);
+
         return this;
       }
 
       public ContractTermBuilder totalContractValueBeforeTax(Long value) {
+
         formData.put("total_contract_value_before_tax", value);
+
         return this;
       }
 
       public ContractTermBuilder billingCycle(Integer value) {
+
         formData.put("billing_cycle", value);
+
         return this;
       }
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 

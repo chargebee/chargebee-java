@@ -37,17 +37,23 @@ public final class HostedPagePreCancelParams {
     private HostedPagePreCancelBuilder() {}
 
     public HostedPagePreCancelBuilder passThruContent(String value) {
+
       formData.put("pass_thru_content", value);
+
       return this;
     }
 
     public HostedPagePreCancelBuilder cancelUrl(String value) {
+
       formData.put("cancel_url", value);
+
       return this;
     }
 
     public HostedPagePreCancelBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
@@ -86,7 +92,9 @@ public final class HostedPagePreCancelParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

@@ -37,7 +37,9 @@ public final class CustomerDeleteParams {
     private CustomerDeleteBuilder() {}
 
     public CustomerDeleteBuilder deletePaymentMethod(Boolean value) {
+
       formData.put("delete_payment_method", value);
+
       return this;
     }
 

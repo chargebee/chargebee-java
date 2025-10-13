@@ -39,42 +39,58 @@ public final class QuoteCreateForOnetimeChargesParams {
     private QuoteCreateForOnetimeChargesBuilder() {}
 
     public QuoteCreateForOnetimeChargesBuilder name(String value) {
+
       formData.put("name", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder poNumber(String value) {
+
       formData.put("po_number", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder notes(String value) {
+
       formData.put("notes", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder expiresAt(Timestamp value) {
+
       formData.put("expires_at", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public QuoteCreateForOnetimeChargesBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
@@ -84,7 +100,6 @@ public final class QuoteCreateForOnetimeChargesParams {
     }
 
     public QuoteCreateForOnetimeChargesBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -101,7 +116,6 @@ public final class QuoteCreateForOnetimeChargesParams {
     }
 
     public QuoteCreateForOnetimeChargesBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -119,7 +133,6 @@ public final class QuoteCreateForOnetimeChargesParams {
 
     public QuoteCreateForOnetimeChargesBuilder taxProvidersFields(
         List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -165,72 +178,100 @@ public final class QuoteCreateForOnetimeChargesParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -299,32 +340,44 @@ public final class QuoteCreateForOnetimeChargesParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder servicePeriod(Integer value) {
+
         formData.put("service_period", value);
+
         return this;
       }
 
@@ -359,37 +412,51 @@ public final class QuoteCreateForOnetimeChargesParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder servicePeriod(Integer value) {
+
         formData.put("service_period", value);
+
         return this;
       }
 
@@ -458,17 +525,23 @@ public final class QuoteCreateForOnetimeChargesParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

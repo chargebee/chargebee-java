@@ -39,48 +39,66 @@ public final class HostedPageCheckoutOneTimeParams {
     private HostedPageCheckoutOneTimeBuilder() {}
 
     public HostedPageCheckoutOneTimeBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder invoiceNote(String value) {
+
       formData.put("invoice_note", value);
+
       return this;
     }
 
     @Deprecated
     public HostedPageCheckoutOneTimeBuilder coupon(String value) {
+
       formData.put("coupon", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder couponIds(List<String> value) {
+
       formData.put("coupon_ids", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder cancelUrl(String value) {
+
       formData.put("cancel_url", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder passThruContent(String value) {
+
       formData.put("pass_thru_content", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder embed(Boolean value) {
+
       formData.put("embed", value);
+
       return this;
     }
 
     public HostedPageCheckoutOneTimeBuilder iframeMessaging(Boolean value) {
+
       formData.put("iframe_messaging", value);
+
       return this;
     }
 
@@ -110,7 +128,6 @@ public final class HostedPageCheckoutOneTimeParams {
     }
 
     public HostedPageCheckoutOneTimeBuilder addons(List<AddonsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AddonsParams item = value.get(i);
@@ -127,7 +144,6 @@ public final class HostedPageCheckoutOneTimeParams {
     }
 
     public HostedPageCheckoutOneTimeBuilder charges(List<ChargesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ChargesParams item = value.get(i);
@@ -173,57 +189,79 @@ public final class HostedPageCheckoutOneTimeParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public CustomerBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public CustomerBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public CustomerBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public CustomerBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public CustomerBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public CustomerBuilder locale(String value) {
+
         formData.put("locale", value);
+
         return this;
       }
 
       public CustomerBuilder taxability(Taxability value) {
+
         formData.put("taxability", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
       public CustomerBuilder consolidatedInvoicing(Boolean value) {
+
         formData.put("consolidated_invoicing", value);
+
         return this;
       }
 
@@ -286,7 +324,9 @@ public final class HostedPageCheckoutOneTimeParams {
       private InvoiceBuilder() {}
 
       public InvoiceBuilder poNumber(String value) {
+
         formData.put("po_number", value);
+
         return this;
       }
 
@@ -322,12 +362,16 @@ public final class HostedPageCheckoutOneTimeParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 
@@ -492,72 +536,100 @@ public final class HostedPageCheckoutOneTimeParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public BillingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public BillingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public BillingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -626,72 +698,100 @@ public final class HostedPageCheckoutOneTimeParams {
       private ShippingAddressBuilder() {}
 
       public ShippingAddressBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -760,37 +860,51 @@ public final class HostedPageCheckoutOneTimeParams {
       private AddonsBuilder() {}
 
       public AddonsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public AddonsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public AddonsBuilder unitPrice(Long value) {
+
         formData.put("unit_price", value);
+
         return this;
       }
 
       public AddonsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder unitPriceInDecimal(String value) {
+
         formData.put("unit_price_in_decimal", value);
+
         return this;
       }
 
       public AddonsBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public AddonsBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
@@ -825,67 +939,93 @@ public final class HostedPageCheckoutOneTimeParams {
       private ChargesBuilder() {}
 
       public ChargesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public ChargesBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public ChargesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public ChargesBuilder taxable(Boolean value) {
+
         formData.put("taxable", value);
+
         return this;
       }
 
       public ChargesBuilder taxProfileId(String value) {
+
         formData.put("tax_profile_id", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTaxCode(String value) {
+
         formData.put("avalara_tax_code", value);
+
         return this;
       }
 
       public ChargesBuilder hsnCode(String value) {
+
         formData.put("hsn_code", value);
+
         return this;
       }
 
       public ChargesBuilder taxjarProductCode(String value) {
+
         formData.put("taxjar_product_code", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraSaleType(AvalaraSaleType value) {
+
         formData.put("avalara_sale_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraTransactionType(Integer value) {
+
         formData.put("avalara_transaction_type", value);
+
         return this;
       }
 
       public ChargesBuilder avalaraServiceType(Integer value) {
+
         formData.put("avalara_service_type", value);
+
         return this;
       }
 
       public ChargesBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public ChargesBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 

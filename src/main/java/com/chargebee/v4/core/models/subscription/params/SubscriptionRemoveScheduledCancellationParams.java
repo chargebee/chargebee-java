@@ -38,13 +38,17 @@ public final class SubscriptionRemoveScheduledCancellationParams {
     private SubscriptionRemoveScheduledCancellationBuilder() {}
 
     public SubscriptionRemoveScheduledCancellationBuilder billingCycles(Integer value) {
+
       formData.put("billing_cycles", value);
+
       return this;
     }
 
     public SubscriptionRemoveScheduledCancellationBuilder contractTermBillingCycleOnRenewal(
         Integer value) {
+
       formData.put("contract_term_billing_cycle_on_renewal", value);
+
       return this;
     }
 
@@ -83,12 +87,16 @@ public final class SubscriptionRemoveScheduledCancellationParams {
       private ContractTermBuilder() {}
 
       public ContractTermBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 

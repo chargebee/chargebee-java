@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.purchase.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,12 +39,16 @@ public final class PurchaseEstimateParams {
     private PurchaseEstimateBuilder() {}
 
     public PurchaseEstimateBuilder clientProfileId(String value) {
+
       formData.put("client_profile_id", value);
+
       return this;
     }
 
     public PurchaseEstimateBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
@@ -58,7 +63,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder purchaseItems(List<PurchaseItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           PurchaseItemsParams item = value.get(i);
@@ -75,7 +79,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder itemTiers(List<ItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ItemTiersParams item = value.get(i);
@@ -92,7 +95,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder shippingAddresses(List<ShippingAddressesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ShippingAddressesParams item = value.get(i);
@@ -109,7 +111,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -126,7 +127,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder subscriptionInfo(List<SubscriptionInfoParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           SubscriptionInfoParams item = value.get(i);
@@ -143,7 +143,6 @@ public final class PurchaseEstimateParams {
     }
 
     public PurchaseEstimateBuilder contractTerms(List<ContractTermsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           ContractTermsParams item = value.get(i);
@@ -189,42 +188,58 @@ public final class PurchaseEstimateParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
       public CustomerBuilder registeredForGst(Boolean value) {
+
         formData.put("registered_for_gst", value);
+
         return this;
       }
 
       public CustomerBuilder taxability(Taxability value) {
+
         formData.put("taxability", value);
+
         return this;
       }
 
       public CustomerBuilder entityCode(EntityCode value) {
+
         formData.put("entity_code", value);
+
         return this;
       }
 
       public CustomerBuilder exemptNumber(String value) {
+
         formData.put("exempt_number", value);
+
         return this;
       }
 
-      public CustomerBuilder exemptionDetails(List<String> value) {
-        formData.put("exemption_details", value);
+      public CustomerBuilder exemptionDetails(List<java.util.Map<String, Object>> value) {
+
+        formData.put("exemption_details", JsonUtil.toJson(value));
+
         return this;
       }
 
       public CustomerBuilder customerType(CustomerType value) {
+
         formData.put("customer_type", value);
+
         return this;
       }
 
@@ -381,42 +396,58 @@ public final class PurchaseEstimateParams {
       private BillingAddressBuilder() {}
 
       public BillingAddressBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public BillingAddressBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public BillingAddressBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public BillingAddressBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public BillingAddressBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public BillingAddressBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public BillingAddressBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public BillingAddressBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -485,32 +516,44 @@ public final class PurchaseEstimateParams {
       private PurchaseItemsBuilder() {}
 
       public PurchaseItemsBuilder index(Integer value) {
+
         formData.put("index", value);
+
         return this;
       }
 
       public PurchaseItemsBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public PurchaseItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public PurchaseItemsBuilder unitAmount(Integer value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public PurchaseItemsBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 
       public PurchaseItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
@@ -545,42 +588,58 @@ public final class PurchaseEstimateParams {
       private ItemTiersBuilder() {}
 
       public ItemTiersBuilder index(Integer value) {
+
         formData.put("index", value);
+
         return this;
       }
 
       public ItemTiersBuilder itemPriceId(String value) {
+
         formData.put("item_price_id", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public ItemTiersBuilder price(Long value) {
+
         formData.put("price", value);
+
         return this;
       }
 
       public ItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public ItemTiersBuilder priceInDecimal(String value) {
+
         formData.put("price_in_decimal", value);
+
         return this;
       }
 
@@ -615,72 +674,100 @@ public final class PurchaseEstimateParams {
       private ShippingAddressesBuilder() {}
 
       public ShippingAddressesBuilder firstName(String value) {
+
         formData.put("first_name", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder lastName(String value) {
+
         formData.put("last_name", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder email(String value) {
+
         formData.put("email", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder company(String value) {
+
         formData.put("company", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder phone(String value) {
+
         formData.put("phone", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder line1(String value) {
+
         formData.put("line1", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder line2(String value) {
+
         formData.put("line2", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder line3(String value) {
+
         formData.put("line3", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder city(String value) {
+
         formData.put("city", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder state(String value) {
+
         formData.put("state", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder stateCode(String value) {
+
         formData.put("state_code", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder country(String value) {
+
         formData.put("country", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder zip(String value) {
+
         formData.put("zip", value);
+
         return this;
       }
 
       public ShippingAddressesBuilder validationStatus(ValidationStatus value) {
+
         formData.put("validation_status", value);
+
         return this;
       }
 
@@ -749,32 +836,44 @@ public final class PurchaseEstimateParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder index(Integer value) {
+
         formData.put("index", value);
+
         return this;
       }
 
       public DiscountsBuilder couponId(String value) {
+
         formData.put("coupon_id", value);
+
         return this;
       }
 
       public DiscountsBuilder percentage(Number value) {
+
         formData.put("percentage", value);
+
         return this;
       }
 
       public DiscountsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public DiscountsBuilder includedInMrr(Boolean value) {
+
         formData.put("included_in_mrr", value);
+
         return this;
       }
 
@@ -809,22 +908,30 @@ public final class PurchaseEstimateParams {
       private SubscriptionInfoBuilder() {}
 
       public SubscriptionInfoBuilder index(Integer value) {
+
         formData.put("index", value);
+
         return this;
       }
 
       public SubscriptionInfoBuilder subscriptionId(String value) {
+
         formData.put("subscription_id", value);
+
         return this;
       }
 
       public SubscriptionInfoBuilder billingCycles(Integer value) {
+
         formData.put("billing_cycles", value);
+
         return this;
       }
 
       public SubscriptionInfoBuilder contractTermBillingCycleOnRenewal(Integer value) {
+
         formData.put("contract_term_billing_cycle_on_renewal", value);
+
         return this;
       }
 
@@ -859,17 +966,23 @@ public final class PurchaseEstimateParams {
       private ContractTermsBuilder() {}
 
       public ContractTermsBuilder index(Integer value) {
+
         formData.put("index", value);
+
         return this;
       }
 
       public ContractTermsBuilder actionAtTermEnd(ActionAtTermEnd value) {
+
         formData.put("action_at_term_end", value);
+
         return this;
       }
 
       public ContractTermsBuilder cancellationCutoffPeriod(Integer value) {
+
         formData.put("cancellation_cutoff_period", value);
+
         return this;
       }
 

@@ -37,12 +37,16 @@ public final class CustomerMergeParams {
     private CustomerMergeBuilder() {}
 
     public CustomerMergeBuilder fromCustomerId(String value) {
+
       formData.put("from_customer_id", value);
+
       return this;
     }
 
     public CustomerMergeBuilder toCustomerId(String value) {
+
       formData.put("to_customer_id", value);
+
       return this;
     }
 

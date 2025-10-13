@@ -46,10 +46,5 @@ public final class EventRetrieveParams {
     public EventRetrieveParams build() {
       return new EventRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

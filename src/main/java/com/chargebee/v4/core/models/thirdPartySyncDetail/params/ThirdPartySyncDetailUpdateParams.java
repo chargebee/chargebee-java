@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.thirdPartySyncDetail.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -37,12 +38,16 @@ public final class ThirdPartySyncDetailUpdateParams {
     private ThirdPartySyncDetailUpdateBuilder() {}
 
     public ThirdPartySyncDetailUpdateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
-    public ThirdPartySyncDetailUpdateBuilder context(Object value) {
-      formData.put("context", value);
+    public ThirdPartySyncDetailUpdateBuilder context(java.util.Map<String, Object> value) {
+
+      formData.put("context", JsonUtil.toJson(value));
+
       return this;
     }
 

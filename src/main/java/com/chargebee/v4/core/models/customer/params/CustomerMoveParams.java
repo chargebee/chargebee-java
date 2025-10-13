@@ -37,12 +37,16 @@ public final class CustomerMoveParams {
     private CustomerMoveBuilder() {}
 
     public CustomerMoveBuilder idAtFromSite(String value) {
+
       formData.put("id_at_from_site", value);
+
       return this;
     }
 
     public CustomerMoveBuilder fromSite(String value) {
+
       formData.put("from_site", value);
+
       return this;
     }
 

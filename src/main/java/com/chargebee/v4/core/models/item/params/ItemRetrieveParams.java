@@ -46,10 +46,5 @@ public final class ItemRetrieveParams {
     public ItemRetrieveParams build() {
       return new ItemRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

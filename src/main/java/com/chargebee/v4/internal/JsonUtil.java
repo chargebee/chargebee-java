@@ -552,4 +552,127 @@ public class JsonUtil {
             .replace("\\r", "\r")
             .replace("\\t", "\t");
     }
+
+    /**
+     * Serialize a Map to a JSON string.
+     */
+    public static String toJson(java.util.Map<String, Object> map) {
+        if (map == null || map.isEmpty()) {
+            return "{}";
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append('{');
+        
+        boolean first = true;
+        for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+            if (!first) {
+                sb.append(',');
+            }
+            first = false;
+            
+            sb.append('"').append(escapeJsonString(entry.getKey())).append('"');
+            sb.append(':');
+            appendJsonValue(sb, entry.getValue());
+        }
+        
+        sb.append('}');
+        return sb.toString();
+    }
+
+    /**
+     * Serialize a List to a JSON string.
+     */
+    public static String toJson(java.util.List<?> list) {
+        if (list == null || list.isEmpty()) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder();
+        appendJsonList(sb, list);
+        return sb.toString();
+    }
+    
+    /**
+     * Append a JSON value (handles different types).
+     */
+    @SuppressWarnings("unchecked")
+    private static void appendJsonValue(StringBuilder sb, Object value) {
+        if (value == null) {
+            sb.append("null");
+        } else if (value instanceof String) {
+            sb.append('"').append(escapeJsonString((String) value)).append('"');
+        } else if (value instanceof Number) {
+            sb.append(value.toString());
+        } else if (value instanceof Boolean) {
+            sb.append(value.toString());
+        } else if (value instanceof java.util.Map) {
+            sb.append(toJson((java.util.Map<String, Object>) value));
+        } else if (value instanceof java.util.List) {
+            appendJsonList(sb, (java.util.List<?>) value);
+        } else {
+            // Fallback: convert to string
+            sb.append('"').append(escapeJsonString(value.toString())).append('"');
+        }
+    }
+    
+    /**
+     * Append a JSON array.
+     */
+    private static void appendJsonList(StringBuilder sb, java.util.List<?> list) {
+        sb.append('[');
+        boolean first = true;
+        for (Object item : list) {
+            if (!first) {
+                sb.append(',');
+            }
+            first = false;
+            appendJsonValue(sb, item);
+        }
+        sb.append(']');
+    }
+    
+    /**
+     * Escape special characters in JSON strings.
+     */
+    private static String escapeJsonString(String str) {
+        if (str == null) {
+            return "";
+        }
+        
+        StringBuilder escaped = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            switch (ch) {
+                case '"':
+                    escaped.append("\\\"");
+                    break;
+                case '\\':
+                    escaped.append("\\\\");
+                    break;
+                case '\b':
+                    escaped.append("\\b");
+                    break;
+                case '\f':
+                    escaped.append("\\f");
+                    break;
+                case '\n':
+                    escaped.append("\\n");
+                    break;
+                case '\r':
+                    escaped.append("\\r");
+                    break;
+                case '\t':
+                    escaped.append("\\t");
+                    break;
+                default:
+                    // Control characters
+                    if (ch < ' ') {
+                        escaped.append(String.format("\\u%04x", (int) ch));
+                    } else {
+                        escaped.append(ch);
+                    }
+            }
+        }
+        return escaped.toString();
+    }
 }

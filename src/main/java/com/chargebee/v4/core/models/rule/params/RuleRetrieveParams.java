@@ -46,10 +46,5 @@ public final class RuleRetrieveParams {
     public RuleRetrieveParams build() {
       return new RuleRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -37,27 +37,37 @@ public final class CustomerDeductPromotionalCreditsParams {
     private CustomerDeductPromotionalCreditsBuilder() {}
 
     public CustomerDeductPromotionalCreditsBuilder amount(Long value) {
+
       formData.put("amount", value);
+
       return this;
     }
 
     public CustomerDeductPromotionalCreditsBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CustomerDeductPromotionalCreditsBuilder description(String value) {
+
       formData.put("description", value);
+
       return this;
     }
 
     public CustomerDeductPromotionalCreditsBuilder creditType(CreditType value) {
+
       formData.put("credit_type", value);
+
       return this;
     }
 
     public CustomerDeductPromotionalCreditsBuilder reference(String value) {
+
       formData.put("reference", value);
+
       return this;
     }
 

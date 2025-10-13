@@ -39,87 +39,118 @@ public final class CreditNoteImportCreditNoteParams {
     private CreditNoteImportCreditNoteBuilder() {}
 
     public CreditNoteImportCreditNoteBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder customerId(String value) {
+
       formData.put("customer_id", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder subscriptionId(String value) {
+
       formData.put("subscription_id", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder referenceInvoiceId(String value) {
+
       formData.put("reference_invoice_id", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder type(Type value) {
+
       formData.put("type", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder currencyCode(String value) {
+
       formData.put("currency_code", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder createReasonCode(String value) {
+
       formData.put("create_reason_code", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder date(Timestamp value) {
+
       formData.put("date", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder total(Long value) {
+
       formData.put("total", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder refundedAt(Timestamp value) {
+
       formData.put("refunded_at", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder voidedAt(Timestamp value) {
+
       formData.put("voided_at", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder subTotal(Long value) {
+
       formData.put("sub_total", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder roundOffAmount(Long value) {
+
       formData.put("round_off_amount", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder fractionalCorrection(Long value) {
+
       formData.put("fractional_correction", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder vatNumberPrefix(String value) {
+
       formData.put("vat_number_prefix", value);
+
       return this;
     }
 
     public CreditNoteImportCreditNoteBuilder lineItems(List<LineItemsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LineItemsParams item = value.get(i);
@@ -136,7 +167,6 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public CreditNoteImportCreditNoteBuilder lineItemTiers(List<LineItemTiersParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LineItemTiersParams item = value.get(i);
@@ -153,7 +183,6 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public CreditNoteImportCreditNoteBuilder discounts(List<DiscountsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           DiscountsParams item = value.get(i);
@@ -170,7 +199,6 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public CreditNoteImportCreditNoteBuilder taxes(List<TaxesParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxesParams item = value.get(i);
@@ -187,7 +215,6 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public CreditNoteImportCreditNoteBuilder allocations(List<AllocationsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           AllocationsParams item = value.get(i);
@@ -204,7 +231,6 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public CreditNoteImportCreditNoteBuilder linkedRefunds(List<LinkedRefundsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           LinkedRefundsParams item = value.get(i);
@@ -312,192 +338,268 @@ public final class CreditNoteImportCreditNoteParams {
       private LineItemsBuilder() {}
 
       public LineItemsBuilder referenceLineItemId(String value) {
+
         formData.put("reference_line_item_id", value);
+
         return this;
       }
 
       public LineItemsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public LineItemsBuilder dateFrom(Timestamp value) {
+
         formData.put("date_from", value);
+
         return this;
       }
 
       public LineItemsBuilder dateTo(Timestamp value) {
+
         formData.put("date_to", value);
+
         return this;
       }
 
       public LineItemsBuilder subscriptionId(String value) {
+
         formData.put("subscription_id", value);
+
         return this;
       }
 
       public LineItemsBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public LineItemsBuilder unitAmount(Long value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder quantity(Integer value) {
+
         formData.put("quantity", value);
+
         return this;
       }
 
       public LineItemsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public LineItemsBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 
       public LineItemsBuilder quantityInDecimal(String value) {
+
         formData.put("quantity_in_decimal", value);
+
         return this;
       }
 
       public LineItemsBuilder amountInDecimal(String value) {
+
         formData.put("amount_in_decimal", value);
+
         return this;
       }
 
       public LineItemsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public LineItemsBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 
       public LineItemsBuilder itemLevelDiscount1EntityId(String value) {
+
         formData.put("item_level_discount1_entity_id", value);
+
         return this;
       }
 
       public LineItemsBuilder itemLevelDiscount1Amount(Long value) {
+
         formData.put("item_level_discount1_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder itemLevelDiscount2EntityId(String value) {
+
         formData.put("item_level_discount2_entity_id", value);
+
         return this;
       }
 
       public LineItemsBuilder itemLevelDiscount2Amount(Long value) {
+
         formData.put("item_level_discount2_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax1Name(String value) {
+
         formData.put("tax1_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax1Amount(Long value) {
+
         formData.put("tax1_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax2Name(String value) {
+
         formData.put("tax2_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax2Amount(Long value) {
+
         formData.put("tax2_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax3Name(String value) {
+
         formData.put("tax3_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax3Amount(Long value) {
+
         formData.put("tax3_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax4Name(String value) {
+
         formData.put("tax4_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax4Amount(Long value) {
+
         formData.put("tax4_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax5Name(String value) {
+
         formData.put("tax5_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax5Amount(Long value) {
+
         formData.put("tax5_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax6Name(String value) {
+
         formData.put("tax6_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax6Amount(Long value) {
+
         formData.put("tax6_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax7Name(String value) {
+
         formData.put("tax7_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax7Amount(Long value) {
+
         formData.put("tax7_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax8Name(String value) {
+
         formData.put("tax8_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax8Amount(Long value) {
+
         formData.put("tax8_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax9Name(String value) {
+
         formData.put("tax9_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax9Amount(Long value) {
+
         formData.put("tax9_amount", value);
+
         return this;
       }
 
       public LineItemsBuilder tax10Name(String value) {
+
         formData.put("tax10_name", value);
+
         return this;
       }
 
       public LineItemsBuilder tax10Amount(Long value) {
+
         formData.put("tax10_amount", value);
+
         return this;
       }
 
@@ -570,47 +672,65 @@ public final class CreditNoteImportCreditNoteParams {
       private LineItemTiersBuilder() {}
 
       public LineItemTiersBuilder lineItemId(String value) {
+
         formData.put("line_item_id", value);
+
         return this;
       }
 
       public LineItemTiersBuilder startingUnit(Integer value) {
+
         formData.put("starting_unit", value);
+
         return this;
       }
 
       public LineItemTiersBuilder endingUnit(Integer value) {
+
         formData.put("ending_unit", value);
+
         return this;
       }
 
       public LineItemTiersBuilder quantityUsed(Integer value) {
+
         formData.put("quantity_used", value);
+
         return this;
       }
 
       public LineItemTiersBuilder unitAmount(Long value) {
+
         formData.put("unit_amount", value);
+
         return this;
       }
 
       public LineItemTiersBuilder startingUnitInDecimal(String value) {
+
         formData.put("starting_unit_in_decimal", value);
+
         return this;
       }
 
       public LineItemTiersBuilder endingUnitInDecimal(String value) {
+
         formData.put("ending_unit_in_decimal", value);
+
         return this;
       }
 
       public LineItemTiersBuilder quantityUsedInDecimal(String value) {
+
         formData.put("quantity_used_in_decimal", value);
+
         return this;
       }
 
       public LineItemTiersBuilder unitAmountInDecimal(String value) {
+
         formData.put("unit_amount_in_decimal", value);
+
         return this;
       }
 
@@ -645,22 +765,30 @@ public final class CreditNoteImportCreditNoteParams {
       private DiscountsBuilder() {}
 
       public DiscountsBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public DiscountsBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 
       public DiscountsBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public DiscountsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
@@ -729,37 +857,51 @@ public final class CreditNoteImportCreditNoteParams {
       private TaxesBuilder() {}
 
       public TaxesBuilder name(String value) {
+
         formData.put("name", value);
+
         return this;
       }
 
       public TaxesBuilder rate(Number value) {
+
         formData.put("rate", value);
+
         return this;
       }
 
       public TaxesBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public TaxesBuilder description(String value) {
+
         formData.put("description", value);
+
         return this;
       }
 
       public TaxesBuilder jurisType(JurisType value) {
+
         formData.put("juris_type", value);
+
         return this;
       }
 
       public TaxesBuilder jurisName(String value) {
+
         formData.put("juris_name", value);
+
         return this;
       }
 
       public TaxesBuilder jurisCode(String value) {
+
         formData.put("juris_code", value);
+
         return this;
       }
 
@@ -834,17 +976,23 @@ public final class CreditNoteImportCreditNoteParams {
       private AllocationsBuilder() {}
 
       public AllocationsBuilder invoiceId(String value) {
+
         formData.put("invoice_id", value);
+
         return this;
       }
 
       public AllocationsBuilder allocatedAmount(Long value) {
+
         formData.put("allocated_amount", value);
+
         return this;
       }
 
       public AllocationsBuilder allocatedAt(Timestamp value) {
+
         formData.put("allocated_at", value);
+
         return this;
       }
 
@@ -879,27 +1027,37 @@ public final class CreditNoteImportCreditNoteParams {
       private LinkedRefundsBuilder() {}
 
       public LinkedRefundsBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       public LinkedRefundsBuilder amount(Long value) {
+
         formData.put("amount", value);
+
         return this;
       }
 
       public LinkedRefundsBuilder paymentMethod(PaymentMethod value) {
+
         formData.put("payment_method", value);
+
         return this;
       }
 
       public LinkedRefundsBuilder date(Timestamp value) {
+
         formData.put("date", value);
+
         return this;
       }
 
       public LinkedRefundsBuilder referenceNumber(String value) {
+
         formData.put("reference_number", value);
+
         return this;
       }
 

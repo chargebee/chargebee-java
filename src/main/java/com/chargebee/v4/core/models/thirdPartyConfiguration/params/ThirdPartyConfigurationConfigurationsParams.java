@@ -53,10 +53,5 @@ public final class ThirdPartyConfigurationConfigurationsParams {
     public ThirdPartyConfigurationConfigurationsParams build() {
       return new ThirdPartyConfigurationConfigurationsParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

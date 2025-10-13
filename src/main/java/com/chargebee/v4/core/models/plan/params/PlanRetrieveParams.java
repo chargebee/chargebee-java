@@ -46,10 +46,5 @@ public final class PlanRetrieveParams {
     public PlanRetrieveParams build() {
       return new PlanRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

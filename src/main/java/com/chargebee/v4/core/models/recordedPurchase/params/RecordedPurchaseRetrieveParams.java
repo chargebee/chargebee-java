@@ -46,10 +46,5 @@ public final class RecordedPurchaseRetrieveParams {
     public RecordedPurchaseRetrieveParams build() {
       return new RecordedPurchaseRetrieveParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

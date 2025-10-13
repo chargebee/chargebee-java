@@ -37,7 +37,9 @@ public final class HostedPageRetrieveAgreementPdfParams {
     private HostedPageRetrieveAgreementPdfBuilder() {}
 
     public HostedPageRetrieveAgreementPdfBuilder paymentSourceId(String value) {
+
       formData.put("payment_source_id", value);
+
       return this;
     }
 

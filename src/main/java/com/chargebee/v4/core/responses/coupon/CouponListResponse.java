@@ -111,7 +111,6 @@ public final class CouponListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     CouponListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : CouponListParams.builder())
             .offset(nextOffset)

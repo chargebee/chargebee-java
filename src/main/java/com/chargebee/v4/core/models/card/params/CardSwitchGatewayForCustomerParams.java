@@ -38,12 +38,16 @@ public final class CardSwitchGatewayForCustomerParams {
 
     @Deprecated
     public CardSwitchGatewayForCustomerBuilder gateway(Gateway value) {
+
       formData.put("gateway", value);
+
       return this;
     }
 
     public CardSwitchGatewayForCustomerBuilder gatewayAccountId(String value) {
+
       formData.put("gateway_account_id", value);
+
       return this;
     }
 

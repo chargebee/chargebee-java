@@ -56,10 +56,5 @@ public final class CustomerContactsForCustomerParams {
     public CustomerContactsForCustomerParams build() {
       return new CustomerContactsForCustomerParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

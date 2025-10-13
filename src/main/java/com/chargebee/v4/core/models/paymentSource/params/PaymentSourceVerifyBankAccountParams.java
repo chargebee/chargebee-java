@@ -37,12 +37,16 @@ public final class PaymentSourceVerifyBankAccountParams {
     private PaymentSourceVerifyBankAccountBuilder() {}
 
     public PaymentSourceVerifyBankAccountBuilder amount1(Long value) {
+
       formData.put("amount1", value);
+
       return this;
     }
 
     public PaymentSourceVerifyBankAccountBuilder amount2(Long value) {
+
       formData.put("amount2", value);
+
       return this;
     }
 

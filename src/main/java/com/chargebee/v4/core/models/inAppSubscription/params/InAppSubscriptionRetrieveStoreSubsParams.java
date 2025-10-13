@@ -38,7 +38,9 @@ public final class InAppSubscriptionRetrieveStoreSubsParams {
     private InAppSubscriptionRetrieveStoreSubsBuilder() {}
 
     public InAppSubscriptionRetrieveStoreSubsBuilder receipt(String value) {
+
       formData.put("receipt", value);
+
       return this;
     }
 

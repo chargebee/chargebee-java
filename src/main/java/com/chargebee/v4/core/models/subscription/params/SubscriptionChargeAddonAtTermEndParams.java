@@ -38,37 +38,51 @@ public final class SubscriptionChargeAddonAtTermEndParams {
     private SubscriptionChargeAddonAtTermEndBuilder() {}
 
     public SubscriptionChargeAddonAtTermEndBuilder addonId(String value) {
+
       formData.put("addon_id", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder addonQuantity(Integer value) {
+
       formData.put("addon_quantity", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder addonUnitPrice(Long value) {
+
       formData.put("addon_unit_price", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder addonQuantityInDecimal(String value) {
+
       formData.put("addon_quantity_in_decimal", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder addonUnitPriceInDecimal(String value) {
+
       formData.put("addon_unit_price_in_decimal", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder dateFrom(Timestamp value) {
+
       formData.put("date_from", value);
+
       return this;
     }
 
     public SubscriptionChargeAddonAtTermEndBuilder dateTo(Timestamp value) {
+
       formData.put("date_to", value);
+
       return this;
     }
 

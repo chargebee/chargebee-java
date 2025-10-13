@@ -38,7 +38,9 @@ public final class TimeMachineTravelForwardParams {
     private TimeMachineTravelForwardBuilder() {}
 
     public TimeMachineTravelForwardBuilder destinationTime(Timestamp value) {
+
       formData.put("destination_time", value);
+
       return this;
     }
 

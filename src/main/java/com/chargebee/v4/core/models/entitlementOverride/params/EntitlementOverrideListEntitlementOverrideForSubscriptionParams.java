@@ -75,10 +75,5 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionPara
     public EntitlementOverrideListEntitlementOverrideForSubscriptionParams build() {
       return new EntitlementOverrideListEntitlementOverrideForSubscriptionParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

@@ -111,7 +111,6 @@ public final class EventListResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     EventListParams nextParams =
         (originalParams != null ? originalParams.toBuilder() : EventListParams.builder())
             .offset(nextOffset)

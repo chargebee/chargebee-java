@@ -37,12 +37,16 @@ public final class QuotePdfParams {
     private QuotePdfBuilder() {}
 
     public QuotePdfBuilder consolidatedView(Boolean value) {
+
       formData.put("consolidated_view", value);
+
       return this;
     }
 
     public QuotePdfBuilder dispositionType(DispositionType value) {
+
       formData.put("disposition_type", value);
+
       return this;
     }
 

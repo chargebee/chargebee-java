@@ -37,22 +37,30 @@ public final class HostedPageUpdateCardParams {
     private HostedPageUpdateCardBuilder() {}
 
     public HostedPageUpdateCardBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageUpdateCardBuilder cancelUrl(String value) {
+
       formData.put("cancel_url", value);
+
       return this;
     }
 
     public HostedPageUpdateCardBuilder passThruContent(String value) {
+
       formData.put("pass_thru_content", value);
+
       return this;
     }
 
     public HostedPageUpdateCardBuilder iframeMessaging(Boolean value) {
+
       formData.put("iframe_messaging", value);
+
       return this;
     }
 
@@ -67,7 +75,9 @@ public final class HostedPageUpdateCardParams {
     }
 
     public HostedPageUpdateCardBuilder embed(Boolean value) {
+
       formData.put("embed", value);
+
       return this;
     }
 
@@ -101,19 +111,25 @@ public final class HostedPageUpdateCardParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
       @Deprecated
       public CustomerBuilder vatNumber(String value) {
+
         formData.put("vat_number", value);
+
         return this;
       }
 
       @Deprecated
       public CustomerBuilder vatNumberPrefix(String value) {
+
         formData.put("vat_number_prefix", value);
+
         return this;
       }
 
@@ -149,12 +165,16 @@ public final class HostedPageUpdateCardParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 

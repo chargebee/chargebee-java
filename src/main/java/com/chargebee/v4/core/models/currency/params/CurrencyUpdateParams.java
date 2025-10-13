@@ -37,12 +37,16 @@ public final class CurrencyUpdateParams {
     private CurrencyUpdateBuilder() {}
 
     public CurrencyUpdateBuilder forexType(ForexType value) {
+
       formData.put("forex_type", value);
+
       return this;
     }
 
     public CurrencyUpdateBuilder manualExchangeRate(String value) {
+
       formData.put("manual_exchange_rate", value);
+
       return this;
     }
 

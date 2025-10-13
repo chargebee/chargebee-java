@@ -37,47 +37,65 @@ public final class OrderCreateParams {
     private OrderCreateBuilder() {}
 
     public OrderCreateBuilder id(String value) {
+
       formData.put("id", value);
+
       return this;
     }
 
     public OrderCreateBuilder invoiceId(String value) {
+
       formData.put("invoice_id", value);
+
       return this;
     }
 
     public OrderCreateBuilder status(Status value) {
+
       formData.put("status", value);
+
       return this;
     }
 
     public OrderCreateBuilder referenceId(String value) {
+
       formData.put("reference_id", value);
+
       return this;
     }
 
     public OrderCreateBuilder fulfillmentStatus(String value) {
+
       formData.put("fulfillment_status", value);
+
       return this;
     }
 
     public OrderCreateBuilder note(String value) {
+
       formData.put("note", value);
+
       return this;
     }
 
     public OrderCreateBuilder trackingId(String value) {
+
       formData.put("tracking_id", value);
+
       return this;
     }
 
     public OrderCreateBuilder trackingUrl(String value) {
+
       formData.put("tracking_url", value);
+
       return this;
     }
 
     public OrderCreateBuilder batchId(String value) {
+
       formData.put("batch_id", value);
+
       return this;
     }
 

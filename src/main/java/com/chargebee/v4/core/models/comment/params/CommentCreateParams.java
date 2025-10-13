@@ -37,22 +37,30 @@ public final class CommentCreateParams {
     private CommentCreateBuilder() {}
 
     public CommentCreateBuilder entityType(EntityType value) {
+
       formData.put("entity_type", value);
+
       return this;
     }
 
     public CommentCreateBuilder entityId(String value) {
+
       formData.put("entity_id", value);
+
       return this;
     }
 
     public CommentCreateBuilder notes(String value) {
+
       formData.put("notes", value);
+
       return this;
     }
 
     public CommentCreateBuilder addedBy(String value) {
+
       formData.put("added_by", value);
+
       return this;
     }
 

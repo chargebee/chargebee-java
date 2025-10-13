@@ -258,13 +258,13 @@ public class DifferentialPrice {
   public static class ParentPeriods {
 
     private PeriodUnit periodUnit;
-    private List<String> period;
+    private List<java.util.Map<String, Object>> period;
 
     public PeriodUnit getPeriodUnit() {
       return periodUnit;
     }
 
-    public List<String> getPeriod() {
+    public List<java.util.Map<String, Object>> getPeriod() {
       return period;
     }
 
@@ -305,7 +305,13 @@ public class DifferentialPrice {
 
       obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
 
-      obj.period = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "period"));
+      String __periodJson = JsonUtil.getArray(json, "period");
+      obj.period =
+          __periodJson != null
+              ? JsonUtil.parseObjectArray(__periodJson).stream()
+                  .map(JsonUtil::parseJsonObjectToMap)
+                  .collect(java.util.stream.Collectors.toList())
+              : null;
 
       return obj;
     }

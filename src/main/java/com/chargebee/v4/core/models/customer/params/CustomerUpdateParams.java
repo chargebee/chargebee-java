@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.customer.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,122 +39,167 @@ public final class CustomerUpdateParams {
     private CustomerUpdateBuilder() {}
 
     public CustomerUpdateBuilder firstName(String value) {
+
       formData.put("first_name", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder lastName(String value) {
+
       formData.put("last_name", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder email(String value) {
+
       formData.put("email", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder preferredCurrencyCode(String value) {
+
       formData.put("preferred_currency_code", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder phone(String value) {
+
       formData.put("phone", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder company(String value) {
+
       formData.put("company", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder autoCollection(AutoCollection value) {
+
       formData.put("auto_collection", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder allowDirectDebit(Boolean value) {
+
       formData.put("allow_direct_debit", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder netTermDays(Integer value) {
+
       formData.put("net_term_days", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder taxability(Taxability value) {
+
       formData.put("taxability", value);
+
       return this;
     }
 
-    public CustomerUpdateBuilder exemptionDetails(List<String> value) {
-      formData.put("exemption_details", value);
+    public CustomerUpdateBuilder exemptionDetails(List<java.util.Map<String, Object>> value) {
+
+      formData.put("exemption_details", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CustomerUpdateBuilder customerType(CustomerType value) {
+
       formData.put("customer_type", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder clientProfileId(String value) {
+
       formData.put("client_profile_id", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder taxjarExemptionCategory(TaxjarExemptionCategory value) {
+
       formData.put("taxjar_exemption_category", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder locale(String value) {
+
       formData.put("locale", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder entityCode(EntityCode value) {
+
       formData.put("entity_code", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder exemptNumber(String value) {
+
       formData.put("exempt_number", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder offlinePaymentMethod(OfflinePaymentMethod value) {
+
       formData.put("offline_payment_method", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder invoiceNotes(String value) {
+
       formData.put("invoice_notes", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder autoCloseInvoices(Boolean value) {
+
       formData.put("auto_close_invoices", value);
+
       return this;
     }
 
-    public CustomerUpdateBuilder metaData(Object value) {
-      formData.put("meta_data", value);
+    public CustomerUpdateBuilder metaData(java.util.Map<String, Object> value) {
+
+      formData.put("meta_data", JsonUtil.toJson(value));
+
       return this;
     }
 
     public CustomerUpdateBuilder fraudFlag(FraudFlag value) {
+
       formData.put("fraud_flag", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder consolidatedInvoicing(Boolean value) {
+
       formData.put("consolidated_invoicing", value);
+
       return this;
     }
 
     public CustomerUpdateBuilder taxProvidersFields(List<TaxProvidersFieldsParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           TaxProvidersFieldsParams item = value.get(i);
@@ -462,17 +508,23 @@ public final class CustomerUpdateParams {
       private TaxProvidersFieldsBuilder() {}
 
       public TaxProvidersFieldsBuilder providerName(String value) {
+
         formData.put("provider_name", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldId(String value) {
+
         formData.put("field_id", value);
+
         return this;
       }
 
       public TaxProvidersFieldsBuilder fieldValue(String value) {
+
         formData.put("field_value", value);
+
         return this;
       }
 

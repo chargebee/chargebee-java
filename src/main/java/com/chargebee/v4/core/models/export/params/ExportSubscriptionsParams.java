@@ -37,7 +37,9 @@ public final class ExportSubscriptionsParams {
     private ExportSubscriptionsBuilder() {}
 
     public ExportSubscriptionsBuilder exportType(ExportType value) {
+
       formData.put("export_type", value);
+
       return this;
     }
 
@@ -119,27 +121,37 @@ public final class ExportSubscriptionsParams {
       private ItemIdBuilder() {}
 
       public ItemIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -174,27 +186,37 @@ public final class ExportSubscriptionsParams {
       private ItemPriceIdBuilder() {}
 
       public ItemPriceIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ItemPriceIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -229,27 +251,37 @@ public final class ExportSubscriptionsParams {
       private CancelReasonCodeBuilder() {}
 
       public CancelReasonCodeBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CancelReasonCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -389,27 +421,37 @@ public final class ExportSubscriptionsParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -444,27 +486,37 @@ public final class ExportSubscriptionsParams {
       private CustomerIdBuilder() {}
 
       public CustomerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CustomerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CustomerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CustomerIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CustomerIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -499,22 +551,30 @@ public final class ExportSubscriptionsParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -625,27 +685,37 @@ public final class ExportSubscriptionsParams {
       private CancelReasonBuilder() {}
 
       public CancelReasonBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CancelReasonBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CancelReasonBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CancelReasonBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
       public CancelReasonBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -784,42 +854,58 @@ public final class ExportSubscriptionsParams {
       private RemainingBillingCyclesBuilder() {}
 
       public RemainingBillingCyclesBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
       public RemainingBillingCyclesBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -882,22 +968,30 @@ public final class ExportSubscriptionsParams {
       private CreatedAtBuilder() {}
 
       public CreatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CreatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CreatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CreatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -932,27 +1026,37 @@ public final class ExportSubscriptionsParams {
       private ActivatedAtBuilder() {}
 
       public ActivatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public ActivatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public ActivatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public ActivatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
       public ActivatedAtBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
@@ -1015,22 +1119,30 @@ public final class ExportSubscriptionsParams {
       private NextBillingAtBuilder() {}
 
       public NextBillingAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public NextBillingAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public NextBillingAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public NextBillingAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1065,22 +1177,30 @@ public final class ExportSubscriptionsParams {
       private CancelledAtBuilder() {}
 
       public CancelledAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public CancelledAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public CancelledAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public CancelledAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1115,7 +1235,9 @@ public final class ExportSubscriptionsParams {
       private HasScheduledChangesBuilder() {}
 
       public HasScheduledChangesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -1178,22 +1300,30 @@ public final class ExportSubscriptionsParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1228,22 +1358,30 @@ public final class ExportSubscriptionsParams {
       private OfflinePaymentMethodBuilder() {}
 
       public OfflinePaymentMethodBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public OfflinePaymentMethodBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1378,7 +1516,9 @@ public final class ExportSubscriptionsParams {
       private AutoCloseInvoicesBuilder() {}
 
       public AutoCloseInvoicesBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
@@ -1441,22 +1581,30 @@ public final class ExportSubscriptionsParams {
       private ChannelBuilder() {}
 
       public ChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1551,27 +1699,37 @@ public final class ExportSubscriptionsParams {
       private PlanIdBuilder() {}
 
       public PlanIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PlanIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PlanIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public PlanIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PlanIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

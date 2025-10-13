@@ -37,7 +37,9 @@ public final class HostedPageManagePaymentSourcesParams {
     private HostedPageManagePaymentSourcesBuilder() {}
 
     public HostedPageManagePaymentSourcesBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
@@ -81,7 +83,9 @@ public final class HostedPageManagePaymentSourcesParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -117,12 +121,16 @@ public final class HostedPageManagePaymentSourcesParams {
 
       @Deprecated
       public CardBuilder gateway(Gateway value) {
+
         formData.put("gateway", value);
+
         return this;
       }
 
       public CardBuilder gatewayAccountId(String value) {
+
         formData.put("gateway_account_id", value);
+
         return this;
       }
 

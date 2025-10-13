@@ -119,10 +119,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       return new EstimateCreateSubForCustomerEstimateParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
     public enum BillingAlignmentMode {
       Immediate("immediate"),
 
@@ -450,10 +446,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return new SubscriptionParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
       public enum OfflinePaymentMethod {
         NoPreference("no_preference"),
 
@@ -647,10 +639,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return new ShippingAddressParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
       public enum ValidationStatus {
         NotValidated("not_validated"),
 
@@ -731,10 +719,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return new ContractTermParams(this);
       }
 
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
       public enum ActionAtTermEnd {
         Renew("renew"),
 
@@ -804,7 +788,7 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public AddonsBuilder quantity(List<String> value) {
+      public AddonsBuilder quantity(List<Integer> value) {
         queryParams.put("quantity", value);
         return this;
       }
@@ -814,7 +798,7 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public AddonsBuilder unitPrice(List<String> value) {
+      public AddonsBuilder unitPrice(List<Integer> value) {
         queryParams.put("unit_price", value);
         return this;
       }
@@ -824,12 +808,12 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public AddonsBuilder billingCycles(List<String> value) {
+      public AddonsBuilder billingCycles(List<Integer> value) {
         queryParams.put("billing_cycles", value);
         return this;
       }
 
-      public AddonsBuilder trialEnd(List<String> value) {
+      public AddonsBuilder trialEnd(List<Integer> value) {
         queryParams.put("trial_end", value);
         return this;
       }
@@ -837,11 +821,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       public AddonsParams build() {
         return new AddonsParams(this);
       }
-
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
     }
   }
 
@@ -880,12 +859,12 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public EventBasedAddonsBuilder quantity(List<String> value) {
+      public EventBasedAddonsBuilder quantity(List<Integer> value) {
         queryParams.put("quantity", value);
         return this;
       }
 
-      public EventBasedAddonsBuilder unitPrice(List<String> value) {
+      public EventBasedAddonsBuilder unitPrice(List<Integer> value) {
         queryParams.put("unit_price", value);
         return this;
       }
@@ -900,7 +879,7 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public EventBasedAddonsBuilder servicePeriodInDays(List<String> value) {
+      public EventBasedAddonsBuilder servicePeriodInDays(List<Integer> value) {
         queryParams.put("service_period_in_days", value);
         return this;
       }
@@ -910,7 +889,7 @@ public final class EstimateCreateSubForCustomerEstimateParams {
         return this;
       }
 
-      public EventBasedAddonsBuilder chargeOnce(List<String> value) {
+      public EventBasedAddonsBuilder chargeOnce(List<Boolean> value) {
         queryParams.put("charge_once", value);
         return this;
       }
@@ -923,11 +902,6 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       public EventBasedAddonsParams build() {
         return new EventBasedAddonsParams(this);
       }
-
-      // Field-specific filter classes for fluent API
-
-      // Sort builder classes for fluent API
-
     }
   }
 }

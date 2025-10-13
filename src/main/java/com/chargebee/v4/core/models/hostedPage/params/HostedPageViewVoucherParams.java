@@ -76,7 +76,9 @@ public final class HostedPageViewVoucherParams {
       private PaymentVoucherBuilder() {}
 
       public PaymentVoucherBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 
@@ -111,7 +113,9 @@ public final class HostedPageViewVoucherParams {
       private CustomerBuilder() {}
 
       public CustomerBuilder locale(String value) {
+
         formData.put("locale", value);
+
         return this;
       }
 

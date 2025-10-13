@@ -37,12 +37,16 @@ public final class HostedPageAcceptQuoteParams {
     private HostedPageAcceptQuoteBuilder() {}
 
     public HostedPageAcceptQuoteBuilder redirectUrl(String value) {
+
       formData.put("redirect_url", value);
+
       return this;
     }
 
     public HostedPageAcceptQuoteBuilder layout(Layout value) {
+
       formData.put("layout", value);
+
       return this;
     }
 
@@ -109,7 +113,9 @@ public final class HostedPageAcceptQuoteParams {
       private QuoteBuilder() {}
 
       public QuoteBuilder id(String value) {
+
         formData.put("id", value);
+
         return this;
       }
 

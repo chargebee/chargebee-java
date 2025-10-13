@@ -90,8 +90,6 @@ public final class VariantListProductVariantsParams {
       return new VariantListProductVariantsParams(this);
     }
 
-    // Field-specific filter classes for fluent API
-
     public static final class IdFilter {
       private final String fieldName;
       private final VariantListProductVariantsBuilder builder;
@@ -286,8 +284,6 @@ public final class VariantListProductVariantsParams {
         return builder;
       }
     }
-
-    // Sort builder classes for fluent API
 
     public static final class SortBySortBuilder {
       private final String fieldName;

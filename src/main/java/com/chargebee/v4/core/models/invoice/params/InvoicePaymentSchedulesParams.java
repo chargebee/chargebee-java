@@ -46,10 +46,5 @@ public final class InvoicePaymentSchedulesParams {
     public InvoicePaymentSchedulesParams build() {
       return new InvoicePaymentSchedulesParams(this);
     }
-
-    // Field-specific filter classes for fluent API
-
-    // Sort builder classes for fluent API
-
   }
 }

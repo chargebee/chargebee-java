@@ -39,27 +39,34 @@ public final class InvoiceCloseParams {
     private InvoiceCloseBuilder() {}
 
     public InvoiceCloseBuilder comment(String value) {
+
       formData.put("comment", value);
+
       return this;
     }
 
     public InvoiceCloseBuilder invoiceNote(String value) {
+
       formData.put("invoice_note", value);
+
       return this;
     }
 
     public InvoiceCloseBuilder removeGeneralNote(Boolean value) {
+
       formData.put("remove_general_note", value);
+
       return this;
     }
 
     public InvoiceCloseBuilder invoiceDate(Timestamp value) {
+
       formData.put("invoice_date", value);
+
       return this;
     }
 
     public InvoiceCloseBuilder notesToRemove(List<NotesToRemoveParams> value) {
-      // Convert list of individual items into indexed format
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           NotesToRemoveParams item = value.get(i);
@@ -105,12 +112,16 @@ public final class InvoiceCloseParams {
       private NotesToRemoveBuilder() {}
 
       public NotesToRemoveBuilder entityType(EntityType value) {
+
         formData.put("entity_type", value);
+
         return this;
       }
 
       public NotesToRemoveBuilder entityId(String value) {
+
         formData.put("entity_id", value);
+
         return this;
       }
 

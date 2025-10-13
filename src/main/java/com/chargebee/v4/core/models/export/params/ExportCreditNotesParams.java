@@ -186,27 +186,37 @@ public final class ExportCreditNotesParams {
       private IdBuilder() {}
 
       public IdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public IdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public IdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public IdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public IdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -241,27 +251,37 @@ public final class ExportCreditNotesParams {
       private CustomerIdBuilder() {}
 
       public CustomerIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CustomerIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CustomerIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CustomerIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CustomerIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -296,32 +316,44 @@ public final class ExportCreditNotesParams {
       private SubscriptionIdBuilder() {}
 
       public SubscriptionIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public SubscriptionIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -384,32 +416,44 @@ public final class ExportCreditNotesParams {
       private ReferenceInvoiceIdBuilder() {}
 
       public ReferenceInvoiceIdBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ReferenceInvoiceIdBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ReferenceInvoiceIdBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public ReferenceInvoiceIdBuilder isPresent(IsPresent value) {
+
         formData.put("is_present", value);
+
         return this;
       }
 
       public ReferenceInvoiceIdBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ReferenceInvoiceIdBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -472,22 +516,30 @@ public final class ExportCreditNotesParams {
       private TypeBuilder() {}
 
       public TypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public TypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -582,22 +634,30 @@ public final class ExportCreditNotesParams {
       private ReasonCodeBuilder() {}
 
       public ReasonCodeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ReasonCodeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ReasonCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ReasonCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -728,27 +788,37 @@ public final class ExportCreditNotesParams {
       private CreateReasonCodeBuilder() {}
 
       public CreateReasonCodeBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public CreateReasonCodeBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public CreateReasonCodeBuilder startsWith(String value) {
+
         formData.put("starts_with", value);
+
         return this;
       }
 
       public CreateReasonCodeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public CreateReasonCodeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -783,22 +853,30 @@ public final class ExportCreditNotesParams {
       private StatusBuilder() {}
 
       public StatusBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public StatusBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public StatusBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public StatusBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -897,22 +975,30 @@ public final class ExportCreditNotesParams {
       private DateBuilder() {}
 
       public DateBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public DateBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public DateBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public DateBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -947,37 +1033,51 @@ public final class ExportCreditNotesParams {
       private TotalBuilder() {}
 
       public TotalBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public TotalBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public TotalBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public TotalBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public TotalBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public TotalBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public TotalBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1012,22 +1112,30 @@ public final class ExportCreditNotesParams {
       private PriceTypeBuilder() {}
 
       public PriceTypeBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public PriceTypeBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public PriceTypeBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public PriceTypeBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 
@@ -1118,37 +1226,51 @@ public final class ExportCreditNotesParams {
       private AmountAllocatedBuilder() {}
 
       public AmountAllocatedBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountAllocatedBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1183,37 +1305,51 @@ public final class ExportCreditNotesParams {
       private AmountRefundedBuilder() {}
 
       public AmountRefundedBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountRefundedBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountRefundedBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountRefundedBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountRefundedBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountRefundedBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountRefundedBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1248,37 +1384,51 @@ public final class ExportCreditNotesParams {
       private AmountAvailableBuilder() {}
 
       public AmountAvailableBuilder is(String value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public AmountAvailableBuilder isNot(String value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public AmountAvailableBuilder lt(String value) {
+
         formData.put("lt", value);
+
         return this;
       }
 
       public AmountAvailableBuilder lte(String value) {
+
         formData.put("lte", value);
+
         return this;
       }
 
       public AmountAvailableBuilder gt(String value) {
+
         formData.put("gt", value);
+
         return this;
       }
 
       public AmountAvailableBuilder gte(String value) {
+
         formData.put("gte", value);
+
         return this;
       }
 
       public AmountAvailableBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1313,22 +1463,30 @@ public final class ExportCreditNotesParams {
       private VoidedAtBuilder() {}
 
       public VoidedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public VoidedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public VoidedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public VoidedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1363,22 +1521,30 @@ public final class ExportCreditNotesParams {
       private UpdatedAtBuilder() {}
 
       public UpdatedAtBuilder after(String value) {
+
         formData.put("after", value);
+
         return this;
       }
 
       public UpdatedAtBuilder before(String value) {
+
         formData.put("before", value);
+
         return this;
       }
 
       public UpdatedAtBuilder on(String value) {
+
         formData.put("on", value);
+
         return this;
       }
 
       public UpdatedAtBuilder between(String value) {
+
         formData.put("between", value);
+
         return this;
       }
 
@@ -1413,22 +1579,30 @@ public final class ExportCreditNotesParams {
       private ChannelBuilder() {}
 
       public ChannelBuilder is(Is value) {
+
         formData.put("is", value);
+
         return this;
       }
 
       public ChannelBuilder isNot(IsNot value) {
+
         formData.put("is_not", value);
+
         return this;
       }
 
       public ChannelBuilder in(String value) {
+
         formData.put("in", value);
+
         return this;
       }
 
       public ChannelBuilder notIn(String value) {
+
         formData.put("not_in", value);
+
         return this;
       }
 

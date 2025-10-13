@@ -7,6 +7,7 @@
 package com.chargebee.v4.core.models.thirdPartyConfiguration.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -38,22 +39,30 @@ public final class ThirdPartyConfigurationUpdateParams {
     private ThirdPartyConfigurationUpdateBuilder() {}
 
     public ThirdPartyConfigurationUpdateBuilder integrationName(String value) {
+
       formData.put("integration_name", value);
+
       return this;
     }
 
-    public ThirdPartyConfigurationUpdateBuilder configJson(Object value) {
-      formData.put("config_json", value);
+    public ThirdPartyConfigurationUpdateBuilder configJson(java.util.Map<String, Object> value) {
+
+      formData.put("config_json", JsonUtil.toJson(value));
+
       return this;
     }
 
-    public ThirdPartyConfigurationUpdateBuilder authJson(Object value) {
-      formData.put("auth_json", value);
+    public ThirdPartyConfigurationUpdateBuilder authJson(java.util.Map<String, Object> value) {
+
+      formData.put("auth_json", JsonUtil.toJson(value));
+
       return this;
     }
 
     public ThirdPartyConfigurationUpdateBuilder lastSyncAt(Timestamp value) {
+
       formData.put("last_sync_at", value);
+
       return this;
     }
 

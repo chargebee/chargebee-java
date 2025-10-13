@@ -126,7 +126,6 @@ public final class InvoiceInvoicesForSubscriptionResponse {
           "nextPage() requires service context. Use fromJson(json, service, originalParams, httpResponse).");
     }
 
-    // Create new params with the next offset
     InvoiceInvoicesForSubscriptionParams nextParams =
         (originalParams != null
                 ? originalParams.toBuilder()
