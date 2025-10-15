@@ -44,12 +44,24 @@ public final class HostedPageClaimGiftParams {
     }
 
     public HostedPageClaimGiftBuilder gift(GiftParams value) {
-      formData.put("gift", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "gift[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public HostedPageClaimGiftBuilder customer(CustomerParams value) {
-      formData.put("customer", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "customer[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

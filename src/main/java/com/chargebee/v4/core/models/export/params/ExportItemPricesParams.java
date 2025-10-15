@@ -37,33 +37,69 @@ public final class ExportItemPricesParams {
     private ExportItemPricesBuilder() {}
 
     public ExportItemPricesBuilder itemFamilyId(ItemFamilyIdParams value) {
-      formData.put("item_family_id", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_family_id[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportItemPricesBuilder itemType(ItemTypeParams value) {
-      formData.put("item_type", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_type[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportItemPricesBuilder currencyCode(CurrencyCodeParams value) {
-      formData.put("currency_code", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "currency_code[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportItemPricesBuilder businessEntityId(BusinessEntityIdParams value) {
-      formData.put("business_entity_id", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "business_entity_id[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportItemPricesBuilder includeSiteLevelResources(
         IncludeSiteLevelResourcesParams value) {
-      formData.put("include_site_level_resources", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "include_site_level_resources[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportItemPricesBuilder itemPrice(ItemPriceParams value) {
-      formData.put("item_price", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_price[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
@@ -482,62 +518,134 @@ public final class ExportItemPricesParams {
       private ItemPriceBuilder() {}
 
       public ItemPriceBuilder id(IdParams value) {
-        formData.put("id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder name(NameParams value) {
-        formData.put("name", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "name[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder pricingModel(PricingModelParams value) {
-        formData.put("pricing_model", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "pricing_model[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder itemId(ItemIdParams value) {
-        formData.put("item_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "item_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder priceVariantId(PriceVariantIdParams value) {
-        formData.put("price_variant_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "price_variant_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder trialPeriod(TrialPeriodParams value) {
-        formData.put("trial_period", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "trial_period[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder trialPeriodUnit(TrialPeriodUnitParams value) {
-        formData.put("trial_period_unit", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "trial_period_unit[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder status(StatusParams value) {
-        formData.put("status", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "status[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder updatedAt(UpdatedAtParams value) {
-        formData.put("updated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "updated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder periodUnit(PeriodUnitParams value) {
-        formData.put("period_unit", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "period_unit[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder period(PeriodParams value) {
-        formData.put("period", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "period[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public ItemPriceBuilder channel(ChannelParams value) {
-        formData.put("channel", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "channel[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 

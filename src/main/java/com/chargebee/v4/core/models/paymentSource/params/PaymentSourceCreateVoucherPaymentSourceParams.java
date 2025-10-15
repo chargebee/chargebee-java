@@ -47,7 +47,13 @@ public final class PaymentSourceCreateVoucherPaymentSourceParams {
 
     public PaymentSourceCreateVoucherPaymentSourceBuilder voucherPaymentSource(
         VoucherPaymentSourceParams value) {
-      formData.put("voucher_payment_source", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "voucher_payment_source[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

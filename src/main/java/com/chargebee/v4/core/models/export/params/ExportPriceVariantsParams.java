@@ -37,18 +37,36 @@ public final class ExportPriceVariantsParams {
     private ExportPriceVariantsBuilder() {}
 
     public ExportPriceVariantsBuilder businessEntityId(BusinessEntityIdParams value) {
-      formData.put("business_entity_id", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "business_entity_id[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportPriceVariantsBuilder includeSiteLevelResources(
         IncludeSiteLevelResourcesParams value) {
-      formData.put("include_site_level_resources", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "include_site_level_resources[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportPriceVariantsBuilder priceVariant(PriceVariantParams value) {
-      formData.put("price_variant", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "price_variant[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
@@ -219,27 +237,57 @@ public final class ExportPriceVariantsParams {
       private PriceVariantBuilder() {}
 
       public PriceVariantBuilder id(IdParams value) {
-        formData.put("id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public PriceVariantBuilder name(NameParams value) {
-        formData.put("name", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "name[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public PriceVariantBuilder status(StatusParams value) {
-        formData.put("status", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "status[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public PriceVariantBuilder updatedAt(UpdatedAtParams value) {
-        formData.put("updated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "updated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public PriceVariantBuilder createdAt(CreatedAtParams value) {
-        formData.put("created_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "created_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 

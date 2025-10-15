@@ -51,12 +51,24 @@ public final class HostedPageCollectNowParams {
     }
 
     public HostedPageCollectNowBuilder customer(CustomerParams value) {
-      formData.put("customer", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "customer[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public HostedPageCollectNowBuilder card(CardParams value) {
-      formData.put("card", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "card[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

@@ -108,7 +108,13 @@ public final class InvoiceAddChargeParams {
     }
 
     public InvoiceAddChargeBuilder lineItem(LineItemParams value) {
-      formData.put("line_item", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "line_item[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

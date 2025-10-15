@@ -39,12 +39,24 @@ public final class InAppSubscriptionImportSubscriptionParams {
     private InAppSubscriptionImportSubscriptionBuilder() {}
 
     public InAppSubscriptionImportSubscriptionBuilder subscription(SubscriptionParams value) {
-      formData.put("subscription", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "subscription[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public InAppSubscriptionImportSubscriptionBuilder customer(CustomerParams value) {
-      formData.put("customer", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "customer[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

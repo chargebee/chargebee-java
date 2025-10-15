@@ -252,27 +252,57 @@ public final class SubscriptionCreateWithItemsParams {
     }
 
     public SubscriptionCreateWithItemsBuilder shippingAddress(ShippingAddressParams value) {
-      formData.put("shipping_address", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "shipping_address[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public SubscriptionCreateWithItemsBuilder statementDescriptor(StatementDescriptorParams value) {
-      formData.put("statement_descriptor", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "statement_descriptor[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public SubscriptionCreateWithItemsBuilder paymentIntent(PaymentIntentParams value) {
-      formData.put("payment_intent", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "payment_intent[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public SubscriptionCreateWithItemsBuilder contractTerm(ContractTermParams value) {
-      formData.put("contract_term", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "contract_term[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public SubscriptionCreateWithItemsBuilder billingOverride(BillingOverrideParams value) {
-      formData.put("billing_override", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "billing_override[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

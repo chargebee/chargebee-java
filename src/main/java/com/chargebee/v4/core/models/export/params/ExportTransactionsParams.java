@@ -37,7 +37,13 @@ public final class ExportTransactionsParams {
     private ExportTransactionsBuilder() {}
 
     public ExportTransactionsBuilder transaction(TransactionParams value) {
-      formData.put("transaction", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "transaction[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
@@ -71,77 +77,167 @@ public final class ExportTransactionsParams {
       private TransactionBuilder() {}
 
       public TransactionBuilder id(IdParams value) {
-        formData.put("id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder customerId(CustomerIdParams value) {
-        formData.put("customer_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "customer_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder subscriptionId(SubscriptionIdParams value) {
-        formData.put("subscription_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "subscription_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder paymentSourceId(PaymentSourceIdParams value) {
-        formData.put("payment_source_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "payment_source_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder paymentMethod(PaymentMethodParams value) {
-        formData.put("payment_method", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "payment_method[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder gateway(GatewayParams value) {
-        formData.put("gateway", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "gateway[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder gatewayAccountId(GatewayAccountIdParams value) {
-        formData.put("gateway_account_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "gateway_account_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder idAtGateway(IdAtGatewayParams value) {
-        formData.put("id_at_gateway", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id_at_gateway[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder referenceNumber(ReferenceNumberParams value) {
-        formData.put("reference_number", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "reference_number[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder type(TypeParams value) {
-        formData.put("type", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "type[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder date(DateParams value) {
-        formData.put("date", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "date[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder amount(AmountParams value) {
-        formData.put("amount", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "amount[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder amountCapturable(AmountCapturableParams value) {
-        formData.put("amount_capturable", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "amount_capturable[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder status(StatusParams value) {
-        formData.put("status", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "status[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public TransactionBuilder updatedAt(UpdatedAtParams value) {
-        formData.put("updated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "updated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 

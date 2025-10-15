@@ -37,7 +37,13 @@ public final class ExportCreditNotesParams {
     private ExportCreditNotesBuilder() {}
 
     public ExportCreditNotesBuilder creditNote(CreditNoteParams value) {
-      formData.put("credit_note", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "credit_note[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
@@ -71,87 +77,189 @@ public final class ExportCreditNotesParams {
       private CreditNoteBuilder() {}
 
       public CreditNoteBuilder id(IdParams value) {
-        formData.put("id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder customerId(CustomerIdParams value) {
-        formData.put("customer_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "customer_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder subscriptionId(SubscriptionIdParams value) {
-        formData.put("subscription_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "subscription_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder referenceInvoiceId(ReferenceInvoiceIdParams value) {
-        formData.put("reference_invoice_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "reference_invoice_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder type(TypeParams value) {
-        formData.put("type", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "type[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder reasonCode(ReasonCodeParams value) {
-        formData.put("reason_code", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "reason_code[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder createReasonCode(CreateReasonCodeParams value) {
-        formData.put("create_reason_code", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "create_reason_code[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder status(StatusParams value) {
-        formData.put("status", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "status[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder date(DateParams value) {
-        formData.put("date", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "date[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder total(TotalParams value) {
-        formData.put("total", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "total[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder priceType(PriceTypeParams value) {
-        formData.put("price_type", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "price_type[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder amountAllocated(AmountAllocatedParams value) {
-        formData.put("amount_allocated", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "amount_allocated[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder amountRefunded(AmountRefundedParams value) {
-        formData.put("amount_refunded", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "amount_refunded[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder amountAvailable(AmountAvailableParams value) {
-        formData.put("amount_available", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "amount_available[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder voidedAt(VoidedAtParams value) {
-        formData.put("voided_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "voided_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder updatedAt(UpdatedAtParams value) {
-        formData.put("updated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "updated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public CreditNoteBuilder channel(ChannelParams value) {
-        formData.put("channel", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "channel[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 

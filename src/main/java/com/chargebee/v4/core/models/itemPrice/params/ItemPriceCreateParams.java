@@ -236,12 +236,24 @@ public final class ItemPriceCreateParams {
     }
 
     public ItemPriceCreateBuilder taxDetail(TaxDetailParams value) {
-      formData.put("tax_detail", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "tax_detail[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ItemPriceCreateBuilder accountingDetail(AccountingDetailParams value) {
-      formData.put("accounting_detail", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "accounting_detail[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

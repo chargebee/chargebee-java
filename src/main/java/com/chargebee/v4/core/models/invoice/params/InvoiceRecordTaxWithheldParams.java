@@ -38,7 +38,13 @@ public final class InvoiceRecordTaxWithheldParams {
     private InvoiceRecordTaxWithheldBuilder() {}
 
     public InvoiceRecordTaxWithheldBuilder taxWithheld(TaxWithheldParams value) {
-      formData.put("tax_withheld", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "tax_withheld[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

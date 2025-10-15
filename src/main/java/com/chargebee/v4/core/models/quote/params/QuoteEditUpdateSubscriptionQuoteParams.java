@@ -138,27 +138,57 @@ public final class QuoteEditUpdateSubscriptionQuoteParams {
     }
 
     public QuoteEditUpdateSubscriptionQuoteBuilder subscription(SubscriptionParams value) {
-      formData.put("subscription", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "subscription[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public QuoteEditUpdateSubscriptionQuoteBuilder billingAddress(BillingAddressParams value) {
-      formData.put("billing_address", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "billing_address[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public QuoteEditUpdateSubscriptionQuoteBuilder shippingAddress(ShippingAddressParams value) {
-      formData.put("shipping_address", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "shipping_address[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public QuoteEditUpdateSubscriptionQuoteBuilder customer(CustomerParams value) {
-      formData.put("customer", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "customer[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public QuoteEditUpdateSubscriptionQuoteBuilder contractTerm(ContractTermParams value) {
-      formData.put("contract_term", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "contract_term[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

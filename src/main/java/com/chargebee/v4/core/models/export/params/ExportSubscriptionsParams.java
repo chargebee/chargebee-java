@@ -44,22 +44,46 @@ public final class ExportSubscriptionsParams {
     }
 
     public ExportSubscriptionsBuilder itemId(ItemIdParams value) {
-      formData.put("item_id", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_id[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportSubscriptionsBuilder itemPriceId(ItemPriceIdParams value) {
-      formData.put("item_price_id", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_price_id[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportSubscriptionsBuilder cancelReasonCode(CancelReasonCodeParams value) {
-      formData.put("cancel_reason_code", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "cancel_reason_code[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public ExportSubscriptionsBuilder subscription(SubscriptionParams value) {
-      formData.put("subscription", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "subscription[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
@@ -316,77 +340,167 @@ public final class ExportSubscriptionsParams {
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(IdParams value) {
-        formData.put("id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder customerId(CustomerIdParams value) {
-        formData.put("customer_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "customer_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder status(StatusParams value) {
-        formData.put("status", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "status[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder cancelReason(CancelReasonParams value) {
-        formData.put("cancel_reason", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "cancel_reason[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder remainingBillingCycles(RemainingBillingCyclesParams value) {
-        formData.put("remaining_billing_cycles", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "remaining_billing_cycles[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder createdAt(CreatedAtParams value) {
-        formData.put("created_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "created_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder activatedAt(ActivatedAtParams value) {
-        formData.put("activated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "activated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder nextBillingAt(NextBillingAtParams value) {
-        formData.put("next_billing_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "next_billing_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder cancelledAt(CancelledAtParams value) {
-        formData.put("cancelled_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "cancelled_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder hasScheduledChanges(HasScheduledChangesParams value) {
-        formData.put("has_scheduled_changes", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "has_scheduled_changes[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder updatedAt(UpdatedAtParams value) {
-        formData.put("updated_at", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "updated_at[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder offlinePaymentMethod(OfflinePaymentMethodParams value) {
-        formData.put("offline_payment_method", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "offline_payment_method[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder autoCloseInvoices(AutoCloseInvoicesParams value) {
-        formData.put("auto_close_invoices", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "auto_close_invoices[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder channel(ChannelParams value) {
-        formData.put("channel", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "channel[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 
       public SubscriptionBuilder planId(PlanIdParams value) {
-        formData.put("plan_id", value);
+        if (value != null) {
+          Map<String, Object> nestedData = value.toFormData();
+          for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+            String nestedKey = "plan_id[" + entry.getKey() + "]";
+            formData.put(nestedKey, entry.getValue());
+          }
+        }
         return this;
       }
 

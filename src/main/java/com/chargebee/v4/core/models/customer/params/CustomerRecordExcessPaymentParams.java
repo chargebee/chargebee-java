@@ -45,7 +45,13 @@ public final class CustomerRecordExcessPaymentParams {
     }
 
     public CustomerRecordExcessPaymentBuilder transaction(TransactionParams value) {
-      formData.put("transaction", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "transaction[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

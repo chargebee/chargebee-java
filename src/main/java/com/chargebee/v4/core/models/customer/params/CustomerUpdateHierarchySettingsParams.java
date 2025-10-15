@@ -45,13 +45,25 @@ public final class CustomerUpdateHierarchySettingsParams {
 
     public CustomerUpdateHierarchySettingsBuilder parentAccountAccess(
         ParentAccountAccessParams value) {
-      formData.put("parent_account_access", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "parent_account_access[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public CustomerUpdateHierarchySettingsBuilder childAccountAccess(
         ChildAccountAccessParams value) {
-      formData.put("child_account_access", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "child_account_access[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

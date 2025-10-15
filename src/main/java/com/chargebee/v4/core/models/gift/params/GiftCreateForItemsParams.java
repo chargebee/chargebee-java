@@ -75,22 +75,46 @@ public final class GiftCreateForItemsParams {
     }
 
     public GiftCreateForItemsBuilder gifter(GifterParams value) {
-      formData.put("gifter", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "gifter[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public GiftCreateForItemsBuilder giftReceiver(GiftReceiverParams value) {
-      formData.put("gift_receiver", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "gift_receiver[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public GiftCreateForItemsBuilder paymentIntent(PaymentIntentParams value) {
-      formData.put("payment_intent", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "payment_intent[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public GiftCreateForItemsBuilder shippingAddress(ShippingAddressParams value) {
-      formData.put("shipping_address", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "shipping_address[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

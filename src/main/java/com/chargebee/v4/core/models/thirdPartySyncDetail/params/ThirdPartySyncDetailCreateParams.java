@@ -46,7 +46,13 @@ public final class ThirdPartySyncDetailCreateParams {
 
     public ThirdPartySyncDetailCreateBuilder thirdPartyConfiguration(
         ThirdPartyConfigurationParams value) {
-      formData.put("third_party_configuration", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "third_party_configuration[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

@@ -52,12 +52,24 @@ public final class HostedPageCheckoutGiftParams {
     }
 
     public HostedPageCheckoutGiftBuilder gifter(GifterParams value) {
-      formData.put("gifter", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "gifter[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
     public HostedPageCheckoutGiftBuilder subscription(SubscriptionParams value) {
-      formData.put("subscription", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "subscription[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

@@ -74,7 +74,13 @@ public final class SubscriptionResumeParams {
     }
 
     public SubscriptionResumeBuilder paymentIntent(PaymentIntentParams value) {
-      formData.put("payment_intent", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "payment_intent[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

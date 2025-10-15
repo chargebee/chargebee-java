@@ -51,7 +51,13 @@ public final class OrderCreateRefundableCreditNoteParams {
     }
 
     public OrderCreateRefundableCreditNoteBuilder creditNote(CreditNoteParams value) {
-      formData.put("credit_note", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "credit_note[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

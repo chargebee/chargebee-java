@@ -44,7 +44,13 @@ public final class UsagePdfParams {
     }
 
     public UsagePdfBuilder invoice(InvoiceParams value) {
-      formData.put("invoice", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "invoice[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

@@ -38,7 +38,13 @@ public final class CustomerUpdatePaymentMethodParams {
     private CustomerUpdatePaymentMethodBuilder() {}
 
     public CustomerUpdatePaymentMethodBuilder paymentMethod(PaymentMethodParams value) {
-      formData.put("payment_method", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "payment_method[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 

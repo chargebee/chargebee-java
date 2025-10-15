@@ -88,7 +88,13 @@ public final class InvoiceCreateForChargeItemParams {
     }
 
     public InvoiceCreateForChargeItemBuilder itemPrice(ItemPriceParams value) {
-      formData.put("item_price", value);
+      if (value != null) {
+        Map<String, Object> nestedData = value.toFormData();
+        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
+          String nestedKey = "item_price[" + entry.getKey() + "]";
+          formData.put(nestedKey, entry.getValue());
+        }
+      }
       return this;
     }
 
