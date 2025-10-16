@@ -625,8 +625,11 @@ class ChargebeeClientRetryTest {
             TimeoutException timeoutException = new TimeoutException("read", "Timeout", new Exception());
             Response successResponse = createSuccessResponse();
             
+            CompletableFuture<Response> failedFuture = new CompletableFuture<>();
+            failedFuture.completeExceptionally(timeoutException);
+            
             when(mockTransport.sendAsync(any(Request.class)))
-                .thenReturn(CompletableFuture.failedFuture(timeoutException))
+                .thenReturn(failedFuture)
                 .thenReturn(CompletableFuture.completedFuture(successResponse));
             
             RetryConfig retryConfig = RetryConfig.builder()
@@ -661,8 +664,11 @@ class ChargebeeClientRetryTest {
             NetworkException networkException = new NetworkException("Network error", new Exception());
             Response successResponse = createSuccessResponse();
             
+            CompletableFuture<Response> failedFuture = new CompletableFuture<>();
+            failedFuture.completeExceptionally(networkException);
+            
             when(mockTransport.sendAsync(any(Request.class)))
-                .thenReturn(CompletableFuture.failedFuture(networkException))
+                .thenReturn(failedFuture)
                 .thenReturn(CompletableFuture.completedFuture(successResponse));
             
             RetryConfig retryConfig = RetryConfig.builder()
@@ -696,8 +702,11 @@ class ChargebeeClientRetryTest {
             Transport mockTransport = mock(Transport.class);
             NetworkException networkException = new NetworkException("Network error", new Exception());
             
+            CompletableFuture<Response> failedFuture = new CompletableFuture<>();
+            failedFuture.completeExceptionally(networkException);
+            
             when(mockTransport.sendAsync(any(Request.class)))
-                .thenReturn(CompletableFuture.failedFuture(networkException));
+                .thenReturn(failedFuture);
             
             RetryConfig retryConfig = RetryConfig.builder()
                 .enabled(true)
@@ -796,8 +805,11 @@ class ChargebeeClientRetryTest {
             Transport mockTransport = mock(Transport.class);
             ConfigurationException configException = new ConfigurationException("Invalid config");
             
+            CompletableFuture<Response> failedFuture = new CompletableFuture<>();
+            failedFuture.completeExceptionally(configException);
+            
             when(mockTransport.sendAsync(any(Request.class)))
-                .thenReturn(CompletableFuture.failedFuture(configException));
+                .thenReturn(failedFuture);
             
             RetryConfig retryConfig = RetryConfig.builder()
                 .enabled(true)
