@@ -55,11 +55,13 @@ public final class ItemEntitlementItemEntitlementsForItemParams {
       return this;
     }
 
+    @Deprecated
     public ItemEntitlementItemEntitlementsForItemBuilder includeDrafts(Boolean value) {
       queryParams.put("include_drafts", value);
       return this;
     }
 
+    @Deprecated
     public ItemEntitlementItemEntitlementsForItemBuilder embed(String value) {
       queryParams.put("embed", value);
       return this;

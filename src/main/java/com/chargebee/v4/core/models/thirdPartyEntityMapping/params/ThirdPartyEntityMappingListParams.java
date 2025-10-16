@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.thirdPartyEntityMapping.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -113,23 +114,25 @@ public final class ThirdPartyEntityMappingListParams {
         this.builder = builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public ThirdPartyEntityMappingListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public ThirdPartyEntityMappingListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public ThirdPartyEntityMappingListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public ThirdPartyEntityMappingListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -143,23 +146,25 @@ public final class ThirdPartyEntityMappingListParams {
         this.builder = builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public ThirdPartyEntityMappingListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public ThirdPartyEntityMappingListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public ThirdPartyEntityMappingListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ThirdPartyEntityMappingListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public ThirdPartyEntityMappingListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }

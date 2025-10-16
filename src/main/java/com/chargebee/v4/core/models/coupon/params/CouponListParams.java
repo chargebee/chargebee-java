@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.coupon.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -296,23 +297,25 @@ public final class CouponListParams {
         this.builder = builder;
       }
 
-      public CouponListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public CouponListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public CouponListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public CouponListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public CouponListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -326,23 +329,25 @@ public final class CouponListParams {
         this.builder = builder;
       }
 
-      public CouponListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public CouponListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public CouponListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public CouponListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public CouponListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public CouponListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -392,26 +397,28 @@ public final class CouponListParams {
       }
 
       public SortDirection created_at() {
-        return new SortDirection(fieldName + "[created_at]", builder);
+        return new SortDirection(fieldName, "created_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final CouponListBuilder builder;
 
-      SortDirection(String paramName, CouponListBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(String fieldName, String selectedField, CouponListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public CouponListBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public CouponListBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

@@ -21,8 +21,8 @@ public class SubscriptionEntitlement {
   private String name;
   private Boolean isOverridden;
   private Boolean isEnabled;
-  private Timestamp effectiveFrom;
-  private ScheduleStatus scheduleStatus;
+  @Deprecated private Timestamp effectiveFrom;
+  @Deprecated private ScheduleStatus scheduleStatus;
   private Timestamp expiresAt;
   private Components components;
 
@@ -62,10 +62,12 @@ public class SubscriptionEntitlement {
     return isEnabled;
   }
 
+  @Deprecated
   public Timestamp getEffectiveFrom() {
     return effectiveFrom;
   }
 
+  @Deprecated
   public ScheduleStatus getScheduleStatus() {
     return scheduleStatus;
   }

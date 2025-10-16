@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.subscription.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -405,8 +406,10 @@ public final class SubscriptionListParams {
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
 
@@ -425,23 +428,25 @@ public final class SubscriptionListParams {
         this.builder = builder;
       }
 
-      public SubscriptionListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public SubscriptionListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public SubscriptionListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public SubscriptionListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -455,23 +460,25 @@ public final class SubscriptionListParams {
         this.builder = builder;
       }
 
-      public SubscriptionListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public SubscriptionListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public SubscriptionListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public SubscriptionListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
 
@@ -490,23 +497,25 @@ public final class SubscriptionListParams {
         this.builder = builder;
       }
 
-      public SubscriptionListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public SubscriptionListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public SubscriptionListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public SubscriptionListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -520,23 +529,25 @@ public final class SubscriptionListParams {
         this.builder = builder;
       }
 
-      public SubscriptionListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public SubscriptionListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public SubscriptionListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public SubscriptionListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -565,23 +576,25 @@ public final class SubscriptionListParams {
         this.builder = builder;
       }
 
-      public SubscriptionListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public SubscriptionListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public SubscriptionListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public SubscriptionListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public SubscriptionListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -736,30 +749,32 @@ public final class SubscriptionListParams {
       }
 
       public SortDirection created_at() {
-        return new SortDirection(fieldName + "[created_at]", builder);
+        return new SortDirection(fieldName, "created_at", builder);
       }
 
       public SortDirection updated_at() {
-        return new SortDirection(fieldName + "[updated_at]", builder);
+        return new SortDirection(fieldName, "updated_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final SubscriptionListBuilder builder;
 
-      SortDirection(String paramName, SubscriptionListBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(String fieldName, String selectedField, SubscriptionListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public SubscriptionListBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public SubscriptionListBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

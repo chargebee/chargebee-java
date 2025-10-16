@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.addon.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -65,6 +66,7 @@ public final class AddonListParams {
       return new PricingModelFilter("pricing_model", this);
     }
 
+    @Deprecated
     public TypeFilter type() {
       return new TypeFilter("type", this);
     }
@@ -289,8 +291,10 @@ public final class AddonListParams {
         return builder;
       }
 
-      public AddonListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public AddonListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -314,8 +318,10 @@ public final class AddonListParams {
         return builder;
       }
 
-      public AddonListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public AddonListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -389,23 +395,25 @@ public final class AddonListParams {
         this.builder = builder;
       }
 
-      public AddonListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public AddonListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public AddonListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public AddonListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public AddonListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public AddonListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public AddonListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public AddonListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }

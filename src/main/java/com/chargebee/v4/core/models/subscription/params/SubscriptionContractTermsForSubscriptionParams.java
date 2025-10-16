@@ -73,26 +73,31 @@ public final class SubscriptionContractTermsForSubscriptionParams {
       }
 
       public SortDirection created_at() {
-        return new SortDirection(fieldName + "[created_at]", builder);
+        return new SortDirection(fieldName, "created_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final SubscriptionContractTermsForSubscriptionBuilder builder;
 
-      SortDirection(String paramName, SubscriptionContractTermsForSubscriptionBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(
+          String fieldName,
+          String selectedField,
+          SubscriptionContractTermsForSubscriptionBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public SubscriptionContractTermsForSubscriptionBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public SubscriptionContractTermsForSubscriptionBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

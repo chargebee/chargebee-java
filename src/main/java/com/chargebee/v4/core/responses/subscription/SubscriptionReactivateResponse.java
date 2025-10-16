@@ -12,6 +12,7 @@ import com.chargebee.v4.core.models.subscription.Subscription;
 
 import com.chargebee.v4.core.models.card.Card;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -19,8 +20,7 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for SubscriptionReactivate operation. Contains the response data from
  * the API.
  */
-public final class SubscriptionReactivateResponse {
-
+public final class SubscriptionReactivateResponse extends BaseResponse {
   private final Subscription subscription;
 
   private final Customer customer;
@@ -31,9 +31,8 @@ public final class SubscriptionReactivateResponse {
 
   private final List<UnbilledCharge> unbilledCharges;
 
-  private final Response httpResponse;
-
   private SubscriptionReactivateResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.subscription = builder.subscription;
 
@@ -44,8 +43,6 @@ public final class SubscriptionReactivateResponse {
     this.invoice = builder.invoice;
 
     this.unbilledCharges = builder.unbilledCharges;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into SubscriptionReactivateResponse object. */
@@ -170,30 +167,5 @@ public final class SubscriptionReactivateResponse {
   /** Get the unbilledCharges from the response. */
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

@@ -65,11 +65,13 @@ public final class EntitlementListParams {
       return new EntityIdFilter("entity_id", this);
     }
 
+    @Deprecated
     public EntitlementListBuilder includeDrafts(Boolean value) {
       queryParams.put("include_drafts", value);
       return this;
     }
 
+    @Deprecated
     public EntitlementListBuilder embed(String value) {
       queryParams.put("embed", value);
       return this;

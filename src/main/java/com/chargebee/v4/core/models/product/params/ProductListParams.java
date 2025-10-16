@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.product.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -233,23 +234,25 @@ public final class ProductListParams {
         this.builder = builder;
       }
 
-      public ProductListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public ProductListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public ProductListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public ProductListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public ProductListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -263,23 +266,25 @@ public final class ProductListParams {
         this.builder = builder;
       }
 
-      public ProductListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public ProductListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public ProductListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public ProductListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ProductListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public ProductListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -294,38 +299,40 @@ public final class ProductListParams {
       }
 
       public SortDirection name() {
-        return new SortDirection(fieldName + "[name]", builder);
+        return new SortDirection(fieldName, "name", builder);
       }
 
       public SortDirection id() {
-        return new SortDirection(fieldName + "[id]", builder);
+        return new SortDirection(fieldName, "id", builder);
       }
 
       public SortDirection created_at() {
-        return new SortDirection(fieldName + "[created_at]", builder);
+        return new SortDirection(fieldName, "created_at", builder);
       }
 
       public SortDirection updated_at() {
-        return new SortDirection(fieldName + "[updated_at]", builder);
+        return new SortDirection(fieldName, "updated_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final ProductListBuilder builder;
 
-      SortDirection(String paramName, ProductListBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(String fieldName, String selectedField, ProductListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public ProductListBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public ProductListBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

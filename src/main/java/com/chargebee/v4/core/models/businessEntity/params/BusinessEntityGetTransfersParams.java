@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.businessEntity.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -131,23 +132,25 @@ public final class BusinessEntityGetTransfersParams {
         this.builder = builder;
       }
 
-      public BusinessEntityGetTransfersBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public BusinessEntityGetTransfersBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public BusinessEntityGetTransfersBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public BusinessEntityGetTransfersBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public BusinessEntityGetTransfersBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public BusinessEntityGetTransfersBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public BusinessEntityGetTransfersBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public BusinessEntityGetTransfersBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -162,26 +165,29 @@ public final class BusinessEntityGetTransfersParams {
       }
 
       public SortDirection created_at() {
-        return new SortDirection(fieldName + "[created_at]", builder);
+        return new SortDirection(fieldName, "created_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final BusinessEntityGetTransfersBuilder builder;
 
-      SortDirection(String paramName, BusinessEntityGetTransfersBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(
+          String fieldName, String selectedField, BusinessEntityGetTransfersBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public BusinessEntityGetTransfersBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public BusinessEntityGetTransfersBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

@@ -17,8 +17,8 @@ public class Event {
   private Timestamp occurredAt;
   private Source source;
   private String user;
-  private WebhookStatus webhookStatus;
-  private String webhookFailureReason;
+  @Deprecated private WebhookStatus webhookStatus;
+  @Deprecated private String webhookFailureReason;
   private EventType eventType;
   private ApiVersion apiVersion;
   private java.util.Map<String, Object> content;
@@ -41,10 +41,12 @@ public class Event {
     return user;
   }
 
+  @Deprecated
   public WebhookStatus getWebhookStatus() {
     return webhookStatus;
   }
 
+  @Deprecated
   public String getWebhookFailureReason() {
     return webhookFailureReason;
   }

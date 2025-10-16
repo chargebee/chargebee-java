@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.core.models.inAppSubscription.InAppSubscription;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -11,17 +12,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for InAppSubscriptionImportReceipt operation. Contains the response
  * data from the API.
  */
-public final class InAppSubscriptionImportReceiptResponse {
-
+public final class InAppSubscriptionImportReceiptResponse extends BaseResponse {
   private final List<InAppSubscription> inAppSubscriptions;
 
-  private final Response httpResponse;
-
   private InAppSubscriptionImportReceiptResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.inAppSubscriptions = builder.inAppSubscriptions;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into InAppSubscriptionImportReceiptResponse object. */
@@ -80,30 +77,5 @@ public final class InAppSubscriptionImportReceiptResponse {
   /** Get the inAppSubscriptions from the response. */
   public List<InAppSubscription> getInAppSubscriptions() {
     return inAppSubscriptions;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

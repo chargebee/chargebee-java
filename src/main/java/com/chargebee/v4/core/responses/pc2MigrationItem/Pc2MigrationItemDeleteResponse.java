@@ -1,5 +1,6 @@
 package com.chargebee.v4.core.responses.pc2MigrationItem;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -7,17 +8,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for Pc2MigrationItemDelete operation. Contains the response data from
  * the API.
  */
-public final class Pc2MigrationItemDeleteResponse {
-
+public final class Pc2MigrationItemDeleteResponse extends BaseResponse {
   private final Boolean isDeleted;
 
-  private final Response httpResponse;
-
   private Pc2MigrationItemDeleteResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.isDeleted = builder.isDeleted;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into Pc2MigrationItemDeleteResponse object. */
@@ -71,30 +68,5 @@ public final class Pc2MigrationItemDeleteResponse {
   /** Get the isDeleted from the response. */
   public Boolean getIsDeleted() {
     return isDeleted;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

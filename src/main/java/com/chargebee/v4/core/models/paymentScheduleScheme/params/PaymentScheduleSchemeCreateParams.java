@@ -8,6 +8,7 @@ package com.chargebee.v4.core.models.paymentScheduleScheme.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -148,7 +149,7 @@ public final class PaymentScheduleSchemeCreateParams {
         return this;
       }
 
-      public FlexibleSchedulesBuilder amountPercentage(Number value) {
+      public FlexibleSchedulesBuilder amountPercentage(BigDecimal value) {
 
         formData.put("amount_percentage", value);
 

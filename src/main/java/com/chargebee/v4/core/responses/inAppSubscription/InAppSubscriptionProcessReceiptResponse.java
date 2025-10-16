@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.inAppSubscription;
 
 import com.chargebee.v4.core.models.inAppSubscription.InAppSubscription;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,17 +10,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for InAppSubscriptionProcessReceipt operation. Contains the response
  * data from the API.
  */
-public final class InAppSubscriptionProcessReceiptResponse {
-
+public final class InAppSubscriptionProcessReceiptResponse extends BaseResponse {
   private final InAppSubscription inAppSubscription;
 
-  private final Response httpResponse;
-
   private InAppSubscriptionProcessReceiptResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.inAppSubscription = builder.inAppSubscription;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into InAppSubscriptionProcessReceiptResponse object. */
@@ -78,30 +75,5 @@ public final class InAppSubscriptionProcessReceiptResponse {
   /** Get the inAppSubscription from the response. */
   public InAppSubscription getInAppSubscription() {
     return inAppSubscription;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

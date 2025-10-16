@@ -323,6 +323,42 @@ public final class AddonUpdateParams {
       return this;
     }
 
+    /**
+     * Add a custom field to the request. Custom fields must start with "cf_".
+     *
+     * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+     * @param value the value of the custom field
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+     */
+    public AddonUpdateBuilder customField(String fieldName, Object value) {
+      if (fieldName == null || !fieldName.startsWith("cf_")) {
+        throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+      }
+      formData.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add multiple custom fields to the request. All field names must start with "cf_".
+     *
+     * @param customFields map of custom field names to values
+     * @return this builder
+     * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+     */
+    public AddonUpdateBuilder customFields(Map<String, Object> customFields) {
+      if (customFields != null) {
+        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+          if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+            throw new IllegalArgumentException(
+                "Custom field name must start with 'cf_': " + entry.getKey());
+          }
+          formData.put(entry.getKey(), entry.getValue());
+        }
+      }
+      return this;
+    }
+
     public AddonUpdateParams build() {
       return new AddonUpdateParams(this);
     }

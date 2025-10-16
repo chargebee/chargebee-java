@@ -1,18 +1,20 @@
 package com.chargebee.v4.core.responses.businessProfile;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for BusinessProfileRetrieve operation. Contains the response data from
  * a single resource get operation.
  */
-public final class BusinessProfileRetrieveResponse {
+public final class BusinessProfileRetrieveResponse extends BaseResponse {
+  private final Object businessProfile;
 
-  private final Response httpResponse;
+  private BusinessProfileRetrieveResponse(Object businessProfile, Response httpResponse) {
+    super(httpResponse);
 
-  private BusinessProfileRetrieveResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.businessProfile = businessProfile;
   }
 
   /** Parse JSON response into BusinessProfileRetrieveResponse object. */
@@ -24,34 +26,16 @@ public final class BusinessProfileRetrieveResponse {
   public static BusinessProfileRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
 
-      return new BusinessProfileRetrieveResponse(httpResponse);
+      Object businessProfile = JsonUtil.getObject(json, "business_profile");
+
+      return new BusinessProfileRetrieveResponse(businessProfile, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse BusinessProfileRetrieveResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the businessProfile from the response. */
+  public Object getBusinessProfile() {
+    return businessProfile;
   }
 }

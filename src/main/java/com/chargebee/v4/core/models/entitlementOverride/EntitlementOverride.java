@@ -21,7 +21,7 @@ public class EntitlementOverride {
   private String name;
   private Timestamp expiresAt;
   private Timestamp effectiveFrom;
-  private ScheduleStatus scheduleStatus;
+  @Deprecated private ScheduleStatus scheduleStatus;
 
   public String getId() {
     return id;
@@ -59,6 +59,7 @@ public class EntitlementOverride {
     return effectiveFrom;
   }
 
+  @Deprecated
   public ScheduleStatus getScheduleStatus() {
     return scheduleStatus;
   }

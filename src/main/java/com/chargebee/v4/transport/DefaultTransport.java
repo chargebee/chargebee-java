@@ -53,13 +53,16 @@ public class DefaultTransport implements Transport {
             HttpURLConnection connection = createConnection(request);
             writeRequestBody(connection, request);
             Response response = readResponse(connection);
-            
+
+            // Validate response and throw appropriate exceptions
+            HttpStatusHandler.validateResponse(request, response);
+
             // Log successful response
             if (logger != null && logger.isEnabled()) {
                 long duration = System.currentTimeMillis() - startTime;
                 logger.logResponse(request, response, duration);
             }
-            
+
             return response;
         } catch (HttpException e) {
             // Log HTTP error
@@ -329,15 +332,12 @@ public class DefaultTransport implements Transport {
     private Response readResponse(HttpURLConnection connection) throws IOException, TransportException {
         int statusCode = connection.getResponseCode();
         Map<String, List<String>> headers = connection.getHeaderFields();
-        
+
         // Read response body
         byte[] body = readResponseBody(connection, statusCode >= 400);
-        
+
         Response response = new Response(statusCode, headers, body);
-        
-        // Validate HTTP status code and throw appropriate exception
-        HttpStatusHandler.validateResponse(response);
-        
+
         return response;
     }
     

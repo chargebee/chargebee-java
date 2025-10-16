@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.item;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class Item {
   private List<ApplicableItems> applicableItems;
   private List<BundleItems> bundleItems;
   private BundleConfiguration bundleConfiguration;
+
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -157,6 +160,26 @@ public class Item {
 
   public BundleConfiguration getBundleConfiguration() {
     return bundleConfiguration;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum Status {
@@ -310,6 +333,67 @@ public class Item {
   public static Item fromJson(String json) {
     Item obj = new Item();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("name");
+
+    knownFields.add("external_name");
+
+    knownFields.add("description");
+
+    knownFields.add("status");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("item_family_id");
+
+    knownFields.add("type");
+
+    knownFields.add("is_shippable");
+
+    knownFields.add("is_giftable");
+
+    knownFields.add("redirect_url");
+
+    knownFields.add("enabled_for_checkout");
+
+    knownFields.add("enabled_in_portal");
+
+    knownFields.add("included_in_mrr");
+
+    knownFields.add("item_applicability");
+
+    knownFields.add("gift_claim_redirect_url");
+
+    knownFields.add("unit");
+
+    knownFields.add("metered");
+
+    knownFields.add("usage_calculation");
+
+    knownFields.add("is_percentage_pricing");
+
+    knownFields.add("archived_at");
+
+    knownFields.add("channel");
+
+    knownFields.add("metadata");
+
+    knownFields.add("deleted");
+
+    knownFields.add("business_entity_id");
+
+    knownFields.add("applicable_items");
+
+    knownFields.add("bundle_items");
+
+    knownFields.add("bundle_configuration");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.name = JsonUtil.getString(json, "name");
@@ -383,7 +467,39 @@ public class Item {
       obj.bundleConfiguration = BundleConfiguration.fromJson(__bundleConfigurationJson);
     }
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class ApplicableItems {
@@ -408,7 +524,7 @@ public class Item {
     private String itemId;
     private ItemType itemType;
     private Integer quantity;
-    private Number priceAllocation;
+    private BigDecimal priceAllocation;
 
     public String getItemId() {
       return itemId;
@@ -422,7 +538,7 @@ public class Item {
       return quantity;
     }
 
-    public Number getPriceAllocation() {
+    public BigDecimal getPriceAllocation() {
       return priceAllocation;
     }
 
@@ -465,7 +581,7 @@ public class Item {
 
       obj.quantity = JsonUtil.getInteger(json, "quantity");
 
-      obj.priceAllocation = JsonUtil.getNumber(json, "price_allocation");
+      obj.priceAllocation = JsonUtil.getBigDecimal(json, "price_allocation");
 
       return obj;
     }

@@ -55,17 +55,20 @@ public final class EntitlementOverrideListEntitlementOverrideForSubscriptionPara
       return this;
     }
 
+    @Deprecated
     public EntitlementOverrideListEntitlementOverrideForSubscriptionBuilder embed(String value) {
       queryParams.put("embed", value);
       return this;
     }
 
+    @Deprecated
     public EntitlementOverrideListEntitlementOverrideForSubscriptionBuilder includeDrafts(
         Boolean value) {
       queryParams.put("include_drafts", value);
       return this;
     }
 
+    @Deprecated
     public EntitlementOverrideListEntitlementOverrideForSubscriptionBuilder
         includeScheduledOverrides(Boolean value) {
       queryParams.put("include_scheduled_overrides", value);

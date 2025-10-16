@@ -1,18 +1,21 @@
 package com.chargebee.v4.core.responses.pc2MigrationItemPrice;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for Pc2MigrationItemPriceRetrieve operation. Contains the response data
  * from a single resource get operation.
  */
-public final class Pc2MigrationItemPriceRetrieveResponse {
+public final class Pc2MigrationItemPriceRetrieveResponse extends BaseResponse {
+  private final Object pc2MigrationItemPrice;
 
-  private final Response httpResponse;
+  private Pc2MigrationItemPriceRetrieveResponse(
+      Object pc2MigrationItemPrice, Response httpResponse) {
+    super(httpResponse);
 
-  private Pc2MigrationItemPriceRetrieveResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.pc2MigrationItemPrice = pc2MigrationItemPrice;
   }
 
   /** Parse JSON response into Pc2MigrationItemPriceRetrieveResponse object. */
@@ -24,35 +27,17 @@ public final class Pc2MigrationItemPriceRetrieveResponse {
   public static Pc2MigrationItemPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
 
-      return new Pc2MigrationItemPriceRetrieveResponse(httpResponse);
+      Object pc2MigrationItemPrice = JsonUtil.getObject(json, "pc2_migration_item_price");
+
+      return new Pc2MigrationItemPriceRetrieveResponse(pc2MigrationItemPrice, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemPriceRetrieveResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the pc2MigrationItemPrice from the response. */
+  public Object getPc2MigrationItemPrice() {
+    return pc2MigrationItemPrice;
   }
 }

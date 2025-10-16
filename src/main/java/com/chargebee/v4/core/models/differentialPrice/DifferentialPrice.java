@@ -258,13 +258,13 @@ public class DifferentialPrice {
   public static class ParentPeriods {
 
     private PeriodUnit periodUnit;
-    private List<java.util.Map<String, Object>> period;
+    private List<Object> period;
 
     public PeriodUnit getPeriodUnit() {
       return periodUnit;
     }
 
-    public List<java.util.Map<String, Object>> getPeriod() {
+    public List<Object> getPeriod() {
       return period;
     }
 

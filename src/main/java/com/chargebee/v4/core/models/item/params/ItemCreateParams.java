@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.item.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.internal.JsonUtil;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -207,6 +208,42 @@ public final class ItemCreateParams {
               formData.put(indexedKey, entry.getValue());
             }
           }
+        }
+      }
+      return this;
+    }
+
+    /**
+     * Add a custom field to the request. Custom fields must start with "cf_".
+     *
+     * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+     * @param value the value of the custom field
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+     */
+    public ItemCreateBuilder customField(String fieldName, Object value) {
+      if (fieldName == null || !fieldName.startsWith("cf_")) {
+        throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+      }
+      formData.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add multiple custom fields to the request. All field names must start with "cf_".
+     *
+     * @param customFields map of custom field names to values
+     * @return this builder
+     * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+     */
+    public ItemCreateBuilder customFields(Map<String, Object> customFields) {
+      if (customFields != null) {
+        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+          if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+            throw new IllegalArgumentException(
+                "Custom field name must start with 'cf_': " + entry.getKey());
+          }
+          formData.put(entry.getKey(), entry.getValue());
         }
       }
       return this;
@@ -415,7 +452,7 @@ public final class ItemCreateParams {
         return this;
       }
 
-      public BundleItemsToAddBuilder priceAllocation(Number value) {
+      public BundleItemsToAddBuilder priceAllocation(BigDecimal value) {
 
         formData.put("price_allocation", value);
 

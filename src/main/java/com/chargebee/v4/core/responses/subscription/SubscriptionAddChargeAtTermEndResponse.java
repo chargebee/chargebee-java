@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.subscription;
 
 import com.chargebee.v4.core.models.estimate.Estimate;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,17 +10,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for SubscriptionAddChargeAtTermEnd operation. Contains the response
  * data from the API.
  */
-public final class SubscriptionAddChargeAtTermEndResponse {
-
+public final class SubscriptionAddChargeAtTermEndResponse extends BaseResponse {
   private final Estimate estimate;
 
-  private final Response httpResponse;
-
   private SubscriptionAddChargeAtTermEndResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.estimate = builder.estimate;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into SubscriptionAddChargeAtTermEndResponse object. */
@@ -78,30 +75,5 @@ public final class SubscriptionAddChargeAtTermEndResponse {
   /** Get the estimate from the response. */
   public Estimate getEstimate() {
     return estimate;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

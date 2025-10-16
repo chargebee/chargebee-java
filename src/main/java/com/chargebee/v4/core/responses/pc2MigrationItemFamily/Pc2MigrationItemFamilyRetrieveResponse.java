@@ -1,18 +1,21 @@
 package com.chargebee.v4.core.responses.pc2MigrationItemFamily;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for Pc2MigrationItemFamilyRetrieve operation. Contains the response
  * data from a single resource get operation.
  */
-public final class Pc2MigrationItemFamilyRetrieveResponse {
+public final class Pc2MigrationItemFamilyRetrieveResponse extends BaseResponse {
+  private final Object pc2MigrationItemFamily;
 
-  private final Response httpResponse;
+  private Pc2MigrationItemFamilyRetrieveResponse(
+      Object pc2MigrationItemFamily, Response httpResponse) {
+    super(httpResponse);
 
-  private Pc2MigrationItemFamilyRetrieveResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.pc2MigrationItemFamily = pc2MigrationItemFamily;
   }
 
   /** Parse JSON response into Pc2MigrationItemFamilyRetrieveResponse object. */
@@ -25,35 +28,17 @@ public final class Pc2MigrationItemFamilyRetrieveResponse {
       String json, Response httpResponse) {
     try {
 
-      return new Pc2MigrationItemFamilyRetrieveResponse(httpResponse);
+      Object pc2MigrationItemFamily = JsonUtil.getObject(json, "pc2_migration_item_family");
+
+      return new Pc2MigrationItemFamilyRetrieveResponse(pc2MigrationItemFamily, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemFamilyRetrieveResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the pc2MigrationItemFamily from the response. */
+  public Object getPc2MigrationItemFamily() {
+    return pc2MigrationItemFamily;
   }
 }

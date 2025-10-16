@@ -4,6 +4,7 @@ import com.chargebee.v4.core.models.quote.Quote;
 
 import com.chargebee.v4.core.models.quotedSubscription.QuotedSubscription;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -11,21 +12,17 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for QuoteCreateSubForCustomerQuote operation. Contains the response
  * data from the API.
  */
-public final class QuoteCreateSubForCustomerQuoteResponse {
-
+public final class QuoteCreateSubForCustomerQuoteResponse extends BaseResponse {
   private final Quote quote;
 
   private final QuotedSubscription quotedSubscription;
 
-  private final Response httpResponse;
-
   private QuoteCreateSubForCustomerQuoteResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.quote = builder.quote;
 
     this.quotedSubscription = builder.quotedSubscription;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into QuoteCreateSubForCustomerQuoteResponse object. */
@@ -101,30 +98,5 @@ public final class QuoteCreateSubForCustomerQuoteResponse {
   /** Get the quotedSubscription from the response. */
   public QuotedSubscription getQuotedSubscription() {
     return quotedSubscription;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

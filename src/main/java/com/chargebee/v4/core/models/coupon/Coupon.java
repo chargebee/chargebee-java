@@ -22,12 +22,12 @@ public class Coupon {
   private Integer discountQuantity;
   private String currencyCode;
   private DurationType durationType;
-  private Integer durationMonth;
+  @Deprecated private Integer durationMonth;
   private Timestamp validFrom;
   private Timestamp validTill;
   private Integer maxRedemptions;
   private Status status;
-  private ApplyDiscountOn applyDiscountOn;
+  @Deprecated private ApplyDiscountOn applyDiscountOn;
   private ApplyOn applyOn;
   private Timestamp createdAt;
   private Timestamp archivedAt;
@@ -47,6 +47,8 @@ public class Coupon {
   private PlanConstraint planConstraint;
   private Boolean includedInMrr;
   private List<String> addonIds;
+
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -84,6 +86,7 @@ public class Coupon {
     return durationType;
   }
 
+  @Deprecated
   public Integer getDurationMonth() {
     return durationMonth;
   }
@@ -104,6 +107,7 @@ public class Coupon {
     return status;
   }
 
+  @Deprecated
   public ApplyDiscountOn getApplyDiscountOn() {
     return applyDiscountOn;
   }
@@ -182,6 +186,26 @@ public class Coupon {
 
   public List<String> getAddonIds() {
     return addonIds;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum DiscountType {
@@ -441,6 +465,77 @@ public class Coupon {
   public static Coupon fromJson(String json) {
     Coupon obj = new Coupon();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("name");
+
+    knownFields.add("invoice_name");
+
+    knownFields.add("discount_type");
+
+    knownFields.add("discount_percentage");
+
+    knownFields.add("discount_amount");
+
+    knownFields.add("discount_quantity");
+
+    knownFields.add("currency_code");
+
+    knownFields.add("duration_type");
+
+    knownFields.add("duration_month");
+
+    knownFields.add("valid_from");
+
+    knownFields.add("valid_till");
+
+    knownFields.add("max_redemptions");
+
+    knownFields.add("status");
+
+    knownFields.add("apply_discount_on");
+
+    knownFields.add("apply_on");
+
+    knownFields.add("created_at");
+
+    knownFields.add("archived_at");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("period");
+
+    knownFields.add("period_unit");
+
+    knownFields.add("redemptions");
+
+    knownFields.add("invoice_notes");
+
+    knownFields.add("meta_data");
+
+    knownFields.add("deleted");
+
+    knownFields.add("item_constraints");
+
+    knownFields.add("item_constraint_criteria");
+
+    knownFields.add("coupon_constraints");
+
+    knownFields.add("plan_ids");
+
+    knownFields.add("addon_constraint");
+
+    knownFields.add("plan_constraint");
+
+    knownFields.add("included_in_mrr");
+
+    knownFields.add("addon_ids");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.name = JsonUtil.getString(json, "name");
@@ -522,14 +617,46 @@ public class Coupon {
 
     obj.addonIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "addon_ids"));
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class ItemConstraints {
 
     private ItemType itemType;
     private Constraint constraint;
-    private List<java.util.Map<String, Object>> itemPriceIds;
+    private List<Object> itemPriceIds;
 
     public ItemType getItemType() {
       return itemType;
@@ -539,7 +666,7 @@ public class Coupon {
       return constraint;
     }
 
-    public List<java.util.Map<String, Object>> getItemPriceIds() {
+    public List<Object> getItemPriceIds() {
       return itemPriceIds;
     }
 
@@ -627,23 +754,23 @@ public class Coupon {
   public static class ItemConstraintCriteria {
 
     private ItemType itemType;
-    private List<java.util.Map<String, Object>> currencies;
-    private List<java.util.Map<String, Object>> itemFamilyIds;
-    private List<java.util.Map<String, Object>> itemPricePeriods;
+    private List<Object> currencies;
+    private List<Object> itemFamilyIds;
+    private List<Object> itemPricePeriods;
 
     public ItemType getItemType() {
       return itemType;
     }
 
-    public List<java.util.Map<String, Object>> getCurrencies() {
+    public List<Object> getCurrencies() {
       return currencies;
     }
 
-    public List<java.util.Map<String, Object>> getItemFamilyIds() {
+    public List<Object> getItemFamilyIds() {
       return itemFamilyIds;
     }
 
-    public List<java.util.Map<String, Object>> getItemPricePeriods() {
+    public List<Object> getItemPricePeriods() {
       return itemPricePeriods;
     }
 

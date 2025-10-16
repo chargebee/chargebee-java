@@ -1,18 +1,20 @@
 package com.chargebee.v4.core.responses.brandConfiguration;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for BrandConfigurationRetrieve operation. Contains the response data
  * from a single resource get operation.
  */
-public final class BrandConfigurationRetrieveResponse {
+public final class BrandConfigurationRetrieveResponse extends BaseResponse {
+  private final Object brandConfiguration;
 
-  private final Response httpResponse;
+  private BrandConfigurationRetrieveResponse(Object brandConfiguration, Response httpResponse) {
+    super(httpResponse);
 
-  private BrandConfigurationRetrieveResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.brandConfiguration = brandConfiguration;
   }
 
   /** Parse JSON response into BrandConfigurationRetrieveResponse object. */
@@ -24,34 +26,16 @@ public final class BrandConfigurationRetrieveResponse {
   public static BrandConfigurationRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
 
-      return new BrandConfigurationRetrieveResponse(httpResponse);
+      Object brandConfiguration = JsonUtil.getObject(json, "brand_configuration");
+
+      return new BrandConfigurationRetrieveResponse(brandConfiguration, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse BrandConfigurationRetrieveResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the brandConfiguration from the response. */
+  public Object getBrandConfiguration() {
+    return brandConfiguration;
   }
 }

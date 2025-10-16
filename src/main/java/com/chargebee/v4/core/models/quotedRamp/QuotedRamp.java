@@ -73,7 +73,7 @@ public class QuotedRamp {
     private ItemType itemType;
     private Integer quantity;
     private String quantityInDecimal;
-    private String meteredQuantity;
+    @Deprecated private String meteredQuantity;
     private Long unitPrice;
     private String unitPriceInDecimal;
     private Long amount;
@@ -115,6 +115,7 @@ public class QuotedRamp {
       return quantityInDecimal;
     }
 
+    @Deprecated
     public String getMeteredQuantity() {
       return meteredQuantity;
     }

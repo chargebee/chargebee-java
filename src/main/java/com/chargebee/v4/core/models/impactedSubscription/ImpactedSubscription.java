@@ -14,14 +14,14 @@ import java.util.List;
 public class ImpactedSubscription {
 
   private Integer count;
-  private List<java.util.Map<String, Object>> subscriptionIds;
+  private List<Object> subscriptionIds;
   private Download download;
 
   public Integer getCount() {
     return count;
   }
 
-  public List<java.util.Map<String, Object>> getSubscriptionIds() {
+  public List<Object> getSubscriptionIds() {
     return subscriptionIds;
   }
 

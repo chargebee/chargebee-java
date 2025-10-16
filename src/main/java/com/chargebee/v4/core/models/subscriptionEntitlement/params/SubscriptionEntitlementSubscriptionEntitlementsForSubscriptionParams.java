@@ -59,18 +59,21 @@ public final class SubscriptionEntitlementSubscriptionEntitlementsForSubscriptio
       return this;
     }
 
+    @Deprecated
     public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionBuilder includeDrafts(
         Boolean value) {
       queryParams.put("include_drafts", value);
       return this;
     }
 
+    @Deprecated
     public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionBuilder embed(
         String value) {
       queryParams.put("embed", value);
       return this;
     }
 
+    @Deprecated
     public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionBuilder
         includeScheduledOverrides(Boolean value) {
       queryParams.put("include_scheduled_overrides", value);

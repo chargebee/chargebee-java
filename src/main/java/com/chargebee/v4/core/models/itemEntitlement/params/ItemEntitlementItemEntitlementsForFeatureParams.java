@@ -55,6 +55,7 @@ public final class ItemEntitlementItemEntitlementsForFeatureParams {
       return this;
     }
 
+    @Deprecated
     public ItemEntitlementItemEntitlementsForFeatureBuilder includeDrafts(Boolean value) {
       queryParams.put("include_drafts", value);
       return this;

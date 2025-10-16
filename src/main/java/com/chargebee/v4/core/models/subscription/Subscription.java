@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.subscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -54,10 +55,10 @@ public class Subscription {
   private Timestamp dueSince;
   private Long totalDues;
   private Long mrr;
-  private Long arr;
-  private Number exchangeRate;
+  @Deprecated private Long arr;
+  private BigDecimal exchangeRate;
   private String baseCurrencyCode;
-  private String coupon;
+  @Deprecated private String coupon;
   private String invoiceNotes;
   private java.util.Map<String, Object> metaData;
   private Boolean deleted;
@@ -91,6 +92,8 @@ public class Subscription {
   private AutoCollection autoCollection;
   private List<EventBasedAddons> eventBasedAddons;
   private String planId;
+
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -256,11 +259,12 @@ public class Subscription {
     return mrr;
   }
 
+  @Deprecated
   public Long getArr() {
     return arr;
   }
 
-  public Number getExchangeRate() {
+  public BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
@@ -268,6 +272,7 @@ public class Subscription {
     return baseCurrencyCode;
   }
 
+  @Deprecated
   public String getCoupon() {
     return coupon;
   }
@@ -402,6 +407,26 @@ public class Subscription {
 
   public String getPlanId() {
     return planId;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum Status {
@@ -689,6 +714,165 @@ public class Subscription {
   public static Subscription fromJson(String json) {
     Subscription obj = new Subscription();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("currency_code");
+
+    knownFields.add("start_date");
+
+    knownFields.add("trial_end");
+
+    knownFields.add("remaining_billing_cycles");
+
+    knownFields.add("po_number");
+
+    knownFields.add("plan_quantity_in_decimal");
+
+    knownFields.add("plan_unit_price_in_decimal");
+
+    knownFields.add("customer_id");
+
+    knownFields.add("status");
+
+    knownFields.add("trial_start");
+
+    knownFields.add("trial_end_action");
+
+    knownFields.add("current_term_start");
+
+    knownFields.add("current_term_end");
+
+    knownFields.add("next_billing_at");
+
+    knownFields.add("created_at");
+
+    knownFields.add("started_at");
+
+    knownFields.add("activated_at");
+
+    knownFields.add("contract_term_billing_cycle_on_renewal");
+
+    knownFields.add("override_relationship");
+
+    knownFields.add("pause_date");
+
+    knownFields.add("resume_date");
+
+    knownFields.add("cancelled_at");
+
+    knownFields.add("cancel_reason");
+
+    knownFields.add("created_from_ip");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("has_scheduled_advance_invoices");
+
+    knownFields.add("has_scheduled_changes");
+
+    knownFields.add("payment_source_id");
+
+    knownFields.add("plan_free_quantity_in_decimal");
+
+    knownFields.add("plan_amount_in_decimal");
+
+    knownFields.add("cancel_schedule_created_at");
+
+    knownFields.add("offline_payment_method");
+
+    knownFields.add("channel");
+
+    knownFields.add("net_term_days");
+
+    knownFields.add("active_id");
+
+    knownFields.add("due_invoices_count");
+
+    knownFields.add("due_since");
+
+    knownFields.add("total_dues");
+
+    knownFields.add("mrr");
+
+    knownFields.add("arr");
+
+    knownFields.add("exchange_rate");
+
+    knownFields.add("base_currency_code");
+
+    knownFields.add("coupon");
+
+    knownFields.add("invoice_notes");
+
+    knownFields.add("meta_data");
+
+    knownFields.add("deleted");
+
+    knownFields.add("changes_scheduled_at");
+
+    knownFields.add("cancel_reason_code");
+
+    knownFields.add("free_period");
+
+    knownFields.add("free_period_unit");
+
+    knownFields.add("create_pending_invoices");
+
+    knownFields.add("auto_close_invoices");
+
+    knownFields.add("business_entity_id");
+
+    knownFields.add("subscription_items");
+
+    knownFields.add("item_tiers");
+
+    knownFields.add("charged_items");
+
+    knownFields.add("coupons");
+
+    knownFields.add("shipping_address");
+
+    knownFields.add("referral_info");
+
+    knownFields.add("billing_override");
+
+    knownFields.add("contract_term");
+
+    knownFields.add("discounts");
+
+    knownFields.add("billing_period");
+
+    knownFields.add("setup_fee");
+
+    knownFields.add("plan_free_quantity");
+
+    knownFields.add("addons");
+
+    knownFields.add("billing_period_unit");
+
+    knownFields.add("gift_id");
+
+    knownFields.add("plan_quantity");
+
+    knownFields.add("affiliate_token");
+
+    knownFields.add("plan_amount");
+
+    knownFields.add("plan_unit_price");
+
+    knownFields.add("charged_event_based_addons");
+
+    knownFields.add("auto_collection");
+
+    knownFields.add("event_based_addons");
+
+    knownFields.add("plan_id");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.currencyCode = JsonUtil.getString(json, "currency_code");
@@ -775,7 +959,7 @@ public class Subscription {
 
     obj.arr = JsonUtil.getLong(json, "arr");
 
-    obj.exchangeRate = JsonUtil.getNumber(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
 
     obj.baseCurrencyCode = JsonUtil.getString(json, "base_currency_code");
 
@@ -888,7 +1072,39 @@ public class Subscription {
 
     obj.planId = JsonUtil.getString(json, "plan_id");
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class SubscriptionItems {
@@ -897,8 +1113,8 @@ public class Subscription {
     private ItemType itemType;
     private Integer quantity;
     private String quantityInDecimal;
-    private String meteredQuantity;
-    private Timestamp lastCalculatedAt;
+    @Deprecated private String meteredQuantity;
+    @Deprecated private Timestamp lastCalculatedAt;
     private Long unitPrice;
     private String unitPriceInDecimal;
     private Long amount;
@@ -935,10 +1151,12 @@ public class Subscription {
       return quantityInDecimal;
     }
 
+    @Deprecated
     public String getMeteredQuantity() {
       return meteredQuantity;
     }
 
+    @Deprecated
     public Timestamp getLastCalculatedAt() {
       return lastCalculatedAt;
     }
@@ -2424,7 +2642,7 @@ public class Subscription {
     private String id;
     private Integer quantity;
     private Long unitPrice;
-    private Integer servicePeriodInDays;
+    @Deprecated private Integer servicePeriodInDays;
     private OnEvent onEvent;
     private Boolean chargeOnce;
     private String quantityInDecimal;
@@ -2442,6 +2660,7 @@ public class Subscription {
       return unitPrice;
     }
 
+    @Deprecated
     public Integer getServicePeriodInDays() {
       return servicePeriodInDays;
     }

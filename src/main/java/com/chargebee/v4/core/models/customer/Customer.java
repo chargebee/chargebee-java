@@ -29,7 +29,7 @@ public class Customer {
   private Boolean isLocationValid;
   private Timestamp createdAt;
   private String createdFromIp;
-  private List<java.util.Map<String, Object>> exemptionDetails;
+  private List<Object> exemptionDetails;
   private Taxability taxability;
   private EntityCode entityCode;
   private String exemptNumber;
@@ -45,7 +45,7 @@ public class Customer {
   private Boolean autoCloseInvoices;
   private Channel channel;
   private String activeId;
-  private CardStatus cardStatus;
+  @Deprecated private CardStatus cardStatus;
   private FraudFlag fraudFlag;
   private String primaryPaymentSourceId;
   private String backupPaymentSourceId;
@@ -79,6 +79,8 @@ public class Customer {
   private Relationship relationship;
   private ParentAccountAccess parentAccountAccess;
   private ChildAccountAccess childAccountAccess;
+
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -144,7 +146,7 @@ public class Customer {
     return createdFromIp;
   }
 
-  public List<java.util.Map<String, Object>> getExemptionDetails() {
+  public List<Object> getExemptionDetails() {
     return exemptionDetails;
   }
 
@@ -208,6 +210,7 @@ public class Customer {
     return activeId;
   }
 
+  @Deprecated
   public CardStatus getCardStatus() {
     return cardStatus;
   }
@@ -342,6 +345,26 @@ public class Customer {
 
   public ChildAccountAccess getChildAccountAccess() {
     return childAccountAccess;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum AutoCollection {
@@ -833,6 +856,141 @@ public class Customer {
   public static Customer fromJson(String json) {
     Customer obj = new Customer();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("first_name");
+
+    knownFields.add("last_name");
+
+    knownFields.add("email");
+
+    knownFields.add("phone");
+
+    knownFields.add("company");
+
+    knownFields.add("vat_number");
+
+    knownFields.add("auto_collection");
+
+    knownFields.add("offline_payment_method");
+
+    knownFields.add("net_term_days");
+
+    knownFields.add("vat_number_validated_time");
+
+    knownFields.add("vat_number_status");
+
+    knownFields.add("allow_direct_debit");
+
+    knownFields.add("is_location_valid");
+
+    knownFields.add("created_at");
+
+    knownFields.add("created_from_ip");
+
+    knownFields.add("exemption_details");
+
+    knownFields.add("taxability");
+
+    knownFields.add("entity_code");
+
+    knownFields.add("exempt_number");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("locale");
+
+    knownFields.add("billing_date");
+
+    knownFields.add("billing_month");
+
+    knownFields.add("billing_date_mode");
+
+    knownFields.add("billing_day_of_week");
+
+    knownFields.add("billing_day_of_week_mode");
+
+    knownFields.add("pii_cleared");
+
+    knownFields.add("auto_close_invoices");
+
+    knownFields.add("channel");
+
+    knownFields.add("active_id");
+
+    knownFields.add("card_status");
+
+    knownFields.add("fraud_flag");
+
+    knownFields.add("primary_payment_source_id");
+
+    knownFields.add("backup_payment_source_id");
+
+    knownFields.add("invoice_notes");
+
+    knownFields.add("business_entity_id");
+
+    knownFields.add("preferred_currency_code");
+
+    knownFields.add("promotional_credits");
+
+    knownFields.add("unbilled_charges");
+
+    knownFields.add("refundable_credits");
+
+    knownFields.add("excess_payments");
+
+    knownFields.add("is_einvoice_enabled");
+
+    knownFields.add("einvoicing_method");
+
+    knownFields.add("meta_data");
+
+    knownFields.add("deleted");
+
+    knownFields.add("registered_for_gst");
+
+    knownFields.add("consolidated_invoicing");
+
+    knownFields.add("customer_type");
+
+    knownFields.add("business_customer_without_vat_number");
+
+    knownFields.add("client_profile_id");
+
+    knownFields.add("use_default_hierarchy_settings");
+
+    knownFields.add("vat_number_prefix");
+
+    knownFields.add("entity_identifier_scheme");
+
+    knownFields.add("entity_identifier_standard");
+
+    knownFields.add("billing_address");
+
+    knownFields.add("referral_urls");
+
+    knownFields.add("contacts");
+
+    knownFields.add("payment_method");
+
+    knownFields.add("balances");
+
+    knownFields.add("entity_identifiers");
+
+    knownFields.add("tax_providers_fields");
+
+    knownFields.add("relationship");
+
+    knownFields.add("parent_account_access");
+
+    knownFields.add("child_account_access");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.firstName = JsonUtil.getString(json, "first_name");
@@ -1010,7 +1168,39 @@ public class Customer {
       obj.childAccountAccess = ChildAccountAccess.fromJson(__childAccountAccessJson);
     }
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class BillingAddress {
@@ -1617,7 +1807,7 @@ public class Customer {
     private Long refundableCredits;
     private Long unbilledCharges;
     private String currencyCode;
-    private String balanceCurrencyCode;
+    @Deprecated private String balanceCurrencyCode;
     private String businessEntityId;
 
     public Long getPromotionalCredits() {
@@ -1640,6 +1830,7 @@ public class Customer {
       return currencyCode;
     }
 
+    @Deprecated
     public String getBalanceCurrencyCode() {
       return balanceCurrencyCode;
     }

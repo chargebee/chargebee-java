@@ -123,10 +123,10 @@ public final class OmnichannelSubscriptionService
   }
 
   /**
-   * omnichannel_transactionsForOmnichannelSubscription a omnichannelSubscription using immutable
+   * omnichannelTransactionsForOmnichannelSubscription a omnichannelSubscription using immutable
    * params (executes immediately) - returns raw Response.
    */
-  Response omnichannel_transactionsForOmnichannelSubscriptionRaw(
+  Response omnichannelTransactionsForOmnichannelSubscriptionRaw(
       String omnichannelSubscriptionId,
       OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams params)
       throws Exception {
@@ -139,10 +139,10 @@ public final class OmnichannelSubscriptionService
   }
 
   /**
-   * omnichannel_transactionsForOmnichannelSubscription a omnichannelSubscription without params
+   * omnichannelTransactionsForOmnichannelSubscription a omnichannelSubscription without params
    * (executes immediately) - returns raw Response.
    */
-  Response omnichannel_transactionsForOmnichannelSubscriptionRaw(String omnichannelSubscriptionId)
+  Response omnichannelTransactionsForOmnichannelSubscriptionRaw(String omnichannelSubscriptionId)
       throws Exception {
     String path =
         buildPathWithParams(
@@ -153,10 +153,10 @@ public final class OmnichannelSubscriptionService
   }
 
   /**
-   * omnichannel_transactionsForOmnichannelSubscription a omnichannelSubscription using raw JSON
+   * omnichannelTransactionsForOmnichannelSubscription a omnichannelSubscription using raw JSON
    * payload (executes immediately) - returns raw Response.
    */
-  Response omnichannel_transactionsForOmnichannelSubscriptionRaw(
+  Response omnichannelTransactionsForOmnichannelSubscriptionRaw(
       String omnichannelSubscriptionId, String jsonPayload) throws Exception {
     String path =
         buildPathWithParams(
@@ -167,21 +167,21 @@ public final class OmnichannelSubscriptionService
   }
 
   public OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-      omnichannel_transactionsForOmnichannelSubscription(
+      omnichannelTransactionsForOmnichannelSubscription(
           String omnichannelSubscriptionId,
           OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionParams params)
           throws Exception {
     Response response =
-        omnichannel_transactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId, params);
+        omnichannelTransactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId, params);
     return OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
         .fromJson(response.getBodyAsString(), this, params, omnichannelSubscriptionId, response);
   }
 
   public OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
-      omnichannel_transactionsForOmnichannelSubscription(String omnichannelSubscriptionId)
+      omnichannelTransactionsForOmnichannelSubscription(String omnichannelSubscriptionId)
           throws Exception {
     Response response =
-        omnichannel_transactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId);
+        omnichannelTransactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId);
     return OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionResponse
         .fromJson(response.getBodyAsString(), this, null, omnichannelSubscriptionId, response);
   }

@@ -127,7 +127,7 @@ public final class DifferentialPriceUpdateParams {
         return this;
       }
 
-      public ParentPeriodsBuilder period(List<java.util.Map<String, Object>> value) {
+      public ParentPeriodsBuilder period(List<Object> value) {
 
         formData.put("period", JsonUtil.toJson(value));
 

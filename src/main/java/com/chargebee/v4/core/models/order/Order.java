@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.order;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -1163,7 +1164,7 @@ public class Order {
     private Number taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
-    private Number proratedTaxableAmount;
+    private BigDecimal proratedTaxableAmount;
     private Boolean isPartialTaxApplied;
     private Boolean isNonComplianceTax;
     private Long taxableAmount;
@@ -1194,7 +1195,7 @@ public class Order {
       return dateFrom;
     }
 
-    public Number getProratedTaxableAmount() {
+    public BigDecimal getProratedTaxableAmount() {
       return proratedTaxableAmount;
     }
 
@@ -1287,7 +1288,7 @@ public class Order {
 
       obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-      obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
       obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 
@@ -1315,7 +1316,7 @@ public class Order {
 
     private String lineItemId;
     private DiscountType discountType;
-    private String couponId;
+    @Deprecated private String couponId;
     private String entityId;
     private Long discountAmount;
 
@@ -1327,6 +1328,7 @@ public class Order {
       return discountType;
     }
 
+    @Deprecated
     public String getCouponId() {
       return couponId;
     }

@@ -16,7 +16,7 @@ public class HostedPage {
   private Type type;
   private String url;
   private State state;
-  private FailureReason failureReason;
+  @Deprecated private FailureReason failureReason;
   private String passThruContent;
   private Timestamp createdAt;
   private Timestamp expiresAt;
@@ -43,6 +43,7 @@ public class HostedPage {
     return state;
   }
 
+  @Deprecated
   public FailureReason getFailureReason() {
     return failureReason;
   }

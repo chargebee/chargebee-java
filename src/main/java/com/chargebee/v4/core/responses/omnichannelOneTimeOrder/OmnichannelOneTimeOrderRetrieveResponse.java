@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.omnichannelOneTimeOrder;
 
 import com.chargebee.v4.core.models.omnichannelOneTimeOrder.OmnichannelOneTimeOrder;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,18 +10,14 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for OmnichannelOneTimeOrderRetrieve operation. Contains the response
  * data from a single resource get operation.
  */
-public final class OmnichannelOneTimeOrderRetrieveResponse {
-
+public final class OmnichannelOneTimeOrderRetrieveResponse extends BaseResponse {
   private final OmnichannelOneTimeOrder omnichannelOneTimeOrder;
-
-  private final Response httpResponse;
 
   private OmnichannelOneTimeOrderRetrieveResponse(
       OmnichannelOneTimeOrder omnichannelOneTimeOrder, Response httpResponse) {
+    super(httpResponse);
 
     this.omnichannelOneTimeOrder = omnichannelOneTimeOrder;
-
-    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into OmnichannelOneTimeOrderRetrieveResponse object. */
@@ -46,30 +43,5 @@ public final class OmnichannelOneTimeOrderRetrieveResponse {
   /** Get the omnichannelOneTimeOrder from the response. */
   public OmnichannelOneTimeOrder getOmnichannelOneTimeOrder() {
     return omnichannelOneTimeOrder;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

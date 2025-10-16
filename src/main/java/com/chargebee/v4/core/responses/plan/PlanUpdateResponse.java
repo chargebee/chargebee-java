@@ -2,21 +2,18 @@ package com.chargebee.v4.core.responses.plan;
 
 import com.chargebee.v4.core.models.plan.Plan;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for PlanUpdate operation. Contains the response data from the API. */
-public final class PlanUpdateResponse {
-
+public final class PlanUpdateResponse extends BaseResponse {
   private final Plan plan;
 
-  private final Response httpResponse;
-
   private PlanUpdateResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.plan = builder.plan;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into PlanUpdateResponse object. */
@@ -73,30 +70,5 @@ public final class PlanUpdateResponse {
   /** Get the plan from the response. */
   public Plan getPlan() {
     return plan;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

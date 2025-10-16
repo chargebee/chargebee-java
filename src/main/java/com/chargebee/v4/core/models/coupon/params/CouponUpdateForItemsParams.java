@@ -214,6 +214,42 @@ public final class CouponUpdateForItemsParams {
       return this;
     }
 
+    /**
+     * Add a custom field to the request. Custom fields must start with "cf_".
+     *
+     * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+     * @param value the value of the custom field
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+     */
+    public CouponUpdateForItemsBuilder customField(String fieldName, Object value) {
+      if (fieldName == null || !fieldName.startsWith("cf_")) {
+        throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+      }
+      formData.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add multiple custom fields to the request. All field names must start with "cf_".
+     *
+     * @param customFields map of custom field names to values
+     * @return this builder
+     * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+     */
+    public CouponUpdateForItemsBuilder customFields(Map<String, Object> customFields) {
+      if (customFields != null) {
+        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+          if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+            throw new IllegalArgumentException(
+                "Custom field name must start with 'cf_': " + entry.getKey());
+          }
+          formData.put(entry.getKey(), entry.getValue());
+        }
+      }
+      return this;
+    }
+
     public CouponUpdateForItemsParams build() {
       return new CouponUpdateForItemsParams(this);
     }
@@ -381,7 +417,7 @@ public final class CouponUpdateForItemsParams {
         return this;
       }
 
-      public ItemConstraintsBuilder itemPriceIds(List<java.util.Map<String, Object>> value) {
+      public ItemConstraintsBuilder itemPriceIds(List<Object> value) {
 
         formData.put("item_price_ids", JsonUtil.toJson(value));
 
@@ -487,23 +523,21 @@ public final class CouponUpdateForItemsParams {
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder itemFamilyIds(
-          List<java.util.Map<String, Object>> value) {
+      public ItemConstraintCriteriaBuilder itemFamilyIds(List<Object> value) {
 
         formData.put("item_family_ids", JsonUtil.toJson(value));
 
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder currencies(List<java.util.Map<String, Object>> value) {
+      public ItemConstraintCriteriaBuilder currencies(List<Object> value) {
 
         formData.put("currencies", JsonUtil.toJson(value));
 
         return this;
       }
 
-      public ItemConstraintCriteriaBuilder itemPricePeriods(
-          List<java.util.Map<String, Object>> value) {
+      public ItemConstraintCriteriaBuilder itemPricePeriods(List<Object> value) {
 
         formData.put("item_price_periods", JsonUtil.toJson(value));
 

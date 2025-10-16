@@ -157,7 +157,7 @@ public class Product {
 
     private String id;
     private String name;
-    private List<java.util.Map<String, Object>> values;
+    private List<Object> values;
     private String defaultValue;
     private Type type;
 
@@ -169,7 +169,7 @@ public class Product {
       return name;
     }
 
-    public List<java.util.Map<String, Object>> getValues() {
+    public List<Object> getValues() {
       return values;
     }
 

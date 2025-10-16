@@ -18,7 +18,7 @@ public class Addon {
   private String invoiceName;
   private String description;
   private PricingModel pricingModel;
-  private Type type;
+  @Deprecated private Type type;
   private ChargeType chargeType;
   private Long price;
   private String currencyCode;
@@ -58,6 +58,8 @@ public class Addon {
   private List<Tiers> tiers;
   private List<TaxProvidersFields> taxProvidersFields;
 
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+
   public String getId() {
     return id;
   }
@@ -78,6 +80,7 @@ public class Addon {
     return pricingModel;
   }
 
+  @Deprecated
   public Type getType() {
     return type;
   }
@@ -232,6 +235,26 @@ public class Addon {
 
   public List<TaxProvidersFields> getTaxProvidersFields() {
     return taxProvidersFields;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum PricingModel {
@@ -524,6 +547,97 @@ public class Addon {
   public static Addon fromJson(String json) {
     Addon obj = new Addon();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("name");
+
+    knownFields.add("invoice_name");
+
+    knownFields.add("description");
+
+    knownFields.add("pricing_model");
+
+    knownFields.add("type");
+
+    knownFields.add("charge_type");
+
+    knownFields.add("price");
+
+    knownFields.add("currency_code");
+
+    knownFields.add("period");
+
+    knownFields.add("period_unit");
+
+    knownFields.add("unit");
+
+    knownFields.add("status");
+
+    knownFields.add("archived_at");
+
+    knownFields.add("enabled_in_portal");
+
+    knownFields.add("tax_code");
+
+    knownFields.add("hsn_code");
+
+    knownFields.add("taxjar_product_code");
+
+    knownFields.add("avalara_sale_type");
+
+    knownFields.add("avalara_transaction_type");
+
+    knownFields.add("avalara_service_type");
+
+    knownFields.add("sku");
+
+    knownFields.add("accounting_code");
+
+    knownFields.add("accounting_category1");
+
+    knownFields.add("accounting_category2");
+
+    knownFields.add("accounting_category3");
+
+    knownFields.add("accounting_category4");
+
+    knownFields.add("is_shippable");
+
+    knownFields.add("shipping_frequency_period");
+
+    knownFields.add("shipping_frequency_period_unit");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("price_in_decimal");
+
+    knownFields.add("included_in_mrr");
+
+    knownFields.add("channel");
+
+    knownFields.add("proration_type");
+
+    knownFields.add("invoice_notes");
+
+    knownFields.add("taxable");
+
+    knownFields.add("tax_profile_id");
+
+    knownFields.add("meta_data");
+
+    knownFields.add("show_description_in_invoices");
+
+    knownFields.add("show_description_in_quotes");
+
+    knownFields.add("tiers");
+
+    knownFields.add("tax_providers_fields");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.name = JsonUtil.getString(json, "name");
@@ -624,7 +738,39 @@ public class Addon {
             .map(TaxProvidersFields::fromJson)
             .collect(java.util.stream.Collectors.toList());
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class Tiers {

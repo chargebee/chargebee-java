@@ -71,6 +71,15 @@ public final class RequestOptions {
         return new HashMap<>(headers); // Return defensive copy
     }
 
+    /**
+     * Get the idempotency key for this request, if set.
+     *
+     * @return the idempotency key, or null if not set
+     */
+    public String getIdempotencyKey() {
+        return headers.get("chargebee-idempotency-key");
+    }
+
     public Integer getMaxNetworkRetries() {
         return maxNetworkRetries;
     }
@@ -129,6 +138,20 @@ public final class RequestOptions {
         public Builder headers(Map<String, String> headers) {
             if (headers != null) {
                 this.headers.putAll(headers);
+            }
+            return this;
+        }
+
+        /**
+         * Set the idempotency key for this request.
+         * Idempotency keys allow safe retrying of POST requests without accidentally duplicating operations.
+         *
+         * @param idempotencyKey a unique identifier for the request (e.g., UUID)
+         * @return this builder for chaining
+         */
+        public Builder idempotencyKey(String idempotencyKey) {
+            if (idempotencyKey != null && !idempotencyKey.isEmpty()) {
+                this.headers.put("chargebee-idempotency-key", idempotencyKey);
             }
             return this;
         }

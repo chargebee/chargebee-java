@@ -9,6 +9,7 @@ package com.chargebee.v4.core.models.item.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -335,23 +336,25 @@ public final class ItemListParams {
         this.builder = builder;
       }
 
-      public ItemListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public ItemListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ItemListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public ItemListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ItemListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public ItemListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public ItemListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public ItemListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -506,34 +509,36 @@ public final class ItemListParams {
       }
 
       public SortDirection name() {
-        return new SortDirection(fieldName + "[name]", builder);
+        return new SortDirection(fieldName, "name", builder);
       }
 
       public SortDirection id() {
-        return new SortDirection(fieldName + "[id]", builder);
+        return new SortDirection(fieldName, "id", builder);
       }
 
       public SortDirection updated_at() {
-        return new SortDirection(fieldName + "[updated_at]", builder);
+        return new SortDirection(fieldName, "updated_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final ItemListBuilder builder;
 
-      SortDirection(String paramName, ItemListBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(String fieldName, String selectedField, ItemListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public ItemListBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public ItemListBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

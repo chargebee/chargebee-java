@@ -1,18 +1,20 @@
 package com.chargebee.v4.core.responses.fullExport;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for FullExportStatus operation. Contains the response data from a
  * single resource get operation.
  */
-public final class FullExportStatusResponse {
+public final class FullExportStatusResponse extends BaseResponse {
+  private final Object fullExport;
 
-  private final Response httpResponse;
+  private FullExportStatusResponse(Object fullExport, Response httpResponse) {
+    super(httpResponse);
 
-  private FullExportStatusResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.fullExport = fullExport;
   }
 
   /** Parse JSON response into FullExportStatusResponse object. */
@@ -24,34 +26,16 @@ public final class FullExportStatusResponse {
   public static FullExportStatusResponse fromJson(String json, Response httpResponse) {
     try {
 
-      return new FullExportStatusResponse(httpResponse);
+      Object fullExport = JsonUtil.getObject(json, "full_export");
+
+      return new FullExportStatusResponse(fullExport, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse FullExportStatusResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the fullExport from the response. */
+  public Object getFullExport() {
+    return fullExport;
   }
 }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.paymentScheduleScheme;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class PaymentScheduleScheme {
   private Timestamp createdAt;
   private Long resourceVersion;
   private Timestamp updatedAt;
-  private List<PreferredSchedules> preferredSchedules;
+  @Deprecated private List<PreferredSchedules> preferredSchedules;
 
   public String getId() {
     return id;
@@ -60,6 +61,7 @@ public class PaymentScheduleScheme {
     return updatedAt;
   }
 
+  @Deprecated
   public List<PreferredSchedules> getPreferredSchedules() {
     return preferredSchedules;
   }
@@ -126,13 +128,13 @@ public class PaymentScheduleScheme {
   public static class PreferredSchedules {
 
     private Integer period;
-    private Number amountPercentage;
+    private BigDecimal amountPercentage;
 
     public Integer getPeriod() {
       return period;
     }
 
-    public Number getAmountPercentage() {
+    public BigDecimal getAmountPercentage() {
       return amountPercentage;
     }
 
@@ -141,7 +143,7 @@ public class PaymentScheduleScheme {
 
       obj.period = JsonUtil.getInteger(json, "period");
 
-      obj.amountPercentage = JsonUtil.getNumber(json, "amount_percentage");
+      obj.amountPercentage = JsonUtil.getBigDecimal(json, "amount_percentage");
 
       return obj;
     }

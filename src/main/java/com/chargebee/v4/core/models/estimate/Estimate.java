@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.estimate;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -1709,7 +1710,7 @@ public class Estimate {
       private Number taxRate;
       private Timestamp dateTo;
       private Timestamp dateFrom;
-      private Number proratedTaxableAmount;
+      private BigDecimal proratedTaxableAmount;
       private Boolean isPartialTaxApplied;
       private Boolean isNonComplianceTax;
       private Long taxableAmount;
@@ -1740,7 +1741,7 @@ public class Estimate {
         return dateFrom;
       }
 
-      public Number getProratedTaxableAmount() {
+      public BigDecimal getProratedTaxableAmount() {
         return proratedTaxableAmount;
       }
 
@@ -1833,7 +1834,7 @@ public class Estimate {
 
         obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-        obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+        obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
         obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 
@@ -2882,7 +2883,7 @@ public class Estimate {
       private Number taxRate;
       private Timestamp dateTo;
       private Timestamp dateFrom;
-      private Number proratedTaxableAmount;
+      private BigDecimal proratedTaxableAmount;
       private Boolean isPartialTaxApplied;
       private Boolean isNonComplianceTax;
       private Long taxableAmount;
@@ -2913,7 +2914,7 @@ public class Estimate {
         return dateFrom;
       }
 
-      public Number getProratedTaxableAmount() {
+      public BigDecimal getProratedTaxableAmount() {
         return proratedTaxableAmount;
       }
 
@@ -3006,7 +3007,7 @@ public class Estimate {
 
         obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-        obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+        obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
         obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 
@@ -4211,7 +4212,7 @@ public class Estimate {
       private Number taxRate;
       private Timestamp dateTo;
       private Timestamp dateFrom;
-      private Number proratedTaxableAmount;
+      private BigDecimal proratedTaxableAmount;
       private Boolean isPartialTaxApplied;
       private Boolean isNonComplianceTax;
       private Long taxableAmount;
@@ -4242,7 +4243,7 @@ public class Estimate {
         return dateFrom;
       }
 
-      public Number getProratedTaxableAmount() {
+      public BigDecimal getProratedTaxableAmount() {
         return proratedTaxableAmount;
       }
 
@@ -4335,7 +4336,7 @@ public class Estimate {
 
         obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-        obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+        obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
         obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 
@@ -5394,7 +5395,7 @@ public class Estimate {
       private Number taxRate;
       private Timestamp dateTo;
       private Timestamp dateFrom;
-      private Number proratedTaxableAmount;
+      private BigDecimal proratedTaxableAmount;
       private Boolean isPartialTaxApplied;
       private Boolean isNonComplianceTax;
       private Long taxableAmount;
@@ -5425,7 +5426,7 @@ public class Estimate {
         return dateFrom;
       }
 
-      public Number getProratedTaxableAmount() {
+      public BigDecimal getProratedTaxableAmount() {
         return proratedTaxableAmount;
       }
 
@@ -5518,7 +5519,7 @@ public class Estimate {
 
         obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-        obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+        obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
         obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 

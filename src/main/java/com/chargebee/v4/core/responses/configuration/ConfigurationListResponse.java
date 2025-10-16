@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.configuration;
 
 import com.chargebee.v4.core.models.configuration.Configuration;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import java.util.List;
@@ -10,17 +11,13 @@ import java.util.List;
  * Immutable response object for ConfigurationList operation. Contains the response data from a
  * single resource get operation.
  */
-public final class ConfigurationListResponse {
-
+public final class ConfigurationListResponse extends BaseResponse {
   private final List<Configuration> configurations;
 
-  private final Response httpResponse;
-
   private ConfigurationListResponse(List<Configuration> configurations, Response httpResponse) {
+    super(httpResponse);
 
     this.configurations = configurations;
-
-    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into ConfigurationListResponse object. */
@@ -46,30 +43,5 @@ public final class ConfigurationListResponse {
   /** Get the configurations from the response. */
   public List<Configuration> getConfigurations() {
     return configurations;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

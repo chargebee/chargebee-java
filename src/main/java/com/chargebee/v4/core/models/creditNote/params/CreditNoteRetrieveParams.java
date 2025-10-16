@@ -43,6 +43,7 @@ public final class CreditNoteRetrieveParams {
 
     private CreditNoteRetrieveBuilder() {}
 
+    @Deprecated
     public CreditNoteRetrieveBuilder lineItem(LineItemParams value) {
       queryParams.put("line_item", value);
       return this;
@@ -83,10 +84,12 @@ public final class CreditNoteRetrieveParams {
 
       private LineItemBuilder() {}
 
+      @Deprecated
       public SubscriptionIdFilter subscriptionId() {
         return new SubscriptionIdFilter("subscription_id", this);
       }
 
+      @Deprecated
       public CustomerIdFilter customerId() {
         return new CustomerIdFilter("customer_id", this);
       }

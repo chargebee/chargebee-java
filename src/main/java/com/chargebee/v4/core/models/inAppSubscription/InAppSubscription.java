@@ -11,13 +11,14 @@ import com.chargebee.v4.internal.JsonUtil;
 
 public class InAppSubscription {
 
-  private String appId;
+  @Deprecated private String appId;
   private String subscriptionId;
   private String customerId;
   private String planId;
   private StoreStatus storeStatus;
   private String invoiceId;
 
+  @Deprecated
   public String getAppId() {
     return appId;
   }

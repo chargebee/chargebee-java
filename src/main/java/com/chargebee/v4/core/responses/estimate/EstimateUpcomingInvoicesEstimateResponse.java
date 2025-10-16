@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.estimate;
 
 import com.chargebee.v4.core.models.estimate.Estimate;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,17 +10,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for EstimateUpcomingInvoicesEstimate operation. Contains the response
  * data from a single resource get operation.
  */
-public final class EstimateUpcomingInvoicesEstimateResponse {
-
+public final class EstimateUpcomingInvoicesEstimateResponse extends BaseResponse {
   private final Estimate estimate;
 
-  private final Response httpResponse;
-
   private EstimateUpcomingInvoicesEstimateResponse(Estimate estimate, Response httpResponse) {
+    super(httpResponse);
 
     this.estimate = estimate;
-
-    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into EstimateUpcomingInvoicesEstimateResponse object. */
@@ -46,30 +43,5 @@ public final class EstimateUpcomingInvoicesEstimateResponse {
   /** Get the estimate from the response. */
   public Estimate getEstimate() {
     return estimate;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

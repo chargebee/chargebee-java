@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.core.models.invoice.Invoice;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -11,17 +12,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for UnbilledChargeInvoiceUnbilledCharges operation. Contains the
  * response data from the API.
  */
-public final class UnbilledChargeInvoiceUnbilledChargesResponse {
-
+public final class UnbilledChargeInvoiceUnbilledChargesResponse extends BaseResponse {
   private final List<Invoice> invoices;
 
-  private final Response httpResponse;
-
   private UnbilledChargeInvoiceUnbilledChargesResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.invoices = builder.invoices;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into UnbilledChargeInvoiceUnbilledChargesResponse object. */
@@ -83,30 +80,5 @@ public final class UnbilledChargeInvoiceUnbilledChargesResponse {
   /** Get the invoices from the response. */
   public List<Invoice> getInvoices() {
     return invoices;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

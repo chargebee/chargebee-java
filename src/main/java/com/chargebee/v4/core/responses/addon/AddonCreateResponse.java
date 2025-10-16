@@ -2,21 +2,18 @@ package com.chargebee.v4.core.responses.addon;
 
 import com.chargebee.v4.core.models.addon.Addon;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for AddonCreate operation. Contains the response data from the API. */
-public final class AddonCreateResponse {
-
+public final class AddonCreateResponse extends BaseResponse {
   private final Addon addon;
 
-  private final Response httpResponse;
-
   private AddonCreateResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.addon = builder.addon;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into AddonCreateResponse object. */
@@ -73,30 +70,5 @@ public final class AddonCreateResponse {
   /** Get the addon from the response. */
   public Addon getAddon() {
     return addon;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

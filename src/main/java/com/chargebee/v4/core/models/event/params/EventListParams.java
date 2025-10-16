@@ -54,11 +54,13 @@ public final class EventListParams {
       return this;
     }
 
+    @Deprecated
     public EventListBuilder startTime(Timestamp value) {
       queryParams.put("start_time", value);
       return this;
     }
 
+    @Deprecated
     public EventListBuilder endTime(Timestamp value) {
       queryParams.put("end_time", value);
       return this;
@@ -226,23 +228,25 @@ public final class EventListParams {
         this.builder = builder;
       }
 
-      public EventListBuilder after(String timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp);
+      public EventListBuilder after(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public EventListBuilder before(String timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp);
+      public EventListBuilder before(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public EventListBuilder on(String timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp);
+      public EventListBuilder on(Timestamp timestamp) {
+        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
         return builder;
       }
 
-      public EventListBuilder between(String start, String end) {
-        builder.queryParams.put(fieldName + "[between]", "[" + start + "," + end + "]");
+      public EventListBuilder between(Timestamp start, Timestamp end) {
+        builder.queryParams.put(
+            fieldName + "[between]",
+            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
         return builder;
       }
     }
@@ -257,26 +261,28 @@ public final class EventListParams {
       }
 
       public SortDirection occurred_at() {
-        return new SortDirection(fieldName + "[occurred_at]", builder);
+        return new SortDirection(fieldName, "occurred_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final EventListBuilder builder;
 
-      SortDirection(String paramName, EventListBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(String fieldName, String selectedField, EventListBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public EventListBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public EventListBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

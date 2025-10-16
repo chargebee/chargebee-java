@@ -153,7 +153,7 @@ class OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionRe
             .offset(nextOffset)
             .build();
 
-    return service.omnichannel_transactionsForOmnichannelSubscription(
+    return service.omnichannelTransactionsForOmnichannelSubscription(
         omnichannelSubscriptionId, nextParams);
   }
 

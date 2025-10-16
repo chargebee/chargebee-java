@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.usageEvent;
 
 import java.util.List;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,21 +10,17 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for UsageEventBatchIngest operation. Contains the response data from
  * the API.
  */
-public final class UsageEventBatchIngestResponse {
-
+public final class UsageEventBatchIngestResponse extends BaseResponse {
   private final String batchId;
 
-  private final List<String> failedEvents;
-
-  private final Response httpResponse;
+  private final List<Object> failedEvents;
 
   private UsageEventBatchIngestResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.batchId = builder.batchId;
 
     this.failedEvents = builder.failedEvents;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into UsageEventBatchIngestResponse object. */
@@ -38,7 +35,13 @@ public final class UsageEventBatchIngestResponse {
 
       builder.batchId(JsonUtil.getString(json, "batch_id"));
 
-      builder.failedEvents(JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "failed_events")));
+      String __failedEventsJson = JsonUtil.getArray(json, "failed_events);");
+      if (__failedEventsJson != null) {
+        builder.failedEvents(
+            JsonUtil.parseObjectArray(__failedEventsJson).stream()
+                .map(JsonUtil::parseJsonObjectToMap)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
       builder.httpResponse(httpResponse);
       return builder.build();
@@ -57,7 +60,7 @@ public final class UsageEventBatchIngestResponse {
 
     private String batchId;
 
-    private List<String> failedEvents;
+    private List<Object> failedEvents;
 
     private Response httpResponse;
 
@@ -68,7 +71,7 @@ public final class UsageEventBatchIngestResponse {
       return this;
     }
 
-    public Builder failedEvents(List<String> failedEvents) {
+    public Builder failedEvents(List<Object> failedEvents) {
       this.failedEvents = failedEvents;
       return this;
     }
@@ -89,32 +92,7 @@ public final class UsageEventBatchIngestResponse {
   }
 
   /** Get the failedEvents from the response. */
-  public List<String> getFailedEvents() {
+  public List<Object> getFailedEvents() {
     return failedEvents;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

@@ -4,6 +4,7 @@ import com.chargebee.v4.core.models.paymentSource.PaymentSource;
 
 import com.chargebee.v4.core.models.subscription.Subscription;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -11,21 +12,17 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for SubscriptionOverrideBillingProfile operation. Contains the response
  * data from the API.
  */
-public final class SubscriptionOverrideBillingProfileResponse {
-
+public final class SubscriptionOverrideBillingProfileResponse extends BaseResponse {
   private final Subscription subscription;
 
   private final PaymentSource paymentSource;
 
-  private final Response httpResponse;
-
   private SubscriptionOverrideBillingProfileResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.subscription = builder.subscription;
 
     this.paymentSource = builder.paymentSource;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into SubscriptionOverrideBillingProfileResponse object. */
@@ -103,30 +100,5 @@ public final class SubscriptionOverrideBillingProfileResponse {
   /** Get the paymentSource from the response. */
   public PaymentSource getPaymentSource() {
     return paymentSource;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

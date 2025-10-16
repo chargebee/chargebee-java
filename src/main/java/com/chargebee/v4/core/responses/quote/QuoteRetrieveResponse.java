@@ -8,6 +8,7 @@ import com.chargebee.v4.core.models.quotedCharge.QuotedCharge;
 
 import com.chargebee.v4.core.models.quotedRamp.QuotedRamp;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -15,8 +16,7 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for QuoteRetrieve operation. Contains the response data from a single
  * resource get operation.
  */
-public final class QuoteRetrieveResponse {
-
+public final class QuoteRetrieveResponse extends BaseResponse {
   private final Quote quote;
 
   private final QuotedSubscription quotedSubscription;
@@ -25,14 +25,13 @@ public final class QuoteRetrieveResponse {
 
   private final QuotedRamp quotedRamp;
 
-  private final Response httpResponse;
-
   private QuoteRetrieveResponse(
       Quote quote,
       QuotedSubscription quotedSubscription,
       QuotedCharge quotedCharge,
       QuotedRamp quotedRamp,
       Response httpResponse) {
+    super(httpResponse);
 
     this.quote = quote;
 
@@ -41,8 +40,6 @@ public final class QuoteRetrieveResponse {
     this.quotedCharge = quotedCharge;
 
     this.quotedRamp = quotedRamp;
-
-    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into QuoteRetrieveResponse object. */
@@ -88,30 +85,5 @@ public final class QuoteRetrieveResponse {
   /** Get the quotedRamp from the response. */
   public QuotedRamp getQuotedRamp() {
     return quotedRamp;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

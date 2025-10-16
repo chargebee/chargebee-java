@@ -8,27 +8,29 @@
 package com.chargebee.v4.core.models.taxWithheld;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class TaxWithheld {
 
   private String id;
-  private String user;
+  @Deprecated private String user;
   private String referenceNumber;
   private String description;
-  private Type type;
-  private PaymentMethod paymentMethod;
+  @Deprecated private Type type;
+  @Deprecated private PaymentMethod paymentMethod;
   private Timestamp date;
-  private String currencyCode;
+  @Deprecated private String currencyCode;
   private Long amount;
   private Long resourceVersion;
   private Timestamp updatedAt;
-  private Number exchangeRate;
+  @Deprecated private BigDecimal exchangeRate;
 
   public String getId() {
     return id;
   }
 
+  @Deprecated
   public String getUser() {
     return user;
   }
@@ -41,10 +43,12 @@ public class TaxWithheld {
     return description;
   }
 
+  @Deprecated
   public Type getType() {
     return type;
   }
 
+  @Deprecated
   public PaymentMethod getPaymentMethod() {
     return paymentMethod;
   }
@@ -53,6 +57,7 @@ public class TaxWithheld {
     return date;
   }
 
+  @Deprecated
   public String getCurrencyCode() {
     return currencyCode;
   }
@@ -69,7 +74,8 @@ public class TaxWithheld {
     return updatedAt;
   }
 
-  public Number getExchangeRate() {
+  @Deprecated
+  public BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
@@ -160,7 +166,7 @@ public class TaxWithheld {
 
     obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
 
-    obj.exchangeRate = JsonUtil.getNumber(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
 
     return obj;
   }

@@ -97,7 +97,7 @@ public final class ProductUpdateOptionsParams {
         return this;
       }
 
-      public OptionsBuilder values(List<java.util.Map<String, Object>> value) {
+      public OptionsBuilder values(List<Object> value) {
 
         formData.put("values", JsonUtil.toJson(value));
 

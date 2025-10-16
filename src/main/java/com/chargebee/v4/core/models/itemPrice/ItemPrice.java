@@ -46,8 +46,8 @@ public class ItemPrice {
   private Boolean isTaxable;
   private java.util.Map<String, Object> metadata;
   private ItemType itemType;
-  private Boolean archivable;
-  private String parentItemId;
+  @Deprecated private Boolean archivable;
+  @Deprecated private String parentItemId;
   private Boolean showDescriptionInInvoices;
   private Boolean showDescriptionInQuotes;
   private Boolean deleted;
@@ -56,6 +56,8 @@ public class ItemPrice {
   private TaxDetail taxDetail;
   private List<TaxProvidersFields> taxProvidersFields;
   private AccountingDetail accountingDetail;
+
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -189,10 +191,12 @@ public class ItemPrice {
     return itemType;
   }
 
+  @Deprecated
   public Boolean getArchivable() {
     return archivable;
   }
 
+  @Deprecated
   public String getParentItemId() {
     return parentItemId;
   }
@@ -227,6 +231,26 @@ public class ItemPrice {
 
   public AccountingDetail getAccountingDetail() {
     return accountingDetail;
+  }
+
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
   }
 
   public enum Status {
@@ -539,6 +563,95 @@ public class ItemPrice {
   public static ItemPrice fromJson(String json) {
     ItemPrice obj = new ItemPrice();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("name");
+
+    knownFields.add("item_family_id");
+
+    knownFields.add("item_id");
+
+    knownFields.add("description");
+
+    knownFields.add("status");
+
+    knownFields.add("external_name");
+
+    knownFields.add("price_variant_id");
+
+    knownFields.add("proration_type");
+
+    knownFields.add("pricing_model");
+
+    knownFields.add("price");
+
+    knownFields.add("price_in_decimal");
+
+    knownFields.add("period");
+
+    knownFields.add("currency_code");
+
+    knownFields.add("period_unit");
+
+    knownFields.add("trial_period");
+
+    knownFields.add("trial_period_unit");
+
+    knownFields.add("trial_end_action");
+
+    knownFields.add("shipping_period");
+
+    knownFields.add("shipping_period_unit");
+
+    knownFields.add("billing_cycles");
+
+    knownFields.add("free_quantity");
+
+    knownFields.add("free_quantity_in_decimal");
+
+    knownFields.add("channel");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("created_at");
+
+    knownFields.add("usage_accumulation_reset_frequency");
+
+    knownFields.add("archived_at");
+
+    knownFields.add("invoice_notes");
+
+    knownFields.add("is_taxable");
+
+    knownFields.add("metadata");
+
+    knownFields.add("item_type");
+
+    knownFields.add("archivable");
+
+    knownFields.add("parent_item_id");
+
+    knownFields.add("show_description_in_invoices");
+
+    knownFields.add("show_description_in_quotes");
+
+    knownFields.add("deleted");
+
+    knownFields.add("business_entity_id");
+
+    knownFields.add("tiers");
+
+    knownFields.add("tax_detail");
+
+    knownFields.add("tax_providers_fields");
+
+    knownFields.add("accounting_detail");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.name = JsonUtil.getString(json, "name");
@@ -644,7 +757,39 @@ public class ItemPrice {
       obj.accountingDetail = AccountingDetail.fromJson(__accountingDetailJson);
     }
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class Tiers {

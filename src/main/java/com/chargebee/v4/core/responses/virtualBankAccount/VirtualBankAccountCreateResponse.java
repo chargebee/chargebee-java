@@ -4,6 +4,7 @@ import com.chargebee.v4.core.models.customer.Customer;
 
 import com.chargebee.v4.core.models.virtualBankAccount.VirtualBankAccount;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -11,21 +12,17 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for VirtualBankAccountCreate operation. Contains the response data from
  * the API.
  */
-public final class VirtualBankAccountCreateResponse {
-
+public final class VirtualBankAccountCreateResponse extends BaseResponse {
   private final VirtualBankAccount virtualBankAccount;
 
   private final Customer customer;
 
-  private final Response httpResponse;
-
   private VirtualBankAccountCreateResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.virtualBankAccount = builder.virtualBankAccount;
 
     this.customer = builder.customer;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into VirtualBankAccountCreateResponse object. */
@@ -99,30 +96,5 @@ public final class VirtualBankAccountCreateResponse {
   /** Get the customer from the response. */
   public Customer getCustomer() {
     return customer;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.transaction;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Transaction {
   private Type type;
   private Timestamp date;
   private Timestamp settledAt;
-  private Number exchangeRate;
+  private BigDecimal exchangeRate;
   private String currencyCode;
   private Long amount;
   private String idAtGateway;
@@ -104,7 +105,7 @@ public class Transaction {
     return settledAt;
   }
 
-  public Number getExchangeRate() {
+  public BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
@@ -657,7 +658,7 @@ public class Transaction {
 
     obj.settledAt = JsonUtil.getTimestamp(json, "settled_at");
 
-    obj.exchangeRate = JsonUtil.getNumber(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
 
     obj.currencyCode = JsonUtil.getString(json, "currency_code");
 

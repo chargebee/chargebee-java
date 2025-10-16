@@ -71,34 +71,37 @@ public final class ItemPriceFindApplicableItemsParams {
       }
 
       public SortDirection name() {
-        return new SortDirection(fieldName + "[name]", builder);
+        return new SortDirection(fieldName, "name", builder);
       }
 
       public SortDirection id() {
-        return new SortDirection(fieldName + "[id]", builder);
+        return new SortDirection(fieldName, "id", builder);
       }
 
       public SortDirection updated_at() {
-        return new SortDirection(fieldName + "[updated_at]", builder);
+        return new SortDirection(fieldName, "updated_at", builder);
       }
     }
 
     public static final class SortDirection {
-      private final String paramName;
+      private final String fieldName;
+      private final String selectedField;
       private final ItemPriceFindApplicableItemsBuilder builder;
 
-      SortDirection(String paramName, ItemPriceFindApplicableItemsBuilder builder) {
-        this.paramName = paramName;
+      SortDirection(
+          String fieldName, String selectedField, ItemPriceFindApplicableItemsBuilder builder) {
+        this.fieldName = fieldName;
+        this.selectedField = selectedField;
         this.builder = builder;
       }
 
       public ItemPriceFindApplicableItemsBuilder asc() {
-        builder.queryParams.put(paramName + "[asc]", "true");
+        builder.queryParams.put(fieldName + "[asc]", selectedField);
         return builder;
       }
 
       public ItemPriceFindApplicableItemsBuilder desc() {
-        builder.queryParams.put(paramName + "[desc]", "true");
+        builder.queryParams.put(fieldName + "[desc]", selectedField);
         return builder;
       }
     }

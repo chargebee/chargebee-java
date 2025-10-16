@@ -8,6 +8,7 @@
 package com.chargebee.v4.core.models.invoice;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -25,8 +26,8 @@ public class Invoice {
   private String poNumber;
   private String vatNumber;
   private PriceType priceType;
-  private Number exchangeRate;
-  private Number localCurrencyExchangeRate;
+  private BigDecimal exchangeRate;
+  private BigDecimal localCurrencyExchangeRate;
   private String currencyCode;
   private String localCurrencyCode;
   private Long tax;
@@ -83,6 +84,8 @@ public class Invoice {
   private Einvoice einvoice;
   private SiteDetailsAtCreation siteDetailsAtCreation;
 
+  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+
   public String getId() {
     return id;
   }
@@ -131,11 +134,11 @@ public class Invoice {
     return priceType;
   }
 
-  public Number getExchangeRate() {
+  public BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
-  public Number getLocalCurrencyExchangeRate() {
+  public BigDecimal getLocalCurrencyExchangeRate() {
     return localCurrencyExchangeRate;
   }
 
@@ -359,6 +362,26 @@ public class Invoice {
     return siteDetailsAtCreation;
   }
 
+  /**
+   * Returns a map of custom fields. Custom fields are dynamic properties that follow the pattern
+   * cf_* (e.g., cf_custom_field_name).
+   *
+   * @return map containing all custom fields
+   */
+  public java.util.Map<String, Object> getCustomFields() {
+    return customFields;
+  }
+
+  /**
+   * Returns the value of a specific custom field.
+   *
+   * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+   * @return the value of the custom field, or null if not present
+   */
+  public Object getCustomField(String fieldName) {
+    return customFields.get(fieldName);
+  }
+
   public enum Status {
     Paid("paid"),
 
@@ -488,6 +511,147 @@ public class Invoice {
   public static Invoice fromJson(String json) {
     Invoice obj = new Invoice();
 
+    // Parse JSON to extract all keys
+    java.util.Set<String> knownFields = new java.util.HashSet<>();
+
+    knownFields.add("id");
+
+    knownFields.add("customer_id");
+
+    knownFields.add("payment_owner");
+
+    knownFields.add("subscription_id");
+
+    knownFields.add("recurring");
+
+    knownFields.add("status");
+
+    knownFields.add("date");
+
+    knownFields.add("due_date");
+
+    knownFields.add("net_term_days");
+
+    knownFields.add("po_number");
+
+    knownFields.add("vat_number");
+
+    knownFields.add("price_type");
+
+    knownFields.add("exchange_rate");
+
+    knownFields.add("local_currency_exchange_rate");
+
+    knownFields.add("currency_code");
+
+    knownFields.add("local_currency_code");
+
+    knownFields.add("tax");
+
+    knownFields.add("sub_total");
+
+    knownFields.add("sub_total_in_local_currency");
+
+    knownFields.add("total");
+
+    knownFields.add("total_in_local_currency");
+
+    knownFields.add("amount_due");
+
+    knownFields.add("amount_adjusted");
+
+    knownFields.add("amount_paid");
+
+    knownFields.add("paid_at");
+
+    knownFields.add("write_off_amount");
+
+    knownFields.add("credits_applied");
+
+    knownFields.add("dunning_status");
+
+    knownFields.add("next_retry_at");
+
+    knownFields.add("voided_at");
+
+    knownFields.add("resource_version");
+
+    knownFields.add("updated_at");
+
+    knownFields.add("first_invoice");
+
+    knownFields.add("new_sales_amount");
+
+    knownFields.add("has_advance_charges");
+
+    knownFields.add("term_finalized");
+
+    knownFields.add("is_gifted");
+
+    knownFields.add("generated_at");
+
+    knownFields.add("expected_payment_date");
+
+    knownFields.add("amount_to_collect");
+
+    knownFields.add("round_off_amount");
+
+    knownFields.add("void_reason_code");
+
+    knownFields.add("deleted");
+
+    knownFields.add("tax_category");
+
+    knownFields.add("vat_number_prefix");
+
+    knownFields.add("channel");
+
+    knownFields.add("business_entity_id");
+
+    knownFields.add("line_items");
+
+    knownFields.add("line_item_tiers");
+
+    knownFields.add("line_item_discounts");
+
+    knownFields.add("line_item_taxes");
+
+    knownFields.add("line_item_credits");
+
+    knownFields.add("line_item_addresses");
+
+    knownFields.add("discounts");
+
+    knownFields.add("taxes");
+
+    knownFields.add("tax_origin");
+
+    knownFields.add("linked_payments");
+
+    knownFields.add("reference_transactions");
+
+    knownFields.add("dunning_attempts");
+
+    knownFields.add("applied_credits");
+
+    knownFields.add("adjustment_credit_notes");
+
+    knownFields.add("issued_credit_notes");
+
+    knownFields.add("linked_orders");
+
+    knownFields.add("notes");
+
+    knownFields.add("shipping_address");
+
+    knownFields.add("billing_address");
+
+    knownFields.add("statement_descriptor");
+
+    knownFields.add("einvoice");
+
+    knownFields.add("site_details_at_creation");
+
     obj.id = JsonUtil.getString(json, "id");
 
     obj.customerId = JsonUtil.getString(json, "customer_id");
@@ -512,9 +676,9 @@ public class Invoice {
 
     obj.priceType = PriceType.fromString(JsonUtil.getString(json, "price_type"));
 
-    obj.exchangeRate = JsonUtil.getNumber(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
 
-    obj.localCurrencyExchangeRate = JsonUtil.getNumber(json, "local_currency_exchange_rate");
+    obj.localCurrencyExchangeRate = JsonUtil.getBigDecimal(json, "local_currency_exchange_rate");
 
     obj.currencyCode = JsonUtil.getString(json, "currency_code");
 
@@ -692,7 +856,39 @@ public class Invoice {
       obj.siteDetailsAtCreation = SiteDetailsAtCreation.fromJson(__siteDetailsAtCreationJson);
     }
 
+    // Extract custom fields (fields starting with cf_)
+    obj.customFields = extractCustomFields(json, knownFields);
+
     return obj;
+  }
+
+  /**
+   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
+   * "cf_" and are not in the known fields set.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of custom fields
+   */
+  private static java.util.Map<String, Object> extractCustomFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cf_" and are not in knownFields
+          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
+            customFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return customFields;
   }
 
   public static class LineItems {
@@ -1202,7 +1398,7 @@ public class Invoice {
     private Number taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
-    private Number proratedTaxableAmount;
+    private BigDecimal proratedTaxableAmount;
     private Boolean isPartialTaxApplied;
     private Boolean isNonComplianceTax;
     private Long taxableAmount;
@@ -1233,7 +1429,7 @@ public class Invoice {
       return dateFrom;
     }
 
-    public Number getProratedTaxableAmount() {
+    public BigDecimal getProratedTaxableAmount() {
       return proratedTaxableAmount;
     }
 
@@ -1326,7 +1522,7 @@ public class Invoice {
 
       obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
 
-      obj.proratedTaxableAmount = JsonUtil.getNumber(json, "prorated_taxable_amount");
+      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
 
       obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
 

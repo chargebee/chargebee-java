@@ -241,7 +241,7 @@ public final class PurchaseEstimateParams {
         return this;
       }
 
-      public CustomerBuilder exemptionDetails(List<java.util.Map<String, Object>> value) {
+      public CustomerBuilder exemptionDetails(List<Object> value) {
 
         formData.put("exemption_details", JsonUtil.toJson(value));
 

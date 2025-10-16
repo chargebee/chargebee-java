@@ -15,11 +15,11 @@ import java.util.Map;
 import java.util.List;
 import java.sql.Timestamp;
 
-public final class UsageEventBatchBatchIngestParams {
+public final class UsageEventBatchIngestParams {
 
   private final Map<String, Object> formData;
 
-  private UsageEventBatchBatchIngestParams(UsageEventBatchBatchIngestBuilder builder) {
+  private UsageEventBatchIngestParams(UsageEventBatchIngestBuilder builder) {
     this.formData = Collections.unmodifiableMap(new LinkedHashMap<>(builder.formData));
   }
 
@@ -28,18 +28,18 @@ public final class UsageEventBatchBatchIngestParams {
     return formData;
   }
 
-  /** Create a new builder for UsageEventBatchBatchIngestParams. */
+  /** Create a new builder for UsageEventBatchIngestParams. */
   @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-  public static UsageEventBatchBatchIngestBuilder builder() {
-    return new UsageEventBatchBatchIngestBuilder();
+  public static UsageEventBatchIngestBuilder builder() {
+    return new UsageEventBatchIngestBuilder();
   }
 
-  public static final class UsageEventBatchBatchIngestBuilder {
+  public static final class UsageEventBatchIngestBuilder {
     private final Map<String, Object> formData = new LinkedHashMap<>();
 
-    private UsageEventBatchBatchIngestBuilder() {}
+    private UsageEventBatchIngestBuilder() {}
 
-    public UsageEventBatchBatchIngestBuilder events(List<EventsParams> value) {
+    public UsageEventBatchIngestBuilder events(List<EventsParams> value) {
       if (value != null && !value.isEmpty()) {
         for (int i = 0; i < value.size(); i++) {
           EventsParams item = value.get(i);
@@ -55,8 +55,8 @@ public final class UsageEventBatchBatchIngestParams {
       return this;
     }
 
-    public UsageEventBatchBatchIngestParams build() {
-      return new UsageEventBatchBatchIngestParams(this);
+    public UsageEventBatchIngestParams build() {
+      return new UsageEventBatchIngestParams(this);
     }
   }
 

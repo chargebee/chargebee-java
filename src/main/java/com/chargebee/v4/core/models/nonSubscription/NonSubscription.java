@@ -11,11 +11,12 @@ import com.chargebee.v4.internal.JsonUtil;
 
 public class NonSubscription {
 
-  private String appId;
+  @Deprecated private String appId;
   private String invoiceId;
   private String customerId;
   private String chargeId;
 
+  @Deprecated
   public String getAppId() {
     return appId;
   }

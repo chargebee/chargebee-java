@@ -1,18 +1,20 @@
 package com.chargebee.v4.core.responses.subscriptionSetting;
 
+import com.chargebee.v4.core.responses.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
 /**
  * Immutable response object for SubscriptionSettingRetrieve operation. Contains the response data
  * from a single resource get operation.
  */
-public final class SubscriptionSettingRetrieveResponse {
+public final class SubscriptionSettingRetrieveResponse extends BaseResponse {
+  private final Object subscriptionSetting;
 
-  private final Response httpResponse;
+  private SubscriptionSettingRetrieveResponse(Object subscriptionSetting, Response httpResponse) {
+    super(httpResponse);
 
-  private SubscriptionSettingRetrieveResponse(Response httpResponse) {
-
-    this.httpResponse = httpResponse;
+    this.subscriptionSetting = subscriptionSetting;
   }
 
   /** Parse JSON response into SubscriptionSettingRetrieveResponse object. */
@@ -24,35 +26,17 @@ public final class SubscriptionSettingRetrieveResponse {
   public static SubscriptionSettingRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
 
-      return new SubscriptionSettingRetrieveResponse(httpResponse);
+      Object subscriptionSetting = JsonUtil.getObject(json, "subscription_setting");
+
+      return new SubscriptionSettingRetrieveResponse(subscriptionSetting, httpResponse);
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse SubscriptionSettingRetrieveResponse from JSON", e);
     }
   }
 
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
+  /** Get the subscriptionSetting from the response. */
+  public Object getSubscriptionSetting() {
+    return subscriptionSetting;
   }
 }

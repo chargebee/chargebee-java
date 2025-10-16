@@ -61,10 +61,10 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   // === Operations ===
 
   /**
-   * payment_vouchersForCustomer a paymentVoucher using immutable params (executes immediately) -
+   * paymentVouchersForCustomer a paymentVoucher using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response payment_vouchersForCustomerRaw(
+  Response paymentVouchersForCustomerRaw(
       String customerId, PaymentVoucherPaymentVouchersForCustomerParams params) throws Exception {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
@@ -72,44 +72,44 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   }
 
   /**
-   * payment_vouchersForCustomer a paymentVoucher without params (executes immediately) - returns
-   * raw Response.
+   * paymentVouchersForCustomer a paymentVoucher without params (executes immediately) - returns raw
+   * Response.
    */
-  Response payment_vouchersForCustomerRaw(String customerId) throws Exception {
+  Response paymentVouchersForCustomerRaw(String customerId) throws Exception {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
     return get(path, null);
   }
 
   /**
-   * payment_vouchersForCustomer a paymentVoucher using raw JSON payload (executes immediately) -
+   * paymentVouchersForCustomer a paymentVoucher using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response payment_vouchersForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response paymentVouchersForCustomerRaw(String customerId, String jsonPayload) throws Exception {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PaymentVoucherPaymentVouchersForCustomerResponse payment_vouchersForCustomer(
+  public PaymentVoucherPaymentVouchersForCustomerResponse paymentVouchersForCustomer(
       String customerId, PaymentVoucherPaymentVouchersForCustomerParams params) throws Exception {
-    Response response = payment_vouchersForCustomerRaw(customerId, params);
+    Response response = paymentVouchersForCustomerRaw(customerId, params);
     return PaymentVoucherPaymentVouchersForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
-  public PaymentVoucherPaymentVouchersForCustomerResponse payment_vouchersForCustomer(
+  public PaymentVoucherPaymentVouchersForCustomerResponse paymentVouchersForCustomer(
       String customerId) throws Exception {
-    Response response = payment_vouchersForCustomerRaw(customerId);
+    Response response = paymentVouchersForCustomerRaw(customerId);
     return PaymentVoucherPaymentVouchersForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
   /**
-   * payment_vouchersForInvoice a paymentVoucher using immutable params (executes immediately) -
+   * paymentVouchersForInvoice a paymentVoucher using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response payment_vouchersForInvoiceRaw(
+  Response paymentVouchersForInvoiceRaw(
       String invoiceId, PaymentVoucherPaymentVouchersForInvoiceParams params) throws Exception {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
@@ -117,35 +117,35 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   }
 
   /**
-   * payment_vouchersForInvoice a paymentVoucher without params (executes immediately) - returns raw
+   * paymentVouchersForInvoice a paymentVoucher without params (executes immediately) - returns raw
    * Response.
    */
-  Response payment_vouchersForInvoiceRaw(String invoiceId) throws Exception {
+  Response paymentVouchersForInvoiceRaw(String invoiceId) throws Exception {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
     return get(path, null);
   }
 
   /**
-   * payment_vouchersForInvoice a paymentVoucher using raw JSON payload (executes immediately) -
+   * paymentVouchersForInvoice a paymentVoucher using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response payment_vouchersForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response paymentVouchersForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PaymentVoucherPaymentVouchersForInvoiceResponse payment_vouchersForInvoice(
+  public PaymentVoucherPaymentVouchersForInvoiceResponse paymentVouchersForInvoice(
       String invoiceId, PaymentVoucherPaymentVouchersForInvoiceParams params) throws Exception {
-    Response response = payment_vouchersForInvoiceRaw(invoiceId, params);
+    Response response = paymentVouchersForInvoiceRaw(invoiceId, params);
     return PaymentVoucherPaymentVouchersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, params, invoiceId, response);
   }
 
-  public PaymentVoucherPaymentVouchersForInvoiceResponse payment_vouchersForInvoice(
-      String invoiceId) throws Exception {
-    Response response = payment_vouchersForInvoiceRaw(invoiceId);
+  public PaymentVoucherPaymentVouchersForInvoiceResponse paymentVouchersForInvoice(String invoiceId)
+      throws Exception {
+    Response response = paymentVouchersForInvoiceRaw(invoiceId);
     return PaymentVoucherPaymentVouchersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, null, invoiceId, response);
   }

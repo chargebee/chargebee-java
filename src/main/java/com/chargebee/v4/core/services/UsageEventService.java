@@ -13,11 +13,11 @@ import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.core.models.usageEvent.params.UsageEventCreateParams;
 
-import com.chargebee.v4.core.models.usageEvent.params.UsageEventBatchBatchIngestParams;
+import com.chargebee.v4.core.models.usageEvent.params.UsageEventBatchIngestParams;
 
 import com.chargebee.v4.core.responses.usageEvent.UsageEventCreateResponse;
 
-import com.chargebee.v4.core.responses.usageEvent.UsageEventBatchBatchIngestResponse;
+import com.chargebee.v4.core.responses.usageEvent.UsageEventBatchIngestResponse;
 
 public final class UsageEventService extends BaseService<UsageEventService> {
 
@@ -72,27 +72,25 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   }
 
   /**
-   * batchBatchIngest a usageEvent using immutable params (executes immediately) - returns raw
-   * Response.
+   * batchIngest a usageEvent using immutable params (executes immediately) - returns raw Response.
    */
-  Response batchBatchIngestRaw(UsageEventBatchBatchIngestParams params) throws Exception {
+  Response batchIngestRaw(UsageEventBatchIngestParams params) throws Exception {
 
     return post("/batch/usage_events", params != null ? params.toFormData() : null);
   }
 
   /**
-   * batchBatchIngest a usageEvent using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * batchIngest a usageEvent using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response batchBatchIngestRaw(String jsonPayload) throws Exception {
+  Response batchIngestRaw(String jsonPayload) throws Exception {
 
     return postJson("/batch/usage_events", jsonPayload);
   }
 
-  public UsageEventBatchBatchIngestResponse batchBatchIngest(
-      UsageEventBatchBatchIngestParams params) throws Exception {
-    Response response = batchBatchIngestRaw(params);
+  public UsageEventBatchIngestResponse batchIngest(UsageEventBatchIngestParams params)
+      throws Exception {
+    Response response = batchIngestRaw(params);
 
-    return UsageEventBatchBatchIngestResponse.fromJson(response.getBodyAsString(), response);
+    return UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -134,7 +134,7 @@ public final class PaymentVoucherPaymentVouchersForCustomerResponse {
             .offset(nextOffset)
             .build();
 
-    return service.payment_vouchersForCustomer(customerId, nextParams);
+    return service.paymentVouchersForCustomer(customerId, nextParams);
   }
 
   /** Get the raw response payload as JSON string. */

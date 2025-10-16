@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.timeMachine;
 
 import com.chargebee.v4.core.models.timeMachine.TimeMachine;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,17 +10,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for TimeMachineRetrieve operation. Contains the response data from a
  * single resource get operation.
  */
-public final class TimeMachineRetrieveResponse {
-
+public final class TimeMachineRetrieveResponse extends BaseResponse {
   private final TimeMachine timeMachine;
 
-  private final Response httpResponse;
-
   private TimeMachineRetrieveResponse(TimeMachine timeMachine, Response httpResponse) {
+    super(httpResponse);
 
     this.timeMachine = timeMachine;
-
-    this.httpResponse = httpResponse;
   }
 
   /** Parse JSON response into TimeMachineRetrieveResponse object. */
@@ -42,30 +39,5 @@ public final class TimeMachineRetrieveResponse {
   /** Get the timeMachine from the response. */
   public TimeMachine getTimeMachine() {
     return timeMachine;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

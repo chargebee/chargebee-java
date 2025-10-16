@@ -2,6 +2,7 @@ package com.chargebee.v4.core.responses.itemEntitlement;
 
 import com.chargebee.v4.core.models.itemEntitlement.ItemEntitlement;
 
+import com.chargebee.v4.core.responses.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 
@@ -9,17 +10,13 @@ import com.chargebee.v4.transport.Response;
  * Immutable response object for ItemEntitlementAddItemEntitlements operation. Contains the response
  * data from the API.
  */
-public final class ItemEntitlementAddItemEntitlementsResponse {
-
+public final class ItemEntitlementAddItemEntitlementsResponse extends BaseResponse {
   private final ItemEntitlement itemEntitlement;
 
-  private final Response httpResponse;
-
   private ItemEntitlementAddItemEntitlementsResponse(Builder builder) {
+    super(builder.httpResponse);
 
     this.itemEntitlement = builder.itemEntitlement;
-
-    this.httpResponse = builder.httpResponse;
   }
 
   /** Parse JSON response into ItemEntitlementAddItemEntitlementsResponse object. */
@@ -80,30 +77,5 @@ public final class ItemEntitlementAddItemEntitlementsResponse {
   /** Get the itemEntitlement from the response. */
   public ItemEntitlement getItemEntitlement() {
     return itemEntitlement;
-  }
-
-  /** Get the raw response payload as JSON string. */
-  public String responsePayload() {
-    return httpResponse != null ? httpResponse.getBodyAsString() : null;
-  }
-
-  /** Get the HTTP status code. */
-  public int httpStatus() {
-    return httpResponse != null ? httpResponse.getStatusCode() : 0;
-  }
-
-  /** Get response headers. */
-  public java.util.Map<String, java.util.List<String>> headers() {
-    return httpResponse != null ? httpResponse.getHeaders() : java.util.Collections.emptyMap();
-  }
-
-  /** Get a specific header value. */
-  public java.util.List<String> header(String name) {
-    if (httpResponse == null) return null;
-    return httpResponse.getHeaders().entrySet().stream()
-        .filter(e -> e.getKey().equalsIgnoreCase(name))
-        .map(java.util.Map.Entry::getValue)
-        .findFirst()
-        .orElse(null);
   }
 }

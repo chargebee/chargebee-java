@@ -314,8 +314,8 @@ public class QuotedSubscription {
     private ItemType itemType;
     private Integer quantity;
     private String quantityInDecimal;
-    private String meteredQuantity;
-    private Timestamp lastCalculatedAt;
+    @Deprecated private String meteredQuantity;
+    @Deprecated private Timestamp lastCalculatedAt;
     private Long unitPrice;
     private String unitPriceInDecimal;
     private Long amount;
@@ -352,10 +352,12 @@ public class QuotedSubscription {
       return quantityInDecimal;
     }
 
+    @Deprecated
     public String getMeteredQuantity() {
       return meteredQuantity;
     }
 
+    @Deprecated
     public Timestamp getLastCalculatedAt() {
       return lastCalculatedAt;
     }
@@ -883,7 +885,7 @@ public class QuotedSubscription {
     private String id;
     private Integer quantity;
     private Long unitPrice;
-    private Integer servicePeriodInDays;
+    @Deprecated private Integer servicePeriodInDays;
     private OnEvent onEvent;
     private Boolean chargeOnce;
     private String quantityInDecimal;
@@ -901,6 +903,7 @@ public class QuotedSubscription {
       return unitPrice;
     }
 
+    @Deprecated
     public Integer getServicePeriodInDays() {
       return servicePeriodInDays;
     }
