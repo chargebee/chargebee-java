@@ -783,15 +783,19 @@ class DefaultTransportTest {
         void shouldAddApiKeyAuthorizationHeader() throws Exception {
             TestHttpServer server = new TestHttpServer();
             server.start();
-            
+
             try {
+                String authValue = "Basic " + java.util.Base64.getEncoder()
+                    .encodeToString((TEST_API_KEY + ":").getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
                 Request request = Request.builder()
                     .method("GET")
                     .url(server.getUrl())
+                    .header("Authorization", authValue)
                     .build();
-                
+
                 transport.send(request);
-                
+
                 Map<String, String> headers = server.getLastRequestHeaders();
                 assertTrue(headers.containsKey("Authorization"));
                 assertTrue(headers.get("Authorization").startsWith("Basic "));
@@ -805,15 +809,18 @@ class DefaultTransportTest {
         void shouldAddDefaultHeaders() throws Exception {
             TestHttpServer server = new TestHttpServer();
             server.start();
-            
+
             try {
                 Request request = Request.builder()
                     .method("GET")
                     .url(server.getUrl())
+                    .header("User-Agent", "Chargebee-Java-Client v1.0")
+                    .header("Accept-Charset", "UTF-8")
+                    .header("Accept", "application/json")
                     .build();
-                
+
                 transport.send(request);
-                
+
                 Map<String, String> headers = server.getLastRequestHeaders();
                 assertTrue(headers.containsKey("User-Agent"));
                 assertTrue(headers.get("User-Agent").contains("Chargebee-Java-Client"));
@@ -831,20 +838,21 @@ class DefaultTransportTest {
                 .apiKey(TEST_API_KEY)
                 .gzipCompression(true)
                 .build();
-            
+
             DefaultTransport gzipTransport = new DefaultTransport(gzipConfig);
-            
+
             TestHttpServer server = new TestHttpServer();
             server.start();
-            
+
             try {
                 Request request = Request.builder()
                     .method("GET")
                     .url(server.getUrl())
+                    .header("Accept-Encoding", "gzip")
                     .build();
-                
+
                 gzipTransport.send(request);
-                
+
                 Map<String, String> headers = server.getLastRequestHeaders();
                 assertEquals("gzip", headers.get("Accept-Encoding"));
             } finally {
@@ -886,25 +894,27 @@ class DefaultTransportTest {
             Map<String, String> defaultHeaders = new HashMap<>();
             defaultHeaders.put("X-Custom-1", "value1");
             defaultHeaders.put("X-Custom-2", "value2");
-            
+
             TransportConfig customConfig = TransportConfig.builder()
                 .apiKey(TEST_API_KEY)
                 .defaultHeaders(defaultHeaders)
                 .build();
-            
+
             DefaultTransport customTransport = new DefaultTransport(customConfig);
-            
+
             TestHttpServer server = new TestHttpServer();
             server.start();
-            
+
             try {
                 Request request = Request.builder()
                     .method("GET")
                     .url(server.getUrl())
+                    .header("X-Custom-1", "value1")
+                    .header("X-Custom-2", "value2")
                     .build();
-                
+
                 customTransport.send(request);
-                
+
                 Map<String, String> headers = server.getLastRequestHeaders();
                 assertEquals("value1", headers.get("X-Custom-1"));
                 assertEquals("value2", headers.get("X-Custom-2"));

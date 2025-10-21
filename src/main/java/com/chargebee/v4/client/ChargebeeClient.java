@@ -110,11 +110,15 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     public Response get(String path, Map<String, List<String>> queryParams) throws Exception {
         Map<String, Object> objectParams = new HashMap<>(queryParams);
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, objectParams);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("GET")
-                .url(fullUrl)
-                .build();
-        return executeWithInterceptor(request);
+                .url(fullUrl);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptor(builder.build());
     }
     
     /**
@@ -138,11 +142,15 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     public CompletableFuture<Response> getAsync(String path, Map<String, List<String>> queryParams) {
         Map<String, Object> objectParams = new HashMap<>(queryParams);
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, objectParams);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("GET")
-                .url(fullUrl)
-                .build();
-        return executeWithInterceptorAsync(request);
+                .url(fullUrl);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptorAsync(builder.build());
     }
     
     /**
@@ -165,12 +173,16 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      */
     public Response post(String path, Map<String, Object> formData) throws Exception {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
-                .formBody(formData)
-                .build();
-        return executeWithInterceptor(request);
+                .formBody(formData);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptor(builder.build());
     }
     
     /**
@@ -183,12 +195,16 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      */
     public Response postJson(String path, String jsonData) throws Exception {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
-                .jsonBody(jsonData)
-                .build();
-        return executeWithInterceptor(request);
+                .jsonBody(jsonData);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptor(builder.build());
     }
     
     /**
@@ -200,12 +216,16 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      */
     public CompletableFuture<Response> postAsync(String path, Map<String, Object> formData) {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
-                .formBody(formData)
-                .build();
-        return executeWithInterceptorAsync(request);
+                .formBody(formData);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptorAsync(builder.build());
     }
     
     /**
@@ -217,12 +237,16 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      */
     public CompletableFuture<Response> postJsonAsync(String path, String jsonData) {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
-        Request request = Request.builder()
+        Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
-                .jsonBody(jsonData)
-                .build();
-        return executeWithInterceptorAsync(request);
+                .jsonBody(jsonData);
+
+        for (Map.Entry<String, String> header : clientHeaders.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return executeWithInterceptorAsync(builder.build());
     }
     
     /**
@@ -253,27 +277,28 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * Send a request with retry logic based on the configured RetryConfig.
      */
     public Response sendWithRetry(Request request) throws TransportException {
-        Integer overrideRetries = request.getMaxNetworkRetriesOverride();
+        Request enrichedRequest = addDefaultHeaders(request);
+
+        Integer overrideRetries = enrichedRequest.getMaxNetworkRetriesOverride();
         boolean retriesEnabled = retry.isEnabled() || (overrideRetries != null && overrideRetries >= 0);
         if (!retriesEnabled) {
-            return transport.send(request);
+            return transport.send(enrichedRequest);
         }
-        
+
         TransportException lastException = null;
         int attempts = 0;
         int maxRetries = (overrideRetries != null ? overrideRetries : retry.getMaxRetries());
-        
+
         while (attempts <= maxRetries) {
             try {
-                Response response = transport.send(request);
-                
-                // Check if we should retry based on status code
+                Response response = transport.send(enrichedRequest);
+
                 if (attempts < maxRetries && shouldRetry(response.getStatusCode())) {
                     attempts++;
                     sleep(calculateBackoffDelay(attempts));
                     continue;
                 }
-                
+
                 return response;
             } catch (TimeoutException | NetworkException e) {
                 lastException = e;
@@ -284,19 +309,95 @@ public final class ChargebeeClient extends ClientMethodsImpl {
                     break;
                 }
             } catch (TransportException e) {
-                // Don't retry configuration errors or other non-retryable exceptions
                 throw e;
             }
         }
-        
-        throw lastException != null ? lastException : 
+
+        throw lastException != null ? lastException :
             new TransportException("Request failed after " + attempts + " attempts");
     }
     
+    private Request addDefaultHeaders(Request request) {
+        Request.Builder builder = Request.builder()
+            .method(request.getMethod())
+            .url(request.getUrl());
+
+        if (!request.getQueryParams().isEmpty()) {
+            builder.queryParams(request.getQueryParams());
+        }
+
+        if (request.getBody() != null) {
+            try {
+                byte[] bodyBytes = request.getBody().getBytes();
+                builder.rawBody(bodyBytes, request.getBody().getContentType());
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to copy request body", e);
+            }
+        }
+
+        if (request.getMaxNetworkRetriesOverride() != null) {
+            builder.maxNetworkRetriesOverride(request.getMaxNetworkRetriesOverride());
+        }
+
+        if (request.getFollowRedirectsOverride() != null) {
+            builder.followRedirectsOverride(request.getFollowRedirectsOverride());
+        }
+
+        addStandardHeaders(builder);
+
+        for (Map.Entry<String, String> header : request.getHeaders().entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+
+        return builder.build();
+    }
+
+    private void addStandardHeaders(Request.Builder builder) {
+        if (apiKey != null) {
+            String authValue = "Basic " + java.util.Base64.getEncoder()
+                .encodeToString((apiKey + ":").getBytes(java.nio.charset.StandardCharsets.UTF_8))
+                .replaceAll("\r", "").replaceAll("\n", "");
+            builder.header("Authorization", authValue);
+        }
+
+        builder.header("Accept-Charset", "UTF-8");
+        builder.header("User-Agent", "Chargebee-Java-Client v" + getVersion());
+        builder.header("Accept", "application/json");
+        builder.header("OS-Version", String.format("%s %s %s",
+            System.getProperty("os.name"),
+            System.getProperty("os.arch"),
+            System.getProperty("os.version")));
+        builder.header("Lang-Version", System.getProperty("java.version"));
+
+        if (transport instanceof DefaultTransport) {
+            TransportConfig config = ((DefaultTransport) transport).getConfig();
+            if (config != null && config.isEnableGzipCompression()) {
+                builder.header("Accept-Encoding", "gzip");
+            }
+            if (config != null) {
+                for (Map.Entry<String, String> header : config.getDefaultHeaders().entrySet()) {
+                    builder.header(header.getKey(), header.getValue());
+                }
+            }
+        }
+    }
+
+    private String getVersion() {
+        try (java.io.InputStream is = ChargebeeClient.class.getClassLoader().getResourceAsStream("version.properties")) {
+            if (is != null) {
+                java.util.Properties props = new java.util.Properties();
+                props.load(is);
+                return props.getProperty("version", "unknown");
+            }
+        } catch (java.io.IOException e) {
+        }
+        return "unknown";
+    }
+
     private boolean shouldRetry(int statusCode) {
         return retry.getRetryOnStatus().contains(statusCode);
     }
-    
+
     private void sleep(long delayMs) {
         try {
             Thread.sleep(delayMs);
@@ -321,13 +422,15 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * Send a request asynchronously with retry logic based on the configured RetryConfig.
      */
     public CompletableFuture<Response> sendWithRetryAsync(Request request) {
-        Integer overrideRetries = request.getMaxNetworkRetriesOverride();
+        Request enrichedRequest = addDefaultHeaders(request);
+
+        Integer overrideRetries = enrichedRequest.getMaxNetworkRetriesOverride();
         boolean retriesEnabled = retry.isEnabled() || (overrideRetries != null && overrideRetries >= 0);
         if (!retriesEnabled) {
-            return transport.sendAsync(request);
+            return transport.sendAsync(enrichedRequest);
         }
-        
-        return sendWithRetryAsyncInternal(request, 0, (overrideRetries != null ? overrideRetries : retry.getMaxRetries()));
+
+        return sendWithRetryAsyncInternal(enrichedRequest, 0, (overrideRetries != null ? overrideRetries : retry.getMaxRetries()));
     }
     
     private CompletableFuture<Response> sendWithRetryAsyncInternal(Request request, int attempts, int maxRetries) {

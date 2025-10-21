@@ -16,8 +16,12 @@ import java.util.zip.GZIPInputStream;
 public class DefaultTransport implements Transport {
     private final TransportConfig config;
     private final Executor asyncExecutor;
-    
+
     private static final String VERSION;
+
+    public TransportConfig getConfig() {
+        return config;
+    }
     
     static {
         String version = "unknown";
@@ -146,14 +150,9 @@ public class DefaultTransport implements Transport {
         
         // Disable caching
         connection.setUseCaches(false);
-        
-        // Add default headers
-        addDefaultHeaders(connection);
-        
-        // Add request headers (custom headers can override defaults)
+
         addRequestHeaders(connection, request);
-        
-        // Set content type from body (unless already set in custom headers)
+
         if (request.getBody() != null && !hasContentTypeHeader(request.getHeaders())) {
             connection.setRequestProperty("Content-Type", request.getBody().getContentType());
         }
@@ -166,75 +165,58 @@ public class DefaultTransport implements Transport {
         return connection;
     }
     
-    /**
-     * Build a complete request with all headers (including defaults) for logging purposes.
-     */
     private Request buildCompleteRequestForLogging(Request request) {
         Request.Builder builder = Request.builder()
             .method(request.getMethod())
             .url(buildFullUrl(request));
-        
-        // Add all query parameters
+
         if (request.getQueryParams() != null) {
             builder.queryParams(request.getQueryParams());
         }
-        
-        // Add default headers first
+
         addDefaultHeadersToBuilder(builder);
-        
-        // Add request headers (can override defaults)
+
         for (Map.Entry<String, String> header : request.getHeaders().entrySet()) {
             builder.header(header.getKey(), header.getValue());
         }
-        
-        // Add Content-Type from body if not already set
+
         if (request.getBody() != null && !hasContentTypeHeader(request.getHeaders())) {
             builder.header("Content-Type", request.getBody().getContentType());
         }
-        
-        // Copy the actual body for logging
+
         if (request.getBody() != null) {
             try {
                 byte[] bodyBytes = request.getBody().getBytes();
                 builder.rawBody(bodyBytes, request.getBody().getContentType());
             } catch (Exception e) {
-                // If we can't copy the body, use a placeholder
                 builder.jsonBody("[Error copying body for logging: " + e.getMessage() + "]");
             }
         }
-        
+
         return builder.build();
     }
-    
-    /**
-     * Add default headers to a request builder for logging.
-     */
+
     private void addDefaultHeadersToBuilder(Request.Builder builder) {
-        // API Key authentication
         if (config.getApiKey() != null) {
             String authValue = "Basic " + Base64.getEncoder()
                 .encodeToString((config.getApiKey() + ":").getBytes(StandardCharsets.UTF_8))
                 .replaceAll("\r", "").replaceAll("\n", "");
             builder.header("Authorization", authValue);
         }
-        
-        // Standard Chargebee headers
+
         builder.header("Accept-Charset", "UTF-8");
         builder.header("User-Agent", "Chargebee-Java-Client v" + VERSION);
         builder.header("Accept", "application/json");
-        builder.header("OS-Version", String.format("%s %s %s", 
+        builder.header("OS-Version", String.format("%s %s %s",
             System.getProperty("os.name"),
-            System.getProperty("os.arch"), 
+            System.getProperty("os.arch"),
             System.getProperty("os.version")));
         builder.header("Lang-Version", System.getProperty("java.version"));
-        
-        // GZIP encoding if enabled
-        // Per-request override via Accept-Encoding header is already possible using RequestOptions.headers
+
         if (config.isEnableGzipCompression()) {
             builder.header("Accept-Encoding", "gzip");
         }
-        
-        // Default headers from config
+
         for (Map.Entry<String, String> header : config.getDefaultHeaders().entrySet()) {
             builder.header(header.getKey(), header.getValue());
         }
@@ -268,37 +250,7 @@ public class DefaultTransport implements Transport {
         
         return urlBuilder.toString();
     }
-    
-    private void addDefaultHeaders(HttpURLConnection connection) {
-        // API Key authentication
-        if (config.getApiKey() != null) {
-            String authValue = "Basic " + Base64.getEncoder()
-                .encodeToString((config.getApiKey() + ":").getBytes(StandardCharsets.UTF_8))
-                .replaceAll("\r", "").replaceAll("\n", ""); // Clean base64 output
-            connection.setRequestProperty("Authorization", authValue);
-        }
-        
-        // Standard Chargebee headers (matching HttpUtil.java)
-        connection.setRequestProperty("Accept-Charset", "UTF-8");
-        connection.setRequestProperty("User-Agent", "Chargebee-Java-Client v" + VERSION);
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestProperty("OS-Version", String.format("%s %s %s", 
-            System.getProperty("os.name"),
-            System.getProperty("os.arch"), 
-            System.getProperty("os.version")));
-        connection.setRequestProperty("Lang-Version", System.getProperty("java.version"));
-        
-        // GZIP encoding if enabled
-        if (config.isEnableGzipCompression()) {
-            connection.setRequestProperty("Accept-Encoding", "gzip");
-        }
-        
-        // Default headers from config (applied after standard headers, can override)
-        for (Map.Entry<String, String> header : config.getDefaultHeaders().entrySet()) {
-            connection.setRequestProperty(header.getKey(), header.getValue());
-        }
-    }
-    
+
     private void addRequestHeaders(HttpURLConnection connection, Request request) {
         for (Map.Entry<String, String> header : request.getHeaders().entrySet()) {
             connection.setRequestProperty(header.getKey(), header.getValue());
