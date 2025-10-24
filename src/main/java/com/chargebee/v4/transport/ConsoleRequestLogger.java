@@ -45,7 +45,7 @@ public class ConsoleRequestLogger implements RequestLogger {
         
         String timestamp = LocalDateTime.now().format(timeFormatter);
         System.out.println("\n" + repeatChar('=', 80));
-        System.out.println("📤 HTTP REQUEST [" + timestamp + "]");
+        System.out.println(">>> HTTP REQUEST [" + timestamp + "]");
         System.out.println(repeatChar('=', 80));
         
         Request logRequest = maskSensitiveData ? CurlFormatter.sanitizeForLogging(request) : request;
@@ -76,7 +76,7 @@ public class ConsoleRequestLogger implements RequestLogger {
         }
         
         String timestamp = LocalDateTime.now().format(timeFormatter);
-        String statusIcon = response.isSuccessful() ? "✅" : "❌";
+        String statusIcon = response.isSuccessful() ? "[OK]" : "[FAIL]";
         
         System.out.println("\n" + repeatChar('-', 80));
         System.out.println(statusIcon + " HTTP RESPONSE [" + timestamp + "] (" + durationMs + "ms)");
@@ -103,7 +103,7 @@ public class ConsoleRequestLogger implements RequestLogger {
         
         String timestamp = LocalDateTime.now().format(timeFormatter);
         System.out.println("\n" + repeatChar('-', 80));
-        System.out.println("💥 HTTP ERROR [" + timestamp + "] (" + durationMs + "ms)");
+        System.out.println("[ERROR] HTTP ERROR [" + timestamp + "] (" + durationMs + "ms)");
         System.out.println(repeatChar('-', 80));
         System.out.println("Error: " + error.getClass().getSimpleName() + ": " + error.getMessage());
         

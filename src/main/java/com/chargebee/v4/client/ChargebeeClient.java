@@ -412,7 +412,7 @@ public final class ChargebeeClient extends ClientMethodsImpl {
         long baseDelay = retry.getBaseDelayMs();
         long exponentialDelay = baseDelay * (1L << (attempt - 1));
         
-        // Add jitter (±25% of the delay)
+        // Add jitter (+/-25% of the delay)
         long jitter = (long) (exponentialDelay * 0.25 * (ThreadLocalRandom.current().nextDouble() * 2 - 1));
         
         return Math.max(0, exponentialDelay + jitter);
