@@ -415,6 +415,10 @@ public class Invoice extends Resource<Invoice> {
             return optString("description");
         }
 
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
@@ -494,6 +498,49 @@ public class Invoice extends Resource<Invoice> {
 
         public Long txnAmount() {
             return optLong("txn_amount");
+        }
+
+    }
+
+    public static class ReferenceTransaction extends Resource<ReferenceTransaction> {
+        public ReferenceTransaction(JSONObject jsonObj) {
+            super(jsonObj);
+        }
+
+        public Long appliedAmount() {
+            return reqLong("applied_amount");
+        }
+
+        public Timestamp appliedAt() {
+            return reqTimestamp("applied_at");
+        }
+
+        public String txnId() {
+            return reqString("txn_id");
+        }
+
+        public Transaction.Status txnStatus() {
+            return optEnum("txn_status", Transaction.Status.class);
+        }
+
+        public Timestamp txnDate() {
+            return optTimestamp("txn_date");
+        }
+
+        public Long txnAmount() {
+            return optLong("txn_amount");
+        }
+
+        public Transaction.Type txnType() {
+            return reqEnum("txn_type", Transaction.Type.class);
+        }
+
+        public Long amountCapturable() {
+            return reqLong("amount_capturable");
+        }
+
+        public Transaction.AuthorizationReason authorizationReason() {
+            return optEnum("authorization_reason", Transaction.AuthorizationReason.class);
         }
 
     }
@@ -1113,6 +1160,10 @@ public class Invoice extends Resource<Invoice> {
 
     public List<Invoice.LinkedPayment> linkedPayments() {
         return optList("linked_payments", Invoice.LinkedPayment.class);
+    }
+
+    public List<Invoice.ReferenceTransaction> referenceTransactions() {
+        return optList("reference_transactions", Invoice.ReferenceTransaction.class);
     }
 
     public List<Invoice.DunningAttempt> dunningAttempts() {
@@ -3435,6 +3486,10 @@ public class Invoice extends Resource<Invoice> {
         }
         public ImportInvoiceRequest lineItemTierUnitAmountInDecimal(int index, String lineItemTierUnitAmountInDecimal) {
             params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
+            return this;
+        }
+        public ImportInvoiceRequest discountLineItemId(int index, String discountLineItemId) {
+            params.addOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
             return this;
         }
         public ImportInvoiceRequest discountEntityType(int index, Invoice.Discount.EntityType discountEntityType) {

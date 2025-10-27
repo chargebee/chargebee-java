@@ -158,7 +158,7 @@ public class OmnichannelSubscriptionItem extends Resource<OmnichannelSubscriptio
     }
 
     public List<OmnichannelSubscriptionItemOffer> omnichannelSubscriptionItemOffers() {
-        return reqList("omnichannel_subscription_item_offers", OmnichannelSubscriptionItemOffer.class);
+        return optList("omnichannel_subscription_item_offers", OmnichannelSubscriptionItemOffer.class);
     }
 
     public OmnichannelSubscriptionItem.UpcomingRenewal upcomingRenewal() {

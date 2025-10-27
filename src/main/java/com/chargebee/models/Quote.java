@@ -333,6 +333,10 @@ public class Quote extends Resource<Quote> {
             return optString("description");
         }
 
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }

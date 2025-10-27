@@ -263,6 +263,10 @@ public class QuoteLineGroup extends Resource<QuoteLineGroup> {
             return optString("description");
         }
 
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
