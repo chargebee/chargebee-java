@@ -635,13 +635,13 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -667,13 +667,13 @@ public final class ExportPlansParams {
       }
 
       public enum IsNot {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -785,9 +785,9 @@ public final class ExportPlansParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -871,9 +871,9 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        Day("day"),
+        DAY("day"),
 
-        Month("month"),
+        MONTH("month"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -899,9 +899,9 @@ public final class ExportPlansParams {
       }
 
       public enum IsNot {
-        Day("day"),
+        DAY("day"),
 
-        Month("month"),
+        MONTH("month"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -985,9 +985,9 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        All("all"),
+        ALL("all"),
 
-        Restricted("restricted"),
+        RESTRICTED("restricted"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1013,9 +1013,9 @@ public final class ExportPlansParams {
       }
 
       public enum IsNot {
-        All("all"),
+        ALL("all"),
 
-        Restricted("restricted"),
+        RESTRICTED("restricted"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1078,9 +1078,9 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1164,11 +1164,11 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1194,11 +1194,11 @@ public final class ExportPlansParams {
       }
 
       public enum IsNot {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1340,11 +1340,11 @@ public final class ExportPlansParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1370,11 +1370,11 @@ public final class ExportPlansParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

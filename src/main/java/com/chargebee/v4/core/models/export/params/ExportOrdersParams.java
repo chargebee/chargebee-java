@@ -495,9 +495,9 @@ public final class ExportOrdersParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -646,29 +646,29 @@ public final class ExportOrdersParams {
       }
 
       public enum Is {
-        New("new"),
+        NEW("new"),
 
-        Processing("processing"),
+        PROCESSING("processing"),
 
-        Complete("complete"),
+        COMPLETE("complete"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Queued("queued"),
+        QUEUED("queued"),
 
-        AwaitingShipment("awaiting_shipment"),
+        AWAITING_SHIPMENT("awaiting_shipment"),
 
-        OnHold("on_hold"),
+        ON_HOLD("on_hold"),
 
-        Delivered("delivered"),
+        DELIVERED("delivered"),
 
-        Shipped("shipped"),
+        SHIPPED("shipped"),
 
-        PartiallyDelivered("partially_delivered"),
+        PARTIALLY_DELIVERED("partially_delivered"),
 
-        Returned("returned"),
+        RETURNED("returned"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -694,29 +694,29 @@ public final class ExportOrdersParams {
       }
 
       public enum IsNot {
-        New("new"),
+        NEW("new"),
 
-        Processing("processing"),
+        PROCESSING("processing"),
 
-        Complete("complete"),
+        COMPLETE("complete"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Queued("queued"),
+        QUEUED("queued"),
 
-        AwaitingShipment("awaiting_shipment"),
+        AWAITING_SHIPMENT("awaiting_shipment"),
 
-        OnHold("on_hold"),
+        ON_HOLD("on_hold"),
 
-        Delivered("delivered"),
+        DELIVERED("delivered"),
 
-        Shipped("shipped"),
+        SHIPPED("shipped"),
 
-        PartiallyDelivered("partially_delivered"),
+        PARTIALLY_DELIVERED("partially_delivered"),
 
-        Returned("returned"),
+        RETURNED("returned"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -800,9 +800,9 @@ public final class ExportOrdersParams {
       }
 
       public enum Is {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -828,9 +828,9 @@ public final class ExportOrdersParams {
       }
 
       public enum IsNot {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1499,9 +1499,9 @@ public final class ExportOrdersParams {
       }
 
       public enum Is {
-        FullyResent("fully_resent"),
+        FULLY_RESENT("fully_resent"),
 
-        PartiallyResent("partially_resent"),
+        PARTIALLY_RESENT("partially_resent"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1527,9 +1527,9 @@ public final class ExportOrdersParams {
       }
 
       public enum IsNot {
-        FullyResent("fully_resent"),
+        FULLY_RESENT("fully_resent"),
 
-        PartiallyResent("partially_resent"),
+        PARTIALLY_RESENT("partially_resent"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1592,9 +1592,9 @@ public final class ExportOrdersParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);

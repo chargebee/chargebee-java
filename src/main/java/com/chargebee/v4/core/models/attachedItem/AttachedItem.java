@@ -94,11 +94,11 @@ public class AttachedItem {
   }
 
   public enum Type {
-    Recommended("recommended"),
+    RECOMMENDED("recommended"),
 
-    Mandatory("mandatory"),
+    MANDATORY("mandatory"),
 
-    Optional("optional"),
+    OPTIONAL("optional"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -124,11 +124,11 @@ public class AttachedItem {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Archived("archived"),
+    ARCHIVED("archived"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -154,17 +154,17 @@ public class AttachedItem {
   }
 
   public enum ChargeOnEvent {
-    SubscriptionCreation("subscription_creation"),
+    SUBSCRIPTION_CREATION("subscription_creation"),
 
-    SubscriptionTrialStart("subscription_trial_start"),
+    SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-    PlanActivation("plan_activation"),
+    PLAN_ACTIVATION("plan_activation"),
 
-    SubscriptionActivation("subscription_activation"),
+    SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-    ContractTermination("contract_termination"),
+    CONTRACT_TERMINATION("contract_termination"),
 
-    OnDemand("on_demand"),
+    ON_DEMAND("on_demand"),
 
     /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -190,11 +190,11 @@ public class AttachedItem {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);

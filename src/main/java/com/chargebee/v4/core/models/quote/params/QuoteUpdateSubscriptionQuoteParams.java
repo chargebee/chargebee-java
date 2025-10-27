@@ -236,9 +236,9 @@ public final class QuoteUpdateSubscriptionQuoteParams {
     }
 
     public enum BillingAlignmentMode {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      Delayed("delayed"),
+      DELAYED("delayed"),
 
       /**
        * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
@@ -266,9 +266,9 @@ public final class QuoteUpdateSubscriptionQuoteParams {
     }
 
     public enum ChangeOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      SpecificDate("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
       /** An enum member indicating that ChangeOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -415,9 +415,9 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum AutoCollection {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -443,31 +443,31 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum OfflinePaymentMethod {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /**
          * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown
@@ -624,13 +624,13 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -786,13 +786,13 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -915,13 +915,13 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -1121,9 +1121,9 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum ChargeOn {
-        Immediately("immediately"),
+        IMMEDIATELY("immediately"),
 
-        OnEvent("on_event"),
+        ON_EVENT("on_event"),
 
         /** An enum member indicating that ChargeOn was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1149,15 +1149,15 @@ public final class QuoteUpdateSubscriptionQuoteParams {
       }
 
       public enum OnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that OnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);

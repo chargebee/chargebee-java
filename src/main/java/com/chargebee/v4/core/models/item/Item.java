@@ -183,11 +183,11 @@ public class Item {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Archived("archived"),
+    ARCHIVED("archived"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -213,11 +213,11 @@ public class Item {
   }
 
   public enum Type {
-    Plan("plan"),
+    PLAN("plan"),
 
-    Addon("addon"),
+    ADDON("addon"),
 
-    Charge("charge"),
+    CHARGE("charge"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -243,9 +243,9 @@ public class Item {
   }
 
   public enum ItemApplicability {
-    All("all"),
+    ALL("all"),
 
-    Restricted("restricted"),
+    RESTRICTED("restricted"),
 
     /** An enum member indicating that ItemApplicability was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -271,11 +271,11 @@ public class Item {
   }
 
   public enum UsageCalculation {
-    SumOfUsages("sum_of_usages"),
+    SUM_OF_USAGES("sum_of_usages"),
 
-    LastUsage("last_usage"),
+    LAST_USAGE("last_usage"),
 
-    MaxUsage("max_usage"),
+    MAX_USAGE("max_usage"),
 
     /** An enum member indicating that UsageCalculation was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -301,11 +301,11 @@ public class Item {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -543,11 +543,11 @@ public class Item {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -596,7 +596,7 @@ public class Item {
     }
 
     public enum Type {
-      Fixed("fixed"),
+      FIXED("fixed"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

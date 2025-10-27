@@ -130,11 +130,11 @@ public class QuotedSubscription {
   }
 
   public enum ChangeOption {
-    EndOfTerm("end_of_term"),
+    END_OF_TERM("end_of_term"),
 
-    SpecificDate("specific_date"),
+    SPECIFIC_DATE("specific_date"),
 
-    Immediately("immediately"),
+    IMMEDIATELY("immediately"),
 
     /** An enum member indicating that ChangeOption was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -160,9 +160,9 @@ public class QuotedSubscription {
   }
 
   public enum AutoCollection {
-    On("on"),
+    ON("on"),
 
-    Off("off"),
+    OFF("off"),
 
     /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -188,13 +188,13 @@ public class QuotedSubscription {
   }
 
   public enum BillingPeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -439,11 +439,11 @@ public class QuotedSubscription {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -469,13 +469,13 @@ public class QuotedSubscription {
     }
 
     public enum BillingPeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /**
        * An enum member indicating that BillingPeriodUnit was instantiated with an unknown value.
@@ -503,15 +503,15 @@ public class QuotedSubscription {
     }
 
     public enum ChargeOnEvent {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
       /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -537,9 +537,9 @@ public class QuotedSubscription {
     }
 
     public enum ChargeOnOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      OnEvent("on_event"),
+      ON_EVENT("on_event"),
 
       /** An enum member indicating that ChargeOnOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -565,11 +565,11 @@ public class QuotedSubscription {
     }
 
     public enum ProrationType {
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -595,9 +595,9 @@ public class QuotedSubscription {
     }
 
     public enum UsageAccumulationResetFrequency {
-      Never("never"),
+      NEVER("never"),
 
-      SubscriptionBillingFrequency("subscription_billing_frequency"),
+      SUBSCRIPTION_BILLING_FREQUENCY("subscription_billing_frequency"),
 
       /**
        * An enum member indicating that UsageAccumulationResetFrequency was instantiated with an
@@ -739,11 +739,11 @@ public class QuotedSubscription {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -829,13 +829,13 @@ public class QuotedSubscription {
     }
 
     public enum ActionAtTermEnd {
-      Renew("renew"),
+      RENEW("renew"),
 
-      Evergreen("evergreen"),
+      EVERGREEN("evergreen"),
 
-      Cancel("cancel"),
+      CANCEL("cancel"),
 
-      RenewOnce("renew_once"),
+      RENEW_ONCE("renew_once"),
 
       /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -925,15 +925,15 @@ public class QuotedSubscription {
     }
 
     public enum OnEvent {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
       /** An enum member indicating that OnEvent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1035,11 +1035,11 @@ public class QuotedSubscription {
     }
 
     public enum ProrationType {
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);

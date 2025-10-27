@@ -271,13 +271,13 @@ public final class QuoteEditOneTimeQuoteParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -456,13 +456,13 @@ public final class QuoteEditOneTimeQuoteParams {
       }
 
       public enum AvalaraSaleType {
-        Wholesale("wholesale"),
+        WHOLESALE("wholesale"),
 
-        Retail("retail"),
+        RETAIL("retail"),
 
-        Consumed("consumed"),
+        CONSUMED("consumed"),
 
-        VendorUse("vendor_use"),
+        VENDOR_USE("vendor_use"),
 
         /**
          * An enum member indicating that AvalaraSaleType was instantiated with an unknown value.

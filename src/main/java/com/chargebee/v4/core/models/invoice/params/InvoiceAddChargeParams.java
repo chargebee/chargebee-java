@@ -123,13 +123,13 @@ public final class InvoiceAddChargeParams {
     }
 
     public enum AvalaraSaleType {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Retail("retail"),
+      RETAIL("retail"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      VendorUse("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
       /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
       _UNKNOWN(null);

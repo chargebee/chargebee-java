@@ -76,9 +76,9 @@ public final class CustomerChangeBillingDateParams {
     }
 
     public enum BillingDateMode {
-      UsingDefaults("using_defaults"),
+      USING_DEFAULTS("using_defaults"),
 
-      ManuallySet("manually_set"),
+      MANUALLY_SET("manually_set"),
 
       /** An enum member indicating that BillingDateMode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -104,19 +104,19 @@ public final class CustomerChangeBillingDateParams {
     }
 
     public enum BillingDayOfWeek {
-      Sunday("sunday"),
+      SUNDAY("sunday"),
 
-      Monday("monday"),
+      MONDAY("monday"),
 
-      Tuesday("tuesday"),
+      TUESDAY("tuesday"),
 
-      Wednesday("wednesday"),
+      WEDNESDAY("wednesday"),
 
-      Thursday("thursday"),
+      THURSDAY("thursday"),
 
-      Friday("friday"),
+      FRIDAY("friday"),
 
-      Saturday("saturday"),
+      SATURDAY("saturday"),
 
       /** An enum member indicating that BillingDayOfWeek was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -142,9 +142,9 @@ public final class CustomerChangeBillingDateParams {
     }
 
     public enum BillingDayOfWeekMode {
-      UsingDefaults("using_defaults"),
+      USING_DEFAULTS("using_defaults"),
 
-      ManuallySet("manually_set"),
+      MANUALLY_SET("manually_set"),
 
       /**
        * An enum member indicating that BillingDayOfWeekMode was instantiated with an unknown value.

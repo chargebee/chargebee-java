@@ -55,9 +55,9 @@ public final class OfferEventOfferEventsParams {
     }
 
     public enum Type {
-      Viewed("viewed"),
+      VIEWED("viewed"),
 
-      Dismissed("dismissed"),
+      DISMISSED("dismissed"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

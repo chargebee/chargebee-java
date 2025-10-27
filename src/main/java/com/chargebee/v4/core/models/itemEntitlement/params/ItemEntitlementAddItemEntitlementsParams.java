@@ -67,9 +67,9 @@ public final class ItemEntitlementAddItemEntitlementsParams {
     }
 
     public enum Action {
-      Upsert("upsert"),
+      UPSERT("upsert"),
 
-      Remove("remove"),
+      REMOVE("remove"),
 
       /** An enum member indicating that Action was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -145,15 +145,15 @@ public final class ItemEntitlementAddItemEntitlementsParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
-        Subscription("subscription"),
+        SUBSCRIPTION("subscription"),
 
-        Item("item"),
+        ITEM("item"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);

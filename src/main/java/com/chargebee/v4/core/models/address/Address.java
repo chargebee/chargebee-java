@@ -93,13 +93,13 @@ public class Address {
   }
 
   public enum ValidationStatus {
-    NotValidated("not_validated"),
+    NOT_VALIDATED("not_validated"),
 
-    Valid("valid"),
+    VALID("valid"),
 
-    PartiallyValid("partially_valid"),
+    PARTIALLY_VALID("partially_valid"),
 
-    Invalid("invalid"),
+    INVALID("invalid"),
 
     /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
     _UNKNOWN(null);

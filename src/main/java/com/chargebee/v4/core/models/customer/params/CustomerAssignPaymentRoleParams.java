@@ -55,11 +55,11 @@ public final class CustomerAssignPaymentRoleParams {
     }
 
     public enum Role {
-      Primary("primary"),
+      PRIMARY("primary"),
 
-      Backup("backup"),
+      BACKUP("backup"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that Role was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -444,9 +444,9 @@ public final class ExportAddonsParams {
       }
 
       public enum Is {
-        Recurring("recurring"),
+        RECURRING("recurring"),
 
-        NonRecurring("non_recurring"),
+        NON_RECURRING("non_recurring"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -472,9 +472,9 @@ public final class ExportAddonsParams {
       }
 
       public enum IsNot {
-        Recurring("recurring"),
+        RECURRING("recurring"),
 
-        NonRecurring("non_recurring"),
+        NON_RECURRING("non_recurring"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -716,15 +716,15 @@ public final class ExportAddonsParams {
       }
 
       public enum Is {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
-        NotApplicable("not_applicable"),
+        NOT_APPLICABLE("not_applicable"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -750,15 +750,15 @@ public final class ExportAddonsParams {
       }
 
       public enum IsNot {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
-        NotApplicable("not_applicable"),
+        NOT_APPLICABLE("not_applicable"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -842,11 +842,11 @@ public final class ExportAddonsParams {
       }
 
       public enum Is {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -872,11 +872,11 @@ public final class ExportAddonsParams {
       }
 
       public enum IsNot {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1018,11 +1018,11 @@ public final class ExportAddonsParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1048,11 +1048,11 @@ public final class ExportAddonsParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

@@ -395,9 +395,9 @@ public final class InvoiceImportInvoiceParams {
     }
 
     public enum PriceType {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -423,11 +423,11 @@ public final class InvoiceImportInvoiceParams {
     }
 
     public enum TaxOverrideReason {
-      IdExempt("id_exempt"),
+      ID_EXEMPT("id_exempt"),
 
-      CustomerExempt("customer_exempt"),
+      CUSTOMER_EXEMPT("customer_exempt"),
 
-      Export("export"),
+      EXPORT("export"),
 
       /**
        * An enum member indicating that TaxOverrideReason was instantiated with an unknown value.
@@ -455,17 +455,17 @@ public final class InvoiceImportInvoiceParams {
     }
 
     public enum Status {
-      Paid("paid"),
+      PAID("paid"),
 
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Pending("pending"),
+      PENDING("pending"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -655,13 +655,13 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -817,13 +817,13 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -1147,19 +1147,19 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1236,15 +1236,15 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum Type {
-        Kid("kid"),
+        KID("kid"),
 
-        Ocr("ocr"),
+        OCR("ocr"),
 
-        Frn("frn"),
+        FRN("frn"),
 
-        Fik("fik"),
+        FIK("fik"),
 
-        SwissReference("swiss_reference"),
+        SWISS_REFERENCE("swiss_reference"),
 
         /** An enum member indicating that Type was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1421,15 +1421,15 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1534,21 +1534,21 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum JurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that JurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1639,19 +1639,19 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum PaymentMethod {
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1728,17 +1728,17 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum EntityType {
-        Coupon("coupon"),
+        COUPON("coupon"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1899,13 +1899,13 @@ public final class InvoiceImportInvoiceParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.

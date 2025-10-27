@@ -119,7 +119,7 @@ public final class PaymentSourceCreateVoucherPaymentSourceParams {
       }
 
       public enum VoucherType {
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
         /** An enum member indicating that VoucherType was instantiated with an unknown value. */
         _UNKNOWN(null);

@@ -119,9 +119,9 @@ public final class InvoiceCreateForChargeItemParams {
     }
 
     public enum PaymentInitiator {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Merchant("merchant"),
+      MERCHANT("merchant"),
 
       /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -311,11 +311,11 @@ public final class InvoiceCreateForChargeItemParams {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);

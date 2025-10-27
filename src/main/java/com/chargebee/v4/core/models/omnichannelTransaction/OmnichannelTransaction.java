@@ -75,9 +75,9 @@ public class OmnichannelTransaction {
   }
 
   public enum Type {
-    Purchase("purchase"),
+    PURCHASE("purchase"),
 
-    Renewal("renewal"),
+    RENEWAL("renewal"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

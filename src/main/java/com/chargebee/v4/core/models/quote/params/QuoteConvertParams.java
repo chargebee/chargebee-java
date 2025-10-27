@@ -138,9 +138,9 @@ public final class QuoteConvertParams {
       }
 
       public enum AutoCollection {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
         _UNKNOWN(null);

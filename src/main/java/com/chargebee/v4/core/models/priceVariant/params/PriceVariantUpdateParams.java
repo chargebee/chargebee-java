@@ -93,9 +93,9 @@ public final class PriceVariantUpdateParams {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -383,9 +383,9 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -483,9 +483,9 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -583,9 +583,9 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -669,75 +669,75 @@ public final class ExportTransactionsParams {
       }
 
       public enum Is {
-        Card("card"),
+        CARD("card"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        Chargeback("chargeback"),
+        CHARGEBACK("chargeback"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        DirectDebit("direct_debit"),
+        DIRECT_DEBIT("direct_debit"),
 
-        Alipay("alipay"),
+        ALIPAY("alipay"),
 
-        Unionpay("unionpay"),
+        UNIONPAY("unionpay"),
 
-        ApplePay("apple_pay"),
+        APPLE_PAY("apple_pay"),
 
-        WechatPay("wechat_pay"),
+        WECHAT_PAY("wechat_pay"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Ideal("ideal"),
+        IDEAL("ideal"),
 
-        GooglePay("google_pay"),
+        GOOGLE_PAY("google_pay"),
 
-        Sofort("sofort"),
+        SOFORT("sofort"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        Giropay("giropay"),
+        GIROPAY("giropay"),
 
-        Dotpay("dotpay"),
+        DOTPAY("dotpay"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        Upi("upi"),
+        UPI("upi"),
 
-        NetbankingEmandates("netbanking_emandates"),
+        NETBANKING_EMANDATES("netbanking_emandates"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        Venmo("venmo"),
+        VENMO("venmo"),
 
-        PayTo("pay_to"),
+        PAY_TO("pay_to"),
 
-        FasterPayments("faster_payments"),
+        FASTER_PAYMENTS("faster_payments"),
 
-        SepaInstantTransfer("sepa_instant_transfer"),
+        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        AutomatedBankTransfer("automated_bank_transfer"),
+        AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-        KlarnaPayNow("klarna_pay_now"),
+        KLARNA_PAY_NOW("klarna_pay_now"),
 
-        OnlineBankingPoland("online_banking_poland"),
+        ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PayconiqByBancontact("payconiq_by_bancontact"),
+        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -763,75 +763,75 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsNot {
-        Card("card"),
+        CARD("card"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        Chargeback("chargeback"),
+        CHARGEBACK("chargeback"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        DirectDebit("direct_debit"),
+        DIRECT_DEBIT("direct_debit"),
 
-        Alipay("alipay"),
+        ALIPAY("alipay"),
 
-        Unionpay("unionpay"),
+        UNIONPAY("unionpay"),
 
-        ApplePay("apple_pay"),
+        APPLE_PAY("apple_pay"),
 
-        WechatPay("wechat_pay"),
+        WECHAT_PAY("wechat_pay"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Ideal("ideal"),
+        IDEAL("ideal"),
 
-        GooglePay("google_pay"),
+        GOOGLE_PAY("google_pay"),
 
-        Sofort("sofort"),
+        SOFORT("sofort"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        Giropay("giropay"),
+        GIROPAY("giropay"),
 
-        Dotpay("dotpay"),
+        DOTPAY("dotpay"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        Upi("upi"),
+        UPI("upi"),
 
-        NetbankingEmandates("netbanking_emandates"),
+        NETBANKING_EMANDATES("netbanking_emandates"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        Venmo("venmo"),
+        VENMO("venmo"),
 
-        PayTo("pay_to"),
+        PAY_TO("pay_to"),
 
-        FasterPayments("faster_payments"),
+        FASTER_PAYMENTS("faster_payments"),
 
-        SepaInstantTransfer("sepa_instant_transfer"),
+        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        AutomatedBankTransfer("automated_bank_transfer"),
+        AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-        KlarnaPayNow("klarna_pay_now"),
+        KLARNA_PAY_NOW("klarna_pay_now"),
 
-        OnlineBankingPoland("online_banking_poland"),
+        ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PayconiqByBancontact("payconiq_by_bancontact"),
+        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -915,115 +915,115 @@ public final class ExportTransactionsParams {
       }
 
       public enum Is {
-        Chargebee("chargebee"),
+        CHARGEBEE("chargebee"),
 
-        ChargebeePayments("chargebee_payments"),
+        CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-        Adyen("adyen"),
+        ADYEN("adyen"),
 
-        Stripe("stripe"),
+        STRIPE("stripe"),
 
-        Wepay("wepay"),
+        WEPAY("wepay"),
 
-        Braintree("braintree"),
+        BRAINTREE("braintree"),
 
-        AuthorizeNet("authorize_net"),
+        AUTHORIZE_NET("authorize_net"),
 
-        PaypalPro("paypal_pro"),
+        PAYPAL_PRO("paypal_pro"),
 
-        Pin("pin"),
+        PIN("pin"),
 
-        Eway("eway"),
+        EWAY("eway"),
 
-        EwayRapid("eway_rapid"),
+        EWAY_RAPID("eway_rapid"),
 
-        Worldpay("worldpay"),
+        WORLDPAY("worldpay"),
 
-        BalancedPayments("balanced_payments"),
+        BALANCED_PAYMENTS("balanced_payments"),
 
-        Beanstream("beanstream"),
+        BEANSTREAM("beanstream"),
 
-        Bluepay("bluepay"),
+        BLUEPAY("bluepay"),
 
-        Elavon("elavon"),
+        ELAVON("elavon"),
 
-        FirstDataGlobal("first_data_global"),
+        FIRST_DATA_GLOBAL("first_data_global"),
 
-        Hdfc("hdfc"),
+        HDFC("hdfc"),
 
-        Migs("migs"),
+        MIGS("migs"),
 
-        Nmi("nmi"),
+        NMI("nmi"),
 
-        Ogone("ogone"),
+        OGONE("ogone"),
 
-        Paymill("paymill"),
+        PAYMILL("paymill"),
 
-        PaypalPayflowPro("paypal_payflow_pro"),
+        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-        SagePay("sage_pay"),
+        SAGE_PAY("sage_pay"),
 
-        Tco("tco"),
+        TCO("tco"),
 
-        Wirecard("wirecard"),
+        WIRECARD("wirecard"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        Gocardless("gocardless"),
+        GOCARDLESS("gocardless"),
 
-        Orbital("orbital"),
+        ORBITAL("orbital"),
 
-        MonerisUs("moneris_us"),
+        MONERIS_US("moneris_us"),
 
-        Moneris("moneris"),
+        MONERIS("moneris"),
 
-        Bluesnap("bluesnap"),
+        BLUESNAP("bluesnap"),
 
-        Cybersource("cybersource"),
+        CYBERSOURCE("cybersource"),
 
-        Vantiv("vantiv"),
+        VANTIV("vantiv"),
 
-        CheckoutCom("checkout_com"),
+        CHECKOUT_COM("checkout_com"),
 
-        Paypal("paypal"),
+        PAYPAL("paypal"),
 
-        IngenicoDirect("ingenico_direct"),
+        INGENICO_DIRECT("ingenico_direct"),
 
-        Exact("exact"),
+        EXACT("exact"),
 
-        Mollie("mollie"),
+        MOLLIE("mollie"),
 
-        Quickbooks("quickbooks"),
+        QUICKBOOKS("quickbooks"),
 
-        Razorpay("razorpay"),
+        RAZORPAY("razorpay"),
 
-        GlobalPayments("global_payments"),
+        GLOBAL_PAYMENTS("global_payments"),
 
-        BankOfAmerica("bank_of_america"),
+        BANK_OF_AMERICA("bank_of_america"),
 
-        Ecentric("ecentric"),
+        ECENTRIC("ecentric"),
 
-        MetricsGlobal("metrics_global"),
+        METRICS_GLOBAL("metrics_global"),
 
-        Windcave("windcave"),
+        WINDCAVE("windcave"),
 
-        PayCom("pay_com"),
+        PAY_COM("pay_com"),
 
-        Ebanx("ebanx"),
+        EBANX("ebanx"),
 
-        Dlocal("dlocal"),
+        DLOCAL("dlocal"),
 
-        Nuvei("nuvei"),
+        NUVEI("nuvei"),
 
-        Solidgate("solidgate"),
+        SOLIDGATE("solidgate"),
 
-        Paystack("paystack"),
+        PAYSTACK("paystack"),
 
-        JpMorgan("jp_morgan"),
+        JP_MORGAN("jp_morgan"),
 
-        NotApplicable("not_applicable"),
+        NOT_APPLICABLE("not_applicable"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1049,115 +1049,115 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsNot {
-        Chargebee("chargebee"),
+        CHARGEBEE("chargebee"),
 
-        ChargebeePayments("chargebee_payments"),
+        CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-        Adyen("adyen"),
+        ADYEN("adyen"),
 
-        Stripe("stripe"),
+        STRIPE("stripe"),
 
-        Wepay("wepay"),
+        WEPAY("wepay"),
 
-        Braintree("braintree"),
+        BRAINTREE("braintree"),
 
-        AuthorizeNet("authorize_net"),
+        AUTHORIZE_NET("authorize_net"),
 
-        PaypalPro("paypal_pro"),
+        PAYPAL_PRO("paypal_pro"),
 
-        Pin("pin"),
+        PIN("pin"),
 
-        Eway("eway"),
+        EWAY("eway"),
 
-        EwayRapid("eway_rapid"),
+        EWAY_RAPID("eway_rapid"),
 
-        Worldpay("worldpay"),
+        WORLDPAY("worldpay"),
 
-        BalancedPayments("balanced_payments"),
+        BALANCED_PAYMENTS("balanced_payments"),
 
-        Beanstream("beanstream"),
+        BEANSTREAM("beanstream"),
 
-        Bluepay("bluepay"),
+        BLUEPAY("bluepay"),
 
-        Elavon("elavon"),
+        ELAVON("elavon"),
 
-        FirstDataGlobal("first_data_global"),
+        FIRST_DATA_GLOBAL("first_data_global"),
 
-        Hdfc("hdfc"),
+        HDFC("hdfc"),
 
-        Migs("migs"),
+        MIGS("migs"),
 
-        Nmi("nmi"),
+        NMI("nmi"),
 
-        Ogone("ogone"),
+        OGONE("ogone"),
 
-        Paymill("paymill"),
+        PAYMILL("paymill"),
 
-        PaypalPayflowPro("paypal_payflow_pro"),
+        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-        SagePay("sage_pay"),
+        SAGE_PAY("sage_pay"),
 
-        Tco("tco"),
+        TCO("tco"),
 
-        Wirecard("wirecard"),
+        WIRECARD("wirecard"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        Gocardless("gocardless"),
+        GOCARDLESS("gocardless"),
 
-        Orbital("orbital"),
+        ORBITAL("orbital"),
 
-        MonerisUs("moneris_us"),
+        MONERIS_US("moneris_us"),
 
-        Moneris("moneris"),
+        MONERIS("moneris"),
 
-        Bluesnap("bluesnap"),
+        BLUESNAP("bluesnap"),
 
-        Cybersource("cybersource"),
+        CYBERSOURCE("cybersource"),
 
-        Vantiv("vantiv"),
+        VANTIV("vantiv"),
 
-        CheckoutCom("checkout_com"),
+        CHECKOUT_COM("checkout_com"),
 
-        Paypal("paypal"),
+        PAYPAL("paypal"),
 
-        IngenicoDirect("ingenico_direct"),
+        INGENICO_DIRECT("ingenico_direct"),
 
-        Exact("exact"),
+        EXACT("exact"),
 
-        Mollie("mollie"),
+        MOLLIE("mollie"),
 
-        Quickbooks("quickbooks"),
+        QUICKBOOKS("quickbooks"),
 
-        Razorpay("razorpay"),
+        RAZORPAY("razorpay"),
 
-        GlobalPayments("global_payments"),
+        GLOBAL_PAYMENTS("global_payments"),
 
-        BankOfAmerica("bank_of_america"),
+        BANK_OF_AMERICA("bank_of_america"),
 
-        Ecentric("ecentric"),
+        ECENTRIC("ecentric"),
 
-        MetricsGlobal("metrics_global"),
+        METRICS_GLOBAL("metrics_global"),
 
-        Windcave("windcave"),
+        WINDCAVE("windcave"),
 
-        PayCom("pay_com"),
+        PAY_COM("pay_com"),
 
-        Ebanx("ebanx"),
+        EBANX("ebanx"),
 
-        Dlocal("dlocal"),
+        DLOCAL("dlocal"),
 
-        Nuvei("nuvei"),
+        NUVEI("nuvei"),
 
-        Solidgate("solidgate"),
+        SOLIDGATE("solidgate"),
 
-        Paystack("paystack"),
+        PAYSTACK("paystack"),
 
-        JpMorgan("jp_morgan"),
+        JP_MORGAN("jp_morgan"),
 
-        NotApplicable("not_applicable"),
+        NOT_APPLICABLE("not_applicable"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1357,9 +1357,9 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1443,13 +1443,13 @@ public final class ExportTransactionsParams {
       }
 
       public enum Is {
-        Authorization("authorization"),
+        AUTHORIZATION("authorization"),
 
-        Payment("payment"),
+        PAYMENT("payment"),
 
-        Refund("refund"),
+        REFUND("refund"),
 
-        PaymentReversal("payment_reversal"),
+        PAYMENT_REVERSAL("payment_reversal"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1475,13 +1475,13 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsNot {
-        Authorization("authorization"),
+        AUTHORIZATION("authorization"),
 
-        Payment("payment"),
+        PAYMENT("payment"),
 
-        Refund("refund"),
+        REFUND("refund"),
 
-        PaymentReversal("payment_reversal"),
+        PAYMENT_REVERSAL("payment_reversal"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1781,19 +1781,19 @@ public final class ExportTransactionsParams {
       }
 
       public enum Is {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Success("success"),
+        SUCCESS("success"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Failure("failure"),
+        FAILURE("failure"),
 
-        Timeout("timeout"),
+        TIMEOUT("timeout"),
 
-        NeedsAttention("needs_attention"),
+        NEEDS_ATTENTION("needs_attention"),
 
-        LateFailure("late_failure"),
+        LATE_FAILURE("late_failure"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1819,19 +1819,19 @@ public final class ExportTransactionsParams {
       }
 
       public enum IsNot {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Success("success"),
+        SUCCESS("success"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Failure("failure"),
+        FAILURE("failure"),
 
-        Timeout("timeout"),
+        TIMEOUT("timeout"),
 
-        NeedsAttention("needs_attention"),
+        NEEDS_ATTENTION("needs_attention"),
 
-        LateFailure("late_failure"),
+        LATE_FAILURE("late_failure"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

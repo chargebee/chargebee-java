@@ -80,15 +80,15 @@ public class PortalSession {
   }
 
   public enum Status {
-    Created("created"),
+    CREATED("created"),
 
-    LoggedIn("logged_in"),
+    LOGGED_IN("logged_in"),
 
-    LoggedOut("logged_out"),
+    LOGGED_OUT("logged_out"),
 
-    NotYetActivated("not_yet_activated"),
+    NOT_YET_ACTIVATED("not_yet_activated"),
 
-    Activated("activated"),
+    ACTIVATED("activated"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

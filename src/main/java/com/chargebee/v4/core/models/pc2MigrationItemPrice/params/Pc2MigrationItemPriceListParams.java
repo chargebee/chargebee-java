@@ -188,9 +188,9 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public enum IsInvalidPc1IdIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that IsInvalidPc1IdIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -216,9 +216,9 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public enum Pc1ItemTypeIs {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that Pc1ItemTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -244,9 +244,9 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public enum Pc1ItemTypeIsNot {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that Pc1ItemTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -272,9 +272,9 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public enum IsRecurringIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
       _UNKNOWN(null);

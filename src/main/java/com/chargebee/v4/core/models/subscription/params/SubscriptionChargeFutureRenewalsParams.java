@@ -93,11 +93,11 @@ public final class SubscriptionChargeFutureRenewalsParams {
     }
 
     public enum ScheduleType {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      SpecificDates("specific_dates"),
+      SPECIFIC_DATES("specific_dates"),
 
-      FixedIntervals("fixed_intervals"),
+      FIXED_INTERVALS("fixed_intervals"),
 
       /** An enum member indicating that ScheduleType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -180,11 +180,11 @@ public final class SubscriptionChargeFutureRenewalsParams {
       }
 
       public enum EndScheduleOn {
-        AfterNumberOfIntervals("after_number_of_intervals"),
+        AFTER_NUMBER_OF_INTERVALS("after_number_of_intervals"),
 
-        SpecificDate("specific_date"),
+        SPECIFIC_DATE("specific_date"),
 
-        SubscriptionEnd("subscription_end"),
+        SUBSCRIPTION_END("subscription_end"),
 
         /** An enum member indicating that EndScheduleOn was instantiated with an unknown value. */
         _UNKNOWN(null);

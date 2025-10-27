@@ -43,9 +43,9 @@ public class Currency {
   }
 
   public enum ForexType {
-    Manual("manual"),
+    MANUAL("manual"),
 
-    Auto("auto"),
+    AUTO("auto"),
 
     /** An enum member indicating that ForexType was instantiated with an unknown value. */
     _UNKNOWN(null);

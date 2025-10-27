@@ -187,9 +187,9 @@ public final class PromotionalCreditListParams {
     }
 
     public enum TypeIs {
-      Increment("increment"),
+      INCREMENT("increment"),
 
-      Decrement("decrement"),
+      DECREMENT("decrement"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -215,9 +215,9 @@ public final class PromotionalCreditListParams {
     }
 
     public enum TypeIsNot {
-      Increment("increment"),
+      INCREMENT("increment"),
 
-      Decrement("decrement"),
+      DECREMENT("decrement"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -59,7 +59,7 @@ public class BusinessEntityChange {
   }
 
   public enum Reason {
-    Correction("correction"),
+    CORRECTION("correction"),
 
     /** An enum member indicating that Reason was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -85,9 +85,9 @@ public class BusinessEntityChange {
   }
 
   public enum ResourceType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
-    Subscription("subscription"),
+    SUBSCRIPTION("subscription"),
 
     /** An enum member indicating that ResourceType was instantiated with an unknown value. */
     _UNKNOWN(null);

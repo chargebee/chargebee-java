@@ -479,9 +479,9 @@ public final class SubscriptionCreateParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -507,9 +507,9 @@ public final class SubscriptionCreateParams {
     }
 
     public enum BillingAlignmentMode {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      Delayed("delayed"),
+      DELAYED("delayed"),
 
       /**
        * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
@@ -537,31 +537,31 @@ public final class SubscriptionCreateParams {
     }
 
     public enum OfflinePaymentMethod {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
@@ -589,13 +589,13 @@ public final class SubscriptionCreateParams {
     }
 
     public enum FreePeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -621,13 +621,13 @@ public final class SubscriptionCreateParams {
     }
 
     public enum TrialEndAction {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PlanDefault("plan_default"),
+      PLAN_DEFAULT("plan_default"),
 
-      ActivateSubscription("activate_subscription"),
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-      CancelSubscription("cancel_subscription"),
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
 
       /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -653,9 +653,9 @@ public final class SubscriptionCreateParams {
     }
 
     public enum PaymentInitiator {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Merchant("merchant"),
+      MERCHANT("merchant"),
 
       /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -892,9 +892,9 @@ public final class SubscriptionCreateParams {
       }
 
       public enum Taxability {
-        Taxable("taxable"),
+        TAXABLE("taxable"),
 
-        Exempt("exempt"),
+        EXEMPT("exempt"),
 
         /** An enum member indicating that Taxability was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -954,9 +954,9 @@ public final class SubscriptionCreateParams {
 
         R("r"),
 
-        Med1("med1"),
+        MED_1("med1"),
 
-        Med2("med2"),
+        MED_2("med2"),
 
         /** An enum member indicating that EntityCode was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -982,11 +982,11 @@ public final class SubscriptionCreateParams {
       }
 
       public enum TaxjarExemptionCategory {
-        Wholesale("wholesale"),
+        WHOLESALE("wholesale"),
 
-        Government("government"),
+        GOVERNMENT("government"),
 
-        Other("other"),
+        OTHER("other"),
 
         /**
          * An enum member indicating that TaxjarExemptionCategory was instantiated with an unknown
@@ -1015,9 +1015,9 @@ public final class SubscriptionCreateParams {
       }
 
       public enum AutoCollection {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1043,31 +1043,31 @@ public final class SubscriptionCreateParams {
       }
 
       public enum OfflinePaymentMethod {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /**
          * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown
@@ -1096,11 +1096,11 @@ public final class SubscriptionCreateParams {
       }
 
       public enum EinvoicingMethod {
-        Automatic("automatic"),
+        AUTOMATIC("automatic"),
 
-        Manual("manual"),
+        MANUAL("manual"),
 
-        SiteDefault("site_default"),
+        SITE_DEFAULT("site_default"),
 
         /**
          * An enum member indicating that EinvoicingMethod was instantiated with an unknown value.
@@ -1128,13 +1128,13 @@ public final class SubscriptionCreateParams {
       }
 
       public enum CustomerType {
-        Residential("residential"),
+        RESIDENTIAL("residential"),
 
-        Business("business"),
+        BUSINESS("business"),
 
-        SeniorCitizen("senior_citizen"),
+        SENIOR_CITIZEN("senior_citizen"),
 
-        Industrial("industrial"),
+        INDUSTRIAL("industrial"),
 
         /** An enum member indicating that CustomerType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1326,111 +1326,111 @@ public final class SubscriptionCreateParams {
       }
 
       public enum Gateway {
-        Chargebee("chargebee"),
+        CHARGEBEE("chargebee"),
 
-        ChargebeePayments("chargebee_payments"),
+        CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-        Adyen("adyen"),
+        ADYEN("adyen"),
 
-        Stripe("stripe"),
+        STRIPE("stripe"),
 
-        Wepay("wepay"),
+        WEPAY("wepay"),
 
-        Braintree("braintree"),
+        BRAINTREE("braintree"),
 
-        AuthorizeNet("authorize_net"),
+        AUTHORIZE_NET("authorize_net"),
 
-        PaypalPro("paypal_pro"),
+        PAYPAL_PRO("paypal_pro"),
 
-        Pin("pin"),
+        PIN("pin"),
 
-        Eway("eway"),
+        EWAY("eway"),
 
-        EwayRapid("eway_rapid"),
+        EWAY_RAPID("eway_rapid"),
 
-        Worldpay("worldpay"),
+        WORLDPAY("worldpay"),
 
-        BalancedPayments("balanced_payments"),
+        BALANCED_PAYMENTS("balanced_payments"),
 
-        Beanstream("beanstream"),
+        BEANSTREAM("beanstream"),
 
-        Bluepay("bluepay"),
+        BLUEPAY("bluepay"),
 
-        Elavon("elavon"),
+        ELAVON("elavon"),
 
-        FirstDataGlobal("first_data_global"),
+        FIRST_DATA_GLOBAL("first_data_global"),
 
-        Hdfc("hdfc"),
+        HDFC("hdfc"),
 
-        Migs("migs"),
+        MIGS("migs"),
 
-        Nmi("nmi"),
+        NMI("nmi"),
 
-        Ogone("ogone"),
+        OGONE("ogone"),
 
-        Paymill("paymill"),
+        PAYMILL("paymill"),
 
-        PaypalPayflowPro("paypal_payflow_pro"),
+        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-        SagePay("sage_pay"),
+        SAGE_PAY("sage_pay"),
 
-        Tco("tco"),
+        TCO("tco"),
 
-        Wirecard("wirecard"),
+        WIRECARD("wirecard"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        Orbital("orbital"),
+        ORBITAL("orbital"),
 
-        MonerisUs("moneris_us"),
+        MONERIS_US("moneris_us"),
 
-        Moneris("moneris"),
+        MONERIS("moneris"),
 
-        Bluesnap("bluesnap"),
+        BLUESNAP("bluesnap"),
 
-        Cybersource("cybersource"),
+        CYBERSOURCE("cybersource"),
 
-        Vantiv("vantiv"),
+        VANTIV("vantiv"),
 
-        CheckoutCom("checkout_com"),
+        CHECKOUT_COM("checkout_com"),
 
-        Paypal("paypal"),
+        PAYPAL("paypal"),
 
-        IngenicoDirect("ingenico_direct"),
+        INGENICO_DIRECT("ingenico_direct"),
 
-        Exact("exact"),
+        EXACT("exact"),
 
-        Mollie("mollie"),
+        MOLLIE("mollie"),
 
-        Quickbooks("quickbooks"),
+        QUICKBOOKS("quickbooks"),
 
-        Razorpay("razorpay"),
+        RAZORPAY("razorpay"),
 
-        GlobalPayments("global_payments"),
+        GLOBAL_PAYMENTS("global_payments"),
 
-        BankOfAmerica("bank_of_america"),
+        BANK_OF_AMERICA("bank_of_america"),
 
-        Ecentric("ecentric"),
+        ECENTRIC("ecentric"),
 
-        MetricsGlobal("metrics_global"),
+        METRICS_GLOBAL("metrics_global"),
 
-        Windcave("windcave"),
+        WINDCAVE("windcave"),
 
-        PayCom("pay_com"),
+        PAY_COM("pay_com"),
 
-        Ebanx("ebanx"),
+        EBANX("ebanx"),
 
-        Dlocal("dlocal"),
+        DLOCAL("dlocal"),
 
-        Nuvei("nuvei"),
+        NUVEI("nuvei"),
 
-        Solidgate("solidgate"),
+        SOLIDGATE("solidgate"),
 
-        Paystack("paystack"),
+        PAYSTACK("paystack"),
 
-        JpMorgan("jp_morgan"),
+        JP_MORGAN("jp_morgan"),
 
         /** An enum member indicating that Gateway was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1456,11 +1456,11 @@ public final class SubscriptionCreateParams {
       }
 
       public enum PreferredScheme {
-        CartesBancaires("cartes_bancaires"),
+        CARTES_BANCAIRES("cartes_bancaires"),
 
-        Mastercard("mastercard"),
+        MASTERCARD("mastercard"),
 
-        Visa("visa"),
+        VISA("visa"),
 
         /**
          * An enum member indicating that PreferredScheme was instantiated with an unknown value.
@@ -1637,13 +1637,13 @@ public final class SubscriptionCreateParams {
       }
 
       public enum AccountType {
-        Checking("checking"),
+        CHECKING("checking"),
 
-        Savings("savings"),
+        SAVINGS("savings"),
 
-        BusinessChecking("business_checking"),
+        BUSINESS_CHECKING("business_checking"),
 
-        Current("current"),
+        CURRENT("current"),
 
         /** An enum member indicating that AccountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1669,9 +1669,9 @@ public final class SubscriptionCreateParams {
       }
 
       public enum AccountHolderType {
-        Individual("individual"),
+        INDIVIDUAL("individual"),
 
-        Company("company"),
+        COMPANY("company"),
 
         /**
          * An enum member indicating that AccountHolderType was instantiated with an unknown value.
@@ -1699,11 +1699,11 @@ public final class SubscriptionCreateParams {
       }
 
       public enum EcheckType {
-        Web("web"),
+        WEB("web"),
 
-        Ppd("ppd"),
+        PPD("ppd"),
 
-        Ccd("ccd"),
+        CCD("ccd"),
 
         /** An enum member indicating that EcheckType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1809,55 +1809,55 @@ public final class SubscriptionCreateParams {
       }
 
       public enum Type {
-        Card("card"),
+        CARD("card"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        DirectDebit("direct_debit"),
+        DIRECT_DEBIT("direct_debit"),
 
-        Generic("generic"),
+        GENERIC("generic"),
 
-        Alipay("alipay"),
+        ALIPAY("alipay"),
 
-        Unionpay("unionpay"),
+        UNIONPAY("unionpay"),
 
-        ApplePay("apple_pay"),
+        APPLE_PAY("apple_pay"),
 
-        WechatPay("wechat_pay"),
+        WECHAT_PAY("wechat_pay"),
 
-        Ideal("ideal"),
+        IDEAL("ideal"),
 
-        GooglePay("google_pay"),
+        GOOGLE_PAY("google_pay"),
 
-        Sofort("sofort"),
+        SOFORT("sofort"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        Giropay("giropay"),
+        GIROPAY("giropay"),
 
-        Dotpay("dotpay"),
+        DOTPAY("dotpay"),
 
-        Upi("upi"),
+        UPI("upi"),
 
-        NetbankingEmandates("netbanking_emandates"),
+        NETBANKING_EMANDATES("netbanking_emandates"),
 
-        Venmo("venmo"),
+        VENMO("venmo"),
 
-        PayTo("pay_to"),
+        PAY_TO("pay_to"),
 
-        FasterPayments("faster_payments"),
+        FASTER_PAYMENTS("faster_payments"),
 
-        SepaInstantTransfer("sepa_instant_transfer"),
+        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        AutomatedBankTransfer("automated_bank_transfer"),
+        AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-        KlarnaPayNow("klarna_pay_now"),
+        KLARNA_PAY_NOW("klarna_pay_now"),
 
-        OnlineBankingPoland("online_banking_poland"),
+        ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PayconiqByBancontact("payconiq_by_bancontact"),
+        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
         /** An enum member indicating that Type was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1883,111 +1883,111 @@ public final class SubscriptionCreateParams {
       }
 
       public enum Gateway {
-        ChargebeePayments("chargebee_payments"),
+        CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-        Adyen("adyen"),
+        ADYEN("adyen"),
 
-        Stripe("stripe"),
+        STRIPE("stripe"),
 
-        Wepay("wepay"),
+        WEPAY("wepay"),
 
-        Braintree("braintree"),
+        BRAINTREE("braintree"),
 
-        AuthorizeNet("authorize_net"),
+        AUTHORIZE_NET("authorize_net"),
 
-        PaypalPro("paypal_pro"),
+        PAYPAL_PRO("paypal_pro"),
 
-        Pin("pin"),
+        PIN("pin"),
 
-        Eway("eway"),
+        EWAY("eway"),
 
-        EwayRapid("eway_rapid"),
+        EWAY_RAPID("eway_rapid"),
 
-        Worldpay("worldpay"),
+        WORLDPAY("worldpay"),
 
-        BalancedPayments("balanced_payments"),
+        BALANCED_PAYMENTS("balanced_payments"),
 
-        Beanstream("beanstream"),
+        BEANSTREAM("beanstream"),
 
-        Bluepay("bluepay"),
+        BLUEPAY("bluepay"),
 
-        Elavon("elavon"),
+        ELAVON("elavon"),
 
-        FirstDataGlobal("first_data_global"),
+        FIRST_DATA_GLOBAL("first_data_global"),
 
-        Hdfc("hdfc"),
+        HDFC("hdfc"),
 
-        Migs("migs"),
+        MIGS("migs"),
 
-        Nmi("nmi"),
+        NMI("nmi"),
 
-        Ogone("ogone"),
+        OGONE("ogone"),
 
-        Paymill("paymill"),
+        PAYMILL("paymill"),
 
-        PaypalPayflowPro("paypal_payflow_pro"),
+        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-        SagePay("sage_pay"),
+        SAGE_PAY("sage_pay"),
 
-        Tco("tco"),
+        TCO("tco"),
 
-        Wirecard("wirecard"),
+        WIRECARD("wirecard"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        Gocardless("gocardless"),
+        GOCARDLESS("gocardless"),
 
-        Orbital("orbital"),
+        ORBITAL("orbital"),
 
-        MonerisUs("moneris_us"),
+        MONERIS_US("moneris_us"),
 
-        Moneris("moneris"),
+        MONERIS("moneris"),
 
-        Bluesnap("bluesnap"),
+        BLUESNAP("bluesnap"),
 
-        Cybersource("cybersource"),
+        CYBERSOURCE("cybersource"),
 
-        Vantiv("vantiv"),
+        VANTIV("vantiv"),
 
-        CheckoutCom("checkout_com"),
+        CHECKOUT_COM("checkout_com"),
 
-        Paypal("paypal"),
+        PAYPAL("paypal"),
 
-        IngenicoDirect("ingenico_direct"),
+        INGENICO_DIRECT("ingenico_direct"),
 
-        Exact("exact"),
+        EXACT("exact"),
 
-        Mollie("mollie"),
+        MOLLIE("mollie"),
 
-        Quickbooks("quickbooks"),
+        QUICKBOOKS("quickbooks"),
 
-        Razorpay("razorpay"),
+        RAZORPAY("razorpay"),
 
-        GlobalPayments("global_payments"),
+        GLOBAL_PAYMENTS("global_payments"),
 
-        BankOfAmerica("bank_of_america"),
+        BANK_OF_AMERICA("bank_of_america"),
 
-        Ecentric("ecentric"),
+        ECENTRIC("ecentric"),
 
-        MetricsGlobal("metrics_global"),
+        METRICS_GLOBAL("metrics_global"),
 
-        Windcave("windcave"),
+        WINDCAVE("windcave"),
 
-        PayCom("pay_com"),
+        PAY_COM("pay_com"),
 
-        Ebanx("ebanx"),
+        EBANX("ebanx"),
 
-        Dlocal("dlocal"),
+        DLOCAL("dlocal"),
 
-        Nuvei("nuvei"),
+        NUVEI("nuvei"),
 
-        Solidgate("solidgate"),
+        SOLIDGATE("solidgate"),
 
-        Paystack("paystack"),
+        PAYSTACK("paystack"),
 
-        JpMorgan("jp_morgan"),
+        JP_MORGAN("jp_morgan"),
 
         /** An enum member indicating that Gateway was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2093,47 +2093,47 @@ public final class SubscriptionCreateParams {
       }
 
       public enum PaymentMethodType {
-        Card("card"),
+        CARD("card"),
 
-        Ideal("ideal"),
+        IDEAL("ideal"),
 
-        Sofort("sofort"),
+        SOFORT("sofort"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        GooglePay("google_pay"),
+        GOOGLE_PAY("google_pay"),
 
-        Dotpay("dotpay"),
+        DOTPAY("dotpay"),
 
-        Giropay("giropay"),
+        GIROPAY("giropay"),
 
-        ApplePay("apple_pay"),
+        APPLE_PAY("apple_pay"),
 
-        Upi("upi"),
+        UPI("upi"),
 
-        NetbankingEmandates("netbanking_emandates"),
+        NETBANKING_EMANDATES("netbanking_emandates"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        DirectDebit("direct_debit"),
+        DIRECT_DEBIT("direct_debit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        Venmo("venmo"),
+        VENMO("venmo"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PayTo("pay_to"),
+        PAY_TO("pay_to"),
 
-        FasterPayments("faster_payments"),
+        FASTER_PAYMENTS("faster_payments"),
 
-        SepaInstantTransfer("sepa_instant_transfer"),
+        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        KlarnaPayNow("klarna_pay_now"),
+        KLARNA_PAY_NOW("klarna_pay_now"),
 
-        OnlineBankingPoland("online_banking_poland"),
+        ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PayconiqByBancontact("payconiq_by_bancontact"),
+        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
         /**
          * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -2289,13 +2289,13 @@ public final class SubscriptionCreateParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -2451,13 +2451,13 @@ public final class SubscriptionCreateParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -2566,11 +2566,11 @@ public final class SubscriptionCreateParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -2879,15 +2879,15 @@ public final class SubscriptionCreateParams {
       }
 
       public enum OnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that OnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2913,9 +2913,9 @@ public final class SubscriptionCreateParams {
       }
 
       public enum ChargeOn {
-        Immediately("immediately"),
+        IMMEDIATELY("immediately"),
 
-        OnEvent("on_event"),
+        ON_EVENT("on_event"),
 
         /** An enum member indicating that ChargeOn was instantiated with an unknown value. */
         _UNKNOWN(null);

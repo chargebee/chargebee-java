@@ -470,9 +470,9 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -570,9 +570,9 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -656,11 +656,11 @@ public final class ExportCreditNotesParams {
       }
 
       public enum Is {
-        Adjustment("adjustment"),
+        ADJUSTMENT("adjustment"),
 
-        Refundable("refundable"),
+        REFUNDABLE("refundable"),
 
-        Store("store"),
+        STORE("store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -686,11 +686,11 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsNot {
-        Adjustment("adjustment"),
+        ADJUSTMENT("adjustment"),
 
-        Refundable("refundable"),
+        REFUNDABLE("refundable"),
 
-        Store("store"),
+        STORE("store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -774,29 +774,29 @@ public final class ExportCreditNotesParams {
       }
 
       public enum Is {
-        WriteOff("write_off"),
+        WRITE_OFF("write_off"),
 
-        SubscriptionChange("subscription_change"),
+        SUBSCRIPTION_CHANGE("subscription_change"),
 
-        SubscriptionCancellation("subscription_cancellation"),
+        SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-        SubscriptionPause("subscription_pause"),
+        SUBSCRIPTION_PAUSE("subscription_pause"),
 
-        Chargeback("chargeback"),
+        CHARGEBACK("chargeback"),
 
-        ProductUnsatisfactory("product_unsatisfactory"),
+        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        ServiceUnsatisfactory("service_unsatisfactory"),
+        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        OrderChange("order_change"),
+        ORDER_CHANGE("order_change"),
 
-        OrderCancellation("order_cancellation"),
+        ORDER_CANCELLATION("order_cancellation"),
 
-        Waiver("waiver"),
+        WAIVER("waiver"),
 
-        Other("other"),
+        OTHER("other"),
 
-        Fraudulent("fraudulent"),
+        FRAUDULENT("fraudulent"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -822,29 +822,29 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsNot {
-        WriteOff("write_off"),
+        WRITE_OFF("write_off"),
 
-        SubscriptionChange("subscription_change"),
+        SUBSCRIPTION_CHANGE("subscription_change"),
 
-        SubscriptionCancellation("subscription_cancellation"),
+        SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-        SubscriptionPause("subscription_pause"),
+        SUBSCRIPTION_PAUSE("subscription_pause"),
 
-        Chargeback("chargeback"),
+        CHARGEBACK("chargeback"),
 
-        ProductUnsatisfactory("product_unsatisfactory"),
+        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        ServiceUnsatisfactory("service_unsatisfactory"),
+        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        OrderChange("order_change"),
+        ORDER_CHANGE("order_change"),
 
-        OrderCancellation("order_cancellation"),
+        ORDER_CANCELLATION("order_cancellation"),
 
-        Waiver("waiver"),
+        WAIVER("waiver"),
 
-        Other("other"),
+        OTHER("other"),
 
-        Fraudulent("fraudulent"),
+        FRAUDULENT("fraudulent"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -993,13 +993,13 @@ public final class ExportCreditNotesParams {
       }
 
       public enum Is {
-        Adjusted("adjusted"),
+        ADJUSTED("adjusted"),
 
-        Refunded("refunded"),
+        REFUNDED("refunded"),
 
-        RefundDue("refund_due"),
+        REFUND_DUE("refund_due"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1025,13 +1025,13 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsNot {
-        Adjusted("adjusted"),
+        ADJUSTED("adjusted"),
 
-        Refunded("refunded"),
+        REFUNDED("refunded"),
 
-        RefundDue("refund_due"),
+        REFUND_DUE("refund_due"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1252,9 +1252,9 @@ public final class ExportCreditNotesParams {
       }
 
       public enum Is {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1280,9 +1280,9 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsNot {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1719,11 +1719,11 @@ public final class ExportCreditNotesParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1749,11 +1749,11 @@ public final class ExportCreditNotesParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

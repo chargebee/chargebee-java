@@ -86,17 +86,17 @@ public class QuoteLineGroup {
   }
 
   public enum ChargeEvent {
-    Immediate("immediate"),
+    IMMEDIATE("immediate"),
 
-    SubscriptionCreation("subscription_creation"),
+    SUBSCRIPTION_CREATION("subscription_creation"),
 
-    TrialStart("trial_start"),
+    TRIAL_START("trial_start"),
 
-    SubscriptionChange("subscription_change"),
+    SUBSCRIPTION_CHANGE("subscription_change"),
 
-    SubscriptionRenewal("subscription_renewal"),
+    SUBSCRIPTION_RENEWAL("subscription_renewal"),
 
-    SubscriptionCancel("subscription_cancel"),
+    SUBSCRIPTION_CANCEL("subscription_cancel"),
 
     /** An enum member indicating that ChargeEvent was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -299,15 +299,15 @@ public class QuoteLineGroup {
     }
 
     public enum PricingModel {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModel was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -333,19 +333,19 @@ public class QuoteLineGroup {
     }
 
     public enum EntityType {
-      Adhoc("adhoc"),
+      ADHOC("adhoc"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      PlanSetup("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -371,25 +371,25 @@ public class QuoteLineGroup {
     }
 
     public enum TaxExemptReason {
-      TaxNotConfigured("tax_not_configured"),
+      TAX_NOT_CONFIGURED("tax_not_configured"),
 
-      RegionNonTaxable("region_non_taxable"),
+      REGION_NON_TAXABLE("region_non_taxable"),
 
-      Export("export"),
+      EXPORT("export"),
 
-      CustomerExempt("customer_exempt"),
+      CUSTOMER_EXEMPT("customer_exempt"),
 
-      ProductExempt("product_exempt"),
+      PRODUCT_EXEMPT("product_exempt"),
 
-      ZeroRated("zero_rated"),
+      ZERO_RATED("zero_rated"),
 
-      ReverseCharge("reverse_charge"),
+      REVERSE_CHARGE("reverse_charge"),
 
-      HighValuePhysicalGoods("high_value_physical_goods"),
+      HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-      ZeroValueItem("zero_value_item"),
+      ZERO_VALUE_ITEM("zero_value_item"),
 
-      TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+      TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
       /** An enum member indicating that TaxExemptReason was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -501,17 +501,17 @@ public class QuoteLineGroup {
     }
 
     public enum DiscountType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -632,21 +632,21 @@ public class QuoteLineGroup {
     }
 
     public enum TaxJurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -742,17 +742,17 @@ public class QuoteLineGroup {
     }
 
     public enum EntityType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -778,9 +778,9 @@ public class QuoteLineGroup {
     }
 
     public enum DiscountType {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);

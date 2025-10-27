@@ -254,11 +254,11 @@ public class ItemPrice {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Archived("archived"),
+    ARCHIVED("archived"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -284,11 +284,11 @@ public class ItemPrice {
   }
 
   public enum ProrationType {
-    SiteDefault("site_default"),
+    SITE_DEFAULT("site_default"),
 
-    PartialTerm("partial_term"),
+    PARTIAL_TERM("partial_term"),
 
-    FullTerm("full_term"),
+    FULL_TERM("full_term"),
 
     /** An enum member indicating that ProrationType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -314,15 +314,15 @@ public class ItemPrice {
   }
 
   public enum PricingModel {
-    FlatFee("flat_fee"),
+    FLAT_FEE("flat_fee"),
 
-    PerUnit("per_unit"),
+    PER_UNIT("per_unit"),
 
-    Tiered("tiered"),
+    TIERED("tiered"),
 
-    Volume("volume"),
+    VOLUME("volume"),
 
-    Stairstep("stairstep"),
+    STAIRSTEP("stairstep"),
 
     /** An enum member indicating that PricingModel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -348,13 +348,13 @@ public class ItemPrice {
   }
 
   public enum PeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -380,9 +380,9 @@ public class ItemPrice {
   }
 
   public enum TrialPeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Month("month"),
+    MONTH("month"),
 
     /** An enum member indicating that TrialPeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -408,11 +408,11 @@ public class ItemPrice {
   }
 
   public enum TrialEndAction {
-    SiteDefault("site_default"),
+    SITE_DEFAULT("site_default"),
 
-    ActivateSubscription("activate_subscription"),
+    ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-    CancelSubscription("cancel_subscription"),
+    CANCEL_SUBSCRIPTION("cancel_subscription"),
 
     /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -438,13 +438,13 @@ public class ItemPrice {
   }
 
   public enum ShippingPeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that ShippingPeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -470,11 +470,11 @@ public class ItemPrice {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -500,9 +500,9 @@ public class ItemPrice {
   }
 
   public enum UsageAccumulationResetFrequency {
-    Never("never"),
+    NEVER("never"),
 
-    SubscriptionBillingFrequency("subscription_billing_frequency"),
+    SUBSCRIPTION_BILLING_FREQUENCY("subscription_billing_frequency"),
 
     /**
      * An enum member indicating that UsageAccumulationResetFrequency was instantiated with an
@@ -531,11 +531,11 @@ public class ItemPrice {
   }
 
   public enum ItemType {
-    Plan("plan"),
+    PLAN("plan"),
 
-    Addon("addon"),
+    ADDON("addon"),
 
-    Charge("charge"),
+    CHARGE("charge"),
 
     /** An enum member indicating that ItemType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -836,11 +836,11 @@ public class ItemPrice {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -927,13 +927,13 @@ public class ItemPrice {
     }
 
     public enum AvalaraSaleType {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Retail("retail"),
+      RETAIL("retail"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      VendorUse("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
       /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -78,13 +78,13 @@ public final class InvoiceListPaymentReferenceNumbersParams {
         this.builder = builder;
       }
 
-      public InvoiceListPaymentReferenceNumbersBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public InvoiceListPaymentReferenceNumbersBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public InvoiceListPaymentReferenceNumbersBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public InvoiceListPaymentReferenceNumbersBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
@@ -137,13 +137,13 @@ public final class InvoiceListPaymentReferenceNumbersParams {
           this.builder = builder;
         }
 
-        public PaymentReferenceNumberBuilder in(String... values) {
-          builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        public PaymentReferenceNumberBuilder is(String value) {
+          builder.queryParams.put(fieldName + "[is]", value);
           return builder;
         }
 
-        public PaymentReferenceNumberBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
+        public PaymentReferenceNumberBuilder in(String... values) {
+          builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
           return builder;
         }
       }

@@ -70,9 +70,9 @@ public class RecordedPurchase {
   }
 
   public enum Source {
-    AppleAppStore("apple_app_store"),
+    APPLE_APP_STORE("apple_app_store"),
 
-    GooglePlayStore("google_play_store"),
+    GOOGLE_PLAY_STORE("google_play_store"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -98,13 +98,13 @@ public class RecordedPurchase {
   }
 
   public enum Status {
-    InProcess("in_process"),
+    IN_PROCESS("in_process"),
 
-    Completed("completed"),
+    COMPLETED("completed"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
-    Ignored("ignored"),
+    IGNORED("ignored"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

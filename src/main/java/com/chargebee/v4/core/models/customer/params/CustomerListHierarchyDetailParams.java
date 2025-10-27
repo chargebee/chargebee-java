@@ -63,13 +63,13 @@ public final class CustomerListHierarchyDetailParams {
     }
 
     public enum HierarchyOperationType {
-      CompleteHierarchy("complete_hierarchy"),
+      COMPLETE_HIERARCHY("complete_hierarchy"),
 
-      Subordinates("subordinates"),
+      SUBORDINATES("subordinates"),
 
-      PathToRoot("path_to_root"),
+      PATH_TO_ROOT("path_to_root"),
 
-      SubordinatesWithUnbilledChargesPayableByParent(
+      SUBORDINATES_WITH_UNBILLED_CHARGES_PAYABLE_BY_PARENT(
           "subordinates_with_unbilled_charges_payable_by_parent"),
 
       /**

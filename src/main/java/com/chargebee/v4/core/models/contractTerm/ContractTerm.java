@@ -74,13 +74,13 @@ public class ContractTerm {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Completed("completed"),
+    COMPLETED("completed"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Terminated("terminated"),
+    TERMINATED("terminated"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -106,13 +106,13 @@ public class ContractTerm {
   }
 
   public enum ActionAtTermEnd {
-    Renew("renew"),
+    RENEW("renew"),
 
-    Evergreen("evergreen"),
+    EVERGREEN("evergreen"),
 
-    Cancel("cancel"),
+    CANCEL("cancel"),
 
-    RenewOnce("renew_once"),
+    RENEW_ONCE("renew_once"),
 
     /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
     _UNKNOWN(null);

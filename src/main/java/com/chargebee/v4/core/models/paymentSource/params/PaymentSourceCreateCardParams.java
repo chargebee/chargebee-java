@@ -208,11 +208,11 @@ public final class PaymentSourceCreateCardParams {
       }
 
       public enum PreferredScheme {
-        CartesBancaires("cartes_bancaires"),
+        CARTES_BANCAIRES("cartes_bancaires"),
 
-        Mastercard("mastercard"),
+        MASTERCARD("mastercard"),
 
-        Visa("visa"),
+        VISA("visa"),
 
         /**
          * An enum member indicating that PreferredScheme was instantiated with an unknown value.

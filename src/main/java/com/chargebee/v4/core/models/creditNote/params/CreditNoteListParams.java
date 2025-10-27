@@ -716,9 +716,9 @@ public final class CreditNoteListParams {
     }
 
     public enum SubscriptionIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
@@ -747,9 +747,9 @@ public final class CreditNoteListParams {
     }
 
     public enum ReferenceInvoiceIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that ReferenceInvoiceIdIsPresent was instantiated with an unknown
@@ -778,11 +778,11 @@ public final class CreditNoteListParams {
     }
 
     public enum TypeIs {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -808,11 +808,11 @@ public final class CreditNoteListParams {
     }
 
     public enum TypeIsNot {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -838,29 +838,29 @@ public final class CreditNoteListParams {
     }
 
     public enum ReasonCodeIs {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that ReasonCodeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -886,29 +886,29 @@ public final class CreditNoteListParams {
     }
 
     public enum ReasonCodeIsNot {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that ReasonCodeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -934,13 +934,13 @@ public final class CreditNoteListParams {
     }
 
     public enum StatusIs {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -966,13 +966,13 @@ public final class CreditNoteListParams {
     }
 
     public enum StatusIsNot {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -998,9 +998,9 @@ public final class CreditNoteListParams {
     }
 
     public enum PriceTypeIs {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1026,9 +1026,9 @@ public final class CreditNoteListParams {
     }
 
     public enum PriceTypeIsNot {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1054,7 +1054,7 @@ public final class CreditNoteListParams {
     }
 
     public enum SortByAsc {
-      Date("date"),
+      DATE("date"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1080,7 +1080,7 @@ public final class CreditNoteListParams {
     }
 
     public enum SortByDesc {
-      Date("date"),
+      DATE("date"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1106,11 +1106,11 @@ public final class CreditNoteListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1136,11 +1136,11 @@ public final class CreditNoteListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

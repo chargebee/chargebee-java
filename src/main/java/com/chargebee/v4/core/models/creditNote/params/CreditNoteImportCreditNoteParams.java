@@ -287,11 +287,11 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public enum Type {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -317,13 +317,13 @@ public final class CreditNoteImportCreditNoteParams {
     }
 
     public enum Status {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -644,19 +644,19 @@ public final class CreditNoteImportCreditNoteParams {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -833,15 +833,15 @@ public final class CreditNoteImportCreditNoteParams {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -946,21 +946,21 @@ public final class CreditNoteImportCreditNoteParams {
       }
 
       public enum JurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that JurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1102,19 +1102,19 @@ public final class CreditNoteImportCreditNoteParams {
       }
 
       public enum PaymentMethod {
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
         _UNKNOWN(null);

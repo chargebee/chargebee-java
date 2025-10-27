@@ -275,11 +275,11 @@ public final class AttachedItemListParams {
     }
 
     public enum TypeIs {
-      Recommended("recommended"),
+      RECOMMENDED("recommended"),
 
-      Mandatory("mandatory"),
+      MANDATORY("mandatory"),
 
-      Optional("optional"),
+      OPTIONAL("optional"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -305,11 +305,11 @@ public final class AttachedItemListParams {
     }
 
     public enum TypeIsNot {
-      Recommended("recommended"),
+      RECOMMENDED("recommended"),
 
-      Mandatory("mandatory"),
+      MANDATORY("mandatory"),
 
-      Optional("optional"),
+      OPTIONAL("optional"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -335,11 +335,11 @@ public final class AttachedItemListParams {
     }
 
     public enum ItemTypeIs {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -365,11 +365,11 @@ public final class AttachedItemListParams {
     }
 
     public enum ItemTypeIsNot {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -395,17 +395,17 @@ public final class AttachedItemListParams {
     }
 
     public enum ChargeOnEventIs {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
-      OnDemand("on_demand"),
+      ON_DEMAND("on_demand"),
 
       /** An enum member indicating that ChargeOnEventIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -431,17 +431,17 @@ public final class AttachedItemListParams {
     }
 
     public enum ChargeOnEventIsNot {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
-      OnDemand("on_demand"),
+      ON_DEMAND("on_demand"),
 
       /**
        * An enum member indicating that ChargeOnEventIsNot was instantiated with an unknown value.

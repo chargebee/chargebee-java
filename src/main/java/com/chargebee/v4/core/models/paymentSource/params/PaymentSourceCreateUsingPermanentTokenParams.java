@@ -152,55 +152,55 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
     }
 
     public enum Type {
-      Card("card"),
+      CARD("card"),
 
-      PaypalExpressCheckout("paypal_express_checkout"),
+      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-      AmazonPayments("amazon_payments"),
+      AMAZON_PAYMENTS("amazon_payments"),
 
-      DirectDebit("direct_debit"),
+      DIRECT_DEBIT("direct_debit"),
 
-      Generic("generic"),
+      GENERIC("generic"),
 
-      Alipay("alipay"),
+      ALIPAY("alipay"),
 
-      Unionpay("unionpay"),
+      UNIONPAY("unionpay"),
 
-      ApplePay("apple_pay"),
+      APPLE_PAY("apple_pay"),
 
-      WechatPay("wechat_pay"),
+      WECHAT_PAY("wechat_pay"),
 
-      Ideal("ideal"),
+      IDEAL("ideal"),
 
-      GooglePay("google_pay"),
+      GOOGLE_PAY("google_pay"),
 
-      Sofort("sofort"),
+      SOFORT("sofort"),
 
-      Bancontact("bancontact"),
+      BANCONTACT("bancontact"),
 
-      Giropay("giropay"),
+      GIROPAY("giropay"),
 
-      Dotpay("dotpay"),
+      DOTPAY("dotpay"),
 
-      Upi("upi"),
+      UPI("upi"),
 
-      NetbankingEmandates("netbanking_emandates"),
+      NETBANKING_EMANDATES("netbanking_emandates"),
 
-      Venmo("venmo"),
+      VENMO("venmo"),
 
-      PayTo("pay_to"),
+      PAY_TO("pay_to"),
 
-      FasterPayments("faster_payments"),
+      FASTER_PAYMENTS("faster_payments"),
 
-      SepaInstantTransfer("sepa_instant_transfer"),
+      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-      AutomatedBankTransfer("automated_bank_transfer"),
+      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-      KlarnaPayNow("klarna_pay_now"),
+      KLARNA_PAY_NOW("klarna_pay_now"),
 
-      OnlineBankingPoland("online_banking_poland"),
+      ONLINE_BANKING_POLAND("online_banking_poland"),
 
-      PayconiqByBancontact("payconiq_by_bancontact"),
+      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -297,47 +297,47 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       }
 
       public enum Brand {
-        Visa("visa"),
+        VISA("visa"),
 
-        Mastercard("mastercard"),
+        MASTERCARD("mastercard"),
 
-        AmericanExpress("american_express"),
+        AMERICAN_EXPRESS("american_express"),
 
-        Discover("discover"),
+        DISCOVER("discover"),
 
-        Jcb("jcb"),
+        JCB("jcb"),
 
-        DinersClub("diners_club"),
+        DINERS_CLUB("diners_club"),
 
-        Other("other"),
+        OTHER("other"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        CmrFalabella("cmr_falabella"),
+        CMR_FALABELLA("cmr_falabella"),
 
-        TarjetaNaranja("tarjeta_naranja"),
+        TARJETA_NARANJA("tarjeta_naranja"),
 
-        Nativa("nativa"),
+        NATIVA("nativa"),
 
-        Cencosud("cencosud"),
+        CENCOSUD("cencosud"),
 
-        Cabal("cabal"),
+        CABAL("cabal"),
 
-        Argencard("argencard"),
+        ARGENCARD("argencard"),
 
-        Elo("elo"),
+        ELO("elo"),
 
-        Hipercard("hipercard"),
+        HIPERCARD("hipercard"),
 
-        Carnet("carnet"),
+        CARNET("carnet"),
 
-        Rupay("rupay"),
+        RUPAY("rupay"),
 
-        Maestro("maestro"),
+        MAESTRO("maestro"),
 
-        Dankort("dankort"),
+        DANKORT("dankort"),
 
-        CartesBancaires("cartes_bancaires"),
+        CARTES_BANCAIRES("cartes_bancaires"),
 
         /** An enum member indicating that Brand was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -363,13 +363,13 @@ public final class PaymentSourceCreateUsingPermanentTokenParams {
       }
 
       public enum FundingType {
-        Credit("credit"),
+        CREDIT("credit"),
 
-        Debit("debit"),
+        DEBIT("debit"),
 
-        Prepaid("prepaid"),
+        PREPAID("prepaid"),
 
-        NotKnown("not_known"),
+        NOT_KNOWN("not_known"),
 
         /** An enum member indicating that FundingType was instantiated with an unknown value. */
         _UNKNOWN(null);

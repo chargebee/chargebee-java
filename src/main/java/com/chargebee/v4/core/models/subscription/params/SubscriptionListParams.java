@@ -780,19 +780,19 @@ public final class SubscriptionListParams {
     }
 
     public enum StatusIs {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -818,19 +818,19 @@ public final class SubscriptionListParams {
     }
 
     public enum StatusIsNot {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -856,19 +856,19 @@ public final class SubscriptionListParams {
     }
 
     public enum CancelReasonIs {
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      NoCard("no_card"),
+      NO_CARD("no_card"),
 
-      FraudReviewFailed("fraud_review_failed"),
+      FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-      NonCompliantEuCustomer("non_compliant_eu_customer"),
+      NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-      TaxCalculationFailed("tax_calculation_failed"),
+      TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-      CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+      CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-      NonCompliantCustomer("non_compliant_customer"),
+      NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
       /** An enum member indicating that CancelReasonIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -894,19 +894,19 @@ public final class SubscriptionListParams {
     }
 
     public enum CancelReasonIsNot {
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      NoCard("no_card"),
+      NO_CARD("no_card"),
 
-      FraudReviewFailed("fraud_review_failed"),
+      FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-      NonCompliantEuCustomer("non_compliant_eu_customer"),
+      NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-      TaxCalculationFailed("tax_calculation_failed"),
+      TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-      CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+      CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-      NonCompliantCustomer("non_compliant_customer"),
+      NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
       /**
        * An enum member indicating that CancelReasonIsNot was instantiated with an unknown value.
@@ -934,9 +934,9 @@ public final class SubscriptionListParams {
     }
 
     public enum CancelReasonIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that CancelReasonIsPresent was instantiated with an unknown
@@ -965,9 +965,9 @@ public final class SubscriptionListParams {
     }
 
     public enum RemainingBillingCyclesIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that RemainingBillingCyclesIsPresent was instantiated with an
@@ -996,9 +996,9 @@ public final class SubscriptionListParams {
     }
 
     public enum ActivatedAtIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that ActivatedAtIsPresent was instantiated with an unknown value.
@@ -1026,9 +1026,9 @@ public final class SubscriptionListParams {
     }
 
     public enum HasScheduledChangesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that HasScheduledChangesIs was instantiated with an unknown
@@ -1057,31 +1057,31 @@ public final class SubscriptionListParams {
     }
 
     public enum OfflinePaymentMethodIs {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethodIs was instantiated with an unknown
@@ -1110,31 +1110,31 @@ public final class SubscriptionListParams {
     }
 
     public enum OfflinePaymentMethodIsNot {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethodIsNot was instantiated with an unknown
@@ -1163,9 +1163,9 @@ public final class SubscriptionListParams {
     }
 
     public enum AutoCloseInvoicesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that AutoCloseInvoicesIs was instantiated with an unknown value.
@@ -1193,9 +1193,9 @@ public final class SubscriptionListParams {
     }
 
     public enum OverrideRelationshipIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that OverrideRelationshipIs was instantiated with an unknown
@@ -1224,9 +1224,9 @@ public final class SubscriptionListParams {
     }
 
     public enum SortByAsc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1252,9 +1252,9 @@ public final class SubscriptionListParams {
     }
 
     public enum SortByDesc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1280,11 +1280,11 @@ public final class SubscriptionListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1310,11 +1310,11 @@ public final class SubscriptionListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

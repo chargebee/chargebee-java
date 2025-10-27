@@ -342,9 +342,9 @@ public final class PriceVariantListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -370,9 +370,9 @@ public final class PriceVariantListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -398,9 +398,9 @@ public final class PriceVariantListParams {
     }
 
     public enum BusinessEntityIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
@@ -429,9 +429,9 @@ public final class PriceVariantListParams {
     }
 
     public enum IncludeSiteLevelResourcesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown
@@ -460,15 +460,15 @@ public final class PriceVariantListParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      Status("status"),
+      STATUS("status"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -494,15 +494,15 @@ public final class PriceVariantListParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      Status("status"),
+      STATUS("status"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

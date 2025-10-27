@@ -65,7 +65,7 @@ public class PaymentSchedule {
   }
 
   public enum EntityType {
-    Invoice("invoice"),
+    INVOICE("invoice"),
 
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -143,11 +143,11 @@ public class PaymentSchedule {
     }
 
     public enum Status {
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      Paid("paid"),
+      PAID("paid"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

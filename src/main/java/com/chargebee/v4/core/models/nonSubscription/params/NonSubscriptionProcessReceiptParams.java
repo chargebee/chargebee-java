@@ -141,11 +141,11 @@ public final class NonSubscriptionProcessReceiptParams {
       }
 
       public enum Type {
-        Consumable("consumable"),
+        CONSUMABLE("consumable"),
 
-        NonConsumable("non_consumable"),
+        NON_CONSUMABLE("non_consumable"),
 
-        NonRenewingSubscription("non_renewing_subscription"),
+        NON_RENEWING_SUBSCRIPTION("non_renewing_subscription"),
 
         /** An enum member indicating that Type was instantiated with an unknown value. */
         _UNKNOWN(null);

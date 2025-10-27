@@ -90,9 +90,9 @@ public class DifferentialPrice {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -203,11 +203,11 @@ public class DifferentialPrice {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -269,13 +269,13 @@ public class DifferentialPrice {
     }
 
     public enum PeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);

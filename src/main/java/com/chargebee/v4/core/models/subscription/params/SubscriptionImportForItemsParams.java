@@ -385,9 +385,9 @@ public final class SubscriptionImportForItemsParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -413,19 +413,19 @@ public final class SubscriptionImportForItemsParams {
     }
 
     public enum Status {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -536,13 +536,13 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -628,19 +628,19 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum PaymentMethod {
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -794,13 +794,13 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -935,15 +935,15 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum ChargeOnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -969,11 +969,11 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1092,9 +1092,9 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum ApplyOn {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecificItemPrice("specific_item_price"),
+        SPECIFIC_ITEM_PRICE("specific_item_price"),
 
         /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1120,11 +1120,11 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum DurationType {
-        OneTime("one_time"),
+        ONE_TIME("one_time"),
 
-        Forever("forever"),
+        FOREVER("forever"),
 
-        LimitedPeriod("limited_period"),
+        LIMITED_PERIOD("limited_period"),
 
         /** An enum member indicating that DurationType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1150,13 +1150,13 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum PeriodUnit {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1319,11 +1319,11 @@ public final class SubscriptionImportForItemsParams {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);

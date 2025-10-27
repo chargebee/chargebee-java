@@ -65,9 +65,9 @@ public class OmnichannelOneTimeOrder {
   }
 
   public enum Source {
-    AppleAppStore("apple_app_store"),
+    APPLE_APP_STORE("apple_app_store"),
 
-    GooglePlayStore("google_play_store"),
+    GOOGLE_PLAY_STORE("google_play_store"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -169,15 +169,15 @@ public class OmnichannelOneTimeOrder {
     }
 
     public enum CancellationReason {
-      CustomerCancelled("customer_cancelled"),
+      CUSTOMER_CANCELLED("customer_cancelled"),
 
-      CustomerDidNotConsentToPriceIncrease("customer_did_not_consent_to_price_increase"),
+      CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE("customer_did_not_consent_to_price_increase"),
 
-      RefundedDueToAppIssue("refunded_due_to_app_issue"),
+      REFUNDED_DUE_TO_APP_ISSUE("refunded_due_to_app_issue"),
 
-      RefundedForOtherReason("refunded_for_other_reason"),
+      REFUNDED_FOR_OTHER_REASON("refunded_for_other_reason"),
 
-      MerchantRevoked("merchant_revoked"),
+      MERCHANT_REVOKED("merchant_revoked"),
 
       /**
        * An enum member indicating that CancellationReason was instantiated with an unknown value.
@@ -292,9 +292,9 @@ public class OmnichannelOneTimeOrder {
     }
 
     public enum Type {
-      Purchase("purchase"),
+      PURCHASE("purchase"),
 
-      Renewal("renewal"),
+      RENEWAL("renewal"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

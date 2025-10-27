@@ -260,9 +260,9 @@ public final class PurchaseEstimateParams {
       }
 
       public enum Taxability {
-        Taxable("taxable"),
+        TAXABLE("taxable"),
 
-        Exempt("exempt"),
+        EXEMPT("exempt"),
 
         /** An enum member indicating that Taxability was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -322,9 +322,9 @@ public final class PurchaseEstimateParams {
 
         R("r"),
 
-        Med1("med1"),
+        MED_1("med1"),
 
-        Med2("med2"),
+        MED_2("med2"),
 
         /** An enum member indicating that EntityCode was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -350,13 +350,13 @@ public final class PurchaseEstimateParams {
       }
 
       public enum CustomerType {
-        Residential("residential"),
+        RESIDENTIAL("residential"),
 
-        Business("business"),
+        BUSINESS("business"),
 
-        SeniorCitizen("senior_citizen"),
+        SENIOR_CITIZEN("senior_citizen"),
 
-        Industrial("industrial"),
+        INDUSTRIAL("industrial"),
 
         /** An enum member indicating that CustomerType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -468,13 +468,13 @@ public final class PurchaseEstimateParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -788,13 +788,13 @@ public final class PurchaseEstimateParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -1003,13 +1003,13 @@ public final class PurchaseEstimateParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.

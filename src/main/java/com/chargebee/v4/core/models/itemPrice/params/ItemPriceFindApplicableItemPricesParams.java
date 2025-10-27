@@ -116,11 +116,11 @@ public final class ItemPriceFindApplicableItemPricesParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -146,11 +146,11 @@ public final class ItemPriceFindApplicableItemPricesParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -573,13 +573,13 @@ public final class PlanListParams {
     }
 
     public enum PeriodUnitIs {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnitIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -605,13 +605,13 @@ public final class PlanListParams {
     }
 
     public enum PeriodUnitIsNot {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnitIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -637,9 +637,9 @@ public final class PlanListParams {
     }
 
     public enum TrialPeriodIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that TrialPeriodIsPresent was instantiated with an unknown value.
@@ -667,9 +667,9 @@ public final class PlanListParams {
     }
 
     public enum TrialPeriodUnitIs {
-      Day("day"),
+      DAY("day"),
 
-      Month("month"),
+      MONTH("month"),
 
       /**
        * An enum member indicating that TrialPeriodUnitIs was instantiated with an unknown value.
@@ -697,9 +697,9 @@ public final class PlanListParams {
     }
 
     public enum TrialPeriodUnitIsNot {
-      Day("day"),
+      DAY("day"),
 
-      Month("month"),
+      MONTH("month"),
 
       /**
        * An enum member indicating that TrialPeriodUnitIsNot was instantiated with an unknown value.
@@ -727,9 +727,9 @@ public final class PlanListParams {
     }
 
     public enum AddonApplicabilityIs {
-      All("all"),
+      ALL("all"),
 
-      Restricted("restricted"),
+      RESTRICTED("restricted"),
 
       /**
        * An enum member indicating that AddonApplicabilityIs was instantiated with an unknown value.
@@ -757,9 +757,9 @@ public final class PlanListParams {
     }
 
     public enum AddonApplicabilityIsNot {
-      All("all"),
+      ALL("all"),
 
-      Restricted("restricted"),
+      RESTRICTED("restricted"),
 
       /**
        * An enum member indicating that AddonApplicabilityIsNot was instantiated with an unknown
@@ -788,9 +788,9 @@ public final class PlanListParams {
     }
 
     public enum GiftableIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that GiftableIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -816,15 +816,15 @@ public final class PlanListParams {
     }
 
     public enum ChargeModelIs {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that ChargeModelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -850,15 +850,15 @@ public final class PlanListParams {
     }
 
     public enum ChargeModelIsNot {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that ChargeModelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -884,15 +884,15 @@ public final class PlanListParams {
     }
 
     public enum PricingModelIs {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -918,15 +918,15 @@ public final class PlanListParams {
     }
 
     public enum PricingModelIsNot {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /**
        * An enum member indicating that PricingModelIsNot was instantiated with an unknown value.
@@ -954,11 +954,11 @@ public final class PlanListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -984,11 +984,11 @@ public final class PlanListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1014,11 +1014,11 @@ public final class PlanListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1044,11 +1044,11 @@ public final class PlanListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

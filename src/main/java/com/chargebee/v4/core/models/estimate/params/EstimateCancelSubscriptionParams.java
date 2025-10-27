@@ -133,13 +133,13 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum CancelOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      EndOfTerm("end_of_term"),
+      END_OF_TERM("end_of_term"),
 
-      SpecificDate("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
-      EndOfBillingTerm("end_of_billing_term"),
+      END_OF_BILLING_TERM("end_of_billing_term"),
 
       /** An enum member indicating that CancelOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -165,11 +165,11 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum CreditOptionForCurrentTermCharges {
-      None("none"),
+      NONE("none"),
 
-      Prorate("prorate"),
+      PRORATE("prorate"),
 
-      Full("full"),
+      FULL("full"),
 
       /**
        * An enum member indicating that CreditOptionForCurrentTermCharges was instantiated with an
@@ -199,9 +199,9 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum UnbilledChargesOption {
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
-      Delete("delete"),
+      DELETE("delete"),
 
       /**
        * An enum member indicating that UnbilledChargesOption was instantiated with an unknown
@@ -230,11 +230,11 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum AccountReceivablesHandling {
-      NoAction("no_action"),
+      NO_ACTION("no_action"),
 
-      SchedulePaymentCollection("schedule_payment_collection"),
+      SCHEDULE_PAYMENT_COLLECTION("schedule_payment_collection"),
 
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
       /**
        * An enum member indicating that AccountReceivablesHandling was instantiated with an unknown
@@ -263,9 +263,9 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum RefundableCreditsHandling {
-      NoAction("no_action"),
+      NO_ACTION("no_action"),
 
-      ScheduleRefund("schedule_refund"),
+      SCHEDULE_REFUND("schedule_refund"),
 
       /**
        * An enum member indicating that RefundableCreditsHandling was instantiated with an unknown
@@ -294,13 +294,13 @@ public final class EstimateCancelSubscriptionParams {
     }
 
     public enum ContractTermCancelOption {
-      TerminateImmediately("terminate_immediately"),
+      TERMINATE_IMMEDIATELY("terminate_immediately"),
 
-      EndOfContractTerm("end_of_contract_term"),
+      END_OF_CONTRACT_TERM("end_of_contract_term"),
 
-      SpecificDate("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
-      EndOfSubscriptionBillingTerm("end_of_subscription_billing_term"),
+      END_OF_SUBSCRIPTION_BILLING_TERM("end_of_subscription_billing_term"),
 
       /**
        * An enum member indicating that ContractTermCancelOption was instantiated with an unknown

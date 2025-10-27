@@ -67,9 +67,9 @@ public final class EstimateResumeSubscriptionParams {
     }
 
     public enum ResumeOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      SpecificDate("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
       /** An enum member indicating that ResumeOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -95,9 +95,9 @@ public final class EstimateResumeSubscriptionParams {
     }
 
     public enum ChargesHandling {
-      InvoiceImmediately("invoice_immediately"),
+      INVOICE_IMMEDIATELY("invoice_immediately"),
 
-      AddToUnbilledCharges("add_to_unbilled_charges"),
+      ADD_TO_UNBILLED_CHARGES("add_to_unbilled_charges"),
 
       /** An enum member indicating that ChargesHandling was instantiated with an unknown value. */
       _UNKNOWN(null);

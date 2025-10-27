@@ -66,9 +66,9 @@ public final class HostedPageAcceptQuoteParams {
     }
 
     public enum Layout {
-      InApp("in_app"),
+      IN_APP("in_app"),
 
-      FullPage("full_page"),
+      FULL_PAGE("full_page"),
 
       /** An enum member indicating that Layout was instantiated with an unknown value. */
       _UNKNOWN(null);

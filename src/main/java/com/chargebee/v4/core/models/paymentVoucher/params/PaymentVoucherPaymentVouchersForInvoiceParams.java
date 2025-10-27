@@ -141,13 +141,13 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -173,13 +173,13 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -205,9 +205,9 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
     }
 
     public enum SortByAsc {
-      Date("date"),
+      DATE("date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -233,9 +233,9 @@ public final class PaymentVoucherPaymentVouchersForInvoiceParams {
     }
 
     public enum SortByDesc {
-      Date("date"),
+      DATE("date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

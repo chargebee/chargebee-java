@@ -106,15 +106,15 @@ public class PersonalizedOffer {
     }
 
     public enum ProcessingType {
-      BillingUpdate("billing_update"),
+      BILLING_UPDATE("billing_update"),
 
-      Checkout("checkout"),
+      CHECKOUT("checkout"),
 
-      UrlRedirect("url_redirect"),
+      URL_REDIRECT("url_redirect"),
 
-      Webhook("webhook"),
+      WEBHOOK("webhook"),
 
-      Email("email"),
+      EMAIL("email"),
 
       /** An enum member indicating that ProcessingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -140,9 +140,9 @@ public class PersonalizedOffer {
     }
 
     public enum ProcessingLayout {
-      InApp("in_app"),
+      IN_APP("in_app"),
 
-      FullPage("full_page"),
+      FULL_PAGE("full_page"),
 
       /** An enum member indicating that ProcessingLayout was instantiated with an unknown value. */
       _UNKNOWN(null);

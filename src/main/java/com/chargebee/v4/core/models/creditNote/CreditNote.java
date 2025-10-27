@@ -273,11 +273,11 @@ public class CreditNote {
   }
 
   public enum Type {
-    Adjustment("adjustment"),
+    ADJUSTMENT("adjustment"),
 
-    Refundable("refundable"),
+    REFUNDABLE("refundable"),
 
-    Store("store"),
+    STORE("store"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -303,29 +303,29 @@ public class CreditNote {
   }
 
   public enum ReasonCode {
-    WriteOff("write_off"),
+    WRITE_OFF("write_off"),
 
-    SubscriptionChange("subscription_change"),
+    SUBSCRIPTION_CHANGE("subscription_change"),
 
-    SubscriptionCancellation("subscription_cancellation"),
+    SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-    SubscriptionPause("subscription_pause"),
+    SUBSCRIPTION_PAUSE("subscription_pause"),
 
-    Chargeback("chargeback"),
+    CHARGEBACK("chargeback"),
 
-    ProductUnsatisfactory("product_unsatisfactory"),
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-    ServiceUnsatisfactory("service_unsatisfactory"),
+    SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-    OrderChange("order_change"),
+    ORDER_CHANGE("order_change"),
 
-    OrderCancellation("order_cancellation"),
+    ORDER_CANCELLATION("order_cancellation"),
 
-    Waiver("waiver"),
+    WAIVER("waiver"),
 
-    Other("other"),
+    OTHER("other"),
 
-    Fraudulent("fraudulent"),
+    FRAUDULENT("fraudulent"),
 
     /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -351,13 +351,13 @@ public class CreditNote {
   }
 
   public enum Status {
-    Adjusted("adjusted"),
+    ADJUSTED("adjusted"),
 
-    Refunded("refunded"),
+    REFUNDED("refunded"),
 
-    RefundDue("refund_due"),
+    REFUND_DUE("refund_due"),
 
-    Voided("voided"),
+    VOIDED("voided"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -383,9 +383,9 @@ public class CreditNote {
   }
 
   public enum PriceType {
-    TaxExclusive("tax_exclusive"),
+    TAX_EXCLUSIVE("tax_exclusive"),
 
-    TaxInclusive("tax_inclusive"),
+    TAX_INCLUSIVE("tax_inclusive"),
 
     /** An enum member indicating that PriceType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -411,11 +411,11 @@ public class CreditNote {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -840,15 +840,15 @@ public class CreditNote {
     }
 
     public enum PricingModel {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModel was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -874,19 +874,19 @@ public class CreditNote {
     }
 
     public enum EntityType {
-      Adhoc("adhoc"),
+      ADHOC("adhoc"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      PlanSetup("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -912,25 +912,25 @@ public class CreditNote {
     }
 
     public enum TaxExemptReason {
-      TaxNotConfigured("tax_not_configured"),
+      TAX_NOT_CONFIGURED("tax_not_configured"),
 
-      RegionNonTaxable("region_non_taxable"),
+      REGION_NON_TAXABLE("region_non_taxable"),
 
-      Export("export"),
+      EXPORT("export"),
 
-      CustomerExempt("customer_exempt"),
+      CUSTOMER_EXEMPT("customer_exempt"),
 
-      ProductExempt("product_exempt"),
+      PRODUCT_EXEMPT("product_exempt"),
 
-      ZeroRated("zero_rated"),
+      ZERO_RATED("zero_rated"),
 
-      ReverseCharge("reverse_charge"),
+      REVERSE_CHARGE("reverse_charge"),
 
-      HighValuePhysicalGoods("high_value_physical_goods"),
+      HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-      ZeroValueItem("zero_value_item"),
+      ZERO_VALUE_ITEM("zero_value_item"),
 
-      TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+      TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
       /** An enum member indicating that TaxExemptReason was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1072,11 +1072,11 @@ public class CreditNote {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1159,17 +1159,17 @@ public class CreditNote {
     }
 
     public enum DiscountType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1290,21 +1290,21 @@ public class CreditNote {
     }
 
     public enum TaxJurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1445,13 +1445,13 @@ public class CreditNote {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1548,17 +1548,17 @@ public class CreditNote {
     }
 
     public enum EntityType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1584,9 +1584,9 @@ public class CreditNote {
     }
 
     public enum DiscountType {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1724,19 +1724,19 @@ public class CreditNote {
     }
 
     public enum TxnStatus {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
-      Timeout("timeout"),
+      TIMEOUT("timeout"),
 
-      NeedsAttention("needs_attention"),
+      NEEDS_ATTENTION("needs_attention"),
 
-      LateFailure("late_failure"),
+      LATE_FAILURE("late_failure"),
 
       /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1816,17 +1816,17 @@ public class CreditNote {
     }
 
     public enum InvoiceStatus {
-      Paid("paid"),
+      PAID("paid"),
 
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Pending("pending"),
+      PENDING("pending"),
 
       /** An enum member indicating that InvoiceStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1852,9 +1852,9 @@ public class CreditNote {
     }
 
     public enum TaxApplication {
-      PreTax("pre_tax"),
+      PRE_TAX("pre_tax"),
 
-      PostTax("post_tax"),
+      POST_TAX("post_tax"),
 
       /** An enum member indicating that TaxApplication was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1972,13 +1972,13 @@ public class CreditNote {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2113,13 +2113,13 @@ public class CreditNote {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2204,17 +2204,17 @@ public class CreditNote {
     }
 
     public enum Status {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Skipped("skipped"),
+      SKIPPED("skipped"),
 
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Registered("registered"),
+      REGISTERED("registered"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

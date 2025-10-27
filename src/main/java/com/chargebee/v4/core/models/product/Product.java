@@ -85,9 +85,9 @@ public class Product {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Inactive("inactive"),
+    INACTIVE("inactive"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -182,7 +182,7 @@ public class Product {
     }
 
     public enum Type {
-      Select("select"),
+      SELECT("select"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

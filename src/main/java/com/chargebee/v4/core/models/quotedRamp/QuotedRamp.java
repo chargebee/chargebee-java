@@ -217,11 +217,11 @@ public class QuotedRamp {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -247,13 +247,13 @@ public class QuotedRamp {
     }
 
     public enum BillingPeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /**
        * An enum member indicating that BillingPeriodUnit was instantiated with an unknown value.
@@ -281,15 +281,15 @@ public class QuotedRamp {
     }
 
     public enum ChargeOnEvent {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
       /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -315,9 +315,9 @@ public class QuotedRamp {
     }
 
     public enum ChargeOnOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      OnEvent("on_event"),
+      ON_EVENT("on_event"),
 
       /** An enum member indicating that ChargeOnOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -502,9 +502,9 @@ public class QuotedRamp {
     }
 
     public enum Type {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -530,11 +530,11 @@ public class QuotedRamp {
     }
 
     public enum DurationType {
-      OneTime("one_time"),
+      ONE_TIME("one_time"),
 
-      Forever("forever"),
+      FOREVER("forever"),
 
-      LimitedPeriod("limited_period"),
+      LIMITED_PERIOD("limited_period"),
 
       /** An enum member indicating that DurationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -560,13 +560,13 @@ public class QuotedRamp {
     }
 
     public enum EntityType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -592,13 +592,13 @@ public class QuotedRamp {
     }
 
     public enum PeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -624,9 +624,9 @@ public class QuotedRamp {
     }
 
     public enum ApplyOn {
-      InvoiceAmount("invoice_amount"),
+      INVOICE_AMOUNT("invoice_amount"),
 
-      SpecificItemPrice("specific_item_price"),
+      SPECIFIC_ITEM_PRICE("specific_item_price"),
 
       /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -746,11 +746,11 @@ public class QuotedRamp {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);

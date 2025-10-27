@@ -378,9 +378,9 @@ public final class AddonCreateParams {
     }
 
     public enum ChargeType {
-      Recurring("recurring"),
+      RECURRING("recurring"),
 
-      NonRecurring("non_recurring"),
+      NON_RECURRING("non_recurring"),
 
       /** An enum member indicating that ChargeType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -406,15 +406,15 @@ public final class AddonCreateParams {
     }
 
     public enum PeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -440,15 +440,15 @@ public final class AddonCreateParams {
     }
 
     public enum PricingModel {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModel was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -474,15 +474,15 @@ public final class AddonCreateParams {
     }
 
     public enum Type {
-      OnOff("on_off"),
+      ON_OFF("on_off"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -508,13 +508,13 @@ public final class AddonCreateParams {
     }
 
     public enum AvalaraSaleType {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Retail("retail"),
+      RETAIL("retail"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      VendorUse("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
       /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -540,13 +540,13 @@ public final class AddonCreateParams {
     }
 
     public enum ShippingFrequencyPeriodUnit {
-      Year("year"),
+      YEAR("year"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Day("day"),
+      DAY("day"),
 
       /**
        * An enum member indicating that ShippingFrequencyPeriodUnit was instantiated with an unknown
@@ -575,11 +575,11 @@ public final class AddonCreateParams {
     }
 
     public enum ProrationType {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -605,9 +605,9 @@ public final class AddonCreateParams {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

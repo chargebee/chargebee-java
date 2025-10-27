@@ -544,11 +544,11 @@ public final class ItemListParams {
     }
 
     public enum TypeIs {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -574,11 +574,11 @@ public final class ItemListParams {
     }
 
     public enum TypeIsNot {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -604,9 +604,9 @@ public final class ItemListParams {
     }
 
     public enum ItemApplicabilityIs {
-      All("all"),
+      ALL("all"),
 
-      Restricted("restricted"),
+      RESTRICTED("restricted"),
 
       /**
        * An enum member indicating that ItemApplicabilityIs was instantiated with an unknown value.
@@ -634,9 +634,9 @@ public final class ItemListParams {
     }
 
     public enum ItemApplicabilityIsNot {
-      All("all"),
+      ALL("all"),
 
-      Restricted("restricted"),
+      RESTRICTED("restricted"),
 
       /**
        * An enum member indicating that ItemApplicabilityIsNot was instantiated with an unknown
@@ -665,11 +665,11 @@ public final class ItemListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -695,11 +695,11 @@ public final class ItemListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -725,9 +725,9 @@ public final class ItemListParams {
     }
 
     public enum IsGiftableIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that IsGiftableIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -753,9 +753,9 @@ public final class ItemListParams {
     }
 
     public enum EnabledForCheckoutIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that EnabledForCheckoutIs was instantiated with an unknown value.
@@ -783,9 +783,9 @@ public final class ItemListParams {
     }
 
     public enum EnabledInPortalIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that EnabledInPortalIs was instantiated with an unknown value.
@@ -813,9 +813,9 @@ public final class ItemListParams {
     }
 
     public enum MeteredIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that MeteredIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -841,11 +841,11 @@ public final class ItemListParams {
     }
 
     public enum UsageCalculationIs {
-      SumOfUsages("sum_of_usages"),
+      SUM_OF_USAGES("sum_of_usages"),
 
-      LastUsage("last_usage"),
+      LAST_USAGE("last_usage"),
 
-      MaxUsage("max_usage"),
+      MAX_USAGE("max_usage"),
 
       /**
        * An enum member indicating that UsageCalculationIs was instantiated with an unknown value.
@@ -873,11 +873,11 @@ public final class ItemListParams {
     }
 
     public enum UsageCalculationIsNot {
-      SumOfUsages("sum_of_usages"),
+      SUM_OF_USAGES("sum_of_usages"),
 
-      LastUsage("last_usage"),
+      LAST_USAGE("last_usage"),
 
-      MaxUsage("max_usage"),
+      MAX_USAGE("max_usage"),
 
       /**
        * An enum member indicating that UsageCalculationIsNot was instantiated with an unknown
@@ -906,11 +906,11 @@ public final class ItemListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -936,11 +936,11 @@ public final class ItemListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -966,9 +966,9 @@ public final class ItemListParams {
     }
 
     public enum BusinessEntityIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
@@ -997,9 +997,9 @@ public final class ItemListParams {
     }
 
     public enum IncludeSiteLevelResourcesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown
@@ -1028,11 +1028,11 @@ public final class ItemListParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1058,11 +1058,11 @@ public final class ItemListParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

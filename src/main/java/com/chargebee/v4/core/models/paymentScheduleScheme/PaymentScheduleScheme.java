@@ -67,11 +67,11 @@ public class PaymentScheduleScheme {
   }
 
   public enum PeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
     /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);

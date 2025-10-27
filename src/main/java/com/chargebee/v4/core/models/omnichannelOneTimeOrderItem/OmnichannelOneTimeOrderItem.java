@@ -54,15 +54,15 @@ public class OmnichannelOneTimeOrderItem {
   }
 
   public enum CancellationReason {
-    CustomerCancelled("customer_cancelled"),
+    CUSTOMER_CANCELLED("customer_cancelled"),
 
-    CustomerDidNotConsentToPriceIncrease("customer_did_not_consent_to_price_increase"),
+    CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE("customer_did_not_consent_to_price_increase"),
 
-    RefundedDueToAppIssue("refunded_due_to_app_issue"),
+    REFUNDED_DUE_TO_APP_ISSUE("refunded_due_to_app_issue"),
 
-    RefundedForOtherReason("refunded_for_other_reason"),
+    REFUNDED_FOR_OTHER_REASON("refunded_for_other_reason"),
 
-    MerchantRevoked("merchant_revoked"),
+    MERCHANT_REVOKED("merchant_revoked"),
 
     /** An enum member indicating that CancellationReason was instantiated with an unknown value. */
     _UNKNOWN(null);

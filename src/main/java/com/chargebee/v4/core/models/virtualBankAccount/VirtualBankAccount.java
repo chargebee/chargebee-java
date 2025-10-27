@@ -89,19 +89,19 @@ public class VirtualBankAccount {
   }
 
   public enum Scheme {
-    AchCredit("ach_credit"),
+    ACH_CREDIT("ach_credit"),
 
-    SepaCredit("sepa_credit"),
+    SEPA_CREDIT("sepa_credit"),
 
-    UsAutomatedBankTransfer("us_automated_bank_transfer"),
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-    GbAutomatedBankTransfer("gb_automated_bank_transfer"),
+    GB_AUTOMATED_BANK_TRANSFER("gb_automated_bank_transfer"),
 
-    EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-    JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-    MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
     /** An enum member indicating that Scheme was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -127,115 +127,115 @@ public class VirtualBankAccount {
   }
 
   public enum Gateway {
-    Chargebee("chargebee"),
+    CHARGEBEE("chargebee"),
 
-    ChargebeePayments("chargebee_payments"),
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-    Adyen("adyen"),
+    ADYEN("adyen"),
 
-    Stripe("stripe"),
+    STRIPE("stripe"),
 
-    Wepay("wepay"),
+    WEPAY("wepay"),
 
-    Braintree("braintree"),
+    BRAINTREE("braintree"),
 
-    AuthorizeNet("authorize_net"),
+    AUTHORIZE_NET("authorize_net"),
 
-    PaypalPro("paypal_pro"),
+    PAYPAL_PRO("paypal_pro"),
 
-    Pin("pin"),
+    PIN("pin"),
 
-    Eway("eway"),
+    EWAY("eway"),
 
-    EwayRapid("eway_rapid"),
+    EWAY_RAPID("eway_rapid"),
 
-    Worldpay("worldpay"),
+    WORLDPAY("worldpay"),
 
-    BalancedPayments("balanced_payments"),
+    BALANCED_PAYMENTS("balanced_payments"),
 
-    Beanstream("beanstream"),
+    BEANSTREAM("beanstream"),
 
-    Bluepay("bluepay"),
+    BLUEPAY("bluepay"),
 
-    Elavon("elavon"),
+    ELAVON("elavon"),
 
-    FirstDataGlobal("first_data_global"),
+    FIRST_DATA_GLOBAL("first_data_global"),
 
-    Hdfc("hdfc"),
+    HDFC("hdfc"),
 
-    Migs("migs"),
+    MIGS("migs"),
 
-    Nmi("nmi"),
+    NMI("nmi"),
 
-    Ogone("ogone"),
+    OGONE("ogone"),
 
-    Paymill("paymill"),
+    PAYMILL("paymill"),
 
-    PaypalPayflowPro("paypal_payflow_pro"),
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-    SagePay("sage_pay"),
+    SAGE_PAY("sage_pay"),
 
-    Tco("tco"),
+    TCO("tco"),
 
-    Wirecard("wirecard"),
+    WIRECARD("wirecard"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    Gocardless("gocardless"),
+    GOCARDLESS("gocardless"),
 
-    Orbital("orbital"),
+    ORBITAL("orbital"),
 
-    MonerisUs("moneris_us"),
+    MONERIS_US("moneris_us"),
 
-    Moneris("moneris"),
+    MONERIS("moneris"),
 
-    Bluesnap("bluesnap"),
+    BLUESNAP("bluesnap"),
 
-    Cybersource("cybersource"),
+    CYBERSOURCE("cybersource"),
 
-    Vantiv("vantiv"),
+    VANTIV("vantiv"),
 
-    CheckoutCom("checkout_com"),
+    CHECKOUT_COM("checkout_com"),
 
-    Paypal("paypal"),
+    PAYPAL("paypal"),
 
-    IngenicoDirect("ingenico_direct"),
+    INGENICO_DIRECT("ingenico_direct"),
 
-    Exact("exact"),
+    EXACT("exact"),
 
-    Mollie("mollie"),
+    MOLLIE("mollie"),
 
-    Quickbooks("quickbooks"),
+    QUICKBOOKS("quickbooks"),
 
-    Razorpay("razorpay"),
+    RAZORPAY("razorpay"),
 
-    GlobalPayments("global_payments"),
+    GLOBAL_PAYMENTS("global_payments"),
 
-    BankOfAmerica("bank_of_america"),
+    BANK_OF_AMERICA("bank_of_america"),
 
-    Ecentric("ecentric"),
+    ECENTRIC("ecentric"),
 
-    MetricsGlobal("metrics_global"),
+    METRICS_GLOBAL("metrics_global"),
 
-    Windcave("windcave"),
+    WINDCAVE("windcave"),
 
-    PayCom("pay_com"),
+    PAY_COM("pay_com"),
 
-    Ebanx("ebanx"),
+    EBANX("ebanx"),
 
-    Dlocal("dlocal"),
+    DLOCAL("dlocal"),
 
-    Nuvei("nuvei"),
+    NUVEI("nuvei"),
 
-    Solidgate("solidgate"),
+    SOLIDGATE("solidgate"),
 
-    Paystack("paystack"),
+    PAYSTACK("paystack"),
 
-    JpMorgan("jp_morgan"),
+    JP_MORGAN("jp_morgan"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);

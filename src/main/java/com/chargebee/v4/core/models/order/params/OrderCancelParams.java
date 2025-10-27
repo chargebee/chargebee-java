@@ -81,33 +81,33 @@ public final class OrderCancelParams {
     }
 
     public enum CancellationReason {
-      ShippingCutOffPassed("shipping_cut_off_passed"),
+      SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ThirdPartyCancellation("third_party_cancellation"),
+      THIRD_PARTY_CANCELLATION("third_party_cancellation"),
 
-      ProductNotRequired("product_not_required"),
+      PRODUCT_NOT_REQUIRED("product_not_required"),
 
-      DeliveryDateMissed("delivery_date_missed"),
+      DELIVERY_DATE_MISSED("delivery_date_missed"),
 
-      AlternativeFound("alternative_found"),
+      ALTERNATIVE_FOUND("alternative_found"),
 
-      InvoiceWrittenOff("invoice_written_off"),
+      INVOICE_WRITTEN_OFF("invoice_written_off"),
 
-      InvoiceVoided("invoice_voided"),
+      INVOICE_VOIDED("invoice_voided"),
 
-      FraudulentTransaction("fraudulent_transaction"),
+      FRAUDULENT_TRANSACTION("fraudulent_transaction"),
 
-      PaymentDeclined("payment_declined"),
+      PAYMENT_DECLINED("payment_declined"),
 
-      SubscriptionCancelled("subscription_cancelled"),
+      SUBSCRIPTION_CANCELLED("subscription_cancelled"),
 
-      ProductNotAvailable("product_not_available"),
+      PRODUCT_NOT_AVAILABLE("product_not_available"),
 
-      Others("others"),
+      OTHERS("others"),
 
-      OrderResent("order_resent"),
+      ORDER_RESENT("order_resent"),
 
       /**
        * An enum member indicating that CancellationReason was instantiated with an unknown value.

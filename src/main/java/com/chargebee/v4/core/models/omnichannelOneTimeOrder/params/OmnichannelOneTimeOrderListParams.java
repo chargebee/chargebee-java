@@ -121,9 +121,9 @@ public final class OmnichannelOneTimeOrderListParams {
     }
 
     public enum SourceIs {
-      AppleAppStore("apple_app_store"),
+      APPLE_APP_STORE("apple_app_store"),
 
-      GooglePlayStore("google_play_store"),
+      GOOGLE_PLAY_STORE("google_play_store"),
 
       /** An enum member indicating that SourceIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -149,9 +149,9 @@ public final class OmnichannelOneTimeOrderListParams {
     }
 
     public enum SourceIsNot {
-      AppleAppStore("apple_app_store"),
+      APPLE_APP_STORE("apple_app_store"),
 
-      GooglePlayStore("google_play_store"),
+      GOOGLE_PLAY_STORE("google_play_store"),
 
       /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

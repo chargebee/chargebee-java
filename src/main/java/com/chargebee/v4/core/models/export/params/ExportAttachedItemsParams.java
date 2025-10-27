@@ -120,11 +120,11 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum Is {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -150,11 +150,11 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum IsNot {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -464,11 +464,11 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum Is {
-        Recommended("recommended"),
+        RECOMMENDED("recommended"),
 
-        Mandatory("mandatory"),
+        MANDATORY("mandatory"),
 
-        Optional("optional"),
+        OPTIONAL("optional"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -494,11 +494,11 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum IsNot {
-        Recommended("recommended"),
+        RECOMMENDED("recommended"),
 
-        Mandatory("mandatory"),
+        MANDATORY("mandatory"),
 
-        Optional("optional"),
+        OPTIONAL("optional"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -582,17 +582,17 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum Is {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
-        OnDemand("on_demand"),
+        ON_DEMAND("on_demand"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -618,17 +618,17 @@ public final class ExportAttachedItemsParams {
       }
 
       public enum IsNot {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
-        OnDemand("on_demand"),
+        ON_DEMAND("on_demand"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

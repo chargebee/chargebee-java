@@ -215,13 +215,13 @@ public final class PaymentSourceCreateBankAccountParams {
       }
 
       public enum AccountType {
-        Checking("checking"),
+        CHECKING("checking"),
 
-        Savings("savings"),
+        SAVINGS("savings"),
 
-        BusinessChecking("business_checking"),
+        BUSINESS_CHECKING("business_checking"),
 
-        Current("current"),
+        CURRENT("current"),
 
         /** An enum member indicating that AccountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -247,9 +247,9 @@ public final class PaymentSourceCreateBankAccountParams {
       }
 
       public enum AccountHolderType {
-        Individual("individual"),
+        INDIVIDUAL("individual"),
 
-        Company("company"),
+        COMPANY("company"),
 
         /**
          * An enum member indicating that AccountHolderType was instantiated with an unknown value.
@@ -277,11 +277,11 @@ public final class PaymentSourceCreateBankAccountParams {
       }
 
       public enum EcheckType {
-        Web("web"),
+        WEB("web"),
 
-        Ppd("ppd"),
+        PPD("ppd"),
 
-        Ccd("ccd"),
+        CCD("ccd"),
 
         /** An enum member indicating that EcheckType was instantiated with an unknown value. */
         _UNKNOWN(null);

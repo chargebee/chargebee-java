@@ -193,7 +193,7 @@ public final class BusinessEntityGetTransfersParams {
     }
 
     public enum SortByAsc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -219,7 +219,7 @@ public final class BusinessEntityGetTransfersParams {
     }
 
     public enum SortByDesc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

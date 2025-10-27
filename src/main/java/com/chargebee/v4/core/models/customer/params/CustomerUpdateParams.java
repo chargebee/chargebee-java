@@ -256,9 +256,9 @@ public final class CustomerUpdateParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -284,9 +284,9 @@ public final class CustomerUpdateParams {
     }
 
     public enum Taxability {
-      Taxable("taxable"),
+      TAXABLE("taxable"),
 
-      Exempt("exempt"),
+      EXEMPT("exempt"),
 
       /** An enum member indicating that Taxability was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -312,13 +312,13 @@ public final class CustomerUpdateParams {
     }
 
     public enum CustomerType {
-      Residential("residential"),
+      RESIDENTIAL("residential"),
 
-      Business("business"),
+      BUSINESS("business"),
 
-      SeniorCitizen("senior_citizen"),
+      SENIOR_CITIZEN("senior_citizen"),
 
-      Industrial("industrial"),
+      INDUSTRIAL("industrial"),
 
       /** An enum member indicating that CustomerType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -344,11 +344,11 @@ public final class CustomerUpdateParams {
     }
 
     public enum TaxjarExemptionCategory {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Government("government"),
+      GOVERNMENT("government"),
 
-      Other("other"),
+      OTHER("other"),
 
       /**
        * An enum member indicating that TaxjarExemptionCategory was instantiated with an unknown
@@ -411,9 +411,9 @@ public final class CustomerUpdateParams {
 
       R("r"),
 
-      Med1("med1"),
+      MED_1("med1"),
 
-      Med2("med2"),
+      MED_2("med2"),
 
       /** An enum member indicating that EntityCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -439,31 +439,31 @@ public final class CustomerUpdateParams {
     }
 
     public enum OfflinePaymentMethod {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
@@ -491,9 +491,9 @@ public final class CustomerUpdateParams {
     }
 
     public enum FraudFlag {
-      Safe("safe"),
+      SAFE("safe"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that FraudFlag was instantiated with an unknown value. */
       _UNKNOWN(null);

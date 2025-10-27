@@ -252,9 +252,9 @@ public final class HostedPageCheckoutNewForItemsParams {
     }
 
     public enum Layout {
-      InApp("in_app"),
+      IN_APP("in_app"),
 
-      FullPage("full_page"),
+      FULL_PAGE("full_page"),
 
       /** An enum member indicating that Layout was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -280,9 +280,9 @@ public final class HostedPageCheckoutNewForItemsParams {
     }
 
     public enum BillingAlignmentMode {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      Delayed("delayed"),
+      DELAYED("delayed"),
 
       /**
        * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
@@ -410,9 +410,9 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum AutoCollection {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -438,31 +438,31 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum OfflinePaymentMethod {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /**
          * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown
@@ -619,9 +619,9 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum Taxability {
-        Taxable("taxable"),
+        TAXABLE("taxable"),
 
-        Exempt("exempt"),
+        EXEMPT("exempt"),
 
         /** An enum member indicating that Taxability was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -647,11 +647,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum EinvoicingMethod {
-        Automatic("automatic"),
+        AUTOMATIC("automatic"),
 
-        Manual("manual"),
+        MANUAL("manual"),
 
-        SiteDefault("site_default"),
+        SITE_DEFAULT("site_default"),
 
         /**
          * An enum member indicating that EinvoicingMethod was instantiated with an unknown value.
@@ -724,111 +724,111 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum Gateway {
-        Chargebee("chargebee"),
+        CHARGEBEE("chargebee"),
 
-        ChargebeePayments("chargebee_payments"),
+        CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-        Adyen("adyen"),
+        ADYEN("adyen"),
 
-        Stripe("stripe"),
+        STRIPE("stripe"),
 
-        Wepay("wepay"),
+        WEPAY("wepay"),
 
-        Braintree("braintree"),
+        BRAINTREE("braintree"),
 
-        AuthorizeNet("authorize_net"),
+        AUTHORIZE_NET("authorize_net"),
 
-        PaypalPro("paypal_pro"),
+        PAYPAL_PRO("paypal_pro"),
 
-        Pin("pin"),
+        PIN("pin"),
 
-        Eway("eway"),
+        EWAY("eway"),
 
-        EwayRapid("eway_rapid"),
+        EWAY_RAPID("eway_rapid"),
 
-        Worldpay("worldpay"),
+        WORLDPAY("worldpay"),
 
-        BalancedPayments("balanced_payments"),
+        BALANCED_PAYMENTS("balanced_payments"),
 
-        Beanstream("beanstream"),
+        BEANSTREAM("beanstream"),
 
-        Bluepay("bluepay"),
+        BLUEPAY("bluepay"),
 
-        Elavon("elavon"),
+        ELAVON("elavon"),
 
-        FirstDataGlobal("first_data_global"),
+        FIRST_DATA_GLOBAL("first_data_global"),
 
-        Hdfc("hdfc"),
+        HDFC("hdfc"),
 
-        Migs("migs"),
+        MIGS("migs"),
 
-        Nmi("nmi"),
+        NMI("nmi"),
 
-        Ogone("ogone"),
+        OGONE("ogone"),
 
-        Paymill("paymill"),
+        PAYMILL("paymill"),
 
-        PaypalPayflowPro("paypal_payflow_pro"),
+        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-        SagePay("sage_pay"),
+        SAGE_PAY("sage_pay"),
 
-        Tco("tco"),
+        TCO("tco"),
 
-        Wirecard("wirecard"),
+        WIRECARD("wirecard"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        Orbital("orbital"),
+        ORBITAL("orbital"),
 
-        MonerisUs("moneris_us"),
+        MONERIS_US("moneris_us"),
 
-        Moneris("moneris"),
+        MONERIS("moneris"),
 
-        Bluesnap("bluesnap"),
+        BLUESNAP("bluesnap"),
 
-        Cybersource("cybersource"),
+        CYBERSOURCE("cybersource"),
 
-        Vantiv("vantiv"),
+        VANTIV("vantiv"),
 
-        CheckoutCom("checkout_com"),
+        CHECKOUT_COM("checkout_com"),
 
-        Paypal("paypal"),
+        PAYPAL("paypal"),
 
-        IngenicoDirect("ingenico_direct"),
+        INGENICO_DIRECT("ingenico_direct"),
 
-        Exact("exact"),
+        EXACT("exact"),
 
-        Mollie("mollie"),
+        MOLLIE("mollie"),
 
-        Quickbooks("quickbooks"),
+        QUICKBOOKS("quickbooks"),
 
-        Razorpay("razorpay"),
+        RAZORPAY("razorpay"),
 
-        GlobalPayments("global_payments"),
+        GLOBAL_PAYMENTS("global_payments"),
 
-        BankOfAmerica("bank_of_america"),
+        BANK_OF_AMERICA("bank_of_america"),
 
-        Ecentric("ecentric"),
+        ECENTRIC("ecentric"),
 
-        MetricsGlobal("metrics_global"),
+        METRICS_GLOBAL("metrics_global"),
 
-        Windcave("windcave"),
+        WINDCAVE("windcave"),
 
-        PayCom("pay_com"),
+        PAY_COM("pay_com"),
 
-        Ebanx("ebanx"),
+        EBANX("ebanx"),
 
-        Dlocal("dlocal"),
+        DLOCAL("dlocal"),
 
-        Nuvei("nuvei"),
+        NUVEI("nuvei"),
 
-        Solidgate("solidgate"),
+        SOLIDGATE("solidgate"),
 
-        Paystack("paystack"),
+        PAYSTACK("paystack"),
 
-        JpMorgan("jp_morgan"),
+        JP_MORGAN("jp_morgan"),
 
         /** An enum member indicating that Gateway was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -982,13 +982,13 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -1144,13 +1144,13 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -1222,11 +1222,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -1368,15 +1368,15 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ChargeOnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1402,11 +1402,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1432,9 +1432,9 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ChargeOnOption {
-        Immediately("immediately"),
+        IMMEDIATELY("immediately"),
 
-        OnEvent("on_event"),
+        ON_EVENT("on_event"),
 
         /** An enum member indicating that ChargeOnOption was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1553,9 +1553,9 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum ApplyOn {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecificItemPrice("specific_item_price"),
+        SPECIFIC_ITEM_PRICE("specific_item_price"),
 
         /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1581,11 +1581,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum DurationType {
-        OneTime("one_time"),
+        ONE_TIME("one_time"),
 
-        Forever("forever"),
+        FOREVER("forever"),
 
-        LimitedPeriod("limited_period"),
+        LIMITED_PERIOD("limited_period"),
 
         /** An enum member indicating that DurationType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1611,13 +1611,13 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum PeriodUnit {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1736,11 +1736,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1831,11 +1831,11 @@ public final class HostedPageCheckoutNewForItemsParams {
       }
 
       public enum Operation {
-        Create("create"),
+        CREATE("create"),
 
-        Update("update"),
+        UPDATE("update"),
 
-        Delete("delete"),
+        DELETE("delete"),
 
         /** An enum member indicating that Operation was instantiated with an unknown value. */
         _UNKNOWN(null);

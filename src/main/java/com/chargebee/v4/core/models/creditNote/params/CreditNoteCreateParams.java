@@ -165,11 +165,11 @@ public final class CreditNoteCreateParams {
     }
 
     public enum Type {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -195,17 +195,17 @@ public final class CreditNoteCreateParams {
     }
 
     public enum ReasonCode {
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -337,17 +337,17 @@ public final class CreditNoteCreateParams {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);

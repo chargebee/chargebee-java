@@ -74,11 +74,11 @@ public class Usage {
   }
 
   public enum Source {
-    AdminConsole("admin_console"),
+    ADMIN_CONSOLE("admin_console"),
 
-    Api("api"),
+    API("api"),
 
-    BulkOperation("bulk_operation"),
+    BULK_OPERATION("bulk_operation"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);

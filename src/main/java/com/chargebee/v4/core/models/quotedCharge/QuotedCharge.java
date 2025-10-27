@@ -118,13 +118,13 @@ public class QuotedCharge {
     }
 
     public enum AvalaraSaleType {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Retail("retail"),
+      RETAIL("retail"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      VendorUse("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
       /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -277,11 +277,11 @@ public class QuotedCharge {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -414,11 +414,11 @@ public class QuotedCharge {
     }
 
     public enum ProrationType {
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);

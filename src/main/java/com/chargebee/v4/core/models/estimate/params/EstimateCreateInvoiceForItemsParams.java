@@ -237,9 +237,9 @@ public final class EstimateCreateInvoiceForItemsParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -443,13 +443,13 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -563,13 +563,13 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -769,11 +769,11 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -920,13 +920,13 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum AvalaraSaleType {
-        Wholesale("wholesale"),
+        WHOLESALE("wholesale"),
 
-        Retail("retail"),
+        RETAIL("retail"),
 
-        Consumed("consumed"),
+        CONSUMED("consumed"),
 
-        VendorUse("vendor_use"),
+        VENDOR_USE("vendor_use"),
 
         /**
          * An enum member indicating that AvalaraSaleType was instantiated with an unknown value.
@@ -998,17 +998,17 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum EntityType {
-        Customer("customer"),
+        CUSTOMER("customer"),
 
-        Subscription("subscription"),
+        SUBSCRIPTION("subscription"),
 
-        Coupon("coupon"),
+        COUPON("coupon"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1099,9 +1099,9 @@ public final class EstimateCreateInvoiceForItemsParams {
       }
 
       public enum ApplyOn {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecificItemPrice("specific_item_price"),
+        SPECIFIC_ITEM_PRICE("specific_item_price"),
 
         /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
         _UNKNOWN(null);

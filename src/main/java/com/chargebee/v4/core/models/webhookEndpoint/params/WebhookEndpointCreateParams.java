@@ -141,11 +141,11 @@ public final class WebhookEndpointCreateParams {
     }
 
     public enum ChargebeeResponseSchemaType {
-      PlansAddons("plans_addons"),
+      PLANS_ADDONS("plans_addons"),
 
-      Items("items"),
+      ITEMS("items"),
 
-      Compat("compat"),
+      COMPAT("compat"),
 
       /**
        * An enum member indicating that ChargebeeResponseSchemaType was instantiated with an unknown

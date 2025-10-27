@@ -484,15 +484,15 @@ public final class AddonListParams {
     }
 
     public enum PricingModelIs {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -518,15 +518,15 @@ public final class AddonListParams {
     }
 
     public enum PricingModelIsNot {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /**
        * An enum member indicating that PricingModelIsNot was instantiated with an unknown value.
@@ -554,15 +554,15 @@ public final class AddonListParams {
     }
 
     public enum TypeIs {
-      OnOff("on_off"),
+      ON_OFF("on_off"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -588,15 +588,15 @@ public final class AddonListParams {
     }
 
     public enum TypeIsNot {
-      OnOff("on_off"),
+      ON_OFF("on_off"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -622,9 +622,9 @@ public final class AddonListParams {
     }
 
     public enum ChargeTypeIs {
-      Recurring("recurring"),
+      RECURRING("recurring"),
 
-      NonRecurring("non_recurring"),
+      NON_RECURRING("non_recurring"),
 
       /** An enum member indicating that ChargeTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -650,9 +650,9 @@ public final class AddonListParams {
     }
 
     public enum ChargeTypeIsNot {
-      Recurring("recurring"),
+      RECURRING("recurring"),
 
-      NonRecurring("non_recurring"),
+      NON_RECURRING("non_recurring"),
 
       /** An enum member indicating that ChargeTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -678,15 +678,15 @@ public final class AddonListParams {
     }
 
     public enum PeriodUnitIs {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that PeriodUnitIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -712,15 +712,15 @@ public final class AddonListParams {
     }
 
     public enum PeriodUnitIsNot {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that PeriodUnitIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -746,11 +746,11 @@ public final class AddonListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -776,11 +776,11 @@ public final class AddonListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -806,11 +806,11 @@ public final class AddonListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -836,11 +836,11 @@ public final class AddonListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -72,9 +72,9 @@ public final class EntitlementCreateParams {
     }
 
     public enum Action {
-      Upsert("upsert"),
+      UPSERT("upsert"),
 
-      Remove("remove"),
+      REMOVE("remove"),
 
       /** An enum member indicating that Action was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -164,15 +164,15 @@ public final class EntitlementCreateParams {
       }
 
       public enum EntityType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
-        PlanPrice("plan_price"),
+        PLAN_PRICE("plan_price"),
 
-        AddonPrice("addon_price"),
+        ADDON_PRICE("addon_price"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);

@@ -79,9 +79,9 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
     }
 
     public enum IsRecurringIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
       _UNKNOWN(null);

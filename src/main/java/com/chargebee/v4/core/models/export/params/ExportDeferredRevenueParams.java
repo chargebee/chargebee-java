@@ -189,13 +189,13 @@ public final class ExportDeferredRevenueParams {
     }
 
     public enum ReportBy {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
-      Product("product"),
+      PRODUCT("product"),
 
-      Subscription("subscription"),
+      SUBSCRIPTION("subscription"),
 
       /** An enum member indicating that ReportBy was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -817,9 +817,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -903,17 +903,17 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Paid("paid"),
+        PAID("paid"),
 
-        Posted("posted"),
+        POSTED("posted"),
 
-        PaymentDue("payment_due"),
+        PAYMENT_DUE("payment_due"),
 
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Pending("pending"),
+        PENDING("pending"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -939,17 +939,17 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Paid("paid"),
+        PAID("paid"),
 
-        Posted("posted"),
+        POSTED("posted"),
 
-        PaymentDue("payment_due"),
+        PAYMENT_DUE("payment_due"),
 
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Pending("pending"),
+        PENDING("pending"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1033,9 +1033,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1061,9 +1061,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1665,13 +1665,13 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Exhausted("exhausted"),
+        EXHAUSTED("exhausted"),
 
-        Stopped("stopped"),
+        STOPPED("stopped"),
 
-        Success("success"),
+        SUCCESS("success"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1697,13 +1697,13 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Exhausted("exhausted"),
+        EXHAUSTED("exhausted"),
 
-        Stopped("stopped"),
+        STOPPED("stopped"),
 
-        Success("success"),
+        SUCCESS("success"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1729,9 +1729,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1873,11 +1873,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1903,11 +1903,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2316,19 +2316,19 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Future("future"),
+        FUTURE("future"),
 
-        InTrial("in_trial"),
+        IN_TRIAL("in_trial"),
 
-        Active("active"),
+        ACTIVE("active"),
 
-        NonRenewing("non_renewing"),
+        NON_RENEWING("non_renewing"),
 
-        Paused("paused"),
+        PAUSED("paused"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Transferred("transferred"),
+        TRANSFERRED("transferred"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2354,19 +2354,19 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Future("future"),
+        FUTURE("future"),
 
-        InTrial("in_trial"),
+        IN_TRIAL("in_trial"),
 
-        Active("active"),
+        ACTIVE("active"),
 
-        NonRenewing("non_renewing"),
+        NON_RENEWING("non_renewing"),
 
-        Paused("paused"),
+        PAUSED("paused"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Transferred("transferred"),
+        TRANSFERRED("transferred"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2457,19 +2457,19 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        NoCard("no_card"),
+        NO_CARD("no_card"),
 
-        FraudReviewFailed("fraud_review_failed"),
+        FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-        NonCompliantEuCustomer("non_compliant_eu_customer"),
+        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-        TaxCalculationFailed("tax_calculation_failed"),
+        TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-        CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-        NonCompliantCustomer("non_compliant_customer"),
+        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2495,19 +2495,19 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        NoCard("no_card"),
+        NO_CARD("no_card"),
 
-        FraudReviewFailed("fraud_review_failed"),
+        FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-        NonCompliantEuCustomer("non_compliant_eu_customer"),
+        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-        TaxCalculationFailed("tax_calculation_failed"),
+        TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-        CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-        NonCompliantCustomer("non_compliant_customer"),
+        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2533,9 +2533,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2647,9 +2647,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2798,9 +2798,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2979,9 +2979,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3123,31 +3123,31 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3173,31 +3173,31 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3260,9 +3260,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3346,11 +3346,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3376,11 +3376,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3767,9 +3767,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3853,9 +3853,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3939,9 +3939,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4025,9 +4025,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4111,9 +4111,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4197,9 +4197,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4225,9 +4225,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        On("on"),
+        ON("on"),
 
-        Off("off"),
+        OFF("off"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4311,9 +4311,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Taxable("taxable"),
+        TAXABLE("taxable"),
 
-        Exempt("exempt"),
+        EXEMPT("exempt"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4339,9 +4339,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Taxable("taxable"),
+        TAXABLE("taxable"),
 
-        Exempt("exempt"),
+        EXEMPT("exempt"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4541,31 +4541,31 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4591,31 +4591,31 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4678,9 +4678,9 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4764,11 +4764,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4794,11 +4794,11 @@ public final class ExportDeferredRevenueParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

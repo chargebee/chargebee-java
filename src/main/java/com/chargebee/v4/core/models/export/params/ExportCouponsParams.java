@@ -433,11 +433,11 @@ public final class ExportCouponsParams {
       }
 
       public enum Is {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
-        OfferQuantity("offer_quantity"),
+        OFFER_QUANTITY("offer_quantity"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -463,11 +463,11 @@ public final class ExportCouponsParams {
       }
 
       public enum IsNot {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
-        OfferQuantity("offer_quantity"),
+        OFFER_QUANTITY("offer_quantity"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -551,11 +551,11 @@ public final class ExportCouponsParams {
       }
 
       public enum Is {
-        OneTime("one_time"),
+        ONE_TIME("one_time"),
 
-        Forever("forever"),
+        FOREVER("forever"),
 
-        LimitedPeriod("limited_period"),
+        LIMITED_PERIOD("limited_period"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -581,11 +581,11 @@ public final class ExportCouponsParams {
       }
 
       public enum IsNot {
-        OneTime("one_time"),
+        ONE_TIME("one_time"),
 
-        Forever("forever"),
+        FOREVER("forever"),
 
-        LimitedPeriod("limited_period"),
+        LIMITED_PERIOD("limited_period"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -669,15 +669,15 @@ public final class ExportCouponsParams {
       }
 
       public enum Is {
-        Active("active"),
+        ACTIVE("active"),
 
-        Expired("expired"),
+        EXPIRED("expired"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
-        Future("future"),
+        FUTURE("future"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -703,15 +703,15 @@ public final class ExportCouponsParams {
       }
 
       public enum IsNot {
-        Active("active"),
+        ACTIVE("active"),
 
-        Expired("expired"),
+        EXPIRED("expired"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
-        Future("future"),
+        FUTURE("future"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -795,13 +795,13 @@ public final class ExportCouponsParams {
       }
 
       public enum Is {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecifiedItemsTotal("specified_items_total"),
+        SPECIFIED_ITEMS_TOTAL("specified_items_total"),
 
-        EachSpecifiedItem("each_specified_item"),
+        EACH_SPECIFIED_ITEM("each_specified_item"),
 
-        EachUnitOfSpecifiedItems("each_unit_of_specified_items"),
+        EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -827,13 +827,13 @@ public final class ExportCouponsParams {
       }
 
       public enum IsNot {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecifiedItemsTotal("specified_items_total"),
+        SPECIFIED_ITEMS_TOTAL("specified_items_total"),
 
-        EachSpecifiedItem("each_specified_item"),
+        EACH_SPECIFIED_ITEM("each_specified_item"),
 
-        EachUnitOfSpecifiedItems("each_unit_of_specified_items"),
+        EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

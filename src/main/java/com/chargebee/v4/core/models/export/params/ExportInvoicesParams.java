@@ -470,9 +470,9 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -600,9 +600,9 @@ public final class ExportInvoicesParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -686,17 +686,17 @@ public final class ExportInvoicesParams {
       }
 
       public enum Is {
-        Paid("paid"),
+        PAID("paid"),
 
-        Posted("posted"),
+        POSTED("posted"),
 
-        PaymentDue("payment_due"),
+        PAYMENT_DUE("payment_due"),
 
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Pending("pending"),
+        PENDING("pending"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -722,17 +722,17 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsNot {
-        Paid("paid"),
+        PAID("paid"),
 
-        Posted("posted"),
+        POSTED("posted"),
 
-        PaymentDue("payment_due"),
+        PAYMENT_DUE("payment_due"),
 
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        Voided("voided"),
+        VOIDED("voided"),
 
-        Pending("pending"),
+        PENDING("pending"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -816,9 +816,9 @@ public final class ExportInvoicesParams {
       }
 
       public enum Is {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -844,9 +844,9 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsNot {
-        TaxExclusive("tax_exclusive"),
+        TAX_EXCLUSIVE("tax_exclusive"),
 
-        TaxInclusive("tax_inclusive"),
+        TAX_INCLUSIVE("tax_inclusive"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1448,13 +1448,13 @@ public final class ExportInvoicesParams {
       }
 
       public enum Is {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Exhausted("exhausted"),
+        EXHAUSTED("exhausted"),
 
-        Stopped("stopped"),
+        STOPPED("stopped"),
 
-        Success("success"),
+        SUCCESS("success"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1480,13 +1480,13 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsNot {
-        InProgress("in_progress"),
+        IN_PROGRESS("in_progress"),
 
-        Exhausted("exhausted"),
+        EXHAUSTED("exhausted"),
 
-        Stopped("stopped"),
+        STOPPED("stopped"),
 
-        Success("success"),
+        SUCCESS("success"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1512,9 +1512,9 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1656,11 +1656,11 @@ public final class ExportInvoicesParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1686,11 +1686,11 @@ public final class ExportInvoicesParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

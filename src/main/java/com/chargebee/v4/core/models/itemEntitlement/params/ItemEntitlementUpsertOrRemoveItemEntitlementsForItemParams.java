@@ -67,9 +67,9 @@ public final class ItemEntitlementUpsertOrRemoveItemEntitlementsForItemParams {
     }
 
     public enum Action {
-      Upsert("upsert"),
+      UPSERT("upsert"),
 
-      Remove("remove"),
+      REMOVE("remove"),
 
       /** An enum member indicating that Action was instantiated with an unknown value. */
       _UNKNOWN(null);

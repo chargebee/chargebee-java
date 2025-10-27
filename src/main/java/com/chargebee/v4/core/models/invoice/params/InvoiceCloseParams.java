@@ -166,21 +166,21 @@ public final class InvoiceCloseParams {
       }
 
       public enum EntityType {
-        Customer("customer"),
+        CUSTOMER("customer"),
 
-        Subscription("subscription"),
+        SUBSCRIPTION("subscription"),
 
-        Coupon("coupon"),
+        COUPON("coupon"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);

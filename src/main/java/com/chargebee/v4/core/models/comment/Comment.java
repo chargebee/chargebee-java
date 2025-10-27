@@ -54,35 +54,35 @@ public class Comment {
   }
 
   public enum EntityType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
-    Subscription("subscription"),
+    SUBSCRIPTION("subscription"),
 
-    Invoice("invoice"),
+    INVOICE("invoice"),
 
-    Quote("quote"),
+    QUOTE("quote"),
 
-    CreditNote("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-    Transaction("transaction"),
+    TRANSACTION("transaction"),
 
-    Plan("plan"),
+    PLAN("plan"),
 
-    Addon("addon"),
+    ADDON("addon"),
 
-    Coupon("coupon"),
+    COUPON("coupon"),
 
-    Order("order"),
+    ORDER("order"),
 
-    BusinessEntity("business_entity"),
+    BUSINESS_ENTITY("business_entity"),
 
-    ItemFamily("item_family"),
+    ITEM_FAMILY("item_family"),
 
-    Item("item"),
+    ITEM("item"),
 
-    ItemPrice("item_price"),
+    ITEM_PRICE("item_price"),
 
-    PriceVariant("price_variant"),
+    PRICE_VARIANT("price_variant"),
 
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -108,9 +108,9 @@ public class Comment {
   }
 
   public enum Type {
-    User("user"),
+    USER("user"),
 
-    System("system"),
+    SYSTEM("system"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

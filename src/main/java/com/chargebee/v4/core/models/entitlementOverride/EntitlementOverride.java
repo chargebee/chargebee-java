@@ -65,11 +65,11 @@ public class EntitlementOverride {
   }
 
   public enum ScheduleStatus {
-    Activated("activated"),
+    ACTIVATED("activated"),
 
-    Scheduled("scheduled"),
+    SCHEDULED("scheduled"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
     /** An enum member indicating that ScheduleStatus was instantiated with an unknown value. */
     _UNKNOWN(null);

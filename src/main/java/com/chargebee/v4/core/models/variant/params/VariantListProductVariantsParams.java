@@ -344,9 +344,9 @@ public final class VariantListProductVariantsParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Inactive("inactive"),
+      INACTIVE("inactive"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -372,9 +372,9 @@ public final class VariantListProductVariantsParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Inactive("inactive"),
+      INACTIVE("inactive"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -400,15 +400,15 @@ public final class VariantListProductVariantsParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      Status("status"),
+      STATUS("status"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -434,15 +434,15 @@ public final class VariantListProductVariantsParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      Status("status"),
+      STATUS("status"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

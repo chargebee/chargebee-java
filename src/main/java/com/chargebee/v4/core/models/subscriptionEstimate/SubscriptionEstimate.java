@@ -59,19 +59,19 @@ public class SubscriptionEstimate {
   }
 
   public enum Status {
-    Future("future"),
+    FUTURE("future"),
 
-    InTrial("in_trial"),
+    IN_TRIAL("in_trial"),
 
-    Active("active"),
+    ACTIVE("active"),
 
-    NonRenewing("non_renewing"),
+    NON_RENEWING("non_renewing"),
 
-    Paused("paused"),
+    PAUSED("paused"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Transferred("transferred"),
+    TRANSFERRED("transferred"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -97,13 +97,13 @@ public class SubscriptionEstimate {
   }
 
   public enum TrialEndAction {
-    SiteDefault("site_default"),
+    SITE_DEFAULT("site_default"),
 
-    PlanDefault("plan_default"),
+    PLAN_DEFAULT("plan_default"),
 
-    ActivateSubscription("activate_subscription"),
+    ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-    CancelSubscription("cancel_subscription"),
+    CANCEL_SUBSCRIPTION("cancel_subscription"),
 
     /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -232,13 +232,13 @@ public class SubscriptionEstimate {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -363,13 +363,13 @@ public class SubscriptionEstimate {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Completed("completed"),
+      COMPLETED("completed"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Terminated("terminated"),
+      TERMINATED("terminated"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -395,13 +395,13 @@ public class SubscriptionEstimate {
     }
 
     public enum ActionAtTermEnd {
-      Renew("renew"),
+      RENEW("renew"),
 
-      Evergreen("evergreen"),
+      EVERGREEN("evergreen"),
 
-      Cancel("cancel"),
+      CANCEL("cancel"),
 
-      RenewOnce("renew_once"),
+      RENEW_ONCE("renew_once"),
 
       /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
       _UNKNOWN(null);

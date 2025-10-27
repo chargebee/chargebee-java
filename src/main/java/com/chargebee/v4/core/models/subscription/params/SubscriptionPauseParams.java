@@ -84,13 +84,13 @@ public final class SubscriptionPauseParams {
     }
 
     public enum PauseOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      EndOfTerm("end_of_term"),
+      END_OF_TERM("end_of_term"),
 
-      SpecificDate("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
-      BillingCycles("billing_cycles"),
+      BILLING_CYCLES("billing_cycles"),
 
       /** An enum member indicating that PauseOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -116,9 +116,9 @@ public final class SubscriptionPauseParams {
     }
 
     public enum UnbilledChargesHandling {
-      NoAction("no_action"),
+      NO_ACTION("no_action"),
 
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
       /**
        * An enum member indicating that UnbilledChargesHandling was instantiated with an unknown
@@ -147,9 +147,9 @@ public final class SubscriptionPauseParams {
     }
 
     public enum InvoiceDunningHandling {
-      Continue("continue"),
+      CONTINUE("continue"),
 
-      Stop("stop"),
+      STOP("stop"),
 
       /**
        * An enum member indicating that InvoiceDunningHandling was instantiated with an unknown

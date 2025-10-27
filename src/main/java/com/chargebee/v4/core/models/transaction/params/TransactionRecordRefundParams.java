@@ -84,21 +84,21 @@ public final class TransactionRecordRefundParams {
     }
 
     public enum PaymentMethod {
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      Other("other"),
+      OTHER("other"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
       _UNKNOWN(null);

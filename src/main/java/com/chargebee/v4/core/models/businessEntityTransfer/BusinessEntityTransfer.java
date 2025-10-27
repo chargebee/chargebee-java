@@ -54,9 +54,9 @@ public class BusinessEntityTransfer {
   }
 
   public enum ResourceType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
-    Subscription("subscription"),
+    SUBSCRIPTION("subscription"),
 
     /** An enum member indicating that ResourceType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -82,7 +82,7 @@ public class BusinessEntityTransfer {
   }
 
   public enum ReasonCode {
-    Correction("correction"),
+    CORRECTION("correction"),
 
     /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
     _UNKNOWN(null);

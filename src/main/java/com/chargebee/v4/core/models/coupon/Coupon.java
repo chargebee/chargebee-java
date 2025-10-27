@@ -209,11 +209,11 @@ public class Coupon {
   }
 
   public enum DiscountType {
-    FixedAmount("fixed_amount"),
+    FIXED_AMOUNT("fixed_amount"),
 
-    Percentage("percentage"),
+    PERCENTAGE("percentage"),
 
-    OfferQuantity("offer_quantity"),
+    OFFER_QUANTITY("offer_quantity"),
 
     /** An enum member indicating that DiscountType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -239,11 +239,11 @@ public class Coupon {
   }
 
   public enum DurationType {
-    OneTime("one_time"),
+    ONE_TIME("one_time"),
 
-    Forever("forever"),
+    FOREVER("forever"),
 
-    LimitedPeriod("limited_period"),
+    LIMITED_PERIOD("limited_period"),
 
     /** An enum member indicating that DurationType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -269,15 +269,15 @@ public class Coupon {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Expired("expired"),
+    EXPIRED("expired"),
 
-    Archived("archived"),
+    ARCHIVED("archived"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
-    Future("future"),
+    FUTURE("future"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -303,13 +303,13 @@ public class Coupon {
   }
 
   public enum ApplyDiscountOn {
-    Plans("plans"),
+    PLANS("plans"),
 
-    PlansAndAddons("plans_and_addons"),
+    PLANS_AND_ADDONS("plans_and_addons"),
 
-    PlansWithQuantity("plans_with_quantity"),
+    PLANS_WITH_QUANTITY("plans_with_quantity"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that ApplyDiscountOn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -335,13 +335,13 @@ public class Coupon {
   }
 
   public enum ApplyOn {
-    InvoiceAmount("invoice_amount"),
+    INVOICE_AMOUNT("invoice_amount"),
 
-    SpecifiedItemsTotal("specified_items_total"),
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
 
-    EachSpecifiedItem("each_specified_item"),
+    EACH_SPECIFIED_ITEM("each_specified_item"),
 
-    EachUnitOfSpecifiedItems("each_unit_of_specified_items"),
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
 
     /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -367,13 +367,13 @@ public class Coupon {
   }
 
   public enum PeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -399,13 +399,13 @@ public class Coupon {
   }
 
   public enum AddonConstraint {
-    None("none"),
+    NONE("none"),
 
-    All("all"),
+    ALL("all"),
 
-    Specific("specific"),
+    SPECIFIC("specific"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that AddonConstraint was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -431,13 +431,13 @@ public class Coupon {
   }
 
   public enum PlanConstraint {
-    None("none"),
+    NONE("none"),
 
-    All("all"),
+    ALL("all"),
 
-    Specific("specific"),
+    SPECIFIC("specific"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that PlanConstraint was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -671,11 +671,11 @@ public class Coupon {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -701,13 +701,13 @@ public class Coupon {
     }
 
     public enum Constraint {
-      None("none"),
+      NONE("none"),
 
-      All("all"),
+      ALL("all"),
 
-      Specific("specific"),
+      SPECIFIC("specific"),
 
-      Criteria("criteria"),
+      CRITERIA("criteria"),
 
       /** An enum member indicating that Constraint was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -775,11 +775,11 @@ public class Coupon {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -856,7 +856,7 @@ public class Coupon {
     }
 
     public enum EntityType {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -882,13 +882,13 @@ public class Coupon {
     }
 
     public enum Type {
-      MaxRedemptions("max_redemptions"),
+      MAX_REDEMPTIONS("max_redemptions"),
 
-      UniqueBy("unique_by"),
+      UNIQUE_BY("unique_by"),
 
-      ExistingCustomer("existing_customer"),
+      EXISTING_CUSTOMER("existing_customer"),
 
-      NewCustomer("new_customer"),
+      NEW_CUSTOMER("new_customer"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -152,19 +152,19 @@ public final class InvoiceRecordPaymentParams {
       }
 
       public enum PaymentMethod {
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -190,11 +190,11 @@ public final class InvoiceRecordPaymentParams {
       }
 
       public enum Status {
-        Success("success"),
+        SUCCESS("success"),
 
-        Failure("failure"),
+        FAILURE("failure"),
 
-        LateFailure("late_failure"),
+        LATE_FAILURE("late_failure"),
 
         /** An enum member indicating that Status was instantiated with an unknown value. */
         _UNKNOWN(null);

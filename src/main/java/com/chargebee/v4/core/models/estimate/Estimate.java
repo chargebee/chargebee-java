@@ -157,19 +157,19 @@ public class Estimate {
     }
 
     public enum Status {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -195,13 +195,13 @@ public class Estimate {
     }
 
     public enum TrialEndAction {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PlanDefault("plan_default"),
+      PLAN_DEFAULT("plan_default"),
 
-      ActivateSubscription("activate_subscription"),
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-      CancelSubscription("cancel_subscription"),
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
 
       /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -330,13 +330,13 @@ public class Estimate {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -463,13 +463,13 @@ public class Estimate {
       }
 
       public enum Status {
-        Active("active"),
+        ACTIVE("active"),
 
-        Completed("completed"),
+        COMPLETED("completed"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Terminated("terminated"),
+        TERMINATED("terminated"),
 
         /** An enum member indicating that Status was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -495,13 +495,13 @@ public class Estimate {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -610,19 +610,19 @@ public class Estimate {
     }
 
     public enum Status {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -648,13 +648,13 @@ public class Estimate {
     }
 
     public enum TrialEndAction {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PlanDefault("plan_default"),
+      PLAN_DEFAULT("plan_default"),
 
-      ActivateSubscription("activate_subscription"),
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-      CancelSubscription("cancel_subscription"),
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
 
       /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -783,13 +783,13 @@ public class Estimate {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -916,13 +916,13 @@ public class Estimate {
       }
 
       public enum Status {
-        Active("active"),
+        ACTIVE("active"),
 
-        Completed("completed"),
+        COMPLETED("completed"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Terminated("terminated"),
+        TERMINATED("terminated"),
 
         /** An enum member indicating that Status was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -948,13 +948,13 @@ public class Estimate {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -1108,9 +1108,9 @@ public class Estimate {
     }
 
     public enum PriceType {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1330,15 +1330,15 @@ public class Estimate {
       }
 
       public enum PricingModel {
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        Tiered("tiered"),
+        TIERED("tiered"),
 
-        Volume("volume"),
+        VOLUME("volume"),
 
-        Stairstep("stairstep"),
+        STAIRSTEP("stairstep"),
 
         /** An enum member indicating that PricingModel was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1364,19 +1364,19 @@ public class Estimate {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1402,25 +1402,25 @@ public class Estimate {
       }
 
       public enum TaxExemptReason {
-        TaxNotConfigured("tax_not_configured"),
+        TAX_NOT_CONFIGURED("tax_not_configured"),
 
-        RegionNonTaxable("region_non_taxable"),
+        REGION_NON_TAXABLE("region_non_taxable"),
 
-        Export("export"),
+        EXPORT("export"),
 
-        CustomerExempt("customer_exempt"),
+        CUSTOMER_EXEMPT("customer_exempt"),
 
-        ProductExempt("product_exempt"),
+        PRODUCT_EXEMPT("product_exempt"),
 
-        ZeroRated("zero_rated"),
+        ZERO_RATED("zero_rated"),
 
-        ReverseCharge("reverse_charge"),
+        REVERSE_CHARGE("reverse_charge"),
 
-        HighValuePhysicalGoods("high_value_physical_goods"),
+        HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-        ZeroValueItem("zero_value_item"),
+        ZERO_VALUE_ITEM("zero_value_item"),
 
-        TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+        TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
         /**
          * An enum member indicating that TaxExemptReason was instantiated with an unknown value.
@@ -1564,11 +1564,11 @@ public class Estimate {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1651,17 +1651,17 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1782,21 +1782,21 @@ public class Estimate {
       }
 
       public enum TaxJurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1968,13 +1968,13 @@ public class Estimate {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -2073,17 +2073,17 @@ public class Estimate {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2109,9 +2109,9 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2281,9 +2281,9 @@ public class Estimate {
     }
 
     public enum PriceType {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2503,15 +2503,15 @@ public class Estimate {
       }
 
       public enum PricingModel {
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        Tiered("tiered"),
+        TIERED("tiered"),
 
-        Volume("volume"),
+        VOLUME("volume"),
 
-        Stairstep("stairstep"),
+        STAIRSTEP("stairstep"),
 
         /** An enum member indicating that PricingModel was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2537,19 +2537,19 @@ public class Estimate {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2575,25 +2575,25 @@ public class Estimate {
       }
 
       public enum TaxExemptReason {
-        TaxNotConfigured("tax_not_configured"),
+        TAX_NOT_CONFIGURED("tax_not_configured"),
 
-        RegionNonTaxable("region_non_taxable"),
+        REGION_NON_TAXABLE("region_non_taxable"),
 
-        Export("export"),
+        EXPORT("export"),
 
-        CustomerExempt("customer_exempt"),
+        CUSTOMER_EXEMPT("customer_exempt"),
 
-        ProductExempt("product_exempt"),
+        PRODUCT_EXEMPT("product_exempt"),
 
-        ZeroRated("zero_rated"),
+        ZERO_RATED("zero_rated"),
 
-        ReverseCharge("reverse_charge"),
+        REVERSE_CHARGE("reverse_charge"),
 
-        HighValuePhysicalGoods("high_value_physical_goods"),
+        HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-        ZeroValueItem("zero_value_item"),
+        ZERO_VALUE_ITEM("zero_value_item"),
 
-        TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+        TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
         /**
          * An enum member indicating that TaxExemptReason was instantiated with an unknown value.
@@ -2737,11 +2737,11 @@ public class Estimate {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2824,17 +2824,17 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -2955,21 +2955,21 @@ public class Estimate {
       }
 
       public enum TaxJurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3141,13 +3141,13 @@ public class Estimate {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -3246,17 +3246,17 @@ public class Estimate {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3282,9 +3282,9 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3399,7 +3399,7 @@ public class Estimate {
     }
 
     public enum EntityType {
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3471,11 +3471,11 @@ public class Estimate {
       }
 
       public enum Status {
-        Posted("posted"),
+        POSTED("posted"),
 
-        PaymentDue("payment_due"),
+        PAYMENT_DUE("payment_due"),
 
-        Paid("paid"),
+        PAID("paid"),
 
         /** An enum member indicating that Status was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3610,9 +3610,9 @@ public class Estimate {
     }
 
     public enum PriceType {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3832,15 +3832,15 @@ public class Estimate {
       }
 
       public enum PricingModel {
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        Tiered("tiered"),
+        TIERED("tiered"),
 
-        Volume("volume"),
+        VOLUME("volume"),
 
-        Stairstep("stairstep"),
+        STAIRSTEP("stairstep"),
 
         /** An enum member indicating that PricingModel was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3866,19 +3866,19 @@ public class Estimate {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -3904,25 +3904,25 @@ public class Estimate {
       }
 
       public enum TaxExemptReason {
-        TaxNotConfigured("tax_not_configured"),
+        TAX_NOT_CONFIGURED("tax_not_configured"),
 
-        RegionNonTaxable("region_non_taxable"),
+        REGION_NON_TAXABLE("region_non_taxable"),
 
-        Export("export"),
+        EXPORT("export"),
 
-        CustomerExempt("customer_exempt"),
+        CUSTOMER_EXEMPT("customer_exempt"),
 
-        ProductExempt("product_exempt"),
+        PRODUCT_EXEMPT("product_exempt"),
 
-        ZeroRated("zero_rated"),
+        ZERO_RATED("zero_rated"),
 
-        ReverseCharge("reverse_charge"),
+        REVERSE_CHARGE("reverse_charge"),
 
-        HighValuePhysicalGoods("high_value_physical_goods"),
+        HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-        ZeroValueItem("zero_value_item"),
+        ZERO_VALUE_ITEM("zero_value_item"),
 
-        TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+        TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
         /**
          * An enum member indicating that TaxExemptReason was instantiated with an unknown value.
@@ -4066,11 +4066,11 @@ public class Estimate {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4153,17 +4153,17 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4284,21 +4284,21 @@ public class Estimate {
       }
 
       public enum TaxJurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4470,13 +4470,13 @@ public class Estimate {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -4575,17 +4575,17 @@ public class Estimate {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4611,9 +4611,9 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -4773,11 +4773,11 @@ public class Estimate {
     }
 
     public enum Type {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -4803,9 +4803,9 @@ public class Estimate {
     }
 
     public enum PriceType {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -5015,15 +5015,15 @@ public class Estimate {
       }
 
       public enum PricingModel {
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        Tiered("tiered"),
+        TIERED("tiered"),
 
-        Volume("volume"),
+        VOLUME("volume"),
 
-        Stairstep("stairstep"),
+        STAIRSTEP("stairstep"),
 
         /** An enum member indicating that PricingModel was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5049,19 +5049,19 @@ public class Estimate {
       }
 
       public enum EntityType {
-        Adhoc("adhoc"),
+        ADHOC("adhoc"),
 
-        PlanItemPrice("plan_item_price"),
+        PLAN_ITEM_PRICE("plan_item_price"),
 
-        AddonItemPrice("addon_item_price"),
+        ADDON_ITEM_PRICE("addon_item_price"),
 
-        ChargeItemPrice("charge_item_price"),
+        CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PlanSetup("plan_setup"),
+        PLAN_SETUP("plan_setup"),
 
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5087,25 +5087,25 @@ public class Estimate {
       }
 
       public enum TaxExemptReason {
-        TaxNotConfigured("tax_not_configured"),
+        TAX_NOT_CONFIGURED("tax_not_configured"),
 
-        RegionNonTaxable("region_non_taxable"),
+        REGION_NON_TAXABLE("region_non_taxable"),
 
-        Export("export"),
+        EXPORT("export"),
 
-        CustomerExempt("customer_exempt"),
+        CUSTOMER_EXEMPT("customer_exempt"),
 
-        ProductExempt("product_exempt"),
+        PRODUCT_EXEMPT("product_exempt"),
 
-        ZeroRated("zero_rated"),
+        ZERO_RATED("zero_rated"),
 
-        ReverseCharge("reverse_charge"),
+        REVERSE_CHARGE("reverse_charge"),
 
-        HighValuePhysicalGoods("high_value_physical_goods"),
+        HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-        ZeroValueItem("zero_value_item"),
+        ZERO_VALUE_ITEM("zero_value_item"),
 
-        TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+        TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
         /**
          * An enum member indicating that TaxExemptReason was instantiated with an unknown value.
@@ -5249,11 +5249,11 @@ public class Estimate {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5336,17 +5336,17 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5467,21 +5467,21 @@ public class Estimate {
       }
 
       public enum TaxJurisType {
-        Country("country"),
+        COUNTRY("country"),
 
-        Federal("federal"),
+        FEDERAL("federal"),
 
-        State("state"),
+        STATE("state"),
 
-        County("county"),
+        COUNTY("county"),
 
-        City("city"),
+        CITY("city"),
 
-        Special("special"),
+        SPECIAL("special"),
 
-        Unincorporated("unincorporated"),
+        UNINCORPORATED("unincorporated"),
 
-        Other("other"),
+        OTHER("other"),
 
         /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5577,17 +5577,17 @@ public class Estimate {
       }
 
       public enum EntityType {
-        ItemLevelCoupon("item_level_coupon"),
+        ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DocumentLevelCoupon("document_level_coupon"),
+        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PromotionalCredits("promotional_credits"),
+        PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ProratedCredits("prorated_credits"),
+        PRORATED_CREDITS("prorated_credits"),
 
-        ItemLevelDiscount("item_level_discount"),
+        ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DocumentLevelDiscount("document_level_discount"),
+        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
         /** An enum member indicating that EntityType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5613,9 +5613,9 @@ public class Estimate {
       }
 
       public enum DiscountType {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -5815,15 +5815,15 @@ public class Estimate {
     }
 
     public enum PricingModel {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModel was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -5849,19 +5849,19 @@ public class Estimate {
     }
 
     public enum EntityType {
-      Adhoc("adhoc"),
+      ADHOC("adhoc"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      PlanSetup("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -6002,11 +6002,11 @@ public class Estimate {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);

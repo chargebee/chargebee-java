@@ -332,9 +332,9 @@ public final class QuoteListParams {
     }
 
     public enum SubscriptionIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
@@ -363,25 +363,25 @@ public final class QuoteListParams {
     }
 
     public enum StatusIs {
-      Open("open"),
+      OPEN("open"),
 
-      Accepted("accepted"),
+      ACCEPTED("accepted"),
 
-      Declined("declined"),
+      DECLINED("declined"),
 
-      Invoiced("invoiced"),
+      INVOICED("invoiced"),
 
-      Closed("closed"),
+      CLOSED("closed"),
 
-      PendingApproval("pending_approval"),
+      PENDING_APPROVAL("pending_approval"),
 
-      ApprovalRejected("approval_rejected"),
+      APPROVAL_REJECTED("approval_rejected"),
 
-      Proposed("proposed"),
+      PROPOSED("proposed"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -407,25 +407,25 @@ public final class QuoteListParams {
     }
 
     public enum StatusIsNot {
-      Open("open"),
+      OPEN("open"),
 
-      Accepted("accepted"),
+      ACCEPTED("accepted"),
 
-      Declined("declined"),
+      DECLINED("declined"),
 
-      Invoiced("invoiced"),
+      INVOICED("invoiced"),
 
-      Closed("closed"),
+      CLOSED("closed"),
 
-      PendingApproval("pending_approval"),
+      PENDING_APPROVAL("pending_approval"),
 
-      ApprovalRejected("approval_rejected"),
+      APPROVAL_REJECTED("approval_rejected"),
 
-      Proposed("proposed"),
+      PROPOSED("proposed"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -451,7 +451,7 @@ public final class QuoteListParams {
     }
 
     public enum SortByAsc {
-      Date("date"),
+      DATE("date"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -477,7 +477,7 @@ public final class QuoteListParams {
     }
 
     public enum SortByDesc {
-      Date("date"),
+      DATE("date"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

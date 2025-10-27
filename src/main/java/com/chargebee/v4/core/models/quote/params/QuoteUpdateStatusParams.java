@@ -55,17 +55,17 @@ public final class QuoteUpdateStatusParams {
     }
 
     public enum Status {
-      Open("open"),
+      OPEN("open"),
 
-      Accepted("accepted"),
+      ACCEPTED("accepted"),
 
-      Declined("declined"),
+      DECLINED("declined"),
 
-      Proposed("proposed"),
+      PROPOSED("proposed"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Closed("closed"),
+      CLOSED("closed"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

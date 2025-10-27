@@ -296,29 +296,29 @@ public class Order {
   }
 
   public enum Status {
-    New("new"),
+    NEW("new"),
 
-    Processing("processing"),
+    PROCESSING("processing"),
 
-    Complete("complete"),
+    COMPLETE("complete"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Voided("voided"),
+    VOIDED("voided"),
 
-    Queued("queued"),
+    QUEUED("queued"),
 
-    AwaitingShipment("awaiting_shipment"),
+    AWAITING_SHIPMENT("awaiting_shipment"),
 
-    OnHold("on_hold"),
+    ON_HOLD("on_hold"),
 
-    Delivered("delivered"),
+    DELIVERED("delivered"),
 
-    Shipped("shipped"),
+    SHIPPED("shipped"),
 
-    PartiallyDelivered("partially_delivered"),
+    PARTIALLY_DELIVERED("partially_delivered"),
 
-    Returned("returned"),
+    RETURNED("returned"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -344,33 +344,33 @@ public class Order {
   }
 
   public enum CancellationReason {
-    ShippingCutOffPassed("shipping_cut_off_passed"),
+    SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
 
-    ProductUnsatisfactory("product_unsatisfactory"),
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-    ThirdPartyCancellation("third_party_cancellation"),
+    THIRD_PARTY_CANCELLATION("third_party_cancellation"),
 
-    ProductNotRequired("product_not_required"),
+    PRODUCT_NOT_REQUIRED("product_not_required"),
 
-    DeliveryDateMissed("delivery_date_missed"),
+    DELIVERY_DATE_MISSED("delivery_date_missed"),
 
-    AlternativeFound("alternative_found"),
+    ALTERNATIVE_FOUND("alternative_found"),
 
-    InvoiceWrittenOff("invoice_written_off"),
+    INVOICE_WRITTEN_OFF("invoice_written_off"),
 
-    InvoiceVoided("invoice_voided"),
+    INVOICE_VOIDED("invoice_voided"),
 
-    FraudulentTransaction("fraudulent_transaction"),
+    FRAUDULENT_TRANSACTION("fraudulent_transaction"),
 
-    PaymentDeclined("payment_declined"),
+    PAYMENT_DECLINED("payment_declined"),
 
-    SubscriptionCancelled("subscription_cancelled"),
+    SUBSCRIPTION_CANCELLED("subscription_cancelled"),
 
-    ProductNotAvailable("product_not_available"),
+    PRODUCT_NOT_AVAILABLE("product_not_available"),
 
-    Others("others"),
+    OTHERS("others"),
 
-    OrderResent("order_resent"),
+    ORDER_RESENT("order_resent"),
 
     /** An enum member indicating that CancellationReason was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -396,9 +396,9 @@ public class Order {
   }
 
   public enum PaymentStatus {
-    NotPaid("not_paid"),
+    NOT_PAID("not_paid"),
 
-    Paid("paid"),
+    PAID("paid"),
 
     /** An enum member indicating that PaymentStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -424,9 +424,9 @@ public class Order {
   }
 
   public enum OrderType {
-    Manual("manual"),
+    MANUAL("manual"),
 
-    SystemGenerated("system_generated"),
+    SYSTEM_GENERATED("system_generated"),
 
     /** An enum member indicating that OrderType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -452,9 +452,9 @@ public class Order {
   }
 
   public enum PriceType {
-    TaxExclusive("tax_exclusive"),
+    TAX_EXCLUSIVE("tax_exclusive"),
 
-    TaxInclusive("tax_inclusive"),
+    TAX_INCLUSIVE("tax_inclusive"),
 
     /** An enum member indicating that PriceType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -480,9 +480,9 @@ public class Order {
   }
 
   public enum ResentStatus {
-    FullyResent("fully_resent"),
+    FULLY_RESENT("fully_resent"),
 
-    PartiallyResent("partially_resent"),
+    PARTIALLY_RESENT("partially_resent"),
 
     /** An enum member indicating that ResentStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -751,21 +751,21 @@ public class Order {
     }
 
     public enum Status {
-      Queued("queued"),
+      QUEUED("queued"),
 
-      AwaitingShipment("awaiting_shipment"),
+      AWAITING_SHIPMENT("awaiting_shipment"),
 
-      OnHold("on_hold"),
+      ON_HOLD("on_hold"),
 
-      Delivered("delivered"),
+      DELIVERED("delivered"),
 
-      Shipped("shipped"),
+      SHIPPED("shipped"),
 
-      PartiallyDelivered("partially_delivered"),
+      PARTIALLY_DELIVERED("partially_delivered"),
 
-      Returned("returned"),
+      RETURNED("returned"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -791,19 +791,19 @@ public class Order {
     }
 
     public enum EntityType {
-      Adhoc("adhoc"),
+      ADHOC("adhoc"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      PlanSetup("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -949,13 +949,13 @@ public class Order {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1090,13 +1090,13 @@ public class Order {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1236,21 +1236,21 @@ public class Order {
     }
 
     public enum TaxJurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1342,19 +1342,19 @@ public class Order {
     }
 
     public enum DiscountType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      CustomDiscount("custom_discount"),
+      CUSTOM_DISCOUNT("custom_discount"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1430,11 +1430,11 @@ public class Order {
     }
 
     public enum Type {
-      Adjustment("adjustment"),
+      ADJUSTMENT("adjustment"),
 
-      Refundable("refundable"),
+      REFUNDABLE("refundable"),
 
-      Store("store"),
+      STORE("store"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1460,13 +1460,13 @@ public class Order {
     }
 
     public enum Status {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

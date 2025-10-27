@@ -38,11 +38,11 @@ public class CouponCode {
   }
 
   public enum Status {
-    NotRedeemed("not_redeemed"),
+    NOT_REDEEMED("not_redeemed"),
 
-    Redeemed("redeemed"),
+    REDEEMED("redeemed"),
 
-    Archived("archived"),
+    ARCHIVED("archived"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

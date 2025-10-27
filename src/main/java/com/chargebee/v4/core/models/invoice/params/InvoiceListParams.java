@@ -778,9 +778,9 @@ public final class InvoiceListParams {
     }
 
     public enum SubscriptionIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
@@ -809,9 +809,9 @@ public final class InvoiceListParams {
     }
 
     public enum RecurringIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that RecurringIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -837,17 +837,17 @@ public final class InvoiceListParams {
     }
 
     public enum StatusIs {
-      Paid("paid"),
+      PAID("paid"),
 
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Pending("pending"),
+      PENDING("pending"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -873,17 +873,17 @@ public final class InvoiceListParams {
     }
 
     public enum StatusIsNot {
-      Paid("paid"),
+      PAID("paid"),
 
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Pending("pending"),
+      PENDING("pending"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -909,9 +909,9 @@ public final class InvoiceListParams {
     }
 
     public enum PriceTypeIs {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -937,9 +937,9 @@ public final class InvoiceListParams {
     }
 
     public enum PriceTypeIsNot {
-      TaxExclusive("tax_exclusive"),
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-      TaxInclusive("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
       /** An enum member indicating that PriceTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -965,13 +965,13 @@ public final class InvoiceListParams {
     }
 
     public enum DunningStatusIs {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Exhausted("exhausted"),
+      EXHAUSTED("exhausted"),
 
-      Stopped("stopped"),
+      STOPPED("stopped"),
 
-      Success("success"),
+      SUCCESS("success"),
 
       /** An enum member indicating that DunningStatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -997,13 +997,13 @@ public final class InvoiceListParams {
     }
 
     public enum DunningStatusIsNot {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Exhausted("exhausted"),
+      EXHAUSTED("exhausted"),
 
-      Stopped("stopped"),
+      STOPPED("stopped"),
 
-      Success("success"),
+      SUCCESS("success"),
 
       /**
        * An enum member indicating that DunningStatusIsNot was instantiated with an unknown value.
@@ -1031,9 +1031,9 @@ public final class InvoiceListParams {
     }
 
     public enum DunningStatusIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that DunningStatusIsPresent was instantiated with an unknown
@@ -1062,11 +1062,11 @@ public final class InvoiceListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1092,11 +1092,11 @@ public final class InvoiceListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1122,9 +1122,9 @@ public final class InvoiceListParams {
     }
 
     public enum SortByAsc {
-      Date("date"),
+      DATE("date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1150,9 +1150,9 @@ public final class InvoiceListParams {
     }
 
     public enum SortByDesc {
-      Date("date"),
+      DATE("date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

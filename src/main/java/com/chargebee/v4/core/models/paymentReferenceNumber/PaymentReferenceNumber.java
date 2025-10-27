@@ -33,15 +33,15 @@ public class PaymentReferenceNumber {
   }
 
   public enum Type {
-    Kid("kid"),
+    KID("kid"),
 
-    Ocr("ocr"),
+    OCR("ocr"),
 
-    Frn("frn"),
+    FRN("frn"),
 
-    Fik("fik"),
+    FIK("fik"),
 
-    SwissReference("swiss_reference"),
+    SWISS_REFERENCE("swiss_reference"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);

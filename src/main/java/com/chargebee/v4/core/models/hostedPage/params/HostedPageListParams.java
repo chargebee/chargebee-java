@@ -202,27 +202,27 @@ public final class HostedPageListParams {
     }
 
     public enum TypeIs {
-      CheckoutNew("checkout_new"),
+      CHECKOUT_NEW("checkout_new"),
 
-      CheckoutExisting("checkout_existing"),
+      CHECKOUT_EXISTING("checkout_existing"),
 
-      UpdateCard("update_card"),
+      UPDATE_CARD("update_card"),
 
-      UpdatePaymentMethod("update_payment_method"),
+      UPDATE_PAYMENT_METHOD("update_payment_method"),
 
-      ManagePaymentSources("manage_payment_sources"),
+      MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
 
-      CollectNow("collect_now"),
+      COLLECT_NOW("collect_now"),
 
-      ExtendSubscription("extend_subscription"),
+      EXTEND_SUBSCRIPTION("extend_subscription"),
 
-      CheckoutOneTime("checkout_one_time"),
+      CHECKOUT_ONE_TIME("checkout_one_time"),
 
-      PreCancel("pre_cancel"),
+      PRE_CANCEL("pre_cancel"),
 
-      ViewVoucher("view_voucher"),
+      VIEW_VOUCHER("view_voucher"),
 
-      AcceptQuote("accept_quote"),
+      ACCEPT_QUOTE("accept_quote"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -248,27 +248,27 @@ public final class HostedPageListParams {
     }
 
     public enum TypeIsNot {
-      CheckoutNew("checkout_new"),
+      CHECKOUT_NEW("checkout_new"),
 
-      CheckoutExisting("checkout_existing"),
+      CHECKOUT_EXISTING("checkout_existing"),
 
-      UpdateCard("update_card"),
+      UPDATE_CARD("update_card"),
 
-      UpdatePaymentMethod("update_payment_method"),
+      UPDATE_PAYMENT_METHOD("update_payment_method"),
 
-      ManagePaymentSources("manage_payment_sources"),
+      MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
 
-      CollectNow("collect_now"),
+      COLLECT_NOW("collect_now"),
 
-      ExtendSubscription("extend_subscription"),
+      EXTEND_SUBSCRIPTION("extend_subscription"),
 
-      CheckoutOneTime("checkout_one_time"),
+      CHECKOUT_ONE_TIME("checkout_one_time"),
 
-      PreCancel("pre_cancel"),
+      PRE_CANCEL("pre_cancel"),
 
-      ViewVoucher("view_voucher"),
+      VIEW_VOUCHER("view_voucher"),
 
-      AcceptQuote("accept_quote"),
+      ACCEPT_QUOTE("accept_quote"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -294,17 +294,17 @@ public final class HostedPageListParams {
     }
 
     public enum StateIs {
-      Created("created"),
+      CREATED("created"),
 
-      Requested("requested"),
+      REQUESTED("requested"),
 
-      Succeeded("succeeded"),
+      SUCCEEDED("succeeded"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Acknowledged("acknowledged"),
+      ACKNOWLEDGED("acknowledged"),
 
       /** An enum member indicating that StateIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -330,17 +330,17 @@ public final class HostedPageListParams {
     }
 
     public enum StateIsNot {
-      Created("created"),
+      CREATED("created"),
 
-      Requested("requested"),
+      REQUESTED("requested"),
 
-      Succeeded("succeeded"),
+      SUCCEEDED("succeeded"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Acknowledged("acknowledged"),
+      ACKNOWLEDGED("acknowledged"),
 
       /** An enum member indicating that StateIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

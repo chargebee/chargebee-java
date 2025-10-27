@@ -120,9 +120,9 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum BillingAlignmentMode {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      Delayed("delayed"),
+      DELAYED("delayed"),
 
       /**
        * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
@@ -150,31 +150,31 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum SubscriptionOfflinePaymentMethod {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that SubscriptionOfflinePaymentMethod was instantiated with an
@@ -204,13 +204,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum SubscriptionFreePeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /**
        * An enum member indicating that SubscriptionFreePeriodUnit was instantiated with an unknown
@@ -239,13 +239,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum SubscriptionTrialEndAction {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PlanDefault("plan_default"),
+      PLAN_DEFAULT("plan_default"),
 
-      ActivateSubscription("activate_subscription"),
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-      CancelSubscription("cancel_subscription"),
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
 
       /**
        * An enum member indicating that SubscriptionTrialEndAction was instantiated with an unknown
@@ -274,13 +274,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum ShippingAddressValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /**
        * An enum member indicating that ShippingAddressValidationStatus was instantiated with an
@@ -309,11 +309,11 @@ public final class EstimateCreateSubForCustomerEstimateParams {
     }
 
     public enum ContractTermActionAtTermEnd {
-      Renew("renew"),
+      RENEW("renew"),
 
-      Evergreen("evergreen"),
+      EVERGREEN("evergreen"),
 
-      Cancel("cancel"),
+      CANCEL("cancel"),
 
       /**
        * An enum member indicating that ContractTermActionAtTermEnd was instantiated with an unknown
@@ -447,31 +447,31 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       }
 
       public enum OfflinePaymentMethod {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /**
          * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown
@@ -500,13 +500,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       }
 
       public enum FreePeriodUnit {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -532,13 +532,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       }
 
       public enum TrialEndAction {
-        SiteDefault("site_default"),
+        SITE_DEFAULT("site_default"),
 
-        PlanDefault("plan_default"),
+        PLAN_DEFAULT("plan_default"),
 
-        ActivateSubscription("activate_subscription"),
+        ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-        CancelSubscription("cancel_subscription"),
+        CANCEL_SUBSCRIPTION("cancel_subscription"),
 
         /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -640,13 +640,13 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -720,11 +720,11 @@ public final class EstimateCreateSubForCustomerEstimateParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.

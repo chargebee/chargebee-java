@@ -259,9 +259,9 @@ public final class ItemUpdateParams {
     }
 
     public enum ItemApplicability {
-      All("all"),
+      ALL("all"),
 
-      Restricted("restricted"),
+      RESTRICTED("restricted"),
 
       /**
        * An enum member indicating that ItemApplicability was instantiated with an unknown value.
@@ -289,9 +289,9 @@ public final class ItemUpdateParams {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -353,7 +353,7 @@ public final class ItemUpdateParams {
       }
 
       public enum Type {
-        Fixed("fixed"),
+        FIXED("fixed"),
 
         /** An enum member indicating that Type was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -437,11 +437,11 @@ public final class ItemUpdateParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -525,11 +525,11 @@ public final class ItemUpdateParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -599,11 +599,11 @@ public final class ItemUpdateParams {
       }
 
       public enum ItemType {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that ItemType was instantiated with an unknown value. */
         _UNKNOWN(null);

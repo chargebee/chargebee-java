@@ -76,9 +76,9 @@ public final class InvoiceCollectPaymentParams {
     }
 
     public enum PaymentInitiator {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Merchant("merchant"),
+      MERCHANT("merchant"),
 
       /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
       _UNKNOWN(null);

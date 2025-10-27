@@ -424,11 +424,11 @@ public final class CouponListParams {
     }
 
     public enum DiscountTypeIs {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
-      OfferQuantity("offer_quantity"),
+      OFFER_QUANTITY("offer_quantity"),
 
       /** An enum member indicating that DiscountTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -454,11 +454,11 @@ public final class CouponListParams {
     }
 
     public enum DiscountTypeIsNot {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
-      OfferQuantity("offer_quantity"),
+      OFFER_QUANTITY("offer_quantity"),
 
       /**
        * An enum member indicating that DiscountTypeIsNot was instantiated with an unknown value.
@@ -486,11 +486,11 @@ public final class CouponListParams {
     }
 
     public enum DurationTypeIs {
-      OneTime("one_time"),
+      ONE_TIME("one_time"),
 
-      Forever("forever"),
+      FOREVER("forever"),
 
-      LimitedPeriod("limited_period"),
+      LIMITED_PERIOD("limited_period"),
 
       /** An enum member indicating that DurationTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -516,11 +516,11 @@ public final class CouponListParams {
     }
 
     public enum DurationTypeIsNot {
-      OneTime("one_time"),
+      ONE_TIME("one_time"),
 
-      Forever("forever"),
+      FOREVER("forever"),
 
-      LimitedPeriod("limited_period"),
+      LIMITED_PERIOD("limited_period"),
 
       /**
        * An enum member indicating that DurationTypeIsNot was instantiated with an unknown value.
@@ -548,15 +548,15 @@ public final class CouponListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
-      Future("future"),
+      FUTURE("future"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -582,15 +582,15 @@ public final class CouponListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
-      Future("future"),
+      FUTURE("future"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -616,13 +616,13 @@ public final class CouponListParams {
     }
 
     public enum ApplyOnIs {
-      InvoiceAmount("invoice_amount"),
+      INVOICE_AMOUNT("invoice_amount"),
 
-      SpecifiedItemsTotal("specified_items_total"),
+      SPECIFIED_ITEMS_TOTAL("specified_items_total"),
 
-      EachSpecifiedItem("each_specified_item"),
+      EACH_SPECIFIED_ITEM("each_specified_item"),
 
-      EachUnitOfSpecifiedItems("each_unit_of_specified_items"),
+      EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
 
       /** An enum member indicating that ApplyOnIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -648,13 +648,13 @@ public final class CouponListParams {
     }
 
     public enum ApplyOnIsNot {
-      InvoiceAmount("invoice_amount"),
+      INVOICE_AMOUNT("invoice_amount"),
 
-      SpecifiedItemsTotal("specified_items_total"),
+      SPECIFIED_ITEMS_TOTAL("specified_items_total"),
 
-      EachSpecifiedItem("each_specified_item"),
+      EACH_SPECIFIED_ITEM("each_specified_item"),
 
-      EachUnitOfSpecifiedItems("each_unit_of_specified_items"),
+      EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
 
       /** An enum member indicating that ApplyOnIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -680,7 +680,7 @@ public final class CouponListParams {
     }
 
     public enum SortByAsc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -706,7 +706,7 @@ public final class CouponListParams {
     }
 
     public enum SortByDesc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

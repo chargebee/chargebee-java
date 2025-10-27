@@ -48,15 +48,15 @@ public class ItemEntitlement {
   }
 
   public enum ItemType {
-    Plan("plan"),
+    PLAN("plan"),
 
-    Addon("addon"),
+    ADDON("addon"),
 
-    Charge("charge"),
+    CHARGE("charge"),
 
-    Subscription("subscription"),
+    SUBSCRIPTION("subscription"),
 
-    Item("item"),
+    ITEM("item"),
 
     /** An enum member indicating that ItemType was instantiated with an unknown value. */
     _UNKNOWN(null);

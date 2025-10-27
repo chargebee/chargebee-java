@@ -92,13 +92,13 @@ public final class RampListParams {
         this.builder = builder;
       }
 
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public RampListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public RampListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
@@ -112,13 +112,13 @@ public final class RampListParams {
         this.builder = builder;
       }
 
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public RampListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public RampListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
@@ -228,13 +228,13 @@ public final class RampListParams {
     }
 
     public enum StatusIs {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Succeeded("succeeded"),
+      SUCCEEDED("succeeded"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Draft("draft"),
+      DRAFT("draft"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -260,9 +260,9 @@ public final class RampListParams {
     }
 
     public enum SortByAsc {
-      EffectiveFrom("effective_from"),
+      EFFECTIVE_FROM("effective_from"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -288,9 +288,9 @@ public final class RampListParams {
     }
 
     public enum SortByDesc {
-      EffectiveFrom("effective_from"),
+      EFFECTIVE_FROM("effective_from"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

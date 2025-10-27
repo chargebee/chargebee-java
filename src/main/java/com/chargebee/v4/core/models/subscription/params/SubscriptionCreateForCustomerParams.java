@@ -386,9 +386,9 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -414,9 +414,9 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum BillingAlignmentMode {
-      Immediate("immediate"),
+      IMMEDIATE("immediate"),
 
-      Delayed("delayed"),
+      DELAYED("delayed"),
 
       /**
        * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
@@ -444,31 +444,31 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum OfflinePaymentMethod {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
@@ -496,13 +496,13 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum FreePeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -528,13 +528,13 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum TrialEndAction {
-      SiteDefault("site_default"),
+      SITE_DEFAULT("site_default"),
 
-      PlanDefault("plan_default"),
+      PLAN_DEFAULT("plan_default"),
 
-      ActivateSubscription("activate_subscription"),
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-      CancelSubscription("cancel_subscription"),
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
 
       /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -560,9 +560,9 @@ public final class SubscriptionCreateForCustomerParams {
     }
 
     public enum PaymentInitiator {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Merchant("merchant"),
+      MERCHANT("merchant"),
 
       /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -715,13 +715,13 @@ public final class SubscriptionCreateForCustomerParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -866,47 +866,47 @@ public final class SubscriptionCreateForCustomerParams {
       }
 
       public enum PaymentMethodType {
-        Card("card"),
+        CARD("card"),
 
-        Ideal("ideal"),
+        IDEAL("ideal"),
 
-        Sofort("sofort"),
+        SOFORT("sofort"),
 
-        Bancontact("bancontact"),
+        BANCONTACT("bancontact"),
 
-        GooglePay("google_pay"),
+        GOOGLE_PAY("google_pay"),
 
-        Dotpay("dotpay"),
+        DOTPAY("dotpay"),
 
-        Giropay("giropay"),
+        GIROPAY("giropay"),
 
-        ApplePay("apple_pay"),
+        APPLE_PAY("apple_pay"),
 
-        Upi("upi"),
+        UPI("upi"),
 
-        NetbankingEmandates("netbanking_emandates"),
+        NETBANKING_EMANDATES("netbanking_emandates"),
 
-        PaypalExpressCheckout("paypal_express_checkout"),
+        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        DirectDebit("direct_debit"),
+        DIRECT_DEBIT("direct_debit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        Venmo("venmo"),
+        VENMO("venmo"),
 
-        AmazonPayments("amazon_payments"),
+        AMAZON_PAYMENTS("amazon_payments"),
 
-        PayTo("pay_to"),
+        PAY_TO("pay_to"),
 
-        FasterPayments("faster_payments"),
+        FASTER_PAYMENTS("faster_payments"),
 
-        SepaInstantTransfer("sepa_instant_transfer"),
+        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        KlarnaPayNow("klarna_pay_now"),
+        KLARNA_PAY_NOW("klarna_pay_now"),
 
-        OnlineBankingPoland("online_banking_poland"),
+        ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PayconiqByBancontact("payconiq_by_bancontact"),
+        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
         /**
          * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -978,11 +978,11 @@ public final class SubscriptionCreateForCustomerParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -1182,15 +1182,15 @@ public final class SubscriptionCreateForCustomerParams {
       }
 
       public enum OnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that OnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1216,9 +1216,9 @@ public final class SubscriptionCreateForCustomerParams {
       }
 
       public enum ChargeOn {
-        Immediately("immediately"),
+        IMMEDIATELY("immediately"),
 
-        OnEvent("on_event"),
+        ON_EVENT("on_event"),
 
         /** An enum member indicating that ChargeOn was instantiated with an unknown value. */
         _UNKNOWN(null);

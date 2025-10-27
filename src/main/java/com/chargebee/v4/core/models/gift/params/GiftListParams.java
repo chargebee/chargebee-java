@@ -102,15 +102,15 @@ public final class GiftListParams {
     }
 
     public enum StatusIs {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Unclaimed("unclaimed"),
+      UNCLAIMED("unclaimed"),
 
-      Claimed("claimed"),
+      CLAIMED("claimed"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -136,15 +136,15 @@ public final class GiftListParams {
     }
 
     public enum StatusIsNot {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Unclaimed("unclaimed"),
+      UNCLAIMED("unclaimed"),
 
-      Claimed("claimed"),
+      CLAIMED("claimed"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

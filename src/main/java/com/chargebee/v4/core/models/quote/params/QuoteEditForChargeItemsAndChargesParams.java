@@ -316,13 +316,13 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -478,13 +478,13 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -677,11 +677,11 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       }
 
       public enum PricingType {
-        PerUnit("per_unit"),
+        PER_UNIT("per_unit"),
 
-        FlatFee("flat_fee"),
+        FLAT_FEE("flat_fee"),
 
-        Package("package"),
+        PACKAGE("package"),
 
         /** An enum member indicating that PricingType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -786,13 +786,13 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       }
 
       public enum AvalaraSaleType {
-        Wholesale("wholesale"),
+        WHOLESALE("wholesale"),
 
-        Retail("retail"),
+        RETAIL("retail"),
 
-        Consumed("consumed"),
+        CONSUMED("consumed"),
 
-        VendorUse("vendor_use"),
+        VENDOR_USE("vendor_use"),
 
         /**
          * An enum member indicating that AvalaraSaleType was instantiated with an unknown value.
@@ -885,9 +885,9 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       }
 
       public enum ApplyOn {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecificItemPrice("specific_item_price"),
+        SPECIFIC_ITEM_PRICE("specific_item_price"),
 
         /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
         _UNKNOWN(null);

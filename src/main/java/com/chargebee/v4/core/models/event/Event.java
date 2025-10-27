@@ -72,27 +72,27 @@ public class Event {
   }
 
   public enum Source {
-    AdminConsole("admin_console"),
+    ADMIN_CONSOLE("admin_console"),
 
-    Api("api"),
+    API("api"),
 
-    ScheduledJob("scheduled_job"),
+    SCHEDULED_JOB("scheduled_job"),
 
-    HostedPage("hosted_page"),
+    HOSTED_PAGE("hosted_page"),
 
-    Portal("portal"),
+    PORTAL("portal"),
 
-    System("system"),
+    SYSTEM("system"),
 
-    None("none"),
+    NONE("none"),
 
-    JsApi("js_api"),
+    JS_API("js_api"),
 
-    Migration("migration"),
+    MIGRATION("migration"),
 
-    BulkOperation("bulk_operation"),
+    BULK_OPERATION("bulk_operation"),
 
-    ExternalService("external_service"),
+    EXTERNAL_SERVICE("external_service"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -118,21 +118,21 @@ public class Event {
   }
 
   public enum WebhookStatus {
-    NotConfigured("not_configured"),
+    NOT_CONFIGURED("not_configured"),
 
-    Scheduled("scheduled"),
+    SCHEDULED("scheduled"),
 
-    Succeeded("succeeded"),
+    SUCCEEDED("succeeded"),
 
-    ReScheduled("re_scheduled"),
+    RE_SCHEDULED("re_scheduled"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
-    Skipped("skipped"),
+    SKIPPED("skipped"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
-    Disabled("disabled"),
+    DISABLED("disabled"),
 
     /** An enum member indicating that WebhookStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -158,458 +158,459 @@ public class Event {
   }
 
   public enum EventType {
-    CouponCreated("coupon_created"),
+    COUPON_CREATED("coupon_created"),
 
-    CouponUpdated("coupon_updated"),
+    COUPON_UPDATED("coupon_updated"),
 
-    CouponDeleted("coupon_deleted"),
+    COUPON_DELETED("coupon_deleted"),
 
-    CouponSetCreated("coupon_set_created"),
+    COUPON_SET_CREATED("coupon_set_created"),
 
-    CouponSetUpdated("coupon_set_updated"),
+    COUPON_SET_UPDATED("coupon_set_updated"),
 
-    CouponSetDeleted("coupon_set_deleted"),
+    COUPON_SET_DELETED("coupon_set_deleted"),
 
-    CouponCodesAdded("coupon_codes_added"),
+    COUPON_CODES_ADDED("coupon_codes_added"),
 
-    CouponCodesDeleted("coupon_codes_deleted"),
+    COUPON_CODES_DELETED("coupon_codes_deleted"),
 
-    CouponCodesUpdated("coupon_codes_updated"),
+    COUPON_CODES_UPDATED("coupon_codes_updated"),
 
-    CustomerCreated("customer_created"),
+    CUSTOMER_CREATED("customer_created"),
 
-    CustomerChanged("customer_changed"),
+    CUSTOMER_CHANGED("customer_changed"),
 
-    CustomerDeleted("customer_deleted"),
+    CUSTOMER_DELETED("customer_deleted"),
 
-    CustomerMovedOut("customer_moved_out"),
+    CUSTOMER_MOVED_OUT("customer_moved_out"),
 
-    CustomerMovedIn("customer_moved_in"),
+    CUSTOMER_MOVED_IN("customer_moved_in"),
 
-    PromotionalCreditsAdded("promotional_credits_added"),
+    PROMOTIONAL_CREDITS_ADDED("promotional_credits_added"),
 
-    PromotionalCreditsDeducted("promotional_credits_deducted"),
+    PROMOTIONAL_CREDITS_DEDUCTED("promotional_credits_deducted"),
 
-    SubscriptionCreated("subscription_created"),
+    SUBSCRIPTION_CREATED("subscription_created"),
 
-    SubscriptionCreatedWithBackdating("subscription_created_with_backdating"),
+    SUBSCRIPTION_CREATED_WITH_BACKDATING("subscription_created_with_backdating"),
 
-    SubscriptionStarted("subscription_started"),
+    SUBSCRIPTION_STARTED("subscription_started"),
 
-    SubscriptionTrialEndReminder("subscription_trial_end_reminder"),
+    SUBSCRIPTION_TRIAL_END_REMINDER("subscription_trial_end_reminder"),
 
-    SubscriptionActivated("subscription_activated"),
+    SUBSCRIPTION_ACTIVATED("subscription_activated"),
 
-    SubscriptionActivatedWithBackdating("subscription_activated_with_backdating"),
+    SUBSCRIPTION_ACTIVATED_WITH_BACKDATING("subscription_activated_with_backdating"),
 
-    SubscriptionChanged("subscription_changed"),
+    SUBSCRIPTION_CHANGED("subscription_changed"),
 
-    SubscriptionTrialExtended("subscription_trial_extended"),
+    SUBSCRIPTION_TRIAL_EXTENDED("subscription_trial_extended"),
 
-    MrrUpdated("mrr_updated"),
+    MRR_UPDATED("mrr_updated"),
 
-    SubscriptionChangedWithBackdating("subscription_changed_with_backdating"),
+    SUBSCRIPTION_CHANGED_WITH_BACKDATING("subscription_changed_with_backdating"),
 
-    SubscriptionCancellationScheduled("subscription_cancellation_scheduled"),
+    SUBSCRIPTION_CANCELLATION_SCHEDULED("subscription_cancellation_scheduled"),
 
-    SubscriptionCancellationReminder("subscription_cancellation_reminder"),
+    SUBSCRIPTION_CANCELLATION_REMINDER("subscription_cancellation_reminder"),
 
-    SubscriptionCancelled("subscription_cancelled"),
+    SUBSCRIPTION_CANCELLED("subscription_cancelled"),
 
-    SubscriptionCanceledWithBackdating("subscription_canceled_with_backdating"),
+    SUBSCRIPTION_CANCELED_WITH_BACKDATING("subscription_canceled_with_backdating"),
 
-    SubscriptionReactivated("subscription_reactivated"),
+    SUBSCRIPTION_REACTIVATED("subscription_reactivated"),
 
-    SubscriptionReactivatedWithBackdating("subscription_reactivated_with_backdating"),
+    SUBSCRIPTION_REACTIVATED_WITH_BACKDATING("subscription_reactivated_with_backdating"),
 
-    SubscriptionRenewed("subscription_renewed"),
+    SUBSCRIPTION_RENEWED("subscription_renewed"),
 
-    SubscriptionItemsRenewed("subscription_items_renewed"),
+    SUBSCRIPTION_ITEMS_RENEWED("subscription_items_renewed"),
 
-    SubscriptionScheduledCancellationRemoved("subscription_scheduled_cancellation_removed"),
+    SUBSCRIPTION_SCHEDULED_CANCELLATION_REMOVED("subscription_scheduled_cancellation_removed"),
 
-    SubscriptionChangesScheduled("subscription_changes_scheduled"),
+    SUBSCRIPTION_CHANGES_SCHEDULED("subscription_changes_scheduled"),
 
-    SubscriptionScheduledChangesRemoved("subscription_scheduled_changes_removed"),
+    SUBSCRIPTION_SCHEDULED_CHANGES_REMOVED("subscription_scheduled_changes_removed"),
 
-    SubscriptionShippingAddressUpdated("subscription_shipping_address_updated"),
+    SUBSCRIPTION_SHIPPING_ADDRESS_UPDATED("subscription_shipping_address_updated"),
 
-    SubscriptionDeleted("subscription_deleted"),
+    SUBSCRIPTION_DELETED("subscription_deleted"),
 
-    SubscriptionPaused("subscription_paused"),
+    SUBSCRIPTION_PAUSED("subscription_paused"),
 
-    SubscriptionPauseScheduled("subscription_pause_scheduled"),
+    SUBSCRIPTION_PAUSE_SCHEDULED("subscription_pause_scheduled"),
 
-    SubscriptionScheduledPauseRemoved("subscription_scheduled_pause_removed"),
+    SUBSCRIPTION_SCHEDULED_PAUSE_REMOVED("subscription_scheduled_pause_removed"),
 
-    SubscriptionResumed("subscription_resumed"),
+    SUBSCRIPTION_RESUMED("subscription_resumed"),
 
-    SubscriptionResumptionScheduled("subscription_resumption_scheduled"),
+    SUBSCRIPTION_RESUMPTION_SCHEDULED("subscription_resumption_scheduled"),
 
-    SubscriptionScheduledResumptionRemoved("subscription_scheduled_resumption_removed"),
+    SUBSCRIPTION_SCHEDULED_RESUMPTION_REMOVED("subscription_scheduled_resumption_removed"),
 
-    SubscriptionAdvanceInvoiceScheduleAdded("subscription_advance_invoice_schedule_added"),
+    SUBSCRIPTION_ADVANCE_INVOICE_SCHEDULE_ADDED("subscription_advance_invoice_schedule_added"),
 
-    SubscriptionAdvanceInvoiceScheduleUpdated("subscription_advance_invoice_schedule_updated"),
+    SUBSCRIPTION_ADVANCE_INVOICE_SCHEDULE_UPDATED("subscription_advance_invoice_schedule_updated"),
 
-    SubscriptionAdvanceInvoiceScheduleRemoved("subscription_advance_invoice_schedule_removed"),
+    SUBSCRIPTION_ADVANCE_INVOICE_SCHEDULE_REMOVED("subscription_advance_invoice_schedule_removed"),
 
-    PendingInvoiceCreated("pending_invoice_created"),
+    PENDING_INVOICE_CREATED("pending_invoice_created"),
 
-    PendingInvoiceUpdated("pending_invoice_updated"),
+    PENDING_INVOICE_UPDATED("pending_invoice_updated"),
 
-    InvoiceGenerated("invoice_generated"),
+    INVOICE_GENERATED("invoice_generated"),
 
-    InvoiceGeneratedWithBackdating("invoice_generated_with_backdating"),
+    INVOICE_GENERATED_WITH_BACKDATING("invoice_generated_with_backdating"),
 
-    InvoiceUpdated("invoice_updated"),
+    INVOICE_UPDATED("invoice_updated"),
 
-    InvoiceDeleted("invoice_deleted"),
+    INVOICE_DELETED("invoice_deleted"),
 
-    CreditNoteCreated("credit_note_created"),
+    CREDIT_NOTE_CREATED("credit_note_created"),
 
-    CreditNoteCreatedWithBackdating("credit_note_created_with_backdating"),
+    CREDIT_NOTE_CREATED_WITH_BACKDATING("credit_note_created_with_backdating"),
 
-    CreditNoteUpdated("credit_note_updated"),
+    CREDIT_NOTE_UPDATED("credit_note_updated"),
 
-    CreditNoteDeleted("credit_note_deleted"),
+    CREDIT_NOTE_DELETED("credit_note_deleted"),
 
-    PaymentSchedulesCreated("payment_schedules_created"),
+    PAYMENT_SCHEDULES_CREATED("payment_schedules_created"),
 
-    PaymentSchedulesUpdated("payment_schedules_updated"),
+    PAYMENT_SCHEDULES_UPDATED("payment_schedules_updated"),
 
-    PaymentScheduleSchemeCreated("payment_schedule_scheme_created"),
+    PAYMENT_SCHEDULE_SCHEME_CREATED("payment_schedule_scheme_created"),
 
-    PaymentScheduleSchemeDeleted("payment_schedule_scheme_deleted"),
+    PAYMENT_SCHEDULE_SCHEME_DELETED("payment_schedule_scheme_deleted"),
 
-    SubscriptionRenewalReminder("subscription_renewal_reminder"),
+    SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
-    AddUsagesReminder("add_usages_reminder"),
+    ADD_USAGES_REMINDER("add_usages_reminder"),
 
-    TransactionCreated("transaction_created"),
+    TRANSACTION_CREATED("transaction_created"),
 
-    TransactionUpdated("transaction_updated"),
+    TRANSACTION_UPDATED("transaction_updated"),
 
-    TransactionDeleted("transaction_deleted"),
+    TRANSACTION_DELETED("transaction_deleted"),
 
-    PaymentSucceeded("payment_succeeded"),
+    PAYMENT_SUCCEEDED("payment_succeeded"),
 
-    PaymentFailed("payment_failed"),
+    PAYMENT_FAILED("payment_failed"),
 
-    DunningUpdated("dunning_updated"),
+    DUNNING_UPDATED("dunning_updated"),
 
-    PaymentRefunded("payment_refunded"),
+    PAYMENT_REFUNDED("payment_refunded"),
 
-    PaymentInitiated("payment_initiated"),
+    PAYMENT_INITIATED("payment_initiated"),
 
-    RefundInitiated("refund_initiated"),
+    REFUND_INITIATED("refund_initiated"),
 
-    NetdPaymentDueReminder("netd_payment_due_reminder"),
+    NETD_PAYMENT_DUE_REMINDER("netd_payment_due_reminder"),
 
-    AuthorizationSucceeded("authorization_succeeded"),
+    AUTHORIZATION_SUCCEEDED("authorization_succeeded"),
 
-    AuthorizationVoided("authorization_voided"),
+    AUTHORIZATION_VOIDED("authorization_voided"),
 
-    CardAdded("card_added"),
+    CARD_ADDED("card_added"),
 
-    CardUpdated("card_updated"),
+    CARD_UPDATED("card_updated"),
 
-    CardExpiryReminder("card_expiry_reminder"),
+    CARD_EXPIRY_REMINDER("card_expiry_reminder"),
 
-    CardExpired("card_expired"),
+    CARD_EXPIRED("card_expired"),
 
-    CardDeleted("card_deleted"),
+    CARD_DELETED("card_deleted"),
 
-    PaymentSourceAdded("payment_source_added"),
+    PAYMENT_SOURCE_ADDED("payment_source_added"),
 
-    PaymentSourceUpdated("payment_source_updated"),
+    PAYMENT_SOURCE_UPDATED("payment_source_updated"),
 
-    PaymentSourceDeleted("payment_source_deleted"),
+    PAYMENT_SOURCE_DELETED("payment_source_deleted"),
 
-    PaymentSourceExpiring("payment_source_expiring"),
+    PAYMENT_SOURCE_EXPIRING("payment_source_expiring"),
 
-    PaymentSourceExpired("payment_source_expired"),
+    PAYMENT_SOURCE_EXPIRED("payment_source_expired"),
 
-    PaymentSourceLocallyDeleted("payment_source_locally_deleted"),
+    PAYMENT_SOURCE_LOCALLY_DELETED("payment_source_locally_deleted"),
 
-    VirtualBankAccountAdded("virtual_bank_account_added"),
+    VIRTUAL_BANK_ACCOUNT_ADDED("virtual_bank_account_added"),
 
-    VirtualBankAccountUpdated("virtual_bank_account_updated"),
+    VIRTUAL_BANK_ACCOUNT_UPDATED("virtual_bank_account_updated"),
 
-    VirtualBankAccountDeleted("virtual_bank_account_deleted"),
+    VIRTUAL_BANK_ACCOUNT_DELETED("virtual_bank_account_deleted"),
 
-    TokenCreated("token_created"),
+    TOKEN_CREATED("token_created"),
 
-    TokenConsumed("token_consumed"),
+    TOKEN_CONSUMED("token_consumed"),
 
-    TokenExpired("token_expired"),
+    TOKEN_EXPIRED("token_expired"),
 
-    UnbilledChargesCreated("unbilled_charges_created"),
+    UNBILLED_CHARGES_CREATED("unbilled_charges_created"),
 
-    UnbilledChargesVoided("unbilled_charges_voided"),
+    UNBILLED_CHARGES_VOIDED("unbilled_charges_voided"),
 
-    UnbilledChargesDeleted("unbilled_charges_deleted"),
+    UNBILLED_CHARGES_DELETED("unbilled_charges_deleted"),
 
-    UnbilledChargesInvoiced("unbilled_charges_invoiced"),
+    UNBILLED_CHARGES_INVOICED("unbilled_charges_invoiced"),
 
-    OrderCreated("order_created"),
+    ORDER_CREATED("order_created"),
 
-    OrderUpdated("order_updated"),
+    ORDER_UPDATED("order_updated"),
 
-    OrderCancelled("order_cancelled"),
+    ORDER_CANCELLED("order_cancelled"),
 
-    OrderDelivered("order_delivered"),
+    ORDER_DELIVERED("order_delivered"),
 
-    OrderReturned("order_returned"),
+    ORDER_RETURNED("order_returned"),
 
-    OrderReadyToProcess("order_ready_to_process"),
+    ORDER_READY_TO_PROCESS("order_ready_to_process"),
 
-    OrderReadyToShip("order_ready_to_ship"),
+    ORDER_READY_TO_SHIP("order_ready_to_ship"),
 
-    OrderDeleted("order_deleted"),
+    ORDER_DELETED("order_deleted"),
 
-    OrderResent("order_resent"),
+    ORDER_RESENT("order_resent"),
 
-    QuoteCreated("quote_created"),
+    QUOTE_CREATED("quote_created"),
 
-    QuoteUpdated("quote_updated"),
+    QUOTE_UPDATED("quote_updated"),
 
-    QuoteDeleted("quote_deleted"),
+    QUOTE_DELETED("quote_deleted"),
 
-    TaxWithheldRecorded("tax_withheld_recorded"),
+    TAX_WITHHELD_RECORDED("tax_withheld_recorded"),
 
-    TaxWithheldDeleted("tax_withheld_deleted"),
+    TAX_WITHHELD_DELETED("tax_withheld_deleted"),
 
-    TaxWithheldRefunded("tax_withheld_refunded"),
+    TAX_WITHHELD_REFUNDED("tax_withheld_refunded"),
 
-    GiftScheduled("gift_scheduled"),
+    GIFT_SCHEDULED("gift_scheduled"),
 
-    GiftUnclaimed("gift_unclaimed"),
+    GIFT_UNCLAIMED("gift_unclaimed"),
 
-    GiftClaimed("gift_claimed"),
+    GIFT_CLAIMED("gift_claimed"),
 
-    GiftExpired("gift_expired"),
+    GIFT_EXPIRED("gift_expired"),
 
-    GiftCancelled("gift_cancelled"),
+    GIFT_CANCELLED("gift_cancelled"),
 
-    GiftUpdated("gift_updated"),
+    GIFT_UPDATED("gift_updated"),
 
-    HierarchyCreated("hierarchy_created"),
+    HIERARCHY_CREATED("hierarchy_created"),
 
-    HierarchyDeleted("hierarchy_deleted"),
+    HIERARCHY_DELETED("hierarchy_deleted"),
 
-    PaymentIntentCreated("payment_intent_created"),
+    PAYMENT_INTENT_CREATED("payment_intent_created"),
 
-    PaymentIntentUpdated("payment_intent_updated"),
+    PAYMENT_INTENT_UPDATED("payment_intent_updated"),
 
-    ContractTermCreated("contract_term_created"),
+    CONTRACT_TERM_CREATED("contract_term_created"),
 
-    ContractTermRenewed("contract_term_renewed"),
+    CONTRACT_TERM_RENEWED("contract_term_renewed"),
 
-    ContractTermTerminated("contract_term_terminated"),
+    CONTRACT_TERM_TERMINATED("contract_term_terminated"),
 
-    ContractTermCompleted("contract_term_completed"),
+    CONTRACT_TERM_COMPLETED("contract_term_completed"),
 
-    ContractTermCancelled("contract_term_cancelled"),
+    CONTRACT_TERM_CANCELLED("contract_term_cancelled"),
 
-    ItemFamilyCreated("item_family_created"),
+    ITEM_FAMILY_CREATED("item_family_created"),
 
-    ItemFamilyUpdated("item_family_updated"),
+    ITEM_FAMILY_UPDATED("item_family_updated"),
 
-    ItemFamilyDeleted("item_family_deleted"),
+    ITEM_FAMILY_DELETED("item_family_deleted"),
 
-    ItemCreated("item_created"),
+    ITEM_CREATED("item_created"),
 
-    ItemUpdated("item_updated"),
+    ITEM_UPDATED("item_updated"),
 
-    ItemDeleted("item_deleted"),
+    ITEM_DELETED("item_deleted"),
 
-    ItemPriceCreated("item_price_created"),
+    ITEM_PRICE_CREATED("item_price_created"),
 
-    ItemPriceUpdated("item_price_updated"),
+    ITEM_PRICE_UPDATED("item_price_updated"),
 
-    ItemPriceDeleted("item_price_deleted"),
+    ITEM_PRICE_DELETED("item_price_deleted"),
 
-    AttachedItemCreated("attached_item_created"),
+    ATTACHED_ITEM_CREATED("attached_item_created"),
 
-    AttachedItemUpdated("attached_item_updated"),
+    ATTACHED_ITEM_UPDATED("attached_item_updated"),
 
-    AttachedItemDeleted("attached_item_deleted"),
+    ATTACHED_ITEM_DELETED("attached_item_deleted"),
 
-    DifferentialPriceCreated("differential_price_created"),
+    DIFFERENTIAL_PRICE_CREATED("differential_price_created"),
 
-    DifferentialPriceUpdated("differential_price_updated"),
+    DIFFERENTIAL_PRICE_UPDATED("differential_price_updated"),
 
-    DifferentialPriceDeleted("differential_price_deleted"),
+    DIFFERENTIAL_PRICE_DELETED("differential_price_deleted"),
 
-    FeatureCreated("feature_created"),
+    FEATURE_CREATED("feature_created"),
 
-    FeatureUpdated("feature_updated"),
+    FEATURE_UPDATED("feature_updated"),
 
-    FeatureDeleted("feature_deleted"),
+    FEATURE_DELETED("feature_deleted"),
 
-    FeatureActivated("feature_activated"),
+    FEATURE_ACTIVATED("feature_activated"),
 
-    FeatureReactivated("feature_reactivated"),
+    FEATURE_REACTIVATED("feature_reactivated"),
 
-    FeatureArchived("feature_archived"),
+    FEATURE_ARCHIVED("feature_archived"),
 
-    ItemEntitlementsUpdated("item_entitlements_updated"),
+    ITEM_ENTITLEMENTS_UPDATED("item_entitlements_updated"),
 
-    EntitlementOverridesUpdated("entitlement_overrides_updated"),
+    ENTITLEMENT_OVERRIDES_UPDATED("entitlement_overrides_updated"),
 
-    EntitlementOverridesRemoved("entitlement_overrides_removed"),
+    ENTITLEMENT_OVERRIDES_REMOVED("entitlement_overrides_removed"),
 
-    ItemEntitlementsRemoved("item_entitlements_removed"),
+    ITEM_ENTITLEMENTS_REMOVED("item_entitlements_removed"),
 
-    EntitlementOverridesAutoRemoved("entitlement_overrides_auto_removed"),
+    ENTITLEMENT_OVERRIDES_AUTO_REMOVED("entitlement_overrides_auto_removed"),
 
-    SubscriptionEntitlementsCreated("subscription_entitlements_created"),
+    SUBSCRIPTION_ENTITLEMENTS_CREATED("subscription_entitlements_created"),
 
-    SubscriptionEntitlementsUpdated("subscription_entitlements_updated"),
+    SUBSCRIPTION_ENTITLEMENTS_UPDATED("subscription_entitlements_updated"),
 
-    BusinessEntityCreated("business_entity_created"),
+    BUSINESS_ENTITY_CREATED("business_entity_created"),
 
-    BusinessEntityUpdated("business_entity_updated"),
+    BUSINESS_ENTITY_UPDATED("business_entity_updated"),
 
-    BusinessEntityDeleted("business_entity_deleted"),
+    BUSINESS_ENTITY_DELETED("business_entity_deleted"),
 
-    CustomerBusinessEntityChanged("customer_business_entity_changed"),
+    CUSTOMER_BUSINESS_ENTITY_CHANGED("customer_business_entity_changed"),
 
-    SubscriptionBusinessEntityChanged("subscription_business_entity_changed"),
+    SUBSCRIPTION_BUSINESS_ENTITY_CHANGED("subscription_business_entity_changed"),
 
-    PurchaseCreated("purchase_created"),
+    PURCHASE_CREATED("purchase_created"),
 
-    VoucherCreated("voucher_created"),
+    VOUCHER_CREATED("voucher_created"),
 
-    VoucherExpired("voucher_expired"),
+    VOUCHER_EXPIRED("voucher_expired"),
 
-    VoucherCreateFailed("voucher_create_failed"),
+    VOUCHER_CREATE_FAILED("voucher_create_failed"),
 
-    ProductCreated("product_created"),
+    PRODUCT_CREATED("product_created"),
 
-    ProductUpdated("product_updated"),
+    PRODUCT_UPDATED("product_updated"),
 
-    ProductDeleted("product_deleted"),
+    PRODUCT_DELETED("product_deleted"),
 
-    VariantCreated("variant_created"),
+    VARIANT_CREATED("variant_created"),
 
-    VariantUpdated("variant_updated"),
+    VARIANT_UPDATED("variant_updated"),
 
-    VariantDeleted("variant_deleted"),
+    VARIANT_DELETED("variant_deleted"),
 
-    ItemPriceEntitlementsUpdated("item_price_entitlements_updated"),
+    ITEM_PRICE_ENTITLEMENTS_UPDATED("item_price_entitlements_updated"),
 
-    ItemPriceEntitlementsRemoved("item_price_entitlements_removed"),
+    ITEM_PRICE_ENTITLEMENTS_REMOVED("item_price_entitlements_removed"),
 
-    SubscriptionRampCreated("subscription_ramp_created"),
+    SUBSCRIPTION_RAMP_CREATED("subscription_ramp_created"),
 
-    SubscriptionRampDeleted("subscription_ramp_deleted"),
+    SUBSCRIPTION_RAMP_DELETED("subscription_ramp_deleted"),
 
-    SubscriptionRampApplied("subscription_ramp_applied"),
+    SUBSCRIPTION_RAMP_APPLIED("subscription_ramp_applied"),
 
-    SubscriptionRampDrafted("subscription_ramp_drafted"),
+    SUBSCRIPTION_RAMP_DRAFTED("subscription_ramp_drafted"),
 
-    SubscriptionRampUpdated("subscription_ramp_updated"),
+    SUBSCRIPTION_RAMP_UPDATED("subscription_ramp_updated"),
 
-    PriceVariantCreated("price_variant_created"),
+    PRICE_VARIANT_CREATED("price_variant_created"),
 
-    PriceVariantUpdated("price_variant_updated"),
+    PRICE_VARIANT_UPDATED("price_variant_updated"),
 
-    PriceVariantDeleted("price_variant_deleted"),
+    PRICE_VARIANT_DELETED("price_variant_deleted"),
 
-    CustomerEntitlementsUpdated("customer_entitlements_updated"),
+    CUSTOMER_ENTITLEMENTS_UPDATED("customer_entitlements_updated"),
 
-    SubscriptionMovedIn("subscription_moved_in"),
+    SUBSCRIPTION_MOVED_IN("subscription_moved_in"),
 
-    SubscriptionMovedOut("subscription_moved_out"),
+    SUBSCRIPTION_MOVED_OUT("subscription_moved_out"),
 
-    SubscriptionMovementFailed("subscription_movement_failed"),
+    SUBSCRIPTION_MOVEMENT_FAILED("subscription_movement_failed"),
 
-    OmnichannelSubscriptionCreated("omnichannel_subscription_created"),
+    OMNICHANNEL_SUBSCRIPTION_CREATED("omnichannel_subscription_created"),
 
-    OmnichannelSubscriptionItemRenewed("omnichannel_subscription_item_renewed"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RENEWED("omnichannel_subscription_item_renewed"),
 
-    OmnichannelSubscriptionItemDowngradeScheduled(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_DOWNGRADE_SCHEDULED(
         "omnichannel_subscription_item_downgrade_scheduled"),
 
-    OmnichannelSubscriptionItemScheduledDowngradeRemoved(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_SCHEDULED_DOWNGRADE_REMOVED(
         "omnichannel_subscription_item_scheduled_downgrade_removed"),
 
-    OmnichannelSubscriptionItemDowngraded("omnichannel_subscription_item_downgraded"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_DOWNGRADED("omnichannel_subscription_item_downgraded"),
 
-    OmnichannelSubscriptionItemExpired("omnichannel_subscription_item_expired"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_EXPIRED("omnichannel_subscription_item_expired"),
 
-    OmnichannelSubscriptionItemCancellationScheduled(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_CANCELLATION_SCHEDULED(
         "omnichannel_subscription_item_cancellation_scheduled"),
 
-    OmnichannelSubscriptionItemScheduledCancellationRemoved(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_SCHEDULED_CANCELLATION_REMOVED(
         "omnichannel_subscription_item_scheduled_cancellation_removed"),
 
-    OmnichannelSubscriptionItemResubscribed("omnichannel_subscription_item_resubscribed"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RESUBSCRIBED("omnichannel_subscription_item_resubscribed"),
 
-    OmnichannelSubscriptionItemUpgraded("omnichannel_subscription_item_upgraded"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_UPGRADED("omnichannel_subscription_item_upgraded"),
 
-    OmnichannelSubscriptionItemCancelled("omnichannel_subscription_item_cancelled"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_CANCELLED("omnichannel_subscription_item_cancelled"),
 
-    OmnichannelSubscriptionImported("omnichannel_subscription_imported"),
+    OMNICHANNEL_SUBSCRIPTION_IMPORTED("omnichannel_subscription_imported"),
 
-    OmnichannelSubscriptionItemGracePeriodStarted(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_GRACE_PERIOD_STARTED(
         "omnichannel_subscription_item_grace_period_started"),
 
-    OmnichannelSubscriptionItemGracePeriodExpired(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_GRACE_PERIOD_EXPIRED(
         "omnichannel_subscription_item_grace_period_expired"),
 
-    OmnichannelSubscriptionItemDunningStarted("omnichannel_subscription_item_dunning_started"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_DUNNING_STARTED("omnichannel_subscription_item_dunning_started"),
 
-    OmnichannelSubscriptionItemDunningExpired("omnichannel_subscription_item_dunning_expired"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_DUNNING_EXPIRED("omnichannel_subscription_item_dunning_expired"),
 
-    RuleCreated("rule_created"),
+    RULE_CREATED("rule_created"),
 
-    RuleUpdated("rule_updated"),
+    RULE_UPDATED("rule_updated"),
 
-    RuleDeleted("rule_deleted"),
+    RULE_DELETED("rule_deleted"),
 
-    RecordPurchaseFailed("record_purchase_failed"),
+    RECORD_PURCHASE_FAILED("record_purchase_failed"),
 
-    OmnichannelSubscriptionItemChangeScheduled("omnichannel_subscription_item_change_scheduled"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_CHANGE_SCHEDULED(
+        "omnichannel_subscription_item_change_scheduled"),
 
-    OmnichannelSubscriptionItemScheduledChangeRemoved(
+    OMNICHANNEL_SUBSCRIPTION_ITEM_SCHEDULED_CHANGE_REMOVED(
         "omnichannel_subscription_item_scheduled_change_removed"),
 
-    OmnichannelSubscriptionItemReactivated("omnichannel_subscription_item_reactivated"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_REACTIVATED("omnichannel_subscription_item_reactivated"),
 
-    SalesOrderCreated("sales_order_created"),
+    SALES_ORDER_CREATED("sales_order_created"),
 
-    SalesOrderUpdated("sales_order_updated"),
+    SALES_ORDER_UPDATED("sales_order_updated"),
 
-    OmnichannelSubscriptionItemChanged("omnichannel_subscription_item_changed"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_CHANGED("omnichannel_subscription_item_changed"),
 
-    OmnichannelSubscriptionItemPaused("omnichannel_subscription_item_paused"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_PAUSED("omnichannel_subscription_item_paused"),
 
-    OmnichannelSubscriptionItemResumed("omnichannel_subscription_item_resumed"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_RESUMED("omnichannel_subscription_item_resumed"),
 
-    OmnichannelOneTimeOrderCreated("omnichannel_one_time_order_created"),
+    OMNICHANNEL_ONE_TIME_ORDER_CREATED("omnichannel_one_time_order_created"),
 
-    OmnichannelOneTimeOrderItemCancelled("omnichannel_one_time_order_item_cancelled"),
+    OMNICHANNEL_ONE_TIME_ORDER_ITEM_CANCELLED("omnichannel_one_time_order_item_cancelled"),
 
-    UsageFileIngested("usage_file_ingested"),
+    USAGE_FILE_INGESTED("usage_file_ingested"),
 
-    OmnichannelSubscriptionItemPauseScheduled("omnichannel_subscription_item_pause_scheduled"),
+    OMNICHANNEL_SUBSCRIPTION_ITEM_PAUSE_SCHEDULED("omnichannel_subscription_item_pause_scheduled"),
 
-    OmnichannelSubscriptionMovedIn("omnichannel_subscription_moved_in"),
+    OMNICHANNEL_SUBSCRIPTION_MOVED_IN("omnichannel_subscription_moved_in"),
 
-    PlanCreated("plan_created"),
+    PLAN_CREATED("plan_created"),
 
-    PlanUpdated("plan_updated"),
+    PLAN_UPDATED("plan_updated"),
 
-    PlanDeleted("plan_deleted"),
+    PLAN_DELETED("plan_deleted"),
 
-    AddonCreated("addon_created"),
+    ADDON_CREATED("addon_created"),
 
-    AddonUpdated("addon_updated"),
+    ADDON_UPDATED("addon_updated"),
 
-    AddonDeleted("addon_deleted"),
+    ADDON_DELETED("addon_deleted"),
 
     /** An enum member indicating that EventType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -711,21 +712,21 @@ public class Event {
     }
 
     public enum WebhookStatus {
-      NotConfigured("not_configured"),
+      NOT_CONFIGURED("not_configured"),
 
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Succeeded("succeeded"),
+      SUCCEEDED("succeeded"),
 
-      ReScheduled("re_scheduled"),
+      RE_SCHEDULED("re_scheduled"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Skipped("skipped"),
+      SKIPPED("skipped"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
-      Disabled("disabled"),
+      DISABLED("disabled"),
 
       /** An enum member indicating that WebhookStatus was instantiated with an unknown value. */
       _UNKNOWN(null);

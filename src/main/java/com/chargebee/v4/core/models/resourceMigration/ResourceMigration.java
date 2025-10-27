@@ -49,7 +49,7 @@ public class ResourceMigration {
   }
 
   public enum EntityType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -75,11 +75,11 @@ public class ResourceMigration {
   }
 
   public enum Status {
-    Scheduled("scheduled"),
+    SCHEDULED("scheduled"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
-    Succeeded("succeeded"),
+    SUCCEEDED("succeeded"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

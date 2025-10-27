@@ -71,7 +71,6 @@ public class Invoice {
   private List<Taxes> taxes;
   private TaxOrigin taxOrigin;
   private List<LinkedPayments> linkedPayments;
-  private List<ReferenceTransactions> referenceTransactions;
   private List<DunningAttempts> dunningAttempts;
   private List<AppliedCredits> appliedCredits;
   private List<AdjustmentCreditNotes> adjustmentCreditNotes;
@@ -314,10 +313,6 @@ public class Invoice {
     return linkedPayments;
   }
 
-  public List<ReferenceTransactions> getReferenceTransactions() {
-    return referenceTransactions;
-  }
-
   public List<DunningAttempts> getDunningAttempts() {
     return dunningAttempts;
   }
@@ -383,17 +378,17 @@ public class Invoice {
   }
 
   public enum Status {
-    Paid("paid"),
+    PAID("paid"),
 
-    Posted("posted"),
+    POSTED("posted"),
 
-    PaymentDue("payment_due"),
+    PAYMENT_DUE("payment_due"),
 
-    NotPaid("not_paid"),
+    NOT_PAID("not_paid"),
 
-    Voided("voided"),
+    VOIDED("voided"),
 
-    Pending("pending"),
+    PENDING("pending"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -419,9 +414,9 @@ public class Invoice {
   }
 
   public enum PriceType {
-    TaxExclusive("tax_exclusive"),
+    TAX_EXCLUSIVE("tax_exclusive"),
 
-    TaxInclusive("tax_inclusive"),
+    TAX_INCLUSIVE("tax_inclusive"),
 
     /** An enum member indicating that PriceType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -447,13 +442,13 @@ public class Invoice {
   }
 
   public enum DunningStatus {
-    InProgress("in_progress"),
+    IN_PROGRESS("in_progress"),
 
-    Exhausted("exhausted"),
+    EXHAUSTED("exhausted"),
 
-    Stopped("stopped"),
+    STOPPED("stopped"),
 
-    Success("success"),
+    SUCCESS("success"),
 
     /** An enum member indicating that DunningStatus was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -479,11 +474,11 @@ public class Invoice {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -627,8 +622,6 @@ public class Invoice {
     knownFields.add("tax_origin");
 
     knownFields.add("linked_payments");
-
-    knownFields.add("reference_transactions");
 
     knownFields.add("dunning_attempts");
 
@@ -794,11 +787,6 @@ public class Invoice {
     obj.linkedPayments =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_payments")).stream()
             .map(LinkedPayments::fromJson)
-            .collect(java.util.stream.Collectors.toList());
-
-    obj.referenceTransactions =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "reference_transactions")).stream()
-            .map(ReferenceTransactions::fromJson)
             .collect(java.util.stream.Collectors.toList());
 
     obj.dunningAttempts =
@@ -1020,15 +1008,15 @@ public class Invoice {
     }
 
     public enum PricingModel {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModel was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1054,19 +1042,19 @@ public class Invoice {
     }
 
     public enum EntityType {
-      Adhoc("adhoc"),
+      ADHOC("adhoc"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      PlanSetup("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1092,25 +1080,25 @@ public class Invoice {
     }
 
     public enum TaxExemptReason {
-      TaxNotConfigured("tax_not_configured"),
+      TAX_NOT_CONFIGURED("tax_not_configured"),
 
-      RegionNonTaxable("region_non_taxable"),
+      REGION_NON_TAXABLE("region_non_taxable"),
 
-      Export("export"),
+      EXPORT("export"),
 
-      CustomerExempt("customer_exempt"),
+      CUSTOMER_EXEMPT("customer_exempt"),
 
-      ProductExempt("product_exempt"),
+      PRODUCT_EXEMPT("product_exempt"),
 
-      ZeroRated("zero_rated"),
+      ZERO_RATED("zero_rated"),
 
-      ReverseCharge("reverse_charge"),
+      REVERSE_CHARGE("reverse_charge"),
 
-      HighValuePhysicalGoods("high_value_physical_goods"),
+      HIGH_VALUE_PHYSICAL_GOODS("high_value_physical_goods"),
 
-      ZeroValueItem("zero_value_item"),
+      ZERO_VALUE_ITEM("zero_value_item"),
 
-      TaxNotConfiguredExternalProvider("tax_not_configured_external_provider"),
+      TAX_NOT_CONFIGURED_EXTERNAL_PROVIDER("tax_not_configured_external_provider"),
 
       /** An enum member indicating that TaxExemptReason was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1252,11 +1240,11 @@ public class Invoice {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1339,17 +1327,17 @@ public class Invoice {
     }
 
     public enum DiscountType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1470,21 +1458,21 @@ public class Invoice {
     }
 
     public enum TaxJurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that TaxJurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1656,13 +1644,13 @@ public class Invoice {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1759,17 +1747,17 @@ public class Invoice {
     }
 
     public enum EntityType {
-      ItemLevelCoupon("item_level_coupon"),
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-      DocumentLevelCoupon("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-      PromotionalCredits("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-      ProratedCredits("prorated_credits"),
+      PRORATED_CREDITS("prorated_credits"),
 
-      ItemLevelDiscount("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-      DocumentLevelDiscount("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1795,9 +1783,9 @@ public class Invoice {
     }
 
     public enum DiscountType {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
       /** An enum member indicating that DiscountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1930,19 +1918,19 @@ public class Invoice {
     }
 
     public enum TxnStatus {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
-      Timeout("timeout"),
+      TIMEOUT("timeout"),
 
-      NeedsAttention("needs_attention"),
+      NEEDS_ATTENTION("needs_attention"),
 
-      LateFailure("late_failure"),
+      LATE_FAILURE("late_failure"),
 
       /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1986,182 +1974,6 @@ public class Invoice {
     }
   }
 
-  public static class ReferenceTransactions {
-
-    private Long appliedAmount;
-    private Timestamp appliedAt;
-    private String txnId;
-    private TxnStatus txnStatus;
-    private Timestamp txnDate;
-    private Long txnAmount;
-    private TxnType txnType;
-    private Long amountCapturable;
-    private AuthorizationReason authorizationReason;
-
-    public Long getAppliedAmount() {
-      return appliedAmount;
-    }
-
-    public Timestamp getAppliedAt() {
-      return appliedAt;
-    }
-
-    public String getTxnId() {
-      return txnId;
-    }
-
-    public TxnStatus getTxnStatus() {
-      return txnStatus;
-    }
-
-    public Timestamp getTxnDate() {
-      return txnDate;
-    }
-
-    public Long getTxnAmount() {
-      return txnAmount;
-    }
-
-    public TxnType getTxnType() {
-      return txnType;
-    }
-
-    public Long getAmountCapturable() {
-      return amountCapturable;
-    }
-
-    public AuthorizationReason getAuthorizationReason() {
-      return authorizationReason;
-    }
-
-    public enum TxnStatus {
-      InProgress("in_progress"),
-
-      Success("success"),
-
-      Voided("voided"),
-
-      Failure("failure"),
-
-      Timeout("timeout"),
-
-      NeedsAttention("needs_attention"),
-
-      LateFailure("late_failure"),
-
-      /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TxnStatus(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TxnStatus fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TxnStatus enumValue : TxnStatus.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum TxnType {
-      Authorization("authorization"),
-
-      Payment("payment"),
-
-      Refund("refund"),
-
-      PaymentReversal("payment_reversal"),
-
-      /** An enum member indicating that TxnType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TxnType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TxnType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TxnType enumValue : TxnType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum AuthorizationReason {
-      Verification("verification"),
-
-      BlockingFunds("blocking_funds"),
-
-      ScheduledCapture("scheduled_capture"),
-
-      /**
-       * An enum member indicating that AuthorizationReason was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AuthorizationReason(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AuthorizationReason fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AuthorizationReason enumValue : AuthorizationReason.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public static ReferenceTransactions fromJson(String json) {
-      ReferenceTransactions obj = new ReferenceTransactions();
-
-      obj.appliedAmount = JsonUtil.getLong(json, "applied_amount");
-
-      obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
-
-      obj.txnId = JsonUtil.getString(json, "txn_id");
-
-      obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(json, "txn_status"));
-
-      obj.txnDate = JsonUtil.getTimestamp(json, "txn_date");
-
-      obj.txnAmount = JsonUtil.getLong(json, "txn_amount");
-
-      obj.txnType = TxnType.fromString(JsonUtil.getString(json, "txn_type"));
-
-      obj.amountCapturable = JsonUtil.getLong(json, "amount_capturable");
-
-      obj.authorizationReason =
-          AuthorizationReason.fromString(JsonUtil.getString(json, "authorization_reason"));
-
-      return obj;
-    }
-  }
-
   public static class DunningAttempts {
 
     private Integer attempt;
@@ -2196,11 +2008,11 @@ public class Invoice {
     }
 
     public enum DunningType {
-      AutoCollect("auto_collect"),
+      AUTO_COLLECT("auto_collect"),
 
-      Offline("offline"),
+      OFFLINE("offline"),
 
-      DirectDebit("direct_debit"),
+      DIRECT_DEBIT("direct_debit"),
 
       /** An enum member indicating that DunningType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2226,19 +2038,19 @@ public class Invoice {
     }
 
     public enum TxnStatus {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
-      Timeout("timeout"),
+      TIMEOUT("timeout"),
 
-      NeedsAttention("needs_attention"),
+      NEEDS_ATTENTION("needs_attention"),
 
-      LateFailure("late_failure"),
+      LATE_FAILURE("late_failure"),
 
       /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2326,29 +2138,29 @@ public class Invoice {
     }
 
     public enum CnReasonCode {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that CnReasonCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2374,13 +2186,13 @@ public class Invoice {
     }
 
     public enum CnStatus {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that CnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2406,9 +2218,9 @@ public class Invoice {
     }
 
     public enum TaxApplication {
-      PreTax("pre_tax"),
+      PRE_TAX("pre_tax"),
 
-      PostTax("post_tax"),
+      POST_TAX("post_tax"),
 
       /** An enum member indicating that TaxApplication was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2490,29 +2302,29 @@ public class Invoice {
     }
 
     public enum CnReasonCode {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that CnReasonCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2538,13 +2350,13 @@ public class Invoice {
     }
 
     public enum CnStatus {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that CnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2622,29 +2434,29 @@ public class Invoice {
     }
 
     public enum CnReasonCode {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that CnReasonCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2670,13 +2482,13 @@ public class Invoice {
     }
 
     public enum CnStatus {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that CnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2764,29 +2576,29 @@ public class Invoice {
     }
 
     public enum Status {
-      New("new"),
+      NEW("new"),
 
-      Processing("processing"),
+      PROCESSING("processing"),
 
-      Complete("complete"),
+      COMPLETE("complete"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Queued("queued"),
+      QUEUED("queued"),
 
-      AwaitingShipment("awaiting_shipment"),
+      AWAITING_SHIPMENT("awaiting_shipment"),
 
-      OnHold("on_hold"),
+      ON_HOLD("on_hold"),
 
-      Delivered("delivered"),
+      DELIVERED("delivered"),
 
-      Shipped("shipped"),
+      SHIPPED("shipped"),
 
-      PartiallyDelivered("partially_delivered"),
+      PARTIALLY_DELIVERED("partially_delivered"),
 
-      Returned("returned"),
+      RETURNED("returned"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2812,9 +2624,9 @@ public class Invoice {
     }
 
     public enum OrderType {
-      Manual("manual"),
+      MANUAL("manual"),
 
-      SystemGenerated("system_generated"),
+      SYSTEM_GENERATED("system_generated"),
 
       /** An enum member indicating that OrderType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2881,23 +2693,23 @@ public class Invoice {
     }
 
     public enum EntityType {
-      Coupon("coupon"),
+      COUPON("coupon"),
 
-      Subscription("subscription"),
+      SUBSCRIPTION("subscription"),
 
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      PlanItemPrice("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-      AddonItemPrice("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-      ChargeItemPrice("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-      Tax("tax"),
+      TAX("tax"),
 
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3009,13 +2821,13 @@ public class Invoice {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3150,13 +2962,13 @@ public class Invoice {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3265,17 +3077,17 @@ public class Invoice {
     }
 
     public enum Status {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Skipped("skipped"),
+      SKIPPED("skipped"),
 
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Registered("registered"),
+      REGISTERED("registered"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

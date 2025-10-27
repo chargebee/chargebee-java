@@ -156,9 +156,9 @@ public final class UnbilledChargeListParams {
     }
 
     public enum SubscriptionIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
@@ -187,9 +187,9 @@ public final class UnbilledChargeListParams {
     }
 
     public enum CustomerIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that CustomerIdIsPresent was instantiated with an unknown value.

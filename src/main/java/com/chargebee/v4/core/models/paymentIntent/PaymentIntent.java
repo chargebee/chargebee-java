@@ -104,15 +104,15 @@ public class PaymentIntent {
   }
 
   public enum Status {
-    Inited("inited"),
+    INITED("inited"),
 
-    InProgress("in_progress"),
+    IN_PROGRESS("in_progress"),
 
-    Authorized("authorized"),
+    AUTHORIZED("authorized"),
 
-    Consumed("consumed"),
+    CONSUMED("consumed"),
 
-    Expired("expired"),
+    EXPIRED("expired"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -138,47 +138,47 @@ public class PaymentIntent {
   }
 
   public enum PaymentMethodType {
-    Card("card"),
+    CARD("card"),
 
-    Ideal("ideal"),
+    IDEAL("ideal"),
 
-    Sofort("sofort"),
+    SOFORT("sofort"),
 
-    Bancontact("bancontact"),
+    BANCONTACT("bancontact"),
 
-    GooglePay("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-    Dotpay("dotpay"),
+    DOTPAY("dotpay"),
 
-    Giropay("giropay"),
+    GIROPAY("giropay"),
 
-    ApplePay("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-    Upi("upi"),
+    UPI("upi"),
 
-    NetbankingEmandates("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    DirectDebit("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-    Boleto("boleto"),
+    BOLETO("boleto"),
 
-    Venmo("venmo"),
+    VENMO("venmo"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    PayTo("pay_to"),
+    PAY_TO("pay_to"),
 
-    FasterPayments("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-    SepaInstantTransfer("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-    KlarnaPayNow("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-    OnlineBankingPoland("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-    PayconiqByBancontact("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -298,19 +298,19 @@ public class PaymentIntent {
     }
 
     public enum Status {
-      Inited("inited"),
+      INITED("inited"),
 
-      RequiresIdentification("requires_identification"),
+      REQUIRES_IDENTIFICATION("requires_identification"),
 
-      RequiresChallenge("requires_challenge"),
+      REQUIRES_CHALLENGE("requires_challenge"),
 
-      RequiresRedirection("requires_redirection"),
+      REQUIRES_REDIRECTION("requires_redirection"),
 
-      Authorized("authorized"),
+      AUTHORIZED("authorized"),
 
-      Refused("refused"),
+      REFUSED("refused"),
 
-      PendingAuthorization("pending_authorization"),
+      PENDING_AUTHORIZATION("pending_authorization"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -336,47 +336,47 @@ public class PaymentIntent {
     }
 
     public enum PaymentMethodType {
-      Card("card"),
+      CARD("card"),
 
-      Ideal("ideal"),
+      IDEAL("ideal"),
 
-      Sofort("sofort"),
+      SOFORT("sofort"),
 
-      Bancontact("bancontact"),
+      BANCONTACT("bancontact"),
 
-      GooglePay("google_pay"),
+      GOOGLE_PAY("google_pay"),
 
-      Dotpay("dotpay"),
+      DOTPAY("dotpay"),
 
-      Giropay("giropay"),
+      GIROPAY("giropay"),
 
-      ApplePay("apple_pay"),
+      APPLE_PAY("apple_pay"),
 
-      Upi("upi"),
+      UPI("upi"),
 
-      NetbankingEmandates("netbanking_emandates"),
+      NETBANKING_EMANDATES("netbanking_emandates"),
 
-      PaypalExpressCheckout("paypal_express_checkout"),
+      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-      DirectDebit("direct_debit"),
+      DIRECT_DEBIT("direct_debit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      Venmo("venmo"),
+      VENMO("venmo"),
 
-      AmazonPayments("amazon_payments"),
+      AMAZON_PAYMENTS("amazon_payments"),
 
-      PayTo("pay_to"),
+      PAY_TO("pay_to"),
 
-      FasterPayments("faster_payments"),
+      FASTER_PAYMENTS("faster_payments"),
 
-      SepaInstantTransfer("sepa_instant_transfer"),
+      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-      KlarnaPayNow("klarna_pay_now"),
+      KLARNA_PAY_NOW("klarna_pay_now"),
 
-      OnlineBankingPoland("online_banking_poland"),
+      ONLINE_BANKING_POLAND("online_banking_poland"),
 
-      PayconiqByBancontact("payconiq_by_bancontact"),
+      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

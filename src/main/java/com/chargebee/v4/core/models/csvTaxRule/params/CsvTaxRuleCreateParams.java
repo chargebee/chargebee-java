@@ -259,21 +259,21 @@ public final class CsvTaxRuleCreateParams {
     }
 
     public enum Tax1JurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that Tax1JurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -299,21 +299,21 @@ public final class CsvTaxRuleCreateParams {
     }
 
     public enum Tax2JurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that Tax2JurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -339,21 +339,21 @@ public final class CsvTaxRuleCreateParams {
     }
 
     public enum Tax3JurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that Tax3JurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -379,21 +379,21 @@ public final class CsvTaxRuleCreateParams {
     }
 
     public enum Tax4JurisType {
-      Country("country"),
+      COUNTRY("country"),
 
-      Federal("federal"),
+      FEDERAL("federal"),
 
-      State("state"),
+      STATE("state"),
 
-      County("county"),
+      COUNTY("county"),
 
-      City("city"),
+      CITY("city"),
 
-      Special("special"),
+      SPECIAL("special"),
 
-      Unincorporated("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that Tax4JurisType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -419,11 +419,11 @@ public final class CsvTaxRuleCreateParams {
     }
 
     public enum ServiceType {
-      Digital("digital"),
+      DIGITAL("digital"),
 
-      Other("other"),
+      OTHER("other"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that ServiceType was instantiated with an unknown value. */
       _UNKNOWN(null);

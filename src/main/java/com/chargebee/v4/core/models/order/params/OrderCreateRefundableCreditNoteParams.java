@@ -109,29 +109,29 @@ public final class OrderCreateRefundableCreditNoteParams {
       }
 
       public enum ReasonCode {
-        WriteOff("write_off"),
+        WRITE_OFF("write_off"),
 
-        SubscriptionChange("subscription_change"),
+        SUBSCRIPTION_CHANGE("subscription_change"),
 
-        SubscriptionCancellation("subscription_cancellation"),
+        SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-        SubscriptionPause("subscription_pause"),
+        SUBSCRIPTION_PAUSE("subscription_pause"),
 
-        Chargeback("chargeback"),
+        CHARGEBACK("chargeback"),
 
-        ProductUnsatisfactory("product_unsatisfactory"),
+        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        ServiceUnsatisfactory("service_unsatisfactory"),
+        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        OrderChange("order_change"),
+        ORDER_CHANGE("order_change"),
 
-        OrderCancellation("order_cancellation"),
+        ORDER_CANCELLATION("order_cancellation"),
 
-        Waiver("waiver"),
+        WAIVER("waiver"),
 
-        Other("other"),
+        OTHER("other"),
 
-        Fraudulent("fraudulent"),
+        FRAUDULENT("fraudulent"),
 
         /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
         _UNKNOWN(null);

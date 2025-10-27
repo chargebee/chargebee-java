@@ -44,9 +44,9 @@ public class Export {
   }
 
   public enum MimeType {
-    Pdf("pdf"),
+    PDF("pdf"),
 
-    Zip("zip"),
+    ZIP("zip"),
 
     /** An enum member indicating that MimeType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -72,11 +72,11 @@ public class Export {
   }
 
   public enum Status {
-    InProcess("in_process"),
+    IN_PROCESS("in_process"),
 
-    Completed("completed"),
+    COMPLETED("completed"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

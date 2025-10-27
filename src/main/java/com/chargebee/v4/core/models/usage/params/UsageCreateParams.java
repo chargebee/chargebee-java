@@ -85,9 +85,9 @@ public final class UsageCreateParams {
     }
 
     public enum DedupeOption {
-      Skip("skip"),
+      SKIP("skip"),
 
-      UpdateExisting("update_existing"),
+      UPDATE_EXISTING("update_existing"),
 
       /** An enum member indicating that DedupeOption was instantiated with an unknown value. */
       _UNKNOWN(null);

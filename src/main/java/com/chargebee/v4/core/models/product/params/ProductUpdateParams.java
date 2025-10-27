@@ -91,9 +91,9 @@ public final class ProductUpdateParams {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Inactive("inactive"),
+      INACTIVE("inactive"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

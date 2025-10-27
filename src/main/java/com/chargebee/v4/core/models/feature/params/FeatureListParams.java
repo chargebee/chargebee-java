@@ -204,11 +204,11 @@ public final class FeatureListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Draft("draft"),
+      DRAFT("draft"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -234,11 +234,11 @@ public final class FeatureListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Draft("draft"),
+      DRAFT("draft"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -264,13 +264,13 @@ public final class FeatureListParams {
     }
 
     public enum TypeIs {
-      Switch("switch"),
+      SWITCH("switch"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Range("range"),
+      RANGE("range"),
 
       /** An enum member indicating that TypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -296,13 +296,13 @@ public final class FeatureListParams {
     }
 
     public enum TypeIsNot {
-      Switch("switch"),
+      SWITCH("switch"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Range("range"),
+      RANGE("range"),
 
       /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

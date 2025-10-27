@@ -117,9 +117,9 @@ public final class ExportItemsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -182,9 +182,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -571,11 +571,11 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -601,11 +601,11 @@ public final class ExportItemsParams {
       }
 
       public enum IsNot {
-        Plan("plan"),
+        PLAN("plan"),
 
-        Addon("addon"),
+        ADDON("addon"),
 
-        Charge("charge"),
+        CHARGE("charge"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -740,9 +740,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        All("all"),
+        ALL("all"),
 
-        Restricted("restricted"),
+        RESTRICTED("restricted"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -768,9 +768,9 @@ public final class ExportItemsParams {
       }
 
       public enum IsNot {
-        All("all"),
+        ALL("all"),
 
-        Restricted("restricted"),
+        RESTRICTED("restricted"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -854,11 +854,11 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -884,11 +884,11 @@ public final class ExportItemsParams {
       }
 
       public enum IsNot {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
-        Deleted("deleted"),
+        DELETED("deleted"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -951,9 +951,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1074,9 +1074,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1139,9 +1139,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1204,9 +1204,9 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1290,11 +1290,11 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        SumOfUsages("sum_of_usages"),
+        SUM_OF_USAGES("sum_of_usages"),
 
-        LastUsage("last_usage"),
+        LAST_USAGE("last_usage"),
 
-        MaxUsage("max_usage"),
+        MAX_USAGE("max_usage"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1320,11 +1320,11 @@ public final class ExportItemsParams {
       }
 
       public enum IsNot {
-        SumOfUsages("sum_of_usages"),
+        SUM_OF_USAGES("sum_of_usages"),
 
-        LastUsage("last_usage"),
+        LAST_USAGE("last_usage"),
 
-        MaxUsage("max_usage"),
+        MAX_USAGE("max_usage"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1408,11 +1408,11 @@ public final class ExportItemsParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1438,11 +1438,11 @@ public final class ExportItemsParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

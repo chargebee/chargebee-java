@@ -80,9 +80,9 @@ public class TaxWithheld {
   }
 
   public enum Type {
-    Payment("payment"),
+    PAYMENT("payment"),
 
-    Refund("refund"),
+    REFUND("refund"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -108,15 +108,15 @@ public class TaxWithheld {
   }
 
   public enum PaymentMethod {
-    Cash("cash"),
+    CASH("cash"),
 
-    Check("check"),
+    CHECK("check"),
 
-    Chargeback("chargeback"),
+    CHARGEBACK("chargeback"),
 
-    BankTransfer("bank_transfer"),
+    BANK_TRANSFER("bank_transfer"),
 
-    Other("other"),
+    OTHER("other"),
 
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);

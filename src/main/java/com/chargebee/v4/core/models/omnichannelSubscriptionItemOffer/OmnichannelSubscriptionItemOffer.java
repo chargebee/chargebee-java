@@ -89,11 +89,11 @@ public class OmnichannelSubscriptionItemOffer {
   }
 
   public enum Category {
-    Introductory("introductory"),
+    INTRODUCTORY("introductory"),
 
-    Promotional("promotional"),
+    PROMOTIONAL("promotional"),
 
-    DeveloperDetermined("developer_determined"),
+    DEVELOPER_DETERMINED("developer_determined"),
 
     /** An enum member indicating that Category was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -119,11 +119,11 @@ public class OmnichannelSubscriptionItemOffer {
   }
 
   public enum Type {
-    FreeTrial("free_trial"),
+    FREE_TRIAL("free_trial"),
 
-    PayUpFront("pay_up_front"),
+    PAY_UP_FRONT("pay_up_front"),
 
-    PayAsYouGo("pay_as_you_go"),
+    PAY_AS_YOU_GO("pay_as_you_go"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -149,11 +149,11 @@ public class OmnichannelSubscriptionItemOffer {
   }
 
   public enum DiscountType {
-    FixedAmount("fixed_amount"),
+    FIXED_AMOUNT("fixed_amount"),
 
-    Percentage("percentage"),
+    PERCENTAGE("percentage"),
 
-    Price("price"),
+    PRICE("price"),
 
     /** An enum member indicating that DiscountType was instantiated with an unknown value. */
     _UNKNOWN(null);

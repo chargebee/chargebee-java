@@ -85,31 +85,31 @@ public class HostedPage {
   }
 
   public enum Type {
-    CheckoutNew("checkout_new"),
+    CHECKOUT_NEW("checkout_new"),
 
-    CheckoutExisting("checkout_existing"),
+    CHECKOUT_EXISTING("checkout_existing"),
 
-    UpdateCard("update_card"),
+    UPDATE_CARD("update_card"),
 
-    UpdatePaymentMethod("update_payment_method"),
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
 
-    ManagePaymentSources("manage_payment_sources"),
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
 
-    CollectNow("collect_now"),
+    COLLECT_NOW("collect_now"),
 
-    ExtendSubscription("extend_subscription"),
+    EXTEND_SUBSCRIPTION("extend_subscription"),
 
-    CheckoutOneTime("checkout_one_time"),
+    CHECKOUT_ONE_TIME("checkout_one_time"),
 
-    PreCancel("pre_cancel"),
+    PRE_CANCEL("pre_cancel"),
 
-    ViewVoucher("view_voucher"),
+    VIEW_VOUCHER("view_voucher"),
 
-    AcceptQuote("accept_quote"),
+    ACCEPT_QUOTE("accept_quote"),
 
-    CheckoutGift("checkout_gift"),
+    CHECKOUT_GIFT("checkout_gift"),
 
-    ClaimGift("claim_gift"),
+    CLAIM_GIFT("claim_gift"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -135,17 +135,17 @@ public class HostedPage {
   }
 
   public enum State {
-    Created("created"),
+    CREATED("created"),
 
-    Requested("requested"),
+    REQUESTED("requested"),
 
-    Succeeded("succeeded"),
+    SUCCEEDED("succeeded"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
-    Acknowledged("acknowledged"),
+    ACKNOWLEDGED("acknowledged"),
 
     /** An enum member indicating that State was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -171,9 +171,9 @@ public class HostedPage {
   }
 
   public enum FailureReason {
-    CardError("card_error"),
+    CARD_ERROR("card_error"),
 
-    ServerError("server_error"),
+    SERVER_ERROR("server_error"),
 
     /** An enum member indicating that FailureReason was instantiated with an unknown value. */
     _UNKNOWN(null);

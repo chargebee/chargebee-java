@@ -199,11 +199,11 @@ public final class CouponCodeListParams {
     }
 
     public enum StatusIs {
-      NotRedeemed("not_redeemed"),
+      NOT_REDEEMED("not_redeemed"),
 
-      Redeemed("redeemed"),
+      REDEEMED("redeemed"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -229,11 +229,11 @@ public final class CouponCodeListParams {
     }
 
     public enum StatusIsNot {
-      NotRedeemed("not_redeemed"),
+      NOT_REDEEMED("not_redeemed"),
 
-      Redeemed("redeemed"),
+      REDEEMED("redeemed"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

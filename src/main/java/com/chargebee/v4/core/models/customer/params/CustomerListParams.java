@@ -568,9 +568,9 @@ public final class CustomerListParams {
     }
 
     public enum FirstNameIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that FirstNameIsPresent was instantiated with an unknown value.
@@ -598,9 +598,9 @@ public final class CustomerListParams {
     }
 
     public enum LastNameIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that LastNameIsPresent was instantiated with an unknown value.
@@ -628,9 +628,9 @@ public final class CustomerListParams {
     }
 
     public enum EmailIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that EmailIsPresent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -656,9 +656,9 @@ public final class CustomerListParams {
     }
 
     public enum CompanyIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that CompanyIsPresent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -684,9 +684,9 @@ public final class CustomerListParams {
     }
 
     public enum PhoneIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that PhoneIsPresent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -712,9 +712,9 @@ public final class CustomerListParams {
     }
 
     public enum AutoCollectionIs {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollectionIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -740,9 +740,9 @@ public final class CustomerListParams {
     }
 
     public enum AutoCollectionIsNot {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /**
        * An enum member indicating that AutoCollectionIsNot was instantiated with an unknown value.
@@ -770,9 +770,9 @@ public final class CustomerListParams {
     }
 
     public enum TaxabilityIs {
-      Taxable("taxable"),
+      TAXABLE("taxable"),
 
-      Exempt("exempt"),
+      EXEMPT("exempt"),
 
       /** An enum member indicating that TaxabilityIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -798,9 +798,9 @@ public final class CustomerListParams {
     }
 
     public enum TaxabilityIsNot {
-      Taxable("taxable"),
+      TAXABLE("taxable"),
 
-      Exempt("exempt"),
+      EXEMPT("exempt"),
 
       /** An enum member indicating that TaxabilityIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -826,31 +826,31 @@ public final class CustomerListParams {
     }
 
     public enum OfflinePaymentMethodIs {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethodIs was instantiated with an unknown
@@ -879,31 +879,31 @@ public final class CustomerListParams {
     }
 
     public enum OfflinePaymentMethodIsNot {
-      NoPreference("no_preference"),
+      NO_PREFERENCE("no_preference"),
 
-      Cash("cash"),
+      CASH("cash"),
 
-      Check("check"),
+      CHECK("check"),
 
-      BankTransfer("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-      AchCredit("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-      SepaCredit("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-      Boleto("boleto"),
+      BOLETO("boleto"),
 
-      UsAutomatedBankTransfer("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-      JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
       /**
        * An enum member indicating that OfflinePaymentMethodIsNot was instantiated with an unknown
@@ -932,9 +932,9 @@ public final class CustomerListParams {
     }
 
     public enum AutoCloseInvoicesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that AutoCloseInvoicesIs was instantiated with an unknown value.
@@ -962,11 +962,11 @@ public final class CustomerListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -992,11 +992,11 @@ public final class CustomerListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1022,9 +1022,9 @@ public final class CustomerListParams {
     }
 
     public enum SortByAsc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1050,9 +1050,9 @@ public final class CustomerListParams {
     }
 
     public enum SortByDesc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

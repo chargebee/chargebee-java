@@ -59,9 +59,9 @@ public class OmnichannelSubscriptionItemScheduledChange {
   }
 
   public enum ChangeType {
-    Downgrade("downgrade"),
+    DOWNGRADE("downgrade"),
 
-    Pause("pause"),
+    PAUSE("pause"),
 
     /** An enum member indicating that ChangeType was instantiated with an unknown value. */
     _UNKNOWN(null);

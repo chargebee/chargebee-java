@@ -338,9 +338,9 @@ public final class ProductListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Inactive("inactive"),
+      INACTIVE("inactive"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -366,9 +366,9 @@ public final class ProductListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Inactive("inactive"),
+      INACTIVE("inactive"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -394,9 +394,9 @@ public final class ProductListParams {
     }
 
     public enum ShippableIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that ShippableIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -422,9 +422,9 @@ public final class ProductListParams {
     }
 
     public enum HasVariantIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that HasVariantIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -450,13 +450,13 @@ public final class ProductListParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -482,13 +482,13 @@ public final class ProductListParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

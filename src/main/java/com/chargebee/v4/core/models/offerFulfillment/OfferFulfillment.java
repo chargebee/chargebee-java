@@ -64,15 +64,15 @@ public class OfferFulfillment {
   }
 
   public enum ProcessingType {
-    BillingUpdate("billing_update"),
+    BILLING_UPDATE("billing_update"),
 
-    Checkout("checkout"),
+    CHECKOUT("checkout"),
 
-    UrlRedirect("url_redirect"),
+    URL_REDIRECT("url_redirect"),
 
-    Webhook("webhook"),
+    WEBHOOK("webhook"),
 
-    Email("email"),
+    EMAIL("email"),
 
     /** An enum member indicating that ProcessingType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -98,11 +98,11 @@ public class OfferFulfillment {
   }
 
   public enum Status {
-    InProgress("in_progress"),
+    IN_PROGRESS("in_progress"),
 
-    Completed("completed"),
+    COMPLETED("completed"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -170,15 +170,15 @@ public class OfferFulfillment {
     }
 
     public enum Code {
-      BillingUpdateFailed("billing_update_failed"),
+      BILLING_UPDATE_FAILED("billing_update_failed"),
 
-      CheckoutAbandoned("checkout_abandoned"),
+      CHECKOUT_ABANDONED("checkout_abandoned"),
 
-      ExternalFulfillmentFailed("external_fulfillment_failed"),
+      EXTERNAL_FULFILLMENT_FAILED("external_fulfillment_failed"),
 
-      InternalError("internal_error"),
+      INTERNAL_ERROR("internal_error"),
 
-      FulfillmentExpired("fulfillment_expired"),
+      FULFILLMENT_EXPIRED("fulfillment_expired"),
 
       /** An enum member indicating that Code was instantiated with an unknown value. */
       _UNKNOWN(null);

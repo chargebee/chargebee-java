@@ -412,13 +412,13 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -574,13 +574,13 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -708,9 +708,9 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
 
       public enum ApplyOn {
-        InvoiceAmount("invoice_amount"),
+        INVOICE_AMOUNT("invoice_amount"),
 
-        SpecificItemPrice("specific_item_price"),
+        SPECIFIC_ITEM_PRICE("specific_item_price"),
 
         /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -736,11 +736,11 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
 
       public enum DurationType {
-        OneTime("one_time"),
+        ONE_TIME("one_time"),
 
-        Forever("forever"),
+        FOREVER("forever"),
 
-        LimitedPeriod("limited_period"),
+        LIMITED_PERIOD("limited_period"),
 
         /** An enum member indicating that DurationType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -766,13 +766,13 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       }
 
       public enum PeriodUnit {
-        Day("day"),
+        DAY("day"),
 
-        Week("week"),
+        WEEK("week"),
 
-        Month("month"),
+        MONTH("month"),
 
-        Year("year"),
+        YEAR("year"),
 
         /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
         _UNKNOWN(null);

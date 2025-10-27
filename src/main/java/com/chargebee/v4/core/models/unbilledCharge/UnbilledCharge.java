@@ -135,15 +135,15 @@ public class UnbilledCharge {
   }
 
   public enum PricingModel {
-    FlatFee("flat_fee"),
+    FLAT_FEE("flat_fee"),
 
-    PerUnit("per_unit"),
+    PER_UNIT("per_unit"),
 
-    Tiered("tiered"),
+    TIERED("tiered"),
 
-    Volume("volume"),
+    VOLUME("volume"),
 
-    Stairstep("stairstep"),
+    STAIRSTEP("stairstep"),
 
     /** An enum member indicating that PricingModel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -169,19 +169,19 @@ public class UnbilledCharge {
   }
 
   public enum EntityType {
-    Adhoc("adhoc"),
+    ADHOC("adhoc"),
 
-    PlanItemPrice("plan_item_price"),
+    PLAN_ITEM_PRICE("plan_item_price"),
 
-    AddonItemPrice("addon_item_price"),
+    ADDON_ITEM_PRICE("addon_item_price"),
 
-    ChargeItemPrice("charge_item_price"),
+    CHARGE_ITEM_PRICE("charge_item_price"),
 
-    PlanSetup("plan_setup"),
+    PLAN_SETUP("plan_setup"),
 
-    Plan("plan"),
+    PLAN("plan"),
 
-    Addon("addon"),
+    ADDON("addon"),
 
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -317,11 +317,11 @@ public class UnbilledCharge {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);

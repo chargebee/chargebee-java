@@ -171,9 +171,9 @@ public final class Pc2MigrationItemCreateParams {
     }
 
     public enum Pc1Type {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
       /** An enum member indicating that Pc1Type was instantiated with an unknown value. */
       _UNKNOWN(null);

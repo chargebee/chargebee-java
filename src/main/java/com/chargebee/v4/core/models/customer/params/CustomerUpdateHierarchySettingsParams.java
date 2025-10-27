@@ -138,11 +138,11 @@ public final class CustomerUpdateHierarchySettingsParams {
       }
 
       public enum PortalEditChildSubscriptions {
-        Yes("yes"),
+        YES("yes"),
 
-        ViewOnly("view_only"),
+        VIEW_ONLY("view_only"),
 
-        No("no"),
+        NO("no"),
 
         /**
          * An enum member indicating that PortalEditChildSubscriptions was instantiated with an
@@ -171,11 +171,11 @@ public final class CustomerUpdateHierarchySettingsParams {
       }
 
       public enum PortalDownloadChildInvoices {
-        Yes("yes"),
+        YES("yes"),
 
-        ViewOnly("view_only"),
+        VIEW_ONLY("view_only"),
 
-        No("no"),
+        NO("no"),
 
         /**
          * An enum member indicating that PortalDownloadChildInvoices was instantiated with an
@@ -269,9 +269,9 @@ public final class CustomerUpdateHierarchySettingsParams {
       }
 
       public enum PortalEditSubscriptions {
-        Yes("yes"),
+        YES("yes"),
 
-        ViewOnly("view_only"),
+        VIEW_ONLY("view_only"),
 
         /**
          * An enum member indicating that PortalEditSubscriptions was instantiated with an unknown
@@ -300,11 +300,11 @@ public final class CustomerUpdateHierarchySettingsParams {
       }
 
       public enum PortalDownloadInvoices {
-        Yes("yes"),
+        YES("yes"),
 
-        ViewOnly("view_only"),
+        VIEW_ONLY("view_only"),
 
-        No("no"),
+        NO("no"),
 
         /**
          * An enum member indicating that PortalDownloadInvoices was instantiated with an unknown

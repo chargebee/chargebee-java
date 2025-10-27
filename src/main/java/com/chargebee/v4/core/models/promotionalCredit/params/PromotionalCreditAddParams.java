@@ -90,11 +90,11 @@ public final class PromotionalCreditAddParams {
     }
 
     public enum CreditType {
-      LoyaltyCredits("loyalty_credits"),
+      LOYALTY_CREDITS("loyalty_credits"),
 
-      ReferralRewards("referral_rewards"),
+      REFERRAL_REWARDS("referral_rewards"),
 
-      General("general"),
+      GENERAL("general"),
 
       /** An enum member indicating that CreditType was instantiated with an unknown value. */
       _UNKNOWN(null);

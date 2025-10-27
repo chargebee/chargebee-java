@@ -90,13 +90,13 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public EntitlementListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
@@ -110,13 +110,13 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public EntitlementListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
@@ -130,27 +130,27 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public EntitlementListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
     }
 
     public enum EntityTypeIs {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
-      PlanPrice("plan_price"),
+      PLAN_PRICE("plan_price"),
 
-      AddonPrice("addon_price"),
+      ADDON_PRICE("addon_price"),
 
       /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);

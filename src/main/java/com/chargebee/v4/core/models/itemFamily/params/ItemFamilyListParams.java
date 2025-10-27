@@ -206,9 +206,9 @@ public final class ItemFamilyListParams {
     }
 
     public enum BusinessEntityIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
@@ -237,9 +237,9 @@ public final class ItemFamilyListParams {
     }
 
     public enum IncludeSiteLevelResourcesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown

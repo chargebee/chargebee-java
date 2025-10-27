@@ -104,11 +104,11 @@ public class Discount {
   }
 
   public enum Type {
-    FixedAmount("fixed_amount"),
+    FIXED_AMOUNT("fixed_amount"),
 
-    Percentage("percentage"),
+    PERCENTAGE("percentage"),
 
-    OfferQuantity("offer_quantity"),
+    OFFER_QUANTITY("offer_quantity"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -134,11 +134,11 @@ public class Discount {
   }
 
   public enum DurationType {
-    OneTime("one_time"),
+    ONE_TIME("one_time"),
 
-    Forever("forever"),
+    FOREVER("forever"),
 
-    LimitedPeriod("limited_period"),
+    LIMITED_PERIOD("limited_period"),
 
     /** An enum member indicating that DurationType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -164,13 +164,13 @@ public class Discount {
   }
 
   public enum PeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -196,9 +196,9 @@ public class Discount {
   }
 
   public enum ApplyOn {
-    InvoiceAmount("invoice_amount"),
+    INVOICE_AMOUNT("invoice_amount"),
 
-    SpecificItemPrice("specific_item_price"),
+    SPECIFIC_ITEM_PRICE("specific_item_price"),
 
     /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
     _UNKNOWN(null);

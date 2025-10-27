@@ -55,9 +55,9 @@ public final class QuotePdfParams {
     }
 
     public enum DispositionType {
-      Attachment("attachment"),
+      ATTACHMENT("attachment"),
 
-      Inline("inline"),
+      INLINE("inline"),
 
       /** An enum member indicating that DispositionType was instantiated with an unknown value. */
       _UNKNOWN(null);

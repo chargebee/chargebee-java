@@ -49,13 +49,13 @@ public class TimeMachine {
   }
 
   public enum TimeTravelStatus {
-    NotEnabled("not_enabled"),
+    NOT_ENABLED("not_enabled"),
 
-    InProgress("in_progress"),
+    IN_PROGRESS("in_progress"),
 
-    Succeeded("succeeded"),
+    SUCCEEDED("succeeded"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
     /** An enum member indicating that TimeTravelStatus was instantiated with an unknown value. */
     _UNKNOWN(null);

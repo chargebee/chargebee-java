@@ -44,17 +44,17 @@ public class SiteMigrationDetail {
   }
 
   public enum EntityType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
-    Subscription("subscription"),
+    SUBSCRIPTION("subscription"),
 
-    Invoice("invoice"),
+    INVOICE("invoice"),
 
-    CreditNote("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-    Transaction("transaction"),
+    TRANSACTION("transaction"),
 
-    Order("order"),
+    ORDER("order"),
 
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -80,11 +80,11 @@ public class SiteMigrationDetail {
   }
 
   public enum Status {
-    MovedIn("moved_in"),
+    MOVED_IN("moved_in"),
 
-    MovedOut("moved_out"),
+    MOVED_OUT("moved_out"),
 
-    MovingOut("moving_out"),
+    MOVING_OUT("moving_out"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

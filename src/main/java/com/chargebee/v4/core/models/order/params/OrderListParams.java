@@ -586,29 +586,29 @@ public final class OrderListParams {
     }
 
     public enum StatusIs {
-      New("new"),
+      NEW("new"),
 
-      Processing("processing"),
+      PROCESSING("processing"),
 
-      Complete("complete"),
+      COMPLETE("complete"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Queued("queued"),
+      QUEUED("queued"),
 
-      AwaitingShipment("awaiting_shipment"),
+      AWAITING_SHIPMENT("awaiting_shipment"),
 
-      OnHold("on_hold"),
+      ON_HOLD("on_hold"),
 
-      Delivered("delivered"),
+      DELIVERED("delivered"),
 
-      Shipped("shipped"),
+      SHIPPED("shipped"),
 
-      PartiallyDelivered("partially_delivered"),
+      PARTIALLY_DELIVERED("partially_delivered"),
 
-      Returned("returned"),
+      RETURNED("returned"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -634,29 +634,29 @@ public final class OrderListParams {
     }
 
     public enum StatusIsNot {
-      New("new"),
+      NEW("new"),
 
-      Processing("processing"),
+      PROCESSING("processing"),
 
-      Complete("complete"),
+      COMPLETE("complete"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Queued("queued"),
+      QUEUED("queued"),
 
-      AwaitingShipment("awaiting_shipment"),
+      AWAITING_SHIPMENT("awaiting_shipment"),
 
-      OnHold("on_hold"),
+      ON_HOLD("on_hold"),
 
-      Delivered("delivered"),
+      DELIVERED("delivered"),
 
-      Shipped("shipped"),
+      SHIPPED("shipped"),
 
-      PartiallyDelivered("partially_delivered"),
+      PARTIALLY_DELIVERED("partially_delivered"),
 
-      Returned("returned"),
+      RETURNED("returned"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -682,9 +682,9 @@ public final class OrderListParams {
     }
 
     public enum OrderTypeIs {
-      Manual("manual"),
+      MANUAL("manual"),
 
-      SystemGenerated("system_generated"),
+      SYSTEM_GENERATED("system_generated"),
 
       /** An enum member indicating that OrderTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -710,9 +710,9 @@ public final class OrderListParams {
     }
 
     public enum OrderTypeIsNot {
-      Manual("manual"),
+      MANUAL("manual"),
 
-      SystemGenerated("system_generated"),
+      SYSTEM_GENERATED("system_generated"),
 
       /** An enum member indicating that OrderTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -738,9 +738,9 @@ public final class OrderListParams {
     }
 
     public enum ResentStatusIs {
-      FullyResent("fully_resent"),
+      FULLY_RESENT("fully_resent"),
 
-      PartiallyResent("partially_resent"),
+      PARTIALLY_RESENT("partially_resent"),
 
       /** An enum member indicating that ResentStatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -766,9 +766,9 @@ public final class OrderListParams {
     }
 
     public enum ResentStatusIsNot {
-      FullyResent("fully_resent"),
+      FULLY_RESENT("fully_resent"),
 
-      PartiallyResent("partially_resent"),
+      PARTIALLY_RESENT("partially_resent"),
 
       /**
        * An enum member indicating that ResentStatusIsNot was instantiated with an unknown value.
@@ -796,9 +796,9 @@ public final class OrderListParams {
     }
 
     public enum IsResentIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /** An enum member indicating that IsResentIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -824,9 +824,9 @@ public final class OrderListParams {
     }
 
     public enum SortByAsc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -852,9 +852,9 @@ public final class OrderListParams {
     }
 
     public enum SortByDesc {
-      CreatedAt("created_at"),
+      CREATED_AT("created_at"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

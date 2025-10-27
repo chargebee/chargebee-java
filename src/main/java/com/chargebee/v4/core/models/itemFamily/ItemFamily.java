@@ -81,9 +81,9 @@ public class ItemFamily {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Deleted("deleted"),
+    DELETED("deleted"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -109,11 +109,11 @@ public class ItemFamily {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);

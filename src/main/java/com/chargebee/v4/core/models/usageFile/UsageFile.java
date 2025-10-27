@@ -99,15 +99,15 @@ public class UsageFile {
   }
 
   public enum Status {
-    Queued("queued"),
+    QUEUED("queued"),
 
-    Imported("imported"),
+    IMPORTED("imported"),
 
-    Processing("processing"),
+    PROCESSING("processing"),
 
-    Processed("processed"),
+    PROCESSED("processed"),
 
-    Failed("failed"),
+    FAILED("failed"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

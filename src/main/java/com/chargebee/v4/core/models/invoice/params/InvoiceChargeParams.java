@@ -179,13 +179,13 @@ public final class InvoiceChargeParams {
     }
 
     public enum AvalaraSaleType {
-      Wholesale("wholesale"),
+      WHOLESALE("wholesale"),
 
-      Retail("retail"),
+      RETAIL("retail"),
 
-      Consumed("consumed"),
+      CONSUMED("consumed"),
 
-      VendorUse("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
       /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -211,9 +211,9 @@ public final class InvoiceChargeParams {
     }
 
     public enum PaymentInitiator {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Merchant("merchant"),
+      MERCHANT("merchant"),
 
       /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
       _UNKNOWN(null);

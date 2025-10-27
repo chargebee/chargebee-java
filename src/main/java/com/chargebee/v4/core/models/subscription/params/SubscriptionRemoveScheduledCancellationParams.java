@@ -111,11 +111,11 @@ public final class SubscriptionRemoveScheduledCancellationParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.

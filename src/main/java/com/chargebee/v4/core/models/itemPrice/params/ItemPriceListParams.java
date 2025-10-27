@@ -686,15 +686,15 @@ public final class ItemPriceListParams {
     }
 
     public enum PricingModelIs {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /** An enum member indicating that PricingModelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -720,15 +720,15 @@ public final class ItemPriceListParams {
     }
 
     public enum PricingModelIsNot {
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      Tiered("tiered"),
+      TIERED("tiered"),
 
-      Volume("volume"),
+      VOLUME("volume"),
 
-      Stairstep("stairstep"),
+      STAIRSTEP("stairstep"),
 
       /**
        * An enum member indicating that PricingModelIsNot was instantiated with an unknown value.
@@ -756,11 +756,11 @@ public final class ItemPriceListParams {
     }
 
     public enum ItemTypeIs {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -786,11 +786,11 @@ public final class ItemPriceListParams {
     }
 
     public enum ItemTypeIsNot {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -816,9 +816,9 @@ public final class ItemPriceListParams {
     }
 
     public enum TrialPeriodUnitIs {
-      Day("day"),
+      DAY("day"),
 
-      Month("month"),
+      MONTH("month"),
 
       /**
        * An enum member indicating that TrialPeriodUnitIs was instantiated with an unknown value.
@@ -846,9 +846,9 @@ public final class ItemPriceListParams {
     }
 
     public enum TrialPeriodUnitIsNot {
-      Day("day"),
+      DAY("day"),
 
-      Month("month"),
+      MONTH("month"),
 
       /**
        * An enum member indicating that TrialPeriodUnitIsNot was instantiated with an unknown value.
@@ -876,11 +876,11 @@ public final class ItemPriceListParams {
     }
 
     public enum StatusIs {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -906,11 +906,11 @@ public final class ItemPriceListParams {
     }
 
     public enum StatusIsNot {
-      Active("active"),
+      ACTIVE("active"),
 
-      Archived("archived"),
+      ARCHIVED("archived"),
 
-      Deleted("deleted"),
+      DELETED("deleted"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -936,9 +936,9 @@ public final class ItemPriceListParams {
     }
 
     public enum BusinessEntityIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
@@ -967,9 +967,9 @@ public final class ItemPriceListParams {
     }
 
     public enum IncludeSiteLevelResourcesIs {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown
@@ -998,13 +998,13 @@ public final class ItemPriceListParams {
     }
 
     public enum PeriodUnitIs {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnitIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1030,13 +1030,13 @@ public final class ItemPriceListParams {
     }
 
     public enum PeriodUnitIsNot {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnitIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1062,11 +1062,11 @@ public final class ItemPriceListParams {
     }
 
     public enum ChannelIs {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1092,11 +1092,11 @@ public final class ItemPriceListParams {
     }
 
     public enum ChannelIsNot {
-      Web("web"),
+      WEB("web"),
 
-      AppStore("app_store"),
+      APP_STORE("app_store"),
 
-      PlayStore("play_store"),
+      PLAY_STORE("play_store"),
 
       /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1122,11 +1122,11 @@ public final class ItemPriceListParams {
     }
 
     public enum SortByAsc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1152,11 +1152,11 @@ public final class ItemPriceListParams {
     }
 
     public enum SortByDesc {
-      Name("name"),
+      NAME("name"),
 
-      Id("id"),
+      ID("id"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

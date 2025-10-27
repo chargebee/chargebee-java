@@ -60,9 +60,9 @@ public class OmnichannelSubscription {
   }
 
   public enum Source {
-    AppleAppStore("apple_app_store"),
+    APPLE_APP_STORE("apple_app_store"),
 
-    GooglePlayStore("google_play_store"),
+    GOOGLE_PLAY_STORE("google_play_store"),
 
     /** An enum member indicating that Source was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -214,17 +214,17 @@ public class OmnichannelSubscription {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      InDunning("in_dunning"),
+      IN_DUNNING("in_dunning"),
 
-      InGracePeriod("in_grace_period"),
+      IN_GRACE_PERIOD("in_grace_period"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -250,9 +250,9 @@ public class OmnichannelSubscription {
     }
 
     public enum AutoRenewStatus {
-      Off("off"),
+      OFF("off"),
 
-      On("on"),
+      ON("on"),
 
       /** An enum member indicating that AutoRenewStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -278,11 +278,11 @@ public class OmnichannelSubscription {
     }
 
     public enum ExpirationReason {
-      BillingError("billing_error"),
+      BILLING_ERROR("billing_error"),
 
-      ProductNotAvailable("product_not_available"),
+      PRODUCT_NOT_AVAILABLE("product_not_available"),
 
-      Other("other"),
+      OTHER("other"),
 
       /** An enum member indicating that ExpirationReason was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -308,15 +308,15 @@ public class OmnichannelSubscription {
     }
 
     public enum CancellationReason {
-      CustomerCancelled("customer_cancelled"),
+      CUSTOMER_CANCELLED("customer_cancelled"),
 
-      CustomerDidNotConsentToPriceIncrease("customer_did_not_consent_to_price_increase"),
+      CUSTOMER_DID_NOT_CONSENT_TO_PRICE_INCREASE("customer_did_not_consent_to_price_increase"),
 
-      RefundedDueToAppIssue("refunded_due_to_app_issue"),
+      REFUNDED_DUE_TO_APP_ISSUE("refunded_due_to_app_issue"),
 
-      RefundedForOtherReason("refunded_for_other_reason"),
+      REFUNDED_FOR_OTHER_REASON("refunded_for_other_reason"),
 
-      MerchantRevoked("merchant_revoked"),
+      MERCHANT_REVOKED("merchant_revoked"),
 
       /**
        * An enum member indicating that CancellationReason was instantiated with an unknown value.
@@ -477,11 +477,11 @@ public class OmnichannelSubscription {
       }
 
       public enum Category {
-        Introductory("introductory"),
+        INTRODUCTORY("introductory"),
 
-        Promotional("promotional"),
+        PROMOTIONAL("promotional"),
 
-        DeveloperDetermined("developer_determined"),
+        DEVELOPER_DETERMINED("developer_determined"),
 
         /** An enum member indicating that Category was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -507,11 +507,11 @@ public class OmnichannelSubscription {
       }
 
       public enum Type {
-        FreeTrial("free_trial"),
+        FREE_TRIAL("free_trial"),
 
-        PayUpFront("pay_up_front"),
+        PAY_UP_FRONT("pay_up_front"),
 
-        PayAsYouGo("pay_as_you_go"),
+        PAY_AS_YOU_GO("pay_as_you_go"),
 
         /** An enum member indicating that Type was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -537,11 +537,11 @@ public class OmnichannelSubscription {
       }
 
       public enum DiscountType {
-        FixedAmount("fixed_amount"),
+        FIXED_AMOUNT("fixed_amount"),
 
-        Percentage("percentage"),
+        PERCENTAGE("percentage"),
 
-        Price("price"),
+        PRICE("price"),
 
         /** An enum member indicating that DiscountType was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -723,9 +723,9 @@ public class OmnichannelSubscription {
     }
 
     public enum Type {
-      Purchase("purchase"),
+      PURCHASE("purchase"),
 
-      Renewal("renewal"),
+      RENEWAL("renewal"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

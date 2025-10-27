@@ -64,9 +64,9 @@ public class Rule {
   }
 
   public enum Status {
-    Active("active"),
+    ACTIVE("active"),
 
-    Disabled("disabled"),
+    DISABLED("disabled"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);

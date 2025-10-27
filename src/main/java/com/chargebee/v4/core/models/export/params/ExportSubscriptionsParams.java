@@ -92,9 +92,9 @@ public final class ExportSubscriptionsParams {
     }
 
     public enum ExportType {
-      Data("data"),
+      DATA("data"),
 
-      ImportFriendlyData("import_friendly_data"),
+      IMPORT_FRIENDLY_DATA("import_friendly_data"),
 
       /** An enum member indicating that ExportType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -697,19 +697,19 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        Future("future"),
+        FUTURE("future"),
 
-        InTrial("in_trial"),
+        IN_TRIAL("in_trial"),
 
-        Active("active"),
+        ACTIVE("active"),
 
-        NonRenewing("non_renewing"),
+        NON_RENEWING("non_renewing"),
 
-        Paused("paused"),
+        PAUSED("paused"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Transferred("transferred"),
+        TRANSFERRED("transferred"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -735,19 +735,19 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsNot {
-        Future("future"),
+        FUTURE("future"),
 
-        InTrial("in_trial"),
+        IN_TRIAL("in_trial"),
 
-        Active("active"),
+        ACTIVE("active"),
 
-        NonRenewing("non_renewing"),
+        NON_RENEWING("non_renewing"),
 
-        Paused("paused"),
+        PAUSED("paused"),
 
-        Cancelled("cancelled"),
+        CANCELLED("cancelled"),
 
-        Transferred("transferred"),
+        TRANSFERRED("transferred"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -838,19 +838,19 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        NoCard("no_card"),
+        NO_CARD("no_card"),
 
-        FraudReviewFailed("fraud_review_failed"),
+        FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-        NonCompliantEuCustomer("non_compliant_eu_customer"),
+        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-        TaxCalculationFailed("tax_calculation_failed"),
+        TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-        CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-        NonCompliantCustomer("non_compliant_customer"),
+        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -876,19 +876,19 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsNot {
-        NotPaid("not_paid"),
+        NOT_PAID("not_paid"),
 
-        NoCard("no_card"),
+        NO_CARD("no_card"),
 
-        FraudReviewFailed("fraud_review_failed"),
+        FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-        NonCompliantEuCustomer("non_compliant_eu_customer"),
+        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-        TaxCalculationFailed("tax_calculation_failed"),
+        TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-        CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-        NonCompliantCustomer("non_compliant_customer"),
+        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -914,9 +914,9 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1028,9 +1028,9 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1179,9 +1179,9 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1360,9 +1360,9 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1504,31 +1504,31 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1554,31 +1554,31 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsNot {
-        NoPreference("no_preference"),
+        NO_PREFERENCE("no_preference"),
 
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        AchCredit("ach_credit"),
+        ACH_CREDIT("ach_credit"),
 
-        SepaCredit("sepa_credit"),
+        SEPA_CREDIT("sepa_credit"),
 
-        Boleto("boleto"),
+        BOLETO("boleto"),
 
-        UsAutomatedBankTransfer("us_automated_bank_transfer"),
+        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1641,9 +1641,9 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1727,11 +1727,11 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum Is {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -1757,11 +1757,11 @@ public final class ExportSubscriptionsParams {
       }
 
       public enum IsNot {
-        Web("web"),
+        WEB("web"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

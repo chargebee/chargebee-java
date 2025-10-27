@@ -104,15 +104,15 @@ public final class OrderCreateParams {
     }
 
     public enum Status {
-      New("new"),
+      NEW("new"),
 
-      Processing("processing"),
+      PROCESSING("processing"),
 
-      Complete("complete"),
+      COMPLETE("complete"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

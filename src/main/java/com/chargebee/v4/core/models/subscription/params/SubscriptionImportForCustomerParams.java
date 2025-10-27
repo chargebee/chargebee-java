@@ -369,9 +369,9 @@ public final class SubscriptionImportForCustomerParams {
     }
 
     public enum AutoCollection {
-      On("on"),
+      ON("on"),
 
-      Off("off"),
+      OFF("off"),
 
       /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -397,19 +397,19 @@ public final class SubscriptionImportForCustomerParams {
     }
 
     public enum Status {
-      Future("future"),
+      FUTURE("future"),
 
-      InTrial("in_trial"),
+      IN_TRIAL("in_trial"),
 
-      Active("active"),
+      ACTIVE("active"),
 
-      NonRenewing("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-      Paused("paused"),
+      PAUSED("paused"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Transferred("transferred"),
+      TRANSFERRED("transferred"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -520,13 +520,13 @@ public final class SubscriptionImportForCustomerParams {
       }
 
       public enum ActionAtTermEnd {
-        Renew("renew"),
+        RENEW("renew"),
 
-        Evergreen("evergreen"),
+        EVERGREEN("evergreen"),
 
-        Cancel("cancel"),
+        CANCEL("cancel"),
 
-        RenewOnce("renew_once"),
+        RENEW_ONCE("renew_once"),
 
         /**
          * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
@@ -612,19 +612,19 @@ public final class SubscriptionImportForCustomerParams {
       }
 
       public enum PaymentMethod {
-        Cash("cash"),
+        CASH("cash"),
 
-        Check("check"),
+        CHECK("check"),
 
-        BankTransfer("bank_transfer"),
+        BANK_TRANSFER("bank_transfer"),
 
-        Other("other"),
+        OTHER("other"),
 
-        AppStore("app_store"),
+        APP_STORE("app_store"),
 
-        PlayStore("play_store"),
+        PLAY_STORE("play_store"),
 
-        Custom("custom"),
+        CUSTOM("custom"),
 
         /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -778,13 +778,13 @@ public final class SubscriptionImportForCustomerParams {
       }
 
       public enum ValidationStatus {
-        NotValidated("not_validated"),
+        NOT_VALIDATED("not_validated"),
 
-        Valid("valid"),
+        VALID("valid"),
 
-        PartiallyValid("partially_valid"),
+        PARTIALLY_VALID("partially_valid"),
 
-        Invalid("invalid"),
+        INVALID("invalid"),
 
         /**
          * An enum member indicating that ValidationStatus was instantiated with an unknown value.
@@ -970,15 +970,15 @@ public final class SubscriptionImportForCustomerParams {
       }
 
       public enum OnEvent {
-        SubscriptionCreation("subscription_creation"),
+        SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SubscriptionTrialStart("subscription_trial_start"),
+        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PlanActivation("plan_activation"),
+        PLAN_ACTIVATION("plan_activation"),
 
-        SubscriptionActivation("subscription_activation"),
+        SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        ContractTermination("contract_termination"),
+        CONTRACT_TERMINATION("contract_termination"),
 
         /** An enum member indicating that OnEvent was instantiated with an unknown value. */
         _UNKNOWN(null);

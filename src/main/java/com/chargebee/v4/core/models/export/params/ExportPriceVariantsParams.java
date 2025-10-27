@@ -118,9 +118,9 @@ public final class ExportPriceVariantsParams {
       }
 
       public enum IsPresent {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that IsPresent was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -183,9 +183,9 @@ public final class ExportPriceVariantsParams {
       }
 
       public enum Is {
-        True("true"),
+        TRUE("true"),
 
-        False("false"),
+        FALSE("false"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -484,9 +484,9 @@ public final class ExportPriceVariantsParams {
       }
 
       public enum Is {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
         /** An enum member indicating that Is was instantiated with an unknown value. */
         _UNKNOWN(null);
@@ -512,9 +512,9 @@ public final class ExportPriceVariantsParams {
       }
 
       public enum IsNot {
-        Active("active"),
+        ACTIVE("active"),
 
-        Archived("archived"),
+        ARCHIVED("archived"),
 
         /** An enum member indicating that IsNot was instantiated with an unknown value. */
         _UNKNOWN(null);

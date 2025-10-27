@@ -213,17 +213,17 @@ public final class SiteMigrationDetailListParams {
     }
 
     public enum EntityTypeIs {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Subscription("subscription"),
+      SUBSCRIPTION("subscription"),
 
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
-      CreditNote("credit_note"),
+      CREDIT_NOTE("credit_note"),
 
-      Transaction("transaction"),
+      TRANSACTION("transaction"),
 
-      Order("order"),
+      ORDER("order"),
 
       /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -249,17 +249,17 @@ public final class SiteMigrationDetailListParams {
     }
 
     public enum EntityTypeIsNot {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
-      Subscription("subscription"),
+      SUBSCRIPTION("subscription"),
 
-      Invoice("invoice"),
+      INVOICE("invoice"),
 
-      CreditNote("credit_note"),
+      CREDIT_NOTE("credit_note"),
 
-      Transaction("transaction"),
+      TRANSACTION("transaction"),
 
-      Order("order"),
+      ORDER("order"),
 
       /** An enum member indicating that EntityTypeIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -285,11 +285,11 @@ public final class SiteMigrationDetailListParams {
     }
 
     public enum StatusIs {
-      MovedIn("moved_in"),
+      MOVED_IN("moved_in"),
 
-      MovedOut("moved_out"),
+      MOVED_OUT("moved_out"),
 
-      MovingOut("moving_out"),
+      MOVING_OUT("moving_out"),
 
       /** An enum member indicating that StatusIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -315,11 +315,11 @@ public final class SiteMigrationDetailListParams {
     }
 
     public enum StatusIsNot {
-      MovedIn("moved_in"),
+      MOVED_IN("moved_in"),
 
-      MovedOut("moved_out"),
+      MOVED_OUT("moved_out"),
 
-      MovingOut("moving_out"),
+      MOVING_OUT("moving_out"),
 
       /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);

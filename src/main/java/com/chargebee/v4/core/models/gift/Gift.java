@@ -70,15 +70,15 @@ public class Gift {
   }
 
   public enum Status {
-    Scheduled("scheduled"),
+    SCHEDULED("scheduled"),
 
-    Unclaimed("unclaimed"),
+    UNCLAIMED("unclaimed"),
 
-    Claimed("claimed"),
+    CLAIMED("claimed"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Expired("expired"),
+    EXPIRED("expired"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -237,15 +237,15 @@ public class Gift {
     }
 
     public enum Status {
-      Scheduled("scheduled"),
+      SCHEDULED("scheduled"),
 
-      Unclaimed("unclaimed"),
+      UNCLAIMED("unclaimed"),
 
-      Claimed("claimed"),
+      CLAIMED("claimed"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Expired("expired"),
+      EXPIRED("expired"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

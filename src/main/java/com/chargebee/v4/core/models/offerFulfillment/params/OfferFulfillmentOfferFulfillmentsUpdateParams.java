@@ -63,9 +63,9 @@ public final class OfferFulfillmentOfferFulfillmentsUpdateParams {
     }
 
     public enum Status {
-      Completed("completed"),
+      COMPLETED("completed"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

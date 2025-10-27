@@ -64,7 +64,7 @@ public final class HostedPageEventsParams {
     }
 
     public enum EventName {
-      CancellationPageLoaded("cancellation_page_loaded"),
+      CANCELLATION_PAGE_LOADED("cancellation_page_loaded"),
 
       /** An enum member indicating that EventName was instantiated with an unknown value. */
       _UNKNOWN(null);

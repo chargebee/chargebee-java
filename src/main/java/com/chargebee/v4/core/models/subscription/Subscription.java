@@ -430,19 +430,19 @@ public class Subscription {
   }
 
   public enum Status {
-    Future("future"),
+    FUTURE("future"),
 
-    InTrial("in_trial"),
+    IN_TRIAL("in_trial"),
 
-    Active("active"),
+    ACTIVE("active"),
 
-    NonRenewing("non_renewing"),
+    NON_RENEWING("non_renewing"),
 
-    Paused("paused"),
+    PAUSED("paused"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Transferred("transferred"),
+    TRANSFERRED("transferred"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -468,13 +468,13 @@ public class Subscription {
   }
 
   public enum TrialEndAction {
-    SiteDefault("site_default"),
+    SITE_DEFAULT("site_default"),
 
-    PlanDefault("plan_default"),
+    PLAN_DEFAULT("plan_default"),
 
-    ActivateSubscription("activate_subscription"),
+    ACTIVATE_SUBSCRIPTION("activate_subscription"),
 
-    CancelSubscription("cancel_subscription"),
+    CANCEL_SUBSCRIPTION("cancel_subscription"),
 
     /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -500,19 +500,19 @@ public class Subscription {
   }
 
   public enum CancelReason {
-    NotPaid("not_paid"),
+    NOT_PAID("not_paid"),
 
-    NoCard("no_card"),
+    NO_CARD("no_card"),
 
-    FraudReviewFailed("fraud_review_failed"),
+    FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-    NonCompliantEuCustomer("non_compliant_eu_customer"),
+    NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-    TaxCalculationFailed("tax_calculation_failed"),
+    TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-    CurrencyIncompatibleWithGateway("currency_incompatible_with_gateway"),
+    CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-    NonCompliantCustomer("non_compliant_customer"),
+    NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
     /** An enum member indicating that CancelReason was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -538,31 +538,31 @@ public class Subscription {
   }
 
   public enum OfflinePaymentMethod {
-    NoPreference("no_preference"),
+    NO_PREFERENCE("no_preference"),
 
-    Cash("cash"),
+    CASH("cash"),
 
-    Check("check"),
+    CHECK("check"),
 
-    BankTransfer("bank_transfer"),
+    BANK_TRANSFER("bank_transfer"),
 
-    AchCredit("ach_credit"),
+    ACH_CREDIT("ach_credit"),
 
-    SepaCredit("sepa_credit"),
+    SEPA_CREDIT("sepa_credit"),
 
-    Boleto("boleto"),
+    BOLETO("boleto"),
 
-    UsAutomatedBankTransfer("us_automated_bank_transfer"),
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-    EuAutomatedBankTransfer("eu_automated_bank_transfer"),
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-    UkAutomatedBankTransfer("uk_automated_bank_transfer"),
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-    JpAutomatedBankTransfer("jp_automated_bank_transfer"),
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-    MxAutomatedBankTransfer("mx_automated_bank_transfer"),
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-    Custom("custom"),
+    CUSTOM("custom"),
 
     /**
      * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
@@ -590,11 +590,11 @@ public class Subscription {
   }
 
   public enum Channel {
-    Web("web"),
+    WEB("web"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
     /** An enum member indicating that Channel was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -620,13 +620,13 @@ public class Subscription {
   }
 
   public enum FreePeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -652,13 +652,13 @@ public class Subscription {
   }
 
   public enum BillingPeriodUnit {
-    Day("day"),
+    DAY("day"),
 
-    Week("week"),
+    WEEK("week"),
 
-    Month("month"),
+    MONTH("month"),
 
-    Year("year"),
+    YEAR("year"),
 
     /** An enum member indicating that BillingPeriodUnit was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -684,9 +684,9 @@ public class Subscription {
   }
 
   public enum AutoCollection {
-    On("on"),
+    ON("on"),
 
-    Off("off"),
+    OFF("off"),
 
     /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -1238,11 +1238,11 @@ public class Subscription {
     }
 
     public enum ItemType {
-      Plan("plan"),
+      PLAN("plan"),
 
-      Addon("addon"),
+      ADDON("addon"),
 
-      Charge("charge"),
+      CHARGE("charge"),
 
       /** An enum member indicating that ItemType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1268,13 +1268,13 @@ public class Subscription {
     }
 
     public enum BillingPeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /**
        * An enum member indicating that BillingPeriodUnit was instantiated with an unknown value.
@@ -1302,15 +1302,15 @@ public class Subscription {
     }
 
     public enum ChargeOnEvent {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
       /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1336,9 +1336,9 @@ public class Subscription {
     }
 
     public enum ChargeOnOption {
-      Immediately("immediately"),
+      IMMEDIATELY("immediately"),
 
-      OnEvent("on_event"),
+      ON_EVENT("on_event"),
 
       /** An enum member indicating that ChargeOnOption was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1364,11 +1364,11 @@ public class Subscription {
     }
 
     public enum ProrationType {
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1394,9 +1394,9 @@ public class Subscription {
     }
 
     public enum UsageAccumulationResetFrequency {
-      Never("never"),
+      NEVER("never"),
 
-      SubscriptionBillingFrequency("subscription_billing_frequency"),
+      SUBSCRIPTION_BILLING_FREQUENCY("subscription_billing_frequency"),
 
       /**
        * An enum member indicating that UsageAccumulationResetFrequency was instantiated with an
@@ -1538,11 +1538,11 @@ public class Subscription {
     }
 
     public enum PricingType {
-      PerUnit("per_unit"),
+      PER_UNIT("per_unit"),
 
-      FlatFee("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-      Package("package"),
+      PACKAGE("package"),
 
       /** An enum member indicating that PricingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1730,13 +1730,13 @@ public class Subscription {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1871,11 +1871,11 @@ public class Subscription {
     }
 
     public enum RewardStatus {
-      Pending("pending"),
+      PENDING("pending"),
 
-      Paid("paid"),
+      PAID("paid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that RewardStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1901,11 +1901,11 @@ public class Subscription {
     }
 
     public enum ReferralSystem {
-      ReferralCandy("referral_candy"),
+      REFERRAL_CANDY("referral_candy"),
 
-      ReferralSaasquatch("referral_saasquatch"),
+      REFERRAL_SAASQUATCH("referral_saasquatch"),
 
-      Friendbuy("friendbuy"),
+      FRIENDBUY("friendbuy"),
 
       /** An enum member indicating that ReferralSystem was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1931,11 +1931,11 @@ public class Subscription {
     }
 
     public enum FriendOfferType {
-      None("none"),
+      NONE("none"),
 
-      Coupon("coupon"),
+      COUPON("coupon"),
 
-      CouponCode("coupon_code"),
+      COUPON_CODE("coupon_code"),
 
       /** An enum member indicating that FriendOfferType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1961,13 +1961,13 @@ public class Subscription {
     }
 
     public enum ReferrerRewardType {
-      None("none"),
+      NONE("none"),
 
-      ReferralDirectReward("referral_direct_reward"),
+      REFERRAL_DIRECT_REWARD("referral_direct_reward"),
 
-      CustomPromotionalCredit("custom_promotional_credit"),
+      CUSTOM_PROMOTIONAL_CREDIT("custom_promotional_credit"),
 
-      CustomRevenuePercentBased("custom_revenue_percent_based"),
+      CUSTOM_REVENUE_PERCENT_BASED("custom_revenue_percent_based"),
 
       /**
        * An enum member indicating that ReferrerRewardType was instantiated with an unknown value.
@@ -1995,11 +1995,11 @@ public class Subscription {
     }
 
     public enum NotifyReferralSystem {
-      None("none"),
+      NONE("none"),
 
-      FirstPaidConversion("first_paid_conversion"),
+      FIRST_PAID_CONVERSION("first_paid_conversion"),
 
-      AllInvoices("all_invoices"),
+      ALL_INVOICES("all_invoices"),
 
       /**
        * An enum member indicating that NotifyReferralSystem was instantiated with an unknown value.
@@ -2152,13 +2152,13 @@ public class Subscription {
     }
 
     public enum Status {
-      Active("active"),
+      ACTIVE("active"),
 
-      Completed("completed"),
+      COMPLETED("completed"),
 
-      Cancelled("cancelled"),
+      CANCELLED("cancelled"),
 
-      Terminated("terminated"),
+      TERMINATED("terminated"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2184,13 +2184,13 @@ public class Subscription {
     }
 
     public enum ActionAtTermEnd {
-      Renew("renew"),
+      RENEW("renew"),
 
-      Evergreen("evergreen"),
+      EVERGREEN("evergreen"),
 
-      Cancel("cancel"),
+      CANCEL("cancel"),
 
-      RenewOnce("renew_once"),
+      RENEW_ONCE("renew_once"),
 
       /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2341,11 +2341,11 @@ public class Subscription {
     }
 
     public enum Type {
-      FixedAmount("fixed_amount"),
+      FIXED_AMOUNT("fixed_amount"),
 
-      Percentage("percentage"),
+      PERCENTAGE("percentage"),
 
-      OfferQuantity("offer_quantity"),
+      OFFER_QUANTITY("offer_quantity"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2371,11 +2371,11 @@ public class Subscription {
     }
 
     public enum DurationType {
-      OneTime("one_time"),
+      ONE_TIME("one_time"),
 
-      Forever("forever"),
+      FOREVER("forever"),
 
-      LimitedPeriod("limited_period"),
+      LIMITED_PERIOD("limited_period"),
 
       /** An enum member indicating that DurationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2401,13 +2401,13 @@ public class Subscription {
     }
 
     public enum PeriodUnit {
-      Day("day"),
+      DAY("day"),
 
-      Week("week"),
+      WEEK("week"),
 
-      Month("month"),
+      MONTH("month"),
 
-      Year("year"),
+      YEAR("year"),
 
       /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2433,9 +2433,9 @@ public class Subscription {
     }
 
     public enum ApplyOn {
-      InvoiceAmount("invoice_amount"),
+      INVOICE_AMOUNT("invoice_amount"),
 
-      SpecificItemPrice("specific_item_price"),
+      SPECIFIC_ITEM_PRICE("specific_item_price"),
 
       /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2557,11 +2557,11 @@ public class Subscription {
     }
 
     public enum ProrationType {
-      FullTerm("full_term"),
+      FULL_TERM("full_term"),
 
-      PartialTerm("partial_term"),
+      PARTIAL_TERM("partial_term"),
 
-      None("none"),
+      NONE("none"),
 
       /** An enum member indicating that ProrationType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -2682,15 +2682,15 @@ public class Subscription {
     }
 
     public enum OnEvent {
-      SubscriptionCreation("subscription_creation"),
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-      SubscriptionTrialStart("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-      PlanActivation("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-      SubscriptionActivation("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-      ContractTermination("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
       /** An enum member indicating that OnEvent was instantiated with an unknown value. */
       _UNKNOWN(null);

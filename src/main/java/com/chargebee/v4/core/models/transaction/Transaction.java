@@ -246,75 +246,75 @@ public class Transaction {
   }
 
   public enum PaymentMethod {
-    Card("card"),
+    CARD("card"),
 
-    Cash("cash"),
+    CASH("cash"),
 
-    Check("check"),
+    CHECK("check"),
 
-    Chargeback("chargeback"),
+    CHARGEBACK("chargeback"),
 
-    BankTransfer("bank_transfer"),
+    BANK_TRANSFER("bank_transfer"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    DirectDebit("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-    Alipay("alipay"),
+    ALIPAY("alipay"),
 
-    Unionpay("unionpay"),
+    UNIONPAY("unionpay"),
 
-    ApplePay("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-    WechatPay("wechat_pay"),
+    WECHAT_PAY("wechat_pay"),
 
-    AchCredit("ach_credit"),
+    ACH_CREDIT("ach_credit"),
 
-    SepaCredit("sepa_credit"),
+    SEPA_CREDIT("sepa_credit"),
 
-    Ideal("ideal"),
+    IDEAL("ideal"),
 
-    GooglePay("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-    Sofort("sofort"),
+    SOFORT("sofort"),
 
-    Bancontact("bancontact"),
+    BANCONTACT("bancontact"),
 
-    Giropay("giropay"),
+    GIROPAY("giropay"),
 
-    Dotpay("dotpay"),
+    DOTPAY("dotpay"),
 
-    Other("other"),
+    OTHER("other"),
 
-    AppStore("app_store"),
+    APP_STORE("app_store"),
 
-    Upi("upi"),
+    UPI("upi"),
 
-    NetbankingEmandates("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-    PlayStore("play_store"),
+    PLAY_STORE("play_store"),
 
-    Custom("custom"),
+    CUSTOM("custom"),
 
-    Boleto("boleto"),
+    BOLETO("boleto"),
 
-    Venmo("venmo"),
+    VENMO("venmo"),
 
-    PayTo("pay_to"),
+    PAY_TO("pay_to"),
 
-    FasterPayments("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-    SepaInstantTransfer("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-    AutomatedBankTransfer("automated_bank_transfer"),
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-    KlarnaPayNow("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-    OnlineBankingPoland("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-    PayconiqByBancontact("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
     /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -340,115 +340,115 @@ public class Transaction {
   }
 
   public enum Gateway {
-    Chargebee("chargebee"),
+    CHARGEBEE("chargebee"),
 
-    ChargebeePayments("chargebee_payments"),
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-    Adyen("adyen"),
+    ADYEN("adyen"),
 
-    Stripe("stripe"),
+    STRIPE("stripe"),
 
-    Wepay("wepay"),
+    WEPAY("wepay"),
 
-    Braintree("braintree"),
+    BRAINTREE("braintree"),
 
-    AuthorizeNet("authorize_net"),
+    AUTHORIZE_NET("authorize_net"),
 
-    PaypalPro("paypal_pro"),
+    PAYPAL_PRO("paypal_pro"),
 
-    Pin("pin"),
+    PIN("pin"),
 
-    Eway("eway"),
+    EWAY("eway"),
 
-    EwayRapid("eway_rapid"),
+    EWAY_RAPID("eway_rapid"),
 
-    Worldpay("worldpay"),
+    WORLDPAY("worldpay"),
 
-    BalancedPayments("balanced_payments"),
+    BALANCED_PAYMENTS("balanced_payments"),
 
-    Beanstream("beanstream"),
+    BEANSTREAM("beanstream"),
 
-    Bluepay("bluepay"),
+    BLUEPAY("bluepay"),
 
-    Elavon("elavon"),
+    ELAVON("elavon"),
 
-    FirstDataGlobal("first_data_global"),
+    FIRST_DATA_GLOBAL("first_data_global"),
 
-    Hdfc("hdfc"),
+    HDFC("hdfc"),
 
-    Migs("migs"),
+    MIGS("migs"),
 
-    Nmi("nmi"),
+    NMI("nmi"),
 
-    Ogone("ogone"),
+    OGONE("ogone"),
 
-    Paymill("paymill"),
+    PAYMILL("paymill"),
 
-    PaypalPayflowPro("paypal_payflow_pro"),
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-    SagePay("sage_pay"),
+    SAGE_PAY("sage_pay"),
 
-    Tco("tco"),
+    TCO("tco"),
 
-    Wirecard("wirecard"),
+    WIRECARD("wirecard"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    Gocardless("gocardless"),
+    GOCARDLESS("gocardless"),
 
-    Orbital("orbital"),
+    ORBITAL("orbital"),
 
-    MonerisUs("moneris_us"),
+    MONERIS_US("moneris_us"),
 
-    Moneris("moneris"),
+    MONERIS("moneris"),
 
-    Bluesnap("bluesnap"),
+    BLUESNAP("bluesnap"),
 
-    Cybersource("cybersource"),
+    CYBERSOURCE("cybersource"),
 
-    Vantiv("vantiv"),
+    VANTIV("vantiv"),
 
-    CheckoutCom("checkout_com"),
+    CHECKOUT_COM("checkout_com"),
 
-    Paypal("paypal"),
+    PAYPAL("paypal"),
 
-    IngenicoDirect("ingenico_direct"),
+    INGENICO_DIRECT("ingenico_direct"),
 
-    Exact("exact"),
+    EXACT("exact"),
 
-    Mollie("mollie"),
+    MOLLIE("mollie"),
 
-    Quickbooks("quickbooks"),
+    QUICKBOOKS("quickbooks"),
 
-    Razorpay("razorpay"),
+    RAZORPAY("razorpay"),
 
-    GlobalPayments("global_payments"),
+    GLOBAL_PAYMENTS("global_payments"),
 
-    BankOfAmerica("bank_of_america"),
+    BANK_OF_AMERICA("bank_of_america"),
 
-    Ecentric("ecentric"),
+    ECENTRIC("ecentric"),
 
-    MetricsGlobal("metrics_global"),
+    METRICS_GLOBAL("metrics_global"),
 
-    Windcave("windcave"),
+    WINDCAVE("windcave"),
 
-    PayCom("pay_com"),
+    PAY_COM("pay_com"),
 
-    Ebanx("ebanx"),
+    EBANX("ebanx"),
 
-    Dlocal("dlocal"),
+    DLOCAL("dlocal"),
 
-    Nuvei("nuvei"),
+    NUVEI("nuvei"),
 
-    Solidgate("solidgate"),
+    SOLIDGATE("solidgate"),
 
-    Paystack("paystack"),
+    PAYSTACK("paystack"),
 
-    JpMorgan("jp_morgan"),
+    JP_MORGAN("jp_morgan"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -474,13 +474,13 @@ public class Transaction {
   }
 
   public enum Type {
-    Authorization("authorization"),
+    AUTHORIZATION("authorization"),
 
-    Payment("payment"),
+    PAYMENT("payment"),
 
-    Refund("refund"),
+    REFUND("refund"),
 
-    PaymentReversal("payment_reversal"),
+    PAYMENT_REVERSAL("payment_reversal"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -506,19 +506,19 @@ public class Transaction {
   }
 
   public enum Status {
-    InProgress("in_progress"),
+    IN_PROGRESS("in_progress"),
 
-    Success("success"),
+    SUCCESS("success"),
 
-    Voided("voided"),
+    VOIDED("voided"),
 
-    Failure("failure"),
+    FAILURE("failure"),
 
-    Timeout("timeout"),
+    TIMEOUT("timeout"),
 
-    NeedsAttention("needs_attention"),
+    NEEDS_ATTENTION("needs_attention"),
 
-    LateFailure("late_failure"),
+    LATE_FAILURE("late_failure"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -544,11 +544,11 @@ public class Transaction {
   }
 
   public enum FraudFlag {
-    Safe("safe"),
+    SAFE("safe"),
 
-    Suspicious("suspicious"),
+    SUSPICIOUS("suspicious"),
 
-    Fraudulent("fraudulent"),
+    FRAUDULENT("fraudulent"),
 
     /** An enum member indicating that FraudFlag was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -574,9 +574,9 @@ public class Transaction {
   }
 
   public enum InitiatorType {
-    Customer("customer"),
+    CUSTOMER("customer"),
 
-    Merchant("merchant"),
+    MERCHANT("merchant"),
 
     /** An enum member indicating that InitiatorType was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -602,11 +602,9 @@ public class Transaction {
   }
 
   public enum AuthorizationReason {
-    BlockingFunds("blocking_funds"),
+    BLOCKING_FUNDS("blocking_funds"),
 
-    Verification("verification"),
-
-    ScheduledCapture("scheduled_capture"),
+    VERIFICATION("verification"),
 
     /**
      * An enum member indicating that AuthorizationReason was instantiated with an unknown value.
@@ -781,17 +779,17 @@ public class Transaction {
     }
 
     public enum InvoiceStatus {
-      Paid("paid"),
+      PAID("paid"),
 
-      Posted("posted"),
+      POSTED("posted"),
 
-      PaymentDue("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-      NotPaid("not_paid"),
+      NOT_PAID("not_paid"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Pending("pending"),
+      PENDING("pending"),
 
       /** An enum member indicating that InvoiceStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -884,29 +882,29 @@ public class Transaction {
     }
 
     public enum CnReasonCode {
-      WriteOff("write_off"),
+      WRITE_OFF("write_off"),
 
-      SubscriptionChange("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-      SubscriptionCancellation("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-      SubscriptionPause("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-      Chargeback("chargeback"),
+      CHARGEBACK("chargeback"),
 
-      ProductUnsatisfactory("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      ServiceUnsatisfactory("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-      OrderChange("order_change"),
+      ORDER_CHANGE("order_change"),
 
-      OrderCancellation("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-      Waiver("waiver"),
+      WAIVER("waiver"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Fraudulent("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
       /** An enum member indicating that CnReasonCode was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -932,13 +930,13 @@ public class Transaction {
     }
 
     public enum CnStatus {
-      Adjusted("adjusted"),
+      ADJUSTED("adjusted"),
 
-      Refunded("refunded"),
+      REFUNDED("refunded"),
 
-      RefundDue("refund_due"),
+      REFUND_DUE("refund_due"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
       /** An enum member indicating that CnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1012,19 +1010,19 @@ public class Transaction {
     }
 
     public enum TxnStatus {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
-      Timeout("timeout"),
+      TIMEOUT("timeout"),
 
-      NeedsAttention("needs_attention"),
+      NEEDS_ATTENTION("needs_attention"),
 
-      LateFailure("late_failure"),
+      LATE_FAILURE("late_failure"),
 
       /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -1088,19 +1086,19 @@ public class Transaction {
     }
 
     public enum Status {
-      InProgress("in_progress"),
+      IN_PROGRESS("in_progress"),
 
-      Success("success"),
+      SUCCESS("success"),
 
-      Voided("voided"),
+      VOIDED("voided"),
 
-      Failure("failure"),
+      FAILURE("failure"),
 
-      Timeout("timeout"),
+      TIMEOUT("timeout"),
 
-      NeedsAttention("needs_attention"),
+      NEEDS_ATTENTION("needs_attention"),
 
-      LateFailure("late_failure"),
+      LATE_FAILURE("late_failure"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

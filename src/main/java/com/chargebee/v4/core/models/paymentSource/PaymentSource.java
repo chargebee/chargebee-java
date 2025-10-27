@@ -135,55 +135,55 @@ public class PaymentSource {
   }
 
   public enum Type {
-    Card("card"),
+    CARD("card"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    DirectDebit("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-    Generic("generic"),
+    GENERIC("generic"),
 
-    Alipay("alipay"),
+    ALIPAY("alipay"),
 
-    Unionpay("unionpay"),
+    UNIONPAY("unionpay"),
 
-    ApplePay("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-    WechatPay("wechat_pay"),
+    WECHAT_PAY("wechat_pay"),
 
-    Ideal("ideal"),
+    IDEAL("ideal"),
 
-    GooglePay("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-    Sofort("sofort"),
+    SOFORT("sofort"),
 
-    Bancontact("bancontact"),
+    BANCONTACT("bancontact"),
 
-    Giropay("giropay"),
+    GIROPAY("giropay"),
 
-    Dotpay("dotpay"),
+    DOTPAY("dotpay"),
 
-    Upi("upi"),
+    UPI("upi"),
 
-    NetbankingEmandates("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-    Venmo("venmo"),
+    VENMO("venmo"),
 
-    PayTo("pay_to"),
+    PAY_TO("pay_to"),
 
-    FasterPayments("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-    SepaInstantTransfer("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-    AutomatedBankTransfer("automated_bank_transfer"),
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-    KlarnaPayNow("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-    OnlineBankingPoland("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-    PayconiqByBancontact("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -209,15 +209,15 @@ public class PaymentSource {
   }
 
   public enum Status {
-    Valid("valid"),
+    VALID("valid"),
 
-    Expiring("expiring"),
+    EXPIRING("expiring"),
 
-    Expired("expired"),
+    EXPIRED("expired"),
 
-    Invalid("invalid"),
+    INVALID("invalid"),
 
-    PendingVerification("pending_verification"),
+    PENDING_VERIFICATION("pending_verification"),
 
     /** An enum member indicating that Status was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -243,115 +243,115 @@ public class PaymentSource {
   }
 
   public enum Gateway {
-    Chargebee("chargebee"),
+    CHARGEBEE("chargebee"),
 
-    ChargebeePayments("chargebee_payments"),
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
 
-    Adyen("adyen"),
+    ADYEN("adyen"),
 
-    Stripe("stripe"),
+    STRIPE("stripe"),
 
-    Wepay("wepay"),
+    WEPAY("wepay"),
 
-    Braintree("braintree"),
+    BRAINTREE("braintree"),
 
-    AuthorizeNet("authorize_net"),
+    AUTHORIZE_NET("authorize_net"),
 
-    PaypalPro("paypal_pro"),
+    PAYPAL_PRO("paypal_pro"),
 
-    Pin("pin"),
+    PIN("pin"),
 
-    Eway("eway"),
+    EWAY("eway"),
 
-    EwayRapid("eway_rapid"),
+    EWAY_RAPID("eway_rapid"),
 
-    Worldpay("worldpay"),
+    WORLDPAY("worldpay"),
 
-    BalancedPayments("balanced_payments"),
+    BALANCED_PAYMENTS("balanced_payments"),
 
-    Beanstream("beanstream"),
+    BEANSTREAM("beanstream"),
 
-    Bluepay("bluepay"),
+    BLUEPAY("bluepay"),
 
-    Elavon("elavon"),
+    ELAVON("elavon"),
 
-    FirstDataGlobal("first_data_global"),
+    FIRST_DATA_GLOBAL("first_data_global"),
 
-    Hdfc("hdfc"),
+    HDFC("hdfc"),
 
-    Migs("migs"),
+    MIGS("migs"),
 
-    Nmi("nmi"),
+    NMI("nmi"),
 
-    Ogone("ogone"),
+    OGONE("ogone"),
 
-    Paymill("paymill"),
+    PAYMILL("paymill"),
 
-    PaypalPayflowPro("paypal_payflow_pro"),
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
 
-    SagePay("sage_pay"),
+    SAGE_PAY("sage_pay"),
 
-    Tco("tco"),
+    TCO("tco"),
 
-    Wirecard("wirecard"),
+    WIRECARD("wirecard"),
 
-    AmazonPayments("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-    PaypalExpressCheckout("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-    Gocardless("gocardless"),
+    GOCARDLESS("gocardless"),
 
-    Orbital("orbital"),
+    ORBITAL("orbital"),
 
-    MonerisUs("moneris_us"),
+    MONERIS_US("moneris_us"),
 
-    Moneris("moneris"),
+    MONERIS("moneris"),
 
-    Bluesnap("bluesnap"),
+    BLUESNAP("bluesnap"),
 
-    Cybersource("cybersource"),
+    CYBERSOURCE("cybersource"),
 
-    Vantiv("vantiv"),
+    VANTIV("vantiv"),
 
-    CheckoutCom("checkout_com"),
+    CHECKOUT_COM("checkout_com"),
 
-    Paypal("paypal"),
+    PAYPAL("paypal"),
 
-    IngenicoDirect("ingenico_direct"),
+    INGENICO_DIRECT("ingenico_direct"),
 
-    Exact("exact"),
+    EXACT("exact"),
 
-    Mollie("mollie"),
+    MOLLIE("mollie"),
 
-    Quickbooks("quickbooks"),
+    QUICKBOOKS("quickbooks"),
 
-    Razorpay("razorpay"),
+    RAZORPAY("razorpay"),
 
-    GlobalPayments("global_payments"),
+    GLOBAL_PAYMENTS("global_payments"),
 
-    BankOfAmerica("bank_of_america"),
+    BANK_OF_AMERICA("bank_of_america"),
 
-    Ecentric("ecentric"),
+    ECENTRIC("ecentric"),
 
-    MetricsGlobal("metrics_global"),
+    METRICS_GLOBAL("metrics_global"),
 
-    Windcave("windcave"),
+    WINDCAVE("windcave"),
 
-    PayCom("pay_com"),
+    PAY_COM("pay_com"),
 
-    Ebanx("ebanx"),
+    EBANX("ebanx"),
 
-    Dlocal("dlocal"),
+    DLOCAL("dlocal"),
 
-    Nuvei("nuvei"),
+    NUVEI("nuvei"),
 
-    Solidgate("solidgate"),
+    SOLIDGATE("solidgate"),
 
-    Paystack("paystack"),
+    PAYSTACK("paystack"),
 
-    JpMorgan("jp_morgan"),
+    JP_MORGAN("jp_morgan"),
 
-    NotApplicable("not_applicable"),
+    NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -544,49 +544,49 @@ public class PaymentSource {
     }
 
     public enum Brand {
-      Visa("visa"),
+      VISA("visa"),
 
-      Mastercard("mastercard"),
+      MASTERCARD("mastercard"),
 
-      AmericanExpress("american_express"),
+      AMERICAN_EXPRESS("american_express"),
 
-      Discover("discover"),
+      DISCOVER("discover"),
 
-      Jcb("jcb"),
+      JCB("jcb"),
 
-      DinersClub("diners_club"),
+      DINERS_CLUB("diners_club"),
 
-      Other("other"),
+      OTHER("other"),
 
-      Bancontact("bancontact"),
+      BANCONTACT("bancontact"),
 
-      CmrFalabella("cmr_falabella"),
+      CMR_FALABELLA("cmr_falabella"),
 
-      TarjetaNaranja("tarjeta_naranja"),
+      TARJETA_NARANJA("tarjeta_naranja"),
 
-      Nativa("nativa"),
+      NATIVA("nativa"),
 
-      Cencosud("cencosud"),
+      CENCOSUD("cencosud"),
 
-      Cabal("cabal"),
+      CABAL("cabal"),
 
-      Argencard("argencard"),
+      ARGENCARD("argencard"),
 
-      Elo("elo"),
+      ELO("elo"),
 
-      Hipercard("hipercard"),
+      HIPERCARD("hipercard"),
 
-      Carnet("carnet"),
+      CARNET("carnet"),
 
-      Rupay("rupay"),
+      RUPAY("rupay"),
 
-      Maestro("maestro"),
+      MAESTRO("maestro"),
 
-      Dankort("dankort"),
+      DANKORT("dankort"),
 
-      CartesBancaires("cartes_bancaires"),
+      CARTES_BANCAIRES("cartes_bancaires"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that Brand was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -612,15 +612,15 @@ public class PaymentSource {
     }
 
     public enum FundingType {
-      Credit("credit"),
+      CREDIT("credit"),
 
-      Debit("debit"),
+      DEBIT("debit"),
 
-      Prepaid("prepaid"),
+      PREPAID("prepaid"),
 
-      NotKnown("not_known"),
+      NOT_KNOWN("not_known"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /** An enum member indicating that FundingType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -743,21 +743,21 @@ public class PaymentSource {
     }
 
     public enum DirectDebitScheme {
-      Ach("ach"),
+      ACH("ach"),
 
-      Bacs("bacs"),
+      BACS("bacs"),
 
-      SepaCore("sepa_core"),
+      SEPA_CORE("sepa_core"),
 
-      Autogiro("autogiro"),
+      AUTOGIRO("autogiro"),
 
-      Becs("becs"),
+      BECS("becs"),
 
-      BecsNz("becs_nz"),
+      BECS_NZ("becs_nz"),
 
-      Pad("pad"),
+      PAD("pad"),
 
-      NotApplicable("not_applicable"),
+      NOT_APPLICABLE("not_applicable"),
 
       /**
        * An enum member indicating that DirectDebitScheme was instantiated with an unknown value.
@@ -785,13 +785,13 @@ public class PaymentSource {
     }
 
     public enum AccountType {
-      Checking("checking"),
+      CHECKING("checking"),
 
-      Savings("savings"),
+      SAVINGS("savings"),
 
-      BusinessChecking("business_checking"),
+      BUSINESS_CHECKING("business_checking"),
 
-      Current("current"),
+      CURRENT("current"),
 
       /** An enum member indicating that AccountType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -817,11 +817,11 @@ public class PaymentSource {
     }
 
     public enum EcheckType {
-      Web("web"),
+      WEB("web"),
 
-      Ppd("ppd"),
+      PPD("ppd"),
 
-      Ccd("ccd"),
+      CCD("ccd"),
 
       /** An enum member indicating that EcheckType was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -847,9 +847,9 @@ public class PaymentSource {
     }
 
     public enum AccountHolderType {
-      Individual("individual"),
+      INDIVIDUAL("individual"),
 
-      Company("company"),
+      COMPANY("company"),
 
       /**
        * An enum member indicating that AccountHolderType was instantiated with an unknown value.
@@ -1019,13 +1019,13 @@ public class PaymentSource {
     }
 
     public enum ValidationStatus {
-      NotValidated("not_validated"),
+      NOT_VALIDATED("not_validated"),
 
-      Valid("valid"),
+      VALID("valid"),
 
-      PartiallyValid("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-      Invalid("invalid"),
+      INVALID("invalid"),
 
       /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
       _UNKNOWN(null);

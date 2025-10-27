@@ -44,13 +44,13 @@ public class InAppSubscription {
   }
 
   public enum StoreStatus {
-    InTrial("in_trial"),
+    IN_TRIAL("in_trial"),
 
-    Active("active"),
+    ACTIVE("active"),
 
-    Cancelled("cancelled"),
+    CANCELLED("cancelled"),
 
-    Paused("paused"),
+    PAUSED("paused"),
 
     /** An enum member indicating that StoreStatus was instantiated with an unknown value. */
     _UNKNOWN(null);

@@ -330,9 +330,9 @@ public final class UsageListParams {
     }
 
     public enum InvoiceIdIsPresent {
-      True("true"),
+      TRUE("true"),
 
-      False("false"),
+      FALSE("false"),
 
       /**
        * An enum member indicating that InvoiceIdIsPresent was instantiated with an unknown value.
@@ -360,11 +360,11 @@ public final class UsageListParams {
     }
 
     public enum SourceIs {
-      AdminConsole("admin_console"),
+      ADMIN_CONSOLE("admin_console"),
 
-      Api("api"),
+      API("api"),
 
-      BulkOperation("bulk_operation"),
+      BULK_OPERATION("bulk_operation"),
 
       /** An enum member indicating that SourceIs was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -390,11 +390,11 @@ public final class UsageListParams {
     }
 
     public enum SourceIsNot {
-      AdminConsole("admin_console"),
+      ADMIN_CONSOLE("admin_console"),
 
-      Api("api"),
+      API("api"),
 
-      BulkOperation("bulk_operation"),
+      BULK_OPERATION("bulk_operation"),
 
       /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -420,9 +420,9 @@ public final class UsageListParams {
     }
 
     public enum SortByAsc {
-      UsageDate("usage_date"),
+      USAGE_DATE("usage_date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -448,9 +448,9 @@ public final class UsageListParams {
     }
 
     public enum SortByDesc {
-      UsageDate("usage_date"),
+      USAGE_DATE("usage_date"),
 
-      UpdatedAt("updated_at"),
+      UPDATED_AT("updated_at"),
 
       /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
       _UNKNOWN(null);

@@ -56,15 +56,15 @@ public final class ThirdPartySyncDetailUpdateParams {
     }
 
     public enum Status {
-      Succeeded("succeeded"),
+      SUCCEEDED("succeeded"),
 
-      Failed("failed"),
+      FAILED("failed"),
 
-      Started("started"),
+      STARTED("started"),
 
-      Running("running"),
+      RUNNING("running"),
 
-      Aborted("aborted"),
+      ABORTED("aborted"),
 
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);

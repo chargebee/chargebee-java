@@ -63,7 +63,7 @@ public final class ResourceMigrationRetrieveLatestParams {
     }
 
     public enum EntityType {
-      Customer("customer"),
+      CUSTOMER("customer"),
 
       /** An enum member indicating that EntityType was instantiated with an unknown value. */
       _UNKNOWN(null);

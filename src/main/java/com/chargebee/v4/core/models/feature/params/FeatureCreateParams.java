@@ -129,13 +129,13 @@ public final class FeatureCreateParams {
     }
 
     public enum Type {
-      Switch("switch"),
+      SWITCH("switch"),
 
-      Custom("custom"),
+      CUSTOM("custom"),
 
-      Quantity("quantity"),
+      QUANTITY("quantity"),
 
-      Range("range"),
+      RANGE("range"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
