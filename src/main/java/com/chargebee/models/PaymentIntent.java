@@ -84,6 +84,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
             return optString("error_text");
         }
 
+        public String checkoutDetails() {
+            return optString("checkout_details");
+        }
+
         public Timestamp createdAt() {
             return reqTimestamp("created_at");
         }
@@ -178,6 +182,10 @@ public class PaymentIntent extends Resource<PaymentIntent> {
 
     public PaymentIntent.PaymentAttempt activePaymentAttempt() {
         return optSubResource("active_payment_attempt", PaymentIntent.PaymentAttempt.class);
+    }
+
+    public List<PaymentIntent.PaymentAttempt> paymentAttempts() {
+        return optList("payment_attempts", PaymentIntent.PaymentAttempt.class);
     }
 
     public String businessEntityId() {

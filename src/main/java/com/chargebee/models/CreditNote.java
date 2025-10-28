@@ -410,6 +410,10 @@ public class CreditNote extends Resource<CreditNote> {
             return optString("description");
         }
 
+        public String lineItemId() {
+            return optString("line_item_id");
+        }
+
         public EntityType entityType() {
             return reqEnum("entity_type", EntityType.class);
         }
@@ -1686,6 +1690,10 @@ public class CreditNote extends Resource<CreditNote> {
         }
         public ImportCreditNoteRequest lineItemTierUnitAmountInDecimal(int index, String lineItemTierUnitAmountInDecimal) {
             params.addOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
+            return this;
+        }
+        public ImportCreditNoteRequest discountLineItemId(int index, String discountLineItemId) {
+            params.addOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
             return this;
         }
         public ImportCreditNoteRequest discountEntityType(int index, CreditNote.Discount.EntityType discountEntityType) {
