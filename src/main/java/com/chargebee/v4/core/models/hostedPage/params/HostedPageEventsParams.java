@@ -62,31 +62,31 @@ public final class HostedPageEventsParams {
     public HostedPageEventsParams build() {
       return new HostedPageEventsParams(this);
     }
+  }
 
-    public enum EventName {
-      CANCELLATION_PAGE_LOADED("cancellation_page_loaded"),
+  public enum EventName {
+    CANCELLATION_PAGE_LOADED("cancellation_page_loaded"),
 
-      /** An enum member indicating that EventName was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EventName was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EventName(String value) {
-        this.value = value;
-      }
+    EventName(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static EventName fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EventName enumValue : EventName.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EventName fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EventName enumValue : EventName.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

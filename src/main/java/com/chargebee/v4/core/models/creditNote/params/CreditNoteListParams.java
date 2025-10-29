@@ -714,455 +714,455 @@ public final class CreditNoteListParams {
         return builder;
       }
     }
+  }
 
-    public enum SubscriptionIdIsPresent {
-      TRUE("true"),
+  public enum SubscriptionIdIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /**
+     * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      SubscriptionIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    SubscriptionIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum ReferenceInvoiceIdIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that ReferenceInvoiceIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReferenceInvoiceIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReferenceInvoiceIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReferenceInvoiceIdIsPresent enumValue : ReferenceInvoiceIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum TypeIs {
-      ADJUSTMENT("adjustment"),
-
-      REFUNDABLE("refundable"),
-
-      STORE("store"),
-
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static SubscriptionIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReferenceInvoiceIdIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that ReferenceInvoiceIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReferenceInvoiceIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      ADJUSTMENT("adjustment"),
-
-      REFUNDABLE("refundable"),
-
-      STORE("store"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ReasonCodeIs {
-      WRITE_OFF("write_off"),
-
-      SUBSCRIPTION_CHANGE("subscription_change"),
-
-      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
-
-      SUBSCRIPTION_PAUSE("subscription_pause"),
-
-      CHARGEBACK("chargeback"),
-
-      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
-
-      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
-
-      ORDER_CHANGE("order_change"),
-
-      ORDER_CANCELLATION("order_cancellation"),
-
-      WAIVER("waiver"),
-
-      OTHER("other"),
-
-      FRAUDULENT("fraudulent"),
-
-      /** An enum member indicating that ReasonCodeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReasonCodeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReasonCodeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReasonCodeIs enumValue : ReasonCodeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ReferenceInvoiceIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReferenceInvoiceIdIsPresent enumValue : ReferenceInvoiceIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIs {
+    ADJUSTMENT("adjustment"),
+
+    REFUNDABLE("refundable"),
+
+    STORE("store"),
+
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIs(String value) {
+      this.value = value;
     }
 
-    public enum ReasonCodeIsNot {
-      WRITE_OFF("write_off"),
-
-      SUBSCRIPTION_CHANGE("subscription_change"),
-
-      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
-
-      SUBSCRIPTION_PAUSE("subscription_pause"),
-
-      CHARGEBACK("chargeback"),
-
-      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
-
-      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
-
-      ORDER_CHANGE("order_change"),
-
-      ORDER_CANCELLATION("order_cancellation"),
-
-      WAIVER("waiver"),
-
-      OTHER("other"),
-
-      FRAUDULENT("fraudulent"),
-
-      /** An enum member indicating that ReasonCodeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReasonCodeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReasonCodeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReasonCodeIsNot enumValue : ReasonCodeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StatusIs {
-      ADJUSTED("adjusted"),
-
-      REFUNDED("refunded"),
-
-      REFUND_DUE("refund_due"),
-
-      VOIDED("voided"),
-
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    ADJUSTMENT("adjustment"),
+
+    REFUNDABLE("refundable"),
+
+    STORE("store"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      ADJUSTED("adjusted"),
-
-      REFUNDED("refunded"),
-
-      REFUND_DUE("refund_due"),
-
-      VOIDED("voided"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PriceTypeIs {
-      TAX_EXCLUSIVE("tax_exclusive"),
-
-      TAX_INCLUSIVE("tax_inclusive"),
-
-      /** An enum member indicating that PriceTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PriceTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PriceTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PriceTypeIs enumValue : PriceTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReasonCodeIs {
+    WRITE_OFF("write_off"),
+
+    SUBSCRIPTION_CHANGE("subscription_change"),
+
+    SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
+
+    SUBSCRIPTION_PAUSE("subscription_pause"),
+
+    CHARGEBACK("chargeback"),
+
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+
+    SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+
+    ORDER_CHANGE("order_change"),
+
+    ORDER_CANCELLATION("order_cancellation"),
+
+    WAIVER("waiver"),
+
+    OTHER("other"),
+
+    FRAUDULENT("fraudulent"),
+
+    /** An enum member indicating that ReasonCodeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReasonCodeIs(String value) {
+      this.value = value;
     }
 
-    public enum PriceTypeIsNot {
-      TAX_EXCLUSIVE("tax_exclusive"),
-
-      TAX_INCLUSIVE("tax_inclusive"),
-
-      /** An enum member indicating that PriceTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PriceTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PriceTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PriceTypeIsNot enumValue : PriceTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByAsc {
-      DATE("date"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ReasonCodeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReasonCodeIs enumValue : ReasonCodeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReasonCodeIsNot {
+    WRITE_OFF("write_off"),
+
+    SUBSCRIPTION_CHANGE("subscription_change"),
+
+    SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
+
+    SUBSCRIPTION_PAUSE("subscription_pause"),
+
+    CHARGEBACK("chargeback"),
+
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+
+    SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+
+    ORDER_CHANGE("order_change"),
+
+    ORDER_CANCELLATION("order_cancellation"),
+
+    WAIVER("waiver"),
+
+    OTHER("other"),
+
+    FRAUDULENT("fraudulent"),
+
+    /** An enum member indicating that ReasonCodeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReasonCodeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum SortByDesc {
-      DATE("date"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ChannelIs {
-      WEB("web"),
-
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIs enumValue : ChannelIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ReasonCodeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReasonCodeIsNot enumValue : ReasonCodeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    ADJUSTED("adjusted"),
+
+    REFUNDED("refunded"),
+
+    REFUND_DUE("refund_due"),
+
+    VOIDED("voided"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
     }
 
-    public enum ChannelIsNot {
-      WEB("web"),
+    public String getValue() {
+      return value;
+    }
 
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIsNot enumValue : ChannelIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    ADJUSTED("adjusted"),
+
+    REFUNDED("refunded"),
+
+    REFUND_DUE("refund_due"),
+
+    VOIDED("voided"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PriceTypeIs {
+    TAX_EXCLUSIVE("tax_exclusive"),
+
+    TAX_INCLUSIVE("tax_inclusive"),
+
+    /** An enum member indicating that PriceTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PriceTypeIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PriceTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceTypeIs enumValue : PriceTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PriceTypeIsNot {
+    TAX_EXCLUSIVE("tax_exclusive"),
+
+    TAX_INCLUSIVE("tax_inclusive"),
+
+    /** An enum member indicating that PriceTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PriceTypeIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PriceTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceTypeIsNot enumValue : PriceTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    DATE("date"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    DATE("date"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIs {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIs enumValue : ChannelIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIsNot {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

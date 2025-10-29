@@ -107,53 +107,53 @@ public final class OrderCreateRefundableCreditNoteParams {
       public CreditNoteParams build() {
         return new CreditNoteParams(this);
       }
+    }
 
-      public enum ReasonCode {
-        WRITE_OFF("write_off"),
+    public enum ReasonCode {
+      WRITE_OFF("write_off"),
 
-        SUBSCRIPTION_CHANGE("subscription_change"),
+      SUBSCRIPTION_CHANGE("subscription_change"),
 
-        SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
+      SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
 
-        SUBSCRIPTION_PAUSE("subscription_pause"),
+      SUBSCRIPTION_PAUSE("subscription_pause"),
 
-        CHARGEBACK("chargeback"),
+      CHARGEBACK("chargeback"),
 
-        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        ORDER_CHANGE("order_change"),
+      ORDER_CHANGE("order_change"),
 
-        ORDER_CANCELLATION("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-        WAIVER("waiver"),
+      WAIVER("waiver"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        FRAUDULENT("fraudulent"),
+      FRAUDULENT("fraudulent"),
 
-        /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ReasonCode(String value) {
-          this.value = value;
-        }
+      ReasonCode(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ReasonCode fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ReasonCode enumValue : ReasonCode.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ReasonCode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ReasonCode enumValue : ReasonCode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

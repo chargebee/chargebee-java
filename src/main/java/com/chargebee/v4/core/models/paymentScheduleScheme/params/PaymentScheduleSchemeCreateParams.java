@@ -86,35 +86,35 @@ public final class PaymentScheduleSchemeCreateParams {
     public PaymentScheduleSchemeCreateParams build() {
       return new PaymentScheduleSchemeCreateParams(this);
     }
+  }
 
-    public enum PeriodUnit {
-      DAY("day"),
+  public enum PeriodUnit {
+    DAY("day"),
 
-      WEEK("week"),
+    WEEK("week"),
 
-      MONTH("month"),
+    MONTH("month"),
 
-      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PeriodUnit(String value) {
-        this.value = value;
-      }
+    PeriodUnit(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static PeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnit enumValue : PeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 

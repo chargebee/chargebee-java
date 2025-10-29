@@ -166,107 +166,105 @@ public final class OrderUpdateParams {
     public OrderUpdateParams build() {
       return new OrderUpdateParams(this);
     }
+  }
 
-    public enum CancellationReason {
-      SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
+  public enum CancellationReason {
+    SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
 
-      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      THIRD_PARTY_CANCELLATION("third_party_cancellation"),
+    THIRD_PARTY_CANCELLATION("third_party_cancellation"),
 
-      PRODUCT_NOT_REQUIRED("product_not_required"),
+    PRODUCT_NOT_REQUIRED("product_not_required"),
 
-      DELIVERY_DATE_MISSED("delivery_date_missed"),
+    DELIVERY_DATE_MISSED("delivery_date_missed"),
 
-      ALTERNATIVE_FOUND("alternative_found"),
+    ALTERNATIVE_FOUND("alternative_found"),
 
-      INVOICE_WRITTEN_OFF("invoice_written_off"),
+    INVOICE_WRITTEN_OFF("invoice_written_off"),
 
-      INVOICE_VOIDED("invoice_voided"),
+    INVOICE_VOIDED("invoice_voided"),
 
-      FRAUDULENT_TRANSACTION("fraudulent_transaction"),
+    FRAUDULENT_TRANSACTION("fraudulent_transaction"),
 
-      PAYMENT_DECLINED("payment_declined"),
+    PAYMENT_DECLINED("payment_declined"),
 
-      SUBSCRIPTION_CANCELLED("subscription_cancelled"),
+    SUBSCRIPTION_CANCELLED("subscription_cancelled"),
 
-      PRODUCT_NOT_AVAILABLE("product_not_available"),
+    PRODUCT_NOT_AVAILABLE("product_not_available"),
 
-      OTHERS("others"),
+    OTHERS("others"),
 
-      ORDER_RESENT("order_resent"),
+    ORDER_RESENT("order_resent"),
 
-      /**
-       * An enum member indicating that CancellationReason was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that CancellationReason was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      CancellationReason(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CancellationReason fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CancellationReason enumValue : CancellationReason.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    CancellationReason(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      NEW("new"),
+    public String getValue() {
+      return value;
+    }
 
-      PROCESSING("processing"),
-
-      COMPLETE("complete"),
-
-      CANCELLED("cancelled"),
-
-      VOIDED("voided"),
-
-      QUEUED("queued"),
-
-      AWAITING_SHIPMENT("awaiting_shipment"),
-
-      ON_HOLD("on_hold"),
-
-      DELIVERED("delivered"),
-
-      SHIPPED("shipped"),
-
-      PARTIALLY_DELIVERED("partially_delivered"),
-
-      RETURNED("returned"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CancellationReason fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CancellationReason enumValue : CancellationReason.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    NEW("new"),
+
+    PROCESSING("processing"),
+
+    COMPLETE("complete"),
+
+    CANCELLED("cancelled"),
+
+    VOIDED("voided"),
+
+    QUEUED("queued"),
+
+    AWAITING_SHIPMENT("awaiting_shipment"),
+
+    ON_HOLD("on_hold"),
+
+    DELIVERED("delivered"),
+
+    SHIPPED("shipped"),
+
+    PARTIALLY_DELIVERED("partially_delivered"),
+
+    RETURNED("returned"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -395,39 +393,37 @@ public final class OrderUpdateParams {
       public ShippingAddressParams build() {
         return new ShippingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -480,45 +476,45 @@ public final class OrderUpdateParams {
       public OrderLineItemsParams build() {
         return new OrderLineItemsParams(this);
       }
+    }
 
-      public enum Status {
-        QUEUED("queued"),
+    public enum Status {
+      QUEUED("queued"),
 
-        AWAITING_SHIPMENT("awaiting_shipment"),
+      AWAITING_SHIPMENT("awaiting_shipment"),
 
-        ON_HOLD("on_hold"),
+      ON_HOLD("on_hold"),
 
-        DELIVERED("delivered"),
+      DELIVERED("delivered"),
 
-        SHIPPED("shipped"),
+      SHIPPED("shipped"),
 
-        PARTIALLY_DELIVERED("partially_delivered"),
+      PARTIALLY_DELIVERED("partially_delivered"),
 
-        RETURNED("returned"),
+      RETURNED("returned"),
 
-        CANCELLED("cancelled"),
+      CANCELLED("cancelled"),
 
-        /** An enum member indicating that Status was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Status(String value) {
-          this.value = value;
-        }
+      Status(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Status fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Status enumValue : Status.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

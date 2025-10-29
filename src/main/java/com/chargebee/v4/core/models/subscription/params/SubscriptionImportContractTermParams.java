@@ -171,71 +171,69 @@ public final class SubscriptionImportContractTermParams {
       public ContractTermParams build() {
         return new ContractTermParams(this);
       }
+    }
 
-      public enum Status {
-        ACTIVE("active"),
+    public enum Status {
+      ACTIVE("active"),
 
-        COMPLETED("completed"),
+      COMPLETED("completed"),
 
-        CANCELLED("cancelled"),
+      CANCELLED("cancelled"),
 
-        TERMINATED("terminated"),
+      TERMINATED("terminated"),
 
-        /** An enum member indicating that Status was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Status(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Status fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Status enumValue : Status.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Status(String value) {
+        this.value = value;
       }
 
-      public enum ActionAtTermEnd {
-        RENEW("renew"),
+      public String getValue() {
+        return value;
+      }
 
-        EVERGREEN("evergreen"),
-
-        CANCEL("cancel"),
-
-        RENEW_ONCE("renew_once"),
-
-        /**
-         * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
-
-        ActionAtTermEnd(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static ActionAtTermEnd fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ActionAtTermEnd enumValue : ActionAtTermEnd.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum ActionAtTermEnd {
+      RENEW("renew"),
+
+      EVERGREEN("evergreen"),
+
+      CANCEL("cancel"),
+
+      RENEW_ONCE("renew_once"),
+
+      /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ActionAtTermEnd(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ActionAtTermEnd fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ActionAtTermEnd enumValue : ActionAtTermEnd.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

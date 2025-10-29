@@ -119,61 +119,61 @@ public final class OmnichannelOneTimeOrderListParams {
         return builder;
       }
     }
+  }
 
-    public enum SourceIs {
-      APPLE_APP_STORE("apple_app_store"),
+  public enum SourceIs {
+    APPLE_APP_STORE("apple_app_store"),
 
-      GOOGLE_PLAY_STORE("google_play_store"),
+    GOOGLE_PLAY_STORE("google_play_store"),
 
-      /** An enum member indicating that SourceIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that SourceIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      SourceIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SourceIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SourceIs enumValue : SourceIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    SourceIs(String value) {
+      this.value = value;
     }
 
-    public enum SourceIsNot {
-      APPLE_APP_STORE("apple_app_store"),
+    public String getValue() {
+      return value;
+    }
 
-      GOOGLE_PLAY_STORE("google_play_store"),
-
-      /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SourceIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SourceIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SourceIsNot enumValue : SourceIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static SourceIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceIs enumValue : SourceIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SourceIsNot {
+    APPLE_APP_STORE("apple_app_store"),
+
+    GOOGLE_PLAY_STORE("google_play_store"),
+
+    /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SourceIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SourceIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceIsNot enumValue : SourceIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

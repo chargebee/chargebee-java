@@ -393,101 +393,99 @@ public final class InvoiceImportInvoiceParams {
     public InvoiceImportInvoiceParams build() {
       return new InvoiceImportInvoiceParams(this);
     }
+  }
 
-    public enum PriceType {
-      TAX_EXCLUSIVE("tax_exclusive"),
+  public enum PriceType {
+    TAX_EXCLUSIVE("tax_exclusive"),
 
-      TAX_INCLUSIVE("tax_inclusive"),
+    TAX_INCLUSIVE("tax_inclusive"),
 
-      /** An enum member indicating that PriceType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PriceType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PriceType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PriceType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PriceType enumValue : PriceType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    PriceType(String value) {
+      this.value = value;
     }
 
-    public enum TaxOverrideReason {
-      ID_EXEMPT("id_exempt"),
-
-      CUSTOMER_EXEMPT("customer_exempt"),
-
-      EXPORT("export"),
-
-      /**
-       * An enum member indicating that TaxOverrideReason was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      TaxOverrideReason(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TaxOverrideReason fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TaxOverrideReason enumValue : TaxOverrideReason.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum Status {
-      PAID("paid"),
-
-      POSTED("posted"),
-
-      PAYMENT_DUE("payment_due"),
-
-      NOT_PAID("not_paid"),
-
-      VOIDED("voided"),
-
-      PENDING("pending"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PriceType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceType enumValue : PriceType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TaxOverrideReason {
+    ID_EXEMPT("id_exempt"),
+
+    CUSTOMER_EXEMPT("customer_exempt"),
+
+    EXPORT("export"),
+
+    /** An enum member indicating that TaxOverrideReason was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TaxOverrideReason(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TaxOverrideReason fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TaxOverrideReason enumValue : TaxOverrideReason.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    PAID("paid"),
+
+    POSTED("posted"),
+
+    PAYMENT_DUE("payment_due"),
+
+    NOT_PAID("not_paid"),
+
+    VOIDED("voided"),
+
+    PENDING("pending"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -653,39 +651,37 @@ public final class InvoiceImportInvoiceParams {
       public BillingAddressParams build() {
         return new BillingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -815,39 +811,37 @@ public final class InvoiceImportInvoiceParams {
       public ShippingAddressParams build() {
         return new ShippingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1145,43 +1139,43 @@ public final class InvoiceImportInvoiceParams {
       public LineItemsParams build() {
         return new LineItemsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ADHOC("adhoc"),
+    public enum EntityType {
+      ADHOC("adhoc"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN_SETUP("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1234,39 +1228,39 @@ public final class InvoiceImportInvoiceParams {
       public PaymentReferenceNumbersParams build() {
         return new PaymentReferenceNumbersParams(this);
       }
+    }
 
-      public enum Type {
-        KID("kid"),
+    public enum Type {
+      KID("kid"),
 
-        OCR("ocr"),
+      OCR("ocr"),
 
-        FRN("frn"),
+      FRN("frn"),
 
-        FIK("fik"),
+      FIK("fik"),
 
-        SWISS_REFERENCE("swiss_reference"),
+      SWISS_REFERENCE("swiss_reference"),
 
-        /** An enum member indicating that Type was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Type was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Type(String value) {
-          this.value = value;
-        }
+      Type(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Type fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Type enumValue : Type.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Type fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Type enumValue : Type.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1419,39 +1413,39 @@ public final class InvoiceImportInvoiceParams {
       public DiscountsParams build() {
         return new DiscountsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ITEM_LEVEL_COUPON("item_level_coupon"),
+    public enum EntityType {
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PROMOTIONAL_CREDITS("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ITEM_LEVEL_DISCOUNT("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1532,45 +1526,45 @@ public final class InvoiceImportInvoiceParams {
       public TaxesParams build() {
         return new TaxesParams(this);
       }
+    }
 
-      public enum JurisType {
-        COUNTRY("country"),
+    public enum JurisType {
+      COUNTRY("country"),
 
-        FEDERAL("federal"),
+      FEDERAL("federal"),
 
-        STATE("state"),
+      STATE("state"),
 
-        COUNTY("county"),
+      COUNTY("county"),
 
-        CITY("city"),
+      CITY("city"),
 
-        SPECIAL("special"),
+      SPECIAL("special"),
 
-        UNINCORPORATED("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        /** An enum member indicating that JurisType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that JurisType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        JurisType(String value) {
-          this.value = value;
-        }
+      JurisType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static JurisType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (JurisType enumValue : JurisType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static JurisType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (JurisType enumValue : JurisType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1637,43 +1631,43 @@ public final class InvoiceImportInvoiceParams {
       public PaymentsParams build() {
         return new PaymentsParams(this);
       }
+    }
 
-      public enum PaymentMethod {
-        CASH("cash"),
+    public enum PaymentMethod {
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PaymentMethod(String value) {
-          this.value = value;
-        }
+      PaymentMethod(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PaymentMethod fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PaymentMethod enumValue : PaymentMethod.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PaymentMethod fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PaymentMethod enumValue : PaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1726,41 +1720,41 @@ public final class InvoiceImportInvoiceParams {
       public NotesParams build() {
         return new NotesParams(this);
       }
+    }
 
-      public enum EntityType {
-        COUPON("coupon"),
+    public enum EntityType {
+      COUPON("coupon"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1897,39 +1891,37 @@ public final class InvoiceImportInvoiceParams {
       public LineItemAddressesParams build() {
         return new LineItemAddressesParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

@@ -482,387 +482,385 @@ public final class AddonListParams {
         return builder;
       }
     }
+  }
 
-    public enum PricingModelIs {
-      FLAT_FEE("flat_fee"),
+  public enum PricingModelIs {
+    FLAT_FEE("flat_fee"),
 
-      PER_UNIT("per_unit"),
+    PER_UNIT("per_unit"),
 
-      TIERED("tiered"),
+    TIERED("tiered"),
 
-      VOLUME("volume"),
+    VOLUME("volume"),
 
-      STAIRSTEP("stairstep"),
+    STAIRSTEP("stairstep"),
 
-      /** An enum member indicating that PricingModelIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PricingModelIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PricingModelIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PricingModelIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PricingModelIs enumValue : PricingModelIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    PricingModelIs(String value) {
+      this.value = value;
     }
 
-    public enum PricingModelIsNot {
-      FLAT_FEE("flat_fee"),
-
-      PER_UNIT("per_unit"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /**
-       * An enum member indicating that PricingModelIsNot was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      PricingModelIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PricingModelIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PricingModelIsNot enumValue : PricingModelIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum TypeIs {
-      ON_OFF("on_off"),
-
-      QUANTITY("quantity"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PricingModelIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModelIs enumValue : PricingModelIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PricingModelIsNot {
+    FLAT_FEE("flat_fee"),
+
+    PER_UNIT("per_unit"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that PricingModelIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PricingModelIsNot(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      ON_OFF("on_off"),
-
-      QUANTITY("quantity"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ChargeTypeIs {
-      RECURRING("recurring"),
-
-      NON_RECURRING("non_recurring"),
-
-      /** An enum member indicating that ChargeTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChargeTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargeTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargeTypeIs enumValue : ChargeTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PricingModelIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModelIsNot enumValue : PricingModelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIs {
+    ON_OFF("on_off"),
+
+    QUANTITY("quantity"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIs(String value) {
+      this.value = value;
     }
 
-    public enum ChargeTypeIsNot {
-      RECURRING("recurring"),
-
-      NON_RECURRING("non_recurring"),
-
-      /** An enum member indicating that ChargeTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChargeTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargeTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargeTypeIsNot enumValue : ChargeTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PeriodUnitIs {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that PeriodUnitIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnitIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnitIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnitIs enumValue : PeriodUnitIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    ON_OFF("on_off"),
+
+    QUANTITY("quantity"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum PeriodUnitIsNot {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that PeriodUnitIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnitIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnitIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnitIsNot enumValue : PeriodUnitIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StatusIs {
-      ACTIVE("active"),
-
-      ARCHIVED("archived"),
-
-      DELETED("deleted"),
-
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeTypeIs {
+    RECURRING("recurring"),
+
+    NON_RECURRING("non_recurring"),
+
+    /** An enum member indicating that ChargeTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      ACTIVE("active"),
-
-      ARCHIVED("archived"),
-
-      DELETED("deleted"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ChannelIs {
-      WEB("web"),
-
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIs enumValue : ChannelIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ChargeTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeTypeIs enumValue : ChargeTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeTypeIsNot {
+    RECURRING("recurring"),
+
+    NON_RECURRING("non_recurring"),
+
+    /** An enum member indicating that ChargeTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeTypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum ChannelIsNot {
-      WEB("web"),
+    public String getValue() {
+      return value;
+    }
 
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIsNot enumValue : ChannelIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ChargeTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeTypeIsNot enumValue : ChargeTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnitIs {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that PeriodUnitIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnitIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnitIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnitIs enumValue : PeriodUnitIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnitIsNot {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that PeriodUnitIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnitIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnitIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnitIsNot enumValue : PeriodUnitIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIs {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIs enumValue : ChannelIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIsNot {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

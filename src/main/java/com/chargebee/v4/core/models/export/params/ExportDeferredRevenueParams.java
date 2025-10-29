@@ -187,37 +187,37 @@ public final class ExportDeferredRevenueParams {
     public ExportDeferredRevenueParams build() {
       return new ExportDeferredRevenueParams(this);
     }
+  }
 
-    public enum ReportBy {
-      CUSTOMER("customer"),
+  public enum ReportBy {
+    CUSTOMER("customer"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      PRODUCT("product"),
+    PRODUCT("product"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      /** An enum member indicating that ReportBy was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ReportBy was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ReportBy(String value) {
-        this.value = value;
-      }
+    ReportBy(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static ReportBy fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReportBy enumValue : ReportBy.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ReportBy fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReportBy enumValue : ReportBy.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -815,33 +815,33 @@ public final class ExportDeferredRevenueParams {
       public RecurringParams build() {
         return new RecurringParams(this);
       }
+    }
 
-      public enum Is {
-        TRUE("true"),
+    public enum Is {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
+      Is(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -901,77 +901,77 @@ public final class ExportDeferredRevenueParams {
       public StatusParams build() {
         return new StatusParams(this);
       }
+    }
 
-      public enum Is {
-        PAID("paid"),
+    public enum Is {
+      PAID("paid"),
 
-        POSTED("posted"),
+      POSTED("posted"),
 
-        PAYMENT_DUE("payment_due"),
+      PAYMENT_DUE("payment_due"),
 
-        NOT_PAID("not_paid"),
+      NOT_PAID("not_paid"),
 
-        VOIDED("voided"),
+      VOIDED("voided"),
 
-        PENDING("pending"),
+      PENDING("pending"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        PAID("paid"),
+      public String getValue() {
+        return value;
+      }
 
-        POSTED("posted"),
-
-        PAYMENT_DUE("payment_due"),
-
-        NOT_PAID("not_paid"),
-
-        VOIDED("voided"),
-
-        PENDING("pending"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      PAID("paid"),
+
+      POSTED("posted"),
+
+      PAYMENT_DUE("payment_due"),
+
+      NOT_PAID("not_paid"),
+
+      VOIDED("voided"),
+
+      PENDING("pending"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -1031,61 +1031,61 @@ public final class ExportDeferredRevenueParams {
       public PriceTypeParams build() {
         return new PriceTypeParams(this);
       }
+    }
 
-      public enum Is {
-        TAX_EXCLUSIVE("tax_exclusive"),
+    public enum Is {
+      TAX_EXCLUSIVE("tax_exclusive"),
 
-        TAX_INCLUSIVE("tax_inclusive"),
+      TAX_INCLUSIVE("tax_inclusive"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        TAX_EXCLUSIVE("tax_exclusive"),
+      public String getValue() {
+        return value;
+      }
 
-        TAX_INCLUSIVE("tax_inclusive"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      TAX_EXCLUSIVE("tax_exclusive"),
+
+      TAX_INCLUSIVE("tax_inclusive"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -1663,97 +1663,97 @@ public final class ExportDeferredRevenueParams {
       public DunningStatusParams build() {
         return new DunningStatusParams(this);
       }
+    }
 
-      public enum Is {
-        IN_PROGRESS("in_progress"),
+    public enum Is {
+      IN_PROGRESS("in_progress"),
 
-        EXHAUSTED("exhausted"),
+      EXHAUSTED("exhausted"),
 
-        STOPPED("stopped"),
+      STOPPED("stopped"),
 
-        SUCCESS("success"),
+      SUCCESS("success"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        IN_PROGRESS("in_progress"),
-
-        EXHAUSTED("exhausted"),
-
-        STOPPED("stopped"),
-
-        SUCCESS("success"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum IsPresent {
-        TRUE("true"),
-
-        FALSE("false"),
-
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsPresent(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      IN_PROGRESS("in_progress"),
+
+      EXHAUSTED("exhausted"),
+
+      STOPPED("stopped"),
+
+      SUCCESS("success"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsPresent {
+      TRUE("true"),
+
+      FALSE("false"),
+
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsPresent(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -1871,65 +1871,65 @@ public final class ExportDeferredRevenueParams {
       public ChannelParams build() {
         return new ChannelParams(this);
       }
+    }
 
-      public enum Is {
-        WEB("web"),
+    public enum Is {
+      WEB("web"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        WEB("web"),
+      public String getValue() {
+        return value;
+      }
 
-        APP_STORE("app_store"),
-
-        PLAY_STORE("play_store"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      WEB("web"),
+
+      APP_STORE("app_store"),
+
+      PLAY_STORE("play_store"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -2314,81 +2314,81 @@ public final class ExportDeferredRevenueParams {
       public ExportStatusParams build() {
         return new ExportStatusParams(this);
       }
+    }
 
-      public enum Is {
-        FUTURE("future"),
+    public enum Is {
+      FUTURE("future"),
 
-        IN_TRIAL("in_trial"),
+      IN_TRIAL("in_trial"),
 
-        ACTIVE("active"),
+      ACTIVE("active"),
 
-        NON_RENEWING("non_renewing"),
+      NON_RENEWING("non_renewing"),
 
-        PAUSED("paused"),
+      PAUSED("paused"),
 
-        CANCELLED("cancelled"),
+      CANCELLED("cancelled"),
 
-        TRANSFERRED("transferred"),
+      TRANSFERRED("transferred"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        FUTURE("future"),
+      public String getValue() {
+        return value;
+      }
 
-        IN_TRIAL("in_trial"),
-
-        ACTIVE("active"),
-
-        NON_RENEWING("non_renewing"),
-
-        PAUSED("paused"),
-
-        CANCELLED("cancelled"),
-
-        TRANSFERRED("transferred"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      FUTURE("future"),
+
+      IN_TRIAL("in_trial"),
+
+      ACTIVE("active"),
+
+      NON_RENEWING("non_renewing"),
+
+      PAUSED("paused"),
+
+      CANCELLED("cancelled"),
+
+      TRANSFERRED("transferred"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -2455,109 +2455,109 @@ public final class ExportDeferredRevenueParams {
       public CancelReasonParams build() {
         return new CancelReasonParams(this);
       }
+    }
 
-      public enum Is {
-        NOT_PAID("not_paid"),
+    public enum Is {
+      NOT_PAID("not_paid"),
 
-        NO_CARD("no_card"),
+      NO_CARD("no_card"),
 
-        FRAUD_REVIEW_FAILED("fraud_review_failed"),
+      FRAUD_REVIEW_FAILED("fraud_review_failed"),
 
-        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
+      NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
 
-        TAX_CALCULATION_FAILED("tax_calculation_failed"),
+      TAX_CALCULATION_FAILED("tax_calculation_failed"),
 
-        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
+      CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
 
-        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
+      NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        NOT_PAID("not_paid"),
-
-        NO_CARD("no_card"),
-
-        FRAUD_REVIEW_FAILED("fraud_review_failed"),
-
-        NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
-
-        TAX_CALCULATION_FAILED("tax_calculation_failed"),
-
-        CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
-
-        NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum IsPresent {
-        TRUE("true"),
-
-        FALSE("false"),
-
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsPresent(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      NOT_PAID("not_paid"),
+
+      NO_CARD("no_card"),
+
+      FRAUD_REVIEW_FAILED("fraud_review_failed"),
+
+      NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
+
+      TAX_CALCULATION_FAILED("tax_calculation_failed"),
+
+      CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
+
+      NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsPresent {
+      TRUE("true"),
+
+      FALSE("false"),
+
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsPresent(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -2645,33 +2645,33 @@ public final class ExportDeferredRevenueParams {
       public RemainingBillingCyclesParams build() {
         return new RemainingBillingCyclesParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -2796,33 +2796,33 @@ public final class ExportDeferredRevenueParams {
       public ActivatedAtParams build() {
         return new ActivatedAtParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -2977,33 +2977,33 @@ public final class ExportDeferredRevenueParams {
       public HasScheduledChangesParams build() {
         return new HasScheduledChangesParams(this);
       }
+    }
 
-      public enum Is {
-        TRUE("true"),
+    public enum Is {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
+      Is(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -3121,105 +3121,105 @@ public final class ExportDeferredRevenueParams {
       public OfflinePaymentMethodParams build() {
         return new OfflinePaymentMethodParams(this);
       }
+    }
 
-      public enum Is {
-        NO_PREFERENCE("no_preference"),
+    public enum Is {
+      NO_PREFERENCE("no_preference"),
 
-        CASH("cash"),
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        ACH_CREDIT("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-        SEPA_CREDIT("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-        BOLETO("boleto"),
+      BOLETO("boleto"),
 
-        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        NO_PREFERENCE("no_preference"),
+      public String getValue() {
+        return value;
+      }
 
-        CASH("cash"),
-
-        CHECK("check"),
-
-        BANK_TRANSFER("bank_transfer"),
-
-        ACH_CREDIT("ach_credit"),
-
-        SEPA_CREDIT("sepa_credit"),
-
-        BOLETO("boleto"),
-
-        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
-
-        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
-
-        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
-
-        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
-
-        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
-
-        CUSTOM("custom"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      NO_PREFERENCE("no_preference"),
+
+      CASH("cash"),
+
+      CHECK("check"),
+
+      BANK_TRANSFER("bank_transfer"),
+
+      ACH_CREDIT("ach_credit"),
+
+      SEPA_CREDIT("sepa_credit"),
+
+      BOLETO("boleto"),
+
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+      CUSTOM("custom"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -3258,33 +3258,33 @@ public final class ExportDeferredRevenueParams {
       public AutoCloseInvoicesParams build() {
         return new AutoCloseInvoicesParams(this);
       }
+    }
 
-      public enum Is {
-        TRUE("true"),
+    public enum Is {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
+      Is(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -3344,65 +3344,65 @@ public final class ExportDeferredRevenueParams {
       public ExportChannelParams build() {
         return new ExportChannelParams(this);
       }
+    }
 
-      public enum Is {
-        WEB("web"),
+    public enum Is {
+      WEB("web"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        WEB("web"),
+      public String getValue() {
+        return value;
+      }
 
-        APP_STORE("app_store"),
-
-        PLAY_STORE("play_store"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      WEB("web"),
+
+      APP_STORE("app_store"),
+
+      PLAY_STORE("play_store"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -3765,33 +3765,33 @@ public final class ExportDeferredRevenueParams {
       public FirstNameParams build() {
         return new FirstNameParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -3851,33 +3851,33 @@ public final class ExportDeferredRevenueParams {
       public LastNameParams build() {
         return new LastNameParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -3937,33 +3937,33 @@ public final class ExportDeferredRevenueParams {
       public EmailParams build() {
         return new EmailParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -4023,33 +4023,33 @@ public final class ExportDeferredRevenueParams {
       public CompanyParams build() {
         return new CompanyParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -4109,33 +4109,33 @@ public final class ExportDeferredRevenueParams {
       public PhoneParams build() {
         return new PhoneParams(this);
       }
+    }
 
-      public enum IsPresent {
-        TRUE("true"),
+    public enum IsPresent {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that IsPresent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        IsPresent(String value) {
-          this.value = value;
-        }
+      IsPresent(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static IsPresent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsPresent enumValue : IsPresent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static IsPresent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsPresent enumValue : IsPresent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -4195,61 +4195,61 @@ public final class ExportDeferredRevenueParams {
       public AutoCollectionParams build() {
         return new AutoCollectionParams(this);
       }
+    }
 
-      public enum Is {
-        ON("on"),
+    public enum Is {
+      ON("on"),
 
-        OFF("off"),
+      OFF("off"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        ON("on"),
+      public String getValue() {
+        return value;
+      }
 
-        OFF("off"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      ON("on"),
+
+      OFF("off"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -4309,61 +4309,61 @@ public final class ExportDeferredRevenueParams {
       public TaxabilityParams build() {
         return new TaxabilityParams(this);
       }
+    }
 
-      public enum Is {
-        TAXABLE("taxable"),
+    public enum Is {
+      TAXABLE("taxable"),
 
-        EXEMPT("exempt"),
+      EXEMPT("exempt"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        TAXABLE("taxable"),
+      public String getValue() {
+        return value;
+      }
 
-        EXEMPT("exempt"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      TAXABLE("taxable"),
+
+      EXEMPT("exempt"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -4539,105 +4539,105 @@ public final class ExportDeferredRevenueParams {
       public ExportOfflinePaymentMethodParams build() {
         return new ExportOfflinePaymentMethodParams(this);
       }
+    }
 
-      public enum Is {
-        NO_PREFERENCE("no_preference"),
+    public enum Is {
+      NO_PREFERENCE("no_preference"),
 
-        CASH("cash"),
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        ACH_CREDIT("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-        SEPA_CREDIT("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-        BOLETO("boleto"),
+      BOLETO("boleto"),
 
-        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        NO_PREFERENCE("no_preference"),
+      public String getValue() {
+        return value;
+      }
 
-        CASH("cash"),
-
-        CHECK("check"),
-
-        BANK_TRANSFER("bank_transfer"),
-
-        ACH_CREDIT("ach_credit"),
-
-        SEPA_CREDIT("sepa_credit"),
-
-        BOLETO("boleto"),
-
-        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
-
-        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
-
-        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
-
-        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
-
-        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
-
-        CUSTOM("custom"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      NO_PREFERENCE("no_preference"),
+
+      CASH("cash"),
+
+      CHECK("check"),
+
+      BANK_TRANSFER("bank_transfer"),
+
+      ACH_CREDIT("ach_credit"),
+
+      SEPA_CREDIT("sepa_credit"),
+
+      BOLETO("boleto"),
+
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+      CUSTOM("custom"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -4676,33 +4676,33 @@ public final class ExportDeferredRevenueParams {
       public ExportAutoCloseInvoicesParams build() {
         return new ExportAutoCloseInvoicesParams(this);
       }
+    }
 
-      public enum Is {
-        TRUE("true"),
+    public enum Is {
+      TRUE("true"),
 
-        FALSE("false"),
+      FALSE("false"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
+      Is(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -4762,65 +4762,65 @@ public final class ExportDeferredRevenueParams {
       public ExportChannel2Params build() {
         return new ExportChannel2Params(this);
       }
+    }
 
-      public enum Is {
-        WEB("web"),
+    public enum Is {
+      WEB("web"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        /** An enum member indicating that Is was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Is was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Is(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Is fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Is enumValue : Is.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Is(String value) {
+        this.value = value;
       }
 
-      public enum IsNot {
-        WEB("web"),
+      public String getValue() {
+        return value;
+      }
 
-        APP_STORE("app_store"),
-
-        PLAY_STORE("play_store"),
-
-        /** An enum member indicating that IsNot was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        IsNot(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static IsNot fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (IsNot enumValue : IsNot.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Is fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Is enumValue : Is.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum IsNot {
+      WEB("web"),
+
+      APP_STORE("app_store"),
+
+      PLAY_STORE("play_store"),
+
+      /** An enum member indicating that IsNot was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      IsNot(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static IsNot fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (IsNot enumValue : IsNot.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

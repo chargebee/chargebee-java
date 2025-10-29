@@ -213,97 +213,97 @@ public final class PaymentSourceCreateBankAccountParams {
       public BankAccountParams build() {
         return new BankAccountParams(this);
       }
+    }
 
-      public enum AccountType {
-        CHECKING("checking"),
+    public enum AccountType {
+      CHECKING("checking"),
 
-        SAVINGS("savings"),
+      SAVINGS("savings"),
 
-        BUSINESS_CHECKING("business_checking"),
+      BUSINESS_CHECKING("business_checking"),
 
-        CURRENT("current"),
+      CURRENT("current"),
 
-        /** An enum member indicating that AccountType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that AccountType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        AccountType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static AccountType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (AccountType enumValue : AccountType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      AccountType(String value) {
+        this.value = value;
       }
 
-      public enum AccountHolderType {
-        INDIVIDUAL("individual"),
-
-        COMPANY("company"),
-
-        /**
-         * An enum member indicating that AccountHolderType was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
-
-        AccountHolderType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static AccountHolderType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (AccountHolderType enumValue : AccountHolderType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum EcheckType {
-        WEB("web"),
-
-        PPD("ppd"),
-
-        CCD("ccd"),
-
-        /** An enum member indicating that EcheckType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        EcheckType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static EcheckType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EcheckType enumValue : EcheckType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static AccountType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AccountType enumValue : AccountType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum AccountHolderType {
+      INDIVIDUAL("individual"),
+
+      COMPANY("company"),
+
+      /**
+       * An enum member indicating that AccountHolderType was instantiated with an unknown value.
+       */
+      _UNKNOWN(null);
+      private final String value;
+
+      AccountHolderType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static AccountHolderType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AccountHolderType enumValue : AccountHolderType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum EcheckType {
+      WEB("web"),
+
+      PPD("ppd"),
+
+      CCD("ccd"),
+
+      /** An enum member indicating that EcheckType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EcheckType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EcheckType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EcheckType enumValue : EcheckType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

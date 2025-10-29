@@ -200,169 +200,169 @@ public final class HostedPageListParams {
         return builder;
       }
     }
+  }
 
-    public enum TypeIs {
-      CHECKOUT_NEW("checkout_new"),
+  public enum TypeIs {
+    CHECKOUT_NEW("checkout_new"),
 
-      CHECKOUT_EXISTING("checkout_existing"),
+    CHECKOUT_EXISTING("checkout_existing"),
 
-      UPDATE_CARD("update_card"),
+    UPDATE_CARD("update_card"),
 
-      UPDATE_PAYMENT_METHOD("update_payment_method"),
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
 
-      MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
 
-      COLLECT_NOW("collect_now"),
+    COLLECT_NOW("collect_now"),
 
-      EXTEND_SUBSCRIPTION("extend_subscription"),
+    EXTEND_SUBSCRIPTION("extend_subscription"),
 
-      CHECKOUT_ONE_TIME("checkout_one_time"),
+    CHECKOUT_ONE_TIME("checkout_one_time"),
 
-      PRE_CANCEL("pre_cancel"),
+    PRE_CANCEL("pre_cancel"),
 
-      VIEW_VOUCHER("view_voucher"),
+    VIEW_VOUCHER("view_voucher"),
 
-      ACCEPT_QUOTE("accept_quote"),
+    ACCEPT_QUOTE("accept_quote"),
 
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    TypeIs(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      CHECKOUT_NEW("checkout_new"),
-
-      CHECKOUT_EXISTING("checkout_existing"),
-
-      UPDATE_CARD("update_card"),
-
-      UPDATE_PAYMENT_METHOD("update_payment_method"),
-
-      MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
-
-      COLLECT_NOW("collect_now"),
-
-      EXTEND_SUBSCRIPTION("extend_subscription"),
-
-      CHECKOUT_ONE_TIME("checkout_one_time"),
-
-      PRE_CANCEL("pre_cancel"),
-
-      VIEW_VOUCHER("view_voucher"),
-
-      ACCEPT_QUOTE("accept_quote"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StateIs {
-      CREATED("created"),
-
-      REQUESTED("requested"),
-
-      SUCCEEDED("succeeded"),
-
-      CANCELLED("cancelled"),
-
-      FAILED("failed"),
-
-      ACKNOWLEDGED("acknowledged"),
-
-      /** An enum member indicating that StateIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StateIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StateIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StateIs enumValue : StateIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    CHECKOUT_NEW("checkout_new"),
+
+    CHECKOUT_EXISTING("checkout_existing"),
+
+    UPDATE_CARD("update_card"),
+
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
+
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
+
+    COLLECT_NOW("collect_now"),
+
+    EXTEND_SUBSCRIPTION("extend_subscription"),
+
+    CHECKOUT_ONE_TIME("checkout_one_time"),
+
+    PRE_CANCEL("pre_cancel"),
+
+    VIEW_VOUCHER("view_voucher"),
+
+    ACCEPT_QUOTE("accept_quote"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum StateIsNot {
-      CREATED("created"),
+    public String getValue() {
+      return value;
+    }
 
-      REQUESTED("requested"),
-
-      SUCCEEDED("succeeded"),
-
-      CANCELLED("cancelled"),
-
-      FAILED("failed"),
-
-      ACKNOWLEDGED("acknowledged"),
-
-      /** An enum member indicating that StateIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StateIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StateIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StateIsNot enumValue : StateIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StateIs {
+    CREATED("created"),
+
+    REQUESTED("requested"),
+
+    SUCCEEDED("succeeded"),
+
+    CANCELLED("cancelled"),
+
+    FAILED("failed"),
+
+    ACKNOWLEDGED("acknowledged"),
+
+    /** An enum member indicating that StateIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StateIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StateIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StateIs enumValue : StateIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StateIsNot {
+    CREATED("created"),
+
+    REQUESTED("requested"),
+
+    SUCCEEDED("succeeded"),
+
+    CANCELLED("cancelled"),
+
+    FAILED("failed"),
+
+    ACKNOWLEDGED("acknowledged"),
+
+    /** An enum member indicating that StateIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StateIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StateIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StateIsNot enumValue : StateIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

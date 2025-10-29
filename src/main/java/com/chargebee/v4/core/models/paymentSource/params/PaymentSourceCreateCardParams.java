@@ -206,37 +206,35 @@ public final class PaymentSourceCreateCardParams {
       public CardParams build() {
         return new CardParams(this);
       }
+    }
 
-      public enum PreferredScheme {
-        CARTES_BANCAIRES("cartes_bancaires"),
+    public enum PreferredScheme {
+      CARTES_BANCAIRES("cartes_bancaires"),
 
-        MASTERCARD("mastercard"),
+      MASTERCARD("mastercard"),
 
-        VISA("visa"),
+      VISA("visa"),
 
-        /**
-         * An enum member indicating that PreferredScheme was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PreferredScheme was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PreferredScheme(String value) {
-          this.value = value;
-        }
+      PreferredScheme(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PreferredScheme fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PreferredScheme enumValue : PreferredScheme.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PreferredScheme fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PreferredScheme enumValue : PreferredScheme.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

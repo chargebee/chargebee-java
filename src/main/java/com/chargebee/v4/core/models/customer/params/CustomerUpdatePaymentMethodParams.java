@@ -130,207 +130,209 @@ public final class CustomerUpdatePaymentMethodParams {
       public PaymentMethodParams build() {
         return new PaymentMethodParams(this);
       }
+    }
 
-      public enum Type {
-        CARD("card"),
+    public enum Type {
+      CARD("card"),
 
-        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-        AMAZON_PAYMENTS("amazon_payments"),
+      AMAZON_PAYMENTS("amazon_payments"),
 
-        DIRECT_DEBIT("direct_debit"),
+      DIRECT_DEBIT("direct_debit"),
 
-        GENERIC("generic"),
+      GENERIC("generic"),
 
-        ALIPAY("alipay"),
+      ALIPAY("alipay"),
 
-        UNIONPAY("unionpay"),
+      UNIONPAY("unionpay"),
 
-        WECHAT_PAY("wechat_pay"),
+      WECHAT_PAY("wechat_pay"),
 
-        IDEAL("ideal"),
+      IDEAL("ideal"),
 
-        GOOGLE_PAY("google_pay"),
+      GOOGLE_PAY("google_pay"),
 
-        SOFORT("sofort"),
+      SOFORT("sofort"),
 
-        BANCONTACT("bancontact"),
+      BANCONTACT("bancontact"),
 
-        GIROPAY("giropay"),
+      GIROPAY("giropay"),
 
-        DOTPAY("dotpay"),
+      DOTPAY("dotpay"),
 
-        UPI("upi"),
+      UPI("upi"),
 
-        NETBANKING_EMANDATES("netbanking_emandates"),
+      NETBANKING_EMANDATES("netbanking_emandates"),
 
-        VENMO("venmo"),
+      VENMO("venmo"),
 
-        PAY_TO("pay_to"),
+      PAY_TO("pay_to"),
 
-        FASTER_PAYMENTS("faster_payments"),
+      FASTER_PAYMENTS("faster_payments"),
 
-        SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-        AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-        KLARNA_PAY_NOW("klarna_pay_now"),
+      KLARNA_PAY_NOW("klarna_pay_now"),
 
-        ONLINE_BANKING_POLAND("online_banking_poland"),
+      ONLINE_BANKING_POLAND("online_banking_poland"),
 
-        PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
-        /** An enum member indicating that Type was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Type was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Type(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Type fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Type enumValue : Type.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Type(String value) {
+        this.value = value;
       }
 
-      public enum Gateway {
-        CHARGEBEE_PAYMENTS("chargebee_payments"),
+      public String getValue() {
+        return value;
+      }
 
-        ADYEN("adyen"),
-
-        STRIPE("stripe"),
-
-        WEPAY("wepay"),
-
-        BRAINTREE("braintree"),
-
-        AUTHORIZE_NET("authorize_net"),
-
-        PAYPAL_PRO("paypal_pro"),
-
-        PIN("pin"),
-
-        EWAY("eway"),
-
-        EWAY_RAPID("eway_rapid"),
-
-        WORLDPAY("worldpay"),
-
-        BALANCED_PAYMENTS("balanced_payments"),
-
-        BEANSTREAM("beanstream"),
-
-        BLUEPAY("bluepay"),
-
-        ELAVON("elavon"),
-
-        FIRST_DATA_GLOBAL("first_data_global"),
-
-        HDFC("hdfc"),
-
-        MIGS("migs"),
-
-        NMI("nmi"),
-
-        OGONE("ogone"),
-
-        PAYMILL("paymill"),
-
-        PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
-
-        SAGE_PAY("sage_pay"),
-
-        TCO("tco"),
-
-        WIRECARD("wirecard"),
-
-        AMAZON_PAYMENTS("amazon_payments"),
-
-        PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-        GOCARDLESS("gocardless"),
-
-        ORBITAL("orbital"),
-
-        MONERIS_US("moneris_us"),
-
-        MONERIS("moneris"),
-
-        BLUESNAP("bluesnap"),
-
-        CYBERSOURCE("cybersource"),
-
-        VANTIV("vantiv"),
-
-        CHECKOUT_COM("checkout_com"),
-
-        PAYPAL("paypal"),
-
-        INGENICO_DIRECT("ingenico_direct"),
-
-        EXACT("exact"),
-
-        MOLLIE("mollie"),
-
-        QUICKBOOKS("quickbooks"),
-
-        RAZORPAY("razorpay"),
-
-        GLOBAL_PAYMENTS("global_payments"),
-
-        BANK_OF_AMERICA("bank_of_america"),
-
-        ECENTRIC("ecentric"),
-
-        METRICS_GLOBAL("metrics_global"),
-
-        WINDCAVE("windcave"),
-
-        PAY_COM("pay_com"),
-
-        EBANX("ebanx"),
-
-        DLOCAL("dlocal"),
-
-        NUVEI("nuvei"),
-
-        SOLIDGATE("solidgate"),
-
-        PAYSTACK("paystack"),
-
-        JP_MORGAN("jp_morgan"),
-
-        /** An enum member indicating that Gateway was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        Gateway(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Gateway fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Gateway enumValue : Gateway.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Type fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Type enumValue : Type.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Gateway {
+      CHARGEBEE_PAYMENTS("chargebee_payments"),
+
+      ADYEN("adyen"),
+
+      STRIPE("stripe"),
+
+      WEPAY("wepay"),
+
+      BRAINTREE("braintree"),
+
+      AUTHORIZE_NET("authorize_net"),
+
+      PAYPAL_PRO("paypal_pro"),
+
+      PIN("pin"),
+
+      EWAY("eway"),
+
+      EWAY_RAPID("eway_rapid"),
+
+      WORLDPAY("worldpay"),
+
+      BALANCED_PAYMENTS("balanced_payments"),
+
+      BEANSTREAM("beanstream"),
+
+      BLUEPAY("bluepay"),
+
+      ELAVON("elavon"),
+
+      FIRST_DATA_GLOBAL("first_data_global"),
+
+      HDFC("hdfc"),
+
+      MIGS("migs"),
+
+      NMI("nmi"),
+
+      OGONE("ogone"),
+
+      PAYMILL("paymill"),
+
+      PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
+
+      SAGE_PAY("sage_pay"),
+
+      TCO("tco"),
+
+      WIRECARD("wirecard"),
+
+      AMAZON_PAYMENTS("amazon_payments"),
+
+      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+      GOCARDLESS("gocardless"),
+
+      ORBITAL("orbital"),
+
+      MONERIS_US("moneris_us"),
+
+      MONERIS("moneris"),
+
+      BLUESNAP("bluesnap"),
+
+      CYBERSOURCE("cybersource"),
+
+      VANTIV("vantiv"),
+
+      CHECKOUT_COM("checkout_com"),
+
+      PAYPAL("paypal"),
+
+      INGENICO_DIRECT("ingenico_direct"),
+
+      EXACT("exact"),
+
+      MOLLIE("mollie"),
+
+      QUICKBOOKS("quickbooks"),
+
+      RAZORPAY("razorpay"),
+
+      GLOBAL_PAYMENTS("global_payments"),
+
+      BANK_OF_AMERICA("bank_of_america"),
+
+      ECENTRIC("ecentric"),
+
+      METRICS_GLOBAL("metrics_global"),
+
+      WINDCAVE("windcave"),
+
+      PAY_COM("pay_com"),
+
+      EBANX("ebanx"),
+
+      DLOCAL("dlocal"),
+
+      NUVEI("nuvei"),
+
+      SOLIDGATE("solidgate"),
+
+      PAYSTACK("paystack"),
+
+      JP_MORGAN("jp_morgan"),
+
+      DEUTSCHE_BANK("deutsche_bank"),
+
+      /** An enum member indicating that Gateway was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Gateway(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Gateway fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Gateway enumValue : Gateway.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

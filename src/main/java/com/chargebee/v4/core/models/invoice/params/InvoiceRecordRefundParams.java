@@ -140,45 +140,45 @@ public final class InvoiceRecordRefundParams {
       public TransactionParams build() {
         return new TransactionParams(this);
       }
+    }
 
-      public enum PaymentMethod {
-        CASH("cash"),
+    public enum PaymentMethod {
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        CHARGEBACK("chargeback"),
+      CHARGEBACK("chargeback"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PaymentMethod(String value) {
-          this.value = value;
-        }
+      PaymentMethod(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PaymentMethod fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PaymentMethod enumValue : PaymentMethod.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PaymentMethod fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PaymentMethod enumValue : PaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -224,43 +224,43 @@ public final class InvoiceRecordRefundParams {
       public CreditNoteParams build() {
         return new CreditNoteParams(this);
       }
+    }
 
-      public enum ReasonCode {
-        CHARGEBACK("chargeback"),
+    public enum ReasonCode {
+      CHARGEBACK("chargeback"),
 
-        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        ORDER_CHANGE("order_change"),
+      ORDER_CHANGE("order_change"),
 
-        ORDER_CANCELLATION("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-        WAIVER("waiver"),
+      WAIVER("waiver"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ReasonCode(String value) {
-          this.value = value;
-        }
+      ReasonCode(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ReasonCode fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ReasonCode enumValue : ReasonCode.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ReasonCode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ReasonCode enumValue : ReasonCode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

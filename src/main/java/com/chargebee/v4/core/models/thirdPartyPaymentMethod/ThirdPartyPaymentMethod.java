@@ -215,6 +215,8 @@ public class ThirdPartyPaymentMethod {
 
     JP_MORGAN("jp_morgan"),
 
+    DEUTSCHE_BANK("deutsche_bank"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */

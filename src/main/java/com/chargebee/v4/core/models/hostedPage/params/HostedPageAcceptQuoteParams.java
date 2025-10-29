@@ -64,33 +64,33 @@ public final class HostedPageAcceptQuoteParams {
     public HostedPageAcceptQuoteParams build() {
       return new HostedPageAcceptQuoteParams(this);
     }
+  }
 
-    public enum Layout {
-      IN_APP("in_app"),
+  public enum Layout {
+    IN_APP("in_app"),
 
-      FULL_PAGE("full_page"),
+    FULL_PAGE("full_page"),
 
-      /** An enum member indicating that Layout was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Layout was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Layout(String value) {
-        this.value = value;
-      }
+    Layout(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Layout fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Layout enumValue : Layout.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Layout fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Layout enumValue : Layout.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 

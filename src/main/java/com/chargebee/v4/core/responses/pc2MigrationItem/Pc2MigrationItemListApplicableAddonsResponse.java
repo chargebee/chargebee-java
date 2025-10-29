@@ -94,11 +94,6 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
     return nextOffset;
   }
 
-  /** Get the list of items in this page (alias). */
-  public List<java.util.Map<String, Object>> items() {
-    return list;
-  }
-
   /** Check if there are more pages available. */
   public boolean hasNextPage() {
     return nextOffset != null && !nextOffset.isEmpty();

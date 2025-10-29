@@ -100,73 +100,73 @@ public final class GiftListParams {
         return builder;
       }
     }
+  }
 
-    public enum StatusIs {
-      SCHEDULED("scheduled"),
+  public enum StatusIs {
+    SCHEDULED("scheduled"),
 
-      UNCLAIMED("unclaimed"),
+    UNCLAIMED("unclaimed"),
 
-      CLAIMED("claimed"),
+    CLAIMED("claimed"),
 
-      CANCELLED("cancelled"),
+    CANCELLED("cancelled"),
 
-      EXPIRED("expired"),
+    EXPIRED("expired"),
 
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    StatusIs(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      SCHEDULED("scheduled"),
+    public String getValue() {
+      return value;
+    }
 
-      UNCLAIMED("unclaimed"),
-
-      CLAIMED("claimed"),
-
-      CANCELLED("cancelled"),
-
-      EXPIRED("expired"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    SCHEDULED("scheduled"),
+
+    UNCLAIMED("unclaimed"),
+
+    CLAIMED("claimed"),
+
+    CANCELLED("cancelled"),
+
+    EXPIRED("expired"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

@@ -91,79 +91,79 @@ public final class PaymentSourceCreateUsingTempTokenParams {
     public PaymentSourceCreateUsingTempTokenParams build() {
       return new PaymentSourceCreateUsingTempTokenParams(this);
     }
+  }
 
-    public enum Type {
-      CARD("card"),
+  public enum Type {
+    CARD("card"),
 
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-      AMAZON_PAYMENTS("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-      DIRECT_DEBIT("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-      GENERIC("generic"),
+    GENERIC("generic"),
 
-      ALIPAY("alipay"),
+    ALIPAY("alipay"),
 
-      UNIONPAY("unionpay"),
+    UNIONPAY("unionpay"),
 
-      APPLE_PAY("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-      WECHAT_PAY("wechat_pay"),
+    WECHAT_PAY("wechat_pay"),
 
-      IDEAL("ideal"),
+    IDEAL("ideal"),
 
-      GOOGLE_PAY("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-      SOFORT("sofort"),
+    SOFORT("sofort"),
 
-      BANCONTACT("bancontact"),
+    BANCONTACT("bancontact"),
 
-      GIROPAY("giropay"),
+    GIROPAY("giropay"),
 
-      DOTPAY("dotpay"),
+    DOTPAY("dotpay"),
 
-      UPI("upi"),
+    UPI("upi"),
 
-      NETBANKING_EMANDATES("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-      VENMO("venmo"),
+    VENMO("venmo"),
 
-      PAY_TO("pay_to"),
+    PAY_TO("pay_to"),
 
-      FASTER_PAYMENTS("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-      KLARNA_PAY_NOW("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-      ONLINE_BANKING_POLAND("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
-      /** An enum member indicating that Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Type(String value) {
-        this.value = value;
-      }
+    Type(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Type enumValue : Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

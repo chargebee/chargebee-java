@@ -257,63 +257,61 @@ public final class ItemUpdateParams {
     public ItemUpdateParams build() {
       return new ItemUpdateParams(this);
     }
+  }
 
-    public enum ItemApplicability {
-      ALL("all"),
+  public enum ItemApplicability {
+    ALL("all"),
 
-      RESTRICTED("restricted"),
+    RESTRICTED("restricted"),
 
-      /**
-       * An enum member indicating that ItemApplicability was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ItemApplicability was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ItemApplicability(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ItemApplicability fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ItemApplicability enumValue : ItemApplicability.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    ItemApplicability(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      ACTIVE("active"),
+    public String getValue() {
+      return value;
+    }
 
-      ARCHIVED("archived"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ItemApplicability fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ItemApplicability enumValue : ItemApplicability.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -351,31 +349,31 @@ public final class ItemUpdateParams {
       public BundleConfigurationParams build() {
         return new BundleConfigurationParams(this);
       }
+    }
 
-      public enum Type {
-        FIXED("fixed"),
+    public enum Type {
+      FIXED("fixed"),
 
-        /** An enum member indicating that Type was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Type was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Type(String value) {
-          this.value = value;
-        }
+      Type(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Type fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Type enumValue : Type.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Type fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Type enumValue : Type.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -435,35 +433,35 @@ public final class ItemUpdateParams {
       public BundleItemsToAddParams build() {
         return new BundleItemsToAddParams(this);
       }
+    }
 
-      public enum ItemType {
-        PLAN("plan"),
+    public enum ItemType {
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        CHARGE("charge"),
+      CHARGE("charge"),
 
-        /** An enum member indicating that ItemType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ItemType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ItemType(String value) {
-          this.value = value;
-        }
+      ItemType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ItemType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ItemType enumValue : ItemType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ItemType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ItemType enumValue : ItemType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -523,35 +521,35 @@ public final class ItemUpdateParams {
       public BundleItemsToUpdateParams build() {
         return new BundleItemsToUpdateParams(this);
       }
+    }
 
-      public enum ItemType {
-        PLAN("plan"),
+    public enum ItemType {
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        CHARGE("charge"),
+      CHARGE("charge"),
 
-        /** An enum member indicating that ItemType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ItemType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ItemType(String value) {
-          this.value = value;
-        }
+      ItemType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ItemType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ItemType enumValue : ItemType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ItemType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ItemType enumValue : ItemType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -597,35 +595,35 @@ public final class ItemUpdateParams {
       public BundleItemsToRemoveParams build() {
         return new BundleItemsToRemoveParams(this);
       }
+    }
 
-      public enum ItemType {
-        PLAN("plan"),
+    public enum ItemType {
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        CHARGE("charge"),
+      CHARGE("charge"),
 
-        /** An enum member indicating that ItemType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ItemType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ItemType(String value) {
-          this.value = value;
-        }
+      ItemType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ItemType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ItemType enumValue : ItemType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ItemType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ItemType enumValue : ItemType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

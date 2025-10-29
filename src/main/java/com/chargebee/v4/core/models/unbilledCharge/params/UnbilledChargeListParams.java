@@ -154,66 +154,66 @@ public final class UnbilledChargeListParams {
         return builder;
       }
     }
+  }
 
-    public enum SubscriptionIdIsPresent {
-      TRUE("true"),
+  public enum SubscriptionIdIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /**
+     * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      SubscriptionIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    SubscriptionIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum CustomerIdIsPresent {
-      TRUE("true"),
+    public String getValue() {
+      return value;
+    }
 
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that CustomerIdIsPresent was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      CustomerIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CustomerIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CustomerIdIsPresent enumValue : CustomerIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static SubscriptionIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum CustomerIdIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that CustomerIdIsPresent was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    CustomerIdIsPresent(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static CustomerIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CustomerIdIsPresent enumValue : CustomerIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

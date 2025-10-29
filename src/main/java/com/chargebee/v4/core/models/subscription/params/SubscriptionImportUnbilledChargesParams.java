@@ -225,43 +225,43 @@ public final class SubscriptionImportUnbilledChargesParams {
       public UnbilledChargesParams build() {
         return new UnbilledChargesParams(this);
       }
+    }
 
-      public enum EntityType {
-        ADHOC("adhoc"),
+    public enum EntityType {
+      ADHOC("adhoc"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN_SETUP("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -328,37 +328,37 @@ public final class SubscriptionImportUnbilledChargesParams {
       public DiscountsParams build() {
         return new DiscountsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ITEM_LEVEL_COUPON("item_level_coupon"),
+    public enum EntityType {
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        ITEM_LEVEL_DISCOUNT("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

@@ -90,11 +90,6 @@ public final class CommentListResponse {
     return nextOffset;
   }
 
-  /** Get the list of items in this page (alias). */
-  public List<CommentListItem> items() {
-    return list;
-  }
-
   /** Check if there are more pages available. */
   public boolean hasNextPage() {
     return nextOffset != null && !nextOffset.isEmpty();

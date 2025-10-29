@@ -94,11 +94,6 @@ public final class SubscriptionListResponse {
     return nextOffset;
   }
 
-  /** Get the list of items in this page (alias). */
-  public List<SubscriptionListItem> items() {
-    return list;
-  }
-
   /** Check if there are more pages available. */
   public boolean hasNextPage() {
     return nextOffset != null && !nextOffset.isEmpty();

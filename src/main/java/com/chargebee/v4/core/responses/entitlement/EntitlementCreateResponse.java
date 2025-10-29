@@ -1,5 +1,7 @@
 package com.chargebee.v4.core.responses.entitlement;
 
+import java.util.List;
+
 import com.chargebee.v4.core.models.entitlement.Entitlement;
 
 import com.chargebee.v4.core.responses.BaseResponse;
@@ -11,12 +13,12 @@ import com.chargebee.v4.transport.Response;
  * API.
  */
 public final class EntitlementCreateResponse extends BaseResponse {
-  private final Entitlement entitlement;
+  private final List<Entitlement> list;
 
   private EntitlementCreateResponse(Builder builder) {
     super(builder.httpResponse);
 
-    this.entitlement = builder.entitlement;
+    this.list = builder.list;
   }
 
   /** Parse JSON response into EntitlementCreateResponse object. */
@@ -29,10 +31,10 @@ public final class EntitlementCreateResponse extends BaseResponse {
     try {
       Builder builder = builder();
 
-      String __entitlementJson = JsonUtil.getObject(json, "entitlement");
-      if (__entitlementJson != null) {
-        builder.entitlement(Entitlement.fromJson(__entitlementJson));
-      }
+      builder.list(
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(Entitlement::fromJson)
+              .collect(java.util.stream.Collectors.toList()));
 
       builder.httpResponse(httpResponse);
       return builder.build();
@@ -49,14 +51,14 @@ public final class EntitlementCreateResponse extends BaseResponse {
   /** Builder for EntitlementCreateResponse. */
   public static class Builder {
 
-    private Entitlement entitlement;
+    private List<Entitlement> list;
 
     private Response httpResponse;
 
     private Builder() {}
 
-    public Builder entitlement(Entitlement entitlement) {
-      this.entitlement = entitlement;
+    public Builder list(List<Entitlement> list) {
+      this.list = list;
       return this;
     }
 
@@ -70,8 +72,8 @@ public final class EntitlementCreateResponse extends BaseResponse {
     }
   }
 
-  /** Get the entitlement from the response. */
-  public Entitlement getEntitlement() {
-    return entitlement;
+  /** Get the list from the response. */
+  public List<Entitlement> getList() {
+    return list;
   }
 }

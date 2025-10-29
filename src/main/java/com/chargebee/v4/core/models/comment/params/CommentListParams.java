@@ -143,111 +143,111 @@ public final class CommentListParams {
         return builder;
       }
     }
+  }
 
-    public enum EntityType {
-      CUSTOMER("customer"),
+  public enum EntityType {
+    CUSTOMER("customer"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      QUOTE("quote"),
+    QUOTE("quote"),
 
-      CREDIT_NOTE("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-      TRANSACTION("transaction"),
+    TRANSACTION("transaction"),
 
-      PLAN("plan"),
+    PLAN("plan"),
 
-      ADDON("addon"),
+    ADDON("addon"),
 
-      COUPON("coupon"),
+    COUPON("coupon"),
 
-      ORDER("order"),
+    ORDER("order"),
 
-      BUSINESS_ENTITY("business_entity"),
+    BUSINESS_ENTITY("business_entity"),
 
-      ITEM_FAMILY("item_family"),
+    ITEM_FAMILY("item_family"),
 
-      ITEM("item"),
+    ITEM("item"),
 
-      ITEM_PRICE("item_price"),
+    ITEM_PRICE("item_price"),
 
-      PRICE_VARIANT("price_variant"),
+    PRICE_VARIANT("price_variant"),
 
-      /** An enum member indicating that EntityType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityType enumValue : EntityType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    EntityType(String value) {
+      this.value = value;
     }
 
-    public enum SortByAsc {
-      CREATED_AT("created_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByDesc {
-      CREATED_AT("created_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    CREATED_AT("created_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    CREATED_AT("created_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

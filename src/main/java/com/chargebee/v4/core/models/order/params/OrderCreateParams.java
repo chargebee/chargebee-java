@@ -102,39 +102,39 @@ public final class OrderCreateParams {
     public OrderCreateParams build() {
       return new OrderCreateParams(this);
     }
+  }
 
-    public enum Status {
-      NEW("new"),
+  public enum Status {
+    NEW("new"),
 
-      PROCESSING("processing"),
+    PROCESSING("processing"),
 
-      COMPLETE("complete"),
+    COMPLETE("complete"),
 
-      CANCELLED("cancelled"),
+    CANCELLED("cancelled"),
 
-      VOIDED("voided"),
+    VOIDED("voided"),
 
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Status(String value) {
-        this.value = value;
-      }
+    Status(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

@@ -103,33 +103,33 @@ public final class WebhookEndpointUpdateParams {
     public WebhookEndpointUpdateParams build() {
       return new WebhookEndpointUpdateParams(this);
     }
+  }
 
-    public enum ApiVersion {
-      V1("v1"),
+  public enum ApiVersion {
+    V1("v1"),
 
-      V2("v2"),
+    V2("v2"),
 
-      /** An enum member indicating that ApiVersion was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ApiVersion was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ApiVersion(String value) {
-        this.value = value;
-      }
+    ApiVersion(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static ApiVersion fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ApiVersion enumValue : ApiVersion.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ApiVersion fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApiVersion enumValue : ApiVersion.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

@@ -328,151 +328,149 @@ public final class UsageListParams {
         return builder;
       }
     }
+  }
 
-    public enum InvoiceIdIsPresent {
-      TRUE("true"),
+  public enum InvoiceIdIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that InvoiceIdIsPresent was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that InvoiceIdIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      InvoiceIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static InvoiceIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (InvoiceIdIsPresent enumValue : InvoiceIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    InvoiceIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum SourceIs {
-      ADMIN_CONSOLE("admin_console"),
-
-      API("api"),
-
-      BULK_OPERATION("bulk_operation"),
-
-      /** An enum member indicating that SourceIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SourceIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SourceIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SourceIs enumValue : SourceIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SourceIsNot {
-      ADMIN_CONSOLE("admin_console"),
-
-      API("api"),
-
-      BULK_OPERATION("bulk_operation"),
-
-      /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SourceIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SourceIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SourceIsNot enumValue : SourceIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static InvoiceIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (InvoiceIdIsPresent enumValue : InvoiceIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SourceIs {
+    ADMIN_CONSOLE("admin_console"),
+
+    API("api"),
+
+    BULK_OPERATION("bulk_operation"),
+
+    /** An enum member indicating that SourceIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SourceIs(String value) {
+      this.value = value;
     }
 
-    public enum SortByAsc {
-      USAGE_DATE("usage_date"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByDesc {
-      USAGE_DATE("usage_date"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static SourceIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceIs enumValue : SourceIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SourceIsNot {
+    ADMIN_CONSOLE("admin_console"),
+
+    API("api"),
+
+    BULK_OPERATION("bulk_operation"),
+
+    /** An enum member indicating that SourceIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SourceIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SourceIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SourceIsNot enumValue : SourceIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    USAGE_DATE("usage_date"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    USAGE_DATE("usage_date"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

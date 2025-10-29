@@ -185,61 +185,61 @@ public final class PromotionalCreditListParams {
         return builder;
       }
     }
+  }
 
-    public enum TypeIs {
-      INCREMENT("increment"),
+  public enum TypeIs {
+    INCREMENT("increment"),
 
-      DECREMENT("decrement"),
+    DECREMENT("decrement"),
 
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    TypeIs(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      INCREMENT("increment"),
+    public String getValue() {
+      return value;
+    }
 
-      DECREMENT("decrement"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    INCREMENT("increment"),
+
+    DECREMENT("decrement"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

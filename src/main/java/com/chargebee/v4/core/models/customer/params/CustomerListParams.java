@@ -566,515 +566,510 @@ public final class CustomerListParams {
         return builder;
       }
     }
+  }
 
-    public enum FirstNameIsPresent {
-      TRUE("true"),
+  public enum FirstNameIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that FirstNameIsPresent was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that FirstNameIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      FirstNameIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static FirstNameIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (FirstNameIsPresent enumValue : FirstNameIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    FirstNameIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum LastNameIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that LastNameIsPresent was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      LastNameIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static LastNameIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (LastNameIsPresent enumValue : LastNameIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum EmailIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that EmailIsPresent was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EmailIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EmailIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EmailIsPresent enumValue : EmailIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static FirstNameIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (FirstNameIsPresent enumValue : FirstNameIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum LastNameIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that LastNameIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    LastNameIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum CompanyIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that CompanyIsPresent was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      CompanyIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CompanyIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CompanyIsPresent enumValue : CompanyIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PhoneIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that PhoneIsPresent was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PhoneIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PhoneIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PhoneIsPresent enumValue : PhoneIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static LastNameIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (LastNameIsPresent enumValue : LastNameIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EmailIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that EmailIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EmailIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum AutoCollectionIs {
-      ON("on"),
-
-      OFF("off"),
-
-      /** An enum member indicating that AutoCollectionIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      AutoCollectionIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCollectionIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCollectionIs enumValue : AutoCollectionIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum AutoCollectionIsNot {
-      ON("on"),
-
-      OFF("off"),
-
-      /**
-       * An enum member indicating that AutoCollectionIsNot was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AutoCollectionIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCollectionIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCollectionIsNot enumValue : AutoCollectionIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EmailIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EmailIsPresent enumValue : EmailIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum CompanyIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that CompanyIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    CompanyIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum TaxabilityIs {
-      TAXABLE("taxable"),
-
-      EXEMPT("exempt"),
-
-      /** An enum member indicating that TaxabilityIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TaxabilityIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TaxabilityIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TaxabilityIs enumValue : TaxabilityIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum TaxabilityIsNot {
-      TAXABLE("taxable"),
-
-      EXEMPT("exempt"),
-
-      /** An enum member indicating that TaxabilityIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TaxabilityIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TaxabilityIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TaxabilityIsNot enumValue : TaxabilityIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CompanyIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CompanyIsPresent enumValue : CompanyIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PhoneIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that PhoneIsPresent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PhoneIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum OfflinePaymentMethodIs {
-      NO_PREFERENCE("no_preference"),
-
-      CASH("cash"),
-
-      CHECK("check"),
-
-      BANK_TRANSFER("bank_transfer"),
-
-      ACH_CREDIT("ach_credit"),
-
-      SEPA_CREDIT("sepa_credit"),
-
-      BOLETO("boleto"),
-
-      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
-
-      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
-
-      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
-
-      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
-
-      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
-
-      CUSTOM("custom"),
-
-      /**
-       * An enum member indicating that OfflinePaymentMethodIs was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      OfflinePaymentMethodIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static OfflinePaymentMethodIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (OfflinePaymentMethodIs enumValue : OfflinePaymentMethodIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum OfflinePaymentMethodIsNot {
-      NO_PREFERENCE("no_preference"),
-
-      CASH("cash"),
-
-      CHECK("check"),
-
-      BANK_TRANSFER("bank_transfer"),
-
-      ACH_CREDIT("ach_credit"),
-
-      SEPA_CREDIT("sepa_credit"),
-
-      BOLETO("boleto"),
-
-      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
-
-      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
-
-      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
-
-      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
-
-      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
-
-      CUSTOM("custom"),
-
-      /**
-       * An enum member indicating that OfflinePaymentMethodIsNot was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      OfflinePaymentMethodIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static OfflinePaymentMethodIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (OfflinePaymentMethodIsNot enumValue : OfflinePaymentMethodIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PhoneIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PhoneIsPresent enumValue : PhoneIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AutoCollectionIs {
+    ON("on"),
+
+    OFF("off"),
+
+    /** An enum member indicating that AutoCollectionIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AutoCollectionIs(String value) {
+      this.value = value;
     }
 
-    public enum AutoCloseInvoicesIs {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that AutoCloseInvoicesIs was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AutoCloseInvoicesIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCloseInvoicesIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCloseInvoicesIs enumValue : AutoCloseInvoicesIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ChannelIs {
-      WEB("web"),
-
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIs enumValue : ChannelIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static AutoCollectionIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AutoCollectionIs enumValue : AutoCollectionIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AutoCollectionIsNot {
+    ON("on"),
+
+    OFF("off"),
+
+    /**
+     * An enum member indicating that AutoCollectionIsNot was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    AutoCollectionIsNot(String value) {
+      this.value = value;
     }
 
-    public enum ChannelIsNot {
-      WEB("web"),
-
-      APP_STORE("app_store"),
-
-      PLAY_STORE("play_store"),
-
-      /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChannelIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChannelIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChannelIsNot enumValue : ChannelIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByAsc {
-      CREATED_AT("created_at"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static AutoCollectionIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AutoCollectionIsNot enumValue : AutoCollectionIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TaxabilityIs {
+    TAXABLE("taxable"),
+
+    EXEMPT("exempt"),
+
+    /** An enum member indicating that TaxabilityIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TaxabilityIs(String value) {
+      this.value = value;
     }
 
-    public enum SortByDesc {
-      CREATED_AT("created_at"),
+    public String getValue() {
+      return value;
+    }
 
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TaxabilityIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TaxabilityIs enumValue : TaxabilityIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TaxabilityIsNot {
+    TAXABLE("taxable"),
+
+    EXEMPT("exempt"),
+
+    /** An enum member indicating that TaxabilityIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TaxabilityIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TaxabilityIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TaxabilityIsNot enumValue : TaxabilityIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OfflinePaymentMethodIs {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethodIs was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethodIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethodIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethodIs enumValue : OfflinePaymentMethodIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OfflinePaymentMethodIsNot {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethodIsNot was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethodIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethodIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethodIsNot enumValue : OfflinePaymentMethodIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AutoCloseInvoicesIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that AutoCloseInvoicesIs was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    AutoCloseInvoicesIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AutoCloseInvoicesIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AutoCloseInvoicesIs enumValue : AutoCloseInvoicesIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIs {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIs enumValue : ChannelIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChannelIsNot {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that ChannelIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChannelIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChannelIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

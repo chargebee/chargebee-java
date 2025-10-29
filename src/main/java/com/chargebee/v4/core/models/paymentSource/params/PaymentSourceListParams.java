@@ -290,277 +290,277 @@ public final class PaymentSourceListParams {
         return builder;
       }
     }
+  }
 
-    public enum TypeIs {
-      CARD("card"),
+  public enum TypeIs {
+    CARD("card"),
 
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-      AMAZON_PAYMENTS("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-      DIRECT_DEBIT("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-      GENERIC("generic"),
+    GENERIC("generic"),
 
-      ALIPAY("alipay"),
+    ALIPAY("alipay"),
 
-      UNIONPAY("unionpay"),
+    UNIONPAY("unionpay"),
 
-      APPLE_PAY("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-      WECHAT_PAY("wechat_pay"),
+    WECHAT_PAY("wechat_pay"),
 
-      IDEAL("ideal"),
+    IDEAL("ideal"),
 
-      GOOGLE_PAY("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-      SOFORT("sofort"),
+    SOFORT("sofort"),
 
-      BANCONTACT("bancontact"),
+    BANCONTACT("bancontact"),
 
-      GIROPAY("giropay"),
+    GIROPAY("giropay"),
 
-      DOTPAY("dotpay"),
+    DOTPAY("dotpay"),
 
-      UPI("upi"),
+    UPI("upi"),
 
-      NETBANKING_EMANDATES("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-      VENMO("venmo"),
+    VENMO("venmo"),
 
-      PAY_TO("pay_to"),
+    PAY_TO("pay_to"),
 
-      FASTER_PAYMENTS("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
 
-      KLARNA_PAY_NOW("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-      ONLINE_BANKING_POLAND("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    TypeIs(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      CARD("card"),
-
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-      AMAZON_PAYMENTS("amazon_payments"),
-
-      DIRECT_DEBIT("direct_debit"),
-
-      GENERIC("generic"),
-
-      ALIPAY("alipay"),
-
-      UNIONPAY("unionpay"),
-
-      APPLE_PAY("apple_pay"),
-
-      WECHAT_PAY("wechat_pay"),
-
-      IDEAL("ideal"),
-
-      GOOGLE_PAY("google_pay"),
-
-      SOFORT("sofort"),
-
-      BANCONTACT("bancontact"),
-
-      GIROPAY("giropay"),
-
-      DOTPAY("dotpay"),
-
-      UPI("upi"),
-
-      NETBANKING_EMANDATES("netbanking_emandates"),
-
-      VENMO("venmo"),
-
-      PAY_TO("pay_to"),
-
-      FASTER_PAYMENTS("faster_payments"),
-
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
-
-      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
-
-      KLARNA_PAY_NOW("klarna_pay_now"),
-
-      ONLINE_BANKING_POLAND("online_banking_poland"),
-
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StatusIs {
-      VALID("valid"),
-
-      EXPIRING("expiring"),
-
-      EXPIRED("expired"),
-
-      INVALID("invalid"),
-
-      PENDING_VERIFICATION("pending_verification"),
-
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    CARD("card"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    GENERIC("generic"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      VALID("valid"),
-
-      EXPIRING("expiring"),
-
-      EXPIRED("expired"),
-
-      INVALID("invalid"),
-
-      PENDING_VERIFICATION("pending_verification"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByAsc {
-      CREATED_AT("created_at"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    VALID("valid"),
+
+    EXPIRING("expiring"),
+
+    EXPIRED("expired"),
+
+    INVALID("invalid"),
+
+    PENDING_VERIFICATION("pending_verification"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
     }
 
-    public enum SortByDesc {
-      CREATED_AT("created_at"),
+    public String getValue() {
+      return value;
+    }
 
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    VALID("valid"),
+
+    EXPIRING("expiring"),
+
+    EXPIRED("expired"),
+
+    INVALID("invalid"),
+
+    PENDING_VERIFICATION("pending_verification"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

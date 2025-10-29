@@ -88,35 +88,35 @@ public final class PromotionalCreditAddParams {
     public PromotionalCreditAddParams build() {
       return new PromotionalCreditAddParams(this);
     }
+  }
 
-    public enum CreditType {
-      LOYALTY_CREDITS("loyalty_credits"),
+  public enum CreditType {
+    LOYALTY_CREDITS("loyalty_credits"),
 
-      REFERRAL_REWARDS("referral_rewards"),
+    REFERRAL_REWARDS("referral_rewards"),
 
-      GENERAL("general"),
+    GENERAL("general"),
 
-      /** An enum member indicating that CreditType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that CreditType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      CreditType(String value) {
-        this.value = value;
-      }
+    CreditType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static CreditType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CreditType enumValue : CreditType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CreditType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CreditType enumValue : CreditType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

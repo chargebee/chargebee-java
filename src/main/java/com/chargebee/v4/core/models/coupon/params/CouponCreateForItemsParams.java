@@ -267,157 +267,157 @@ public final class CouponCreateForItemsParams {
     public CouponCreateForItemsParams build() {
       return new CouponCreateForItemsParams(this);
     }
+  }
 
-    public enum DiscountType {
-      FIXED_AMOUNT("fixed_amount"),
+  public enum DiscountType {
+    FIXED_AMOUNT("fixed_amount"),
 
-      PERCENTAGE("percentage"),
+    PERCENTAGE("percentage"),
 
-      OFFER_QUANTITY("offer_quantity"),
+    OFFER_QUANTITY("offer_quantity"),
 
-      /** An enum member indicating that DiscountType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that DiscountType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      DiscountType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static DiscountType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DiscountType enumValue : DiscountType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    DiscountType(String value) {
+      this.value = value;
     }
 
-    public enum ApplyOn {
-      INVOICE_AMOUNT("invoice_amount"),
-
-      SPECIFIED_ITEMS_TOTAL("specified_items_total"),
-
-      EACH_SPECIFIED_ITEM("each_specified_item"),
-
-      EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
-
-      /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ApplyOn(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ApplyOn fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ApplyOn enumValue : ApplyOn.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum DurationType {
-      ONE_TIME("one_time"),
-
-      FOREVER("forever"),
-
-      LIMITED_PERIOD("limited_period"),
-
-      /** An enum member indicating that DurationType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      DurationType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static DurationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DurationType enumValue : DurationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static DiscountType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DiscountType enumValue : DiscountType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ApplyOn {
+    INVOICE_AMOUNT("invoice_amount"),
+
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
+
+    EACH_SPECIFIED_ITEM("each_specified_item"),
+
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
+
+    /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ApplyOn(String value) {
+      this.value = value;
     }
 
-    public enum PeriodUnit {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum Status {
-      ACTIVE("active"),
-
-      ARCHIVED("archived"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ApplyOn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApplyOn enumValue : ApplyOn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DurationType {
+    ONE_TIME("one_time"),
+
+    FOREVER("forever"),
+
+    LIMITED_PERIOD("limited_period"),
+
+    /** An enum member indicating that DurationType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DurationType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DurationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DurationType enumValue : DurationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnit enumValue : PeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -469,67 +469,67 @@ public final class CouponCreateForItemsParams {
       public ItemConstraintsParams build() {
         return new ItemConstraintsParams(this);
       }
+    }
 
-      public enum Constraint {
-        NONE("none"),
+    public enum Constraint {
+      NONE("none"),
 
-        ALL("all"),
+      ALL("all"),
 
-        SPECIFIC("specific"),
+      SPECIFIC("specific"),
 
-        CRITERIA("criteria"),
+      CRITERIA("criteria"),
 
-        /** An enum member indicating that Constraint was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Constraint was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Constraint(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Constraint fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Constraint enumValue : Constraint.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Constraint(String value) {
+        this.value = value;
       }
 
-      public enum ItemType {
-        PLAN("plan"),
+      public String getValue() {
+        return value;
+      }
 
-        ADDON("addon"),
-
-        CHARGE("charge"),
-
-        /** An enum member indicating that ItemType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        ItemType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static ItemType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ItemType enumValue : ItemType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Constraint fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Constraint enumValue : Constraint.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum ItemType {
+      PLAN("plan"),
+
+      ADDON("addon"),
+
+      CHARGE("charge"),
+
+      /** An enum member indicating that ItemType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ItemType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ItemType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ItemType enumValue : ItemType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -589,35 +589,35 @@ public final class CouponCreateForItemsParams {
       public ItemConstraintCriteriaParams build() {
         return new ItemConstraintCriteriaParams(this);
       }
+    }
 
-      public enum ItemType {
-        PLAN("plan"),
+    public enum ItemType {
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        CHARGE("charge"),
+      CHARGE("charge"),
 
-        /** An enum member indicating that ItemType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ItemType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ItemType(String value) {
-          this.value = value;
-        }
+      ItemType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ItemType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ItemType enumValue : ItemType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ItemType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ItemType enumValue : ItemType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -670,63 +670,63 @@ public final class CouponCreateForItemsParams {
       public CouponConstraintsParams build() {
         return new CouponConstraintsParams(this);
       }
+    }
 
-      public enum EntityType {
-        CUSTOMER("customer"),
+    public enum EntityType {
+      CUSTOMER("customer"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      EntityType(String value) {
+        this.value = value;
       }
 
-      public enum Type {
-        MAX_REDEMPTIONS("max_redemptions"),
+      public String getValue() {
+        return value;
+      }
 
-        UNIQUE_BY("unique_by"),
-
-        EXISTING_CUSTOMER("existing_customer"),
-
-        NEW_CUSTOMER("new_customer"),
-
-        /** An enum member indicating that Type was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        Type(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Type fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Type enumValue : Type.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Type {
+      MAX_REDEMPTIONS("max_redemptions"),
+
+      UNIQUE_BY("unique_by"),
+
+      EXISTING_CUSTOMER("existing_customer"),
+
+      NEW_CUSTOMER("new_customer"),
+
+      /** An enum member indicating that Type was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Type(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Type fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Type enumValue : Type.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

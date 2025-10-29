@@ -147,33 +147,33 @@ public final class InvoiceChargeAddonParams {
     public InvoiceChargeAddonParams build() {
       return new InvoiceChargeAddonParams(this);
     }
+  }
 
-    public enum PaymentInitiator {
-      CUSTOMER("customer"),
+  public enum PaymentInitiator {
+    CUSTOMER("customer"),
 
-      MERCHANT("merchant"),
+    MERCHANT("merchant"),
 
-      /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PaymentInitiator(String value) {
-        this.value = value;
-      }
+    PaymentInitiator(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static PaymentInitiator fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentInitiator enumValue : PaymentInitiator.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentInitiator fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentInitiator enumValue : PaymentInitiator.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

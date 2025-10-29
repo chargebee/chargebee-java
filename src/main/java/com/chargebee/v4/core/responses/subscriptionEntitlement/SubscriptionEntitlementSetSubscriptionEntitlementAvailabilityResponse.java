@@ -1,5 +1,7 @@
 package com.chargebee.v4.core.responses.subscriptionEntitlement;
 
+import java.util.List;
+
 import com.chargebee.v4.core.models.subscriptionEntitlement.SubscriptionEntitlement;
 
 import com.chargebee.v4.core.responses.BaseResponse;
@@ -12,12 +14,12 @@ import com.chargebee.v4.transport.Response;
  */
 public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityResponse
     extends BaseResponse {
-  private final SubscriptionEntitlement subscriptionEntitlement;
+  private final List<SubscriptionEntitlement> list;
 
   private SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityResponse(Builder builder) {
     super(builder.httpResponse);
 
-    this.subscriptionEntitlement = builder.subscriptionEntitlement;
+    this.list = builder.list;
   }
 
   /**
@@ -38,11 +40,10 @@ public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailability
     try {
       Builder builder = builder();
 
-      String __subscriptionEntitlementJson = JsonUtil.getObject(json, "subscription_entitlement");
-      if (__subscriptionEntitlementJson != null) {
-        builder.subscriptionEntitlement(
-            SubscriptionEntitlement.fromJson(__subscriptionEntitlementJson));
-      }
+      builder.list(
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(SubscriptionEntitlement::fromJson)
+              .collect(java.util.stream.Collectors.toList()));
 
       builder.httpResponse(httpResponse);
       return builder.build();
@@ -63,14 +64,14 @@ public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailability
   /** Builder for SubscriptionEntitlementSetSubscriptionEntitlementAvailabilityResponse. */
   public static class Builder {
 
-    private SubscriptionEntitlement subscriptionEntitlement;
+    private List<SubscriptionEntitlement> list;
 
     private Response httpResponse;
 
     private Builder() {}
 
-    public Builder subscriptionEntitlement(SubscriptionEntitlement subscriptionEntitlement) {
-      this.subscriptionEntitlement = subscriptionEntitlement;
+    public Builder list(List<SubscriptionEntitlement> list) {
+      this.list = list;
       return this;
     }
 
@@ -84,8 +85,8 @@ public final class SubscriptionEntitlementSetSubscriptionEntitlementAvailability
     }
   }
 
-  /** Get the subscriptionEntitlement from the response. */
-  public SubscriptionEntitlement getSubscriptionEntitlement() {
-    return subscriptionEntitlement;
+  /** Get the list from the response. */
+  public List<SubscriptionEntitlement> getList() {
+    return list;
   }
 }

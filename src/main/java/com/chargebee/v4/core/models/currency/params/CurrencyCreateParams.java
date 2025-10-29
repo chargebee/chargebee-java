@@ -60,33 +60,33 @@ public final class CurrencyCreateParams {
     public CurrencyCreateParams build() {
       return new CurrencyCreateParams(this);
     }
+  }
 
-    public enum ForexType {
-      MANUAL("manual"),
+  public enum ForexType {
+    MANUAL("manual"),
 
-      AUTO("auto"),
+    AUTO("auto"),
 
-      /** An enum member indicating that ForexType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ForexType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ForexType(String value) {
-        this.value = value;
-      }
+    ForexType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static ForexType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ForexType enumValue : ForexType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ForexType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ForexType enumValue : ForexType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

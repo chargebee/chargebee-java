@@ -79,59 +79,57 @@ public final class OrderCancelParams {
     public OrderCancelParams build() {
       return new OrderCancelParams(this);
     }
+  }
 
-    public enum CancellationReason {
-      SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
+  public enum CancellationReason {
+    SHIPPING_CUT_OFF_PASSED("shipping_cut_off_passed"),
 
-      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-      THIRD_PARTY_CANCELLATION("third_party_cancellation"),
+    THIRD_PARTY_CANCELLATION("third_party_cancellation"),
 
-      PRODUCT_NOT_REQUIRED("product_not_required"),
+    PRODUCT_NOT_REQUIRED("product_not_required"),
 
-      DELIVERY_DATE_MISSED("delivery_date_missed"),
+    DELIVERY_DATE_MISSED("delivery_date_missed"),
 
-      ALTERNATIVE_FOUND("alternative_found"),
+    ALTERNATIVE_FOUND("alternative_found"),
 
-      INVOICE_WRITTEN_OFF("invoice_written_off"),
+    INVOICE_WRITTEN_OFF("invoice_written_off"),
 
-      INVOICE_VOIDED("invoice_voided"),
+    INVOICE_VOIDED("invoice_voided"),
 
-      FRAUDULENT_TRANSACTION("fraudulent_transaction"),
+    FRAUDULENT_TRANSACTION("fraudulent_transaction"),
 
-      PAYMENT_DECLINED("payment_declined"),
+    PAYMENT_DECLINED("payment_declined"),
 
-      SUBSCRIPTION_CANCELLED("subscription_cancelled"),
+    SUBSCRIPTION_CANCELLED("subscription_cancelled"),
 
-      PRODUCT_NOT_AVAILABLE("product_not_available"),
+    PRODUCT_NOT_AVAILABLE("product_not_available"),
 
-      OTHERS("others"),
+    OTHERS("others"),
 
-      ORDER_RESENT("order_resent"),
+    ORDER_RESENT("order_resent"),
 
-      /**
-       * An enum member indicating that CancellationReason was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that CancellationReason was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      CancellationReason(String value) {
-        this.value = value;
-      }
+    CancellationReason(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static CancellationReason fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CancellationReason enumValue : CancellationReason.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CancellationReason fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CancellationReason enumValue : CancellationReason.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 

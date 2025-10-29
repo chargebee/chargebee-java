@@ -61,43 +61,43 @@ public final class VirtualBankAccountCreateUsingPermanentTokenParams {
     public VirtualBankAccountCreateUsingPermanentTokenParams build() {
       return new VirtualBankAccountCreateUsingPermanentTokenParams(this);
     }
+  }
 
-    public enum Scheme {
-      ACH_CREDIT("ach_credit"),
+  public enum Scheme {
+    ACH_CREDIT("ach_credit"),
 
-      SEPA_CREDIT("sepa_credit"),
+    SEPA_CREDIT("sepa_credit"),
 
-      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-      GB_AUTOMATED_BANK_TRANSFER("gb_automated_bank_transfer"),
+    GB_AUTOMATED_BANK_TRANSFER("gb_automated_bank_transfer"),
 
-      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-      /** An enum member indicating that Scheme was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Scheme was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Scheme(String value) {
-        this.value = value;
-      }
+    Scheme(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Scheme fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Scheme enumValue : Scheme.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Scheme fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Scheme enumValue : Scheme.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

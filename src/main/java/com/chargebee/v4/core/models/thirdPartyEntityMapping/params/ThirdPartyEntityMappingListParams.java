@@ -168,113 +168,113 @@ public final class ThirdPartyEntityMappingListParams {
         return builder;
       }
     }
+  }
 
-    public enum EntityTypeIs {
-      CUSTOMER("customer"),
+  public enum EntityTypeIs {
+    CUSTOMER("customer"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      CREDIT_NOTE("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-      TRANSACTION("transaction"),
+    TRANSACTION("transaction"),
 
-      PLAN("plan"),
+    PLAN("plan"),
 
-      ADDON("addon"),
+    ADDON("addon"),
 
-      COUPON("coupon"),
+    COUPON("coupon"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      ORDER("order"),
+    ORDER("order"),
 
-      QUOTE("quote"),
+    QUOTE("quote"),
 
-      ITEM_FAMILY("item_family"),
+    ITEM_FAMILY("item_family"),
 
-      ITEM("item"),
+    ITEM("item"),
 
-      ITEM_PRICE("item_price"),
+    ITEM_PRICE("item_price"),
 
-      TAX_RATE("tax_rate"),
+    TAX_RATE("tax_rate"),
 
-      TAX_GROUP("tax_group"),
+    TAX_GROUP("tax_group"),
 
-      /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityTypeIs enumValue : EntityTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    EntityTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum EntityTypeIsNot {
-      CUSTOMER("customer"),
+    public String getValue() {
+      return value;
+    }
 
-      INVOICE("invoice"),
-
-      CREDIT_NOTE("credit_note"),
-
-      TRANSACTION("transaction"),
-
-      PLAN("plan"),
-
-      ADDON("addon"),
-
-      COUPON("coupon"),
-
-      SUBSCRIPTION("subscription"),
-
-      ORDER("order"),
-
-      QUOTE("quote"),
-
-      ITEM_FAMILY("item_family"),
-
-      ITEM("item"),
-
-      ITEM_PRICE("item_price"),
-
-      TAX_RATE("tax_rate"),
-
-      TAX_GROUP("tax_group"),
-
-      /** An enum member indicating that EntityTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EntityTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityTypeIsNot enumValue : EntityTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIs enumValue : EntityTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityTypeIsNot {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    /** An enum member indicating that EntityTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIsNot enumValue : EntityTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

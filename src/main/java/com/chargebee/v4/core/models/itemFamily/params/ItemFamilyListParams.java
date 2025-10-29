@@ -179,13 +179,13 @@ public final class ItemFamilyListParams {
         this.builder = builder;
       }
 
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public ItemFamilyListBuilder isPresent(boolean value) {
+        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
         return builder;
       }
 
-      public ItemFamilyListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
+      public ItemFamilyListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -204,67 +204,67 @@ public final class ItemFamilyListParams {
         return builder;
       }
     }
+  }
 
-    public enum BusinessEntityIdIsPresent {
-      TRUE("true"),
+  public enum BusinessEntityIdIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /**
+     * An enum member indicating that BusinessEntityIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      BusinessEntityIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static BusinessEntityIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (BusinessEntityIdIsPresent enumValue : BusinessEntityIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    BusinessEntityIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum IncludeSiteLevelResourcesIs {
-      TRUE("true"),
+    public String getValue() {
+      return value;
+    }
 
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      IncludeSiteLevelResourcesIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IncludeSiteLevelResourcesIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IncludeSiteLevelResourcesIs enumValue : IncludeSiteLevelResourcesIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static BusinessEntityIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BusinessEntityIdIsPresent enumValue : BusinessEntityIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum IncludeSiteLevelResourcesIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that IncludeSiteLevelResourcesIs was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    IncludeSiteLevelResourcesIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static IncludeSiteLevelResourcesIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (IncludeSiteLevelResourcesIs enumValue : IncludeSiteLevelResourcesIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

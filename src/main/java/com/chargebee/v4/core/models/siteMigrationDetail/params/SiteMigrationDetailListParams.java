@@ -211,137 +211,137 @@ public final class SiteMigrationDetailListParams {
         return builder;
       }
     }
+  }
 
-    public enum EntityTypeIs {
-      CUSTOMER("customer"),
+  public enum EntityTypeIs {
+    CUSTOMER("customer"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      CREDIT_NOTE("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-      TRANSACTION("transaction"),
+    TRANSACTION("transaction"),
 
-      ORDER("order"),
+    ORDER("order"),
 
-      /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityTypeIs enumValue : EntityTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    EntityTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum EntityTypeIsNot {
-      CUSTOMER("customer"),
-
-      SUBSCRIPTION("subscription"),
-
-      INVOICE("invoice"),
-
-      CREDIT_NOTE("credit_note"),
-
-      TRANSACTION("transaction"),
-
-      ORDER("order"),
-
-      /** An enum member indicating that EntityTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EntityTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityTypeIsNot enumValue : EntityTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StatusIs {
-      MOVED_IN("moved_in"),
-
-      MOVED_OUT("moved_out"),
-
-      MOVING_OUT("moving_out"),
-
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIs enumValue : EntityTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityTypeIsNot {
+    CUSTOMER("customer"),
+
+    SUBSCRIPTION("subscription"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    ORDER("order"),
+
+    /** An enum member indicating that EntityTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      MOVED_IN("moved_in"),
+    public String getValue() {
+      return value;
+    }
 
-      MOVED_OUT("moved_out"),
-
-      MOVING_OUT("moving_out"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIsNot enumValue : EntityTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    MOVED_IN("moved_in"),
+
+    MOVED_OUT("moved_out"),
+
+    MOVING_OUT("moving_out"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    MOVED_IN("moved_in"),
+
+    MOVED_OUT("moved_out"),
+
+    MOVING_OUT("moving_out"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

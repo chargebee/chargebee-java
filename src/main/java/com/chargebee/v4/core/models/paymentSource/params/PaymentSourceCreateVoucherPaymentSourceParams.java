@@ -117,31 +117,31 @@ public final class PaymentSourceCreateVoucherPaymentSourceParams {
       public VoucherPaymentSourceParams build() {
         return new VoucherPaymentSourceParams(this);
       }
+    }
 
-      public enum VoucherType {
-        BOLETO("boleto"),
+    public enum VoucherType {
+      BOLETO("boleto"),
 
-        /** An enum member indicating that VoucherType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that VoucherType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        VoucherType(String value) {
-          this.value = value;
-        }
+      VoucherType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static VoucherType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (VoucherType enumValue : VoucherType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static VoucherType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (VoucherType enumValue : VoucherType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

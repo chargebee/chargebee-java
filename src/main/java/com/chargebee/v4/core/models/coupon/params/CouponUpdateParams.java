@@ -189,189 +189,189 @@ public final class CouponUpdateParams {
     public CouponUpdateParams build() {
       return new CouponUpdateParams(this);
     }
+  }
 
-    public enum DiscountType {
-      FIXED_AMOUNT("fixed_amount"),
+  public enum DiscountType {
+    FIXED_AMOUNT("fixed_amount"),
 
-      PERCENTAGE("percentage"),
+    PERCENTAGE("percentage"),
 
-      OFFER_QUANTITY("offer_quantity"),
+    OFFER_QUANTITY("offer_quantity"),
 
-      /** An enum member indicating that DiscountType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that DiscountType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      DiscountType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static DiscountType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DiscountType enumValue : DiscountType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    DiscountType(String value) {
+      this.value = value;
     }
 
-    public enum ApplyOn {
-      INVOICE_AMOUNT("invoice_amount"),
-
-      SPECIFIED_ITEMS_TOTAL("specified_items_total"),
-
-      EACH_SPECIFIED_ITEM("each_specified_item"),
-
-      EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
-
-      /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ApplyOn(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ApplyOn fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ApplyOn enumValue : ApplyOn.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum DurationType {
-      ONE_TIME("one_time"),
-
-      FOREVER("forever"),
-
-      LIMITED_PERIOD("limited_period"),
-
-      /** An enum member indicating that DurationType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      DurationType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static DurationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DurationType enumValue : DurationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static DiscountType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DiscountType enumValue : DiscountType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ApplyOn {
+    INVOICE_AMOUNT("invoice_amount"),
+
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
+
+    EACH_SPECIFIED_ITEM("each_specified_item"),
+
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
+
+    /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ApplyOn(String value) {
+      this.value = value;
     }
 
-    public enum PeriodUnit {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PlanConstraint {
-      NONE("none"),
-
-      ALL("all"),
-
-      SPECIFIC("specific"),
-
-      /** An enum member indicating that PlanConstraint was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PlanConstraint(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PlanConstraint fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PlanConstraint enumValue : PlanConstraint.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ApplyOn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApplyOn enumValue : ApplyOn.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DurationType {
+    ONE_TIME("one_time"),
+
+    FOREVER("forever"),
+
+    LIMITED_PERIOD("limited_period"),
+
+    /** An enum member indicating that DurationType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DurationType(String value) {
+      this.value = value;
     }
 
-    public enum AddonConstraint {
-      NONE("none"),
+    public String getValue() {
+      return value;
+    }
 
-      ALL("all"),
-
-      SPECIFIC("specific"),
-
-      /** An enum member indicating that AddonConstraint was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      AddonConstraint(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AddonConstraint fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AddonConstraint enumValue : AddonConstraint.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static DurationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DurationType enumValue : DurationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnit enumValue : PeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PlanConstraint {
+    NONE("none"),
+
+    ALL("all"),
+
+    SPECIFIC("specific"),
+
+    /** An enum member indicating that PlanConstraint was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PlanConstraint(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PlanConstraint fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PlanConstraint enumValue : PlanConstraint.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AddonConstraint {
+    NONE("none"),
+
+    ALL("all"),
+
+    SPECIFIC("specific"),
+
+    /** An enum member indicating that AddonConstraint was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AddonConstraint(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AddonConstraint fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AddonConstraint enumValue : AddonConstraint.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

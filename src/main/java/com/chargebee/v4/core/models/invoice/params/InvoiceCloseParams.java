@@ -164,45 +164,45 @@ public final class InvoiceCloseParams {
       public NotesToRemoveParams build() {
         return new NotesToRemoveParams(this);
       }
+    }
 
-      public enum EntityType {
-        CUSTOMER("customer"),
+    public enum EntityType {
+      CUSTOMER("customer"),
 
-        SUBSCRIPTION("subscription"),
+      SUBSCRIPTION("subscription"),
 
-        COUPON("coupon"),
+      COUPON("coupon"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

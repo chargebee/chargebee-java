@@ -314,39 +314,37 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       public BillingAddressParams build() {
         return new BillingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -476,39 +474,37 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       public ShippingAddressParams build() {
         return new ShippingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -675,35 +671,35 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       public ItemTiersParams build() {
         return new ItemTiersParams(this);
       }
+    }
 
-      public enum PricingType {
-        PER_UNIT("per_unit"),
+    public enum PricingType {
+      PER_UNIT("per_unit"),
 
-        FLAT_FEE("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-        PACKAGE("package"),
+      PACKAGE("package"),
 
-        /** An enum member indicating that PricingType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PricingType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PricingType(String value) {
-          this.value = value;
-        }
+      PricingType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PricingType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PricingType enumValue : PricingType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PricingType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PricingType enumValue : PricingType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -784,39 +780,37 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       public ChargesParams build() {
         return new ChargesParams(this);
       }
+    }
 
-      public enum AvalaraSaleType {
-        WHOLESALE("wholesale"),
+    public enum AvalaraSaleType {
+      WHOLESALE("wholesale"),
 
-        RETAIL("retail"),
+      RETAIL("retail"),
 
-        CONSUMED("consumed"),
+      CONSUMED("consumed"),
 
-        VENDOR_USE("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
-        /**
-         * An enum member indicating that AvalaraSaleType was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        AvalaraSaleType(String value) {
-          this.value = value;
-        }
+      AvalaraSaleType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static AvalaraSaleType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static AvalaraSaleType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -883,33 +877,33 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       public DiscountsParams build() {
         return new DiscountsParams(this);
       }
+    }
 
-      public enum ApplyOn {
-        INVOICE_AMOUNT("invoice_amount"),
+    public enum ApplyOn {
+      INVOICE_AMOUNT("invoice_amount"),
 
-        SPECIFIC_ITEM_PRICE("specific_item_price"),
+      SPECIFIC_ITEM_PRICE("specific_item_price"),
 
-        /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ApplyOn(String value) {
-          this.value = value;
-        }
+      ApplyOn(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ApplyOn fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ApplyOn enumValue : ApplyOn.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ApplyOn fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ApplyOn enumValue : ApplyOn.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

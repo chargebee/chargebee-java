@@ -314,252 +314,250 @@ public final class ItemPriceUpdateParams {
     public ItemPriceUpdateParams build() {
       return new ItemPriceUpdateParams(this);
     }
+  }
 
-    public enum ProrationType {
-      SITE_DEFAULT("site_default"),
+  public enum ProrationType {
+    SITE_DEFAULT("site_default"),
 
-      PARTIAL_TERM("partial_term"),
+    PARTIAL_TERM("partial_term"),
 
-      FULL_TERM("full_term"),
+    FULL_TERM("full_term"),
 
-      /** An enum member indicating that ProrationType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ProrationType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ProrationType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ProrationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ProrationType enumValue : ProrationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    ProrationType(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      ACTIVE("active"),
-
-      ARCHIVED("archived"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum UsageAccumulationResetFrequency {
-      NEVER("never"),
-
-      SUBSCRIPTION_BILLING_FREQUENCY("subscription_billing_frequency"),
-
-      /**
-       * An enum member indicating that UsageAccumulationResetFrequency was instantiated with an
-       * unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      UsageAccumulationResetFrequency(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static UsageAccumulationResetFrequency fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (UsageAccumulationResetFrequency enumValue : UsageAccumulationResetFrequency.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ProrationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ProrationType enumValue : ProrationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
     }
 
-    public enum PricingModel {
-      FLAT_FEE("flat_fee"),
-
-      PER_UNIT("per_unit"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /** An enum member indicating that PricingModel was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PricingModel(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PricingModel fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PricingModel enumValue : PricingModel.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PeriodUnit {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum UsageAccumulationResetFrequency {
+    NEVER("never"),
+
+    SUBSCRIPTION_BILLING_FREQUENCY("subscription_billing_frequency"),
+
+    /**
+     * An enum member indicating that UsageAccumulationResetFrequency was instantiated with an
+     * unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    UsageAccumulationResetFrequency(String value) {
+      this.value = value;
     }
 
-    public enum TrialPeriodUnit {
-      DAY("day"),
-
-      MONTH("month"),
-
-      /** An enum member indicating that TrialPeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TrialPeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TrialPeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TrialPeriodUnit enumValue : TrialPeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ShippingPeriodUnit {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      /**
-       * An enum member indicating that ShippingPeriodUnit was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ShippingPeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ShippingPeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ShippingPeriodUnit enumValue : ShippingPeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static UsageAccumulationResetFrequency fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (UsageAccumulationResetFrequency enumValue : UsageAccumulationResetFrequency.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PricingModel {
+    FLAT_FEE("flat_fee"),
+
+    PER_UNIT("per_unit"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that PricingModel was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PricingModel(String value) {
+      this.value = value;
     }
 
-    public enum TrialEndAction {
-      SITE_DEFAULT("site_default"),
+    public String getValue() {
+      return value;
+    }
 
-      ACTIVATE_SUBSCRIPTION("activate_subscription"),
-
-      CANCEL_SUBSCRIPTION("cancel_subscription"),
-
-      /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TrialEndAction(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TrialEndAction fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TrialEndAction enumValue : TrialEndAction.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PricingModel fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModel enumValue : PricingModel.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnit enumValue : PeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TrialPeriodUnit {
+    DAY("day"),
+
+    MONTH("month"),
+
+    /** An enum member indicating that TrialPeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TrialPeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TrialPeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TrialPeriodUnit enumValue : TrialPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ShippingPeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    /** An enum member indicating that ShippingPeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ShippingPeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ShippingPeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ShippingPeriodUnit enumValue : ShippingPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TrialEndAction {
+    SITE_DEFAULT("site_default"),
+
+    ACTIVATE_SUBSCRIPTION("activate_subscription"),
+
+    CANCEL_SUBSCRIPTION("cancel_subscription"),
+
+    /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TrialEndAction(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TrialEndAction fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TrialEndAction enumValue : TrialEndAction.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -639,39 +637,37 @@ public final class ItemPriceUpdateParams {
       public TaxDetailParams build() {
         return new TaxDetailParams(this);
       }
+    }
 
-      public enum AvalaraSaleType {
-        WHOLESALE("wholesale"),
+    public enum AvalaraSaleType {
+      WHOLESALE("wholesale"),
 
-        RETAIL("retail"),
+      RETAIL("retail"),
 
-        CONSUMED("consumed"),
+      CONSUMED("consumed"),
 
-        VENDOR_USE("vendor_use"),
+      VENDOR_USE("vendor_use"),
 
-        /**
-         * An enum member indicating that AvalaraSaleType was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        AvalaraSaleType(String value) {
-          this.value = value;
-        }
+      AvalaraSaleType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static AvalaraSaleType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static AvalaraSaleType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -831,35 +827,35 @@ public final class ItemPriceUpdateParams {
       public TiersParams build() {
         return new TiersParams(this);
       }
+    }
 
-      public enum PricingType {
-        PER_UNIT("per_unit"),
+    public enum PricingType {
+      PER_UNIT("per_unit"),
 
-        FLAT_FEE("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-        PACKAGE("package"),
+      PACKAGE("package"),
 
-        /** An enum member indicating that PricingType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PricingType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PricingType(String value) {
-          this.value = value;
-        }
+      PricingType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PricingType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PricingType enumValue : PricingType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PricingType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PricingType enumValue : PricingType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

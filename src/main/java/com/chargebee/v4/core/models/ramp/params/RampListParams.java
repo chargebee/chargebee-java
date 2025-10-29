@@ -92,13 +92,13 @@ public final class RampListParams {
         this.builder = builder;
       }
 
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public RampListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
 
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public RampListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -112,13 +112,13 @@ public final class RampListParams {
         this.builder = builder;
       }
 
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public RampListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
 
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public RampListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -226,93 +226,93 @@ public final class RampListParams {
         return builder;
       }
     }
+  }
 
-    public enum StatusIs {
-      SCHEDULED("scheduled"),
+  public enum StatusIs {
+    SCHEDULED("scheduled"),
 
-      SUCCEEDED("succeeded"),
+    SUCCEEDED("succeeded"),
 
-      FAILED("failed"),
+    FAILED("failed"),
 
-      DRAFT("draft"),
+    DRAFT("draft"),
 
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    StatusIs(String value) {
+      this.value = value;
     }
 
-    public enum SortByAsc {
-      EFFECTIVE_FROM("effective_from"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByDesc {
-      EFFECTIVE_FROM("effective_from"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    EFFECTIVE_FROM("effective_from"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    EFFECTIVE_FROM("effective_from"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

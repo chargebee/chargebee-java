@@ -675,6 +675,8 @@ public class SalesOrder {
 
       PERCENTAGE("percentage"),
 
+      OFFER_QUANTITY("offer_quantity"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

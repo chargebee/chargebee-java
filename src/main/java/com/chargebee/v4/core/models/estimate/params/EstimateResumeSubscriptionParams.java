@@ -65,61 +65,61 @@ public final class EstimateResumeSubscriptionParams {
     public EstimateResumeSubscriptionParams build() {
       return new EstimateResumeSubscriptionParams(this);
     }
+  }
 
-    public enum ResumeOption {
-      IMMEDIATELY("immediately"),
+  public enum ResumeOption {
+    IMMEDIATELY("immediately"),
 
-      SPECIFIC_DATE("specific_date"),
+    SPECIFIC_DATE("specific_date"),
 
-      /** An enum member indicating that ResumeOption was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ResumeOption was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ResumeOption(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ResumeOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ResumeOption enumValue : ResumeOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    ResumeOption(String value) {
+      this.value = value;
     }
 
-    public enum ChargesHandling {
-      INVOICE_IMMEDIATELY("invoice_immediately"),
+    public String getValue() {
+      return value;
+    }
 
-      ADD_TO_UNBILLED_CHARGES("add_to_unbilled_charges"),
-
-      /** An enum member indicating that ChargesHandling was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChargesHandling(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargesHandling fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargesHandling enumValue : ChargesHandling.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ResumeOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResumeOption enumValue : ResumeOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargesHandling {
+    INVOICE_IMMEDIATELY("invoice_immediately"),
+
+    ADD_TO_UNBILLED_CHARGES("add_to_unbilled_charges"),
+
+    /** An enum member indicating that ChargesHandling was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargesHandling(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargesHandling fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargesHandling enumValue : ChargesHandling.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

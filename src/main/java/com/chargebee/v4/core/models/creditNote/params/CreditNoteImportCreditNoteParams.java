@@ -285,67 +285,67 @@ public final class CreditNoteImportCreditNoteParams {
     public CreditNoteImportCreditNoteParams build() {
       return new CreditNoteImportCreditNoteParams(this);
     }
+  }
 
-    public enum Type {
-      ADJUSTMENT("adjustment"),
+  public enum Type {
+    ADJUSTMENT("adjustment"),
 
-      REFUNDABLE("refundable"),
+    REFUNDABLE("refundable"),
 
-      STORE("store"),
+    STORE("store"),
 
-      /** An enum member indicating that Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Type(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Type enumValue : Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    Type(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      ADJUSTED("adjusted"),
+    public String getValue() {
+      return value;
+    }
 
-      REFUNDED("refunded"),
-
-      REFUND_DUE("refund_due"),
-
-      VOIDED("voided"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ADJUSTED("adjusted"),
+
+    REFUNDED("refunded"),
+
+    REFUND_DUE("refund_due"),
+
+    VOIDED("voided"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -642,43 +642,43 @@ public final class CreditNoteImportCreditNoteParams {
       public LineItemsParams build() {
         return new LineItemsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ADHOC("adhoc"),
+    public enum EntityType {
+      ADHOC("adhoc"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN_SETUP("plan_setup"),
+      PLAN_SETUP("plan_setup"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -831,39 +831,39 @@ public final class CreditNoteImportCreditNoteParams {
       public DiscountsParams build() {
         return new DiscountsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ITEM_LEVEL_COUPON("item_level_coupon"),
+    public enum EntityType {
+      ITEM_LEVEL_COUPON("item_level_coupon"),
 
-        DOCUMENT_LEVEL_COUPON("document_level_coupon"),
+      DOCUMENT_LEVEL_COUPON("document_level_coupon"),
 
-        PROMOTIONAL_CREDITS("promotional_credits"),
+      PROMOTIONAL_CREDITS("promotional_credits"),
 
-        ITEM_LEVEL_DISCOUNT("item_level_discount"),
+      ITEM_LEVEL_DISCOUNT("item_level_discount"),
 
-        DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
+      DOCUMENT_LEVEL_DISCOUNT("document_level_discount"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -944,45 +944,45 @@ public final class CreditNoteImportCreditNoteParams {
       public TaxesParams build() {
         return new TaxesParams(this);
       }
+    }
 
-      public enum JurisType {
-        COUNTRY("country"),
+    public enum JurisType {
+      COUNTRY("country"),
 
-        FEDERAL("federal"),
+      FEDERAL("federal"),
 
-        STATE("state"),
+      STATE("state"),
 
-        COUNTY("county"),
+      COUNTY("county"),
 
-        CITY("city"),
+      CITY("city"),
 
-        SPECIAL("special"),
+      SPECIAL("special"),
 
-        UNINCORPORATED("unincorporated"),
+      UNINCORPORATED("unincorporated"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        /** An enum member indicating that JurisType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that JurisType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        JurisType(String value) {
-          this.value = value;
-        }
+      JurisType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static JurisType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (JurisType enumValue : JurisType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static JurisType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (JurisType enumValue : JurisType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1100,43 +1100,43 @@ public final class CreditNoteImportCreditNoteParams {
       public LinkedRefundsParams build() {
         return new LinkedRefundsParams(this);
       }
+    }
 
-      public enum PaymentMethod {
-        CASH("cash"),
+    public enum PaymentMethod {
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PaymentMethod(String value) {
-          this.value = value;
-        }
+      PaymentMethod(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PaymentMethod fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PaymentMethod enumValue : PaymentMethod.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PaymentMethod fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PaymentMethod enumValue : PaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

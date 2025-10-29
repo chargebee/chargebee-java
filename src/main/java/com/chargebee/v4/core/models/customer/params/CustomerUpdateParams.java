@@ -254,268 +254,268 @@ public final class CustomerUpdateParams {
     public CustomerUpdateParams build() {
       return new CustomerUpdateParams(this);
     }
+  }
 
-    public enum AutoCollection {
-      ON("on"),
+  public enum AutoCollection {
+    ON("on"),
 
-      OFF("off"),
+    OFF("off"),
 
-      /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that AutoCollection was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      AutoCollection(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCollection fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCollection enumValue : AutoCollection.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    AutoCollection(String value) {
+      this.value = value;
     }
 
-    public enum Taxability {
-      TAXABLE("taxable"),
-
-      EXEMPT("exempt"),
-
-      /** An enum member indicating that Taxability was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Taxability(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Taxability fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Taxability enumValue : Taxability.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum CustomerType {
-      RESIDENTIAL("residential"),
-
-      BUSINESS("business"),
-
-      SENIOR_CITIZEN("senior_citizen"),
-
-      INDUSTRIAL("industrial"),
-
-      /** An enum member indicating that CustomerType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      CustomerType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CustomerType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CustomerType enumValue : CustomerType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static AutoCollection fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AutoCollection enumValue : AutoCollection.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Taxability {
+    TAXABLE("taxable"),
+
+    EXEMPT("exempt"),
+
+    /** An enum member indicating that Taxability was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Taxability(String value) {
+      this.value = value;
     }
 
-    public enum TaxjarExemptionCategory {
-      WHOLESALE("wholesale"),
-
-      GOVERNMENT("government"),
-
-      OTHER("other"),
-
-      /**
-       * An enum member indicating that TaxjarExemptionCategory was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      TaxjarExemptionCategory(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TaxjarExemptionCategory fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TaxjarExemptionCategory enumValue : TaxjarExemptionCategory.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum EntityCode {
-      A("a"),
-
-      B("b"),
-
-      C("c"),
-
-      D("d"),
-
-      E("e"),
-
-      F("f"),
-
-      G("g"),
-
-      H("h"),
-
-      I("i"),
-
-      J("j"),
-
-      K("k"),
-
-      L("l"),
-
-      M("m"),
-
-      N("n"),
-
-      P("p"),
-
-      Q("q"),
-
-      R("r"),
-
-      MED_1("med1"),
-
-      MED_2("med2"),
-
-      /** An enum member indicating that EntityCode was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EntityCode(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityCode fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityCode enumValue : EntityCode.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Taxability fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Taxability enumValue : Taxability.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum CustomerType {
+    RESIDENTIAL("residential"),
+
+    BUSINESS("business"),
+
+    SENIOR_CITIZEN("senior_citizen"),
+
+    INDUSTRIAL("industrial"),
+
+    /** An enum member indicating that CustomerType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    CustomerType(String value) {
+      this.value = value;
     }
 
-    public enum OfflinePaymentMethod {
-      NO_PREFERENCE("no_preference"),
-
-      CASH("cash"),
-
-      CHECK("check"),
-
-      BANK_TRANSFER("bank_transfer"),
-
-      ACH_CREDIT("ach_credit"),
-
-      SEPA_CREDIT("sepa_credit"),
-
-      BOLETO("boleto"),
-
-      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
-
-      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
-
-      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
-
-      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
-
-      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
-
-      CUSTOM("custom"),
-
-      /**
-       * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      OfflinePaymentMethod(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static OfflinePaymentMethod fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum FraudFlag {
-      SAFE("safe"),
-
-      FRAUDULENT("fraudulent"),
-
-      /** An enum member indicating that FraudFlag was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      FraudFlag(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static FraudFlag fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (FraudFlag enumValue : FraudFlag.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CustomerType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CustomerType enumValue : CustomerType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TaxjarExemptionCategory {
+    WHOLESALE("wholesale"),
+
+    GOVERNMENT("government"),
+
+    OTHER("other"),
+
+    /**
+     * An enum member indicating that TaxjarExemptionCategory was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    TaxjarExemptionCategory(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TaxjarExemptionCategory fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TaxjarExemptionCategory enumValue : TaxjarExemptionCategory.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityCode {
+    A("a"),
+
+    B("b"),
+
+    C("c"),
+
+    D("d"),
+
+    E("e"),
+
+    F("f"),
+
+    G("g"),
+
+    H("h"),
+
+    I("i"),
+
+    J("j"),
+
+    K("k"),
+
+    L("l"),
+
+    M("m"),
+
+    N("n"),
+
+    P("p"),
+
+    Q("q"),
+
+    R("r"),
+
+    MED_1("med1"),
+
+    MED_2("med2"),
+
+    /** An enum member indicating that EntityCode was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityCode(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityCode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityCode enumValue : EntityCode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OfflinePaymentMethod {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum FraudFlag {
+    SAFE("safe"),
+
+    FRAUDULENT("fraudulent"),
+
+    /** An enum member indicating that FraudFlag was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    FraudFlag(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static FraudFlag fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (FraudFlag enumValue : FraudFlag.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

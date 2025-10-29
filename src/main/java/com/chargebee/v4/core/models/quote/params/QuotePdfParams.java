@@ -53,33 +53,33 @@ public final class QuotePdfParams {
     public QuotePdfParams build() {
       return new QuotePdfParams(this);
     }
+  }
 
-    public enum DispositionType {
-      ATTACHMENT("attachment"),
+  public enum DispositionType {
+    ATTACHMENT("attachment"),
 
-      INLINE("inline"),
+    INLINE("inline"),
 
-      /** An enum member indicating that DispositionType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that DispositionType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      DispositionType(String value) {
-        this.value = value;
-      }
+    DispositionType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static DispositionType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DispositionType enumValue : DispositionType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static DispositionType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DispositionType enumValue : DispositionType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

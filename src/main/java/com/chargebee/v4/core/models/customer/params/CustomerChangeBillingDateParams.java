@@ -74,101 +74,101 @@ public final class CustomerChangeBillingDateParams {
     public CustomerChangeBillingDateParams build() {
       return new CustomerChangeBillingDateParams(this);
     }
+  }
 
-    public enum BillingDateMode {
-      USING_DEFAULTS("using_defaults"),
+  public enum BillingDateMode {
+    USING_DEFAULTS("using_defaults"),
 
-      MANUALLY_SET("manually_set"),
+    MANUALLY_SET("manually_set"),
 
-      /** An enum member indicating that BillingDateMode was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that BillingDateMode was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      BillingDateMode(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static BillingDateMode fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (BillingDateMode enumValue : BillingDateMode.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    BillingDateMode(String value) {
+      this.value = value;
     }
 
-    public enum BillingDayOfWeek {
-      SUNDAY("sunday"),
-
-      MONDAY("monday"),
-
-      TUESDAY("tuesday"),
-
-      WEDNESDAY("wednesday"),
-
-      THURSDAY("thursday"),
-
-      FRIDAY("friday"),
-
-      SATURDAY("saturday"),
-
-      /** An enum member indicating that BillingDayOfWeek was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      BillingDayOfWeek(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static BillingDayOfWeek fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (BillingDayOfWeek enumValue : BillingDayOfWeek.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum BillingDayOfWeekMode {
-      USING_DEFAULTS("using_defaults"),
-
-      MANUALLY_SET("manually_set"),
-
-      /**
-       * An enum member indicating that BillingDayOfWeekMode was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      BillingDayOfWeekMode(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static BillingDayOfWeekMode fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (BillingDayOfWeekMode enumValue : BillingDayOfWeekMode.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static BillingDateMode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingDateMode enumValue : BillingDateMode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum BillingDayOfWeek {
+    SUNDAY("sunday"),
+
+    MONDAY("monday"),
+
+    TUESDAY("tuesday"),
+
+    WEDNESDAY("wednesday"),
+
+    THURSDAY("thursday"),
+
+    FRIDAY("friday"),
+
+    SATURDAY("saturday"),
+
+    /** An enum member indicating that BillingDayOfWeek was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    BillingDayOfWeek(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static BillingDayOfWeek fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingDayOfWeek enumValue : BillingDayOfWeek.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum BillingDayOfWeekMode {
+    USING_DEFAULTS("using_defaults"),
+
+    MANUALLY_SET("manually_set"),
+
+    /**
+     * An enum member indicating that BillingDayOfWeekMode was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    BillingDayOfWeekMode(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static BillingDayOfWeekMode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingDayOfWeekMode enumValue : BillingDayOfWeekMode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

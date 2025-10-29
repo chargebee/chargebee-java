@@ -66,33 +66,33 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionParam
     public EntitlementOverrideAddEntitlementOverrideForSubscriptionParams build() {
       return new EntitlementOverrideAddEntitlementOverrideForSubscriptionParams(this);
     }
+  }
 
-    public enum Action {
-      UPSERT("upsert"),
+  public enum Action {
+    UPSERT("upsert"),
 
-      REMOVE("remove"),
+    REMOVE("remove"),
 
-      /** An enum member indicating that Action was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Action was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Action(String value) {
-        this.value = value;
-      }
+    Action(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Action fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Action enumValue : Action.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Action fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Action enumValue : Action.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 

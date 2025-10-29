@@ -121,166 +121,166 @@ public final class ThirdPartyEntityMappingUpdateEntityParams {
     public ThirdPartyEntityMappingUpdateEntityParams build() {
       return new ThirdPartyEntityMappingUpdateEntityParams(this);
     }
+  }
 
-    public enum EntityType {
-      CUSTOMER("customer"),
+  public enum EntityType {
+    CUSTOMER("customer"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      CREDIT_NOTE("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-      TRANSACTION("transaction"),
+    TRANSACTION("transaction"),
 
-      PLAN("plan"),
+    PLAN("plan"),
 
-      ADDON("addon"),
+    ADDON("addon"),
 
-      COUPON("coupon"),
+    COUPON("coupon"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      ORDER("order"),
+    ORDER("order"),
 
-      QUOTE("quote"),
+    QUOTE("quote"),
 
-      ITEM_FAMILY("item_family"),
+    ITEM_FAMILY("item_family"),
 
-      ITEM("item"),
+    ITEM("item"),
 
-      ITEM_PRICE("item_price"),
+    ITEM_PRICE("item_price"),
 
-      TAX_RATE("tax_rate"),
+    TAX_RATE("tax_rate"),
 
-      TAX_GROUP("tax_group"),
+    TAX_GROUP("tax_group"),
 
-      /** An enum member indicating that EntityType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityType enumValue : EntityType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    EntityType(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      SYNCED("synced"),
-
-      PARTIALLY_SYNCED("partially_synced"),
-
-      CREATE_FAILED("create_failed"),
-
-      UPDATE_FAILED("update_failed"),
-
-      STOPPED("stopped"),
-
-      IGNORED("ignored"),
-
-      TO_BE_PICKED("to_be_picked"),
-
-      FORCE_SYNC("force_sync"),
-
-      MISMATCH("mismatch"),
-
-      DELETED("deleted"),
-
-      QUEUED("queued"),
-
-      DELETE_FAILED("delete_failed"),
-
-      DELETE_SUCCESS("delete_success"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum FailedDependentEntityType {
-      CUSTOMER("customer"),
-
-      INVOICE("invoice"),
-
-      CREDIT_NOTE("credit_note"),
-
-      TRANSACTION("transaction"),
-
-      PLAN("plan"),
-
-      ADDON("addon"),
-
-      COUPON("coupon"),
-
-      SUBSCRIPTION("subscription"),
-
-      ORDER("order"),
-
-      QUOTE("quote"),
-
-      ITEM_FAMILY("item_family"),
-
-      ITEM("item"),
-
-      ITEM_PRICE("item_price"),
-
-      TAX_RATE("tax_rate"),
-
-      TAX_GROUP("tax_group"),
-
-      /**
-       * An enum member indicating that FailedDependentEntityType was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      FailedDependentEntityType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static FailedDependentEntityType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (FailedDependentEntityType enumValue : FailedDependentEntityType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    SYNCED("synced"),
+
+    PARTIALLY_SYNCED("partially_synced"),
+
+    CREATE_FAILED("create_failed"),
+
+    UPDATE_FAILED("update_failed"),
+
+    STOPPED("stopped"),
+
+    IGNORED("ignored"),
+
+    TO_BE_PICKED("to_be_picked"),
+
+    FORCE_SYNC("force_sync"),
+
+    MISMATCH("mismatch"),
+
+    DELETED("deleted"),
+
+    QUEUED("queued"),
+
+    DELETE_FAILED("delete_failed"),
+
+    DELETE_SUCCESS("delete_success"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum FailedDependentEntityType {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    /**
+     * An enum member indicating that FailedDependentEntityType was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    FailedDependentEntityType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static FailedDependentEntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (FailedDependentEntityType enumValue : FailedDependentEntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

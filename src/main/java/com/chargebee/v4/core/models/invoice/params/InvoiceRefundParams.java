@@ -114,41 +114,41 @@ public final class InvoiceRefundParams {
       public CreditNoteParams build() {
         return new CreditNoteParams(this);
       }
+    }
 
-      public enum ReasonCode {
-        PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+    public enum ReasonCode {
+      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
 
-        SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
 
-        ORDER_CHANGE("order_change"),
+      ORDER_CHANGE("order_change"),
 
-        ORDER_CANCELLATION("order_cancellation"),
+      ORDER_CANCELLATION("order_cancellation"),
 
-        WAIVER("waiver"),
+      WAIVER("waiver"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ReasonCode(String value) {
-          this.value = value;
-        }
+      ReasonCode(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ReasonCode fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ReasonCode enumValue : ReasonCode.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ReasonCode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ReasonCode enumValue : ReasonCode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

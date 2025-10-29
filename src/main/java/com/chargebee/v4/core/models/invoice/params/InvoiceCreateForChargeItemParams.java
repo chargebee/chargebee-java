@@ -117,33 +117,33 @@ public final class InvoiceCreateForChargeItemParams {
     public InvoiceCreateForChargeItemParams build() {
       return new InvoiceCreateForChargeItemParams(this);
     }
+  }
 
-    public enum PaymentInitiator {
-      CUSTOMER("customer"),
+  public enum PaymentInitiator {
+    CUSTOMER("customer"),
 
-      MERCHANT("merchant"),
+    MERCHANT("merchant"),
 
-      /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PaymentInitiator(String value) {
-        this.value = value;
-      }
+    PaymentInitiator(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static PaymentInitiator fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentInitiator enumValue : PaymentInitiator.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentInitiator fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentInitiator enumValue : PaymentInitiator.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -309,35 +309,35 @@ public final class InvoiceCreateForChargeItemParams {
       public ItemTiersParams build() {
         return new ItemTiersParams(this);
       }
+    }
 
-      public enum PricingType {
-        PER_UNIT("per_unit"),
+    public enum PricingType {
+      PER_UNIT("per_unit"),
 
-        FLAT_FEE("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-        PACKAGE("package"),
+      PACKAGE("package"),
 
-        /** An enum member indicating that PricingType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PricingType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PricingType(String value) {
-          this.value = value;
-        }
+      PricingType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PricingType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PricingType enumValue : PricingType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PricingType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PricingType enumValue : PricingType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

@@ -102,11 +102,6 @@ public final class CustomerListHierarchyDetailResponse {
     return nextOffset;
   }
 
-  /** Get the list of items in this page (alias). */
-  public List<CustomerListHierarchyDetailItem> items() {
-    return list;
-  }
-
   /** Check if there are more pages available. */
   public boolean hasNextPage() {
     return nextOffset != null && !nextOffset.isEmpty();
@@ -163,19 +158,19 @@ public final class CustomerListHierarchyDetailResponse {
 
   public static class CustomerListHierarchyDetailItem {
 
-    private List<Hierarchy> hierarchies;
+    private Hierarchy hierarchy;
 
-    public List<Hierarchy> getHierarchies() {
-      return hierarchies;
+    public Hierarchy getHierarchy() {
+      return hierarchy;
     }
 
     public static CustomerListHierarchyDetailItem fromJson(String json) {
       CustomerListHierarchyDetailItem item = new CustomerListHierarchyDetailItem();
 
-      item.hierarchies =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "hierarchies")).stream()
-              .map(Hierarchy::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __hierarchyJson = JsonUtil.getObject(json, "hierarchy");
+      if (__hierarchyJson != null) {
+        item.hierarchy = Hierarchy.fromJson(__hierarchyJson);
+      }
 
       return item;
     }

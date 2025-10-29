@@ -83,33 +83,33 @@ public final class UsageCreateParams {
     public UsageCreateParams build() {
       return new UsageCreateParams(this);
     }
+  }
 
-    public enum DedupeOption {
-      SKIP("skip"),
+  public enum DedupeOption {
+    SKIP("skip"),
 
-      UPDATE_EXISTING("update_existing"),
+    UPDATE_EXISTING("update_existing"),
 
-      /** An enum member indicating that DedupeOption was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that DedupeOption was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      DedupeOption(String value) {
-        this.value = value;
-      }
+    DedupeOption(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static DedupeOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (DedupeOption enumValue : DedupeOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static DedupeOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DedupeOption enumValue : DedupeOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

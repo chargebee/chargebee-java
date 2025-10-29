@@ -600,6 +600,8 @@ public class Event {
 
     OMNICHANNEL_SUBSCRIPTION_MOVED_IN("omnichannel_subscription_moved_in"),
 
+    OMNICHANNEL_TRANSACTION_CREATED("omnichannel_transaction_created"),
+
     PLAN_CREATED("plan_created"),
 
     PLAN_UPDATED("plan_updated"),

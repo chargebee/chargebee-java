@@ -376,260 +376,260 @@ public final class AddonCreateParams {
     public AddonCreateParams build() {
       return new AddonCreateParams(this);
     }
+  }
 
-    public enum ChargeType {
-      RECURRING("recurring"),
+  public enum ChargeType {
+    RECURRING("recurring"),
 
-      NON_RECURRING("non_recurring"),
+    NON_RECURRING("non_recurring"),
 
-      /** An enum member indicating that ChargeType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ChargeType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ChargeType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargeType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargeType enumValue : ChargeType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    ChargeType(String value) {
+      this.value = value;
     }
 
-    public enum PeriodUnit {
-      DAY("day"),
-
-      WEEK("week"),
-
-      MONTH("month"),
-
-      YEAR("year"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PricingModel {
-      FLAT_FEE("flat_fee"),
-
-      PER_UNIT("per_unit"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /** An enum member indicating that PricingModel was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PricingModel(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PricingModel fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PricingModel enumValue : PricingModel.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ChargeType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeType enumValue : ChargeType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PeriodUnit {
+    DAY("day"),
+
+    WEEK("week"),
+
+    MONTH("month"),
+
+    YEAR("year"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PeriodUnit(String value) {
+      this.value = value;
     }
 
-    public enum Type {
-      ON_OFF("on_off"),
-
-      QUANTITY("quantity"),
-
-      TIERED("tiered"),
-
-      VOLUME("volume"),
-
-      STAIRSTEP("stairstep"),
-
-      /** An enum member indicating that Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Type(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Type enumValue : Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum AvalaraSaleType {
-      WHOLESALE("wholesale"),
-
-      RETAIL("retail"),
-
-      CONSUMED("consumed"),
-
-      VENDOR_USE("vendor_use"),
-
-      /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      AvalaraSaleType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AvalaraSaleType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PeriodUnit enumValue : PeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PricingModel {
+    FLAT_FEE("flat_fee"),
+
+    PER_UNIT("per_unit"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that PricingModel was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PricingModel(String value) {
+      this.value = value;
     }
 
-    public enum ShippingFrequencyPeriodUnit {
-      YEAR("year"),
-
-      MONTH("month"),
-
-      WEEK("week"),
-
-      DAY("day"),
-
-      /**
-       * An enum member indicating that ShippingFrequencyPeriodUnit was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ShippingFrequencyPeriodUnit(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ShippingFrequencyPeriodUnit fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ShippingFrequencyPeriodUnit enumValue : ShippingFrequencyPeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ProrationType {
-      SITE_DEFAULT("site_default"),
-
-      PARTIAL_TERM("partial_term"),
-
-      FULL_TERM("full_term"),
-
-      /** An enum member indicating that ProrationType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ProrationType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ProrationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ProrationType enumValue : ProrationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PricingModel fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PricingModel enumValue : PricingModel.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    ON_OFF("on_off"),
+
+    QUANTITY("quantity"),
+
+    TIERED("tiered"),
+
+    VOLUME("volume"),
+
+    STAIRSTEP("stairstep"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
     }
 
-    public enum Status {
-      ACTIVE("active"),
+    public String getValue() {
+      return value;
+    }
 
-      ARCHIVED("archived"),
-
-      /** An enum member indicating that Status was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Status(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Status fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AvalaraSaleType {
+    WHOLESALE("wholesale"),
+
+    RETAIL("retail"),
+
+    CONSUMED("consumed"),
+
+    VENDOR_USE("vendor_use"),
+
+    /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    AvalaraSaleType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AvalaraSaleType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ShippingFrequencyPeriodUnit {
+    YEAR("year"),
+
+    MONTH("month"),
+
+    WEEK("week"),
+
+    DAY("day"),
+
+    /**
+     * An enum member indicating that ShippingFrequencyPeriodUnit was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    ShippingFrequencyPeriodUnit(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ShippingFrequencyPeriodUnit fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ShippingFrequencyPeriodUnit enumValue : ShippingFrequencyPeriodUnit.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ProrationType {
+    SITE_DEFAULT("site_default"),
+
+    PARTIAL_TERM("partial_term"),
+
+    FULL_TERM("full_term"),
+
+    /** An enum member indicating that ProrationType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ProrationType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ProrationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ProrationType enumValue : ProrationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ACTIVE("active"),
+
+    ARCHIVED("archived"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

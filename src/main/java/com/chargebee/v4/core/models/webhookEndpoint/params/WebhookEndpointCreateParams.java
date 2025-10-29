@@ -111,66 +111,66 @@ public final class WebhookEndpointCreateParams {
     public WebhookEndpointCreateParams build() {
       return new WebhookEndpointCreateParams(this);
     }
+  }
 
-    public enum ApiVersion {
-      V1("v1"),
+  public enum ApiVersion {
+    V1("v1"),
 
-      V2("v2"),
+    V2("v2"),
 
-      /** An enum member indicating that ApiVersion was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ApiVersion was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ApiVersion(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ApiVersion fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ApiVersion enumValue : ApiVersion.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    ApiVersion(String value) {
+      this.value = value;
     }
 
-    public enum ChargebeeResponseSchemaType {
-      PLANS_ADDONS("plans_addons"),
+    public String getValue() {
+      return value;
+    }
 
-      ITEMS("items"),
-
-      COMPAT("compat"),
-
-      /**
-       * An enum member indicating that ChargebeeResponseSchemaType was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChargebeeResponseSchemaType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargebeeResponseSchemaType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargebeeResponseSchemaType enumValue : ChargebeeResponseSchemaType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ApiVersion fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApiVersion enumValue : ApiVersion.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargebeeResponseSchemaType {
+    PLANS_ADDONS("plans_addons"),
+
+    ITEMS("items"),
+
+    COMPAT("compat"),
+
+    /**
+     * An enum member indicating that ChargebeeResponseSchemaType was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargebeeResponseSchemaType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargebeeResponseSchemaType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargebeeResponseSchemaType enumValue : ChargebeeResponseSchemaType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

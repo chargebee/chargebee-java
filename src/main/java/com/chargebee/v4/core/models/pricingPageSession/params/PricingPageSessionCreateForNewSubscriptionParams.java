@@ -410,39 +410,37 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       public BillingAddressParams build() {
         return new BillingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -572,39 +570,37 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       public ShippingAddressParams build() {
         return new ShippingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -706,95 +702,95 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       public DiscountsParams build() {
         return new DiscountsParams(this);
       }
+    }
 
-      public enum ApplyOn {
-        INVOICE_AMOUNT("invoice_amount"),
+    public enum ApplyOn {
+      INVOICE_AMOUNT("invoice_amount"),
 
-        SPECIFIC_ITEM_PRICE("specific_item_price"),
+      SPECIFIC_ITEM_PRICE("specific_item_price"),
 
-        /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ApplyOn(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static ApplyOn fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ApplyOn enumValue : ApplyOn.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      ApplyOn(String value) {
+        this.value = value;
       }
 
-      public enum DurationType {
-        ONE_TIME("one_time"),
-
-        FOREVER("forever"),
-
-        LIMITED_PERIOD("limited_period"),
-
-        /** An enum member indicating that DurationType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        DurationType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static DurationType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (DurationType enumValue : DurationType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum PeriodUnit {
-        DAY("day"),
-
-        WEEK("week"),
-
-        MONTH("month"),
-
-        YEAR("year"),
-
-        /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        PeriodUnit(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PeriodUnit fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PeriodUnit enumValue : PeriodUnit.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ApplyOn fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ApplyOn enumValue : ApplyOn.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum DurationType {
+      ONE_TIME("one_time"),
+
+      FOREVER("forever"),
+
+      LIMITED_PERIOD("limited_period"),
+
+      /** An enum member indicating that DurationType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      DurationType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static DurationType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (DurationType enumValue : DurationType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum PeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      PeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static PeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PeriodUnit enumValue : PeriodUnit.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

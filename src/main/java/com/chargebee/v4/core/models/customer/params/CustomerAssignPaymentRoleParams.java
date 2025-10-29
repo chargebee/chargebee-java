@@ -53,35 +53,35 @@ public final class CustomerAssignPaymentRoleParams {
     public CustomerAssignPaymentRoleParams build() {
       return new CustomerAssignPaymentRoleParams(this);
     }
+  }
 
-    public enum Role {
-      PRIMARY("primary"),
+  public enum Role {
+    PRIMARY("primary"),
 
-      BACKUP("backup"),
+    BACKUP("backup"),
 
-      NONE("none"),
+    NONE("none"),
 
-      /** An enum member indicating that Role was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Role was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Role(String value) {
-        this.value = value;
-      }
+    Role(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Role fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Role enumValue : Role.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Role fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Role enumValue : Role.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

@@ -177,65 +177,65 @@ public final class InvoiceChargeParams {
     public InvoiceChargeParams build() {
       return new InvoiceChargeParams(this);
     }
+  }
 
-    public enum AvalaraSaleType {
-      WHOLESALE("wholesale"),
+  public enum AvalaraSaleType {
+    WHOLESALE("wholesale"),
 
-      RETAIL("retail"),
+    RETAIL("retail"),
 
-      CONSUMED("consumed"),
+    CONSUMED("consumed"),
 
-      VENDOR_USE("vendor_use"),
+    VENDOR_USE("vendor_use"),
 
-      /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      AvalaraSaleType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AvalaraSaleType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    AvalaraSaleType(String value) {
+      this.value = value;
     }
 
-    public enum PaymentInitiator {
-      CUSTOMER("customer"),
+    public String getValue() {
+      return value;
+    }
 
-      MERCHANT("merchant"),
-
-      /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PaymentInitiator(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PaymentInitiator fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentInitiator enumValue : PaymentInitiator.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static AvalaraSaleType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PaymentInitiator {
+    CUSTOMER("customer"),
+
+    MERCHANT("merchant"),
+
+    /** An enum member indicating that PaymentInitiator was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentInitiator(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PaymentInitiator fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentInitiator enumValue : PaymentInitiator.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

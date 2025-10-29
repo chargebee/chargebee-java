@@ -257,195 +257,195 @@ public final class CsvTaxRuleCreateParams {
     public CsvTaxRuleCreateParams build() {
       return new CsvTaxRuleCreateParams(this);
     }
+  }
 
-    public enum Tax1JurisType {
-      COUNTRY("country"),
+  public enum Tax1JurisType {
+    COUNTRY("country"),
 
-      FEDERAL("federal"),
+    FEDERAL("federal"),
 
-      STATE("state"),
+    STATE("state"),
 
-      COUNTY("county"),
+    COUNTY("county"),
 
-      CITY("city"),
+    CITY("city"),
 
-      SPECIAL("special"),
+    SPECIAL("special"),
 
-      UNINCORPORATED("unincorporated"),
+    UNINCORPORATED("unincorporated"),
 
-      OTHER("other"),
+    OTHER("other"),
 
-      /** An enum member indicating that Tax1JurisType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Tax1JurisType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Tax1JurisType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Tax1JurisType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Tax1JurisType enumValue : Tax1JurisType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    Tax1JurisType(String value) {
+      this.value = value;
     }
 
-    public enum Tax2JurisType {
-      COUNTRY("country"),
-
-      FEDERAL("federal"),
-
-      STATE("state"),
-
-      COUNTY("county"),
-
-      CITY("city"),
-
-      SPECIAL("special"),
-
-      UNINCORPORATED("unincorporated"),
-
-      OTHER("other"),
-
-      /** An enum member indicating that Tax2JurisType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Tax2JurisType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Tax2JurisType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Tax2JurisType enumValue : Tax2JurisType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum Tax3JurisType {
-      COUNTRY("country"),
-
-      FEDERAL("federal"),
-
-      STATE("state"),
-
-      COUNTY("county"),
-
-      CITY("city"),
-
-      SPECIAL("special"),
-
-      UNINCORPORATED("unincorporated"),
-
-      OTHER("other"),
-
-      /** An enum member indicating that Tax3JurisType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Tax3JurisType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Tax3JurisType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Tax3JurisType enumValue : Tax3JurisType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Tax1JurisType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Tax1JurisType enumValue : Tax1JurisType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Tax2JurisType {
+    COUNTRY("country"),
+
+    FEDERAL("federal"),
+
+    STATE("state"),
+
+    COUNTY("county"),
+
+    CITY("city"),
+
+    SPECIAL("special"),
+
+    UNINCORPORATED("unincorporated"),
+
+    OTHER("other"),
+
+    /** An enum member indicating that Tax2JurisType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Tax2JurisType(String value) {
+      this.value = value;
     }
 
-    public enum Tax4JurisType {
-      COUNTRY("country"),
-
-      FEDERAL("federal"),
-
-      STATE("state"),
-
-      COUNTY("county"),
-
-      CITY("city"),
-
-      SPECIAL("special"),
-
-      UNINCORPORATED("unincorporated"),
-
-      OTHER("other"),
-
-      /** An enum member indicating that Tax4JurisType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Tax4JurisType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Tax4JurisType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Tax4JurisType enumValue : Tax4JurisType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ServiceType {
-      DIGITAL("digital"),
-
-      OTHER("other"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that ServiceType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ServiceType(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ServiceType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ServiceType enumValue : ServiceType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Tax2JurisType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Tax2JurisType enumValue : Tax2JurisType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Tax3JurisType {
+    COUNTRY("country"),
+
+    FEDERAL("federal"),
+
+    STATE("state"),
+
+    COUNTY("county"),
+
+    CITY("city"),
+
+    SPECIAL("special"),
+
+    UNINCORPORATED("unincorporated"),
+
+    OTHER("other"),
+
+    /** An enum member indicating that Tax3JurisType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Tax3JurisType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Tax3JurisType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Tax3JurisType enumValue : Tax3JurisType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Tax4JurisType {
+    COUNTRY("country"),
+
+    FEDERAL("federal"),
+
+    STATE("state"),
+
+    COUNTY("county"),
+
+    CITY("city"),
+
+    SPECIAL("special"),
+
+    UNINCORPORATED("unincorporated"),
+
+    OTHER("other"),
+
+    /** An enum member indicating that Tax4JurisType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Tax4JurisType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Tax4JurisType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Tax4JurisType enumValue : Tax4JurisType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ServiceType {
+    DIGITAL("digital"),
+
+    OTHER("other"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that ServiceType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ServiceType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ServiceType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ServiceType enumValue : ServiceType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

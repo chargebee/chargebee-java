@@ -448,6 +448,8 @@ public class Transaction {
 
     JP_MORGAN("jp_morgan"),
 
+    DEUTSCHE_BANK("deutsche_bank"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */
@@ -605,6 +607,8 @@ public class Transaction {
     BLOCKING_FUNDS("blocking_funds"),
 
     VERIFICATION("verification"),
+
+    SCHEDULED_CAPTURE("scheduled_capture"),
 
     /**
      * An enum member indicating that AuthorizationReason was instantiated with an unknown value.

@@ -61,41 +61,42 @@ public final class CustomerListHierarchyDetailParams {
     public CustomerListHierarchyDetailParams build() {
       return new CustomerListHierarchyDetailParams(this);
     }
+  }
 
-    public enum HierarchyOperationType {
-      COMPLETE_HIERARCHY("complete_hierarchy"),
+  public enum HierarchyOperationType {
+    COMPLETE_HIERARCHY("complete_hierarchy"),
 
-      SUBORDINATES("subordinates"),
+    SUBORDINATES("subordinates"),
 
-      PATH_TO_ROOT("path_to_root"),
+    PATH_TO_ROOT("path_to_root"),
 
-      SUBORDINATES_WITH_UNBILLED_CHARGES_PAYABLE_BY_PARENT(
-          "subordinates_with_unbilled_charges_payable_by_parent"),
+    SUBORDINATES_WITH_UNBILLED_CHARGES_PAYABLE_BY_PARENT(
+        "subordinates_with_unbilled_charges_payable_by_parent"),
 
-      /**
-       * An enum member indicating that HierarchyOperationType was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    IMMEDIATE_CHILDREN("immediate_children"),
 
-      HierarchyOperationType(String value) {
-        this.value = value;
-      }
+    /**
+     * An enum member indicating that HierarchyOperationType was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      public String getValue() {
-        return value;
-      }
+    HierarchyOperationType(String value) {
+      this.value = value;
+    }
 
-      public static HierarchyOperationType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (HierarchyOperationType enumValue : HierarchyOperationType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public String getValue() {
+      return value;
+    }
+
+    public static HierarchyOperationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (HierarchyOperationType enumValue : HierarchyOperationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

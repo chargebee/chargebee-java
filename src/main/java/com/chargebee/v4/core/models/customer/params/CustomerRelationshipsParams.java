@@ -155,71 +155,71 @@ public final class CustomerRelationshipsParams {
       public ParentAccountAccessParams build() {
         return new ParentAccountAccessParams(this);
       }
+    }
 
-      public enum PortalEditChildSubscriptions {
-        YES("yes"),
+    public enum PortalEditChildSubscriptions {
+      YES("yes"),
 
-        VIEW_ONLY("view_only"),
+      VIEW_ONLY("view_only"),
 
-        NO("no"),
+      NO("no"),
 
-        /**
-         * An enum member indicating that PortalEditChildSubscriptions was instantiated with an
-         * unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /**
+       * An enum member indicating that PortalEditChildSubscriptions was instantiated with an
+       * unknown value.
+       */
+      _UNKNOWN(null);
+      private final String value;
 
-        PortalEditChildSubscriptions(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PortalEditChildSubscriptions fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PortalEditChildSubscriptions enumValue : PortalEditChildSubscriptions.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      PortalEditChildSubscriptions(String value) {
+        this.value = value;
       }
 
-      public enum PortalDownloadChildInvoices {
-        YES("yes"),
+      public String getValue() {
+        return value;
+      }
 
-        VIEW_ONLY("view_only"),
-
-        NO("no"),
-
-        /**
-         * An enum member indicating that PortalDownloadChildInvoices was instantiated with an
-         * unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
-
-        PortalDownloadChildInvoices(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PortalDownloadChildInvoices fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PortalDownloadChildInvoices enumValue : PortalDownloadChildInvoices.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PortalEditChildSubscriptions fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PortalEditChildSubscriptions enumValue : PortalEditChildSubscriptions.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum PortalDownloadChildInvoices {
+      YES("yes"),
+
+      VIEW_ONLY("view_only"),
+
+      NO("no"),
+
+      /**
+       * An enum member indicating that PortalDownloadChildInvoices was instantiated with an unknown
+       * value.
+       */
+      _UNKNOWN(null);
+      private final String value;
+
+      PortalDownloadChildInvoices(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static PortalDownloadChildInvoices fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PortalDownloadChildInvoices enumValue : PortalDownloadChildInvoices.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -286,69 +286,69 @@ public final class CustomerRelationshipsParams {
       public ChildAccountAccessParams build() {
         return new ChildAccountAccessParams(this);
       }
+    }
 
-      public enum PortalEditSubscriptions {
-        YES("yes"),
+    public enum PortalEditSubscriptions {
+      YES("yes"),
 
-        VIEW_ONLY("view_only"),
+      VIEW_ONLY("view_only"),
 
-        /**
-         * An enum member indicating that PortalEditSubscriptions was instantiated with an unknown
-         * value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /**
+       * An enum member indicating that PortalEditSubscriptions was instantiated with an unknown
+       * value.
+       */
+      _UNKNOWN(null);
+      private final String value;
 
-        PortalEditSubscriptions(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PortalEditSubscriptions fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PortalEditSubscriptions enumValue : PortalEditSubscriptions.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      PortalEditSubscriptions(String value) {
+        this.value = value;
       }
 
-      public enum PortalDownloadInvoices {
-        YES("yes"),
+      public String getValue() {
+        return value;
+      }
 
-        VIEW_ONLY("view_only"),
-
-        NO("no"),
-
-        /**
-         * An enum member indicating that PortalDownloadInvoices was instantiated with an unknown
-         * value.
-         */
-        _UNKNOWN(null);
-        private final String value;
-
-        PortalDownloadInvoices(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PortalDownloadInvoices fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PortalDownloadInvoices enumValue : PortalDownloadInvoices.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PortalEditSubscriptions fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PortalEditSubscriptions enumValue : PortalEditSubscriptions.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum PortalDownloadInvoices {
+      YES("yes"),
+
+      VIEW_ONLY("view_only"),
+
+      NO("no"),
+
+      /**
+       * An enum member indicating that PortalDownloadInvoices was instantiated with an unknown
+       * value.
+       */
+      _UNKNOWN(null);
+      private final String value;
+
+      PortalDownloadInvoices(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static PortalDownloadInvoices fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PortalDownloadInvoices enumValue : PortalDownloadInvoices.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

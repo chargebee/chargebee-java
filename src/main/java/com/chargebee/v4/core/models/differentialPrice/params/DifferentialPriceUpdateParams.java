@@ -137,37 +137,37 @@ public final class DifferentialPriceUpdateParams {
       public ParentPeriodsParams build() {
         return new ParentPeriodsParams(this);
       }
+    }
 
-      public enum PeriodUnit {
-        DAY("day"),
+    public enum PeriodUnit {
+      DAY("day"),
 
-        WEEK("week"),
+      WEEK("week"),
 
-        MONTH("month"),
+      MONTH("month"),
 
-        YEAR("year"),
+      YEAR("year"),
 
-        /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PeriodUnit(String value) {
-          this.value = value;
-        }
+      PeriodUnit(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PeriodUnit fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PeriodUnit enumValue : PeriodUnit.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PeriodUnit enumValue : PeriodUnit.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -255,35 +255,35 @@ public final class DifferentialPriceUpdateParams {
       public TiersParams build() {
         return new TiersParams(this);
       }
+    }
 
-      public enum PricingType {
-        PER_UNIT("per_unit"),
+    public enum PricingType {
+      PER_UNIT("per_unit"),
 
-        FLAT_FEE("flat_fee"),
+      FLAT_FEE("flat_fee"),
 
-        PACKAGE("package"),
+      PACKAGE("package"),
 
-        /** An enum member indicating that PricingType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PricingType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PricingType(String value) {
-          this.value = value;
-        }
+      PricingType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static PricingType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PricingType enumValue : PricingType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PricingType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PricingType enumValue : PricingType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

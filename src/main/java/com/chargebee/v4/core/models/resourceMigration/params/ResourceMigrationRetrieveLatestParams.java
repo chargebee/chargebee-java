@@ -61,31 +61,31 @@ public final class ResourceMigrationRetrieveLatestParams {
     public ResourceMigrationRetrieveLatestParams build() {
       return new ResourceMigrationRetrieveLatestParams(this);
     }
+  }
 
-    public enum EntityType {
-      CUSTOMER("customer"),
+  public enum EntityType {
+    CUSTOMER("customer"),
 
-      /** An enum member indicating that EntityType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityType(String value) {
-        this.value = value;
-      }
+    EntityType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static EntityType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityType enumValue : EntityType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

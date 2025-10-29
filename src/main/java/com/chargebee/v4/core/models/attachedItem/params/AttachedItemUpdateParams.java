@@ -88,71 +88,71 @@ public final class AttachedItemUpdateParams {
     public AttachedItemUpdateParams build() {
       return new AttachedItemUpdateParams(this);
     }
+  }
 
-    public enum Type {
-      RECOMMENDED("recommended"),
+  public enum Type {
+    RECOMMENDED("recommended"),
 
-      MANDATORY("mandatory"),
+    MANDATORY("mandatory"),
 
-      OPTIONAL("optional"),
+    OPTIONAL("optional"),
 
-      /** An enum member indicating that Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Type(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Type enumValue : Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    Type(String value) {
+      this.value = value;
     }
 
-    public enum ChargeOnEvent {
-      SUBSCRIPTION_CREATION("subscription_creation"),
+    public String getValue() {
+      return value;
+    }
 
-      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
-
-      PLAN_ACTIVATION("plan_activation"),
-
-      SUBSCRIPTION_ACTIVATION("subscription_activation"),
-
-      CONTRACT_TERMINATION("contract_termination"),
-
-      ON_DEMAND("on_demand"),
-
-      /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ChargeOnEvent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ChargeOnEvent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ChargeOnEvent enumValue : ChargeOnEvent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeOnEvent {
+    SUBSCRIPTION_CREATION("subscription_creation"),
+
+    SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
+
+    PLAN_ACTIVATION("plan_activation"),
+
+    SUBSCRIPTION_ACTIVATION("subscription_activation"),
+
+    CONTRACT_TERMINATION("contract_termination"),
+
+    ON_DEMAND("on_demand"),
+
+    /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeOnEvent(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeOnEvent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeOnEvent enumValue : ChargeOnEvent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

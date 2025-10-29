@@ -169,33 +169,33 @@ public final class Pc2MigrationItemCreateParams {
     public Pc2MigrationItemCreateParams build() {
       return new Pc2MigrationItemCreateParams(this);
     }
+  }
 
-    public enum Pc1Type {
-      PLAN("plan"),
+  public enum Pc1Type {
+    PLAN("plan"),
 
-      ADDON("addon"),
+    ADDON("addon"),
 
-      /** An enum member indicating that Pc1Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Pc1Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Pc1Type(String value) {
-        this.value = value;
-      }
+    Pc1Type(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Pc1Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Pc1Type enumValue : Pc1Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Pc1Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1Type enumValue : Pc1Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 

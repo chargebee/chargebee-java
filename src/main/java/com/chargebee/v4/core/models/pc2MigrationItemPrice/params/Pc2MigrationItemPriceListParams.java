@@ -186,117 +186,117 @@ public final class Pc2MigrationItemPriceListParams {
         return builder;
       }
     }
+  }
 
-    public enum IsInvalidPc1IdIs {
-      TRUE("true"),
+  public enum IsInvalidPc1IdIs {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /** An enum member indicating that IsInvalidPc1IdIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that IsInvalidPc1IdIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      IsInvalidPc1IdIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsInvalidPc1IdIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsInvalidPc1IdIs enumValue : IsInvalidPc1IdIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    IsInvalidPc1IdIs(String value) {
+      this.value = value;
     }
 
-    public enum Pc1ItemTypeIs {
-      PLAN("plan"),
-
-      ADDON("addon"),
-
-      /** An enum member indicating that Pc1ItemTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Pc1ItemTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Pc1ItemTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Pc1ItemTypeIs enumValue : Pc1ItemTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum Pc1ItemTypeIsNot {
-      PLAN("plan"),
-
-      ADDON("addon"),
-
-      /** An enum member indicating that Pc1ItemTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Pc1ItemTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Pc1ItemTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Pc1ItemTypeIsNot enumValue : Pc1ItemTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static IsInvalidPc1IdIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (IsInvalidPc1IdIs enumValue : IsInvalidPc1IdIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Pc1ItemTypeIs {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    /** An enum member indicating that Pc1ItemTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Pc1ItemTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum IsRecurringIs {
-      TRUE("true"),
+    public String getValue() {
+      return value;
+    }
 
-      FALSE("false"),
-
-      /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsRecurringIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsRecurringIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsRecurringIs enumValue : IsRecurringIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Pc1ItemTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1ItemTypeIs enumValue : Pc1ItemTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Pc1ItemTypeIsNot {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    /** An enum member indicating that Pc1ItemTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Pc1ItemTypeIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Pc1ItemTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1ItemTypeIsNot enumValue : Pc1ItemTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum IsRecurringIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    IsRecurringIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static IsRecurringIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (IsRecurringIs enumValue : IsRecurringIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

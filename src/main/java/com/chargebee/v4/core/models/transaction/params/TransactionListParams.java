@@ -649,782 +649,784 @@ public final class TransactionListParams {
         return builder;
       }
     }
+  }
 
-    public enum CustomerIdIsPresent {
-      TRUE("true"),
+  public enum CustomerIdIsPresent {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /**
-       * An enum member indicating that CustomerIdIsPresent was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /**
+     * An enum member indicating that CustomerIdIsPresent was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      CustomerIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CustomerIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CustomerIdIsPresent enumValue : CustomerIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    CustomerIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum SubscriptionIdIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      SubscriptionIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PaymentSourceIdIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that PaymentSourceIdIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      PaymentSourceIdIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PaymentSourceIdIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentSourceIdIsPresent enumValue : PaymentSourceIdIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CustomerIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CustomerIdIsPresent enumValue : CustomerIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SubscriptionIdIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that SubscriptionIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    SubscriptionIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum PaymentMethodIs {
-      CARD("card"),
-
-      CASH("cash"),
-
-      CHECK("check"),
-
-      CHARGEBACK("chargeback"),
-
-      BANK_TRANSFER("bank_transfer"),
-
-      AMAZON_PAYMENTS("amazon_payments"),
-
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-      DIRECT_DEBIT("direct_debit"),
-
-      ALIPAY("alipay"),
-
-      UNIONPAY("unionpay"),
-
-      APPLE_PAY("apple_pay"),
-
-      WECHAT_PAY("wechat_pay"),
-
-      ACH_CREDIT("ach_credit"),
-
-      SEPA_CREDIT("sepa_credit"),
-
-      IDEAL("ideal"),
-
-      GOOGLE_PAY("google_pay"),
-
-      SOFORT("sofort"),
-
-      BANCONTACT("bancontact"),
-
-      GIROPAY("giropay"),
-
-      DOTPAY("dotpay"),
-
-      OTHER("other"),
-
-      APP_STORE("app_store"),
-
-      UPI("upi"),
-
-      NETBANKING_EMANDATES("netbanking_emandates"),
-
-      PLAY_STORE("play_store"),
-
-      CUSTOM("custom"),
-
-      BOLETO("boleto"),
-
-      VENMO("venmo"),
-
-      PAY_TO("pay_to"),
-
-      FASTER_PAYMENTS("faster_payments"),
-
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
-
-      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
-
-      KLARNA_PAY_NOW("klarna_pay_now"),
-
-      ONLINE_BANKING_POLAND("online_banking_poland"),
-
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
-
-      /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PaymentMethodIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PaymentMethodIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentMethodIs enumValue : PaymentMethodIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum PaymentMethodIsNot {
-      CARD("card"),
-
-      CASH("cash"),
-
-      CHECK("check"),
-
-      CHARGEBACK("chargeback"),
-
-      BANK_TRANSFER("bank_transfer"),
-
-      AMAZON_PAYMENTS("amazon_payments"),
-
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-      DIRECT_DEBIT("direct_debit"),
-
-      ALIPAY("alipay"),
-
-      UNIONPAY("unionpay"),
-
-      APPLE_PAY("apple_pay"),
-
-      WECHAT_PAY("wechat_pay"),
-
-      ACH_CREDIT("ach_credit"),
-
-      SEPA_CREDIT("sepa_credit"),
-
-      IDEAL("ideal"),
-
-      GOOGLE_PAY("google_pay"),
-
-      SOFORT("sofort"),
-
-      BANCONTACT("bancontact"),
-
-      GIROPAY("giropay"),
-
-      DOTPAY("dotpay"),
-
-      OTHER("other"),
-
-      APP_STORE("app_store"),
-
-      UPI("upi"),
-
-      NETBANKING_EMANDATES("netbanking_emandates"),
-
-      PLAY_STORE("play_store"),
-
-      CUSTOM("custom"),
-
-      BOLETO("boleto"),
-
-      VENMO("venmo"),
-
-      PAY_TO("pay_to"),
-
-      FASTER_PAYMENTS("faster_payments"),
-
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
-
-      AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
-
-      KLARNA_PAY_NOW("klarna_pay_now"),
-
-      ONLINE_BANKING_POLAND("online_banking_poland"),
-
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
-
-      /**
-       * An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      PaymentMethodIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PaymentMethodIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentMethodIsNot enumValue : PaymentMethodIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static SubscriptionIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SubscriptionIdIsPresent enumValue : SubscriptionIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PaymentSourceIdIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that PaymentSourceIdIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentSourceIdIsPresent(String value) {
+      this.value = value;
     }
 
-    public enum GatewayIs {
-      CHARGEBEE("chargebee"),
-
-      CHARGEBEE_PAYMENTS("chargebee_payments"),
-
-      ADYEN("adyen"),
-
-      STRIPE("stripe"),
-
-      WEPAY("wepay"),
-
-      BRAINTREE("braintree"),
-
-      AUTHORIZE_NET("authorize_net"),
-
-      PAYPAL_PRO("paypal_pro"),
-
-      PIN("pin"),
-
-      EWAY("eway"),
-
-      EWAY_RAPID("eway_rapid"),
-
-      WORLDPAY("worldpay"),
-
-      BALANCED_PAYMENTS("balanced_payments"),
-
-      BEANSTREAM("beanstream"),
-
-      BLUEPAY("bluepay"),
-
-      ELAVON("elavon"),
-
-      FIRST_DATA_GLOBAL("first_data_global"),
-
-      HDFC("hdfc"),
-
-      MIGS("migs"),
-
-      NMI("nmi"),
-
-      OGONE("ogone"),
-
-      PAYMILL("paymill"),
-
-      PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
-
-      SAGE_PAY("sage_pay"),
-
-      TCO("tco"),
-
-      WIRECARD("wirecard"),
-
-      AMAZON_PAYMENTS("amazon_payments"),
-
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-      GOCARDLESS("gocardless"),
-
-      ORBITAL("orbital"),
-
-      MONERIS_US("moneris_us"),
-
-      MONERIS("moneris"),
-
-      BLUESNAP("bluesnap"),
-
-      CYBERSOURCE("cybersource"),
-
-      VANTIV("vantiv"),
-
-      CHECKOUT_COM("checkout_com"),
-
-      PAYPAL("paypal"),
-
-      INGENICO_DIRECT("ingenico_direct"),
-
-      EXACT("exact"),
-
-      MOLLIE("mollie"),
-
-      QUICKBOOKS("quickbooks"),
-
-      RAZORPAY("razorpay"),
-
-      GLOBAL_PAYMENTS("global_payments"),
-
-      BANK_OF_AMERICA("bank_of_america"),
-
-      ECENTRIC("ecentric"),
-
-      METRICS_GLOBAL("metrics_global"),
-
-      WINDCAVE("windcave"),
-
-      PAY_COM("pay_com"),
-
-      EBANX("ebanx"),
-
-      DLOCAL("dlocal"),
-
-      NUVEI("nuvei"),
-
-      SOLIDGATE("solidgate"),
-
-      PAYSTACK("paystack"),
-
-      JP_MORGAN("jp_morgan"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that GatewayIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      GatewayIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static GatewayIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (GatewayIs enumValue : GatewayIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum GatewayIsNot {
-      CHARGEBEE("chargebee"),
-
-      CHARGEBEE_PAYMENTS("chargebee_payments"),
-
-      ADYEN("adyen"),
-
-      STRIPE("stripe"),
-
-      WEPAY("wepay"),
-
-      BRAINTREE("braintree"),
-
-      AUTHORIZE_NET("authorize_net"),
-
-      PAYPAL_PRO("paypal_pro"),
-
-      PIN("pin"),
-
-      EWAY("eway"),
-
-      EWAY_RAPID("eway_rapid"),
-
-      WORLDPAY("worldpay"),
-
-      BALANCED_PAYMENTS("balanced_payments"),
-
-      BEANSTREAM("beanstream"),
-
-      BLUEPAY("bluepay"),
-
-      ELAVON("elavon"),
-
-      FIRST_DATA_GLOBAL("first_data_global"),
-
-      HDFC("hdfc"),
-
-      MIGS("migs"),
-
-      NMI("nmi"),
-
-      OGONE("ogone"),
-
-      PAYMILL("paymill"),
-
-      PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
-
-      SAGE_PAY("sage_pay"),
-
-      TCO("tco"),
-
-      WIRECARD("wirecard"),
-
-      AMAZON_PAYMENTS("amazon_payments"),
-
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
-
-      GOCARDLESS("gocardless"),
-
-      ORBITAL("orbital"),
-
-      MONERIS_US("moneris_us"),
-
-      MONERIS("moneris"),
-
-      BLUESNAP("bluesnap"),
-
-      CYBERSOURCE("cybersource"),
-
-      VANTIV("vantiv"),
-
-      CHECKOUT_COM("checkout_com"),
-
-      PAYPAL("paypal"),
-
-      INGENICO_DIRECT("ingenico_direct"),
-
-      EXACT("exact"),
-
-      MOLLIE("mollie"),
-
-      QUICKBOOKS("quickbooks"),
-
-      RAZORPAY("razorpay"),
-
-      GLOBAL_PAYMENTS("global_payments"),
-
-      BANK_OF_AMERICA("bank_of_america"),
-
-      ECENTRIC("ecentric"),
-
-      METRICS_GLOBAL("metrics_global"),
-
-      WINDCAVE("windcave"),
-
-      PAY_COM("pay_com"),
-
-      EBANX("ebanx"),
-
-      DLOCAL("dlocal"),
-
-      NUVEI("nuvei"),
-
-      SOLIDGATE("solidgate"),
-
-      PAYSTACK("paystack"),
-
-      JP_MORGAN("jp_morgan"),
-
-      NOT_APPLICABLE("not_applicable"),
-
-      /** An enum member indicating that GatewayIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      GatewayIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static GatewayIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (GatewayIsNot enumValue : GatewayIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentSourceIdIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentSourceIdIsPresent enumValue : PaymentSourceIdIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PaymentMethodIs {
+    CARD("card"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    CHARGEBACK("chargeback"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    OTHER("other"),
+
+    APP_STORE("app_store"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    PLAY_STORE("play_store"),
+
+    CUSTOM("custom"),
+
+    BOLETO("boleto"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentMethodIs(String value) {
+      this.value = value;
     }
 
-    public enum ReferenceNumberIsPresent {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that ReferenceNumberIsPresent was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReferenceNumberIsPresent(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReferenceNumberIsPresent fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReferenceNumberIsPresent enumValue : ReferenceNumberIsPresent.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum TypeIs {
-      AUTHORIZATION("authorization"),
-
-      PAYMENT("payment"),
-
-      REFUND("refund"),
-
-      PAYMENT_REVERSAL("payment_reversal"),
-
-      /** An enum member indicating that TypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIs enumValue : TypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentMethodIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentMethodIs enumValue : PaymentMethodIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PaymentMethodIsNot {
+    CARD("card"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    CHARGEBACK("chargeback"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    OTHER("other"),
+
+    APP_STORE("app_store"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    PLAY_STORE("play_store"),
+
+    CUSTOM("custom"),
+
+    BOLETO("boleto"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    /** An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentMethodIsNot(String value) {
+      this.value = value;
     }
 
-    public enum TypeIsNot {
-      AUTHORIZATION("authorization"),
-
-      PAYMENT("payment"),
-
-      REFUND("refund"),
-
-      PAYMENT_REVERSAL("payment_reversal"),
-
-      /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TypeIsNot enumValue : TypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum StatusIs {
-      IN_PROGRESS("in_progress"),
-
-      SUCCESS("success"),
-
-      VOIDED("voided"),
-
-      FAILURE("failure"),
-
-      TIMEOUT("timeout"),
-
-      NEEDS_ATTENTION("needs_attention"),
-
-      LATE_FAILURE("late_failure"),
-
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentMethodIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentMethodIsNot enumValue : PaymentMethodIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum GatewayIs {
+    CHARGEBEE("chargebee"),
+
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
+
+    ADYEN("adyen"),
+
+    STRIPE("stripe"),
+
+    WEPAY("wepay"),
+
+    BRAINTREE("braintree"),
+
+    AUTHORIZE_NET("authorize_net"),
+
+    PAYPAL_PRO("paypal_pro"),
+
+    PIN("pin"),
+
+    EWAY("eway"),
+
+    EWAY_RAPID("eway_rapid"),
+
+    WORLDPAY("worldpay"),
+
+    BALANCED_PAYMENTS("balanced_payments"),
+
+    BEANSTREAM("beanstream"),
+
+    BLUEPAY("bluepay"),
+
+    ELAVON("elavon"),
+
+    FIRST_DATA_GLOBAL("first_data_global"),
+
+    HDFC("hdfc"),
+
+    MIGS("migs"),
+
+    NMI("nmi"),
+
+    OGONE("ogone"),
+
+    PAYMILL("paymill"),
+
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
+
+    SAGE_PAY("sage_pay"),
+
+    TCO("tco"),
+
+    WIRECARD("wirecard"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    GOCARDLESS("gocardless"),
+
+    ORBITAL("orbital"),
+
+    MONERIS_US("moneris_us"),
+
+    MONERIS("moneris"),
+
+    BLUESNAP("bluesnap"),
+
+    CYBERSOURCE("cybersource"),
+
+    VANTIV("vantiv"),
+
+    CHECKOUT_COM("checkout_com"),
+
+    PAYPAL("paypal"),
+
+    INGENICO_DIRECT("ingenico_direct"),
+
+    EXACT("exact"),
+
+    MOLLIE("mollie"),
+
+    QUICKBOOKS("quickbooks"),
+
+    RAZORPAY("razorpay"),
+
+    GLOBAL_PAYMENTS("global_payments"),
+
+    BANK_OF_AMERICA("bank_of_america"),
+
+    ECENTRIC("ecentric"),
+
+    METRICS_GLOBAL("metrics_global"),
+
+    WINDCAVE("windcave"),
+
+    PAY_COM("pay_com"),
+
+    EBANX("ebanx"),
+
+    DLOCAL("dlocal"),
+
+    NUVEI("nuvei"),
+
+    SOLIDGATE("solidgate"),
+
+    PAYSTACK("paystack"),
+
+    JP_MORGAN("jp_morgan"),
+
+    DEUTSCHE_BANK("deutsche_bank"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that GatewayIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    GatewayIs(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      IN_PROGRESS("in_progress"),
-
-      SUCCESS("success"),
-
-      VOIDED("voided"),
-
-      FAILURE("failure"),
-
-      TIMEOUT("timeout"),
-
-      NEEDS_ATTENTION("needs_attention"),
-
-      LATE_FAILURE("late_failure"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByAsc {
-      DATE("date"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static GatewayIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (GatewayIs enumValue : GatewayIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum GatewayIsNot {
+    CHARGEBEE("chargebee"),
+
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
+
+    ADYEN("adyen"),
+
+    STRIPE("stripe"),
+
+    WEPAY("wepay"),
+
+    BRAINTREE("braintree"),
+
+    AUTHORIZE_NET("authorize_net"),
+
+    PAYPAL_PRO("paypal_pro"),
+
+    PIN("pin"),
+
+    EWAY("eway"),
+
+    EWAY_RAPID("eway_rapid"),
+
+    WORLDPAY("worldpay"),
+
+    BALANCED_PAYMENTS("balanced_payments"),
+
+    BEANSTREAM("beanstream"),
+
+    BLUEPAY("bluepay"),
+
+    ELAVON("elavon"),
+
+    FIRST_DATA_GLOBAL("first_data_global"),
+
+    HDFC("hdfc"),
+
+    MIGS("migs"),
+
+    NMI("nmi"),
+
+    OGONE("ogone"),
+
+    PAYMILL("paymill"),
+
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
+
+    SAGE_PAY("sage_pay"),
+
+    TCO("tco"),
+
+    WIRECARD("wirecard"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    GOCARDLESS("gocardless"),
+
+    ORBITAL("orbital"),
+
+    MONERIS_US("moneris_us"),
+
+    MONERIS("moneris"),
+
+    BLUESNAP("bluesnap"),
+
+    CYBERSOURCE("cybersource"),
+
+    VANTIV("vantiv"),
+
+    CHECKOUT_COM("checkout_com"),
+
+    PAYPAL("paypal"),
+
+    INGENICO_DIRECT("ingenico_direct"),
+
+    EXACT("exact"),
+
+    MOLLIE("mollie"),
+
+    QUICKBOOKS("quickbooks"),
+
+    RAZORPAY("razorpay"),
+
+    GLOBAL_PAYMENTS("global_payments"),
+
+    BANK_OF_AMERICA("bank_of_america"),
+
+    ECENTRIC("ecentric"),
+
+    METRICS_GLOBAL("metrics_global"),
+
+    WINDCAVE("windcave"),
+
+    PAY_COM("pay_com"),
+
+    EBANX("ebanx"),
+
+    DLOCAL("dlocal"),
+
+    NUVEI("nuvei"),
+
+    SOLIDGATE("solidgate"),
+
+    PAYSTACK("paystack"),
+
+    JP_MORGAN("jp_morgan"),
+
+    DEUTSCHE_BANK("deutsche_bank"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that GatewayIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    GatewayIsNot(String value) {
+      this.value = value;
     }
 
-    public enum SortByDesc {
-      DATE("date"),
+    public String getValue() {
+      return value;
+    }
 
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static GatewayIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (GatewayIsNot enumValue : GatewayIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReferenceNumberIsPresent {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /**
+     * An enum member indicating that ReferenceNumberIsPresent was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReferenceNumberIsPresent(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ReferenceNumberIsPresent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReferenceNumberIsPresent enumValue : ReferenceNumberIsPresent.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIs {
+    AUTHORIZATION("authorization"),
+
+    PAYMENT("payment"),
+
+    REFUND("refund"),
+
+    PAYMENT_REVERSAL("payment_reversal"),
+
+    /** An enum member indicating that TypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIs enumValue : TypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum TypeIsNot {
+    AUTHORIZATION("authorization"),
+
+    PAYMENT("payment"),
+
+    REFUND("refund"),
+
+    PAYMENT_REVERSAL("payment_reversal"),
+
+    /** An enum member indicating that TypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    TypeIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static TypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIs {
+    IN_PROGRESS("in_progress"),
+
+    SUCCESS("success"),
+
+    VOIDED("voided"),
+
+    FAILURE("failure"),
+
+    TIMEOUT("timeout"),
+
+    NEEDS_ATTENTION("needs_attention"),
+
+    LATE_FAILURE("late_failure"),
+
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    IN_PROGRESS("in_progress"),
+
+    SUCCESS("success"),
+
+    VOIDED("voided"),
+
+    FAILURE("failure"),
+
+    TIMEOUT("timeout"),
+
+    NEEDS_ATTENTION("needs_attention"),
+
+    LATE_FAILURE("late_failure"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    DATE("date"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    DATE("date"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

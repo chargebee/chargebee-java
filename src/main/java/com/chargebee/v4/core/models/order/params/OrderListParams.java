@@ -584,299 +584,297 @@ public final class OrderListParams {
         return builder;
       }
     }
+  }
 
-    public enum StatusIs {
-      NEW("new"),
+  public enum StatusIs {
+    NEW("new"),
 
-      PROCESSING("processing"),
+    PROCESSING("processing"),
 
-      COMPLETE("complete"),
+    COMPLETE("complete"),
 
-      CANCELLED("cancelled"),
+    CANCELLED("cancelled"),
 
-      VOIDED("voided"),
+    VOIDED("voided"),
 
-      QUEUED("queued"),
+    QUEUED("queued"),
 
-      AWAITING_SHIPMENT("awaiting_shipment"),
+    AWAITING_SHIPMENT("awaiting_shipment"),
 
-      ON_HOLD("on_hold"),
+    ON_HOLD("on_hold"),
 
-      DELIVERED("delivered"),
+    DELIVERED("delivered"),
 
-      SHIPPED("shipped"),
+    SHIPPED("shipped"),
 
-      PARTIALLY_DELIVERED("partially_delivered"),
+    PARTIALLY_DELIVERED("partially_delivered"),
 
-      RETURNED("returned"),
+    RETURNED("returned"),
 
-      /** An enum member indicating that StatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that StatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      StatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIs enumValue : StatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    StatusIs(String value) {
+      this.value = value;
     }
 
-    public enum StatusIsNot {
-      NEW("new"),
-
-      PROCESSING("processing"),
-
-      COMPLETE("complete"),
-
-      CANCELLED("cancelled"),
-
-      VOIDED("voided"),
-
-      QUEUED("queued"),
-
-      AWAITING_SHIPMENT("awaiting_shipment"),
-
-      ON_HOLD("on_hold"),
-
-      DELIVERED("delivered"),
-
-      SHIPPED("shipped"),
-
-      PARTIALLY_DELIVERED("partially_delivered"),
-
-      RETURNED("returned"),
-
-      /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      StatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static StatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (StatusIsNot enumValue : StatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum OrderTypeIs {
-      MANUAL("manual"),
-
-      SYSTEM_GENERATED("system_generated"),
-
-      /** An enum member indicating that OrderTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      OrderTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static OrderTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (OrderTypeIs enumValue : OrderTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIs enumValue : StatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum StatusIsNot {
+    NEW("new"),
+
+    PROCESSING("processing"),
+
+    COMPLETE("complete"),
+
+    CANCELLED("cancelled"),
+
+    VOIDED("voided"),
+
+    QUEUED("queued"),
+
+    AWAITING_SHIPMENT("awaiting_shipment"),
+
+    ON_HOLD("on_hold"),
+
+    DELIVERED("delivered"),
+
+    SHIPPED("shipped"),
+
+    PARTIALLY_DELIVERED("partially_delivered"),
+
+    RETURNED("returned"),
+
+    /** An enum member indicating that StatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    StatusIsNot(String value) {
+      this.value = value;
     }
 
-    public enum OrderTypeIsNot {
-      MANUAL("manual"),
-
-      SYSTEM_GENERATED("system_generated"),
-
-      /** An enum member indicating that OrderTypeIsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      OrderTypeIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static OrderTypeIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (OrderTypeIsNot enumValue : OrderTypeIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum ResentStatusIs {
-      FULLY_RESENT("fully_resent"),
-
-      PARTIALLY_RESENT("partially_resent"),
-
-      /** An enum member indicating that ResentStatusIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ResentStatusIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ResentStatusIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ResentStatusIs enumValue : ResentStatusIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static StatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OrderTypeIs {
+    MANUAL("manual"),
+
+    SYSTEM_GENERATED("system_generated"),
+
+    /** An enum member indicating that OrderTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    OrderTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum ResentStatusIsNot {
-      FULLY_RESENT("fully_resent"),
-
-      PARTIALLY_RESENT("partially_resent"),
-
-      /**
-       * An enum member indicating that ResentStatusIsNot was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ResentStatusIsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ResentStatusIsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ResentStatusIsNot enumValue : ResentStatusIsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum IsResentIs {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that IsResentIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsResentIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsResentIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsResentIs enumValue : IsResentIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static OrderTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OrderTypeIs enumValue : OrderTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OrderTypeIsNot {
+    MANUAL("manual"),
+
+    SYSTEM_GENERATED("system_generated"),
+
+    /** An enum member indicating that OrderTypeIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    OrderTypeIsNot(String value) {
+      this.value = value;
     }
 
-    public enum SortByAsc {
-      CREATED_AT("created_at"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByAsc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByAsc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByAsc enumValue : SortByAsc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum SortByDesc {
-      CREATED_AT("created_at"),
-
-      UPDATED_AT("updated_at"),
-
-      /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SortByDesc(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SortByDesc fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SortByDesc enumValue : SortByDesc.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static OrderTypeIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OrderTypeIsNot enumValue : OrderTypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ResentStatusIs {
+    FULLY_RESENT("fully_resent"),
+
+    PARTIALLY_RESENT("partially_resent"),
+
+    /** An enum member indicating that ResentStatusIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ResentStatusIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ResentStatusIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResentStatusIs enumValue : ResentStatusIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ResentStatusIsNot {
+    FULLY_RESENT("fully_resent"),
+
+    PARTIALLY_RESENT("partially_resent"),
+
+    /** An enum member indicating that ResentStatusIsNot was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ResentStatusIsNot(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ResentStatusIsNot fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResentStatusIsNot enumValue : ResentStatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum IsResentIs {
+    TRUE("true"),
+
+    FALSE("false"),
+
+    /** An enum member indicating that IsResentIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    IsResentIs(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static IsResentIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (IsResentIs enumValue : IsResentIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByAsc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByAsc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByAsc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByAsc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByAsc enumValue : SortByAsc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum SortByDesc {
+    CREATED_AT("created_at"),
+
+    UPDATED_AT("updated_at"),
+
+    /** An enum member indicating that SortByDesc was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    SortByDesc(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static SortByDesc fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

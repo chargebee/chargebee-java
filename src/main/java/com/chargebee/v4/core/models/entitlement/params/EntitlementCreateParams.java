@@ -70,33 +70,33 @@ public final class EntitlementCreateParams {
     public EntitlementCreateParams build() {
       return new EntitlementCreateParams(this);
     }
+  }
 
-    public enum Action {
-      UPSERT("upsert"),
+  public enum Action {
+    UPSERT("upsert"),
 
-      REMOVE("remove"),
+    REMOVE("remove"),
 
-      /** An enum member indicating that Action was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Action was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Action(String value) {
-        this.value = value;
-      }
+    Action(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static Action fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Action enumValue : Action.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Action fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Action enumValue : Action.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -162,39 +162,39 @@ public final class EntitlementCreateParams {
       public EntitlementsParams build() {
         return new EntitlementsParams(this);
       }
+    }
 
-      public enum EntityType {
-        PLAN("plan"),
+    public enum EntityType {
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        CHARGE("charge"),
+      CHARGE("charge"),
 
-        PLAN_PRICE("plan_price"),
+      PLAN_PRICE("plan_price"),
 
-        ADDON_PRICE("addon_price"),
+      ADDON_PRICE("addon_price"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

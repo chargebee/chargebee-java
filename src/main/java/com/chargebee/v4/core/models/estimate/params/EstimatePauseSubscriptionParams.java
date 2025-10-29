@@ -65,68 +65,68 @@ public final class EstimatePauseSubscriptionParams {
     public EstimatePauseSubscriptionParams build() {
       return new EstimatePauseSubscriptionParams(this);
     }
+  }
 
-    public enum PauseOption {
-      IMMEDIATELY("immediately"),
+  public enum PauseOption {
+    IMMEDIATELY("immediately"),
 
-      END_OF_TERM("end_of_term"),
+    END_OF_TERM("end_of_term"),
 
-      SPECIFIC_DATE("specific_date"),
+    SPECIFIC_DATE("specific_date"),
 
-      BILLING_CYCLES("billing_cycles"),
+    BILLING_CYCLES("billing_cycles"),
 
-      /** An enum member indicating that PauseOption was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PauseOption was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PauseOption(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PauseOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PauseOption enumValue : PauseOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    PauseOption(String value) {
+      this.value = value;
     }
 
-    public enum UnbilledChargesHandling {
-      NO_ACTION("no_action"),
+    public String getValue() {
+      return value;
+    }
 
-      INVOICE("invoice"),
-
-      /**
-       * An enum member indicating that UnbilledChargesHandling was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      UnbilledChargesHandling(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static UnbilledChargesHandling fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (UnbilledChargesHandling enumValue : UnbilledChargesHandling.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PauseOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PauseOption enumValue : PauseOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum UnbilledChargesHandling {
+    NO_ACTION("no_action"),
+
+    INVOICE("invoice"),
+
+    /**
+     * An enum member indicating that UnbilledChargesHandling was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    UnbilledChargesHandling(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static UnbilledChargesHandling fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (UnbilledChargesHandling enumValue : UnbilledChargesHandling.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

@@ -1,5 +1,7 @@
 package com.chargebee.v4.core.responses.entitlementOverride;
 
+import java.util.List;
+
 import com.chargebee.v4.core.models.entitlementOverride.EntitlementOverride;
 
 import com.chargebee.v4.core.responses.BaseResponse;
@@ -12,12 +14,12 @@ import com.chargebee.v4.transport.Response;
  */
 public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse
     extends BaseResponse {
-  private final EntitlementOverride entitlementOverride;
+  private final List<EntitlementOverride> list;
 
   private EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse(Builder builder) {
     super(builder.httpResponse);
 
-    this.entitlementOverride = builder.entitlementOverride;
+    this.list = builder.list;
   }
 
   /**
@@ -38,10 +40,10 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
     try {
       Builder builder = builder();
 
-      String __entitlementOverrideJson = JsonUtil.getObject(json, "entitlement_override");
-      if (__entitlementOverrideJson != null) {
-        builder.entitlementOverride(EntitlementOverride.fromJson(__entitlementOverrideJson));
-      }
+      builder.list(
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
+              .map(EntitlementOverride::fromJson)
+              .collect(java.util.stream.Collectors.toList()));
 
       builder.httpResponse(httpResponse);
       return builder.build();
@@ -60,14 +62,14 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
   /** Builder for EntitlementOverrideAddEntitlementOverrideForSubscriptionResponse. */
   public static class Builder {
 
-    private EntitlementOverride entitlementOverride;
+    private List<EntitlementOverride> list;
 
     private Response httpResponse;
 
     private Builder() {}
 
-    public Builder entitlementOverride(EntitlementOverride entitlementOverride) {
-      this.entitlementOverride = entitlementOverride;
+    public Builder list(List<EntitlementOverride> list) {
+      this.list = list;
       return this;
     }
 
@@ -81,8 +83,8 @@ public final class EntitlementOverrideAddEntitlementOverrideForSubscriptionRespo
     }
   }
 
-  /** Get the entitlementOverride from the response. */
-  public EntitlementOverride getEntitlementOverride() {
-    return entitlementOverride;
+  /** Get the list from the response. */
+  public List<EntitlementOverride> getList() {
+    return list;
   }
 }

@@ -90,13 +90,13 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public EntitlementListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
 
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -110,13 +110,13 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public EntitlementListBuilder in(String... values) {
+        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
 
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }
@@ -130,49 +130,49 @@ public final class EntitlementListParams {
         this.builder = builder;
       }
 
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
       public EntitlementListBuilder in(String... values) {
         builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
         return builder;
       }
+
+      public EntitlementListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
+        return builder;
+      }
+    }
+  }
+
+  public enum EntityTypeIs {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    PLAN_PRICE("plan_price"),
+
+    ADDON_PRICE("addon_price"),
+
+    /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityTypeIs(String value) {
+      this.value = value;
     }
 
-    public enum EntityTypeIs {
-      PLAN("plan"),
+    public String getValue() {
+      return value;
+    }
 
-      ADDON("addon"),
-
-      CHARGE("charge"),
-
-      PLAN_PRICE("plan_price"),
-
-      ADDON_PRICE("addon_price"),
-
-      /** An enum member indicating that EntityTypeIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EntityTypeIs(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EntityTypeIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityTypeIs enumValue : EntityTypeIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityTypeIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityTypeIs enumValue : EntityTypeIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

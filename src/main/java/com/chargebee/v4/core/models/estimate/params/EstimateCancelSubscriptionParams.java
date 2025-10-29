@@ -131,201 +131,200 @@ public final class EstimateCancelSubscriptionParams {
     public EstimateCancelSubscriptionParams build() {
       return new EstimateCancelSubscriptionParams(this);
     }
+  }
 
-    public enum CancelOption {
-      IMMEDIATELY("immediately"),
+  public enum CancelOption {
+    IMMEDIATELY("immediately"),
 
-      END_OF_TERM("end_of_term"),
+    END_OF_TERM("end_of_term"),
 
-      SPECIFIC_DATE("specific_date"),
+    SPECIFIC_DATE("specific_date"),
 
-      END_OF_BILLING_TERM("end_of_billing_term"),
+    END_OF_BILLING_TERM("end_of_billing_term"),
 
-      /** An enum member indicating that CancelOption was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that CancelOption was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      CancelOption(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CancelOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CancelOption enumValue : CancelOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    CancelOption(String value) {
+      this.value = value;
     }
 
-    public enum CreditOptionForCurrentTermCharges {
-      NONE("none"),
-
-      PRORATE("prorate"),
-
-      FULL("full"),
-
-      /**
-       * An enum member indicating that CreditOptionForCurrentTermCharges was instantiated with an
-       * unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      CreditOptionForCurrentTermCharges(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CreditOptionForCurrentTermCharges fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CreditOptionForCurrentTermCharges enumValue :
-            CreditOptionForCurrentTermCharges.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum UnbilledChargesOption {
-      INVOICE("invoice"),
-
-      DELETE("delete"),
-
-      /**
-       * An enum member indicating that UnbilledChargesOption was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      UnbilledChargesOption(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static UnbilledChargesOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (UnbilledChargesOption enumValue : UnbilledChargesOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CancelOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CancelOption enumValue : CancelOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum CreditOptionForCurrentTermCharges {
+    NONE("none"),
+
+    PRORATE("prorate"),
+
+    FULL("full"),
+
+    /**
+     * An enum member indicating that CreditOptionForCurrentTermCharges was instantiated with an
+     * unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    CreditOptionForCurrentTermCharges(String value) {
+      this.value = value;
     }
 
-    public enum AccountReceivablesHandling {
-      NO_ACTION("no_action"),
-
-      SCHEDULE_PAYMENT_COLLECTION("schedule_payment_collection"),
-
-      WRITE_OFF("write_off"),
-
-      /**
-       * An enum member indicating that AccountReceivablesHandling was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AccountReceivablesHandling(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AccountReceivablesHandling fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AccountReceivablesHandling enumValue : AccountReceivablesHandling.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    public String getValue() {
+      return value;
     }
 
-    public enum RefundableCreditsHandling {
-      NO_ACTION("no_action"),
-
-      SCHEDULE_REFUND("schedule_refund"),
-
-      /**
-       * An enum member indicating that RefundableCreditsHandling was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      RefundableCreditsHandling(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static RefundableCreditsHandling fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (RefundableCreditsHandling enumValue : RefundableCreditsHandling.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static CreditOptionForCurrentTermCharges fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CreditOptionForCurrentTermCharges enumValue :
+          CreditOptionForCurrentTermCharges.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum UnbilledChargesOption {
+    INVOICE("invoice"),
+
+    DELETE("delete"),
+
+    /**
+     * An enum member indicating that UnbilledChargesOption was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    UnbilledChargesOption(String value) {
+      this.value = value;
     }
 
-    public enum ContractTermCancelOption {
-      TERMINATE_IMMEDIATELY("terminate_immediately"),
+    public String getValue() {
+      return value;
+    }
 
-      END_OF_CONTRACT_TERM("end_of_contract_term"),
-
-      SPECIFIC_DATE("specific_date"),
-
-      END_OF_SUBSCRIPTION_BILLING_TERM("end_of_subscription_billing_term"),
-
-      /**
-       * An enum member indicating that ContractTermCancelOption was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ContractTermCancelOption(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ContractTermCancelOption fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ContractTermCancelOption enumValue : ContractTermCancelOption.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static UnbilledChargesOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (UnbilledChargesOption enumValue : UnbilledChargesOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum AccountReceivablesHandling {
+    NO_ACTION("no_action"),
+
+    SCHEDULE_PAYMENT_COLLECTION("schedule_payment_collection"),
+
+    WRITE_OFF("write_off"),
+
+    /**
+     * An enum member indicating that AccountReceivablesHandling was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    AccountReceivablesHandling(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static AccountReceivablesHandling fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AccountReceivablesHandling enumValue : AccountReceivablesHandling.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum RefundableCreditsHandling {
+    NO_ACTION("no_action"),
+
+    SCHEDULE_REFUND("schedule_refund"),
+
+    /**
+     * An enum member indicating that RefundableCreditsHandling was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    RefundableCreditsHandling(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static RefundableCreditsHandling fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (RefundableCreditsHandling enumValue : RefundableCreditsHandling.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ContractTermCancelOption {
+    TERMINATE_IMMEDIATELY("terminate_immediately"),
+
+    END_OF_CONTRACT_TERM("end_of_contract_term"),
+
+    SPECIFIC_DATE("specific_date"),
+
+    END_OF_SUBSCRIPTION_BILLING_TERM("end_of_subscription_billing_term"),
+
+    /**
+     * An enum member indicating that ContractTermCancelOption was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    ContractTermCancelOption(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ContractTermCancelOption fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ContractTermCancelOption enumValue : ContractTermCancelOption.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 

@@ -140,35 +140,35 @@ public final class CustomerUpdateBillingInfoParams {
     public CustomerUpdateBillingInfoParams build() {
       return new CustomerUpdateBillingInfoParams(this);
     }
+  }
 
-    public enum EinvoicingMethod {
-      AUTOMATIC("automatic"),
+  public enum EinvoicingMethod {
+    AUTOMATIC("automatic"),
 
-      MANUAL("manual"),
+    MANUAL("manual"),
 
-      SITE_DEFAULT("site_default"),
+    SITE_DEFAULT("site_default"),
 
-      /** An enum member indicating that EinvoicingMethod was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EinvoicingMethod was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EinvoicingMethod(String value) {
-        this.value = value;
-      }
+    EinvoicingMethod(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static EinvoicingMethod fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EinvoicingMethod enumValue : EinvoicingMethod.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EinvoicingMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EinvoicingMethod enumValue : EinvoicingMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -297,39 +297,37 @@ public final class CustomerUpdateBillingInfoParams {
       public BillingAddressParams build() {
         return new BillingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -396,35 +394,35 @@ public final class CustomerUpdateBillingInfoParams {
       public EntityIdentifiersParams build() {
         return new EntityIdentifiersParams(this);
       }
+    }
 
-      public enum Operation {
-        CREATE("create"),
+    public enum Operation {
+      CREATE("create"),
 
-        UPDATE("update"),
+      UPDATE("update"),
 
-        DELETE("delete"),
+      DELETE("delete"),
 
-        /** An enum member indicating that Operation was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Operation was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Operation(String value) {
-          this.value = value;
-        }
+      Operation(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static Operation fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Operation enumValue : Operation.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Operation fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Operation enumValue : Operation.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

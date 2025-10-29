@@ -77,33 +77,33 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
         return builder;
       }
     }
+  }
 
-    public enum IsRecurringIs {
-      TRUE("true"),
+  public enum IsRecurringIs {
+    TRUE("true"),
 
-      FALSE("false"),
+    FALSE("false"),
 
-      /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that IsRecurringIs was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      IsRecurringIs(String value) {
-        this.value = value;
-      }
+    IsRecurringIs(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static IsRecurringIs fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsRecurringIs enumValue : IsRecurringIs.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static IsRecurringIs fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (IsRecurringIs enumValue : IsRecurringIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

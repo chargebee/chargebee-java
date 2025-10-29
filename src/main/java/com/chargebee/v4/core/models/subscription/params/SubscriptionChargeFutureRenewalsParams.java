@@ -91,35 +91,35 @@ public final class SubscriptionChargeFutureRenewalsParams {
     public SubscriptionChargeFutureRenewalsParams build() {
       return new SubscriptionChargeFutureRenewalsParams(this);
     }
+  }
 
-    public enum ScheduleType {
-      IMMEDIATE("immediate"),
+  public enum ScheduleType {
+    IMMEDIATE("immediate"),
 
-      SPECIFIC_DATES("specific_dates"),
+    SPECIFIC_DATES("specific_dates"),
 
-      FIXED_INTERVALS("fixed_intervals"),
+    FIXED_INTERVALS("fixed_intervals"),
 
-      /** An enum member indicating that ScheduleType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that ScheduleType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      ScheduleType(String value) {
-        this.value = value;
-      }
+    ScheduleType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static ScheduleType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ScheduleType enumValue : ScheduleType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static ScheduleType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ScheduleType enumValue : ScheduleType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -178,35 +178,35 @@ public final class SubscriptionChargeFutureRenewalsParams {
       public FixedIntervalScheduleParams build() {
         return new FixedIntervalScheduleParams(this);
       }
+    }
 
-      public enum EndScheduleOn {
-        AFTER_NUMBER_OF_INTERVALS("after_number_of_intervals"),
+    public enum EndScheduleOn {
+      AFTER_NUMBER_OF_INTERVALS("after_number_of_intervals"),
 
-        SPECIFIC_DATE("specific_date"),
+      SPECIFIC_DATE("specific_date"),
 
-        SUBSCRIPTION_END("subscription_end"),
+      SUBSCRIPTION_END("subscription_end"),
 
-        /** An enum member indicating that EndScheduleOn was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EndScheduleOn was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EndScheduleOn(String value) {
-          this.value = value;
-        }
+      EndScheduleOn(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EndScheduleOn fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EndScheduleOn enumValue : EndScheduleOn.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EndScheduleOn fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EndScheduleOn enumValue : EndScheduleOn.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }

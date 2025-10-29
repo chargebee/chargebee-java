@@ -67,59 +67,59 @@ public final class CommentCreateParams {
     public CommentCreateParams build() {
       return new CommentCreateParams(this);
     }
+  }
 
-    public enum EntityType {
-      CUSTOMER("customer"),
+  public enum EntityType {
+    CUSTOMER("customer"),
 
-      SUBSCRIPTION("subscription"),
+    SUBSCRIPTION("subscription"),
 
-      INVOICE("invoice"),
+    INVOICE("invoice"),
 
-      QUOTE("quote"),
+    QUOTE("quote"),
 
-      CREDIT_NOTE("credit_note"),
+    CREDIT_NOTE("credit_note"),
 
-      TRANSACTION("transaction"),
+    TRANSACTION("transaction"),
 
-      PLAN("plan"),
+    PLAN("plan"),
 
-      ADDON("addon"),
+    ADDON("addon"),
 
-      COUPON("coupon"),
+    COUPON("coupon"),
 
-      ORDER("order"),
+    ORDER("order"),
 
-      BUSINESS_ENTITY("business_entity"),
+    BUSINESS_ENTITY("business_entity"),
 
-      ITEM_FAMILY("item_family"),
+    ITEM_FAMILY("item_family"),
 
-      ITEM("item"),
+    ITEM("item"),
 
-      ITEM_PRICE("item_price"),
+    ITEM_PRICE("item_price"),
 
-      PRICE_VARIANT("price_variant"),
+    PRICE_VARIANT("price_variant"),
 
-      /** An enum member indicating that EntityType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      EntityType(String value) {
-        this.value = value;
-      }
+    EntityType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static EntityType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EntityType enumValue : EntityType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

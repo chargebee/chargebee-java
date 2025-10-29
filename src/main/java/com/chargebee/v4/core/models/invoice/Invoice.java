@@ -71,6 +71,7 @@ public class Invoice {
   private List<Taxes> taxes;
   private TaxOrigin taxOrigin;
   private List<LinkedPayments> linkedPayments;
+  private List<ReferenceTransactions> referenceTransactions;
   private List<DunningAttempts> dunningAttempts;
   private List<AppliedCredits> appliedCredits;
   private List<AdjustmentCreditNotes> adjustmentCreditNotes;
@@ -311,6 +312,10 @@ public class Invoice {
 
   public List<LinkedPayments> getLinkedPayments() {
     return linkedPayments;
+  }
+
+  public List<ReferenceTransactions> getReferenceTransactions() {
+    return referenceTransactions;
   }
 
   public List<DunningAttempts> getDunningAttempts() {
@@ -623,6 +628,8 @@ public class Invoice {
 
     knownFields.add("linked_payments");
 
+    knownFields.add("reference_transactions");
+
     knownFields.add("dunning_attempts");
 
     knownFields.add("applied_credits");
@@ -787,6 +794,11 @@ public class Invoice {
     obj.linkedPayments =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_payments")).stream()
             .map(LinkedPayments::fromJson)
+            .collect(java.util.stream.Collectors.toList());
+
+    obj.referenceTransactions =
+        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "reference_transactions")).stream()
+            .map(ReferenceTransactions::fromJson)
             .collect(java.util.stream.Collectors.toList());
 
     obj.dunningAttempts =
@@ -1969,6 +1981,182 @@ public class Invoice {
       obj.txnDate = JsonUtil.getTimestamp(json, "txn_date");
 
       obj.txnAmount = JsonUtil.getLong(json, "txn_amount");
+
+      return obj;
+    }
+  }
+
+  public static class ReferenceTransactions {
+
+    private Long appliedAmount;
+    private Timestamp appliedAt;
+    private String txnId;
+    private TxnStatus txnStatus;
+    private Timestamp txnDate;
+    private Long txnAmount;
+    private TxnType txnType;
+    private Long amountCapturable;
+    private AuthorizationReason authorizationReason;
+
+    public Long getAppliedAmount() {
+      return appliedAmount;
+    }
+
+    public Timestamp getAppliedAt() {
+      return appliedAt;
+    }
+
+    public String getTxnId() {
+      return txnId;
+    }
+
+    public TxnStatus getTxnStatus() {
+      return txnStatus;
+    }
+
+    public Timestamp getTxnDate() {
+      return txnDate;
+    }
+
+    public Long getTxnAmount() {
+      return txnAmount;
+    }
+
+    public TxnType getTxnType() {
+      return txnType;
+    }
+
+    public Long getAmountCapturable() {
+      return amountCapturable;
+    }
+
+    public AuthorizationReason getAuthorizationReason() {
+      return authorizationReason;
+    }
+
+    public enum TxnStatus {
+      IN_PROGRESS("in_progress"),
+
+      SUCCESS("success"),
+
+      VOIDED("voided"),
+
+      FAILURE("failure"),
+
+      TIMEOUT("timeout"),
+
+      NEEDS_ATTENTION("needs_attention"),
+
+      LATE_FAILURE("late_failure"),
+
+      /** An enum member indicating that TxnStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      TxnStatus(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static TxnStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (TxnStatus enumValue : TxnStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum TxnType {
+      AUTHORIZATION("authorization"),
+
+      PAYMENT("payment"),
+
+      REFUND("refund"),
+
+      PAYMENT_REVERSAL("payment_reversal"),
+
+      /** An enum member indicating that TxnType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      TxnType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static TxnType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (TxnType enumValue : TxnType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum AuthorizationReason {
+      VERIFICATION("verification"),
+
+      BLOCKING_FUNDS("blocking_funds"),
+
+      SCHEDULED_CAPTURE("scheduled_capture"),
+
+      /**
+       * An enum member indicating that AuthorizationReason was instantiated with an unknown value.
+       */
+      _UNKNOWN(null);
+      private final String value;
+
+      AuthorizationReason(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static AuthorizationReason fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (AuthorizationReason enumValue : AuthorizationReason.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public static ReferenceTransactions fromJson(String json) {
+      ReferenceTransactions obj = new ReferenceTransactions();
+
+      obj.appliedAmount = JsonUtil.getLong(json, "applied_amount");
+
+      obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
+
+      obj.txnId = JsonUtil.getString(json, "txn_id");
+
+      obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(json, "txn_status"));
+
+      obj.txnDate = JsonUtil.getTimestamp(json, "txn_date");
+
+      obj.txnAmount = JsonUtil.getLong(json, "txn_amount");
+
+      obj.txnType = TxnType.fromString(JsonUtil.getString(json, "txn_type"));
+
+      obj.amountCapturable = JsonUtil.getLong(json, "amount_capturable");
+
+      obj.authorizationReason =
+          AuthorizationReason.fromString(JsonUtil.getString(json, "authorization_reason"));
 
       return obj;
     }

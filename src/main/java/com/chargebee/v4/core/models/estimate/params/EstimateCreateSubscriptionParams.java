@@ -202,35 +202,35 @@ public final class EstimateCreateSubscriptionParams {
     public EstimateCreateSubscriptionParams build() {
       return new EstimateCreateSubscriptionParams(this);
     }
+  }
 
-    public enum BillingAlignmentMode {
-      IMMEDIATE("immediate"),
+  public enum BillingAlignmentMode {
+    IMMEDIATE("immediate"),
 
-      DELAYED("delayed"),
+    DELAYED("delayed"),
 
-      /**
-       * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /**
+     * An enum member indicating that BillingAlignmentMode was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
 
-      BillingAlignmentMode(String value) {
-        this.value = value;
-      }
+    BillingAlignmentMode(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static BillingAlignmentMode fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (BillingAlignmentMode enumValue : BillingAlignmentMode.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static BillingAlignmentMode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (BillingAlignmentMode enumValue : BillingAlignmentMode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 
@@ -367,122 +367,121 @@ public final class EstimateCreateSubscriptionParams {
       public SubscriptionParams build() {
         return new SubscriptionParams(this);
       }
+    }
 
-      public enum OfflinePaymentMethod {
-        NO_PREFERENCE("no_preference"),
+    public enum OfflinePaymentMethod {
+      NO_PREFERENCE("no_preference"),
 
-        CASH("cash"),
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        ACH_CREDIT("ach_credit"),
+      ACH_CREDIT("ach_credit"),
 
-        SEPA_CREDIT("sepa_credit"),
+      SEPA_CREDIT("sepa_credit"),
 
-        BOLETO("boleto"),
+      BOLETO("boleto"),
 
-        US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+      US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
 
-        EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+      EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
 
-        UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+      UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
 
-        JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+      JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
 
-        MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+      MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /**
-         * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown
-         * value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /**
+       * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+       */
+      _UNKNOWN(null);
+      private final String value;
 
-        OfflinePaymentMethod(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static OfflinePaymentMethod fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      OfflinePaymentMethod(String value) {
+        this.value = value;
       }
 
-      public enum FreePeriodUnit {
-        DAY("day"),
-
-        WEEK("week"),
-
-        MONTH("month"),
-
-        YEAR("year"),
-
-        /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        FreePeriodUnit(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static FreePeriodUnit fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (FreePeriodUnit enumValue : FreePeriodUnit.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum TrialEndAction {
-        SITE_DEFAULT("site_default"),
-
-        PLAN_DEFAULT("plan_default"),
-
-        ACTIVATE_SUBSCRIPTION("activate_subscription"),
-
-        CANCEL_SUBSCRIPTION("cancel_subscription"),
-
-        /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        TrialEndAction(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static TrialEndAction fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (TrialEndAction enumValue : TrialEndAction.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static OfflinePaymentMethod fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum FreePeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      FreePeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static FreePeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (FreePeriodUnit enumValue : FreePeriodUnit.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum TrialEndAction {
+      SITE_DEFAULT("site_default"),
+
+      PLAN_DEFAULT("plan_default"),
+
+      ACTIVATE_SUBSCRIPTION("activate_subscription"),
+
+      CANCEL_SUBSCRIPTION("cancel_subscription"),
+
+      /** An enum member indicating that TrialEndAction was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      TrialEndAction(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static TrialEndAction fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (TrialEndAction enumValue : TrialEndAction.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -570,39 +569,37 @@ public final class EstimateCreateSubscriptionParams {
       public BillingAddressParams build() {
         return new BillingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -690,39 +687,37 @@ public final class EstimateCreateSubscriptionParams {
       public ShippingAddressParams build() {
         return new ShippingAddressParams(this);
       }
+    }
 
-      public enum ValidationStatus {
-        NOT_VALIDATED("not_validated"),
+    public enum ValidationStatus {
+      NOT_VALIDATED("not_validated"),
 
-        VALID("valid"),
+      VALID("valid"),
 
-        PARTIALLY_VALID("partially_valid"),
+      PARTIALLY_VALID("partially_valid"),
 
-        INVALID("invalid"),
+      INVALID("invalid"),
 
-        /**
-         * An enum member indicating that ValidationStatus was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ValidationStatus was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ValidationStatus(String value) {
-          this.value = value;
-        }
+      ValidationStatus(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ValidationStatus fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ValidationStatus enumValue : ValidationStatus.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ValidationStatus fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ValidationStatus enumValue : ValidationStatus.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -810,127 +805,127 @@ public final class EstimateCreateSubscriptionParams {
       public CustomerParams build() {
         return new CustomerParams(this);
       }
+    }
 
-      public enum Taxability {
-        TAXABLE("taxable"),
+    public enum Taxability {
+      TAXABLE("taxable"),
 
-        EXEMPT("exempt"),
+      EXEMPT("exempt"),
 
-        /** An enum member indicating that Taxability was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that Taxability was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        Taxability(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Taxability fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Taxability enumValue : Taxability.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      Taxability(String value) {
+        this.value = value;
       }
 
-      public enum EntityCode {
-        A("a"),
-
-        B("b"),
-
-        C("c"),
-
-        D("d"),
-
-        E("e"),
-
-        F("f"),
-
-        G("g"),
-
-        H("h"),
-
-        I("i"),
-
-        J("j"),
-
-        K("k"),
-
-        L("l"),
-
-        M("m"),
-
-        N("n"),
-
-        P("p"),
-
-        Q("q"),
-
-        R("r"),
-
-        MED_1("med1"),
-
-        MED_2("med2"),
-
-        /** An enum member indicating that EntityCode was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        EntityCode(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static EntityCode fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityCode enumValue : EntityCode.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      public String getValue() {
+        return value;
       }
 
-      public enum CustomerType {
-        RESIDENTIAL("residential"),
-
-        BUSINESS("business"),
-
-        SENIOR_CITIZEN("senior_citizen"),
-
-        INDUSTRIAL("industrial"),
-
-        /** An enum member indicating that CustomerType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        CustomerType(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static CustomerType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (CustomerType enumValue : CustomerType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static Taxability fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Taxability enumValue : Taxability.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum EntityCode {
+      A("a"),
+
+      B("b"),
+
+      C("c"),
+
+      D("d"),
+
+      E("e"),
+
+      F("f"),
+
+      G("g"),
+
+      H("h"),
+
+      I("i"),
+
+      J("j"),
+
+      K("k"),
+
+      L("l"),
+
+      M("m"),
+
+      N("n"),
+
+      P("p"),
+
+      Q("q"),
+
+      R("r"),
+
+      MED_1("med1"),
+
+      MED_2("med2"),
+
+      /** An enum member indicating that EntityCode was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EntityCode(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EntityCode fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityCode enumValue : EntityCode.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum CustomerType {
+      RESIDENTIAL("residential"),
+
+      BUSINESS("business"),
+
+      SENIOR_CITIZEN("senior_citizen"),
+
+      INDUSTRIAL("industrial"),
+
+      /** An enum member indicating that CustomerType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      CustomerType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static CustomerType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (CustomerType enumValue : CustomerType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }
@@ -976,37 +971,35 @@ public final class EstimateCreateSubscriptionParams {
       public ContractTermParams build() {
         return new ContractTermParams(this);
       }
+    }
 
-      public enum ActionAtTermEnd {
-        RENEW("renew"),
+    public enum ActionAtTermEnd {
+      RENEW("renew"),
 
-        EVERGREEN("evergreen"),
+      EVERGREEN("evergreen"),
 
-        CANCEL("cancel"),
+      CANCEL("cancel"),
 
-        /**
-         * An enum member indicating that ActionAtTermEnd was instantiated with an unknown value.
-         */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that ActionAtTermEnd was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        ActionAtTermEnd(String value) {
-          this.value = value;
-        }
+      ActionAtTermEnd(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static ActionAtTermEnd fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ActionAtTermEnd enumValue : ActionAtTermEnd.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static ActionAtTermEnd fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ActionAtTermEnd enumValue : ActionAtTermEnd.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
@@ -1180,67 +1173,67 @@ public final class EstimateCreateSubscriptionParams {
       public EventBasedAddonsParams build() {
         return new EventBasedAddonsParams(this);
       }
+    }
 
-      public enum OnEvent {
-        SUBSCRIPTION_CREATION("subscription_creation"),
+    public enum OnEvent {
+      SUBSCRIPTION_CREATION("subscription_creation"),
 
-        SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
+      SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
 
-        PLAN_ACTIVATION("plan_activation"),
+      PLAN_ACTIVATION("plan_activation"),
 
-        SUBSCRIPTION_ACTIVATION("subscription_activation"),
+      SUBSCRIPTION_ACTIVATION("subscription_activation"),
 
-        CONTRACT_TERMINATION("contract_termination"),
+      CONTRACT_TERMINATION("contract_termination"),
 
-        /** An enum member indicating that OnEvent was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that OnEvent was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        OnEvent(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static OnEvent fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (OnEvent enumValue : OnEvent.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      OnEvent(String value) {
+        this.value = value;
       }
 
-      public enum ChargeOn {
-        IMMEDIATELY("immediately"),
+      public String getValue() {
+        return value;
+      }
 
-        ON_EVENT("on_event"),
-
-        /** An enum member indicating that ChargeOn was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        ChargeOn(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static ChargeOn fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (ChargeOn enumValue : ChargeOn.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static OnEvent fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (OnEvent enumValue : OnEvent.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum ChargeOn {
+      IMMEDIATELY("immediately"),
+
+      ON_EVENT("on_event"),
+
+      /** An enum member indicating that ChargeOn was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      ChargeOn(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static ChargeOn fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (ChargeOn enumValue : ChargeOn.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

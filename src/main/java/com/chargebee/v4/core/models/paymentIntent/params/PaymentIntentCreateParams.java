@@ -102,73 +102,71 @@ public final class PaymentIntentCreateParams {
     public PaymentIntentCreateParams build() {
       return new PaymentIntentCreateParams(this);
     }
+  }
 
-    public enum PaymentMethodType {
-      CARD("card"),
+  public enum PaymentMethodType {
+    CARD("card"),
 
-      IDEAL("ideal"),
+    IDEAL("ideal"),
 
-      SOFORT("sofort"),
+    SOFORT("sofort"),
 
-      BANCONTACT("bancontact"),
+    BANCONTACT("bancontact"),
 
-      GOOGLE_PAY("google_pay"),
+    GOOGLE_PAY("google_pay"),
 
-      DOTPAY("dotpay"),
+    DOTPAY("dotpay"),
 
-      GIROPAY("giropay"),
+    GIROPAY("giropay"),
 
-      APPLE_PAY("apple_pay"),
+    APPLE_PAY("apple_pay"),
 
-      UPI("upi"),
+    UPI("upi"),
 
-      NETBANKING_EMANDATES("netbanking_emandates"),
+    NETBANKING_EMANDATES("netbanking_emandates"),
 
-      PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
 
-      DIRECT_DEBIT("direct_debit"),
+    DIRECT_DEBIT("direct_debit"),
 
-      BOLETO("boleto"),
+    BOLETO("boleto"),
 
-      VENMO("venmo"),
+    VENMO("venmo"),
 
-      AMAZON_PAYMENTS("amazon_payments"),
+    AMAZON_PAYMENTS("amazon_payments"),
 
-      PAY_TO("pay_to"),
+    PAY_TO("pay_to"),
 
-      FASTER_PAYMENTS("faster_payments"),
+    FASTER_PAYMENTS("faster_payments"),
 
-      SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
 
-      KLARNA_PAY_NOW("klarna_pay_now"),
+    KLARNA_PAY_NOW("klarna_pay_now"),
 
-      ONLINE_BANKING_POLAND("online_banking_poland"),
+    ONLINE_BANKING_POLAND("online_banking_poland"),
 
-      PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
-      /**
-       * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      PaymentMethodType(String value) {
-        this.value = value;
-      }
+    PaymentMethodType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static PaymentMethodType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentMethodType enumValue : PaymentMethodType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static PaymentMethodType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentMethodType enumValue : PaymentMethodType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

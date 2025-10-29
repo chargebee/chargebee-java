@@ -150,73 +150,73 @@ public final class InvoiceRecordPaymentParams {
       public TransactionParams build() {
         return new TransactionParams(this);
       }
+    }
 
-      public enum PaymentMethod {
-        CASH("cash"),
+    public enum PaymentMethod {
+      CASH("cash"),
 
-        CHECK("check"),
+      CHECK("check"),
 
-        BANK_TRANSFER("bank_transfer"),
+      BANK_TRANSFER("bank_transfer"),
 
-        OTHER("other"),
+      OTHER("other"),
 
-        APP_STORE("app_store"),
+      APP_STORE("app_store"),
 
-        PLAY_STORE("play_store"),
+      PLAY_STORE("play_store"),
 
-        CUSTOM("custom"),
+      CUSTOM("custom"),
 
-        /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        PaymentMethod(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static PaymentMethod fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (PaymentMethod enumValue : PaymentMethod.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
-          }
-          return _UNKNOWN;
-        }
+      PaymentMethod(String value) {
+        this.value = value;
       }
 
-      public enum Status {
-        SUCCESS("success"),
+      public String getValue() {
+        return value;
+      }
 
-        FAILURE("failure"),
-
-        LATE_FAILURE("late_failure"),
-
-        /** An enum member indicating that Status was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
-
-        Status(String value) {
-          this.value = value;
-        }
-
-        public String getValue() {
-          return value;
-        }
-
-        public static Status fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (Status enumValue : Status.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static PaymentMethod fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (PaymentMethod enumValue : PaymentMethod.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
+      }
+    }
+
+    public enum Status {
+      SUCCESS("success"),
+
+      FAILURE("failure"),
+
+      LATE_FAILURE("late_failure"),
+
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Status(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

@@ -96,37 +96,37 @@ public final class SubscriptionAddChargeAtTermEndParams {
     public SubscriptionAddChargeAtTermEndParams build() {
       return new SubscriptionAddChargeAtTermEndParams(this);
     }
+  }
 
-    public enum AvalaraSaleType {
-      WHOLESALE("wholesale"),
+  public enum AvalaraSaleType {
+    WHOLESALE("wholesale"),
 
-      RETAIL("retail"),
+    RETAIL("retail"),
 
-      CONSUMED("consumed"),
+    CONSUMED("consumed"),
 
-      VENDOR_USE("vendor_use"),
+    VENDOR_USE("vendor_use"),
 
-      /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that AvalaraSaleType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      AvalaraSaleType(String value) {
-        this.value = value;
-      }
+    AvalaraSaleType(String value) {
+      this.value = value;
+    }
 
-      public String getValue() {
-        return value;
-      }
+    public String getValue() {
+      return value;
+    }
 
-      public static AvalaraSaleType fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static AvalaraSaleType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (AvalaraSaleType enumValue : AvalaraSaleType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
     }
   }
 }

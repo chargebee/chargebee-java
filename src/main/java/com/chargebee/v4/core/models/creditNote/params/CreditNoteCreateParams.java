@@ -163,71 +163,71 @@ public final class CreditNoteCreateParams {
     public CreditNoteCreateParams build() {
       return new CreditNoteCreateParams(this);
     }
+  }
 
-    public enum Type {
-      ADJUSTMENT("adjustment"),
+  public enum Type {
+    ADJUSTMENT("adjustment"),
 
-      REFUNDABLE("refundable"),
+    REFUNDABLE("refundable"),
 
-      STORE("store"),
+    STORE("store"),
 
-      /** An enum member indicating that Type was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
 
-      Type(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Type fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Type enumValue : Type.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
+    Type(String value) {
+      this.value = value;
     }
 
-    public enum ReasonCode {
-      PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+    public String getValue() {
+      return value;
+    }
 
-      SERVICE_UNSATISFACTORY("service_unsatisfactory"),
-
-      ORDER_CHANGE("order_change"),
-
-      ORDER_CANCELLATION("order_cancellation"),
-
-      WAIVER("waiver"),
-
-      OTHER("other"),
-
-      /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReasonCode(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReasonCode fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReasonCode enumValue : ReasonCode.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
         }
-        return _UNKNOWN;
       }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReasonCode {
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+
+    SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+
+    ORDER_CHANGE("order_change"),
+
+    ORDER_CANCELLATION("order_cancellation"),
+
+    WAIVER("waiver"),
+
+    OTHER("other"),
+
+    /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReasonCode(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ReasonCode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReasonCode enumValue : ReasonCode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -335,41 +335,41 @@ public final class CreditNoteCreateParams {
       public LineItemsParams build() {
         return new LineItemsParams(this);
       }
+    }
 
-      public enum EntityType {
-        ADHOC("adhoc"),
+    public enum EntityType {
+      ADHOC("adhoc"),
 
-        PLAN_ITEM_PRICE("plan_item_price"),
+      PLAN_ITEM_PRICE("plan_item_price"),
 
-        ADDON_ITEM_PRICE("addon_item_price"),
+      ADDON_ITEM_PRICE("addon_item_price"),
 
-        CHARGE_ITEM_PRICE("charge_item_price"),
+      CHARGE_ITEM_PRICE("charge_item_price"),
 
-        PLAN("plan"),
+      PLAN("plan"),
 
-        ADDON("addon"),
+      ADDON("addon"),
 
-        /** An enum member indicating that EntityType was instantiated with an unknown value. */
-        _UNKNOWN(null);
-        private final String value;
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
 
-        EntityType(String value) {
-          this.value = value;
-        }
+      EntityType(String value) {
+        this.value = value;
+      }
 
-        public String getValue() {
-          return value;
-        }
+      public String getValue() {
+        return value;
+      }
 
-        public static EntityType fromString(String value) {
-          if (value == null) return _UNKNOWN;
-          for (EntityType enumValue : EntityType.values()) {
-            if (enumValue.value != null && enumValue.value.equals(value)) {
-              return enumValue;
-            }
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
           }
-          return _UNKNOWN;
         }
+        return _UNKNOWN;
       }
     }
   }
