@@ -138,11 +138,11 @@ ChargebeeClient client = ChargebeeClient.builder()
 
 #### Create and list customers (sync)
 ```java
-import com.chargebee.core.services.CustomerService;
-import com.chargebee.core.models.customer.params.CustomerCreateParams;
-import com.chargebee.core.models.customer.params.CustomerListParams;
-import com.chargebee.core.responses.customer.CustomerCreateResponse;
-import com.chargebee.core.responses.customer.CustomerListResponse;
+import com.chargebee.v4.services.CustomerService;
+import com.chargebee.v4.core.models.customer.params.CustomerCreateParams;
+import com.chargebee.v4.core.models.customer.params.CustomerListParams;
+import com.chargebee.v4.core.responses.customer.CustomerCreateResponse;
+import com.chargebee.v4.core.responses.customer.CustomerListResponse;
 
 CustomerService customers = client.customer();
 
@@ -213,6 +213,173 @@ future.thenAccept(resp -> {
         System.out.println(resp.getBodyAsString());
     }
 });
+```
+
+### Exception Handling
+
+The library provides a comprehensive exception hierarchy to handle different types of errors that may occur during API operations.
+
+#### Exception Hierarchy
+
+All Chargebee exceptions extend from `TransportException`, which is a checked exception:
+
+```
+TransportException (checked)
+  └── HttpException (HTTP status code errors: 4xx, 5xx)
+        ├── ClientErrorException (4xx errors)
+        ├── ServerErrorException (5xx errors)
+        └── APIException (Chargebee API errors)
+              ├── InvalidRequestException (validation errors)
+              ├── PaymentException (payment-related errors)
+              ├── OperationFailedException (business logic errors)
+              ├── BatchAPIException (batch operation errors)
+              └── UbbBatchIngestionInvalidRequestException (batch ingestion errors)
+```
+
+#### Exception Types
+
+- **`TransportException`**: Base exception for all transport-layer failures (network issues, timeouts, etc.)
+- **`HttpException`**: Thrown for HTTP error status codes (4xx, 5xx) - contains status code and response
+- **`ClientErrorException`**: HTTP 4xx client errors (bad request, unauthorized, not found, etc.)
+- **`ServerErrorException`**: HTTP 5xx server errors (internal server error, service unavailable, etc.)
+- **`APIException`**: Base exception for Chargebee API errors - includes error type, API error code, and parameters
+- **`InvalidRequestException`**: Invalid parameters, missing required fields, or validation errors (type: `invalid_request`)
+- **`PaymentException`**: Payment failures such as card declined, insufficient funds, etc. (type: `payment`)
+- **`OperationFailedException`**: Business logic violations or state conflicts (type: `operation_failed`)
+- **`BatchAPIException`**: Errors specific to batch API operations
+- **`UbbBatchIngestionInvalidRequestException`**: Errors specific to UBB batch ingestion operations
+
+#### v4 SDK Exception Handling Examples
+
+##### Basic exception handling
+```java
+import com.chargebee.v4.exceptions.*;
+import com.chargebee.v4.services.CustomerService;
+import com.chargebee.v4.core.models.customer.params.CustomerCreateParams;
+
+CustomerService customers = client.customer();
+
+try {
+    CustomerCreateResponse created = customers.create(
+        CustomerCreateParams.builder()
+            .email("invalid-email")  // Invalid email format
+            .build()
+    ).get();
+} catch (InvalidRequestException e) {
+    // Handle validation errors
+    System.err.println("Validation error: " + e.getMessage());
+    System.err.println("Error code: " + e.getApiErrorCode());
+    System.err.println("Invalid parameters: " + e.getParams());
+    System.err.println("HTTP status: " + e.getStatusCode());
+} catch (APIException e) {
+    // Handle other API errors
+    System.err.println("API error: " + e.getMessage());
+    System.err.println("Error type: " + e.getType());
+} catch (TransportException e) {
+    // Handle network/transport errors
+    System.err.println("Transport error: " + e.getMessage());
+}
+```
+
+##### Handling payment errors
+```java
+import com.chargebee.v4.exceptions.PaymentException;
+import com.chargebee.v4.services.SubscriptionService;
+
+try {
+    SubscriptionCreateResponse subscription = subscriptions.create(params).get();
+} catch (PaymentException e) {
+    // Handle payment-specific errors
+    System.err.println("Payment failed: " + e.getMessage());
+    System.err.println("Payment error code: " + e.getApiErrorCode());
+    // Common codes: card_declined, insufficient_funds, etc.
+} catch (APIException e) {
+    System.err.println("Other API error: " + e.getMessage());
+}
+```
+
+##### Handling HTTP-level errors
+```java
+import com.chargebee.v4.transport.ClientErrorException;
+import com.chargebee.v4.transport.ServerErrorException;
+import com.chargebee.v4.transport.HttpException;
+
+try {
+    CustomerCreateResponse response = customers.create(params).get();
+} catch (ClientErrorException e) {
+    // Handle 4xx client errors
+    if (e.isUnauthorized()) {
+        System.err.println("Authentication failed. Check your API key.");
+    } else if (e.isNotFound()) {
+        System.err.println("Resource not found.");
+    } else if (e.isTooManyRequests()) {
+        System.err.println("Rate limit exceeded. Retry after some time.");
+    } else {
+        System.err.println("Client error: " + e.getStatusCode());
+    }
+} catch (ServerErrorException e) {
+    // Handle 5xx server errors (often retryable)
+    if (e.isRetryable()) {
+        System.err.println("Server error. Consider retrying: " + e.getMessage());
+    }
+} catch (HttpException e) {
+    System.err.println("HTTP error: " + e.getStatusCode());
+}
+```
+
+##### Extracting detailed error information
+```java
+try {
+    // API operation
+} catch (APIException e) {
+    // Get HTTP status code
+    int statusCode = e.getStatusCode();
+    
+    // Get error type (payment, invalid_request, operation_failed)
+    String errorType = e.getType();
+    
+    // Get API-specific error code
+    String apiErrorCode = e.getApiErrorCode();
+    
+    // Get error message
+    String message = e.getMessage();
+    
+    // Get invalid parameter names (for validation errors)
+    List<String> invalidParams = e.getParams();
+    
+    // Get full JSON response for debugging
+    String jsonResponse = e.getJsonResponse();
+    
+    // Get full HTTP response object
+    Response response = e.getResponse();
+    
+    System.err.println("Error details: " + e.toString());
+}
+```
+
+##### Async exception handling
+```java
+import java.util.concurrent.CompletableFuture;
+
+CompletableFuture<CustomerCreateResponse> futureCustomer = customers.create(params);
+
+futureCustomer
+    .thenAccept(customer -> {
+        System.out.println("Customer created: " + customer.getId());
+    })
+    .exceptionally(throwable -> {
+        if (throwable.getCause() instanceof InvalidRequestException) {
+            InvalidRequestException e = (InvalidRequestException) throwable.getCause();
+            System.err.println("Validation error: " + e.getMessage());
+            System.err.println("Invalid params: " + e.getParams());
+        } else if (throwable.getCause() instanceof APIException) {
+            APIException e = (APIException) throwable.getCause();
+            System.err.println("API error: " + e.getApiErrorCode());
+        } else {
+            System.err.println("Unexpected error: " + throwable.getMessage());
+        }
+        return null;
+    });
 ```
 
 ### v3 SDK Examples

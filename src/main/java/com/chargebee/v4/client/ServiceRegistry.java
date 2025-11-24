@@ -1,166 +1,166 @@
 package com.chargebee.v4.client;
 
-import com.chargebee.v4.core.services.GiftService;
+import com.chargebee.v4.services.GiftService;
 
-import com.chargebee.v4.core.services.CsvTaxRuleService;
+import com.chargebee.v4.services.CsvTaxRuleService;
 
-import com.chargebee.v4.core.services.UsageService;
+import com.chargebee.v4.services.UsageService;
 
-import com.chargebee.v4.core.services.TimeMachineService;
+import com.chargebee.v4.services.TimeMachineService;
 
-import com.chargebee.v4.core.services.BusinessEntityService;
+import com.chargebee.v4.services.BusinessEntityService;
 
-import com.chargebee.v4.core.services.OfferEventService;
+import com.chargebee.v4.services.OfferEventService;
 
-import com.chargebee.v4.core.services.InAppSubscriptionService;
+import com.chargebee.v4.services.InAppSubscriptionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationService;
+import com.chargebee.v4.services.Pc2MigrationService;
 
-import com.chargebee.v4.core.services.CreditNoteService;
+import com.chargebee.v4.services.CreditNoteService;
 
-import com.chargebee.v4.core.services.CouponSetService;
+import com.chargebee.v4.services.CouponSetService;
 
-import com.chargebee.v4.core.services.QuoteService;
+import com.chargebee.v4.services.QuoteService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemService;
+import com.chargebee.v4.services.Pc2MigrationItemService;
 
-import com.chargebee.v4.core.services.EstimateService;
+import com.chargebee.v4.services.EstimateService;
 
-import com.chargebee.v4.core.services.VariantService;
+import com.chargebee.v4.services.VariantService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemFamilyService;
+import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 
-import com.chargebee.v4.core.services.PaymentSourceService;
+import com.chargebee.v4.services.PaymentSourceService;
 
-import com.chargebee.v4.core.services.RecordedPurchaseService;
+import com.chargebee.v4.services.RecordedPurchaseService;
 
-import com.chargebee.v4.core.services.PlanService;
+import com.chargebee.v4.services.PlanService;
 
-import com.chargebee.v4.core.services.ExportService;
+import com.chargebee.v4.services.ExportService;
 
-import com.chargebee.v4.core.services.OrderService;
+import com.chargebee.v4.services.OrderService;
 
-import com.chargebee.v4.core.services.ItemService;
+import com.chargebee.v4.services.ItemService;
 
-import com.chargebee.v4.core.services.CustomerEntitlementService;
+import com.chargebee.v4.services.CustomerEntitlementService;
 
-import com.chargebee.v4.core.services.PersonalizedOfferService;
+import com.chargebee.v4.services.PersonalizedOfferService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionService;
+import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionItemService;
+import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
-import com.chargebee.v4.core.services.RampService;
+import com.chargebee.v4.services.RampService;
 
-import com.chargebee.v4.core.services.OmnichannelOneTimeOrderService;
+import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
 
-import com.chargebee.v4.core.services.DifferentialPriceService;
+import com.chargebee.v4.services.DifferentialPriceService;
 
-import com.chargebee.v4.core.services.EntitlementService;
+import com.chargebee.v4.services.EntitlementService;
 
-import com.chargebee.v4.core.services.AdditionalBillingLogiqService;
+import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
-import com.chargebee.v4.core.services.SubscriptionSettingService;
+import com.chargebee.v4.services.SubscriptionSettingService;
 
-import com.chargebee.v4.core.services.SiteMigrationDetailService;
+import com.chargebee.v4.services.SiteMigrationDetailService;
 
-import com.chargebee.v4.core.services.PaymentIntentService;
+import com.chargebee.v4.services.PaymentIntentService;
 
-import com.chargebee.v4.core.services.PaymentScheduleSchemeService;
+import com.chargebee.v4.services.PaymentScheduleSchemeService;
 
-import com.chargebee.v4.core.services.CardService;
+import com.chargebee.v4.services.CardService;
 
-import com.chargebee.v4.core.services.AttachedItemService;
+import com.chargebee.v4.services.AttachedItemService;
 
-import com.chargebee.v4.core.services.UsageEventService;
+import com.chargebee.v4.services.UsageEventService;
 
-import com.chargebee.v4.core.services.PriceVariantService;
+import com.chargebee.v4.services.PriceVariantService;
 
-import com.chargebee.v4.core.services.FullExportService;
+import com.chargebee.v4.services.FullExportService;
 
-import com.chargebee.v4.core.services.VirtualBankAccountService;
+import com.chargebee.v4.services.VirtualBankAccountService;
 
-import com.chargebee.v4.core.services.AddonService;
+import com.chargebee.v4.services.AddonService;
 
-import com.chargebee.v4.core.services.TpSiteUserService;
+import com.chargebee.v4.services.TpSiteUserService;
 
-import com.chargebee.v4.core.services.ConfigurationService;
+import com.chargebee.v4.services.ConfigurationService;
 
-import com.chargebee.v4.core.services.PricingPageSessionService;
+import com.chargebee.v4.services.PricingPageSessionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemPriceService;
+import com.chargebee.v4.services.Pc2MigrationItemPriceService;
 
-import com.chargebee.v4.core.services.RuleService;
+import com.chargebee.v4.services.RuleService;
 
-import com.chargebee.v4.core.services.SubscriptionService;
+import com.chargebee.v4.services.SubscriptionService;
 
-import com.chargebee.v4.core.services.MediaService;
+import com.chargebee.v4.services.MediaService;
 
-import com.chargebee.v4.core.services.BusinessProfileService;
+import com.chargebee.v4.services.BusinessProfileService;
 
-import com.chargebee.v4.core.services.PromotionalCreditService;
+import com.chargebee.v4.services.PromotionalCreditService;
 
-import com.chargebee.v4.core.services.BrandConfigurationService;
+import com.chargebee.v4.services.BrandConfigurationService;
 
-import com.chargebee.v4.core.services.WebhookEndpointService;
+import com.chargebee.v4.services.WebhookEndpointService;
 
-import com.chargebee.v4.core.services.FeatureService;
+import com.chargebee.v4.services.FeatureService;
 
-import com.chargebee.v4.core.services.UnbilledChargesSettingService;
+import com.chargebee.v4.services.UnbilledChargesSettingService;
 
-import com.chargebee.v4.core.services.CurrencyService;
+import com.chargebee.v4.services.CurrencyService;
 
-import com.chargebee.v4.core.services.EventService;
+import com.chargebee.v4.services.EventService;
 
-import com.chargebee.v4.core.services.UsageFileService;
+import com.chargebee.v4.services.UsageFileService;
 
-import com.chargebee.v4.core.services.NonSubscriptionService;
+import com.chargebee.v4.services.NonSubscriptionService;
 
-import com.chargebee.v4.core.services.ResourceMigrationService;
+import com.chargebee.v4.services.ResourceMigrationService;
 
-import com.chargebee.v4.core.services.ProductService;
+import com.chargebee.v4.services.ProductService;
 
-import com.chargebee.v4.core.services.CouponCodeService;
+import com.chargebee.v4.services.CouponCodeService;
 
-import com.chargebee.v4.core.services.AddressService;
+import com.chargebee.v4.services.AddressService;
 
-import com.chargebee.v4.core.services.CouponService;
+import com.chargebee.v4.services.CouponService;
 
-import com.chargebee.v4.core.services.PortalSessionService;
+import com.chargebee.v4.services.PortalSessionService;
 
-import com.chargebee.v4.core.services.ItemPriceService;
+import com.chargebee.v4.services.ItemPriceService;
 
-import com.chargebee.v4.core.services.OfferFulfillmentService;
+import com.chargebee.v4.services.OfferFulfillmentService;
 
-import com.chargebee.v4.core.services.HostedPageService;
+import com.chargebee.v4.services.HostedPageService;
 
-import com.chargebee.v4.core.services.PurchaseService;
+import com.chargebee.v4.services.PurchaseService;
 
-import com.chargebee.v4.core.services.PaymentVoucherService;
+import com.chargebee.v4.services.PaymentVoucherService;
 
-import com.chargebee.v4.core.services.ItemFamilyService;
+import com.chargebee.v4.services.ItemFamilyService;
 
-import com.chargebee.v4.core.services.SubscriptionEntitlementService;
+import com.chargebee.v4.services.SubscriptionEntitlementService;
 
-import com.chargebee.v4.core.services.ThirdPartyEntityMappingService;
+import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
-import com.chargebee.v4.core.services.EntitlementOverrideService;
+import com.chargebee.v4.services.EntitlementOverrideService;
 
-import com.chargebee.v4.core.services.ThirdPartyConfigurationService;
+import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
-import com.chargebee.v4.core.services.UnbilledChargeService;
+import com.chargebee.v4.services.UnbilledChargeService;
 
-import com.chargebee.v4.core.services.CommentService;
+import com.chargebee.v4.services.CommentService;
 
-import com.chargebee.v4.core.services.InvoiceService;
+import com.chargebee.v4.services.InvoiceService;
 
-import com.chargebee.v4.core.services.TransactionService;
+import com.chargebee.v4.services.TransactionService;
 
-import com.chargebee.v4.core.services.ThirdPartySyncDetailService;
+import com.chargebee.v4.services.ThirdPartySyncDetailService;
 
-import com.chargebee.v4.core.services.CustomerService;
+import com.chargebee.v4.services.CustomerService;
 
-import com.chargebee.v4.core.services.ItemEntitlementService;
+import com.chargebee.v4.services.ItemEntitlementService;
 
 /**
  * Auto-generated service registry for lazy initialization of all Chargebee services. This class
@@ -339,7 +339,7 @@ final class ServiceRegistry {
    * Get or create the GiftService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  GiftService gift() {
+  GiftService gifts() {
     if (giftService == null) {
       synchronized (this) {
         if (giftService == null) {
@@ -354,7 +354,7 @@ final class ServiceRegistry {
    * Get or create the CsvTaxRuleService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CsvTaxRuleService csvTaxRule() {
+  CsvTaxRuleService csvTaxRules() {
     if (csvTaxRuleService == null) {
       synchronized (this) {
         if (csvTaxRuleService == null) {
@@ -369,7 +369,7 @@ final class ServiceRegistry {
    * Get or create the UsageService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  UsageService usage() {
+  UsageService usages() {
     if (usageService == null) {
       synchronized (this) {
         if (usageService == null) {
@@ -384,7 +384,7 @@ final class ServiceRegistry {
    * Get or create the TimeMachineService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  TimeMachineService timeMachine() {
+  TimeMachineService timeMachines() {
     if (timeMachineService == null) {
       synchronized (this) {
         if (timeMachineService == null) {
@@ -399,7 +399,7 @@ final class ServiceRegistry {
    * Get or create the BusinessEntityService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  BusinessEntityService businessEntity() {
+  BusinessEntityService businessEntities() {
     if (businessEntityService == null) {
       synchronized (this) {
         if (businessEntityService == null) {
@@ -414,7 +414,7 @@ final class ServiceRegistry {
    * Get or create the OfferEventService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  OfferEventService offerEvent() {
+  OfferEventService offerEvents() {
     if (offerEventService == null) {
       synchronized (this) {
         if (offerEventService == null) {
@@ -429,7 +429,7 @@ final class ServiceRegistry {
    * Get or create the InAppSubscriptionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  InAppSubscriptionService inAppSubscription() {
+  InAppSubscriptionService inAppSubscriptions() {
     if (inAppSubscriptionService == null) {
       synchronized (this) {
         if (inAppSubscriptionService == null) {
@@ -444,7 +444,7 @@ final class ServiceRegistry {
    * Get or create the Pc2MigrationService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  Pc2MigrationService pc2Migration() {
+  Pc2MigrationService pc2Migrations() {
     if (pc2MigrationService == null) {
       synchronized (this) {
         if (pc2MigrationService == null) {
@@ -459,7 +459,7 @@ final class ServiceRegistry {
    * Get or create the CreditNoteService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CreditNoteService creditNote() {
+  CreditNoteService creditNotes() {
     if (creditNoteService == null) {
       synchronized (this) {
         if (creditNoteService == null) {
@@ -474,7 +474,7 @@ final class ServiceRegistry {
    * Get or create the CouponSetService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CouponSetService couponSet() {
+  CouponSetService couponSets() {
     if (couponSetService == null) {
       synchronized (this) {
         if (couponSetService == null) {
@@ -489,7 +489,7 @@ final class ServiceRegistry {
    * Get or create the QuoteService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  QuoteService quote() {
+  QuoteService quotes() {
     if (quoteService == null) {
       synchronized (this) {
         if (quoteService == null) {
@@ -504,7 +504,7 @@ final class ServiceRegistry {
    * Get or create the Pc2MigrationItemService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  Pc2MigrationItemService pc2MigrationItem() {
+  Pc2MigrationItemService pc2MigrationItems() {
     if (pc2MigrationItemService == null) {
       synchronized (this) {
         if (pc2MigrationItemService == null) {
@@ -519,7 +519,7 @@ final class ServiceRegistry {
    * Get or create the EstimateService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  EstimateService estimate() {
+  EstimateService estimates() {
     if (estimateService == null) {
       synchronized (this) {
         if (estimateService == null) {
@@ -534,7 +534,7 @@ final class ServiceRegistry {
    * Get or create the VariantService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  VariantService variant() {
+  VariantService variants() {
     if (variantService == null) {
       synchronized (this) {
         if (variantService == null) {
@@ -549,7 +549,7 @@ final class ServiceRegistry {
    * Get or create the Pc2MigrationItemFamilyService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  Pc2MigrationItemFamilyService pc2MigrationItemFamily() {
+  Pc2MigrationItemFamilyService pc2MigrationItemFamilies() {
     if (pc2MigrationItemFamilyService == null) {
       synchronized (this) {
         if (pc2MigrationItemFamilyService == null) {
@@ -564,7 +564,7 @@ final class ServiceRegistry {
    * Get or create the PaymentSourceService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PaymentSourceService paymentSource() {
+  PaymentSourceService paymentSources() {
     if (paymentSourceService == null) {
       synchronized (this) {
         if (paymentSourceService == null) {
@@ -579,7 +579,7 @@ final class ServiceRegistry {
    * Get or create the RecordedPurchaseService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  RecordedPurchaseService recordedPurchase() {
+  RecordedPurchaseService recordedPurchases() {
     if (recordedPurchaseService == null) {
       synchronized (this) {
         if (recordedPurchaseService == null) {
@@ -594,7 +594,7 @@ final class ServiceRegistry {
    * Get or create the PlanService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  PlanService plan() {
+  PlanService plans() {
     if (planService == null) {
       synchronized (this) {
         if (planService == null) {
@@ -609,7 +609,7 @@ final class ServiceRegistry {
    * Get or create the ExportService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  ExportService export() {
+  ExportService exports() {
     if (exportService == null) {
       synchronized (this) {
         if (exportService == null) {
@@ -624,7 +624,7 @@ final class ServiceRegistry {
    * Get or create the OrderService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  OrderService order() {
+  OrderService orders() {
     if (orderService == null) {
       synchronized (this) {
         if (orderService == null) {
@@ -639,7 +639,7 @@ final class ServiceRegistry {
    * Get or create the ItemService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  ItemService item() {
+  ItemService items() {
     if (itemService == null) {
       synchronized (this) {
         if (itemService == null) {
@@ -654,7 +654,7 @@ final class ServiceRegistry {
    * Get or create the CustomerEntitlementService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CustomerEntitlementService customerEntitlement() {
+  CustomerEntitlementService customerEntitlements() {
     if (customerEntitlementService == null) {
       synchronized (this) {
         if (customerEntitlementService == null) {
@@ -669,7 +669,7 @@ final class ServiceRegistry {
    * Get or create the PersonalizedOfferService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PersonalizedOfferService personalizedOffer() {
+  PersonalizedOfferService personalizedOffers() {
     if (personalizedOfferService == null) {
       synchronized (this) {
         if (personalizedOfferService == null) {
@@ -684,7 +684,7 @@ final class ServiceRegistry {
    * Get or create the OmnichannelSubscriptionService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  OmnichannelSubscriptionService omnichannelSubscription() {
+  OmnichannelSubscriptionService omnichannelSubscriptions() {
     if (omnichannelSubscriptionService == null) {
       synchronized (this) {
         if (omnichannelSubscriptionService == null) {
@@ -699,7 +699,7 @@ final class ServiceRegistry {
    * Get or create the OmnichannelSubscriptionItemService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  OmnichannelSubscriptionItemService omnichannelSubscriptionItem() {
+  OmnichannelSubscriptionItemService omnichannelSubscriptionItems() {
     if (omnichannelSubscriptionItemService == null) {
       synchronized (this) {
         if (omnichannelSubscriptionItemService == null) {
@@ -714,7 +714,7 @@ final class ServiceRegistry {
    * Get or create the RampService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  RampService ramp() {
+  RampService ramps() {
     if (rampService == null) {
       synchronized (this) {
         if (rampService == null) {
@@ -729,7 +729,7 @@ final class ServiceRegistry {
    * Get or create the OmnichannelOneTimeOrderService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  OmnichannelOneTimeOrderService omnichannelOneTimeOrder() {
+  OmnichannelOneTimeOrderService omnichannelOneTimeOrders() {
     if (omnichannelOneTimeOrderService == null) {
       synchronized (this) {
         if (omnichannelOneTimeOrderService == null) {
@@ -744,7 +744,7 @@ final class ServiceRegistry {
    * Get or create the DifferentialPriceService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  DifferentialPriceService differentialPrice() {
+  DifferentialPriceService differentialPrices() {
     if (differentialPriceService == null) {
       synchronized (this) {
         if (differentialPriceService == null) {
@@ -759,7 +759,7 @@ final class ServiceRegistry {
    * Get or create the EntitlementService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  EntitlementService entitlement() {
+  EntitlementService entitlements() {
     if (entitlementService == null) {
       synchronized (this) {
         if (entitlementService == null) {
@@ -774,7 +774,7 @@ final class ServiceRegistry {
    * Get or create the AdditionalBillingLogiqService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  AdditionalBillingLogiqService additionalBillingLogiq() {
+  AdditionalBillingLogiqService additionalBillingLogiqs() {
     if (additionalBillingLogiqService == null) {
       synchronized (this) {
         if (additionalBillingLogiqService == null) {
@@ -789,7 +789,7 @@ final class ServiceRegistry {
    * Get or create the SubscriptionSettingService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  SubscriptionSettingService subscriptionSetting() {
+  SubscriptionSettingService subscriptionSettings() {
     if (subscriptionSettingService == null) {
       synchronized (this) {
         if (subscriptionSettingService == null) {
@@ -804,7 +804,7 @@ final class ServiceRegistry {
    * Get or create the SiteMigrationDetailService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  SiteMigrationDetailService siteMigrationDetail() {
+  SiteMigrationDetailService siteMigrationDetails() {
     if (siteMigrationDetailService == null) {
       synchronized (this) {
         if (siteMigrationDetailService == null) {
@@ -819,7 +819,7 @@ final class ServiceRegistry {
    * Get or create the PaymentIntentService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PaymentIntentService paymentIntent() {
+  PaymentIntentService paymentIntents() {
     if (paymentIntentService == null) {
       synchronized (this) {
         if (paymentIntentService == null) {
@@ -834,7 +834,7 @@ final class ServiceRegistry {
    * Get or create the PaymentScheduleSchemeService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PaymentScheduleSchemeService paymentScheduleScheme() {
+  PaymentScheduleSchemeService paymentScheduleSchemes() {
     if (paymentScheduleSchemeService == null) {
       synchronized (this) {
         if (paymentScheduleSchemeService == null) {
@@ -849,7 +849,7 @@ final class ServiceRegistry {
    * Get or create the CardService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  CardService card() {
+  CardService cards() {
     if (cardService == null) {
       synchronized (this) {
         if (cardService == null) {
@@ -864,7 +864,7 @@ final class ServiceRegistry {
    * Get or create the AttachedItemService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  AttachedItemService attachedItem() {
+  AttachedItemService attachedItems() {
     if (attachedItemService == null) {
       synchronized (this) {
         if (attachedItemService == null) {
@@ -879,7 +879,7 @@ final class ServiceRegistry {
    * Get or create the UsageEventService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  UsageEventService usageEvent() {
+  UsageEventService usageEvents() {
     if (usageEventService == null) {
       synchronized (this) {
         if (usageEventService == null) {
@@ -894,7 +894,7 @@ final class ServiceRegistry {
    * Get or create the PriceVariantService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PriceVariantService priceVariant() {
+  PriceVariantService priceVariants() {
     if (priceVariantService == null) {
       synchronized (this) {
         if (priceVariantService == null) {
@@ -909,7 +909,7 @@ final class ServiceRegistry {
    * Get or create the FullExportService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  FullExportService fullExport() {
+  FullExportService fullExports() {
     if (fullExportService == null) {
       synchronized (this) {
         if (fullExportService == null) {
@@ -924,7 +924,7 @@ final class ServiceRegistry {
    * Get or create the VirtualBankAccountService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  VirtualBankAccountService virtualBankAccount() {
+  VirtualBankAccountService virtualBankAccounts() {
     if (virtualBankAccountService == null) {
       synchronized (this) {
         if (virtualBankAccountService == null) {
@@ -939,7 +939,7 @@ final class ServiceRegistry {
    * Get or create the AddonService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  AddonService addon() {
+  AddonService addons() {
     if (addonService == null) {
       synchronized (this) {
         if (addonService == null) {
@@ -954,7 +954,7 @@ final class ServiceRegistry {
    * Get or create the TpSiteUserService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  TpSiteUserService tpSiteUser() {
+  TpSiteUserService tpSiteUsers() {
     if (tpSiteUserService == null) {
       synchronized (this) {
         if (tpSiteUserService == null) {
@@ -969,7 +969,7 @@ final class ServiceRegistry {
    * Get or create the ConfigurationService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ConfigurationService configuration() {
+  ConfigurationService configurations() {
     if (configurationService == null) {
       synchronized (this) {
         if (configurationService == null) {
@@ -984,7 +984,7 @@ final class ServiceRegistry {
    * Get or create the PricingPageSessionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PricingPageSessionService pricingPageSession() {
+  PricingPageSessionService pricingPageSessions() {
     if (pricingPageSessionService == null) {
       synchronized (this) {
         if (pricingPageSessionService == null) {
@@ -999,7 +999,7 @@ final class ServiceRegistry {
    * Get or create the Pc2MigrationItemPriceService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  Pc2MigrationItemPriceService pc2MigrationItemPrice() {
+  Pc2MigrationItemPriceService pc2MigrationItemPrices() {
     if (pc2MigrationItemPriceService == null) {
       synchronized (this) {
         if (pc2MigrationItemPriceService == null) {
@@ -1014,7 +1014,7 @@ final class ServiceRegistry {
    * Get or create the RuleService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  RuleService rule() {
+  RuleService rules() {
     if (ruleService == null) {
       synchronized (this) {
         if (ruleService == null) {
@@ -1029,7 +1029,7 @@ final class ServiceRegistry {
    * Get or create the SubscriptionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  SubscriptionService subscription() {
+  SubscriptionService subscriptions() {
     if (subscriptionService == null) {
       synchronized (this) {
         if (subscriptionService == null) {
@@ -1044,7 +1044,7 @@ final class ServiceRegistry {
    * Get or create the MediaService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  MediaService media() {
+  MediaService medias() {
     if (mediaService == null) {
       synchronized (this) {
         if (mediaService == null) {
@@ -1059,7 +1059,7 @@ final class ServiceRegistry {
    * Get or create the BusinessProfileService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  BusinessProfileService businessProfile() {
+  BusinessProfileService businessProfiles() {
     if (businessProfileService == null) {
       synchronized (this) {
         if (businessProfileService == null) {
@@ -1074,7 +1074,7 @@ final class ServiceRegistry {
    * Get or create the PromotionalCreditService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PromotionalCreditService promotionalCredit() {
+  PromotionalCreditService promotionalCredits() {
     if (promotionalCreditService == null) {
       synchronized (this) {
         if (promotionalCreditService == null) {
@@ -1089,7 +1089,7 @@ final class ServiceRegistry {
    * Get or create the BrandConfigurationService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  BrandConfigurationService brandConfiguration() {
+  BrandConfigurationService brandConfigurations() {
     if (brandConfigurationService == null) {
       synchronized (this) {
         if (brandConfigurationService == null) {
@@ -1104,7 +1104,7 @@ final class ServiceRegistry {
    * Get or create the WebhookEndpointService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  WebhookEndpointService webhookEndpoint() {
+  WebhookEndpointService webhookEndpoints() {
     if (webhookEndpointService == null) {
       synchronized (this) {
         if (webhookEndpointService == null) {
@@ -1119,7 +1119,7 @@ final class ServiceRegistry {
    * Get or create the FeatureService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  FeatureService feature() {
+  FeatureService features() {
     if (featureService == null) {
       synchronized (this) {
         if (featureService == null) {
@@ -1134,7 +1134,7 @@ final class ServiceRegistry {
    * Get or create the UnbilledChargesSettingService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  UnbilledChargesSettingService unbilledChargesSetting() {
+  UnbilledChargesSettingService unbilledChargesSettings() {
     if (unbilledChargesSettingService == null) {
       synchronized (this) {
         if (unbilledChargesSettingService == null) {
@@ -1149,7 +1149,7 @@ final class ServiceRegistry {
    * Get or create the CurrencyService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CurrencyService currency() {
+  CurrencyService currencies() {
     if (currencyService == null) {
       synchronized (this) {
         if (currencyService == null) {
@@ -1164,7 +1164,7 @@ final class ServiceRegistry {
    * Get or create the EventService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  EventService event() {
+  EventService events() {
     if (eventService == null) {
       synchronized (this) {
         if (eventService == null) {
@@ -1179,7 +1179,7 @@ final class ServiceRegistry {
    * Get or create the UsageFileService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  UsageFileService usageFile() {
+  UsageFileService usageFiles() {
     if (usageFileService == null) {
       synchronized (this) {
         if (usageFileService == null) {
@@ -1194,7 +1194,7 @@ final class ServiceRegistry {
    * Get or create the NonSubscriptionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  NonSubscriptionService nonSubscription() {
+  NonSubscriptionService nonSubscriptions() {
     if (nonSubscriptionService == null) {
       synchronized (this) {
         if (nonSubscriptionService == null) {
@@ -1209,7 +1209,7 @@ final class ServiceRegistry {
    * Get or create the ResourceMigrationService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ResourceMigrationService resourceMigration() {
+  ResourceMigrationService resourceMigrations() {
     if (resourceMigrationService == null) {
       synchronized (this) {
         if (resourceMigrationService == null) {
@@ -1224,7 +1224,7 @@ final class ServiceRegistry {
    * Get or create the ProductService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  ProductService product() {
+  ProductService products() {
     if (productService == null) {
       synchronized (this) {
         if (productService == null) {
@@ -1239,7 +1239,7 @@ final class ServiceRegistry {
    * Get or create the CouponCodeService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CouponCodeService couponCode() {
+  CouponCodeService couponCodes() {
     if (couponCodeService == null) {
       synchronized (this) {
         if (couponCodeService == null) {
@@ -1254,7 +1254,7 @@ final class ServiceRegistry {
    * Get or create the AddressService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  AddressService address() {
+  AddressService addresses() {
     if (addressService == null) {
       synchronized (this) {
         if (addressService == null) {
@@ -1269,7 +1269,7 @@ final class ServiceRegistry {
    * Get or create the CouponService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  CouponService coupon() {
+  CouponService coupons() {
     if (couponService == null) {
       synchronized (this) {
         if (couponService == null) {
@@ -1284,7 +1284,7 @@ final class ServiceRegistry {
    * Get or create the PortalSessionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PortalSessionService portalSession() {
+  PortalSessionService portalSessions() {
     if (portalSessionService == null) {
       synchronized (this) {
         if (portalSessionService == null) {
@@ -1299,7 +1299,7 @@ final class ServiceRegistry {
    * Get or create the ItemPriceService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ItemPriceService itemPrice() {
+  ItemPriceService itemPrices() {
     if (itemPriceService == null) {
       synchronized (this) {
         if (itemPriceService == null) {
@@ -1314,7 +1314,7 @@ final class ServiceRegistry {
    * Get or create the OfferFulfillmentService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  OfferFulfillmentService offerFulfillment() {
+  OfferFulfillmentService offerFulfillments() {
     if (offerFulfillmentService == null) {
       synchronized (this) {
         if (offerFulfillmentService == null) {
@@ -1329,7 +1329,7 @@ final class ServiceRegistry {
    * Get or create the HostedPageService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  HostedPageService hostedPage() {
+  HostedPageService hostedPages() {
     if (hostedPageService == null) {
       synchronized (this) {
         if (hostedPageService == null) {
@@ -1344,7 +1344,7 @@ final class ServiceRegistry {
    * Get or create the PurchaseService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PurchaseService purchase() {
+  PurchaseService purchases() {
     if (purchaseService == null) {
       synchronized (this) {
         if (purchaseService == null) {
@@ -1359,7 +1359,7 @@ final class ServiceRegistry {
    * Get or create the PaymentVoucherService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  PaymentVoucherService paymentVoucher() {
+  PaymentVoucherService paymentVouchers() {
     if (paymentVoucherService == null) {
       synchronized (this) {
         if (paymentVoucherService == null) {
@@ -1374,7 +1374,7 @@ final class ServiceRegistry {
    * Get or create the ItemFamilyService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ItemFamilyService itemFamily() {
+  ItemFamilyService itemFamilies() {
     if (itemFamilyService == null) {
       synchronized (this) {
         if (itemFamilyService == null) {
@@ -1389,7 +1389,7 @@ final class ServiceRegistry {
    * Get or create the SubscriptionEntitlementService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  SubscriptionEntitlementService subscriptionEntitlement() {
+  SubscriptionEntitlementService subscriptionEntitlements() {
     if (subscriptionEntitlementService == null) {
       synchronized (this) {
         if (subscriptionEntitlementService == null) {
@@ -1404,7 +1404,7 @@ final class ServiceRegistry {
    * Get or create the ThirdPartyEntityMappingService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  ThirdPartyEntityMappingService thirdPartyEntityMapping() {
+  ThirdPartyEntityMappingService thirdPartyEntityMappings() {
     if (thirdPartyEntityMappingService == null) {
       synchronized (this) {
         if (thirdPartyEntityMappingService == null) {
@@ -1419,7 +1419,7 @@ final class ServiceRegistry {
    * Get or create the EntitlementOverrideService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  EntitlementOverrideService entitlementOverride() {
+  EntitlementOverrideService entitlementOverrides() {
     if (entitlementOverrideService == null) {
       synchronized (this) {
         if (entitlementOverrideService == null) {
@@ -1434,7 +1434,7 @@ final class ServiceRegistry {
    * Get or create the ThirdPartyConfigurationService instance. Thread-safe lazy initialization
    * using double-checked locking.
    */
-  ThirdPartyConfigurationService thirdPartyConfiguration() {
+  ThirdPartyConfigurationService thirdPartyConfigurations() {
     if (thirdPartyConfigurationService == null) {
       synchronized (this) {
         if (thirdPartyConfigurationService == null) {
@@ -1449,7 +1449,7 @@ final class ServiceRegistry {
    * Get or create the UnbilledChargeService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  UnbilledChargeService unbilledCharge() {
+  UnbilledChargeService unbilledCharges() {
     if (unbilledChargeService == null) {
       synchronized (this) {
         if (unbilledChargeService == null) {
@@ -1464,7 +1464,7 @@ final class ServiceRegistry {
    * Get or create the CommentService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  CommentService comment() {
+  CommentService comments() {
     if (commentService == null) {
       synchronized (this) {
         if (commentService == null) {
@@ -1479,7 +1479,7 @@ final class ServiceRegistry {
    * Get or create the InvoiceService instance. Thread-safe lazy initialization using double-checked
    * locking.
    */
-  InvoiceService invoice() {
+  InvoiceService invoices() {
     if (invoiceService == null) {
       synchronized (this) {
         if (invoiceService == null) {
@@ -1494,7 +1494,7 @@ final class ServiceRegistry {
    * Get or create the TransactionService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  TransactionService transaction() {
+  TransactionService transactions() {
     if (transactionService == null) {
       synchronized (this) {
         if (transactionService == null) {
@@ -1509,7 +1509,7 @@ final class ServiceRegistry {
    * Get or create the ThirdPartySyncDetailService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ThirdPartySyncDetailService thirdPartySyncDetail() {
+  ThirdPartySyncDetailService thirdPartySyncDetails() {
     if (thirdPartySyncDetailService == null) {
       synchronized (this) {
         if (thirdPartySyncDetailService == null) {
@@ -1524,7 +1524,7 @@ final class ServiceRegistry {
    * Get or create the CustomerService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  CustomerService customer() {
+  CustomerService customers() {
     if (customerService == null) {
       synchronized (this) {
         if (customerService == null) {
@@ -1539,7 +1539,7 @@ final class ServiceRegistry {
    * Get or create the ItemEntitlementService instance. Thread-safe lazy initialization using
    * double-checked locking.
    */
-  ItemEntitlementService itemEntitlement() {
+  ItemEntitlementService itemEntitlements() {
     if (itemEntitlementService == null) {
       synchronized (this) {
         if (itemEntitlementService == null) {

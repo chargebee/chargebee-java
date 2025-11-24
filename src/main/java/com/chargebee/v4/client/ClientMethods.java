@@ -1,166 +1,166 @@
 package com.chargebee.v4.client;
 
-import com.chargebee.v4.core.services.GiftService;
+import com.chargebee.v4.services.GiftService;
 
-import com.chargebee.v4.core.services.CsvTaxRuleService;
+import com.chargebee.v4.services.CsvTaxRuleService;
 
-import com.chargebee.v4.core.services.UsageService;
+import com.chargebee.v4.services.UsageService;
 
-import com.chargebee.v4.core.services.TimeMachineService;
+import com.chargebee.v4.services.TimeMachineService;
 
-import com.chargebee.v4.core.services.BusinessEntityService;
+import com.chargebee.v4.services.BusinessEntityService;
 
-import com.chargebee.v4.core.services.OfferEventService;
+import com.chargebee.v4.services.OfferEventService;
 
-import com.chargebee.v4.core.services.InAppSubscriptionService;
+import com.chargebee.v4.services.InAppSubscriptionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationService;
+import com.chargebee.v4.services.Pc2MigrationService;
 
-import com.chargebee.v4.core.services.CreditNoteService;
+import com.chargebee.v4.services.CreditNoteService;
 
-import com.chargebee.v4.core.services.CouponSetService;
+import com.chargebee.v4.services.CouponSetService;
 
-import com.chargebee.v4.core.services.QuoteService;
+import com.chargebee.v4.services.QuoteService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemService;
+import com.chargebee.v4.services.Pc2MigrationItemService;
 
-import com.chargebee.v4.core.services.EstimateService;
+import com.chargebee.v4.services.EstimateService;
 
-import com.chargebee.v4.core.services.VariantService;
+import com.chargebee.v4.services.VariantService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemFamilyService;
+import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 
-import com.chargebee.v4.core.services.PaymentSourceService;
+import com.chargebee.v4.services.PaymentSourceService;
 
-import com.chargebee.v4.core.services.RecordedPurchaseService;
+import com.chargebee.v4.services.RecordedPurchaseService;
 
-import com.chargebee.v4.core.services.PlanService;
+import com.chargebee.v4.services.PlanService;
 
-import com.chargebee.v4.core.services.ExportService;
+import com.chargebee.v4.services.ExportService;
 
-import com.chargebee.v4.core.services.OrderService;
+import com.chargebee.v4.services.OrderService;
 
-import com.chargebee.v4.core.services.ItemService;
+import com.chargebee.v4.services.ItemService;
 
-import com.chargebee.v4.core.services.CustomerEntitlementService;
+import com.chargebee.v4.services.CustomerEntitlementService;
 
-import com.chargebee.v4.core.services.PersonalizedOfferService;
+import com.chargebee.v4.services.PersonalizedOfferService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionService;
+import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionItemService;
+import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
-import com.chargebee.v4.core.services.RampService;
+import com.chargebee.v4.services.RampService;
 
-import com.chargebee.v4.core.services.OmnichannelOneTimeOrderService;
+import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
 
-import com.chargebee.v4.core.services.DifferentialPriceService;
+import com.chargebee.v4.services.DifferentialPriceService;
 
-import com.chargebee.v4.core.services.EntitlementService;
+import com.chargebee.v4.services.EntitlementService;
 
-import com.chargebee.v4.core.services.AdditionalBillingLogiqService;
+import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
-import com.chargebee.v4.core.services.SubscriptionSettingService;
+import com.chargebee.v4.services.SubscriptionSettingService;
 
-import com.chargebee.v4.core.services.SiteMigrationDetailService;
+import com.chargebee.v4.services.SiteMigrationDetailService;
 
-import com.chargebee.v4.core.services.PaymentIntentService;
+import com.chargebee.v4.services.PaymentIntentService;
 
-import com.chargebee.v4.core.services.PaymentScheduleSchemeService;
+import com.chargebee.v4.services.PaymentScheduleSchemeService;
 
-import com.chargebee.v4.core.services.CardService;
+import com.chargebee.v4.services.CardService;
 
-import com.chargebee.v4.core.services.AttachedItemService;
+import com.chargebee.v4.services.AttachedItemService;
 
-import com.chargebee.v4.core.services.UsageEventService;
+import com.chargebee.v4.services.UsageEventService;
 
-import com.chargebee.v4.core.services.PriceVariantService;
+import com.chargebee.v4.services.PriceVariantService;
 
-import com.chargebee.v4.core.services.FullExportService;
+import com.chargebee.v4.services.FullExportService;
 
-import com.chargebee.v4.core.services.VirtualBankAccountService;
+import com.chargebee.v4.services.VirtualBankAccountService;
 
-import com.chargebee.v4.core.services.AddonService;
+import com.chargebee.v4.services.AddonService;
 
-import com.chargebee.v4.core.services.TpSiteUserService;
+import com.chargebee.v4.services.TpSiteUserService;
 
-import com.chargebee.v4.core.services.ConfigurationService;
+import com.chargebee.v4.services.ConfigurationService;
 
-import com.chargebee.v4.core.services.PricingPageSessionService;
+import com.chargebee.v4.services.PricingPageSessionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemPriceService;
+import com.chargebee.v4.services.Pc2MigrationItemPriceService;
 
-import com.chargebee.v4.core.services.RuleService;
+import com.chargebee.v4.services.RuleService;
 
-import com.chargebee.v4.core.services.SubscriptionService;
+import com.chargebee.v4.services.SubscriptionService;
 
-import com.chargebee.v4.core.services.MediaService;
+import com.chargebee.v4.services.MediaService;
 
-import com.chargebee.v4.core.services.BusinessProfileService;
+import com.chargebee.v4.services.BusinessProfileService;
 
-import com.chargebee.v4.core.services.PromotionalCreditService;
+import com.chargebee.v4.services.PromotionalCreditService;
 
-import com.chargebee.v4.core.services.BrandConfigurationService;
+import com.chargebee.v4.services.BrandConfigurationService;
 
-import com.chargebee.v4.core.services.WebhookEndpointService;
+import com.chargebee.v4.services.WebhookEndpointService;
 
-import com.chargebee.v4.core.services.FeatureService;
+import com.chargebee.v4.services.FeatureService;
 
-import com.chargebee.v4.core.services.UnbilledChargesSettingService;
+import com.chargebee.v4.services.UnbilledChargesSettingService;
 
-import com.chargebee.v4.core.services.CurrencyService;
+import com.chargebee.v4.services.CurrencyService;
 
-import com.chargebee.v4.core.services.EventService;
+import com.chargebee.v4.services.EventService;
 
-import com.chargebee.v4.core.services.UsageFileService;
+import com.chargebee.v4.services.UsageFileService;
 
-import com.chargebee.v4.core.services.NonSubscriptionService;
+import com.chargebee.v4.services.NonSubscriptionService;
 
-import com.chargebee.v4.core.services.ResourceMigrationService;
+import com.chargebee.v4.services.ResourceMigrationService;
 
-import com.chargebee.v4.core.services.ProductService;
+import com.chargebee.v4.services.ProductService;
 
-import com.chargebee.v4.core.services.CouponCodeService;
+import com.chargebee.v4.services.CouponCodeService;
 
-import com.chargebee.v4.core.services.AddressService;
+import com.chargebee.v4.services.AddressService;
 
-import com.chargebee.v4.core.services.CouponService;
+import com.chargebee.v4.services.CouponService;
 
-import com.chargebee.v4.core.services.PortalSessionService;
+import com.chargebee.v4.services.PortalSessionService;
 
-import com.chargebee.v4.core.services.ItemPriceService;
+import com.chargebee.v4.services.ItemPriceService;
 
-import com.chargebee.v4.core.services.OfferFulfillmentService;
+import com.chargebee.v4.services.OfferFulfillmentService;
 
-import com.chargebee.v4.core.services.HostedPageService;
+import com.chargebee.v4.services.HostedPageService;
 
-import com.chargebee.v4.core.services.PurchaseService;
+import com.chargebee.v4.services.PurchaseService;
 
-import com.chargebee.v4.core.services.PaymentVoucherService;
+import com.chargebee.v4.services.PaymentVoucherService;
 
-import com.chargebee.v4.core.services.ItemFamilyService;
+import com.chargebee.v4.services.ItemFamilyService;
 
-import com.chargebee.v4.core.services.SubscriptionEntitlementService;
+import com.chargebee.v4.services.SubscriptionEntitlementService;
 
-import com.chargebee.v4.core.services.ThirdPartyEntityMappingService;
+import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
-import com.chargebee.v4.core.services.EntitlementOverrideService;
+import com.chargebee.v4.services.EntitlementOverrideService;
 
-import com.chargebee.v4.core.services.ThirdPartyConfigurationService;
+import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
-import com.chargebee.v4.core.services.UnbilledChargeService;
+import com.chargebee.v4.services.UnbilledChargeService;
 
-import com.chargebee.v4.core.services.CommentService;
+import com.chargebee.v4.services.CommentService;
 
-import com.chargebee.v4.core.services.InvoiceService;
+import com.chargebee.v4.services.InvoiceService;
 
-import com.chargebee.v4.core.services.TransactionService;
+import com.chargebee.v4.services.TransactionService;
 
-import com.chargebee.v4.core.services.ThirdPartySyncDetailService;
+import com.chargebee.v4.services.ThirdPartySyncDetailService;
 
-import com.chargebee.v4.core.services.CustomerService;
+import com.chargebee.v4.services.CustomerService;
 
-import com.chargebee.v4.core.services.ItemEntitlementService;
+import com.chargebee.v4.services.ItemEntitlementService;
 
 /**
  * Auto-generated interface defining all service access methods. ChargebeeClient implements this
@@ -173,565 +173,565 @@ public interface ClientMethods {
    *
    * @return GiftService instance for fluent API access
    */
-  GiftService gift();
+  GiftService gifts();
 
   /**
    * Access csv_tax_rule-related operations.
    *
    * @return CsvTaxRuleService instance for fluent API access
    */
-  CsvTaxRuleService csvTaxRule();
+  CsvTaxRuleService csvTaxRules();
 
   /**
    * Access usage-related operations.
    *
    * @return UsageService instance for fluent API access
    */
-  UsageService usage();
+  UsageService usages();
 
   /**
    * Access time_machine-related operations.
    *
    * @return TimeMachineService instance for fluent API access
    */
-  TimeMachineService timeMachine();
+  TimeMachineService timeMachines();
 
   /**
    * Access business_entity-related operations.
    *
    * @return BusinessEntityService instance for fluent API access
    */
-  BusinessEntityService businessEntity();
+  BusinessEntityService businessEntities();
 
   /**
    * Access offer_event-related operations.
    *
    * @return OfferEventService instance for fluent API access
    */
-  OfferEventService offerEvent();
+  OfferEventService offerEvents();
 
   /**
    * Access in_app_subscription-related operations.
    *
    * @return InAppSubscriptionService instance for fluent API access
    */
-  InAppSubscriptionService inAppSubscription();
+  InAppSubscriptionService inAppSubscriptions();
 
   /**
    * Access pc2_migration-related operations.
    *
    * @return Pc2MigrationService instance for fluent API access
    */
-  Pc2MigrationService pc2Migration();
+  Pc2MigrationService pc2Migrations();
 
   /**
    * Access credit_note-related operations.
    *
    * @return CreditNoteService instance for fluent API access
    */
-  CreditNoteService creditNote();
+  CreditNoteService creditNotes();
 
   /**
    * Access coupon_set-related operations.
    *
    * @return CouponSetService instance for fluent API access
    */
-  CouponSetService couponSet();
+  CouponSetService couponSets();
 
   /**
    * Access quote-related operations.
    *
    * @return QuoteService instance for fluent API access
    */
-  QuoteService quote();
+  QuoteService quotes();
 
   /**
    * Access pc2_migration_item-related operations.
    *
    * @return Pc2MigrationItemService instance for fluent API access
    */
-  Pc2MigrationItemService pc2MigrationItem();
+  Pc2MigrationItemService pc2MigrationItems();
 
   /**
    * Access estimate-related operations.
    *
    * @return EstimateService instance for fluent API access
    */
-  EstimateService estimate();
+  EstimateService estimates();
 
   /**
    * Access variant-related operations.
    *
    * @return VariantService instance for fluent API access
    */
-  VariantService variant();
+  VariantService variants();
 
   /**
    * Access pc2_migration_item_family-related operations.
    *
    * @return Pc2MigrationItemFamilyService instance for fluent API access
    */
-  Pc2MigrationItemFamilyService pc2MigrationItemFamily();
+  Pc2MigrationItemFamilyService pc2MigrationItemFamilies();
 
   /**
    * Access payment_source-related operations.
    *
    * @return PaymentSourceService instance for fluent API access
    */
-  PaymentSourceService paymentSource();
+  PaymentSourceService paymentSources();
 
   /**
    * Access recorded_purchase-related operations.
    *
    * @return RecordedPurchaseService instance for fluent API access
    */
-  RecordedPurchaseService recordedPurchase();
+  RecordedPurchaseService recordedPurchases();
 
   /**
    * Access plan-related operations.
    *
    * @return PlanService instance for fluent API access
    */
-  PlanService plan();
+  PlanService plans();
 
   /**
    * Access export-related operations.
    *
    * @return ExportService instance for fluent API access
    */
-  ExportService export();
+  ExportService exports();
 
   /**
    * Access order-related operations.
    *
    * @return OrderService instance for fluent API access
    */
-  OrderService order();
+  OrderService orders();
 
   /**
    * Access item-related operations.
    *
    * @return ItemService instance for fluent API access
    */
-  ItemService item();
+  ItemService items();
 
   /**
    * Access customer_entitlement-related operations.
    *
    * @return CustomerEntitlementService instance for fluent API access
    */
-  CustomerEntitlementService customerEntitlement();
+  CustomerEntitlementService customerEntitlements();
 
   /**
    * Access personalized_offer-related operations.
    *
    * @return PersonalizedOfferService instance for fluent API access
    */
-  PersonalizedOfferService personalizedOffer();
+  PersonalizedOfferService personalizedOffers();
 
   /**
    * Access omnichannel_subscription-related operations.
    *
    * @return OmnichannelSubscriptionService instance for fluent API access
    */
-  OmnichannelSubscriptionService omnichannelSubscription();
+  OmnichannelSubscriptionService omnichannelSubscriptions();
 
   /**
    * Access omnichannel_subscription_item-related operations.
    *
    * @return OmnichannelSubscriptionItemService instance for fluent API access
    */
-  OmnichannelSubscriptionItemService omnichannelSubscriptionItem();
+  OmnichannelSubscriptionItemService omnichannelSubscriptionItems();
 
   /**
    * Access ramp-related operations.
    *
    * @return RampService instance for fluent API access
    */
-  RampService ramp();
+  RampService ramps();
 
   /**
    * Access omnichannel_one_time_order-related operations.
    *
    * @return OmnichannelOneTimeOrderService instance for fluent API access
    */
-  OmnichannelOneTimeOrderService omnichannelOneTimeOrder();
+  OmnichannelOneTimeOrderService omnichannelOneTimeOrders();
 
   /**
    * Access differential_price-related operations.
    *
    * @return DifferentialPriceService instance for fluent API access
    */
-  DifferentialPriceService differentialPrice();
+  DifferentialPriceService differentialPrices();
 
   /**
    * Access entitlement-related operations.
    *
    * @return EntitlementService instance for fluent API access
    */
-  EntitlementService entitlement();
+  EntitlementService entitlements();
 
   /**
    * Access additional_billing_logiq-related operations.
    *
    * @return AdditionalBillingLogiqService instance for fluent API access
    */
-  AdditionalBillingLogiqService additionalBillingLogiq();
+  AdditionalBillingLogiqService additionalBillingLogiqs();
 
   /**
    * Access subscription_setting-related operations.
    *
    * @return SubscriptionSettingService instance for fluent API access
    */
-  SubscriptionSettingService subscriptionSetting();
+  SubscriptionSettingService subscriptionSettings();
 
   /**
    * Access site_migration_detail-related operations.
    *
    * @return SiteMigrationDetailService instance for fluent API access
    */
-  SiteMigrationDetailService siteMigrationDetail();
+  SiteMigrationDetailService siteMigrationDetails();
 
   /**
    * Access payment_intent-related operations.
    *
    * @return PaymentIntentService instance for fluent API access
    */
-  PaymentIntentService paymentIntent();
+  PaymentIntentService paymentIntents();
 
   /**
    * Access payment_schedule_scheme-related operations.
    *
    * @return PaymentScheduleSchemeService instance for fluent API access
    */
-  PaymentScheduleSchemeService paymentScheduleScheme();
+  PaymentScheduleSchemeService paymentScheduleSchemes();
 
   /**
    * Access card-related operations.
    *
    * @return CardService instance for fluent API access
    */
-  CardService card();
+  CardService cards();
 
   /**
    * Access attached_item-related operations.
    *
    * @return AttachedItemService instance for fluent API access
    */
-  AttachedItemService attachedItem();
+  AttachedItemService attachedItems();
 
   /**
    * Access usage_event-related operations.
    *
    * @return UsageEventService instance for fluent API access
    */
-  UsageEventService usageEvent();
+  UsageEventService usageEvents();
 
   /**
    * Access price_variant-related operations.
    *
    * @return PriceVariantService instance for fluent API access
    */
-  PriceVariantService priceVariant();
+  PriceVariantService priceVariants();
 
   /**
    * Access full_export-related operations.
    *
    * @return FullExportService instance for fluent API access
    */
-  FullExportService fullExport();
+  FullExportService fullExports();
 
   /**
    * Access virtual_bank_account-related operations.
    *
    * @return VirtualBankAccountService instance for fluent API access
    */
-  VirtualBankAccountService virtualBankAccount();
+  VirtualBankAccountService virtualBankAccounts();
 
   /**
    * Access addon-related operations.
    *
    * @return AddonService instance for fluent API access
    */
-  AddonService addon();
+  AddonService addons();
 
   /**
    * Access tp_site_user-related operations.
    *
    * @return TpSiteUserService instance for fluent API access
    */
-  TpSiteUserService tpSiteUser();
+  TpSiteUserService tpSiteUsers();
 
   /**
    * Access configuration-related operations.
    *
    * @return ConfigurationService instance for fluent API access
    */
-  ConfigurationService configuration();
+  ConfigurationService configurations();
 
   /**
    * Access pricing_page_session-related operations.
    *
    * @return PricingPageSessionService instance for fluent API access
    */
-  PricingPageSessionService pricingPageSession();
+  PricingPageSessionService pricingPageSessions();
 
   /**
    * Access pc2_migration_item_price-related operations.
    *
    * @return Pc2MigrationItemPriceService instance for fluent API access
    */
-  Pc2MigrationItemPriceService pc2MigrationItemPrice();
+  Pc2MigrationItemPriceService pc2MigrationItemPrices();
 
   /**
    * Access rule-related operations.
    *
    * @return RuleService instance for fluent API access
    */
-  RuleService rule();
+  RuleService rules();
 
   /**
    * Access subscription-related operations.
    *
    * @return SubscriptionService instance for fluent API access
    */
-  SubscriptionService subscription();
+  SubscriptionService subscriptions();
 
   /**
    * Access media-related operations.
    *
    * @return MediaService instance for fluent API access
    */
-  MediaService media();
+  MediaService medias();
 
   /**
    * Access business_profile-related operations.
    *
    * @return BusinessProfileService instance for fluent API access
    */
-  BusinessProfileService businessProfile();
+  BusinessProfileService businessProfiles();
 
   /**
    * Access promotional_credit-related operations.
    *
    * @return PromotionalCreditService instance for fluent API access
    */
-  PromotionalCreditService promotionalCredit();
+  PromotionalCreditService promotionalCredits();
 
   /**
    * Access brand_configuration-related operations.
    *
    * @return BrandConfigurationService instance for fluent API access
    */
-  BrandConfigurationService brandConfiguration();
+  BrandConfigurationService brandConfigurations();
 
   /**
    * Access webhook_endpoint-related operations.
    *
    * @return WebhookEndpointService instance for fluent API access
    */
-  WebhookEndpointService webhookEndpoint();
+  WebhookEndpointService webhookEndpoints();
 
   /**
    * Access feature-related operations.
    *
    * @return FeatureService instance for fluent API access
    */
-  FeatureService feature();
+  FeatureService features();
 
   /**
    * Access unbilled_charges_setting-related operations.
    *
    * @return UnbilledChargesSettingService instance for fluent API access
    */
-  UnbilledChargesSettingService unbilledChargesSetting();
+  UnbilledChargesSettingService unbilledChargesSettings();
 
   /**
    * Access currency-related operations.
    *
    * @return CurrencyService instance for fluent API access
    */
-  CurrencyService currency();
+  CurrencyService currencies();
 
   /**
    * Access event-related operations.
    *
    * @return EventService instance for fluent API access
    */
-  EventService event();
+  EventService events();
 
   /**
    * Access usage_file-related operations.
    *
    * @return UsageFileService instance for fluent API access
    */
-  UsageFileService usageFile();
+  UsageFileService usageFiles();
 
   /**
    * Access non_subscription-related operations.
    *
    * @return NonSubscriptionService instance for fluent API access
    */
-  NonSubscriptionService nonSubscription();
+  NonSubscriptionService nonSubscriptions();
 
   /**
    * Access resource_migration-related operations.
    *
    * @return ResourceMigrationService instance for fluent API access
    */
-  ResourceMigrationService resourceMigration();
+  ResourceMigrationService resourceMigrations();
 
   /**
    * Access product-related operations.
    *
    * @return ProductService instance for fluent API access
    */
-  ProductService product();
+  ProductService products();
 
   /**
    * Access coupon_code-related operations.
    *
    * @return CouponCodeService instance for fluent API access
    */
-  CouponCodeService couponCode();
+  CouponCodeService couponCodes();
 
   /**
    * Access address-related operations.
    *
    * @return AddressService instance for fluent API access
    */
-  AddressService address();
+  AddressService addresses();
 
   /**
    * Access coupon-related operations.
    *
    * @return CouponService instance for fluent API access
    */
-  CouponService coupon();
+  CouponService coupons();
 
   /**
    * Access portal_session-related operations.
    *
    * @return PortalSessionService instance for fluent API access
    */
-  PortalSessionService portalSession();
+  PortalSessionService portalSessions();
 
   /**
    * Access item_price-related operations.
    *
    * @return ItemPriceService instance for fluent API access
    */
-  ItemPriceService itemPrice();
+  ItemPriceService itemPrices();
 
   /**
    * Access offer_fulfillment-related operations.
    *
    * @return OfferFulfillmentService instance for fluent API access
    */
-  OfferFulfillmentService offerFulfillment();
+  OfferFulfillmentService offerFulfillments();
 
   /**
    * Access hosted_page-related operations.
    *
    * @return HostedPageService instance for fluent API access
    */
-  HostedPageService hostedPage();
+  HostedPageService hostedPages();
 
   /**
    * Access purchase-related operations.
    *
    * @return PurchaseService instance for fluent API access
    */
-  PurchaseService purchase();
+  PurchaseService purchases();
 
   /**
    * Access payment_voucher-related operations.
    *
    * @return PaymentVoucherService instance for fluent API access
    */
-  PaymentVoucherService paymentVoucher();
+  PaymentVoucherService paymentVouchers();
 
   /**
    * Access item_family-related operations.
    *
    * @return ItemFamilyService instance for fluent API access
    */
-  ItemFamilyService itemFamily();
+  ItemFamilyService itemFamilies();
 
   /**
    * Access subscription_entitlement-related operations.
    *
    * @return SubscriptionEntitlementService instance for fluent API access
    */
-  SubscriptionEntitlementService subscriptionEntitlement();
+  SubscriptionEntitlementService subscriptionEntitlements();
 
   /**
    * Access third_party_entity_mapping-related operations.
    *
    * @return ThirdPartyEntityMappingService instance for fluent API access
    */
-  ThirdPartyEntityMappingService thirdPartyEntityMapping();
+  ThirdPartyEntityMappingService thirdPartyEntityMappings();
 
   /**
    * Access entitlement_override-related operations.
    *
    * @return EntitlementOverrideService instance for fluent API access
    */
-  EntitlementOverrideService entitlementOverride();
+  EntitlementOverrideService entitlementOverrides();
 
   /**
    * Access third_party_configuration-related operations.
    *
    * @return ThirdPartyConfigurationService instance for fluent API access
    */
-  ThirdPartyConfigurationService thirdPartyConfiguration();
+  ThirdPartyConfigurationService thirdPartyConfigurations();
 
   /**
    * Access unbilled_charge-related operations.
    *
    * @return UnbilledChargeService instance for fluent API access
    */
-  UnbilledChargeService unbilledCharge();
+  UnbilledChargeService unbilledCharges();
 
   /**
    * Access comment-related operations.
    *
    * @return CommentService instance for fluent API access
    */
-  CommentService comment();
+  CommentService comments();
 
   /**
    * Access invoice-related operations.
    *
    * @return InvoiceService instance for fluent API access
    */
-  InvoiceService invoice();
+  InvoiceService invoices();
 
   /**
    * Access transaction-related operations.
    *
    * @return TransactionService instance for fluent API access
    */
-  TransactionService transaction();
+  TransactionService transactions();
 
   /**
    * Access third_party_sync_detail-related operations.
    *
    * @return ThirdPartySyncDetailService instance for fluent API access
    */
-  ThirdPartySyncDetailService thirdPartySyncDetail();
+  ThirdPartySyncDetailService thirdPartySyncDetails();
 
   /**
    * Access customer-related operations.
    *
    * @return CustomerService instance for fluent API access
    */
-  CustomerService customer();
+  CustomerService customers();
 
   /**
    * Access item_entitlement-related operations.
    *
    * @return ItemEntitlementService instance for fluent API access
    */
-  ItemEntitlementService itemEntitlement();
+  ItemEntitlementService itemEntitlements();
 }
