@@ -55,6 +55,7 @@ public enum Gateway {
     PAYSTACK,
     JP_MORGAN,
     DEUTSCHE_BANK,
+    EZIDEBIT,
     GOCARDLESS,
     NOT_APPLICABLE,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a

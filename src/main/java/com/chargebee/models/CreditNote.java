@@ -806,6 +806,10 @@ public class CreditNote extends Resource<CreditNote> {
         return optEnum("channel", Channel.class);
     }
 
+    public String lineItemsNextOffset() {
+        return optString("line_items_next_offset");
+    }
+
     public Long subTotal() {
         return reqLong("sub_total");
     }
@@ -1119,6 +1123,18 @@ public class CreditNote extends Resource<CreditNote> {
         @Deprecated
         public StringFilter<RetrieveRequest> lineItemCustomerId() {
             return new StringFilter<RetrieveRequest>("line_item[customer_id]",this);        
+        }
+
+
+        public RetrieveRequest lineItemsLimit(Integer lineItemsLimit) {
+            params.addOpt("line_items_limit", lineItemsLimit);
+            return this;
+        }
+
+
+        public RetrieveRequest lineItemsOffset(String lineItemsOffset) {
+            params.addOpt("line_items_offset", lineItemsOffset);
+            return this;
         }
 
 

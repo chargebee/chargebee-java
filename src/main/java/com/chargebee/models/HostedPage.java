@@ -3053,6 +3053,42 @@ public class HostedPage extends Resource<HostedPage> {
             params.addOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
             return this;
         }
+        public CheckoutGiftForItemsRequest subscriptionItemUnitPrice(int index, Long subscriptionItemUnitPrice) {
+            params.addOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest subscriptionItemUnitPriceInDecimal(int index, String subscriptionItemUnitPriceInDecimal) {
+            params.addOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierItemPriceId(int index, String itemTierItemPriceId) {
+            params.addOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierStartingUnit(int index, Integer itemTierStartingUnit) {
+            params.addOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierEndingUnit(int index, Integer itemTierEndingUnit) {
+            params.addOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierPrice(int index, Long itemTierPrice) {
+            params.addOpt("item_tiers[price][" + index + "]", itemTierPrice);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierStartingUnitInDecimal(int index, String itemTierStartingUnitInDecimal) {
+            params.addOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierEndingUnitInDecimal(int index, String itemTierEndingUnitInDecimal) {
+            params.addOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+            return this;
+        }
+        public CheckoutGiftForItemsRequest itemTierPriceInDecimal(int index, String itemTierPriceInDecimal) {
+            params.addOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+            return this;
+        }
         @Override
         public Params params() {
             return params;
