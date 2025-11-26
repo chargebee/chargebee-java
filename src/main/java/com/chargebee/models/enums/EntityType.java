@@ -39,6 +39,8 @@ public enum EntityType {
     OMNICHANNEL_ONE_TIME_ORDER,
     OMNICHANNEL_ONE_TIME_ORDER_ITEM,
     USAGE_FILE,
+    BUSINESS_RULE,
+    RULESET,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

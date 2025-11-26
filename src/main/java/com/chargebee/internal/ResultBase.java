@@ -84,6 +84,10 @@ public class ResultBase {
         return (PaymentSchedule)get("payment_schedule");
     }
 
+    public Einvoice einvoice() {
+        return (Einvoice)get("einvoice");
+    }
+
     public TaxWithheld taxWithheld() {
         return (TaxWithheld)get("tax_withheld");
     }
@@ -130,6 +134,10 @@ public class ResultBase {
 
     public QuotedRamp quotedRamp() {
         return (QuotedRamp)get("quoted_ramp");
+    }
+
+    public QuotedDeltaRamp quotedDeltaRamp() {
+        return (QuotedDeltaRamp)get("quoted_delta_ramp");
     }
 
     public BillingConfiguration billingConfiguration() {
