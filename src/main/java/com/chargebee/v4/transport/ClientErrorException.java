@@ -6,12 +6,12 @@ package com.chargebee.v4.transport;
  */
 public class ClientErrorException extends HttpException {
     
-    public ClientErrorException(int statusCode, String message, Response response) {
-        super(statusCode, message, response);
+    public ClientErrorException(int statusCode, String message, Request request, Response response) {
+        super(statusCode, message, request, response);
     }
     
-    public ClientErrorException(int statusCode, String message, Response response, Throwable cause) {
-        super(statusCode, message, response, cause);
+    public ClientErrorException(int statusCode, String message, Request request, Response response, Throwable cause) {
+        super(statusCode, message, request, response, cause);
     }
     
     /**

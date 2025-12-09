@@ -217,7 +217,7 @@ future.thenAccept(resp -> {
 
 ### Exception Handling
 
-The library provides a comprehensive exception hierarchy to handle different types of errors that may occur during API operations.
+The library provides a comprehensive exception hierarchy with **strongly-typed error enums** to handle different types of errors that may occur during API operations.
 
 #### Exception Hierarchy
 
@@ -249,9 +249,42 @@ TransportException (checked)
 - **`BatchAPIException`**: Errors specific to batch API operations
 - **`UbbBatchIngestionInvalidRequestException`**: Errors specific to UBB batch ingestion operations
 
+#### Strongly-Typed Error Enums
+
+The v4 SDK provides strongly-typed enums for error handling, making it easier to write type-safe error handling code:
+
+##### ErrorType Enum
+Represents the type of error returned by the API:
+```java
+import com.chargebee.v4.exceptions.ErrorType;
+
+// Available values:
+ErrorType.INVALID_REQUEST   // Validation and request errors
+ErrorType.PAYMENT           // Payment-related errors  
+ErrorType.OPERATION_FAILED  // Business logic errors
+ErrorType.UNTYPED           // Untyped errors
+ErrorType._UNKNOWN          // Unknown/new error types (forward compatibility)
+```
+
+##### Per-HTTP-Status API Error Code Enums
+Each HTTP status code has its own enum with specific error codes:
+
+| Enum | HTTP Status | Example Error Codes |
+|------|-------------|---------------------|
+| `BadRequestApiErrorCode` | 400 | `DUPLICATE_ENTRY`, `INVALID_REQUEST`, `PAYMENT_PROCESSING_FAILED`, `PARAM_WRONG_VALUE` |
+| `UnauthorizedApiErrorCode` | 401 | `API_AUTHENTICATION_FAILED`, `BASIC_AUTHENTICATION_FAILED` |
+| `ForbiddenApiErrorCode` | 403 | `REQUEST_BLOCKED`, `API_AUTHORIZATION_FAILED` |
+| `NotFoundApiErrorCode` | 404 | `RESOURCE_NOT_FOUND`, `SITE_NOT_FOUND` |
+| `ConflictApiErrorCode` | 409 | `INVALID_STATE_FOR_REQUEST` |
+| `TooManyRequestsApiErrorCode` | 429 | `REQUEST_LIMIT_EXCEEDED`, `OPERATION_LIMIT_EXCEEDED` |
+| `InternalServerErrorApiErrorCode` | 500 | `INTERNAL_ERROR`, `INTERNAL_TEMPORARY_ERROR` |
+| `ServiceUnavailableApiErrorCode` | 503 | `SITE_NOT_READY`, `SITE_MIGRATING`, `SITE_UNDER_MAINTENANCE` |
+
+All enums include an `_UNKNOWN` value for forward compatibility when new error codes are added by the API.
+
 #### v4 SDK Exception Handling Examples
 
-##### Basic exception handling
+##### Basic exception handling with enums
 ```java
 import com.chargebee.v4.exceptions.*;
 import com.chargebee.v4.services.CustomerService;
@@ -266,35 +299,111 @@ try {
             .build()
     ).get();
 } catch (InvalidRequestException e) {
-    // Handle validation errors
-    System.err.println("Validation error: " + e.getMessage());
-    System.err.println("Error code: " + e.getApiErrorCode());
-    System.err.println("Invalid parameters: " + e.getParams());
-    System.err.println("HTTP status: " + e.getStatusCode());
+    // getApiErrorCode() returns a strongly-typed ApiErrorCode enum
+    ApiErrorCode errorCode = e.getApiErrorCode();
+    
+    // Cast to specific enum based on HTTP status code
+    if (errorCode instanceof BadRequestApiErrorCode) {
+        BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
+        if (code == BadRequestApiErrorCode.DUPLICATE_ENTRY) {
+            System.err.println("Resource already exists!");
+        } else if (code == BadRequestApiErrorCode.PARAM_WRONG_VALUE) {
+            System.err.println("Invalid parameter: " + e.getParams());
+        }
+    }
+} catch (PaymentException e) {
+    ApiErrorCode errorCode = e.getApiErrorCode();
+    
+    if (errorCode instanceof BadRequestApiErrorCode) {
+        BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
+        if (code == BadRequestApiErrorCode.PAYMENT_PROCESSING_FAILED) {
+            System.err.println("Payment failed. Please try again.");
+        } else if (code == BadRequestApiErrorCode.PAYMENT_METHOD_NOT_PRESENT) {
+            System.err.println("No payment method on file.");
+        }
+    }
 } catch (APIException e) {
     // Handle other API errors
     System.err.println("API error: " + e.getMessage());
-    System.err.println("Error type: " + e.getType());
+    System.err.println("Error type: " + e.getErrorType());
 } catch (TransportException e) {
     // Handle network/transport errors
     System.err.println("Transport error: " + e.getMessage());
 }
 ```
 
-##### Handling payment errors
+##### Using switch with ErrorType enum
 ```java
-import com.chargebee.v4.exceptions.PaymentException;
-import com.chargebee.v4.services.SubscriptionService;
+try {
+    // API operation
+} catch (APIException e) {
+    switch (e.getErrorType()) {
+        case INVALID_REQUEST:
+            System.err.println("Invalid request: " + e.getMessage());
+            break;
+        case PAYMENT:
+            System.err.println("Payment error: " + e.getMessage());
+            break;
+        case OPERATION_FAILED:
+            System.err.println("Operation failed: " + e.getMessage());
+            break;
+        default:
+            System.err.println("Unknown error type: " + e.getType());
+    }
+}
+```
+
+##### Handling specific error codes
+```java
+import com.chargebee.v4.exceptions.*;
 
 try {
-    SubscriptionCreateResponse subscription = subscriptions.create(params).get();
-} catch (PaymentException e) {
-    // Handle payment-specific errors
-    System.err.println("Payment failed: " + e.getMessage());
-    System.err.println("Payment error code: " + e.getApiErrorCode());
-    // Common codes: card_declined, insufficient_funds, etc.
+    subscriptions.create(params).get();
 } catch (APIException e) {
-    System.err.println("Other API error: " + e.getMessage());
+    ApiErrorCode errorCode = e.getApiErrorCode();
+    
+    // Check if it's a BadRequest error code
+    if (errorCode instanceof BadRequestApiErrorCode) {
+        BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
+        switch (code) {
+            case DUPLICATE_ENTRY:
+                System.err.println("Resource already exists");
+                break;
+            case RESOURCE_LIMIT_EXHAUSTED:
+                System.err.println("Limit reached, please upgrade your plan");
+                break;
+            case PAYMENT_PROCESSING_FAILED:
+                System.err.println("Payment failed, please update payment method");
+                break;
+            case _UNKNOWN:
+                // Unknown error code - use raw value for logging
+                System.err.println("Unknown error code: " + e.getApiErrorCodeRaw());
+                break;
+            default:
+                System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+##### Checking for unknown error types (forward compatibility)
+```java
+try {
+    // API operation
+} catch (APIException e) {
+    ErrorType errorType = e.getErrorType();
+    
+    if (!errorType.isKnown()) {
+        // New error type added by API that SDK doesn't know about yet
+        System.err.println("New error type encountered: " + e.getType());
+        // Log for investigation, but handle gracefully
+    }
+    
+    ApiErrorCode errorCode = e.getApiErrorCode();
+    if (errorCode != null && !errorCode.isKnown()) {
+        // New error code - handle gracefully using raw value
+        System.err.println("New error code: " + e.getApiErrorCodeRaw());
+    }
 }
 ```
 
@@ -327,6 +436,18 @@ try {
 }
 ```
 
+##### Error Response Attributes
+
+The `APIException` class provides typed access to all error response attributes:
+
+| Attribute | Method | Description |
+|-----------|--------|-------------|
+| `message` | `getMessage()` | Descriptive error information (for developer consumption, not for end users) |
+| `type` | `getType()` / `getErrorType()` | Error type grouping: `payment`, `invalid_request`, `operation_failed` |
+| `api_error_code` | `getApiErrorCode()` / `getApiErrorCodeRaw()` | Strongly-typed enum (`ApiErrorCode`) or raw string for error handling |
+| `param` | `getParam()` / `getParams()` | Parameter name(s) if error is parameter-specific |
+| `error_cause_id` | `getErrorCauseId()` | Chargebee-defined code for standardizing errors across gateways |
+
 ##### Extracting detailed error information
 ```java
 try {
@@ -335,17 +456,27 @@ try {
     // Get HTTP status code
     int statusCode = e.getStatusCode();
     
-    // Get error type (payment, invalid_request, operation_failed)
-    String errorType = e.getType();
+    // Get error type as enum (type-safe)
+    ErrorType errorType = e.getErrorType();
     
-    // Get API-specific error code
-    String apiErrorCode = e.getApiErrorCode();
+    // Get error type as raw string
+    String type = e.getType();
     
-    // Get error message
+    // Get API error code as typed enum
+    ApiErrorCode apiErrorCode = e.getApiErrorCode();
+    
+    // Get API error code as raw string (for logging)
+    String apiErrorCodeRaw = e.getApiErrorCodeRaw();
+    
+    // Get error message (for developer consumption)
     String message = e.getMessage();
     
-    // Get invalid parameter names (for validation errors)
-    List<String> invalidParams = e.getParams();
+    // Get parameter name(s) that caused the error
+    String param = e.getParam();           // Single param (convenience)
+    List<String> params = e.getParams();   // All params
+    
+    // Get error cause ID (for gateway error standardization)
+    String errorCauseId = e.getErrorCauseId();
     
     // Get full JSON response for debugging
     String jsonResponse = e.getJsonResponse();
@@ -354,6 +485,33 @@ try {
     Response response = e.getResponse();
     
     System.err.println("Error details: " + e.toString());
+}
+```
+
+##### Handling gateway errors with error_cause_id
+```java
+try {
+    // Payment operation
+} catch (PaymentException e) {
+    // error_cause_id helps standardize errors across different payment gateways
+    String errorCauseId = e.getErrorCauseId();
+    
+    if (errorCauseId != null) {
+        // Use error_cause_id for consistent handling across gateways
+        System.err.println("Gateway error cause: " + errorCauseId);
+        
+        // Log for analytics/debugging
+        logPaymentError(e.getApiErrorCodeRaw(), errorCauseId, e.getMessage());
+    }
+    
+    // Check the specific API error code using typed enum
+    ApiErrorCode errorCode = e.getApiErrorCode();
+    if (errorCode instanceof BadRequestApiErrorCode) {
+        BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
+        if (code == BadRequestApiErrorCode.PAYMENT_PROCESSING_FAILED) {
+            // Handle payment failure
+        }
+    }
 }
 ```
 
@@ -370,11 +528,19 @@ futureCustomer
     .exceptionally(throwable -> {
         if (throwable.getCause() instanceof InvalidRequestException) {
             InvalidRequestException e = (InvalidRequestException) throwable.getCause();
-            System.err.println("Validation error: " + e.getMessage());
-            System.err.println("Invalid params: " + e.getParams());
+            ApiErrorCode errorCode = e.getApiErrorCode();
+            
+            if (errorCode instanceof BadRequestApiErrorCode) {
+                BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
+                if (code == BadRequestApiErrorCode.DUPLICATE_ENTRY) {
+                    System.err.println("Customer already exists");
+                }
+            } else {
+                System.err.println("Validation error: " + e.getMessage());
+            }
         } else if (throwable.getCause() instanceof APIException) {
             APIException e = (APIException) throwable.getCause();
-            System.err.println("API error: " + e.getApiErrorCode());
+            System.err.println("API error: " + e.getApiErrorCodeRaw());
         } else {
             System.err.println("Unexpected error: " + throwable.getMessage());
         }

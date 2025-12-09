@@ -1,5 +1,7 @@
 package com.chargebee.v4.exceptions;
 
+import com.chargebee.v4.exceptions.codes.ApiErrorCode;
+import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -8,8 +10,8 @@ import com.chargebee.v4.transport.Response;
  */
 public class UbbBatchIngestionInvalidRequestException extends APIException {
 
-    public UbbBatchIngestionInvalidRequestException(int statusCode, String type, String apiErrorCode,
-                                                   String message, String jsonResponse, Response response) {
-        super(statusCode, type, apiErrorCode, message, jsonResponse, response);
+    public UbbBatchIngestionInvalidRequestException(int statusCode, String type, ApiErrorCode apiErrorCode,
+                                                   String message, String jsonResponse, Request request, Response response) {
+        super(statusCode, type, apiErrorCode, message, jsonResponse, request, response);
     }
 }
