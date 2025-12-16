@@ -547,7 +547,7 @@ public class Addon {
   public static Addon fromJson(String json) {
     Addon obj = new Addon();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");

@@ -46,6 +46,7 @@ public class Invoice {
   private Timestamp voidedAt;
   private Long resourceVersion;
   private Timestamp updatedAt;
+  private String lineItemsNextOffset;
   private Boolean firstInvoice;
   private Long newSalesAmount;
   private Boolean hasAdvanceCharges;
@@ -212,6 +213,10 @@ public class Invoice {
 
   public Timestamp getUpdatedAt() {
     return updatedAt;
+  }
+
+  public String getLineItemsNextOffset() {
+    return lineItemsNextOffset;
   }
 
   public Boolean getFirstInvoice() {
@@ -511,7 +516,7 @@ public class Invoice {
   public static Invoice fromJson(String json) {
     Invoice obj = new Invoice();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -577,6 +582,8 @@ public class Invoice {
     knownFields.add("resource_version");
 
     knownFields.add("updated_at");
+
+    knownFields.add("line_items_next_offset");
 
     knownFields.add("first_invoice");
 
@@ -715,6 +722,8 @@ public class Invoice {
     obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
 
     obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+
+    obj.lineItemsNextOffset = JsonUtil.getString(json, "line_items_next_offset");
 
     obj.firstInvoice = JsonUtil.getBoolean(json, "first_invoice");
 
@@ -2177,6 +2186,7 @@ public class Invoice {
     private Timestamp createdAt;
     private TxnStatus txnStatus;
     private Long txnAmount;
+    private RetryEngine retryEngine;
 
     public Integer getAttempt() {
       return attempt;
@@ -2200,6 +2210,10 @@ public class Invoice {
 
     public Long getTxnAmount() {
       return txnAmount;
+    }
+
+    public RetryEngine getRetryEngine() {
+      return retryEngine;
     }
 
     public enum DunningType {
@@ -2270,6 +2284,36 @@ public class Invoice {
       }
     }
 
+    public enum RetryEngine {
+      CHARGEBEE("chargebee"),
+
+      FLEXPAY("flexpay"),
+
+      SUCCESSPLUS("successplus"),
+
+      /** An enum member indicating that RetryEngine was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      RetryEngine(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static RetryEngine fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (RetryEngine enumValue : RetryEngine.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
     public static DunningAttempts fromJson(String json) {
       DunningAttempts obj = new DunningAttempts();
 
@@ -2284,6 +2328,8 @@ public class Invoice {
       obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(json, "txn_status"));
 
       obj.txnAmount = JsonUtil.getLong(json, "txn_amount");
+
+      obj.retryEngine = RetryEngine.fromString(JsonUtil.getString(json, "retry_engine"));
 
       return obj;
     }

@@ -465,7 +465,7 @@ public class Coupon {
   public static Coupon fromJson(String json) {
     Coupon obj = new Coupon();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");

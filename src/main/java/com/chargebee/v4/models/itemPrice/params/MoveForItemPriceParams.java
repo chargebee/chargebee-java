@@ -15,13 +15,21 @@ public final class MoveForItemPriceParams {
 
   private final String destinationItemId;
 
+  private final String variantId;
+
   private MoveForItemPriceParams(MoveForItemPriceBuilder builder) {
 
     this.destinationItemId = builder.destinationItemId;
+
+    this.variantId = builder.variantId;
   }
 
   public String getDestinationItemId() {
     return destinationItemId;
+  }
+
+  public String getVariantId() {
+    return variantId;
   }
 
   /** Get the form data for this request. */
@@ -31,6 +39,11 @@ public final class MoveForItemPriceParams {
     if (this.destinationItemId != null) {
 
       formData.put("destination_item_id", this.destinationItemId);
+    }
+
+    if (this.variantId != null) {
+
+      formData.put("variant_id", this.variantId);
     }
 
     return formData;
@@ -46,10 +59,17 @@ public final class MoveForItemPriceParams {
 
     private String destinationItemId;
 
+    private String variantId;
+
     private MoveForItemPriceBuilder() {}
 
     public MoveForItemPriceBuilder destinationItemId(String value) {
       this.destinationItemId = value;
+      return this;
+    }
+
+    public MoveForItemPriceBuilder variantId(String value) {
+      this.variantId = value;
       return this;
     }
 

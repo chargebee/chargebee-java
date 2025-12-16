@@ -100,6 +100,8 @@ public final class CustomerCreateParams {
 
   private final Map<String, Object> customFields;
 
+  private final Map<String, Object> consentFields;
+
   private CustomerCreateParams(CustomerCreateBuilder builder) {
 
     this.id = builder.id;
@@ -188,6 +190,11 @@ public final class CustomerCreateParams {
         builder.customFields.isEmpty()
             ? Collections.emptyMap()
             : Collections.unmodifiableMap(new LinkedHashMap<>(builder.customFields));
+
+    this.consentFields =
+        builder.consentFields.isEmpty()
+            ? Collections.emptyMap()
+            : Collections.unmodifiableMap(new LinkedHashMap<>(builder.consentFields));
   }
 
   public String getId() {
@@ -356,6 +363,10 @@ public final class CustomerCreateParams {
 
   public Map<String, Object> customFields() {
     return customFields;
+  }
+
+  public Map<String, Object> consentFields() {
+    return consentFields;
   }
 
   /** Get the form data for this request. */
@@ -614,6 +625,8 @@ public final class CustomerCreateParams {
 
     formData.putAll(customFields);
 
+    formData.putAll(consentFields);
+
     return formData;
   }
 
@@ -708,6 +721,8 @@ public final class CustomerCreateParams {
     private List<TaxProvidersFieldsParams> taxProvidersFields;
 
     private Map<String, Object> customFields = new LinkedHashMap<>();
+
+    private Map<String, Object> consentFields = new LinkedHashMap<>();
 
     private CustomerCreateBuilder() {}
 
@@ -948,6 +963,59 @@ public final class CustomerCreateParams {
                 "Custom field name must start with 'cf_': " + entry.getKey());
           }
           this.customFields.put(entry.getKey(), entry.getValue());
+        }
+      }
+      return this;
+    }
+
+    /**
+     * Add a consent field to the request. Consent fields must start with "cs_". Consent fields
+     * typically hold boolean values or options.
+     *
+     * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+     * @param value the value of the consent field (typically Boolean or String for options)
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cs_"
+     */
+    public CustomerCreateBuilder consentField(String fieldName, Object value) {
+      if (fieldName == null || !fieldName.startsWith("cs_")) {
+        throw new IllegalArgumentException("Consent field name must start with 'cs_'");
+      }
+      this.consentFields.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add a boolean consent field to the request. Consent fields must start with "cs_".
+     *
+     * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+     * @param value the boolean value of the consent field
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cs_"
+     */
+    public CustomerCreateBuilder consentField(String fieldName, Boolean value) {
+      if (fieldName == null || !fieldName.startsWith("cs_")) {
+        throw new IllegalArgumentException("Consent field name must start with 'cs_'");
+      }
+      this.consentFields.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add multiple consent fields to the request. All field names must start with "cs_".
+     *
+     * @param consentFields map of consent field names to values
+     * @return this builder
+     * @throws IllegalArgumentException if any field name doesn't start with "cs_"
+     */
+    public CustomerCreateBuilder consentFields(Map<String, Object> consentFields) {
+      if (consentFields != null) {
+        for (Map.Entry<String, Object> entry : consentFields.entrySet()) {
+          if (entry.getKey() == null || !entry.getKey().startsWith("cs_")) {
+            throw new IllegalArgumentException(
+                "Consent field name must start with 'cs_': " + entry.getKey());
+          }
+          this.consentFields.put(entry.getKey(), entry.getValue());
         }
       }
       return this;
@@ -2477,6 +2545,16 @@ public final class CustomerCreateParams {
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -2845,6 +2923,16 @@ public final class CustomerCreateParams {
       ONLINE_BANKING_POLAND("online_banking_poland"),
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

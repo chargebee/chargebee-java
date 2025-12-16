@@ -43,6 +43,16 @@ public final class InvoiceRetrieveParams {
 
     private InvoiceRetrieveBuilder() {}
 
+    public InvoiceRetrieveBuilder lineItemsLimit(Integer value) {
+      queryParams.put("line_items_limit", value);
+      return this;
+    }
+
+    public InvoiceRetrieveBuilder lineItemsOffset(String value) {
+      queryParams.put("line_items_offset", value);
+      return this;
+    }
+
     @Deprecated
     public InvoiceRetrieveBuilder lineItem(LineItemParams value) {
       queryParams.put("line_item", value);

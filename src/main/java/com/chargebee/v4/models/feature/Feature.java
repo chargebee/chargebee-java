@@ -151,7 +151,7 @@ public class Feature {
   public static Feature fromJson(String json) {
     Feature obj = new Feature();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");

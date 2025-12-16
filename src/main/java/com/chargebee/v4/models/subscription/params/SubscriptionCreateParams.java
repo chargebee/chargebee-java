@@ -3361,6 +3361,16 @@ public final class SubscriptionCreateParams {
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -3729,6 +3739,16 @@ public final class SubscriptionCreateParams {
       ONLINE_BANKING_POLAND("online_banking_poland"),
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

@@ -8,6 +8,7 @@ package com.chargebee.v4.models.customer.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -23,6 +24,8 @@ public final class DeductPromotionalCreditsForCustomerParams {
 
   private final String reference;
 
+  private final Map<String, Object> consentFields;
+
   private DeductPromotionalCreditsForCustomerParams(
       DeductPromotionalCreditsForCustomerBuilder builder) {
 
@@ -35,6 +38,11 @@ public final class DeductPromotionalCreditsForCustomerParams {
     this.creditType = builder.creditType;
 
     this.reference = builder.reference;
+
+    this.consentFields =
+        builder.consentFields.isEmpty()
+            ? Collections.emptyMap()
+            : Collections.unmodifiableMap(new LinkedHashMap<>(builder.consentFields));
   }
 
   public Long getAmount() {
@@ -55,6 +63,10 @@ public final class DeductPromotionalCreditsForCustomerParams {
 
   public String getReference() {
     return reference;
+  }
+
+  public Map<String, Object> consentFields() {
+    return consentFields;
   }
 
   /** Get the form data for this request. */
@@ -86,6 +98,8 @@ public final class DeductPromotionalCreditsForCustomerParams {
       formData.put("reference", this.reference);
     }
 
+    formData.putAll(consentFields);
+
     return formData;
   }
 
@@ -106,6 +120,8 @@ public final class DeductPromotionalCreditsForCustomerParams {
     private CreditType creditType;
 
     private String reference;
+
+    private Map<String, Object> consentFields = new LinkedHashMap<>();
 
     private DeductPromotionalCreditsForCustomerBuilder() {}
 
@@ -131,6 +147,61 @@ public final class DeductPromotionalCreditsForCustomerParams {
 
     public DeductPromotionalCreditsForCustomerBuilder reference(String value) {
       this.reference = value;
+      return this;
+    }
+
+    /**
+     * Add a consent field to the request. Consent fields must start with "cs_". Consent fields
+     * typically hold boolean values or options.
+     *
+     * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+     * @param value the value of the consent field (typically Boolean or String for options)
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cs_"
+     */
+    public DeductPromotionalCreditsForCustomerBuilder consentField(String fieldName, Object value) {
+      if (fieldName == null || !fieldName.startsWith("cs_")) {
+        throw new IllegalArgumentException("Consent field name must start with 'cs_'");
+      }
+      this.consentFields.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add a boolean consent field to the request. Consent fields must start with "cs_".
+     *
+     * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+     * @param value the boolean value of the consent field
+     * @return this builder
+     * @throws IllegalArgumentException if fieldName doesn't start with "cs_"
+     */
+    public DeductPromotionalCreditsForCustomerBuilder consentField(
+        String fieldName, Boolean value) {
+      if (fieldName == null || !fieldName.startsWith("cs_")) {
+        throw new IllegalArgumentException("Consent field name must start with 'cs_'");
+      }
+      this.consentFields.put(fieldName, value);
+      return this;
+    }
+
+    /**
+     * Add multiple consent fields to the request. All field names must start with "cs_".
+     *
+     * @param consentFields map of consent field names to values
+     * @return this builder
+     * @throws IllegalArgumentException if any field name doesn't start with "cs_"
+     */
+    public DeductPromotionalCreditsForCustomerBuilder consentFields(
+        Map<String, Object> consentFields) {
+      if (consentFields != null) {
+        for (Map.Entry<String, Object> entry : consentFields.entrySet()) {
+          if (entry.getKey() == null || !entry.getKey().startsWith("cs_")) {
+            throw new IllegalArgumentException(
+                "Consent field name must start with 'cs_': " + entry.getKey());
+          }
+          this.consentFields.put(entry.getKey(), entry.getValue());
+        }
+      }
       return this;
     }
 

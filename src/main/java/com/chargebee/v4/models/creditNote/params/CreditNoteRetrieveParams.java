@@ -43,6 +43,16 @@ public final class CreditNoteRetrieveParams {
 
     private CreditNoteRetrieveBuilder() {}
 
+    public CreditNoteRetrieveBuilder lineItemsLimit(Integer value) {
+      queryParams.put("line_items_limit", value);
+      return this;
+    }
+
+    public CreditNoteRetrieveBuilder lineItemsOffset(String value) {
+      queryParams.put("line_items_offset", value);
+      return this;
+    }
+
     @Deprecated
     public CreditNoteRetrieveBuilder lineItem(LineItemParams value) {
       queryParams.put("line_item", value);

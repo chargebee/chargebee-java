@@ -7,6 +7,7 @@
 package com.chargebee.v4.models.pricingPageSession.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,6 +16,8 @@ import java.util.List;
 public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
   private final String redirectUrl;
+
+  private final java.util.Map<String, Object> custom;
 
   private final PricingPageParams pricingPage;
 
@@ -27,6 +30,8 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
     this.redirectUrl = builder.redirectUrl;
 
+    this.custom = builder.custom;
+
     this.pricingPage = builder.pricingPage;
 
     this.subscription = builder.subscription;
@@ -36,6 +41,10 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
   public String getRedirectUrl() {
     return redirectUrl;
+  }
+
+  public java.util.Map<String, Object> getCustom() {
+    return custom;
   }
 
   public PricingPageParams getPricingPage() {
@@ -57,6 +66,11 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
     if (this.redirectUrl != null) {
 
       formData.put("redirect_url", this.redirectUrl);
+    }
+
+    if (this.custom != null) {
+
+      formData.put("custom", JsonUtil.toJson(this.custom));
     }
 
     if (this.pricingPage != null) {
@@ -107,6 +121,8 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
     private String redirectUrl;
 
+    private java.util.Map<String, Object> custom;
+
     private PricingPageParams pricingPage;
 
     private SubscriptionParams subscription;
@@ -117,6 +133,12 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
     public PricingPageSessionCreateForExistingSubscriptionBuilder redirectUrl(String value) {
       this.redirectUrl = value;
+      return this;
+    }
+
+    public PricingPageSessionCreateForExistingSubscriptionBuilder custom(
+        java.util.Map<String, Object> value) {
+      this.custom = value;
       return this;
     }
 

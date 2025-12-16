@@ -63,8 +63,41 @@ public final class RenewalEstimateForSubscriptionParams {
       return this;
     }
 
+    public RenewalEstimateForSubscriptionBuilder excludeTaxType(ExcludeTaxType value) {
+      queryParams.put("exclude_tax_type", value);
+      return this;
+    }
+
     public RenewalEstimateForSubscriptionParams build() {
       return new RenewalEstimateForSubscriptionParams(this);
+    }
+  }
+
+  public enum ExcludeTaxType {
+    EXCLUSIVE("exclusive"),
+
+    NONE("none"),
+
+    /** An enum member indicating that ExcludeTaxType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ExcludeTaxType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ExcludeTaxType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ExcludeTaxType enumValue : ExcludeTaxType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 }

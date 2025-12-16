@@ -473,7 +473,8 @@ class ChargebeeClientRetryTest {
         void shouldNotRetryOnClientErrorException() throws Exception {
             Transport mockTransport = mock(Transport.class);
             Response errorResponse = createResponse(400);
-            ClientErrorException clientError = new ClientErrorException(400, "Bad Request", errorResponse);
+            Request errorRequest = Request.builder().method("GET").url("http://test.com").build();
+            ClientErrorException clientError = new ClientErrorException(400, "Bad Request", errorRequest, errorResponse);
             
             when(mockTransport.send(any(Request.class))).thenThrow(clientError);
             

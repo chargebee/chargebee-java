@@ -11,14 +11,6 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.creditNote.params.VoidCreditNoteParams;
-
-import com.chargebee.v4.models.creditNote.params.RefundForCreditNoteParams;
-
-import com.chargebee.v4.models.creditNote.params.CreditNoteListParams;
-
-import com.chargebee.v4.models.creditNote.params.CreditNoteCreateParams;
-
 import com.chargebee.v4.models.creditNote.params.RecordRefundForCreditNoteParams;
 
 import com.chargebee.v4.models.creditNote.params.ImportCreditNoteParams;
@@ -29,15 +21,15 @@ import com.chargebee.v4.models.creditNote.params.CreditNotesForCustomerParams;
 
 import com.chargebee.v4.models.creditNote.params.PdfForCreditNoteParams;
 
+import com.chargebee.v4.models.creditNote.params.VoidCreditNoteParams;
+
+import com.chargebee.v4.models.creditNote.params.RefundForCreditNoteParams;
+
+import com.chargebee.v4.models.creditNote.params.CreditNoteListParams;
+
+import com.chargebee.v4.models.creditNote.params.CreditNoteCreateParams;
+
 import com.chargebee.v4.models.creditNote.params.RemoveTaxWithheldRefundForCreditNoteParams;
-
-import com.chargebee.v4.models.creditNote.responses.VoidCreditNoteResponse;
-
-import com.chargebee.v4.models.creditNote.responses.RefundForCreditNoteResponse;
-
-import com.chargebee.v4.models.creditNote.responses.CreditNoteListResponse;
-
-import com.chargebee.v4.models.creditNote.responses.CreditNoteCreateResponse;
 
 import com.chargebee.v4.models.creditNote.responses.RecordRefundForCreditNoteResponse;
 
@@ -47,17 +39,25 @@ import com.chargebee.v4.models.creditNote.responses.DeleteCreditNoteResponse;
 
 import com.chargebee.v4.models.creditNote.responses.CreditNotesForCustomerResponse;
 
-import com.chargebee.v4.models.creditNote.responses.DownloadEinvoiceForCreditNoteResponse;
-
 import com.chargebee.v4.models.creditNote.responses.PdfForCreditNoteResponse;
+
+import com.chargebee.v4.models.creditNote.responses.SendEinvoiceForCreditNoteResponse;
+
+import com.chargebee.v4.models.creditNote.responses.VoidCreditNoteResponse;
+
+import com.chargebee.v4.models.creditNote.responses.RefundForCreditNoteResponse;
+
+import com.chargebee.v4.models.creditNote.responses.CreditNoteListResponse;
+
+import com.chargebee.v4.models.creditNote.responses.CreditNoteCreateResponse;
+
+import com.chargebee.v4.models.creditNote.responses.DownloadEinvoiceForCreditNoteResponse;
 
 import com.chargebee.v4.models.creditNote.responses.ResendEinvoiceForCreditNoteResponse;
 
 import com.chargebee.v4.models.creditNote.responses.RemoveTaxWithheldRefundForCreditNoteResponse;
 
 import com.chargebee.v4.models.creditNote.responses.CreditNoteRetrieveResponse;
-
-import com.chargebee.v4.models.creditNote.responses.SendEinvoiceForCreditNoteResponse;
 
 public final class CreditNoteService extends BaseService<CreditNoteService> {
 
@@ -92,125 +92,6 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   }
 
   // === Operations ===
-
-  /** voidCreditNote a creditNote (executes immediately) - returns raw Response. */
-  Response voidCreditNoteRaw(String creditNoteId) throws Exception {
-    String path =
-        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-
-    return post(path, null);
-  }
-
-  /**
-   * voidCreditNote a creditNote using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response voidCreditNoteRaw(String creditNoteId, VoidCreditNoteParams params) throws Exception {
-    String path =
-        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * voidCreditNote a creditNote using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response voidCreditNoteRaw(String creditNoteId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
-  }
-
-  public VoidCreditNoteResponse voidCreditNote(String creditNoteId, VoidCreditNoteParams params)
-      throws Exception {
-    Response response = voidCreditNoteRaw(creditNoteId, params);
-    return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** refundForCreditNote a creditNote (executes immediately) - returns raw Response. */
-  Response refundForCreditNoteRaw(String creditNoteId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-
-    return post(path, null);
-  }
-
-  /**
-   * refundForCreditNote a creditNote using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForCreditNoteRaw(String creditNoteId, RefundForCreditNoteParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * refundForCreditNote a creditNote using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForCreditNoteRaw(String creditNoteId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
-    return postJson(path, jsonPayload);
-  }
-
-  public RefundForCreditNoteResponse refundForCreditNote(
-      String creditNoteId, RefundForCreditNoteParams params) throws Exception {
-    Response response = refundForCreditNoteRaw(creditNoteId, params);
-    return RefundForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** list a creditNote using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(CreditNoteListParams params) throws Exception {
-
-    return get("/credit_notes", params != null ? params.toQueryParams() : null);
-  }
-
-  /** list a creditNote without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
-
-    return get("/credit_notes", null);
-  }
-
-  /** list a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
-
-    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
-  }
-
-  public CreditNoteListResponse list(CreditNoteListParams params) throws Exception {
-    Response response = listRaw(params);
-
-    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
-  }
-
-  public CreditNoteListResponse list() throws Exception {
-    Response response = listRaw();
-    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
-  }
-
-  /** create a creditNote using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CreditNoteCreateParams params) throws Exception {
-
-    return post("/credit_notes", params != null ? params.toFormData() : null);
-  }
-
-  /** create a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
-
-    return postJson("/credit_notes", jsonPayload);
-  }
-
-  public CreditNoteCreateResponse create(CreditNoteCreateParams params) throws Exception {
-    Response response = createRaw(params);
-
-    return CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response);
-  }
 
   /** recordRefundForCreditNote a creditNote (executes immediately) - returns raw Response. */
   Response recordRefundForCreditNoteRaw(String creditNoteId) throws Exception {
@@ -356,21 +237,6 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /** downloadEinvoiceForCreditNote a creditNote (executes immediately) - returns raw Response. */
-  Response downloadEinvoiceForCreditNoteRaw(String creditNoteId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/credit_notes/{credit-note-id}/download_einvoice", "credit-note-id", creditNoteId);
-
-    return get(path, null);
-  }
-
-  public DownloadEinvoiceForCreditNoteResponse downloadEinvoiceForCreditNote(String creditNoteId)
-      throws Exception {
-    Response response = downloadEinvoiceForCreditNoteRaw(creditNoteId);
-    return DownloadEinvoiceForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
-  }
-
   /** pdfForCreditNote a creditNote (executes immediately) - returns raw Response. */
   Response pdfForCreditNoteRaw(String creditNoteId) throws Exception {
     String path =
@@ -404,6 +270,155 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String creditNoteId, PdfForCreditNoteParams params) throws Exception {
     Response response = pdfForCreditNoteRaw(creditNoteId, params);
     return PdfForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** sendEinvoiceForCreditNote a creditNote (executes immediately) - returns raw Response. */
+  Response sendEinvoiceForCreditNoteRaw(String creditNoteId) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/send_einvoice", "credit-note-id", creditNoteId);
+
+    return post(path, null);
+  }
+
+  public SendEinvoiceForCreditNoteResponse sendEinvoiceForCreditNote(String creditNoteId)
+      throws Exception {
+    Response response = sendEinvoiceForCreditNoteRaw(creditNoteId);
+    return SendEinvoiceForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** voidCreditNote a creditNote (executes immediately) - returns raw Response. */
+  Response voidCreditNoteRaw(String creditNoteId) throws Exception {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
+
+    return post(path, null);
+  }
+
+  /**
+   * voidCreditNote a creditNote using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response voidCreditNoteRaw(String creditNoteId, VoidCreditNoteParams params) throws Exception {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * voidCreditNote a creditNote using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response voidCreditNoteRaw(String creditNoteId, String jsonPayload) throws Exception {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
+    return postJson(path, jsonPayload);
+  }
+
+  public VoidCreditNoteResponse voidCreditNote(String creditNoteId, VoidCreditNoteParams params)
+      throws Exception {
+    Response response = voidCreditNoteRaw(creditNoteId, params);
+    return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** refundForCreditNote a creditNote (executes immediately) - returns raw Response. */
+  Response refundForCreditNoteRaw(String creditNoteId) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
+
+    return post(path, null);
+  }
+
+  /**
+   * refundForCreditNote a creditNote using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response refundForCreditNoteRaw(String creditNoteId, RefundForCreditNoteParams params)
+      throws Exception {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * refundForCreditNote a creditNote using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response refundForCreditNoteRaw(String creditNoteId, String jsonPayload) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
+    return postJson(path, jsonPayload);
+  }
+
+  public RefundForCreditNoteResponse refundForCreditNote(
+      String creditNoteId, RefundForCreditNoteParams params) throws Exception {
+    Response response = refundForCreditNoteRaw(creditNoteId, params);
+    return RefundForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** list a creditNote using immutable params (executes immediately) - returns raw Response. */
+  Response listRaw(CreditNoteListParams params) throws Exception {
+
+    return get("/credit_notes", params != null ? params.toQueryParams() : null);
+  }
+
+  /** list a creditNote without params (executes immediately) - returns raw Response. */
+  Response listRaw() throws Exception {
+
+    return get("/credit_notes", null);
+  }
+
+  /** list a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response listRaw(String jsonPayload) throws Exception {
+
+    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
+  }
+
+  public CreditNoteListResponse list(CreditNoteListParams params) throws Exception {
+    Response response = listRaw(params);
+
+    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
+  }
+
+  public CreditNoteListResponse list() throws Exception {
+    Response response = listRaw();
+    return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** create a creditNote using immutable params (executes immediately) - returns raw Response. */
+  Response createRaw(CreditNoteCreateParams params) throws Exception {
+
+    return post("/credit_notes", params != null ? params.toFormData() : null);
+  }
+
+  /** create a creditNote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response createRaw(String jsonPayload) throws Exception {
+
+    return postJson("/credit_notes", jsonPayload);
+  }
+
+  public CreditNoteCreateResponse create(CreditNoteCreateParams params) throws Exception {
+    Response response = createRaw(params);
+
+    return CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** downloadEinvoiceForCreditNote a creditNote (executes immediately) - returns raw Response. */
+  Response downloadEinvoiceForCreditNoteRaw(String creditNoteId) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/download_einvoice", "credit-note-id", creditNoteId);
+
+    return get(path, null);
+  }
+
+  public DownloadEinvoiceForCreditNoteResponse downloadEinvoiceForCreditNote(String creditNoteId)
+      throws Exception {
+    Response response = downloadEinvoiceForCreditNoteRaw(creditNoteId);
+    return DownloadEinvoiceForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** resendEinvoiceForCreditNote a creditNote (executes immediately) - returns raw Response. */
@@ -481,20 +496,5 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteRetrieveResponse retrieve(String creditNoteId) throws Exception {
     Response response = retrieveRaw(creditNoteId);
     return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** sendEinvoiceForCreditNote a creditNote (executes immediately) - returns raw Response. */
-  Response sendEinvoiceForCreditNoteRaw(String creditNoteId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/credit_notes/{credit-note-id}/send_einvoice", "credit-note-id", creditNoteId);
-
-    return post(path, null);
-  }
-
-  public SendEinvoiceForCreditNoteResponse sendEinvoiceForCreditNote(String creditNoteId)
-      throws Exception {
-    Response response = sendEinvoiceForCreditNoteRaw(creditNoteId);
-    return SendEinvoiceForCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

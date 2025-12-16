@@ -141,7 +141,7 @@ public class ItemFamily {
   public static ItemFamily fromJson(String json) {
     ItemFamily obj = new ItemFamily();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");

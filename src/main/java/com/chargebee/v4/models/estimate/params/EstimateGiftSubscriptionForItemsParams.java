@@ -30,6 +30,8 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
   private final List<SubscriptionItemsParams> subscriptionItems;
 
+  private final List<ItemTiersParams> itemTiers;
+
   private EstimateGiftSubscriptionForItemsParams(EstimateGiftSubscriptionForItemsBuilder builder) {
 
     this.couponIds = builder.couponIds;
@@ -45,6 +47,8 @@ public final class EstimateGiftSubscriptionForItemsParams {
     this.shippingAddress = builder.shippingAddress;
 
     this.subscriptionItems = builder.subscriptionItems;
+
+    this.itemTiers = builder.itemTiers;
   }
 
   public List<String> getCouponIds() {
@@ -73,6 +77,10 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
   public List<SubscriptionItemsParams> getSubscriptionItems() {
     return subscriptionItems;
+  }
+
+  public List<ItemTiersParams> getItemTiers() {
+    return itemTiers;
   }
 
   /** Get the form data for this request. */
@@ -149,6 +157,21 @@ public final class EstimateGiftSubscriptionForItemsParams {
       }
     }
 
+    if (this.itemTiers != null) {
+
+      // List of objects
+      for (int i = 0; i < this.itemTiers.size(); i++) {
+        ItemTiersParams item = this.itemTiers.get(i);
+        if (item != null) {
+          Map<String, Object> itemData = item.toFormData();
+          for (Map.Entry<String, Object> entry : itemData.entrySet()) {
+            String indexedKey = "item_tiers[" + entry.getKey() + "][" + i + "]";
+            formData.put(indexedKey, entry.getValue());
+          }
+        }
+      }
+    }
+
     return formData;
   }
 
@@ -173,6 +196,8 @@ public final class EstimateGiftSubscriptionForItemsParams {
     private ShippingAddressParams shippingAddress;
 
     private List<SubscriptionItemsParams> subscriptionItems;
+
+    private List<ItemTiersParams> itemTiers;
 
     private EstimateGiftSubscriptionForItemsBuilder() {}
 
@@ -209,6 +234,11 @@ public final class EstimateGiftSubscriptionForItemsParams {
     public EstimateGiftSubscriptionForItemsBuilder subscriptionItems(
         List<SubscriptionItemsParams> value) {
       this.subscriptionItems = value;
+      return this;
+    }
+
+    public EstimateGiftSubscriptionForItemsBuilder itemTiers(List<ItemTiersParams> value) {
+      this.itemTiers = value;
       return this;
     }
 
@@ -752,6 +782,16 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
+
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
        */
@@ -1126,6 +1166,10 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
     private final String quantityInDecimal;
 
+    private final Long unitPrice;
+
+    private final String unitPriceInDecimal;
+
     private SubscriptionItemsParams(SubscriptionItemsBuilder builder) {
 
       this.itemPriceId = builder.itemPriceId;
@@ -1133,6 +1177,10 @@ public final class EstimateGiftSubscriptionForItemsParams {
       this.quantity = builder.quantity;
 
       this.quantityInDecimal = builder.quantityInDecimal;
+
+      this.unitPrice = builder.unitPrice;
+
+      this.unitPriceInDecimal = builder.unitPriceInDecimal;
     }
 
     public String getItemPriceId() {
@@ -1145,6 +1193,14 @@ public final class EstimateGiftSubscriptionForItemsParams {
 
     public String getQuantityInDecimal() {
       return quantityInDecimal;
+    }
+
+    public Long getUnitPrice() {
+      return unitPrice;
+    }
+
+    public String getUnitPriceInDecimal() {
+      return unitPriceInDecimal;
     }
 
     /** Get the form data for this request. */
@@ -1166,6 +1222,16 @@ public final class EstimateGiftSubscriptionForItemsParams {
         formData.put("quantity_in_decimal", this.quantityInDecimal);
       }
 
+      if (this.unitPrice != null) {
+
+        formData.put("unit_price", this.unitPrice);
+      }
+
+      if (this.unitPriceInDecimal != null) {
+
+        formData.put("unit_price_in_decimal", this.unitPriceInDecimal);
+      }
+
       return formData;
     }
 
@@ -1182,6 +1248,10 @@ public final class EstimateGiftSubscriptionForItemsParams {
       private Integer quantity;
 
       private String quantityInDecimal;
+
+      private Long unitPrice;
+
+      private String unitPriceInDecimal;
 
       private SubscriptionItemsBuilder() {}
 
@@ -1200,8 +1270,186 @@ public final class EstimateGiftSubscriptionForItemsParams {
         return this;
       }
 
+      public SubscriptionItemsBuilder unitPrice(Long value) {
+        this.unitPrice = value;
+        return this;
+      }
+
+      public SubscriptionItemsBuilder unitPriceInDecimal(String value) {
+        this.unitPriceInDecimal = value;
+        return this;
+      }
+
       public SubscriptionItemsParams build() {
         return new SubscriptionItemsParams(this);
+      }
+    }
+  }
+
+  public static final class ItemTiersParams {
+
+    private final String itemPriceId;
+
+    private final Integer startingUnit;
+
+    private final Integer endingUnit;
+
+    private final Long price;
+
+    private final String startingUnitInDecimal;
+
+    private final String endingUnitInDecimal;
+
+    private final String priceInDecimal;
+
+    private ItemTiersParams(ItemTiersBuilder builder) {
+
+      this.itemPriceId = builder.itemPriceId;
+
+      this.startingUnit = builder.startingUnit;
+
+      this.endingUnit = builder.endingUnit;
+
+      this.price = builder.price;
+
+      this.startingUnitInDecimal = builder.startingUnitInDecimal;
+
+      this.endingUnitInDecimal = builder.endingUnitInDecimal;
+
+      this.priceInDecimal = builder.priceInDecimal;
+    }
+
+    public String getItemPriceId() {
+      return itemPriceId;
+    }
+
+    public Integer getStartingUnit() {
+      return startingUnit;
+    }
+
+    public Integer getEndingUnit() {
+      return endingUnit;
+    }
+
+    public Long getPrice() {
+      return price;
+    }
+
+    public String getStartingUnitInDecimal() {
+      return startingUnitInDecimal;
+    }
+
+    public String getEndingUnitInDecimal() {
+      return endingUnitInDecimal;
+    }
+
+    public String getPriceInDecimal() {
+      return priceInDecimal;
+    }
+
+    /** Get the form data for this request. */
+    public Map<String, Object> toFormData() {
+      Map<String, Object> formData = new LinkedHashMap<>();
+
+      if (this.itemPriceId != null) {
+
+        formData.put("item_price_id", this.itemPriceId);
+      }
+
+      if (this.startingUnit != null) {
+
+        formData.put("starting_unit", this.startingUnit);
+      }
+
+      if (this.endingUnit != null) {
+
+        formData.put("ending_unit", this.endingUnit);
+      }
+
+      if (this.price != null) {
+
+        formData.put("price", this.price);
+      }
+
+      if (this.startingUnitInDecimal != null) {
+
+        formData.put("starting_unit_in_decimal", this.startingUnitInDecimal);
+      }
+
+      if (this.endingUnitInDecimal != null) {
+
+        formData.put("ending_unit_in_decimal", this.endingUnitInDecimal);
+      }
+
+      if (this.priceInDecimal != null) {
+
+        formData.put("price_in_decimal", this.priceInDecimal);
+      }
+
+      return formData;
+    }
+
+    /** Create a new builder for ItemTiersParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static ItemTiersBuilder builder() {
+      return new ItemTiersBuilder();
+    }
+
+    public static final class ItemTiersBuilder {
+
+      private String itemPriceId;
+
+      private Integer startingUnit;
+
+      private Integer endingUnit;
+
+      private Long price;
+
+      private String startingUnitInDecimal;
+
+      private String endingUnitInDecimal;
+
+      private String priceInDecimal;
+
+      private ItemTiersBuilder() {}
+
+      public ItemTiersBuilder itemPriceId(String value) {
+        this.itemPriceId = value;
+        return this;
+      }
+
+      public ItemTiersBuilder startingUnit(Integer value) {
+        this.startingUnit = value;
+        return this;
+      }
+
+      public ItemTiersBuilder endingUnit(Integer value) {
+        this.endingUnit = value;
+        return this;
+      }
+
+      public ItemTiersBuilder price(Long value) {
+        this.price = value;
+        return this;
+      }
+
+      public ItemTiersBuilder startingUnitInDecimal(String value) {
+        this.startingUnitInDecimal = value;
+        return this;
+      }
+
+      public ItemTiersBuilder endingUnitInDecimal(String value) {
+        this.endingUnitInDecimal = value;
+        return this;
+      }
+
+      public ItemTiersBuilder priceInDecimal(String value) {
+        this.priceInDecimal = value;
+        return this;
+      }
+
+      public ItemTiersParams build() {
+        return new ItemTiersParams(this);
       }
     }
   }

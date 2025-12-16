@@ -82,6 +82,8 @@ public class Customer {
 
   private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
 
+  private java.util.Map<String, Object> consentFields = new java.util.HashMap<>();
+
   public String getId() {
     return id;
   }
@@ -365,6 +367,40 @@ public class Customer {
    */
   public Object getCustomField(String fieldName) {
     return customFields.get(fieldName);
+  }
+
+  /**
+   * Returns a map of consent fields. Consent fields are dynamic boolean/option properties that
+   * follow the pattern cs_* (e.g., cs_marketing_consent).
+   *
+   * @return map containing all consent fields
+   */
+  public java.util.Map<String, Object> getConsentFields() {
+    return consentFields;
+  }
+
+  /**
+   * Returns the value of a specific consent field.
+   *
+   * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+   * @return the value of the consent field, or null if not present
+   */
+  public Object getConsentField(String fieldName) {
+    return consentFields.get(fieldName);
+  }
+
+  /**
+   * Returns the boolean value of a specific consent field.
+   *
+   * @param fieldName the name of the consent field (e.g., "cs_marketing_consent")
+   * @return the boolean value of the consent field, or null if not present or not a boolean
+   */
+  public Boolean getConsentFieldAsBoolean(String fieldName) {
+    Object value = consentFields.get(fieldName);
+    if (value instanceof Boolean) {
+      return (Boolean) value;
+    }
+    return null;
   }
 
   public enum AutoCollection {
@@ -856,7 +892,7 @@ public class Customer {
   public static Customer fromJson(String json) {
     Customer obj = new Customer();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -1171,6 +1207,9 @@ public class Customer {
     // Extract custom fields (fields starting with cf_)
     obj.customFields = extractCustomFields(json, knownFields);
 
+    // Extract consent fields (fields starting with cs_)
+    obj.consentFields = extractConsentFields(json, knownFields);
+
     return obj;
   }
 
@@ -1201,6 +1240,35 @@ public class Customer {
       // If parsing fails, return empty map
     }
     return customFields;
+  }
+
+  /**
+   * Helper method to extract consent fields from JSON. Consent fields are fields that start with
+   * "cs_" and are not in the known fields set. They typically contain boolean values or options.
+   *
+   * @param json JSON string to parse
+   * @param knownFields set of known field names
+   * @return map of consent fields
+   */
+  private static java.util.Map<String, Object> extractConsentFields(
+      String json, java.util.Set<String> knownFields) {
+    java.util.Map<String, Object> consentFields = new java.util.HashMap<>();
+    try {
+      // Parse the entire JSON as a map
+      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
+      if (allFields != null) {
+        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
+          String key = entry.getKey();
+          // Include fields that start with "cs_" and are not in knownFields
+          if (key != null && key.startsWith("cs_") && !knownFields.contains(key)) {
+            consentFields.put(key, entry.getValue());
+          }
+        }
+      }
+    } catch (Exception e) {
+      // If parsing fails, return empty map
+    }
+    return consentFields;
   }
 
   public static class BillingAddress {
@@ -1591,6 +1659,16 @@ public class Customer {
       ONLINE_BANKING_POLAND("online_banking_poland"),
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
 
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);

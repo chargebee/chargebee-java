@@ -29,6 +29,9 @@ public class SalesOrder {
   private String currencyCode;
   private List<String> subscriptionIds;
   private Status status;
+  @Deprecated private List<String> invoiceIds;
+  @Deprecated private List<String> creditNoteIds;
+  @Deprecated private List<String> unbilledChargeIds;
   private List<LineItems> lineItems;
   private List<BillingAddresses> billingAddresses;
   private List<Discounts> discounts;
@@ -101,6 +104,21 @@ public class SalesOrder {
 
   public Status getStatus() {
     return status;
+  }
+
+  @Deprecated
+  public List<String> getInvoiceIds() {
+    return invoiceIds;
+  }
+
+  @Deprecated
+  public List<String> getCreditNoteIds() {
+    return creditNoteIds;
+  }
+
+  @Deprecated
+  public List<String> getUnbilledChargeIds() {
+    return unbilledChargeIds;
   }
 
   public List<LineItems> getLineItems() {
@@ -201,6 +219,13 @@ public class SalesOrder {
     obj.subscriptionIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "subscription_ids"));
 
     obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+
+    obj.invoiceIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "invoice_ids"));
+
+    obj.creditNoteIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "credit_note_ids"));
+
+    obj.unbilledChargeIds =
+        JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "unbilled_charge_ids"));
 
     obj.lineItems =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_items")).stream()
@@ -1358,10 +1383,15 @@ public class SalesOrder {
   public static class CreditLines {
 
     private String amount;
+    private String unitPrice;
     private String lineItemAssociationId;
 
     public String getAmount() {
       return amount;
+    }
+
+    public String getUnitPrice() {
+      return unitPrice;
     }
 
     public String getLineItemAssociationId() {
@@ -1372,6 +1402,8 @@ public class SalesOrder {
       CreditLines obj = new CreditLines();
 
       obj.amount = JsonUtil.getString(json, "amount");
+
+      obj.unitPrice = JsonUtil.getString(json, "unit_price");
 
       obj.lineItemAssociationId = JsonUtil.getString(json, "line_item_association_id");
 

@@ -7,6 +7,7 @@
 package com.chargebee.v4.models.pricingPageSession.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,6 +20,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
   private final String businessEntityId;
 
   private final Boolean autoSelectLocalCurrency;
+
+  private final java.util.Map<String, Object> custom;
 
   private final PricingPageParams pricingPage;
 
@@ -40,6 +43,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     this.businessEntityId = builder.businessEntityId;
 
     this.autoSelectLocalCurrency = builder.autoSelectLocalCurrency;
+
+    this.custom = builder.custom;
 
     this.pricingPage = builder.pricingPage;
 
@@ -64,6 +69,10 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
   public Boolean getAutoSelectLocalCurrency() {
     return autoSelectLocalCurrency;
+  }
+
+  public java.util.Map<String, Object> getCustom() {
+    return custom;
   }
 
   public PricingPageParams getPricingPage() {
@@ -107,6 +116,11 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     if (this.autoSelectLocalCurrency != null) {
 
       formData.put("auto_select_local_currency", this.autoSelectLocalCurrency);
+    }
+
+    if (this.custom != null) {
+
+      formData.put("custom", JsonUtil.toJson(this.custom));
     }
 
     if (this.pricingPage != null) {
@@ -191,6 +205,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     private Boolean autoSelectLocalCurrency;
 
+    private java.util.Map<String, Object> custom;
+
     private PricingPageParams pricingPage;
 
     private SubscriptionParams subscription;
@@ -218,6 +234,12 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
     public PricingPageSessionCreateForNewSubscriptionBuilder autoSelectLocalCurrency(
         Boolean value) {
       this.autoSelectLocalCurrency = value;
+      return this;
+    }
+
+    public PricingPageSessionCreateForNewSubscriptionBuilder custom(
+        java.util.Map<String, Object> value) {
+      this.custom = value;
       return this;
     }
 

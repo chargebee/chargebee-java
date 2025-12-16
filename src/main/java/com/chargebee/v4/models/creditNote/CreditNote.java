@@ -35,6 +35,7 @@ public class CreditNote {
   private Long resourceVersion;
   private Timestamp updatedAt;
   private Channel channel;
+  private String lineItemsNextOffset;
   private Long subTotal;
   private Long subTotalInLocalCurrency;
   private Long totalInLocalCurrency;
@@ -146,6 +147,10 @@ public class CreditNote {
 
   public Channel getChannel() {
     return channel;
+  }
+
+  public String getLineItemsNextOffset() {
+    return lineItemsNextOffset;
   }
 
   public Long getSubTotal() {
@@ -443,7 +448,7 @@ public class CreditNote {
   public static CreditNote fromJson(String json) {
     CreditNote obj = new CreditNote();
 
-    // Parse JSON to extract all keys
+    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -487,6 +492,8 @@ public class CreditNote {
     knownFields.add("updated_at");
 
     knownFields.add("channel");
+
+    knownFields.add("line_items_next_offset");
 
     knownFields.add("sub_total");
 
@@ -581,6 +588,8 @@ public class CreditNote {
     obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
 
     obj.channel = Channel.fromString(JsonUtil.getString(json, "channel"));
+
+    obj.lineItemsNextOffset = JsonUtil.getString(json, "line_items_next_offset");
 
     obj.subTotal = JsonUtil.getLong(json, "sub_total");
 

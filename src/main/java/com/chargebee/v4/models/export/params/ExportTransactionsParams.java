@@ -1300,6 +1300,16 @@ public final class ExportTransactionsParams {
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
 
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
+
       /** An enum member indicating that Is was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -1393,6 +1403,16 @@ public final class ExportTransactionsParams {
       ONLINE_BANKING_POLAND("online_banking_poland"),
 
       PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+      ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+      KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+      PAY_BY_BANK("pay_by_bank"),
+
+      TRUSTLY("trustly"),
+
+      STABLECOIN("stablecoin"),
 
       /** An enum member indicating that IsNot was instantiated with an unknown value. */
       _UNKNOWN(null);
