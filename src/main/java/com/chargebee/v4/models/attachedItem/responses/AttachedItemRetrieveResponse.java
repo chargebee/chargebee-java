@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class AttachedItemRetrieveResponse extends BaseResponse {
   private final AttachedItem attachedItem;
 
-  private AttachedItemRetrieveResponse(AttachedItem attachedItem, Response httpResponse) {
-    super(httpResponse);
+  private AttachedItemRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.attachedItem = attachedItem;
+    this.attachedItem = builder.attachedItem;
   }
 
   /** Parse JSON response into AttachedItemRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class AttachedItemRetrieveResponse extends BaseResponse {
   /** Parse JSON response into AttachedItemRetrieveResponse object with HTTP response. */
   public static AttachedItemRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      AttachedItem attachedItem = AttachedItem.fromJson(JsonUtil.getObject(json, "attached_item"));
+      String __attachedItemJson = JsonUtil.getObject(json, "attached_item");
+      if (__attachedItemJson != null) {
+        builder.attachedItem(AttachedItem.fromJson(__attachedItemJson));
+      }
 
-      return new AttachedItemRetrieveResponse(attachedItem, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse AttachedItemRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for AttachedItemRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for AttachedItemRetrieveResponse. */
+  public static class Builder {
+
+    private AttachedItem attachedItem;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder attachedItem(AttachedItem attachedItem) {
+      this.attachedItem = attachedItem;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public AttachedItemRetrieveResponse build() {
+      return new AttachedItemRetrieveResponse(this);
     }
   }
 

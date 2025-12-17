@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PaymentIntentRetrieveResponse extends BaseResponse {
   private final PaymentIntent paymentIntent;
 
-  private PaymentIntentRetrieveResponse(PaymentIntent paymentIntent, Response httpResponse) {
-    super(httpResponse);
+  private PaymentIntentRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.paymentIntent = paymentIntent;
+    this.paymentIntent = builder.paymentIntent;
   }
 
   /** Parse JSON response into PaymentIntentRetrieveResponse object. */
@@ -27,13 +27,46 @@ public final class PaymentIntentRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PaymentIntentRetrieveResponse object with HTTP response. */
   public static PaymentIntentRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PaymentIntent paymentIntent =
-          PaymentIntent.fromJson(JsonUtil.getObject(json, "payment_intent"));
+      String __paymentIntentJson = JsonUtil.getObject(json, "payment_intent");
+      if (__paymentIntentJson != null) {
+        builder.paymentIntent(PaymentIntent.fromJson(__paymentIntentJson));
+      }
 
-      return new PaymentIntentRetrieveResponse(paymentIntent, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PaymentIntentRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PaymentIntentRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PaymentIntentRetrieveResponse. */
+  public static class Builder {
+
+    private PaymentIntent paymentIntent;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder paymentIntent(PaymentIntent paymentIntent) {
+      this.paymentIntent = paymentIntent;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PaymentIntentRetrieveResponse build() {
+      return new PaymentIntentRetrieveResponse(this);
     }
   }
 

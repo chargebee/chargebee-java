@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class AddonRetrieveResponse extends BaseResponse {
   private final Addon addon;
 
-  private AddonRetrieveResponse(Addon addon, Response httpResponse) {
-    super(httpResponse);
+  private AddonRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.addon = addon;
+    this.addon = builder.addon;
   }
 
   /** Parse JSON response into AddonRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class AddonRetrieveResponse extends BaseResponse {
   /** Parse JSON response into AddonRetrieveResponse object with HTTP response. */
   public static AddonRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Addon addon = Addon.fromJson(JsonUtil.getObject(json, "addon"));
+      String __addonJson = JsonUtil.getObject(json, "addon");
+      if (__addonJson != null) {
+        builder.addon(Addon.fromJson(__addonJson));
+      }
 
-      return new AddonRetrieveResponse(addon, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse AddonRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for AddonRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for AddonRetrieveResponse. */
+  public static class Builder {
+
+    private Addon addon;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder addon(Addon addon) {
+      this.addon = addon;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public AddonRetrieveResponse build() {
+      return new AddonRetrieveResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class UsagesForSubscriptionResponse extends BaseResponse {
   private final Usage usage;
 
-  private UsagesForSubscriptionResponse(Usage usage, Response httpResponse) {
-    super(httpResponse);
+  private UsagesForSubscriptionResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.usage = usage;
+    this.usage = builder.usage;
   }
 
   /** Parse JSON response into UsagesForSubscriptionResponse object. */
@@ -27,12 +27,46 @@ public final class UsagesForSubscriptionResponse extends BaseResponse {
   /** Parse JSON response into UsagesForSubscriptionResponse object with HTTP response. */
   public static UsagesForSubscriptionResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Usage usage = Usage.fromJson(JsonUtil.getObject(json, "usage"));
+      String __usageJson = JsonUtil.getObject(json, "usage");
+      if (__usageJson != null) {
+        builder.usage(Usage.fromJson(__usageJson));
+      }
 
-      return new UsagesForSubscriptionResponse(usage, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse UsagesForSubscriptionResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for UsagesForSubscriptionResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for UsagesForSubscriptionResponse. */
+  public static class Builder {
+
+    private Usage usage;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder usage(Usage usage) {
+      this.usage = usage;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public UsagesForSubscriptionResponse build() {
+      return new UsagesForSubscriptionResponse(this);
     }
   }
 

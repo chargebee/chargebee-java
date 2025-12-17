@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class RenewalEstimateForSubscriptionResponse extends BaseResponse {
   private final Estimate estimate;
 
-  private RenewalEstimateForSubscriptionResponse(Estimate estimate, Response httpResponse) {
-    super(httpResponse);
+  private RenewalEstimateForSubscriptionResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.estimate = estimate;
+    this.estimate = builder.estimate;
   }
 
   /** Parse JSON response into RenewalEstimateForSubscriptionResponse object. */
@@ -28,13 +28,47 @@ public final class RenewalEstimateForSubscriptionResponse extends BaseResponse {
   public static RenewalEstimateForSubscriptionResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Estimate estimate = Estimate.fromJson(JsonUtil.getObject(json, "estimate"));
+      String __estimateJson = JsonUtil.getObject(json, "estimate");
+      if (__estimateJson != null) {
+        builder.estimate(Estimate.fromJson(__estimateJson));
+      }
 
-      return new RenewalEstimateForSubscriptionResponse(estimate, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse RenewalEstimateForSubscriptionResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RenewalEstimateForSubscriptionResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RenewalEstimateForSubscriptionResponse. */
+  public static class Builder {
+
+    private Estimate estimate;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder estimate(Estimate estimate) {
+      this.estimate = estimate;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RenewalEstimateForSubscriptionResponse build() {
+      return new RenewalEstimateForSubscriptionResponse(this);
     }
   }
 

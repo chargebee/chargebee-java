@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PromotionalCreditRetrieveResponse extends BaseResponse {
   private final PromotionalCredit promotionalCredit;
 
-  private PromotionalCreditRetrieveResponse(
-      PromotionalCredit promotionalCredit, Response httpResponse) {
-    super(httpResponse);
+  private PromotionalCreditRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.promotionalCredit = promotionalCredit;
+    this.promotionalCredit = builder.promotionalCredit;
   }
 
   /** Parse JSON response into PromotionalCreditRetrieveResponse object. */
@@ -28,13 +27,46 @@ public final class PromotionalCreditRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PromotionalCreditRetrieveResponse object with HTTP response. */
   public static PromotionalCreditRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PromotionalCredit promotionalCredit =
-          PromotionalCredit.fromJson(JsonUtil.getObject(json, "promotional_credit"));
+      String __promotionalCreditJson = JsonUtil.getObject(json, "promotional_credit");
+      if (__promotionalCreditJson != null) {
+        builder.promotionalCredit(PromotionalCredit.fromJson(__promotionalCreditJson));
+      }
 
-      return new PromotionalCreditRetrieveResponse(promotionalCredit, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PromotionalCreditRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PromotionalCreditRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PromotionalCreditRetrieveResponse. */
+  public static class Builder {
+
+    private PromotionalCredit promotionalCredit;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder promotionalCredit(PromotionalCredit promotionalCredit) {
+      this.promotionalCredit = promotionalCredit;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PromotionalCreditRetrieveResponse build() {
+      return new PromotionalCreditRetrieveResponse(this);
     }
   }
 

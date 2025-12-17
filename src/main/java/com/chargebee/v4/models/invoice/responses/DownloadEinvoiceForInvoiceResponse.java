@@ -14,10 +14,10 @@ import java.util.List;
 public final class DownloadEinvoiceForInvoiceResponse extends BaseResponse {
   private final List<Download> downloads;
 
-  private DownloadEinvoiceForInvoiceResponse(List<Download> downloads, Response httpResponse) {
-    super(httpResponse);
+  private DownloadEinvoiceForInvoiceResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.downloads = downloads;
+    this.downloads = builder.downloads;
   }
 
   /** Parse JSON response into DownloadEinvoiceForInvoiceResponse object. */
@@ -28,15 +28,49 @@ public final class DownloadEinvoiceForInvoiceResponse extends BaseResponse {
   /** Parse JSON response into DownloadEinvoiceForInvoiceResponse object with HTTP response. */
   public static DownloadEinvoiceForInvoiceResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      List<Download> downloads =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "downloads")).stream()
-              .map(Download::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __downloadsJson = JsonUtil.getArray(json, "downloads");
+      if (__downloadsJson != null) {
+        builder.downloads(
+            JsonUtil.parseObjectArray(__downloadsJson).stream()
+                .map(Download::fromJson)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
-      return new DownloadEinvoiceForInvoiceResponse(downloads, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse DownloadEinvoiceForInvoiceResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for DownloadEinvoiceForInvoiceResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for DownloadEinvoiceForInvoiceResponse. */
+  public static class Builder {
+
+    private List<Download> downloads;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder downloads(List<Download> downloads) {
+      this.downloads = downloads;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public DownloadEinvoiceForInvoiceResponse build() {
+      return new DownloadEinvoiceForInvoiceResponse(this);
     }
   }
 

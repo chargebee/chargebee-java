@@ -11,11 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class Pc2MigrationItemPriceRetrieveResponse extends BaseResponse {
   private final Object pc2MigrationItemPrice;
 
-  private Pc2MigrationItemPriceRetrieveResponse(
-      Object pc2MigrationItemPrice, Response httpResponse) {
-    super(httpResponse);
+  private Pc2MigrationItemPriceRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.pc2MigrationItemPrice = pc2MigrationItemPrice;
+    this.pc2MigrationItemPrice = builder.pc2MigrationItemPrice;
   }
 
   /** Parse JSON response into Pc2MigrationItemPriceRetrieveResponse object. */
@@ -26,13 +25,44 @@ public final class Pc2MigrationItemPriceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationItemPriceRetrieveResponse object with HTTP response. */
   public static Pc2MigrationItemPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object pc2MigrationItemPrice = JsonUtil.getObject(json, "pc2_migration_item_price");
+      builder.pc2MigrationItemPrice(JsonUtil.getObject(json, "pc2_migration_item_price"));
 
-      return new Pc2MigrationItemPriceRetrieveResponse(pc2MigrationItemPrice, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemPriceRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for Pc2MigrationItemPriceRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for Pc2MigrationItemPriceRetrieveResponse. */
+  public static class Builder {
+
+    private Object pc2MigrationItemPrice;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder pc2MigrationItemPrice(Object pc2MigrationItemPrice) {
+      this.pc2MigrationItemPrice = pc2MigrationItemPrice;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public Pc2MigrationItemPriceRetrieveResponse build() {
+      return new Pc2MigrationItemPriceRetrieveResponse(this);
     }
   }
 

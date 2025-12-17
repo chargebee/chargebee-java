@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ExportRetrieveResponse extends BaseResponse {
   private final Export export;
 
-  private ExportRetrieveResponse(Export export, Response httpResponse) {
-    super(httpResponse);
+  private ExportRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.export = export;
+    this.export = builder.export;
   }
 
   /** Parse JSON response into ExportRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class ExportRetrieveResponse extends BaseResponse {
   /** Parse JSON response into ExportRetrieveResponse object with HTTP response. */
   public static ExportRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Export export = Export.fromJson(JsonUtil.getObject(json, "export"));
+      String __exportJson = JsonUtil.getObject(json, "export");
+      if (__exportJson != null) {
+        builder.export(Export.fromJson(__exportJson));
+      }
 
-      return new ExportRetrieveResponse(export, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse ExportRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ExportRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ExportRetrieveResponse. */
+  public static class Builder {
+
+    private Export export;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder export(Export export) {
+      this.export = export;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ExportRetrieveResponse build() {
+      return new ExportRetrieveResponse(this);
     }
   }
 

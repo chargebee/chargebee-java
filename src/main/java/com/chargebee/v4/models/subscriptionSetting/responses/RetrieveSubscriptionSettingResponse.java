@@ -11,10 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class RetrieveSubscriptionSettingResponse extends BaseResponse {
   private final Object subscriptionSetting;
 
-  private RetrieveSubscriptionSettingResponse(Object subscriptionSetting, Response httpResponse) {
-    super(httpResponse);
+  private RetrieveSubscriptionSettingResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.subscriptionSetting = subscriptionSetting;
+    this.subscriptionSetting = builder.subscriptionSetting;
   }
 
   /** Parse JSON response into RetrieveSubscriptionSettingResponse object. */
@@ -25,13 +25,44 @@ public final class RetrieveSubscriptionSettingResponse extends BaseResponse {
   /** Parse JSON response into RetrieveSubscriptionSettingResponse object with HTTP response. */
   public static RetrieveSubscriptionSettingResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object subscriptionSetting = JsonUtil.getObject(json, "subscription_setting");
+      builder.subscriptionSetting(JsonUtil.getObject(json, "subscription_setting"));
 
-      return new RetrieveSubscriptionSettingResponse(subscriptionSetting, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse RetrieveSubscriptionSettingResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RetrieveSubscriptionSettingResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RetrieveSubscriptionSettingResponse. */
+  public static class Builder {
+
+    private Object subscriptionSetting;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder subscriptionSetting(Object subscriptionSetting) {
+      this.subscriptionSetting = subscriptionSetting;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RetrieveSubscriptionSettingResponse build() {
+      return new RetrieveSubscriptionSettingResponse(this);
     }
   }
 

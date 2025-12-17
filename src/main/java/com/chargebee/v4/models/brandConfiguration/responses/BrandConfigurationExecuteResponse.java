@@ -11,10 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class BrandConfigurationExecuteResponse extends BaseResponse {
   private final Object brandConfiguration;
 
-  private BrandConfigurationExecuteResponse(Object brandConfiguration, Response httpResponse) {
-    super(httpResponse);
+  private BrandConfigurationExecuteResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.brandConfiguration = brandConfiguration;
+    this.brandConfiguration = builder.brandConfiguration;
   }
 
   /** Parse JSON response into BrandConfigurationExecuteResponse object. */
@@ -25,12 +25,43 @@ public final class BrandConfigurationExecuteResponse extends BaseResponse {
   /** Parse JSON response into BrandConfigurationExecuteResponse object with HTTP response. */
   public static BrandConfigurationExecuteResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object brandConfiguration = JsonUtil.getObject(json, "brand_configuration");
+      builder.brandConfiguration(JsonUtil.getObject(json, "brand_configuration"));
 
-      return new BrandConfigurationExecuteResponse(brandConfiguration, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse BrandConfigurationExecuteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for BrandConfigurationExecuteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for BrandConfigurationExecuteResponse. */
+  public static class Builder {
+
+    private Object brandConfiguration;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder brandConfiguration(Object brandConfiguration) {
+      this.brandConfiguration = brandConfiguration;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public BrandConfigurationExecuteResponse build() {
+      return new BrandConfigurationExecuteResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PaymentSourceRetrieveResponse extends BaseResponse {
   private final PaymentSource paymentSource;
 
-  private PaymentSourceRetrieveResponse(PaymentSource paymentSource, Response httpResponse) {
-    super(httpResponse);
+  private PaymentSourceRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.paymentSource = paymentSource;
+    this.paymentSource = builder.paymentSource;
   }
 
   /** Parse JSON response into PaymentSourceRetrieveResponse object. */
@@ -27,13 +27,46 @@ public final class PaymentSourceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PaymentSourceRetrieveResponse object with HTTP response. */
   public static PaymentSourceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PaymentSource paymentSource =
-          PaymentSource.fromJson(JsonUtil.getObject(json, "payment_source"));
+      String __paymentSourceJson = JsonUtil.getObject(json, "payment_source");
+      if (__paymentSourceJson != null) {
+        builder.paymentSource(PaymentSource.fromJson(__paymentSourceJson));
+      }
 
-      return new PaymentSourceRetrieveResponse(paymentSource, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PaymentSourceRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PaymentSourceRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PaymentSourceRetrieveResponse. */
+  public static class Builder {
+
+    private PaymentSource paymentSource;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder paymentSource(PaymentSource paymentSource) {
+      this.paymentSource = paymentSource;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PaymentSourceRetrieveResponse build() {
+      return new PaymentSourceRetrieveResponse(this);
     }
   }
 

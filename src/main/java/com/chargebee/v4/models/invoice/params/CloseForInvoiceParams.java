@@ -26,7 +26,7 @@ public final class CloseForInvoiceParams {
 
   private final List<NotesToRemoveParams> notesToRemove;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private CloseForInvoiceParams(CloseForInvoiceBuilder builder) {
 
@@ -66,7 +66,7 @@ public final class CloseForInvoiceParams {
     return notesToRemove;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -132,7 +132,7 @@ public final class CloseForInvoiceParams {
 
     private List<NotesToRemoveParams> notesToRemove;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private CloseForInvoiceBuilder() {}
 
@@ -169,7 +169,7 @@ public final class CloseForInvoiceParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public CloseForInvoiceBuilder customField(String fieldName, Object value) {
+    public CloseForInvoiceBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -184,9 +184,9 @@ public final class CloseForInvoiceParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public CloseForInvoiceBuilder customFields(Map<String, Object> customFields) {
+    public CloseForInvoiceBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CouponSetRetrieveResponse extends BaseResponse {
   private final CouponSet couponSet;
 
-  private CouponSetRetrieveResponse(CouponSet couponSet, Response httpResponse) {
-    super(httpResponse);
+  private CouponSetRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.couponSet = couponSet;
+    this.couponSet = builder.couponSet;
   }
 
   /** Parse JSON response into CouponSetRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CouponSetRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CouponSetRetrieveResponse object with HTTP response. */
   public static CouponSetRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      CouponSet couponSet = CouponSet.fromJson(JsonUtil.getObject(json, "coupon_set"));
+      String __couponSetJson = JsonUtil.getObject(json, "coupon_set");
+      if (__couponSetJson != null) {
+        builder.couponSet(CouponSet.fromJson(__couponSetJson));
+      }
 
-      return new CouponSetRetrieveResponse(couponSet, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CouponSetRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CouponSetRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CouponSetRetrieveResponse. */
+  public static class Builder {
+
+    private CouponSet couponSet;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder couponSet(CouponSet couponSet) {
+      this.couponSet = couponSet;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CouponSetRetrieveResponse build() {
+      return new CouponSetRetrieveResponse(this);
     }
   }
 

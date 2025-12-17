@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class RampRetrieveResponse extends BaseResponse {
   private final Ramp ramp;
 
-  private RampRetrieveResponse(Ramp ramp, Response httpResponse) {
-    super(httpResponse);
+  private RampRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.ramp = ramp;
+    this.ramp = builder.ramp;
   }
 
   /** Parse JSON response into RampRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class RampRetrieveResponse extends BaseResponse {
   /** Parse JSON response into RampRetrieveResponse object with HTTP response. */
   public static RampRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Ramp ramp = Ramp.fromJson(JsonUtil.getObject(json, "ramp"));
+      String __rampJson = JsonUtil.getObject(json, "ramp");
+      if (__rampJson != null) {
+        builder.ramp(Ramp.fromJson(__rampJson));
+      }
 
-      return new RampRetrieveResponse(ramp, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse RampRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RampRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RampRetrieveResponse. */
+  public static class Builder {
+
+    private Ramp ramp;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder ramp(Ramp ramp) {
+      this.ramp = ramp;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RampRetrieveResponse build() {
+      return new RampRetrieveResponse(this);
     }
   }
 

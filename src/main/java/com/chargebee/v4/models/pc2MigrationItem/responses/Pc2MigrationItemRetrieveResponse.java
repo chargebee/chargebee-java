@@ -11,10 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class Pc2MigrationItemRetrieveResponse extends BaseResponse {
   private final Object pc2MigrationItem;
 
-  private Pc2MigrationItemRetrieveResponse(Object pc2MigrationItem, Response httpResponse) {
-    super(httpResponse);
+  private Pc2MigrationItemRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.pc2MigrationItem = pc2MigrationItem;
+    this.pc2MigrationItem = builder.pc2MigrationItem;
   }
 
   /** Parse JSON response into Pc2MigrationItemRetrieveResponse object. */
@@ -25,12 +25,43 @@ public final class Pc2MigrationItemRetrieveResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationItemRetrieveResponse object with HTTP response. */
   public static Pc2MigrationItemRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object pc2MigrationItem = JsonUtil.getObject(json, "pc2_migration_item");
+      builder.pc2MigrationItem(JsonUtil.getObject(json, "pc2_migration_item"));
 
-      return new Pc2MigrationItemRetrieveResponse(pc2MigrationItem, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse Pc2MigrationItemRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for Pc2MigrationItemRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for Pc2MigrationItemRetrieveResponse. */
+  public static class Builder {
+
+    private Object pc2MigrationItem;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder pc2MigrationItem(Object pc2MigrationItem) {
+      this.pc2MigrationItem = pc2MigrationItem;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public Pc2MigrationItemRetrieveResponse build() {
+      return new Pc2MigrationItemRetrieveResponse(this);
     }
   }
 

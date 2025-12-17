@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CardRetrieveResponse extends BaseResponse {
   private final Card card;
 
-  private CardRetrieveResponse(Card card, Response httpResponse) {
-    super(httpResponse);
+  private CardRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.card = card;
+    this.card = builder.card;
   }
 
   /** Parse JSON response into CardRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CardRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CardRetrieveResponse object with HTTP response. */
   public static CardRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Card card = Card.fromJson(JsonUtil.getObject(json, "card"));
+      String __cardJson = JsonUtil.getObject(json, "card");
+      if (__cardJson != null) {
+        builder.card(Card.fromJson(__cardJson));
+      }
 
-      return new CardRetrieveResponse(card, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CardRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CardRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CardRetrieveResponse. */
+  public static class Builder {
+
+    private Card card;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder card(Card card) {
+      this.card = card;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CardRetrieveResponse build() {
+      return new CardRetrieveResponse(this);
     }
   }
 

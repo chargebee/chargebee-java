@@ -17,12 +17,12 @@ public final class GiftRetrieveResponse extends BaseResponse {
 
   private final Subscription subscription;
 
-  private GiftRetrieveResponse(Gift gift, Subscription subscription, Response httpResponse) {
-    super(httpResponse);
+  private GiftRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.gift = gift;
+    this.gift = builder.gift;
 
-    this.subscription = subscription;
+    this.subscription = builder.subscription;
   }
 
   /** Parse JSON response into GiftRetrieveResponse object. */
@@ -33,14 +33,58 @@ public final class GiftRetrieveResponse extends BaseResponse {
   /** Parse JSON response into GiftRetrieveResponse object with HTTP response. */
   public static GiftRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Gift gift = Gift.fromJson(JsonUtil.getObject(json, "gift"));
+      String __giftJson = JsonUtil.getObject(json, "gift");
+      if (__giftJson != null) {
+        builder.gift(Gift.fromJson(__giftJson));
+      }
 
-      Subscription subscription = Subscription.fromJson(JsonUtil.getObject(json, "subscription"));
+      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
+      if (__subscriptionJson != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      }
 
-      return new GiftRetrieveResponse(gift, subscription, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse GiftRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for GiftRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for GiftRetrieveResponse. */
+  public static class Builder {
+
+    private Gift gift;
+
+    private Subscription subscription;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder gift(Gift gift) {
+      this.gift = gift;
+      return this;
+    }
+
+    public Builder subscription(Subscription subscription) {
+      this.subscription = subscription;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public GiftRetrieveResponse build() {
+      return new GiftRetrieveResponse(this);
     }
   }
 

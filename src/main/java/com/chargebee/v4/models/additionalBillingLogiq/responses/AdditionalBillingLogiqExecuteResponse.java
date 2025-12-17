@@ -11,11 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class AdditionalBillingLogiqExecuteResponse extends BaseResponse {
   private final Object additionalBillingLogiq;
 
-  private AdditionalBillingLogiqExecuteResponse(
-      Object additionalBillingLogiq, Response httpResponse) {
-    super(httpResponse);
+  private AdditionalBillingLogiqExecuteResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.additionalBillingLogiq = additionalBillingLogiq;
+    this.additionalBillingLogiq = builder.additionalBillingLogiq;
   }
 
   /** Parse JSON response into AdditionalBillingLogiqExecuteResponse object. */
@@ -26,13 +25,44 @@ public final class AdditionalBillingLogiqExecuteResponse extends BaseResponse {
   /** Parse JSON response into AdditionalBillingLogiqExecuteResponse object with HTTP response. */
   public static AdditionalBillingLogiqExecuteResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object additionalBillingLogiq = JsonUtil.getObject(json, "additional_billing_logiq");
+      builder.additionalBillingLogiq(JsonUtil.getObject(json, "additional_billing_logiq"));
 
-      return new AdditionalBillingLogiqExecuteResponse(additionalBillingLogiq, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse AdditionalBillingLogiqExecuteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for AdditionalBillingLogiqExecuteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for AdditionalBillingLogiqExecuteResponse. */
+  public static class Builder {
+
+    private Object additionalBillingLogiq;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder additionalBillingLogiq(Object additionalBillingLogiq) {
+      this.additionalBillingLogiq = additionalBillingLogiq;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public AdditionalBillingLogiqExecuteResponse build() {
+      return new AdditionalBillingLogiqExecuteResponse(this);
     }
   }
 

@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ResourceMigrationRetrieveLatestResponse extends BaseResponse {
   private final ResourceMigration resourceMigration;
 
-  private ResourceMigrationRetrieveLatestResponse(
-      ResourceMigration resourceMigration, Response httpResponse) {
-    super(httpResponse);
+  private ResourceMigrationRetrieveLatestResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.resourceMigration = resourceMigration;
+    this.resourceMigration = builder.resourceMigration;
   }
 
   /** Parse JSON response into ResourceMigrationRetrieveLatestResponse object. */
@@ -29,14 +28,47 @@ public final class ResourceMigrationRetrieveLatestResponse extends BaseResponse 
   public static ResourceMigrationRetrieveLatestResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ResourceMigration resourceMigration =
-          ResourceMigration.fromJson(JsonUtil.getObject(json, "resource_migration"));
+      String __resourceMigrationJson = JsonUtil.getObject(json, "resource_migration");
+      if (__resourceMigrationJson != null) {
+        builder.resourceMigration(ResourceMigration.fromJson(__resourceMigrationJson));
+      }
 
-      return new ResourceMigrationRetrieveLatestResponse(resourceMigration, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ResourceMigrationRetrieveLatestResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ResourceMigrationRetrieveLatestResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ResourceMigrationRetrieveLatestResponse. */
+  public static class Builder {
+
+    private ResourceMigration resourceMigration;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder resourceMigration(ResourceMigration resourceMigration) {
+      this.resourceMigration = resourceMigration;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ResourceMigrationRetrieveLatestResponse build() {
+      return new ResourceMigrationRetrieveLatestResponse(this);
     }
   }
 

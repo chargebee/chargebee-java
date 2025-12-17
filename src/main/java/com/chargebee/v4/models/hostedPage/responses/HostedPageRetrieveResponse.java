@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class HostedPageRetrieveResponse extends BaseResponse {
   private final HostedPage hostedPage;
 
-  private HostedPageRetrieveResponse(HostedPage hostedPage, Response httpResponse) {
-    super(httpResponse);
+  private HostedPageRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.hostedPage = hostedPage;
+    this.hostedPage = builder.hostedPage;
   }
 
   /** Parse JSON response into HostedPageRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class HostedPageRetrieveResponse extends BaseResponse {
   /** Parse JSON response into HostedPageRetrieveResponse object with HTTP response. */
   public static HostedPageRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      HostedPage hostedPage = HostedPage.fromJson(JsonUtil.getObject(json, "hosted_page"));
+      String __hostedPageJson = JsonUtil.getObject(json, "hosted_page");
+      if (__hostedPageJson != null) {
+        builder.hostedPage(HostedPage.fromJson(__hostedPageJson));
+      }
 
-      return new HostedPageRetrieveResponse(hostedPage, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse HostedPageRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for HostedPageRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for HostedPageRetrieveResponse. */
+  public static class Builder {
+
+    private HostedPage hostedPage;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder hostedPage(HostedPage hostedPage) {
+      this.hostedPage = hostedPage;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public HostedPageRetrieveResponse build() {
+      return new HostedPageRetrieveResponse(this);
     }
   }
 

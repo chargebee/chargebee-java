@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PriceVariantRetrieveResponse extends BaseResponse {
   private final PriceVariant priceVariant;
 
-  private PriceVariantRetrieveResponse(PriceVariant priceVariant, Response httpResponse) {
-    super(httpResponse);
+  private PriceVariantRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.priceVariant = priceVariant;
+    this.priceVariant = builder.priceVariant;
   }
 
   /** Parse JSON response into PriceVariantRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class PriceVariantRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PriceVariantRetrieveResponse object with HTTP response. */
   public static PriceVariantRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PriceVariant priceVariant = PriceVariant.fromJson(JsonUtil.getObject(json, "price_variant"));
+      String __priceVariantJson = JsonUtil.getObject(json, "price_variant");
+      if (__priceVariantJson != null) {
+        builder.priceVariant(PriceVariant.fromJson(__priceVariantJson));
+      }
 
-      return new PriceVariantRetrieveResponse(priceVariant, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PriceVariantRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PriceVariantRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PriceVariantRetrieveResponse. */
+  public static class Builder {
+
+    private PriceVariant priceVariant;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder priceVariant(PriceVariant priceVariant) {
+      this.priceVariant = priceVariant;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PriceVariantRetrieveResponse build() {
+      return new PriceVariantRetrieveResponse(this);
     }
   }
 

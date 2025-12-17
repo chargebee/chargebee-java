@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CreditNoteRetrieveResponse extends BaseResponse {
   private final CreditNote creditNote;
 
-  private CreditNoteRetrieveResponse(CreditNote creditNote, Response httpResponse) {
-    super(httpResponse);
+  private CreditNoteRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.creditNote = creditNote;
+    this.creditNote = builder.creditNote;
   }
 
   /** Parse JSON response into CreditNoteRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CreditNoteRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CreditNoteRetrieveResponse object with HTTP response. */
   public static CreditNoteRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      CreditNote creditNote = CreditNote.fromJson(JsonUtil.getObject(json, "credit_note"));
+      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
+      if (__creditNoteJson != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      }
 
-      return new CreditNoteRetrieveResponse(creditNote, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CreditNoteRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CreditNoteRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CreditNoteRetrieveResponse. */
+  public static class Builder {
+
+    private CreditNote creditNote;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder creditNote(CreditNote creditNote) {
+      this.creditNote = creditNote;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CreditNoteRetrieveResponse build() {
+      return new CreditNoteRetrieveResponse(this);
     }
   }
 

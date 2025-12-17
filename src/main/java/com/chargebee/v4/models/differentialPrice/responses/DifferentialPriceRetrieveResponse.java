@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class DifferentialPriceRetrieveResponse extends BaseResponse {
   private final DifferentialPrice differentialPrice;
 
-  private DifferentialPriceRetrieveResponse(
-      DifferentialPrice differentialPrice, Response httpResponse) {
-    super(httpResponse);
+  private DifferentialPriceRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.differentialPrice = differentialPrice;
+    this.differentialPrice = builder.differentialPrice;
   }
 
   /** Parse JSON response into DifferentialPriceRetrieveResponse object. */
@@ -28,13 +27,46 @@ public final class DifferentialPriceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into DifferentialPriceRetrieveResponse object with HTTP response. */
   public static DifferentialPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      DifferentialPrice differentialPrice =
-          DifferentialPrice.fromJson(JsonUtil.getObject(json, "differential_price"));
+      String __differentialPriceJson = JsonUtil.getObject(json, "differential_price");
+      if (__differentialPriceJson != null) {
+        builder.differentialPrice(DifferentialPrice.fromJson(__differentialPriceJson));
+      }
 
-      return new DifferentialPriceRetrieveResponse(differentialPrice, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse DifferentialPriceRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for DifferentialPriceRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for DifferentialPriceRetrieveResponse. */
+  public static class Builder {
+
+    private DifferentialPrice differentialPrice;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder differentialPrice(DifferentialPrice differentialPrice) {
+      this.differentialPrice = differentialPrice;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public DifferentialPriceRetrieveResponse build() {
+      return new DifferentialPriceRetrieveResponse(this);
     }
   }
 

@@ -21,15 +21,14 @@ public final class SubscriptionRetrieveResponse extends BaseResponse {
 
   private final Card card;
 
-  private SubscriptionRetrieveResponse(
-      Subscription subscription, Customer customer, Card card, Response httpResponse) {
-    super(httpResponse);
+  private SubscriptionRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.subscription = subscription;
+    this.subscription = builder.subscription;
 
-    this.customer = customer;
+    this.customer = builder.customer;
 
-    this.card = card;
+    this.card = builder.card;
   }
 
   /** Parse JSON response into SubscriptionRetrieveResponse object. */
@@ -40,16 +39,70 @@ public final class SubscriptionRetrieveResponse extends BaseResponse {
   /** Parse JSON response into SubscriptionRetrieveResponse object with HTTP response. */
   public static SubscriptionRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Subscription subscription = Subscription.fromJson(JsonUtil.getObject(json, "subscription"));
+      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
+      if (__subscriptionJson != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      }
 
-      Customer customer = Customer.fromJson(JsonUtil.getObject(json, "customer"));
+      String __customerJson = JsonUtil.getObject(json, "customer");
+      if (__customerJson != null) {
+        builder.customer(Customer.fromJson(__customerJson));
+      }
 
-      Card card = Card.fromJson(JsonUtil.getObject(json, "card"));
+      String __cardJson = JsonUtil.getObject(json, "card");
+      if (__cardJson != null) {
+        builder.card(Card.fromJson(__cardJson));
+      }
 
-      return new SubscriptionRetrieveResponse(subscription, customer, card, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse SubscriptionRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for SubscriptionRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for SubscriptionRetrieveResponse. */
+  public static class Builder {
+
+    private Subscription subscription;
+
+    private Customer customer;
+
+    private Card card;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder subscription(Subscription subscription) {
+      this.subscription = subscription;
+      return this;
+    }
+
+    public Builder customer(Customer customer) {
+      this.customer = customer;
+      return this;
+    }
+
+    public Builder card(Card card) {
+      this.card = card;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public SubscriptionRetrieveResponse build() {
+      return new SubscriptionRetrieveResponse(this);
     }
   }
 

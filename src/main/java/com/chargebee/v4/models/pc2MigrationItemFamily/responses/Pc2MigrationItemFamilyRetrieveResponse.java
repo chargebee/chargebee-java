@@ -11,11 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class Pc2MigrationItemFamilyRetrieveResponse extends BaseResponse {
   private final Object pc2MigrationItemFamily;
 
-  private Pc2MigrationItemFamilyRetrieveResponse(
-      Object pc2MigrationItemFamily, Response httpResponse) {
-    super(httpResponse);
+  private Pc2MigrationItemFamilyRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.pc2MigrationItemFamily = pc2MigrationItemFamily;
+    this.pc2MigrationItemFamily = builder.pc2MigrationItemFamily;
   }
 
   /** Parse JSON response into Pc2MigrationItemFamilyRetrieveResponse object. */
@@ -27,13 +26,44 @@ public final class Pc2MigrationItemFamilyRetrieveResponse extends BaseResponse {
   public static Pc2MigrationItemFamilyRetrieveResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object pc2MigrationItemFamily = JsonUtil.getObject(json, "pc2_migration_item_family");
+      builder.pc2MigrationItemFamily(JsonUtil.getObject(json, "pc2_migration_item_family"));
 
-      return new Pc2MigrationItemFamilyRetrieveResponse(pc2MigrationItemFamily, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse Pc2MigrationItemFamilyRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for Pc2MigrationItemFamilyRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for Pc2MigrationItemFamilyRetrieveResponse. */
+  public static class Builder {
+
+    private Object pc2MigrationItemFamily;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder pc2MigrationItemFamily(Object pc2MigrationItemFamily) {
+      this.pc2MigrationItemFamily = pc2MigrationItemFamily;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public Pc2MigrationItemFamilyRetrieveResponse build() {
+      return new Pc2MigrationItemFamilyRetrieveResponse(this);
     }
   }
 

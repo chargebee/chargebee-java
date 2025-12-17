@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class WebhookEndpointRetrieveResponse extends BaseResponse {
   private final WebhookEndpoint webhookEndpoint;
 
-  private WebhookEndpointRetrieveResponse(WebhookEndpoint webhookEndpoint, Response httpResponse) {
-    super(httpResponse);
+  private WebhookEndpointRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.webhookEndpoint = webhookEndpoint;
+    this.webhookEndpoint = builder.webhookEndpoint;
   }
 
   /** Parse JSON response into WebhookEndpointRetrieveResponse object. */
@@ -27,13 +27,46 @@ public final class WebhookEndpointRetrieveResponse extends BaseResponse {
   /** Parse JSON response into WebhookEndpointRetrieveResponse object with HTTP response. */
   public static WebhookEndpointRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      WebhookEndpoint webhookEndpoint =
-          WebhookEndpoint.fromJson(JsonUtil.getObject(json, "webhook_endpoint"));
+      String __webhookEndpointJson = JsonUtil.getObject(json, "webhook_endpoint");
+      if (__webhookEndpointJson != null) {
+        builder.webhookEndpoint(WebhookEndpoint.fromJson(__webhookEndpointJson));
+      }
 
-      return new WebhookEndpointRetrieveResponse(webhookEndpoint, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse WebhookEndpointRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for WebhookEndpointRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for WebhookEndpointRetrieveResponse. */
+  public static class Builder {
+
+    private WebhookEndpoint webhookEndpoint;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder webhookEndpoint(WebhookEndpoint webhookEndpoint) {
+      this.webhookEndpoint = webhookEndpoint;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public WebhookEndpointRetrieveResponse build() {
+      return new WebhookEndpointRetrieveResponse(this);
     }
   }
 

@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class RecordedPurchaseRetrieveResponse extends BaseResponse {
   private final RecordedPurchase recordedPurchase;
 
-  private RecordedPurchaseRetrieveResponse(
-      RecordedPurchase recordedPurchase, Response httpResponse) {
-    super(httpResponse);
+  private RecordedPurchaseRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.recordedPurchase = recordedPurchase;
+    this.recordedPurchase = builder.recordedPurchase;
   }
 
   /** Parse JSON response into RecordedPurchaseRetrieveResponse object. */
@@ -28,13 +27,46 @@ public final class RecordedPurchaseRetrieveResponse extends BaseResponse {
   /** Parse JSON response into RecordedPurchaseRetrieveResponse object with HTTP response. */
   public static RecordedPurchaseRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      RecordedPurchase recordedPurchase =
-          RecordedPurchase.fromJson(JsonUtil.getObject(json, "recorded_purchase"));
+      String __recordedPurchaseJson = JsonUtil.getObject(json, "recorded_purchase");
+      if (__recordedPurchaseJson != null) {
+        builder.recordedPurchase(RecordedPurchase.fromJson(__recordedPurchaseJson));
+      }
 
-      return new RecordedPurchaseRetrieveResponse(recordedPurchase, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse RecordedPurchaseRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RecordedPurchaseRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RecordedPurchaseRetrieveResponse. */
+  public static class Builder {
+
+    private RecordedPurchase recordedPurchase;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder recordedPurchase(RecordedPurchase recordedPurchase) {
+      this.recordedPurchase = recordedPurchase;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RecordedPurchaseRetrieveResponse build() {
+      return new RecordedPurchaseRetrieveResponse(this);
     }
   }
 

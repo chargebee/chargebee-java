@@ -18,7 +18,7 @@ public final class ItemFamilyUpdateParams {
 
   private final String description;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private ItemFamilyUpdateParams(ItemFamilyUpdateBuilder builder) {
 
@@ -40,7 +40,7 @@ public final class ItemFamilyUpdateParams {
     return description;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -75,7 +75,7 @@ public final class ItemFamilyUpdateParams {
 
     private String description;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private ItemFamilyUpdateBuilder() {}
 
@@ -97,7 +97,7 @@ public final class ItemFamilyUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public ItemFamilyUpdateBuilder customField(String fieldName, Object value) {
+    public ItemFamilyUpdateBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -112,9 +112,9 @@ public final class ItemFamilyUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public ItemFamilyUpdateBuilder customFields(Map<String, Object> customFields) {
+    public ItemFamilyUpdateBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

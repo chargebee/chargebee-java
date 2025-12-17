@@ -14,11 +14,10 @@ import java.util.List;
 public final class PaymentSchedulesForInvoiceResponse extends BaseResponse {
   private final List<PaymentSchedule> paymentSchedules;
 
-  private PaymentSchedulesForInvoiceResponse(
-      List<PaymentSchedule> paymentSchedules, Response httpResponse) {
-    super(httpResponse);
+  private PaymentSchedulesForInvoiceResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.paymentSchedules = paymentSchedules;
+    this.paymentSchedules = builder.paymentSchedules;
   }
 
   /** Parse JSON response into PaymentSchedulesForInvoiceResponse object. */
@@ -29,15 +28,49 @@ public final class PaymentSchedulesForInvoiceResponse extends BaseResponse {
   /** Parse JSON response into PaymentSchedulesForInvoiceResponse object with HTTP response. */
   public static PaymentSchedulesForInvoiceResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      List<PaymentSchedule> paymentSchedules =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "payment_schedules")).stream()
-              .map(PaymentSchedule::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __paymentSchedulesJson = JsonUtil.getArray(json, "payment_schedules");
+      if (__paymentSchedulesJson != null) {
+        builder.paymentSchedules(
+            JsonUtil.parseObjectArray(__paymentSchedulesJson).stream()
+                .map(PaymentSchedule::fromJson)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
-      return new PaymentSchedulesForInvoiceResponse(paymentSchedules, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PaymentSchedulesForInvoiceResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PaymentSchedulesForInvoiceResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PaymentSchedulesForInvoiceResponse. */
+  public static class Builder {
+
+    private List<PaymentSchedule> paymentSchedules;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder paymentSchedules(List<PaymentSchedule> paymentSchedules) {
+      this.paymentSchedules = paymentSchedules;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PaymentSchedulesForInvoiceResponse build() {
+      return new PaymentSchedulesForInvoiceResponse(this);
     }
   }
 

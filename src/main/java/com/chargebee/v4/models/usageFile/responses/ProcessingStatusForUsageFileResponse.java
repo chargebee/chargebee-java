@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ProcessingStatusForUsageFileResponse extends BaseResponse {
   private final UsageFile usageFile;
 
-  private ProcessingStatusForUsageFileResponse(UsageFile usageFile, Response httpResponse) {
-    super(httpResponse);
+  private ProcessingStatusForUsageFileResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.usageFile = usageFile;
+    this.usageFile = builder.usageFile;
   }
 
   /** Parse JSON response into ProcessingStatusForUsageFileResponse object. */
@@ -27,13 +27,47 @@ public final class ProcessingStatusForUsageFileResponse extends BaseResponse {
   /** Parse JSON response into ProcessingStatusForUsageFileResponse object with HTTP response. */
   public static ProcessingStatusForUsageFileResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      UsageFile usageFile = UsageFile.fromJson(JsonUtil.getObject(json, "usage_file"));
+      String __usageFileJson = JsonUtil.getObject(json, "usage_file");
+      if (__usageFileJson != null) {
+        builder.usageFile(UsageFile.fromJson(__usageFileJson));
+      }
 
-      return new ProcessingStatusForUsageFileResponse(usageFile, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ProcessingStatusForUsageFileResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ProcessingStatusForUsageFileResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ProcessingStatusForUsageFileResponse. */
+  public static class Builder {
+
+    private UsageFile usageFile;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder usageFile(UsageFile usageFile) {
+      this.usageFile = usageFile;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ProcessingStatusForUsageFileResponse build() {
+      return new ProcessingStatusForUsageFileResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class EventRetrieveResponse extends BaseResponse {
   private final Event event;
 
-  private EventRetrieveResponse(Event event, Response httpResponse) {
-    super(httpResponse);
+  private EventRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.event = event;
+    this.event = builder.event;
   }
 
   /** Parse JSON response into EventRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class EventRetrieveResponse extends BaseResponse {
   /** Parse JSON response into EventRetrieveResponse object with HTTP response. */
   public static EventRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Event event = Event.fromJson(JsonUtil.getObject(json, "event"));
+      String __eventJson = JsonUtil.getObject(json, "event");
+      if (__eventJson != null) {
+        builder.event(Event.fromJson(__eventJson));
+      }
 
-      return new EventRetrieveResponse(event, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse EventRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for EventRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for EventRetrieveResponse. */
+  public static class Builder {
+
+    private Event event;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder event(Event event) {
+      this.event = event;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public EventRetrieveResponse build() {
+      return new EventRetrieveResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class OrderRetrieveResponse extends BaseResponse {
   private final Order order;
 
-  private OrderRetrieveResponse(Order order, Response httpResponse) {
-    super(httpResponse);
+  private OrderRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.order = order;
+    this.order = builder.order;
   }
 
   /** Parse JSON response into OrderRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class OrderRetrieveResponse extends BaseResponse {
   /** Parse JSON response into OrderRetrieveResponse object with HTTP response. */
   public static OrderRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Order order = Order.fromJson(JsonUtil.getObject(json, "order"));
+      String __orderJson = JsonUtil.getObject(json, "order");
+      if (__orderJson != null) {
+        builder.order(Order.fromJson(__orderJson));
+      }
 
-      return new OrderRetrieveResponse(order, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse OrderRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for OrderRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for OrderRetrieveResponse. */
+  public static class Builder {
+
+    private Order order;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder order(Order order) {
+      this.order = order;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public OrderRetrieveResponse build() {
+      return new OrderRetrieveResponse(this);
     }
   }
 

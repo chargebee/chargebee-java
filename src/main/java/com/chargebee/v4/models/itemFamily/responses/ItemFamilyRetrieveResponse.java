@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ItemFamilyRetrieveResponse extends BaseResponse {
   private final ItemFamily itemFamily;
 
-  private ItemFamilyRetrieveResponse(ItemFamily itemFamily, Response httpResponse) {
-    super(httpResponse);
+  private ItemFamilyRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.itemFamily = itemFamily;
+    this.itemFamily = builder.itemFamily;
   }
 
   /** Parse JSON response into ItemFamilyRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class ItemFamilyRetrieveResponse extends BaseResponse {
   /** Parse JSON response into ItemFamilyRetrieveResponse object with HTTP response. */
   public static ItemFamilyRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ItemFamily itemFamily = ItemFamily.fromJson(JsonUtil.getObject(json, "item_family"));
+      String __itemFamilyJson = JsonUtil.getObject(json, "item_family");
+      if (__itemFamilyJson != null) {
+        builder.itemFamily(ItemFamily.fromJson(__itemFamilyJson));
+      }
 
-      return new ItemFamilyRetrieveResponse(itemFamily, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse ItemFamilyRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ItemFamilyRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ItemFamilyRetrieveResponse. */
+  public static class Builder {
+
+    private ItemFamily itemFamily;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder itemFamily(ItemFamily itemFamily) {
+      this.itemFamily = itemFamily;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ItemFamilyRetrieveResponse build() {
+      return new ItemFamilyRetrieveResponse(this);
     }
   }
 

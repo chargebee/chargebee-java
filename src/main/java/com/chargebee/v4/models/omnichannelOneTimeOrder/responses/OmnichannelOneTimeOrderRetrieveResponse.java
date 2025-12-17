@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class OmnichannelOneTimeOrderRetrieveResponse extends BaseResponse {
   private final OmnichannelOneTimeOrder omnichannelOneTimeOrder;
 
-  private OmnichannelOneTimeOrderRetrieveResponse(
-      OmnichannelOneTimeOrder omnichannelOneTimeOrder, Response httpResponse) {
-    super(httpResponse);
+  private OmnichannelOneTimeOrderRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.omnichannelOneTimeOrder = omnichannelOneTimeOrder;
+    this.omnichannelOneTimeOrder = builder.omnichannelOneTimeOrder;
   }
 
   /** Parse JSON response into OmnichannelOneTimeOrderRetrieveResponse object. */
@@ -29,14 +28,48 @@ public final class OmnichannelOneTimeOrderRetrieveResponse extends BaseResponse 
   public static OmnichannelOneTimeOrderRetrieveResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      OmnichannelOneTimeOrder omnichannelOneTimeOrder =
-          OmnichannelOneTimeOrder.fromJson(JsonUtil.getObject(json, "omnichannel_one_time_order"));
+      String __omnichannelOneTimeOrderJson = JsonUtil.getObject(json, "omnichannel_one_time_order");
+      if (__omnichannelOneTimeOrderJson != null) {
+        builder.omnichannelOneTimeOrder(
+            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderJson));
+      }
 
-      return new OmnichannelOneTimeOrderRetrieveResponse(omnichannelOneTimeOrder, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse OmnichannelOneTimeOrderRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for OmnichannelOneTimeOrderRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for OmnichannelOneTimeOrderRetrieveResponse. */
+  public static class Builder {
+
+    private OmnichannelOneTimeOrder omnichannelOneTimeOrder;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder omnichannelOneTimeOrder(OmnichannelOneTimeOrder omnichannelOneTimeOrder) {
+      this.omnichannelOneTimeOrder = omnichannelOneTimeOrder;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public OmnichannelOneTimeOrderRetrieveResponse build() {
+      return new OmnichannelOneTimeOrderRetrieveResponse(this);
     }
   }
 

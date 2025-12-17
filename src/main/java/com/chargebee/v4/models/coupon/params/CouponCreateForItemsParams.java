@@ -63,7 +63,7 @@ public final class CouponCreateForItemsParams {
 
   private final List<CouponConstraintsParams> couponConstraints;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private CouponCreateForItemsParams(CouponCreateForItemsBuilder builder) {
 
@@ -211,7 +211,7 @@ public final class CouponCreateForItemsParams {
     return couponConstraints;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -423,7 +423,7 @@ public final class CouponCreateForItemsParams {
 
     private List<CouponConstraintsParams> couponConstraints;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private CouponCreateForItemsBuilder() {}
 
@@ -551,7 +551,7 @@ public final class CouponCreateForItemsParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public CouponCreateForItemsBuilder customField(String fieldName, Object value) {
+    public CouponCreateForItemsBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -566,9 +566,9 @@ public final class CouponCreateForItemsParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public CouponCreateForItemsBuilder customFields(Map<String, Object> customFields) {
+    public CouponCreateForItemsBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

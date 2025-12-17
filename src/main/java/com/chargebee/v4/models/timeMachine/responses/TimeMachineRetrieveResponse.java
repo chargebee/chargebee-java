@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class TimeMachineRetrieveResponse extends BaseResponse {
   private final TimeMachine timeMachine;
 
-  private TimeMachineRetrieveResponse(TimeMachine timeMachine, Response httpResponse) {
-    super(httpResponse);
+  private TimeMachineRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.timeMachine = timeMachine;
+    this.timeMachine = builder.timeMachine;
   }
 
   /** Parse JSON response into TimeMachineRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class TimeMachineRetrieveResponse extends BaseResponse {
   /** Parse JSON response into TimeMachineRetrieveResponse object with HTTP response. */
   public static TimeMachineRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      TimeMachine timeMachine = TimeMachine.fromJson(JsonUtil.getObject(json, "time_machine"));
+      String __timeMachineJson = JsonUtil.getObject(json, "time_machine");
+      if (__timeMachineJson != null) {
+        builder.timeMachine(TimeMachine.fromJson(__timeMachineJson));
+      }
 
-      return new TimeMachineRetrieveResponse(timeMachine, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse TimeMachineRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for TimeMachineRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for TimeMachineRetrieveResponse. */
+  public static class Builder {
+
+    private TimeMachine timeMachine;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder timeMachine(TimeMachine timeMachine) {
+      this.timeMachine = timeMachine;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public TimeMachineRetrieveResponse build() {
+      return new TimeMachineRetrieveResponse(this);
     }
   }
 

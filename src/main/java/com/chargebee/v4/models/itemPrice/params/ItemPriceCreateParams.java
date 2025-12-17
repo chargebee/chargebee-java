@@ -80,7 +80,7 @@ public final class ItemPriceCreateParams {
 
   private final List<TaxProvidersFieldsParams> taxProvidersFields;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private ItemPriceCreateParams(ItemPriceCreateBuilder builder) {
 
@@ -282,7 +282,7 @@ public final class ItemPriceCreateParams {
     return taxProvidersFields;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -557,7 +557,7 @@ public final class ItemPriceCreateParams {
 
     private List<TaxProvidersFieldsParams> taxProvidersFields;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private ItemPriceCreateBuilder() {}
 
@@ -730,7 +730,7 @@ public final class ItemPriceCreateParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public ItemPriceCreateBuilder customField(String fieldName, Object value) {
+    public ItemPriceCreateBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -745,9 +745,9 @@ public final class ItemPriceCreateParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public ItemPriceCreateBuilder customFields(Map<String, Object> customFields) {
+    public ItemPriceCreateBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

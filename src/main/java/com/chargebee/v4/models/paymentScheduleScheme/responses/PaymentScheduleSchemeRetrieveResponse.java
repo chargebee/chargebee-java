@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PaymentScheduleSchemeRetrieveResponse extends BaseResponse {
   private final PaymentScheduleScheme paymentScheduleScheme;
 
-  private PaymentScheduleSchemeRetrieveResponse(
-      PaymentScheduleScheme paymentScheduleScheme, Response httpResponse) {
-    super(httpResponse);
+  private PaymentScheduleSchemeRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.paymentScheduleScheme = paymentScheduleScheme;
+    this.paymentScheduleScheme = builder.paymentScheduleScheme;
   }
 
   /** Parse JSON response into PaymentScheduleSchemeRetrieveResponse object. */
@@ -28,14 +27,47 @@ public final class PaymentScheduleSchemeRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PaymentScheduleSchemeRetrieveResponse object with HTTP response. */
   public static PaymentScheduleSchemeRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PaymentScheduleScheme paymentScheduleScheme =
-          PaymentScheduleScheme.fromJson(JsonUtil.getObject(json, "payment_schedule_scheme"));
+      String __paymentScheduleSchemeJson = JsonUtil.getObject(json, "payment_schedule_scheme");
+      if (__paymentScheduleSchemeJson != null) {
+        builder.paymentScheduleScheme(PaymentScheduleScheme.fromJson(__paymentScheduleSchemeJson));
+      }
 
-      return new PaymentScheduleSchemeRetrieveResponse(paymentScheduleScheme, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse PaymentScheduleSchemeRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PaymentScheduleSchemeRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PaymentScheduleSchemeRetrieveResponse. */
+  public static class Builder {
+
+    private PaymentScheduleScheme paymentScheduleScheme;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder paymentScheduleScheme(PaymentScheduleScheme paymentScheduleScheme) {
+      this.paymentScheduleScheme = paymentScheduleScheme;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PaymentScheduleSchemeRetrieveResponse build() {
+      return new PaymentScheduleSchemeRetrieveResponse(this);
     }
   }
 

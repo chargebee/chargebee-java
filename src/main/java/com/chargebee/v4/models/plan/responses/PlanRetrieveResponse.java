@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PlanRetrieveResponse extends BaseResponse {
   private final Plan plan;
 
-  private PlanRetrieveResponse(Plan plan, Response httpResponse) {
-    super(httpResponse);
+  private PlanRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.plan = plan;
+    this.plan = builder.plan;
   }
 
   /** Parse JSON response into PlanRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class PlanRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PlanRetrieveResponse object with HTTP response. */
   public static PlanRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Plan plan = Plan.fromJson(JsonUtil.getObject(json, "plan"));
+      String __planJson = JsonUtil.getObject(json, "plan");
+      if (__planJson != null) {
+        builder.plan(Plan.fromJson(__planJson));
+      }
 
-      return new PlanRetrieveResponse(plan, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PlanRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PlanRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PlanRetrieveResponse. */
+  public static class Builder {
+
+    private Plan plan;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder plan(Plan plan) {
+      this.plan = plan;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PlanRetrieveResponse build() {
+      return new PlanRetrieveResponse(this);
     }
   }
 

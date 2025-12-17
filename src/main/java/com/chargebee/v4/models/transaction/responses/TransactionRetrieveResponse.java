@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class TransactionRetrieveResponse extends BaseResponse {
   private final Transaction transaction;
 
-  private TransactionRetrieveResponse(Transaction transaction, Response httpResponse) {
-    super(httpResponse);
+  private TransactionRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.transaction = transaction;
+    this.transaction = builder.transaction;
   }
 
   /** Parse JSON response into TransactionRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class TransactionRetrieveResponse extends BaseResponse {
   /** Parse JSON response into TransactionRetrieveResponse object with HTTP response. */
   public static TransactionRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Transaction transaction = Transaction.fromJson(JsonUtil.getObject(json, "transaction"));
+      String __transactionJson = JsonUtil.getObject(json, "transaction");
+      if (__transactionJson != null) {
+        builder.transaction(Transaction.fromJson(__transactionJson));
+      }
 
-      return new TransactionRetrieveResponse(transaction, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse TransactionRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for TransactionRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for TransactionRetrieveResponse. */
+  public static class Builder {
+
+    private Transaction transaction;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder transaction(Transaction transaction) {
+      this.transaction = transaction;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public TransactionRetrieveResponse build() {
+      return new TransactionRetrieveResponse(this);
     }
   }
 

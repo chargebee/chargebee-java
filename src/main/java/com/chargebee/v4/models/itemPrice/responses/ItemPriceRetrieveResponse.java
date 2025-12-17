@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ItemPriceRetrieveResponse extends BaseResponse {
   private final ItemPrice itemPrice;
 
-  private ItemPriceRetrieveResponse(ItemPrice itemPrice, Response httpResponse) {
-    super(httpResponse);
+  private ItemPriceRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.itemPrice = itemPrice;
+    this.itemPrice = builder.itemPrice;
   }
 
   /** Parse JSON response into ItemPriceRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class ItemPriceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into ItemPriceRetrieveResponse object with HTTP response. */
   public static ItemPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ItemPrice itemPrice = ItemPrice.fromJson(JsonUtil.getObject(json, "item_price"));
+      String __itemPriceJson = JsonUtil.getObject(json, "item_price");
+      if (__itemPriceJson != null) {
+        builder.itemPrice(ItemPrice.fromJson(__itemPriceJson));
+      }
 
-      return new ItemPriceRetrieveResponse(itemPrice, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse ItemPriceRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ItemPriceRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ItemPriceRetrieveResponse. */
+  public static class Builder {
+
+    private ItemPrice itemPrice;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder itemPrice(ItemPrice itemPrice) {
+      this.itemPrice = itemPrice;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ItemPriceRetrieveResponse build() {
+      return new ItemPriceRetrieveResponse(this);
     }
   }
 

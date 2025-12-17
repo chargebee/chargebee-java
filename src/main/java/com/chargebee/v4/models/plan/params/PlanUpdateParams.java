@@ -112,7 +112,7 @@ public final class PlanUpdateParams {
 
   private final List<AttachedAddonsParams> attachedAddons;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private PlanUpdateParams(PlanUpdateBuilder builder) {
 
@@ -410,7 +410,7 @@ public final class PlanUpdateParams {
     return attachedAddons;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -817,7 +817,7 @@ public final class PlanUpdateParams {
 
     private List<AttachedAddonsParams> attachedAddons;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private PlanUpdateBuilder() {}
 
@@ -1071,7 +1071,7 @@ public final class PlanUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public PlanUpdateBuilder customField(String fieldName, Object value) {
+    public PlanUpdateBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -1086,9 +1086,9 @@ public final class PlanUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public PlanUpdateBuilder customFields(Map<String, Object> customFields) {
+    public PlanUpdateBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PaymentVoucherRetrieveResponse extends BaseResponse {
   private final PaymentVoucher paymentVoucher;
 
-  private PaymentVoucherRetrieveResponse(PaymentVoucher paymentVoucher, Response httpResponse) {
-    super(httpResponse);
+  private PaymentVoucherRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.paymentVoucher = paymentVoucher;
+    this.paymentVoucher = builder.paymentVoucher;
   }
 
   /** Parse JSON response into PaymentVoucherRetrieveResponse object. */
@@ -27,13 +27,46 @@ public final class PaymentVoucherRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PaymentVoucherRetrieveResponse object with HTTP response. */
   public static PaymentVoucherRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PaymentVoucher paymentVoucher =
-          PaymentVoucher.fromJson(JsonUtil.getObject(json, "payment_voucher"));
+      String __paymentVoucherJson = JsonUtil.getObject(json, "payment_voucher");
+      if (__paymentVoucherJson != null) {
+        builder.paymentVoucher(PaymentVoucher.fromJson(__paymentVoucherJson));
+      }
 
-      return new PaymentVoucherRetrieveResponse(paymentVoucher, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PaymentVoucherRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PaymentVoucherRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PaymentVoucherRetrieveResponse. */
+  public static class Builder {
+
+    private PaymentVoucher paymentVoucher;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder paymentVoucher(PaymentVoucher paymentVoucher) {
+      this.paymentVoucher = paymentVoucher;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PaymentVoucherRetrieveResponse build() {
+      return new PaymentVoucherRetrieveResponse(this);
     }
   }
 

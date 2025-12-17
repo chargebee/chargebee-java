@@ -23,7 +23,7 @@ public final class FeatureUpdateParams {
 
   private final List<LevelsParams> levels;
 
-  private final Map<String, Object> customFields;
+  private final Map<String, String> customFields;
 
   private FeatureUpdateParams(FeatureUpdateBuilder builder) {
 
@@ -57,7 +57,7 @@ public final class FeatureUpdateParams {
     return levels;
   }
 
-  public Map<String, Object> customFields() {
+  public Map<String, String> customFields() {
     return customFields;
   }
 
@@ -116,7 +116,7 @@ public final class FeatureUpdateParams {
 
     private List<LevelsParams> levels;
 
-    private Map<String, Object> customFields = new LinkedHashMap<>();
+    private Map<String, String> customFields = new LinkedHashMap<>();
 
     private FeatureUpdateBuilder() {}
 
@@ -148,7 +148,7 @@ public final class FeatureUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
      */
-    public FeatureUpdateBuilder customField(String fieldName, Object value) {
+    public FeatureUpdateBuilder customField(String fieldName, String value) {
       if (fieldName == null || !fieldName.startsWith("cf_")) {
         throw new IllegalArgumentException("Custom field name must start with 'cf_'");
       }
@@ -163,9 +163,9 @@ public final class FeatureUpdateParams {
      * @return this builder
      * @throws IllegalArgumentException if any field name doesn't start with "cf_"
      */
-    public FeatureUpdateBuilder customFields(Map<String, Object> customFields) {
+    public FeatureUpdateBuilder customFields(Map<String, String> customFields) {
       if (customFields != null) {
-        for (Map.Entry<String, Object> entry : customFields.entrySet()) {
+        for (Map.Entry<String, String> entry : customFields.entrySet()) {
           if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
             throw new IllegalArgumentException(
                 "Custom field name must start with 'cf_': " + entry.getKey());

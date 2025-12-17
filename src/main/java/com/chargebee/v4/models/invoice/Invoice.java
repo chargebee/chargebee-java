@@ -85,7 +85,7 @@ public class Invoice {
   private Einvoice einvoice;
   private SiteDetailsAtCreation siteDetailsAtCreation;
 
-  private java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+  private java.util.Map<String, String> customFields = new java.util.HashMap<>();
 
   public String getId() {
     return id;
@@ -373,7 +373,7 @@ public class Invoice {
    *
    * @return map containing all custom fields
    */
-  public java.util.Map<String, Object> getCustomFields() {
+  public java.util.Map<String, String> getCustomFields() {
     return customFields;
   }
 
@@ -383,7 +383,7 @@ public class Invoice {
    * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
    * @return the value of the custom field, or null if not present
    */
-  public Object getCustomField(String fieldName) {
+  public String getCustomField(String fieldName) {
     return customFields.get(fieldName);
   }
 
@@ -879,9 +879,9 @@ public class Invoice {
    * @param knownFields set of known field names
    * @return map of custom fields
    */
-  private static java.util.Map<String, Object> extractCustomFields(
+  private static java.util.Map<String, String> extractCustomFields(
       String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, Object> customFields = new java.util.HashMap<>();
+    java.util.Map<String, String> customFields = new java.util.HashMap<>();
     try {
       // Parse the entire JSON as a map
       java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
@@ -890,7 +890,8 @@ public class Invoice {
           String key = entry.getKey();
           // Include fields that start with "cf_" and are not in knownFields
           if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(key, entry.getValue());
+            customFields.put(
+                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
           }
         }
       }

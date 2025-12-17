@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ThirdPartyEntityMappingListAllResponse extends BaseResponse {
   private final ThirdPartyEntityMapping thirdPartyEntityMapping;
 
-  private ThirdPartyEntityMappingListAllResponse(
-      ThirdPartyEntityMapping thirdPartyEntityMapping, Response httpResponse) {
-    super(httpResponse);
+  private ThirdPartyEntityMappingListAllResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.thirdPartyEntityMapping = thirdPartyEntityMapping;
+    this.thirdPartyEntityMapping = builder.thirdPartyEntityMapping;
   }
 
   /** Parse JSON response into ThirdPartyEntityMappingListAllResponse object. */
@@ -29,14 +28,48 @@ public final class ThirdPartyEntityMappingListAllResponse extends BaseResponse {
   public static ThirdPartyEntityMappingListAllResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ThirdPartyEntityMapping thirdPartyEntityMapping =
-          ThirdPartyEntityMapping.fromJson(JsonUtil.getObject(json, "third_party_entity_mapping"));
+      String __thirdPartyEntityMappingJson = JsonUtil.getObject(json, "third_party_entity_mapping");
+      if (__thirdPartyEntityMappingJson != null) {
+        builder.thirdPartyEntityMapping(
+            ThirdPartyEntityMapping.fromJson(__thirdPartyEntityMappingJson));
+      }
 
-      return new ThirdPartyEntityMappingListAllResponse(thirdPartyEntityMapping, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ThirdPartyEntityMappingListAllResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ThirdPartyEntityMappingListAllResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ThirdPartyEntityMappingListAllResponse. */
+  public static class Builder {
+
+    private ThirdPartyEntityMapping thirdPartyEntityMapping;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder thirdPartyEntityMapping(ThirdPartyEntityMapping thirdPartyEntityMapping) {
+      this.thirdPartyEntityMapping = thirdPartyEntityMapping;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ThirdPartyEntityMappingListAllResponse build() {
+      return new ThirdPartyEntityMappingListAllResponse(this);
     }
   }
 

@@ -11,10 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class BusinessProfileExecuteResponse extends BaseResponse {
   private final Object businessProfile;
 
-  private BusinessProfileExecuteResponse(Object businessProfile, Response httpResponse) {
-    super(httpResponse);
+  private BusinessProfileExecuteResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.businessProfile = businessProfile;
+    this.businessProfile = builder.businessProfile;
   }
 
   /** Parse JSON response into BusinessProfileExecuteResponse object. */
@@ -25,12 +25,43 @@ public final class BusinessProfileExecuteResponse extends BaseResponse {
   /** Parse JSON response into BusinessProfileExecuteResponse object with HTTP response. */
   public static BusinessProfileExecuteResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object businessProfile = JsonUtil.getObject(json, "business_profile");
+      builder.businessProfile(JsonUtil.getObject(json, "business_profile"));
 
-      return new BusinessProfileExecuteResponse(businessProfile, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse BusinessProfileExecuteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for BusinessProfileExecuteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for BusinessProfileExecuteResponse. */
+  public static class Builder {
+
+    private Object businessProfile;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder businessProfile(Object businessProfile) {
+      this.businessProfile = businessProfile;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public BusinessProfileExecuteResponse build() {
+      return new BusinessProfileExecuteResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class UpcomingInvoicesEstimateForCustomerResponse extends BaseResponse {
   private final Estimate estimate;
 
-  private UpcomingInvoicesEstimateForCustomerResponse(Estimate estimate, Response httpResponse) {
-    super(httpResponse);
+  private UpcomingInvoicesEstimateForCustomerResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.estimate = estimate;
+    this.estimate = builder.estimate;
   }
 
   /** Parse JSON response into UpcomingInvoicesEstimateForCustomerResponse object. */
@@ -30,13 +30,47 @@ public final class UpcomingInvoicesEstimateForCustomerResponse extends BaseRespo
   public static UpcomingInvoicesEstimateForCustomerResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Estimate estimate = Estimate.fromJson(JsonUtil.getObject(json, "estimate"));
+      String __estimateJson = JsonUtil.getObject(json, "estimate");
+      if (__estimateJson != null) {
+        builder.estimate(Estimate.fromJson(__estimateJson));
+      }
 
-      return new UpcomingInvoicesEstimateForCustomerResponse(estimate, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse UpcomingInvoicesEstimateForCustomerResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for UpcomingInvoicesEstimateForCustomerResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for UpcomingInvoicesEstimateForCustomerResponse. */
+  public static class Builder {
+
+    private Estimate estimate;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder estimate(Estimate estimate) {
+      this.estimate = estimate;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public UpcomingInvoicesEstimateForCustomerResponse build() {
+      return new UpcomingInvoicesEstimateForCustomerResponse(this);
     }
   }
 

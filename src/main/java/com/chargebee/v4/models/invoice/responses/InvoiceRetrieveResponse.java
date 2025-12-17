@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class InvoiceRetrieveResponse extends BaseResponse {
   private final Invoice invoice;
 
-  private InvoiceRetrieveResponse(Invoice invoice, Response httpResponse) {
-    super(httpResponse);
+  private InvoiceRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.invoice = invoice;
+    this.invoice = builder.invoice;
   }
 
   /** Parse JSON response into InvoiceRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class InvoiceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into InvoiceRetrieveResponse object with HTTP response. */
   public static InvoiceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Invoice invoice = Invoice.fromJson(JsonUtil.getObject(json, "invoice"));
+      String __invoiceJson = JsonUtil.getObject(json, "invoice");
+      if (__invoiceJson != null) {
+        builder.invoice(Invoice.fromJson(__invoiceJson));
+      }
 
-      return new InvoiceRetrieveResponse(invoice, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse InvoiceRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for InvoiceRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for InvoiceRetrieveResponse. */
+  public static class Builder {
+
+    private Invoice invoice;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder invoice(Invoice invoice) {
+      this.invoice = invoice;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public InvoiceRetrieveResponse build() {
+      return new InvoiceRetrieveResponse(this);
     }
   }
 

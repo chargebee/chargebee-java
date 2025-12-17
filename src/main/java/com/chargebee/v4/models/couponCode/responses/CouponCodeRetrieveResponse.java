@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CouponCodeRetrieveResponse extends BaseResponse {
   private final CouponCode couponCode;
 
-  private CouponCodeRetrieveResponse(CouponCode couponCode, Response httpResponse) {
-    super(httpResponse);
+  private CouponCodeRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.couponCode = couponCode;
+    this.couponCode = builder.couponCode;
   }
 
   /** Parse JSON response into CouponCodeRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CouponCodeRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CouponCodeRetrieveResponse object with HTTP response. */
   public static CouponCodeRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      CouponCode couponCode = CouponCode.fromJson(JsonUtil.getObject(json, "coupon_code"));
+      String __couponCodeJson = JsonUtil.getObject(json, "coupon_code");
+      if (__couponCodeJson != null) {
+        builder.couponCode(CouponCode.fromJson(__couponCodeJson));
+      }
 
-      return new CouponCodeRetrieveResponse(couponCode, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CouponCodeRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CouponCodeRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CouponCodeRetrieveResponse. */
+  public static class Builder {
+
+    private CouponCode couponCode;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder couponCode(CouponCode couponCode) {
+      this.couponCode = couponCode;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CouponCodeRetrieveResponse build() {
+      return new CouponCodeRetrieveResponse(this);
     }
   }
 

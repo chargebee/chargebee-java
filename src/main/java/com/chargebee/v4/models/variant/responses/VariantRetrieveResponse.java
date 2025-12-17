@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class VariantRetrieveResponse extends BaseResponse {
   private final Variant variant;
 
-  private VariantRetrieveResponse(Variant variant, Response httpResponse) {
-    super(httpResponse);
+  private VariantRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.variant = variant;
+    this.variant = builder.variant;
   }
 
   /** Parse JSON response into VariantRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class VariantRetrieveResponse extends BaseResponse {
   /** Parse JSON response into VariantRetrieveResponse object with HTTP response. */
   public static VariantRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Variant variant = Variant.fromJson(JsonUtil.getObject(json, "variant"));
+      String __variantJson = JsonUtil.getObject(json, "variant");
+      if (__variantJson != null) {
+        builder.variant(Variant.fromJson(__variantJson));
+      }
 
-      return new VariantRetrieveResponse(variant, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse VariantRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for VariantRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for VariantRetrieveResponse. */
+  public static class Builder {
+
+    private Variant variant;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder variant(Variant variant) {
+      this.variant = variant;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public VariantRetrieveResponse build() {
+      return new VariantRetrieveResponse(this);
     }
   }
 

@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ThirdPartyConfigurationExecuteResponse extends BaseResponse {
   private final ThirdPartyConfiguration thirdPartyConfiguration;
 
-  private ThirdPartyConfigurationExecuteResponse(
-      ThirdPartyConfiguration thirdPartyConfiguration, Response httpResponse) {
-    super(httpResponse);
+  private ThirdPartyConfigurationExecuteResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.thirdPartyConfiguration = thirdPartyConfiguration;
+    this.thirdPartyConfiguration = builder.thirdPartyConfiguration;
   }
 
   /** Parse JSON response into ThirdPartyConfigurationExecuteResponse object. */
@@ -29,14 +28,48 @@ public final class ThirdPartyConfigurationExecuteResponse extends BaseResponse {
   public static ThirdPartyConfigurationExecuteResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ThirdPartyConfiguration thirdPartyConfiguration =
-          ThirdPartyConfiguration.fromJson(JsonUtil.getObject(json, "third_party_configuration"));
+      String __thirdPartyConfigurationJson = JsonUtil.getObject(json, "third_party_configuration");
+      if (__thirdPartyConfigurationJson != null) {
+        builder.thirdPartyConfiguration(
+            ThirdPartyConfiguration.fromJson(__thirdPartyConfigurationJson));
+      }
 
-      return new ThirdPartyConfigurationExecuteResponse(thirdPartyConfiguration, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ThirdPartyConfigurationExecuteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ThirdPartyConfigurationExecuteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ThirdPartyConfigurationExecuteResponse. */
+  public static class Builder {
+
+    private ThirdPartyConfiguration thirdPartyConfiguration;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder thirdPartyConfiguration(ThirdPartyConfiguration thirdPartyConfiguration) {
+      this.thirdPartyConfiguration = thirdPartyConfiguration;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ThirdPartyConfigurationExecuteResponse build() {
+      return new ThirdPartyConfigurationExecuteResponse(this);
     }
   }
 

@@ -11,10 +11,10 @@ import com.chargebee.v4.transport.Response;
 public final class Pc2MigrationRetrieveResponse extends BaseResponse {
   private final Object pc2Migration;
 
-  private Pc2MigrationRetrieveResponse(Object pc2Migration, Response httpResponse) {
-    super(httpResponse);
+  private Pc2MigrationRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.pc2Migration = pc2Migration;
+    this.pc2Migration = builder.pc2Migration;
   }
 
   /** Parse JSON response into Pc2MigrationRetrieveResponse object. */
@@ -25,12 +25,43 @@ public final class Pc2MigrationRetrieveResponse extends BaseResponse {
   /** Parse JSON response into Pc2MigrationRetrieveResponse object with HTTP response. */
   public static Pc2MigrationRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Object pc2Migration = JsonUtil.getObject(json, "pc2_migration");
+      builder.pc2Migration(JsonUtil.getObject(json, "pc2_migration"));
 
-      return new Pc2MigrationRetrieveResponse(pc2Migration, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse Pc2MigrationRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for Pc2MigrationRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for Pc2MigrationRetrieveResponse. */
+  public static class Builder {
+
+    private Object pc2Migration;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder pc2Migration(Object pc2Migration) {
+      this.pc2Migration = pc2Migration;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public Pc2MigrationRetrieveResponse build() {
+      return new Pc2MigrationRetrieveResponse(this);
     }
   }
 

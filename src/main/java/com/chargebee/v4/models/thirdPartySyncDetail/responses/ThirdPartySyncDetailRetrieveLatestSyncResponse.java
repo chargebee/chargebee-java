@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class ThirdPartySyncDetailRetrieveLatestSyncResponse extends BaseResponse {
   private final ThirdPartySyncDetail thirdPartySyncDetail;
 
-  private ThirdPartySyncDetailRetrieveLatestSyncResponse(
-      ThirdPartySyncDetail thirdPartySyncDetail, Response httpResponse) {
-    super(httpResponse);
+  private ThirdPartySyncDetailRetrieveLatestSyncResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.thirdPartySyncDetail = thirdPartySyncDetail;
+    this.thirdPartySyncDetail = builder.thirdPartySyncDetail;
   }
 
   /** Parse JSON response into ThirdPartySyncDetailRetrieveLatestSyncResponse object. */
@@ -32,14 +31,47 @@ public final class ThirdPartySyncDetailRetrieveLatestSyncResponse extends BaseRe
   public static ThirdPartySyncDetailRetrieveLatestSyncResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      ThirdPartySyncDetail thirdPartySyncDetail =
-          ThirdPartySyncDetail.fromJson(JsonUtil.getObject(json, "third_party_sync_detail"));
+      String __thirdPartySyncDetailJson = JsonUtil.getObject(json, "third_party_sync_detail");
+      if (__thirdPartySyncDetailJson != null) {
+        builder.thirdPartySyncDetail(ThirdPartySyncDetail.fromJson(__thirdPartySyncDetailJson));
+      }
 
-      return new ThirdPartySyncDetailRetrieveLatestSyncResponse(thirdPartySyncDetail, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse ThirdPartySyncDetailRetrieveLatestSyncResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ThirdPartySyncDetailRetrieveLatestSyncResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ThirdPartySyncDetailRetrieveLatestSyncResponse. */
+  public static class Builder {
+
+    private ThirdPartySyncDetail thirdPartySyncDetail;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder thirdPartySyncDetail(ThirdPartySyncDetail thirdPartySyncDetail) {
+      this.thirdPartySyncDetail = thirdPartySyncDetail;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ThirdPartySyncDetailRetrieveLatestSyncResponse build() {
+      return new ThirdPartySyncDetailRetrieveLatestSyncResponse(this);
     }
   }
 

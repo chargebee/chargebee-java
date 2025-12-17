@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class OmnichannelSubscriptionRetrieveResponse extends BaseResponse {
   private final OmnichannelSubscription omnichannelSubscription;
 
-  private OmnichannelSubscriptionRetrieveResponse(
-      OmnichannelSubscription omnichannelSubscription, Response httpResponse) {
-    super(httpResponse);
+  private OmnichannelSubscriptionRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.omnichannelSubscription = omnichannelSubscription;
+    this.omnichannelSubscription = builder.omnichannelSubscription;
   }
 
   /** Parse JSON response into OmnichannelSubscriptionRetrieveResponse object. */
@@ -29,14 +28,48 @@ public final class OmnichannelSubscriptionRetrieveResponse extends BaseResponse 
   public static OmnichannelSubscriptionRetrieveResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      OmnichannelSubscription omnichannelSubscription =
-          OmnichannelSubscription.fromJson(JsonUtil.getObject(json, "omnichannel_subscription"));
+      String __omnichannelSubscriptionJson = JsonUtil.getObject(json, "omnichannel_subscription");
+      if (__omnichannelSubscriptionJson != null) {
+        builder.omnichannelSubscription(
+            OmnichannelSubscription.fromJson(__omnichannelSubscriptionJson));
+      }
 
-      return new OmnichannelSubscriptionRetrieveResponse(omnichannelSubscription, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse OmnichannelSubscriptionRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for OmnichannelSubscriptionRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for OmnichannelSubscriptionRetrieveResponse. */
+  public static class Builder {
+
+    private OmnichannelSubscription omnichannelSubscription;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder omnichannelSubscription(OmnichannelSubscription omnichannelSubscription) {
+      this.omnichannelSubscription = omnichannelSubscription;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public OmnichannelSubscriptionRetrieveResponse build() {
+      return new OmnichannelSubscriptionRetrieveResponse(this);
     }
   }
 

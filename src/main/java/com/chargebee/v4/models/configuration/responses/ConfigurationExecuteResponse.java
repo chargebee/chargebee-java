@@ -14,10 +14,10 @@ import java.util.List;
 public final class ConfigurationExecuteResponse extends BaseResponse {
   private final List<Configuration> configurations;
 
-  private ConfigurationExecuteResponse(List<Configuration> configurations, Response httpResponse) {
-    super(httpResponse);
+  private ConfigurationExecuteResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.configurations = configurations;
+    this.configurations = builder.configurations;
   }
 
   /** Parse JSON response into ConfigurationExecuteResponse object. */
@@ -28,15 +28,49 @@ public final class ConfigurationExecuteResponse extends BaseResponse {
   /** Parse JSON response into ConfigurationExecuteResponse object with HTTP response. */
   public static ConfigurationExecuteResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      List<Configuration> configurations =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "configurations")).stream()
-              .map(Configuration::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __configurationsJson = JsonUtil.getArray(json, "configurations");
+      if (__configurationsJson != null) {
+        builder.configurations(
+            JsonUtil.parseObjectArray(__configurationsJson).stream()
+                .map(Configuration::fromJson)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
-      return new ConfigurationExecuteResponse(configurations, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse ConfigurationExecuteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ConfigurationExecuteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ConfigurationExecuteResponse. */
+  public static class Builder {
+
+    private List<Configuration> configurations;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder configurations(List<Configuration> configurations) {
+      this.configurations = configurations;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ConfigurationExecuteResponse build() {
+      return new ConfigurationExecuteResponse(this);
     }
   }
 

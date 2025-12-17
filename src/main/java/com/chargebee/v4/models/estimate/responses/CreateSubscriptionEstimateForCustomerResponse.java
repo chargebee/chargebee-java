@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CreateSubscriptionEstimateForCustomerResponse extends BaseResponse {
   private final Estimate estimate;
 
-  private CreateSubscriptionEstimateForCustomerResponse(Estimate estimate, Response httpResponse) {
-    super(httpResponse);
+  private CreateSubscriptionEstimateForCustomerResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.estimate = estimate;
+    this.estimate = builder.estimate;
   }
 
   /** Parse JSON response into CreateSubscriptionEstimateForCustomerResponse object. */
@@ -31,13 +31,47 @@ public final class CreateSubscriptionEstimateForCustomerResponse extends BaseRes
   public static CreateSubscriptionEstimateForCustomerResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Estimate estimate = Estimate.fromJson(JsonUtil.getObject(json, "estimate"));
+      String __estimateJson = JsonUtil.getObject(json, "estimate");
+      if (__estimateJson != null) {
+        builder.estimate(Estimate.fromJson(__estimateJson));
+      }
 
-      return new CreateSubscriptionEstimateForCustomerResponse(estimate, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse CreateSubscriptionEstimateForCustomerResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CreateSubscriptionEstimateForCustomerResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CreateSubscriptionEstimateForCustomerResponse. */
+  public static class Builder {
+
+    private Estimate estimate;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder estimate(Estimate estimate) {
+      this.estimate = estimate;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CreateSubscriptionEstimateForCustomerResponse build() {
+      return new CreateSubscriptionEstimateForCustomerResponse(this);
     }
   }
 

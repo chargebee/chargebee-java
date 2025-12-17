@@ -17,12 +17,12 @@ public final class CustomerRetrieveResponse extends BaseResponse {
 
   private final Card card;
 
-  private CustomerRetrieveResponse(Customer customer, Card card, Response httpResponse) {
-    super(httpResponse);
+  private CustomerRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.customer = customer;
+    this.customer = builder.customer;
 
-    this.card = card;
+    this.card = builder.card;
   }
 
   /** Parse JSON response into CustomerRetrieveResponse object. */
@@ -33,14 +33,58 @@ public final class CustomerRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CustomerRetrieveResponse object with HTTP response. */
   public static CustomerRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Customer customer = Customer.fromJson(JsonUtil.getObject(json, "customer"));
+      String __customerJson = JsonUtil.getObject(json, "customer");
+      if (__customerJson != null) {
+        builder.customer(Customer.fromJson(__customerJson));
+      }
 
-      Card card = Card.fromJson(JsonUtil.getObject(json, "card"));
+      String __cardJson = JsonUtil.getObject(json, "card");
+      if (__cardJson != null) {
+        builder.card(Card.fromJson(__cardJson));
+      }
 
-      return new CustomerRetrieveResponse(customer, card, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CustomerRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CustomerRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CustomerRetrieveResponse. */
+  public static class Builder {
+
+    private Customer customer;
+
+    private Card card;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder customer(Customer customer) {
+      this.customer = customer;
+      return this;
+    }
+
+    public Builder card(Card card) {
+      this.card = card;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CustomerRetrieveResponse build() {
+      return new CustomerRetrieveResponse(this);
     }
   }
 

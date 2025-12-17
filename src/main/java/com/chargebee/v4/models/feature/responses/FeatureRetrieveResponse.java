@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class FeatureRetrieveResponse extends BaseResponse {
   private final Feature feature;
 
-  private FeatureRetrieveResponse(Feature feature, Response httpResponse) {
-    super(httpResponse);
+  private FeatureRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.feature = feature;
+    this.feature = builder.feature;
   }
 
   /** Parse JSON response into FeatureRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class FeatureRetrieveResponse extends BaseResponse {
   /** Parse JSON response into FeatureRetrieveResponse object with HTTP response. */
   public static FeatureRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Feature feature = Feature.fromJson(JsonUtil.getObject(json, "feature"));
+      String __featureJson = JsonUtil.getObject(json, "feature");
+      if (__featureJson != null) {
+        builder.feature(Feature.fromJson(__featureJson));
+      }
 
-      return new FeatureRetrieveResponse(feature, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse FeatureRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for FeatureRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for FeatureRetrieveResponse. */
+  public static class Builder {
+
+    private Feature feature;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder feature(Feature feature) {
+      this.feature = feature;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public FeatureRetrieveResponse build() {
+      return new FeatureRetrieveResponse(this);
     }
   }
 

@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class RuleRetrieveResponse extends BaseResponse {
   private final Rule rule;
 
-  private RuleRetrieveResponse(Rule rule, Response httpResponse) {
-    super(httpResponse);
+  private RuleRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.rule = rule;
+    this.rule = builder.rule;
   }
 
   /** Parse JSON response into RuleRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class RuleRetrieveResponse extends BaseResponse {
   /** Parse JSON response into RuleRetrieveResponse object with HTTP response. */
   public static RuleRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Rule rule = Rule.fromJson(JsonUtil.getObject(json, "rule"));
+      String __ruleJson = JsonUtil.getObject(json, "rule");
+      if (__ruleJson != null) {
+        builder.rule(Rule.fromJson(__ruleJson));
+      }
 
-      return new RuleRetrieveResponse(rule, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse RuleRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RuleRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RuleRetrieveResponse. */
+  public static class Builder {
+
+    private Rule rule;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder rule(Rule rule) {
+      this.rule = rule;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RuleRetrieveResponse build() {
+      return new RuleRetrieveResponse(this);
     }
   }
 

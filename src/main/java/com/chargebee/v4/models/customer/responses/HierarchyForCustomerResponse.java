@@ -14,10 +14,10 @@ import java.util.List;
 public final class HierarchyForCustomerResponse extends BaseResponse {
   private final List<Hierarchy> hierarchies;
 
-  private HierarchyForCustomerResponse(List<Hierarchy> hierarchies, Response httpResponse) {
-    super(httpResponse);
+  private HierarchyForCustomerResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.hierarchies = hierarchies;
+    this.hierarchies = builder.hierarchies;
   }
 
   /** Parse JSON response into HierarchyForCustomerResponse object. */
@@ -28,15 +28,49 @@ public final class HierarchyForCustomerResponse extends BaseResponse {
   /** Parse JSON response into HierarchyForCustomerResponse object with HTTP response. */
   public static HierarchyForCustomerResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      List<Hierarchy> hierarchies =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "hierarchies")).stream()
-              .map(Hierarchy::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __hierarchiesJson = JsonUtil.getArray(json, "hierarchies");
+      if (__hierarchiesJson != null) {
+        builder.hierarchies(
+            JsonUtil.parseObjectArray(__hierarchiesJson).stream()
+                .map(Hierarchy::fromJson)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
-      return new HierarchyForCustomerResponse(hierarchies, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse HierarchyForCustomerResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for HierarchyForCustomerResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for HierarchyForCustomerResponse. */
+  public static class Builder {
+
+    private List<Hierarchy> hierarchies;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder hierarchies(List<Hierarchy> hierarchies) {
+      this.hierarchies = hierarchies;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public HierarchyForCustomerResponse build() {
+      return new HierarchyForCustomerResponse(this);
     }
   }
 

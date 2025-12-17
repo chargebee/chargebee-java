@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CurrencyRetrieveResponse extends BaseResponse {
   private final Currency currency;
 
-  private CurrencyRetrieveResponse(Currency currency, Response httpResponse) {
-    super(httpResponse);
+  private CurrencyRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.currency = currency;
+    this.currency = builder.currency;
   }
 
   /** Parse JSON response into CurrencyRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CurrencyRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CurrencyRetrieveResponse object with HTTP response. */
   public static CurrencyRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Currency currency = Currency.fromJson(JsonUtil.getObject(json, "currency"));
+      String __currencyJson = JsonUtil.getObject(json, "currency");
+      if (__currencyJson != null) {
+        builder.currency(Currency.fromJson(__currencyJson));
+      }
 
-      return new CurrencyRetrieveResponse(currency, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CurrencyRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CurrencyRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CurrencyRetrieveResponse. */
+  public static class Builder {
+
+    private Currency currency;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder currency(Currency currency) {
+      this.currency = currency;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CurrencyRetrieveResponse build() {
+      return new CurrencyRetrieveResponse(this);
     }
   }
 

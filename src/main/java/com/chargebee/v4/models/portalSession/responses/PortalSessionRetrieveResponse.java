@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class PortalSessionRetrieveResponse extends BaseResponse {
   private final PortalSession portalSession;
 
-  private PortalSessionRetrieveResponse(PortalSession portalSession, Response httpResponse) {
-    super(httpResponse);
+  private PortalSessionRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.portalSession = portalSession;
+    this.portalSession = builder.portalSession;
   }
 
   /** Parse JSON response into PortalSessionRetrieveResponse object. */
@@ -27,13 +27,46 @@ public final class PortalSessionRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PortalSessionRetrieveResponse object with HTTP response. */
   public static PortalSessionRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      PortalSession portalSession =
-          PortalSession.fromJson(JsonUtil.getObject(json, "portal_session"));
+      String __portalSessionJson = JsonUtil.getObject(json, "portal_session");
+      if (__portalSessionJson != null) {
+        builder.portalSession(PortalSession.fromJson(__portalSessionJson));
+      }
 
-      return new PortalSessionRetrieveResponse(portalSession, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse PortalSessionRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for PortalSessionRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for PortalSessionRetrieveResponse. */
+  public static class Builder {
+
+    private PortalSession portalSession;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder portalSession(PortalSession portalSession) {
+      this.portalSession = portalSession;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public PortalSessionRetrieveResponse build() {
+      return new PortalSessionRetrieveResponse(this);
     }
   }
 

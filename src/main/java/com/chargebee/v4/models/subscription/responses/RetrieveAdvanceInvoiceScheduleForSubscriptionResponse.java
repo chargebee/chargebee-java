@@ -14,11 +14,10 @@ import java.util.List;
 public final class RetrieveAdvanceInvoiceScheduleForSubscriptionResponse extends BaseResponse {
   private final List<AdvanceInvoiceSchedule> advanceInvoiceSchedules;
 
-  private RetrieveAdvanceInvoiceScheduleForSubscriptionResponse(
-      List<AdvanceInvoiceSchedule> advanceInvoiceSchedules, Response httpResponse) {
-    super(httpResponse);
+  private RetrieveAdvanceInvoiceScheduleForSubscriptionResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.advanceInvoiceSchedules = advanceInvoiceSchedules;
+    this.advanceInvoiceSchedules = builder.advanceInvoiceSchedules;
   }
 
   /** Parse JSON response into RetrieveAdvanceInvoiceScheduleForSubscriptionResponse object. */
@@ -33,17 +32,50 @@ public final class RetrieveAdvanceInvoiceScheduleForSubscriptionResponse extends
   public static RetrieveAdvanceInvoiceScheduleForSubscriptionResponse fromJson(
       String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      List<AdvanceInvoiceSchedule> advanceInvoiceSchedules =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "advance_invoice_schedules")).stream()
-              .map(AdvanceInvoiceSchedule::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+      String __advanceInvoiceSchedulesJson = JsonUtil.getArray(json, "advance_invoice_schedules");
+      if (__advanceInvoiceSchedulesJson != null) {
+        builder.advanceInvoiceSchedules(
+            JsonUtil.parseObjectArray(__advanceInvoiceSchedulesJson).stream()
+                .map(AdvanceInvoiceSchedule::fromJson)
+                .collect(java.util.stream.Collectors.toList()));
+      }
 
-      return new RetrieveAdvanceInvoiceScheduleForSubscriptionResponse(
-          advanceInvoiceSchedules, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException(
           "Failed to parse RetrieveAdvanceInvoiceScheduleForSubscriptionResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for RetrieveAdvanceInvoiceScheduleForSubscriptionResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for RetrieveAdvanceInvoiceScheduleForSubscriptionResponse. */
+  public static class Builder {
+
+    private List<AdvanceInvoiceSchedule> advanceInvoiceSchedules;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder advanceInvoiceSchedules(List<AdvanceInvoiceSchedule> advanceInvoiceSchedules) {
+      this.advanceInvoiceSchedules = advanceInvoiceSchedules;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public RetrieveAdvanceInvoiceScheduleForSubscriptionResponse build() {
+      return new RetrieveAdvanceInvoiceScheduleForSubscriptionResponse(this);
     }
   }
 

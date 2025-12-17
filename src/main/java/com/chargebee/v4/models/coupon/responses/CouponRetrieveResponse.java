@@ -13,10 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class CouponRetrieveResponse extends BaseResponse {
   private final Coupon coupon;
 
-  private CouponRetrieveResponse(Coupon coupon, Response httpResponse) {
-    super(httpResponse);
+  private CouponRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.coupon = coupon;
+    this.coupon = builder.coupon;
   }
 
   /** Parse JSON response into CouponRetrieveResponse object. */
@@ -27,12 +27,46 @@ public final class CouponRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CouponRetrieveResponse object with HTTP response. */
   public static CouponRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      Coupon coupon = Coupon.fromJson(JsonUtil.getObject(json, "coupon"));
+      String __couponJson = JsonUtil.getObject(json, "coupon");
+      if (__couponJson != null) {
+        builder.coupon(Coupon.fromJson(__couponJson));
+      }
 
-      return new CouponRetrieveResponse(coupon, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse CouponRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for CouponRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for CouponRetrieveResponse. */
+  public static class Builder {
+
+    private Coupon coupon;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder coupon(Coupon coupon) {
+      this.coupon = coupon;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public CouponRetrieveResponse build() {
+      return new CouponRetrieveResponse(this);
     }
   }
 

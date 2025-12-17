@@ -13,11 +13,10 @@ import com.chargebee.v4.transport.Response;
 public final class VirtualBankAccountRetrieveResponse extends BaseResponse {
   private final VirtualBankAccount virtualBankAccount;
 
-  private VirtualBankAccountRetrieveResponse(
-      VirtualBankAccount virtualBankAccount, Response httpResponse) {
-    super(httpResponse);
+  private VirtualBankAccountRetrieveResponse(Builder builder) {
+    super(builder.httpResponse);
 
-    this.virtualBankAccount = virtualBankAccount;
+    this.virtualBankAccount = builder.virtualBankAccount;
   }
 
   /** Parse JSON response into VirtualBankAccountRetrieveResponse object. */
@@ -28,13 +27,46 @@ public final class VirtualBankAccountRetrieveResponse extends BaseResponse {
   /** Parse JSON response into VirtualBankAccountRetrieveResponse object with HTTP response. */
   public static VirtualBankAccountRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      Builder builder = builder();
 
-      VirtualBankAccount virtualBankAccount =
-          VirtualBankAccount.fromJson(JsonUtil.getObject(json, "virtual_bank_account"));
+      String __virtualBankAccountJson = JsonUtil.getObject(json, "virtual_bank_account");
+      if (__virtualBankAccountJson != null) {
+        builder.virtualBankAccount(VirtualBankAccount.fromJson(__virtualBankAccountJson));
+      }
 
-      return new VirtualBankAccountRetrieveResponse(virtualBankAccount, httpResponse);
+      builder.httpResponse(httpResponse);
+      return builder.build();
     } catch (Exception e) {
       throw new RuntimeException("Failed to parse VirtualBankAccountRetrieveResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for VirtualBankAccountRetrieveResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for VirtualBankAccountRetrieveResponse. */
+  public static class Builder {
+
+    private VirtualBankAccount virtualBankAccount;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder virtualBankAccount(VirtualBankAccount virtualBankAccount) {
+      this.virtualBankAccount = virtualBankAccount;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public VirtualBankAccountRetrieveResponse build() {
+      return new VirtualBankAccountRetrieveResponse(this);
     }
   }
 
