@@ -1,5 +1,7 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.exceptions.*;
+
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -83,22 +85,22 @@ public class DefaultTransport implements Transport {
             }
             throw e;
         } catch (SocketTimeoutException e) {
-            String timeoutType = e.getMessage().contains("connect") ? "connect" : "read";
-            TimeoutException timeoutException = new TimeoutException(timeoutType, "Request timed out", e);
+            String timeoutType = e.getMessage() != null && e.getMessage().contains("connect") ? "connect" : "read";
+            TimeoutException timeoutException = new TimeoutException(timeoutType, "Request timed out", e, request);
             if (logger != null && logger.isEnabled()) {
                 long duration = System.currentTimeMillis() - startTime;
                 logger.logError(request, timeoutException, duration);
             }
             throw timeoutException;
         } catch (UnknownHostException | NoRouteToHostException e) {
-            NetworkException networkException = new NetworkException("Network connectivity issue", e);
+            NetworkException networkException = new NetworkException("Network connectivity issue: " + e.getMessage(), e, request);
             if (logger != null && logger.isEnabled()) {
                 long duration = System.currentTimeMillis() - startTime;
                 logger.logError(request, networkException, duration);
             }
             throw networkException;
         } catch (IOException e) {
-            NetworkException networkException = new NetworkException("Network error", e);
+            NetworkException networkException = new NetworkException("Network error: " + e.getMessage(), e, request);
             if (logger != null && logger.isEnabled()) {
                 long duration = System.currentTimeMillis() - startTime;
                 logger.logError(request, networkException, duration);

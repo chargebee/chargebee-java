@@ -55,6 +55,27 @@ public final class Response {
         return statusCode >= 200 && statusCode < 300;
     }
     
+    /**
+     * Get a single header value by name (case-insensitive).
+     *
+     * @param name the header name
+     * @return the first header value, or null if not found
+     */
+    public String getHeader(String name) {
+        List<String> values = getHeaderValue(headers, name);
+        return (values != null && !values.isEmpty()) ? values.get(0) : null;
+    }
+    
+    /**
+     * Get all values for a header by name (case-insensitive).
+     *
+     * @param name the header name
+     * @return list of header values, or null if not found
+     */
+    public List<String> getHeaderValues(String name) {
+        return getHeaderValue(headers, name);
+    }
+    
     private static String parseContentType(Map<String, List<String>> headers) {
         List<String> values = getHeaderValue(headers, "Content-Type");
         if (values == null || values.isEmpty()) return null;

@@ -1,9 +1,12 @@
 package com.chargebee.v4.client;
 
+import com.chargebee.v4.exceptions.ClientErrorException;
+import com.chargebee.v4.exceptions.ConfigurationException;
+import com.chargebee.v4.exceptions.NetworkException;
+import com.chargebee.v4.exceptions.TimeoutException;
 import com.chargebee.v4.internal.RetryConfig;
 import com.chargebee.v4.transport.*;
 import org.junit.jupiter.api.*;
-import org.mockito.*;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -473,7 +476,8 @@ class ChargebeeClientRetryTest {
         void shouldNotRetryOnClientErrorException() throws Exception {
             Transport mockTransport = mock(Transport.class);
             Response errorResponse = createResponse(400);
-            ClientErrorException clientError = new ClientErrorException(400, "Bad Request", errorResponse);
+            Request errorRequest = Request.builder().method("GET").url("http://test.com").build();
+            ClientErrorException clientError = new ClientErrorException(400, "Bad Request", errorRequest, errorResponse);
             
             when(mockTransport.send(any(Request.class))).thenThrow(clientError);
             

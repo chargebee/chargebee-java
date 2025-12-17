@@ -1,5 +1,6 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.exceptions.*;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 
@@ -208,7 +209,7 @@ class DefaultTransportTest {
                     .url(server.getUrl())
                     .build();
                 
-                ClientErrorException exception = assertThrows(ClientErrorException.class, 
+                ClientErrorException exception = assertThrows(ClientErrorException.class,
                     () -> transport.send(request));
                 
                 assertEquals(400, exception.getStatusCode());

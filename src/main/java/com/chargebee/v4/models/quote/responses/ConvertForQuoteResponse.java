@@ -1,0 +1,262 @@
+package com.chargebee.v4.models.quote.responses;
+
+import java.util.List;
+
+import com.chargebee.v4.models.quote.Quote;
+
+import com.chargebee.v4.models.quotedRamp.QuotedRamp;
+
+import com.chargebee.v4.models.quotedSubscription.QuotedSubscription;
+
+import com.chargebee.v4.models.invoice.Invoice;
+
+import com.chargebee.v4.models.customer.Customer;
+
+import com.chargebee.v4.models.creditNote.CreditNote;
+
+import com.chargebee.v4.models.unbilledCharge.UnbilledCharge;
+
+import com.chargebee.v4.models.quotedCharge.QuotedCharge;
+
+import com.chargebee.v4.models.subscription.Subscription;
+
+import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
+
+/**
+ * Immutable response object for ConvertForQuote operation. Contains the response data from the API.
+ */
+public final class ConvertForQuoteResponse extends BaseResponse {
+  private final Quote quote;
+
+  private final QuotedSubscription quotedSubscription;
+
+  private final QuotedCharge quotedCharge;
+
+  private final QuotedRamp quotedRamp;
+
+  private final Customer customer;
+
+  private final Subscription subscription;
+
+  private final Invoice invoice;
+
+  private final CreditNote creditNote;
+
+  private final List<UnbilledCharge> unbilledCharges;
+
+  private ConvertForQuoteResponse(Builder builder) {
+    super(builder.httpResponse);
+
+    this.quote = builder.quote;
+
+    this.quotedSubscription = builder.quotedSubscription;
+
+    this.quotedCharge = builder.quotedCharge;
+
+    this.quotedRamp = builder.quotedRamp;
+
+    this.customer = builder.customer;
+
+    this.subscription = builder.subscription;
+
+    this.invoice = builder.invoice;
+
+    this.creditNote = builder.creditNote;
+
+    this.unbilledCharges = builder.unbilledCharges;
+  }
+
+  /** Parse JSON response into ConvertForQuoteResponse object. */
+  public static ConvertForQuoteResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into ConvertForQuoteResponse object with HTTP response. */
+  public static ConvertForQuoteResponse fromJson(String json, Response httpResponse) {
+    try {
+      Builder builder = builder();
+
+      String __quoteJson = JsonUtil.getObject(json, "quote");
+      if (__quoteJson != null) {
+        builder.quote(Quote.fromJson(__quoteJson));
+      }
+
+      String __quotedSubscriptionJson = JsonUtil.getObject(json, "quoted_subscription");
+      if (__quotedSubscriptionJson != null) {
+        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionJson));
+      }
+
+      String __quotedChargeJson = JsonUtil.getObject(json, "quoted_charge");
+      if (__quotedChargeJson != null) {
+        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeJson));
+      }
+
+      String __quotedRampJson = JsonUtil.getObject(json, "quoted_ramp");
+      if (__quotedRampJson != null) {
+        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampJson));
+      }
+
+      String __customerJson = JsonUtil.getObject(json, "customer");
+      if (__customerJson != null) {
+        builder.customer(Customer.fromJson(__customerJson));
+      }
+
+      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
+      if (__subscriptionJson != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      }
+
+      String __invoiceJson = JsonUtil.getObject(json, "invoice");
+      if (__invoiceJson != null) {
+        builder.invoice(Invoice.fromJson(__invoiceJson));
+      }
+
+      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
+      if (__creditNoteJson != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      }
+
+      builder.unbilledCharges(
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "unbilled_charges")).stream()
+              .map(UnbilledCharge::fromJson)
+              .collect(java.util.stream.Collectors.toList()));
+
+      builder.httpResponse(httpResponse);
+      return builder.build();
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to parse ConvertForQuoteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for ConvertForQuoteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for ConvertForQuoteResponse. */
+  public static class Builder {
+
+    private Quote quote;
+
+    private QuotedSubscription quotedSubscription;
+
+    private QuotedCharge quotedCharge;
+
+    private QuotedRamp quotedRamp;
+
+    private Customer customer;
+
+    private Subscription subscription;
+
+    private Invoice invoice;
+
+    private CreditNote creditNote;
+
+    private List<UnbilledCharge> unbilledCharges;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder quote(Quote quote) {
+      this.quote = quote;
+      return this;
+    }
+
+    public Builder quotedSubscription(QuotedSubscription quotedSubscription) {
+      this.quotedSubscription = quotedSubscription;
+      return this;
+    }
+
+    public Builder quotedCharge(QuotedCharge quotedCharge) {
+      this.quotedCharge = quotedCharge;
+      return this;
+    }
+
+    public Builder quotedRamp(QuotedRamp quotedRamp) {
+      this.quotedRamp = quotedRamp;
+      return this;
+    }
+
+    public Builder customer(Customer customer) {
+      this.customer = customer;
+      return this;
+    }
+
+    public Builder subscription(Subscription subscription) {
+      this.subscription = subscription;
+      return this;
+    }
+
+    public Builder invoice(Invoice invoice) {
+      this.invoice = invoice;
+      return this;
+    }
+
+    public Builder creditNote(CreditNote creditNote) {
+      this.creditNote = creditNote;
+      return this;
+    }
+
+    public Builder unbilledCharges(List<UnbilledCharge> unbilledCharges) {
+      this.unbilledCharges = unbilledCharges;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public ConvertForQuoteResponse build() {
+      return new ConvertForQuoteResponse(this);
+    }
+  }
+
+  /** Get the quote from the response. */
+  public Quote getQuote() {
+    return quote;
+  }
+
+  /** Get the quotedSubscription from the response. */
+  public QuotedSubscription getQuotedSubscription() {
+    return quotedSubscription;
+  }
+
+  /** Get the quotedCharge from the response. */
+  public QuotedCharge getQuotedCharge() {
+    return quotedCharge;
+  }
+
+  /** Get the quotedRamp from the response. */
+  public QuotedRamp getQuotedRamp() {
+    return quotedRamp;
+  }
+
+  /** Get the customer from the response. */
+  public Customer getCustomer() {
+    return customer;
+  }
+
+  /** Get the subscription from the response. */
+  public Subscription getSubscription() {
+    return subscription;
+  }
+
+  /** Get the invoice from the response. */
+  public Invoice getInvoice() {
+    return invoice;
+  }
+
+  /** Get the creditNote from the response. */
+  public CreditNote getCreditNote() {
+    return creditNote;
+  }
+
+  /** Get the unbilledCharges from the response. */
+  public List<UnbilledCharge> getUnbilledCharges() {
+    return unbilledCharges;
+  }
+}

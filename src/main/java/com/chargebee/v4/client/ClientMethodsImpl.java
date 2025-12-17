@@ -1,166 +1,166 @@
 package com.chargebee.v4.client;
 
-import com.chargebee.v4.core.services.GiftService;
+import com.chargebee.v4.services.GiftService;
 
-import com.chargebee.v4.core.services.CsvTaxRuleService;
+import com.chargebee.v4.services.CsvTaxRuleService;
 
-import com.chargebee.v4.core.services.UsageService;
+import com.chargebee.v4.services.UsageService;
 
-import com.chargebee.v4.core.services.TimeMachineService;
+import com.chargebee.v4.services.TimeMachineService;
 
-import com.chargebee.v4.core.services.BusinessEntityService;
+import com.chargebee.v4.services.BusinessEntityService;
 
-import com.chargebee.v4.core.services.OfferEventService;
+import com.chargebee.v4.services.OfferEventService;
 
-import com.chargebee.v4.core.services.InAppSubscriptionService;
+import com.chargebee.v4.services.InAppSubscriptionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationService;
+import com.chargebee.v4.services.Pc2MigrationService;
 
-import com.chargebee.v4.core.services.CreditNoteService;
+import com.chargebee.v4.services.CreditNoteService;
 
-import com.chargebee.v4.core.services.CouponSetService;
+import com.chargebee.v4.services.CouponSetService;
 
-import com.chargebee.v4.core.services.QuoteService;
+import com.chargebee.v4.services.QuoteService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemService;
+import com.chargebee.v4.services.Pc2MigrationItemService;
 
-import com.chargebee.v4.core.services.EstimateService;
+import com.chargebee.v4.services.EstimateService;
 
-import com.chargebee.v4.core.services.VariantService;
+import com.chargebee.v4.services.VariantService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemFamilyService;
+import com.chargebee.v4.services.Pc2MigrationItemFamilyService;
 
-import com.chargebee.v4.core.services.PaymentSourceService;
+import com.chargebee.v4.services.PaymentSourceService;
 
-import com.chargebee.v4.core.services.RecordedPurchaseService;
+import com.chargebee.v4.services.RecordedPurchaseService;
 
-import com.chargebee.v4.core.services.PlanService;
+import com.chargebee.v4.services.PlanService;
 
-import com.chargebee.v4.core.services.ExportService;
+import com.chargebee.v4.services.ExportService;
 
-import com.chargebee.v4.core.services.OrderService;
+import com.chargebee.v4.services.OrderService;
 
-import com.chargebee.v4.core.services.ItemService;
+import com.chargebee.v4.services.ItemService;
 
-import com.chargebee.v4.core.services.CustomerEntitlementService;
+import com.chargebee.v4.services.CustomerEntitlementService;
 
-import com.chargebee.v4.core.services.PersonalizedOfferService;
+import com.chargebee.v4.services.PersonalizedOfferService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionService;
+import com.chargebee.v4.services.OmnichannelSubscriptionService;
 
-import com.chargebee.v4.core.services.OmnichannelSubscriptionItemService;
+import com.chargebee.v4.services.OmnichannelSubscriptionItemService;
 
-import com.chargebee.v4.core.services.RampService;
+import com.chargebee.v4.services.RampService;
 
-import com.chargebee.v4.core.services.OmnichannelOneTimeOrderService;
+import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
 
-import com.chargebee.v4.core.services.DifferentialPriceService;
+import com.chargebee.v4.services.DifferentialPriceService;
 
-import com.chargebee.v4.core.services.EntitlementService;
+import com.chargebee.v4.services.EntitlementService;
 
-import com.chargebee.v4.core.services.AdditionalBillingLogiqService;
+import com.chargebee.v4.services.AdditionalBillingLogiqService;
 
-import com.chargebee.v4.core.services.SubscriptionSettingService;
+import com.chargebee.v4.services.SubscriptionSettingService;
 
-import com.chargebee.v4.core.services.SiteMigrationDetailService;
+import com.chargebee.v4.services.SiteMigrationDetailService;
 
-import com.chargebee.v4.core.services.PaymentIntentService;
+import com.chargebee.v4.services.PaymentIntentService;
 
-import com.chargebee.v4.core.services.PaymentScheduleSchemeService;
+import com.chargebee.v4.services.PaymentScheduleSchemeService;
 
-import com.chargebee.v4.core.services.CardService;
+import com.chargebee.v4.services.CardService;
 
-import com.chargebee.v4.core.services.AttachedItemService;
+import com.chargebee.v4.services.AttachedItemService;
 
-import com.chargebee.v4.core.services.UsageEventService;
+import com.chargebee.v4.services.UsageEventService;
 
-import com.chargebee.v4.core.services.PriceVariantService;
+import com.chargebee.v4.services.PriceVariantService;
 
-import com.chargebee.v4.core.services.FullExportService;
+import com.chargebee.v4.services.FullExportService;
 
-import com.chargebee.v4.core.services.VirtualBankAccountService;
+import com.chargebee.v4.services.VirtualBankAccountService;
 
-import com.chargebee.v4.core.services.AddonService;
+import com.chargebee.v4.services.AddonService;
 
-import com.chargebee.v4.core.services.TpSiteUserService;
+import com.chargebee.v4.services.TpSiteUserService;
 
-import com.chargebee.v4.core.services.ConfigurationService;
+import com.chargebee.v4.services.ConfigurationService;
 
-import com.chargebee.v4.core.services.PricingPageSessionService;
+import com.chargebee.v4.services.PricingPageSessionService;
 
-import com.chargebee.v4.core.services.Pc2MigrationItemPriceService;
+import com.chargebee.v4.services.Pc2MigrationItemPriceService;
 
-import com.chargebee.v4.core.services.RuleService;
+import com.chargebee.v4.services.RuleService;
 
-import com.chargebee.v4.core.services.SubscriptionService;
+import com.chargebee.v4.services.SubscriptionService;
 
-import com.chargebee.v4.core.services.MediaService;
+import com.chargebee.v4.services.MediaService;
 
-import com.chargebee.v4.core.services.BusinessProfileService;
+import com.chargebee.v4.services.BusinessProfileService;
 
-import com.chargebee.v4.core.services.PromotionalCreditService;
+import com.chargebee.v4.services.PromotionalCreditService;
 
-import com.chargebee.v4.core.services.BrandConfigurationService;
+import com.chargebee.v4.services.BrandConfigurationService;
 
-import com.chargebee.v4.core.services.WebhookEndpointService;
+import com.chargebee.v4.services.WebhookEndpointService;
 
-import com.chargebee.v4.core.services.FeatureService;
+import com.chargebee.v4.services.FeatureService;
 
-import com.chargebee.v4.core.services.UnbilledChargesSettingService;
+import com.chargebee.v4.services.UnbilledChargesSettingService;
 
-import com.chargebee.v4.core.services.CurrencyService;
+import com.chargebee.v4.services.CurrencyService;
 
-import com.chargebee.v4.core.services.EventService;
+import com.chargebee.v4.services.EventService;
 
-import com.chargebee.v4.core.services.UsageFileService;
+import com.chargebee.v4.services.UsageFileService;
 
-import com.chargebee.v4.core.services.NonSubscriptionService;
+import com.chargebee.v4.services.NonSubscriptionService;
 
-import com.chargebee.v4.core.services.ResourceMigrationService;
+import com.chargebee.v4.services.ResourceMigrationService;
 
-import com.chargebee.v4.core.services.ProductService;
+import com.chargebee.v4.services.ProductService;
 
-import com.chargebee.v4.core.services.CouponCodeService;
+import com.chargebee.v4.services.CouponCodeService;
 
-import com.chargebee.v4.core.services.AddressService;
+import com.chargebee.v4.services.AddressService;
 
-import com.chargebee.v4.core.services.CouponService;
+import com.chargebee.v4.services.CouponService;
 
-import com.chargebee.v4.core.services.PortalSessionService;
+import com.chargebee.v4.services.PortalSessionService;
 
-import com.chargebee.v4.core.services.ItemPriceService;
+import com.chargebee.v4.services.ItemPriceService;
 
-import com.chargebee.v4.core.services.OfferFulfillmentService;
+import com.chargebee.v4.services.OfferFulfillmentService;
 
-import com.chargebee.v4.core.services.HostedPageService;
+import com.chargebee.v4.services.HostedPageService;
 
-import com.chargebee.v4.core.services.PurchaseService;
+import com.chargebee.v4.services.PurchaseService;
 
-import com.chargebee.v4.core.services.PaymentVoucherService;
+import com.chargebee.v4.services.PaymentVoucherService;
 
-import com.chargebee.v4.core.services.ItemFamilyService;
+import com.chargebee.v4.services.ItemFamilyService;
 
-import com.chargebee.v4.core.services.SubscriptionEntitlementService;
+import com.chargebee.v4.services.SubscriptionEntitlementService;
 
-import com.chargebee.v4.core.services.ThirdPartyEntityMappingService;
+import com.chargebee.v4.services.ThirdPartyEntityMappingService;
 
-import com.chargebee.v4.core.services.EntitlementOverrideService;
+import com.chargebee.v4.services.EntitlementOverrideService;
 
-import com.chargebee.v4.core.services.ThirdPartyConfigurationService;
+import com.chargebee.v4.services.ThirdPartyConfigurationService;
 
-import com.chargebee.v4.core.services.UnbilledChargeService;
+import com.chargebee.v4.services.UnbilledChargeService;
 
-import com.chargebee.v4.core.services.CommentService;
+import com.chargebee.v4.services.CommentService;
 
-import com.chargebee.v4.core.services.InvoiceService;
+import com.chargebee.v4.services.InvoiceService;
 
-import com.chargebee.v4.core.services.TransactionService;
+import com.chargebee.v4.services.TransactionService;
 
-import com.chargebee.v4.core.services.ThirdPartySyncDetailService;
+import com.chargebee.v4.services.ThirdPartySyncDetailService;
 
-import com.chargebee.v4.core.services.CustomerService;
+import com.chargebee.v4.services.CustomerService;
 
-import com.chargebee.v4.core.services.ItemEntitlementService;
+import com.chargebee.v4.services.ItemEntitlementService;
 
 /**
  * Auto-generated implementation of ClientMethods interface. This class provides the actual service
@@ -171,407 +171,407 @@ abstract class ClientMethodsImpl implements ClientMethods {
   protected abstract ServiceRegistry getServiceRegistry();
 
   @Override
-  public GiftService gift() {
-    return getServiceRegistry().gift();
+  public GiftService gifts() {
+    return getServiceRegistry().gifts();
   }
 
   @Override
-  public CsvTaxRuleService csvTaxRule() {
-    return getServiceRegistry().csvTaxRule();
+  public CsvTaxRuleService csvTaxRules() {
+    return getServiceRegistry().csvTaxRules();
   }
 
   @Override
-  public UsageService usage() {
-    return getServiceRegistry().usage();
+  public UsageService usages() {
+    return getServiceRegistry().usages();
   }
 
   @Override
-  public TimeMachineService timeMachine() {
-    return getServiceRegistry().timeMachine();
+  public TimeMachineService timeMachines() {
+    return getServiceRegistry().timeMachines();
   }
 
   @Override
-  public BusinessEntityService businessEntity() {
-    return getServiceRegistry().businessEntity();
+  public BusinessEntityService businessEntities() {
+    return getServiceRegistry().businessEntities();
   }
 
   @Override
-  public OfferEventService offerEvent() {
-    return getServiceRegistry().offerEvent();
+  public OfferEventService offerEvents() {
+    return getServiceRegistry().offerEvents();
   }
 
   @Override
-  public InAppSubscriptionService inAppSubscription() {
-    return getServiceRegistry().inAppSubscription();
+  public InAppSubscriptionService inAppSubscriptions() {
+    return getServiceRegistry().inAppSubscriptions();
   }
 
   @Override
-  public Pc2MigrationService pc2Migration() {
-    return getServiceRegistry().pc2Migration();
+  public Pc2MigrationService pc2Migrations() {
+    return getServiceRegistry().pc2Migrations();
   }
 
   @Override
-  public CreditNoteService creditNote() {
-    return getServiceRegistry().creditNote();
+  public CreditNoteService creditNotes() {
+    return getServiceRegistry().creditNotes();
   }
 
   @Override
-  public CouponSetService couponSet() {
-    return getServiceRegistry().couponSet();
+  public CouponSetService couponSets() {
+    return getServiceRegistry().couponSets();
   }
 
   @Override
-  public QuoteService quote() {
-    return getServiceRegistry().quote();
+  public QuoteService quotes() {
+    return getServiceRegistry().quotes();
   }
 
   @Override
-  public Pc2MigrationItemService pc2MigrationItem() {
-    return getServiceRegistry().pc2MigrationItem();
+  public Pc2MigrationItemService pc2MigrationItems() {
+    return getServiceRegistry().pc2MigrationItems();
   }
 
   @Override
-  public EstimateService estimate() {
-    return getServiceRegistry().estimate();
+  public EstimateService estimates() {
+    return getServiceRegistry().estimates();
   }
 
   @Override
-  public VariantService variant() {
-    return getServiceRegistry().variant();
+  public VariantService variants() {
+    return getServiceRegistry().variants();
   }
 
   @Override
-  public Pc2MigrationItemFamilyService pc2MigrationItemFamily() {
-    return getServiceRegistry().pc2MigrationItemFamily();
+  public Pc2MigrationItemFamilyService pc2MigrationItemFamilies() {
+    return getServiceRegistry().pc2MigrationItemFamilies();
   }
 
   @Override
-  public PaymentSourceService paymentSource() {
-    return getServiceRegistry().paymentSource();
+  public PaymentSourceService paymentSources() {
+    return getServiceRegistry().paymentSources();
   }
 
   @Override
-  public RecordedPurchaseService recordedPurchase() {
-    return getServiceRegistry().recordedPurchase();
+  public RecordedPurchaseService recordedPurchases() {
+    return getServiceRegistry().recordedPurchases();
   }
 
   @Override
-  public PlanService plan() {
-    return getServiceRegistry().plan();
+  public PlanService plans() {
+    return getServiceRegistry().plans();
   }
 
   @Override
-  public ExportService export() {
-    return getServiceRegistry().export();
+  public ExportService exports() {
+    return getServiceRegistry().exports();
   }
 
   @Override
-  public OrderService order() {
-    return getServiceRegistry().order();
+  public OrderService orders() {
+    return getServiceRegistry().orders();
   }
 
   @Override
-  public ItemService item() {
-    return getServiceRegistry().item();
+  public ItemService items() {
+    return getServiceRegistry().items();
   }
 
   @Override
-  public CustomerEntitlementService customerEntitlement() {
-    return getServiceRegistry().customerEntitlement();
+  public CustomerEntitlementService customerEntitlements() {
+    return getServiceRegistry().customerEntitlements();
   }
 
   @Override
-  public PersonalizedOfferService personalizedOffer() {
-    return getServiceRegistry().personalizedOffer();
+  public PersonalizedOfferService personalizedOffers() {
+    return getServiceRegistry().personalizedOffers();
   }
 
   @Override
-  public OmnichannelSubscriptionService omnichannelSubscription() {
-    return getServiceRegistry().omnichannelSubscription();
+  public OmnichannelSubscriptionService omnichannelSubscriptions() {
+    return getServiceRegistry().omnichannelSubscriptions();
   }
 
   @Override
-  public OmnichannelSubscriptionItemService omnichannelSubscriptionItem() {
-    return getServiceRegistry().omnichannelSubscriptionItem();
+  public OmnichannelSubscriptionItemService omnichannelSubscriptionItems() {
+    return getServiceRegistry().omnichannelSubscriptionItems();
   }
 
   @Override
-  public RampService ramp() {
-    return getServiceRegistry().ramp();
+  public RampService ramps() {
+    return getServiceRegistry().ramps();
   }
 
   @Override
-  public OmnichannelOneTimeOrderService omnichannelOneTimeOrder() {
-    return getServiceRegistry().omnichannelOneTimeOrder();
+  public OmnichannelOneTimeOrderService omnichannelOneTimeOrders() {
+    return getServiceRegistry().omnichannelOneTimeOrders();
   }
 
   @Override
-  public DifferentialPriceService differentialPrice() {
-    return getServiceRegistry().differentialPrice();
+  public DifferentialPriceService differentialPrices() {
+    return getServiceRegistry().differentialPrices();
   }
 
   @Override
-  public EntitlementService entitlement() {
-    return getServiceRegistry().entitlement();
+  public EntitlementService entitlements() {
+    return getServiceRegistry().entitlements();
   }
 
   @Override
-  public AdditionalBillingLogiqService additionalBillingLogiq() {
-    return getServiceRegistry().additionalBillingLogiq();
+  public AdditionalBillingLogiqService additionalBillingLogiqs() {
+    return getServiceRegistry().additionalBillingLogiqs();
   }
 
   @Override
-  public SubscriptionSettingService subscriptionSetting() {
-    return getServiceRegistry().subscriptionSetting();
+  public SubscriptionSettingService subscriptionSettings() {
+    return getServiceRegistry().subscriptionSettings();
   }
 
   @Override
-  public SiteMigrationDetailService siteMigrationDetail() {
-    return getServiceRegistry().siteMigrationDetail();
+  public SiteMigrationDetailService siteMigrationDetails() {
+    return getServiceRegistry().siteMigrationDetails();
   }
 
   @Override
-  public PaymentIntentService paymentIntent() {
-    return getServiceRegistry().paymentIntent();
+  public PaymentIntentService paymentIntents() {
+    return getServiceRegistry().paymentIntents();
   }
 
   @Override
-  public PaymentScheduleSchemeService paymentScheduleScheme() {
-    return getServiceRegistry().paymentScheduleScheme();
+  public PaymentScheduleSchemeService paymentScheduleSchemes() {
+    return getServiceRegistry().paymentScheduleSchemes();
   }
 
   @Override
-  public CardService card() {
-    return getServiceRegistry().card();
+  public CardService cards() {
+    return getServiceRegistry().cards();
   }
 
   @Override
-  public AttachedItemService attachedItem() {
-    return getServiceRegistry().attachedItem();
+  public AttachedItemService attachedItems() {
+    return getServiceRegistry().attachedItems();
   }
 
   @Override
-  public UsageEventService usageEvent() {
-    return getServiceRegistry().usageEvent();
+  public UsageEventService usageEvents() {
+    return getServiceRegistry().usageEvents();
   }
 
   @Override
-  public PriceVariantService priceVariant() {
-    return getServiceRegistry().priceVariant();
+  public PriceVariantService priceVariants() {
+    return getServiceRegistry().priceVariants();
   }
 
   @Override
-  public FullExportService fullExport() {
-    return getServiceRegistry().fullExport();
+  public FullExportService fullExports() {
+    return getServiceRegistry().fullExports();
   }
 
   @Override
-  public VirtualBankAccountService virtualBankAccount() {
-    return getServiceRegistry().virtualBankAccount();
+  public VirtualBankAccountService virtualBankAccounts() {
+    return getServiceRegistry().virtualBankAccounts();
   }
 
   @Override
-  public AddonService addon() {
-    return getServiceRegistry().addon();
+  public AddonService addons() {
+    return getServiceRegistry().addons();
   }
 
   @Override
-  public TpSiteUserService tpSiteUser() {
-    return getServiceRegistry().tpSiteUser();
+  public TpSiteUserService tpSiteUsers() {
+    return getServiceRegistry().tpSiteUsers();
   }
 
   @Override
-  public ConfigurationService configuration() {
-    return getServiceRegistry().configuration();
+  public ConfigurationService configurations() {
+    return getServiceRegistry().configurations();
   }
 
   @Override
-  public PricingPageSessionService pricingPageSession() {
-    return getServiceRegistry().pricingPageSession();
+  public PricingPageSessionService pricingPageSessions() {
+    return getServiceRegistry().pricingPageSessions();
   }
 
   @Override
-  public Pc2MigrationItemPriceService pc2MigrationItemPrice() {
-    return getServiceRegistry().pc2MigrationItemPrice();
+  public Pc2MigrationItemPriceService pc2MigrationItemPrices() {
+    return getServiceRegistry().pc2MigrationItemPrices();
   }
 
   @Override
-  public RuleService rule() {
-    return getServiceRegistry().rule();
+  public RuleService rules() {
+    return getServiceRegistry().rules();
   }
 
   @Override
-  public SubscriptionService subscription() {
-    return getServiceRegistry().subscription();
+  public SubscriptionService subscriptions() {
+    return getServiceRegistry().subscriptions();
   }
 
   @Override
-  public MediaService media() {
-    return getServiceRegistry().media();
+  public MediaService medias() {
+    return getServiceRegistry().medias();
   }
 
   @Override
-  public BusinessProfileService businessProfile() {
-    return getServiceRegistry().businessProfile();
+  public BusinessProfileService businessProfiles() {
+    return getServiceRegistry().businessProfiles();
   }
 
   @Override
-  public PromotionalCreditService promotionalCredit() {
-    return getServiceRegistry().promotionalCredit();
+  public PromotionalCreditService promotionalCredits() {
+    return getServiceRegistry().promotionalCredits();
   }
 
   @Override
-  public BrandConfigurationService brandConfiguration() {
-    return getServiceRegistry().brandConfiguration();
+  public BrandConfigurationService brandConfigurations() {
+    return getServiceRegistry().brandConfigurations();
   }
 
   @Override
-  public WebhookEndpointService webhookEndpoint() {
-    return getServiceRegistry().webhookEndpoint();
+  public WebhookEndpointService webhookEndpoints() {
+    return getServiceRegistry().webhookEndpoints();
   }
 
   @Override
-  public FeatureService feature() {
-    return getServiceRegistry().feature();
+  public FeatureService features() {
+    return getServiceRegistry().features();
   }
 
   @Override
-  public UnbilledChargesSettingService unbilledChargesSetting() {
-    return getServiceRegistry().unbilledChargesSetting();
+  public UnbilledChargesSettingService unbilledChargesSettings() {
+    return getServiceRegistry().unbilledChargesSettings();
   }
 
   @Override
-  public CurrencyService currency() {
-    return getServiceRegistry().currency();
+  public CurrencyService currencies() {
+    return getServiceRegistry().currencies();
   }
 
   @Override
-  public EventService event() {
-    return getServiceRegistry().event();
+  public EventService events() {
+    return getServiceRegistry().events();
   }
 
   @Override
-  public UsageFileService usageFile() {
-    return getServiceRegistry().usageFile();
+  public UsageFileService usageFiles() {
+    return getServiceRegistry().usageFiles();
   }
 
   @Override
-  public NonSubscriptionService nonSubscription() {
-    return getServiceRegistry().nonSubscription();
+  public NonSubscriptionService nonSubscriptions() {
+    return getServiceRegistry().nonSubscriptions();
   }
 
   @Override
-  public ResourceMigrationService resourceMigration() {
-    return getServiceRegistry().resourceMigration();
+  public ResourceMigrationService resourceMigrations() {
+    return getServiceRegistry().resourceMigrations();
   }
 
   @Override
-  public ProductService product() {
-    return getServiceRegistry().product();
+  public ProductService products() {
+    return getServiceRegistry().products();
   }
 
   @Override
-  public CouponCodeService couponCode() {
-    return getServiceRegistry().couponCode();
+  public CouponCodeService couponCodes() {
+    return getServiceRegistry().couponCodes();
   }
 
   @Override
-  public AddressService address() {
-    return getServiceRegistry().address();
+  public AddressService addresses() {
+    return getServiceRegistry().addresses();
   }
 
   @Override
-  public CouponService coupon() {
-    return getServiceRegistry().coupon();
+  public CouponService coupons() {
+    return getServiceRegistry().coupons();
   }
 
   @Override
-  public PortalSessionService portalSession() {
-    return getServiceRegistry().portalSession();
+  public PortalSessionService portalSessions() {
+    return getServiceRegistry().portalSessions();
   }
 
   @Override
-  public ItemPriceService itemPrice() {
-    return getServiceRegistry().itemPrice();
+  public ItemPriceService itemPrices() {
+    return getServiceRegistry().itemPrices();
   }
 
   @Override
-  public OfferFulfillmentService offerFulfillment() {
-    return getServiceRegistry().offerFulfillment();
+  public OfferFulfillmentService offerFulfillments() {
+    return getServiceRegistry().offerFulfillments();
   }
 
   @Override
-  public HostedPageService hostedPage() {
-    return getServiceRegistry().hostedPage();
+  public HostedPageService hostedPages() {
+    return getServiceRegistry().hostedPages();
   }
 
   @Override
-  public PurchaseService purchase() {
-    return getServiceRegistry().purchase();
+  public PurchaseService purchases() {
+    return getServiceRegistry().purchases();
   }
 
   @Override
-  public PaymentVoucherService paymentVoucher() {
-    return getServiceRegistry().paymentVoucher();
+  public PaymentVoucherService paymentVouchers() {
+    return getServiceRegistry().paymentVouchers();
   }
 
   @Override
-  public ItemFamilyService itemFamily() {
-    return getServiceRegistry().itemFamily();
+  public ItemFamilyService itemFamilies() {
+    return getServiceRegistry().itemFamilies();
   }
 
   @Override
-  public SubscriptionEntitlementService subscriptionEntitlement() {
-    return getServiceRegistry().subscriptionEntitlement();
+  public SubscriptionEntitlementService subscriptionEntitlements() {
+    return getServiceRegistry().subscriptionEntitlements();
   }
 
   @Override
-  public ThirdPartyEntityMappingService thirdPartyEntityMapping() {
-    return getServiceRegistry().thirdPartyEntityMapping();
+  public ThirdPartyEntityMappingService thirdPartyEntityMappings() {
+    return getServiceRegistry().thirdPartyEntityMappings();
   }
 
   @Override
-  public EntitlementOverrideService entitlementOverride() {
-    return getServiceRegistry().entitlementOverride();
+  public EntitlementOverrideService entitlementOverrides() {
+    return getServiceRegistry().entitlementOverrides();
   }
 
   @Override
-  public ThirdPartyConfigurationService thirdPartyConfiguration() {
-    return getServiceRegistry().thirdPartyConfiguration();
+  public ThirdPartyConfigurationService thirdPartyConfigurations() {
+    return getServiceRegistry().thirdPartyConfigurations();
   }
 
   @Override
-  public UnbilledChargeService unbilledCharge() {
-    return getServiceRegistry().unbilledCharge();
+  public UnbilledChargeService unbilledCharges() {
+    return getServiceRegistry().unbilledCharges();
   }
 
   @Override
-  public CommentService comment() {
-    return getServiceRegistry().comment();
+  public CommentService comments() {
+    return getServiceRegistry().comments();
   }
 
   @Override
-  public InvoiceService invoice() {
-    return getServiceRegistry().invoice();
+  public InvoiceService invoices() {
+    return getServiceRegistry().invoices();
   }
 
   @Override
-  public TransactionService transaction() {
-    return getServiceRegistry().transaction();
+  public TransactionService transactions() {
+    return getServiceRegistry().transactions();
   }
 
   @Override
-  public ThirdPartySyncDetailService thirdPartySyncDetail() {
-    return getServiceRegistry().thirdPartySyncDetail();
+  public ThirdPartySyncDetailService thirdPartySyncDetails() {
+    return getServiceRegistry().thirdPartySyncDetails();
   }
 
   @Override
-  public CustomerService customer() {
-    return getServiceRegistry().customer();
+  public CustomerService customers() {
+    return getServiceRegistry().customers();
   }
 
   @Override
-  public ItemEntitlementService itemEntitlement() {
-    return getServiceRegistry().itemEntitlement();
+  public ItemEntitlementService itemEntitlements() {
+    return getServiceRegistry().itemEntitlements();
   }
 }
