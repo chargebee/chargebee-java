@@ -47,7 +47,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 #### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
-    implementation("com.chargebee:chargebee-java:4.0.0-beta.1")
+    implementation("com.chargebee:chargebee-java:4.0.0")
 }
 ```
 
@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0-beta.2</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 
@@ -139,12 +139,12 @@ ChargebeeClient client = ChargebeeClient.builder()
 #### Create and list customers (sync)
 ```java
 import com.chargebee.v4.services.CustomerService;
-import com.chargebee.v4.core.models.customer.params.CustomerCreateParams;
-import com.chargebee.v4.core.models.customer.params.CustomerListParams;
-import com.chargebee.v4.core.responses.customer.CustomerCreateResponse;
-import com.chargebee.v4.core.responses.customer.CustomerListResponse;
+import com.chargebee.v4.models.customer.params.CustomerCreateParams;
+import com.chargebee.v4.models.customer.params.CustomerListParams;
+import com.chargebee.v4.models.customer.responses.CustomerCreateResponse;
+import com.chargebee.v4.models.customer.responses.CustomerListResponse;
 
-CustomerService customers = client.customer();
+CustomerService customers = client.customers();
 
 CustomerCreateResponse created = customers.create(
     CustomerCreateParams.builder()
@@ -161,7 +161,7 @@ CustomerCreateResponse created = customers.create(
                 .build()
         )
         .build()
-).get();
+);
 
 CustomerListResponse list = customers.list(
     CustomerListParams.builder()
@@ -194,7 +194,7 @@ ChargebeeClient client = ChargebeeClient.builder()
 ```java
 import com.chargebee.v4.client.request.RequestOptions;
 
-CustomerService scoped = customers.withOptions(
+CustomerService scoped = client.customers().withOptions(
     RequestOptions.builder()
         .header("Idempotency-Key", "req-123")
         .maxNetworkRetries(2)
@@ -287,17 +287,19 @@ All enums include an `_UNKNOWN` value for forward compatibility when new error c
 ##### Basic exception handling with enums
 ```java
 import com.chargebee.v4.exceptions.*;
+import com.chargebee.v4.exceptions.codes.ApiErrorCode;
+import com.chargebee.v4.exceptions.codes.BadRequestApiErrorCode;
 import com.chargebee.v4.services.CustomerService;
-import com.chargebee.v4.core.models.customer.params.CustomerCreateParams;
+import com.chargebee.v4.models.customer.params.CustomerCreateParams;
 
-CustomerService customers = client.customer();
+CustomerService customers = client.customers();
 
 try {
     CustomerCreateResponse created = customers.create(
         CustomerCreateParams.builder()
             .email("invalid-email")  // Invalid email format
             .build()
-    ).get();
+    );
 } catch (InvalidRequestException e) {
     // getApiErrorCode() returns a strongly-typed ApiErrorCode enum
     ApiErrorCode errorCode = e.getApiErrorCode();
@@ -356,9 +358,11 @@ try {
 ##### Handling specific error codes
 ```java
 import com.chargebee.v4.exceptions.*;
+import com.chargebee.v4.exceptions.codes.ApiErrorCode;
+import com.chargebee.v4.exceptions.codes.BadRequestApiErrorCode;
 
 try {
-    subscriptions.create(params).get();
+        client.subscriptions().create(params);
 } catch (APIException e) {
     ApiErrorCode errorCode = e.getApiErrorCode();
     
@@ -409,12 +413,12 @@ try {
 
 ##### Handling HTTP-level errors
 ```java
-import com.chargebee.v4.transport.ClientErrorException;
-import com.chargebee.v4.transport.ServerErrorException;
-import com.chargebee.v4.transport.HttpException;
+import com.chargebee.v4.exceptions.ClientErrorException;
+import com.chargebee.v4.exceptions.ServerErrorException;
+import com.chargebee.v4.exceptions.HttpException;
 
 try {
-    CustomerCreateResponse response = customers.create(params).get();
+    CustomerCreateResponse response = client.customers().create(params);
 } catch (ClientErrorException e) {
     // Handle 4xx client errors
     if (e.isUnauthorized()) {
@@ -433,6 +437,9 @@ try {
     }
 } catch (HttpException e) {
     System.err.println("HTTP error: " + e.getStatusCode());
+}
+catch (Exception e) {
+    throw new RuntimeException(e);
 }
 ```
 
@@ -500,8 +507,6 @@ try {
         // Use error_cause_id for consistent handling across gateways
         System.err.println("Gateway error cause: " + errorCauseId);
         
-        // Log for analytics/debugging
-        logPaymentError(e.getApiErrorCodeRaw(), errorCauseId, e.getMessage());
     }
     
     // Check the specific API error code using typed enum
@@ -523,7 +528,7 @@ CompletableFuture<CustomerCreateResponse> futureCustomer = customers.create(para
 
 futureCustomer
     .thenAccept(customer -> {
-        System.out.println("Customer created: " + customer.getId());
+        System.out.println("Customer created: " + customer.getCustomer().getId());
     })
     .exceptionally(throwable -> {
         if (throwable.getCause() instanceof InvalidRequestException) {

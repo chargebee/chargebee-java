@@ -34,7 +34,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0-beta.1</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 
