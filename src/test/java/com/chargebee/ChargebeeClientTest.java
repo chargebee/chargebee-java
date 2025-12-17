@@ -1,6 +1,7 @@
 package com.chargebee;
 
 import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.exceptions.ConfigurationException;
 import com.chargebee.v4.internal.RetryConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +25,7 @@ class ChargebeeClientTest {
     @Test
     @DisplayName("Builder should fail when apiKey is missing")
     void testBuilderFailsWithoutApiKey() {
-        com.chargebee.v4.transport.ConfigurationException exception = assertThrows(com.chargebee.v4.transport.ConfigurationException.class, () ->
+        ConfigurationException exception = assertThrows(ConfigurationException.class, () ->
                 ChargebeeClient.builder()
                         .siteName("acme")
                         .build()
@@ -35,7 +36,7 @@ class ChargebeeClientTest {
     @Test
     @DisplayName("Builder should fail when siteName is missing")
     void testBuilderFailsWithoutSiteName() {
-        com.chargebee.v4.transport.ConfigurationException exception = assertThrows(com.chargebee.v4.transport.ConfigurationException.class, () ->
+        ConfigurationException exception = assertThrows(ConfigurationException.class, () ->
                 ChargebeeClient.builder()
                         .apiKey("cb_test_123")
                         .build()
@@ -46,7 +47,7 @@ class ChargebeeClientTest {
     @Test
     @DisplayName("Builder should fail when both required fields are missing")
     void testBuilderFailsWithoutRequiredFields() {
-        com.chargebee.v4.transport.ConfigurationException exception = assertThrows(com.chargebee.v4.transport.ConfigurationException.class, () ->
+        ConfigurationException exception = assertThrows(ConfigurationException.class, () ->
                 ChargebeeClient.builder().build()
         );
         assertEquals("API key is required", exception.getMessage());

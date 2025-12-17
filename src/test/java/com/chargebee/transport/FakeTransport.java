@@ -1,5 +1,7 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.exceptions.TransportException;
+
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentLinkedQueue;

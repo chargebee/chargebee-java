@@ -1,5 +1,7 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.exceptions.HttpException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

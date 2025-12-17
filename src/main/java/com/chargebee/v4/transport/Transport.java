@@ -1,5 +1,8 @@
 package com.chargebee.v4.transport;
 
+import com.chargebee.v4.exceptions.HttpException;
+import com.chargebee.v4.exceptions.TransportException;
+
 import java.util.concurrent.CompletableFuture;
 
 /**

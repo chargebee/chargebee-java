@@ -1,5 +1,6 @@
 package com.chargebee.v4.client;
 
+import com.chargebee.v4.exceptions.TransportException;
 import com.chargebee.v4.transport.*;
 import org.junit.jupiter.api.Test;
 import java.util.concurrent.CompletableFuture;

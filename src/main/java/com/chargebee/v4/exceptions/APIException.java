@@ -7,7 +7,6 @@ package com.chargebee.v4.exceptions;
 
 import com.chargebee.v4.exceptions.codes.ApiErrorCode;
 import com.chargebee.v4.internal.JsonUtil;
-import com.chargebee.v4.transport.HttpException;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 
@@ -249,6 +248,24 @@ public class APIException extends HttpException {
       return JsonUtil.getString(jsonResponse, "error_cause_id");
     }
     return null;
+  }
+
+  /**
+   * API errors are generally not retryable as they indicate business logic issues.
+   * 
+   * <p>Exceptions that may warrant retry:
+   * <ul>
+   *   <li>429 Too Many Requests - Rate limiting</li>
+   *   <li>5xx Server errors - Temporary server issues</li>
+   * </ul>
+   *
+   * @return true only for 429 or 5xx status codes
+   */
+  @Override
+  public boolean isRetryable() {
+    int code = getStatusCode();
+    // 429 Too Many Requests or 5xx server errors (except 501)
+    return code == 429 || (code >= 500 && code != 501);
   }
 
   @Override

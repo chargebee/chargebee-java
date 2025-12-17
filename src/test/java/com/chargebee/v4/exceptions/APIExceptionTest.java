@@ -173,6 +173,104 @@ class APIExceptionTest {
         assertNull(exception.getApiErrorCodeRaw()); // _UNKNOWN has null value
     }
 
+    @Test
+    @DisplayName("Should be retryable for 429 status code")
+    void shouldBeRetryableFor429() {
+        String jsonResponse = "{\"type\":\"invalid_request\",\"message\":\"Rate limit exceeded\"}";
+        Request mockRequest = createMockRequest();
+        Response mockResponse = createMockResponse(429, jsonResponse);
+
+        APIException exception = new APIException(
+            429, "invalid_request", null, "Rate limit exceeded", jsonResponse, mockRequest, mockResponse
+        );
+
+        assertTrue(exception.isRetryable());
+    }
+
+    @Test
+    @DisplayName("Should be retryable for 5xx status codes except 501")
+    void shouldBeRetryableFor5xxExcept501() {
+        String jsonResponse = "{\"type\":\"operation_failed\",\"message\":\"Server error\"}";
+        Request mockRequest = createMockRequest();
+
+        // 500 should be retryable
+        APIException exception500 = new APIException(
+            500, "operation_failed", null, "Server error", jsonResponse, mockRequest, createMockResponse(500, jsonResponse)
+        );
+        assertTrue(exception500.isRetryable());
+
+        // 502 should be retryable
+        APIException exception502 = new APIException(
+            502, "operation_failed", null, "Bad gateway", jsonResponse, mockRequest, createMockResponse(502, jsonResponse)
+        );
+        assertTrue(exception502.isRetryable());
+
+        // 503 should be retryable
+        APIException exception503 = new APIException(
+            503, "operation_failed", null, "Service unavailable", jsonResponse, mockRequest, createMockResponse(503, jsonResponse)
+        );
+        assertTrue(exception503.isRetryable());
+
+        // 501 should NOT be retryable
+        APIException exception501 = new APIException(
+            501, "operation_failed", null, "Not implemented", jsonResponse, mockRequest, createMockResponse(501, jsonResponse)
+        );
+        assertFalse(exception501.isRetryable());
+    }
+
+    @Test
+    @DisplayName("Should NOT be retryable for 4xx status codes except 429")
+    void shouldNotBeRetryableFor4xxExcept429() {
+        String jsonResponse = "{\"type\":\"invalid_request\",\"message\":\"Bad request\"}";
+        Request mockRequest = createMockRequest();
+
+        // 400 should NOT be retryable
+        APIException exception400 = new APIException(
+            400, "invalid_request", null, "Bad request", jsonResponse, mockRequest, createMockResponse(400, jsonResponse)
+        );
+        assertFalse(exception400.isRetryable());
+
+        // 401 should NOT be retryable
+        APIException exception401 = new APIException(
+            401, "invalid_request", null, "Unauthorized", jsonResponse, mockRequest, createMockResponse(401, jsonResponse)
+        );
+        assertFalse(exception401.isRetryable());
+
+        // 404 should NOT be retryable
+        APIException exception404 = new APIException(
+            404, "invalid_request", null, "Not found", jsonResponse, mockRequest, createMockResponse(404, jsonResponse)
+        );
+        assertFalse(exception404.isRetryable());
+    }
+
+    @Test
+    @DisplayName("Should inherit getUrl from HttpException")
+    void shouldInheritGetUrl() {
+        String jsonResponse = "{\"type\":\"invalid_request\",\"message\":\"Error\"}";
+        Request mockRequest = createMockRequest();
+        Response mockResponse = createMockResponse(400, jsonResponse);
+
+        APIException exception = new APIException(
+            400, "invalid_request", null, "Error", jsonResponse, mockRequest, mockResponse
+        );
+
+        assertEquals("https://test-site.chargebee.com/api/v2/customers", exception.getUrl());
+    }
+
+    @Test
+    @DisplayName("Should inherit getHttpMethod from HttpException")
+    void shouldInheritGetHttpMethod() {
+        String jsonResponse = "{\"type\":\"invalid_request\",\"message\":\"Error\"}";
+        Request mockRequest = createMockRequest();
+        Response mockResponse = createMockResponse(400, jsonResponse);
+
+        APIException exception = new APIException(
+            400, "invalid_request", null, "Error", jsonResponse, mockRequest, mockResponse
+        );
+
+        assertEquals("POST", exception.getHttpMethod());
+    }
+
     private Request createMockRequest() {
         return Request.builder()
             .method("POST")
