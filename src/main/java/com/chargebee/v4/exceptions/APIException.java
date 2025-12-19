@@ -7,7 +7,6 @@ package com.chargebee.v4.exceptions;
 
 import com.chargebee.v4.exceptions.codes.ApiErrorCode;
 import com.chargebee.v4.internal.JsonUtil;
-import com.chargebee.v4.transport.HttpException;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 
