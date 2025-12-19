@@ -11,6 +11,8 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.transport.Response;
 
+import com.chargebee.v4.models.attachedItem.params.AttachedItemRetrieveParams;
+
 import com.chargebee.v4.models.attachedItem.params.AttachedItemUpdateParams;
 
 import com.chargebee.v4.models.attachedItem.params.AttachedItemsForItemParams;
@@ -71,6 +73,22 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
 
     return get(path, null);
+  }
+
+  /**
+   * retrieve a attachedItem using immutable params (executes immediately) - returns raw Response.
+   */
+  Response retrieveRaw(String attachedItemId, AttachedItemRetrieveParams params) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public AttachedItemRetrieveResponse retrieve(
+      String attachedItemId, AttachedItemRetrieveParams params) throws Exception {
+    Response response = retrieveRaw(attachedItemId, params);
+    return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public AttachedItemRetrieveResponse retrieve(String attachedItemId) throws Exception {

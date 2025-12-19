@@ -31,6 +31,8 @@ import com.chargebee.v4.models.creditNote.params.CreditNoteCreateParams;
 
 import com.chargebee.v4.models.creditNote.params.RemoveTaxWithheldRefundForCreditNoteParams;
 
+import com.chargebee.v4.models.creditNote.params.CreditNoteRetrieveParams;
+
 import com.chargebee.v4.models.creditNote.responses.RecordRefundForCreditNoteResponse;
 
 import com.chargebee.v4.models.creditNote.responses.ImportCreditNoteResponse;
@@ -491,6 +493,19 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
 
     return get(path, null);
+  }
+
+  /** retrieve a creditNote using immutable params (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String creditNoteId, CreditNoteRetrieveParams params) throws Exception {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public CreditNoteRetrieveResponse retrieve(String creditNoteId, CreditNoteRetrieveParams params)
+      throws Exception {
+    Response response = retrieveRaw(creditNoteId, params);
+    return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public CreditNoteRetrieveResponse retrieve(String creditNoteId) throws Exception {

@@ -13,6 +13,8 @@ import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.usage.params.UsagePdfParams;
 
+import com.chargebee.v4.models.usage.params.UsagesForSubscriptionParams;
+
 import com.chargebee.v4.models.usage.params.AddUsageForSubscriptionParams;
 
 import com.chargebee.v4.models.usage.params.DeleteUsageForSubscriptionParams;
@@ -88,6 +90,24 @@ public final class UsageService extends BaseService<UsageService> {
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
 
     return get(path, null);
+  }
+
+  /**
+   * usagesForSubscription a usage using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response usagesForSubscriptionRaw(String subscriptionId, UsagesForSubscriptionParams params)
+      throws Exception {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public UsagesForSubscriptionResponse usagesForSubscription(
+      String subscriptionId, UsagesForSubscriptionParams params) throws Exception {
+    Response response = usagesForSubscriptionRaw(subscriptionId, params);
+    return UsagesForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public UsagesForSubscriptionResponse usagesForSubscription(String subscriptionId)

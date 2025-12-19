@@ -11,6 +11,8 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.transport.Response;
 
+import com.chargebee.v4.models.estimate.params.RenewalEstimateForSubscriptionParams;
+
 import com.chargebee.v4.models.estimate.params.EstimateCreateSubscriptionForItemsParams;
 
 import com.chargebee.v4.models.estimate.params.EstimatePaymentSchedulesParams;
@@ -38,6 +40,8 @@ import com.chargebee.v4.models.estimate.params.AdvanceInvoiceEstimateForSubscrip
 import com.chargebee.v4.models.estimate.params.EstimateUpdateSubscriptionParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateGiftSubscriptionParams;
+
+import com.chargebee.v4.models.estimate.params.CreateSubscriptionEstimateForCustomerParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateCreateSubscriptionParams;
 
@@ -126,6 +130,24 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
 
     return get(path, null);
+  }
+
+  /**
+   * renewalEstimateForSubscription a estimate using immutable params (executes immediately) -
+   * returns raw Response.
+   */
+  Response renewalEstimateForSubscriptionRaw(
+      String subscriptionId, RenewalEstimateForSubscriptionParams params) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public RenewalEstimateForSubscriptionResponse renewalEstimateForSubscription(
+      String subscriptionId, RenewalEstimateForSubscriptionParams params) throws Exception {
+    Response response = renewalEstimateForSubscriptionRaw(subscriptionId, params);
+    return RenewalEstimateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public RenewalEstimateForSubscriptionResponse renewalEstimateForSubscription(
@@ -700,6 +722,25 @@ public final class EstimateService extends BaseService<EstimateService> {
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
 
     return get(path, null);
+  }
+
+  /**
+   * createSubscriptionEstimateForCustomer a estimate using immutable params (executes immediately)
+   * - returns raw Response.
+   */
+  Response createSubscriptionEstimateForCustomerRaw(
+      String customerId, CreateSubscriptionEstimateForCustomerParams params) throws Exception {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public CreateSubscriptionEstimateForCustomerResponse createSubscriptionEstimateForCustomer(
+      String customerId, CreateSubscriptionEstimateForCustomerParams params) throws Exception {
+    Response response = createSubscriptionEstimateForCustomerRaw(customerId, params);
+    return CreateSubscriptionEstimateForCustomerResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   public CreateSubscriptionEstimateForCustomerResponse createSubscriptionEstimateForCustomer(

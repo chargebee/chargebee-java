@@ -17,6 +17,8 @@ import com.chargebee.v4.models.differentialPrice.params.AddDifferentialPriceForI
 
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceListParams;
 
+import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceRetrieveParams;
+
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceUpdateParams;
 
 import com.chargebee.v4.models.differentialPrice.responses.DeleteDifferentialPriceResponse;
@@ -194,6 +196,26 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
             differentialPriceId);
 
     return get(path, null);
+  }
+
+  /**
+   * retrieve a differentialPrice using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response retrieveRaw(String differentialPriceId, DifferentialPriceRetrieveParams params)
+      throws Exception {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}",
+            "differential-price-id",
+            differentialPriceId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public DifferentialPriceRetrieveResponse retrieve(
+      String differentialPriceId, DifferentialPriceRetrieveParams params) throws Exception {
+    Response response = retrieveRaw(differentialPriceId, params);
+    return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public DifferentialPriceRetrieveResponse retrieve(String differentialPriceId) throws Exception {

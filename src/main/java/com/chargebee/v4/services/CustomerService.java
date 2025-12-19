@@ -23,6 +23,8 @@ import com.chargebee.v4.models.customer.params.AssignPaymentRoleForCustomerParam
 
 import com.chargebee.v4.models.customer.params.CustomerMoveParams;
 
+import com.chargebee.v4.models.customer.params.HierarchyForCustomerParams;
+
 import com.chargebee.v4.models.customer.params.UpdatePaymentMethodForCustomerParams;
 
 import com.chargebee.v4.models.customer.params.CustomerUpdateParams;
@@ -356,6 +358,23 @@ public final class CustomerService extends BaseService<CustomerService> {
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
 
     return get(path, null);
+  }
+
+  /**
+   * hierarchyForCustomer a customer using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response hierarchyForCustomerRaw(String customerId, HierarchyForCustomerParams params)
+      throws Exception {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public HierarchyForCustomerResponse hierarchyForCustomer(
+      String customerId, HierarchyForCustomerParams params) throws Exception {
+    Response response = hierarchyForCustomerRaw(customerId, params);
+    return HierarchyForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public HierarchyForCustomerResponse hierarchyForCustomer(String customerId) throws Exception {

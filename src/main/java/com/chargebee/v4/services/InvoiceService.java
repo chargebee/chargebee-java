@@ -41,6 +41,8 @@ import com.chargebee.v4.models.invoice.params.CloseForInvoiceParams;
 
 import com.chargebee.v4.models.invoice.params.ApplyCreditsForInvoiceParams;
 
+import com.chargebee.v4.models.invoice.params.InvoiceRetrieveParams;
+
 import com.chargebee.v4.models.invoice.params.InvoiceCreateForChargeItemParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceCreateForChargeItemsAndChargesParams;
@@ -716,6 +718,18 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
 
     return get(path, null);
+  }
+
+  /** retrieve a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String invoiceId, InvoiceRetrieveParams params) throws Exception {
+    String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public InvoiceRetrieveResponse retrieve(String invoiceId, InvoiceRetrieveParams params)
+      throws Exception {
+    Response response = retrieveRaw(invoiceId, params);
+    return InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   public InvoiceRetrieveResponse retrieve(String invoiceId) throws Exception {
