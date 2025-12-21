@@ -9,17 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingPermanentTokenParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateCardParams;
 
-import com.chargebee.v4.models.paymentSource.params.VerifyBankAccountForPaymentSourceParams;
+import com.chargebee.v4.models.paymentSource.params.PaymentSourceVerifyBankAccountParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceListParams;
 
-import com.chargebee.v4.models.paymentSource.params.ExportPaymentSourceForPaymentSourceParams;
+import com.chargebee.v4.models.paymentSource.params.ExportPaymentSourceParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingPaymentIntentParams;
 
@@ -27,31 +28,31 @@ import com.chargebee.v4.models.paymentSource.params.CreateVoucherPaymentSourcePa
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingTempTokenParams;
 
-import com.chargebee.v4.models.paymentSource.params.UpdateCardForPaymentSourceParams;
+import com.chargebee.v4.models.paymentSource.params.PaymentSourceUpdateCardParams;
 
-import com.chargebee.v4.models.paymentSource.params.SwitchGatewayAccountForPaymentSourceParams;
+import com.chargebee.v4.models.paymentSource.params.PaymentSourceSwitchGatewayAccountParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingTokenParams;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateBankAccountParams;
 
-import com.chargebee.v4.models.paymentSource.params.UpdateBankAccountForPaymentSourceParams;
+import com.chargebee.v4.models.paymentSource.params.PaymentSourceUpdateBankAccountParams;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateUsingPermanentTokenResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.DeletePaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceDeleteResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateCardResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.VerifyBankAccountForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceVerifyBankAccountResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceListResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.ExportPaymentSourceForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.ExportPaymentSourceResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateUsingPaymentIntentResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.AgreementPdfForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceAgreementPdfResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceRetrieveResponse;
 
@@ -59,17 +60,17 @@ import com.chargebee.v4.models.paymentSource.responses.CreateVoucherPaymentSourc
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateUsingTempTokenResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.UpdateCardForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceUpdateCardResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.SwitchGatewayAccountForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceSwitchGatewayAccountResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateUsingTokenResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.DeleteLocalForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceDeleteLocalResponse;
 
 import com.chargebee.v4.models.paymentSource.responses.PaymentSourceCreateBankAccountResponse;
 
-import com.chargebee.v4.models.paymentSource.responses.UpdateBankAccountForPaymentSourceResponse;
+import com.chargebee.v4.models.paymentSource.responses.PaymentSourceUpdateBankAccountResponse;
 
 public final class PaymentSourceService extends BaseService<PaymentSourceService> {
 
@@ -111,7 +112,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * returns raw Response.
    */
   Response createUsingPermanentTokenRaw(PaymentSourceCreateUsingPermanentTokenParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/payment_sources/create_using_permanent_token",
@@ -122,21 +123,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createUsingPermanentToken a paymentSource using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createUsingPermanentTokenRaw(String jsonPayload) throws Exception {
+  Response createUsingPermanentTokenRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_using_permanent_token", jsonPayload);
   }
 
   public PaymentSourceCreateUsingPermanentTokenResponse createUsingPermanentToken(
-      PaymentSourceCreateUsingPermanentTokenParams params) throws Exception {
+      PaymentSourceCreateUsingPermanentTokenParams params) throws ChargebeeException {
     Response response = createUsingPermanentTokenRaw(params);
 
     return PaymentSourceCreateUsingPermanentTokenResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** deletePaymentSource a paymentSource (executes immediately) - returns raw Response. */
-  Response deletePaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** delete a paymentSource (executes immediately) - returns raw Response. */
+  Response deleteRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/delete",
@@ -146,17 +147,16 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return post(path, null);
   }
 
-  public DeletePaymentSourceResponse deletePaymentSource(String custPaymentSourceId)
-      throws Exception {
-    Response response = deletePaymentSourceRaw(custPaymentSourceId);
-    return DeletePaymentSourceResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentSourceDeleteResponse delete(String custPaymentSourceId) throws ChargebeeException {
+    Response response = deleteRaw(custPaymentSourceId);
+    return PaymentSourceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * createCard a paymentSource using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createCardRaw(PaymentSourceCreateCardParams params) throws Exception {
+  Response createCardRaw(PaymentSourceCreateCardParams params) throws ChargebeeException {
 
     return post("/payment_sources/create_card", params != null ? params.toFormData() : null);
   }
@@ -165,23 +165,20 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createCard a paymentSource using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createCardRaw(String jsonPayload) throws Exception {
+  Response createCardRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_card", jsonPayload);
   }
 
   public PaymentSourceCreateCardResponse createCard(PaymentSourceCreateCardParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createCardRaw(params);
 
     return PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * verifyBankAccountForPaymentSource a paymentSource (executes immediately) - returns raw
-   * Response.
-   */
-  Response verifyBankAccountForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** verifyBankAccount a paymentSource (executes immediately) - returns raw Response. */
+  Response verifyBankAccountRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
@@ -192,11 +189,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * verifyBankAccountForPaymentSource a paymentSource using immutable params (executes immediately)
-   * - returns raw Response.
+   * verifyBankAccount a paymentSource using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response verifyBankAccountForPaymentSourceRaw(
-      String custPaymentSourceId, VerifyBankAccountForPaymentSourceParams params) throws Exception {
+  Response verifyBankAccountRaw(
+      String custPaymentSourceId, PaymentSourceVerifyBankAccountParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
@@ -206,11 +204,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * verifyBankAccountForPaymentSource a paymentSource using raw JSON payload (executes immediately)
-   * - returns raw Response.
+   * verifyBankAccount a paymentSource using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response verifyBankAccountForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
-      throws Exception {
+  Response verifyBankAccountRaw(String custPaymentSourceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/verify_bank_account",
@@ -219,46 +217,44 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return postJson(path, jsonPayload);
   }
 
-  public VerifyBankAccountForPaymentSourceResponse verifyBankAccountForPaymentSource(
-      String custPaymentSourceId, VerifyBankAccountForPaymentSourceParams params) throws Exception {
-    Response response = verifyBankAccountForPaymentSourceRaw(custPaymentSourceId, params);
-    return VerifyBankAccountForPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentSourceVerifyBankAccountResponse verifyBankAccount(
+      String custPaymentSourceId, PaymentSourceVerifyBankAccountParams params)
+      throws ChargebeeException {
+    Response response = verifyBankAccountRaw(custPaymentSourceId, params);
+    return PaymentSourceVerifyBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a paymentSource using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(PaymentSourceListParams params) throws Exception {
+  Response listRaw(PaymentSourceListParams params) throws ChargebeeException {
 
     return get("/payment_sources", params != null ? params.toQueryParams() : null);
   }
 
   /** list a paymentSource without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/payment_sources", null);
   }
 
   /** list a paymentSource using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PaymentSourceListResponse list(PaymentSourceListParams params) throws Exception {
+  public PaymentSourceListResponse list(PaymentSourceListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public PaymentSourceListResponse list() throws Exception {
+  public PaymentSourceListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
-  /**
-   * exportPaymentSourceForPaymentSource a paymentSource (executes immediately) - returns raw
-   * Response.
-   */
-  Response exportPaymentSourceForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** exportPaymentSource a paymentSource (executes immediately) - returns raw Response. */
+  Response exportPaymentSourceRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
@@ -269,12 +265,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * exportPaymentSourceForPaymentSource a paymentSource using immutable params (executes
-   * immediately) - returns raw Response.
+   * exportPaymentSource a paymentSource using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response exportPaymentSourceForPaymentSourceRaw(
-      String custPaymentSourceId, ExportPaymentSourceForPaymentSourceParams params)
-      throws Exception {
+  Response exportPaymentSourceRaw(String custPaymentSourceId, ExportPaymentSourceParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
@@ -284,11 +279,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * exportPaymentSourceForPaymentSource a paymentSource using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * exportPaymentSource a paymentSource using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response exportPaymentSourceForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
-      throws Exception {
+  Response exportPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/export_payment_source",
@@ -297,12 +292,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return postJson(path, jsonPayload);
   }
 
-  public ExportPaymentSourceForPaymentSourceResponse exportPaymentSourceForPaymentSource(
-      String custPaymentSourceId, ExportPaymentSourceForPaymentSourceParams params)
-      throws Exception {
-    Response response = exportPaymentSourceForPaymentSourceRaw(custPaymentSourceId, params);
-    return ExportPaymentSourceForPaymentSourceResponse.fromJson(
-        response.getBodyAsString(), response);
+  public ExportPaymentSourceResponse exportPaymentSource(
+      String custPaymentSourceId, ExportPaymentSourceParams params) throws ChargebeeException {
+    Response response = exportPaymentSourceRaw(custPaymentSourceId, params);
+    return ExportPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -310,7 +303,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * returns raw Response.
    */
   Response createUsingPaymentIntentRaw(PaymentSourceCreateUsingPaymentIntentParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/payment_sources/create_using_payment_intent",
@@ -321,21 +314,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createUsingPaymentIntent a paymentSource using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createUsingPaymentIntentRaw(String jsonPayload) throws Exception {
+  Response createUsingPaymentIntentRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_using_payment_intent", jsonPayload);
   }
 
   public PaymentSourceCreateUsingPaymentIntentResponse createUsingPaymentIntent(
-      PaymentSourceCreateUsingPaymentIntentParams params) throws Exception {
+      PaymentSourceCreateUsingPaymentIntentParams params) throws ChargebeeException {
     Response response = createUsingPaymentIntentRaw(params);
 
     return PaymentSourceCreateUsingPaymentIntentResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** agreementPdfForPaymentSource a paymentSource (executes immediately) - returns raw Response. */
-  Response agreementPdfForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** agreementPdf a paymentSource (executes immediately) - returns raw Response. */
+  Response agreementPdfRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/agreement_pdf",
@@ -345,14 +338,14 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return post(path, null);
   }
 
-  public AgreementPdfForPaymentSourceResponse agreementPdfForPaymentSource(
-      String custPaymentSourceId) throws Exception {
-    Response response = agreementPdfForPaymentSourceRaw(custPaymentSourceId);
-    return AgreementPdfForPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentSourceAgreementPdfResponse agreementPdf(String custPaymentSourceId)
+      throws ChargebeeException {
+    Response response = agreementPdfRaw(custPaymentSourceId);
+    return PaymentSourceAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a paymentSource (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String custPaymentSourceId) throws Exception {
+  Response retrieveRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}",
@@ -362,7 +355,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return get(path, null);
   }
 
-  public PaymentSourceRetrieveResponse retrieve(String custPaymentSourceId) throws Exception {
+  public PaymentSourceRetrieveResponse retrieve(String custPaymentSourceId)
+      throws ChargebeeException {
     Response response = retrieveRaw(custPaymentSourceId);
     return PaymentSourceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -371,7 +365,8 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createVoucherPaymentSource a paymentSource using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response createVoucherPaymentSourceRaw(CreateVoucherPaymentSourceParams params) throws Exception {
+  Response createVoucherPaymentSourceRaw(CreateVoucherPaymentSourceParams params)
+      throws ChargebeeException {
 
     return post(
         "/payment_sources/create_voucher_payment_source",
@@ -382,13 +377,13 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createVoucherPaymentSource a paymentSource using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createVoucherPaymentSourceRaw(String jsonPayload) throws Exception {
+  Response createVoucherPaymentSourceRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_voucher_payment_source", jsonPayload);
   }
 
   public CreateVoucherPaymentSourceResponse createVoucherPaymentSource(
-      CreateVoucherPaymentSourceParams params) throws Exception {
+      CreateVoucherPaymentSourceParams params) throws ChargebeeException {
     Response response = createVoucherPaymentSourceRaw(params);
 
     return CreateVoucherPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
@@ -399,7 +394,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * raw Response.
    */
   Response createUsingTempTokenRaw(PaymentSourceCreateUsingTempTokenParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/payment_sources/create_using_temp_token", params != null ? params.toFormData() : null);
@@ -409,20 +404,20 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createUsingTempToken a paymentSource using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response createUsingTempTokenRaw(String jsonPayload) throws Exception {
+  Response createUsingTempTokenRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_using_temp_token", jsonPayload);
   }
 
   public PaymentSourceCreateUsingTempTokenResponse createUsingTempToken(
-      PaymentSourceCreateUsingTempTokenParams params) throws Exception {
+      PaymentSourceCreateUsingTempTokenParams params) throws ChargebeeException {
     Response response = createUsingTempTokenRaw(params);
 
     return PaymentSourceCreateUsingTempTokenResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateCardForPaymentSource a paymentSource (executes immediately) - returns raw Response. */
-  Response updateCardForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** updateCard a paymentSource (executes immediately) - returns raw Response. */
+  Response updateCardRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/update_card",
@@ -433,44 +428,40 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * updateCardForPaymentSource a paymentSource using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response updateCardForPaymentSourceRaw(
-      String custPaymentSourceId, UpdateCardForPaymentSourceParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/payment_sources/{cust-payment-source-id}/update_card",
-            "cust-payment-source-id",
-            custPaymentSourceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * updateCardForPaymentSource a paymentSource using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response updateCardForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/payment_sources/{cust-payment-source-id}/update_card",
-            "cust-payment-source-id",
-            custPaymentSourceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public UpdateCardForPaymentSourceResponse updateCardForPaymentSource(
-      String custPaymentSourceId, UpdateCardForPaymentSourceParams params) throws Exception {
-    Response response = updateCardForPaymentSourceRaw(custPaymentSourceId, params);
-    return UpdateCardForPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * switchGatewayAccountForPaymentSource a paymentSource (executes immediately) - returns raw
+   * updateCard a paymentSource using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response switchGatewayAccountForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  Response updateCardRaw(String custPaymentSourceId, PaymentSourceUpdateCardParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_card",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * updateCard a paymentSource using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response updateCardRaw(String custPaymentSourceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_card",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public PaymentSourceUpdateCardResponse updateCard(
+      String custPaymentSourceId, PaymentSourceUpdateCardParams params) throws ChargebeeException {
+    Response response = updateCardRaw(custPaymentSourceId, params);
+    return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** switchGatewayAccount a paymentSource (executes immediately) - returns raw Response. */
+  Response switchGatewayAccountRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
@@ -481,12 +472,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * switchGatewayAccountForPaymentSource a paymentSource using immutable params (executes
-   * immediately) - returns raw Response.
+   * switchGatewayAccount a paymentSource using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response switchGatewayAccountForPaymentSourceRaw(
-      String custPaymentSourceId, SwitchGatewayAccountForPaymentSourceParams params)
-      throws Exception {
+  Response switchGatewayAccountRaw(
+      String custPaymentSourceId, PaymentSourceSwitchGatewayAccountParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
@@ -496,11 +487,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * switchGatewayAccountForPaymentSource a paymentSource using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * switchGatewayAccount a paymentSource using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response switchGatewayAccountForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
-      throws Exception {
+  Response switchGatewayAccountRaw(String custPaymentSourceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
@@ -509,19 +500,19 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return postJson(path, jsonPayload);
   }
 
-  public SwitchGatewayAccountForPaymentSourceResponse switchGatewayAccountForPaymentSource(
-      String custPaymentSourceId, SwitchGatewayAccountForPaymentSourceParams params)
-      throws Exception {
-    Response response = switchGatewayAccountForPaymentSourceRaw(custPaymentSourceId, params);
-    return SwitchGatewayAccountForPaymentSourceResponse.fromJson(
-        response.getBodyAsString(), response);
+  public PaymentSourceSwitchGatewayAccountResponse switchGatewayAccount(
+      String custPaymentSourceId, PaymentSourceSwitchGatewayAccountParams params)
+      throws ChargebeeException {
+    Response response = switchGatewayAccountRaw(custPaymentSourceId, params);
+    return PaymentSourceSwitchGatewayAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * createUsingToken a paymentSource using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createUsingTokenRaw(PaymentSourceCreateUsingTokenParams params) throws Exception {
+  Response createUsingTokenRaw(PaymentSourceCreateUsingTokenParams params)
+      throws ChargebeeException {
 
     return post("/payment_sources/create_using_token", params != null ? params.toFormData() : null);
   }
@@ -530,20 +521,20 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createUsingToken a paymentSource using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createUsingTokenRaw(String jsonPayload) throws Exception {
+  Response createUsingTokenRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_using_token", jsonPayload);
   }
 
   public PaymentSourceCreateUsingTokenResponse createUsingToken(
-      PaymentSourceCreateUsingTokenParams params) throws Exception {
+      PaymentSourceCreateUsingTokenParams params) throws ChargebeeException {
     Response response = createUsingTokenRaw(params);
 
     return PaymentSourceCreateUsingTokenResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteLocalForPaymentSource a paymentSource (executes immediately) - returns raw Response. */
-  Response deleteLocalForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** deleteLocal a paymentSource (executes immediately) - returns raw Response. */
+  Response deleteLocalRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/delete_local",
@@ -553,17 +544,18 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return post(path, null);
   }
 
-  public DeleteLocalForPaymentSourceResponse deleteLocalForPaymentSource(String custPaymentSourceId)
-      throws Exception {
-    Response response = deleteLocalForPaymentSourceRaw(custPaymentSourceId);
-    return DeleteLocalForPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentSourceDeleteLocalResponse deleteLocal(String custPaymentSourceId)
+      throws ChargebeeException {
+    Response response = deleteLocalRaw(custPaymentSourceId);
+    return PaymentSourceDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * createBankAccount a paymentSource using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createBankAccountRaw(PaymentSourceCreateBankAccountParams params) throws Exception {
+  Response createBankAccountRaw(PaymentSourceCreateBankAccountParams params)
+      throws ChargebeeException {
 
     return post(
         "/payment_sources/create_bank_account", params != null ? params.toFormData() : null);
@@ -573,23 +565,20 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
    * createBankAccount a paymentSource using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createBankAccountRaw(String jsonPayload) throws Exception {
+  Response createBankAccountRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_sources/create_bank_account", jsonPayload);
   }
 
   public PaymentSourceCreateBankAccountResponse createBankAccount(
-      PaymentSourceCreateBankAccountParams params) throws Exception {
+      PaymentSourceCreateBankAccountParams params) throws ChargebeeException {
     Response response = createBankAccountRaw(params);
 
     return PaymentSourceCreateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * updateBankAccountForPaymentSource a paymentSource (executes immediately) - returns raw
-   * Response.
-   */
-  Response updateBankAccountForPaymentSourceRaw(String custPaymentSourceId) throws Exception {
+  /** updateBankAccount a paymentSource (executes immediately) - returns raw Response. */
+  Response updateBankAccountRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
@@ -600,11 +589,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * updateBankAccountForPaymentSource a paymentSource using immutable params (executes immediately)
-   * - returns raw Response.
+   * updateBankAccount a paymentSource using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response updateBankAccountForPaymentSourceRaw(
-      String custPaymentSourceId, UpdateBankAccountForPaymentSourceParams params) throws Exception {
+  Response updateBankAccountRaw(
+      String custPaymentSourceId, PaymentSourceUpdateBankAccountParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
@@ -614,11 +604,11 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   }
 
   /**
-   * updateBankAccountForPaymentSource a paymentSource using raw JSON payload (executes immediately)
-   * - returns raw Response.
+   * updateBankAccount a paymentSource using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response updateBankAccountForPaymentSourceRaw(String custPaymentSourceId, String jsonPayload)
-      throws Exception {
+  Response updateBankAccountRaw(String custPaymentSourceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_sources/{cust-payment-source-id}/update_bank_account",
@@ -627,9 +617,10 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return postJson(path, jsonPayload);
   }
 
-  public UpdateBankAccountForPaymentSourceResponse updateBankAccountForPaymentSource(
-      String custPaymentSourceId, UpdateBankAccountForPaymentSourceParams params) throws Exception {
-    Response response = updateBankAccountForPaymentSourceRaw(custPaymentSourceId, params);
-    return UpdateBankAccountForPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentSourceUpdateBankAccountResponse updateBankAccount(
+      String custPaymentSourceId, PaymentSourceUpdateBankAccountParams params)
+      throws ChargebeeException {
+    Response response = updateBankAccountRaw(custPaymentSourceId, params);
+    return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 }

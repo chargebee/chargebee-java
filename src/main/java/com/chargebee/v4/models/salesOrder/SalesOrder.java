@@ -32,6 +32,7 @@ public class SalesOrder {
   @Deprecated private List<String> invoiceIds;
   @Deprecated private List<String> creditNoteIds;
   @Deprecated private List<String> unbilledChargeIds;
+  private Boolean deleted;
   private List<LineItems> lineItems;
   private List<BillingAddresses> billingAddresses;
   private List<Discounts> discounts;
@@ -119,6 +120,10 @@ public class SalesOrder {
   @Deprecated
   public List<String> getUnbilledChargeIds() {
     return unbilledChargeIds;
+  }
+
+  public Boolean getDeleted() {
+    return deleted;
   }
 
   public List<LineItems> getLineItems() {
@@ -226,6 +231,8 @@ public class SalesOrder {
 
     obj.unbilledChargeIds =
         JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "unbilled_charge_ids"));
+
+    obj.deleted = JsonUtil.getBoolean(json, "deleted");
 
     obj.lineItems =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_items")).stream()

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.subscription.Subscription;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SubscriptionService;
@@ -107,9 +108,9 @@ public final class SubscriptionsForCustomerResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public SubscriptionsForCustomerResponse nextPage() throws Exception {
+  public SubscriptionsForCustomerResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

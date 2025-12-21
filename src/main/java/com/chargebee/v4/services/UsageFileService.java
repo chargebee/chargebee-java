@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.usageFile.params.UsageFileUploadUrlParams;
 
-import com.chargebee.v4.models.usageFile.responses.ProcessingStatusForUsageFileResponse;
+import com.chargebee.v4.models.usageFile.responses.UsageFileProcessingStatusResponse;
 
 import com.chargebee.v4.models.usageFile.responses.UsageFileUploadUrlResponse;
 
@@ -51,8 +52,8 @@ public final class UsageFileService extends BaseService<UsageFileService> {
 
   // === Operations ===
 
-  /** processingStatusForUsageFile a usageFile (executes immediately) - returns raw Response. */
-  Response processingStatusForUsageFileRaw(String usageFileId) throws Exception {
+  /** processingStatus a usageFile (executes immediately) - returns raw Response. */
+  Response processingStatusRaw(String usageFileId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
@@ -60,25 +61,26 @@ public final class UsageFileService extends BaseService<UsageFileService> {
     return get(path, null);
   }
 
-  public ProcessingStatusForUsageFileResponse processingStatusForUsageFile(String usageFileId)
-      throws Exception {
-    Response response = processingStatusForUsageFileRaw(usageFileId);
-    return ProcessingStatusForUsageFileResponse.fromJson(response.getBodyAsString(), response);
+  public UsageFileProcessingStatusResponse processingStatus(String usageFileId)
+      throws ChargebeeException {
+    Response response = processingStatusRaw(usageFileId);
+    return UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** uploadUrl a usageFile using immutable params (executes immediately) - returns raw Response. */
-  Response uploadUrlRaw(UsageFileUploadUrlParams params) throws Exception {
+  Response uploadUrlRaw(UsageFileUploadUrlParams params) throws ChargebeeException {
 
     return post("/usage_files/upload_url", params != null ? params.toFormData() : null);
   }
 
   /** uploadUrl a usageFile using raw JSON payload (executes immediately) - returns raw Response. */
-  Response uploadUrlRaw(String jsonPayload) throws Exception {
+  Response uploadUrlRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/usage_files/upload_url", jsonPayload);
   }
 
-  public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params) throws Exception {
+  public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params)
+      throws ChargebeeException {
     Response response = uploadUrlRaw(params);
 
     return UsageFileUploadUrlResponse.fromJson(response.getBodyAsString(), response);

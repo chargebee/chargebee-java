@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.unbilledCharge.params.UnbilledChargeInvoiceNowEstimateParams;
@@ -21,7 +22,7 @@ import com.chargebee.v4.models.unbilledCharge.params.UnbilledChargeCreateParams;
 
 import com.chargebee.v4.models.unbilledCharge.params.CreateUnbilledChargeParams;
 
-import com.chargebee.v4.models.unbilledCharge.responses.DeleteUnbilledChargeResponse;
+import com.chargebee.v4.models.unbilledCharge.responses.UnbilledChargeDeleteResponse;
 
 import com.chargebee.v4.models.unbilledCharge.responses.UnbilledChargeInvoiceNowEstimateResponse;
 
@@ -68,8 +69,8 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
 
   // === Operations ===
 
-  /** deleteUnbilledCharge a unbilledCharge (executes immediately) - returns raw Response. */
-  Response deleteUnbilledChargeRaw(String unbilledChargeId) throws Exception {
+  /** delete a unbilledCharge (executes immediately) - returns raw Response. */
+  Response deleteRaw(String unbilledChargeId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/unbilled_charges/{unbilled-charge-id}/delete",
@@ -79,17 +80,17 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return post(path, null);
   }
 
-  public DeleteUnbilledChargeResponse deleteUnbilledCharge(String unbilledChargeId)
-      throws Exception {
-    Response response = deleteUnbilledChargeRaw(unbilledChargeId);
-    return DeleteUnbilledChargeResponse.fromJson(response.getBodyAsString(), response);
+  public UnbilledChargeDeleteResponse delete(String unbilledChargeId) throws ChargebeeException {
+    Response response = deleteRaw(unbilledChargeId);
+    return UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * invoiceNowEstimate a unbilledCharge using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response invoiceNowEstimateRaw(UnbilledChargeInvoiceNowEstimateParams params) throws Exception {
+  Response invoiceNowEstimateRaw(UnbilledChargeInvoiceNowEstimateParams params)
+      throws ChargebeeException {
 
     return post(
         "/unbilled_charges/invoice_now_estimate", params != null ? params.toFormData() : null);
@@ -99,13 +100,13 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    * invoiceNowEstimate a unbilledCharge using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response invoiceNowEstimateRaw(String jsonPayload) throws Exception {
+  Response invoiceNowEstimateRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/unbilled_charges/invoice_now_estimate", jsonPayload);
   }
 
   public UnbilledChargeInvoiceNowEstimateResponse invoiceNowEstimate(
-      UnbilledChargeInvoiceNowEstimateParams params) throws Exception {
+      UnbilledChargeInvoiceNowEstimateParams params) throws ChargebeeException {
     Response response = invoiceNowEstimateRaw(params);
 
     return UnbilledChargeInvoiceNowEstimateResponse.fromJson(response.getBodyAsString(), response);
@@ -115,7 +116,8 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    * invoiceUnbilledCharges a unbilledCharge using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response invoiceUnbilledChargesRaw(InvoiceUnbilledChargesParams params) throws Exception {
+  Response invoiceUnbilledChargesRaw(InvoiceUnbilledChargesParams params)
+      throws ChargebeeException {
 
     return post(
         "/unbilled_charges/invoice_unbilled_charges", params != null ? params.toFormData() : null);
@@ -125,43 +127,44 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    * invoiceUnbilledCharges a unbilledCharge using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response invoiceUnbilledChargesRaw(String jsonPayload) throws Exception {
+  Response invoiceUnbilledChargesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/unbilled_charges/invoice_unbilled_charges", jsonPayload);
   }
 
   public InvoiceUnbilledChargesResponse invoiceUnbilledCharges(InvoiceUnbilledChargesParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = invoiceUnbilledChargesRaw(params);
 
     return InvoiceUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a unbilledCharge using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(UnbilledChargeListParams params) throws Exception {
+  Response listRaw(UnbilledChargeListParams params) throws ChargebeeException {
 
     return get("/unbilled_charges", params != null ? params.toQueryParams() : null);
   }
 
   /** list a unbilledCharge without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/unbilled_charges", null);
   }
 
   /** list a unbilledCharge using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public UnbilledChargeListResponse list(UnbilledChargeListParams params) throws Exception {
+  public UnbilledChargeListResponse list(UnbilledChargeListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public UnbilledChargeListResponse list() throws Exception {
+  public UnbilledChargeListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
@@ -169,7 +172,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   /**
    * create a unbilledCharge using immutable params (executes immediately) - returns raw Response.
    */
-  Response createRaw(UnbilledChargeCreateParams params) throws Exception {
+  Response createRaw(UnbilledChargeCreateParams params) throws ChargebeeException {
 
     return post("/unbilled_charges", params != null ? params.toFormData() : null);
   }
@@ -177,12 +180,13 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
   /**
    * create a unbilledCharge using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/unbilled_charges", jsonPayload);
   }
 
-  public UnbilledChargeCreateResponse create(UnbilledChargeCreateParams params) throws Exception {
+  public UnbilledChargeCreateResponse create(UnbilledChargeCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response);
@@ -192,7 +196,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    * createUnbilledCharge a unbilledCharge using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response createUnbilledChargeRaw(CreateUnbilledChargeParams params) throws Exception {
+  Response createUnbilledChargeRaw(CreateUnbilledChargeParams params) throws ChargebeeException {
 
     return post("/unbilled_charges/create", params != null ? params.toFormData() : null);
   }
@@ -201,13 +205,13 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
    * createUnbilledCharge a unbilledCharge using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response createUnbilledChargeRaw(String jsonPayload) throws Exception {
+  Response createUnbilledChargeRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/unbilled_charges/create", jsonPayload);
   }
 
   public CreateUnbilledChargeResponse createUnbilledCharge(CreateUnbilledChargeParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createUnbilledChargeRaw(params);
 
     return CreateUnbilledChargeResponse.fromJson(response.getBodyAsString(), response);

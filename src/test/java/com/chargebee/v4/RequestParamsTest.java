@@ -1,6 +1,6 @@
 package com.chargebee.v4;
 
-import com.chargebee.v4.models.estimate.params.EstimateCreateSubscriptionForItemsParams;
+import com.chargebee.v4.models.estimate.params.CreateSubscriptionItemEstimateParams;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import java.util.Map;
@@ -18,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class RequestParamsTest {
 
     @Test
-    @DisplayName("EstimateCreateSubscriptionForItemsParams should build with strongly-typed fields")
-    void testEstimateCreateSubscriptionForItemsParamsBuilding() {
+    @DisplayName("CreateSubscriptionItemEstimateParams should build with strongly-typed fields")
+    void testCreateSubscriptionItemEstimateParamsBuilding() {
         // Build request using the strongly-typed builder
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .billingCycles(3)
                 .mandatoryItemsToRemove(Arrays.asList("item1", "item2"))
                 .termsToCharge(12)
-                .billingAlignmentMode(EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.IMMEDIATE)
+                .billingAlignmentMode(CreateSubscriptionItemEstimateParams.BillingAlignmentMode.IMMEDIATE)
                 .couponIds(Arrays.asList("coupon1", "coupon2"))
                 .invoiceImmediately(true)
                 .invoiceDate(Timestamp.from(Instant.now()))
@@ -36,7 +36,7 @@ class RequestParamsTest {
         assertEquals(3, params.getBillingCycles());
         assertEquals(Arrays.asList("item1", "item2"), params.getMandatoryItemsToRemove());
         assertEquals(12, params.getTermsToCharge());
-        assertEquals(EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.IMMEDIATE, params.getBillingAlignmentMode());
+        assertEquals(CreateSubscriptionItemEstimateParams.BillingAlignmentMode.IMMEDIATE, params.getBillingAlignmentMode());
         assertEquals(Arrays.asList("coupon1", "coupon2"), params.getCouponIds());
         assertTrue(params.getInvoiceImmediately());
         assertNotNull(params.getInvoiceDate());
@@ -44,10 +44,10 @@ class RequestParamsTest {
     }
 
     @Test
-    @DisplayName("EstimateCreateSubscriptionForItemsParams should serialize to Map for HTTP transport")
-    void testEstimateCreateSubscriptionForItemsParamsToFormData() {
+    @DisplayName("CreateSubscriptionItemEstimateParams should serialize to Map for HTTP transport")
+    void testCreateSubscriptionItemEstimateParamsToFormData() {
         // Build request
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .billingCycles(6)
                 .mandatoryItemsToRemove(Arrays.asList("remove1"))
                 .termsToCharge(24)
@@ -68,14 +68,14 @@ class RequestParamsTest {
     @DisplayName("Nested SubscriptionParams should work correctly")
     void testNestedSubscriptionParams() {
         // Build nested subscription params
-        EstimateCreateSubscriptionForItemsParams.SubscriptionParams subscription =
-            EstimateCreateSubscriptionForItemsParams.SubscriptionParams.builder()
+        CreateSubscriptionItemEstimateParams.SubscriptionParams subscription =
+            CreateSubscriptionItemEstimateParams.SubscriptionParams.builder()
                 .id("sub123")
                 .trialEnd(Timestamp.from(Instant.now().plusSeconds(86400)))
                 .build();
 
         // Build main params with nested subscription
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .subscription(subscription)
                 .billingCycles(12)
                 .build();
@@ -90,8 +90,8 @@ class RequestParamsTest {
     @DisplayName("BillingAddressParams should work as nested object")
     void testNestedBillingAddressParams() {
         // Build nested billing address
-        EstimateCreateSubscriptionForItemsParams.BillingAddressParams billingAddress =
-            EstimateCreateSubscriptionForItemsParams.BillingAddressParams.builder()
+        CreateSubscriptionItemEstimateParams.BillingAddressParams billingAddress =
+            CreateSubscriptionItemEstimateParams.BillingAddressParams.builder()
                 .line1("123 Main St")
                 .city("San Francisco")
                 .stateCode("CA")
@@ -100,7 +100,7 @@ class RequestParamsTest {
                 .build();
 
         // Build main params
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .billingAddress(billingAddress)
                 .build();
 
@@ -115,7 +115,7 @@ class RequestParamsTest {
     @Test
     @DisplayName("Null values should be handled correctly")
     void testNullValues() {
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .billingCycles(1)
                 .build();
 
@@ -129,19 +129,19 @@ class RequestParamsTest {
     @DisplayName("List of SubscriptionItemsParams should work correctly")
     void testListOfSubscriptionItemsParams() {
         // Build list of subscription items
-        List<EstimateCreateSubscriptionForItemsParams.SubscriptionItemsParams> items = Arrays.asList(
-            EstimateCreateSubscriptionForItemsParams.SubscriptionItemsParams.builder()
+        List<CreateSubscriptionItemEstimateParams.SubscriptionItemsParams> items = Arrays.asList(
+            CreateSubscriptionItemEstimateParams.SubscriptionItemsParams.builder()
                 .itemPriceId("price1")
                 .quantity(5)
                 .build(),
-            EstimateCreateSubscriptionForItemsParams.SubscriptionItemsParams.builder()
+            CreateSubscriptionItemEstimateParams.SubscriptionItemsParams.builder()
                 .itemPriceId("price2")
                 .quantity(10)
                 .build()
         );
 
         // Build main params
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .subscriptionItems(items)
                 .build();
 
@@ -156,24 +156,24 @@ class RequestParamsTest {
     @Test
     @DisplayName("Enum values should work correctly")
     void testEnumValues() {
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
-                .billingAlignmentMode(EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.DELAYED)
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
+                .billingAlignmentMode(CreateSubscriptionItemEstimateParams.BillingAlignmentMode.DELAYED)
                 .build();
 
-        assertEquals(EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.DELAYED,
+        assertEquals(CreateSubscriptionItemEstimateParams.BillingAlignmentMode.DELAYED,
                     params.getBillingAlignmentMode());
         assertEquals("delayed", params.getBillingAlignmentMode().getValue());
 
         // Test enum fromString
-        EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode parsed =
-            EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.fromString("immediate");
-        assertEquals(EstimateCreateSubscriptionForItemsParams.BillingAlignmentMode.IMMEDIATE, parsed);
+        CreateSubscriptionItemEstimateParams.BillingAlignmentMode parsed =
+            CreateSubscriptionItemEstimateParams.BillingAlignmentMode.fromString("immediate");
+        assertEquals(CreateSubscriptionItemEstimateParams.BillingAlignmentMode.IMMEDIATE, parsed);
     }
 
     @Test
     @DisplayName("MapStruct compatibility - getters follow Java Bean convention")
     void testMapStructCompatibility() {
-        EstimateCreateSubscriptionForItemsParams params = EstimateCreateSubscriptionForItemsParams.builder()
+        CreateSubscriptionItemEstimateParams params = CreateSubscriptionItemEstimateParams.builder()
                 .billingCycles(42)
                 .clientProfileId("test-profile")
                 .build();

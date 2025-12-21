@@ -9,27 +9,28 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.attachedItem.params.AttachedItemRetrieveParams;
 
 import com.chargebee.v4.models.attachedItem.params.AttachedItemUpdateParams;
 
-import com.chargebee.v4.models.attachedItem.params.AttachedItemsForItemParams;
+import com.chargebee.v4.models.attachedItem.params.AttachedItemListParams;
 
-import com.chargebee.v4.models.attachedItem.params.AddAttachedItemForItemParams;
+import com.chargebee.v4.models.attachedItem.params.AttachedItemCreateParams;
 
-import com.chargebee.v4.models.attachedItem.params.DeleteAttachedItemParams;
+import com.chargebee.v4.models.attachedItem.params.AttachedItemDeleteParams;
 
 import com.chargebee.v4.models.attachedItem.responses.AttachedItemRetrieveResponse;
 
 import com.chargebee.v4.models.attachedItem.responses.AttachedItemUpdateResponse;
 
-import com.chargebee.v4.models.attachedItem.responses.AttachedItemsForItemResponse;
+import com.chargebee.v4.models.attachedItem.responses.AttachedItemListResponse;
 
-import com.chargebee.v4.models.attachedItem.responses.AddAttachedItemForItemResponse;
+import com.chargebee.v4.models.attachedItem.responses.AttachedItemCreateResponse;
 
-import com.chargebee.v4.models.attachedItem.responses.DeleteAttachedItemResponse;
+import com.chargebee.v4.models.attachedItem.responses.AttachedItemDeleteResponse;
 
 public final class AttachedItemService extends BaseService<AttachedItemService> {
 
@@ -67,7 +68,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   // === Operations ===
 
   /** retrieve a attachedItem (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String attachedItemId) throws Exception {
+  Response retrieveRaw(String attachedItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
@@ -78,7 +79,8 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   /**
    * retrieve a attachedItem using immutable params (executes immediately) - returns raw Response.
    */
-  Response retrieveRaw(String attachedItemId, AttachedItemRetrieveParams params) throws Exception {
+  Response retrieveRaw(String attachedItemId, AttachedItemRetrieveParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
@@ -86,18 +88,18 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   }
 
   public AttachedItemRetrieveResponse retrieve(
-      String attachedItemId, AttachedItemRetrieveParams params) throws Exception {
+      String attachedItemId, AttachedItemRetrieveParams params) throws ChargebeeException {
     Response response = retrieveRaw(attachedItemId, params);
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  public AttachedItemRetrieveResponse retrieve(String attachedItemId) throws Exception {
+  public AttachedItemRetrieveResponse retrieve(String attachedItemId) throws ChargebeeException {
     Response response = retrieveRaw(attachedItemId);
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a attachedItem (executes immediately) - returns raw Response. */
-  Response updateRaw(String attachedItemId) throws Exception {
+  Response updateRaw(String attachedItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
@@ -106,7 +108,8 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   }
 
   /** update a attachedItem using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String attachedItemId, AttachedItemUpdateParams params) throws Exception {
+  Response updateRaw(String attachedItemId, AttachedItemUpdateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
@@ -114,7 +117,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   }
 
   /** update a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String attachedItemId, String jsonPayload) throws Exception {
+  Response updateRaw(String attachedItemId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
@@ -122,86 +125,69 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
   }
 
   public AttachedItemUpdateResponse update(String attachedItemId, AttachedItemUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(attachedItemId, params);
     return AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * attachedItemsForItem a attachedItem using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response attachedItemsForItemRaw(String itemId, AttachedItemsForItemParams params)
-      throws Exception {
+  /** list a attachedItem using immutable params (executes immediately) - returns raw Response. */
+  Response listRaw(String itemId, AttachedItemListParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
-  /**
-   * attachedItemsForItem a attachedItem without params (executes immediately) - returns raw
-   * Response.
-   */
-  Response attachedItemsForItemRaw(String itemId) throws Exception {
+  /** list a attachedItem without params (executes immediately) - returns raw Response. */
+  Response listRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     return get(path, null);
   }
 
-  /**
-   * attachedItemsForItem a attachedItem using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response attachedItemsForItemRaw(String itemId, String jsonPayload) throws Exception {
+  /** list a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
+  Response listRaw(String itemId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public AttachedItemsForItemResponse attachedItemsForItem(
-      String itemId, AttachedItemsForItemParams params) throws Exception {
-    Response response = attachedItemsForItemRaw(itemId, params);
-    return AttachedItemsForItemResponse.fromJson(
+  public AttachedItemListResponse list(String itemId, AttachedItemListParams params)
+      throws ChargebeeException {
+    Response response = listRaw(itemId, params);
+    return AttachedItemListResponse.fromJson(
         response.getBodyAsString(), this, params, itemId, response);
   }
 
-  public AttachedItemsForItemResponse attachedItemsForItem(String itemId) throws Exception {
-    Response response = attachedItemsForItemRaw(itemId);
-    return AttachedItemsForItemResponse.fromJson(
+  public AttachedItemListResponse list(String itemId) throws ChargebeeException {
+    Response response = listRaw(itemId);
+    return AttachedItemListResponse.fromJson(
         response.getBodyAsString(), this, null, itemId, response);
   }
 
-  /** addAttachedItemForItem a attachedItem (executes immediately) - returns raw Response. */
-  Response addAttachedItemForItemRaw(String itemId) throws Exception {
+  /** create a attachedItem (executes immediately) - returns raw Response. */
+  Response createRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
 
     return post(path, null);
   }
 
-  /**
-   * addAttachedItemForItem a attachedItem using immutable params (executes immediately) - returns
-   * raw Response.
-   */
-  Response addAttachedItemForItemRaw(String itemId, AddAttachedItemForItemParams params)
-      throws Exception {
+  /** create a attachedItem using immutable params (executes immediately) - returns raw Response. */
+  Response createRaw(String itemId, AttachedItemCreateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * addAttachedItemForItem a attachedItem using raw JSON payload (executes immediately) - returns
-   * raw Response.
-   */
-  Response addAttachedItemForItemRaw(String itemId, String jsonPayload) throws Exception {
+  /** create a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
+  Response createRaw(String itemId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     return postJson(path, jsonPayload);
   }
 
-  public AddAttachedItemForItemResponse addAttachedItemForItem(
-      String itemId, AddAttachedItemForItemParams params) throws Exception {
-    Response response = addAttachedItemForItemRaw(itemId, params);
-    return AddAttachedItemForItemResponse.fromJson(response.getBodyAsString(), response);
+  public AttachedItemCreateResponse create(String itemId, AttachedItemCreateParams params)
+      throws ChargebeeException {
+    Response response = createRaw(itemId, params);
+    return AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteAttachedItem a attachedItem (executes immediately) - returns raw Response. */
-  Response deleteAttachedItemRaw(String attachedItemId) throws Exception {
+  /** delete a attachedItem (executes immediately) - returns raw Response. */
+  Response deleteRaw(String attachedItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
@@ -209,32 +195,26 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return post(path, null);
   }
 
-  /**
-   * deleteAttachedItem a attachedItem using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteAttachedItemRaw(String attachedItemId, DeleteAttachedItemParams params)
-      throws Exception {
+  /** delete a attachedItem using immutable params (executes immediately) - returns raw Response. */
+  Response deleteRaw(String attachedItemId, AttachedItemDeleteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * deleteAttachedItem a attachedItem using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteAttachedItemRaw(String attachedItemId, String jsonPayload) throws Exception {
+  /** delete a attachedItem using raw JSON payload (executes immediately) - returns raw Response. */
+  Response deleteRaw(String attachedItemId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteAttachedItemResponse deleteAttachedItem(
-      String attachedItemId, DeleteAttachedItemParams params) throws Exception {
-    Response response = deleteAttachedItemRaw(attachedItemId, params);
-    return DeleteAttachedItemResponse.fromJson(response.getBodyAsString(), response);
+  public AttachedItemDeleteResponse delete(String attachedItemId, AttachedItemDeleteParams params)
+      throws ChargebeeException {
+    Response response = deleteRaw(attachedItemId, params);
+    return AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.customerEntitlement.params.CustomerEntitlementsForCustomerParams;
+import com.chargebee.v4.models.customerEntitlement.params.CustomerEntitlementEntitlementsForCustomerParams;
 
-import com.chargebee.v4.models.customerEntitlement.responses.CustomerEntitlementsForCustomerResponse;
+import com.chargebee.v4.models.customerEntitlement.responses.CustomerEntitlementEntitlementsForCustomerResponse;
 
 public final class CustomerEntitlementService extends BaseService<CustomerEntitlementService> {
 
@@ -51,11 +52,12 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
   // === Operations ===
 
   /**
-   * customerEntitlementsForCustomer a customerEntitlement using immutable params (executes
-   * immediately) - returns raw Response.
+   * entitlementsForCustomer a customerEntitlement using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response customerEntitlementsForCustomerRaw(
-      String customerId, CustomerEntitlementsForCustomerParams params) throws Exception {
+  Response entitlementsForCustomerRaw(
+      String customerId, CustomerEntitlementEntitlementsForCustomerParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
@@ -63,10 +65,10 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
   }
 
   /**
-   * customerEntitlementsForCustomer a customerEntitlement without params (executes immediately) -
-   * returns raw Response.
+   * entitlementsForCustomer a customerEntitlement without params (executes immediately) - returns
+   * raw Response.
    */
-  Response customerEntitlementsForCustomerRaw(String customerId) throws Exception {
+  Response entitlementsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
@@ -74,28 +76,29 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
   }
 
   /**
-   * customerEntitlementsForCustomer a customerEntitlement using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * entitlementsForCustomer a customerEntitlement using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response customerEntitlementsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response entitlementsForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CustomerEntitlementsForCustomerResponse customerEntitlementsForCustomer(
-      String customerId, CustomerEntitlementsForCustomerParams params) throws Exception {
-    Response response = customerEntitlementsForCustomerRaw(customerId, params);
-    return CustomerEntitlementsForCustomerResponse.fromJson(
+  public CustomerEntitlementEntitlementsForCustomerResponse entitlementsForCustomer(
+      String customerId, CustomerEntitlementEntitlementsForCustomerParams params)
+      throws ChargebeeException {
+    Response response = entitlementsForCustomerRaw(customerId, params);
+    return CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
-  public CustomerEntitlementsForCustomerResponse customerEntitlementsForCustomer(String customerId)
-      throws Exception {
-    Response response = customerEntitlementsForCustomerRaw(customerId);
-    return CustomerEntitlementsForCustomerResponse.fromJson(
+  public CustomerEntitlementEntitlementsForCustomerResponse entitlementsForCustomer(
+      String customerId) throws ChargebeeException {
+    Response response = entitlementsForCustomerRaw(customerId);
+    return CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 }

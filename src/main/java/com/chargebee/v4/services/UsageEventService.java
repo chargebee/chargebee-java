@@ -9,15 +9,16 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.usageEvent.params.UsageEventCreateParams;
 
-import com.chargebee.v4.models.usageEvent.params.UsageEventBatchCreateParams;
+import com.chargebee.v4.models.usageEvent.params.UsageEventBatchIngestParams;
 
 import com.chargebee.v4.models.usageEvent.responses.UsageEventCreateResponse;
 
-import com.chargebee.v4.models.usageEvent.responses.UsageEventBatchCreateResponse;
+import com.chargebee.v4.models.usageEvent.responses.UsageEventBatchIngestResponse;
 
 public final class UsageEventService extends BaseService<UsageEventService> {
 
@@ -54,43 +55,43 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   // === Operations ===
 
   /** create a usageEvent using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(UsageEventCreateParams params) throws Exception {
+  Response createRaw(UsageEventCreateParams params) throws ChargebeeException {
 
     return post("/usage_events", params != null ? params.toFormData() : null);
   }
 
   /** create a usageEvent using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/usage_events", jsonPayload);
   }
 
-  public UsageEventCreateResponse create(UsageEventCreateParams params) throws Exception {
+  public UsageEventCreateResponse create(UsageEventCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return UsageEventCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * batchCreate a usageEvent using immutable params (executes immediately) - returns raw Response.
+   * batchIngest a usageEvent using immutable params (executes immediately) - returns raw Response.
    */
-  Response batchCreateRaw(UsageEventBatchCreateParams params) throws Exception {
+  Response batchIngestRaw(UsageEventBatchIngestParams params) throws ChargebeeException {
 
     return post("/batch/usage_events", params != null ? params.toFormData() : null);
   }
 
   /**
-   * batchCreate a usageEvent using raw JSON payload (executes immediately) - returns raw Response.
+   * batchIngest a usageEvent using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response batchCreateRaw(String jsonPayload) throws Exception {
+  Response batchIngestRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/batch/usage_events", jsonPayload);
   }
 
-  public UsageEventBatchCreateResponse batchCreate(UsageEventBatchCreateParams params)
-      throws Exception {
-    Response response = batchCreateRaw(params);
+  public UsageEventBatchIngestResponse batchIngest(UsageEventBatchIngestParams params)
+      throws ChargebeeException {
+    Response response = batchIngestRaw(params);
 
-    return UsageEventBatchCreateResponse.fromJson(response.getBodyAsString(), response);
+    return UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response);
   }
 }

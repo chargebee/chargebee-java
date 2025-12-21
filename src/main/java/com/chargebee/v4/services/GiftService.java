@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.gift.params.GiftCreateForItemsParams;
 
-import com.chargebee.v4.models.gift.params.UpdateGiftForGiftParams;
+import com.chargebee.v4.models.gift.params.UpdateGiftParams;
 
 import com.chargebee.v4.models.gift.params.GiftListParams;
 
@@ -21,9 +22,9 @@ import com.chargebee.v4.models.gift.params.GiftCreateParams;
 
 import com.chargebee.v4.models.gift.responses.GiftCreateForItemsResponse;
 
-import com.chargebee.v4.models.gift.responses.CancelForGiftResponse;
+import com.chargebee.v4.models.gift.responses.GiftCancelResponse;
 
-import com.chargebee.v4.models.gift.responses.UpdateGiftForGiftResponse;
+import com.chargebee.v4.models.gift.responses.UpdateGiftResponse;
 
 import com.chargebee.v4.models.gift.responses.GiftListResponse;
 
@@ -31,7 +32,7 @@ import com.chargebee.v4.models.gift.responses.GiftCreateResponse;
 
 import com.chargebee.v4.models.gift.responses.GiftRetrieveResponse;
 
-import com.chargebee.v4.models.gift.responses.ClaimForGiftResponse;
+import com.chargebee.v4.models.gift.responses.GiftClaimResponse;
 
 public final class GiftService extends BaseService<GiftService> {
 
@@ -68,133 +69,129 @@ public final class GiftService extends BaseService<GiftService> {
   // === Operations ===
 
   /** createForItems a gift using immutable params (executes immediately) - returns raw Response. */
-  Response createForItemsRaw(GiftCreateForItemsParams params) throws Exception {
+  Response createForItemsRaw(GiftCreateForItemsParams params) throws ChargebeeException {
 
     return post("/gifts/create_for_items", params != null ? params.toFormData() : null);
   }
 
   /** createForItems a gift using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createForItemsRaw(String jsonPayload) throws Exception {
+  Response createForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/gifts/create_for_items", jsonPayload);
   }
 
   public GiftCreateForItemsResponse createForItems(GiftCreateForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createForItemsRaw(params);
 
     return GiftCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** cancelForGift a gift (executes immediately) - returns raw Response. */
-  Response cancelForGiftRaw(String giftId) throws Exception {
+  /** cancel a gift (executes immediately) - returns raw Response. */
+  Response cancelRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/cancel", "gift-id", giftId);
 
     return post(path, null);
   }
 
-  public CancelForGiftResponse cancelForGift(String giftId) throws Exception {
-    Response response = cancelForGiftRaw(giftId);
-    return CancelForGiftResponse.fromJson(response.getBodyAsString(), response);
+  public GiftCancelResponse cancel(String giftId) throws ChargebeeException {
+    Response response = cancelRaw(giftId);
+    return GiftCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateGiftForGift a gift (executes immediately) - returns raw Response. */
-  Response updateGiftForGiftRaw(String giftId) throws Exception {
+  /** updateGift a gift (executes immediately) - returns raw Response. */
+  Response updateGiftRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/update_gift", "gift-id", giftId);
 
     return post(path, null);
   }
 
-  /**
-   * updateGiftForGift a gift using immutable params (executes immediately) - returns raw Response.
-   */
-  Response updateGiftForGiftRaw(String giftId, UpdateGiftForGiftParams params) throws Exception {
+  /** updateGift a gift using immutable params (executes immediately) - returns raw Response. */
+  Response updateGiftRaw(String giftId, UpdateGiftParams params) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/update_gift", "gift-id", giftId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * updateGiftForGift a gift using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response updateGiftForGiftRaw(String giftId, String jsonPayload) throws Exception {
+  /** updateGift a gift using raw JSON payload (executes immediately) - returns raw Response. */
+  Response updateGiftRaw(String giftId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/update_gift", "gift-id", giftId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateGiftForGiftResponse updateGiftForGift(String giftId, UpdateGiftForGiftParams params)
-      throws Exception {
-    Response response = updateGiftForGiftRaw(giftId, params);
-    return UpdateGiftForGiftResponse.fromJson(response.getBodyAsString(), response);
+  public UpdateGiftResponse updateGift(String giftId, UpdateGiftParams params)
+      throws ChargebeeException {
+    Response response = updateGiftRaw(giftId, params);
+    return UpdateGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a gift using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(GiftListParams params) throws Exception {
+  Response listRaw(GiftListParams params) throws ChargebeeException {
 
     return get("/gifts", params != null ? params.toQueryParams() : null);
   }
 
   /** list a gift without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/gifts", null);
   }
 
   /** list a gift using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public GiftListResponse list(GiftListParams params) throws Exception {
+  public GiftListResponse list(GiftListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return GiftListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public GiftListResponse list() throws Exception {
+  public GiftListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return GiftListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a gift using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(GiftCreateParams params) throws Exception {
+  Response createRaw(GiftCreateParams params) throws ChargebeeException {
 
     return post("/gifts", params != null ? params.toFormData() : null);
   }
 
   /** create a gift using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/gifts", jsonPayload);
   }
 
-  public GiftCreateResponse create(GiftCreateParams params) throws Exception {
+  public GiftCreateResponse create(GiftCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return GiftCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a gift (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String giftId) throws Exception {
+  Response retrieveRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}", "gift-id", giftId);
 
     return get(path, null);
   }
 
-  public GiftRetrieveResponse retrieve(String giftId) throws Exception {
+  public GiftRetrieveResponse retrieve(String giftId) throws ChargebeeException {
     Response response = retrieveRaw(giftId);
     return GiftRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** claimForGift a gift (executes immediately) - returns raw Response. */
-  Response claimForGiftRaw(String giftId) throws Exception {
+  /** claim a gift (executes immediately) - returns raw Response. */
+  Response claimRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/claim", "gift-id", giftId);
 
     return post(path, null);
   }
 
-  public ClaimForGiftResponse claimForGift(String giftId) throws Exception {
-    Response response = claimForGiftRaw(giftId);
-    return ClaimForGiftResponse.fromJson(response.getBodyAsString(), response);
+  public GiftClaimResponse claim(String giftId) throws ChargebeeException {
+    Response response = claimRaw(giftId);
+    return GiftClaimResponse.fromJson(response.getBodyAsString(), response);
   }
 }

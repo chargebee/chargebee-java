@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.differentialPrice.params.DeleteDifferentialPriceParams;
+import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceDeleteParams;
 
-import com.chargebee.v4.models.differentialPrice.params.AddDifferentialPriceForItemPriceParams;
+import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceCreateParams;
 
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceListParams;
 
@@ -21,9 +22,9 @@ import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceRetriev
 
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceUpdateParams;
 
-import com.chargebee.v4.models.differentialPrice.responses.DeleteDifferentialPriceResponse;
+import com.chargebee.v4.models.differentialPrice.responses.DifferentialPriceDeleteResponse;
 
-import com.chargebee.v4.models.differentialPrice.responses.AddDifferentialPriceForItemPriceResponse;
+import com.chargebee.v4.models.differentialPrice.responses.DifferentialPriceCreateResponse;
 
 import com.chargebee.v4.models.differentialPrice.responses.DifferentialPriceListResponse;
 
@@ -66,8 +67,8 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
 
   // === Operations ===
 
-  /** deleteDifferentialPrice a differentialPrice (executes immediately) - returns raw Response. */
-  Response deleteDifferentialPriceRaw(String differentialPriceId) throws Exception {
+  /** delete a differentialPrice (executes immediately) - returns raw Response. */
+  Response deleteRaw(String differentialPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}/delete",
@@ -78,44 +79,40 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   }
 
   /**
-   * deleteDifferentialPrice a differentialPrice using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response deleteDifferentialPriceRaw(
-      String differentialPriceId, DeleteDifferentialPriceParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/differential_prices/{differential-price-id}/delete",
-            "differential-price-id",
-            differentialPriceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * deleteDifferentialPrice a differentialPrice using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response deleteDifferentialPriceRaw(String differentialPriceId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/differential_prices/{differential-price-id}/delete",
-            "differential-price-id",
-            differentialPriceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public DeleteDifferentialPriceResponse deleteDifferentialPrice(
-      String differentialPriceId, DeleteDifferentialPriceParams params) throws Exception {
-    Response response = deleteDifferentialPriceRaw(differentialPriceId, params);
-    return DeleteDifferentialPriceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * addDifferentialPriceForItemPrice a differentialPrice (executes immediately) - returns raw
+   * delete a differentialPrice using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response addDifferentialPriceForItemPriceRaw(String itemPriceId) throws Exception {
+  Response deleteRaw(String differentialPriceId, DifferentialPriceDeleteParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}/delete",
+            "differential-price-id",
+            differentialPriceId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * delete a differentialPrice using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response deleteRaw(String differentialPriceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}/delete",
+            "differential-price-id",
+            differentialPriceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public DifferentialPriceDeleteResponse delete(
+      String differentialPriceId, DifferentialPriceDeleteParams params) throws ChargebeeException {
+    Response response = deleteRaw(differentialPriceId, params);
+    return DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** create a differentialPrice (executes immediately) - returns raw Response. */
+  Response createRaw(String itemPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
@@ -124,11 +121,11 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   }
 
   /**
-   * addDifferentialPriceForItemPrice a differentialPrice using immutable params (executes
-   * immediately) - returns raw Response.
+   * create a differentialPrice using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response addDifferentialPriceForItemPriceRaw(
-      String itemPriceId, AddDifferentialPriceForItemPriceParams params) throws Exception {
+  Response createRaw(String itemPriceId, DifferentialPriceCreateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
@@ -136,33 +133,32 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   }
 
   /**
-   * addDifferentialPriceForItemPrice a differentialPrice using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * create a differentialPrice using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response addDifferentialPriceForItemPriceRaw(String itemPriceId, String jsonPayload)
-      throws Exception {
+  Response createRaw(String itemPriceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
     return postJson(path, jsonPayload);
   }
 
-  public AddDifferentialPriceForItemPriceResponse addDifferentialPriceForItemPrice(
-      String itemPriceId, AddDifferentialPriceForItemPriceParams params) throws Exception {
-    Response response = addDifferentialPriceForItemPriceRaw(itemPriceId, params);
-    return AddDifferentialPriceForItemPriceResponse.fromJson(response.getBodyAsString(), response);
+  public DifferentialPriceCreateResponse create(
+      String itemPriceId, DifferentialPriceCreateParams params) throws ChargebeeException {
+    Response response = createRaw(itemPriceId, params);
+    return DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * list a differentialPrice using immutable params (executes immediately) - returns raw Response.
    */
-  Response listRaw(DifferentialPriceListParams params) throws Exception {
+  Response listRaw(DifferentialPriceListParams params) throws ChargebeeException {
 
     return get("/differential_prices", params != null ? params.toQueryParams() : null);
   }
 
   /** list a differentialPrice without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/differential_prices", null);
   }
@@ -170,25 +166,26 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   /**
    * list a differentialPrice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public DifferentialPriceListResponse list(DifferentialPriceListParams params) throws Exception {
+  public DifferentialPriceListResponse list(DifferentialPriceListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return DifferentialPriceListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public DifferentialPriceListResponse list() throws Exception {
+  public DifferentialPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** retrieve a differentialPrice (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String differentialPriceId) throws Exception {
+  Response retrieveRaw(String differentialPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}",
@@ -203,7 +200,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
    * Response.
    */
   Response retrieveRaw(String differentialPriceId, DifferentialPriceRetrieveParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}",
@@ -213,18 +210,20 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   }
 
   public DifferentialPriceRetrieveResponse retrieve(
-      String differentialPriceId, DifferentialPriceRetrieveParams params) throws Exception {
+      String differentialPriceId, DifferentialPriceRetrieveParams params)
+      throws ChargebeeException {
     Response response = retrieveRaw(differentialPriceId, params);
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  public DifferentialPriceRetrieveResponse retrieve(String differentialPriceId) throws Exception {
+  public DifferentialPriceRetrieveResponse retrieve(String differentialPriceId)
+      throws ChargebeeException {
     Response response = retrieveRaw(differentialPriceId);
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a differentialPrice (executes immediately) - returns raw Response. */
-  Response updateRaw(String differentialPriceId) throws Exception {
+  Response updateRaw(String differentialPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}",
@@ -239,7 +238,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
    * Response.
    */
   Response updateRaw(String differentialPriceId, DifferentialPriceUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}",
@@ -252,7 +251,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
    * update a differentialPrice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateRaw(String differentialPriceId, String jsonPayload) throws Exception {
+  Response updateRaw(String differentialPriceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/differential_prices/{differential-price-id}",
@@ -262,7 +261,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
   }
 
   public DifferentialPriceUpdateResponse update(
-      String differentialPriceId, DifferentialPriceUpdateParams params) throws Exception {
+      String differentialPriceId, DifferentialPriceUpdateParams params) throws ChargebeeException {
     Response response = updateRaw(differentialPriceId, params);
     return DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

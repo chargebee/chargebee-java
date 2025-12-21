@@ -1,6 +1,7 @@
 package com.chargebee.v4.client.request;
 
 import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 import java.util.concurrent.Callable;
@@ -95,9 +96,9 @@ public final class RequestWrap implements Callable<Response> {
      * standard request processing after any modifications.</p>
      * 
      * @return the transport response from normal execution
-     * @throws Exception if request execution fails
+     * @throws ChargebeeException if request execution fails
      */
-    public Response proceed() throws Exception {
+    public Response proceed() throws ChargebeeException {
         return call();
     }
     
@@ -120,10 +121,10 @@ public final class RequestWrap implements Callable<Response> {
      * and transport layer.</p>
      * 
      * @return the transport response
-     * @throws Exception if request execution fails
+     * @throws ChargebeeException if request execution fails
      */
     @Override
-    public Response call() throws Exception {
+    public Response call() throws ChargebeeException {
         return client.sendWithRetry(request);
     }
 }

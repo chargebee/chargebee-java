@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.siteMigrationDetail.params.SiteMigrationDetailListParams;
@@ -54,13 +55,13 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
    * list a siteMigrationDetail using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(SiteMigrationDetailListParams params) throws Exception {
+  Response listRaw(SiteMigrationDetailListParams params) throws ChargebeeException {
 
     return get("/site_migration_details", params != null ? params.toQueryParams() : null);
   }
 
   /** list a siteMigrationDetail without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/site_migration_details", null);
   }
@@ -69,20 +70,20 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
    * list a siteMigrationDetail using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public SiteMigrationDetailListResponse list(SiteMigrationDetailListParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return SiteMigrationDetailListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public SiteMigrationDetailListResponse list() throws Exception {
+  public SiteMigrationDetailListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return SiteMigrationDetailListResponse.fromJson(
         response.getBodyAsString(), this, null, response);

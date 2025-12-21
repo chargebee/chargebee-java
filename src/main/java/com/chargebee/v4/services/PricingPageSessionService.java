@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.pricingPageSession.params.PricingPageSessionCreateForExistingSubscriptionParams;
@@ -59,7 +60,7 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    * immediately) - returns raw Response.
    */
   Response createForExistingSubscriptionRaw(
-      PricingPageSessionCreateForExistingSubscriptionParams params) throws Exception {
+      PricingPageSessionCreateForExistingSubscriptionParams params) throws ChargebeeException {
 
     return post(
         "/pricing_page_sessions/create_for_existing_subscription",
@@ -70,13 +71,13 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    * createForExistingSubscription a pricingPageSession using raw JSON payload (executes
    * immediately) - returns raw Response.
    */
-  Response createForExistingSubscriptionRaw(String jsonPayload) throws Exception {
+  Response createForExistingSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/pricing_page_sessions/create_for_existing_subscription", jsonPayload);
   }
 
   public PricingPageSessionCreateForExistingSubscriptionResponse createForExistingSubscription(
-      PricingPageSessionCreateForExistingSubscriptionParams params) throws Exception {
+      PricingPageSessionCreateForExistingSubscriptionParams params) throws ChargebeeException {
     Response response = createForExistingSubscriptionRaw(params);
 
     return PricingPageSessionCreateForExistingSubscriptionResponse.fromJson(
@@ -88,7 +89,7 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    * returns raw Response.
    */
   Response createForNewSubscriptionRaw(PricingPageSessionCreateForNewSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/pricing_page_sessions/create_for_new_subscription",
@@ -99,13 +100,13 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
    * createForNewSubscription a pricingPageSession using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createForNewSubscriptionRaw(String jsonPayload) throws Exception {
+  Response createForNewSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/pricing_page_sessions/create_for_new_subscription", jsonPayload);
   }
 
   public PricingPageSessionCreateForNewSubscriptionResponse createForNewSubscription(
-      PricingPageSessionCreateForNewSubscriptionParams params) throws Exception {
+      PricingPageSessionCreateForNewSubscriptionParams params) throws ChargebeeException {
     Response response = createForNewSubscriptionRaw(params);
 
     return PricingPageSessionCreateForNewSubscriptionResponse.fromJson(

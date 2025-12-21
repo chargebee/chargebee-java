@@ -1,5 +1,6 @@
 package com.chargebee.v4.client.request;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 import java.util.concurrent.CompletableFuture;
@@ -51,9 +52,9 @@ public interface RequestInterceptor {
      * 
      * @param requestWrap wrapper containing the transport request and execution context
      * @return the transport response, either from proceeding or custom implementation
-     * @throws Exception if request processing fails
+     * @throws ChargebeeException if request processing fails
      */
-    Response handleRequest(RequestWrap requestWrap) throws Exception;
+    Response handleRequest(RequestWrap requestWrap) throws ChargebeeException;
     
     /**
      * Handle the intercepted request asynchronously.

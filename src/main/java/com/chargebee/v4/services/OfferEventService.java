@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.offerEvent.params.OfferEventCreateParams;
+import com.chargebee.v4.models.offerEvent.params.OfferEventsParams;
 
-import com.chargebee.v4.models.offerEvent.responses.OfferEventCreateResponse;
+import com.chargebee.v4.models.offerEvent.responses.OfferEventsResponse;
 
 public final class OfferEventService extends BaseService<OfferEventService> {
 
@@ -49,21 +50,25 @@ public final class OfferEventService extends BaseService<OfferEventService> {
 
   // === Operations ===
 
-  /** create a offerEvent using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(OfferEventCreateParams params) throws Exception {
+  /**
+   * offerEvents a offerEvent using immutable params (executes immediately) - returns raw Response.
+   */
+  Response offerEventsRaw(OfferEventsParams params) throws ChargebeeException {
 
     return post("/offer_events", params != null ? params.toFormData() : null);
   }
 
-  /** create a offerEvent using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  /**
+   * offerEvents a offerEvent using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response offerEventsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/offer_events", jsonPayload);
   }
 
-  public OfferEventCreateResponse create(OfferEventCreateParams params) throws Exception {
-    Response response = createRaw(params);
+  public OfferEventsResponse offerEvents(OfferEventsParams params) throws ChargebeeException {
+    Response response = offerEventsRaw(params);
 
-    return OfferEventCreateResponse.fromJson(response.getBodyAsString(), response);
+    return OfferEventsResponse.fromJson(response.getBodyAsString(), response);
   }
 }

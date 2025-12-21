@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.itemFamily.params.ItemFamilyListParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.itemFamily.params.ItemFamilyCreateParams;
 
 import com.chargebee.v4.models.itemFamily.params.ItemFamilyUpdateParams;
 
-import com.chargebee.v4.models.itemFamily.responses.DeleteItemFamilyResponse;
+import com.chargebee.v4.models.itemFamily.responses.ItemFamilyDeleteResponse;
 
 import com.chargebee.v4.models.itemFamily.responses.ItemFamilyListResponse;
 
@@ -61,8 +62,8 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
 
   // === Operations ===
 
-  /** deleteItemFamily a itemFamily (executes immediately) - returns raw Response. */
-  Response deleteItemFamilyRaw(String itemFamilyId) throws Exception {
+  /** delete a itemFamily (executes immediately) - returns raw Response. */
+  Response deleteRaw(String itemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/item_families/{item-family-id}/delete", "item-family-id", itemFamilyId);
@@ -70,73 +71,73 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return post(path, null);
   }
 
-  public DeleteItemFamilyResponse deleteItemFamily(String itemFamilyId) throws Exception {
-    Response response = deleteItemFamilyRaw(itemFamilyId);
-    return DeleteItemFamilyResponse.fromJson(response.getBodyAsString(), response);
+  public ItemFamilyDeleteResponse delete(String itemFamilyId) throws ChargebeeException {
+    Response response = deleteRaw(itemFamilyId);
+    return ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a itemFamily using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(ItemFamilyListParams params) throws Exception {
+  Response listRaw(ItemFamilyListParams params) throws ChargebeeException {
 
     return get("/item_families", params != null ? params.toQueryParams() : null);
   }
 
   /** list a itemFamily without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/item_families", null);
   }
 
   /** list a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ItemFamilyListResponse list(ItemFamilyListParams params) throws Exception {
+  public ItemFamilyListResponse list(ItemFamilyListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public ItemFamilyListResponse list() throws Exception {
+  public ItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a itemFamily using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(ItemFamilyCreateParams params) throws Exception {
+  Response createRaw(ItemFamilyCreateParams params) throws ChargebeeException {
 
     return post("/item_families", params != null ? params.toFormData() : null);
   }
 
   /** create a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/item_families", jsonPayload);
   }
 
-  public ItemFamilyCreateResponse create(ItemFamilyCreateParams params) throws Exception {
+  public ItemFamilyCreateResponse create(ItemFamilyCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a itemFamily (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String itemFamilyId) throws Exception {
+  Response retrieveRaw(String itemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
     return get(path, null);
   }
 
-  public ItemFamilyRetrieveResponse retrieve(String itemFamilyId) throws Exception {
+  public ItemFamilyRetrieveResponse retrieve(String itemFamilyId) throws ChargebeeException {
     Response response = retrieveRaw(itemFamilyId);
     return ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a itemFamily (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemFamilyId) throws Exception {
+  Response updateRaw(String itemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
 
@@ -144,21 +145,21 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   }
 
   /** update a itemFamily using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemFamilyId, ItemFamilyUpdateParams params) throws Exception {
+  Response updateRaw(String itemFamilyId, ItemFamilyUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
     return post(path, params.toFormData());
   }
 
   /** update a itemFamily using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemFamilyId, String jsonPayload) throws Exception {
+  Response updateRaw(String itemFamilyId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
     return postJson(path, jsonPayload);
   }
 
   public ItemFamilyUpdateResponse update(String itemFamilyId, ItemFamilyUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(itemFamilyId, params);
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

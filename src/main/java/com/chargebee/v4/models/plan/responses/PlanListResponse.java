@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.plan.Plan;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PlanService;
@@ -95,9 +96,9 @@ public final class PlanListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public PlanListResponse nextPage() throws Exception {
+  public PlanListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

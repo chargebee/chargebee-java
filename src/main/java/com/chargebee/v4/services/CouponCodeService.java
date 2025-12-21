@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.couponCode.params.CouponCodeListParams;
@@ -21,7 +22,7 @@ import com.chargebee.v4.models.couponCode.responses.CouponCodeCreateResponse;
 
 import com.chargebee.v4.models.couponCode.responses.CouponCodeRetrieveResponse;
 
-import com.chargebee.v4.models.couponCode.responses.ArchiveForCouponCodeResponse;
+import com.chargebee.v4.models.couponCode.responses.CouponCodeArchiveResponse;
 
 public final class CouponCodeService extends BaseService<CouponCodeService> {
 
@@ -58,67 +59,67 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
   // === Operations ===
 
   /** list a couponCode using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(CouponCodeListParams params) throws Exception {
+  Response listRaw(CouponCodeListParams params) throws ChargebeeException {
 
     return get("/coupon_codes", params != null ? params.toQueryParams() : null);
   }
 
   /** list a couponCode without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/coupon_codes", null);
   }
 
   /** list a couponCode using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CouponCodeListResponse list(CouponCodeListParams params) throws Exception {
+  public CouponCodeListResponse list(CouponCodeListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public CouponCodeListResponse list() throws Exception {
+  public CouponCodeListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a couponCode using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CouponCodeCreateParams params) throws Exception {
+  Response createRaw(CouponCodeCreateParams params) throws ChargebeeException {
 
     return post("/coupon_codes", params != null ? params.toFormData() : null);
   }
 
   /** create a couponCode using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/coupon_codes", jsonPayload);
   }
 
-  public CouponCodeCreateResponse create(CouponCodeCreateParams params) throws Exception {
+  public CouponCodeCreateResponse create(CouponCodeCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CouponCodeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a couponCode (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String couponCodeCode) throws Exception {
+  Response retrieveRaw(String couponCodeCode) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_codes/{coupon-code-code}", "coupon-code-code", couponCodeCode);
 
     return get(path, null);
   }
 
-  public CouponCodeRetrieveResponse retrieve(String couponCodeCode) throws Exception {
+  public CouponCodeRetrieveResponse retrieve(String couponCodeCode) throws ChargebeeException {
     Response response = retrieveRaw(couponCodeCode);
     return CouponCodeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** archiveForCouponCode a couponCode (executes immediately) - returns raw Response. */
-  Response archiveForCouponCodeRaw(String couponCodeCode) throws Exception {
+  /** archive a couponCode (executes immediately) - returns raw Response. */
+  Response archiveRaw(String couponCodeCode) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/coupon_codes/{coupon-code-code}/archive", "coupon-code-code", couponCodeCode);
@@ -126,8 +127,8 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return post(path, null);
   }
 
-  public ArchiveForCouponCodeResponse archiveForCouponCode(String couponCodeCode) throws Exception {
-    Response response = archiveForCouponCodeRaw(couponCodeCode);
-    return ArchiveForCouponCodeResponse.fromJson(response.getBodyAsString(), response);
+  public CouponCodeArchiveResponse archive(String couponCodeCode) throws ChargebeeException {
+    Response response = archiveRaw(couponCodeCode);
+    return CouponCodeArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

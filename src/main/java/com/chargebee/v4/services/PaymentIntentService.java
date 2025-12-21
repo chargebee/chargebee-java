@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.paymentIntent.params.PaymentIntentUpdateParams;
@@ -57,7 +58,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   // === Operations ===
 
   /** retrieve a paymentIntent (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String paymentIntentId) throws Exception {
+  Response retrieveRaw(String paymentIntentId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
@@ -65,13 +66,13 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return get(path, null);
   }
 
-  public PaymentIntentRetrieveResponse retrieve(String paymentIntentId) throws Exception {
+  public PaymentIntentRetrieveResponse retrieve(String paymentIntentId) throws ChargebeeException {
     Response response = retrieveRaw(paymentIntentId);
     return PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a paymentIntent (executes immediately) - returns raw Response. */
-  Response updateRaw(String paymentIntentId) throws Exception {
+  Response updateRaw(String paymentIntentId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
@@ -82,7 +83,8 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   /**
    * update a paymentIntent using immutable params (executes immediately) - returns raw Response.
    */
-  Response updateRaw(String paymentIntentId, PaymentIntentUpdateParams params) throws Exception {
+  Response updateRaw(String paymentIntentId, PaymentIntentUpdateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
@@ -92,7 +94,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   /**
    * update a paymentIntent using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateRaw(String paymentIntentId, String jsonPayload) throws Exception {
+  Response updateRaw(String paymentIntentId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
@@ -100,7 +102,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   }
 
   public PaymentIntentUpdateResponse update(
-      String paymentIntentId, PaymentIntentUpdateParams params) throws Exception {
+      String paymentIntentId, PaymentIntentUpdateParams params) throws ChargebeeException {
     Response response = updateRaw(paymentIntentId, params);
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -108,7 +110,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   /**
    * create a paymentIntent using immutable params (executes immediately) - returns raw Response.
    */
-  Response createRaw(PaymentIntentCreateParams params) throws Exception {
+  Response createRaw(PaymentIntentCreateParams params) throws ChargebeeException {
 
     return post("/payment_intents", params != null ? params.toFormData() : null);
   }
@@ -116,12 +118,13 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
   /**
    * create a paymentIntent using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_intents", jsonPayload);
   }
 
-  public PaymentIntentCreateResponse create(PaymentIntentCreateParams params) throws Exception {
+  public PaymentIntentCreateResponse create(PaymentIntentCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response);

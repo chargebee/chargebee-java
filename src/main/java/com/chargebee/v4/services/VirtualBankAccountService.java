@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.virtualBankAccount.params.VirtualBankAccountListParams;
@@ -17,15 +18,15 @@ import com.chargebee.v4.models.virtualBankAccount.params.VirtualBankAccountCreat
 
 import com.chargebee.v4.models.virtualBankAccount.params.VirtualBankAccountCreateUsingPermanentTokenParams;
 
-import com.chargebee.v4.models.virtualBankAccount.responses.DeleteLocalForVirtualBankAccountResponse;
+import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountDeleteLocalResponse;
 
-import com.chargebee.v4.models.virtualBankAccount.responses.DeleteVirtualBankAccountResponse;
+import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountDeleteResponse;
 
 import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountListResponse;
 
 import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountCreateResponse;
 
-import com.chargebee.v4.models.virtualBankAccount.responses.SyncFundForVirtualBankAccountResponse;
+import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountSyncFundResponse;
 
 import com.chargebee.v4.models.virtualBankAccount.responses.VirtualBankAccountRetrieveResponse;
 
@@ -66,11 +67,8 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
   // === Operations ===
 
-  /**
-   * deleteLocalForVirtualBankAccount a virtualBankAccount (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteLocalForVirtualBankAccountRaw(String virtualBankAccountId) throws Exception {
+  /** deleteLocal a virtualBankAccount (executes immediately) - returns raw Response. */
+  Response deleteLocalRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/virtual_bank_accounts/{virtual-bank-account-id}/delete_local",
@@ -80,16 +78,14 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return post(path, null);
   }
 
-  public DeleteLocalForVirtualBankAccountResponse deleteLocalForVirtualBankAccount(
-      String virtualBankAccountId) throws Exception {
-    Response response = deleteLocalForVirtualBankAccountRaw(virtualBankAccountId);
-    return DeleteLocalForVirtualBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  public VirtualBankAccountDeleteLocalResponse deleteLocal(String virtualBankAccountId)
+      throws ChargebeeException {
+    Response response = deleteLocalRaw(virtualBankAccountId);
+    return VirtualBankAccountDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * deleteVirtualBankAccount a virtualBankAccount (executes immediately) - returns raw Response.
-   */
-  Response deleteVirtualBankAccountRaw(String virtualBankAccountId) throws Exception {
+  /** delete a virtualBankAccount (executes immediately) - returns raw Response. */
+  Response deleteRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/virtual_bank_accounts/{virtual-bank-account-id}/delete",
@@ -99,22 +95,22 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return post(path, null);
   }
 
-  public DeleteVirtualBankAccountResponse deleteVirtualBankAccount(String virtualBankAccountId)
-      throws Exception {
-    Response response = deleteVirtualBankAccountRaw(virtualBankAccountId);
-    return DeleteVirtualBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  public VirtualBankAccountDeleteResponse delete(String virtualBankAccountId)
+      throws ChargebeeException {
+    Response response = deleteRaw(virtualBankAccountId);
+    return VirtualBankAccountDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * list a virtualBankAccount using immutable params (executes immediately) - returns raw Response.
    */
-  Response listRaw(VirtualBankAccountListParams params) throws Exception {
+  Response listRaw(VirtualBankAccountListParams params) throws ChargebeeException {
 
     return get("/virtual_bank_accounts", params != null ? params.toQueryParams() : null);
   }
 
   /** list a virtualBankAccount without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/virtual_bank_accounts", null);
   }
@@ -122,19 +118,20 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
   /**
    * list a virtualBankAccount using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public VirtualBankAccountListResponse list(VirtualBankAccountListParams params) throws Exception {
+  public VirtualBankAccountListResponse list(VirtualBankAccountListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return VirtualBankAccountListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public VirtualBankAccountListResponse list() throws Exception {
+  public VirtualBankAccountListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return VirtualBankAccountListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
@@ -144,7 +141,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
    * create a virtualBankAccount using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(VirtualBankAccountCreateParams params) throws Exception {
+  Response createRaw(VirtualBankAccountCreateParams params) throws ChargebeeException {
 
     return post("/virtual_bank_accounts", params != null ? params.toFormData() : null);
   }
@@ -153,23 +150,20 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
    * create a virtualBankAccount using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/virtual_bank_accounts", jsonPayload);
   }
 
   public VirtualBankAccountCreateResponse create(VirtualBankAccountCreateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return VirtualBankAccountCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * syncFundForVirtualBankAccount a virtualBankAccount (executes immediately) - returns raw
-   * Response.
-   */
-  Response syncFundForVirtualBankAccountRaw(String virtualBankAccountId) throws Exception {
+  /** syncFund a virtualBankAccount (executes immediately) - returns raw Response. */
+  Response syncFundRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/virtual_bank_accounts/{virtual-bank-account-id}/sync_fund",
@@ -179,14 +173,14 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return post(path, null);
   }
 
-  public SyncFundForVirtualBankAccountResponse syncFundForVirtualBankAccount(
-      String virtualBankAccountId) throws Exception {
-    Response response = syncFundForVirtualBankAccountRaw(virtualBankAccountId);
-    return SyncFundForVirtualBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  public VirtualBankAccountSyncFundResponse syncFund(String virtualBankAccountId)
+      throws ChargebeeException {
+    Response response = syncFundRaw(virtualBankAccountId);
+    return VirtualBankAccountSyncFundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a virtualBankAccount (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String virtualBankAccountId) throws Exception {
+  Response retrieveRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/virtual_bank_accounts/{virtual-bank-account-id}",
@@ -196,7 +190,8 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return get(path, null);
   }
 
-  public VirtualBankAccountRetrieveResponse retrieve(String virtualBankAccountId) throws Exception {
+  public VirtualBankAccountRetrieveResponse retrieve(String virtualBankAccountId)
+      throws ChargebeeException {
     Response response = retrieveRaw(virtualBankAccountId);
     return VirtualBankAccountRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -206,7 +201,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
    * returns raw Response.
    */
   Response createUsingPermanentTokenRaw(VirtualBankAccountCreateUsingPermanentTokenParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/virtual_bank_accounts/create_using_permanent_token",
@@ -217,13 +212,13 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
    * createUsingPermanentToken a virtualBankAccount using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createUsingPermanentTokenRaw(String jsonPayload) throws Exception {
+  Response createUsingPermanentTokenRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/virtual_bank_accounts/create_using_permanent_token", jsonPayload);
   }
 
   public VirtualBankAccountCreateUsingPermanentTokenResponse createUsingPermanentToken(
-      VirtualBankAccountCreateUsingPermanentTokenParams params) throws Exception {
+      VirtualBankAccountCreateUsingPermanentTokenParams params) throws ChargebeeException {
     Response response = createUsingPermanentTokenRaw(params);
 
     return VirtualBankAccountCreateUsingPermanentTokenResponse.fromJson(

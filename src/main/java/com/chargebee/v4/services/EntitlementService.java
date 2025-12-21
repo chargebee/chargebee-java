@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.entitlement.params.EntitlementListParams;
@@ -54,47 +55,48 @@ public final class EntitlementService extends BaseService<EntitlementService> {
   // === Operations ===
 
   /** list a entitlement using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(EntitlementListParams params) throws Exception {
+  Response listRaw(EntitlementListParams params) throws ChargebeeException {
 
     return get("/entitlements", params != null ? params.toQueryParams() : null);
   }
 
   /** list a entitlement without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/entitlements", null);
   }
 
   /** list a entitlement using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public EntitlementListResponse list(EntitlementListParams params) throws Exception {
+  public EntitlementListResponse list(EntitlementListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return EntitlementListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public EntitlementListResponse list() throws Exception {
+  public EntitlementListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return EntitlementListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a entitlement using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(EntitlementCreateParams params) throws Exception {
+  Response createRaw(EntitlementCreateParams params) throws ChargebeeException {
 
     return post("/entitlements", params != null ? params.toFormData() : null);
   }
 
   /** create a entitlement using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/entitlements", jsonPayload);
   }
 
-  public EntitlementCreateResponse create(EntitlementCreateParams params) throws Exception {
+  public EntitlementCreateResponse create(EntitlementCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return EntitlementCreateResponse.fromJson(response.getBodyAsString(), response);

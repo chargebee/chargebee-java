@@ -9,23 +9,24 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.variant.params.VariantsForProductParams;
+import com.chargebee.v4.models.variant.params.ListProductVariantsParams;
 
-import com.chargebee.v4.models.variant.params.AddVariantForProductParams;
+import com.chargebee.v4.models.variant.params.CreateProductVariantParams;
 
 import com.chargebee.v4.models.variant.params.VariantUpdateParams;
 
-import com.chargebee.v4.models.variant.responses.VariantsForProductResponse;
+import com.chargebee.v4.models.variant.responses.ListProductVariantsResponse;
 
-import com.chargebee.v4.models.variant.responses.AddVariantForProductResponse;
+import com.chargebee.v4.models.variant.responses.CreateProductVariantResponse;
 
 import com.chargebee.v4.models.variant.responses.VariantRetrieveResponse;
 
 import com.chargebee.v4.models.variant.responses.VariantUpdateResponse;
 
-import com.chargebee.v4.models.variant.responses.DeleteVariantResponse;
+import com.chargebee.v4.models.variant.responses.VariantDeleteResponse;
 
 public final class VariantService extends BaseService<VariantService> {
 
@@ -62,77 +63,78 @@ public final class VariantService extends BaseService<VariantService> {
   // === Operations ===
 
   /**
-   * variantsForProduct a variant using immutable params (executes immediately) - returns raw
+   * listProductVariants a variant using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response variantsForProductRaw(String productId, VariantsForProductParams params)
-      throws Exception {
+  Response listProductVariantsRaw(String productId, ListProductVariantsParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
-  /** variantsForProduct a variant without params (executes immediately) - returns raw Response. */
-  Response variantsForProductRaw(String productId) throws Exception {
+  /** listProductVariants a variant without params (executes immediately) - returns raw Response. */
+  Response listProductVariantsRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     return get(path, null);
   }
 
   /**
-   * variantsForProduct a variant using raw JSON payload (executes immediately) - returns raw
+   * listProductVariants a variant using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response variantsForProductRaw(String productId, String jsonPayload) throws Exception {
+  Response listProductVariantsRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public VariantsForProductResponse variantsForProduct(
-      String productId, VariantsForProductParams params) throws Exception {
-    Response response = variantsForProductRaw(productId, params);
-    return VariantsForProductResponse.fromJson(
+  public ListProductVariantsResponse listProductVariants(
+      String productId, ListProductVariantsParams params) throws ChargebeeException {
+    Response response = listProductVariantsRaw(productId, params);
+    return ListProductVariantsResponse.fromJson(
         response.getBodyAsString(), this, params, productId, response);
   }
 
-  public VariantsForProductResponse variantsForProduct(String productId) throws Exception {
-    Response response = variantsForProductRaw(productId);
-    return VariantsForProductResponse.fromJson(
+  public ListProductVariantsResponse listProductVariants(String productId)
+      throws ChargebeeException {
+    Response response = listProductVariantsRaw(productId);
+    return ListProductVariantsResponse.fromJson(
         response.getBodyAsString(), this, null, productId, response);
   }
 
-  /** addVariantForProduct a variant (executes immediately) - returns raw Response. */
-  Response addVariantForProductRaw(String productId) throws Exception {
+  /** createProductVariant a variant (executes immediately) - returns raw Response. */
+  Response createProductVariantRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
 
     return post(path, null);
   }
 
   /**
-   * addVariantForProduct a variant using immutable params (executes immediately) - returns raw
+   * createProductVariant a variant using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response addVariantForProductRaw(String productId, AddVariantForProductParams params)
-      throws Exception {
+  Response createProductVariantRaw(String productId, CreateProductVariantParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addVariantForProduct a variant using raw JSON payload (executes immediately) - returns raw
+   * createProductVariant a variant using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response addVariantForProductRaw(String productId, String jsonPayload) throws Exception {
+  Response createProductVariantRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     return postJson(path, jsonPayload);
   }
 
-  public AddVariantForProductResponse addVariantForProduct(
-      String productId, AddVariantForProductParams params) throws Exception {
-    Response response = addVariantForProductRaw(productId, params);
-    return AddVariantForProductResponse.fromJson(response.getBodyAsString(), response);
+  public CreateProductVariantResponse createProductVariant(
+      String productId, CreateProductVariantParams params) throws ChargebeeException {
+    Response response = createProductVariantRaw(productId, params);
+    return CreateProductVariantResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a variant (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String productVariantId) throws Exception {
+  Response retrieveRaw(String productVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/variants/{product-variant-id}", "product-variant-id", productVariantId);
@@ -140,13 +142,13 @@ public final class VariantService extends BaseService<VariantService> {
     return get(path, null);
   }
 
-  public VariantRetrieveResponse retrieve(String productVariantId) throws Exception {
+  public VariantRetrieveResponse retrieve(String productVariantId) throws ChargebeeException {
     Response response = retrieveRaw(productVariantId);
     return VariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a variant (executes immediately) - returns raw Response. */
-  Response updateRaw(String productVariantId) throws Exception {
+  Response updateRaw(String productVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/variants/{product-variant-id}", "product-variant-id", productVariantId);
@@ -155,7 +157,8 @@ public final class VariantService extends BaseService<VariantService> {
   }
 
   /** update a variant using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String productVariantId, VariantUpdateParams params) throws Exception {
+  Response updateRaw(String productVariantId, VariantUpdateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/variants/{product-variant-id}", "product-variant-id", productVariantId);
@@ -163,7 +166,7 @@ public final class VariantService extends BaseService<VariantService> {
   }
 
   /** update a variant using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String productVariantId, String jsonPayload) throws Exception {
+  Response updateRaw(String productVariantId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/variants/{product-variant-id}", "product-variant-id", productVariantId);
@@ -171,13 +174,13 @@ public final class VariantService extends BaseService<VariantService> {
   }
 
   public VariantUpdateResponse update(String productVariantId, VariantUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(productVariantId, params);
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteVariant a variant (executes immediately) - returns raw Response. */
-  Response deleteVariantRaw(String productVariantId) throws Exception {
+  /** delete a variant (executes immediately) - returns raw Response. */
+  Response deleteRaw(String productVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/variants/{product-variant-id}/delete", "product-variant-id", productVariantId);
@@ -185,8 +188,8 @@ public final class VariantService extends BaseService<VariantService> {
     return post(path, null);
   }
 
-  public DeleteVariantResponse deleteVariant(String productVariantId) throws Exception {
-    Response response = deleteVariantRaw(productVariantId);
-    return DeleteVariantResponse.fromJson(response.getBodyAsString(), response);
+  public VariantDeleteResponse delete(String productVariantId) throws ChargebeeException {
+    Response response = deleteRaw(productVariantId);
+    return VariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

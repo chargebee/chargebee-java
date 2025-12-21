@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.paymentSource.PaymentSource;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PaymentSourceService;
@@ -98,9 +99,9 @@ public final class PaymentSourceListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public PaymentSourceListResponse nextPage() throws Exception {
+  public PaymentSourceListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

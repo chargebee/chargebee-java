@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.export.params.ExportCustomersParams;
@@ -116,18 +117,18 @@ public final class ExportService extends BaseService<ExportService> {
   // === Operations ===
 
   /** customers a export using immutable params (executes immediately) - returns raw Response. */
-  Response customersRaw(ExportCustomersParams params) throws Exception {
+  Response customersRaw(ExportCustomersParams params) throws ChargebeeException {
 
     return post("/exports/customers", params != null ? params.toFormData() : null);
   }
 
   /** customers a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response customersRaw(String jsonPayload) throws Exception {
+  Response customersRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/customers", jsonPayload);
   }
 
-  public ExportCustomersResponse customers(ExportCustomersParams params) throws Exception {
+  public ExportCustomersResponse customers(ExportCustomersParams params) throws ChargebeeException {
     Response response = customersRaw(params);
 
     return ExportCustomersResponse.fromJson(response.getBodyAsString(), response);
@@ -136,7 +137,7 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * attachedItems a export using immutable params (executes immediately) - returns raw Response.
    */
-  Response attachedItemsRaw(ExportAttachedItemsParams params) throws Exception {
+  Response attachedItemsRaw(ExportAttachedItemsParams params) throws ChargebeeException {
 
     return post("/exports/attached_items", params != null ? params.toFormData() : null);
   }
@@ -144,31 +145,32 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * attachedItems a export using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response attachedItemsRaw(String jsonPayload) throws Exception {
+  Response attachedItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/attached_items", jsonPayload);
   }
 
   public ExportAttachedItemsResponse attachedItems(ExportAttachedItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = attachedItemsRaw(params);
 
     return ExportAttachedItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** transactions a export using immutable params (executes immediately) - returns raw Response. */
-  Response transactionsRaw(ExportTransactionsParams params) throws Exception {
+  Response transactionsRaw(ExportTransactionsParams params) throws ChargebeeException {
 
     return post("/exports/transactions", params != null ? params.toFormData() : null);
   }
 
   /** transactions a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response transactionsRaw(String jsonPayload) throws Exception {
+  Response transactionsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/transactions", jsonPayload);
   }
 
-  public ExportTransactionsResponse transactions(ExportTransactionsParams params) throws Exception {
+  public ExportTransactionsResponse transactions(ExportTransactionsParams params)
+      throws ChargebeeException {
     Response response = transactionsRaw(params);
 
     return ExportTransactionsResponse.fromJson(response.getBodyAsString(), response);
@@ -178,7 +180,7 @@ public final class ExportService extends BaseService<ExportService> {
    * differentialPrices a export using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response differentialPricesRaw(ExportDifferentialPricesParams params) throws Exception {
+  Response differentialPricesRaw(ExportDifferentialPricesParams params) throws ChargebeeException {
 
     return post("/exports/differential_prices", params != null ? params.toFormData() : null);
   }
@@ -187,62 +189,63 @@ public final class ExportService extends BaseService<ExportService> {
    * differentialPrices a export using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response differentialPricesRaw(String jsonPayload) throws Exception {
+  Response differentialPricesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/differential_prices", jsonPayload);
   }
 
   public ExportDifferentialPricesResponse differentialPrices(ExportDifferentialPricesParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = differentialPricesRaw(params);
 
     return ExportDifferentialPricesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** itemFamilies a export using immutable params (executes immediately) - returns raw Response. */
-  Response itemFamiliesRaw(ExportItemFamiliesParams params) throws Exception {
+  Response itemFamiliesRaw(ExportItemFamiliesParams params) throws ChargebeeException {
 
     return post("/exports/item_families", params != null ? params.toFormData() : null);
   }
 
   /** itemFamilies a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response itemFamiliesRaw(String jsonPayload) throws Exception {
+  Response itemFamiliesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/item_families", jsonPayload);
   }
 
-  public ExportItemFamiliesResponse itemFamilies(ExportItemFamiliesParams params) throws Exception {
+  public ExportItemFamiliesResponse itemFamilies(ExportItemFamiliesParams params)
+      throws ChargebeeException {
     Response response = itemFamiliesRaw(params);
 
     return ExportItemFamiliesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** invoices a export using immutable params (executes immediately) - returns raw Response. */
-  Response invoicesRaw(ExportInvoicesParams params) throws Exception {
+  Response invoicesRaw(ExportInvoicesParams params) throws ChargebeeException {
 
     return post("/exports/invoices", params != null ? params.toFormData() : null);
   }
 
   /** invoices a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response invoicesRaw(String jsonPayload) throws Exception {
+  Response invoicesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/invoices", jsonPayload);
   }
 
-  public ExportInvoicesResponse invoices(ExportInvoicesParams params) throws Exception {
+  public ExportInvoicesResponse invoices(ExportInvoicesParams params) throws ChargebeeException {
     Response response = invoicesRaw(params);
 
     return ExportInvoicesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a export (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String exportId) throws Exception {
+  Response retrieveRaw(String exportId) throws ChargebeeException {
     String path = buildPathWithParams("/exports/{export-id}", "export-id", exportId);
 
     return get(path, null);
   }
 
-  public ExportRetrieveResponse retrieve(String exportId) throws Exception {
+  public ExportRetrieveResponse retrieve(String exportId) throws ChargebeeException {
     Response response = retrieveRaw(exportId);
     return ExportRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -250,7 +253,7 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * priceVariants a export using immutable params (executes immediately) - returns raw Response.
    */
-  Response priceVariantsRaw(ExportPriceVariantsParams params) throws Exception {
+  Response priceVariantsRaw(ExportPriceVariantsParams params) throws ChargebeeException {
 
     return post("/exports/price_variants", params != null ? params.toFormData() : null);
   }
@@ -258,31 +261,31 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * priceVariants a export using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response priceVariantsRaw(String jsonPayload) throws Exception {
+  Response priceVariantsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/price_variants", jsonPayload);
   }
 
   public ExportPriceVariantsResponse priceVariants(ExportPriceVariantsParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = priceVariantsRaw(params);
 
     return ExportPriceVariantsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** items a export using immutable params (executes immediately) - returns raw Response. */
-  Response itemsRaw(ExportItemsParams params) throws Exception {
+  Response itemsRaw(ExportItemsParams params) throws ChargebeeException {
 
     return post("/exports/items", params != null ? params.toFormData() : null);
   }
 
   /** items a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response itemsRaw(String jsonPayload) throws Exception {
+  Response itemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/items", jsonPayload);
   }
 
-  public ExportItemsResponse items(ExportItemsParams params) throws Exception {
+  public ExportItemsResponse items(ExportItemsParams params) throws ChargebeeException {
     Response response = itemsRaw(params);
 
     return ExportItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -291,7 +294,7 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * deferredRevenue a export using immutable params (executes immediately) - returns raw Response.
    */
-  Response deferredRevenueRaw(ExportDeferredRevenueParams params) throws Exception {
+  Response deferredRevenueRaw(ExportDeferredRevenueParams params) throws ChargebeeException {
 
     return post("/exports/deferred_revenue", params != null ? params.toFormData() : null);
   }
@@ -299,13 +302,13 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * deferredRevenue a export using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response deferredRevenueRaw(String jsonPayload) throws Exception {
+  Response deferredRevenueRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/deferred_revenue", jsonPayload);
   }
 
   public ExportDeferredRevenueResponse deferredRevenue(ExportDeferredRevenueParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = deferredRevenueRaw(params);
 
     return ExportDeferredRevenueResponse.fromJson(response.getBodyAsString(), response);
@@ -315,7 +318,7 @@ public final class ExportService extends BaseService<ExportService> {
    * revenueRecognition a export using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response revenueRecognitionRaw(ExportRevenueRecognitionParams params) throws Exception {
+  Response revenueRecognitionRaw(ExportRevenueRecognitionParams params) throws ChargebeeException {
 
     return post("/exports/revenue_recognition", params != null ? params.toFormData() : null);
   }
@@ -324,85 +327,87 @@ public final class ExportService extends BaseService<ExportService> {
    * revenueRecognition a export using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response revenueRecognitionRaw(String jsonPayload) throws Exception {
+  Response revenueRecognitionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/revenue_recognition", jsonPayload);
   }
 
   public ExportRevenueRecognitionResponse revenueRecognition(ExportRevenueRecognitionParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = revenueRecognitionRaw(params);
 
     return ExportRevenueRecognitionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** creditNotes a export using immutable params (executes immediately) - returns raw Response. */
-  Response creditNotesRaw(ExportCreditNotesParams params) throws Exception {
+  Response creditNotesRaw(ExportCreditNotesParams params) throws ChargebeeException {
 
     return post("/exports/credit_notes", params != null ? params.toFormData() : null);
   }
 
   /** creditNotes a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response creditNotesRaw(String jsonPayload) throws Exception {
+  Response creditNotesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/credit_notes", jsonPayload);
   }
 
-  public ExportCreditNotesResponse creditNotes(ExportCreditNotesParams params) throws Exception {
+  public ExportCreditNotesResponse creditNotes(ExportCreditNotesParams params)
+      throws ChargebeeException {
     Response response = creditNotesRaw(params);
 
     return ExportCreditNotesResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** coupons a export using immutable params (executes immediately) - returns raw Response. */
-  Response couponsRaw(ExportCouponsParams params) throws Exception {
+  Response couponsRaw(ExportCouponsParams params) throws ChargebeeException {
 
     return post("/exports/coupons", params != null ? params.toFormData() : null);
   }
 
   /** coupons a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response couponsRaw(String jsonPayload) throws Exception {
+  Response couponsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/coupons", jsonPayload);
   }
 
-  public ExportCouponsResponse coupons(ExportCouponsParams params) throws Exception {
+  public ExportCouponsResponse coupons(ExportCouponsParams params) throws ChargebeeException {
     Response response = couponsRaw(params);
 
     return ExportCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** orders a export using immutable params (executes immediately) - returns raw Response. */
-  Response ordersRaw(ExportOrdersParams params) throws Exception {
+  Response ordersRaw(ExportOrdersParams params) throws ChargebeeException {
 
     return post("/exports/orders", params != null ? params.toFormData() : null);
   }
 
   /** orders a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response ordersRaw(String jsonPayload) throws Exception {
+  Response ordersRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/orders", jsonPayload);
   }
 
-  public ExportOrdersResponse orders(ExportOrdersParams params) throws Exception {
+  public ExportOrdersResponse orders(ExportOrdersParams params) throws ChargebeeException {
     Response response = ordersRaw(params);
 
     return ExportOrdersResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** itemPrices a export using immutable params (executes immediately) - returns raw Response. */
-  Response itemPricesRaw(ExportItemPricesParams params) throws Exception {
+  Response itemPricesRaw(ExportItemPricesParams params) throws ChargebeeException {
 
     return post("/exports/item_prices", params != null ? params.toFormData() : null);
   }
 
   /** itemPrices a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response itemPricesRaw(String jsonPayload) throws Exception {
+  Response itemPricesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/item_prices", jsonPayload);
   }
 
-  public ExportItemPricesResponse itemPrices(ExportItemPricesParams params) throws Exception {
+  public ExportItemPricesResponse itemPrices(ExportItemPricesParams params)
+      throws ChargebeeException {
     Response response = itemPricesRaw(params);
 
     return ExportItemPricesResponse.fromJson(response.getBodyAsString(), response);
@@ -411,7 +416,7 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * subscriptions a export using immutable params (executes immediately) - returns raw Response.
    */
-  Response subscriptionsRaw(ExportSubscriptionsParams params) throws Exception {
+  Response subscriptionsRaw(ExportSubscriptionsParams params) throws ChargebeeException {
 
     return post("/exports/subscriptions", params != null ? params.toFormData() : null);
   }
@@ -419,49 +424,49 @@ public final class ExportService extends BaseService<ExportService> {
   /**
    * subscriptions a export using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response subscriptionsRaw(String jsonPayload) throws Exception {
+  Response subscriptionsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/subscriptions", jsonPayload);
   }
 
   public ExportSubscriptionsResponse subscriptions(ExportSubscriptionsParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = subscriptionsRaw(params);
 
     return ExportSubscriptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** addons a export using immutable params (executes immediately) - returns raw Response. */
-  Response addonsRaw(ExportAddonsParams params) throws Exception {
+  Response addonsRaw(ExportAddonsParams params) throws ChargebeeException {
 
     return post("/exports/addons", params != null ? params.toFormData() : null);
   }
 
   /** addons a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response addonsRaw(String jsonPayload) throws Exception {
+  Response addonsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/addons", jsonPayload);
   }
 
-  public ExportAddonsResponse addons(ExportAddonsParams params) throws Exception {
+  public ExportAddonsResponse addons(ExportAddonsParams params) throws ChargebeeException {
     Response response = addonsRaw(params);
 
     return ExportAddonsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** plans a export using immutable params (executes immediately) - returns raw Response. */
-  Response plansRaw(ExportPlansParams params) throws Exception {
+  Response plansRaw(ExportPlansParams params) throws ChargebeeException {
 
     return post("/exports/plans", params != null ? params.toFormData() : null);
   }
 
   /** plans a export using raw JSON payload (executes immediately) - returns raw Response. */
-  Response plansRaw(String jsonPayload) throws Exception {
+  Response plansRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/exports/plans", jsonPayload);
   }
 
-  public ExportPlansResponse plans(ExportPlansParams params) throws Exception {
+  public ExportPlansResponse plans(ExportPlansParams params) throws ChargebeeException {
     Response response = plansRaw(params);
 
     return ExportPlansResponse.fromJson(response.getBodyAsString(), response);

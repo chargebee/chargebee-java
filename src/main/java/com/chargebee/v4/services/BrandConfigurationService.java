@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.brandConfiguration.params.BrandConfigurationExecuteParams;
+import com.chargebee.v4.models.brandConfiguration.params.BrandConfigurationRetrieveParams;
 
-import com.chargebee.v4.models.brandConfiguration.responses.BrandConfigurationExecuteResponse;
+import com.chargebee.v4.models.brandConfiguration.responses.BrandConfigurationRetrieveResponse;
 
 public final class BrandConfigurationService extends BaseService<BrandConfigurationService> {
 
@@ -51,27 +52,27 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
   // === Operations ===
 
   /**
-   * execute a brandConfiguration using immutable params (executes immediately) - returns raw
+   * retrieve a brandConfiguration using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(BrandConfigurationExecuteParams params) throws Exception {
+  Response retrieveRaw(BrandConfigurationRetrieveParams params) throws ChargebeeException {
 
     return get("/brand_configurations", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * execute a brandConfiguration using raw JSON payload (executes immediately) - returns raw
+   * retrieve a brandConfiguration using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(String jsonPayload) throws Exception {
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public BrandConfigurationExecuteResponse execute(BrandConfigurationExecuteParams params)
-      throws Exception {
-    Response response = executeRaw(params);
+  public BrandConfigurationRetrieveResponse retrieve(BrandConfigurationRetrieveParams params)
+      throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return BrandConfigurationExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

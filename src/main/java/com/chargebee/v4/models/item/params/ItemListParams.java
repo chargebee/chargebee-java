@@ -473,13 +473,13 @@ public final class ItemListParams {
         this.builder = builder;
       }
 
-      public ItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public ItemListBuilder isPresent(boolean value) {
+        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
         return builder;
       }
 
-      public ItemListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
+      public ItemListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }

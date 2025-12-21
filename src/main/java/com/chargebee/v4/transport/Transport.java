@@ -16,10 +16,8 @@ public interface Transport {
      * 
      * @param request the HTTP request to send
      * @return the HTTP response
-     * @throws TransportException for network, timeout, or configuration failures
-     * @throws HttpException for HTTP error status codes (4xx, 5xx)
      */
-    Response send(Request request) throws TransportException;
+    Response send(Request request);
     
     /**
      * Send an HTTP request asynchronously and return a CompletableFuture with the response.

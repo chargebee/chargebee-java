@@ -9,85 +9,86 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.quote.params.CreateSubscriptionQuoteForItemsForCustomerParams;
+import com.chargebee.v4.models.quote.params.CreateSubscriptionItemsForCustomerQuoteParams;
 
-import com.chargebee.v4.models.quote.params.EditCreateSubscriptionQuoteForItemsForQuoteParams;
+import com.chargebee.v4.models.quote.params.EditCreateSubscriptionCustomerQuoteForItemsParams;
 
-import com.chargebee.v4.models.quote.params.UpdateStatusForQuoteParams;
+import com.chargebee.v4.models.quote.params.QuoteUpdateStatusParams;
 
 import com.chargebee.v4.models.quote.params.UpdateSubscriptionQuoteForItemsParams;
 
 import com.chargebee.v4.models.quote.params.QuoteLineGroupsForQuoteParams;
 
-import com.chargebee.v4.models.quote.params.ExtendExpiryDateForQuoteParams;
+import com.chargebee.v4.models.quote.params.QuoteExtendExpiryDateParams;
 
-import com.chargebee.v4.models.quote.params.EditForChargeItemsAndChargesForQuoteParams;
+import com.chargebee.v4.models.quote.params.QuoteEditForChargeItemsAndChargesParams;
 
-import com.chargebee.v4.models.quote.params.EditUpdateSubscriptionQuoteForItemsForQuoteParams;
+import com.chargebee.v4.models.quote.params.EditUpdateSubscriptionQuoteForItemsParams;
 
 import com.chargebee.v4.models.quote.params.QuoteListParams;
 
-import com.chargebee.v4.models.quote.params.PdfForQuoteParams;
+import com.chargebee.v4.models.quote.params.QuotePdfParams;
 
-import com.chargebee.v4.models.quote.params.ConvertForQuoteParams;
+import com.chargebee.v4.models.quote.params.QuoteConvertParams;
 
 import com.chargebee.v4.models.quote.params.QuoteCreateForChargeItemsAndChargesParams;
 
-import com.chargebee.v4.models.quote.params.DeleteQuoteParams;
+import com.chargebee.v4.models.quote.params.QuoteDeleteParams;
 
-import com.chargebee.v4.models.quote.params.EditOneTimeQuoteForQuoteParams;
+import com.chargebee.v4.models.quote.params.EditOneTimeQuoteParams;
 
 import com.chargebee.v4.models.quote.params.UpdateSubscriptionQuoteParams;
 
 import com.chargebee.v4.models.quote.params.QuoteCreateForOnetimeChargesParams;
 
-import com.chargebee.v4.models.quote.params.CreateSubscriptionQuoteForCustomerParams;
+import com.chargebee.v4.models.quote.params.CreateSubscriptionForCustomerQuoteParams;
 
-import com.chargebee.v4.models.quote.params.EditUpdateSubscriptionQuoteForQuoteParams;
+import com.chargebee.v4.models.quote.params.EditUpdateSubscriptionQuoteParams;
 
-import com.chargebee.v4.models.quote.params.EditCreateSubscriptionQuoteForQuoteParams;
+import com.chargebee.v4.models.quote.params.EditCreateSubscriptionForCustomerQuoteParams;
 
-import com.chargebee.v4.models.quote.responses.CreateSubscriptionQuoteForItemsForCustomerResponse;
+import com.chargebee.v4.models.quote.responses.CreateSubscriptionItemsForCustomerQuoteResponse;
 
 import com.chargebee.v4.models.quote.responses.QuoteRetrieveResponse;
 
-import com.chargebee.v4.models.quote.responses.EditCreateSubscriptionQuoteForItemsForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.EditCreateSubscriptionCustomerQuoteForItemsResponse;
 
-import com.chargebee.v4.models.quote.responses.UpdateStatusForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuoteUpdateStatusResponse;
 
 import com.chargebee.v4.models.quote.responses.UpdateSubscriptionQuoteForItemsResponse;
 
 import com.chargebee.v4.models.quote.responses.QuoteLineGroupsForQuoteResponse;
 
-import com.chargebee.v4.models.quote.responses.ExtendExpiryDateForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuoteExtendExpiryDateResponse;
 
-import com.chargebee.v4.models.quote.responses.EditForChargeItemsAndChargesForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuoteEditForChargeItemsAndChargesResponse;
 
-import com.chargebee.v4.models.quote.responses.EditUpdateSubscriptionQuoteForItemsForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.EditUpdateSubscriptionQuoteForItemsResponse;
 
 import com.chargebee.v4.models.quote.responses.QuoteListResponse;
 
-import com.chargebee.v4.models.quote.responses.PdfForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuotePdfResponse;
 
-import com.chargebee.v4.models.quote.responses.ConvertForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuoteConvertResponse;
 
 import com.chargebee.v4.models.quote.responses.QuoteCreateForChargeItemsAndChargesResponse;
 
-import com.chargebee.v4.models.quote.responses.DeleteQuoteResponse;
+import com.chargebee.v4.models.quote.responses.QuoteDeleteResponse;
 
-import com.chargebee.v4.models.quote.responses.EditOneTimeQuoteForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.EditOneTimeQuoteResponse;
 
 import com.chargebee.v4.models.quote.responses.UpdateSubscriptionQuoteResponse;
 
 import com.chargebee.v4.models.quote.responses.QuoteCreateForOnetimeChargesResponse;
 
-import com.chargebee.v4.models.quote.responses.CreateSubscriptionQuoteForCustomerResponse;
+import com.chargebee.v4.models.quote.responses.CreateSubscriptionForCustomerQuoteResponse;
 
-import com.chargebee.v4.models.quote.responses.EditUpdateSubscriptionQuoteForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.EditUpdateSubscriptionQuoteResponse;
 
-import com.chargebee.v4.models.quote.responses.EditCreateSubscriptionQuoteForQuoteResponse;
+import com.chargebee.v4.models.quote.responses.EditCreateSubscriptionForCustomerQuoteResponse;
 
 public final class QuoteService extends BaseService<QuoteService> {
 
@@ -124,10 +125,9 @@ public final class QuoteService extends BaseService<QuoteService> {
   // === Operations ===
 
   /**
-   * createSubscriptionQuoteForItemsForCustomer a quote (executes immediately) - returns raw
-   * Response.
+   * createSubscriptionItemsForCustomerQuote a quote (executes immediately) - returns raw Response.
    */
-  Response createSubscriptionQuoteForItemsForCustomerRaw(String customerId) throws Exception {
+  Response createSubscriptionItemsForCustomerQuoteRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote_for_items",
@@ -138,11 +138,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * createSubscriptionQuoteForItemsForCustomer a quote using immutable params (executes
-   * immediately) - returns raw Response.
+   * createSubscriptionItemsForCustomerQuote a quote using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response createSubscriptionQuoteForItemsForCustomerRaw(
-      String customerId, CreateSubscriptionQuoteForItemsForCustomerParams params) throws Exception {
+  Response createSubscriptionItemsForCustomerQuoteRaw(
+      String customerId, CreateSubscriptionItemsForCustomerQuoteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote_for_items",
@@ -152,11 +153,11 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * createSubscriptionQuoteForItemsForCustomer a quote using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * createSubscriptionItemsForCustomerQuote a quote using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response createSubscriptionQuoteForItemsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response createSubscriptionItemsForCustomerQuoteRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote_for_items",
@@ -165,32 +166,32 @@ public final class QuoteService extends BaseService<QuoteService> {
     return postJson(path, jsonPayload);
   }
 
-  public CreateSubscriptionQuoteForItemsForCustomerResponse
-      createSubscriptionQuoteForItemsForCustomer(
-          String customerId, CreateSubscriptionQuoteForItemsForCustomerParams params)
-          throws Exception {
-    Response response = createSubscriptionQuoteForItemsForCustomerRaw(customerId, params);
-    return CreateSubscriptionQuoteForItemsForCustomerResponse.fromJson(
+  public CreateSubscriptionItemsForCustomerQuoteResponse createSubscriptionItemsForCustomerQuote(
+      String customerId, CreateSubscriptionItemsForCustomerQuoteParams params)
+      throws ChargebeeException {
+    Response response = createSubscriptionItemsForCustomerQuoteRaw(customerId, params);
+    return CreateSubscriptionItemsForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
   /** retrieve a quote (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String quoteId) throws Exception {
+  Response retrieveRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}", "quote-id", quoteId);
 
     return get(path, null);
   }
 
-  public QuoteRetrieveResponse retrieve(String quoteId) throws Exception {
+  public QuoteRetrieveResponse retrieve(String quoteId) throws ChargebeeException {
     Response response = retrieveRaw(quoteId);
     return QuoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * editCreateSubscriptionQuoteForItemsForQuote a quote (executes immediately) - returns raw
+   * editCreateSubscriptionCustomerQuoteForItems a quote (executes immediately) - returns raw
    * Response.
    */
-  Response editCreateSubscriptionQuoteForItemsForQuoteRaw(String quoteId) throws Exception {
+  Response editCreateSubscriptionCustomerQuoteForItemsRaw(String quoteId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote_for_items", "quote-id", quoteId);
@@ -199,11 +200,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editCreateSubscriptionQuoteForItemsForQuote a quote using immutable params (executes
+   * editCreateSubscriptionCustomerQuoteForItems a quote using immutable params (executes
    * immediately) - returns raw Response.
    */
-  Response editCreateSubscriptionQuoteForItemsForQuoteRaw(
-      String quoteId, EditCreateSubscriptionQuoteForItemsForQuoteParams params) throws Exception {
+  Response editCreateSubscriptionCustomerQuoteForItemsRaw(
+      String quoteId, EditCreateSubscriptionCustomerQuoteForItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote_for_items", "quote-id", quoteId);
@@ -211,56 +213,50 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editCreateSubscriptionQuoteForItemsForQuote a quote using raw JSON payload (executes
+   * editCreateSubscriptionCustomerQuoteForItems a quote using raw JSON payload (executes
    * immediately) - returns raw Response.
    */
-  Response editCreateSubscriptionQuoteForItemsForQuoteRaw(String quoteId, String jsonPayload)
-      throws Exception {
+  Response editCreateSubscriptionCustomerQuoteForItemsRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote_for_items", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public EditCreateSubscriptionQuoteForItemsForQuoteResponse
-      editCreateSubscriptionQuoteForItemsForQuote(
-          String quoteId, EditCreateSubscriptionQuoteForItemsForQuoteParams params)
-          throws Exception {
-    Response response = editCreateSubscriptionQuoteForItemsForQuoteRaw(quoteId, params);
-    return EditCreateSubscriptionQuoteForItemsForQuoteResponse.fromJson(
+  public EditCreateSubscriptionCustomerQuoteForItemsResponse
+      editCreateSubscriptionCustomerQuoteForItems(
+          String quoteId, EditCreateSubscriptionCustomerQuoteForItemsParams params)
+          throws ChargebeeException {
+    Response response = editCreateSubscriptionCustomerQuoteForItemsRaw(quoteId, params);
+    return EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** updateStatusForQuote a quote (executes immediately) - returns raw Response. */
-  Response updateStatusForQuoteRaw(String quoteId) throws Exception {
+  /** updateStatus a quote (executes immediately) - returns raw Response. */
+  Response updateStatusRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/update_status", "quote-id", quoteId);
 
     return post(path, null);
   }
 
-  /**
-   * updateStatusForQuote a quote using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response updateStatusForQuoteRaw(String quoteId, UpdateStatusForQuoteParams params)
-      throws Exception {
+  /** updateStatus a quote using immutable params (executes immediately) - returns raw Response. */
+  Response updateStatusRaw(String quoteId, QuoteUpdateStatusParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/update_status", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * updateStatusForQuote a quote using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response updateStatusForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  /** updateStatus a quote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response updateStatusRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/update_status", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateStatusForQuoteResponse updateStatusForQuote(
-      String quoteId, UpdateStatusForQuoteParams params) throws Exception {
-    Response response = updateStatusForQuoteRaw(quoteId, params);
-    return UpdateStatusForQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public QuoteUpdateStatusResponse updateStatus(String quoteId, QuoteUpdateStatusParams params)
+      throws ChargebeeException {
+    Response response = updateStatusRaw(quoteId, params);
+    return QuoteUpdateStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -268,7 +264,7 @@ public final class QuoteService extends BaseService<QuoteService> {
    * raw Response.
    */
   Response updateSubscriptionQuoteForItemsRaw(UpdateSubscriptionQuoteForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/quotes/update_subscription_quote_for_items", params != null ? params.toFormData() : null);
@@ -278,13 +274,13 @@ public final class QuoteService extends BaseService<QuoteService> {
    * updateSubscriptionQuoteForItems a quote using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response updateSubscriptionQuoteForItemsRaw(String jsonPayload) throws Exception {
+  Response updateSubscriptionQuoteForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/quotes/update_subscription_quote_for_items", jsonPayload);
   }
 
   public UpdateSubscriptionQuoteForItemsResponse updateSubscriptionQuoteForItems(
-      UpdateSubscriptionQuoteForItemsParams params) throws Exception {
+      UpdateSubscriptionQuoteForItemsParams params) throws ChargebeeException {
     Response response = updateSubscriptionQuoteForItemsRaw(params);
 
     return UpdateSubscriptionQuoteForItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -295,7 +291,7 @@ public final class QuoteService extends BaseService<QuoteService> {
    * Response.
    */
   Response quoteLineGroupsForQuoteRaw(String quoteId, QuoteLineGroupsForQuoteParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
@@ -303,7 +299,7 @@ public final class QuoteService extends BaseService<QuoteService> {
   /**
    * quoteLineGroupsForQuote a quote without params (executes immediately) - returns raw Response.
    */
-  Response quoteLineGroupsForQuoteRaw(String quoteId) throws Exception {
+  Response quoteLineGroupsForQuoteRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
     return get(path, null);
   }
@@ -312,58 +308,58 @@ public final class QuoteService extends BaseService<QuoteService> {
    * quoteLineGroupsForQuote a quote using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response quoteLineGroupsForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  Response quoteLineGroupsForQuoteRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public QuoteLineGroupsForQuoteResponse quoteLineGroupsForQuote(
-      String quoteId, QuoteLineGroupsForQuoteParams params) throws Exception {
+      String quoteId, QuoteLineGroupsForQuoteParams params) throws ChargebeeException {
     Response response = quoteLineGroupsForQuoteRaw(quoteId, params);
     return QuoteLineGroupsForQuoteResponse.fromJson(
         response.getBodyAsString(), this, params, quoteId, response);
   }
 
-  public QuoteLineGroupsForQuoteResponse quoteLineGroupsForQuote(String quoteId) throws Exception {
+  public QuoteLineGroupsForQuoteResponse quoteLineGroupsForQuote(String quoteId)
+      throws ChargebeeException {
     Response response = quoteLineGroupsForQuoteRaw(quoteId);
     return QuoteLineGroupsForQuoteResponse.fromJson(
         response.getBodyAsString(), this, null, quoteId, response);
   }
 
-  /** extendExpiryDateForQuote a quote (executes immediately) - returns raw Response. */
-  Response extendExpiryDateForQuoteRaw(String quoteId) throws Exception {
+  /** extendExpiryDate a quote (executes immediately) - returns raw Response. */
+  Response extendExpiryDateRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
 
     return post(path, null);
   }
 
   /**
-   * extendExpiryDateForQuote a quote using immutable params (executes immediately) - returns raw
-   * Response.
+   * extendExpiryDate a quote using immutable params (executes immediately) - returns raw Response.
    */
-  Response extendExpiryDateForQuoteRaw(String quoteId, ExtendExpiryDateForQuoteParams params)
-      throws Exception {
+  Response extendExpiryDateRaw(String quoteId, QuoteExtendExpiryDateParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
   /**
-   * extendExpiryDateForQuote a quote using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * extendExpiryDate a quote using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response extendExpiryDateForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  Response extendExpiryDateRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public ExtendExpiryDateForQuoteResponse extendExpiryDateForQuote(
-      String quoteId, ExtendExpiryDateForQuoteParams params) throws Exception {
-    Response response = extendExpiryDateForQuoteRaw(quoteId, params);
-    return ExtendExpiryDateForQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public QuoteExtendExpiryDateResponse extendExpiryDate(
+      String quoteId, QuoteExtendExpiryDateParams params) throws ChargebeeException {
+    Response response = extendExpiryDateRaw(quoteId, params);
+    return QuoteExtendExpiryDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** editForChargeItemsAndChargesForQuote a quote (executes immediately) - returns raw Response. */
-  Response editForChargeItemsAndChargesForQuoteRaw(String quoteId) throws Exception {
+  /** editForChargeItemsAndCharges a quote (executes immediately) - returns raw Response. */
+  Response editForChargeItemsAndChargesRaw(String quoteId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
@@ -372,162 +368,151 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editForChargeItemsAndChargesForQuote a quote using immutable params (executes immediately) -
+   * editForChargeItemsAndCharges a quote using immutable params (executes immediately) - returns
+   * raw Response.
+   */
+  Response editForChargeItemsAndChargesRaw(
+      String quoteId, QuoteEditForChargeItemsAndChargesParams params) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * editForChargeItemsAndCharges a quote using raw JSON payload (executes immediately) - returns
+   * raw Response.
+   */
+  Response editForChargeItemsAndChargesRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
+    return postJson(path, jsonPayload);
+  }
+
+  public QuoteEditForChargeItemsAndChargesResponse editForChargeItemsAndCharges(
+      String quoteId, QuoteEditForChargeItemsAndChargesParams params) throws ChargebeeException {
+    Response response = editForChargeItemsAndChargesRaw(quoteId, params);
+    return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** editUpdateSubscriptionQuoteForItems a quote (executes immediately) - returns raw Response. */
+  Response editUpdateSubscriptionQuoteForItemsRaw(String quoteId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
+
+    return post(path, null);
+  }
+
+  /**
+   * editUpdateSubscriptionQuoteForItems a quote using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response editForChargeItemsAndChargesForQuoteRaw(
-      String quoteId, EditForChargeItemsAndChargesForQuoteParams params) throws Exception {
+  Response editUpdateSubscriptionQuoteForItemsRaw(
+      String quoteId, EditUpdateSubscriptionQuoteForItemsParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
-            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
+            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
   /**
-   * editForChargeItemsAndChargesForQuote a quote using raw JSON payload (executes immediately) -
+   * editUpdateSubscriptionQuoteForItems a quote using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response editForChargeItemsAndChargesForQuoteRaw(String quoteId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
-    return postJson(path, jsonPayload);
-  }
-
-  public EditForChargeItemsAndChargesForQuoteResponse editForChargeItemsAndChargesForQuote(
-      String quoteId, EditForChargeItemsAndChargesForQuoteParams params) throws Exception {
-    Response response = editForChargeItemsAndChargesForQuoteRaw(quoteId, params);
-    return EditForChargeItemsAndChargesForQuoteResponse.fromJson(
-        response.getBodyAsString(), response);
-  }
-
-  /**
-   * editUpdateSubscriptionQuoteForItemsForQuote a quote (executes immediately) - returns raw
-   * Response.
-   */
-  Response editUpdateSubscriptionQuoteForItemsForQuoteRaw(String quoteId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
-
-    return post(path, null);
-  }
-
-  /**
-   * editUpdateSubscriptionQuoteForItemsForQuote a quote using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response editUpdateSubscriptionQuoteForItemsForQuoteRaw(
-      String quoteId, EditUpdateSubscriptionQuoteForItemsForQuoteParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * editUpdateSubscriptionQuoteForItemsForQuote a quote using raw JSON payload (executes
-   * immediately) - returns raw Response.
-   */
-  Response editUpdateSubscriptionQuoteForItemsForQuoteRaw(String quoteId, String jsonPayload)
-      throws Exception {
+  Response editUpdateSubscriptionQuoteForItemsRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public EditUpdateSubscriptionQuoteForItemsForQuoteResponse
-      editUpdateSubscriptionQuoteForItemsForQuote(
-          String quoteId, EditUpdateSubscriptionQuoteForItemsForQuoteParams params)
-          throws Exception {
-    Response response = editUpdateSubscriptionQuoteForItemsForQuoteRaw(quoteId, params);
-    return EditUpdateSubscriptionQuoteForItemsForQuoteResponse.fromJson(
+  public EditUpdateSubscriptionQuoteForItemsResponse editUpdateSubscriptionQuoteForItems(
+      String quoteId, EditUpdateSubscriptionQuoteForItemsParams params) throws ChargebeeException {
+    Response response = editUpdateSubscriptionQuoteForItemsRaw(quoteId, params);
+    return EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
   /** list a quote using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(QuoteListParams params) throws Exception {
+  Response listRaw(QuoteListParams params) throws ChargebeeException {
 
     return get("/quotes", params != null ? params.toQueryParams() : null);
   }
 
   /** list a quote without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/quotes", null);
   }
 
   /** list a quote using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public QuoteListResponse list(QuoteListParams params) throws Exception {
+  public QuoteListResponse list(QuoteListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public QuoteListResponse list() throws Exception {
+  public QuoteListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
-  /** pdfForQuote a quote (executes immediately) - returns raw Response. */
-  Response pdfForQuoteRaw(String quoteId) throws Exception {
+  /** pdf a quote (executes immediately) - returns raw Response. */
+  Response pdfRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
 
     return post(path, null);
   }
 
-  /** pdfForQuote a quote using immutable params (executes immediately) - returns raw Response. */
-  Response pdfForQuoteRaw(String quoteId, PdfForQuoteParams params) throws Exception {
+  /** pdf a quote using immutable params (executes immediately) - returns raw Response. */
+  Response pdfRaw(String quoteId, QuotePdfParams params) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
-  /** pdfForQuote a quote using raw JSON payload (executes immediately) - returns raw Response. */
-  Response pdfForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  /** pdf a quote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response pdfRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public PdfForQuoteResponse pdfForQuote(String quoteId, PdfForQuoteParams params)
-      throws Exception {
-    Response response = pdfForQuoteRaw(quoteId, params);
-    return PdfForQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public QuotePdfResponse pdf(String quoteId, QuotePdfParams params) throws ChargebeeException {
+    Response response = pdfRaw(quoteId, params);
+    return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** convertForQuote a quote (executes immediately) - returns raw Response. */
-  Response convertForQuoteRaw(String quoteId) throws Exception {
+  /** convert a quote (executes immediately) - returns raw Response. */
+  Response convertRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
 
     return post(path, null);
   }
 
-  /**
-   * convertForQuote a quote using immutable params (executes immediately) - returns raw Response.
-   */
-  Response convertForQuoteRaw(String quoteId, ConvertForQuoteParams params) throws Exception {
+  /** convert a quote using immutable params (executes immediately) - returns raw Response. */
+  Response convertRaw(String quoteId, QuoteConvertParams params) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * convertForQuote a quote using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response convertForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  /** convert a quote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response convertRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public ConvertForQuoteResponse convertForQuote(String quoteId, ConvertForQuoteParams params)
-      throws Exception {
-    Response response = convertForQuoteRaw(quoteId, params);
-    return ConvertForQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public QuoteConvertResponse convert(String quoteId, QuoteConvertParams params)
+      throws ChargebeeException {
+    Response response = convertRaw(quoteId, params);
+    return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -535,7 +520,7 @@ public final class QuoteService extends BaseService<QuoteService> {
    * raw Response.
    */
   Response createForChargeItemsAndChargesRaw(QuoteCreateForChargeItemsAndChargesParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/quotes/create_for_charge_items_and_charges", params != null ? params.toFormData() : null);
@@ -545,46 +530,46 @@ public final class QuoteService extends BaseService<QuoteService> {
    * createForChargeItemsAndCharges a quote using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response createForChargeItemsAndChargesRaw(String jsonPayload) throws Exception {
+  Response createForChargeItemsAndChargesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/quotes/create_for_charge_items_and_charges", jsonPayload);
   }
 
   public QuoteCreateForChargeItemsAndChargesResponse createForChargeItemsAndCharges(
-      QuoteCreateForChargeItemsAndChargesParams params) throws Exception {
+      QuoteCreateForChargeItemsAndChargesParams params) throws ChargebeeException {
     Response response = createForChargeItemsAndChargesRaw(params);
 
     return QuoteCreateForChargeItemsAndChargesResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** deleteQuote a quote (executes immediately) - returns raw Response. */
-  Response deleteQuoteRaw(String quoteId) throws Exception {
+  /** delete a quote (executes immediately) - returns raw Response. */
+  Response deleteRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
 
     return post(path, null);
   }
 
-  /** deleteQuote a quote using immutable params (executes immediately) - returns raw Response. */
-  Response deleteQuoteRaw(String quoteId, DeleteQuoteParams params) throws Exception {
+  /** delete a quote using immutable params (executes immediately) - returns raw Response. */
+  Response deleteRaw(String quoteId, QuoteDeleteParams params) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
-  /** deleteQuote a quote using raw JSON payload (executes immediately) - returns raw Response. */
-  Response deleteQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  /** delete a quote using raw JSON payload (executes immediately) - returns raw Response. */
+  Response deleteRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteQuoteResponse deleteQuote(String quoteId, DeleteQuoteParams params)
-      throws Exception {
-    Response response = deleteQuoteRaw(quoteId, params);
-    return DeleteQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public QuoteDeleteResponse delete(String quoteId, QuoteDeleteParams params)
+      throws ChargebeeException {
+    Response response = deleteRaw(quoteId, params);
+    return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** editOneTimeQuoteForQuote a quote (executes immediately) - returns raw Response. */
-  Response editOneTimeQuoteForQuoteRaw(String quoteId) throws Exception {
+  /** editOneTimeQuote a quote (executes immediately) - returns raw Response. */
+  Response editOneTimeQuoteRaw(String quoteId) throws ChargebeeException {
     String path =
         buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
 
@@ -592,37 +577,36 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editOneTimeQuoteForQuote a quote using immutable params (executes immediately) - returns raw
-   * Response.
+   * editOneTimeQuote a quote using immutable params (executes immediately) - returns raw Response.
    */
-  Response editOneTimeQuoteForQuoteRaw(String quoteId, EditOneTimeQuoteForQuoteParams params)
-      throws Exception {
+  Response editOneTimeQuoteRaw(String quoteId, EditOneTimeQuoteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
     return post(path, params.toFormData());
   }
 
   /**
-   * editOneTimeQuoteForQuote a quote using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * editOneTimeQuote a quote using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response editOneTimeQuoteForQuoteRaw(String quoteId, String jsonPayload) throws Exception {
+  Response editOneTimeQuoteRaw(String quoteId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public EditOneTimeQuoteForQuoteResponse editOneTimeQuoteForQuote(
-      String quoteId, EditOneTimeQuoteForQuoteParams params) throws Exception {
-    Response response = editOneTimeQuoteForQuoteRaw(quoteId, params);
-    return EditOneTimeQuoteForQuoteResponse.fromJson(response.getBodyAsString(), response);
+  public EditOneTimeQuoteResponse editOneTimeQuote(String quoteId, EditOneTimeQuoteParams params)
+      throws ChargebeeException {
+    Response response = editOneTimeQuoteRaw(quoteId, params);
+    return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * updateSubscriptionQuote a quote using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response updateSubscriptionQuoteRaw(UpdateSubscriptionQuoteParams params) throws Exception {
+  Response updateSubscriptionQuoteRaw(UpdateSubscriptionQuoteParams params)
+      throws ChargebeeException {
 
     return post("/quotes/update_subscription_quote", params != null ? params.toFormData() : null);
   }
@@ -631,13 +615,13 @@ public final class QuoteService extends BaseService<QuoteService> {
    * updateSubscriptionQuote a quote using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateSubscriptionQuoteRaw(String jsonPayload) throws Exception {
+  Response updateSubscriptionQuoteRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/quotes/update_subscription_quote", jsonPayload);
   }
 
   public UpdateSubscriptionQuoteResponse updateSubscriptionQuote(
-      UpdateSubscriptionQuoteParams params) throws Exception {
+      UpdateSubscriptionQuoteParams params) throws ChargebeeException {
     Response response = updateSubscriptionQuoteRaw(params);
 
     return UpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
@@ -647,7 +631,8 @@ public final class QuoteService extends BaseService<QuoteService> {
    * createForOnetimeCharges a quote using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createForOnetimeChargesRaw(QuoteCreateForOnetimeChargesParams params) throws Exception {
+  Response createForOnetimeChargesRaw(QuoteCreateForOnetimeChargesParams params)
+      throws ChargebeeException {
 
     return post("/quotes/create_for_onetime_charges", params != null ? params.toFormData() : null);
   }
@@ -656,20 +641,20 @@ public final class QuoteService extends BaseService<QuoteService> {
    * createForOnetimeCharges a quote using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createForOnetimeChargesRaw(String jsonPayload) throws Exception {
+  Response createForOnetimeChargesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/quotes/create_for_onetime_charges", jsonPayload);
   }
 
   public QuoteCreateForOnetimeChargesResponse createForOnetimeCharges(
-      QuoteCreateForOnetimeChargesParams params) throws Exception {
+      QuoteCreateForOnetimeChargesParams params) throws ChargebeeException {
     Response response = createForOnetimeChargesRaw(params);
 
     return QuoteCreateForOnetimeChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** createSubscriptionQuoteForCustomer a quote (executes immediately) - returns raw Response. */
-  Response createSubscriptionQuoteForCustomerRaw(String customerId) throws Exception {
+  /** createSubscriptionForCustomerQuote a quote (executes immediately) - returns raw Response. */
+  Response createSubscriptionForCustomerQuoteRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote", "customer-id", customerId);
@@ -678,11 +663,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * createSubscriptionQuoteForCustomer a quote using immutable params (executes immediately) -
+   * createSubscriptionForCustomerQuote a quote using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response createSubscriptionQuoteForCustomerRaw(
-      String customerId, CreateSubscriptionQuoteForCustomerParams params) throws Exception {
+  Response createSubscriptionForCustomerQuoteRaw(
+      String customerId, CreateSubscriptionForCustomerQuoteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote", "customer-id", customerId);
@@ -690,26 +676,27 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * createSubscriptionQuoteForCustomer a quote using raw JSON payload (executes immediately) -
+   * createSubscriptionForCustomerQuote a quote using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createSubscriptionQuoteForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response createSubscriptionForCustomerQuoteRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_quote", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public CreateSubscriptionQuoteForCustomerResponse createSubscriptionQuoteForCustomer(
-      String customerId, CreateSubscriptionQuoteForCustomerParams params) throws Exception {
-    Response response = createSubscriptionQuoteForCustomerRaw(customerId, params);
-    return CreateSubscriptionQuoteForCustomerResponse.fromJson(
+  public CreateSubscriptionForCustomerQuoteResponse createSubscriptionForCustomerQuote(
+      String customerId, CreateSubscriptionForCustomerQuoteParams params)
+      throws ChargebeeException {
+    Response response = createSubscriptionForCustomerQuoteRaw(customerId, params);
+    return CreateSubscriptionForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** editUpdateSubscriptionQuoteForQuote a quote (executes immediately) - returns raw Response. */
-  Response editUpdateSubscriptionQuoteForQuoteRaw(String quoteId) throws Exception {
+  /** editUpdateSubscriptionQuote a quote (executes immediately) - returns raw Response. */
+  Response editUpdateSubscriptionQuoteRaw(String quoteId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_update_subscription_quote", "quote-id", quoteId);
@@ -718,11 +705,11 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editUpdateSubscriptionQuoteForQuote a quote using immutable params (executes immediately) -
-   * returns raw Response.
+   * editUpdateSubscriptionQuote a quote using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response editUpdateSubscriptionQuoteForQuoteRaw(
-      String quoteId, EditUpdateSubscriptionQuoteForQuoteParams params) throws Exception {
+  Response editUpdateSubscriptionQuoteRaw(String quoteId, EditUpdateSubscriptionQuoteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_update_subscription_quote", "quote-id", quoteId);
@@ -730,26 +717,27 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editUpdateSubscriptionQuoteForQuote a quote using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * editUpdateSubscriptionQuote a quote using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response editUpdateSubscriptionQuoteForQuoteRaw(String quoteId, String jsonPayload)
-      throws Exception {
+  Response editUpdateSubscriptionQuoteRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_update_subscription_quote", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public EditUpdateSubscriptionQuoteForQuoteResponse editUpdateSubscriptionQuoteForQuote(
-      String quoteId, EditUpdateSubscriptionQuoteForQuoteParams params) throws Exception {
-    Response response = editUpdateSubscriptionQuoteForQuoteRaw(quoteId, params);
-    return EditUpdateSubscriptionQuoteForQuoteResponse.fromJson(
-        response.getBodyAsString(), response);
+  public EditUpdateSubscriptionQuoteResponse editUpdateSubscriptionQuote(
+      String quoteId, EditUpdateSubscriptionQuoteParams params) throws ChargebeeException {
+    Response response = editUpdateSubscriptionQuoteRaw(quoteId, params);
+    return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** editCreateSubscriptionQuoteForQuote a quote (executes immediately) - returns raw Response. */
-  Response editCreateSubscriptionQuoteForQuoteRaw(String quoteId) throws Exception {
+  /**
+   * editCreateSubscriptionForCustomerQuote a quote (executes immediately) - returns raw Response.
+   */
+  Response editCreateSubscriptionForCustomerQuoteRaw(String quoteId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote", "quote-id", quoteId);
@@ -758,11 +746,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editCreateSubscriptionQuoteForQuote a quote using immutable params (executes immediately) -
+   * editCreateSubscriptionForCustomerQuote a quote using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response editCreateSubscriptionQuoteForQuoteRaw(
-      String quoteId, EditCreateSubscriptionQuoteForQuoteParams params) throws Exception {
+  Response editCreateSubscriptionForCustomerQuoteRaw(
+      String quoteId, EditCreateSubscriptionForCustomerQuoteParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote", "quote-id", quoteId);
@@ -770,21 +759,22 @@ public final class QuoteService extends BaseService<QuoteService> {
   }
 
   /**
-   * editCreateSubscriptionQuoteForQuote a quote using raw JSON payload (executes immediately) -
+   * editCreateSubscriptionForCustomerQuote a quote using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response editCreateSubscriptionQuoteForQuoteRaw(String quoteId, String jsonPayload)
-      throws Exception {
+  Response editCreateSubscriptionForCustomerQuoteRaw(String quoteId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/quotes/{quote-id}/edit_create_subscription_quote", "quote-id", quoteId);
     return postJson(path, jsonPayload);
   }
 
-  public EditCreateSubscriptionQuoteForQuoteResponse editCreateSubscriptionQuoteForQuote(
-      String quoteId, EditCreateSubscriptionQuoteForQuoteParams params) throws Exception {
-    Response response = editCreateSubscriptionQuoteForQuoteRaw(quoteId, params);
-    return EditCreateSubscriptionQuoteForQuoteResponse.fromJson(
+  public EditCreateSubscriptionForCustomerQuoteResponse editCreateSubscriptionForCustomerQuote(
+      String quoteId, EditCreateSubscriptionForCustomerQuoteParams params)
+      throws ChargebeeException {
+    Response response = editCreateSubscriptionForCustomerQuoteRaw(quoteId, params);
+    return EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
   }
 }

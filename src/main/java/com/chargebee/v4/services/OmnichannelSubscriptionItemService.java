@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.omnichannelSubscriptionItem.params.ScheduledChangesForOmnichannelSubscriptionItemParams;
+import com.chargebee.v4.models.omnichannelSubscriptionItem.params.OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams;
 
-import com.chargebee.v4.models.omnichannelSubscriptionItem.responses.ScheduledChangesForOmnichannelSubscriptionItemResponse;
+import com.chargebee.v4.models.omnichannelSubscriptionItem.responses.OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse;
 
 public final class OmnichannelSubscriptionItemService
     extends BaseService<OmnichannelSubscriptionItemService> {
@@ -52,13 +53,13 @@ public final class OmnichannelSubscriptionItemService
   // === Operations ===
 
   /**
-   * scheduledChangesForOmnichannelSubscriptionItem a omnichannelSubscriptionItem using immutable
-   * params (executes immediately) - returns raw Response.
+   * listOmniSubscriptionItemScheduleChanges a omnichannelSubscriptionItem using immutable params
+   * (executes immediately) - returns raw Response.
    */
-  Response scheduledChangesForOmnichannelSubscriptionItemRaw(
+  Response listOmniSubscriptionItemScheduleChangesRaw(
       String omnichannelSubscriptionItemId,
-      ScheduledChangesForOmnichannelSubscriptionItemParams params)
-      throws Exception {
+      OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
@@ -68,11 +69,11 @@ public final class OmnichannelSubscriptionItemService
   }
 
   /**
-   * scheduledChangesForOmnichannelSubscriptionItem a omnichannelSubscriptionItem without params
-   * (executes immediately) - returns raw Response.
+   * listOmniSubscriptionItemScheduleChanges a omnichannelSubscriptionItem without params (executes
+   * immediately) - returns raw Response.
    */
-  Response scheduledChangesForOmnichannelSubscriptionItemRaw(String omnichannelSubscriptionItemId)
-      throws Exception {
+  Response listOmniSubscriptionItemScheduleChangesRaw(String omnichannelSubscriptionItemId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
@@ -82,11 +83,11 @@ public final class OmnichannelSubscriptionItemService
   }
 
   /**
-   * scheduledChangesForOmnichannelSubscriptionItem a omnichannelSubscriptionItem using raw JSON
-   * payload (executes immediately) - returns raw Response.
+   * listOmniSubscriptionItemScheduleChanges a omnichannelSubscriptionItem using raw JSON payload
+   * (executes immediately) - returns raw Response.
    */
-  Response scheduledChangesForOmnichannelSubscriptionItemRaw(
-      String omnichannelSubscriptionItemId, String jsonPayload) throws Exception {
+  Response listOmniSubscriptionItemScheduleChangesRaw(
+      String omnichannelSubscriptionItemId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
@@ -95,23 +96,22 @@ public final class OmnichannelSubscriptionItemService
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ScheduledChangesForOmnichannelSubscriptionItemResponse
-      scheduledChangesForOmnichannelSubscriptionItem(
+  public OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse
+      listOmniSubscriptionItemScheduleChanges(
           String omnichannelSubscriptionItemId,
-          ScheduledChangesForOmnichannelSubscriptionItemParams params)
-          throws Exception {
+          OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams params)
+          throws ChargebeeException {
     Response response =
-        scheduledChangesForOmnichannelSubscriptionItemRaw(omnichannelSubscriptionItemId, params);
-    return ScheduledChangesForOmnichannelSubscriptionItemResponse.fromJson(
+        listOmniSubscriptionItemScheduleChangesRaw(omnichannelSubscriptionItemId, params);
+    return OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
         response.getBodyAsString(), this, params, omnichannelSubscriptionItemId, response);
   }
 
-  public ScheduledChangesForOmnichannelSubscriptionItemResponse
-      scheduledChangesForOmnichannelSubscriptionItem(String omnichannelSubscriptionItemId)
-          throws Exception {
-    Response response =
-        scheduledChangesForOmnichannelSubscriptionItemRaw(omnichannelSubscriptionItemId);
-    return ScheduledChangesForOmnichannelSubscriptionItemResponse.fromJson(
+  public OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse
+      listOmniSubscriptionItemScheduleChanges(String omnichannelSubscriptionItemId)
+          throws ChargebeeException {
+    Response response = listOmniSubscriptionItemScheduleChangesRaw(omnichannelSubscriptionItemId);
+    return OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
         response.getBodyAsString(), this, null, omnichannelSubscriptionItemId, response);
   }
 }

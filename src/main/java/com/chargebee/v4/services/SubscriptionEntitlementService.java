@@ -9,13 +9,14 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.subscriptionEntitlement.params.SubscriptionEntitlementsSetAvailabilityForSubscriptionParams;
+import com.chargebee.v4.models.subscriptionEntitlement.params.SetSubscriptionEntitlementAvailabilityParams;
 
 import com.chargebee.v4.models.subscriptionEntitlement.params.SubscriptionEntitlementsForSubscriptionParams;
 
-import com.chargebee.v4.models.subscriptionEntitlement.responses.SubscriptionEntitlementsSetAvailabilityForSubscriptionResponse;
+import com.chargebee.v4.models.subscriptionEntitlement.responses.SetSubscriptionEntitlementAvailabilityResponse;
 
 import com.chargebee.v4.models.subscriptionEntitlement.responses.SubscriptionEntitlementsForSubscriptionResponse;
 
@@ -56,11 +57,11 @@ public final class SubscriptionEntitlementService
   // === Operations ===
 
   /**
-   * subscriptionEntitlementsSetAvailabilityForSubscription a subscriptionEntitlement (executes
-   * immediately) - returns raw Response.
+   * setSubscriptionEntitlementAvailability a subscriptionEntitlement (executes immediately) -
+   * returns raw Response.
    */
-  Response subscriptionEntitlementsSetAvailabilityForSubscriptionRaw(String subscriptionId)
-      throws Exception {
+  Response setSubscriptionEntitlementAvailabilityRaw(String subscriptionId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
@@ -71,12 +72,12 @@ public final class SubscriptionEntitlementService
   }
 
   /**
-   * subscriptionEntitlementsSetAvailabilityForSubscription a subscriptionEntitlement using
-   * immutable params (executes immediately) - returns raw Response.
+   * setSubscriptionEntitlementAvailability a subscriptionEntitlement using immutable params
+   * (executes immediately) - returns raw Response.
    */
-  Response subscriptionEntitlementsSetAvailabilityForSubscriptionRaw(
-      String subscriptionId, SubscriptionEntitlementsSetAvailabilityForSubscriptionParams params)
-      throws Exception {
+  Response setSubscriptionEntitlementAvailabilityRaw(
+      String subscriptionId, SetSubscriptionEntitlementAvailabilityParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
@@ -86,11 +87,11 @@ public final class SubscriptionEntitlementService
   }
 
   /**
-   * subscriptionEntitlementsSetAvailabilityForSubscription a subscriptionEntitlement using raw JSON
-   * payload (executes immediately) - returns raw Response.
+   * setSubscriptionEntitlementAvailability a subscriptionEntitlement using raw JSON payload
+   * (executes immediately) - returns raw Response.
    */
-  Response subscriptionEntitlementsSetAvailabilityForSubscriptionRaw(
-      String subscriptionId, String jsonPayload) throws Exception {
+  Response setSubscriptionEntitlementAvailabilityRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
@@ -99,14 +100,11 @@ public final class SubscriptionEntitlementService
     return postJson(path, jsonPayload);
   }
 
-  public SubscriptionEntitlementsSetAvailabilityForSubscriptionResponse
-      subscriptionEntitlementsSetAvailabilityForSubscription(
-          String subscriptionId,
-          SubscriptionEntitlementsSetAvailabilityForSubscriptionParams params)
-          throws Exception {
-    Response response =
-        subscriptionEntitlementsSetAvailabilityForSubscriptionRaw(subscriptionId, params);
-    return SubscriptionEntitlementsSetAvailabilityForSubscriptionResponse.fromJson(
+  public SetSubscriptionEntitlementAvailabilityResponse setSubscriptionEntitlementAvailability(
+      String subscriptionId, SetSubscriptionEntitlementAvailabilityParams params)
+      throws ChargebeeException {
+    Response response = setSubscriptionEntitlementAvailabilityRaw(subscriptionId, params);
+    return SetSubscriptionEntitlementAvailabilityResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
@@ -116,7 +114,7 @@ public final class SubscriptionEntitlementService
    */
   Response subscriptionEntitlementsForSubscriptionRaw(
       String subscriptionId, SubscriptionEntitlementsForSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements",
@@ -129,7 +127,8 @@ public final class SubscriptionEntitlementService
    * subscriptionEntitlementsForSubscription a subscriptionEntitlement without params (executes
    * immediately) - returns raw Response.
    */
-  Response subscriptionEntitlementsForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response subscriptionEntitlementsForSubscriptionRaw(String subscriptionId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements",
@@ -143,7 +142,7 @@ public final class SubscriptionEntitlementService
    * (executes immediately) - returns raw Response.
    */
   Response subscriptionEntitlementsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/subscription_entitlements",
@@ -154,14 +153,14 @@ public final class SubscriptionEntitlementService
 
   public SubscriptionEntitlementsForSubscriptionResponse subscriptionEntitlementsForSubscription(
       String subscriptionId, SubscriptionEntitlementsForSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = subscriptionEntitlementsForSubscriptionRaw(subscriptionId, params);
     return SubscriptionEntitlementsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public SubscriptionEntitlementsForSubscriptionResponse subscriptionEntitlementsForSubscription(
-      String subscriptionId) throws Exception {
+      String subscriptionId) throws ChargebeeException {
     Response response = subscriptionEntitlementsForSubscriptionRaw(subscriptionId);
     return SubscriptionEntitlementsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);

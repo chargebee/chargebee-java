@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.paymentReferenceNumber.PaymentReferenceNumber;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.InvoiceService;
@@ -104,9 +105,9 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public InvoiceListPaymentReferenceNumbersResponse nextPage() throws Exception {
+  public InvoiceListPaymentReferenceNumbersResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

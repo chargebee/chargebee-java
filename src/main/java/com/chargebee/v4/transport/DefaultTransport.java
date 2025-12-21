@@ -45,7 +45,7 @@ public class DefaultTransport implements Transport {
     }
     
     @Override
-    public Response send(Request request) throws TransportException {
+    public Response send(Request request) {
         RequestLogger logger = config.getRequestLogger();
         long startTime = System.currentTimeMillis();
         
@@ -126,7 +126,7 @@ public class DefaultTransport implements Transport {
         return future;
     }
     
-    private HttpURLConnection createConnection(Request request) throws IOException, TransportException {
+    private HttpURLConnection createConnection(Request request) throws IOException {
         String fullUrl = buildFullUrl(request);
         
         URL url;
@@ -283,7 +283,7 @@ public class DefaultTransport implements Transport {
         }
     }
     
-    private Response readResponse(HttpURLConnection connection) throws IOException, TransportException {
+    private Response readResponse(HttpURLConnection connection) throws IOException {
         int statusCode = connection.getResponseCode();
         Map<String, List<String>> headers = connection.getHeaderFields();
 

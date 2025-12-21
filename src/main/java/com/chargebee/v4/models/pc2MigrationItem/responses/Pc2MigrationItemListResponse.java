@@ -2,6 +2,7 @@ package com.chargebee.v4.models.pc2MigrationItem.responses;
 
 import java.util.List;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.Pc2MigrationItemService;
@@ -97,9 +98,9 @@ public final class Pc2MigrationItemListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public Pc2MigrationItemListResponse nextPage() throws Exception {
+  public Pc2MigrationItemListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

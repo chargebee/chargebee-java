@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.feature.params.FeatureListParams;
@@ -21,17 +22,17 @@ import com.chargebee.v4.models.feature.responses.FeatureListResponse;
 
 import com.chargebee.v4.models.feature.responses.FeatureCreateResponse;
 
-import com.chargebee.v4.models.feature.responses.DeleteFeatureResponse;
+import com.chargebee.v4.models.feature.responses.FeatureDeleteResponse;
 
 import com.chargebee.v4.models.feature.responses.FeatureRetrieveResponse;
 
 import com.chargebee.v4.models.feature.responses.FeatureUpdateResponse;
 
-import com.chargebee.v4.models.feature.responses.ArchiveCommandForFeatureResponse;
+import com.chargebee.v4.models.feature.responses.FeatureArchiveResponse;
 
-import com.chargebee.v4.models.feature.responses.ActivateCommandForFeatureResponse;
+import com.chargebee.v4.models.feature.responses.FeatureActivateResponse;
 
-import com.chargebee.v4.models.feature.responses.ReactivateCommandForFeatureResponse;
+import com.chargebee.v4.models.feature.responses.FeatureReactivateResponse;
 
 public final class FeatureService extends BaseService<FeatureService> {
 
@@ -68,140 +69,137 @@ public final class FeatureService extends BaseService<FeatureService> {
   // === Operations ===
 
   /** list a feature using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(FeatureListParams params) throws Exception {
+  Response listRaw(FeatureListParams params) throws ChargebeeException {
 
     return get("/features", params != null ? params.toQueryParams() : null);
   }
 
   /** list a feature without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/features", null);
   }
 
   /** list a feature using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public FeatureListResponse list(FeatureListParams params) throws Exception {
+  public FeatureListResponse list(FeatureListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public FeatureListResponse list() throws Exception {
+  public FeatureListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a feature using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(FeatureCreateParams params) throws Exception {
+  Response createRaw(FeatureCreateParams params) throws ChargebeeException {
 
     return post("/features", params != null ? params.toFormData() : null);
   }
 
   /** create a feature using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/features", jsonPayload);
   }
 
-  public FeatureCreateResponse create(FeatureCreateParams params) throws Exception {
+  public FeatureCreateResponse create(FeatureCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return FeatureCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteFeature a feature (executes immediately) - returns raw Response. */
-  Response deleteFeatureRaw(String featureId) throws Exception {
+  /** delete a feature (executes immediately) - returns raw Response. */
+  Response deleteRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
 
     return post(path, null);
   }
 
-  public DeleteFeatureResponse deleteFeature(String featureId) throws Exception {
-    Response response = deleteFeatureRaw(featureId);
-    return DeleteFeatureResponse.fromJson(response.getBodyAsString(), response);
+  public FeatureDeleteResponse delete(String featureId) throws ChargebeeException {
+    Response response = deleteRaw(featureId);
+    return FeatureDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a feature (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String featureId) throws Exception {
+  Response retrieveRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
     return get(path, null);
   }
 
-  public FeatureRetrieveResponse retrieve(String featureId) throws Exception {
+  public FeatureRetrieveResponse retrieve(String featureId) throws ChargebeeException {
     Response response = retrieveRaw(featureId);
     return FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a feature (executes immediately) - returns raw Response. */
-  Response updateRaw(String featureId) throws Exception {
+  Response updateRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
     return post(path, null);
   }
 
   /** update a feature using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String featureId, FeatureUpdateParams params) throws Exception {
+  Response updateRaw(String featureId, FeatureUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
     return post(path, params.toFormData());
   }
 
   /** update a feature using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String featureId, String jsonPayload) throws Exception {
+  Response updateRaw(String featureId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
     return postJson(path, jsonPayload);
   }
 
   public FeatureUpdateResponse update(String featureId, FeatureUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(featureId, params);
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** archiveCommandForFeature a feature (executes immediately) - returns raw Response. */
-  Response archiveCommandForFeatureRaw(String featureId) throws Exception {
+  /** archive a feature (executes immediately) - returns raw Response. */
+  Response archiveRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/archive_command", "feature-id", featureId);
 
     return post(path, null);
   }
 
-  public ArchiveCommandForFeatureResponse archiveCommandForFeature(String featureId)
-      throws Exception {
-    Response response = archiveCommandForFeatureRaw(featureId);
-    return ArchiveCommandForFeatureResponse.fromJson(response.getBodyAsString(), response);
+  public FeatureArchiveResponse archive(String featureId) throws ChargebeeException {
+    Response response = archiveRaw(featureId);
+    return FeatureArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** activateCommandForFeature a feature (executes immediately) - returns raw Response. */
-  Response activateCommandForFeatureRaw(String featureId) throws Exception {
+  /** activate a feature (executes immediately) - returns raw Response. */
+  Response activateRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/activate_command", "feature-id", featureId);
 
     return post(path, null);
   }
 
-  public ActivateCommandForFeatureResponse activateCommandForFeature(String featureId)
-      throws Exception {
-    Response response = activateCommandForFeatureRaw(featureId);
-    return ActivateCommandForFeatureResponse.fromJson(response.getBodyAsString(), response);
+  public FeatureActivateResponse activate(String featureId) throws ChargebeeException {
+    Response response = activateRaw(featureId);
+    return FeatureActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** reactivateCommandForFeature a feature (executes immediately) - returns raw Response. */
-  Response reactivateCommandForFeatureRaw(String featureId) throws Exception {
+  /** reactivate a feature (executes immediately) - returns raw Response. */
+  Response reactivateRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/reactivate_command", "feature-id", featureId);
 
     return post(path, null);
   }
 
-  public ReactivateCommandForFeatureResponse reactivateCommandForFeature(String featureId)
-      throws Exception {
-    Response response = reactivateCommandForFeatureRaw(featureId);
-    return ReactivateCommandForFeatureResponse.fromJson(response.getBodyAsString(), response);
+  public FeatureReactivateResponse reactivate(String featureId) throws ChargebeeException {
+    Response response = reactivateRaw(featureId);
+    return FeatureReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

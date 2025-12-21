@@ -9,105 +9,106 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.customer.params.DeleteCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerDeleteParams;
 
-import com.chargebee.v4.models.customer.params.AddPromotionalCreditsForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerAddPromotionalCreditsParams;
 
-import com.chargebee.v4.models.customer.params.RelationshipsForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerRelationshipsParams;
 
-import com.chargebee.v4.models.customer.params.DeleteContactForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerDeleteContactParams;
 
-import com.chargebee.v4.models.customer.params.AssignPaymentRoleForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerAssignPaymentRoleParams;
 
 import com.chargebee.v4.models.customer.params.CustomerMoveParams;
 
-import com.chargebee.v4.models.customer.params.HierarchyForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerHierarchyParams;
 
-import com.chargebee.v4.models.customer.params.UpdatePaymentMethodForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerUpdatePaymentMethodParams;
 
 import com.chargebee.v4.models.customer.params.CustomerUpdateParams;
 
-import com.chargebee.v4.models.customer.params.HierarchyDetailForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerListHierarchyDetailParams;
 
-import com.chargebee.v4.models.customer.params.ChangeBillingDateForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerChangeBillingDateParams;
 
 import com.chargebee.v4.models.customer.params.CustomerListParams;
 
 import com.chargebee.v4.models.customer.params.CustomerCreateParams;
 
-import com.chargebee.v4.models.customer.params.AddContactForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerAddContactParams;
 
 import com.chargebee.v4.models.customer.params.ContactsForCustomerParams;
 
-import com.chargebee.v4.models.customer.params.DeductPromotionalCreditsForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerDeductPromotionalCreditsParams;
 
 import com.chargebee.v4.models.customer.params.CustomerMergeParams;
 
-import com.chargebee.v4.models.customer.params.CollectPaymentForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerCollectPaymentParams;
 
-import com.chargebee.v4.models.customer.params.RecordExcessPaymentForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerRecordExcessPaymentParams;
 
-import com.chargebee.v4.models.customer.params.SetPromotionalCreditsForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerSetPromotionalCreditsParams;
 
-import com.chargebee.v4.models.customer.params.UpdateContactForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerUpdateContactParams;
 
-import com.chargebee.v4.models.customer.params.UpdateHierarchySettingsForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerUpdateHierarchySettingsParams;
 
-import com.chargebee.v4.models.customer.params.UpdateBillingInfoForCustomerParams;
+import com.chargebee.v4.models.customer.params.CustomerUpdateBillingInfoParams;
 
-import com.chargebee.v4.models.customer.responses.DeleteCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerDeleteResponse;
 
-import com.chargebee.v4.models.customer.responses.AddPromotionalCreditsForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerAddPromotionalCreditsResponse;
 
-import com.chargebee.v4.models.customer.responses.RelationshipsForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerRelationshipsResponse;
 
-import com.chargebee.v4.models.customer.responses.DeleteRelationshipForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerDeleteRelationshipResponse;
 
-import com.chargebee.v4.models.customer.responses.DeleteContactForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerDeleteContactResponse;
 
-import com.chargebee.v4.models.customer.responses.AssignPaymentRoleForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerAssignPaymentRoleResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerMoveResponse;
 
-import com.chargebee.v4.models.customer.responses.HierarchyForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerHierarchyResponse;
 
-import com.chargebee.v4.models.customer.responses.UpdatePaymentMethodForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerUpdatePaymentMethodResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerRetrieveResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerUpdateResponse;
 
-import com.chargebee.v4.models.customer.responses.HierarchyDetailForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerListHierarchyDetailResponse;
 
-import com.chargebee.v4.models.customer.responses.ChangeBillingDateForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerChangeBillingDateResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerListResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerCreateResponse;
 
-import com.chargebee.v4.models.customer.responses.AddContactForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerAddContactResponse;
 
 import com.chargebee.v4.models.customer.responses.ContactsForCustomerResponse;
 
-import com.chargebee.v4.models.customer.responses.DeductPromotionalCreditsForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerDeductPromotionalCreditsResponse;
 
-import com.chargebee.v4.models.customer.responses.ClearPersonalDataForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerClearPersonalDataResponse;
 
 import com.chargebee.v4.models.customer.responses.CustomerMergeResponse;
 
-import com.chargebee.v4.models.customer.responses.CollectPaymentForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerCollectPaymentResponse;
 
-import com.chargebee.v4.models.customer.responses.RecordExcessPaymentForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerRecordExcessPaymentResponse;
 
-import com.chargebee.v4.models.customer.responses.SetPromotionalCreditsForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerSetPromotionalCreditsResponse;
 
-import com.chargebee.v4.models.customer.responses.UpdateContactForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerUpdateContactResponse;
 
-import com.chargebee.v4.models.customer.responses.UpdateHierarchySettingsForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerUpdateHierarchySettingsResponse;
 
-import com.chargebee.v4.models.customer.responses.UpdateBillingInfoForCustomerResponse;
+import com.chargebee.v4.models.customer.responses.CustomerUpdateBillingInfoResponse;
 
 public final class CustomerService extends BaseService<CustomerService> {
 
@@ -143,37 +144,33 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   // === Operations ===
 
-  /** deleteCustomer a customer (executes immediately) - returns raw Response. */
-  Response deleteCustomerRaw(String customerId) throws Exception {
+  /** delete a customer (executes immediately) - returns raw Response. */
+  Response deleteRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
 
     return post(path, null);
   }
 
-  /**
-   * deleteCustomer a customer using immutable params (executes immediately) - returns raw Response.
-   */
-  Response deleteCustomerRaw(String customerId, DeleteCustomerParams params) throws Exception {
+  /** delete a customer using immutable params (executes immediately) - returns raw Response. */
+  Response deleteRaw(String customerId, CustomerDeleteParams params) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * deleteCustomer a customer using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response deleteCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  /** delete a customer using raw JSON payload (executes immediately) - returns raw Response. */
+  Response deleteRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteCustomerResponse deleteCustomer(String customerId, DeleteCustomerParams params)
-      throws Exception {
-    Response response = deleteCustomerRaw(customerId, params);
-    return DeleteCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerDeleteResponse delete(String customerId, CustomerDeleteParams params)
+      throws ChargebeeException {
+    Response response = deleteRaw(customerId, params);
+    return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addPromotionalCreditsForCustomer a customer (executes immediately) - returns raw Response. */
-  Response addPromotionalCreditsForCustomerRaw(String customerId) throws Exception {
+  /** addPromotionalCredits a customer (executes immediately) - returns raw Response. */
+  Response addPromotionalCreditsRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
@@ -182,72 +179,70 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * addPromotionalCreditsForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response addPromotionalCreditsForCustomerRaw(
-      String customerId, AddPromotionalCreditsForCustomerParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * addPromotionalCreditsForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response addPromotionalCreditsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
-    return postJson(path, jsonPayload);
-  }
-
-  public AddPromotionalCreditsForCustomerResponse addPromotionalCreditsForCustomer(
-      String customerId, AddPromotionalCreditsForCustomerParams params) throws Exception {
-    Response response = addPromotionalCreditsForCustomerRaw(customerId, params);
-    return AddPromotionalCreditsForCustomerResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** relationshipsForCustomer a customer (executes immediately) - returns raw Response. */
-  Response relationshipsForCustomerRaw(String customerId) throws Exception {
-    String path =
-        buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
-
-    return post(path, null);
-  }
-
-  /**
-   * relationshipsForCustomer a customer using immutable params (executes immediately) - returns raw
+   * addPromotionalCredits a customer using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response relationshipsForCustomerRaw(String customerId, RelationshipsForCustomerParams params)
-      throws Exception {
+  Response addPromotionalCreditsRaw(String customerId, CustomerAddPromotionalCreditsParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * addPromotionalCredits a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response addPromotionalCreditsRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
+    return postJson(path, jsonPayload);
+  }
+
+  public CustomerAddPromotionalCreditsResponse addPromotionalCredits(
+      String customerId, CustomerAddPromotionalCreditsParams params) throws ChargebeeException {
+    Response response = addPromotionalCreditsRaw(customerId, params);
+    return CustomerAddPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** relationships a customer (executes immediately) - returns raw Response. */
+  Response relationshipsRaw(String customerId) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
+
+    return post(path, null);
+  }
+
+  /**
+   * relationships a customer using immutable params (executes immediately) - returns raw Response.
+   */
+  Response relationshipsRaw(String customerId, CustomerRelationshipsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * relationshipsForCustomer a customer using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * relationships a customer using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response relationshipsForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response relationshipsRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public RelationshipsForCustomerResponse relationshipsForCustomer(
-      String customerId, RelationshipsForCustomerParams params) throws Exception {
-    Response response = relationshipsForCustomerRaw(customerId, params);
-    return RelationshipsForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerRelationshipsResponse relationships(
+      String customerId, CustomerRelationshipsParams params) throws ChargebeeException {
+    Response response = relationshipsRaw(customerId, params);
+    return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteRelationshipForCustomer a customer (executes immediately) - returns raw Response. */
-  Response deleteRelationshipForCustomerRaw(String customerId) throws Exception {
+  /** deleteRelationship a customer (executes immediately) - returns raw Response. */
+  Response deleteRelationshipRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/delete_relationship", "customer-id", customerId);
@@ -255,14 +250,14 @@ public final class CustomerService extends BaseService<CustomerService> {
     return post(path, null);
   }
 
-  public DeleteRelationshipForCustomerResponse deleteRelationshipForCustomer(String customerId)
-      throws Exception {
-    Response response = deleteRelationshipForCustomerRaw(customerId);
-    return DeleteRelationshipForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerDeleteRelationshipResponse deleteRelationship(String customerId)
+      throws ChargebeeException {
+    Response response = deleteRelationshipRaw(customerId);
+    return CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteContactForCustomer a customer (executes immediately) - returns raw Response. */
-  Response deleteContactForCustomerRaw(String customerId) throws Exception {
+  /** deleteContact a customer (executes immediately) - returns raw Response. */
+  Response deleteContactRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
 
@@ -270,34 +265,32 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * deleteContactForCustomer a customer using immutable params (executes immediately) - returns raw
-   * Response.
+   * deleteContact a customer using immutable params (executes immediately) - returns raw Response.
    */
-  Response deleteContactForCustomerRaw(String customerId, DeleteContactForCustomerParams params)
-      throws Exception {
+  Response deleteContactRaw(String customerId, CustomerDeleteContactParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * deleteContactForCustomer a customer using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * deleteContact a customer using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response deleteContactForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response deleteContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteContactForCustomerResponse deleteContactForCustomer(
-      String customerId, DeleteContactForCustomerParams params) throws Exception {
-    Response response = deleteContactForCustomerRaw(customerId, params);
-    return DeleteContactForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerDeleteContactResponse deleteContact(
+      String customerId, CustomerDeleteContactParams params) throws ChargebeeException {
+    Response response = deleteContactRaw(customerId, params);
+    return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** assignPaymentRoleForCustomer a customer (executes immediately) - returns raw Response. */
-  Response assignPaymentRoleForCustomerRaw(String customerId) throws Exception {
+  /** assignPaymentRole a customer (executes immediately) - returns raw Response. */
+  Response assignPaymentRoleRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
@@ -306,11 +299,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * assignPaymentRoleForCustomer a customer using immutable params (executes immediately) - returns
-   * raw Response.
+   * assignPaymentRole a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response assignPaymentRoleForCustomerRaw(
-      String customerId, AssignPaymentRoleForCustomerParams params) throws Exception {
+  Response assignPaymentRoleRaw(String customerId, CustomerAssignPaymentRoleParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
@@ -318,72 +311,69 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * assignPaymentRoleForCustomer a customer using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * assignPaymentRole a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response assignPaymentRoleForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response assignPaymentRoleRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public AssignPaymentRoleForCustomerResponse assignPaymentRoleForCustomer(
-      String customerId, AssignPaymentRoleForCustomerParams params) throws Exception {
-    Response response = assignPaymentRoleForCustomerRaw(customerId, params);
-    return AssignPaymentRoleForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerAssignPaymentRoleResponse assignPaymentRole(
+      String customerId, CustomerAssignPaymentRoleParams params) throws ChargebeeException {
+    Response response = assignPaymentRoleRaw(customerId, params);
+    return CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** move a customer using immutable params (executes immediately) - returns raw Response. */
-  Response moveRaw(CustomerMoveParams params) throws Exception {
+  Response moveRaw(CustomerMoveParams params) throws ChargebeeException {
 
     return post("/customers/move", params != null ? params.toFormData() : null);
   }
 
   /** move a customer using raw JSON payload (executes immediately) - returns raw Response. */
-  Response moveRaw(String jsonPayload) throws Exception {
+  Response moveRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/customers/move", jsonPayload);
   }
 
-  public CustomerMoveResponse move(CustomerMoveParams params) throws Exception {
+  public CustomerMoveResponse move(CustomerMoveParams params) throws ChargebeeException {
     Response response = moveRaw(params);
 
     return CustomerMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** hierarchyForCustomer a customer (executes immediately) - returns raw Response. */
-  Response hierarchyForCustomerRaw(String customerId) throws Exception {
+  /** hierarchy a customer (executes immediately) - returns raw Response. */
+  Response hierarchyRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
 
     return get(path, null);
   }
 
-  /**
-   * hierarchyForCustomer a customer using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response hierarchyForCustomerRaw(String customerId, HierarchyForCustomerParams params)
-      throws Exception {
+  /** hierarchy a customer using immutable params (executes immediately) - returns raw Response. */
+  Response hierarchyRaw(String customerId, CustomerHierarchyParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
-  public HierarchyForCustomerResponse hierarchyForCustomer(
-      String customerId, HierarchyForCustomerParams params) throws Exception {
-    Response response = hierarchyForCustomerRaw(customerId, params);
-    return HierarchyForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerHierarchyResponse hierarchy(String customerId, CustomerHierarchyParams params)
+      throws ChargebeeException {
+    Response response = hierarchyRaw(customerId, params);
+    return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  public HierarchyForCustomerResponse hierarchyForCustomer(String customerId) throws Exception {
-    Response response = hierarchyForCustomerRaw(customerId);
-    return HierarchyForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerHierarchyResponse hierarchy(String customerId) throws ChargebeeException {
+    Response response = hierarchyRaw(customerId);
+    return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updatePaymentMethodForCustomer a customer (executes immediately) - returns raw Response. */
-  Response updatePaymentMethodForCustomerRaw(String customerId) throws Exception {
+  /** updatePaymentMethod a customer (executes immediately) - returns raw Response. */
+  Response updatePaymentMethodRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
@@ -392,11 +382,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updatePaymentMethodForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
+   * updatePaymentMethod a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response updatePaymentMethodForCustomerRaw(
-      String customerId, UpdatePaymentMethodForCustomerParams params) throws Exception {
+  Response updatePaymentMethodRaw(String customerId, CustomerUpdatePaymentMethodParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
@@ -404,107 +394,105 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updatePaymentMethodForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * updatePaymentMethod a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response updatePaymentMethodForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response updatePaymentMethodRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdatePaymentMethodForCustomerResponse updatePaymentMethodForCustomer(
-      String customerId, UpdatePaymentMethodForCustomerParams params) throws Exception {
-    Response response = updatePaymentMethodForCustomerRaw(customerId, params);
-    return UpdatePaymentMethodForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerUpdatePaymentMethodResponse updatePaymentMethod(
+      String customerId, CustomerUpdatePaymentMethodParams params) throws ChargebeeException {
+    Response response = updatePaymentMethodRaw(customerId, params);
+    return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a customer (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String customerId) throws Exception {
+  Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
     return get(path, null);
   }
 
-  public CustomerRetrieveResponse retrieve(String customerId) throws Exception {
+  public CustomerRetrieveResponse retrieve(String customerId) throws ChargebeeException {
     Response response = retrieveRaw(customerId);
     return CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a customer (executes immediately) - returns raw Response. */
-  Response updateRaw(String customerId) throws Exception {
+  Response updateRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
     return post(path, null);
   }
 
   /** update a customer using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String customerId, CustomerUpdateParams params) throws Exception {
+  Response updateRaw(String customerId, CustomerUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /** update a customer using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String customerId, String jsonPayload) throws Exception {
+  Response updateRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
   public CustomerUpdateResponse update(String customerId, CustomerUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(customerId, params);
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * hierarchyDetailForCustomer a customer using immutable params (executes immediately) - returns
-   * raw Response.
+   * listHierarchyDetail a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response hierarchyDetailForCustomerRaw(String customerId, HierarchyDetailForCustomerParams params)
-      throws Exception {
+  Response listHierarchyDetailRaw(String customerId, CustomerListHierarchyDetailParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * hierarchyDetailForCustomer a customer without params (executes immediately) - returns raw
-   * Response.
+   * listHierarchyDetail a customer without params (executes immediately) - returns raw Response.
    */
-  Response hierarchyDetailForCustomerRaw(String customerId) throws Exception {
+  Response listHierarchyDetailRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
     return get(path, null);
   }
 
   /**
-   * hierarchyDetailForCustomer a customer using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * listHierarchyDetail a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response hierarchyDetailForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response listHierarchyDetailRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public HierarchyDetailForCustomerResponse hierarchyDetailForCustomer(
-      String customerId, HierarchyDetailForCustomerParams params) throws Exception {
-    Response response = hierarchyDetailForCustomerRaw(customerId, params);
-    return HierarchyDetailForCustomerResponse.fromJson(
+  public CustomerListHierarchyDetailResponse listHierarchyDetail(
+      String customerId, CustomerListHierarchyDetailParams params) throws ChargebeeException {
+    Response response = listHierarchyDetailRaw(customerId, params);
+    return CustomerListHierarchyDetailResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
-  public HierarchyDetailForCustomerResponse hierarchyDetailForCustomer(String customerId)
-      throws Exception {
-    Response response = hierarchyDetailForCustomerRaw(customerId);
-    return HierarchyDetailForCustomerResponse.fromJson(
+  public CustomerListHierarchyDetailResponse listHierarchyDetail(String customerId)
+      throws ChargebeeException {
+    Response response = listHierarchyDetailRaw(customerId);
+    return CustomerListHierarchyDetailResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /** changeBillingDateForCustomer a customer (executes immediately) - returns raw Response. */
-  Response changeBillingDateForCustomerRaw(String customerId) throws Exception {
+  /** changeBillingDate a customer (executes immediately) - returns raw Response. */
+  Response changeBillingDateRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
@@ -513,11 +501,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * changeBillingDateForCustomer a customer using immutable params (executes immediately) - returns
-   * raw Response.
+   * changeBillingDate a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response changeBillingDateForCustomerRaw(
-      String customerId, ChangeBillingDateForCustomerParams params) throws Exception {
+  Response changeBillingDateRaw(String customerId, CustomerChangeBillingDateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
@@ -525,102 +513,96 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * changeBillingDateForCustomer a customer using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * changeBillingDate a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response changeBillingDateForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response changeBillingDateRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public ChangeBillingDateForCustomerResponse changeBillingDateForCustomer(
-      String customerId, ChangeBillingDateForCustomerParams params) throws Exception {
-    Response response = changeBillingDateForCustomerRaw(customerId, params);
-    return ChangeBillingDateForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerChangeBillingDateResponse changeBillingDate(
+      String customerId, CustomerChangeBillingDateParams params) throws ChargebeeException {
+    Response response = changeBillingDateRaw(customerId, params);
+    return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a customer using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(CustomerListParams params) throws Exception {
+  Response listRaw(CustomerListParams params) throws ChargebeeException {
 
     return get("/customers", params != null ? params.toQueryParams() : null);
   }
 
   /** list a customer without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/customers", null);
   }
 
   /** list a customer using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CustomerListResponse list(CustomerListParams params) throws Exception {
+  public CustomerListResponse list(CustomerListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public CustomerListResponse list() throws Exception {
+  public CustomerListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a customer using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CustomerCreateParams params) throws Exception {
+  Response createRaw(CustomerCreateParams params) throws ChargebeeException {
 
     return post("/customers", params != null ? params.toFormData() : null);
   }
 
   /** create a customer using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/customers", jsonPayload);
   }
 
-  public CustomerCreateResponse create(CustomerCreateParams params) throws Exception {
+  public CustomerCreateResponse create(CustomerCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CustomerCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addContactForCustomer a customer (executes immediately) - returns raw Response. */
-  Response addContactForCustomerRaw(String customerId) throws Exception {
+  /** addContact a customer (executes immediately) - returns raw Response. */
+  Response addContactRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
 
     return post(path, null);
   }
 
-  /**
-   * addContactForCustomer a customer using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response addContactForCustomerRaw(String customerId, AddContactForCustomerParams params)
-      throws Exception {
+  /** addContact a customer using immutable params (executes immediately) - returns raw Response. */
+  Response addContactRaw(String customerId, CustomerAddContactParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * addContactForCustomer a customer using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response addContactForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  /** addContact a customer using raw JSON payload (executes immediately) - returns raw Response. */
+  Response addContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public AddContactForCustomerResponse addContactForCustomer(
-      String customerId, AddContactForCustomerParams params) throws Exception {
-    Response response = addContactForCustomerRaw(customerId, params);
-    return AddContactForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerAddContactResponse addContact(String customerId, CustomerAddContactParams params)
+      throws ChargebeeException {
+    Response response = addContactRaw(customerId, params);
+    return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -628,7 +610,7 @@ public final class CustomerService extends BaseService<CustomerService> {
    * Response.
    */
   Response contactsForCustomerRaw(String customerId, ContactsForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -637,7 +619,7 @@ public final class CustomerService extends BaseService<CustomerService> {
   /**
    * contactsForCustomer a customer without params (executes immediately) - returns raw Response.
    */
-  Response contactsForCustomerRaw(String customerId) throws Exception {
+  Response contactsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
     return get(path, null);
@@ -647,29 +629,28 @@ public final class CustomerService extends BaseService<CustomerService> {
    * contactsForCustomer a customer using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response contactsForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response contactsForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ContactsForCustomerResponse contactsForCustomer(
-      String customerId, ContactsForCustomerParams params) throws Exception {
+      String customerId, ContactsForCustomerParams params) throws ChargebeeException {
     Response response = contactsForCustomerRaw(customerId, params);
     return ContactsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
-  public ContactsForCustomerResponse contactsForCustomer(String customerId) throws Exception {
+  public ContactsForCustomerResponse contactsForCustomer(String customerId)
+      throws ChargebeeException {
     Response response = contactsForCustomerRaw(customerId);
     return ContactsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /**
-   * deductPromotionalCreditsForCustomer a customer (executes immediately) - returns raw Response.
-   */
-  Response deductPromotionalCreditsForCustomerRaw(String customerId) throws Exception {
+  /** deductPromotionalCredits a customer (executes immediately) - returns raw Response. */
+  Response deductPromotionalCreditsRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
@@ -678,11 +659,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * deductPromotionalCreditsForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
+   * deductPromotionalCredits a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response deductPromotionalCreditsForCustomerRaw(
-      String customerId, DeductPromotionalCreditsForCustomerParams params) throws Exception {
+  Response deductPromotionalCreditsRaw(
+      String customerId, CustomerDeductPromotionalCreditsParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
@@ -690,26 +671,25 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * deductPromotionalCreditsForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * deductPromotionalCredits a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response deductPromotionalCreditsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response deductPromotionalCreditsRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public DeductPromotionalCreditsForCustomerResponse deductPromotionalCreditsForCustomer(
-      String customerId, DeductPromotionalCreditsForCustomerParams params) throws Exception {
-    Response response = deductPromotionalCreditsForCustomerRaw(customerId, params);
-    return DeductPromotionalCreditsForCustomerResponse.fromJson(
-        response.getBodyAsString(), response);
+  public CustomerDeductPromotionalCreditsResponse deductPromotionalCredits(
+      String customerId, CustomerDeductPromotionalCreditsParams params) throws ChargebeeException {
+    Response response = deductPromotionalCreditsRaw(customerId, params);
+    return CustomerDeductPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** clearPersonalDataForCustomer a customer (executes immediately) - returns raw Response. */
-  Response clearPersonalDataForCustomerRaw(String customerId) throws Exception {
+  /** clearPersonalData a customer (executes immediately) - returns raw Response. */
+  Response clearPersonalDataRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/clear_personal_data", "customer-id", customerId);
@@ -717,32 +697,32 @@ public final class CustomerService extends BaseService<CustomerService> {
     return post(path, null);
   }
 
-  public ClearPersonalDataForCustomerResponse clearPersonalDataForCustomer(String customerId)
-      throws Exception {
-    Response response = clearPersonalDataForCustomerRaw(customerId);
-    return ClearPersonalDataForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerClearPersonalDataResponse clearPersonalData(String customerId)
+      throws ChargebeeException {
+    Response response = clearPersonalDataRaw(customerId);
+    return CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** merge a customer using immutable params (executes immediately) - returns raw Response. */
-  Response mergeRaw(CustomerMergeParams params) throws Exception {
+  Response mergeRaw(CustomerMergeParams params) throws ChargebeeException {
 
     return post("/customers/merge", params != null ? params.toFormData() : null);
   }
 
   /** merge a customer using raw JSON payload (executes immediately) - returns raw Response. */
-  Response mergeRaw(String jsonPayload) throws Exception {
+  Response mergeRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/customers/merge", jsonPayload);
   }
 
-  public CustomerMergeResponse merge(CustomerMergeParams params) throws Exception {
+  public CustomerMergeResponse merge(CustomerMergeParams params) throws ChargebeeException {
     Response response = mergeRaw(params);
 
     return CustomerMergeResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** collectPaymentForCustomer a customer (executes immediately) - returns raw Response. */
-  Response collectPaymentForCustomerRaw(String customerId) throws Exception {
+  /** collectPayment a customer (executes immediately) - returns raw Response. */
+  Response collectPaymentRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
 
@@ -750,34 +730,32 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * collectPaymentForCustomer a customer using immutable params (executes immediately) - returns
-   * raw Response.
+   * collectPayment a customer using immutable params (executes immediately) - returns raw Response.
    */
-  Response collectPaymentForCustomerRaw(String customerId, CollectPaymentForCustomerParams params)
-      throws Exception {
+  Response collectPaymentRaw(String customerId, CustomerCollectPaymentParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * collectPaymentForCustomer a customer using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * collectPayment a customer using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response collectPaymentForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response collectPaymentRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public CollectPaymentForCustomerResponse collectPaymentForCustomer(
-      String customerId, CollectPaymentForCustomerParams params) throws Exception {
-    Response response = collectPaymentForCustomerRaw(customerId, params);
-    return CollectPaymentForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerCollectPaymentResponse collectPayment(
+      String customerId, CustomerCollectPaymentParams params) throws ChargebeeException {
+    Response response = collectPaymentRaw(customerId, params);
+    return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** recordExcessPaymentForCustomer a customer (executes immediately) - returns raw Response. */
-  Response recordExcessPaymentForCustomerRaw(String customerId) throws Exception {
+  /** recordExcessPayment a customer (executes immediately) - returns raw Response. */
+  Response recordExcessPaymentRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
@@ -786,113 +764,108 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * recordExcessPaymentForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response recordExcessPaymentForCustomerRaw(
-      String customerId, RecordExcessPaymentForCustomerParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * recordExcessPaymentForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response recordExcessPaymentForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
-    return postJson(path, jsonPayload);
-  }
-
-  public RecordExcessPaymentForCustomerResponse recordExcessPaymentForCustomer(
-      String customerId, RecordExcessPaymentForCustomerParams params) throws Exception {
-    Response response = recordExcessPaymentForCustomerRaw(customerId, params);
-    return RecordExcessPaymentForCustomerResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** setPromotionalCreditsForCustomer a customer (executes immediately) - returns raw Response. */
-  Response setPromotionalCreditsForCustomerRaw(String customerId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-
-    return post(path, null);
-  }
-
-  /**
-   * setPromotionalCreditsForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response setPromotionalCreditsForCustomerRaw(
-      String customerId, SetPromotionalCreditsForCustomerParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * setPromotionalCreditsForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response setPromotionalCreditsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
-    return postJson(path, jsonPayload);
-  }
-
-  public SetPromotionalCreditsForCustomerResponse setPromotionalCreditsForCustomer(
-      String customerId, SetPromotionalCreditsForCustomerParams params) throws Exception {
-    Response response = setPromotionalCreditsForCustomerRaw(customerId, params);
-    return SetPromotionalCreditsForCustomerResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** updateContactForCustomer a customer (executes immediately) - returns raw Response. */
-  Response updateContactForCustomerRaw(String customerId) throws Exception {
-    String path =
-        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
-
-    return post(path, null);
-  }
-
-  /**
-   * updateContactForCustomer a customer using immutable params (executes immediately) - returns raw
+   * recordExcessPayment a customer using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response updateContactForCustomerRaw(String customerId, UpdateContactForCustomerParams params)
-      throws Exception {
+  Response recordExcessPaymentRaw(String customerId, CustomerRecordExcessPaymentParams params)
+      throws ChargebeeException {
     String path =
-        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
+        buildPathWithParams(
+            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * updateContactForCustomer a customer using raw JSON payload (executes immediately) - returns raw
+   * recordExcessPayment a customer using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateContactForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response recordExcessPaymentRaw(String customerId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
+    return postJson(path, jsonPayload);
+  }
+
+  public CustomerRecordExcessPaymentResponse recordExcessPayment(
+      String customerId, CustomerRecordExcessPaymentParams params) throws ChargebeeException {
+    Response response = recordExcessPaymentRaw(customerId, params);
+    return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** setPromotionalCredits a customer (executes immediately) - returns raw Response. */
+  Response setPromotionalCreditsRaw(String customerId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
+
+    return post(path, null);
+  }
+
+  /**
+   * setPromotionalCredits a customer using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response setPromotionalCreditsRaw(String customerId, CustomerSetPromotionalCreditsParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * setPromotionalCredits a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response setPromotionalCreditsRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
+    return postJson(path, jsonPayload);
+  }
+
+  public CustomerSetPromotionalCreditsResponse setPromotionalCredits(
+      String customerId, CustomerSetPromotionalCreditsParams params) throws ChargebeeException {
+    Response response = setPromotionalCreditsRaw(customerId, params);
+    return CustomerSetPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** updateContact a customer (executes immediately) - returns raw Response. */
+  Response updateContactRaw(String customerId) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
+
+    return post(path, null);
+  }
+
+  /**
+   * updateContact a customer using immutable params (executes immediately) - returns raw Response.
+   */
+  Response updateContactRaw(String customerId, CustomerUpdateContactParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * updateContact a customer using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response updateContactRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateContactForCustomerResponse updateContactForCustomer(
-      String customerId, UpdateContactForCustomerParams params) throws Exception {
-    Response response = updateContactForCustomerRaw(customerId, params);
-    return UpdateContactForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerUpdateContactResponse updateContact(
+      String customerId, CustomerUpdateContactParams params) throws ChargebeeException {
+    Response response = updateContactRaw(customerId, params);
+    return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * updateHierarchySettingsForCustomer a customer (executes immediately) - returns raw Response.
-   */
-  Response updateHierarchySettingsForCustomerRaw(String customerId) throws Exception {
+  /** updateHierarchySettings a customer (executes immediately) - returns raw Response. */
+  Response updateHierarchySettingsRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
@@ -901,11 +874,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updateHierarchySettingsForCustomer a customer using immutable params (executes immediately) -
-   * returns raw Response.
+   * updateHierarchySettings a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response updateHierarchySettingsForCustomerRaw(
-      String customerId, UpdateHierarchySettingsForCustomerParams params) throws Exception {
+  Response updateHierarchySettingsRaw(
+      String customerId, CustomerUpdateHierarchySettingsParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
@@ -913,26 +886,25 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updateHierarchySettingsForCustomer a customer using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * updateHierarchySettings a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response updateHierarchySettingsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response updateHierarchySettingsRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateHierarchySettingsForCustomerResponse updateHierarchySettingsForCustomer(
-      String customerId, UpdateHierarchySettingsForCustomerParams params) throws Exception {
-    Response response = updateHierarchySettingsForCustomerRaw(customerId, params);
-    return UpdateHierarchySettingsForCustomerResponse.fromJson(
-        response.getBodyAsString(), response);
+  public CustomerUpdateHierarchySettingsResponse updateHierarchySettings(
+      String customerId, CustomerUpdateHierarchySettingsParams params) throws ChargebeeException {
+    Response response = updateHierarchySettingsRaw(customerId, params);
+    return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateBillingInfoForCustomer a customer (executes immediately) - returns raw Response. */
-  Response updateBillingInfoForCustomerRaw(String customerId) throws Exception {
+  /** updateBillingInfo a customer (executes immediately) - returns raw Response. */
+  Response updateBillingInfoRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
@@ -941,11 +913,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updateBillingInfoForCustomer a customer using immutable params (executes immediately) - returns
-   * raw Response.
+   * updateBillingInfo a customer using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response updateBillingInfoForCustomerRaw(
-      String customerId, UpdateBillingInfoForCustomerParams params) throws Exception {
+  Response updateBillingInfoRaw(String customerId, CustomerUpdateBillingInfoParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
@@ -953,19 +925,19 @@ public final class CustomerService extends BaseService<CustomerService> {
   }
 
   /**
-   * updateBillingInfoForCustomer a customer using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * updateBillingInfo a customer using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response updateBillingInfoForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response updateBillingInfoRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateBillingInfoForCustomerResponse updateBillingInfoForCustomer(
-      String customerId, UpdateBillingInfoForCustomerParams params) throws Exception {
-    Response response = updateBillingInfoForCustomerRaw(customerId, params);
-    return UpdateBillingInfoForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public CustomerUpdateBillingInfoResponse updateBillingInfo(
+      String customerId, CustomerUpdateBillingInfoParams params) throws ChargebeeException {
+    Response response = updateBillingInfoRaw(customerId, params);
+    return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 }

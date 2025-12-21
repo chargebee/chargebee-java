@@ -263,13 +263,13 @@ public final class PriceVariantListParams {
         this.builder = builder;
       }
 
-      public PriceVariantListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public PriceVariantListBuilder isPresent(boolean value) {
+        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
         return builder;
       }
 
-      public PriceVariantListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
+      public PriceVariantListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }

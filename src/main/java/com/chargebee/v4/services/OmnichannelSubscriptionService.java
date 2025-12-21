@@ -9,15 +9,16 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.omnichannelSubscription.params.MoveForOmnichannelSubscriptionParams;
+import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelSubscriptionMoveParams;
 
 import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelTransactionsForOmnichannelSubscriptionParams;
 
 import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelSubscriptionListParams;
 
-import com.chargebee.v4.models.omnichannelSubscription.responses.MoveForOmnichannelSubscriptionResponse;
+import com.chargebee.v4.models.omnichannelSubscription.responses.OmnichannelSubscriptionMoveResponse;
 
 import com.chargebee.v4.models.omnichannelSubscription.responses.OmnichannelSubscriptionRetrieveResponse;
 
@@ -61,11 +62,8 @@ public final class OmnichannelSubscriptionService
 
   // === Operations ===
 
-  /**
-   * moveForOmnichannelSubscription a omnichannelSubscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response moveForOmnichannelSubscriptionRaw(String omnichannelSubscriptionId) throws Exception {
+  /** move a omnichannelSubscription (executes immediately) - returns raw Response. */
+  Response moveRaw(String omnichannelSubscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
@@ -76,12 +74,11 @@ public final class OmnichannelSubscriptionService
   }
 
   /**
-   * moveForOmnichannelSubscription a omnichannelSubscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * move a omnichannelSubscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response moveForOmnichannelSubscriptionRaw(
-      String omnichannelSubscriptionId, MoveForOmnichannelSubscriptionParams params)
-      throws Exception {
+  Response moveRaw(String omnichannelSubscriptionId, OmnichannelSubscriptionMoveParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
@@ -91,11 +88,10 @@ public final class OmnichannelSubscriptionService
   }
 
   /**
-   * moveForOmnichannelSubscription a omnichannelSubscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * move a omnichannelSubscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response moveForOmnichannelSubscriptionRaw(String omnichannelSubscriptionId, String jsonPayload)
-      throws Exception {
+  Response moveRaw(String omnichannelSubscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
@@ -104,15 +100,15 @@ public final class OmnichannelSubscriptionService
     return postJson(path, jsonPayload);
   }
 
-  public MoveForOmnichannelSubscriptionResponse moveForOmnichannelSubscription(
-      String omnichannelSubscriptionId, MoveForOmnichannelSubscriptionParams params)
-      throws Exception {
-    Response response = moveForOmnichannelSubscriptionRaw(omnichannelSubscriptionId, params);
-    return MoveForOmnichannelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public OmnichannelSubscriptionMoveResponse move(
+      String omnichannelSubscriptionId, OmnichannelSubscriptionMoveParams params)
+      throws ChargebeeException {
+    Response response = moveRaw(omnichannelSubscriptionId, params);
+    return OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a omnichannelSubscription (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String omnichannelSubscriptionId) throws Exception {
+  Response retrieveRaw(String omnichannelSubscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}",
@@ -123,7 +119,7 @@ public final class OmnichannelSubscriptionService
   }
 
   public OmnichannelSubscriptionRetrieveResponse retrieve(String omnichannelSubscriptionId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(omnichannelSubscriptionId);
     return OmnichannelSubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -135,7 +131,7 @@ public final class OmnichannelSubscriptionService
   Response omnichannelTransactionsForOmnichannelSubscriptionRaw(
       String omnichannelSubscriptionId,
       OmnichannelTransactionsForOmnichannelSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
@@ -149,7 +145,7 @@ public final class OmnichannelSubscriptionService
    * (executes immediately) - returns raw Response.
    */
   Response omnichannelTransactionsForOmnichannelSubscriptionRaw(String omnichannelSubscriptionId)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
@@ -163,7 +159,7 @@ public final class OmnichannelSubscriptionService
    * payload (executes immediately) - returns raw Response.
    */
   Response omnichannelTransactionsForOmnichannelSubscriptionRaw(
-      String omnichannelSubscriptionId, String jsonPayload) throws Exception {
+      String omnichannelSubscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
@@ -176,7 +172,7 @@ public final class OmnichannelSubscriptionService
       omnichannelTransactionsForOmnichannelSubscription(
           String omnichannelSubscriptionId,
           OmnichannelTransactionsForOmnichannelSubscriptionParams params)
-          throws Exception {
+          throws ChargebeeException {
     Response response =
         omnichannelTransactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId, params);
     return OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
@@ -185,7 +181,7 @@ public final class OmnichannelSubscriptionService
 
   public OmnichannelTransactionsForOmnichannelSubscriptionResponse
       omnichannelTransactionsForOmnichannelSubscription(String omnichannelSubscriptionId)
-          throws Exception {
+          throws ChargebeeException {
     Response response =
         omnichannelTransactionsForOmnichannelSubscriptionRaw(omnichannelSubscriptionId);
     return OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
@@ -196,7 +192,7 @@ public final class OmnichannelSubscriptionService
    * list a omnichannelSubscription using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(OmnichannelSubscriptionListParams params) throws Exception {
+  Response listRaw(OmnichannelSubscriptionListParams params) throws ChargebeeException {
 
     return get("/omnichannel_subscriptions", params != null ? params.toQueryParams() : null);
   }
@@ -204,7 +200,7 @@ public final class OmnichannelSubscriptionService
   /**
    * list a omnichannelSubscription without params (executes immediately) - returns raw Response.
    */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/omnichannel_subscriptions", null);
   }
@@ -213,20 +209,20 @@ public final class OmnichannelSubscriptionService
    * list a omnichannelSubscription using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public OmnichannelSubscriptionListResponse list(OmnichannelSubscriptionListParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return OmnichannelSubscriptionListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public OmnichannelSubscriptionListResponse list() throws Exception {
+  public OmnichannelSubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return OmnichannelSubscriptionListResponse.fromJson(
         response.getBodyAsString(), this, null, response);

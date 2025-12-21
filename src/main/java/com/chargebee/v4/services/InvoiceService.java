@@ -9,37 +9,38 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.invoice.params.DeleteLineItemsForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceDeleteLineItemsParams;
 
-import com.chargebee.v4.models.invoice.params.RemoveCreditNoteForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRemoveCreditNoteParams;
 
-import com.chargebee.v4.models.invoice.params.RemovePaymentForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRemovePaymentParams;
 
-import com.chargebee.v4.models.invoice.params.StopDunningForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceStopDunningParams;
 
-import com.chargebee.v4.models.invoice.params.ApplyPaymentsForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceApplyPaymentsParams;
 
-import com.chargebee.v4.models.invoice.params.ApplyPaymentScheduleSchemeForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceApplyPaymentScheduleSchemeParams;
 
 import com.chargebee.v4.models.invoice.params.VoidInvoiceParams;
 
-import com.chargebee.v4.models.invoice.params.AddChargeForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceAddChargeParams;
 
-import com.chargebee.v4.models.invoice.params.WriteOffForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceWriteOffParams;
 
-import com.chargebee.v4.models.invoice.params.AddChargeItemForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceAddChargeItemParams;
 
-import com.chargebee.v4.models.invoice.params.PauseDunningForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoicePauseDunningParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceListParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceCreateParams;
 
-import com.chargebee.v4.models.invoice.params.CloseForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceCloseParams;
 
-import com.chargebee.v4.models.invoice.params.ApplyCreditsForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceApplyCreditsParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceRetrieveParams;
 
@@ -47,75 +48,75 @@ import com.chargebee.v4.models.invoice.params.InvoiceCreateForChargeItemParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceCreateForChargeItemsAndChargesParams;
 
-import com.chargebee.v4.models.invoice.params.DeleteImportedForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceDeleteImportedParams;
 
-import com.chargebee.v4.models.invoice.params.UpdateDetailsForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceUpdateDetailsParams;
 
 import com.chargebee.v4.models.invoice.params.InvoicesForCustomerParams;
 
-import com.chargebee.v4.models.invoice.params.RecordPaymentForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRecordPaymentParams;
 
-import com.chargebee.v4.models.invoice.params.DeleteInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceDeleteParams;
 
 import com.chargebee.v4.models.invoice.params.ImportInvoiceParams;
 
-import com.chargebee.v4.models.invoice.params.ResumeDunningForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceResumeDunningParams;
 
-import com.chargebee.v4.models.invoice.params.RecordTaxWithheldForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRecordTaxWithheldParams;
 
-import com.chargebee.v4.models.invoice.params.RemoveTaxWithheldForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRemoveTaxWithheldParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceListPaymentReferenceNumbersParams;
 
-import com.chargebee.v4.models.invoice.params.CollectPaymentForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceCollectPaymentParams;
 
-import com.chargebee.v4.models.invoice.params.RefundForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRefundParams;
 
-import com.chargebee.v4.models.invoice.params.RecordRefundForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceRecordRefundParams;
 
-import com.chargebee.v4.models.invoice.params.PdfForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoicePdfParams;
 
 import com.chargebee.v4.models.invoice.params.InvoicesForSubscriptionParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceChargeAddonParams;
 
-import com.chargebee.v4.models.invoice.params.AddAddonChargeForInvoiceParams;
+import com.chargebee.v4.models.invoice.params.InvoiceAddAddonChargeParams;
 
 import com.chargebee.v4.models.invoice.params.InvoiceChargeParams;
 
-import com.chargebee.v4.models.invoice.responses.DeleteLineItemsForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceDeleteLineItemsResponse;
 
-import com.chargebee.v4.models.invoice.responses.RemoveCreditNoteForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRemoveCreditNoteResponse;
 
-import com.chargebee.v4.models.invoice.responses.RemovePaymentForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRemovePaymentResponse;
 
-import com.chargebee.v4.models.invoice.responses.StopDunningForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceStopDunningResponse;
 
-import com.chargebee.v4.models.invoice.responses.ApplyPaymentsForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceApplyPaymentsResponse;
 
-import com.chargebee.v4.models.invoice.responses.ApplyPaymentScheduleSchemeForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceApplyPaymentScheduleSchemeResponse;
 
 import com.chargebee.v4.models.invoice.responses.VoidInvoiceResponse;
 
-import com.chargebee.v4.models.invoice.responses.AddChargeForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceAddChargeResponse;
 
-import com.chargebee.v4.models.invoice.responses.SendEinvoiceForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.SendEinvoiceResponse;
 
-import com.chargebee.v4.models.invoice.responses.PaymentSchedulesForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoicePaymentSchedulesResponse;
 
-import com.chargebee.v4.models.invoice.responses.WriteOffForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceWriteOffResponse;
 
-import com.chargebee.v4.models.invoice.responses.AddChargeItemForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceAddChargeItemResponse;
 
-import com.chargebee.v4.models.invoice.responses.PauseDunningForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoicePauseDunningResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceListResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceCreateResponse;
 
-import com.chargebee.v4.models.invoice.responses.CloseForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceCloseResponse;
 
-import com.chargebee.v4.models.invoice.responses.ApplyCreditsForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceApplyCreditsResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceRetrieveResponse;
 
@@ -123,45 +124,45 @@ import com.chargebee.v4.models.invoice.responses.InvoiceCreateForChargeItemRespo
 
 import com.chargebee.v4.models.invoice.responses.InvoiceCreateForChargeItemsAndChargesResponse;
 
-import com.chargebee.v4.models.invoice.responses.DeleteImportedForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceDeleteImportedResponse;
 
-import com.chargebee.v4.models.invoice.responses.UpdateDetailsForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceUpdateDetailsResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoicesForCustomerResponse;
 
-import com.chargebee.v4.models.invoice.responses.RecordPaymentForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRecordPaymentResponse;
 
-import com.chargebee.v4.models.invoice.responses.DeleteInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceDeleteResponse;
 
 import com.chargebee.v4.models.invoice.responses.ImportInvoiceResponse;
 
-import com.chargebee.v4.models.invoice.responses.ResumeDunningForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceResumeDunningResponse;
 
-import com.chargebee.v4.models.invoice.responses.RecordTaxWithheldForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRecordTaxWithheldResponse;
 
-import com.chargebee.v4.models.invoice.responses.ResendEinvoiceForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.ResendEinvoiceResponse;
 
-import com.chargebee.v4.models.invoice.responses.RemoveTaxWithheldForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRemoveTaxWithheldResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceListPaymentReferenceNumbersResponse;
 
-import com.chargebee.v4.models.invoice.responses.CollectPaymentForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceCollectPaymentResponse;
 
-import com.chargebee.v4.models.invoice.responses.SyncUsagesForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceSyncUsagesResponse;
 
-import com.chargebee.v4.models.invoice.responses.RefundForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRefundResponse;
 
-import com.chargebee.v4.models.invoice.responses.RecordRefundForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceRecordRefundResponse;
 
-import com.chargebee.v4.models.invoice.responses.PdfForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoicePdfResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoicesForSubscriptionResponse;
 
-import com.chargebee.v4.models.invoice.responses.DownloadEinvoiceForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.DownloadEinvoiceResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceChargeAddonResponse;
 
-import com.chargebee.v4.models.invoice.responses.AddAddonChargeForInvoiceResponse;
+import com.chargebee.v4.models.invoice.responses.InvoiceAddAddonChargeResponse;
 
 import com.chargebee.v4.models.invoice.responses.InvoiceChargeResponse;
 
@@ -199,8 +200,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   // === Operations ===
 
-  /** deleteLineItemsForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response deleteLineItemsForInvoiceRaw(String invoiceId) throws Exception {
+  /** deleteLineItems a invoice (executes immediately) - returns raw Response. */
+  Response deleteLineItemsRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
 
@@ -208,34 +209,32 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * deleteLineItemsForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * deleteLineItems a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response deleteLineItemsForInvoiceRaw(String invoiceId, DeleteLineItemsForInvoiceParams params)
-      throws Exception {
+  Response deleteLineItemsRaw(String invoiceId, InvoiceDeleteLineItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * deleteLineItemsForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * deleteLineItems a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response deleteLineItemsForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response deleteLineItemsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_line_items", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteLineItemsForInvoiceResponse deleteLineItemsForInvoice(
-      String invoiceId, DeleteLineItemsForInvoiceParams params) throws Exception {
-    Response response = deleteLineItemsForInvoiceRaw(invoiceId, params);
-    return DeleteLineItemsForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceDeleteLineItemsResponse deleteLineItems(
+      String invoiceId, InvoiceDeleteLineItemsParams params) throws ChargebeeException {
+    Response response = deleteLineItemsRaw(invoiceId, params);
+    return InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** removeCreditNoteForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response removeCreditNoteForInvoiceRaw(String invoiceId) throws Exception {
+  /** removeCreditNote a invoice (executes immediately) - returns raw Response. */
+  Response removeCreditNoteRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
 
@@ -243,297 +242,270 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * removeCreditNoteForInvoice a invoice using immutable params (executes immediately) - returns
+   * removeCreditNote a invoice using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response removeCreditNoteRaw(String invoiceId, InvoiceRemoveCreditNoteParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * removeCreditNote a invoice using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response removeCreditNoteRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InvoiceRemoveCreditNoteResponse removeCreditNote(
+      String invoiceId, InvoiceRemoveCreditNoteParams params) throws ChargebeeException {
+    Response response = removeCreditNoteRaw(invoiceId, params);
+    return InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** removePayment a invoice (executes immediately) - returns raw Response. */
+  Response removePaymentRaw(String invoiceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
+
+    return post(path, null);
+  }
+
+  /**
+   * removePayment a invoice using immutable params (executes immediately) - returns raw Response.
+   */
+  Response removePaymentRaw(String invoiceId, InvoiceRemovePaymentParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * removePayment a invoice using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response removePaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InvoiceRemovePaymentResponse removePayment(
+      String invoiceId, InvoiceRemovePaymentParams params) throws ChargebeeException {
+    Response response = removePaymentRaw(invoiceId, params);
+    return InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** stopDunning a invoice (executes immediately) - returns raw Response. */
+  Response stopDunningRaw(String invoiceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
+
+    return post(path, null);
+  }
+
+  /** stopDunning a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response stopDunningRaw(String invoiceId, InvoiceStopDunningParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
+    return post(path, params.toFormData());
+  }
+
+  /** stopDunning a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response stopDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InvoiceStopDunningResponse stopDunning(String invoiceId, InvoiceStopDunningParams params)
+      throws ChargebeeException {
+    Response response = stopDunningRaw(invoiceId, params);
+    return InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** applyPayments a invoice (executes immediately) - returns raw Response. */
+  Response applyPaymentsRaw(String invoiceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
+
+    return post(path, null);
+  }
+
+  /**
+   * applyPayments a invoice using immutable params (executes immediately) - returns raw Response.
+   */
+  Response applyPaymentsRaw(String invoiceId, InvoiceApplyPaymentsParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * applyPayments a invoice using raw JSON payload (executes immediately) - returns raw Response.
+   */
+  Response applyPaymentsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InvoiceApplyPaymentsResponse applyPayments(
+      String invoiceId, InvoiceApplyPaymentsParams params) throws ChargebeeException {
+    Response response = applyPaymentsRaw(invoiceId, params);
+    return InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** applyPaymentScheduleScheme a invoice (executes immediately) - returns raw Response. */
+  Response applyPaymentScheduleSchemeRaw(String invoiceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
+
+    return post(path, null);
+  }
+
+  /**
+   * applyPaymentScheduleScheme a invoice using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response removeCreditNoteForInvoiceRaw(String invoiceId, RemoveCreditNoteForInvoiceParams params)
-      throws Exception {
+  Response applyPaymentScheduleSchemeRaw(
+      String invoiceId, InvoiceApplyPaymentScheduleSchemeParams params) throws ChargebeeException {
     String path =
-        buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
+        buildPathWithParams(
+            "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * removeCreditNoteForInvoice a invoice using raw JSON payload (executes immediately) - returns
+   * applyPaymentScheduleScheme a invoice using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response removeCreditNoteForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/remove_credit_note", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public RemoveCreditNoteForInvoiceResponse removeCreditNoteForInvoice(
-      String invoiceId, RemoveCreditNoteForInvoiceParams params) throws Exception {
-    Response response = removeCreditNoteForInvoiceRaw(invoiceId, params);
-    return RemoveCreditNoteForInvoiceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** removePaymentForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response removePaymentForInvoiceRaw(String invoiceId) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-
-    return post(path, null);
-  }
-
-  /**
-   * removePaymentForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response removePaymentForInvoiceRaw(String invoiceId, RemovePaymentForInvoiceParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * removePaymentForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response removePaymentForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/remove_payment", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public RemovePaymentForInvoiceResponse removePaymentForInvoice(
-      String invoiceId, RemovePaymentForInvoiceParams params) throws Exception {
-    Response response = removePaymentForInvoiceRaw(invoiceId, params);
-    return RemovePaymentForInvoiceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** stopDunningForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response stopDunningForInvoiceRaw(String invoiceId) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-
-    return post(path, null);
-  }
-
-  /**
-   * stopDunningForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response stopDunningForInvoiceRaw(String invoiceId, StopDunningForInvoiceParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * stopDunningForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response stopDunningForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/stop_dunning", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public StopDunningForInvoiceResponse stopDunningForInvoice(
-      String invoiceId, StopDunningForInvoiceParams params) throws Exception {
-    Response response = stopDunningForInvoiceRaw(invoiceId, params);
-    return StopDunningForInvoiceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /** applyPaymentsForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response applyPaymentsForInvoiceRaw(String invoiceId) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-
-    return post(path, null);
-  }
-
-  /**
-   * applyPaymentsForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response applyPaymentsForInvoiceRaw(String invoiceId, ApplyPaymentsForInvoiceParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * applyPaymentsForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response applyPaymentsForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams("/invoices/{invoice-id}/apply_payments", "invoice-id", invoiceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public ApplyPaymentsForInvoiceResponse applyPaymentsForInvoice(
-      String invoiceId, ApplyPaymentsForInvoiceParams params) throws Exception {
-    Response response = applyPaymentsForInvoiceRaw(invoiceId, params);
-    return ApplyPaymentsForInvoiceResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * applyPaymentScheduleSchemeForInvoice a invoice (executes immediately) - returns raw Response.
-   */
-  Response applyPaymentScheduleSchemeForInvoiceRaw(String invoiceId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
-
-    return post(path, null);
-  }
-
-  /**
-   * applyPaymentScheduleSchemeForInvoice a invoice using immutable params (executes immediately) -
-   * returns raw Response.
-   */
-  Response applyPaymentScheduleSchemeForInvoiceRaw(
-      String invoiceId, ApplyPaymentScheduleSchemeForInvoiceParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * applyPaymentScheduleSchemeForInvoice a invoice using raw JSON payload (executes immediately) -
-   * returns raw Response.
-   */
-  Response applyPaymentScheduleSchemeForInvoiceRaw(String invoiceId, String jsonPayload)
-      throws Exception {
+  Response applyPaymentScheduleSchemeRaw(String invoiceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/invoices/{invoice-id}/apply_payment_schedule_scheme", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public ApplyPaymentScheduleSchemeForInvoiceResponse applyPaymentScheduleSchemeForInvoice(
-      String invoiceId, ApplyPaymentScheduleSchemeForInvoiceParams params) throws Exception {
-    Response response = applyPaymentScheduleSchemeForInvoiceRaw(invoiceId, params);
-    return ApplyPaymentScheduleSchemeForInvoiceResponse.fromJson(
-        response.getBodyAsString(), response);
+  public InvoiceApplyPaymentScheduleSchemeResponse applyPaymentScheduleScheme(
+      String invoiceId, InvoiceApplyPaymentScheduleSchemeParams params) throws ChargebeeException {
+    Response response = applyPaymentScheduleSchemeRaw(invoiceId, params);
+    return InvoiceApplyPaymentScheduleSchemeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** voidInvoice a invoice (executes immediately) - returns raw Response. */
-  Response voidInvoiceRaw(String invoiceId) throws Exception {
+  Response voidInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
   /** voidInvoice a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response voidInvoiceRaw(String invoiceId, VoidInvoiceParams params) throws Exception {
+  Response voidInvoiceRaw(String invoiceId, VoidInvoiceParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /** voidInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response. */
-  Response voidInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response voidInvoiceRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/void", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
   public VoidInvoiceResponse voidInvoice(String invoiceId, VoidInvoiceParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = voidInvoiceRaw(invoiceId, params);
     return VoidInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addChargeForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response addChargeForInvoiceRaw(String invoiceId) throws Exception {
+  /** addCharge a invoice (executes immediately) - returns raw Response. */
+  Response addChargeRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * addChargeForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response addChargeForInvoiceRaw(String invoiceId, AddChargeForInvoiceParams params)
-      throws Exception {
+  /** addCharge a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response addChargeRaw(String invoiceId, InvoiceAddChargeParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * addChargeForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response addChargeForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** addCharge a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response addChargeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/add_charge", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public AddChargeForInvoiceResponse addChargeForInvoice(
-      String invoiceId, AddChargeForInvoiceParams params) throws Exception {
-    Response response = addChargeForInvoiceRaw(invoiceId, params);
-    return AddChargeForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceAddChargeResponse addCharge(String invoiceId, InvoiceAddChargeParams params)
+      throws ChargebeeException {
+    Response response = addChargeRaw(invoiceId, params);
+    return InvoiceAddChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** sendEinvoiceForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response sendEinvoiceForInvoiceRaw(String invoiceId) throws Exception {
+  /** sendEinvoice a invoice (executes immediately) - returns raw Response. */
+  Response sendEinvoiceRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/send_einvoice", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  public SendEinvoiceForInvoiceResponse sendEinvoiceForInvoice(String invoiceId) throws Exception {
-    Response response = sendEinvoiceForInvoiceRaw(invoiceId);
-    return SendEinvoiceForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public SendEinvoiceResponse sendEinvoice(String invoiceId) throws ChargebeeException {
+    Response response = sendEinvoiceRaw(invoiceId);
+    return SendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** paymentSchedulesForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response paymentSchedulesForInvoiceRaw(String invoiceId) throws Exception {
+  /** paymentSchedules a invoice (executes immediately) - returns raw Response. */
+  Response paymentSchedulesRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_schedules", "invoice-id", invoiceId);
 
     return get(path, null);
   }
 
-  public PaymentSchedulesForInvoiceResponse paymentSchedulesForInvoice(String invoiceId)
-      throws Exception {
-    Response response = paymentSchedulesForInvoiceRaw(invoiceId);
-    return PaymentSchedulesForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoicePaymentSchedulesResponse paymentSchedules(String invoiceId)
+      throws ChargebeeException {
+    Response response = paymentSchedulesRaw(invoiceId);
+    return InvoicePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** writeOffForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response writeOffForInvoiceRaw(String invoiceId) throws Exception {
+  /** writeOff a invoice (executes immediately) - returns raw Response. */
+  Response writeOffRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * writeOffForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response writeOffForInvoiceRaw(String invoiceId, WriteOffForInvoiceParams params)
-      throws Exception {
+  /** writeOff a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response writeOffRaw(String invoiceId, InvoiceWriteOffParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * writeOffForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response writeOffForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** writeOff a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response writeOffRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/write_off", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public WriteOffForInvoiceResponse writeOffForInvoice(
-      String invoiceId, WriteOffForInvoiceParams params) throws Exception {
-    Response response = writeOffForInvoiceRaw(invoiceId, params);
-    return WriteOffForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceWriteOffResponse writeOff(String invoiceId, InvoiceWriteOffParams params)
+      throws ChargebeeException {
+    Response response = writeOffRaw(invoiceId, params);
+    return InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addChargeItemForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response addChargeItemForInvoiceRaw(String invoiceId) throws Exception {
+  /** addChargeItem a invoice (executes immediately) - returns raw Response. */
+  Response addChargeItemRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
 
@@ -541,34 +513,32 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * addChargeItemForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * addChargeItem a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response addChargeItemForInvoiceRaw(String invoiceId, AddChargeItemForInvoiceParams params)
-      throws Exception {
+  Response addChargeItemRaw(String invoiceId, InvoiceAddChargeItemParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addChargeItemForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * addChargeItem a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response addChargeItemForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response addChargeItemRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_charge_item", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public AddChargeItemForInvoiceResponse addChargeItemForInvoice(
-      String invoiceId, AddChargeItemForInvoiceParams params) throws Exception {
-    Response response = addChargeItemForInvoiceRaw(invoiceId, params);
-    return AddChargeItemForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceAddChargeItemResponse addChargeItem(
+      String invoiceId, InvoiceAddChargeItemParams params) throws ChargebeeException {
+    Response response = addChargeItemRaw(invoiceId, params);
+    return InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** pauseDunningForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response pauseDunningForInvoiceRaw(String invoiceId) throws Exception {
+  /** pauseDunning a invoice (executes immediately) - returns raw Response. */
+  Response pauseDunningRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
 
@@ -576,110 +546,104 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * pauseDunningForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * pauseDunning a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response pauseDunningForInvoiceRaw(String invoiceId, PauseDunningForInvoiceParams params)
-      throws Exception {
+  Response pauseDunningRaw(String invoiceId, InvoicePauseDunningParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * pauseDunningForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * pauseDunning a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response pauseDunningForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response pauseDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/pause_dunning", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public PauseDunningForInvoiceResponse pauseDunningForInvoice(
-      String invoiceId, PauseDunningForInvoiceParams params) throws Exception {
-    Response response = pauseDunningForInvoiceRaw(invoiceId, params);
-    return PauseDunningForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoicePauseDunningResponse pauseDunning(
+      String invoiceId, InvoicePauseDunningParams params) throws ChargebeeException {
+    Response response = pauseDunningRaw(invoiceId, params);
+    return InvoicePauseDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(InvoiceListParams params) throws Exception {
+  Response listRaw(InvoiceListParams params) throws ChargebeeException {
 
     return get("/invoices", params != null ? params.toQueryParams() : null);
   }
 
   /** list a invoice without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/invoices", null);
   }
 
   /** list a invoice using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public InvoiceListResponse list(InvoiceListParams params) throws Exception {
+  public InvoiceListResponse list(InvoiceListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return InvoiceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public InvoiceListResponse list() throws Exception {
+  public InvoiceListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return InvoiceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(InvoiceCreateParams params) throws Exception {
+  Response createRaw(InvoiceCreateParams params) throws ChargebeeException {
 
     return post("/invoices", params != null ? params.toFormData() : null);
   }
 
   /** create a invoice using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices", jsonPayload);
   }
 
-  public InvoiceCreateResponse create(InvoiceCreateParams params) throws Exception {
+  public InvoiceCreateResponse create(InvoiceCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return InvoiceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** closeForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response closeForInvoiceRaw(String invoiceId) throws Exception {
+  /** close a invoice (executes immediately) - returns raw Response. */
+  Response closeRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * closeForInvoice a invoice using immutable params (executes immediately) - returns raw Response.
-   */
-  Response closeForInvoiceRaw(String invoiceId, CloseForInvoiceParams params) throws Exception {
+  /** close a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response closeRaw(String invoiceId, InvoiceCloseParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * closeForInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response closeForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** close a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response closeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/close", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public CloseForInvoiceResponse closeForInvoice(String invoiceId, CloseForInvoiceParams params)
-      throws Exception {
-    Response response = closeForInvoiceRaw(invoiceId, params);
-    return CloseForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceCloseResponse close(String invoiceId, InvoiceCloseParams params)
+      throws ChargebeeException {
+    Response response = closeRaw(invoiceId, params);
+    return InvoiceCloseResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** applyCreditsForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response applyCreditsForInvoiceRaw(String invoiceId) throws Exception {
+  /** applyCredits a invoice (executes immediately) - returns raw Response. */
+  Response applyCreditsRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
 
@@ -687,52 +651,50 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * applyCreditsForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * applyCredits a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response applyCreditsForInvoiceRaw(String invoiceId, ApplyCreditsForInvoiceParams params)
-      throws Exception {
+  Response applyCreditsRaw(String invoiceId, InvoiceApplyCreditsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * applyCreditsForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * applyCredits a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response applyCreditsForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response applyCreditsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/apply_credits", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public ApplyCreditsForInvoiceResponse applyCreditsForInvoice(
-      String invoiceId, ApplyCreditsForInvoiceParams params) throws Exception {
-    Response response = applyCreditsForInvoiceRaw(invoiceId, params);
-    return ApplyCreditsForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceApplyCreditsResponse applyCredits(
+      String invoiceId, InvoiceApplyCreditsParams params) throws ChargebeeException {
+    Response response = applyCreditsRaw(invoiceId, params);
+    return InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a invoice (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String invoiceId) throws Exception {
+  Response retrieveRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
 
     return get(path, null);
   }
 
   /** retrieve a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String invoiceId, InvoiceRetrieveParams params) throws Exception {
+  Response retrieveRaw(String invoiceId, InvoiceRetrieveParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}", "invoice-id", invoiceId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
   public InvoiceRetrieveResponse retrieve(String invoiceId, InvoiceRetrieveParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(invoiceId, params);
     return InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  public InvoiceRetrieveResponse retrieve(String invoiceId) throws Exception {
+  public InvoiceRetrieveResponse retrieve(String invoiceId) throws ChargebeeException {
     Response response = retrieveRaw(invoiceId);
     return InvoiceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -741,7 +703,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * createForChargeItem a invoice using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createForChargeItemRaw(InvoiceCreateForChargeItemParams params) throws Exception {
+  Response createForChargeItemRaw(InvoiceCreateForChargeItemParams params)
+      throws ChargebeeException {
 
     return post("/invoices/create_for_charge_item", params != null ? params.toFormData() : null);
   }
@@ -750,13 +713,13 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * createForChargeItem a invoice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createForChargeItemRaw(String jsonPayload) throws Exception {
+  Response createForChargeItemRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices/create_for_charge_item", jsonPayload);
   }
 
   public InvoiceCreateForChargeItemResponse createForChargeItem(
-      InvoiceCreateForChargeItemParams params) throws Exception {
+      InvoiceCreateForChargeItemParams params) throws ChargebeeException {
     Response response = createForChargeItemRaw(params);
 
     return InvoiceCreateForChargeItemResponse.fromJson(response.getBodyAsString(), response);
@@ -767,7 +730,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * returns raw Response.
    */
   Response createForChargeItemsAndChargesRaw(InvoiceCreateForChargeItemsAndChargesParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/invoices/create_for_charge_items_and_charges",
@@ -778,21 +741,21 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * createForChargeItemsAndCharges a invoice using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response createForChargeItemsAndChargesRaw(String jsonPayload) throws Exception {
+  Response createForChargeItemsAndChargesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices/create_for_charge_items_and_charges", jsonPayload);
   }
 
   public InvoiceCreateForChargeItemsAndChargesResponse createForChargeItemsAndCharges(
-      InvoiceCreateForChargeItemsAndChargesParams params) throws Exception {
+      InvoiceCreateForChargeItemsAndChargesParams params) throws ChargebeeException {
     Response response = createForChargeItemsAndChargesRaw(params);
 
     return InvoiceCreateForChargeItemsAndChargesResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** deleteImportedForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response deleteImportedForInvoiceRaw(String invoiceId) throws Exception {
+  /** deleteImported a invoice (executes immediately) - returns raw Response. */
+  Response deleteImportedRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
 
@@ -800,34 +763,32 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * deleteImportedForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * deleteImported a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response deleteImportedForInvoiceRaw(String invoiceId, DeleteImportedForInvoiceParams params)
-      throws Exception {
+  Response deleteImportedRaw(String invoiceId, InvoiceDeleteImportedParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * deleteImportedForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * deleteImported a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response deleteImportedForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response deleteImportedRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/delete_imported", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteImportedForInvoiceResponse deleteImportedForInvoice(
-      String invoiceId, DeleteImportedForInvoiceParams params) throws Exception {
-    Response response = deleteImportedForInvoiceRaw(invoiceId, params);
-    return DeleteImportedForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceDeleteImportedResponse deleteImported(
+      String invoiceId, InvoiceDeleteImportedParams params) throws ChargebeeException {
+    Response response = deleteImportedRaw(invoiceId, params);
+    return InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateDetailsForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response updateDetailsForInvoiceRaw(String invoiceId) throws Exception {
+  /** updateDetails a invoice (executes immediately) - returns raw Response. */
+  Response updateDetailsRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
 
@@ -835,30 +796,28 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * updateDetailsForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * updateDetails a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response updateDetailsForInvoiceRaw(String invoiceId, UpdateDetailsForInvoiceParams params)
-      throws Exception {
+  Response updateDetailsRaw(String invoiceId, InvoiceUpdateDetailsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * updateDetailsForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * updateDetails a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateDetailsForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response updateDetailsRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/update_details", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateDetailsForInvoiceResponse updateDetailsForInvoice(
-      String invoiceId, UpdateDetailsForInvoiceParams params) throws Exception {
-    Response response = updateDetailsForInvoiceRaw(invoiceId, params);
-    return UpdateDetailsForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceUpdateDetailsResponse updateDetails(
+      String invoiceId, InvoiceUpdateDetailsParams params) throws ChargebeeException {
+    Response response = updateDetailsRaw(invoiceId, params);
+    return InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -866,14 +825,14 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * Response.
    */
   Response invoicesForCustomerRaw(String customerId, InvoicesForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
   /** invoicesForCustomer a invoice without params (executes immediately) - returns raw Response. */
-  Response invoicesForCustomerRaw(String customerId) throws Exception {
+  Response invoicesForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
     return get(path, null);
@@ -883,27 +842,28 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * invoicesForCustomer a invoice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response invoicesForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response invoicesForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/invoices", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public InvoicesForCustomerResponse invoicesForCustomer(
-      String customerId, InvoicesForCustomerParams params) throws Exception {
+      String customerId, InvoicesForCustomerParams params) throws ChargebeeException {
     Response response = invoicesForCustomerRaw(customerId, params);
     return InvoicesForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
-  public InvoicesForCustomerResponse invoicesForCustomer(String customerId) throws Exception {
+  public InvoicesForCustomerResponse invoicesForCustomer(String customerId)
+      throws ChargebeeException {
     Response response = invoicesForCustomerRaw(customerId);
     return InvoicesForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /** recordPaymentForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response recordPaymentForInvoiceRaw(String invoiceId) throws Exception {
+  /** recordPayment a invoice (executes immediately) - returns raw Response. */
+  Response recordPaymentRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
 
@@ -911,65 +871,59 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * recordPaymentForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * recordPayment a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response recordPaymentForInvoiceRaw(String invoiceId, RecordPaymentForInvoiceParams params)
-      throws Exception {
+  Response recordPaymentRaw(String invoiceId, InvoiceRecordPaymentParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * recordPaymentForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * recordPayment a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response recordPaymentForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response recordPaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_payment", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public RecordPaymentForInvoiceResponse recordPaymentForInvoice(
-      String invoiceId, RecordPaymentForInvoiceParams params) throws Exception {
-    Response response = recordPaymentForInvoiceRaw(invoiceId, params);
-    return RecordPaymentForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceRecordPaymentResponse recordPayment(
+      String invoiceId, InvoiceRecordPaymentParams params) throws ChargebeeException {
+    Response response = recordPaymentRaw(invoiceId, params);
+    return InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteInvoice a invoice (executes immediately) - returns raw Response. */
-  Response deleteInvoiceRaw(String invoiceId) throws Exception {
+  /** delete a invoice (executes immediately) - returns raw Response. */
+  Response deleteRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * deleteInvoice a invoice using immutable params (executes immediately) - returns raw Response.
-   */
-  Response deleteInvoiceRaw(String invoiceId, DeleteInvoiceParams params) throws Exception {
+  /** delete a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response deleteRaw(String invoiceId, InvoiceDeleteParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * deleteInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response deleteInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** delete a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response deleteRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteInvoiceResponse deleteInvoice(String invoiceId, DeleteInvoiceParams params)
-      throws Exception {
-    Response response = deleteInvoiceRaw(invoiceId, params);
-    return DeleteInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceDeleteResponse delete(String invoiceId, InvoiceDeleteParams params)
+      throws ChargebeeException {
+    Response response = deleteRaw(invoiceId, params);
+    return InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * importInvoice a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response importInvoiceRaw(ImportInvoiceParams params) throws Exception {
+  Response importInvoiceRaw(ImportInvoiceParams params) throws ChargebeeException {
 
     return post("/invoices/import_invoice", params != null ? params.toFormData() : null);
   }
@@ -977,19 +931,19 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /**
    * importInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response importInvoiceRaw(String jsonPayload) throws Exception {
+  Response importInvoiceRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices/import_invoice", jsonPayload);
   }
 
-  public ImportInvoiceResponse importInvoice(ImportInvoiceParams params) throws Exception {
+  public ImportInvoiceResponse importInvoice(ImportInvoiceParams params) throws ChargebeeException {
     Response response = importInvoiceRaw(params);
 
     return ImportInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** resumeDunningForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response resumeDunningForInvoiceRaw(String invoiceId) throws Exception {
+  /** resumeDunning a invoice (executes immediately) - returns raw Response. */
+  Response resumeDunningRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
 
@@ -997,34 +951,32 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * resumeDunningForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * resumeDunning a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response resumeDunningForInvoiceRaw(String invoiceId, ResumeDunningForInvoiceParams params)
-      throws Exception {
+  Response resumeDunningRaw(String invoiceId, InvoiceResumeDunningParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * resumeDunningForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * resumeDunning a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response resumeDunningForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response resumeDunningRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resume_dunning", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public ResumeDunningForInvoiceResponse resumeDunningForInvoice(
-      String invoiceId, ResumeDunningForInvoiceParams params) throws Exception {
-    Response response = resumeDunningForInvoiceRaw(invoiceId, params);
-    return ResumeDunningForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceResumeDunningResponse resumeDunning(
+      String invoiceId, InvoiceResumeDunningParams params) throws ChargebeeException {
+    Response response = resumeDunningRaw(invoiceId, params);
+    return InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** recordTaxWithheldForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response recordTaxWithheldForInvoiceRaw(String invoiceId) throws Exception {
+  /** recordTaxWithheld a invoice (executes immediately) - returns raw Response. */
+  Response recordTaxWithheldRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
 
@@ -1032,48 +984,47 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * recordTaxWithheldForInvoice a invoice using immutable params (executes immediately) - returns
-   * raw Response.
+   * recordTaxWithheld a invoice using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response recordTaxWithheldForInvoiceRaw(
-      String invoiceId, RecordTaxWithheldForInvoiceParams params) throws Exception {
+  Response recordTaxWithheldRaw(String invoiceId, InvoiceRecordTaxWithheldParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * recordTaxWithheldForInvoice a invoice using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * recordTaxWithheld a invoice using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response recordTaxWithheldForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response recordTaxWithheldRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_tax_withheld", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public RecordTaxWithheldForInvoiceResponse recordTaxWithheldForInvoice(
-      String invoiceId, RecordTaxWithheldForInvoiceParams params) throws Exception {
-    Response response = recordTaxWithheldForInvoiceRaw(invoiceId, params);
-    return RecordTaxWithheldForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceRecordTaxWithheldResponse recordTaxWithheld(
+      String invoiceId, InvoiceRecordTaxWithheldParams params) throws ChargebeeException {
+    Response response = recordTaxWithheldRaw(invoiceId, params);
+    return InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** resendEinvoiceForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response resendEinvoiceForInvoiceRaw(String invoiceId) throws Exception {
+  /** resendEinvoice a invoice (executes immediately) - returns raw Response. */
+  Response resendEinvoiceRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/resend_einvoice", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  public ResendEinvoiceForInvoiceResponse resendEinvoiceForInvoice(String invoiceId)
-      throws Exception {
-    Response response = resendEinvoiceForInvoiceRaw(invoiceId);
-    return ResendEinvoiceForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public ResendEinvoiceResponse resendEinvoice(String invoiceId) throws ChargebeeException {
+    Response response = resendEinvoiceRaw(invoiceId);
+    return ResendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** removeTaxWithheldForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response removeTaxWithheldForInvoiceRaw(String invoiceId) throws Exception {
+  /** removeTaxWithheld a invoice (executes immediately) - returns raw Response. */
+  Response removeTaxWithheldRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
 
@@ -1081,30 +1032,30 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * removeTaxWithheldForInvoice a invoice using immutable params (executes immediately) - returns
-   * raw Response.
+   * removeTaxWithheld a invoice using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response removeTaxWithheldForInvoiceRaw(
-      String invoiceId, RemoveTaxWithheldForInvoiceParams params) throws Exception {
+  Response removeTaxWithheldRaw(String invoiceId, InvoiceRemoveTaxWithheldParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * removeTaxWithheldForInvoice a invoice using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * removeTaxWithheld a invoice using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response removeTaxWithheldForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response removeTaxWithheldRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/remove_tax_withheld", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public RemoveTaxWithheldForInvoiceResponse removeTaxWithheldForInvoice(
-      String invoiceId, RemoveTaxWithheldForInvoiceParams params) throws Exception {
-    Response response = removeTaxWithheldForInvoiceRaw(invoiceId, params);
-    return RemoveTaxWithheldForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceRemoveTaxWithheldResponse removeTaxWithheld(
+      String invoiceId, InvoiceRemoveTaxWithheldParams params) throws ChargebeeException {
+    Response response = removeTaxWithheldRaw(invoiceId, params);
+    return InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -1112,7 +1063,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * raw Response.
    */
   Response listPaymentReferenceNumbersRaw(InvoiceListPaymentReferenceNumbersParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return get(
         "/invoices/payment_reference_numbers", params != null ? params.toQueryParams() : null);
@@ -1122,7 +1073,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * listPaymentReferenceNumbers a invoice without params (executes immediately) - returns raw
    * Response.
    */
-  Response listPaymentReferenceNumbersRaw() throws Exception {
+  Response listPaymentReferenceNumbersRaw() throws ChargebeeException {
 
     return get("/invoices/payment_reference_numbers", null);
   }
@@ -1131,27 +1082,28 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * listPaymentReferenceNumbers a invoice using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response listPaymentReferenceNumbersRaw(String jsonPayload) throws Exception {
+  Response listPaymentReferenceNumbersRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public InvoiceListPaymentReferenceNumbersResponse listPaymentReferenceNumbers(
-      InvoiceListPaymentReferenceNumbersParams params) throws Exception {
+      InvoiceListPaymentReferenceNumbersParams params) throws ChargebeeException {
     Response response = listPaymentReferenceNumbersRaw(params);
 
     return InvoiceListPaymentReferenceNumbersResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public InvoiceListPaymentReferenceNumbersResponse listPaymentReferenceNumbers() throws Exception {
+  public InvoiceListPaymentReferenceNumbersResponse listPaymentReferenceNumbers()
+      throws ChargebeeException {
     Response response = listPaymentReferenceNumbersRaw();
     return InvoiceListPaymentReferenceNumbersResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }
 
-  /** collectPaymentForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response collectPaymentForInvoiceRaw(String invoiceId) throws Exception {
+  /** collectPayment a invoice (executes immediately) - returns raw Response. */
+  Response collectPaymentRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
 
@@ -1159,78 +1111,70 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * collectPaymentForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * collectPayment a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response collectPaymentForInvoiceRaw(String invoiceId, CollectPaymentForInvoiceParams params)
-      throws Exception {
+  Response collectPaymentRaw(String invoiceId, InvoiceCollectPaymentParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * collectPaymentForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * collectPayment a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response collectPaymentForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response collectPaymentRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/collect_payment", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public CollectPaymentForInvoiceResponse collectPaymentForInvoice(
-      String invoiceId, CollectPaymentForInvoiceParams params) throws Exception {
-    Response response = collectPaymentForInvoiceRaw(invoiceId, params);
-    return CollectPaymentForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceCollectPaymentResponse collectPayment(
+      String invoiceId, InvoiceCollectPaymentParams params) throws ChargebeeException {
+    Response response = collectPaymentRaw(invoiceId, params);
+    return InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** syncUsagesForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response syncUsagesForInvoiceRaw(String invoiceId) throws Exception {
+  /** syncUsages a invoice (executes immediately) - returns raw Response. */
+  Response syncUsagesRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/sync_usages", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  public SyncUsagesForInvoiceResponse syncUsagesForInvoice(String invoiceId) throws Exception {
-    Response response = syncUsagesForInvoiceRaw(invoiceId);
-    return SyncUsagesForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceSyncUsagesResponse syncUsages(String invoiceId) throws ChargebeeException {
+    Response response = syncUsagesRaw(invoiceId);
+    return InvoiceSyncUsagesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** refundForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response refundForInvoiceRaw(String invoiceId) throws Exception {
+  /** refund a invoice (executes immediately) - returns raw Response. */
+  Response refundRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * refundForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForInvoiceRaw(String invoiceId, RefundForInvoiceParams params) throws Exception {
+  /** refund a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response refundRaw(String invoiceId, InvoiceRefundParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * refundForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** refund a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response refundRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/refund", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public RefundForInvoiceResponse refundForInvoice(String invoiceId, RefundForInvoiceParams params)
-      throws Exception {
-    Response response = refundForInvoiceRaw(invoiceId, params);
-    return RefundForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceRefundResponse refund(String invoiceId, InvoiceRefundParams params)
+      throws ChargebeeException {
+    Response response = refundRaw(invoiceId, params);
+    return InvoiceRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** recordRefundForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response recordRefundForInvoiceRaw(String invoiceId) throws Exception {
+  /** recordRefund a invoice (executes immediately) - returns raw Response. */
+  Response recordRefundRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
 
@@ -1238,59 +1182,53 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * recordRefundForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * recordRefund a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response recordRefundForInvoiceRaw(String invoiceId, RecordRefundForInvoiceParams params)
-      throws Exception {
+  Response recordRefundRaw(String invoiceId, InvoiceRecordRefundParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * recordRefundForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * recordRefund a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response recordRefundForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response recordRefundRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/record_refund", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public RecordRefundForInvoiceResponse recordRefundForInvoice(
-      String invoiceId, RecordRefundForInvoiceParams params) throws Exception {
-    Response response = recordRefundForInvoiceRaw(invoiceId, params);
-    return RecordRefundForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceRecordRefundResponse recordRefund(
+      String invoiceId, InvoiceRecordRefundParams params) throws ChargebeeException {
+    Response response = recordRefundRaw(invoiceId, params);
+    return InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** pdfForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response pdfForInvoiceRaw(String invoiceId) throws Exception {
+  /** pdf a invoice (executes immediately) - returns raw Response. */
+  Response pdfRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
 
     return post(path, null);
   }
 
-  /**
-   * pdfForInvoice a invoice using immutable params (executes immediately) - returns raw Response.
-   */
-  Response pdfForInvoiceRaw(String invoiceId, PdfForInvoiceParams params) throws Exception {
+  /** pdf a invoice using immutable params (executes immediately) - returns raw Response. */
+  Response pdfRaw(String invoiceId, InvoicePdfParams params) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * pdfForInvoice a invoice using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response pdfForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  /** pdf a invoice using raw JSON payload (executes immediately) - returns raw Response. */
+  Response pdfRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public PdfForInvoiceResponse pdfForInvoice(String invoiceId, PdfForInvoiceParams params)
-      throws Exception {
-    Response response = pdfForInvoiceRaw(invoiceId, params);
-    return PdfForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoicePdfResponse pdf(String invoiceId, InvoicePdfParams params)
+      throws ChargebeeException {
+    Response response = pdfRaw(invoiceId, params);
+    return InvoicePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -1298,7 +1236,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * Response.
    */
   Response invoicesForSubscriptionRaw(String subscriptionId, InvoicesForSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
@@ -1308,7 +1246,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   /**
    * invoicesForSubscription a invoice without params (executes immediately) - returns raw Response.
    */
-  Response invoicesForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response invoicesForSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
@@ -1319,7 +1257,8 @@ public final class InvoiceService extends BaseService<InvoiceService> {
    * invoicesForSubscription a invoice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response invoicesForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  Response invoicesForSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/invoices", "subscription-id", subscriptionId);
@@ -1327,53 +1266,53 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   public InvoicesForSubscriptionResponse invoicesForSubscription(
-      String subscriptionId, InvoicesForSubscriptionParams params) throws Exception {
+      String subscriptionId, InvoicesForSubscriptionParams params) throws ChargebeeException {
     Response response = invoicesForSubscriptionRaw(subscriptionId, params);
     return InvoicesForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public InvoicesForSubscriptionResponse invoicesForSubscription(String subscriptionId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = invoicesForSubscriptionRaw(subscriptionId);
     return InvoicesForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
-  /** downloadEinvoiceForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response downloadEinvoiceForInvoiceRaw(String invoiceId) throws Exception {
+  /** downloadEinvoice a invoice (executes immediately) - returns raw Response. */
+  Response downloadEinvoiceRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/download_einvoice", "invoice-id", invoiceId);
 
     return get(path, null);
   }
 
-  public DownloadEinvoiceForInvoiceResponse downloadEinvoiceForInvoice(String invoiceId)
-      throws Exception {
-    Response response = downloadEinvoiceForInvoiceRaw(invoiceId);
-    return DownloadEinvoiceForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public DownloadEinvoiceResponse downloadEinvoice(String invoiceId) throws ChargebeeException {
+    Response response = downloadEinvoiceRaw(invoiceId);
+    return DownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** chargeAddon a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response chargeAddonRaw(InvoiceChargeAddonParams params) throws Exception {
+  Response chargeAddonRaw(InvoiceChargeAddonParams params) throws ChargebeeException {
 
     return post("/invoices/charge_addon", params != null ? params.toFormData() : null);
   }
 
   /** chargeAddon a invoice using raw JSON payload (executes immediately) - returns raw Response. */
-  Response chargeAddonRaw(String jsonPayload) throws Exception {
+  Response chargeAddonRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices/charge_addon", jsonPayload);
   }
 
-  public InvoiceChargeAddonResponse chargeAddon(InvoiceChargeAddonParams params) throws Exception {
+  public InvoiceChargeAddonResponse chargeAddon(InvoiceChargeAddonParams params)
+      throws ChargebeeException {
     Response response = chargeAddonRaw(params);
 
     return InvoiceChargeAddonResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addAddonChargeForInvoice a invoice (executes immediately) - returns raw Response. */
-  Response addAddonChargeForInvoiceRaw(String invoiceId) throws Exception {
+  /** addAddonCharge a invoice (executes immediately) - returns raw Response. */
+  Response addAddonChargeRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
 
@@ -1381,45 +1320,43 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   }
 
   /**
-   * addAddonChargeForInvoice a invoice using immutable params (executes immediately) - returns raw
-   * Response.
+   * addAddonCharge a invoice using immutable params (executes immediately) - returns raw Response.
    */
-  Response addAddonChargeForInvoiceRaw(String invoiceId, AddAddonChargeForInvoiceParams params)
-      throws Exception {
+  Response addAddonChargeRaw(String invoiceId, InvoiceAddAddonChargeParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addAddonChargeForInvoice a invoice using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * addAddonCharge a invoice using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response addAddonChargeForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response addAddonChargeRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/add_addon_charge", "invoice-id", invoiceId);
     return postJson(path, jsonPayload);
   }
 
-  public AddAddonChargeForInvoiceResponse addAddonChargeForInvoice(
-      String invoiceId, AddAddonChargeForInvoiceParams params) throws Exception {
-    Response response = addAddonChargeForInvoiceRaw(invoiceId, params);
-    return AddAddonChargeForInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  public InvoiceAddAddonChargeResponse addAddonCharge(
+      String invoiceId, InvoiceAddAddonChargeParams params) throws ChargebeeException {
+    Response response = addAddonChargeRaw(invoiceId, params);
+    return InvoiceAddAddonChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** charge a invoice using immutable params (executes immediately) - returns raw Response. */
-  Response chargeRaw(InvoiceChargeParams params) throws Exception {
+  Response chargeRaw(InvoiceChargeParams params) throws ChargebeeException {
 
     return post("/invoices/charge", params != null ? params.toFormData() : null);
   }
 
   /** charge a invoice using raw JSON payload (executes immediately) - returns raw Response. */
-  Response chargeRaw(String jsonPayload) throws Exception {
+  Response chargeRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/invoices/charge", jsonPayload);
   }
 
-  public InvoiceChargeResponse charge(InvoiceChargeParams params) throws Exception {
+  public InvoiceChargeResponse charge(InvoiceChargeParams params) throws ChargebeeException {
     Response response = chargeRaw(params);
 
     return InvoiceChargeResponse.fromJson(response.getBodyAsString(), response);

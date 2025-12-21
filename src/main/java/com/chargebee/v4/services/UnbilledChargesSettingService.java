@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.unbilledChargesSetting.params.UnbilledChargesSettingExecuteParams;
+import com.chargebee.v4.models.unbilledChargesSetting.params.UnbilledChargesSettingRetrieveParams;
 
-import com.chargebee.v4.models.unbilledChargesSetting.responses.UnbilledChargesSettingExecuteResponse;
+import com.chargebee.v4.models.unbilledChargesSetting.responses.UnbilledChargesSettingRetrieveResponse;
 
 public final class UnbilledChargesSettingService
     extends BaseService<UnbilledChargesSettingService> {
@@ -52,27 +53,27 @@ public final class UnbilledChargesSettingService
   // === Operations ===
 
   /**
-   * execute a unbilledChargesSetting using immutable params (executes immediately) - returns raw
+   * retrieve a unbilledChargesSetting using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(UnbilledChargesSettingExecuteParams params) throws Exception {
+  Response retrieveRaw(UnbilledChargesSettingRetrieveParams params) throws ChargebeeException {
 
     return get("/unbilled_charges_settings", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * execute a unbilledChargesSetting using raw JSON payload (executes immediately) - returns raw
+   * retrieve a unbilledChargesSetting using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(String jsonPayload) throws Exception {
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public UnbilledChargesSettingExecuteResponse execute(UnbilledChargesSettingExecuteParams params)
-      throws Exception {
-    Response response = executeRaw(params);
+  public UnbilledChargesSettingRetrieveResponse retrieve(
+      UnbilledChargesSettingRetrieveParams params) throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return UnbilledChargesSettingExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

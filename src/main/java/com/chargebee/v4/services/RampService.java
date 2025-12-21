@@ -9,23 +9,24 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.ramp.params.CreateRampForSubscriptionParams;
+import com.chargebee.v4.models.ramp.params.RampCreateForSubscriptionParams;
 
 import com.chargebee.v4.models.ramp.params.RampListParams;
 
-import com.chargebee.v4.models.ramp.params.UpdateRampParams;
+import com.chargebee.v4.models.ramp.params.RampUpdateParams;
 
 import com.chargebee.v4.models.ramp.responses.RampRetrieveResponse;
 
-import com.chargebee.v4.models.ramp.responses.CreateRampForSubscriptionResponse;
+import com.chargebee.v4.models.ramp.responses.RampCreateForSubscriptionResponse;
 
 import com.chargebee.v4.models.ramp.responses.RampListResponse;
 
-import com.chargebee.v4.models.ramp.responses.UpdateRampResponse;
+import com.chargebee.v4.models.ramp.responses.RampUpdateResponse;
 
-import com.chargebee.v4.models.ramp.responses.DeleteRampResponse;
+import com.chargebee.v4.models.ramp.responses.RampDeleteResponse;
 
 public final class RampService extends BaseService<RampService> {
 
@@ -62,19 +63,19 @@ public final class RampService extends BaseService<RampService> {
   // === Operations ===
 
   /** retrieve a ramp (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String rampId) throws Exception {
+  Response retrieveRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}", "ramp-id", rampId);
 
     return get(path, null);
   }
 
-  public RampRetrieveResponse retrieve(String rampId) throws Exception {
+  public RampRetrieveResponse retrieve(String rampId) throws ChargebeeException {
     Response response = retrieveRaw(rampId);
     return RampRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** createRampForSubscription a ramp (executes immediately) - returns raw Response. */
-  Response createRampForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** createForSubscription a ramp (executes immediately) - returns raw Response. */
+  Response createForSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
@@ -83,11 +84,11 @@ public final class RampService extends BaseService<RampService> {
   }
 
   /**
-   * createRampForSubscription a ramp using immutable params (executes immediately) - returns raw
+   * createForSubscription a ramp using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRampForSubscriptionRaw(
-      String subscriptionId, CreateRampForSubscriptionParams params) throws Exception {
+  Response createForSubscriptionRaw(String subscriptionId, RampCreateForSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
@@ -95,85 +96,86 @@ public final class RampService extends BaseService<RampService> {
   }
 
   /**
-   * createRampForSubscription a ramp using raw JSON payload (executes immediately) - returns raw
+   * createForSubscription a ramp using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRampForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response createForSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/create_ramp", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public CreateRampForSubscriptionResponse createRampForSubscription(
-      String subscriptionId, CreateRampForSubscriptionParams params) throws Exception {
-    Response response = createRampForSubscriptionRaw(subscriptionId, params);
-    return CreateRampForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public RampCreateForSubscriptionResponse createForSubscription(
+      String subscriptionId, RampCreateForSubscriptionParams params) throws ChargebeeException {
+    Response response = createForSubscriptionRaw(subscriptionId, params);
+    return RampCreateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a ramp using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(RampListParams params) throws Exception {
+  Response listRaw(RampListParams params) throws ChargebeeException {
 
     return get("/ramps", params != null ? params.toQueryParams() : null);
   }
 
   /** list a ramp without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/ramps", null);
   }
 
   /** list a ramp using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public RampListResponse list(RampListParams params) throws Exception {
+  public RampListResponse list(RampListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return RampListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public RampListResponse list() throws Exception {
+  public RampListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return RampListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
-  /** updateRamp a ramp (executes immediately) - returns raw Response. */
-  Response updateRampRaw(String rampId) throws Exception {
+  /** update a ramp (executes immediately) - returns raw Response. */
+  Response updateRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
 
     return post(path, null);
   }
 
-  /** updateRamp a ramp using immutable params (executes immediately) - returns raw Response. */
-  Response updateRampRaw(String rampId, UpdateRampParams params) throws Exception {
+  /** update a ramp using immutable params (executes immediately) - returns raw Response. */
+  Response updateRaw(String rampId, RampUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
     return post(path, params.toFormData());
   }
 
-  /** updateRamp a ramp using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRampRaw(String rampId, String jsonPayload) throws Exception {
+  /** update a ramp using raw JSON payload (executes immediately) - returns raw Response. */
+  Response updateRaw(String rampId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateRampResponse updateRamp(String rampId, UpdateRampParams params) throws Exception {
-    Response response = updateRampRaw(rampId, params);
-    return UpdateRampResponse.fromJson(response.getBodyAsString(), response);
+  public RampUpdateResponse update(String rampId, RampUpdateParams params)
+      throws ChargebeeException {
+    Response response = updateRaw(rampId, params);
+    return RampUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteRamp a ramp (executes immediately) - returns raw Response. */
-  Response deleteRampRaw(String rampId) throws Exception {
+  /** delete a ramp (executes immediately) - returns raw Response. */
+  Response deleteRaw(String rampId) throws ChargebeeException {
     String path = buildPathWithParams("/ramps/{ramp-id}/delete", "ramp-id", rampId);
 
     return post(path, null);
   }
 
-  public DeleteRampResponse deleteRamp(String rampId) throws Exception {
-    Response response = deleteRampRaw(rampId);
-    return DeleteRampResponse.fromJson(response.getBodyAsString(), response);
+  public RampDeleteResponse delete(String rampId) throws ChargebeeException {
+    Response response = deleteRaw(rampId);
+    return RampDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

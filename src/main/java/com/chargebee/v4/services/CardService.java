@@ -9,13 +9,14 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.card.params.CopyCardForCustomerParams;
 
 import com.chargebee.v4.models.card.params.CardSwitchGatewayForCustomerParams;
 
-import com.chargebee.v4.models.card.params.CreditCardForCustomerParams;
+import com.chargebee.v4.models.card.params.UpdateCardForCustomerParams;
 
 import com.chargebee.v4.models.card.responses.CopyCardForCustomerResponse;
 
@@ -25,7 +26,7 @@ import com.chargebee.v4.models.card.responses.CardSwitchGatewayForCustomerRespon
 
 import com.chargebee.v4.models.card.responses.DeleteCardForCustomerResponse;
 
-import com.chargebee.v4.models.card.responses.CreditCardForCustomerResponse;
+import com.chargebee.v4.models.card.responses.UpdateCardForCustomerResponse;
 
 public final class CardService extends BaseService<CardService> {
 
@@ -62,7 +63,7 @@ public final class CardService extends BaseService<CardService> {
   // === Operations ===
 
   /** copyCardForCustomer a card (executes immediately) - returns raw Response. */
-  Response copyCardForCustomerRaw(String customerId) throws Exception {
+  Response copyCardForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
 
@@ -74,7 +75,7 @@ public final class CardService extends BaseService<CardService> {
    * Response.
    */
   Response copyCardForCustomerRaw(String customerId, CopyCardForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
     return post(path, params.toFormData());
@@ -84,32 +85,32 @@ public final class CardService extends BaseService<CardService> {
    * copyCardForCustomer a card using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response copyCardForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response copyCardForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
   public CopyCardForCustomerResponse copyCardForCustomer(
-      String customerId, CopyCardForCustomerParams params) throws Exception {
+      String customerId, CopyCardForCustomerParams params) throws ChargebeeException {
     Response response = copyCardForCustomerRaw(customerId, params);
     return CopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a card (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String customerId) throws Exception {
+  Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
 
     return get(path, null);
   }
 
-  public CardRetrieveResponse retrieve(String customerId) throws Exception {
+  public CardRetrieveResponse retrieve(String customerId) throws ChargebeeException {
     Response response = retrieveRaw(customerId);
     return CardRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** switchGatewayForCustomer a card (executes immediately) - returns raw Response. */
-  Response switchGatewayForCustomerRaw(String customerId) throws Exception {
+  Response switchGatewayForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
 
@@ -121,7 +122,7 @@ public final class CardService extends BaseService<CardService> {
    * Response.
    */
   Response switchGatewayForCustomerRaw(String customerId, CardSwitchGatewayForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
     return post(path, params.toFormData());
@@ -131,33 +132,35 @@ public final class CardService extends BaseService<CardService> {
    * switchGatewayForCustomer a card using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response switchGatewayForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response switchGatewayForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
   public CardSwitchGatewayForCustomerResponse switchGatewayForCustomer(
-      String customerId, CardSwitchGatewayForCustomerParams params) throws Exception {
+      String customerId, CardSwitchGatewayForCustomerParams params) throws ChargebeeException {
     Response response = switchGatewayForCustomerRaw(customerId, params);
     return CardSwitchGatewayForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** deleteCardForCustomer a card (executes immediately) - returns raw Response. */
-  Response deleteCardForCustomerRaw(String customerId) throws Exception {
+  Response deleteCardForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_card", "customer-id", customerId);
 
     return post(path, null);
   }
 
-  public DeleteCardForCustomerResponse deleteCardForCustomer(String customerId) throws Exception {
+  public DeleteCardForCustomerResponse deleteCardForCustomer(String customerId)
+      throws ChargebeeException {
     Response response = deleteCardForCustomerRaw(customerId);
     return DeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** creditCardForCustomer a card (executes immediately) - returns raw Response. */
-  Response creditCardForCustomerRaw(String customerId) throws Exception {
+  /** updateCardForCustomer a card (executes immediately) - returns raw Response. */
+  Response updateCardForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
 
@@ -165,29 +168,30 @@ public final class CardService extends BaseService<CardService> {
   }
 
   /**
-   * creditCardForCustomer a card using immutable params (executes immediately) - returns raw
+   * updateCardForCustomer a card using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response creditCardForCustomerRaw(String customerId, CreditCardForCustomerParams params)
-      throws Exception {
+  Response updateCardForCustomerRaw(String customerId, UpdateCardForCustomerParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * creditCardForCustomer a card using raw JSON payload (executes immediately) - returns raw
+   * updateCardForCustomer a card using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response creditCardForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response updateCardForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public CreditCardForCustomerResponse creditCardForCustomer(
-      String customerId, CreditCardForCustomerParams params) throws Exception {
-    Response response = creditCardForCustomerRaw(customerId, params);
-    return CreditCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public UpdateCardForCustomerResponse updateCardForCustomer(
+      String customerId, UpdateCardForCustomerParams params) throws ChargebeeException {
+    Response response = updateCardForCustomerRaw(customerId, params);
+    return UpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 }

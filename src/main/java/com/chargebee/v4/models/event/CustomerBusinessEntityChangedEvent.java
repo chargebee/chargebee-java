@@ -11,8 +11,6 @@ import com.chargebee.v4.internal.JsonUtil;
 
 import com.chargebee.v4.models.customer.Customer;
 
-import com.chargebee.v4.models.businessEntityChange.BusinessEntityChange;
-
 import com.chargebee.v4.models.businessEntityTransfer.BusinessEntityTransfer;
 
 public class CustomerBusinessEntityChangedEvent {
@@ -85,13 +83,8 @@ public class CustomerBusinessEntityChangedEvent {
 
   public static class Content {
 
-    private BusinessEntityChange businessEntityChange;
     private BusinessEntityTransfer businessEntityTransfer;
     private Customer customer;
-
-    public BusinessEntityChange getBusinessEntityChange() {
-      return businessEntityChange;
-    }
 
     public BusinessEntityTransfer getBusinessEntityTransfer() {
       return businessEntityTransfer;
@@ -103,11 +96,6 @@ public class CustomerBusinessEntityChangedEvent {
 
     public static Content fromJson(String json) {
       Content obj = new Content();
-
-      String __businessEntityChangeJson = JsonUtil.getObject(json, "business_entity_change");
-      if (__businessEntityChangeJson != null) {
-        obj.businessEntityChange = BusinessEntityChange.fromJson(__businessEntityChangeJson);
-      }
 
       String __businessEntityTransferJson = JsonUtil.getObject(json, "business_entity_transfer");
       if (__businessEntityTransferJson != null) {

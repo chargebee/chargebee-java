@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.product.params.ProductUpdateParams;
 
-import com.chargebee.v4.models.product.params.UpdateOptionsForProductParams;
+import com.chargebee.v4.models.product.params.ProductUpdateOptionsParams;
 
 import com.chargebee.v4.models.product.params.ProductListParams;
 
@@ -23,9 +24,9 @@ import com.chargebee.v4.models.product.responses.ProductRetrieveResponse;
 
 import com.chargebee.v4.models.product.responses.ProductUpdateResponse;
 
-import com.chargebee.v4.models.product.responses.DeleteProductResponse;
+import com.chargebee.v4.models.product.responses.ProductDeleteResponse;
 
-import com.chargebee.v4.models.product.responses.UpdateOptionsForProductResponse;
+import com.chargebee.v4.models.product.responses.ProductUpdateOptionsResponse;
 
 import com.chargebee.v4.models.product.responses.ProductListResponse;
 
@@ -66,56 +67,56 @@ public final class ProductService extends BaseService<ProductService> {
   // === Operations ===
 
   /** retrieve a product (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String productId) throws Exception {
+  Response retrieveRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
     return get(path, null);
   }
 
-  public ProductRetrieveResponse retrieve(String productId) throws Exception {
+  public ProductRetrieveResponse retrieve(String productId) throws ChargebeeException {
     Response response = retrieveRaw(productId);
     return ProductRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a product (executes immediately) - returns raw Response. */
-  Response updateRaw(String productId) throws Exception {
+  Response updateRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
     return post(path, null);
   }
 
   /** update a product using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String productId, ProductUpdateParams params) throws Exception {
+  Response updateRaw(String productId, ProductUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
     return post(path, params.toFormData());
   }
 
   /** update a product using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String productId, String jsonPayload) throws Exception {
+  Response updateRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
     return postJson(path, jsonPayload);
   }
 
   public ProductUpdateResponse update(String productId, ProductUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(productId, params);
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteProduct a product (executes immediately) - returns raw Response. */
-  Response deleteProductRaw(String productId) throws Exception {
+  /** delete a product (executes immediately) - returns raw Response. */
+  Response deleteRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
 
     return post(path, null);
   }
 
-  public DeleteProductResponse deleteProduct(String productId) throws Exception {
-    Response response = deleteProductRaw(productId);
-    return DeleteProductResponse.fromJson(response.getBodyAsString(), response);
+  public ProductDeleteResponse delete(String productId) throws ChargebeeException {
+    Response response = deleteRaw(productId);
+    return ProductDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateOptionsForProduct a product (executes immediately) - returns raw Response. */
-  Response updateOptionsForProductRaw(String productId) throws Exception {
+  /** updateOptions a product (executes immediately) - returns raw Response. */
+  Response updateOptionsRaw(String productId) throws ChargebeeException {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
 
@@ -123,74 +124,72 @@ public final class ProductService extends BaseService<ProductService> {
   }
 
   /**
-   * updateOptionsForProduct a product using immutable params (executes immediately) - returns raw
-   * Response.
+   * updateOptions a product using immutable params (executes immediately) - returns raw Response.
    */
-  Response updateOptionsForProductRaw(String productId, UpdateOptionsForProductParams params)
-      throws Exception {
+  Response updateOptionsRaw(String productId, ProductUpdateOptionsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
     return post(path, params.toFormData());
   }
 
   /**
-   * updateOptionsForProduct a product using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * updateOptions a product using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateOptionsForProductRaw(String productId, String jsonPayload) throws Exception {
+  Response updateOptionsRaw(String productId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateOptionsForProductResponse updateOptionsForProduct(
-      String productId, UpdateOptionsForProductParams params) throws Exception {
-    Response response = updateOptionsForProductRaw(productId, params);
-    return UpdateOptionsForProductResponse.fromJson(response.getBodyAsString(), response);
+  public ProductUpdateOptionsResponse updateOptions(
+      String productId, ProductUpdateOptionsParams params) throws ChargebeeException {
+    Response response = updateOptionsRaw(productId, params);
+    return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a product using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(ProductListParams params) throws Exception {
+  Response listRaw(ProductListParams params) throws ChargebeeException {
 
     return get("/products", params != null ? params.toQueryParams() : null);
   }
 
   /** list a product without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/products", null);
   }
 
   /** list a product using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ProductListResponse list(ProductListParams params) throws Exception {
+  public ProductListResponse list(ProductListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return ProductListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public ProductListResponse list() throws Exception {
+  public ProductListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return ProductListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a product using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(ProductCreateParams params) throws Exception {
+  Response createRaw(ProductCreateParams params) throws ChargebeeException {
 
     return post("/products", params != null ? params.toFormData() : null);
   }
 
   /** create a product using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/products", jsonPayload);
   }
 
-  public ProductCreateResponse create(ProductCreateParams params) throws Exception {
+  public ProductCreateResponse create(ProductCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return ProductCreateResponse.fromJson(response.getBodyAsString(), response);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.priceVariant.PriceVariant;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PriceVariantService;
@@ -98,9 +99,9 @@ public final class PriceVariantListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public PriceVariantListResponse nextPage() throws Exception {
+  public PriceVariantListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

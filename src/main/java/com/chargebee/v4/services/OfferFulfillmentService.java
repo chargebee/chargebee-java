@@ -9,17 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.offerFulfillment.params.OfferFulfillmentCreateParams;
+import com.chargebee.v4.models.offerFulfillment.params.OfferFulfillmentsParams;
 
-import com.chargebee.v4.models.offerFulfillment.params.OfferFulfillmentUpdateParams;
+import com.chargebee.v4.models.offerFulfillment.params.OfferFulfillmentsUpdateParams;
 
-import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentCreateResponse;
+import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentsResponse;
 
-import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentRetrieveResponse;
+import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentsGetResponse;
 
-import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentUpdateResponse;
+import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentsUpdateResponse;
 
 public final class OfferFulfillmentService extends BaseService<OfferFulfillmentService> {
 
@@ -57,30 +58,32 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
   // === Operations ===
 
   /**
-   * create a offerFulfillment using immutable params (executes immediately) - returns raw Response.
+   * offerFulfillments a offerFulfillment using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response createRaw(OfferFulfillmentCreateParams params) throws Exception {
+  Response offerFulfillmentsRaw(OfferFulfillmentsParams params) throws ChargebeeException {
 
     return post("/offer_fulfillments", params != null ? params.toFormData() : null);
   }
 
   /**
-   * create a offerFulfillment using raw JSON payload (executes immediately) - returns raw Response.
+   * offerFulfillments a offerFulfillment using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response offerFulfillmentsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/offer_fulfillments", jsonPayload);
   }
 
-  public OfferFulfillmentCreateResponse create(OfferFulfillmentCreateParams params)
-      throws Exception {
-    Response response = createRaw(params);
+  public OfferFulfillmentsResponse offerFulfillments(OfferFulfillmentsParams params)
+      throws ChargebeeException {
+    Response response = offerFulfillmentsRaw(params);
 
-    return OfferFulfillmentCreateResponse.fromJson(response.getBodyAsString(), response);
+    return OfferFulfillmentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** retrieve a offerFulfillment (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String offerFulfillmentId) throws Exception {
+  /** offerFulfillmentsGet a offerFulfillment (executes immediately) - returns raw Response. */
+  Response offerFulfillmentsGetRaw(String offerFulfillmentId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/offer_fulfillments/{offer-fulfillment-id}",
@@ -90,13 +93,14 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return get(path, null);
   }
 
-  public OfferFulfillmentRetrieveResponse retrieve(String offerFulfillmentId) throws Exception {
-    Response response = retrieveRaw(offerFulfillmentId);
-    return OfferFulfillmentRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  public OfferFulfillmentsGetResponse offerFulfillmentsGet(String offerFulfillmentId)
+      throws ChargebeeException {
+    Response response = offerFulfillmentsGetRaw(offerFulfillmentId);
+    return OfferFulfillmentsGetResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** update a offerFulfillment (executes immediately) - returns raw Response. */
-  Response updateRaw(String offerFulfillmentId) throws Exception {
+  /** offerFulfillmentsUpdate a offerFulfillment (executes immediately) - returns raw Response. */
+  Response offerFulfillmentsUpdateRaw(String offerFulfillmentId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/offer_fulfillments/{offer-fulfillment-id}",
@@ -107,10 +111,11 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
   }
 
   /**
-   * update a offerFulfillment using immutable params (executes immediately) - returns raw Response.
+   * offerFulfillmentsUpdate a offerFulfillment using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response updateRaw(String offerFulfillmentId, OfferFulfillmentUpdateParams params)
-      throws Exception {
+  Response offerFulfillmentsUpdateRaw(
+      String offerFulfillmentId, OfferFulfillmentsUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/offer_fulfillments/{offer-fulfillment-id}",
@@ -120,9 +125,11 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
   }
 
   /**
-   * update a offerFulfillment using raw JSON payload (executes immediately) - returns raw Response.
+   * offerFulfillmentsUpdate a offerFulfillment using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response updateRaw(String offerFulfillmentId, String jsonPayload) throws Exception {
+  Response offerFulfillmentsUpdateRaw(String offerFulfillmentId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/offer_fulfillments/{offer-fulfillment-id}",
@@ -131,9 +138,9 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return postJson(path, jsonPayload);
   }
 
-  public OfferFulfillmentUpdateResponse update(
-      String offerFulfillmentId, OfferFulfillmentUpdateParams params) throws Exception {
-    Response response = updateRaw(offerFulfillmentId, params);
-    return OfferFulfillmentUpdateResponse.fromJson(response.getBodyAsString(), response);
+  public OfferFulfillmentsUpdateResponse offerFulfillmentsUpdate(
+      String offerFulfillmentId, OfferFulfillmentsUpdateParams params) throws ChargebeeException {
+    Response response = offerFulfillmentsUpdateRaw(offerFulfillmentId, params);
+    return OfferFulfillmentsUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

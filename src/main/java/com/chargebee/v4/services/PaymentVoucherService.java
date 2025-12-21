@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.paymentVoucher.params.PaymentVouchersForCustomerParams;
@@ -65,7 +66,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * returns raw Response.
    */
   Response paymentVouchersForCustomerRaw(String customerId, PaymentVouchersForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -75,7 +76,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * paymentVouchersForCustomer a paymentVoucher without params (executes immediately) - returns raw
    * Response.
    */
-  Response paymentVouchersForCustomerRaw(String customerId) throws Exception {
+  Response paymentVouchersForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
     return get(path, null);
@@ -85,21 +86,22 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * paymentVouchersForCustomer a paymentVoucher using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response paymentVouchersForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response paymentVouchersForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public PaymentVouchersForCustomerResponse paymentVouchersForCustomer(
-      String customerId, PaymentVouchersForCustomerParams params) throws Exception {
+      String customerId, PaymentVouchersForCustomerParams params) throws ChargebeeException {
     Response response = paymentVouchersForCustomerRaw(customerId, params);
     return PaymentVouchersForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
   public PaymentVouchersForCustomerResponse paymentVouchersForCustomer(String customerId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = paymentVouchersForCustomerRaw(customerId);
     return PaymentVouchersForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
@@ -110,7 +112,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * returns raw Response.
    */
   Response paymentVouchersForInvoiceRaw(String invoiceId, PaymentVouchersForInvoiceParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -120,7 +122,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * paymentVouchersForInvoice a paymentVoucher without params (executes immediately) - returns raw
    * Response.
    */
-  Response paymentVouchersForInvoiceRaw(String invoiceId) throws Exception {
+  Response paymentVouchersForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
     return get(path, null);
@@ -130,28 +132,29 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
    * paymentVouchersForInvoice a paymentVoucher using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response paymentVouchersForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response paymentVouchersForInvoiceRaw(String invoiceId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public PaymentVouchersForInvoiceResponse paymentVouchersForInvoice(
-      String invoiceId, PaymentVouchersForInvoiceParams params) throws Exception {
+      String invoiceId, PaymentVouchersForInvoiceParams params) throws ChargebeeException {
     Response response = paymentVouchersForInvoiceRaw(invoiceId, params);
     return PaymentVouchersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, params, invoiceId, response);
   }
 
   public PaymentVouchersForInvoiceResponse paymentVouchersForInvoice(String invoiceId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = paymentVouchersForInvoiceRaw(invoiceId);
     return PaymentVouchersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
   /** retrieve a paymentVoucher (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String paymentVoucherId) throws Exception {
+  Response retrieveRaw(String paymentVoucherId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_vouchers/{payment-voucher-id}", "payment-voucher-id", paymentVoucherId);
@@ -159,7 +162,8 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
     return get(path, null);
   }
 
-  public PaymentVoucherRetrieveResponse retrieve(String paymentVoucherId) throws Exception {
+  public PaymentVoucherRetrieveResponse retrieve(String paymentVoucherId)
+      throws ChargebeeException {
     Response response = retrieveRaw(paymentVoucherId);
     return PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -167,7 +171,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   /**
    * create a paymentVoucher using immutable params (executes immediately) - returns raw Response.
    */
-  Response createRaw(PaymentVoucherCreateParams params) throws Exception {
+  Response createRaw(PaymentVoucherCreateParams params) throws ChargebeeException {
 
     return post("/payment_vouchers", params != null ? params.toFormData() : null);
   }
@@ -175,12 +179,13 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
   /**
    * create a paymentVoucher using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_vouchers", jsonPayload);
   }
 
-  public PaymentVoucherCreateResponse create(PaymentVoucherCreateParams params) throws Exception {
+  public PaymentVoucherCreateResponse create(PaymentVoucherCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response);

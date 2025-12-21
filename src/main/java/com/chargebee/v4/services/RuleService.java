@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.rule.responses.RuleRetrieveResponse;
@@ -48,13 +49,13 @@ public final class RuleService extends BaseService<RuleService> {
   // === Operations ===
 
   /** retrieve a rule (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String ruleId) throws Exception {
+  Response retrieveRaw(String ruleId) throws ChargebeeException {
     String path = buildPathWithParams("/rules/{rule-id}", "rule-id", ruleId);
 
     return get(path, null);
   }
 
-  public RuleRetrieveResponse retrieve(String ruleId) throws Exception {
+  public RuleRetrieveResponse retrieve(String ruleId) throws ChargebeeException {
     Response response = retrieveRaw(ruleId);
     return RuleRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
