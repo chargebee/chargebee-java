@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.personalizedOffer.params.PersonalizedOfferCreateParams;
+import com.chargebee.v4.models.personalizedOffer.params.PersonalizedOffersParams;
 
-import com.chargebee.v4.models.personalizedOffer.responses.PersonalizedOfferCreateResponse;
+import com.chargebee.v4.models.personalizedOffer.responses.PersonalizedOffersResponse;
 
 public final class PersonalizedOfferService extends BaseService<PersonalizedOfferService> {
 
@@ -51,27 +52,27 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
   // === Operations ===
 
   /**
-   * create a personalizedOffer using immutable params (executes immediately) - returns raw
-   * Response.
+   * personalizedOffers a personalizedOffer using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response createRaw(PersonalizedOfferCreateParams params) throws Exception {
+  Response personalizedOffersRaw(PersonalizedOffersParams params) throws ChargebeeException {
 
     return post("/personalized_offers", params != null ? params.toFormData() : null);
   }
 
   /**
-   * create a personalizedOffer using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * personalizedOffers a personalizedOffer using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response personalizedOffersRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/personalized_offers", jsonPayload);
   }
 
-  public PersonalizedOfferCreateResponse create(PersonalizedOfferCreateParams params)
-      throws Exception {
-    Response response = createRaw(params);
+  public PersonalizedOffersResponse personalizedOffers(PersonalizedOffersParams params)
+      throws ChargebeeException {
+    Response response = personalizedOffersRaw(params);
 
-    return PersonalizedOfferCreateResponse.fromJson(response.getBodyAsString(), response);
+    return PersonalizedOffersResponse.fromJson(response.getBodyAsString(), response);
   }
 }

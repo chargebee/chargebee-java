@@ -9,23 +9,24 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.inAppSubscription.params.RetrieveInAppSubscriptionParams;
+import com.chargebee.v4.models.inAppSubscription.params.InAppSubscriptionRetrieveStoreSubscriptionsParams;
 
-import com.chargebee.v4.models.inAppSubscription.params.ImportReceiptForInAppSubscriptionParams;
+import com.chargebee.v4.models.inAppSubscription.params.InAppSubscriptionImportReceiptParams;
 
-import com.chargebee.v4.models.inAppSubscription.params.ImportSubscriptionForInAppSubscriptionParams;
+import com.chargebee.v4.models.inAppSubscription.params.InAppSubscriptionImportSubscriptionParams;
 
-import com.chargebee.v4.models.inAppSubscription.params.ProcessPurchaseCommandForInAppSubscriptionParams;
+import com.chargebee.v4.models.inAppSubscription.params.InAppSubscriptionProcessReceiptParams;
 
-import com.chargebee.v4.models.inAppSubscription.responses.RetrieveInAppSubscriptionResponse;
+import com.chargebee.v4.models.inAppSubscription.responses.InAppSubscriptionRetrieveStoreSubscriptionsResponse;
 
-import com.chargebee.v4.models.inAppSubscription.responses.ImportReceiptForInAppSubscriptionResponse;
+import com.chargebee.v4.models.inAppSubscription.responses.InAppSubscriptionImportReceiptResponse;
 
-import com.chargebee.v4.models.inAppSubscription.responses.ImportSubscriptionForInAppSubscriptionResponse;
+import com.chargebee.v4.models.inAppSubscription.responses.InAppSubscriptionImportSubscriptionResponse;
 
-import com.chargebee.v4.models.inAppSubscription.responses.ProcessPurchaseCommandForInAppSubscriptionResponse;
+import com.chargebee.v4.models.inAppSubscription.responses.InAppSubscriptionProcessReceiptResponse;
 
 public final class InAppSubscriptionService extends BaseService<InAppSubscriptionService> {
 
@@ -63,9 +64,9 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   // === Operations ===
 
   /**
-   * retrieveInAppSubscription a inAppSubscription (executes immediately) - returns raw Response.
+   * retrieveStoreSubscriptions a inAppSubscription (executes immediately) - returns raw Response.
    */
-  Response retrieveInAppSubscriptionRaw(String inAppSubscriptionAppId) throws Exception {
+  Response retrieveStoreSubscriptionsRaw(String inAppSubscriptionAppId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
@@ -76,11 +77,12 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   }
 
   /**
-   * retrieveInAppSubscription a inAppSubscription using immutable params (executes immediately) -
+   * retrieveStoreSubscriptions a inAppSubscription using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response retrieveInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, RetrieveInAppSubscriptionParams params) throws Exception {
+  Response retrieveStoreSubscriptionsRaw(
+      String inAppSubscriptionAppId, InAppSubscriptionRetrieveStoreSubscriptionsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
@@ -90,11 +92,11 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   }
 
   /**
-   * retrieveInAppSubscription a inAppSubscription using raw JSON payload (executes immediately) -
+   * retrieveStoreSubscriptions a inAppSubscription using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response retrieveInAppSubscriptionRaw(String inAppSubscriptionAppId, String jsonPayload)
-      throws Exception {
+  Response retrieveStoreSubscriptionsRaw(String inAppSubscriptionAppId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
@@ -103,120 +105,111 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
     return postJson(path, jsonPayload);
   }
 
-  public RetrieveInAppSubscriptionResponse retrieveInAppSubscription(
-      String inAppSubscriptionAppId, RetrieveInAppSubscriptionParams params) throws Exception {
-    Response response = retrieveInAppSubscriptionRaw(inAppSubscriptionAppId, params);
-    return RetrieveInAppSubscriptionResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * importReceiptForInAppSubscription a inAppSubscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response importReceiptForInAppSubscriptionRaw(String inAppSubscriptionAppId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-
-    return post(path, null);
-  }
-
-  /**
-   * importReceiptForInAppSubscription a inAppSubscription using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response importReceiptForInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, ImportReceiptForInAppSubscriptionParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * importReceiptForInAppSubscription a inAppSubscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
-   */
-  Response importReceiptForInAppSubscriptionRaw(String inAppSubscriptionAppId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
-  }
-
-  public ImportReceiptForInAppSubscriptionResponse importReceiptForInAppSubscription(
-      String inAppSubscriptionAppId, ImportReceiptForInAppSubscriptionParams params)
-      throws Exception {
-    Response response = importReceiptForInAppSubscriptionRaw(inAppSubscriptionAppId, params);
-    return ImportReceiptForInAppSubscriptionResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * importSubscriptionForInAppSubscription a inAppSubscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response importSubscriptionForInAppSubscriptionRaw(String inAppSubscriptionAppId)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-
-    return post(path, null);
-  }
-
-  /**
-   * importSubscriptionForInAppSubscription a inAppSubscription using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response importSubscriptionForInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, ImportSubscriptionForInAppSubscriptionParams params)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * importSubscriptionForInAppSubscription a inAppSubscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
-   */
-  Response importSubscriptionForInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, String jsonPayload) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
-            "in-app-subscription-app-id",
-            inAppSubscriptionAppId);
-    return postJson(path, jsonPayload);
-  }
-
-  public ImportSubscriptionForInAppSubscriptionResponse importSubscriptionForInAppSubscription(
-      String inAppSubscriptionAppId, ImportSubscriptionForInAppSubscriptionParams params)
-      throws Exception {
-    Response response = importSubscriptionForInAppSubscriptionRaw(inAppSubscriptionAppId, params);
-    return ImportSubscriptionForInAppSubscriptionResponse.fromJson(
+  public InAppSubscriptionRetrieveStoreSubscriptionsResponse retrieveStoreSubscriptions(
+      String inAppSubscriptionAppId, InAppSubscriptionRetrieveStoreSubscriptionsParams params)
+      throws ChargebeeException {
+    Response response = retrieveStoreSubscriptionsRaw(inAppSubscriptionAppId, params);
+    return InAppSubscriptionRetrieveStoreSubscriptionsResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
+  /** importReceipt a inAppSubscription (executes immediately) - returns raw Response. */
+  Response importReceiptRaw(String inAppSubscriptionAppId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+
+    return post(path, null);
+  }
+
   /**
-   * processPurchaseCommandForInAppSubscription a inAppSubscription (executes immediately) - returns
+   * importReceipt a inAppSubscription using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response importReceiptRaw(
+      String inAppSubscriptionAppId, InAppSubscriptionImportReceiptParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * importReceipt a inAppSubscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response importReceiptRaw(String inAppSubscriptionAppId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InAppSubscriptionImportReceiptResponse importReceipt(
+      String inAppSubscriptionAppId, InAppSubscriptionImportReceiptParams params)
+      throws ChargebeeException {
+    Response response = importReceiptRaw(inAppSubscriptionAppId, params);
+    return InAppSubscriptionImportReceiptResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** importSubscription a inAppSubscription (executes immediately) - returns raw Response. */
+  Response importSubscriptionRaw(String inAppSubscriptionAppId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+
+    return post(path, null);
+  }
+
+  /**
+   * importSubscription a inAppSubscription using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response processPurchaseCommandForInAppSubscriptionRaw(String inAppSubscriptionAppId)
-      throws Exception {
+  Response importSubscriptionRaw(
+      String inAppSubscriptionAppId, InAppSubscriptionImportSubscriptionParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * importSubscription a inAppSubscription using raw JSON payload (executes immediately) - returns
+   * raw Response.
+   */
+  Response importSubscriptionRaw(String inAppSubscriptionAppId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postJson(path, jsonPayload);
+  }
+
+  public InAppSubscriptionImportSubscriptionResponse importSubscription(
+      String inAppSubscriptionAppId, InAppSubscriptionImportSubscriptionParams params)
+      throws ChargebeeException {
+    Response response = importSubscriptionRaw(inAppSubscriptionAppId, params);
+    return InAppSubscriptionImportSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  /** processReceipt a inAppSubscription (executes immediately) - returns raw Response. */
+  Response processReceiptRaw(String inAppSubscriptionAppId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
@@ -227,12 +220,12 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   }
 
   /**
-   * processPurchaseCommandForInAppSubscription a inAppSubscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * processReceipt a inAppSubscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response processPurchaseCommandForInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, ProcessPurchaseCommandForInAppSubscriptionParams params)
-      throws Exception {
+  Response processReceiptRaw(
+      String inAppSubscriptionAppId, InAppSubscriptionProcessReceiptParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
@@ -242,11 +235,11 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
   }
 
   /**
-   * processPurchaseCommandForInAppSubscription a inAppSubscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * processReceipt a inAppSubscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response processPurchaseCommandForInAppSubscriptionRaw(
-      String inAppSubscriptionAppId, String jsonPayload) throws Exception {
+  Response processReceiptRaw(String inAppSubscriptionAppId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
@@ -255,13 +248,10 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
     return postJson(path, jsonPayload);
   }
 
-  public ProcessPurchaseCommandForInAppSubscriptionResponse
-      processPurchaseCommandForInAppSubscription(
-          String inAppSubscriptionAppId, ProcessPurchaseCommandForInAppSubscriptionParams params)
-          throws Exception {
-    Response response =
-        processPurchaseCommandForInAppSubscriptionRaw(inAppSubscriptionAppId, params);
-    return ProcessPurchaseCommandForInAppSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public InAppSubscriptionProcessReceiptResponse processReceipt(
+      String inAppSubscriptionAppId, InAppSubscriptionProcessReceiptParams params)
+      throws ChargebeeException {
+    Response response = processReceiptRaw(inAppSubscriptionAppId, params);
+    return InAppSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 }

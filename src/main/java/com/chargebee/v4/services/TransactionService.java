@@ -9,17 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.transaction.params.TransactionListParams;
 
-import com.chargebee.v4.models.transaction.params.ReconcileForTransactionParams;
+import com.chargebee.v4.models.transaction.params.TransactionReconcileParams;
 
-import com.chargebee.v4.models.transaction.params.RefundForTransactionParams;
+import com.chargebee.v4.models.transaction.params.TransactionRefundParams;
 
 import com.chargebee.v4.models.transaction.params.TransactionsForCustomerParams;
 
-import com.chargebee.v4.models.transaction.params.RecordRefundForTransactionParams;
+import com.chargebee.v4.models.transaction.params.TransactionRecordRefundParams;
 
 import com.chargebee.v4.models.transaction.params.TransactionsForSubscriptionParams;
 
@@ -27,31 +28,31 @@ import com.chargebee.v4.models.transaction.params.TransactionCreateAuthorization
 
 import com.chargebee.v4.models.transaction.params.TransactionPaymentsForInvoiceParams;
 
-import com.chargebee.v4.models.transaction.params.DeleteOfflineTransactionForTransactionParams;
+import com.chargebee.v4.models.transaction.params.DeleteOfflineTransactionParams;
 
 import com.chargebee.v4.models.transaction.responses.TransactionListResponse;
 
-import com.chargebee.v4.models.transaction.responses.ReconcileForTransactionResponse;
+import com.chargebee.v4.models.transaction.responses.TransactionReconcileResponse;
 
 import com.chargebee.v4.models.transaction.responses.TransactionRetrieveResponse;
 
-import com.chargebee.v4.models.transaction.responses.RefundForTransactionResponse;
+import com.chargebee.v4.models.transaction.responses.TransactionRefundResponse;
 
 import com.chargebee.v4.models.transaction.responses.TransactionsForCustomerResponse;
 
-import com.chargebee.v4.models.transaction.responses.RecordRefundForTransactionResponse;
+import com.chargebee.v4.models.transaction.responses.TransactionRecordRefundResponse;
 
 import com.chargebee.v4.models.transaction.responses.TransactionsForSubscriptionResponse;
 
 import com.chargebee.v4.models.transaction.responses.VoidTransactionResponse;
 
-import com.chargebee.v4.models.transaction.responses.SyncForTransactionResponse;
+import com.chargebee.v4.models.transaction.responses.SyncTransactionResponse;
 
 import com.chargebee.v4.models.transaction.responses.TransactionCreateAuthorizationResponse;
 
 import com.chargebee.v4.models.transaction.responses.TransactionPaymentsForInvoiceResponse;
 
-import com.chargebee.v4.models.transaction.responses.DeleteOfflineTransactionForTransactionResponse;
+import com.chargebee.v4.models.transaction.responses.DeleteOfflineTransactionResponse;
 
 public final class TransactionService extends BaseService<TransactionService> {
 
@@ -88,36 +89,36 @@ public final class TransactionService extends BaseService<TransactionService> {
   // === Operations ===
 
   /** list a transaction using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(TransactionListParams params) throws Exception {
+  Response listRaw(TransactionListParams params) throws ChargebeeException {
 
     return get("/transactions", params != null ? params.toQueryParams() : null);
   }
 
   /** list a transaction without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/transactions", null);
   }
 
   /** list a transaction using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public TransactionListResponse list(TransactionListParams params) throws Exception {
+  public TransactionListResponse list(TransactionListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public TransactionListResponse list() throws Exception {
+  public TransactionListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
-  /** reconcileForTransaction a transaction (executes immediately) - returns raw Response. */
-  Response reconcileForTransactionRaw(String transactionId) throws Exception {
+  /** reconcile a transaction (executes immediately) - returns raw Response. */
+  Response reconcileRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
@@ -126,11 +127,10 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * reconcileForTransaction a transaction using immutable params (executes immediately) - returns
-   * raw Response.
+   * reconcile a transaction using immutable params (executes immediately) - returns raw Response.
    */
-  Response reconcileForTransactionRaw(String transactionId, ReconcileForTransactionParams params)
-      throws Exception {
+  Response reconcileRaw(String transactionId, TransactionReconcileParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
@@ -138,37 +138,36 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * reconcileForTransaction a transaction using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * reconcile a transaction using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response reconcileForTransactionRaw(String transactionId, String jsonPayload) throws Exception {
+  Response reconcileRaw(String transactionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
     return postJson(path, jsonPayload);
   }
 
-  public ReconcileForTransactionResponse reconcileForTransaction(
-      String transactionId, ReconcileForTransactionParams params) throws Exception {
-    Response response = reconcileForTransactionRaw(transactionId, params);
-    return ReconcileForTransactionResponse.fromJson(response.getBodyAsString(), response);
+  public TransactionReconcileResponse reconcile(
+      String transactionId, TransactionReconcileParams params) throws ChargebeeException {
+    Response response = reconcileRaw(transactionId, params);
+    return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a transaction (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String transactionId) throws Exception {
+  Response retrieveRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams("/transactions/{transaction-id}", "transaction-id", transactionId);
 
     return get(path, null);
   }
 
-  public TransactionRetrieveResponse retrieve(String transactionId) throws Exception {
+  public TransactionRetrieveResponse retrieve(String transactionId) throws ChargebeeException {
     Response response = retrieveRaw(transactionId);
     return TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** refundForTransaction a transaction (executes immediately) - returns raw Response. */
-  Response refundForTransactionRaw(String transactionId) throws Exception {
+  /** refund a transaction (executes immediately) - returns raw Response. */
+  Response refundRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
@@ -176,33 +175,27 @@ public final class TransactionService extends BaseService<TransactionService> {
     return post(path, null);
   }
 
-  /**
-   * refundForTransaction a transaction using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForTransactionRaw(String transactionId, RefundForTransactionParams params)
-      throws Exception {
+  /** refund a transaction using immutable params (executes immediately) - returns raw Response. */
+  Response refundRaw(String transactionId, TransactionRefundParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * refundForTransaction a transaction using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response refundForTransactionRaw(String transactionId, String jsonPayload) throws Exception {
+  /** refund a transaction using raw JSON payload (executes immediately) - returns raw Response. */
+  Response refundRaw(String transactionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
     return postJson(path, jsonPayload);
   }
 
-  public RefundForTransactionResponse refundForTransaction(
-      String transactionId, RefundForTransactionParams params) throws Exception {
-    Response response = refundForTransactionRaw(transactionId, params);
-    return RefundForTransactionResponse.fromJson(response.getBodyAsString(), response);
+  public TransactionRefundResponse refund(String transactionId, TransactionRefundParams params)
+      throws ChargebeeException {
+    Response response = refundRaw(transactionId, params);
+    return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -210,7 +203,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * raw Response.
    */
   Response transactionsForCustomerRaw(String customerId, TransactionsForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -220,7 +213,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * transactionsForCustomer a transaction without params (executes immediately) - returns raw
    * Response.
    */
-  Response transactionsForCustomerRaw(String customerId) throws Exception {
+  Response transactionsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
     return get(path, null);
@@ -230,28 +223,29 @@ public final class TransactionService extends BaseService<TransactionService> {
    * transactionsForCustomer a transaction using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response transactionsForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response transactionsForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public TransactionsForCustomerResponse transactionsForCustomer(
-      String customerId, TransactionsForCustomerParams params) throws Exception {
+      String customerId, TransactionsForCustomerParams params) throws ChargebeeException {
     Response response = transactionsForCustomerRaw(customerId, params);
     return TransactionsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
   public TransactionsForCustomerResponse transactionsForCustomer(String customerId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = transactionsForCustomerRaw(customerId);
     return TransactionsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /** recordRefundForTransaction a transaction (executes immediately) - returns raw Response. */
-  Response recordRefundForTransactionRaw(String transactionId) throws Exception {
+  /** recordRefund a transaction (executes immediately) - returns raw Response. */
+  Response recordRefundRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
@@ -260,11 +254,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * recordRefundForTransaction a transaction using immutable params (executes immediately) -
-   * returns raw Response.
+   * recordRefund a transaction using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response recordRefundForTransactionRaw(
-      String transactionId, RecordRefundForTransactionParams params) throws Exception {
+  Response recordRefundRaw(String transactionId, TransactionRecordRefundParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
@@ -272,21 +266,20 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * recordRefundForTransaction a transaction using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * recordRefund a transaction using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response recordRefundForTransactionRaw(String transactionId, String jsonPayload)
-      throws Exception {
+  Response recordRefundRaw(String transactionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
     return postJson(path, jsonPayload);
   }
 
-  public RecordRefundForTransactionResponse recordRefundForTransaction(
-      String transactionId, RecordRefundForTransactionParams params) throws Exception {
-    Response response = recordRefundForTransactionRaw(transactionId, params);
-    return RecordRefundForTransactionResponse.fromJson(response.getBodyAsString(), response);
+  public TransactionRecordRefundResponse recordRefund(
+      String transactionId, TransactionRecordRefundParams params) throws ChargebeeException {
+    Response response = recordRefundRaw(transactionId, params);
+    return TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -294,7 +287,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * returns raw Response.
    */
   Response transactionsForSubscriptionRaw(
-      String subscriptionId, TransactionsForSubscriptionParams params) throws Exception {
+      String subscriptionId, TransactionsForSubscriptionParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
@@ -305,7 +298,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * transactionsForSubscription a transaction without params (executes immediately) - returns raw
    * Response.
    */
-  Response transactionsForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response transactionsForSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
@@ -317,7 +310,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * returns raw Response.
    */
   Response transactionsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
@@ -325,50 +318,51 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   public TransactionsForSubscriptionResponse transactionsForSubscription(
-      String subscriptionId, TransactionsForSubscriptionParams params) throws Exception {
+      String subscriptionId, TransactionsForSubscriptionParams params) throws ChargebeeException {
     Response response = transactionsForSubscriptionRaw(subscriptionId, params);
     return TransactionsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public TransactionsForSubscriptionResponse transactionsForSubscription(String subscriptionId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = transactionsForSubscriptionRaw(subscriptionId);
     return TransactionsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
   /** voidTransaction a transaction (executes immediately) - returns raw Response. */
-  Response voidTransactionRaw(String transactionId) throws Exception {
+  Response voidTransactionRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/void", "transaction-id", transactionId);
 
     return post(path, null);
   }
 
-  public VoidTransactionResponse voidTransaction(String transactionId) throws Exception {
+  public VoidTransactionResponse voidTransaction(String transactionId) throws ChargebeeException {
     Response response = voidTransactionRaw(transactionId);
     return VoidTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** syncForTransaction a transaction (executes immediately) - returns raw Response. */
-  Response syncForTransactionRaw(String transactionId) throws Exception {
+  /** syncTransaction a transaction (executes immediately) - returns raw Response. */
+  Response syncTransactionRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/sync", "transaction-id", transactionId);
 
     return post(path, null);
   }
 
-  public SyncForTransactionResponse syncForTransaction(String transactionId) throws Exception {
-    Response response = syncForTransactionRaw(transactionId);
-    return SyncForTransactionResponse.fromJson(response.getBodyAsString(), response);
+  public SyncTransactionResponse syncTransaction(String transactionId) throws ChargebeeException {
+    Response response = syncTransactionRaw(transactionId);
+    return SyncTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * createAuthorization a transaction using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createAuthorizationRaw(TransactionCreateAuthorizationParams params) throws Exception {
+  Response createAuthorizationRaw(TransactionCreateAuthorizationParams params)
+      throws ChargebeeException {
 
     return post("/transactions/create_authorization", params != null ? params.toFormData() : null);
   }
@@ -377,13 +371,13 @@ public final class TransactionService extends BaseService<TransactionService> {
    * createAuthorization a transaction using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createAuthorizationRaw(String jsonPayload) throws Exception {
+  Response createAuthorizationRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/transactions/create_authorization", jsonPayload);
   }
 
   public TransactionCreateAuthorizationResponse createAuthorization(
-      TransactionCreateAuthorizationParams params) throws Exception {
+      TransactionCreateAuthorizationParams params) throws ChargebeeException {
     Response response = createAuthorizationRaw(params);
 
     return TransactionCreateAuthorizationResponse.fromJson(response.getBodyAsString(), response);
@@ -394,7 +388,7 @@ public final class TransactionService extends BaseService<TransactionService> {
    * Response.
    */
   Response paymentsForInvoiceRaw(String invoiceId, TransactionPaymentsForInvoiceParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
@@ -402,7 +396,7 @@ public final class TransactionService extends BaseService<TransactionService> {
   /**
    * paymentsForInvoice a transaction without params (executes immediately) - returns raw Response.
    */
-  Response paymentsForInvoiceRaw(String invoiceId) throws Exception {
+  Response paymentsForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
     return get(path, null);
   }
@@ -411,30 +405,27 @@ public final class TransactionService extends BaseService<TransactionService> {
    * paymentsForInvoice a transaction using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response paymentsForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response paymentsForInvoiceRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public TransactionPaymentsForInvoiceResponse paymentsForInvoice(
-      String invoiceId, TransactionPaymentsForInvoiceParams params) throws Exception {
+      String invoiceId, TransactionPaymentsForInvoiceParams params) throws ChargebeeException {
     Response response = paymentsForInvoiceRaw(invoiceId, params);
     return TransactionPaymentsForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, params, invoiceId, response);
   }
 
   public TransactionPaymentsForInvoiceResponse paymentsForInvoice(String invoiceId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = paymentsForInvoiceRaw(invoiceId);
     return TransactionPaymentsForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
-  /**
-   * deleteOfflineTransactionForTransaction a transaction (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteOfflineTransactionForTransactionRaw(String transactionId) throws Exception {
+  /** deleteOfflineTransaction a transaction (executes immediately) - returns raw Response. */
+  Response deleteOfflineTransactionRaw(String transactionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/delete_offline_transaction",
@@ -445,11 +436,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * deleteOfflineTransactionForTransaction a transaction using immutable params (executes
-   * immediately) - returns raw Response.
+   * deleteOfflineTransaction a transaction using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response deleteOfflineTransactionForTransactionRaw(
-      String transactionId, DeleteOfflineTransactionForTransactionParams params) throws Exception {
+  Response deleteOfflineTransactionRaw(String transactionId, DeleteOfflineTransactionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/delete_offline_transaction",
@@ -459,11 +450,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   }
 
   /**
-   * deleteOfflineTransactionForTransaction a transaction using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * deleteOfflineTransaction a transaction using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response deleteOfflineTransactionForTransactionRaw(String transactionId, String jsonPayload)
-      throws Exception {
+  Response deleteOfflineTransactionRaw(String transactionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/transactions/{transaction-id}/delete_offline_transaction",
@@ -472,10 +463,9 @@ public final class TransactionService extends BaseService<TransactionService> {
     return postJson(path, jsonPayload);
   }
 
-  public DeleteOfflineTransactionForTransactionResponse deleteOfflineTransactionForTransaction(
-      String transactionId, DeleteOfflineTransactionForTransactionParams params) throws Exception {
-    Response response = deleteOfflineTransactionForTransactionRaw(transactionId, params);
-    return DeleteOfflineTransactionForTransactionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public DeleteOfflineTransactionResponse deleteOfflineTransaction(
+      String transactionId, DeleteOfflineTransactionParams params) throws ChargebeeException {
+    Response response = deleteOfflineTransactionRaw(transactionId, params);
+    return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 }

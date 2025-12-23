@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.order.params.OrderListParams;
@@ -17,17 +18,17 @@ import com.chargebee.v4.models.order.params.OrderCreateParams;
 
 import com.chargebee.v4.models.order.params.ImportOrderParams;
 
-import com.chargebee.v4.models.order.params.ResendForOrderParams;
+import com.chargebee.v4.models.order.params.OrderResendParams;
 
-import com.chargebee.v4.models.order.params.ReopenForOrderParams;
+import com.chargebee.v4.models.order.params.OrderReopenParams;
 
 import com.chargebee.v4.models.order.params.OrdersForInvoiceParams;
 
-import com.chargebee.v4.models.order.params.CancelForOrderParams;
+import com.chargebee.v4.models.order.params.OrderCancelParams;
 
 import com.chargebee.v4.models.order.params.OrderUpdateParams;
 
-import com.chargebee.v4.models.order.params.CreateRefundableCreditNoteForOrderParams;
+import com.chargebee.v4.models.order.params.OrderCreateRefundableCreditNoteParams;
 
 import com.chargebee.v4.models.order.responses.OrderListResponse;
 
@@ -35,23 +36,23 @@ import com.chargebee.v4.models.order.responses.OrderCreateResponse;
 
 import com.chargebee.v4.models.order.responses.ImportOrderResponse;
 
-import com.chargebee.v4.models.order.responses.AssignOrderNumberForOrderResponse;
+import com.chargebee.v4.models.order.responses.AssignOrderNumberResponse;
 
-import com.chargebee.v4.models.order.responses.ResendForOrderResponse;
+import com.chargebee.v4.models.order.responses.OrderResendResponse;
 
-import com.chargebee.v4.models.order.responses.ReopenForOrderResponse;
+import com.chargebee.v4.models.order.responses.OrderReopenResponse;
 
 import com.chargebee.v4.models.order.responses.OrdersForInvoiceResponse;
 
-import com.chargebee.v4.models.order.responses.CancelForOrderResponse;
+import com.chargebee.v4.models.order.responses.OrderCancelResponse;
 
 import com.chargebee.v4.models.order.responses.OrderRetrieveResponse;
 
 import com.chargebee.v4.models.order.responses.OrderUpdateResponse;
 
-import com.chargebee.v4.models.order.responses.DeleteOrderResponse;
+import com.chargebee.v4.models.order.responses.OrderDeleteResponse;
 
-import com.chargebee.v4.models.order.responses.CreateRefundableCreditNoteForOrderResponse;
+import com.chargebee.v4.models.order.responses.OrderCreateRefundableCreditNoteResponse;
 
 public final class OrderService extends BaseService<OrderService> {
 
@@ -88,152 +89,144 @@ public final class OrderService extends BaseService<OrderService> {
   // === Operations ===
 
   /** list a order using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(OrderListParams params) throws Exception {
+  Response listRaw(OrderListParams params) throws ChargebeeException {
 
     return get("/orders", params != null ? params.toQueryParams() : null);
   }
 
   /** list a order without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/orders", null);
   }
 
   /** list a order using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public OrderListResponse list(OrderListParams params) throws Exception {
+  public OrderListResponse list(OrderListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return OrderListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public OrderListResponse list() throws Exception {
+  public OrderListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return OrderListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a order using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(OrderCreateParams params) throws Exception {
+  Response createRaw(OrderCreateParams params) throws ChargebeeException {
 
     return post("/orders", params != null ? params.toFormData() : null);
   }
 
   /** create a order using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/orders", jsonPayload);
   }
 
-  public OrderCreateResponse create(OrderCreateParams params) throws Exception {
+  public OrderCreateResponse create(OrderCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return OrderCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** importOrder a order using immutable params (executes immediately) - returns raw Response. */
-  Response importOrderRaw(ImportOrderParams params) throws Exception {
+  Response importOrderRaw(ImportOrderParams params) throws ChargebeeException {
 
     return post("/orders/import_order", params != null ? params.toFormData() : null);
   }
 
   /** importOrder a order using raw JSON payload (executes immediately) - returns raw Response. */
-  Response importOrderRaw(String jsonPayload) throws Exception {
+  Response importOrderRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/orders/import_order", jsonPayload);
   }
 
-  public ImportOrderResponse importOrder(ImportOrderParams params) throws Exception {
+  public ImportOrderResponse importOrder(ImportOrderParams params) throws ChargebeeException {
     Response response = importOrderRaw(params);
 
     return ImportOrderResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** assignOrderNumberForOrder a order (executes immediately) - returns raw Response. */
-  Response assignOrderNumberForOrderRaw(String orderId) throws Exception {
+  /** assignOrderNumber a order (executes immediately) - returns raw Response. */
+  Response assignOrderNumberRaw(String orderId) throws ChargebeeException {
     String path =
         buildPathWithParams("/orders/{order-id}/assign_order_number", "order-id", orderId);
 
     return post(path, null);
   }
 
-  public AssignOrderNumberForOrderResponse assignOrderNumberForOrder(String orderId)
-      throws Exception {
-    Response response = assignOrderNumberForOrderRaw(orderId);
-    return AssignOrderNumberForOrderResponse.fromJson(response.getBodyAsString(), response);
+  public AssignOrderNumberResponse assignOrderNumber(String orderId) throws ChargebeeException {
+    Response response = assignOrderNumberRaw(orderId);
+    return AssignOrderNumberResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** resendForOrder a order (executes immediately) - returns raw Response. */
-  Response resendForOrderRaw(String orderId) throws Exception {
+  /** resend a order (executes immediately) - returns raw Response. */
+  Response resendRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
 
     return post(path, null);
   }
 
-  /**
-   * resendForOrder a order using immutable params (executes immediately) - returns raw Response.
-   */
-  Response resendForOrderRaw(String orderId, ResendForOrderParams params) throws Exception {
+  /** resend a order using immutable params (executes immediately) - returns raw Response. */
+  Response resendRaw(String orderId, OrderResendParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * resendForOrder a order using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response resendForOrderRaw(String orderId, String jsonPayload) throws Exception {
+  /** resend a order using raw JSON payload (executes immediately) - returns raw Response. */
+  Response resendRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
     return postJson(path, jsonPayload);
   }
 
-  public ResendForOrderResponse resendForOrder(String orderId, ResendForOrderParams params)
-      throws Exception {
-    Response response = resendForOrderRaw(orderId, params);
-    return ResendForOrderResponse.fromJson(response.getBodyAsString(), response);
+  public OrderResendResponse resend(String orderId, OrderResendParams params)
+      throws ChargebeeException {
+    Response response = resendRaw(orderId, params);
+    return OrderResendResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** reopenForOrder a order (executes immediately) - returns raw Response. */
-  Response reopenForOrderRaw(String orderId) throws Exception {
+  /** reopen a order (executes immediately) - returns raw Response. */
+  Response reopenRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
 
     return post(path, null);
   }
 
-  /**
-   * reopenForOrder a order using immutable params (executes immediately) - returns raw Response.
-   */
-  Response reopenForOrderRaw(String orderId, ReopenForOrderParams params) throws Exception {
+  /** reopen a order using immutable params (executes immediately) - returns raw Response. */
+  Response reopenRaw(String orderId, OrderReopenParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * reopenForOrder a order using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response reopenForOrderRaw(String orderId, String jsonPayload) throws Exception {
+  /** reopen a order using raw JSON payload (executes immediately) - returns raw Response. */
+  Response reopenRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
     return postJson(path, jsonPayload);
   }
 
-  public ReopenForOrderResponse reopenForOrder(String orderId, ReopenForOrderParams params)
-      throws Exception {
-    Response response = reopenForOrderRaw(orderId, params);
-    return ReopenForOrderResponse.fromJson(response.getBodyAsString(), response);
+  public OrderReopenResponse reopen(String orderId, OrderReopenParams params)
+      throws ChargebeeException {
+    Response response = reopenRaw(orderId, params);
+    return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * ordersForInvoice a order using immutable params (executes immediately) - returns raw Response.
    */
-  Response ordersForInvoiceRaw(String invoiceId, OrdersForInvoiceParams params) throws Exception {
+  Response ordersForInvoiceRaw(String invoiceId, OrdersForInvoiceParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
   /** ordersForInvoice a order without params (executes immediately) - returns raw Response. */
-  Response ordersForInvoiceRaw(String invoiceId) throws Exception {
+  Response ordersForInvoiceRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
     return get(path, null);
   }
@@ -241,103 +234,100 @@ public final class OrderService extends BaseService<OrderService> {
   /**
    * ordersForInvoice a order using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response ordersForInvoiceRaw(String invoiceId, String jsonPayload) throws Exception {
+  Response ordersForInvoiceRaw(String invoiceId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public OrdersForInvoiceResponse ordersForInvoice(String invoiceId, OrdersForInvoiceParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = ordersForInvoiceRaw(invoiceId, params);
     return OrdersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, params, invoiceId, response);
   }
 
-  public OrdersForInvoiceResponse ordersForInvoice(String invoiceId) throws Exception {
+  public OrdersForInvoiceResponse ordersForInvoice(String invoiceId) throws ChargebeeException {
     Response response = ordersForInvoiceRaw(invoiceId);
     return OrdersForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
-  /** cancelForOrder a order (executes immediately) - returns raw Response. */
-  Response cancelForOrderRaw(String orderId) throws Exception {
+  /** cancel a order (executes immediately) - returns raw Response. */
+  Response cancelRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
 
     return post(path, null);
   }
 
-  /**
-   * cancelForOrder a order using immutable params (executes immediately) - returns raw Response.
-   */
-  Response cancelForOrderRaw(String orderId, CancelForOrderParams params) throws Exception {
+  /** cancel a order using immutable params (executes immediately) - returns raw Response. */
+  Response cancelRaw(String orderId, OrderCancelParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * cancelForOrder a order using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response cancelForOrderRaw(String orderId, String jsonPayload) throws Exception {
+  /** cancel a order using raw JSON payload (executes immediately) - returns raw Response. */
+  Response cancelRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
     return postJson(path, jsonPayload);
   }
 
-  public CancelForOrderResponse cancelForOrder(String orderId, CancelForOrderParams params)
-      throws Exception {
-    Response response = cancelForOrderRaw(orderId, params);
-    return CancelForOrderResponse.fromJson(response.getBodyAsString(), response);
+  public OrderCancelResponse cancel(String orderId, OrderCancelParams params)
+      throws ChargebeeException {
+    Response response = cancelRaw(orderId, params);
+    return OrderCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a order (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String orderId) throws Exception {
+  Response retrieveRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
     return get(path, null);
   }
 
-  public OrderRetrieveResponse retrieve(String orderId) throws Exception {
+  public OrderRetrieveResponse retrieve(String orderId) throws ChargebeeException {
     Response response = retrieveRaw(orderId);
     return OrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a order (executes immediately) - returns raw Response. */
-  Response updateRaw(String orderId) throws Exception {
+  Response updateRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
     return post(path, null);
   }
 
   /** update a order using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String orderId, OrderUpdateParams params) throws Exception {
+  Response updateRaw(String orderId, OrderUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
     return post(path, params.toFormData());
   }
 
   /** update a order using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String orderId, String jsonPayload) throws Exception {
+  Response updateRaw(String orderId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
     return postJson(path, jsonPayload);
   }
 
-  public OrderUpdateResponse update(String orderId, OrderUpdateParams params) throws Exception {
+  public OrderUpdateResponse update(String orderId, OrderUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(orderId, params);
     return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteOrder a order (executes immediately) - returns raw Response. */
-  Response deleteOrderRaw(String orderId) throws Exception {
+  /** delete a order (executes immediately) - returns raw Response. */
+  Response deleteRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/delete", "order-id", orderId);
 
     return post(path, null);
   }
 
-  public DeleteOrderResponse deleteOrder(String orderId) throws Exception {
-    Response response = deleteOrderRaw(orderId);
-    return DeleteOrderResponse.fromJson(response.getBodyAsString(), response);
+  public OrderDeleteResponse delete(String orderId) throws ChargebeeException {
+    Response response = deleteRaw(orderId);
+    return OrderDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** createRefundableCreditNoteForOrder a order (executes immediately) - returns raw Response. */
-  Response createRefundableCreditNoteForOrderRaw(String orderId) throws Exception {
+  /** createRefundableCreditNote a order (executes immediately) - returns raw Response. */
+  Response createRefundableCreditNoteRaw(String orderId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
@@ -346,11 +336,11 @@ public final class OrderService extends BaseService<OrderService> {
   }
 
   /**
-   * createRefundableCreditNoteForOrder a order using immutable params (executes immediately) -
-   * returns raw Response.
+   * createRefundableCreditNote a order using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response createRefundableCreditNoteForOrderRaw(
-      String orderId, CreateRefundableCreditNoteForOrderParams params) throws Exception {
+  Response createRefundableCreditNoteRaw(
+      String orderId, OrderCreateRefundableCreditNoteParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
@@ -358,21 +348,20 @@ public final class OrderService extends BaseService<OrderService> {
   }
 
   /**
-   * createRefundableCreditNoteForOrder a order using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * createRefundableCreditNote a order using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response createRefundableCreditNoteForOrderRaw(String orderId, String jsonPayload)
-      throws Exception {
+  Response createRefundableCreditNoteRaw(String orderId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/orders/{order-id}/create_refundable_credit_note", "order-id", orderId);
     return postJson(path, jsonPayload);
   }
 
-  public CreateRefundableCreditNoteForOrderResponse createRefundableCreditNoteForOrder(
-      String orderId, CreateRefundableCreditNoteForOrderParams params) throws Exception {
-    Response response = createRefundableCreditNoteForOrderRaw(orderId, params);
-    return CreateRefundableCreditNoteForOrderResponse.fromJson(
-        response.getBodyAsString(), response);
+  public OrderCreateRefundableCreditNoteResponse createRefundableCreditNote(
+      String orderId, OrderCreateRefundableCreditNoteParams params) throws ChargebeeException {
+    Response response = createRefundableCreditNoteRaw(orderId, params);
+    return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.priceVariant.params.PriceVariantListParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.priceVariant.params.PriceVariantCreateParams;
 
 import com.chargebee.v4.models.priceVariant.params.PriceVariantUpdateParams;
 
-import com.chargebee.v4.models.priceVariant.responses.DeletePriceVariantResponse;
+import com.chargebee.v4.models.priceVariant.responses.PriceVariantDeleteResponse;
 
 import com.chargebee.v4.models.priceVariant.responses.PriceVariantListResponse;
 
@@ -62,8 +63,8 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
 
   // === Operations ===
 
-  /** deletePriceVariant a priceVariant (executes immediately) - returns raw Response. */
-  Response deletePriceVariantRaw(String priceVariantId) throws Exception {
+  /** delete a priceVariant (executes immediately) - returns raw Response. */
+  Response deleteRaw(String priceVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}/delete", "price-variant-id", priceVariantId);
@@ -71,60 +72,61 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return post(path, null);
   }
 
-  public DeletePriceVariantResponse deletePriceVariant(String priceVariantId) throws Exception {
-    Response response = deletePriceVariantRaw(priceVariantId);
-    return DeletePriceVariantResponse.fromJson(response.getBodyAsString(), response);
+  public PriceVariantDeleteResponse delete(String priceVariantId) throws ChargebeeException {
+    Response response = deleteRaw(priceVariantId);
+    return PriceVariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a priceVariant using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(PriceVariantListParams params) throws Exception {
+  Response listRaw(PriceVariantListParams params) throws ChargebeeException {
 
     return get("/price_variants", params != null ? params.toQueryParams() : null);
   }
 
   /** list a priceVariant without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/price_variants", null);
   }
 
   /** list a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PriceVariantListResponse list(PriceVariantListParams params) throws Exception {
+  public PriceVariantListResponse list(PriceVariantListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public PriceVariantListResponse list() throws Exception {
+  public PriceVariantListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a priceVariant using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(PriceVariantCreateParams params) throws Exception {
+  Response createRaw(PriceVariantCreateParams params) throws ChargebeeException {
 
     return post("/price_variants", params != null ? params.toFormData() : null);
   }
 
   /** create a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/price_variants", jsonPayload);
   }
 
-  public PriceVariantCreateResponse create(PriceVariantCreateParams params) throws Exception {
+  public PriceVariantCreateResponse create(PriceVariantCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return PriceVariantCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a priceVariant (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String priceVariantId) throws Exception {
+  Response retrieveRaw(String priceVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
@@ -132,13 +134,13 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return get(path, null);
   }
 
-  public PriceVariantRetrieveResponse retrieve(String priceVariantId) throws Exception {
+  public PriceVariantRetrieveResponse retrieve(String priceVariantId) throws ChargebeeException {
     Response response = retrieveRaw(priceVariantId);
     return PriceVariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a priceVariant (executes immediately) - returns raw Response. */
-  Response updateRaw(String priceVariantId) throws Exception {
+  Response updateRaw(String priceVariantId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
@@ -147,7 +149,8 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   }
 
   /** update a priceVariant using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String priceVariantId, PriceVariantUpdateParams params) throws Exception {
+  Response updateRaw(String priceVariantId, PriceVariantUpdateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
@@ -155,7 +158,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   }
 
   /** update a priceVariant using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String priceVariantId, String jsonPayload) throws Exception {
+  Response updateRaw(String priceVariantId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
@@ -163,7 +166,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   }
 
   public PriceVariantUpdateResponse update(String priceVariantId, PriceVariantUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(priceVariantId, params);
     return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

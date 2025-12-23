@@ -9,17 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.timeMachine.params.TravelForwardForTimeMachineParams;
+import com.chargebee.v4.models.timeMachine.params.TimeMachineTravelForwardParams;
 
-import com.chargebee.v4.models.timeMachine.params.StartAfreshForTimeMachineParams;
+import com.chargebee.v4.models.timeMachine.params.TimeMachineStartAfreshParams;
 
 import com.chargebee.v4.models.timeMachine.responses.TimeMachineRetrieveResponse;
 
-import com.chargebee.v4.models.timeMachine.responses.TravelForwardForTimeMachineResponse;
+import com.chargebee.v4.models.timeMachine.responses.TimeMachineTravelForwardResponse;
 
-import com.chargebee.v4.models.timeMachine.responses.StartAfreshForTimeMachineResponse;
+import com.chargebee.v4.models.timeMachine.responses.TimeMachineStartAfreshResponse;
 
 public final class TimeMachineService extends BaseService<TimeMachineService> {
 
@@ -56,7 +57,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   // === Operations ===
 
   /** retrieve a timeMachine (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String timeMachineName) throws Exception {
+  Response retrieveRaw(String timeMachineName) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}", "time-machine-name", timeMachineName);
@@ -64,13 +65,13 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return get(path, null);
   }
 
-  public TimeMachineRetrieveResponse retrieve(String timeMachineName) throws Exception {
+  public TimeMachineRetrieveResponse retrieve(String timeMachineName) throws ChargebeeException {
     Response response = retrieveRaw(timeMachineName);
     return TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** travelForwardForTimeMachine a timeMachine (executes immediately) - returns raw Response. */
-  Response travelForwardForTimeMachineRaw(String timeMachineName) throws Exception {
+  /** travelForward a timeMachine (executes immediately) - returns raw Response. */
+  Response travelForwardRaw(String timeMachineName) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/travel_forward",
@@ -81,11 +82,11 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   }
 
   /**
-   * travelForwardForTimeMachine a timeMachine using immutable params (executes immediately) -
-   * returns raw Response.
+   * travelForward a timeMachine using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response travelForwardForTimeMachineRaw(
-      String timeMachineName, TravelForwardForTimeMachineParams params) throws Exception {
+  Response travelForwardRaw(String timeMachineName, TimeMachineTravelForwardParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/travel_forward",
@@ -95,11 +96,10 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   }
 
   /**
-   * travelForwardForTimeMachine a timeMachine using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * travelForward a timeMachine using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response travelForwardForTimeMachineRaw(String timeMachineName, String jsonPayload)
-      throws Exception {
+  Response travelForwardRaw(String timeMachineName, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/travel_forward",
@@ -108,14 +108,14 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return postJson(path, jsonPayload);
   }
 
-  public TravelForwardForTimeMachineResponse travelForwardForTimeMachine(
-      String timeMachineName, TravelForwardForTimeMachineParams params) throws Exception {
-    Response response = travelForwardForTimeMachineRaw(timeMachineName, params);
-    return TravelForwardForTimeMachineResponse.fromJson(response.getBodyAsString(), response);
+  public TimeMachineTravelForwardResponse travelForward(
+      String timeMachineName, TimeMachineTravelForwardParams params) throws ChargebeeException {
+    Response response = travelForwardRaw(timeMachineName, params);
+    return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** startAfreshForTimeMachine a timeMachine (executes immediately) - returns raw Response. */
-  Response startAfreshForTimeMachineRaw(String timeMachineName) throws Exception {
+  /** startAfresh a timeMachine (executes immediately) - returns raw Response. */
+  Response startAfreshRaw(String timeMachineName) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/start_afresh",
@@ -126,11 +126,10 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   }
 
   /**
-   * startAfreshForTimeMachine a timeMachine using immutable params (executes immediately) - returns
-   * raw Response.
+   * startAfresh a timeMachine using immutable params (executes immediately) - returns raw Response.
    */
-  Response startAfreshForTimeMachineRaw(
-      String timeMachineName, StartAfreshForTimeMachineParams params) throws Exception {
+  Response startAfreshRaw(String timeMachineName, TimeMachineStartAfreshParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/start_afresh",
@@ -140,11 +139,9 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   }
 
   /**
-   * startAfreshForTimeMachine a timeMachine using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * startAfresh a timeMachine using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response startAfreshForTimeMachineRaw(String timeMachineName, String jsonPayload)
-      throws Exception {
+  Response startAfreshRaw(String timeMachineName, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/time_machines/{time-machine-name}/start_afresh",
@@ -153,9 +150,9 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return postJson(path, jsonPayload);
   }
 
-  public StartAfreshForTimeMachineResponse startAfreshForTimeMachine(
-      String timeMachineName, StartAfreshForTimeMachineParams params) throws Exception {
-    Response response = startAfreshForTimeMachineRaw(timeMachineName, params);
-    return StartAfreshForTimeMachineResponse.fromJson(response.getBodyAsString(), response);
+  public TimeMachineStartAfreshResponse startAfresh(
+      String timeMachineName, TimeMachineStartAfreshParams params) throws ChargebeeException {
+    Response response = startAfreshRaw(timeMachineName, params);
+    return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 }

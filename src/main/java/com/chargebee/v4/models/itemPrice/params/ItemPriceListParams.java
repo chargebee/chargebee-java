@@ -528,13 +528,13 @@ public final class ItemPriceListParams {
         this.builder = builder;
       }
 
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public ItemPriceListBuilder isPresent(boolean value) {
+        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
         return builder;
       }
 
-      public ItemPriceListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
+      public ItemPriceListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }

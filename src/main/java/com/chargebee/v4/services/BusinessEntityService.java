@@ -9,15 +9,16 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.businessEntity.params.BusinessEntityListTransfersParams;
+import com.chargebee.v4.models.businessEntity.params.BusinessEntityGetTransfersParams;
 
-import com.chargebee.v4.models.businessEntity.params.BusinessEntityTransfersParams;
+import com.chargebee.v4.models.businessEntity.params.BusinessEntityCreateTransfersParams;
 
-import com.chargebee.v4.models.businessEntity.responses.BusinessEntityListTransfersResponse;
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityGetTransfersResponse;
 
-import com.chargebee.v4.models.businessEntity.responses.BusinessEntityTransfersResponse;
+import com.chargebee.v4.models.businessEntity.responses.BusinessEntityCreateTransfersResponse;
 
 public final class BusinessEntityService extends BaseService<BusinessEntityService> {
 
@@ -55,67 +56,66 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
   // === Operations ===
 
   /**
-   * listTransfers a businessEntity using immutable params (executes immediately) - returns raw
+   * getTransfers a businessEntity using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listTransfersRaw(BusinessEntityListTransfersParams params) throws Exception {
+  Response getTransfersRaw(BusinessEntityGetTransfersParams params) throws ChargebeeException {
 
     return get("/business_entities/transfers", params != null ? params.toQueryParams() : null);
   }
 
-  /**
-   * listTransfers a businessEntity without params (executes immediately) - returns raw Response.
-   */
-  Response listTransfersRaw() throws Exception {
+  /** getTransfers a businessEntity without params (executes immediately) - returns raw Response. */
+  Response getTransfersRaw() throws ChargebeeException {
 
     return get("/business_entities/transfers", null);
   }
 
   /**
-   * listTransfers a businessEntity using raw JSON payload (executes immediately) - returns raw
+   * getTransfers a businessEntity using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listTransfersRaw(String jsonPayload) throws Exception {
+  Response getTransfersRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public BusinessEntityListTransfersResponse listTransfers(BusinessEntityListTransfersParams params)
-      throws Exception {
-    Response response = listTransfersRaw(params);
+  public BusinessEntityGetTransfersResponse getTransfers(BusinessEntityGetTransfersParams params)
+      throws ChargebeeException {
+    Response response = getTransfersRaw(params);
 
-    return BusinessEntityListTransfersResponse.fromJson(
+    return BusinessEntityGetTransfersResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public BusinessEntityListTransfersResponse listTransfers() throws Exception {
-    Response response = listTransfersRaw();
-    return BusinessEntityListTransfersResponse.fromJson(
+  public BusinessEntityGetTransfersResponse getTransfers() throws ChargebeeException {
+    Response response = getTransfersRaw();
+    return BusinessEntityGetTransfersResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }
 
   /**
-   * transfers a businessEntity using immutable params (executes immediately) - returns raw
+   * createTransfers a businessEntity using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response transfersRaw(BusinessEntityTransfersParams params) throws Exception {
+  Response createTransfersRaw(BusinessEntityCreateTransfersParams params)
+      throws ChargebeeException {
 
     return post("/business_entities/transfers", params != null ? params.toFormData() : null);
   }
 
   /**
-   * transfers a businessEntity using raw JSON payload (executes immediately) - returns raw
+   * createTransfers a businessEntity using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response transfersRaw(String jsonPayload) throws Exception {
+  Response createTransfersRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/business_entities/transfers", jsonPayload);
   }
 
-  public BusinessEntityTransfersResponse transfers(BusinessEntityTransfersParams params)
-      throws Exception {
-    Response response = transfersRaw(params);
+  public BusinessEntityCreateTransfersResponse createTransfers(
+      BusinessEntityCreateTransfersParams params) throws ChargebeeException {
+    Response response = createTransfersRaw(params);
 
-    return BusinessEntityTransfersResponse.fromJson(response.getBodyAsString(), response);
+    return BusinessEntityCreateTransfersResponse.fromJson(response.getBodyAsString(), response);
   }
 }

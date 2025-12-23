@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.csvTaxRule.params.CsvTaxRuleCreateParams;
@@ -50,18 +51,18 @@ public final class CsvTaxRuleService extends BaseService<CsvTaxRuleService> {
   // === Operations ===
 
   /** create a csvTaxRule using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CsvTaxRuleCreateParams params) throws Exception {
+  Response createRaw(CsvTaxRuleCreateParams params) throws ChargebeeException {
 
     return post("/csv_tax_rules", params != null ? params.toFormData() : null);
   }
 
   /** create a csvTaxRule using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/csv_tax_rules", jsonPayload);
   }
 
-  public CsvTaxRuleCreateResponse create(CsvTaxRuleCreateParams params) throws Exception {
+  public CsvTaxRuleCreateResponse create(CsvTaxRuleCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CsvTaxRuleCreateResponse.fromJson(response.getBodyAsString(), response);

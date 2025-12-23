@@ -23,7 +23,7 @@ public class FakeTransport implements Transport {
     }
     
     @Override
-    public Response send(Request request) throws TransportException {
+    public Response send(Request request) {
         recordedRequests.add(request);
         
         Response response = queuedResponses.poll();

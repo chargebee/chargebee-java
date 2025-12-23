@@ -9,141 +9,142 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.subscription.params.RemoveAdvanceInvoiceScheduleForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionRemoveAdvanceInvoiceScheduleParams;
 
-import com.chargebee.v4.models.subscription.params.UpdateForItemsForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionUpdateForItemsParams;
 
-import com.chargebee.v4.models.subscription.params.RemoveCouponsForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionRemoveCouponsParams;
 
-import com.chargebee.v4.models.subscription.params.ResumeForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionResumeParams;
 
-import com.chargebee.v4.models.subscription.params.CancelForItemsForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionCancelForItemsParams;
 
-import com.chargebee.v4.models.subscription.params.RegenerateInvoiceForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionRegenerateInvoiceParams;
 
 import com.chargebee.v4.models.subscription.params.SubscriptionListParams;
 
 import com.chargebee.v4.models.subscription.params.SubscriptionCreateParams;
 
-import com.chargebee.v4.models.subscription.params.MoveForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionMoveParams;
 
 import com.chargebee.v4.models.subscription.params.SubscriptionsForCustomerParams;
 
-import com.chargebee.v4.models.subscription.params.AddSubscriptionForCustomerParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionCreateForCustomerParams;
 
-import com.chargebee.v4.models.subscription.params.SubscriptionImportForItemsForCustomerParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionImportForItemsParams;
 
-import com.chargebee.v4.models.subscription.params.RemoveScheduledCancellationForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionRemoveScheduledCancellationParams;
 
-import com.chargebee.v4.models.subscription.params.ReactivateForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionReactivateParams;
 
-import com.chargebee.v4.models.subscription.params.ChargeFutureRenewalsForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionChargeFutureRenewalsParams;
 
-import com.chargebee.v4.models.subscription.params.AddChargeAtTermEndForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionAddChargeAtTermEndParams;
 
-import com.chargebee.v4.models.subscription.params.ChangeTermEndForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionChangeTermEndParams;
 
-import com.chargebee.v4.models.subscription.params.SubscriptionForItemsForCustomerParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionCreateWithItemsParams;
 
-import com.chargebee.v4.models.subscription.params.ImportUnbilledChargesForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionImportUnbilledChargesParams;
 
 import com.chargebee.v4.models.subscription.params.SubscriptionUpdateParams;
 
-import com.chargebee.v4.models.subscription.params.ImportContractTermForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionImportContractTermParams;
 
-import com.chargebee.v4.models.subscription.params.OverrideBillingProfileForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionOverrideBillingProfileParams;
 
-import com.chargebee.v4.models.subscription.params.EditAdvanceInvoiceScheduleForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionEditAdvanceInvoiceScheduleParams;
 
-import com.chargebee.v4.models.subscription.params.DiscountsForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionListDiscountsParams;
 
 import com.chargebee.v4.models.subscription.params.ContractTermsForSubscriptionParams;
 
-import com.chargebee.v4.models.subscription.params.PauseForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionPauseParams;
 
-import com.chargebee.v4.models.subscription.params.ImportSubscriptionForCustomerParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionImportForCustomerParams;
 
 import com.chargebee.v4.models.subscription.params.ImportSubscriptionParams;
 
-import com.chargebee.v4.models.subscription.params.CancelForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionCancelParams;
 
-import com.chargebee.v4.models.subscription.params.ChargeAddonAtTermEndForSubscriptionParams;
+import com.chargebee.v4.models.subscription.params.SubscriptionChargeAddonAtTermEndParams;
 
-import com.chargebee.v4.models.subscription.responses.RemoveAdvanceInvoiceScheduleForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveAdvanceInvoiceScheduleResponse;
 
-import com.chargebee.v4.models.subscription.responses.UpdateForItemsForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionUpdateForItemsResponse;
 
-import com.chargebee.v4.models.subscription.responses.RemoveCouponsForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveCouponsResponse;
 
-import com.chargebee.v4.models.subscription.responses.ResumeForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionResumeResponse;
 
-import com.chargebee.v4.models.subscription.responses.CancelForItemsForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionCancelForItemsResponse;
 
-import com.chargebee.v4.models.subscription.responses.RegenerateInvoiceForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRegenerateInvoiceResponse;
 
 import com.chargebee.v4.models.subscription.responses.SubscriptionListResponse;
 
 import com.chargebee.v4.models.subscription.responses.SubscriptionCreateResponse;
 
-import com.chargebee.v4.models.subscription.responses.MoveForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionMoveResponse;
 
 import com.chargebee.v4.models.subscription.responses.SubscriptionsForCustomerResponse;
 
-import com.chargebee.v4.models.subscription.responses.AddSubscriptionForCustomerResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionCreateForCustomerResponse;
 
-import com.chargebee.v4.models.subscription.responses.SubscriptionImportForItemsForCustomerResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionImportForItemsResponse;
 
-import com.chargebee.v4.models.subscription.responses.RetrieveAdvanceInvoiceScheduleForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRetrieveAdvanceInvoiceScheduleResponse;
 
-import com.chargebee.v4.models.subscription.responses.RemoveScheduledCancellationForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveScheduledCancellationResponse;
 
-import com.chargebee.v4.models.subscription.responses.RetrieveWithScheduledChangesForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRetrieveWithScheduledChangesResponse;
 
-import com.chargebee.v4.models.subscription.responses.ReactivateForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionReactivateResponse;
 
-import com.chargebee.v4.models.subscription.responses.ChargeFutureRenewalsForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionChargeFutureRenewalsResponse;
 
-import com.chargebee.v4.models.subscription.responses.AddChargeAtTermEndForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionAddChargeAtTermEndResponse;
 
-import com.chargebee.v4.models.subscription.responses.RemoveScheduledChangesForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveScheduledChangesResponse;
 
-import com.chargebee.v4.models.subscription.responses.ChangeTermEndForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionChangeTermEndResponse;
 
-import com.chargebee.v4.models.subscription.responses.DeleteSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionDeleteResponse;
 
-import com.chargebee.v4.models.subscription.responses.SubscriptionForItemsForCustomerResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionCreateWithItemsResponse;
 
-import com.chargebee.v4.models.subscription.responses.ImportUnbilledChargesForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionImportUnbilledChargesResponse;
 
-import com.chargebee.v4.models.subscription.responses.RemoveScheduledResumptionForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveScheduledResumptionResponse;
 
 import com.chargebee.v4.models.subscription.responses.SubscriptionRetrieveResponse;
 
 import com.chargebee.v4.models.subscription.responses.SubscriptionUpdateResponse;
 
-import com.chargebee.v4.models.subscription.responses.ImportContractTermForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionImportContractTermResponse;
 
-import com.chargebee.v4.models.subscription.responses.OverrideBillingProfileForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionOverrideBillingProfileResponse;
 
-import com.chargebee.v4.models.subscription.responses.RemoveScheduledPauseForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionRemoveScheduledPauseResponse;
 
-import com.chargebee.v4.models.subscription.responses.EditAdvanceInvoiceScheduleForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionEditAdvanceInvoiceScheduleResponse;
 
-import com.chargebee.v4.models.subscription.responses.DiscountsForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionListDiscountsResponse;
 
 import com.chargebee.v4.models.subscription.responses.ContractTermsForSubscriptionResponse;
 
-import com.chargebee.v4.models.subscription.responses.PauseForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionPauseResponse;
 
-import com.chargebee.v4.models.subscription.responses.ImportSubscriptionForCustomerResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionImportForCustomerResponse;
 
 import com.chargebee.v4.models.subscription.responses.ImportSubscriptionResponse;
 
-import com.chargebee.v4.models.subscription.responses.CancelForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionCancelResponse;
 
-import com.chargebee.v4.models.subscription.responses.ChargeAddonAtTermEndForSubscriptionResponse;
+import com.chargebee.v4.models.subscription.responses.SubscriptionChargeAddonAtTermEndResponse;
 
 public final class SubscriptionService extends BaseService<SubscriptionService> {
 
@@ -180,11 +181,8 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
 
   // === Operations ===
 
-  /**
-   * removeAdvanceInvoiceScheduleForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response removeAdvanceInvoiceScheduleForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** removeAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response. */
+  Response removeAdvanceInvoiceScheduleRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
@@ -195,12 +193,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeAdvanceInvoiceScheduleForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * removeAdvanceInvoiceSchedule a subscription using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response removeAdvanceInvoiceScheduleForSubscriptionRaw(
-      String subscriptionId, RemoveAdvanceInvoiceScheduleForSubscriptionParams params)
-      throws Exception {
+  Response removeAdvanceInvoiceScheduleRaw(
+      String subscriptionId, SubscriptionRemoveAdvanceInvoiceScheduleParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
@@ -210,11 +208,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeAdvanceInvoiceScheduleForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * removeAdvanceInvoiceSchedule a subscription using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response removeAdvanceInvoiceScheduleForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response removeAdvanceInvoiceScheduleRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
@@ -223,17 +221,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public RemoveAdvanceInvoiceScheduleForSubscriptionResponse
-      removeAdvanceInvoiceScheduleForSubscription(
-          String subscriptionId, RemoveAdvanceInvoiceScheduleForSubscriptionParams params)
-          throws Exception {
-    Response response = removeAdvanceInvoiceScheduleForSubscriptionRaw(subscriptionId, params);
-    return RemoveAdvanceInvoiceScheduleForSubscriptionResponse.fromJson(
+  public SubscriptionRemoveAdvanceInvoiceScheduleResponse removeAdvanceInvoiceSchedule(
+      String subscriptionId, SubscriptionRemoveAdvanceInvoiceScheduleParams params)
+      throws ChargebeeException {
+    Response response = removeAdvanceInvoiceScheduleRaw(subscriptionId, params);
+    return SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** updateForItemsForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response updateForItemsForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** updateForItems a subscription (executes immediately) - returns raw Response. */
+  Response updateForItemsRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
@@ -242,11 +239,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * updateForItemsForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * updateForItems a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response updateForItemsForSubscriptionRaw(
-      String subscriptionId, UpdateForItemsForSubscriptionParams params) throws Exception {
+  Response updateForItemsRaw(String subscriptionId, SubscriptionUpdateForItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
@@ -254,25 +251,24 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * updateForItemsForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * updateForItems a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response updateForItemsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response updateForItemsRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateForItemsForSubscriptionResponse updateForItemsForSubscription(
-      String subscriptionId, UpdateForItemsForSubscriptionParams params) throws Exception {
-    Response response = updateForItemsForSubscriptionRaw(subscriptionId, params);
-    return UpdateForItemsForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionUpdateForItemsResponse updateForItems(
+      String subscriptionId, SubscriptionUpdateForItemsParams params) throws ChargebeeException {
+    Response response = updateForItemsRaw(subscriptionId, params);
+    return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** removeCouponsForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response removeCouponsForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** removeCoupons a subscription (executes immediately) - returns raw Response. */
+  Response removeCouponsRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
@@ -281,11 +277,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeCouponsForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * removeCoupons a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response removeCouponsForSubscriptionRaw(
-      String subscriptionId, RemoveCouponsForSubscriptionParams params) throws Exception {
+  Response removeCouponsRaw(String subscriptionId, SubscriptionRemoveCouponsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
@@ -293,25 +289,24 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeCouponsForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * removeCoupons a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response removeCouponsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response removeCouponsRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public RemoveCouponsForSubscriptionResponse removeCouponsForSubscription(
-      String subscriptionId, RemoveCouponsForSubscriptionParams params) throws Exception {
-    Response response = removeCouponsForSubscriptionRaw(subscriptionId, params);
-    return RemoveCouponsForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionRemoveCouponsResponse removeCoupons(
+      String subscriptionId, SubscriptionRemoveCouponsParams params) throws ChargebeeException {
+    Response response = removeCouponsRaw(subscriptionId, params);
+    return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** resumeForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response resumeForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** resume a subscription (executes immediately) - returns raw Response. */
+  Response resumeRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
@@ -319,37 +314,31 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  /**
-   * resumeForSubscription a subscription using immutable params (executes immediately) - returns
-   * raw Response.
-   */
-  Response resumeForSubscriptionRaw(String subscriptionId, ResumeForSubscriptionParams params)
-      throws Exception {
+  /** resume a subscription using immutable params (executes immediately) - returns raw Response. */
+  Response resumeRaw(String subscriptionId, SubscriptionResumeParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * resumeForSubscription a subscription using raw JSON payload (executes immediately) - returns
-   * raw Response.
-   */
-  Response resumeForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  /** resume a subscription using raw JSON payload (executes immediately) - returns raw Response. */
+  Response resumeRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public ResumeForSubscriptionResponse resumeForSubscription(
-      String subscriptionId, ResumeForSubscriptionParams params) throws Exception {
-    Response response = resumeForSubscriptionRaw(subscriptionId, params);
-    return ResumeForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionResumeResponse resume(String subscriptionId, SubscriptionResumeParams params)
+      throws ChargebeeException {
+    Response response = resumeRaw(subscriptionId, params);
+    return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** cancelForItemsForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response cancelForItemsForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** cancelForItems a subscription (executes immediately) - returns raw Response. */
+  Response cancelForItemsRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
@@ -358,11 +347,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * cancelForItemsForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * cancelForItems a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response cancelForItemsForSubscriptionRaw(
-      String subscriptionId, CancelForItemsForSubscriptionParams params) throws Exception {
+  Response cancelForItemsRaw(String subscriptionId, SubscriptionCancelForItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
@@ -370,27 +359,24 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * cancelForItemsForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * cancelForItems a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response cancelForItemsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response cancelForItemsRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public CancelForItemsForSubscriptionResponse cancelForItemsForSubscription(
-      String subscriptionId, CancelForItemsForSubscriptionParams params) throws Exception {
-    Response response = cancelForItemsForSubscriptionRaw(subscriptionId, params);
-    return CancelForItemsForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionCancelForItemsResponse cancelForItems(
+      String subscriptionId, SubscriptionCancelForItemsParams params) throws ChargebeeException {
+    Response response = cancelForItemsRaw(subscriptionId, params);
+    return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * regenerateInvoiceForSubscription a subscription (executes immediately) - returns raw Response.
-   */
-  Response regenerateInvoiceForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** regenerateInvoice a subscription (executes immediately) - returns raw Response. */
+  Response regenerateInvoiceRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice",
@@ -401,11 +387,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * regenerateInvoiceForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * regenerateInvoice a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response regenerateInvoiceForSubscriptionRaw(
-      String subscriptionId, RegenerateInvoiceForSubscriptionParams params) throws Exception {
+  Response regenerateInvoiceRaw(String subscriptionId, SubscriptionRegenerateInvoiceParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice",
@@ -415,11 +401,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * regenerateInvoiceForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * regenerateInvoice a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response regenerateInvoiceForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response regenerateInvoiceRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice",
@@ -428,61 +414,62 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public RegenerateInvoiceForSubscriptionResponse regenerateInvoiceForSubscription(
-      String subscriptionId, RegenerateInvoiceForSubscriptionParams params) throws Exception {
-    Response response = regenerateInvoiceForSubscriptionRaw(subscriptionId, params);
-    return RegenerateInvoiceForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionRegenerateInvoiceResponse regenerateInvoice(
+      String subscriptionId, SubscriptionRegenerateInvoiceParams params) throws ChargebeeException {
+    Response response = regenerateInvoiceRaw(subscriptionId, params);
+    return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a subscription using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(SubscriptionListParams params) throws Exception {
+  Response listRaw(SubscriptionListParams params) throws ChargebeeException {
 
     return get("/subscriptions", params != null ? params.toQueryParams() : null);
   }
 
   /** list a subscription without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/subscriptions", null);
   }
 
   /** list a subscription using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public SubscriptionListResponse list(SubscriptionListParams params) throws Exception {
+  public SubscriptionListResponse list(SubscriptionListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public SubscriptionListResponse list() throws Exception {
+  public SubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a subscription using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(SubscriptionCreateParams params) throws Exception {
+  Response createRaw(SubscriptionCreateParams params) throws ChargebeeException {
 
     return post("/subscriptions", params != null ? params.toFormData() : null);
   }
 
   /** create a subscription using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/subscriptions", jsonPayload);
   }
 
-  public SubscriptionCreateResponse create(SubscriptionCreateParams params) throws Exception {
+  public SubscriptionCreateResponse create(SubscriptionCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** moveForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response moveForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** move a subscription (executes immediately) - returns raw Response. */
+  Response moveRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
@@ -490,33 +477,26 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  /**
-   * moveForSubscription a subscription using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response moveForSubscriptionRaw(String subscriptionId, MoveForSubscriptionParams params)
-      throws Exception {
+  /** move a subscription using immutable params (executes immediately) - returns raw Response. */
+  Response moveRaw(String subscriptionId, SubscriptionMoveParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * moveForSubscription a subscription using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response moveForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  /** move a subscription using raw JSON payload (executes immediately) - returns raw Response. */
+  Response moveRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public MoveForSubscriptionResponse moveForSubscription(
-      String subscriptionId, MoveForSubscriptionParams params) throws Exception {
-    Response response = moveForSubscriptionRaw(subscriptionId, params);
-    return MoveForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionMoveResponse move(String subscriptionId, SubscriptionMoveParams params)
+      throws ChargebeeException {
+    Response response = moveRaw(subscriptionId, params);
+    return SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -524,7 +504,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * raw Response.
    */
   Response subscriptionsForCustomerRaw(String customerId, SubscriptionsForCustomerParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -534,7 +514,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * subscriptionsForCustomer a subscription without params (executes immediately) - returns raw
    * Response.
    */
-  Response subscriptionsForCustomerRaw(String customerId) throws Exception {
+  Response subscriptionsForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
     return get(path, null);
@@ -544,28 +524,29 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * subscriptionsForCustomer a subscription using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response subscriptionsForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response subscriptionsForCustomerRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public SubscriptionsForCustomerResponse subscriptionsForCustomer(
-      String customerId, SubscriptionsForCustomerParams params) throws Exception {
+      String customerId, SubscriptionsForCustomerParams params) throws ChargebeeException {
     Response response = subscriptionsForCustomerRaw(customerId, params);
     return SubscriptionsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, params, customerId, response);
   }
 
   public SubscriptionsForCustomerResponse subscriptionsForCustomer(String customerId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = subscriptionsForCustomerRaw(customerId);
     return SubscriptionsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
   }
 
-  /** addSubscriptionForCustomer a subscription (executes immediately) - returns raw Response. */
-  Response addSubscriptionForCustomerRaw(String customerId) throws Exception {
+  /** createForCustomer a subscription (executes immediately) - returns raw Response. */
+  Response createForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
 
@@ -573,34 +554,34 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * addSubscriptionForCustomer a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * createForCustomer a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response addSubscriptionForCustomerRaw(String customerId, AddSubscriptionForCustomerParams params)
-      throws Exception {
+  Response createForCustomerRaw(String customerId, SubscriptionCreateForCustomerParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addSubscriptionForCustomer a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * createForCustomer a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response addSubscriptionForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response createForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public AddSubscriptionForCustomerResponse addSubscriptionForCustomer(
-      String customerId, AddSubscriptionForCustomerParams params) throws Exception {
-    Response response = addSubscriptionForCustomerRaw(customerId, params);
-    return AddSubscriptionForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionCreateForCustomerResponse createForCustomer(
+      String customerId, SubscriptionCreateForCustomerParams params) throws ChargebeeException {
+    Response response = createForCustomerRaw(customerId, params);
+    return SubscriptionCreateForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** importForItemsForCustomer a subscription (executes immediately) - returns raw Response. */
-  Response importForItemsForCustomerRaw(String customerId) throws Exception {
+  /** importForItems a subscription (executes immediately) - returns raw Response. */
+  Response importForItemsRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
 
@@ -608,39 +589,36 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importForItemsForCustomer a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * importForItems a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response importForItemsForCustomerRaw(
-      String customerId, SubscriptionImportForItemsForCustomerParams params) throws Exception {
+  Response importForItemsRaw(String customerId, SubscriptionImportForItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
     return post(path, params.toFormData());
   }
 
   /**
-   * importForItemsForCustomer a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * importForItems a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response importForItemsForCustomerRaw(String customerId, String jsonPayload) throws Exception {
+  Response importForItemsRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public SubscriptionImportForItemsForCustomerResponse importForItemsForCustomer(
-      String customerId, SubscriptionImportForItemsForCustomerParams params) throws Exception {
-    Response response = importForItemsForCustomerRaw(customerId, params);
-    return SubscriptionImportForItemsForCustomerResponse.fromJson(
-        response.getBodyAsString(), response);
+  public SubscriptionImportForItemsResponse importForItems(
+      String customerId, SubscriptionImportForItemsParams params) throws ChargebeeException {
+    Response response = importForItemsRaw(customerId, params);
+    return SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * retrieveAdvanceInvoiceScheduleForSubscription a subscription (executes immediately) - returns
-   * raw Response.
+   * retrieveAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response.
    */
-  Response retrieveAdvanceInvoiceScheduleForSubscriptionRaw(String subscriptionId)
-      throws Exception {
+  Response retrieveAdvanceInvoiceScheduleRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/retrieve_advance_invoice_schedule",
@@ -650,18 +628,15 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return get(path, null);
   }
 
-  public RetrieveAdvanceInvoiceScheduleForSubscriptionResponse
-      retrieveAdvanceInvoiceScheduleForSubscription(String subscriptionId) throws Exception {
-    Response response = retrieveAdvanceInvoiceScheduleForSubscriptionRaw(subscriptionId);
-    return RetrieveAdvanceInvoiceScheduleForSubscriptionResponse.fromJson(
+  public SubscriptionRetrieveAdvanceInvoiceScheduleResponse retrieveAdvanceInvoiceSchedule(
+      String subscriptionId) throws ChargebeeException {
+    Response response = retrieveAdvanceInvoiceScheduleRaw(subscriptionId);
+    return SubscriptionRetrieveAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /**
-   * removeScheduledCancellationForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response removeScheduledCancellationForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** removeScheduledCancellation a subscription (executes immediately) - returns raw Response. */
+  Response removeScheduledCancellationRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
@@ -672,12 +647,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeScheduledCancellationForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * removeScheduledCancellation a subscription using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response removeScheduledCancellationForSubscriptionRaw(
-      String subscriptionId, RemoveScheduledCancellationForSubscriptionParams params)
-      throws Exception {
+  Response removeScheduledCancellationRaw(
+      String subscriptionId, SubscriptionRemoveScheduledCancellationParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
@@ -687,11 +662,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * removeScheduledCancellationForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * removeScheduledCancellation a subscription using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response removeScheduledCancellationForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response removeScheduledCancellationRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
@@ -700,20 +675,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public RemoveScheduledCancellationForSubscriptionResponse
-      removeScheduledCancellationForSubscription(
-          String subscriptionId, RemoveScheduledCancellationForSubscriptionParams params)
-          throws Exception {
-    Response response = removeScheduledCancellationForSubscriptionRaw(subscriptionId, params);
-    return RemoveScheduledCancellationForSubscriptionResponse.fromJson(
+  public SubscriptionRemoveScheduledCancellationResponse removeScheduledCancellation(
+      String subscriptionId, SubscriptionRemoveScheduledCancellationParams params)
+      throws ChargebeeException {
+    Response response = removeScheduledCancellationRaw(subscriptionId, params);
+    return SubscriptionRemoveScheduledCancellationResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /**
-   * retrieveWithScheduledChangesForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response retrieveWithScheduledChangesForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** retrieveWithScheduledChanges a subscription (executes immediately) - returns raw Response. */
+  Response retrieveWithScheduledChangesRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/retrieve_with_scheduled_changes",
@@ -723,15 +694,15 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return get(path, null);
   }
 
-  public RetrieveWithScheduledChangesForSubscriptionResponse
-      retrieveWithScheduledChangesForSubscription(String subscriptionId) throws Exception {
-    Response response = retrieveWithScheduledChangesForSubscriptionRaw(subscriptionId);
-    return RetrieveWithScheduledChangesForSubscriptionResponse.fromJson(
+  public SubscriptionRetrieveWithScheduledChangesResponse retrieveWithScheduledChanges(
+      String subscriptionId) throws ChargebeeException {
+    Response response = retrieveWithScheduledChangesRaw(subscriptionId);
+    return SubscriptionRetrieveWithScheduledChangesResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** reactivateForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response reactivateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** reactivate a subscription (executes immediately) - returns raw Response. */
+  Response reactivateRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
@@ -740,11 +711,10 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * reactivateForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * reactivate a subscription using immutable params (executes immediately) - returns raw Response.
    */
-  Response reactivateForSubscriptionRaw(
-      String subscriptionId, ReactivateForSubscriptionParams params) throws Exception {
+  Response reactivateRaw(String subscriptionId, SubscriptionReactivateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
@@ -752,43 +722,39 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * reactivateForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * reactivate a subscription using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response reactivateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response reactivateRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public ReactivateForSubscriptionResponse reactivateForSubscription(
-      String subscriptionId, ReactivateForSubscriptionParams params) throws Exception {
-    Response response = reactivateForSubscriptionRaw(subscriptionId, params);
-    return ReactivateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionReactivateResponse reactivate(
+      String subscriptionId, SubscriptionReactivateParams params) throws ChargebeeException {
+    Response response = reactivateRaw(subscriptionId, params);
+    return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** chargeFutureRenewals a subscription (executes immediately) - returns raw Response. */
+  Response chargeFutureRenewalsRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_future_renewals",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
   }
 
   /**
-   * chargeFutureRenewalsForSubscription a subscription (executes immediately) - returns raw
+   * chargeFutureRenewals a subscription using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response chargeFutureRenewalsForSubscriptionRaw(String subscriptionId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/charge_future_renewals",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * chargeFutureRenewalsForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response chargeFutureRenewalsForSubscriptionRaw(
-      String subscriptionId, ChargeFutureRenewalsForSubscriptionParams params) throws Exception {
+  Response chargeFutureRenewalsRaw(
+      String subscriptionId, SubscriptionChargeFutureRenewalsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/charge_future_renewals",
@@ -798,78 +764,74 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * chargeFutureRenewalsForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
-   */
-  Response chargeFutureRenewalsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/charge_future_renewals",
-            "subscription-id",
-            subscriptionId);
-    return postJson(path, jsonPayload);
-  }
-
-  public ChargeFutureRenewalsForSubscriptionResponse chargeFutureRenewalsForSubscription(
-      String subscriptionId, ChargeFutureRenewalsForSubscriptionParams params) throws Exception {
-    Response response = chargeFutureRenewalsForSubscriptionRaw(subscriptionId, params);
-    return ChargeFutureRenewalsForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
-  }
-
-  /**
-   * addChargeAtTermEndForSubscription a subscription (executes immediately) - returns raw Response.
-   */
-  Response addChargeAtTermEndForSubscriptionRaw(String subscriptionId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/add_charge_at_term_end",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * addChargeAtTermEndForSubscription a subscription using immutable params (executes immediately)
-   * - returns raw Response.
-   */
-  Response addChargeAtTermEndForSubscriptionRaw(
-      String subscriptionId, AddChargeAtTermEndForSubscriptionParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/add_charge_at_term_end",
-            "subscription-id",
-            subscriptionId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * addChargeAtTermEndForSubscription a subscription using raw JSON payload (executes immediately)
-   * - returns raw Response.
-   */
-  Response addChargeAtTermEndForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/add_charge_at_term_end",
-            "subscription-id",
-            subscriptionId);
-    return postJson(path, jsonPayload);
-  }
-
-  public AddChargeAtTermEndForSubscriptionResponse addChargeAtTermEndForSubscription(
-      String subscriptionId, AddChargeAtTermEndForSubscriptionParams params) throws Exception {
-    Response response = addChargeAtTermEndForSubscriptionRaw(subscriptionId, params);
-    return AddChargeAtTermEndForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * removeScheduledChangesForSubscription a subscription (executes immediately) - returns raw
+   * chargeFutureRenewals a subscription using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response removeScheduledChangesForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response chargeFutureRenewalsRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_future_renewals",
+            "subscription-id",
+            subscriptionId);
+    return postJson(path, jsonPayload);
+  }
+
+  public SubscriptionChargeFutureRenewalsResponse chargeFutureRenewals(
+      String subscriptionId, SubscriptionChargeFutureRenewalsParams params)
+      throws ChargebeeException {
+    Response response = chargeFutureRenewalsRaw(subscriptionId, params);
+    return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** addChargeAtTermEnd a subscription (executes immediately) - returns raw Response. */
+  Response addChargeAtTermEndRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/add_charge_at_term_end",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
+  }
+
+  /**
+   * addChargeAtTermEnd a subscription using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response addChargeAtTermEndRaw(String subscriptionId, SubscriptionAddChargeAtTermEndParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/add_charge_at_term_end",
+            "subscription-id",
+            subscriptionId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * addChargeAtTermEnd a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response addChargeAtTermEndRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/add_charge_at_term_end",
+            "subscription-id",
+            subscriptionId);
+    return postJson(path, jsonPayload);
+  }
+
+  public SubscriptionAddChargeAtTermEndResponse addChargeAtTermEnd(
+      String subscriptionId, SubscriptionAddChargeAtTermEndParams params)
+      throws ChargebeeException {
+    Response response = addChargeAtTermEndRaw(subscriptionId, params);
+    return SubscriptionAddChargeAtTermEndResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** removeScheduledChanges a subscription (executes immediately) - returns raw Response. */
+  Response removeScheduledChangesRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_changes",
@@ -879,15 +841,15 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  public RemoveScheduledChangesForSubscriptionResponse removeScheduledChangesForSubscription(
-      String subscriptionId) throws Exception {
-    Response response = removeScheduledChangesForSubscriptionRaw(subscriptionId);
-    return RemoveScheduledChangesForSubscriptionResponse.fromJson(
+  public SubscriptionRemoveScheduledChangesResponse removeScheduledChanges(String subscriptionId)
+      throws ChargebeeException {
+    Response response = removeScheduledChangesRaw(subscriptionId);
+    return SubscriptionRemoveScheduledChangesResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /** changeTermEndForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response changeTermEndForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** changeTermEnd a subscription (executes immediately) - returns raw Response. */
+  Response changeTermEndRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
@@ -896,11 +858,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * changeTermEndForSubscription a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * changeTermEnd a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response changeTermEndForSubscriptionRaw(
-      String subscriptionId, ChangeTermEndForSubscriptionParams params) throws Exception {
+  Response changeTermEndRaw(String subscriptionId, SubscriptionChangeTermEndParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
@@ -908,25 +870,24 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * changeTermEndForSubscription a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * changeTermEnd a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response changeTermEndForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response changeTermEndRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public ChangeTermEndForSubscriptionResponse changeTermEndForSubscription(
-      String subscriptionId, ChangeTermEndForSubscriptionParams params) throws Exception {
-    Response response = changeTermEndForSubscriptionRaw(subscriptionId, params);
-    return ChangeTermEndForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionChangeTermEndResponse changeTermEnd(
+      String subscriptionId, SubscriptionChangeTermEndParams params) throws ChargebeeException {
+    Response response = changeTermEndRaw(subscriptionId, params);
+    return SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteSubscription a subscription (executes immediately) - returns raw Response. */
-  Response deleteSubscriptionRaw(String subscriptionId) throws Exception {
+  /** delete a subscription (executes immediately) - returns raw Response. */
+  Response deleteRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete", "subscription-id", subscriptionId);
@@ -934,15 +895,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  public DeleteSubscriptionResponse deleteSubscription(String subscriptionId) throws Exception {
-    Response response = deleteSubscriptionRaw(subscriptionId);
-    return DeleteSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionDeleteResponse delete(String subscriptionId) throws ChargebeeException {
+    Response response = deleteRaw(subscriptionId);
+    return SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * subscriptionForItemsForCustomer a subscription (executes immediately) - returns raw Response.
-   */
-  Response subscriptionForItemsForCustomerRaw(String customerId) throws Exception {
+  /** createWithItems a subscription (executes immediately) - returns raw Response. */
+  Response createWithItemsRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
@@ -951,11 +910,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * subscriptionForItemsForCustomer a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * createWithItems a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response subscriptionForItemsForCustomerRaw(
-      String customerId, SubscriptionForItemsForCustomerParams params) throws Exception {
+  Response createWithItemsRaw(String customerId, SubscriptionCreateWithItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
@@ -963,28 +922,24 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * subscriptionForItemsForCustomer a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * createWithItems a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response subscriptionForItemsForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response createWithItemsRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public SubscriptionForItemsForCustomerResponse subscriptionForItemsForCustomer(
-      String customerId, SubscriptionForItemsForCustomerParams params) throws Exception {
-    Response response = subscriptionForItemsForCustomerRaw(customerId, params);
-    return SubscriptionForItemsForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionCreateWithItemsResponse createWithItems(
+      String customerId, SubscriptionCreateWithItemsParams params) throws ChargebeeException {
+    Response response = createWithItemsRaw(customerId, params);
+    return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * importUnbilledChargesForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response importUnbilledChargesForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** importUnbilledCharges a subscription (executes immediately) - returns raw Response. */
+  Response importUnbilledChargesRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/import_unbilled_charges",
@@ -995,11 +950,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importUnbilledChargesForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * importUnbilledCharges a subscription using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response importUnbilledChargesForSubscriptionRaw(
-      String subscriptionId, ImportUnbilledChargesForSubscriptionParams params) throws Exception {
+  Response importUnbilledChargesRaw(
+      String subscriptionId, SubscriptionImportUnbilledChargesParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/import_unbilled_charges",
@@ -1009,11 +965,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importUnbilledChargesForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * importUnbilledCharges a subscription using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response importUnbilledChargesForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response importUnbilledChargesRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/import_unbilled_charges",
@@ -1022,18 +978,15 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public ImportUnbilledChargesForSubscriptionResponse importUnbilledChargesForSubscription(
-      String subscriptionId, ImportUnbilledChargesForSubscriptionParams params) throws Exception {
-    Response response = importUnbilledChargesForSubscriptionRaw(subscriptionId, params);
-    return ImportUnbilledChargesForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public SubscriptionImportUnbilledChargesResponse importUnbilledCharges(
+      String subscriptionId, SubscriptionImportUnbilledChargesParams params)
+      throws ChargebeeException {
+    Response response = importUnbilledChargesRaw(subscriptionId, params);
+    return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * removeScheduledResumptionForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response removeScheduledResumptionForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** removeScheduledResumption a subscription (executes immediately) - returns raw Response. */
+  Response removeScheduledResumptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_resumption",
@@ -1043,28 +996,28 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  public RemoveScheduledResumptionForSubscriptionResponse removeScheduledResumptionForSubscription(
-      String subscriptionId) throws Exception {
-    Response response = removeScheduledResumptionForSubscriptionRaw(subscriptionId);
-    return RemoveScheduledResumptionForSubscriptionResponse.fromJson(
+  public SubscriptionRemoveScheduledResumptionResponse removeScheduledResumption(
+      String subscriptionId) throws ChargebeeException {
+    Response response = removeScheduledResumptionRaw(subscriptionId);
+    return SubscriptionRemoveScheduledResumptionResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
   /** retrieve a subscription (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String subscriptionId) throws Exception {
+  Response retrieveRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
     return get(path, null);
   }
 
-  public SubscriptionRetrieveResponse retrieve(String subscriptionId) throws Exception {
+  public SubscriptionRetrieveResponse retrieve(String subscriptionId) throws ChargebeeException {
     Response response = retrieveRaw(subscriptionId);
     return SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a subscription (executes immediately) - returns raw Response. */
-  Response updateRaw(String subscriptionId) throws Exception {
+  Response updateRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
 
@@ -1072,29 +1025,28 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /** update a subscription using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String subscriptionId, SubscriptionUpdateParams params) throws Exception {
+  Response updateRaw(String subscriptionId, SubscriptionUpdateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
   /** update a subscription using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String subscriptionId, String jsonPayload) throws Exception {
+  Response updateRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
   public SubscriptionUpdateResponse update(String subscriptionId, SubscriptionUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(subscriptionId, params);
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * importContractTermForSubscription a subscription (executes immediately) - returns raw Response.
-   */
-  Response importContractTermForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** importContractTerm a subscription (executes immediately) - returns raw Response. */
+  Response importContractTermRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/import_contract_term",
@@ -1105,44 +1057,42 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importContractTermForSubscription a subscription using immutable params (executes immediately)
-   * - returns raw Response.
-   */
-  Response importContractTermForSubscriptionRaw(
-      String subscriptionId, ImportContractTermForSubscriptionParams params) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/import_contract_term",
-            "subscription-id",
-            subscriptionId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * importContractTermForSubscription a subscription using raw JSON payload (executes immediately)
-   * - returns raw Response.
-   */
-  Response importContractTermForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/import_contract_term",
-            "subscription-id",
-            subscriptionId);
-    return postJson(path, jsonPayload);
-  }
-
-  public ImportContractTermForSubscriptionResponse importContractTermForSubscription(
-      String subscriptionId, ImportContractTermForSubscriptionParams params) throws Exception {
-    Response response = importContractTermForSubscriptionRaw(subscriptionId, params);
-    return ImportContractTermForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
-  }
-
-  /**
-   * overrideBillingProfileForSubscription a subscription (executes immediately) - returns raw
+   * importContractTerm a subscription using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response overrideBillingProfileForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response importContractTermRaw(String subscriptionId, SubscriptionImportContractTermParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_contract_term",
+            "subscription-id",
+            subscriptionId);
+    return post(path, params.toFormData());
+  }
+
+  /**
+   * importContractTerm a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response importContractTermRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_contract_term",
+            "subscription-id",
+            subscriptionId);
+    return postJson(path, jsonPayload);
+  }
+
+  public SubscriptionImportContractTermResponse importContractTerm(
+      String subscriptionId, SubscriptionImportContractTermParams params)
+      throws ChargebeeException {
+    Response response = importContractTermRaw(subscriptionId, params);
+    return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** overrideBillingProfile a subscription (executes immediately) - returns raw Response. */
+  Response overrideBillingProfileRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/override_billing_profile",
@@ -1153,11 +1103,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * overrideBillingProfileForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * overrideBillingProfile a subscription using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response overrideBillingProfileForSubscriptionRaw(
-      String subscriptionId, OverrideBillingProfileForSubscriptionParams params) throws Exception {
+  Response overrideBillingProfileRaw(
+      String subscriptionId, SubscriptionOverrideBillingProfileParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/override_billing_profile",
@@ -1167,11 +1118,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * overrideBillingProfileForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * overrideBillingProfile a subscription using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response overrideBillingProfileForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response overrideBillingProfileRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/override_billing_profile",
@@ -1180,18 +1131,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public OverrideBillingProfileForSubscriptionResponse overrideBillingProfileForSubscription(
-      String subscriptionId, OverrideBillingProfileForSubscriptionParams params) throws Exception {
-    Response response = overrideBillingProfileForSubscriptionRaw(subscriptionId, params);
-    return OverrideBillingProfileForSubscriptionResponse.fromJson(
+  public SubscriptionOverrideBillingProfileResponse overrideBillingProfile(
+      String subscriptionId, SubscriptionOverrideBillingProfileParams params)
+      throws ChargebeeException {
+    Response response = overrideBillingProfileRaw(subscriptionId, params);
+    return SubscriptionOverrideBillingProfileResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /**
-   * removeScheduledPauseForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response removeScheduledPauseForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** removeScheduledPause a subscription (executes immediately) - returns raw Response. */
+  Response removeScheduledPauseRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/remove_scheduled_pause",
@@ -1201,18 +1150,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  public RemoveScheduledPauseForSubscriptionResponse removeScheduledPauseForSubscription(
-      String subscriptionId) throws Exception {
-    Response response = removeScheduledPauseForSubscriptionRaw(subscriptionId);
-    return RemoveScheduledPauseForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public SubscriptionRemoveScheduledPauseResponse removeScheduledPause(String subscriptionId)
+      throws ChargebeeException {
+    Response response = removeScheduledPauseRaw(subscriptionId);
+    return SubscriptionRemoveScheduledPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * editAdvanceInvoiceScheduleForSubscription a subscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response editAdvanceInvoiceScheduleForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** editAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response. */
+  Response editAdvanceInvoiceScheduleRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
@@ -1223,12 +1168,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * editAdvanceInvoiceScheduleForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * editAdvanceInvoiceSchedule a subscription using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response editAdvanceInvoiceScheduleForSubscriptionRaw(
-      String subscriptionId, EditAdvanceInvoiceScheduleForSubscriptionParams params)
-      throws Exception {
+  Response editAdvanceInvoiceScheduleRaw(
+      String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
@@ -1238,11 +1183,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * editAdvanceInvoiceScheduleForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * editAdvanceInvoiceSchedule a subscription using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response editAdvanceInvoiceScheduleForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response editAdvanceInvoiceScheduleRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
@@ -1251,32 +1196,28 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public EditAdvanceInvoiceScheduleForSubscriptionResponse
-      editAdvanceInvoiceScheduleForSubscription(
-          String subscriptionId, EditAdvanceInvoiceScheduleForSubscriptionParams params)
-          throws Exception {
-    Response response = editAdvanceInvoiceScheduleForSubscriptionRaw(subscriptionId, params);
-    return EditAdvanceInvoiceScheduleForSubscriptionResponse.fromJson(
+  public SubscriptionEditAdvanceInvoiceScheduleResponse editAdvanceInvoiceSchedule(
+      String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params)
+      throws ChargebeeException {
+    Response response = editAdvanceInvoiceScheduleRaw(subscriptionId, params);
+    return SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
   /**
-   * discountsForSubscription a subscription using immutable params (executes immediately) - returns
-   * raw Response.
+   * listDiscounts a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response discountsForSubscriptionRaw(String subscriptionId, DiscountsForSubscriptionParams params)
-      throws Exception {
+  Response listDiscountsRaw(String subscriptionId, SubscriptionListDiscountsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
 
-  /**
-   * discountsForSubscription a subscription without params (executes immediately) - returns raw
-   * Response.
-   */
-  Response discountsForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** listDiscounts a subscription without params (executes immediately) - returns raw Response. */
+  Response listDiscountsRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
@@ -1284,27 +1225,27 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * discountsForSubscription a subscription using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * listDiscounts a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response discountsForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  Response listDiscountsRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public DiscountsForSubscriptionResponse discountsForSubscription(
-      String subscriptionId, DiscountsForSubscriptionParams params) throws Exception {
-    Response response = discountsForSubscriptionRaw(subscriptionId, params);
-    return DiscountsForSubscriptionResponse.fromJson(
+  public SubscriptionListDiscountsResponse listDiscounts(
+      String subscriptionId, SubscriptionListDiscountsParams params) throws ChargebeeException {
+    Response response = listDiscountsRaw(subscriptionId, params);
+    return SubscriptionListDiscountsResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
-  public DiscountsForSubscriptionResponse discountsForSubscription(String subscriptionId)
-      throws Exception {
-    Response response = discountsForSubscriptionRaw(subscriptionId);
-    return DiscountsForSubscriptionResponse.fromJson(
+  public SubscriptionListDiscountsResponse listDiscounts(String subscriptionId)
+      throws ChargebeeException {
+    Response response = listDiscountsRaw(subscriptionId);
+    return SubscriptionListDiscountsResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
@@ -1313,7 +1254,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * returns raw Response.
    */
   Response contractTermsForSubscriptionRaw(
-      String subscriptionId, ContractTermsForSubscriptionParams params) throws Exception {
+      String subscriptionId, ContractTermsForSubscriptionParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
@@ -1324,7 +1265,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * contractTermsForSubscription a subscription without params (executes immediately) - returns raw
    * Response.
    */
-  Response contractTermsForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response contractTermsForSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
@@ -1336,7 +1277,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * returns raw Response.
    */
   Response contractTermsForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
@@ -1344,21 +1285,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   public ContractTermsForSubscriptionResponse contractTermsForSubscription(
-      String subscriptionId, ContractTermsForSubscriptionParams params) throws Exception {
+      String subscriptionId, ContractTermsForSubscriptionParams params) throws ChargebeeException {
     Response response = contractTermsForSubscriptionRaw(subscriptionId, params);
     return ContractTermsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
   public ContractTermsForSubscriptionResponse contractTermsForSubscription(String subscriptionId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = contractTermsForSubscriptionRaw(subscriptionId);
     return ContractTermsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
-  /** pauseForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response pauseForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** pause a subscription (executes immediately) - returns raw Response. */
+  Response pauseRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
@@ -1366,37 +1307,31 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  /**
-   * pauseForSubscription a subscription using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response pauseForSubscriptionRaw(String subscriptionId, PauseForSubscriptionParams params)
-      throws Exception {
+  /** pause a subscription using immutable params (executes immediately) - returns raw Response. */
+  Response pauseRaw(String subscriptionId, SubscriptionPauseParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * pauseForSubscription a subscription using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response pauseForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  /** pause a subscription using raw JSON payload (executes immediately) - returns raw Response. */
+  Response pauseRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public PauseForSubscriptionResponse pauseForSubscription(
-      String subscriptionId, PauseForSubscriptionParams params) throws Exception {
-    Response response = pauseForSubscriptionRaw(subscriptionId, params);
-    return PauseForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionPauseResponse pause(String subscriptionId, SubscriptionPauseParams params)
+      throws ChargebeeException {
+    Response response = pauseRaw(subscriptionId, params);
+    return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** importSubscriptionForCustomer a subscription (executes immediately) - returns raw Response. */
-  Response importSubscriptionForCustomerRaw(String customerId) throws Exception {
+  /** importForCustomer a subscription (executes immediately) - returns raw Response. */
+  Response importForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
@@ -1405,11 +1340,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importSubscriptionForCustomer a subscription using immutable params (executes immediately) -
-   * returns raw Response.
+   * importForCustomer a subscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response importSubscriptionForCustomerRaw(
-      String customerId, ImportSubscriptionForCustomerParams params) throws Exception {
+  Response importForCustomerRaw(String customerId, SubscriptionImportForCustomerParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
@@ -1417,28 +1352,27 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * importSubscriptionForCustomer a subscription using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * importForCustomer a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response importSubscriptionForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response importForCustomerRaw(String customerId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/import_subscription", "customer-id", customerId);
     return postJson(path, jsonPayload);
   }
 
-  public ImportSubscriptionForCustomerResponse importSubscriptionForCustomer(
-      String customerId, ImportSubscriptionForCustomerParams params) throws Exception {
-    Response response = importSubscriptionForCustomerRaw(customerId, params);
-    return ImportSubscriptionForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionImportForCustomerResponse importForCustomer(
+      String customerId, SubscriptionImportForCustomerParams params) throws ChargebeeException {
+    Response response = importForCustomerRaw(customerId, params);
+    return SubscriptionImportForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * importSubscription a subscription using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response importSubscriptionRaw(ImportSubscriptionParams params) throws Exception {
+  Response importSubscriptionRaw(ImportSubscriptionParams params) throws ChargebeeException {
 
     return post("/subscriptions/import_subscription", params != null ? params.toFormData() : null);
   }
@@ -1447,20 +1381,20 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
    * importSubscription a subscription using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response importSubscriptionRaw(String jsonPayload) throws Exception {
+  Response importSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/subscriptions/import_subscription", jsonPayload);
   }
 
   public ImportSubscriptionResponse importSubscription(ImportSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = importSubscriptionRaw(params);
 
     return ImportSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** cancelForSubscription a subscription (executes immediately) - returns raw Response. */
-  Response cancelForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** cancel a subscription (executes immediately) - returns raw Response. */
+  Response cancelRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
@@ -1468,55 +1402,47 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return post(path, null);
   }
 
-  /**
-   * cancelForSubscription a subscription using immutable params (executes immediately) - returns
-   * raw Response.
-   */
-  Response cancelForSubscriptionRaw(String subscriptionId, CancelForSubscriptionParams params)
-      throws Exception {
+  /** cancel a subscription using immutable params (executes immediately) - returns raw Response. */
+  Response cancelRaw(String subscriptionId, SubscriptionCancelParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * cancelForSubscription a subscription using raw JSON payload (executes immediately) - returns
-   * raw Response.
-   */
-  Response cancelForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  /** cancel a subscription using raw JSON payload (executes immediately) - returns raw Response. */
+  Response cancelRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public CancelForSubscriptionResponse cancelForSubscription(
-      String subscriptionId, CancelForSubscriptionParams params) throws Exception {
-    Response response = cancelForSubscriptionRaw(subscriptionId, params);
-    return CancelForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public SubscriptionCancelResponse cancel(String subscriptionId, SubscriptionCancelParams params)
+      throws ChargebeeException {
+    Response response = cancelRaw(subscriptionId, params);
+    return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** chargeAddonAtTermEnd a subscription (executes immediately) - returns raw Response. */
+  Response chargeAddonAtTermEndRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_addon_at_term_end",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
   }
 
   /**
-   * chargeAddonAtTermEndForSubscription a subscription (executes immediately) - returns raw
+   * chargeAddonAtTermEnd a subscription using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response chargeAddonAtTermEndForSubscriptionRaw(String subscriptionId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/charge_addon_at_term_end",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * chargeAddonAtTermEndForSubscription a subscription using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response chargeAddonAtTermEndForSubscriptionRaw(
-      String subscriptionId, ChargeAddonAtTermEndForSubscriptionParams params) throws Exception {
+  Response chargeAddonAtTermEndRaw(
+      String subscriptionId, SubscriptionChargeAddonAtTermEndParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/charge_addon_at_term_end",
@@ -1526,11 +1452,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   }
 
   /**
-   * chargeAddonAtTermEndForSubscription a subscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * chargeAddonAtTermEnd a subscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response chargeAddonAtTermEndForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response chargeAddonAtTermEndRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/charge_addon_at_term_end",
@@ -1539,10 +1465,10 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return postJson(path, jsonPayload);
   }
 
-  public ChargeAddonAtTermEndForSubscriptionResponse chargeAddonAtTermEndForSubscription(
-      String subscriptionId, ChargeAddonAtTermEndForSubscriptionParams params) throws Exception {
-    Response response = chargeAddonAtTermEndForSubscriptionRaw(subscriptionId, params);
-    return ChargeAddonAtTermEndForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public SubscriptionChargeAddonAtTermEndResponse chargeAddonAtTermEnd(
+      String subscriptionId, SubscriptionChargeAddonAtTermEndParams params)
+      throws ChargebeeException {
+    Response response = chargeAddonAtTermEndRaw(subscriptionId, params);
+    return SubscriptionChargeAddonAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 }

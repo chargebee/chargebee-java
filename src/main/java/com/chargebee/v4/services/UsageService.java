@@ -9,23 +9,26 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.usage.params.UsagePdfParams;
 
-import com.chargebee.v4.models.usage.params.AddUsageForSubscriptionParams;
+import com.chargebee.v4.models.usage.params.UsageRetrieveParams;
 
-import com.chargebee.v4.models.usage.params.DeleteUsageForSubscriptionParams;
+import com.chargebee.v4.models.usage.params.UsageCreateParams;
+
+import com.chargebee.v4.models.usage.params.UsageDeleteParams;
 
 import com.chargebee.v4.models.usage.params.UsageListParams;
 
 import com.chargebee.v4.models.usage.responses.UsagePdfResponse;
 
-import com.chargebee.v4.models.usage.responses.UsagesForSubscriptionResponse;
+import com.chargebee.v4.models.usage.responses.UsageRetrieveResponse;
 
-import com.chargebee.v4.models.usage.responses.AddUsageForSubscriptionResponse;
+import com.chargebee.v4.models.usage.responses.UsageCreateResponse;
 
-import com.chargebee.v4.models.usage.responses.DeleteUsageForSubscriptionResponse;
+import com.chargebee.v4.models.usage.responses.UsageDeleteResponse;
 
 import com.chargebee.v4.models.usage.responses.UsageListResponse;
 
@@ -64,25 +67,25 @@ public final class UsageService extends BaseService<UsageService> {
   // === Operations ===
 
   /** pdf a usage using immutable params (executes immediately) - returns raw Response. */
-  Response pdfRaw(UsagePdfParams params) throws Exception {
+  Response pdfRaw(UsagePdfParams params) throws ChargebeeException {
 
     return post("/usages/pdf", params != null ? params.toFormData() : null);
   }
 
   /** pdf a usage using raw JSON payload (executes immediately) - returns raw Response. */
-  Response pdfRaw(String jsonPayload) throws Exception {
+  Response pdfRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/usages/pdf", jsonPayload);
   }
 
-  public UsagePdfResponse pdf(UsagePdfParams params) throws Exception {
+  public UsagePdfResponse pdf(UsagePdfParams params) throws ChargebeeException {
     Response response = pdfRaw(params);
 
     return UsagePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** usagesForSubscription a usage (executes immediately) - returns raw Response. */
-  Response usagesForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** retrieve a usage (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
@@ -90,14 +93,28 @@ public final class UsageService extends BaseService<UsageService> {
     return get(path, null);
   }
 
-  public UsagesForSubscriptionResponse usagesForSubscription(String subscriptionId)
-      throws Exception {
-    Response response = usagesForSubscriptionRaw(subscriptionId);
-    return UsagesForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  /** retrieve a usage using immutable params (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String subscriptionId, UsageRetrieveParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
+    return get(path, params != null ? params.toQueryParams() : null);
   }
 
-  /** addUsageForSubscription a usage (executes immediately) - returns raw Response. */
-  Response addUsageForSubscriptionRaw(String subscriptionId) throws Exception {
+  public UsageRetrieveResponse retrieve(String subscriptionId, UsageRetrieveParams params)
+      throws ChargebeeException {
+    Response response = retrieveRaw(subscriptionId, params);
+    return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public UsageRetrieveResponse retrieve(String subscriptionId) throws ChargebeeException {
+    Response response = retrieveRaw(subscriptionId);
+    return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** create a usage (executes immediately) - returns raw Response. */
+  Response createRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
@@ -105,37 +122,30 @@ public final class UsageService extends BaseService<UsageService> {
     return post(path, null);
   }
 
-  /**
-   * addUsageForSubscription a usage using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response addUsageForSubscriptionRaw(String subscriptionId, AddUsageForSubscriptionParams params)
-      throws Exception {
+  /** create a usage using immutable params (executes immediately) - returns raw Response. */
+  Response createRaw(String subscriptionId, UsageCreateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * addUsageForSubscription a usage using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response addUsageForSubscriptionRaw(String subscriptionId, String jsonPayload) throws Exception {
+  /** create a usage using raw JSON payload (executes immediately) - returns raw Response. */
+  Response createRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public AddUsageForSubscriptionResponse addUsageForSubscription(
-      String subscriptionId, AddUsageForSubscriptionParams params) throws Exception {
-    Response response = addUsageForSubscriptionRaw(subscriptionId, params);
-    return AddUsageForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public UsageCreateResponse create(String subscriptionId, UsageCreateParams params)
+      throws ChargebeeException {
+    Response response = createRaw(subscriptionId, params);
+    return UsageCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteUsageForSubscription a usage (executes immediately) - returns raw Response. */
-  Response deleteUsageForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** delete a usage (executes immediately) - returns raw Response. */
+  Response deleteRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
@@ -143,61 +153,53 @@ public final class UsageService extends BaseService<UsageService> {
     return post(path, null);
   }
 
-  /**
-   * deleteUsageForSubscription a usage using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteUsageForSubscriptionRaw(
-      String subscriptionId, DeleteUsageForSubscriptionParams params) throws Exception {
+  /** delete a usage using immutable params (executes immediately) - returns raw Response. */
+  Response deleteRaw(String subscriptionId, UsageDeleteParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * deleteUsageForSubscription a usage using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response deleteUsageForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  /** delete a usage using raw JSON payload (executes immediately) - returns raw Response. */
+  Response deleteRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
     return postJson(path, jsonPayload);
   }
 
-  public DeleteUsageForSubscriptionResponse deleteUsageForSubscription(
-      String subscriptionId, DeleteUsageForSubscriptionParams params) throws Exception {
-    Response response = deleteUsageForSubscriptionRaw(subscriptionId, params);
-    return DeleteUsageForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public UsageDeleteResponse delete(String subscriptionId, UsageDeleteParams params)
+      throws ChargebeeException {
+    Response response = deleteRaw(subscriptionId, params);
+    return UsageDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a usage using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(UsageListParams params) throws Exception {
+  Response listRaw(UsageListParams params) throws ChargebeeException {
 
     return get("/usages", params != null ? params.toQueryParams() : null);
   }
 
   /** list a usage without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/usages", null);
   }
 
   /** list a usage using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public UsageListResponse list(UsageListParams params) throws Exception {
+  public UsageListResponse list(UsageListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return UsageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public UsageListResponse list() throws Exception {
+  public UsageListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return UsageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }

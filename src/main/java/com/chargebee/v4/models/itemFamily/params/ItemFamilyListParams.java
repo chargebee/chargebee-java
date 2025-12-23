@@ -179,13 +179,13 @@ public final class ItemFamilyListParams {
         this.builder = builder;
       }
 
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
+      public ItemFamilyListBuilder isPresent(boolean value) {
+        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
         return builder;
       }
 
-      public ItemFamilyListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
+      public ItemFamilyListBuilder is(String value) {
+        builder.queryParams.put(fieldName + "[is]", value);
         return builder;
       }
     }

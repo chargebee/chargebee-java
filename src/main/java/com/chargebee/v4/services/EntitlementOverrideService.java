@@ -9,13 +9,14 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.entitlementOverride.params.EntitlementOverridesForSubscriptionParams;
+import com.chargebee.v4.models.entitlementOverride.params.ListEntitlementOverrideForSubscriptionParams;
 
 import com.chargebee.v4.models.entitlementOverride.params.AddEntitlementOverrideForSubscriptionParams;
 
-import com.chargebee.v4.models.entitlementOverride.responses.EntitlementOverridesForSubscriptionResponse;
+import com.chargebee.v4.models.entitlementOverride.responses.ListEntitlementOverrideForSubscriptionResponse;
 
 import com.chargebee.v4.models.entitlementOverride.responses.AddEntitlementOverrideForSubscriptionResponse;
 
@@ -55,11 +56,12 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
   // === Operations ===
 
   /**
-   * entitlementOverridesForSubscription a entitlementOverride using immutable params (executes
+   * listEntitlementOverrideForSubscription a entitlementOverride using immutable params (executes
    * immediately) - returns raw Response.
    */
-  Response entitlementOverridesForSubscriptionRaw(
-      String subscriptionId, EntitlementOverridesForSubscriptionParams params) throws Exception {
+  Response listEntitlementOverrideForSubscriptionRaw(
+      String subscriptionId, ListEntitlementOverrideForSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -69,10 +71,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
   }
 
   /**
-   * entitlementOverridesForSubscription a entitlementOverride without params (executes immediately)
-   * - returns raw Response.
+   * listEntitlementOverrideForSubscription a entitlementOverride without params (executes
+   * immediately) - returns raw Response.
    */
-  Response entitlementOverridesForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response listEntitlementOverrideForSubscriptionRaw(String subscriptionId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -82,11 +85,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
   }
 
   /**
-   * entitlementOverridesForSubscription a entitlementOverride using raw JSON payload (executes
+   * listEntitlementOverrideForSubscription a entitlementOverride using raw JSON payload (executes
    * immediately) - returns raw Response.
    */
-  Response entitlementOverridesForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response listEntitlementOverrideForSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -95,17 +98,18 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public EntitlementOverridesForSubscriptionResponse entitlementOverridesForSubscription(
-      String subscriptionId, EntitlementOverridesForSubscriptionParams params) throws Exception {
-    Response response = entitlementOverridesForSubscriptionRaw(subscriptionId, params);
-    return EntitlementOverridesForSubscriptionResponse.fromJson(
+  public ListEntitlementOverrideForSubscriptionResponse listEntitlementOverrideForSubscription(
+      String subscriptionId, ListEntitlementOverrideForSubscriptionParams params)
+      throws ChargebeeException {
+    Response response = listEntitlementOverrideForSubscriptionRaw(subscriptionId, params);
+    return ListEntitlementOverrideForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, params, subscriptionId, response);
   }
 
-  public EntitlementOverridesForSubscriptionResponse entitlementOverridesForSubscription(
-      String subscriptionId) throws Exception {
-    Response response = entitlementOverridesForSubscriptionRaw(subscriptionId);
-    return EntitlementOverridesForSubscriptionResponse.fromJson(
+  public ListEntitlementOverrideForSubscriptionResponse listEntitlementOverrideForSubscription(
+      String subscriptionId) throws ChargebeeException {
+    Response response = listEntitlementOverrideForSubscriptionRaw(subscriptionId);
+    return ListEntitlementOverrideForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
@@ -113,7 +117,8 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
    * addEntitlementOverrideForSubscription a entitlementOverride (executes immediately) - returns
    * raw Response.
    */
-  Response addEntitlementOverrideForSubscriptionRaw(String subscriptionId) throws Exception {
+  Response addEntitlementOverrideForSubscriptionRaw(String subscriptionId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -128,7 +133,8 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
    * immediately) - returns raw Response.
    */
   Response addEntitlementOverrideForSubscriptionRaw(
-      String subscriptionId, AddEntitlementOverrideForSubscriptionParams params) throws Exception {
+      String subscriptionId, AddEntitlementOverrideForSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -142,7 +148,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
    * immediately) - returns raw Response.
    */
   Response addEntitlementOverrideForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/entitlement_overrides",
@@ -152,7 +158,8 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
   }
 
   public AddEntitlementOverrideForSubscriptionResponse addEntitlementOverrideForSubscription(
-      String subscriptionId, AddEntitlementOverrideForSubscriptionParams params) throws Exception {
+      String subscriptionId, AddEntitlementOverrideForSubscriptionParams params)
+      throws ChargebeeException {
     Response response = addEntitlementOverrideForSubscriptionRaw(subscriptionId, params);
     return AddEntitlementOverrideForSubscriptionResponse.fromJson(
         response.getBodyAsString(), response);

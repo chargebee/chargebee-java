@@ -3,6 +3,7 @@ package com.chargebee.v4.services;
 import com.chargebee.v4.client.request.RequestContext;
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Request;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.transport.UrlBuilder;
@@ -97,7 +98,7 @@ public abstract class BaseService<T extends BaseService<T>> {
     /**
      * Helper: POST with optional headers.
      */
-    protected Response post(String path, Map<String, Object> formData) throws Exception {
+    protected Response post(String path, Map<String, Object> formData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
@@ -110,7 +111,7 @@ public abstract class BaseService<T extends BaseService<T>> {
     /**
      * Helper: POST JSON with optional headers.
      */
-    protected Response postJson(String path, String jsonData) throws Exception {
+    protected Response postJson(String path, String jsonData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
@@ -173,7 +174,7 @@ public abstract class BaseService<T extends BaseService<T>> {
     /**
      * GET with Object query parameters.
      */
-    protected Response get(String path, Map<String, Object> queryParams) throws Exception {
+    protected Response get(String path, Map<String, Object> queryParams) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, queryParams);
         Request.Builder builder = Request.builder()
                 .method("GET")

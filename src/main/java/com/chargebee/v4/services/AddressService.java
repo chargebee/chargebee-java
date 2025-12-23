@@ -9,15 +9,16 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.address.params.AddressExecuteParams;
+import com.chargebee.v4.models.address.params.AddressRetrieveParams;
 
-import com.chargebee.v4.models.address.params.AddressCreateParams;
+import com.chargebee.v4.models.address.params.AddressUpdateParams;
 
-import com.chargebee.v4.models.address.responses.AddressExecuteResponse;
+import com.chargebee.v4.models.address.responses.AddressRetrieveResponse;
 
-import com.chargebee.v4.models.address.responses.AddressCreateResponse;
+import com.chargebee.v4.models.address.responses.AddressUpdateResponse;
 
 public final class AddressService extends BaseService<AddressService> {
 
@@ -53,39 +54,39 @@ public final class AddressService extends BaseService<AddressService> {
 
   // === Operations ===
 
-  /** execute a address using immutable params (executes immediately) - returns raw Response. */
-  Response executeRaw(AddressExecuteParams params) throws Exception {
+  /** retrieve a address using immutable params (executes immediately) - returns raw Response. */
+  Response retrieveRaw(AddressRetrieveParams params) throws ChargebeeException {
 
     return get("/addresses", params != null ? params.toQueryParams() : null);
   }
 
-  /** execute a address using raw JSON payload (executes immediately) - returns raw Response. */
-  Response executeRaw(String jsonPayload) throws Exception {
+  /** retrieve a address using raw JSON payload (executes immediately) - returns raw Response. */
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public AddressExecuteResponse execute(AddressExecuteParams params) throws Exception {
-    Response response = executeRaw(params);
+  public AddressRetrieveResponse retrieve(AddressRetrieveParams params) throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return AddressExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return AddressRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** create a address using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(AddressCreateParams params) throws Exception {
+  /** update a address using immutable params (executes immediately) - returns raw Response. */
+  Response updateRaw(AddressUpdateParams params) throws ChargebeeException {
 
     return post("/addresses", params != null ? params.toFormData() : null);
   }
 
-  /** create a address using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  /** update a address using raw JSON payload (executes immediately) - returns raw Response. */
+  Response updateRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/addresses", jsonPayload);
   }
 
-  public AddressCreateResponse create(AddressCreateParams params) throws Exception {
-    Response response = createRaw(params);
+  public AddressUpdateResponse update(AddressUpdateParams params) throws ChargebeeException {
+    Response response = updateRaw(params);
 
-    return AddressCreateResponse.fromJson(response.getBodyAsString(), response);
+    return AddressUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

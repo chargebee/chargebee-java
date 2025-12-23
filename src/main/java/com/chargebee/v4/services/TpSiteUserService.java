@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.tpSiteUser.params.UsersForTpSiteUserParams;
@@ -62,7 +63,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * Response.
    */
   Response usersForTpSiteUserRaw(String tpSiteUserDomain, UsersForTpSiteUserParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
@@ -72,7 +73,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
   /**
    * usersForTpSiteUser a tpSiteUser without params (executes immediately) - returns raw Response.
    */
-  Response usersForTpSiteUserRaw(String tpSiteUserDomain) throws Exception {
+  Response usersForTpSiteUserRaw(String tpSiteUserDomain) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
@@ -83,7 +84,8 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * usersForTpSiteUser a tpSiteUser using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response usersForTpSiteUserRaw(String tpSiteUserDomain, String jsonPayload) throws Exception {
+  Response usersForTpSiteUserRaw(String tpSiteUserDomain, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
@@ -91,13 +93,14 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
   }
 
   public UsersForTpSiteUserResponse usersForTpSiteUser(
-      String tpSiteUserDomain, UsersForTpSiteUserParams params) throws Exception {
+      String tpSiteUserDomain, UsersForTpSiteUserParams params) throws ChargebeeException {
     Response response = usersForTpSiteUserRaw(tpSiteUserDomain, params);
     return UsersForTpSiteUserResponse.fromJson(
         response.getBodyAsString(), this, params, tpSiteUserDomain, response);
   }
 
-  public UsersForTpSiteUserResponse usersForTpSiteUser(String tpSiteUserDomain) throws Exception {
+  public UsersForTpSiteUserResponse usersForTpSiteUser(String tpSiteUserDomain)
+      throws ChargebeeException {
     Response response = usersForTpSiteUserRaw(tpSiteUserDomain);
     return UsersForTpSiteUserResponse.fromJson(
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);
@@ -107,7 +110,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * payNowEnableLive a tpSiteUser using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response payNowEnableLiveRaw(TpSiteUserPayNowEnableLiveParams params) throws Exception {
+  Response payNowEnableLiveRaw(TpSiteUserPayNowEnableLiveParams params) throws ChargebeeException {
 
     return post("/tp_site_users/pay_now_enable_live", params != null ? params.toFormData() : null);
   }
@@ -116,13 +119,13 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * payNowEnableLive a tpSiteUser using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response payNowEnableLiveRaw(String jsonPayload) throws Exception {
+  Response payNowEnableLiveRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/tp_site_users/pay_now_enable_live", jsonPayload);
   }
 
   public TpSiteUserPayNowEnableLiveResponse payNowEnableLive(
-      TpSiteUserPayNowEnableLiveParams params) throws Exception {
+      TpSiteUserPayNowEnableLiveParams params) throws ChargebeeException {
     Response response = payNowEnableLiveRaw(params);
 
     return TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response);
@@ -133,7 +136,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * Response.
    */
   Response guestsForTpSiteUserRaw(String tpSiteUserDomain, GuestsForTpSiteUserParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
@@ -143,7 +146,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
   /**
    * guestsForTpSiteUser a tpSiteUser without params (executes immediately) - returns raw Response.
    */
-  Response guestsForTpSiteUserRaw(String tpSiteUserDomain) throws Exception {
+  Response guestsForTpSiteUserRaw(String tpSiteUserDomain) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
@@ -154,7 +157,8 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
    * guestsForTpSiteUser a tpSiteUser using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response guestsForTpSiteUserRaw(String tpSiteUserDomain, String jsonPayload) throws Exception {
+  Response guestsForTpSiteUserRaw(String tpSiteUserDomain, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
@@ -162,13 +166,14 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
   }
 
   public GuestsForTpSiteUserResponse guestsForTpSiteUser(
-      String tpSiteUserDomain, GuestsForTpSiteUserParams params) throws Exception {
+      String tpSiteUserDomain, GuestsForTpSiteUserParams params) throws ChargebeeException {
     Response response = guestsForTpSiteUserRaw(tpSiteUserDomain, params);
     return GuestsForTpSiteUserResponse.fromJson(
         response.getBodyAsString(), this, params, tpSiteUserDomain, response);
   }
 
-  public GuestsForTpSiteUserResponse guestsForTpSiteUser(String tpSiteUserDomain) throws Exception {
+  public GuestsForTpSiteUserResponse guestsForTpSiteUser(String tpSiteUserDomain)
+      throws ChargebeeException {
     Response response = guestsForTpSiteUserRaw(tpSiteUserDomain);
     return GuestsForTpSiteUserResponse.fromJson(
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);

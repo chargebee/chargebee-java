@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.pc2MigrationItemFamily.params.Pc2MigrationItemFamilyUpdateParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.pc2MigrationItemFamily.params.Pc2MigrationItemFam
 
 import com.chargebee.v4.models.pc2MigrationItemFamily.params.Pc2MigrationItemFamilyCreateParams;
 
-import com.chargebee.v4.models.pc2MigrationItemFamily.responses.DeletePc2MigrationItemFamilyResponse;
+import com.chargebee.v4.models.pc2MigrationItemFamily.responses.Pc2MigrationItemFamilyDeleteResponse;
 
 import com.chargebee.v4.models.pc2MigrationItemFamily.responses.Pc2MigrationItemFamilyRetrieveResponse;
 
@@ -63,11 +64,8 @@ public final class Pc2MigrationItemFamilyService
 
   // === Operations ===
 
-  /**
-   * deletePc2MigrationItemFamily a pc2MigrationItemFamily (executes immediately) - returns raw
-   * Response.
-   */
-  Response deletePc2MigrationItemFamilyRaw(String pc2MigrationItemFamilyId) throws Exception {
+  /** delete a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
+  Response deleteRaw(String pc2MigrationItemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_families/{pc2-migration-item-family-id}/delete",
@@ -77,14 +75,14 @@ public final class Pc2MigrationItemFamilyService
     return post(path, null);
   }
 
-  public DeletePc2MigrationItemFamilyResponse deletePc2MigrationItemFamily(
-      String pc2MigrationItemFamilyId) throws Exception {
-    Response response = deletePc2MigrationItemFamilyRaw(pc2MigrationItemFamilyId);
-    return DeletePc2MigrationItemFamilyResponse.fromJson(response.getBodyAsString(), response);
+  public Pc2MigrationItemFamilyDeleteResponse delete(String pc2MigrationItemFamilyId)
+      throws ChargebeeException {
+    Response response = deleteRaw(pc2MigrationItemFamilyId);
+    return Pc2MigrationItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String pc2MigrationItemFamilyId) throws Exception {
+  Response retrieveRaw(String pc2MigrationItemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
@@ -95,13 +93,13 @@ public final class Pc2MigrationItemFamilyService
   }
 
   public Pc2MigrationItemFamilyRetrieveResponse retrieve(String pc2MigrationItemFamilyId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationItemFamilyId);
     return Pc2MigrationItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
-  Response updateRaw(String pc2MigrationItemFamilyId) throws Exception {
+  Response updateRaw(String pc2MigrationItemFamilyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
@@ -116,7 +114,7 @@ public final class Pc2MigrationItemFamilyService
    * Response.
    */
   Response updateRaw(String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
@@ -129,7 +127,8 @@ public final class Pc2MigrationItemFamilyService
    * update a pc2MigrationItemFamily using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateRaw(String pc2MigrationItemFamilyId, String jsonPayload) throws Exception {
+  Response updateRaw(String pc2MigrationItemFamilyId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_families/{pc2-migration-item-family-id}",
@@ -139,7 +138,8 @@ public final class Pc2MigrationItemFamilyService
   }
 
   public Pc2MigrationItemFamilyUpdateResponse update(
-      String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params) throws Exception {
+      String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(pc2MigrationItemFamilyId, params);
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -148,13 +148,13 @@ public final class Pc2MigrationItemFamilyService
    * list a pc2MigrationItemFamily using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(Pc2MigrationItemFamilyListParams params) throws Exception {
+  Response listRaw(Pc2MigrationItemFamilyListParams params) throws ChargebeeException {
 
     return get("/pc2_migration_item_families", params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItemFamily without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/pc2_migration_item_families", null);
   }
@@ -163,20 +163,20 @@ public final class Pc2MigrationItemFamilyService
    * list a pc2MigrationItemFamily using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public Pc2MigrationItemFamilyListResponse list(Pc2MigrationItemFamilyListParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return Pc2MigrationItemFamilyListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public Pc2MigrationItemFamilyListResponse list() throws Exception {
+  public Pc2MigrationItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return Pc2MigrationItemFamilyListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
@@ -186,7 +186,7 @@ public final class Pc2MigrationItemFamilyService
    * create a pc2MigrationItemFamily using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(Pc2MigrationItemFamilyCreateParams params) throws Exception {
+  Response createRaw(Pc2MigrationItemFamilyCreateParams params) throws ChargebeeException {
 
     return post("/pc2_migration_item_families", params != null ? params.toFormData() : null);
   }
@@ -195,13 +195,13 @@ public final class Pc2MigrationItemFamilyService
    * create a pc2MigrationItemFamily using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/pc2_migration_item_families", jsonPayload);
   }
 
   public Pc2MigrationItemFamilyCreateResponse create(Pc2MigrationItemFamilyCreateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return Pc2MigrationItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);

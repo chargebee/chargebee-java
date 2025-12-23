@@ -9,29 +9,30 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.couponSet.params.CouponSetListParams;
 
 import com.chargebee.v4.models.couponSet.params.CouponSetCreateParams;
 
-import com.chargebee.v4.models.couponSet.params.UpdateCouponSetParams;
+import com.chargebee.v4.models.couponSet.params.CouponSetUpdateParams;
 
-import com.chargebee.v4.models.couponSet.params.AddCouponCodesForCouponSetParams;
+import com.chargebee.v4.models.couponSet.params.CouponSetAddCouponCodesParams;
 
 import com.chargebee.v4.models.couponSet.responses.CouponSetListResponse;
 
 import com.chargebee.v4.models.couponSet.responses.CouponSetCreateResponse;
 
-import com.chargebee.v4.models.couponSet.responses.UpdateCouponSetResponse;
+import com.chargebee.v4.models.couponSet.responses.CouponSetUpdateResponse;
 
 import com.chargebee.v4.models.couponSet.responses.CouponSetRetrieveResponse;
 
-import com.chargebee.v4.models.couponSet.responses.AddCouponCodesForCouponSetResponse;
+import com.chargebee.v4.models.couponSet.responses.CouponSetAddCouponCodesResponse;
 
-import com.chargebee.v4.models.couponSet.responses.DeleteUnusedCouponCodesForCouponSetResponse;
+import com.chargebee.v4.models.couponSet.responses.CouponSetDeleteUnusedCouponCodesResponse;
 
-import com.chargebee.v4.models.couponSet.responses.DeleteCouponSetResponse;
+import com.chargebee.v4.models.couponSet.responses.CouponSetDeleteResponse;
 
 public final class CouponSetService extends BaseService<CouponSetService> {
 
@@ -68,100 +69,94 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   // === Operations ===
 
   /** list a couponSet using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(CouponSetListParams params) throws Exception {
+  Response listRaw(CouponSetListParams params) throws ChargebeeException {
 
     return get("/coupon_sets", params != null ? params.toQueryParams() : null);
   }
 
   /** list a couponSet without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/coupon_sets", null);
   }
 
   /** list a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CouponSetListResponse list(CouponSetListParams params) throws Exception {
+  public CouponSetListResponse list(CouponSetListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public CouponSetListResponse list() throws Exception {
+  public CouponSetListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a couponSet using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CouponSetCreateParams params) throws Exception {
+  Response createRaw(CouponSetCreateParams params) throws ChargebeeException {
 
     return post("/coupon_sets", params != null ? params.toFormData() : null);
   }
 
   /** create a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/coupon_sets", jsonPayload);
   }
 
-  public CouponSetCreateResponse create(CouponSetCreateParams params) throws Exception {
+  public CouponSetCreateResponse create(CouponSetCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CouponSetCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** updateCouponSet a couponSet (executes immediately) - returns raw Response. */
-  Response updateCouponSetRaw(String couponSetId) throws Exception {
+  /** update a couponSet (executes immediately) - returns raw Response. */
+  Response updateRaw(String couponSetId) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
 
     return post(path, null);
   }
 
-  /**
-   * updateCouponSet a couponSet using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response updateCouponSetRaw(String couponSetId, UpdateCouponSetParams params) throws Exception {
+  /** update a couponSet using immutable params (executes immediately) - returns raw Response. */
+  Response updateRaw(String couponSetId, CouponSetUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
     return post(path, params.toFormData());
   }
 
-  /**
-   * updateCouponSet a couponSet using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response updateCouponSetRaw(String couponSetId, String jsonPayload) throws Exception {
+  /** update a couponSet using raw JSON payload (executes immediately) - returns raw Response. */
+  Response updateRaw(String couponSetId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
     return postJson(path, jsonPayload);
   }
 
-  public UpdateCouponSetResponse updateCouponSet(String couponSetId, UpdateCouponSetParams params)
-      throws Exception {
-    Response response = updateCouponSetRaw(couponSetId, params);
-    return UpdateCouponSetResponse.fromJson(response.getBodyAsString(), response);
+  public CouponSetUpdateResponse update(String couponSetId, CouponSetUpdateParams params)
+      throws ChargebeeException {
+    Response response = updateRaw(couponSetId, params);
+    return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a couponSet (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String couponSetId) throws Exception {
+  Response retrieveRaw(String couponSetId) throws ChargebeeException {
     String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
 
     return get(path, null);
   }
 
-  public CouponSetRetrieveResponse retrieve(String couponSetId) throws Exception {
+  public CouponSetRetrieveResponse retrieve(String couponSetId) throws ChargebeeException {
     Response response = retrieveRaw(couponSetId);
     return CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** addCouponCodesForCouponSet a couponSet (executes immediately) - returns raw Response. */
-  Response addCouponCodesForCouponSetRaw(String couponSetId) throws Exception {
+  /** addCouponCodes a couponSet (executes immediately) - returns raw Response. */
+  Response addCouponCodesRaw(String couponSetId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
@@ -170,11 +165,11 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   }
 
   /**
-   * addCouponCodesForCouponSet a couponSet using immutable params (executes immediately) - returns
-   * raw Response.
+   * addCouponCodes a couponSet using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response addCouponCodesForCouponSetRaw(
-      String couponSetId, AddCouponCodesForCouponSetParams params) throws Exception {
+  Response addCouponCodesRaw(String couponSetId, CouponSetAddCouponCodesParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
@@ -182,26 +177,24 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   }
 
   /**
-   * addCouponCodesForCouponSet a couponSet using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * addCouponCodes a couponSet using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response addCouponCodesForCouponSetRaw(String couponSetId, String jsonPayload) throws Exception {
+  Response addCouponCodesRaw(String couponSetId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
     return postJson(path, jsonPayload);
   }
 
-  public AddCouponCodesForCouponSetResponse addCouponCodesForCouponSet(
-      String couponSetId, AddCouponCodesForCouponSetParams params) throws Exception {
-    Response response = addCouponCodesForCouponSetRaw(couponSetId, params);
-    return AddCouponCodesForCouponSetResponse.fromJson(response.getBodyAsString(), response);
+  public CouponSetAddCouponCodesResponse addCouponCodes(
+      String couponSetId, CouponSetAddCouponCodesParams params) throws ChargebeeException {
+    Response response = addCouponCodesRaw(couponSetId, params);
+    return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * deleteUnusedCouponCodesForCouponSet a couponSet (executes immediately) - returns raw Response.
-   */
-  Response deleteUnusedCouponCodesForCouponSetRaw(String couponSetId) throws Exception {
+  /** deleteUnusedCouponCodes a couponSet (executes immediately) - returns raw Response. */
+  Response deleteUnusedCouponCodesRaw(String couponSetId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/coupon_sets/{coupon-set-id}/delete_unused_coupon_codes",
@@ -211,23 +204,22 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return post(path, null);
   }
 
-  public DeleteUnusedCouponCodesForCouponSetResponse deleteUnusedCouponCodesForCouponSet(
-      String couponSetId) throws Exception {
-    Response response = deleteUnusedCouponCodesForCouponSetRaw(couponSetId);
-    return DeleteUnusedCouponCodesForCouponSetResponse.fromJson(
-        response.getBodyAsString(), response);
+  public CouponSetDeleteUnusedCouponCodesResponse deleteUnusedCouponCodes(String couponSetId)
+      throws ChargebeeException {
+    Response response = deleteUnusedCouponCodesRaw(couponSetId);
+    return CouponSetDeleteUnusedCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteCouponSet a couponSet (executes immediately) - returns raw Response. */
-  Response deleteCouponSetRaw(String couponSetId) throws Exception {
+  /** delete a couponSet (executes immediately) - returns raw Response. */
+  Response deleteRaw(String couponSetId) throws ChargebeeException {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/delete", "coupon-set-id", couponSetId);
 
     return post(path, null);
   }
 
-  public DeleteCouponSetResponse deleteCouponSet(String couponSetId) throws Exception {
-    Response response = deleteCouponSetRaw(couponSetId);
-    return DeleteCouponSetResponse.fromJson(response.getBodyAsString(), response);
+  public CouponSetDeleteResponse delete(String couponSetId) throws ChargebeeException {
+    Response response = deleteRaw(couponSetId);
+    return CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

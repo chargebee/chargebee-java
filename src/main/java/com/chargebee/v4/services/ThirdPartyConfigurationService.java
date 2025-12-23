@@ -9,19 +9,20 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationConfigurationsParams;
 
-import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationExecuteParams;
+import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationRetrieveParams;
 
-import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationCreateParams;
+import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationUpdateParams;
 
 import com.chargebee.v4.models.thirdPartyConfiguration.responses.ThirdPartyConfigurationConfigurationsResponse;
 
-import com.chargebee.v4.models.thirdPartyConfiguration.responses.ThirdPartyConfigurationExecuteResponse;
+import com.chargebee.v4.models.thirdPartyConfiguration.responses.ThirdPartyConfigurationRetrieveResponse;
 
-import com.chargebee.v4.models.thirdPartyConfiguration.responses.ThirdPartyConfigurationCreateResponse;
+import com.chargebee.v4.models.thirdPartyConfiguration.responses.ThirdPartyConfigurationUpdateResponse;
 
 public final class ThirdPartyConfigurationService
     extends BaseService<ThirdPartyConfigurationService> {
@@ -63,7 +64,8 @@ public final class ThirdPartyConfigurationService
    * configurations a thirdPartyConfiguration using immutable params (executes immediately) -
    * returns raw Response.
    */
-  Response configurationsRaw(ThirdPartyConfigurationConfigurationsParams params) throws Exception {
+  Response configurationsRaw(ThirdPartyConfigurationConfigurationsParams params)
+      throws ChargebeeException {
 
     return get(
         "/third_party_configurations/configurations",
@@ -74,13 +76,13 @@ public final class ThirdPartyConfigurationService
    * configurations a thirdPartyConfiguration using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response configurationsRaw(String jsonPayload) throws Exception {
+  Response configurationsRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ThirdPartyConfigurationConfigurationsResponse configurations(
-      ThirdPartyConfigurationConfigurationsParams params) throws Exception {
+      ThirdPartyConfigurationConfigurationsParams params) throws ChargebeeException {
     Response response = configurationsRaw(params);
 
     return ThirdPartyConfigurationConfigurationsResponse.fromJson(
@@ -88,52 +90,52 @@ public final class ThirdPartyConfigurationService
   }
 
   /**
-   * execute a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
+   * retrieve a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(ThirdPartyConfigurationExecuteParams params) throws Exception {
+  Response retrieveRaw(ThirdPartyConfigurationRetrieveParams params) throws ChargebeeException {
 
     return get("/third_party_configurations", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * execute a thirdPartyConfiguration using raw JSON payload (executes immediately) - returns raw
+   * retrieve a thirdPartyConfiguration using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response executeRaw(String jsonPayload) throws Exception {
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ThirdPartyConfigurationExecuteResponse execute(ThirdPartyConfigurationExecuteParams params)
-      throws Exception {
-    Response response = executeRaw(params);
+  public ThirdPartyConfigurationRetrieveResponse retrieve(
+      ThirdPartyConfigurationRetrieveParams params) throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return ThirdPartyConfigurationExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return ThirdPartyConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * create a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
+   * update a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(ThirdPartyConfigurationCreateParams params) throws Exception {
+  Response updateRaw(ThirdPartyConfigurationUpdateParams params) throws ChargebeeException {
 
     return post("/third_party_configurations", params != null ? params.toFormData() : null);
   }
 
   /**
-   * create a thirdPartyConfiguration using raw JSON payload (executes immediately) - returns raw
+   * update a thirdPartyConfiguration using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response updateRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/third_party_configurations", jsonPayload);
   }
 
-  public ThirdPartyConfigurationCreateResponse create(ThirdPartyConfigurationCreateParams params)
-      throws Exception {
-    Response response = createRaw(params);
+  public ThirdPartyConfigurationUpdateResponse update(ThirdPartyConfigurationUpdateParams params)
+      throws ChargebeeException {
+    Response response = updateRaw(params);
 
-    return ThirdPartyConfigurationCreateResponse.fromJson(response.getBodyAsString(), response);
+    return ThirdPartyConfigurationUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 }

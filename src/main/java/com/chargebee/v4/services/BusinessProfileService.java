@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.businessProfile.params.BusinessProfileExecuteParams;
+import com.chargebee.v4.models.businessProfile.params.BusinessProfileRetrieveParams;
 
-import com.chargebee.v4.models.businessProfile.responses.BusinessProfileExecuteResponse;
+import com.chargebee.v4.models.businessProfile.responses.BusinessProfileRetrieveResponse;
 
 public final class BusinessProfileService extends BaseService<BusinessProfileService> {
 
@@ -51,25 +52,27 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
   // === Operations ===
 
   /**
-   * execute a businessProfile using immutable params (executes immediately) - returns raw Response.
+   * retrieve a businessProfile using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response executeRaw(BusinessProfileExecuteParams params) throws Exception {
+  Response retrieveRaw(BusinessProfileRetrieveParams params) throws ChargebeeException {
 
     return get("/business_profiles", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * execute a businessProfile using raw JSON payload (executes immediately) - returns raw Response.
+   * retrieve a businessProfile using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response executeRaw(String jsonPayload) throws Exception {
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public BusinessProfileExecuteResponse execute(BusinessProfileExecuteParams params)
-      throws Exception {
-    Response response = executeRaw(params);
+  public BusinessProfileRetrieveResponse retrieve(BusinessProfileRetrieveParams params)
+      throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return BusinessProfileExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

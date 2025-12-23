@@ -9,17 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.currency.params.AddScheduleForCurrencyParams;
+import com.chargebee.v4.models.currency.params.CurrencyAddScheduleParams;
 
 import com.chargebee.v4.models.currency.params.CurrencyCreateParams;
 
 import com.chargebee.v4.models.currency.params.CurrencyUpdateParams;
 
-import com.chargebee.v4.models.currency.params.CurrencyListListParams;
+import com.chargebee.v4.models.currency.params.CurrencyListParams;
 
-import com.chargebee.v4.models.currency.responses.AddScheduleForCurrencyResponse;
+import com.chargebee.v4.models.currency.responses.CurrencyAddScheduleResponse;
 
 import com.chargebee.v4.models.currency.responses.CurrencyCreateResponse;
 
@@ -27,9 +28,9 @@ import com.chargebee.v4.models.currency.responses.CurrencyRetrieveResponse;
 
 import com.chargebee.v4.models.currency.responses.CurrencyUpdateResponse;
 
-import com.chargebee.v4.models.currency.responses.RemoveScheduleForCurrencyResponse;
+import com.chargebee.v4.models.currency.responses.CurrencyRemoveScheduleResponse;
 
-import com.chargebee.v4.models.currency.responses.CurrencyListListResponse;
+import com.chargebee.v4.models.currency.responses.CurrencyListResponse;
 
 public final class CurrencyService extends BaseService<CurrencyService> {
 
@@ -65,8 +66,8 @@ public final class CurrencyService extends BaseService<CurrencyService> {
 
   // === Operations ===
 
-  /** addScheduleForCurrency a currency (executes immediately) - returns raw Response. */
-  Response addScheduleForCurrencyRaw(String siteCurrencyId) throws Exception {
+  /** addSchedule a currency (executes immediately) - returns raw Response. */
+  Response addScheduleRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
@@ -75,11 +76,10 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   }
 
   /**
-   * addScheduleForCurrency a currency using immutable params (executes immediately) - returns raw
-   * Response.
+   * addSchedule a currency using immutable params (executes immediately) - returns raw Response.
    */
-  Response addScheduleForCurrencyRaw(String siteCurrencyId, AddScheduleForCurrencyParams params)
-      throws Exception {
+  Response addScheduleRaw(String siteCurrencyId, CurrencyAddScheduleParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
@@ -87,55 +87,54 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   }
 
   /**
-   * addScheduleForCurrency a currency using raw JSON payload (executes immediately) - returns raw
-   * Response.
+   * addSchedule a currency using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response addScheduleForCurrencyRaw(String siteCurrencyId, String jsonPayload) throws Exception {
+  Response addScheduleRaw(String siteCurrencyId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
     return postJson(path, jsonPayload);
   }
 
-  public AddScheduleForCurrencyResponse addScheduleForCurrency(
-      String siteCurrencyId, AddScheduleForCurrencyParams params) throws Exception {
-    Response response = addScheduleForCurrencyRaw(siteCurrencyId, params);
-    return AddScheduleForCurrencyResponse.fromJson(response.getBodyAsString(), response);
+  public CurrencyAddScheduleResponse addSchedule(
+      String siteCurrencyId, CurrencyAddScheduleParams params) throws ChargebeeException {
+    Response response = addScheduleRaw(siteCurrencyId, params);
+    return CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** create a currency using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CurrencyCreateParams params) throws Exception {
+  Response createRaw(CurrencyCreateParams params) throws ChargebeeException {
 
     return post("/currencies", params != null ? params.toFormData() : null);
   }
 
   /** create a currency using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/currencies", jsonPayload);
   }
 
-  public CurrencyCreateResponse create(CurrencyCreateParams params) throws Exception {
+  public CurrencyCreateResponse create(CurrencyCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CurrencyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a currency (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String siteCurrencyId) throws Exception {
+  Response retrieveRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
 
     return get(path, null);
   }
 
-  public CurrencyRetrieveResponse retrieve(String siteCurrencyId) throws Exception {
+  public CurrencyRetrieveResponse retrieve(String siteCurrencyId) throws ChargebeeException {
     Response response = retrieveRaw(siteCurrencyId);
     return CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a currency (executes immediately) - returns raw Response. */
-  Response updateRaw(String siteCurrencyId) throws Exception {
+  Response updateRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
 
@@ -143,27 +142,27 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   }
 
   /** update a currency using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String siteCurrencyId, CurrencyUpdateParams params) throws Exception {
+  Response updateRaw(String siteCurrencyId, CurrencyUpdateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
     return post(path, params.toFormData());
   }
 
   /** update a currency using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String siteCurrencyId, String jsonPayload) throws Exception {
+  Response updateRaw(String siteCurrencyId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
     return postJson(path, jsonPayload);
   }
 
   public CurrencyUpdateResponse update(String siteCurrencyId, CurrencyUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateRaw(siteCurrencyId, params);
     return CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** removeScheduleForCurrency a currency (executes immediately) - returns raw Response. */
-  Response removeScheduleForCurrencyRaw(String siteCurrencyId) throws Exception {
+  /** removeSchedule a currency (executes immediately) - returns raw Response. */
+  Response removeScheduleRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/currencies/{site-currency-id}/remove_schedule", "site-currency-id", siteCurrencyId);
@@ -171,38 +170,38 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return post(path, null);
   }
 
-  public RemoveScheduleForCurrencyResponse removeScheduleForCurrency(String siteCurrencyId)
-      throws Exception {
-    Response response = removeScheduleForCurrencyRaw(siteCurrencyId);
-    return RemoveScheduleForCurrencyResponse.fromJson(response.getBodyAsString(), response);
+  public CurrencyRemoveScheduleResponse removeSchedule(String siteCurrencyId)
+      throws ChargebeeException {
+    Response response = removeScheduleRaw(siteCurrencyId);
+    return CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** listList a currency using immutable params (executes immediately) - returns raw Response. */
-  Response listListRaw(CurrencyListListParams params) throws Exception {
+  /** list a currency using immutable params (executes immediately) - returns raw Response. */
+  Response listRaw(CurrencyListParams params) throws ChargebeeException {
 
     return get("/currencies/list", params != null ? params.toQueryParams() : null);
   }
 
-  /** listList a currency without params (executes immediately) - returns raw Response. */
-  Response listListRaw() throws Exception {
+  /** list a currency without params (executes immediately) - returns raw Response. */
+  Response listRaw() throws ChargebeeException {
 
     return get("/currencies/list", null);
   }
 
-  /** listList a currency using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listListRaw(String jsonPayload) throws Exception {
+  /** list a currency using raw JSON payload (executes immediately) - returns raw Response. */
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CurrencyListListResponse listList(CurrencyListListParams params) throws Exception {
-    Response response = listListRaw(params);
+  public CurrencyListResponse list(CurrencyListParams params) throws ChargebeeException {
+    Response response = listRaw(params);
 
-    return CurrencyListListResponse.fromJson(response.getBodyAsString(), this, params, response);
+    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public CurrencyListListResponse listList() throws Exception {
-    Response response = listListRaw();
-    return CurrencyListListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  public CurrencyListResponse list() throws ChargebeeException {
+    Response response = listRaw();
+    return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 }

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.pc2MigrationItemPrice.params.Pc2MigrationItemPriceListParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.pc2MigrationItemPrice.params.Pc2MigrationItemPric
 
 import com.chargebee.v4.models.pc2MigrationItemPrice.responses.Pc2MigrationItemPriceListResponse;
 
-import com.chargebee.v4.models.pc2MigrationItemPrice.responses.DeletePc2MigrationItemPriceResponse;
+import com.chargebee.v4.models.pc2MigrationItemPrice.responses.Pc2MigrationItemPriceDeleteResponse;
 
 import com.chargebee.v4.models.pc2MigrationItemPrice.responses.Pc2MigrationItemPriceRetrieveResponse;
 
@@ -62,13 +63,13 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
    * list a pc2MigrationItemPrice using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(Pc2MigrationItemPriceListParams params) throws Exception {
+  Response listRaw(Pc2MigrationItemPriceListParams params) throws ChargebeeException {
 
     return get("/pc2_migration_item_prices", params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItemPrice without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/pc2_migration_item_prices", null);
   }
@@ -77,30 +78,27 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
    * list a pc2MigrationItemPrice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public Pc2MigrationItemPriceListResponse list(Pc2MigrationItemPriceListParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return Pc2MigrationItemPriceListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public Pc2MigrationItemPriceListResponse list() throws Exception {
+  public Pc2MigrationItemPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return Pc2MigrationItemPriceListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }
 
-  /**
-   * deletePc2MigrationItemPrice a pc2MigrationItemPrice (executes immediately) - returns raw
-   * Response.
-   */
-  Response deletePc2MigrationItemPriceRaw(String pc2MigrationItemPriceId) throws Exception {
+  /** delete a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
+  Response deleteRaw(String pc2MigrationItemPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}/delete",
@@ -110,14 +108,14 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
     return post(path, null);
   }
 
-  public DeletePc2MigrationItemPriceResponse deletePc2MigrationItemPrice(
-      String pc2MigrationItemPriceId) throws Exception {
-    Response response = deletePc2MigrationItemPriceRaw(pc2MigrationItemPriceId);
-    return DeletePc2MigrationItemPriceResponse.fromJson(response.getBodyAsString(), response);
+  public Pc2MigrationItemPriceDeleteResponse delete(String pc2MigrationItemPriceId)
+      throws ChargebeeException {
+    Response response = deleteRaw(pc2MigrationItemPriceId);
+    return Pc2MigrationItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String pc2MigrationItemPriceId) throws Exception {
+  Response retrieveRaw(String pc2MigrationItemPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
@@ -128,13 +126,13 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   }
 
   public Pc2MigrationItemPriceRetrieveResponse retrieve(String pc2MigrationItemPriceId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationItemPriceId);
     return Pc2MigrationItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
-  Response updateRaw(String pc2MigrationItemPriceId) throws Exception {
+  Response updateRaw(String pc2MigrationItemPriceId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
@@ -149,7 +147,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
    * Response.
    */
   Response updateRaw(String pc2MigrationItemPriceId, Pc2MigrationItemPriceUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
@@ -162,7 +160,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
    * update a pc2MigrationItemPrice using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateRaw(String pc2MigrationItemPriceId, String jsonPayload) throws Exception {
+  Response updateRaw(String pc2MigrationItemPriceId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
@@ -172,7 +170,8 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
   }
 
   public Pc2MigrationItemPriceUpdateResponse update(
-      String pc2MigrationItemPriceId, Pc2MigrationItemPriceUpdateParams params) throws Exception {
+      String pc2MigrationItemPriceId, Pc2MigrationItemPriceUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(pc2MigrationItemPriceId, params);
     return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

@@ -15,7 +15,7 @@ class CustomTransportHeaderTest {
         
         Transport customTransport = new Transport() {
             @Override
-            public Response send(Request request) throws TransportException {
+            public Response send(Request request) {
                 capturedRequest.set(request);
                 return new Response(200, java.util.Collections.emptyMap(), "{}".getBytes());
             }
