@@ -54,9 +54,13 @@ jobs:
               continue-on-error: true
 
             - name: Build and publish to Maven Central
-              run: ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository  -Dorg.gradle.project.NEXUS_USERNAME=$MAVEN_USERNAME -Dorg.gradle.project.MAVEN_PASSWORD=$NEXUS_PASSWORD -Dorg.gradle.project.signing.gnupg.keyName=$MAVEN_GPG_PRIVATE_KEY -Dorg.gradle.project.signing.gnupg.passphrase=$MAVEN_GPG_PASSPHRASE
               env:
-                  ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.MAVEN_USERNAME }}
-                  ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.MAVEN_PASSWORD }}
-                  ORG_GRADLE_PROJECT_signingKey: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
-                  ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+                MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+                MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+                MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+                MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+              run: ./gradlew jreleaserDeploy \
+                -PJRELEASER_MAVENCENTRAL_SONATYPE_USERNAME="$MAVEN_USERNAME" \
+                -PJRELEASER_MAVENCENTRAL_SONATYPE_PASSWORD="$MAVEN_PASSWORD" \
+                -PJRELEASER_GPG_SECRET_KEY="$MAVEN_GPG_PRIVATE_KEY" \
+                -PJRELEASER_GPG_PASSPHRASE="$MAVEN_GPG_PASSPHRASE"
