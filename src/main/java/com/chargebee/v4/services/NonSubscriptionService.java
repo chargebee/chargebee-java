@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.nonSubscription.params.OneTimePurchaseForNonSubscriptionParams;
+import com.chargebee.v4.models.nonSubscription.params.NonSubscriptionProcessReceiptParams;
 
-import com.chargebee.v4.models.nonSubscription.responses.OneTimePurchaseForNonSubscriptionResponse;
+import com.chargebee.v4.models.nonSubscription.responses.NonSubscriptionProcessReceiptResponse;
 
 public final class NonSubscriptionService extends BaseService<NonSubscriptionService> {
 
@@ -50,11 +51,8 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
 
   // === Operations ===
 
-  /**
-   * oneTimePurchaseForNonSubscription a nonSubscription (executes immediately) - returns raw
-   * Response.
-   */
-  Response oneTimePurchaseForNonSubscriptionRaw(String nonSubscriptionAppId) throws Exception {
+  /** processReceipt a nonSubscription (executes immediately) - returns raw Response. */
+  Response processReceiptRaw(String nonSubscriptionAppId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
@@ -65,12 +63,12 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
   }
 
   /**
-   * oneTimePurchaseForNonSubscription a nonSubscription using immutable params (executes
-   * immediately) - returns raw Response.
+   * processReceipt a nonSubscription using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response oneTimePurchaseForNonSubscriptionRaw(
-      String nonSubscriptionAppId, OneTimePurchaseForNonSubscriptionParams params)
-      throws Exception {
+  Response processReceiptRaw(
+      String nonSubscriptionAppId, NonSubscriptionProcessReceiptParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
@@ -80,11 +78,11 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
   }
 
   /**
-   * oneTimePurchaseForNonSubscription a nonSubscription using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * processReceipt a nonSubscription using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response oneTimePurchaseForNonSubscriptionRaw(String nonSubscriptionAppId, String jsonPayload)
-      throws Exception {
+  Response processReceiptRaw(String nonSubscriptionAppId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
@@ -93,10 +91,10 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
     return postJson(path, jsonPayload);
   }
 
-  public OneTimePurchaseForNonSubscriptionResponse oneTimePurchaseForNonSubscription(
-      String nonSubscriptionAppId, OneTimePurchaseForNonSubscriptionParams params)
-      throws Exception {
-    Response response = oneTimePurchaseForNonSubscriptionRaw(nonSubscriptionAppId, params);
-    return OneTimePurchaseForNonSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  public NonSubscriptionProcessReceiptResponse processReceipt(
+      String nonSubscriptionAppId, NonSubscriptionProcessReceiptParams params)
+      throws ChargebeeException {
+    Response response = processReceiptRaw(nonSubscriptionAppId, params);
+    return NonSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 }

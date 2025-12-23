@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.promotionalCredit.params.PromotionalCreditListParams;
@@ -65,7 +66,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   // === Operations ===
 
   /** retrieve a promotionalCredit (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String accountCreditId) throws Exception {
+  Response retrieveRaw(String accountCreditId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/promotional_credits/{account-credit-id}", "account-credit-id", accountCreditId);
@@ -73,7 +74,8 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return get(path, null);
   }
 
-  public PromotionalCreditRetrieveResponse retrieve(String accountCreditId) throws Exception {
+  public PromotionalCreditRetrieveResponse retrieve(String accountCreditId)
+      throws ChargebeeException {
     Response response = retrieveRaw(accountCreditId);
     return PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -81,13 +83,13 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * list a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
-  Response listRaw(PromotionalCreditListParams params) throws Exception {
+  Response listRaw(PromotionalCreditListParams params) throws ChargebeeException {
 
     return get("/promotional_credits", params != null ? params.toQueryParams() : null);
   }
 
   /** list a promotionalCredit without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/promotional_credits", null);
   }
@@ -95,19 +97,20 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * list a promotionalCredit using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PromotionalCreditListResponse list(PromotionalCreditListParams params) throws Exception {
+  public PromotionalCreditListResponse list(PromotionalCreditListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return PromotionalCreditListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public PromotionalCreditListResponse list() throws Exception {
+  public PromotionalCreditListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
@@ -116,7 +119,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    * deduct a promotionalCredit using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response deductRaw(PromotionalCreditDeductParams params) throws Exception {
+  Response deductRaw(PromotionalCreditDeductParams params) throws ChargebeeException {
 
     return post("/promotional_credits/deduct", params != null ? params.toFormData() : null);
   }
@@ -125,13 +128,13 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
    * deduct a promotionalCredit using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response deductRaw(String jsonPayload) throws Exception {
+  Response deductRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/promotional_credits/deduct", jsonPayload);
   }
 
   public PromotionalCreditDeductResponse deduct(PromotionalCreditDeductParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = deductRaw(params);
 
     return PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response);
@@ -140,7 +143,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * set a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
-  Response setRaw(PromotionalCreditSetParams params) throws Exception {
+  Response setRaw(PromotionalCreditSetParams params) throws ChargebeeException {
 
     return post("/promotional_credits/set", params != null ? params.toFormData() : null);
   }
@@ -148,12 +151,13 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * set a promotionalCredit using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response setRaw(String jsonPayload) throws Exception {
+  Response setRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/promotional_credits/set", jsonPayload);
   }
 
-  public PromotionalCreditSetResponse set(PromotionalCreditSetParams params) throws Exception {
+  public PromotionalCreditSetResponse set(PromotionalCreditSetParams params)
+      throws ChargebeeException {
     Response response = setRaw(params);
 
     return PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response);
@@ -162,7 +166,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * add a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
-  Response addRaw(PromotionalCreditAddParams params) throws Exception {
+  Response addRaw(PromotionalCreditAddParams params) throws ChargebeeException {
 
     return post("/promotional_credits/add", params != null ? params.toFormData() : null);
   }
@@ -170,12 +174,13 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
   /**
    * add a promotionalCredit using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response addRaw(String jsonPayload) throws Exception {
+  Response addRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/promotional_credits/add", jsonPayload);
   }
 
-  public PromotionalCreditAddResponse add(PromotionalCreditAddParams params) throws Exception {
+  public PromotionalCreditAddResponse add(PromotionalCreditAddParams params)
+      throws ChargebeeException {
     Response response = addRaw(params);
 
     return PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response);

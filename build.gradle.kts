@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.chargebee"
-version = "4.0.0"
+version = "4.0.0-beta.3"
 description = "Next-gen Java client library for ChargeBee API"
 
 // Project metadata
@@ -30,8 +30,8 @@ extra["projectLicenseUrl"] = projectLicenseUrl
 extra["teamMembers"] = teamMembers
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
     withSourcesJar()
     withJavadocJar()
 }

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.event.params.EventListParams;
@@ -52,42 +53,42 @@ public final class EventService extends BaseService<EventService> {
   // === Operations ===
 
   /** list a event using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(EventListParams params) throws Exception {
+  Response listRaw(EventListParams params) throws ChargebeeException {
 
     return get("/events", params != null ? params.toQueryParams() : null);
   }
 
   /** list a event without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/events", null);
   }
 
   /** list a event using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public EventListResponse list(EventListParams params) throws Exception {
+  public EventListResponse list(EventListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return EventListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public EventListResponse list() throws Exception {
+  public EventListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return EventListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** retrieve a event (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String eventId) throws Exception {
+  Response retrieveRaw(String eventId) throws ChargebeeException {
     String path = buildPathWithParams("/events/{event-id}", "event-id", eventId);
 
     return get(path, null);
   }
 
-  public EventRetrieveResponse retrieve(String eventId) throws Exception {
+  public EventRetrieveResponse retrieve(String eventId) throws ChargebeeException {
     Response response = retrieveRaw(eventId);
     return EventRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

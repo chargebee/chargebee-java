@@ -9,23 +9,24 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.itemEntitlement.params.ItemEntitlementsForFeatureParams;
 
-import com.chargebee.v4.models.itemEntitlement.params.AddItemEntitlementForFeatureParams;
+import com.chargebee.v4.models.itemEntitlement.params.AddItemEntitlementsParams;
 
 import com.chargebee.v4.models.itemEntitlement.params.ItemEntitlementsForItemParams;
 
-import com.chargebee.v4.models.itemEntitlement.params.AddItemEntitlementForItemParams;
+import com.chargebee.v4.models.itemEntitlement.params.UpsertOrRemoveItemEntitlementsForItemParams;
 
 import com.chargebee.v4.models.itemEntitlement.responses.ItemEntitlementsForFeatureResponse;
 
-import com.chargebee.v4.models.itemEntitlement.responses.AddItemEntitlementForFeatureResponse;
+import com.chargebee.v4.models.itemEntitlement.responses.AddItemEntitlementsResponse;
 
 import com.chargebee.v4.models.itemEntitlement.responses.ItemEntitlementsForItemResponse;
 
-import com.chargebee.v4.models.itemEntitlement.responses.AddItemEntitlementForItemResponse;
+import com.chargebee.v4.models.itemEntitlement.responses.UpsertOrRemoveItemEntitlementsForItemResponse;
 
 public final class ItemEntitlementService extends BaseService<ItemEntitlementService> {
 
@@ -67,7 +68,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * returns raw Response.
    */
   Response itemEntitlementsForFeatureRaw(String featureId, ItemEntitlementsForFeatureParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
     return get(path, params != null ? params.toQueryParams() : null);
@@ -77,7 +78,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * itemEntitlementsForFeature a itemEntitlement without params (executes immediately) - returns
    * raw Response.
    */
-  Response itemEntitlementsForFeatureRaw(String featureId) throws Exception {
+  Response itemEntitlementsForFeatureRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
     return get(path, null);
@@ -87,30 +88,29 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * itemEntitlementsForFeature a itemEntitlement using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response itemEntitlementsForFeatureRaw(String featureId, String jsonPayload) throws Exception {
+  Response itemEntitlementsForFeatureRaw(String featureId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ItemEntitlementsForFeatureResponse itemEntitlementsForFeature(
-      String featureId, ItemEntitlementsForFeatureParams params) throws Exception {
+      String featureId, ItemEntitlementsForFeatureParams params) throws ChargebeeException {
     Response response = itemEntitlementsForFeatureRaw(featureId, params);
     return ItemEntitlementsForFeatureResponse.fromJson(
         response.getBodyAsString(), this, params, featureId, response);
   }
 
   public ItemEntitlementsForFeatureResponse itemEntitlementsForFeature(String featureId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = itemEntitlementsForFeatureRaw(featureId);
     return ItemEntitlementsForFeatureResponse.fromJson(
         response.getBodyAsString(), this, null, featureId, response);
   }
 
-  /**
-   * addItemEntitlementForFeature a itemEntitlement (executes immediately) - returns raw Response.
-   */
-  Response addItemEntitlementForFeatureRaw(String featureId) throws Exception {
+  /** addItemEntitlements a itemEntitlement (executes immediately) - returns raw Response. */
+  Response addItemEntitlementsRaw(String featureId) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
 
@@ -118,30 +118,30 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
   }
 
   /**
-   * addItemEntitlementForFeature a itemEntitlement using immutable params (executes immediately) -
-   * returns raw Response.
+   * addItemEntitlements a itemEntitlement using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response addItemEntitlementForFeatureRaw(
-      String featureId, AddItemEntitlementForFeatureParams params) throws Exception {
+  Response addItemEntitlementsRaw(String featureId, AddItemEntitlementsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addItemEntitlementForFeature a itemEntitlement using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * addItemEntitlements a itemEntitlement using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response addItemEntitlementForFeatureRaw(String featureId, String jsonPayload) throws Exception {
+  Response addItemEntitlementsRaw(String featureId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
     return postJson(path, jsonPayload);
   }
 
-  public AddItemEntitlementForFeatureResponse addItemEntitlementForFeature(
-      String featureId, AddItemEntitlementForFeatureParams params) throws Exception {
-    Response response = addItemEntitlementForFeatureRaw(featureId, params);
-    return AddItemEntitlementForFeatureResponse.fromJson(response.getBodyAsString(), response);
+  public AddItemEntitlementsResponse addItemEntitlements(
+      String featureId, AddItemEntitlementsParams params) throws ChargebeeException {
+    Response response = addItemEntitlementsRaw(featureId, params);
+    return AddItemEntitlementsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
@@ -149,7 +149,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * returns raw Response.
    */
   Response itemEntitlementsForItemRaw(String itemId, ItemEntitlementsForItemParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
     return get(path, params != null ? params.toQueryParams() : null);
   }
@@ -158,7 +158,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * itemEntitlementsForItem a itemEntitlement without params (executes immediately) - returns raw
    * Response.
    */
-  Response itemEntitlementsForItemRaw(String itemId) throws Exception {
+  Response itemEntitlementsForItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
     return get(path, null);
   }
@@ -167,53 +167,59 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
    * itemEntitlementsForItem a itemEntitlement using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response itemEntitlementsForItemRaw(String itemId, String jsonPayload) throws Exception {
+  Response itemEntitlementsForItemRaw(String itemId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ItemEntitlementsForItemResponse itemEntitlementsForItem(
-      String itemId, ItemEntitlementsForItemParams params) throws Exception {
+      String itemId, ItemEntitlementsForItemParams params) throws ChargebeeException {
     Response response = itemEntitlementsForItemRaw(itemId, params);
     return ItemEntitlementsForItemResponse.fromJson(
         response.getBodyAsString(), this, params, itemId, response);
   }
 
-  public ItemEntitlementsForItemResponse itemEntitlementsForItem(String itemId) throws Exception {
+  public ItemEntitlementsForItemResponse itemEntitlementsForItem(String itemId)
+      throws ChargebeeException {
     Response response = itemEntitlementsForItemRaw(itemId);
     return ItemEntitlementsForItemResponse.fromJson(
         response.getBodyAsString(), this, null, itemId, response);
   }
 
-  /** addItemEntitlementForItem a itemEntitlement (executes immediately) - returns raw Response. */
-  Response addItemEntitlementForItemRaw(String itemId) throws Exception {
+  /**
+   * upsertOrRemoveItemEntitlementsForItem a itemEntitlement (executes immediately) - returns raw
+   * Response.
+   */
+  Response upsertOrRemoveItemEntitlementsForItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
 
     return post(path, null);
   }
 
   /**
-   * addItemEntitlementForItem a itemEntitlement using immutable params (executes immediately) -
-   * returns raw Response.
+   * upsertOrRemoveItemEntitlementsForItem a itemEntitlement using immutable params (executes
+   * immediately) - returns raw Response.
    */
-  Response addItemEntitlementForItemRaw(String itemId, AddItemEntitlementForItemParams params)
-      throws Exception {
+  Response upsertOrRemoveItemEntitlementsForItemRaw(
+      String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addItemEntitlementForItem a itemEntitlement using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * upsertOrRemoveItemEntitlementsForItem a itemEntitlement using raw JSON payload (executes
+   * immediately) - returns raw Response.
    */
-  Response addItemEntitlementForItemRaw(String itemId, String jsonPayload) throws Exception {
+  Response upsertOrRemoveItemEntitlementsForItemRaw(String itemId, String jsonPayload)
+      throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
     return postJson(path, jsonPayload);
   }
 
-  public AddItemEntitlementForItemResponse addItemEntitlementForItem(
-      String itemId, AddItemEntitlementForItemParams params) throws Exception {
-    Response response = addItemEntitlementForItemRaw(itemId, params);
-    return AddItemEntitlementForItemResponse.fromJson(response.getBodyAsString(), response);
+  public UpsertOrRemoveItemEntitlementsForItemResponse upsertOrRemoveItemEntitlementsForItem(
+      String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) throws ChargebeeException {
+    Response response = upsertOrRemoveItemEntitlementsForItemRaw(itemId, params);
+    return UpsertOrRemoveItemEntitlementsForItemResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 }

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.item.params.ItemListParams;
@@ -21,7 +22,7 @@ import com.chargebee.v4.models.item.responses.ItemListResponse;
 
 import com.chargebee.v4.models.item.responses.ItemCreateResponse;
 
-import com.chargebee.v4.models.item.responses.DeleteItemResponse;
+import com.chargebee.v4.models.item.responses.ItemDeleteResponse;
 
 import com.chargebee.v4.models.item.responses.ItemRetrieveResponse;
 
@@ -62,96 +63,97 @@ public final class ItemService extends BaseService<ItemService> {
   // === Operations ===
 
   /** list a item using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(ItemListParams params) throws Exception {
+  Response listRaw(ItemListParams params) throws ChargebeeException {
 
     return get("/items", params != null ? params.toQueryParams() : null);
   }
 
   /** list a item without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/items", null);
   }
 
   /** list a item using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ItemListResponse list(ItemListParams params) throws Exception {
+  public ItemListResponse list(ItemListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return ItemListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public ItemListResponse list() throws Exception {
+  public ItemListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return ItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a item using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(ItemCreateParams params) throws Exception {
+  Response createRaw(ItemCreateParams params) throws ChargebeeException {
 
     return post("/items", params != null ? params.toFormData() : null);
   }
 
   /** create a item using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/items", jsonPayload);
   }
 
-  public ItemCreateResponse create(ItemCreateParams params) throws Exception {
+  public ItemCreateResponse create(ItemCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return ItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteItem a item (executes immediately) - returns raw Response. */
-  Response deleteItemRaw(String itemId) throws Exception {
+  /** delete a item (executes immediately) - returns raw Response. */
+  Response deleteRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/delete", "item-id", itemId);
 
     return post(path, null);
   }
 
-  public DeleteItemResponse deleteItem(String itemId) throws Exception {
-    Response response = deleteItemRaw(itemId);
-    return DeleteItemResponse.fromJson(response.getBodyAsString(), response);
+  public ItemDeleteResponse delete(String itemId) throws ChargebeeException {
+    Response response = deleteRaw(itemId);
+    return ItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a item (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String itemId) throws Exception {
+  Response retrieveRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
 
     return get(path, null);
   }
 
-  public ItemRetrieveResponse retrieve(String itemId) throws Exception {
+  public ItemRetrieveResponse retrieve(String itemId) throws ChargebeeException {
     Response response = retrieveRaw(itemId);
     return ItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a item (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemId) throws Exception {
+  Response updateRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
 
     return post(path, null);
   }
 
   /** update a item using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemId, ItemUpdateParams params) throws Exception {
+  Response updateRaw(String itemId, ItemUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
     return post(path, params.toFormData());
   }
 
   /** update a item using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String itemId, String jsonPayload) throws Exception {
+  Response updateRaw(String itemId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
     return postJson(path, jsonPayload);
   }
 
-  public ItemUpdateResponse update(String itemId, ItemUpdateParams params) throws Exception {
+  public ItemUpdateResponse update(String itemId, ItemUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(itemId, params);
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

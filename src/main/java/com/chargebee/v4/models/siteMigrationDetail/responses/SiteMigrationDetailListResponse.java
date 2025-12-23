@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.siteMigrationDetail.SiteMigrationDetail;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SiteMigrationDetailService;
@@ -101,9 +102,9 @@ public final class SiteMigrationDetailListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public SiteMigrationDetailListResponse nextPage() throws Exception {
+  public SiteMigrationDetailListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

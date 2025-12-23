@@ -3,7 +3,7 @@ package com.chargebee.v4.exceptions;
 /**
  * Exception thrown when there's an issue with SDK configuration.
  * 
- * <p>This is a runtime exception (unchecked) to allow fluent builder usage
+ * <p>This extends {@link ChargebeeException} to allow fluent builder usage
  * without requiring try-catch blocks during client setup.
  * 
  * <p>Common causes:
@@ -28,7 +28,7 @@ package com.chargebee.v4.exceptions;
  * <p>Note: This exception is NOT retryable as it indicates a programming error
  * that must be fixed in the code.
  */
-public class ConfigurationException extends RuntimeException {
+public class ConfigurationException extends ChargebeeException {
     
     /**
      * Creates a ConfigurationException with a message.

@@ -120,26 +120,114 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(\\{[^}]*\\})");
+        // Find the key position
+        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:";
+        Pattern pattern = Pattern.compile(keyPattern);
         Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return matcher.group(1);
+        if (!matcher.find()) {
+            return null;
         }
+        
+        // Find the start of the object value (skip whitespace after colon)
+        int start = matcher.end();
+        while (start < json.length() && Character.isWhitespace(json.charAt(start))) {
+            start++;
+        }
+        
+        if (start >= json.length() || json.charAt(start) != '{') {
+            return null;
+        }
+        
+        // Extract the object by tracking brace depth
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+        int objectStart = start;
+        
+        for (int i = start; i < json.length(); i++) {
+            char c = json.charAt(i);
+            
+            if (escaped) {
+                escaped = false;
+                continue;
+            }
+            
+            if (c == '\\' && inString) {
+                escaped = true;
+                continue;
+            }
+            
+            if (c == '"' && !escaped) {
+                inString = !inString;
+                continue;
+            }
+            
+            if (!inString) {
+                if (c == '{') {
+                    depth++;
+                } else if (c == '}') {
+                    depth--;
+                    if (depth == 0) {
+                        return json.substring(objectStart, i + 1);
+                    }
+                }
+            }
+        }
+        
         return null;
     }
     
     /**
      * Extract array as JSON string for a given key.
+     * Handles nested arrays and objects by tracking bracket depth.
      */
     public static String getArray(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
-        String pattern = "\"" + Pattern.quote(key) + "\"\\s*:\\s*(\\[.*?\\])";
-        Pattern p = Pattern.compile(pattern, Pattern.DOTALL);
+        
+        // Find the key position
+        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:\\s*\\[";
+        Pattern p = Pattern.compile(keyPattern);
         Matcher matcher = p.matcher(json);
-        if (matcher.find()) {
-            return matcher.group(1);
+        if (!matcher.find()) {
+            return null;
+        }
+        
+        // Start from the opening bracket
+        int start = matcher.end() - 1; // Position of '['
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+        
+        for (int i = start; i < json.length(); i++) {
+            char c = json.charAt(i);
+            
+            if (escaped) {
+                escaped = false;
+                continue;
+            }
+            
+            if (c == '\\' && inString) {
+                escaped = true;
+                continue;
+            }
+            
+            if (c == '"' && !escaped) {
+                inString = !inString;
+                continue;
+            }
+            
+            if (!inString) {
+                if (c == '[') {
+                    depth++;
+                } else if (c == ']') {
+                    depth--;
+                    if (depth == 0) {
+                        return json.substring(start, i + 1);
+                    }
+                }
+            }
         }
         return null;
     }
@@ -200,8 +288,17 @@ public class JsonUtil {
      * Check if a key exists and has non-null value.
      */
     public static boolean hasValue(String json, String key) {
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(?!null\\b)");
-        return pattern.matcher(json).find();
+        if (json == null || key == null) {
+            return false;
+        }
+        // First check if the key exists with null value
+        Pattern nullPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*null\\b");
+        if (nullPattern.matcher(json).find()) {
+            return false;
+        }
+        // Then check if the key exists at all
+        Pattern keyPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:");
+        return keyPattern.matcher(json).find();
     }
     
     /**
@@ -329,19 +426,15 @@ public class JsonUtil {
     }
 
     /** 
-     * Parse timestamp from JSON string.
+     * Parse timestamp from JSON (Unix epoch seconds).
      */
     public static Timestamp getTimestamp(String json, String key) {
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)");
-        Matcher matcher = pattern.matcher(json);
-        if (matcher.find()) {
-            return Timestamp.valueOf(matcher.group(1));
-        }
-        return null;
+        Long epochSeconds = getLong(json, key);
+        return epochSeconds != null ? new Timestamp(epochSeconds * 1000) : null;
     }
 
     /**
-     * Parse a JSON object into a Map<String, Object>.
+     * Parse a JSON object into a Map&lt;String, Object&gt;.
      * Values are kept as their raw types (String, Long, Double, Boolean, or nested JSON strings).
      */
     public static java.util.Map<String, Object> parseJsonObjectToMap(String json) {
@@ -539,18 +632,26 @@ public class JsonUtil {
 
     /**
      * Unescape JSON string.
+     * Processes escape sequences correctly by handling \\\\ last to avoid
+     * incorrectly interpreting sequences like \\t as tab.
      */
     private static String unescapeJsonString(String escaped) {
         if (escaped == null) return null;
+        
+        // Use a placeholder for \\ to avoid interference with other escapes
+        // e.g., \\t should become \t (backslash + t), not a tab character
+        String placeholder = "\u0000BACKSLASH\u0000";
+        
         return escaped
+            .replace("\\\\", placeholder)  // Temporarily replace \\ with placeholder
             .replace("\\\"", "\"")
-            .replace("\\\\", "\\")
             .replace("\\/", "/")
             .replace("\\b", "\b")
             .replace("\\f", "\f")
             .replace("\\n", "\n")
             .replace("\\r", "\r")
-            .replace("\\t", "\t");
+            .replace("\\t", "\t")
+            .replace(placeholder, "\\");   // Replace placeholder with actual backslash
     }
 
     /**

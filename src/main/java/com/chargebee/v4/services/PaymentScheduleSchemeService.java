@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.paymentScheduleScheme.params.PaymentScheduleSchemeCreateParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSc
 
 import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSchemeCreateResponse;
 
-import com.chargebee.v4.models.paymentScheduleScheme.responses.DeletePaymentScheduleSchemeResponse;
+import com.chargebee.v4.models.paymentScheduleScheme.responses.PaymentScheduleSchemeDeleteResponse;
 
 public final class PaymentScheduleSchemeService extends BaseService<PaymentScheduleSchemeService> {
 
@@ -55,7 +56,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
   // === Operations ===
 
   /** retrieve a paymentScheduleScheme (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String paymentScheduleSchemeId) throws Exception {
+  Response retrieveRaw(String paymentScheduleSchemeId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_schedule_schemes/{payment-schedule-scheme-id}",
@@ -66,7 +67,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
   }
 
   public PaymentScheduleSchemeRetrieveResponse retrieve(String paymentScheduleSchemeId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(paymentScheduleSchemeId);
     return PaymentScheduleSchemeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -75,7 +76,7 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
    * create a paymentScheduleScheme using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(PaymentScheduleSchemeCreateParams params) throws Exception {
+  Response createRaw(PaymentScheduleSchemeCreateParams params) throws ChargebeeException {
 
     return post("/payment_schedule_schemes", params != null ? params.toFormData() : null);
   }
@@ -84,23 +85,20 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
    * create a paymentScheduleScheme using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/payment_schedule_schemes", jsonPayload);
   }
 
   public PaymentScheduleSchemeCreateResponse create(PaymentScheduleSchemeCreateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return PaymentScheduleSchemeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * deletePaymentScheduleScheme a paymentScheduleScheme (executes immediately) - returns raw
-   * Response.
-   */
-  Response deletePaymentScheduleSchemeRaw(String paymentScheduleSchemeId) throws Exception {
+  /** delete a paymentScheduleScheme (executes immediately) - returns raw Response. */
+  Response deleteRaw(String paymentScheduleSchemeId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/payment_schedule_schemes/{payment-schedule-scheme-id}/delete",
@@ -110,9 +108,9 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
     return post(path, null);
   }
 
-  public DeletePaymentScheduleSchemeResponse deletePaymentScheduleScheme(
-      String paymentScheduleSchemeId) throws Exception {
-    Response response = deletePaymentScheduleSchemeRaw(paymentScheduleSchemeId);
-    return DeletePaymentScheduleSchemeResponse.fromJson(response.getBodyAsString(), response);
+  public PaymentScheduleSchemeDeleteResponse delete(String paymentScheduleSchemeId)
+      throws ChargebeeException {
+    Response response = deleteRaw(paymentScheduleSchemeId);
+    return PaymentScheduleSchemeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.addon.params.AddonCopyParams;
@@ -21,7 +22,7 @@ import com.chargebee.v4.models.addon.params.AddonCreateParams;
 
 import com.chargebee.v4.models.addon.responses.AddonCopyResponse;
 
-import com.chargebee.v4.models.addon.responses.UnarchiveForAddonResponse;
+import com.chargebee.v4.models.addon.responses.AddonUnarchiveResponse;
 
 import com.chargebee.v4.models.addon.responses.AddonRetrieveResponse;
 
@@ -31,7 +32,7 @@ import com.chargebee.v4.models.addon.responses.AddonListResponse;
 
 import com.chargebee.v4.models.addon.responses.AddonCreateResponse;
 
-import com.chargebee.v4.models.addon.responses.DeleteAddonResponse;
+import com.chargebee.v4.models.addon.responses.AddonDeleteResponse;
 
 public final class AddonService extends BaseService<AddonService> {
 
@@ -68,127 +69,128 @@ public final class AddonService extends BaseService<AddonService> {
   // === Operations ===
 
   /** copy a addon using immutable params (executes immediately) - returns raw Response. */
-  Response copyRaw(AddonCopyParams params) throws Exception {
+  Response copyRaw(AddonCopyParams params) throws ChargebeeException {
 
     return post("/addons/copy", params != null ? params.toFormData() : null);
   }
 
   /** copy a addon using raw JSON payload (executes immediately) - returns raw Response. */
-  Response copyRaw(String jsonPayload) throws Exception {
+  Response copyRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/addons/copy", jsonPayload);
   }
 
-  public AddonCopyResponse copy(AddonCopyParams params) throws Exception {
+  public AddonCopyResponse copy(AddonCopyParams params) throws ChargebeeException {
     Response response = copyRaw(params);
 
     return AddonCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** unarchiveForAddon a addon (executes immediately) - returns raw Response. */
-  Response unarchiveForAddonRaw(String addonId) throws Exception {
+  /** unarchive a addon (executes immediately) - returns raw Response. */
+  Response unarchiveRaw(String addonId) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}/unarchive", "addon-id", addonId);
 
     return post(path, null);
   }
 
-  public UnarchiveForAddonResponse unarchiveForAddon(String addonId) throws Exception {
-    Response response = unarchiveForAddonRaw(addonId);
-    return UnarchiveForAddonResponse.fromJson(response.getBodyAsString(), response);
+  public AddonUnarchiveResponse unarchive(String addonId) throws ChargebeeException {
+    Response response = unarchiveRaw(addonId);
+    return AddonUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a addon (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String addonId) throws Exception {
+  Response retrieveRaw(String addonId) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
 
     return get(path, null);
   }
 
-  public AddonRetrieveResponse retrieve(String addonId) throws Exception {
+  public AddonRetrieveResponse retrieve(String addonId) throws ChargebeeException {
     Response response = retrieveRaw(addonId);
     return AddonRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a addon (executes immediately) - returns raw Response. */
-  Response updateRaw(String addonId) throws Exception {
+  Response updateRaw(String addonId) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
 
     return post(path, null);
   }
 
   /** update a addon using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String addonId, AddonUpdateParams params) throws Exception {
+  Response updateRaw(String addonId, AddonUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
     return post(path, params.toFormData());
   }
 
   /** update a addon using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String addonId, String jsonPayload) throws Exception {
+  Response updateRaw(String addonId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
     return postJson(path, jsonPayload);
   }
 
-  public AddonUpdateResponse update(String addonId, AddonUpdateParams params) throws Exception {
+  public AddonUpdateResponse update(String addonId, AddonUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(addonId, params);
     return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a addon using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(AddonListParams params) throws Exception {
+  Response listRaw(AddonListParams params) throws ChargebeeException {
 
     return get("/addons", params != null ? params.toQueryParams() : null);
   }
 
   /** list a addon without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/addons", null);
   }
 
   /** list a addon using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public AddonListResponse list(AddonListParams params) throws Exception {
+  public AddonListResponse list(AddonListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return AddonListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public AddonListResponse list() throws Exception {
+  public AddonListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return AddonListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a addon using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(AddonCreateParams params) throws Exception {
+  Response createRaw(AddonCreateParams params) throws ChargebeeException {
 
     return post("/addons", params != null ? params.toFormData() : null);
   }
 
   /** create a addon using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/addons", jsonPayload);
   }
 
-  public AddonCreateResponse create(AddonCreateParams params) throws Exception {
+  public AddonCreateResponse create(AddonCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return AddonCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deleteAddon a addon (executes immediately) - returns raw Response. */
-  Response deleteAddonRaw(String addonId) throws Exception {
+  /** delete a addon (executes immediately) - returns raw Response. */
+  Response deleteRaw(String addonId) throws ChargebeeException {
     String path = buildPathWithParams("/addons/{addon-id}/delete", "addon-id", addonId);
 
     return post(path, null);
   }
 
-  public DeleteAddonResponse deleteAddon(String addonId) throws Exception {
-    Response response = deleteAddonRaw(addonId);
-    return DeleteAddonResponse.fromJson(response.getBodyAsString(), response);
+  public AddonDeleteResponse delete(String addonId) throws ChargebeeException {
+    Response response = deleteRaw(addonId);
+    return AddonDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

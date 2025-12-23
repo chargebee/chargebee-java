@@ -9,13 +9,14 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.comment.params.CommentListParams;
 
 import com.chargebee.v4.models.comment.params.CommentCreateParams;
 
-import com.chargebee.v4.models.comment.responses.DeleteCommentResponse;
+import com.chargebee.v4.models.comment.responses.CommentDeleteResponse;
 
 import com.chargebee.v4.models.comment.responses.CommentRetrieveResponse;
 
@@ -57,72 +58,72 @@ public final class CommentService extends BaseService<CommentService> {
 
   // === Operations ===
 
-  /** deleteComment a comment (executes immediately) - returns raw Response. */
-  Response deleteCommentRaw(String commentId) throws Exception {
+  /** delete a comment (executes immediately) - returns raw Response. */
+  Response deleteRaw(String commentId) throws ChargebeeException {
     String path = buildPathWithParams("/comments/{comment-id}/delete", "comment-id", commentId);
 
     return post(path, null);
   }
 
-  public DeleteCommentResponse deleteComment(String commentId) throws Exception {
-    Response response = deleteCommentRaw(commentId);
-    return DeleteCommentResponse.fromJson(response.getBodyAsString(), response);
+  public CommentDeleteResponse delete(String commentId) throws ChargebeeException {
+    Response response = deleteRaw(commentId);
+    return CommentDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a comment (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String commentId) throws Exception {
+  Response retrieveRaw(String commentId) throws ChargebeeException {
     String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
 
     return get(path, null);
   }
 
-  public CommentRetrieveResponse retrieve(String commentId) throws Exception {
+  public CommentRetrieveResponse retrieve(String commentId) throws ChargebeeException {
     Response response = retrieveRaw(commentId);
     return CommentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a comment using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(CommentListParams params) throws Exception {
+  Response listRaw(CommentListParams params) throws ChargebeeException {
 
     return get("/comments", params != null ? params.toQueryParams() : null);
   }
 
   /** list a comment without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/comments", null);
   }
 
   /** list a comment using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public CommentListResponse list(CommentListParams params) throws Exception {
+  public CommentListResponse list(CommentListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return CommentListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public CommentListResponse list() throws Exception {
+  public CommentListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return CommentListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a comment using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(CommentCreateParams params) throws Exception {
+  Response createRaw(CommentCreateParams params) throws ChargebeeException {
 
     return post("/comments", params != null ? params.toFormData() : null);
   }
 
   /** create a comment using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/comments", jsonPayload);
   }
 
-  public CommentCreateResponse create(CommentCreateParams params) throws Exception {
+  public CommentCreateResponse create(CommentCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return CommentCreateResponse.fromJson(response.getBodyAsString(), response);

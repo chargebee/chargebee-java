@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.plan.params.PlanCopyParams;
@@ -19,9 +20,9 @@ import com.chargebee.v4.models.plan.params.PlanCreateParams;
 
 import com.chargebee.v4.models.plan.params.PlanUpdateParams;
 
-import com.chargebee.v4.models.plan.responses.UnarchiveForPlanResponse;
+import com.chargebee.v4.models.plan.responses.PlanUnarchiveResponse;
 
-import com.chargebee.v4.models.plan.responses.DeletePlanResponse;
+import com.chargebee.v4.models.plan.responses.PlanDeleteResponse;
 
 import com.chargebee.v4.models.plan.responses.PlanCopyResponse;
 
@@ -67,127 +68,128 @@ public final class PlanService extends BaseService<PlanService> {
 
   // === Operations ===
 
-  /** unarchiveForPlan a plan (executes immediately) - returns raw Response. */
-  Response unarchiveForPlanRaw(String planId) throws Exception {
+  /** unarchive a plan (executes immediately) - returns raw Response. */
+  Response unarchiveRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}/unarchive", "plan-id", planId);
 
     return post(path, null);
   }
 
-  public UnarchiveForPlanResponse unarchiveForPlan(String planId) throws Exception {
-    Response response = unarchiveForPlanRaw(planId);
-    return UnarchiveForPlanResponse.fromJson(response.getBodyAsString(), response);
+  public PlanUnarchiveResponse unarchive(String planId) throws ChargebeeException {
+    Response response = unarchiveRaw(planId);
+    return PlanUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deletePlan a plan (executes immediately) - returns raw Response. */
-  Response deletePlanRaw(String planId) throws Exception {
+  /** delete a plan (executes immediately) - returns raw Response. */
+  Response deleteRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}/delete", "plan-id", planId);
 
     return post(path, null);
   }
 
-  public DeletePlanResponse deletePlan(String planId) throws Exception {
-    Response response = deletePlanRaw(planId);
-    return DeletePlanResponse.fromJson(response.getBodyAsString(), response);
+  public PlanDeleteResponse delete(String planId) throws ChargebeeException {
+    Response response = deleteRaw(planId);
+    return PlanDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** copy a plan using immutable params (executes immediately) - returns raw Response. */
-  Response copyRaw(PlanCopyParams params) throws Exception {
+  Response copyRaw(PlanCopyParams params) throws ChargebeeException {
 
     return post("/plans/copy", params != null ? params.toFormData() : null);
   }
 
   /** copy a plan using raw JSON payload (executes immediately) - returns raw Response. */
-  Response copyRaw(String jsonPayload) throws Exception {
+  Response copyRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/plans/copy", jsonPayload);
   }
 
-  public PlanCopyResponse copy(PlanCopyParams params) throws Exception {
+  public PlanCopyResponse copy(PlanCopyParams params) throws ChargebeeException {
     Response response = copyRaw(params);
 
     return PlanCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a plan using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(PlanListParams params) throws Exception {
+  Response listRaw(PlanListParams params) throws ChargebeeException {
 
     return get("/plans", params != null ? params.toQueryParams() : null);
   }
 
   /** list a plan without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/plans", null);
   }
 
   /** list a plan using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public PlanListResponse list(PlanListParams params) throws Exception {
+  public PlanListResponse list(PlanListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return PlanListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public PlanListResponse list() throws Exception {
+  public PlanListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return PlanListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
   /** create a plan using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(PlanCreateParams params) throws Exception {
+  Response createRaw(PlanCreateParams params) throws ChargebeeException {
 
     return post("/plans", params != null ? params.toFormData() : null);
   }
 
   /** create a plan using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/plans", jsonPayload);
   }
 
-  public PlanCreateResponse create(PlanCreateParams params) throws Exception {
+  public PlanCreateResponse create(PlanCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return PlanCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a plan (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String planId) throws Exception {
+  Response retrieveRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
     return get(path, null);
   }
 
-  public PlanRetrieveResponse retrieve(String planId) throws Exception {
+  public PlanRetrieveResponse retrieve(String planId) throws ChargebeeException {
     Response response = retrieveRaw(planId);
     return PlanRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a plan (executes immediately) - returns raw Response. */
-  Response updateRaw(String planId) throws Exception {
+  Response updateRaw(String planId) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
     return post(path, null);
   }
 
   /** update a plan using immutable params (executes immediately) - returns raw Response. */
-  Response updateRaw(String planId, PlanUpdateParams params) throws Exception {
+  Response updateRaw(String planId, PlanUpdateParams params) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
     return post(path, params.toFormData());
   }
 
   /** update a plan using raw JSON payload (executes immediately) - returns raw Response. */
-  Response updateRaw(String planId, String jsonPayload) throws Exception {
+  Response updateRaw(String planId, String jsonPayload) throws ChargebeeException {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
     return postJson(path, jsonPayload);
   }
 
-  public PlanUpdateResponse update(String planId, PlanUpdateParams params) throws Exception {
+  public PlanUpdateResponse update(String planId, PlanUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(planId, params);
     return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
   }

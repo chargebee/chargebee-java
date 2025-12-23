@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.subscriptionSetting.params.RetrieveSubscriptionSettingParams;
+import com.chargebee.v4.models.subscriptionSetting.params.SubscriptionSettingRetrieveParams;
 
-import com.chargebee.v4.models.subscriptionSetting.responses.RetrieveSubscriptionSettingResponse;
+import com.chargebee.v4.models.subscriptionSetting.responses.SubscriptionSettingRetrieveResponse;
 
 public final class SubscriptionSettingService extends BaseService<SubscriptionSettingService> {
 
@@ -51,28 +52,27 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
   // === Operations ===
 
   /**
-   * retrieveSubscriptionSetting a subscriptionSetting using immutable params (executes immediately)
-   * - returns raw Response.
+   * retrieve a subscriptionSetting using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response retrieveSubscriptionSettingRaw(RetrieveSubscriptionSettingParams params)
-      throws Exception {
+  Response retrieveRaw(SubscriptionSettingRetrieveParams params) throws ChargebeeException {
 
     return get("/subscription_settings/retrieve", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * retrieveSubscriptionSetting a subscriptionSetting using raw JSON payload (executes immediately)
-   * - returns raw Response.
+   * retrieve a subscriptionSetting using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response retrieveSubscriptionSettingRaw(String jsonPayload) throws Exception {
+  Response retrieveRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public RetrieveSubscriptionSettingResponse retrieveSubscriptionSetting(
-      RetrieveSubscriptionSettingParams params) throws Exception {
-    Response response = retrieveSubscriptionSettingRaw(params);
+  public SubscriptionSettingRetrieveResponse retrieve(SubscriptionSettingRetrieveParams params)
+      throws ChargebeeException {
+    Response response = retrieveRaw(params);
 
-    return RetrieveSubscriptionSettingResponse.fromJson(response.getBodyAsString(), response);
+    return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 }

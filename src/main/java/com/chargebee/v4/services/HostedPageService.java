@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.hostedPage.params.HostedPageCheckoutOneTimeForItemsParams;
@@ -79,7 +80,7 @@ import com.chargebee.v4.models.hostedPage.responses.HostedPageCheckoutExistingFo
 
 import com.chargebee.v4.models.hostedPage.responses.HostedPagePreCancelResponse;
 
-import com.chargebee.v4.models.hostedPage.responses.AcknowledgeForHostedPageResponse;
+import com.chargebee.v4.models.hostedPage.responses.HostedPageAcknowledgeResponse;
 
 import com.chargebee.v4.models.hostedPage.responses.HostedPageRetrieveAgreementPdfResponse;
 
@@ -134,7 +135,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * raw Response.
    */
   Response checkoutOneTimeForItemsRaw(HostedPageCheckoutOneTimeForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/checkout_one_time_for_items", params != null ? params.toFormData() : null);
@@ -144,13 +145,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutOneTimeForItems a hostedPage using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response checkoutOneTimeForItemsRaw(String jsonPayload) throws Exception {
+  Response checkoutOneTimeForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_one_time_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutOneTimeForItemsResponse checkoutOneTimeForItems(
-      HostedPageCheckoutOneTimeForItemsParams params) throws Exception {
+      HostedPageCheckoutOneTimeForItemsParams params) throws ChargebeeException {
     Response response = checkoutOneTimeForItemsRaw(params);
 
     return HostedPageCheckoutOneTimeForItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -160,7 +161,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * updatePaymentMethod a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response updatePaymentMethodRaw(HostedPageUpdatePaymentMethodParams params) throws Exception {
+  Response updatePaymentMethodRaw(HostedPageUpdatePaymentMethodParams params)
+      throws ChargebeeException {
 
     return post("/hosted_pages/update_payment_method", params != null ? params.toFormData() : null);
   }
@@ -169,13 +171,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * updatePaymentMethod a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updatePaymentMethodRaw(String jsonPayload) throws Exception {
+  Response updatePaymentMethodRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/update_payment_method", jsonPayload);
   }
 
   public HostedPageUpdatePaymentMethodResponse updatePaymentMethod(
-      HostedPageUpdatePaymentMethodParams params) throws Exception {
+      HostedPageUpdatePaymentMethodParams params) throws ChargebeeException {
     Response response = updatePaymentMethodRaw(params);
 
     return HostedPageUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
@@ -184,7 +186,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * updateCard a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response updateCardRaw(HostedPageUpdateCardParams params) throws Exception {
+  Response updateCardRaw(HostedPageUpdateCardParams params) throws ChargebeeException {
 
     return post("/hosted_pages/update_card", params != null ? params.toFormData() : null);
   }
@@ -192,13 +194,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * updateCard a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateCardRaw(String jsonPayload) throws Exception {
+  Response updateCardRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/update_card", jsonPayload);
   }
 
   public HostedPageUpdateCardResponse updateCard(HostedPageUpdateCardParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = updateCardRaw(params);
 
     return HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response);
@@ -208,7 +210,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * extendSubscription a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response extendSubscriptionRaw(HostedPageExtendSubscriptionParams params) throws Exception {
+  Response extendSubscriptionRaw(HostedPageExtendSubscriptionParams params)
+      throws ChargebeeException {
 
     return post("/hosted_pages/extend_subscription", params != null ? params.toFormData() : null);
   }
@@ -217,31 +220,31 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * extendSubscription a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response extendSubscriptionRaw(String jsonPayload) throws Exception {
+  Response extendSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/extend_subscription", jsonPayload);
   }
 
   public HostedPageExtendSubscriptionResponse extendSubscription(
-      HostedPageExtendSubscriptionParams params) throws Exception {
+      HostedPageExtendSubscriptionParams params) throws ChargebeeException {
     Response response = extendSubscriptionRaw(params);
 
     return HostedPageExtendSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** events a hostedPage using immutable params (executes immediately) - returns raw Response. */
-  Response eventsRaw(HostedPageEventsParams params) throws Exception {
+  Response eventsRaw(HostedPageEventsParams params) throws ChargebeeException {
 
     return post("/hosted_pages/events", params != null ? params.toFormData() : null);
   }
 
   /** events a hostedPage using raw JSON payload (executes immediately) - returns raw Response. */
-  Response eventsRaw(String jsonPayload) throws Exception {
+  Response eventsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/events", jsonPayload);
   }
 
-  public HostedPageEventsResponse events(HostedPageEventsParams params) throws Exception {
+  public HostedPageEventsResponse events(HostedPageEventsParams params) throws ChargebeeException {
     Response response = eventsRaw(params);
 
     return HostedPageEventsResponse.fromJson(response.getBodyAsString(), response);
@@ -251,7 +254,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutGiftForItems a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutGiftForItemsRaw(HostedPageCheckoutGiftForItemsParams params) throws Exception {
+  Response checkoutGiftForItemsRaw(HostedPageCheckoutGiftForItemsParams params)
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/checkout_gift_for_items", params != null ? params.toFormData() : null);
@@ -261,43 +265,43 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutGiftForItems a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutGiftForItemsRaw(String jsonPayload) throws Exception {
+  Response checkoutGiftForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_gift_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutGiftForItemsResponse checkoutGiftForItems(
-      HostedPageCheckoutGiftForItemsParams params) throws Exception {
+      HostedPageCheckoutGiftForItemsParams params) throws ChargebeeException {
     Response response = checkoutGiftForItemsRaw(params);
 
     return HostedPageCheckoutGiftForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** list a hostedPage using immutable params (executes immediately) - returns raw Response. */
-  Response listRaw(HostedPageListParams params) throws Exception {
+  Response listRaw(HostedPageListParams params) throws ChargebeeException {
 
     return get("/hosted_pages", params != null ? params.toQueryParams() : null);
   }
 
   /** list a hostedPage without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/hosted_pages", null);
   }
 
   /** list a hostedPage using raw JSON payload (executes immediately) - returns raw Response. */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public HostedPageListResponse list(HostedPageListParams params) throws Exception {
+  public HostedPageListResponse list(HostedPageListParams params) throws ChargebeeException {
     Response response = listRaw(params);
 
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public HostedPageListResponse list() throws Exception {
+  public HostedPageListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
@@ -305,7 +309,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * viewVoucher a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response viewVoucherRaw(HostedPageViewVoucherParams params) throws Exception {
+  Response viewVoucherRaw(HostedPageViewVoucherParams params) throws ChargebeeException {
 
     return post("/hosted_pages/view_voucher", params != null ? params.toFormData() : null);
   }
@@ -313,13 +317,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * viewVoucher a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response viewVoucherRaw(String jsonPayload) throws Exception {
+  Response viewVoucherRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/view_voucher", jsonPayload);
   }
 
   public HostedPageViewVoucherResponse viewVoucher(HostedPageViewVoucherParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = viewVoucherRaw(params);
 
     return HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response);
@@ -328,7 +332,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * collectNow a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response collectNowRaw(HostedPageCollectNowParams params) throws Exception {
+  Response collectNowRaw(HostedPageCollectNowParams params) throws ChargebeeException {
 
     return post("/hosted_pages/collect_now", params != null ? params.toFormData() : null);
   }
@@ -336,13 +340,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * collectNow a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response collectNowRaw(String jsonPayload) throws Exception {
+  Response collectNowRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/collect_now", jsonPayload);
   }
 
   public HostedPageCollectNowResponse collectNow(HostedPageCollectNowParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = collectNowRaw(params);
 
     return HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response);
@@ -351,7 +355,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * acceptQuote a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response acceptQuoteRaw(HostedPageAcceptQuoteParams params) throws Exception {
+  Response acceptQuoteRaw(HostedPageAcceptQuoteParams params) throws ChargebeeException {
 
     return post("/hosted_pages/accept_quote", params != null ? params.toFormData() : null);
   }
@@ -359,13 +363,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * acceptQuote a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response acceptQuoteRaw(String jsonPayload) throws Exception {
+  Response acceptQuoteRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/accept_quote", jsonPayload);
   }
 
   public HostedPageAcceptQuoteResponse acceptQuote(HostedPageAcceptQuoteParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = acceptQuoteRaw(params);
 
     return HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response);
@@ -375,7 +379,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutNewForItems a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutNewForItemsRaw(HostedPageCheckoutNewForItemsParams params) throws Exception {
+  Response checkoutNewForItemsRaw(HostedPageCheckoutNewForItemsParams params)
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/checkout_new_for_items", params != null ? params.toFormData() : null);
@@ -385,13 +390,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutNewForItems a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutNewForItemsRaw(String jsonPayload) throws Exception {
+  Response checkoutNewForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_new_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutNewForItemsResponse checkoutNewForItems(
-      HostedPageCheckoutNewForItemsParams params) throws Exception {
+      HostedPageCheckoutNewForItemsParams params) throws ChargebeeException {
     Response response = checkoutNewForItemsRaw(params);
 
     return HostedPageCheckoutNewForItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -400,7 +405,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * claimGift a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response claimGiftRaw(HostedPageClaimGiftParams params) throws Exception {
+  Response claimGiftRaw(HostedPageClaimGiftParams params) throws ChargebeeException {
 
     return post("/hosted_pages/claim_gift", params != null ? params.toFormData() : null);
   }
@@ -408,12 +413,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * claimGift a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response claimGiftRaw(String jsonPayload) throws Exception {
+  Response claimGiftRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/claim_gift", jsonPayload);
   }
 
-  public HostedPageClaimGiftResponse claimGift(HostedPageClaimGiftParams params) throws Exception {
+  public HostedPageClaimGiftResponse claimGift(HostedPageClaimGiftParams params)
+      throws ChargebeeException {
     Response response = claimGiftRaw(params);
 
     return HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response);
@@ -424,7 +430,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * raw Response.
    */
   Response checkoutExistingForItemsRaw(HostedPageCheckoutExistingForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/checkout_existing_for_items", params != null ? params.toFormData() : null);
@@ -434,13 +440,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutExistingForItems a hostedPage using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response checkoutExistingForItemsRaw(String jsonPayload) throws Exception {
+  Response checkoutExistingForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_existing_for_items", jsonPayload);
   }
 
   public HostedPageCheckoutExistingForItemsResponse checkoutExistingForItems(
-      HostedPageCheckoutExistingForItemsParams params) throws Exception {
+      HostedPageCheckoutExistingForItemsParams params) throws ChargebeeException {
     Response response = checkoutExistingForItemsRaw(params);
 
     return HostedPageCheckoutExistingForItemsResponse.fromJson(
@@ -450,7 +456,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * preCancel a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response preCancelRaw(HostedPagePreCancelParams params) throws Exception {
+  Response preCancelRaw(HostedPagePreCancelParams params) throws ChargebeeException {
 
     return post("/hosted_pages/pre_cancel", params != null ? params.toFormData() : null);
   }
@@ -458,19 +464,20 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * preCancel a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response preCancelRaw(String jsonPayload) throws Exception {
+  Response preCancelRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/pre_cancel", jsonPayload);
   }
 
-  public HostedPagePreCancelResponse preCancel(HostedPagePreCancelParams params) throws Exception {
+  public HostedPagePreCancelResponse preCancel(HostedPagePreCancelParams params)
+      throws ChargebeeException {
     Response response = preCancelRaw(params);
 
     return HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** acknowledgeForHostedPage a hostedPage (executes immediately) - returns raw Response. */
-  Response acknowledgeForHostedPageRaw(String hostedPageId) throws Exception {
+  /** acknowledge a hostedPage (executes immediately) - returns raw Response. */
+  Response acknowledgeRaw(String hostedPageId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/hosted_pages/{hosted-page-id}/acknowledge", "hosted-page-id", hostedPageId);
@@ -478,17 +485,17 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return post(path, null);
   }
 
-  public AcknowledgeForHostedPageResponse acknowledgeForHostedPage(String hostedPageId)
-      throws Exception {
-    Response response = acknowledgeForHostedPageRaw(hostedPageId);
-    return AcknowledgeForHostedPageResponse.fromJson(response.getBodyAsString(), response);
+  public HostedPageAcknowledgeResponse acknowledge(String hostedPageId) throws ChargebeeException {
+    Response response = acknowledgeRaw(hostedPageId);
+    return HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * retrieveAgreementPdf a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response retrieveAgreementPdfRaw(HostedPageRetrieveAgreementPdfParams params) throws Exception {
+  Response retrieveAgreementPdfRaw(HostedPageRetrieveAgreementPdfParams params)
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/retrieve_agreement_pdf", params != null ? params.toFormData() : null);
@@ -498,27 +505,27 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * retrieveAgreementPdf a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response retrieveAgreementPdfRaw(String jsonPayload) throws Exception {
+  Response retrieveAgreementPdfRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/retrieve_agreement_pdf", jsonPayload);
   }
 
   public HostedPageRetrieveAgreementPdfResponse retrieveAgreementPdf(
-      HostedPageRetrieveAgreementPdfParams params) throws Exception {
+      HostedPageRetrieveAgreementPdfParams params) throws ChargebeeException {
     Response response = retrieveAgreementPdfRaw(params);
 
     return HostedPageRetrieveAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a hostedPage (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String hostedPageId) throws Exception {
+  Response retrieveRaw(String hostedPageId) throws ChargebeeException {
     String path =
         buildPathWithParams("/hosted_pages/{hosted-page-id}", "hosted-page-id", hostedPageId);
 
     return get(path, null);
   }
 
-  public HostedPageRetrieveResponse retrieve(String hostedPageId) throws Exception {
+  public HostedPageRetrieveResponse retrieve(String hostedPageId) throws ChargebeeException {
     Response response = retrieveRaw(hostedPageId);
     return HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -527,7 +534,8 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * managePaymentSources a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response managePaymentSourcesRaw(HostedPageManagePaymentSourcesParams params) throws Exception {
+  Response managePaymentSourcesRaw(HostedPageManagePaymentSourcesParams params)
+      throws ChargebeeException {
 
     return post(
         "/hosted_pages/manage_payment_sources", params != null ? params.toFormData() : null);
@@ -537,13 +545,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * managePaymentSources a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response managePaymentSourcesRaw(String jsonPayload) throws Exception {
+  Response managePaymentSourcesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/manage_payment_sources", jsonPayload);
   }
 
   public HostedPageManagePaymentSourcesResponse managePaymentSources(
-      HostedPageManagePaymentSourcesParams params) throws Exception {
+      HostedPageManagePaymentSourcesParams params) throws ChargebeeException {
     Response response = managePaymentSourcesRaw(params);
 
     return HostedPageManagePaymentSourcesResponse.fromJson(response.getBodyAsString(), response);
@@ -553,7 +561,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutOneTime a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutOneTimeRaw(HostedPageCheckoutOneTimeParams params) throws Exception {
+  Response checkoutOneTimeRaw(HostedPageCheckoutOneTimeParams params) throws ChargebeeException {
 
     return post("/hosted_pages/checkout_one_time", params != null ? params.toFormData() : null);
   }
@@ -562,13 +570,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutOneTime a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutOneTimeRaw(String jsonPayload) throws Exception {
+  Response checkoutOneTimeRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_one_time", jsonPayload);
   }
 
   public HostedPageCheckoutOneTimeResponse checkoutOneTime(HostedPageCheckoutOneTimeParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = checkoutOneTimeRaw(params);
 
     return HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response);
@@ -577,7 +585,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * checkoutNew a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response checkoutNewRaw(HostedPageCheckoutNewParams params) throws Exception {
+  Response checkoutNewRaw(HostedPageCheckoutNewParams params) throws ChargebeeException {
 
     return post("/hosted_pages/checkout_new", params != null ? params.toFormData() : null);
   }
@@ -585,13 +593,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * checkoutNew a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response checkoutNewRaw(String jsonPayload) throws Exception {
+  Response checkoutNewRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_new", jsonPayload);
   }
 
   public HostedPageCheckoutNewResponse checkoutNew(HostedPageCheckoutNewParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = checkoutNewRaw(params);
 
     return HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response);
@@ -600,7 +608,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * checkoutGift a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
-  Response checkoutGiftRaw(HostedPageCheckoutGiftParams params) throws Exception {
+  Response checkoutGiftRaw(HostedPageCheckoutGiftParams params) throws ChargebeeException {
 
     return post("/hosted_pages/checkout_gift", params != null ? params.toFormData() : null);
   }
@@ -608,13 +616,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   /**
    * checkoutGift a hostedPage using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response checkoutGiftRaw(String jsonPayload) throws Exception {
+  Response checkoutGiftRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_gift", jsonPayload);
   }
 
   public HostedPageCheckoutGiftResponse checkoutGift(HostedPageCheckoutGiftParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = checkoutGiftRaw(params);
 
     return HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response);
@@ -624,7 +632,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutExisting a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutExistingRaw(HostedPageCheckoutExistingParams params) throws Exception {
+  Response checkoutExistingRaw(HostedPageCheckoutExistingParams params) throws ChargebeeException {
 
     return post("/hosted_pages/checkout_existing", params != null ? params.toFormData() : null);
   }
@@ -633,13 +641,13 @@ public final class HostedPageService extends BaseService<HostedPageService> {
    * checkoutExisting a hostedPage using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response checkoutExistingRaw(String jsonPayload) throws Exception {
+  Response checkoutExistingRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/hosted_pages/checkout_existing", jsonPayload);
   }
 
   public HostedPageCheckoutExistingResponse checkoutExisting(
-      HostedPageCheckoutExistingParams params) throws Exception {
+      HostedPageCheckoutExistingParams params) throws ChargebeeException {
     Response response = checkoutExistingRaw(params);
 
     return HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response);

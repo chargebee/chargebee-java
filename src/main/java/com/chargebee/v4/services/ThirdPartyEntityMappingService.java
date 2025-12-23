@@ -9,9 +9,10 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.thirdPartyEntityMapping.params.RetrieveThirdPartyEntityMappingParams;
+import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingRetrieveEntityParams;
 
 import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingListAllParams;
 
@@ -19,7 +20,7 @@ import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMa
 
 import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingListParams;
 
-import com.chargebee.v4.models.thirdPartyEntityMapping.responses.RetrieveThirdPartyEntityMappingResponse;
+import com.chargebee.v4.models.thirdPartyEntityMapping.responses.ThirdPartyEntityMappingRetrieveEntityResponse;
 
 import com.chargebee.v4.models.thirdPartyEntityMapping.responses.ThirdPartyEntityMappingListAllResponse;
 
@@ -64,37 +65,38 @@ public final class ThirdPartyEntityMappingService
   // === Operations ===
 
   /**
-   * retrieveThirdPartyEntityMapping a thirdPartyEntityMapping using immutable params (executes
-   * immediately) - returns raw Response.
+   * retrieveEntity a thirdPartyEntityMapping using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response retrieveThirdPartyEntityMappingRaw(RetrieveThirdPartyEntityMappingParams params)
-      throws Exception {
+  Response retrieveEntityRaw(ThirdPartyEntityMappingRetrieveEntityParams params)
+      throws ChargebeeException {
 
     return get(
         "/third_party_entity_mappings/retrieve", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * retrieveThirdPartyEntityMapping a thirdPartyEntityMapping using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * retrieveEntity a thirdPartyEntityMapping using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response retrieveThirdPartyEntityMappingRaw(String jsonPayload) throws Exception {
+  Response retrieveEntityRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public RetrieveThirdPartyEntityMappingResponse retrieveThirdPartyEntityMapping(
-      RetrieveThirdPartyEntityMappingParams params) throws Exception {
-    Response response = retrieveThirdPartyEntityMappingRaw(params);
+  public ThirdPartyEntityMappingRetrieveEntityResponse retrieveEntity(
+      ThirdPartyEntityMappingRetrieveEntityParams params) throws ChargebeeException {
+    Response response = retrieveEntityRaw(params);
 
-    return RetrieveThirdPartyEntityMappingResponse.fromJson(response.getBodyAsString(), response);
+    return ThirdPartyEntityMappingRetrieveEntityResponse.fromJson(
+        response.getBodyAsString(), response);
   }
 
   /**
    * listAll a thirdPartyEntityMapping using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listAllRaw(ThirdPartyEntityMappingListAllParams params) throws Exception {
+  Response listAllRaw(ThirdPartyEntityMappingListAllParams params) throws ChargebeeException {
 
     return get(
         "/third_party_entity_mappings/list_all", params != null ? params.toQueryParams() : null);
@@ -104,13 +106,13 @@ public final class ThirdPartyEntityMappingService
    * listAll a thirdPartyEntityMapping using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listAllRaw(String jsonPayload) throws Exception {
+  Response listAllRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ThirdPartyEntityMappingListAllResponse listAll(ThirdPartyEntityMappingListAllParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listAllRaw(params);
 
     return ThirdPartyEntityMappingListAllResponse.fromJson(response.getBodyAsString(), response);
@@ -120,7 +122,8 @@ public final class ThirdPartyEntityMappingService
    * updateEntity a thirdPartyEntityMapping using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response updateEntityRaw(ThirdPartyEntityMappingUpdateEntityParams params) throws Exception {
+  Response updateEntityRaw(ThirdPartyEntityMappingUpdateEntityParams params)
+      throws ChargebeeException {
 
     return post(
         "/third_party_entity_mappings/update_entity", params != null ? params.toFormData() : null);
@@ -130,13 +133,13 @@ public final class ThirdPartyEntityMappingService
    * updateEntity a thirdPartyEntityMapping using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response updateEntityRaw(String jsonPayload) throws Exception {
+  Response updateEntityRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/third_party_entity_mappings/update_entity", jsonPayload);
   }
 
   public ThirdPartyEntityMappingUpdateEntityResponse updateEntity(
-      ThirdPartyEntityMappingUpdateEntityParams params) throws Exception {
+      ThirdPartyEntityMappingUpdateEntityParams params) throws ChargebeeException {
     Response response = updateEntityRaw(params);
 
     return ThirdPartyEntityMappingUpdateEntityResponse.fromJson(
@@ -147,7 +150,7 @@ public final class ThirdPartyEntityMappingService
    * list a thirdPartyEntityMapping using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(ThirdPartyEntityMappingListParams params) throws Exception {
+  Response listRaw(ThirdPartyEntityMappingListParams params) throws ChargebeeException {
 
     return get("/third_party_entity_mappings", params != null ? params.toQueryParams() : null);
   }
@@ -155,7 +158,7 @@ public final class ThirdPartyEntityMappingService
   /**
    * list a thirdPartyEntityMapping without params (executes immediately) - returns raw Response.
    */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/third_party_entity_mappings", null);
   }
@@ -164,20 +167,20 @@ public final class ThirdPartyEntityMappingService
    * list a thirdPartyEntityMapping using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ThirdPartyEntityMappingListResponse list(ThirdPartyEntityMappingListParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return ThirdPartyEntityMappingListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public ThirdPartyEntityMappingListResponse list() throws Exception {
+  public ThirdPartyEntityMappingListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return ThirdPartyEntityMappingListResponse.fromJson(
         response.getBodyAsString(), this, null, response);

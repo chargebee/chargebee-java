@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.pc2MigrationItem.params.Pc2MigrationItemUpdateParams;
@@ -17,19 +18,19 @@ import com.chargebee.v4.models.pc2MigrationItem.params.Pc2MigrationItemListParam
 
 import com.chargebee.v4.models.pc2MigrationItem.params.Pc2MigrationItemCreateParams;
 
-import com.chargebee.v4.models.pc2MigrationItem.params.Pc2MigrationItemListApplicableItemsParams;
+import com.chargebee.v4.models.pc2MigrationItem.params.Pc2MigrationItemListApplicableAddonsParams;
 
 import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemRetrieveResponse;
 
 import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemUpdateResponse;
 
-import com.chargebee.v4.models.pc2MigrationItem.responses.DeletePc2MigrationItemResponse;
+import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemDeleteResponse;
 
 import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemListResponse;
 
 import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemCreateResponse;
 
-import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemListApplicableItemsResponse;
+import com.chargebee.v4.models.pc2MigrationItem.responses.Pc2MigrationItemListApplicableAddonsResponse;
 
 public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemService> {
 
@@ -67,7 +68,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   // === Operations ===
 
   /** retrieve a pc2MigrationItem (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String pc2MigrationItemId) throws Exception {
+  Response retrieveRaw(String pc2MigrationItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_items/{pc2-migration-item-id}",
@@ -77,13 +78,14 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return get(path, null);
   }
 
-  public Pc2MigrationItemRetrieveResponse retrieve(String pc2MigrationItemId) throws Exception {
+  public Pc2MigrationItemRetrieveResponse retrieve(String pc2MigrationItemId)
+      throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationItemId);
     return Pc2MigrationItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a pc2MigrationItem (executes immediately) - returns raw Response. */
-  Response updateRaw(String pc2MigrationItemId) throws Exception {
+  Response updateRaw(String pc2MigrationItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_items/{pc2-migration-item-id}",
@@ -97,7 +99,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
    * update a pc2MigrationItem using immutable params (executes immediately) - returns raw Response.
    */
   Response updateRaw(String pc2MigrationItemId, Pc2MigrationItemUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_items/{pc2-migration-item-id}",
@@ -109,7 +111,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   /**
    * update a pc2MigrationItem using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateRaw(String pc2MigrationItemId, String jsonPayload) throws Exception {
+  Response updateRaw(String pc2MigrationItemId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_items/{pc2-migration-item-id}",
@@ -119,13 +121,13 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   }
 
   public Pc2MigrationItemUpdateResponse update(
-      String pc2MigrationItemId, Pc2MigrationItemUpdateParams params) throws Exception {
+      String pc2MigrationItemId, Pc2MigrationItemUpdateParams params) throws ChargebeeException {
     Response response = updateRaw(pc2MigrationItemId, params);
     return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /** deletePc2MigrationItem a pc2MigrationItem (executes immediately) - returns raw Response. */
-  Response deletePc2MigrationItemRaw(String pc2MigrationItemId) throws Exception {
+  /** delete a pc2MigrationItem (executes immediately) - returns raw Response. */
+  Response deleteRaw(String pc2MigrationItemId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/pc2_migration_items/{pc2-migration-item-id}/delete",
@@ -135,22 +137,22 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return post(path, null);
   }
 
-  public DeletePc2MigrationItemResponse deletePc2MigrationItem(String pc2MigrationItemId)
-      throws Exception {
-    Response response = deletePc2MigrationItemRaw(pc2MigrationItemId);
-    return DeletePc2MigrationItemResponse.fromJson(response.getBodyAsString(), response);
+  public Pc2MigrationItemDeleteResponse delete(String pc2MigrationItemId)
+      throws ChargebeeException {
+    Response response = deleteRaw(pc2MigrationItemId);
+    return Pc2MigrationItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * list a pc2MigrationItem using immutable params (executes immediately) - returns raw Response.
    */
-  Response listRaw(Pc2MigrationItemListParams params) throws Exception {
+  Response listRaw(Pc2MigrationItemListParams params) throws ChargebeeException {
 
     return get("/pc2_migration_items", params != null ? params.toQueryParams() : null);
   }
 
   /** list a pc2MigrationItem without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/pc2_migration_items", null);
   }
@@ -158,19 +160,20 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   /**
    * list a pc2MigrationItem using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public Pc2MigrationItemListResponse list(Pc2MigrationItemListParams params) throws Exception {
+  public Pc2MigrationItemListResponse list(Pc2MigrationItemListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return Pc2MigrationItemListResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public Pc2MigrationItemListResponse list() throws Exception {
+  public Pc2MigrationItemListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
@@ -178,7 +181,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   /**
    * create a pc2MigrationItem using immutable params (executes immediately) - returns raw Response.
    */
-  Response createRaw(Pc2MigrationItemCreateParams params) throws Exception {
+  Response createRaw(Pc2MigrationItemCreateParams params) throws ChargebeeException {
 
     return post("/pc2_migration_items", params != null ? params.toFormData() : null);
   }
@@ -186,58 +189,59 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   /**
    * create a pc2MigrationItem using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/pc2_migration_items", jsonPayload);
   }
 
   public Pc2MigrationItemCreateResponse create(Pc2MigrationItemCreateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return Pc2MigrationItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * listApplicableItems a pc2MigrationItem using immutable params (executes immediately) - returns
+   * listApplicableAddons a pc2MigrationItem using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response listApplicableItemsRaw(Pc2MigrationItemListApplicableItemsParams params)
-      throws Exception {
+  Response listApplicableAddonsRaw(Pc2MigrationItemListApplicableAddonsParams params)
+      throws ChargebeeException {
 
     return get(
         "/pc2_migration_items/applicable_items", params != null ? params.toQueryParams() : null);
   }
 
   /**
-   * listApplicableItems a pc2MigrationItem without params (executes immediately) - returns raw
+   * listApplicableAddons a pc2MigrationItem without params (executes immediately) - returns raw
    * Response.
    */
-  Response listApplicableItemsRaw() throws Exception {
+  Response listApplicableAddonsRaw() throws ChargebeeException {
 
     return get("/pc2_migration_items/applicable_items", null);
   }
 
   /**
-   * listApplicableItems a pc2MigrationItem using raw JSON payload (executes immediately) - returns
+   * listApplicableAddons a pc2MigrationItem using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response listApplicableItemsRaw(String jsonPayload) throws Exception {
+  Response listApplicableAddonsRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public Pc2MigrationItemListApplicableItemsResponse listApplicableItems(
-      Pc2MigrationItemListApplicableItemsParams params) throws Exception {
-    Response response = listApplicableItemsRaw(params);
+  public Pc2MigrationItemListApplicableAddonsResponse listApplicableAddons(
+      Pc2MigrationItemListApplicableAddonsParams params) throws ChargebeeException {
+    Response response = listApplicableAddonsRaw(params);
 
-    return Pc2MigrationItemListApplicableItemsResponse.fromJson(
+    return Pc2MigrationItemListApplicableAddonsResponse.fromJson(
         response.getBodyAsString(), this, params, response);
   }
 
-  public Pc2MigrationItemListApplicableItemsResponse listApplicableItems() throws Exception {
-    Response response = listApplicableItemsRaw();
-    return Pc2MigrationItemListApplicableItemsResponse.fromJson(
+  public Pc2MigrationItemListApplicableAddonsResponse listApplicableAddons()
+      throws ChargebeeException {
+    Response response = listApplicableAddonsRaw();
+    return Pc2MigrationItemListApplicableAddonsResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }
 }

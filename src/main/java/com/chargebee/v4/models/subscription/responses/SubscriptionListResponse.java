@@ -8,6 +8,7 @@ import com.chargebee.v4.models.customer.Customer;
 
 import com.chargebee.v4.models.card.Card;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SubscriptionService;
@@ -102,9 +103,9 @@ public final class SubscriptionListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public SubscriptionListResponse nextPage() throws Exception {
+  public SubscriptionListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

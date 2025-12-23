@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.purchase.params.PurchaseCreateParams;
@@ -54,36 +55,37 @@ public final class PurchaseService extends BaseService<PurchaseService> {
   // === Operations ===
 
   /** create a purchase using immutable params (executes immediately) - returns raw Response. */
-  Response createRaw(PurchaseCreateParams params) throws Exception {
+  Response createRaw(PurchaseCreateParams params) throws ChargebeeException {
 
     return post("/purchases", params != null ? params.toFormData() : null);
   }
 
   /** create a purchase using raw JSON payload (executes immediately) - returns raw Response. */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/purchases", jsonPayload);
   }
 
-  public PurchaseCreateResponse create(PurchaseCreateParams params) throws Exception {
+  public PurchaseCreateResponse create(PurchaseCreateParams params) throws ChargebeeException {
     Response response = createRaw(params);
 
     return PurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** estimate a purchase using immutable params (executes immediately) - returns raw Response. */
-  Response estimateRaw(PurchaseEstimateParams params) throws Exception {
+  Response estimateRaw(PurchaseEstimateParams params) throws ChargebeeException {
 
     return post("/purchases/estimate", params != null ? params.toFormData() : null);
   }
 
   /** estimate a purchase using raw JSON payload (executes immediately) - returns raw Response. */
-  Response estimateRaw(String jsonPayload) throws Exception {
+  Response estimateRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/purchases/estimate", jsonPayload);
   }
 
-  public PurchaseEstimateResponse estimate(PurchaseEstimateParams params) throws Exception {
+  public PurchaseEstimateResponse estimate(PurchaseEstimateParams params)
+      throws ChargebeeException {
     Response response = estimateRaw(params);
 
     return PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response);

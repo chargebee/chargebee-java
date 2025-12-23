@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.addon.Addon;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.AddonService;
@@ -95,9 +96,9 @@ public final class AddonListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public AddonListResponse nextPage() throws Exception {
+  public AddonListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

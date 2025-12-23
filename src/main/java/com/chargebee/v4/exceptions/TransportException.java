@@ -19,16 +19,17 @@ import com.chargebee.v4.transport.Request;
  * 
  * <p>Exception hierarchy:
  * <pre>
- * TransportException
- * ├── NetworkException      (DNS failures, connection refused, I/O errors)
- * ├── TimeoutException      (connect/read timeouts)
- * └── HttpException         (HTTP status code errors: 4xx, 5xx)
- *     ├── ClientErrorException (4xx)
- *     ├── ServerErrorException (5xx)
- *     └── APIException         (Chargebee API errors with structured response)
+ * ChargebeeException
+ * └── TransportException
+ *     ├── NetworkException      (DNS failures, connection refused, I/O errors)
+ *     ├── TimeoutException      (connect/read timeouts)
+ *     └── HttpException         (HTTP status code errors: 4xx, 5xx)
+ *         ├── ClientErrorException (4xx)
+ *         ├── ServerErrorException (5xx)
+ *         └── APIException         (Chargebee API errors with structured response)
  * </pre>
  */
-public class TransportException extends Exception {
+public class TransportException extends ChargebeeException {
     
     private final Request request;
     

@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.thirdPartySyncDetail.params.ThirdPartySyncDetailUpdateParams;
@@ -61,7 +62,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   // === Operations ===
 
   /** retrieve a thirdPartySyncDetail (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String tpIntegSyncDetailId) throws Exception {
+  Response retrieveRaw(String tpIntegSyncDetailId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
@@ -72,13 +73,13 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   }
 
   public ThirdPartySyncDetailRetrieveResponse retrieve(String tpIntegSyncDetailId)
-      throws Exception {
+      throws ChargebeeException {
     Response response = retrieveRaw(tpIntegSyncDetailId);
     return ThirdPartySyncDetailRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a thirdPartySyncDetail (executes immediately) - returns raw Response. */
-  Response updateRaw(String tpIntegSyncDetailId) throws Exception {
+  Response updateRaw(String tpIntegSyncDetailId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
@@ -93,7 +94,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * Response.
    */
   Response updateRaw(String tpIntegSyncDetailId, ThirdPartySyncDetailUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
@@ -106,7 +107,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * update a thirdPartySyncDetail using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateRaw(String tpIntegSyncDetailId, String jsonPayload) throws Exception {
+  Response updateRaw(String tpIntegSyncDetailId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/third_party_sync_details/{tp-integ-sync-detail-id}",
@@ -116,7 +117,8 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   }
 
   public ThirdPartySyncDetailUpdateResponse update(
-      String tpIntegSyncDetailId, ThirdPartySyncDetailUpdateParams params) throws Exception {
+      String tpIntegSyncDetailId, ThirdPartySyncDetailUpdateParams params)
+      throws ChargebeeException {
     Response response = updateRaw(tpIntegSyncDetailId, params);
     return ThirdPartySyncDetailUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -125,7 +127,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * create a thirdPartySyncDetail using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(ThirdPartySyncDetailCreateParams params) throws Exception {
+  Response createRaw(ThirdPartySyncDetailCreateParams params) throws ChargebeeException {
 
     return post("/third_party_sync_details", params != null ? params.toFormData() : null);
   }
@@ -134,13 +136,13 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * create a thirdPartySyncDetail using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/third_party_sync_details", jsonPayload);
   }
 
   public ThirdPartySyncDetailCreateResponse create(ThirdPartySyncDetailCreateParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return ThirdPartySyncDetailCreateResponse.fromJson(response.getBodyAsString(), response);
@@ -151,7 +153,7 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * returns raw Response.
    */
   Response retrieveLatestSyncRaw(ThirdPartySyncDetailRetrieveLatestSyncParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return get(
         "/third_party_sync_details/retrieve_latest_sync",
@@ -162,13 +164,13 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
    * retrieveLatestSync a thirdPartySyncDetail using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
-  Response retrieveLatestSyncRaw(String jsonPayload) throws Exception {
+  Response retrieveLatestSyncRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
   public ThirdPartySyncDetailRetrieveLatestSyncResponse retrieveLatestSync(
-      ThirdPartySyncDetailRetrieveLatestSyncParams params) throws Exception {
+      ThirdPartySyncDetailRetrieveLatestSyncParams params) throws ChargebeeException {
     Response response = retrieveLatestSyncRaw(params);
 
     return ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(

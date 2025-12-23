@@ -1,0 +1,73 @@
+package com.chargebee.v4.models.pc2MigrationItemPrice.responses;
+
+import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.chargebee.v4.transport.Response;
+
+/**
+ * Immutable response object for Pc2MigrationItemPriceDelete operation. Contains the response data
+ * from the API.
+ */
+public final class Pc2MigrationItemPriceDeleteResponse extends BaseResponse {
+  private final Boolean isDeleted;
+
+  private Pc2MigrationItemPriceDeleteResponse(Builder builder) {
+    super(builder.httpResponse);
+
+    this.isDeleted = builder.isDeleted;
+  }
+
+  /** Parse JSON response into Pc2MigrationItemPriceDeleteResponse object. */
+  public static Pc2MigrationItemPriceDeleteResponse fromJson(String json) {
+    return fromJson(json, null);
+  }
+
+  /** Parse JSON response into Pc2MigrationItemPriceDeleteResponse object with HTTP response. */
+  public static Pc2MigrationItemPriceDeleteResponse fromJson(String json, Response httpResponse) {
+    try {
+      Builder builder = builder();
+
+      builder.isDeleted(JsonUtil.getBoolean(json, "is_deleted"));
+
+      builder.httpResponse(httpResponse);
+      return builder.build();
+    } catch (Exception e) {
+      throw new RuntimeException(
+          "Failed to parse Pc2MigrationItemPriceDeleteResponse from JSON", e);
+    }
+  }
+
+  /** Create a new builder for Pc2MigrationItemPriceDeleteResponse. */
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  /** Builder for Pc2MigrationItemPriceDeleteResponse. */
+  public static class Builder {
+
+    private Boolean isDeleted;
+
+    private Response httpResponse;
+
+    private Builder() {}
+
+    public Builder isDeleted(Boolean isDeleted) {
+      this.isDeleted = isDeleted;
+      return this;
+    }
+
+    public Builder httpResponse(Response httpResponse) {
+      this.httpResponse = httpResponse;
+      return this;
+    }
+
+    public Pc2MigrationItemPriceDeleteResponse build() {
+      return new Pc2MigrationItemPriceDeleteResponse(this);
+    }
+  }
+
+  /** Get the isDeleted from the response. */
+  public Boolean getIsDeleted() {
+    return isDeleted;
+  }
+}

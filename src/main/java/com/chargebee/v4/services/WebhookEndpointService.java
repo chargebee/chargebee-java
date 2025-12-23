@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.webhookEndpoint.params.WebhookEndpointUpdateParams;
@@ -17,7 +18,7 @@ import com.chargebee.v4.models.webhookEndpoint.params.WebhookEndpointListParams;
 
 import com.chargebee.v4.models.webhookEndpoint.params.WebhookEndpointCreateParams;
 
-import com.chargebee.v4.models.webhookEndpoint.responses.DeleteWebhookEndpointResponse;
+import com.chargebee.v4.models.webhookEndpoint.responses.WebhookEndpointDeleteResponse;
 
 import com.chargebee.v4.models.webhookEndpoint.responses.WebhookEndpointRetrieveResponse;
 
@@ -62,8 +63,8 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
 
   // === Operations ===
 
-  /** deleteWebhookEndpoint a webhookEndpoint (executes immediately) - returns raw Response. */
-  Response deleteWebhookEndpointRaw(String webhookEndpointId) throws Exception {
+  /** delete a webhookEndpoint (executes immediately) - returns raw Response. */
+  Response deleteRaw(String webhookEndpointId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/webhook_endpoints/{webhook-endpoint-id}/delete",
@@ -73,14 +74,13 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return post(path, null);
   }
 
-  public DeleteWebhookEndpointResponse deleteWebhookEndpoint(String webhookEndpointId)
-      throws Exception {
-    Response response = deleteWebhookEndpointRaw(webhookEndpointId);
-    return DeleteWebhookEndpointResponse.fromJson(response.getBodyAsString(), response);
+  public WebhookEndpointDeleteResponse delete(String webhookEndpointId) throws ChargebeeException {
+    Response response = deleteRaw(webhookEndpointId);
+    return WebhookEndpointDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** retrieve a webhookEndpoint (executes immediately) - returns raw Response. */
-  Response retrieveRaw(String webhookEndpointId) throws Exception {
+  Response retrieveRaw(String webhookEndpointId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
@@ -88,13 +88,14 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return get(path, null);
   }
 
-  public WebhookEndpointRetrieveResponse retrieve(String webhookEndpointId) throws Exception {
+  public WebhookEndpointRetrieveResponse retrieve(String webhookEndpointId)
+      throws ChargebeeException {
     Response response = retrieveRaw(webhookEndpointId);
     return WebhookEndpointRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /** update a webhookEndpoint (executes immediately) - returns raw Response. */
-  Response updateRaw(String webhookEndpointId) throws Exception {
+  Response updateRaw(String webhookEndpointId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
@@ -106,7 +107,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
    * update a webhookEndpoint using immutable params (executes immediately) - returns raw Response.
    */
   Response updateRaw(String webhookEndpointId, WebhookEndpointUpdateParams params)
-      throws Exception {
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
@@ -116,7 +117,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   /**
    * update a webhookEndpoint using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response updateRaw(String webhookEndpointId, String jsonPayload) throws Exception {
+  Response updateRaw(String webhookEndpointId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
@@ -124,7 +125,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   }
 
   public WebhookEndpointUpdateResponse update(
-      String webhookEndpointId, WebhookEndpointUpdateParams params) throws Exception {
+      String webhookEndpointId, WebhookEndpointUpdateParams params) throws ChargebeeException {
     Response response = updateRaw(webhookEndpointId, params);
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
@@ -132,13 +133,13 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   /**
    * list a webhookEndpoint using immutable params (executes immediately) - returns raw Response.
    */
-  Response listRaw(WebhookEndpointListParams params) throws Exception {
+  Response listRaw(WebhookEndpointListParams params) throws ChargebeeException {
 
     return get("/webhook_endpoints", params != null ? params.toQueryParams() : null);
   }
 
   /** list a webhookEndpoint without params (executes immediately) - returns raw Response. */
-  Response listRaw() throws Exception {
+  Response listRaw() throws ChargebeeException {
 
     return get("/webhook_endpoints", null);
   }
@@ -146,18 +147,19 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   /**
    * list a webhookEndpoint using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response listRaw(String jsonPayload) throws Exception {
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public WebhookEndpointListResponse list(WebhookEndpointListParams params) throws Exception {
+  public WebhookEndpointListResponse list(WebhookEndpointListParams params)
+      throws ChargebeeException {
     Response response = listRaw(params);
 
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
-  public WebhookEndpointListResponse list() throws Exception {
+  public WebhookEndpointListResponse list() throws ChargebeeException {
     Response response = listRaw();
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
@@ -165,7 +167,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   /**
    * create a webhookEndpoint using immutable params (executes immediately) - returns raw Response.
    */
-  Response createRaw(WebhookEndpointCreateParams params) throws Exception {
+  Response createRaw(WebhookEndpointCreateParams params) throws ChargebeeException {
 
     return post("/webhook_endpoints", params != null ? params.toFormData() : null);
   }
@@ -173,12 +175,13 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
   /**
    * create a webhookEndpoint using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createRaw(String jsonPayload) throws Exception {
+  Response createRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/webhook_endpoints", jsonPayload);
   }
 
-  public WebhookEndpointCreateResponse create(WebhookEndpointCreateParams params) throws Exception {
+  public WebhookEndpointCreateResponse create(WebhookEndpointCreateParams params)
+      throws ChargebeeException {
     Response response = createRaw(params);
 
     return WebhookEndpointCreateResponse.fromJson(response.getBodyAsString(), response);

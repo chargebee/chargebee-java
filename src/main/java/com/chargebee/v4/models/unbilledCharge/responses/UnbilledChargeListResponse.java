@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.chargebee.v4.models.unbilledCharge.UnbilledCharge;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.UnbilledChargeService;
@@ -99,9 +100,9 @@ public final class UnbilledChargeListResponse {
   /**
    * Get the next page of results.
    *
-   * @throws Exception if unable to fetch next page
+   * @throws ChargebeeException if unable to fetch next page
    */
-  public UnbilledChargeListResponse nextPage() throws Exception {
+  public UnbilledChargeListResponse nextPage() throws ChargebeeException {
     if (!hasNextPage()) {
       throw new IllegalStateException("No more pages available");
     }

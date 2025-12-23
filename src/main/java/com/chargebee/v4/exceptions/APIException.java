@@ -252,11 +252,12 @@ public class APIException extends HttpException {
 
   /**
    * API errors are generally not retryable as they indicate business logic issues.
-   * 
+   *
    * <p>Exceptions that may warrant retry:
+   *
    * <ul>
-   *   <li>429 Too Many Requests - Rate limiting</li>
-   *   <li>5xx Server errors - Temporary server issues</li>
+   *   <li>429 Too Many Requests - Rate limiting
+   *   <li>5xx Server errors - Temporary server issues
    * </ul>
    *
    * @return true only for 429 or 5xx status codes

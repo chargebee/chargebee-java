@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.media.params.AddMediaForItemParams;
+import com.chargebee.v4.models.media.params.CreateMediaAndAttachToItemParams;
 
-import com.chargebee.v4.models.media.responses.AddMediaForItemResponse;
+import com.chargebee.v4.models.media.responses.CreateMediaAndAttachToItemResponse;
 
 public final class MediaService extends BaseService<MediaService> {
 
@@ -49,32 +50,36 @@ public final class MediaService extends BaseService<MediaService> {
 
   // === Operations ===
 
-  /** addMediaForItem a media (executes immediately) - returns raw Response. */
-  Response addMediaForItemRaw(String itemId) throws Exception {
+  /** createMediaAndAttachToItem a media (executes immediately) - returns raw Response. */
+  Response createMediaAndAttachToItemRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
 
     return post(path, null);
   }
 
   /**
-   * addMediaForItem a media using immutable params (executes immediately) - returns raw Response.
+   * createMediaAndAttachToItem a media using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response addMediaForItemRaw(String itemId, AddMediaForItemParams params) throws Exception {
+  Response createMediaAndAttachToItemRaw(String itemId, CreateMediaAndAttachToItemParams params)
+      throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
     return post(path, params.toFormData());
   }
 
   /**
-   * addMediaForItem a media using raw JSON payload (executes immediately) - returns raw Response.
+   * createMediaAndAttachToItem a media using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response addMediaForItemRaw(String itemId, String jsonPayload) throws Exception {
+  Response createMediaAndAttachToItemRaw(String itemId, String jsonPayload)
+      throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
     return postJson(path, jsonPayload);
   }
 
-  public AddMediaForItemResponse addMediaForItem(String itemId, AddMediaForItemParams params)
-      throws Exception {
-    Response response = addMediaForItemRaw(itemId, params);
-    return AddMediaForItemResponse.fromJson(response.getBodyAsString(), response);
+  public CreateMediaAndAttachToItemResponse createMediaAndAttachToItem(
+      String itemId, CreateMediaAndAttachToItemParams params) throws ChargebeeException {
+    Response response = createMediaAndAttachToItemRaw(itemId, params);
+    return CreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response);
   }
 }

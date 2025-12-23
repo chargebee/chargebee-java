@@ -9,6 +9,7 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
 import com.chargebee.v4.models.fullExport.params.FullExportStatusParams;
@@ -50,18 +51,18 @@ public final class FullExportService extends BaseService<FullExportService> {
   // === Operations ===
 
   /** status a fullExport using immutable params (executes immediately) - returns raw Response. */
-  Response statusRaw(FullExportStatusParams params) throws Exception {
+  Response statusRaw(FullExportStatusParams params) throws ChargebeeException {
 
     return get("/full_exports/status", params != null ? params.toQueryParams() : null);
   }
 
   /** status a fullExport using raw JSON payload (executes immediately) - returns raw Response. */
-  Response statusRaw(String jsonPayload) throws Exception {
+  Response statusRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public FullExportStatusResponse status(FullExportStatusParams params) throws Exception {
+  public FullExportStatusResponse status(FullExportStatusParams params) throws ChargebeeException {
     Response response = statusRaw(params);
 
     return FullExportStatusResponse.fromJson(response.getBodyAsString(), response);

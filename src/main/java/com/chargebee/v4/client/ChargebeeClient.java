@@ -3,6 +3,7 @@ package com.chargebee.v4.client;
 import com.chargebee.v4.client.request.RequestContext;
 import com.chargebee.v4.client.request.RequestInterceptor;
 import com.chargebee.v4.client.request.RequestWrap;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.exceptions.ConfigurationException;
 import com.chargebee.v4.exceptions.NetworkException;
 import com.chargebee.v4.exceptions.TimeoutException;
@@ -109,9 +110,9 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * @param path the API path (e.g., "/customers")
      * @param queryParams optional query parameters
      * @return the HTTP response
-     * @throws Exception for network, timeout, configuration failures, or interceptor errors
+     * @throws ChargebeeException for network, timeout, configuration failures, or interceptor errors
      */
-    public Response get(String path, Map<String, List<String>> queryParams) throws Exception {
+    public Response get(String path, Map<String, List<String>> queryParams) throws ChargebeeException {
         Map<String, Object> objectParams = new HashMap<>(queryParams);
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, objectParams);
         Request.Builder builder = Request.builder()
@@ -130,9 +131,9 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * 
      * @param path the API path (e.g., "/customers")
      * @return the HTTP response
-     * @throws Exception for network, timeout, configuration failures, or interceptor errors
+     * @throws ChargebeeException for network, timeout, configuration failures, or interceptor errors
      */
-    public Response get(String path) throws Exception {
+    public Response get(String path) throws ChargebeeException {
         return get(path, Collections.emptyMap());
     }
     
@@ -173,9 +174,9 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * @param path the API path (e.g., "/customers")
      * @param formData the form data to send
      * @return the HTTP response
-     * @throws Exception for network, timeout, configuration failures, or interceptor errors
+     * @throws ChargebeeException for network, timeout, configuration failures, or interceptor errors
      */
-    public Response post(String path, Map<String, Object> formData) throws Exception {
+    public Response post(String path, Map<String, Object> formData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
@@ -195,9 +196,9 @@ public final class ChargebeeClient extends ClientMethodsImpl {
      * @param path the API path (e.g., "/customers")
      * @param jsonData the JSON data to send
      * @return the HTTP response
-     * @throws Exception for network, timeout, configuration failures, or interceptor errors
+     * @throws ChargebeeException for network, timeout, configuration failures, or interceptor errors
      */
-    public Response postJson(String path, String jsonData) throws Exception {
+    public Response postJson(String path, String jsonData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(getBaseUrl(), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
@@ -256,7 +257,7 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     /**
      * Execute a request with optional interceptor.
      */
-    public Response executeWithInterceptor(Request request) throws Exception {
+    public Response executeWithInterceptor(Request request) throws ChargebeeException {
         if (requestInterceptor != null) {
             RequestWrap requestWrap = new RequestWrap(this, request);
             return requestInterceptor.handleRequest(requestWrap);
@@ -280,7 +281,7 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     /**
      * Send a request with retry logic based on the configured RetryConfig.
      */
-    public Response sendWithRetry(Request request) throws TransportException {
+    public Response sendWithRetry(Request request) {
         Request enrichedRequest = addDefaultHeaders(request);
 
         Integer overrideRetries = enrichedRequest.getMaxNetworkRetriesOverride();

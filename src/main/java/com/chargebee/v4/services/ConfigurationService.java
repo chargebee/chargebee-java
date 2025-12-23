@@ -9,11 +9,12 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.configuration.params.ConfigurationExecuteParams;
+import com.chargebee.v4.models.configuration.params.ConfigurationListParams;
 
-import com.chargebee.v4.models.configuration.responses.ConfigurationExecuteResponse;
+import com.chargebee.v4.models.configuration.responses.ConfigurationListResponse;
 
 public final class ConfigurationService extends BaseService<ConfigurationService> {
 
@@ -50,25 +51,21 @@ public final class ConfigurationService extends BaseService<ConfigurationService
 
   // === Operations ===
 
-  /**
-   * execute a configuration using immutable params (executes immediately) - returns raw Response.
-   */
-  Response executeRaw(ConfigurationExecuteParams params) throws Exception {
+  /** list a configuration using immutable params (executes immediately) - returns raw Response. */
+  Response listRaw(ConfigurationListParams params) throws ChargebeeException {
 
     return get("/configurations", params != null ? params.toQueryParams() : null);
   }
 
-  /**
-   * execute a configuration using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response executeRaw(String jsonPayload) throws Exception {
+  /** list a configuration using raw JSON payload (executes immediately) - returns raw Response. */
+  Response listRaw(String jsonPayload) throws ChargebeeException {
 
     throw new UnsupportedOperationException("JSON payload not supported for GET operations");
   }
 
-  public ConfigurationExecuteResponse execute(ConfigurationExecuteParams params) throws Exception {
-    Response response = executeRaw(params);
+  public ConfigurationListResponse list(ConfigurationListParams params) throws ChargebeeException {
+    Response response = listRaw(params);
 
-    return ConfigurationExecuteResponse.fromJson(response.getBodyAsString(), response);
+    return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }
 }

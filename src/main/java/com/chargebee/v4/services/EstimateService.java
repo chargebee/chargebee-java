@@ -9,15 +9,18 @@ package com.chargebee.v4.services;
 
 import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
+import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.estimate.params.EstimateCreateSubscriptionForItemsParams;
+import com.chargebee.v4.models.estimate.params.RenewalEstimateParams;
+
+import com.chargebee.v4.models.estimate.params.CreateSubscriptionItemEstimateParams;
 
 import com.chargebee.v4.models.estimate.params.EstimatePaymentSchedulesParams;
 
-import com.chargebee.v4.models.estimate.params.CancelSubscriptionForItemsEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.EstimateCancelSubscriptionForItemsParams;
 
-import com.chargebee.v4.models.estimate.params.ResumeSubscriptionEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.EstimateResumeSubscriptionParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateCreateInvoiceForItemsParams;
 
@@ -25,35 +28,37 @@ import com.chargebee.v4.models.estimate.params.EstimateGiftSubscriptionForItemsP
 
 import com.chargebee.v4.models.estimate.params.EstimateUpdateSubscriptionForItemsParams;
 
-import com.chargebee.v4.models.estimate.params.RegenerateInvoiceEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.RegenerateInvoiceEstimateParams;
 
-import com.chargebee.v4.models.estimate.params.CreateSubscriptionForItemsEstimateForCustomerParams;
+import com.chargebee.v4.models.estimate.params.CreateSubscriptionItemForCustomerEstimateParams;
 
-import com.chargebee.v4.models.estimate.params.ChangeTermEndEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.EstimateChangeTermEndParams;
 
-import com.chargebee.v4.models.estimate.params.PauseSubscriptionEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.EstimatePauseSubscriptionParams;
 
-import com.chargebee.v4.models.estimate.params.AdvanceInvoiceEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.AdvanceInvoiceEstimateParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateUpdateSubscriptionParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateGiftSubscriptionParams;
 
+import com.chargebee.v4.models.estimate.params.CreateSubscriptionForCustomerEstimateParams;
+
 import com.chargebee.v4.models.estimate.params.EstimateCreateSubscriptionParams;
 
 import com.chargebee.v4.models.estimate.params.EstimateCreateInvoiceParams;
 
-import com.chargebee.v4.models.estimate.params.CancelSubscriptionEstimateForSubscriptionParams;
+import com.chargebee.v4.models.estimate.params.EstimateCancelSubscriptionParams;
 
-import com.chargebee.v4.models.estimate.responses.RenewalEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.RenewalEstimateResponse;
 
-import com.chargebee.v4.models.estimate.responses.EstimateCreateSubscriptionForItemsResponse;
+import com.chargebee.v4.models.estimate.responses.CreateSubscriptionItemEstimateResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimatePaymentSchedulesResponse;
 
-import com.chargebee.v4.models.estimate.responses.CancelSubscriptionForItemsEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.EstimateCancelSubscriptionForItemsResponse;
 
-import com.chargebee.v4.models.estimate.responses.ResumeSubscriptionEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.EstimateResumeSubscriptionResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimateCreateInvoiceForItemsResponse;
 
@@ -61,29 +66,29 @@ import com.chargebee.v4.models.estimate.responses.EstimateGiftSubscriptionForIte
 
 import com.chargebee.v4.models.estimate.responses.EstimateUpdateSubscriptionForItemsResponse;
 
-import com.chargebee.v4.models.estimate.responses.UpcomingInvoicesEstimateForCustomerResponse;
+import com.chargebee.v4.models.estimate.responses.UpcomingInvoicesEstimateResponse;
 
-import com.chargebee.v4.models.estimate.responses.RegenerateInvoiceEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.RegenerateInvoiceEstimateResponse;
 
-import com.chargebee.v4.models.estimate.responses.CreateSubscriptionForItemsEstimateForCustomerResponse;
+import com.chargebee.v4.models.estimate.responses.CreateSubscriptionItemForCustomerEstimateResponse;
 
-import com.chargebee.v4.models.estimate.responses.ChangeTermEndEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.EstimateChangeTermEndResponse;
 
-import com.chargebee.v4.models.estimate.responses.PauseSubscriptionEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.EstimatePauseSubscriptionResponse;
 
-import com.chargebee.v4.models.estimate.responses.AdvanceInvoiceEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.AdvanceInvoiceEstimateResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimateUpdateSubscriptionResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimateGiftSubscriptionResponse;
 
-import com.chargebee.v4.models.estimate.responses.CreateSubscriptionEstimateForCustomerResponse;
+import com.chargebee.v4.models.estimate.responses.CreateSubscriptionForCustomerEstimateResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimateCreateSubscriptionResponse;
 
 import com.chargebee.v4.models.estimate.responses.EstimateCreateInvoiceResponse;
 
-import com.chargebee.v4.models.estimate.responses.CancelSubscriptionEstimateForSubscriptionResponse;
+import com.chargebee.v4.models.estimate.responses.EstimateCancelSubscriptionResponse;
 
 public final class EstimateService extends BaseService<EstimateService> {
 
@@ -119,8 +124,8 @@ public final class EstimateService extends BaseService<EstimateService> {
 
   // === Operations ===
 
-  /** renewalEstimateForSubscription a estimate (executes immediately) - returns raw Response. */
-  Response renewalEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** renewalEstimate a estimate (executes immediately) - returns raw Response. */
+  Response renewalEstimateRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
@@ -128,45 +133,61 @@ public final class EstimateService extends BaseService<EstimateService> {
     return get(path, null);
   }
 
-  public RenewalEstimateForSubscriptionResponse renewalEstimateForSubscription(
-      String subscriptionId) throws Exception {
-    Response response = renewalEstimateForSubscriptionRaw(subscriptionId);
-    return RenewalEstimateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  /**
+   * renewalEstimate a estimate using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response renewalEstimateRaw(String subscriptionId, RenewalEstimateParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public RenewalEstimateResponse renewalEstimate(
+      String subscriptionId, RenewalEstimateParams params) throws ChargebeeException {
+    Response response = renewalEstimateRaw(subscriptionId, params);
+    return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public RenewalEstimateResponse renewalEstimate(String subscriptionId) throws ChargebeeException {
+    Response response = renewalEstimateRaw(subscriptionId);
+    return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * createSubscriptionForItems a estimate using immutable params (executes immediately) - returns
-   * raw Response.
+   * createSubscriptionItemEstimate a estimate using immutable params (executes immediately) -
+   * returns raw Response.
    */
-  Response createSubscriptionForItemsRaw(EstimateCreateSubscriptionForItemsParams params)
-      throws Exception {
+  Response createSubscriptionItemEstimateRaw(CreateSubscriptionItemEstimateParams params)
+      throws ChargebeeException {
 
     return post(
         "/estimates/create_subscription_for_items", params != null ? params.toFormData() : null);
   }
 
   /**
-   * createSubscriptionForItems a estimate using raw JSON payload (executes immediately) - returns
-   * raw Response.
+   * createSubscriptionItemEstimate a estimate using raw JSON payload (executes immediately) -
+   * returns raw Response.
    */
-  Response createSubscriptionForItemsRaw(String jsonPayload) throws Exception {
+  Response createSubscriptionItemEstimateRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/create_subscription_for_items", jsonPayload);
   }
 
-  public EstimateCreateSubscriptionForItemsResponse createSubscriptionForItems(
-      EstimateCreateSubscriptionForItemsParams params) throws Exception {
-    Response response = createSubscriptionForItemsRaw(params);
+  public CreateSubscriptionItemEstimateResponse createSubscriptionItemEstimate(
+      CreateSubscriptionItemEstimateParams params) throws ChargebeeException {
+    Response response = createSubscriptionItemEstimateRaw(params);
 
-    return EstimateCreateSubscriptionForItemsResponse.fromJson(
-        response.getBodyAsString(), response);
+    return CreateSubscriptionItemEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * paymentSchedules a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response paymentSchedulesRaw(EstimatePaymentSchedulesParams params) throws Exception {
+  Response paymentSchedulesRaw(EstimatePaymentSchedulesParams params) throws ChargebeeException {
 
     return post("/estimates/payment_schedules", params != null ? params.toFormData() : null);
   }
@@ -175,40 +196,36 @@ public final class EstimateService extends BaseService<EstimateService> {
    * paymentSchedules a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response paymentSchedulesRaw(String jsonPayload) throws Exception {
+  Response paymentSchedulesRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/payment_schedules", jsonPayload);
   }
 
   public EstimatePaymentSchedulesResponse paymentSchedules(EstimatePaymentSchedulesParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = paymentSchedulesRaw(params);
 
     return EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** cancelSubscriptionForItems a estimate (executes immediately) - returns raw Response. */
+  Response cancelSubscriptionForItemsRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
+  }
+
   /**
-   * cancelSubscriptionForItemsEstimateForSubscription a estimate (executes immediately) - returns
+   * cancelSubscriptionForItems a estimate using immutable params (executes immediately) - returns
    * raw Response.
    */
-  Response cancelSubscriptionForItemsEstimateForSubscriptionRaw(String subscriptionId)
-      throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * cancelSubscriptionForItemsEstimateForSubscription a estimate using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response cancelSubscriptionForItemsEstimateForSubscriptionRaw(
-      String subscriptionId, CancelSubscriptionForItemsEstimateForSubscriptionParams params)
-      throws Exception {
+  Response cancelSubscriptionForItemsRaw(
+      String subscriptionId, EstimateCancelSubscriptionForItemsParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
@@ -218,11 +235,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * cancelSubscriptionForItemsEstimateForSubscription a estimate using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * cancelSubscriptionForItems a estimate using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response cancelSubscriptionForItemsEstimateForSubscriptionRaw(
-      String subscriptionId, String jsonPayload) throws Exception {
+  Response cancelSubscriptionForItemsRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
@@ -231,37 +248,31 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public CancelSubscriptionForItemsEstimateForSubscriptionResponse
-      cancelSubscriptionForItemsEstimateForSubscription(
-          String subscriptionId, CancelSubscriptionForItemsEstimateForSubscriptionParams params)
-          throws Exception {
-    Response response =
-        cancelSubscriptionForItemsEstimateForSubscriptionRaw(subscriptionId, params);
-    return CancelSubscriptionForItemsEstimateForSubscriptionResponse.fromJson(
+  public EstimateCancelSubscriptionForItemsResponse cancelSubscriptionForItems(
+      String subscriptionId, EstimateCancelSubscriptionForItemsParams params)
+      throws ChargebeeException {
+    Response response = cancelSubscriptionForItemsRaw(subscriptionId, params);
+    return EstimateCancelSubscriptionForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
+  /** resumeSubscription a estimate (executes immediately) - returns raw Response. */
+  Response resumeSubscriptionRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/resume_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
+  }
+
   /**
-   * resumeSubscriptionEstimateForSubscription a estimate (executes immediately) - returns raw
+   * resumeSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response resumeSubscriptionEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/resume_subscription_estimate",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * resumeSubscriptionEstimateForSubscription a estimate using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response resumeSubscriptionEstimateForSubscriptionRaw(
-      String subscriptionId, ResumeSubscriptionEstimateForSubscriptionParams params)
-      throws Exception {
+  Response resumeSubscriptionRaw(String subscriptionId, EstimateResumeSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume_subscription_estimate",
@@ -271,11 +282,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * resumeSubscriptionEstimateForSubscription a estimate using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * resumeSubscription a estimate using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response resumeSubscriptionEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response resumeSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/resume_subscription_estimate",
@@ -284,20 +295,18 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public ResumeSubscriptionEstimateForSubscriptionResponse
-      resumeSubscriptionEstimateForSubscription(
-          String subscriptionId, ResumeSubscriptionEstimateForSubscriptionParams params)
-          throws Exception {
-    Response response = resumeSubscriptionEstimateForSubscriptionRaw(subscriptionId, params);
-    return ResumeSubscriptionEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public EstimateResumeSubscriptionResponse resumeSubscription(
+      String subscriptionId, EstimateResumeSubscriptionParams params) throws ChargebeeException {
+    Response response = resumeSubscriptionRaw(subscriptionId, params);
+    return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * createInvoiceForItems a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createInvoiceForItemsRaw(EstimateCreateInvoiceForItemsParams params) throws Exception {
+  Response createInvoiceForItemsRaw(EstimateCreateInvoiceForItemsParams params)
+      throws ChargebeeException {
 
     return post("/estimates/create_invoice_for_items", params != null ? params.toFormData() : null);
   }
@@ -306,13 +315,13 @@ public final class EstimateService extends BaseService<EstimateService> {
    * createInvoiceForItems a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createInvoiceForItemsRaw(String jsonPayload) throws Exception {
+  Response createInvoiceForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/create_invoice_for_items", jsonPayload);
   }
 
   public EstimateCreateInvoiceForItemsResponse createInvoiceForItems(
-      EstimateCreateInvoiceForItemsParams params) throws Exception {
+      EstimateCreateInvoiceForItemsParams params) throws ChargebeeException {
     Response response = createInvoiceForItemsRaw(params);
 
     return EstimateCreateInvoiceForItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -323,7 +332,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    * Response.
    */
   Response giftSubscriptionForItemsRaw(EstimateGiftSubscriptionForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/estimates/gift_subscription_for_items", params != null ? params.toFormData() : null);
@@ -333,13 +342,13 @@ public final class EstimateService extends BaseService<EstimateService> {
    * giftSubscriptionForItems a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response giftSubscriptionForItemsRaw(String jsonPayload) throws Exception {
+  Response giftSubscriptionForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/gift_subscription_for_items", jsonPayload);
   }
 
   public EstimateGiftSubscriptionForItemsResponse giftSubscriptionForItems(
-      EstimateGiftSubscriptionForItemsParams params) throws Exception {
+      EstimateGiftSubscriptionForItemsParams params) throws ChargebeeException {
     Response response = giftSubscriptionForItemsRaw(params);
 
     return EstimateGiftSubscriptionForItemsResponse.fromJson(response.getBodyAsString(), response);
@@ -350,7 +359,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    * raw Response.
    */
   Response updateSubscriptionForItemsRaw(EstimateUpdateSubscriptionForItemsParams params)
-      throws Exception {
+      throws ChargebeeException {
 
     return post(
         "/estimates/update_subscription_for_items", params != null ? params.toFormData() : null);
@@ -360,23 +369,21 @@ public final class EstimateService extends BaseService<EstimateService> {
    * updateSubscriptionForItems a estimate using raw JSON payload (executes immediately) - returns
    * raw Response.
    */
-  Response updateSubscriptionForItemsRaw(String jsonPayload) throws Exception {
+  Response updateSubscriptionForItemsRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/update_subscription_for_items", jsonPayload);
   }
 
   public EstimateUpdateSubscriptionForItemsResponse updateSubscriptionForItems(
-      EstimateUpdateSubscriptionForItemsParams params) throws Exception {
+      EstimateUpdateSubscriptionForItemsParams params) throws ChargebeeException {
     Response response = updateSubscriptionForItemsRaw(params);
 
     return EstimateUpdateSubscriptionForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /**
-   * upcomingInvoicesEstimateForCustomer a estimate (executes immediately) - returns raw Response.
-   */
-  Response upcomingInvoicesEstimateForCustomerRaw(String customerId) throws Exception {
+  /** upcomingInvoicesEstimate a estimate (executes immediately) - returns raw Response. */
+  Response upcomingInvoicesEstimateRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
@@ -384,18 +391,14 @@ public final class EstimateService extends BaseService<EstimateService> {
     return get(path, null);
   }
 
-  public UpcomingInvoicesEstimateForCustomerResponse upcomingInvoicesEstimateForCustomer(
-      String customerId) throws Exception {
-    Response response = upcomingInvoicesEstimateForCustomerRaw(customerId);
-    return UpcomingInvoicesEstimateForCustomerResponse.fromJson(
-        response.getBodyAsString(), response);
+  public UpcomingInvoicesEstimateResponse upcomingInvoicesEstimate(String customerId)
+      throws ChargebeeException {
+    Response response = upcomingInvoicesEstimateRaw(customerId);
+    return UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * regenerateInvoiceEstimateForSubscription a estimate (executes immediately) - returns raw
-   * Response.
-   */
-  Response regenerateInvoiceEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** regenerateInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
+  Response regenerateInvoiceEstimateRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
@@ -406,12 +409,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * regenerateInvoiceEstimateForSubscription a estimate using immutable params (executes
-   * immediately) - returns raw Response.
+   * regenerateInvoiceEstimate a estimate using immutable params (executes immediately) - returns
+   * raw Response.
    */
-  Response regenerateInvoiceEstimateForSubscriptionRaw(
-      String subscriptionId, RegenerateInvoiceEstimateForSubscriptionParams params)
-      throws Exception {
+  Response regenerateInvoiceEstimateRaw(
+      String subscriptionId, RegenerateInvoiceEstimateParams params) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
@@ -421,11 +423,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * regenerateInvoiceEstimateForSubscription a estimate using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * regenerateInvoiceEstimate a estimate using raw JSON payload (executes immediately) - returns
+   * raw Response.
    */
-  Response regenerateInvoiceEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response regenerateInvoiceEstimateRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
@@ -434,19 +436,18 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public RegenerateInvoiceEstimateForSubscriptionResponse regenerateInvoiceEstimateForSubscription(
-      String subscriptionId, RegenerateInvoiceEstimateForSubscriptionParams params)
-      throws Exception {
-    Response response = regenerateInvoiceEstimateForSubscriptionRaw(subscriptionId, params);
-    return RegenerateInvoiceEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public RegenerateInvoiceEstimateResponse regenerateInvoiceEstimate(
+      String subscriptionId, RegenerateInvoiceEstimateParams params) throws ChargebeeException {
+    Response response = regenerateInvoiceEstimateRaw(subscriptionId, params);
+    return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * createSubscriptionForItemsEstimateForCustomer a estimate (executes immediately) - returns raw
+   * createSubscriptionItemForCustomerEstimate a estimate (executes immediately) - returns raw
    * Response.
    */
-  Response createSubscriptionForItemsEstimateForCustomerRaw(String customerId) throws Exception {
+  Response createSubscriptionItemForCustomerEstimateRaw(String customerId)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_for_items_estimate",
@@ -457,12 +458,12 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * createSubscriptionForItemsEstimateForCustomer a estimate using immutable params (executes
+   * createSubscriptionItemForCustomerEstimate a estimate using immutable params (executes
    * immediately) - returns raw Response.
    */
-  Response createSubscriptionForItemsEstimateForCustomerRaw(
-      String customerId, CreateSubscriptionForItemsEstimateForCustomerParams params)
-      throws Exception {
+  Response createSubscriptionItemForCustomerEstimateRaw(
+      String customerId, CreateSubscriptionItemForCustomerEstimateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_for_items_estimate",
@@ -472,11 +473,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * createSubscriptionForItemsEstimateForCustomer a estimate using raw JSON payload (executes
+   * createSubscriptionItemForCustomerEstimate a estimate using raw JSON payload (executes
    * immediately) - returns raw Response.
    */
-  Response createSubscriptionForItemsEstimateForCustomerRaw(String customerId, String jsonPayload)
-      throws Exception {
+  Response createSubscriptionItemForCustomerEstimateRaw(String customerId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_for_items_estimate",
@@ -485,19 +486,17 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public CreateSubscriptionForItemsEstimateForCustomerResponse
-      createSubscriptionForItemsEstimateForCustomer(
-          String customerId, CreateSubscriptionForItemsEstimateForCustomerParams params)
-          throws Exception {
-    Response response = createSubscriptionForItemsEstimateForCustomerRaw(customerId, params);
-    return CreateSubscriptionForItemsEstimateForCustomerResponse.fromJson(
+  public CreateSubscriptionItemForCustomerEstimateResponse
+      createSubscriptionItemForCustomerEstimate(
+          String customerId, CreateSubscriptionItemForCustomerEstimateParams params)
+          throws ChargebeeException {
+    Response response = createSubscriptionItemForCustomerEstimateRaw(customerId, params);
+    return CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
-  /**
-   * changeTermEndEstimateForSubscription a estimate (executes immediately) - returns raw Response.
-   */
-  Response changeTermEndEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** changeTermEnd a estimate (executes immediately) - returns raw Response. */
+  Response changeTermEndRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end_estimate",
@@ -508,11 +507,10 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * changeTermEndEstimateForSubscription a estimate using immutable params (executes immediately) -
-   * returns raw Response.
+   * changeTermEnd a estimate using immutable params (executes immediately) - returns raw Response.
    */
-  Response changeTermEndEstimateForSubscriptionRaw(
-      String subscriptionId, ChangeTermEndEstimateForSubscriptionParams params) throws Exception {
+  Response changeTermEndRaw(String subscriptionId, EstimateChangeTermEndParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end_estimate",
@@ -522,11 +520,9 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * changeTermEndEstimateForSubscription a estimate using raw JSON payload (executes immediately) -
-   * returns raw Response.
+   * changeTermEnd a estimate using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response changeTermEndEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response changeTermEndRaw(String subscriptionId, String jsonPayload) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/change_term_end_estimate",
@@ -535,34 +531,29 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public ChangeTermEndEstimateForSubscriptionResponse changeTermEndEstimateForSubscription(
-      String subscriptionId, ChangeTermEndEstimateForSubscriptionParams params) throws Exception {
-    Response response = changeTermEndEstimateForSubscriptionRaw(subscriptionId, params);
-    return ChangeTermEndEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public EstimateChangeTermEndResponse changeTermEnd(
+      String subscriptionId, EstimateChangeTermEndParams params) throws ChargebeeException {
+    Response response = changeTermEndRaw(subscriptionId, params);
+    return EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** pauseSubscription a estimate (executes immediately) - returns raw Response. */
+  Response pauseSubscriptionRaw(String subscriptionId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/pause_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return post(path, null);
   }
 
   /**
-   * pauseSubscriptionEstimateForSubscription a estimate (executes immediately) - returns raw
+   * pauseSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response pauseSubscriptionEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
-    String path =
-        buildPathWithParams(
-            "/subscriptions/{subscription-id}/pause_subscription_estimate",
-            "subscription-id",
-            subscriptionId);
-
-    return post(path, null);
-  }
-
-  /**
-   * pauseSubscriptionEstimateForSubscription a estimate using immutable params (executes
-   * immediately) - returns raw Response.
-   */
-  Response pauseSubscriptionEstimateForSubscriptionRaw(
-      String subscriptionId, PauseSubscriptionEstimateForSubscriptionParams params)
-      throws Exception {
+  Response pauseSubscriptionRaw(String subscriptionId, EstimatePauseSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause_subscription_estimate",
@@ -572,11 +563,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * pauseSubscriptionEstimateForSubscription a estimate using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * pauseSubscription a estimate using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response pauseSubscriptionEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response pauseSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/pause_subscription_estimate",
@@ -585,18 +576,14 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public PauseSubscriptionEstimateForSubscriptionResponse pauseSubscriptionEstimateForSubscription(
-      String subscriptionId, PauseSubscriptionEstimateForSubscriptionParams params)
-      throws Exception {
-    Response response = pauseSubscriptionEstimateForSubscriptionRaw(subscriptionId, params);
-    return PauseSubscriptionEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public EstimatePauseSubscriptionResponse pauseSubscription(
+      String subscriptionId, EstimatePauseSubscriptionParams params) throws ChargebeeException {
+    Response response = pauseSubscriptionRaw(subscriptionId, params);
+    return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * advanceInvoiceEstimateForSubscription a estimate (executes immediately) - returns raw Response.
-   */
-  Response advanceInvoiceEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** advanceInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
+  Response advanceInvoiceEstimateRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
@@ -607,11 +594,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * advanceInvoiceEstimateForSubscription a estimate using immutable params (executes immediately)
-   * - returns raw Response.
+   * advanceInvoiceEstimate a estimate using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response advanceInvoiceEstimateForSubscriptionRaw(
-      String subscriptionId, AdvanceInvoiceEstimateForSubscriptionParams params) throws Exception {
+  Response advanceInvoiceEstimateRaw(String subscriptionId, AdvanceInvoiceEstimateParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
@@ -621,11 +608,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * advanceInvoiceEstimateForSubscription a estimate using raw JSON payload (executes immediately)
-   * - returns raw Response.
+   * advanceInvoiceEstimate a estimate using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response advanceInvoiceEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response advanceInvoiceEstimateRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/advance_invoice_estimate",
@@ -634,18 +621,18 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public AdvanceInvoiceEstimateForSubscriptionResponse advanceInvoiceEstimateForSubscription(
-      String subscriptionId, AdvanceInvoiceEstimateForSubscriptionParams params) throws Exception {
-    Response response = advanceInvoiceEstimateForSubscriptionRaw(subscriptionId, params);
-    return AdvanceInvoiceEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public AdvanceInvoiceEstimateResponse advanceInvoiceEstimate(
+      String subscriptionId, AdvanceInvoiceEstimateParams params) throws ChargebeeException {
+    Response response = advanceInvoiceEstimateRaw(subscriptionId, params);
+    return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
    * updateSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response updateSubscriptionRaw(EstimateUpdateSubscriptionParams params) throws Exception {
+  Response updateSubscriptionRaw(EstimateUpdateSubscriptionParams params)
+      throws ChargebeeException {
 
     return post("/estimates/update_subscription", params != null ? params.toFormData() : null);
   }
@@ -654,13 +641,13 @@ public final class EstimateService extends BaseService<EstimateService> {
    * updateSubscription a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response updateSubscriptionRaw(String jsonPayload) throws Exception {
+  Response updateSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/update_subscription", jsonPayload);
   }
 
   public EstimateUpdateSubscriptionResponse updateSubscription(
-      EstimateUpdateSubscriptionParams params) throws Exception {
+      EstimateUpdateSubscriptionParams params) throws ChargebeeException {
     Response response = updateSubscriptionRaw(params);
 
     return EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
@@ -670,7 +657,7 @@ public final class EstimateService extends BaseService<EstimateService> {
    * giftSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response giftSubscriptionRaw(EstimateGiftSubscriptionParams params) throws Exception {
+  Response giftSubscriptionRaw(EstimateGiftSubscriptionParams params) throws ChargebeeException {
 
     return post("/estimates/gift_subscription", params != null ? params.toFormData() : null);
   }
@@ -679,22 +666,22 @@ public final class EstimateService extends BaseService<EstimateService> {
    * giftSubscription a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response giftSubscriptionRaw(String jsonPayload) throws Exception {
+  Response giftSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/gift_subscription", jsonPayload);
   }
 
   public EstimateGiftSubscriptionResponse giftSubscription(EstimateGiftSubscriptionParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = giftSubscriptionRaw(params);
 
     return EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
   /**
-   * createSubscriptionEstimateForCustomer a estimate (executes immediately) - returns raw Response.
+   * createSubscriptionForCustomerEstimate a estimate (executes immediately) - returns raw Response.
    */
-  Response createSubscriptionEstimateForCustomerRaw(String customerId) throws Exception {
+  Response createSubscriptionForCustomerEstimateRaw(String customerId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
@@ -702,10 +689,31 @@ public final class EstimateService extends BaseService<EstimateService> {
     return get(path, null);
   }
 
-  public CreateSubscriptionEstimateForCustomerResponse createSubscriptionEstimateForCustomer(
-      String customerId) throws Exception {
-    Response response = createSubscriptionEstimateForCustomerRaw(customerId);
-    return CreateSubscriptionEstimateForCustomerResponse.fromJson(
+  /**
+   * createSubscriptionForCustomerEstimate a estimate using immutable params (executes immediately)
+   * - returns raw Response.
+   */
+  Response createSubscriptionForCustomerEstimateRaw(
+      String customerId, CreateSubscriptionForCustomerEstimateParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  public CreateSubscriptionForCustomerEstimateResponse createSubscriptionForCustomerEstimate(
+      String customerId, CreateSubscriptionForCustomerEstimateParams params)
+      throws ChargebeeException {
+    Response response = createSubscriptionForCustomerEstimateRaw(customerId, params);
+    return CreateSubscriptionForCustomerEstimateResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public CreateSubscriptionForCustomerEstimateResponse createSubscriptionForCustomerEstimate(
+      String customerId) throws ChargebeeException {
+    Response response = createSubscriptionForCustomerEstimateRaw(customerId);
+    return CreateSubscriptionForCustomerEstimateResponse.fromJson(
         response.getBodyAsString(), response);
   }
 
@@ -713,7 +721,8 @@ public final class EstimateService extends BaseService<EstimateService> {
    * createSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
    */
-  Response createSubscriptionRaw(EstimateCreateSubscriptionParams params) throws Exception {
+  Response createSubscriptionRaw(EstimateCreateSubscriptionParams params)
+      throws ChargebeeException {
 
     return post("/estimates/create_subscription", params != null ? params.toFormData() : null);
   }
@@ -722,13 +731,13 @@ public final class EstimateService extends BaseService<EstimateService> {
    * createSubscription a estimate using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
-  Response createSubscriptionRaw(String jsonPayload) throws Exception {
+  Response createSubscriptionRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/create_subscription", jsonPayload);
   }
 
   public EstimateCreateSubscriptionResponse createSubscription(
-      EstimateCreateSubscriptionParams params) throws Exception {
+      EstimateCreateSubscriptionParams params) throws ChargebeeException {
     Response response = createSubscriptionRaw(params);
 
     return EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
@@ -737,7 +746,7 @@ public final class EstimateService extends BaseService<EstimateService> {
   /**
    * createInvoice a estimate using immutable params (executes immediately) - returns raw Response.
    */
-  Response createInvoiceRaw(EstimateCreateInvoiceParams params) throws Exception {
+  Response createInvoiceRaw(EstimateCreateInvoiceParams params) throws ChargebeeException {
 
     return post("/estimates/create_invoice", params != null ? params.toFormData() : null);
   }
@@ -745,23 +754,20 @@ public final class EstimateService extends BaseService<EstimateService> {
   /**
    * createInvoice a estimate using raw JSON payload (executes immediately) - returns raw Response.
    */
-  Response createInvoiceRaw(String jsonPayload) throws Exception {
+  Response createInvoiceRaw(String jsonPayload) throws ChargebeeException {
 
     return postJson("/estimates/create_invoice", jsonPayload);
   }
 
   public EstimateCreateInvoiceResponse createInvoice(EstimateCreateInvoiceParams params)
-      throws Exception {
+      throws ChargebeeException {
     Response response = createInvoiceRaw(params);
 
     return EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
-  /**
-   * cancelSubscriptionEstimateForSubscription a estimate (executes immediately) - returns raw
-   * Response.
-   */
-  Response cancelSubscriptionEstimateForSubscriptionRaw(String subscriptionId) throws Exception {
+  /** cancelSubscription a estimate (executes immediately) - returns raw Response. */
+  Response cancelSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
@@ -772,12 +778,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * cancelSubscriptionEstimateForSubscription a estimate using immutable params (executes
-   * immediately) - returns raw Response.
+   * cancelSubscription a estimate using immutable params (executes immediately) - returns raw
+   * Response.
    */
-  Response cancelSubscriptionEstimateForSubscriptionRaw(
-      String subscriptionId, CancelSubscriptionEstimateForSubscriptionParams params)
-      throws Exception {
+  Response cancelSubscriptionRaw(String subscriptionId, EstimateCancelSubscriptionParams params)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
@@ -787,11 +792,11 @@ public final class EstimateService extends BaseService<EstimateService> {
   }
 
   /**
-   * cancelSubscriptionEstimateForSubscription a estimate using raw JSON payload (executes
-   * immediately) - returns raw Response.
+   * cancelSubscription a estimate using raw JSON payload (executes immediately) - returns raw
+   * Response.
    */
-  Response cancelSubscriptionEstimateForSubscriptionRaw(String subscriptionId, String jsonPayload)
-      throws Exception {
+  Response cancelSubscriptionRaw(String subscriptionId, String jsonPayload)
+      throws ChargebeeException {
     String path =
         buildPathWithParams(
             "/subscriptions/{subscription-id}/cancel_subscription_estimate",
@@ -800,12 +805,9 @@ public final class EstimateService extends BaseService<EstimateService> {
     return postJson(path, jsonPayload);
   }
 
-  public CancelSubscriptionEstimateForSubscriptionResponse
-      cancelSubscriptionEstimateForSubscription(
-          String subscriptionId, CancelSubscriptionEstimateForSubscriptionParams params)
-          throws Exception {
-    Response response = cancelSubscriptionEstimateForSubscriptionRaw(subscriptionId, params);
-    return CancelSubscriptionEstimateForSubscriptionResponse.fromJson(
-        response.getBodyAsString(), response);
+  public EstimateCancelSubscriptionResponse cancelSubscription(
+      String subscriptionId, EstimateCancelSubscriptionParams params) throws ChargebeeException {
+    Response response = cancelSubscriptionRaw(subscriptionId, params);
+    return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 }

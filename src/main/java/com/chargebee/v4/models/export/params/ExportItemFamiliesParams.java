@@ -116,37 +116,37 @@ public final class ExportItemFamiliesParams {
 
   public static final class BusinessEntityIdParams {
 
-    private final String is;
-
     private final IsPresent isPresent;
+
+    private final String is;
 
     private BusinessEntityIdParams(BusinessEntityIdBuilder builder) {
 
-      this.is = builder.is;
-
       this.isPresent = builder.isPresent;
-    }
 
-    public String getIs() {
-      return is;
+      this.is = builder.is;
     }
 
     public IsPresent getIsPresent() {
       return isPresent;
     }
 
+    public String getIs() {
+      return is;
+    }
+
     /** Get the form data for this request. */
     public Map<String, Object> toFormData() {
       Map<String, Object> formData = new LinkedHashMap<>();
 
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
       if (this.isPresent != null) {
 
         formData.put("is_present", this.isPresent);
+      }
+
+      if (this.is != null) {
+
+        formData.put("is", this.is);
       }
 
       return formData;
@@ -160,19 +160,19 @@ public final class ExportItemFamiliesParams {
 
     public static final class BusinessEntityIdBuilder {
 
-      private String is;
-
       private IsPresent isPresent;
+
+      private String is;
 
       private BusinessEntityIdBuilder() {}
 
-      public BusinessEntityIdBuilder is(String value) {
-        this.is = value;
+      public BusinessEntityIdBuilder isPresent(IsPresent value) {
+        this.isPresent = value;
         return this;
       }
 
-      public BusinessEntityIdBuilder isPresent(IsPresent value) {
-        this.isPresent = value;
+      public BusinessEntityIdBuilder is(String value) {
+        this.is = value;
         return this;
       }
 

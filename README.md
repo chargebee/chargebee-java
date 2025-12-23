@@ -47,7 +47,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 #### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
-    implementation("com.chargebee:chargebee-java:4.0.0")
+    implementation("com.chargebee:chargebee-java:4.0.0-beta.3")
 }
 ```
 
@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0</version>
+  <version>4.0.0-beta.3</version>
 </dependency>
 ```
 
@@ -221,23 +221,29 @@ The library provides a comprehensive exception hierarchy with **strongly-typed e
 
 #### Exception Hierarchy
 
-All Chargebee exceptions extend from `TransportException`, which is a checked exception:
+All Chargebee exceptions extend from `ChargebeeException`, which is an unchecked exception:
 
 ```
-TransportException (checked)
-  └── HttpException (HTTP status code errors: 4xx, 5xx)
-        ├── ClientErrorException (4xx errors)
-        ├── ServerErrorException (5xx errors)
-        └── APIException (Chargebee API errors)
-              ├── InvalidRequestException (validation errors)
-              ├── PaymentException (payment-related errors)
-              ├── OperationFailedException (business logic errors)
-              ├── BatchAPIException (batch operation errors)
-              └── UbbBatchIngestionInvalidRequestException (batch ingestion errors)
+ChargebeeException (unchecked - extends RuntimeException)
+├── ConfigurationException (setup/config errors)
+└── TransportException (runtime API errors)
+      ├── NetworkException (DNS failures, connection refused)
+      ├── TimeoutException (connect/read timeouts)
+      └── HttpException (HTTP status code errors: 4xx, 5xx)
+            ├── ClientErrorException (4xx errors)
+            ├── ServerErrorException (5xx errors)
+            └── APIException (Chargebee API errors)
+                  ├── InvalidRequestException (validation errors)
+                  ├── PaymentException (payment-related errors)
+                  ├── OperationFailedException (business logic errors)
+                  ├── BatchAPIException (batch operation errors)
+                  └── UbbBatchIngestionInvalidRequestException (batch ingestion errors)
 ```
 
 #### Exception Types
 
+- **`ChargebeeException`**: Base exception for all SDK errors - catch-all for any Chargebee SDK error
+- **`ConfigurationException`**: Thrown when SDK configuration is invalid (missing API key, invalid URL, etc.)
 - **`TransportException`**: Base exception for all transport-layer failures (network issues, timeouts, etc.)
 - **`HttpException`**: Thrown for HTTP error status codes (4xx, 5xx) - contains status code and response
 - **`ClientErrorException`**: HTTP 4xx client errors (bad request, unauthorized, not found, etc.)
