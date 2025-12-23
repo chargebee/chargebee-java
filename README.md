@@ -47,7 +47,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 #### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
-    implementation("com.chargebee:chargebee-java:4.0.0")
+    implementation("com.chargebee:chargebee-java:4.0.0-beta.3")
 }
 ```
 
@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0</version>
+  <version>4.0.0-beta.3</version>
 </dependency>
 ```
 
