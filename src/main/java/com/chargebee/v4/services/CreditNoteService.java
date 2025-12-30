@@ -132,6 +132,12 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CreditNoteRecordRefundResponse recordRefund(String creditNoteId)
+      throws ChargebeeException {
+    Response response = recordRefundRaw(creditNoteId);
+    return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /**
    * importCreditNote a creditNote using immutable params (executes immediately) - returns raw
    * Response.
@@ -185,6 +191,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteDeleteResponse delete(String creditNoteId, CreditNoteDeleteParams params)
       throws ChargebeeException {
     Response response = deleteRaw(creditNoteId, params);
+    return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CreditNoteDeleteResponse delete(String creditNoteId) throws ChargebeeException {
+    Response response = deleteRaw(creditNoteId);
     return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -262,6 +273,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CreditNotePdfResponse pdf(String creditNoteId) throws ChargebeeException {
+    Response response = pdfRaw(creditNoteId);
+    return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** sendEinvoice a creditNote (executes immediately) - returns raw Response. */
   Response sendEinvoiceRaw(String creditNoteId) throws ChargebeeException {
     String path =
@@ -312,6 +328,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public VoidCreditNoteResponse voidCreditNote(String creditNoteId) throws ChargebeeException {
+    Response response = voidCreditNoteRaw(creditNoteId);
+    return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** refund a creditNote (executes immediately) - returns raw Response. */
   Response refundRaw(String creditNoteId) throws ChargebeeException {
     String path =
@@ -340,6 +361,11 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
   public CreditNoteRefundResponse refund(String creditNoteId, CreditNoteRefundParams params)
       throws ChargebeeException {
     Response response = refundRaw(creditNoteId, params);
+    return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CreditNoteRefundResponse refund(String creditNoteId) throws ChargebeeException {
+    Response response = refundRaw(creditNoteId);
     return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -464,6 +490,12 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       String creditNoteId, CreditNoteRemoveTaxWithheldRefundParams params)
       throws ChargebeeException {
     Response response = removeTaxWithheldRefundRaw(creditNoteId, params);
+    return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CreditNoteRemoveTaxWithheldRefundResponse removeTaxWithheldRefund(String creditNoteId)
+      throws ChargebeeException {
+    Response response = removeTaxWithheldRefundRaw(creditNoteId);
     return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 

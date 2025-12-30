@@ -153,6 +153,11 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public TransactionReconcileResponse reconcile(String transactionId) throws ChargebeeException {
+    Response response = reconcileRaw(transactionId);
+    return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** retrieve a transaction (executes immediately) - returns raw Response. */
   Response retrieveRaw(String transactionId) throws ChargebeeException {
     String path =
@@ -195,6 +200,11 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionRefundResponse refund(String transactionId, TransactionRefundParams params)
       throws ChargebeeException {
     Response response = refundRaw(transactionId, params);
+    return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public TransactionRefundResponse refund(String transactionId) throws ChargebeeException {
+    Response response = refundRaw(transactionId);
     return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -466,6 +476,12 @@ public final class TransactionService extends BaseService<TransactionService> {
   public DeleteOfflineTransactionResponse deleteOfflineTransaction(
       String transactionId, DeleteOfflineTransactionParams params) throws ChargebeeException {
     Response response = deleteOfflineTransactionRaw(transactionId, params);
+    return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public DeleteOfflineTransactionResponse deleteOfflineTransaction(String transactionId)
+      throws ChargebeeException {
+    Response response = deleteOfflineTransactionRaw(transactionId);
     return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 }

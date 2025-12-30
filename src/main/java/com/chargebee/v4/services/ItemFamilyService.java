@@ -163,4 +163,9 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     Response response = updateRaw(itemFamilyId, params);
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  public ItemFamilyUpdateResponse update(String itemFamilyId) throws ChargebeeException {
+    Response response = updateRaw(itemFamilyId);
+    return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
 }

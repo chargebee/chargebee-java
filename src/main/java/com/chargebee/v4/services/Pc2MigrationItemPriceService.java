@@ -175,4 +175,10 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
     Response response = updateRaw(pc2MigrationItemPriceId, params);
     return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  public Pc2MigrationItemPriceUpdateResponse update(String pc2MigrationItemPriceId)
+      throws ChargebeeException {
+    Response response = updateRaw(pc2MigrationItemPriceId);
+    return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
 }

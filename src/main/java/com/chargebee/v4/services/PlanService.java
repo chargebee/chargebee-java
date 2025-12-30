@@ -193,4 +193,9 @@ public final class PlanService extends BaseService<PlanService> {
     Response response = updateRaw(planId, params);
     return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  public PlanUpdateResponse update(String planId) throws ChargebeeException {
+    Response response = updateRaw(planId);
+    return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
 }

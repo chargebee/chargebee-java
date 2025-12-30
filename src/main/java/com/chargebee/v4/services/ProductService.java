@@ -103,6 +103,11 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public ProductUpdateResponse update(String productId) throws ChargebeeException {
+    Response response = updateRaw(productId);
+    return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a product (executes immediately) - returns raw Response. */
   Response deleteRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
@@ -145,6 +150,11 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductUpdateOptionsResponse updateOptions(
       String productId, ProductUpdateOptionsParams params) throws ChargebeeException {
     Response response = updateOptionsRaw(productId, params);
+    return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public ProductUpdateOptionsResponse updateOptions(String productId) throws ChargebeeException {
+    Response response = updateOptionsRaw(productId);
     return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 

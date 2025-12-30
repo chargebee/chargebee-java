@@ -460,6 +460,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public PaymentSourceUpdateCardResponse updateCard(String custPaymentSourceId)
+      throws ChargebeeException {
+    Response response = updateCardRaw(custPaymentSourceId);
+    return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** switchGatewayAccount a paymentSource (executes immediately) - returns raw Response. */
   Response switchGatewayAccountRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
@@ -621,6 +627,12 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       String custPaymentSourceId, PaymentSourceUpdateBankAccountParams params)
       throws ChargebeeException {
     Response response = updateBankAccountRaw(custPaymentSourceId, params);
+    return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public PaymentSourceUpdateBankAccountResponse updateBankAccount(String custPaymentSourceId)
+      throws ChargebeeException {
+    Response response = updateBankAccountRaw(custPaymentSourceId);
     return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 }

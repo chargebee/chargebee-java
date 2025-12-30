@@ -157,4 +157,9 @@ public final class ItemService extends BaseService<ItemService> {
     Response response = updateRaw(itemId, params);
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  public ItemUpdateResponse update(String itemId) throws ChargebeeException {
+    Response response = updateRaw(itemId);
+    return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
 }

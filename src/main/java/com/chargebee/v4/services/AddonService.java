@@ -135,6 +135,11 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public AddonUpdateResponse update(String addonId) throws ChargebeeException {
+    Response response = updateRaw(addonId);
+    return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** list a addon using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(AddonListParams params) throws ChargebeeException {
 

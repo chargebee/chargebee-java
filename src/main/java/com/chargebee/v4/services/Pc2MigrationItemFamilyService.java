@@ -144,6 +144,12 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public Pc2MigrationItemFamilyUpdateResponse update(String pc2MigrationItemFamilyId)
+      throws ChargebeeException {
+    Response response = updateRaw(pc2MigrationItemFamilyId);
+    return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /**
    * list a pc2MigrationItemFamily using immutable params (executes immediately) - returns raw
    * Response.

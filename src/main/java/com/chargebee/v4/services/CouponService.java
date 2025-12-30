@@ -156,6 +156,11 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CouponUpdateForItemsResponse updateForItems(String couponId) throws ChargebeeException {
+    Response response = updateForItemsRaw(couponId);
+    return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** unarchive a coupon (executes immediately) - returns raw Response. */
   Response unarchiveRaw(String couponId) throws ChargebeeException {
     String path = buildPathWithParams("/coupons/{coupon-id}/unarchive", "coupon-id", couponId);
@@ -232,6 +237,11 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponUpdateResponse update(String couponId, CouponUpdateParams params)
       throws ChargebeeException {
     Response response = updateRaw(couponId, params);
+    return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CouponUpdateResponse update(String couponId) throws ChargebeeException {
+    Response response = updateRaw(couponId);
     return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 

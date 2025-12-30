@@ -174,6 +174,13 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CreateSubscriptionItemsForCustomerQuoteResponse createSubscriptionItemsForCustomerQuote(
+      String customerId) throws ChargebeeException {
+    Response response = createSubscriptionItemsForCustomerQuoteRaw(customerId);
+    return CreateSubscriptionItemsForCustomerQuoteResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** retrieve a quote (executes immediately) - returns raw Response. */
   Response retrieveRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}", "quote-id", quoteId);
@@ -229,6 +236,13 @@ public final class QuoteService extends BaseService<QuoteService> {
           String quoteId, EditCreateSubscriptionCustomerQuoteForItemsParams params)
           throws ChargebeeException {
     Response response = editCreateSubscriptionCustomerQuoteForItemsRaw(quoteId, params);
+    return EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public EditCreateSubscriptionCustomerQuoteForItemsResponse
+      editCreateSubscriptionCustomerQuoteForItems(String quoteId) throws ChargebeeException {
+    Response response = editCreateSubscriptionCustomerQuoteForItemsRaw(quoteId);
     return EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
@@ -397,6 +411,12 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public QuoteEditForChargeItemsAndChargesResponse editForChargeItemsAndCharges(String quoteId)
+      throws ChargebeeException {
+    Response response = editForChargeItemsAndChargesRaw(quoteId);
+    return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** editUpdateSubscriptionQuoteForItems a quote (executes immediately) - returns raw Response. */
   Response editUpdateSubscriptionQuoteForItemsRaw(String quoteId) throws ChargebeeException {
     String path =
@@ -433,6 +453,13 @@ public final class QuoteService extends BaseService<QuoteService> {
   public EditUpdateSubscriptionQuoteForItemsResponse editUpdateSubscriptionQuoteForItems(
       String quoteId, EditUpdateSubscriptionQuoteForItemsParams params) throws ChargebeeException {
     Response response = editUpdateSubscriptionQuoteForItemsRaw(quoteId, params);
+    return EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public EditUpdateSubscriptionQuoteForItemsResponse editUpdateSubscriptionQuoteForItems(
+      String quoteId) throws ChargebeeException {
+    Response response = editUpdateSubscriptionQuoteForItemsRaw(quoteId);
     return EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
   }
@@ -490,6 +517,11 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public QuotePdfResponse pdf(String quoteId) throws ChargebeeException {
+    Response response = pdfRaw(quoteId);
+    return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** convert a quote (executes immediately) - returns raw Response. */
   Response convertRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
@@ -512,6 +544,11 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteConvertResponse convert(String quoteId, QuoteConvertParams params)
       throws ChargebeeException {
     Response response = convertRaw(quoteId, params);
+    return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public QuoteConvertResponse convert(String quoteId) throws ChargebeeException {
+    Response response = convertRaw(quoteId);
     return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -568,6 +605,11 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public QuoteDeleteResponse delete(String quoteId) throws ChargebeeException {
+    Response response = deleteRaw(quoteId);
+    return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** editOneTimeQuote a quote (executes immediately) - returns raw Response. */
   Response editOneTimeQuoteRaw(String quoteId) throws ChargebeeException {
     String path =
@@ -598,6 +640,11 @@ public final class QuoteService extends BaseService<QuoteService> {
   public EditOneTimeQuoteResponse editOneTimeQuote(String quoteId, EditOneTimeQuoteParams params)
       throws ChargebeeException {
     Response response = editOneTimeQuoteRaw(quoteId, params);
+    return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public EditOneTimeQuoteResponse editOneTimeQuote(String quoteId) throws ChargebeeException {
+    Response response = editOneTimeQuoteRaw(quoteId);
     return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -695,6 +742,13 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CreateSubscriptionForCustomerQuoteResponse createSubscriptionForCustomerQuote(
+      String customerId) throws ChargebeeException {
+    Response response = createSubscriptionForCustomerQuoteRaw(customerId);
+    return CreateSubscriptionForCustomerQuoteResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** editUpdateSubscriptionQuote a quote (executes immediately) - returns raw Response. */
   Response editUpdateSubscriptionQuoteRaw(String quoteId) throws ChargebeeException {
     String path =
@@ -731,6 +785,12 @@ public final class QuoteService extends BaseService<QuoteService> {
   public EditUpdateSubscriptionQuoteResponse editUpdateSubscriptionQuote(
       String quoteId, EditUpdateSubscriptionQuoteParams params) throws ChargebeeException {
     Response response = editUpdateSubscriptionQuoteRaw(quoteId, params);
+    return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public EditUpdateSubscriptionQuoteResponse editUpdateSubscriptionQuote(String quoteId)
+      throws ChargebeeException {
+    Response response = editUpdateSubscriptionQuoteRaw(quoteId);
     return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -774,6 +834,13 @@ public final class QuoteService extends BaseService<QuoteService> {
       String quoteId, EditCreateSubscriptionForCustomerQuoteParams params)
       throws ChargebeeException {
     Response response = editCreateSubscriptionForCustomerQuoteRaw(quoteId, params);
+    return EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public EditCreateSubscriptionForCustomerQuoteResponse editCreateSubscriptionForCustomerQuote(
+      String quoteId) throws ChargebeeException {
+    Response response = editCreateSubscriptionForCustomerQuoteRaw(quoteId);
     return EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
   }

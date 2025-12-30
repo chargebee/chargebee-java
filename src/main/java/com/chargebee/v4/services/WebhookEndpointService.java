@@ -130,6 +130,11 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public WebhookEndpointUpdateResponse update(String webhookEndpointId) throws ChargebeeException {
+    Response response = updateRaw(webhookEndpointId);
+    return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /**
    * list a webhookEndpoint using immutable params (executes immediately) - returns raw Response.
    */

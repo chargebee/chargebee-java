@@ -170,4 +170,9 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     Response response = updateRaw(priceVariantId, params);
     return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  public PriceVariantUpdateResponse update(String priceVariantId) throws ChargebeeException {
+    Response response = updateRaw(priceVariantId);
+    return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
 }

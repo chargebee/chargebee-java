@@ -192,6 +192,11 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public ItemPriceUpdateResponse update(String itemPriceId) throws ChargebeeException {
+    Response response = updateRaw(itemPriceId);
+    return ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a itemPrice (executes immediately) - returns raw Response. */
   Response deleteRaw(String itemPriceId) throws ChargebeeException {
     String path =

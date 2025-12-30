@@ -208,6 +208,13 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  public InAppSubscriptionImportSubscriptionResponse importSubscription(
+      String inAppSubscriptionAppId) throws ChargebeeException {
+    Response response = importSubscriptionRaw(inAppSubscriptionAppId);
+    return InAppSubscriptionImportSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** processReceipt a inAppSubscription (executes immediately) - returns raw Response. */
   Response processReceiptRaw(String inAppSubscriptionAppId) throws ChargebeeException {
     String path =

@@ -229,6 +229,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public SubscriptionRemoveAdvanceInvoiceScheduleResponse removeAdvanceInvoiceSchedule(
+      String subscriptionId) throws ChargebeeException {
+    Response response = removeAdvanceInvoiceScheduleRaw(subscriptionId);
+    return SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** updateForItems a subscription (executes immediately) - returns raw Response. */
   Response updateForItemsRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -264,6 +271,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionUpdateForItemsResponse updateForItems(
       String subscriptionId, SubscriptionUpdateForItemsParams params) throws ChargebeeException {
     Response response = updateForItemsRaw(subscriptionId, params);
+    return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionUpdateForItemsResponse updateForItems(String subscriptionId)
+      throws ChargebeeException {
+    Response response = updateForItemsRaw(subscriptionId);
     return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -305,6 +318,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public SubscriptionRemoveCouponsResponse removeCoupons(String subscriptionId)
+      throws ChargebeeException {
+    Response response = removeCouponsRaw(subscriptionId);
+    return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** resume a subscription (executes immediately) - returns raw Response. */
   Response resumeRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -334,6 +353,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionResumeResponse resume(String subscriptionId, SubscriptionResumeParams params)
       throws ChargebeeException {
     Response response = resumeRaw(subscriptionId, params);
+    return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionResumeResponse resume(String subscriptionId) throws ChargebeeException {
+    Response response = resumeRaw(subscriptionId);
     return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -372,6 +396,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCancelForItemsResponse cancelForItems(
       String subscriptionId, SubscriptionCancelForItemsParams params) throws ChargebeeException {
     Response response = cancelForItemsRaw(subscriptionId, params);
+    return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionCancelForItemsResponse cancelForItems(String subscriptionId)
+      throws ChargebeeException {
+    Response response = cancelForItemsRaw(subscriptionId);
     return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -417,6 +447,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRegenerateInvoiceResponse regenerateInvoice(
       String subscriptionId, SubscriptionRegenerateInvoiceParams params) throws ChargebeeException {
     Response response = regenerateInvoiceRaw(subscriptionId, params);
+    return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionRegenerateInvoiceResponse regenerateInvoice(String subscriptionId)
+      throws ChargebeeException {
+    Response response = regenerateInvoiceRaw(subscriptionId);
     return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -683,6 +719,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public SubscriptionRemoveScheduledCancellationResponse removeScheduledCancellation(
+      String subscriptionId) throws ChargebeeException {
+    Response response = removeScheduledCancellationRaw(subscriptionId);
+    return SubscriptionRemoveScheduledCancellationResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** retrieveWithScheduledChanges a subscription (executes immediately) - returns raw Response. */
   Response retrieveWithScheduledChangesRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -737,6 +780,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public SubscriptionReactivateResponse reactivate(String subscriptionId)
+      throws ChargebeeException {
+    Response response = reactivateRaw(subscriptionId);
+    return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** chargeFutureRenewals a subscription (executes immediately) - returns raw Response. */
   Response chargeFutureRenewalsRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -781,6 +830,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionChargeFutureRenewalsParams params)
       throws ChargebeeException {
     Response response = chargeFutureRenewalsRaw(subscriptionId, params);
+    return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionChargeFutureRenewalsResponse chargeFutureRenewals(String subscriptionId)
+      throws ChargebeeException {
+    Response response = chargeFutureRenewalsRaw(subscriptionId);
     return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -938,6 +993,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public SubscriptionCreateWithItemsResponse createWithItems(String customerId)
+      throws ChargebeeException {
+    Response response = createWithItemsRaw(customerId);
+    return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** importUnbilledCharges a subscription (executes immediately) - returns raw Response. */
   Response importUnbilledChargesRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -982,6 +1043,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionImportUnbilledChargesParams params)
       throws ChargebeeException {
     Response response = importUnbilledChargesRaw(subscriptionId, params);
+    return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionImportUnbilledChargesResponse importUnbilledCharges(String subscriptionId)
+      throws ChargebeeException {
+    Response response = importUnbilledChargesRaw(subscriptionId);
     return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -1045,6 +1112,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public SubscriptionUpdateResponse update(String subscriptionId) throws ChargebeeException {
+    Response response = updateRaw(subscriptionId);
+    return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** importContractTerm a subscription (executes immediately) - returns raw Response. */
   Response importContractTermRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -1088,6 +1160,12 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionImportContractTermParams params)
       throws ChargebeeException {
     Response response = importContractTermRaw(subscriptionId, params);
+    return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionImportContractTermResponse importContractTerm(String subscriptionId)
+      throws ChargebeeException {
+    Response response = importContractTermRaw(subscriptionId);
     return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -1135,6 +1213,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionOverrideBillingProfileParams params)
       throws ChargebeeException {
     Response response = overrideBillingProfileRaw(subscriptionId, params);
+    return SubscriptionOverrideBillingProfileResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public SubscriptionOverrideBillingProfileResponse overrideBillingProfile(String subscriptionId)
+      throws ChargebeeException {
+    Response response = overrideBillingProfileRaw(subscriptionId);
     return SubscriptionOverrideBillingProfileResponse.fromJson(
         response.getBodyAsString(), response);
   }
@@ -1200,6 +1285,13 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params)
       throws ChargebeeException {
     Response response = editAdvanceInvoiceScheduleRaw(subscriptionId, params);
+    return SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public SubscriptionEditAdvanceInvoiceScheduleResponse editAdvanceInvoiceSchedule(
+      String subscriptionId) throws ChargebeeException {
+    Response response = editAdvanceInvoiceScheduleRaw(subscriptionId);
     return SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
   }
@@ -1330,6 +1422,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public SubscriptionPauseResponse pause(String subscriptionId) throws ChargebeeException {
+    Response response = pauseRaw(subscriptionId);
+    return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** importForCustomer a subscription (executes immediately) - returns raw Response. */
   Response importForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
@@ -1422,6 +1519,11 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionCancelResponse cancel(String subscriptionId, SubscriptionCancelParams params)
       throws ChargebeeException {
     Response response = cancelRaw(subscriptionId, params);
+    return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionCancelResponse cancel(String subscriptionId) throws ChargebeeException {
+    Response response = cancelRaw(subscriptionId);
     return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 

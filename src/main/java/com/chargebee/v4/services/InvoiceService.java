@@ -233,6 +233,12 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceDeleteLineItemsResponse deleteLineItems(String invoiceId)
+      throws ChargebeeException {
+    Response response = deleteLineItemsRaw(invoiceId);
+    return InvoiceDeleteLineItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** removeCreditNote a invoice (executes immediately) - returns raw Response. */
   Response removeCreditNoteRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -265,6 +271,12 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRemoveCreditNoteResponse removeCreditNote(
       String invoiceId, InvoiceRemoveCreditNoteParams params) throws ChargebeeException {
     Response response = removeCreditNoteRaw(invoiceId, params);
+    return InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceRemoveCreditNoteResponse removeCreditNote(String invoiceId)
+      throws ChargebeeException {
+    Response response = removeCreditNoteRaw(invoiceId);
     return InvoiceRemoveCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -301,6 +313,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceRemovePaymentResponse removePayment(String invoiceId) throws ChargebeeException {
+    Response response = removePaymentRaw(invoiceId);
+    return InvoiceRemovePaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** stopDunning a invoice (executes immediately) - returns raw Response. */
   Response stopDunningRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -327,6 +344,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceStopDunningResponse stopDunning(String invoiceId, InvoiceStopDunningParams params)
       throws ChargebeeException {
     Response response = stopDunningRaw(invoiceId, params);
+    return InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceStopDunningResponse stopDunning(String invoiceId) throws ChargebeeException {
+    Response response = stopDunningRaw(invoiceId);
     return InvoiceStopDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -360,6 +382,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceApplyPaymentsResponse applyPayments(
       String invoiceId, InvoiceApplyPaymentsParams params) throws ChargebeeException {
     Response response = applyPaymentsRaw(invoiceId, params);
+    return InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceApplyPaymentsResponse applyPayments(String invoiceId) throws ChargebeeException {
+    Response response = applyPaymentsRaw(invoiceId);
     return InvoiceApplyPaymentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -424,6 +451,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public VoidInvoiceResponse voidInvoice(String invoiceId, VoidInvoiceParams params)
       throws ChargebeeException {
     Response response = voidInvoiceRaw(invoiceId, params);
+    return VoidInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public VoidInvoiceResponse voidInvoice(String invoiceId) throws ChargebeeException {
+    Response response = voidInvoiceRaw(invoiceId);
     return VoidInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -504,6 +536,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceWriteOffResponse writeOff(String invoiceId) throws ChargebeeException {
+    Response response = writeOffRaw(invoiceId);
+    return InvoiceWriteOffResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** addChargeItem a invoice (executes immediately) - returns raw Response. */
   Response addChargeItemRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -534,6 +571,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceAddChargeItemResponse addChargeItem(
       String invoiceId, InvoiceAddChargeItemParams params) throws ChargebeeException {
     Response response = addChargeItemRaw(invoiceId, params);
+    return InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceAddChargeItemResponse addChargeItem(String invoiceId) throws ChargebeeException {
+    Response response = addChargeItemRaw(invoiceId);
     return InvoiceAddChargeItemResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -642,6 +684,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceCloseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceCloseResponse close(String invoiceId) throws ChargebeeException {
+    Response response = closeRaw(invoiceId);
+    return InvoiceCloseResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** applyCredits a invoice (executes immediately) - returns raw Response. */
   Response applyCreditsRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -672,6 +719,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceApplyCreditsResponse applyCredits(
       String invoiceId, InvoiceApplyCreditsParams params) throws ChargebeeException {
     Response response = applyCreditsRaw(invoiceId, params);
+    return InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceApplyCreditsResponse applyCredits(String invoiceId) throws ChargebeeException {
+    Response response = applyCreditsRaw(invoiceId);
     return InvoiceApplyCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -787,6 +839,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceDeleteImportedResponse deleteImported(String invoiceId) throws ChargebeeException {
+    Response response = deleteImportedRaw(invoiceId);
+    return InvoiceDeleteImportedResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** updateDetails a invoice (executes immediately) - returns raw Response. */
   Response updateDetailsRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -817,6 +874,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceUpdateDetailsResponse updateDetails(
       String invoiceId, InvoiceUpdateDetailsParams params) throws ChargebeeException {
     Response response = updateDetailsRaw(invoiceId, params);
+    return InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceUpdateDetailsResponse updateDetails(String invoiceId) throws ChargebeeException {
+    Response response = updateDetailsRaw(invoiceId);
     return InvoiceUpdateDetailsResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -895,6 +957,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceRecordPaymentResponse recordPayment(String invoiceId) throws ChargebeeException {
+    Response response = recordPaymentRaw(invoiceId);
+    return InvoiceRecordPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a invoice (executes immediately) - returns raw Response. */
   Response deleteRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/delete", "invoice-id", invoiceId);
@@ -917,6 +984,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceDeleteResponse delete(String invoiceId, InvoiceDeleteParams params)
       throws ChargebeeException {
     Response response = deleteRaw(invoiceId, params);
+    return InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceDeleteResponse delete(String invoiceId) throws ChargebeeException {
+    Response response = deleteRaw(invoiceId);
     return InvoiceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -975,6 +1047,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceResumeDunningResponse resumeDunning(String invoiceId) throws ChargebeeException {
+    Response response = resumeDunningRaw(invoiceId);
+    return InvoiceResumeDunningResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** recordTaxWithheld a invoice (executes immediately) - returns raw Response. */
   Response recordTaxWithheldRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -1007,6 +1084,12 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRecordTaxWithheldResponse recordTaxWithheld(
       String invoiceId, InvoiceRecordTaxWithheldParams params) throws ChargebeeException {
     Response response = recordTaxWithheldRaw(invoiceId, params);
+    return InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceRecordTaxWithheldResponse recordTaxWithheld(String invoiceId)
+      throws ChargebeeException {
+    Response response = recordTaxWithheldRaw(invoiceId);
     return InvoiceRecordTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -1055,6 +1138,12 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceRemoveTaxWithheldResponse removeTaxWithheld(
       String invoiceId, InvoiceRemoveTaxWithheldParams params) throws ChargebeeException {
     Response response = removeTaxWithheldRaw(invoiceId, params);
+    return InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoiceRemoveTaxWithheldResponse removeTaxWithheld(String invoiceId)
+      throws ChargebeeException {
+    Response response = removeTaxWithheldRaw(invoiceId);
     return InvoiceRemoveTaxWithheldResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -1135,6 +1224,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceCollectPaymentResponse collectPayment(String invoiceId) throws ChargebeeException {
+    Response response = collectPaymentRaw(invoiceId);
+    return InvoiceCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** syncUsages a invoice (executes immediately) - returns raw Response. */
   Response syncUsagesRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -1173,6 +1267,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceRefundResponse refund(String invoiceId) throws ChargebeeException {
+    Response response = refundRaw(invoiceId);
+    return InvoiceRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** recordRefund a invoice (executes immediately) - returns raw Response. */
   Response recordRefundRaw(String invoiceId) throws ChargebeeException {
     String path =
@@ -1206,6 +1305,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
     return InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public InvoiceRecordRefundResponse recordRefund(String invoiceId) throws ChargebeeException {
+    Response response = recordRefundRaw(invoiceId);
+    return InvoiceRecordRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** pdf a invoice (executes immediately) - returns raw Response. */
   Response pdfRaw(String invoiceId) throws ChargebeeException {
     String path = buildPathWithParams("/invoices/{invoice-id}/pdf", "invoice-id", invoiceId);
@@ -1228,6 +1332,11 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoicePdfResponse pdf(String invoiceId, InvoicePdfParams params)
       throws ChargebeeException {
     Response response = pdfRaw(invoiceId, params);
+    return InvoicePdfResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public InvoicePdfResponse pdf(String invoiceId) throws ChargebeeException {
+    Response response = pdfRaw(invoiceId);
     return InvoicePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 

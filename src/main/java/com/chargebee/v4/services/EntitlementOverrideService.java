@@ -164,4 +164,11 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
     return AddEntitlementOverrideForSubscriptionResponse.fromJson(
         response.getBodyAsString(), response);
   }
+
+  public AddEntitlementOverrideForSubscriptionResponse addEntitlementOverrideForSubscription(
+      String subscriptionId) throws ChargebeeException {
+    Response response = addEntitlementOverrideForSubscriptionRaw(subscriptionId);
+    return AddEntitlementOverrideForSubscriptionResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
 }

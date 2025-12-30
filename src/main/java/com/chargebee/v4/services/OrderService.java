@@ -191,6 +191,11 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderResendResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public OrderResendResponse resend(String orderId) throws ChargebeeException {
+    Response response = resendRaw(orderId);
+    return OrderResendResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** reopen a order (executes immediately) - returns raw Response. */
   Response reopenRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
@@ -213,6 +218,11 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderReopenResponse reopen(String orderId, OrderReopenParams params)
       throws ChargebeeException {
     Response response = reopenRaw(orderId, params);
+    return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public OrderReopenResponse reopen(String orderId) throws ChargebeeException {
+    Response response = reopenRaw(orderId);
     return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -314,6 +324,11 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public OrderUpdateResponse update(String orderId) throws ChargebeeException {
+    Response response = updateRaw(orderId);
+    return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a order (executes immediately) - returns raw Response. */
   Response deleteRaw(String orderId) throws ChargebeeException {
     String path = buildPathWithParams("/orders/{order-id}/delete", "order-id", orderId);
@@ -362,6 +377,12 @@ public final class OrderService extends BaseService<OrderService> {
   public OrderCreateRefundableCreditNoteResponse createRefundableCreditNote(
       String orderId, OrderCreateRefundableCreditNoteParams params) throws ChargebeeException {
     Response response = createRefundableCreditNoteRaw(orderId, params);
+    return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public OrderCreateRefundableCreditNoteResponse createRefundableCreditNote(String orderId)
+      throws ChargebeeException {
+    Response response = createRefundableCreditNoteRaw(orderId);
     return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 }

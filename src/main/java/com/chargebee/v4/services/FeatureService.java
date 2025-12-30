@@ -164,6 +164,11 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public FeatureUpdateResponse update(String featureId) throws ChargebeeException {
+    Response response = updateRaw(featureId);
+    return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** archive a feature (executes immediately) - returns raw Response. */
   Response archiveRaw(String featureId) throws ChargebeeException {
     String path =

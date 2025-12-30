@@ -143,6 +143,11 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CouponSetUpdateResponse update(String couponSetId) throws ChargebeeException {
+    Response response = updateRaw(couponSetId);
+    return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** retrieve a couponSet (executes immediately) - returns raw Response. */
   Response retrieveRaw(String couponSetId) throws ChargebeeException {
     String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
@@ -190,6 +195,12 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetAddCouponCodesResponse addCouponCodes(
       String couponSetId, CouponSetAddCouponCodesParams params) throws ChargebeeException {
     Response response = addCouponCodesRaw(couponSetId, params);
+    return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CouponSetAddCouponCodesResponse addCouponCodes(String couponSetId)
+      throws ChargebeeException {
+    Response response = addCouponCodesRaw(couponSetId);
     return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 

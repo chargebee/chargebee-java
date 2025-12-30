@@ -179,6 +179,11 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public VariantUpdateResponse update(String productVariantId) throws ChargebeeException {
+    Response response = updateRaw(productVariantId);
+    return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a variant (executes immediately) - returns raw Response. */
   Response deleteRaw(String productVariantId) throws ChargebeeException {
     String path =

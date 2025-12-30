@@ -107,6 +107,11 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public PaymentIntentUpdateResponse update(String paymentIntentId) throws ChargebeeException {
+    Response response = updateRaw(paymentIntentId);
+    return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /**
    * create a paymentIntent using immutable params (executes immediately) - returns raw Response.
    */

@@ -114,6 +114,12 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public TimeMachineTravelForwardResponse travelForward(String timeMachineName)
+      throws ChargebeeException {
+    Response response = travelForwardRaw(timeMachineName);
+    return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** startAfresh a timeMachine (executes immediately) - returns raw Response. */
   Response startAfreshRaw(String timeMachineName) throws ChargebeeException {
     String path =
@@ -153,6 +159,12 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
   public TimeMachineStartAfreshResponse startAfresh(
       String timeMachineName, TimeMachineStartAfreshParams params) throws ChargebeeException {
     Response response = startAfreshRaw(timeMachineName, params);
+    return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public TimeMachineStartAfreshResponse startAfresh(String timeMachineName)
+      throws ChargebeeException {
+    Response response = startAfreshRaw(timeMachineName);
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 }

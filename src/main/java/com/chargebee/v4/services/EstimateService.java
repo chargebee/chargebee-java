@@ -256,6 +256,13 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  public EstimateCancelSubscriptionForItemsResponse cancelSubscriptionForItems(
+      String subscriptionId) throws ChargebeeException {
+    Response response = cancelSubscriptionForItemsRaw(subscriptionId);
+    return EstimateCancelSubscriptionForItemsResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
   /** resumeSubscription a estimate (executes immediately) - returns raw Response. */
   Response resumeSubscriptionRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -298,6 +305,12 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateResumeSubscriptionResponse resumeSubscription(
       String subscriptionId, EstimateResumeSubscriptionParams params) throws ChargebeeException {
     Response response = resumeSubscriptionRaw(subscriptionId, params);
+    return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public EstimateResumeSubscriptionResponse resumeSubscription(String subscriptionId)
+      throws ChargebeeException {
+    Response response = resumeSubscriptionRaw(subscriptionId);
     return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -442,6 +455,12 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public RegenerateInvoiceEstimateResponse regenerateInvoiceEstimate(String subscriptionId)
+      throws ChargebeeException {
+    Response response = regenerateInvoiceEstimateRaw(subscriptionId);
+    return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /**
    * createSubscriptionItemForCustomerEstimate a estimate (executes immediately) - returns raw
    * Response.
@@ -491,6 +510,13 @@ public final class EstimateService extends BaseService<EstimateService> {
           String customerId, CreateSubscriptionItemForCustomerEstimateParams params)
           throws ChargebeeException {
     Response response = createSubscriptionItemForCustomerEstimateRaw(customerId, params);
+    return CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public CreateSubscriptionItemForCustomerEstimateResponse
+      createSubscriptionItemForCustomerEstimate(String customerId) throws ChargebeeException {
+    Response response = createSubscriptionItemForCustomerEstimateRaw(customerId);
     return CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
         response.getBodyAsString(), response);
   }
@@ -582,6 +608,12 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public EstimatePauseSubscriptionResponse pauseSubscription(String subscriptionId)
+      throws ChargebeeException {
+    Response response = pauseSubscriptionRaw(subscriptionId);
+    return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** advanceInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
   Response advanceInvoiceEstimateRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -624,6 +656,12 @@ public final class EstimateService extends BaseService<EstimateService> {
   public AdvanceInvoiceEstimateResponse advanceInvoiceEstimate(
       String subscriptionId, AdvanceInvoiceEstimateParams params) throws ChargebeeException {
     Response response = advanceInvoiceEstimateRaw(subscriptionId, params);
+    return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public AdvanceInvoiceEstimateResponse advanceInvoiceEstimate(String subscriptionId)
+      throws ChargebeeException {
+    Response response = advanceInvoiceEstimateRaw(subscriptionId);
     return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -808,6 +846,12 @@ public final class EstimateService extends BaseService<EstimateService> {
   public EstimateCancelSubscriptionResponse cancelSubscription(
       String subscriptionId, EstimateCancelSubscriptionParams params) throws ChargebeeException {
     Response response = cancelSubscriptionRaw(subscriptionId, params);
+    return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public EstimateCancelSubscriptionResponse cancelSubscription(String subscriptionId)
+      throws ChargebeeException {
+    Response response = cancelSubscriptionRaw(subscriptionId);
     return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 }

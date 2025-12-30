@@ -126,6 +126,12 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public Pc2MigrationItemUpdateResponse update(String pc2MigrationItemId)
+      throws ChargebeeException {
+    Response response = updateRaw(pc2MigrationItemId);
+    return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** delete a pc2MigrationItem (executes immediately) - returns raw Response. */
   Response deleteRaw(String pc2MigrationItemId) throws ChargebeeException {
     String path =

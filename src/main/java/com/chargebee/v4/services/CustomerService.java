@@ -169,6 +169,11 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerDeleteResponse delete(String customerId) throws ChargebeeException {
+    Response response = deleteRaw(customerId);
+    return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** addPromotionalCredits a customer (executes immediately) - returns raw Response. */
   Response addPromotionalCreditsRaw(String customerId) throws ChargebeeException {
     String path =
@@ -241,6 +246,11 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerRelationshipsResponse relationships(String customerId) throws ChargebeeException {
+    Response response = relationshipsRaw(customerId);
+    return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** deleteRelationship a customer (executes immediately) - returns raw Response. */
   Response deleteRelationshipRaw(String customerId) throws ChargebeeException {
     String path =
@@ -286,6 +296,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerDeleteContactResponse deleteContact(
       String customerId, CustomerDeleteContactParams params) throws ChargebeeException {
     Response response = deleteContactRaw(customerId, params);
+    return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CustomerDeleteContactResponse deleteContact(String customerId) throws ChargebeeException {
+    Response response = deleteContactRaw(customerId);
     return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -410,6 +425,12 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerUpdatePaymentMethodResponse updatePaymentMethod(String customerId)
+      throws ChargebeeException {
+    Response response = updatePaymentMethodRaw(customerId);
+    return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** retrieve a customer (executes immediately) - returns raw Response. */
   Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
@@ -444,6 +465,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateResponse update(String customerId, CustomerUpdateParams params)
       throws ChargebeeException {
     Response response = updateRaw(customerId, params);
+    return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CustomerUpdateResponse update(String customerId) throws ChargebeeException {
+    Response response = updateRaw(customerId);
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -529,6 +555,12 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerChangeBillingDateResponse changeBillingDate(String customerId)
+      throws ChargebeeException {
+    Response response = changeBillingDateRaw(customerId);
+    return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** list a customer using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(CustomerListParams params) throws ChargebeeException {
 
@@ -602,6 +634,11 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerAddContactResponse addContact(String customerId, CustomerAddContactParams params)
       throws ChargebeeException {
     Response response = addContactRaw(customerId, params);
+    return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CustomerAddContactResponse addContact(String customerId) throws ChargebeeException {
+    Response response = addContactRaw(customerId);
     return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -754,6 +791,12 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerCollectPaymentResponse collectPayment(String customerId)
+      throws ChargebeeException {
+    Response response = collectPaymentRaw(customerId);
+    return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** recordExcessPayment a customer (executes immediately) - returns raw Response. */
   Response recordExcessPaymentRaw(String customerId) throws ChargebeeException {
     String path =
@@ -789,6 +832,12 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerRecordExcessPaymentResponse recordExcessPayment(
       String customerId, CustomerRecordExcessPaymentParams params) throws ChargebeeException {
     Response response = recordExcessPaymentRaw(customerId, params);
+    return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CustomerRecordExcessPaymentResponse recordExcessPayment(String customerId)
+      throws ChargebeeException {
+    Response response = recordExcessPaymentRaw(customerId);
     return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
@@ -864,6 +913,11 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerUpdateContactResponse updateContact(String customerId) throws ChargebeeException {
+    Response response = updateContactRaw(customerId);
+    return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** updateHierarchySettings a customer (executes immediately) - returns raw Response. */
   Response updateHierarchySettingsRaw(String customerId) throws ChargebeeException {
     String path =
@@ -903,6 +957,12 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CustomerUpdateHierarchySettingsResponse updateHierarchySettings(String customerId)
+      throws ChargebeeException {
+    Response response = updateHierarchySettingsRaw(customerId);
+    return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
   /** updateBillingInfo a customer (executes immediately) - returns raw Response. */
   Response updateBillingInfoRaw(String customerId) throws ChargebeeException {
     String path =
@@ -938,6 +998,12 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerUpdateBillingInfoResponse updateBillingInfo(
       String customerId, CustomerUpdateBillingInfoParams params) throws ChargebeeException {
     Response response = updateBillingInfoRaw(customerId, params);
+    return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CustomerUpdateBillingInfoResponse updateBillingInfo(String customerId)
+      throws ChargebeeException {
+    Response response = updateBillingInfoRaw(customerId);
     return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 }
