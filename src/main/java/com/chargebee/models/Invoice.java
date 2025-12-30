@@ -574,6 +574,10 @@ public class Invoice extends Resource<Invoice> {
             return optLong("txn_amount");
         }
 
+        public RetryEngine retryEngine() {
+            return optEnum("retry_engine", RetryEngine.class);
+        }
+
     }
 
     public static class AppliedCredit extends Resource<AppliedCredit> {

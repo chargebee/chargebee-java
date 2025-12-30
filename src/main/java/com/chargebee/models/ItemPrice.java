@@ -1175,6 +1175,12 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
 
 
+        public MoveItemPriceRequest variantId(String variantId) {
+            params.addOpt("variant_id", variantId);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;
