@@ -2335,6 +2335,12 @@ public class Estimate extends Resource<Estimate> {
         }
 
 
+        public RenewalEstimateRequest excludeTaxType(com.chargebee.models.enums.ExcludeTaxType excludeTaxType) {
+            params.addOpt("exclude_tax_type", excludeTaxType);
+            return this;
+        }
+
+
         @Override
         public Params params() {
             return params;

@@ -34,6 +34,11 @@ public enum PaymentMethod {
     KLARNA_PAY_NOW,
     ONLINE_BANKING_POLAND,
     PAYCONIQ_BY_BANCONTACT,
+    ELECTRONIC_PAYMENT_STANDARD,
+    KBC_PAYMENT_BUTTON,
+    PAY_BY_BANK,
+    TRUSTLY,
+    STABLECOIN,
     _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
     java-client version incompatibility. We suggest you to upgrade to the latest version */
 }

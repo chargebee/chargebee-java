@@ -84,6 +84,12 @@ public class PricingPageSession extends Resource<PricingPageSession> {
         }
 
 
+        public CreateForNewSubscriptionRequest custom(JSONObject custom) {
+            params.addOpt("custom", custom);
+            return this;
+        }
+
+
         public CreateForNewSubscriptionRequest pricingPageId(String pricingPageId) {
             params.add("pricing_page[id]", pricingPageId);
             return this;
@@ -323,6 +329,12 @@ public class PricingPageSession extends Resource<PricingPageSession> {
     
         public CreateForExistingSubscriptionRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
+            return this;
+        }
+
+
+        public CreateForExistingSubscriptionRequest custom(JSONObject custom) {
+            params.addOpt("custom", custom);
             return this;
         }
 
