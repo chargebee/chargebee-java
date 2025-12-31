@@ -81,12 +81,14 @@ public final class OrderCreateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OrderCreateResponse that = (OrderCreateResponse) o;
     return java.util.Objects.equals(order, that.order);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(order);
   }
 }

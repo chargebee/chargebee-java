@@ -144,6 +144,7 @@ public class Export {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Export that = (Export) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(operationType, that.operationType)
@@ -155,6 +156,7 @@ public class Export {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, operationType, mimeType, status, createdAt, download);
   }
 
@@ -204,6 +206,7 @@ public class Export {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Download that = (Download) o;
       return java.util.Objects.equals(downloadUrl, that.downloadUrl)
           && java.util.Objects.equals(validTill, that.validTill)
@@ -212,6 +215,7 @@ public class Export {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(downloadUrl, validTill, mimeType);
     }
   }

@@ -87,6 +87,7 @@ public class QuotedRamp {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuotedRamp that = (QuotedRamp) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(lineItems, that.lineItems)
@@ -97,6 +98,7 @@ public class QuotedRamp {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, lineItems, discounts, itemTiers, couponApplicabilityMappings);
   }
 
@@ -513,6 +515,7 @@ public class QuotedRamp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(itemType, that.itemType)
@@ -553,6 +556,7 @@ public class QuotedRamp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           itemType,
@@ -908,6 +912,7 @@ public class QuotedRamp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(invoiceName, that.invoiceName)
@@ -930,6 +935,7 @@ public class QuotedRamp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           invoiceName,
@@ -1090,6 +1096,7 @@ public class QuotedRamp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemTiers that = (ItemTiers) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -1105,6 +1112,7 @@ public class QuotedRamp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           startingUnit,
@@ -1157,6 +1165,7 @@ public class QuotedRamp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CouponApplicabilityMappings that = (CouponApplicabilityMappings) o;
       return java.util.Objects.equals(couponId, that.couponId)
           && java.util.Objects.equals(applicableItemPriceIds, that.applicableItemPriceIds);
@@ -1164,6 +1173,7 @@ public class QuotedRamp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(couponId, applicableItemPriceIds);
     }
   }

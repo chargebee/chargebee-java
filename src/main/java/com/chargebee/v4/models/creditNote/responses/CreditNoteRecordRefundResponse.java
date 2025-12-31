@@ -112,6 +112,7 @@ public final class CreditNoteRecordRefundResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CreditNoteRecordRefundResponse that = (CreditNoteRecordRefundResponse) o;
     return java.util.Objects.equals(creditNote, that.creditNote)
         && java.util.Objects.equals(transaction, that.transaction);
@@ -119,6 +120,7 @@ public final class CreditNoteRecordRefundResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(creditNote, transaction);
   }
 }

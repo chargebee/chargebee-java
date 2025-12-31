@@ -113,6 +113,7 @@ public final class PaymentSourceCreateUsingTokenResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceCreateUsingTokenResponse that = (PaymentSourceCreateUsingTokenResponse) o;
     return java.util.Objects.equals(customer, that.customer)
         && java.util.Objects.equals(paymentSource, that.paymentSource);
@@ -120,6 +121,7 @@ public final class PaymentSourceCreateUsingTokenResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer, paymentSource);
   }
 }

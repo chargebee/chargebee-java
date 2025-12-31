@@ -107,6 +107,7 @@ public class CustomerBusinessEntityChangedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerBusinessEntityChangedEvent that = (CustomerBusinessEntityChangedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -120,6 +121,7 @@ public class CustomerBusinessEntityChangedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -167,6 +169,7 @@ public class CustomerBusinessEntityChangedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(businessEntityTransfer, that.businessEntityTransfer)
           && java.util.Objects.equals(customer, that.customer);
@@ -174,6 +177,7 @@ public class CustomerBusinessEntityChangedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(businessEntityTransfer, customer);
     }
   }

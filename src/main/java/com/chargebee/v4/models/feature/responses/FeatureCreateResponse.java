@@ -83,12 +83,14 @@ public final class FeatureCreateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     FeatureCreateResponse that = (FeatureCreateResponse) o;
     return java.util.Objects.equals(feature, that.feature);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(feature);
   }
 }

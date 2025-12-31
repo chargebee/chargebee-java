@@ -184,6 +184,7 @@ public class PortalSession {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PortalSession that = (PortalSession) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(token, that.token)
@@ -202,6 +203,7 @@ public class PortalSession {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         token,
@@ -282,6 +284,7 @@ public class PortalSession {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedCustomers that = (LinkedCustomers) o;
       return java.util.Objects.equals(customerId, that.customerId)
           && java.util.Objects.equals(email, that.email)
@@ -292,6 +295,7 @@ public class PortalSession {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           customerId, email, hasBillingAddress, hasPaymentMethod, hasActiveSubscription);
     }

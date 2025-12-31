@@ -55,6 +55,7 @@ public class TpSiteUser {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     TpSiteUser that = (TpSiteUser) o;
     return java.util.Objects.equals(hostedPageToken, that.hostedPageToken)
         && java.util.Objects.equals(email, that.email)
@@ -63,6 +64,7 @@ public class TpSiteUser {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(hostedPageToken, email, domain);
   }
 }

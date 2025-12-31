@@ -159,6 +159,7 @@ public final class ContactsForCustomerResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ContactsForCustomerResponse that = (ContactsForCustomerResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -166,6 +167,7 @@ public final class ContactsForCustomerResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -197,12 +199,14 @@ public final class ContactsForCustomerResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CustomerContactsForCustomerItem that = (CustomerContactsForCustomerItem) o;
       return java.util.Objects.equals(contact, that.contact);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(contact);
     }
   }

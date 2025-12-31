@@ -115,6 +115,7 @@ public class SubscriptionPausedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionPausedEvent that = (SubscriptionPausedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -128,6 +129,7 @@ public class SubscriptionPausedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -223,6 +225,7 @@ public class SubscriptionPausedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(subscription, that.subscription)
           && java.util.Objects.equals(customer, that.customer)
@@ -234,6 +237,7 @@ public class SubscriptionPausedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           subscription, customer, card, invoice, creditNotes, unbilledCharges);
     }

@@ -121,6 +121,7 @@ public class Configuration {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Configuration that = (Configuration) o;
     return java.util.Objects.equals(domain, that.domain)
         && java.util.Objects.equals(productCatalogVersion, that.productCatalogVersion)
@@ -129,6 +130,7 @@ public class Configuration {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(domain, productCatalogVersion, chargebeeResponseSchemaType);
   }
 }

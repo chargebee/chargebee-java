@@ -149,6 +149,7 @@ public class SiteMigrationDetail {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SiteMigrationDetail that = (SiteMigrationDetail) o;
     return java.util.Objects.equals(entityId, that.entityId)
         && java.util.Objects.equals(otherSiteName, that.otherSiteName)
@@ -160,6 +161,7 @@ public class SiteMigrationDetail {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         entityId, otherSiteName, entityIdAtOtherSite, migratedAt, entityType, status);
   }

@@ -168,6 +168,7 @@ public final class SubscriptionsForCustomerResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionsForCustomerResponse that = (SubscriptionsForCustomerResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -175,6 +176,7 @@ public final class SubscriptionsForCustomerResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -207,12 +209,14 @@ public final class SubscriptionsForCustomerResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       SubscriptionSubscriptionsForCustomerItem that = (SubscriptionSubscriptionsForCustomerItem) o;
       return java.util.Objects.equals(subscription, that.subscription);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(subscription);
     }
   }

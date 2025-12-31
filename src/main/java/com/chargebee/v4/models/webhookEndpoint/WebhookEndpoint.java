@@ -173,6 +173,7 @@ public class WebhookEndpoint {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     WebhookEndpoint that = (WebhookEndpoint) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -187,6 +188,7 @@ public class WebhookEndpoint {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,

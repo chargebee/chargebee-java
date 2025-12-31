@@ -265,6 +265,7 @@ public class Feature {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Feature that = (Feature) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -281,6 +282,7 @@ public class Feature {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -350,6 +352,7 @@ public class Feature {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Levels that = (Levels) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(value, that.value)
@@ -359,6 +362,7 @@ public class Feature {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, value, level, isUnlimited);
     }
   }

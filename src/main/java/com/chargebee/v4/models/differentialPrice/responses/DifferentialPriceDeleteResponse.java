@@ -84,12 +84,14 @@ public final class DifferentialPriceDeleteResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     DifferentialPriceDeleteResponse that = (DifferentialPriceDeleteResponse) o;
     return java.util.Objects.equals(differentialPrice, that.differentialPrice);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(differentialPrice);
   }
 }

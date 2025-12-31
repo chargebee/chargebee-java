@@ -110,6 +110,7 @@ public class Currency {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Currency that = (Currency) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(enabled, that.enabled)
@@ -121,6 +122,7 @@ public class Currency {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, enabled, forexType, currencyCode, isBaseCurrency, manualExchangeRate);
   }

@@ -113,6 +113,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscriptionItemRenewedEvent that = (OmnichannelSubscriptionItemRenewedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -126,6 +127,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -216,6 +218,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(omnichannelSubscriptionItem, that.omnichannelSubscriptionItem)
           && java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription)
@@ -228,6 +231,7 @@ public class OmnichannelSubscriptionItemRenewedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           omnichannelSubscriptionItem,
           omnichannelSubscription,

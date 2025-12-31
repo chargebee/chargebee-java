@@ -100,6 +100,7 @@ public class Einvoice {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Einvoice that = (Einvoice) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(referenceNumber, that.referenceNumber)
@@ -109,6 +110,7 @@ public class Einvoice {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, referenceNumber, status, message);
   }
 }

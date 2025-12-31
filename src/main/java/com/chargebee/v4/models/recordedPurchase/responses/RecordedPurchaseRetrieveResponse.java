@@ -84,12 +84,14 @@ public final class RecordedPurchaseRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     RecordedPurchaseRetrieveResponse that = (RecordedPurchaseRetrieveResponse) o;
     return java.util.Objects.equals(recordedPurchase, that.recordedPurchase);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(recordedPurchase);
   }
 }

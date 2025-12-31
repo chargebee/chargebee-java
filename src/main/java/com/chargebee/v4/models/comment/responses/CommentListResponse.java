@@ -152,6 +152,7 @@ public final class CommentListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CommentListResponse that = (CommentListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class CommentListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class CommentListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CommentListItem that = (CommentListItem) o;
       return java.util.Objects.equals(comment, that.comment);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(comment);
     }
   }

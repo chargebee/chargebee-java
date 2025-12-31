@@ -104,6 +104,7 @@ public final class GiftCancelResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     GiftCancelResponse that = (GiftCancelResponse) o;
     return java.util.Objects.equals(gift, that.gift)
         && java.util.Objects.equals(subscription, that.subscription);
@@ -111,6 +112,7 @@ public final class GiftCancelResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(gift, subscription);
   }
 }

@@ -214,6 +214,7 @@ public final class SubscriptionUpdateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionUpdateResponse that = (SubscriptionUpdateResponse) o;
     return java.util.Objects.equals(subscription, that.subscription)
         && java.util.Objects.equals(customer, that.customer)
@@ -225,6 +226,7 @@ public final class SubscriptionUpdateResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         subscription, customer, card, invoice, unbilledCharges, creditNotes);
   }

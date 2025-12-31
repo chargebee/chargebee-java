@@ -163,6 +163,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Pc2MigrationItemListApplicableAddonsResponse that =
         (Pc2MigrationItemListApplicableAddonsResponse) o;
     return java.util.Objects.equals(list, that.list)
@@ -171,6 +172,7 @@ public final class Pc2MigrationItemListApplicableAddonsResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 }

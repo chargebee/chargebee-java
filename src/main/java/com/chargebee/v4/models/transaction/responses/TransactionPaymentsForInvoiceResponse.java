@@ -171,6 +171,7 @@ public final class TransactionPaymentsForInvoiceResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     TransactionPaymentsForInvoiceResponse that = (TransactionPaymentsForInvoiceResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -178,6 +179,7 @@ public final class TransactionPaymentsForInvoiceResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -209,12 +211,14 @@ public final class TransactionPaymentsForInvoiceResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TransactionPaymentsForInvoiceItem that = (TransactionPaymentsForInvoiceItem) o;
       return java.util.Objects.equals(transaction, that.transaction);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(transaction);
     }
   }

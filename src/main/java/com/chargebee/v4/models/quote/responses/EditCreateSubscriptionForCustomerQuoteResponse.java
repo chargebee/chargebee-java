@@ -117,6 +117,7 @@ public final class EditCreateSubscriptionForCustomerQuoteResponse extends BaseRe
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EditCreateSubscriptionForCustomerQuoteResponse that =
         (EditCreateSubscriptionForCustomerQuoteResponse) o;
     return java.util.Objects.equals(quote, that.quote)
@@ -125,6 +126,7 @@ public final class EditCreateSubscriptionForCustomerQuoteResponse extends BaseRe
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedSubscription);
   }
 }

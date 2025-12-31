@@ -115,6 +115,7 @@ public class InAppSubscription {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InAppSubscription that = (InAppSubscription) o;
     return java.util.Objects.equals(appId, that.appId)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -126,6 +127,7 @@ public class InAppSubscription {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         appId, subscriptionId, customerId, planId, storeStatus, invoiceId);
   }

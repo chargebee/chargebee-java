@@ -874,6 +874,7 @@ public class Addon {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Addon that = (Addon) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -924,6 +925,7 @@ public class Addon {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -1093,6 +1095,7 @@ public class Addon {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Tiers that = (Tiers) o;
       return java.util.Objects.equals(startingUnit, that.startingUnit)
           && java.util.Objects.equals(endingUnit, that.endingUnit)
@@ -1106,6 +1109,7 @@ public class Addon {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           startingUnit,
           endingUnit,
@@ -1164,6 +1168,7 @@ public class Addon {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxProvidersFields that = (TaxProvidersFields) o;
       return java.util.Objects.equals(providerName, that.providerName)
           && java.util.Objects.equals(fieldId, that.fieldId)
@@ -1172,6 +1177,7 @@ public class Addon {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(providerName, fieldId, fieldValue);
     }
   }

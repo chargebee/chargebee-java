@@ -205,6 +205,7 @@ public class TaxWithheld {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     TaxWithheld that = (TaxWithheld) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(user, that.user)
@@ -222,6 +223,7 @@ public class TaxWithheld {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         user,

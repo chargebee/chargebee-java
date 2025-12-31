@@ -149,6 +149,7 @@ public final class PlanListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PlanListResponse that = (PlanListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -156,6 +157,7 @@ public final class PlanListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -187,12 +189,14 @@ public final class PlanListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PlanListItem that = (PlanListItem) o;
       return java.util.Objects.equals(plan, that.plan);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(plan);
     }
   }

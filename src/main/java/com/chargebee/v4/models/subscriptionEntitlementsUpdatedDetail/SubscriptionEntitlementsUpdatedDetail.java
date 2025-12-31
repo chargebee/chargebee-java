@@ -46,6 +46,7 @@ public class SubscriptionEntitlementsUpdatedDetail {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionEntitlementsUpdatedDetail that = (SubscriptionEntitlementsUpdatedDetail) o;
     return java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(hasNext, that.hasNext);
@@ -53,6 +54,7 @@ public class SubscriptionEntitlementsUpdatedDetail {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(subscriptionId, hasNext);
   }
 }

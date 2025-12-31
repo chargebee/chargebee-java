@@ -117,6 +117,7 @@ public final class PaymentSourceCreateUsingPaymentIntentResponse extends BaseRes
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceCreateUsingPaymentIntentResponse that =
         (PaymentSourceCreateUsingPaymentIntentResponse) o;
     return java.util.Objects.equals(customer, that.customer)
@@ -125,6 +126,7 @@ public final class PaymentSourceCreateUsingPaymentIntentResponse extends BaseRes
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer, paymentSource);
   }
 }

@@ -254,6 +254,7 @@ public class OmnichannelSubscriptionItemOffer {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscriptionItemOffer that = (OmnichannelSubscriptionItemOffer) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(offerIdAtSource, that.offerIdAtSource)
@@ -274,6 +275,7 @@ public class OmnichannelSubscriptionItemOffer {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         offerIdAtSource,

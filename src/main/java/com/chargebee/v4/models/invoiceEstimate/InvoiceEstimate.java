@@ -245,6 +245,7 @@ public class InvoiceEstimate {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InvoiceEstimate that = (InvoiceEstimate) o;
     return java.util.Objects.equals(recurring, that.recurring)
         && java.util.Objects.equals(priceType, that.priceType)
@@ -268,6 +269,7 @@ public class InvoiceEstimate {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         recurring,
         priceType,
@@ -650,6 +652,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -680,6 +683,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           subscriptionId,
@@ -857,6 +861,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTiers that = (LineItemTiers) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -873,6 +878,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           startingUnit,
@@ -988,6 +994,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemDiscounts that = (LineItemDiscounts) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(discountType, that.discountType)
@@ -998,6 +1005,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
     }
   }
@@ -1196,6 +1204,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTaxes that = (LineItemTaxes) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(taxName, that.taxName)
@@ -1216,6 +1225,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           taxName,
@@ -1281,6 +1291,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemCredits that = (LineItemCredits) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -1289,6 +1300,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(cnId, appliedAmount, lineItemId);
     }
   }
@@ -1480,6 +1492,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemAddresses that = (LineItemAddresses) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(firstName, that.firstName)
@@ -1500,6 +1513,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           firstName,
@@ -1665,6 +1679,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(description, that.description)
@@ -1677,6 +1692,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
     }
@@ -1728,6 +1744,7 @@ public class InvoiceEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Taxes that = (Taxes) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(amount, that.amount)
@@ -1736,6 +1753,7 @@ public class InvoiceEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, amount, description);
     }
   }

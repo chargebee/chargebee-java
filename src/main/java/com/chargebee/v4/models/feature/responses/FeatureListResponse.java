@@ -152,6 +152,7 @@ public final class FeatureListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     FeatureListResponse that = (FeatureListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class FeatureListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class FeatureListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       FeatureListItem that = (FeatureListItem) o;
       return java.util.Objects.equals(feature, that.feature);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(feature);
     }
   }

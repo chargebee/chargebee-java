@@ -84,12 +84,14 @@ public final class CustomerDeleteRelationshipResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerDeleteRelationshipResponse that = (CustomerDeleteRelationshipResponse) o;
     return java.util.Objects.equals(customer, that.customer);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer);
   }
 }

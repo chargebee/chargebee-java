@@ -142,6 +142,7 @@ public final class SubscriptionRetrieveWithScheduledChangesResponse extends Base
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionRetrieveWithScheduledChangesResponse that =
         (SubscriptionRetrieveWithScheduledChangesResponse) o;
     return java.util.Objects.equals(subscription, that.subscription)
@@ -151,6 +152,7 @@ public final class SubscriptionRetrieveWithScheduledChangesResponse extends Base
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(subscription, customer, card);
   }
 }

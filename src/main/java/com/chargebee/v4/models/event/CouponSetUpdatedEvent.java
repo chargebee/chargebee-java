@@ -107,6 +107,7 @@ public class CouponSetUpdatedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CouponSetUpdatedEvent that = (CouponSetUpdatedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -120,6 +121,7 @@ public class CouponSetUpdatedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -162,6 +164,7 @@ public class CouponSetUpdatedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(coupon, that.coupon)
           && java.util.Objects.equals(couponSet, that.couponSet);
@@ -169,6 +172,7 @@ public class CouponSetUpdatedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(coupon, couponSet);
     }
   }

@@ -733,6 +733,7 @@ public class Coupon {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Coupon that = (Coupon) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -773,6 +774,7 @@ public class Coupon {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -925,6 +927,7 @@ public class Coupon {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemConstraints that = (ItemConstraints) o;
       return java.util.Objects.equals(itemType, that.itemType)
           && java.util.Objects.equals(constraint, that.constraint)
@@ -933,6 +936,7 @@ public class Coupon {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(itemType, constraint, itemPriceIds);
     }
   }
@@ -1040,6 +1044,7 @@ public class Coupon {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemConstraintCriteria that = (ItemConstraintCriteria) o;
       return java.util.Objects.equals(itemType, that.itemType)
           && java.util.Objects.equals(currencies, that.currencies)
@@ -1049,6 +1054,7 @@ public class Coupon {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(itemType, currencies, itemFamilyIds, itemPricePeriods);
     }
   }
@@ -1157,6 +1163,7 @@ public class Coupon {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CouponConstraints that = (CouponConstraints) o;
       return java.util.Objects.equals(entityType, that.entityType)
           && java.util.Objects.equals(type, that.type)
@@ -1165,6 +1172,7 @@ public class Coupon {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(entityType, type, value);
     }
   }

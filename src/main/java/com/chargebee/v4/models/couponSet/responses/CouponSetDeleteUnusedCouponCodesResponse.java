@@ -88,12 +88,14 @@ public final class CouponSetDeleteUnusedCouponCodesResponse extends BaseResponse
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CouponSetDeleteUnusedCouponCodesResponse that = (CouponSetDeleteUnusedCouponCodesResponse) o;
     return java.util.Objects.equals(couponSet, that.couponSet);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(couponSet);
   }
 }

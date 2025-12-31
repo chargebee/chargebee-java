@@ -167,6 +167,7 @@ public class Usage {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Usage that = (Usage) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(usageDate, that.usageDate)
@@ -184,6 +185,7 @@ public class Usage {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         usageDate,

@@ -149,6 +149,7 @@ public final class CouponListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CouponListResponse that = (CouponListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -156,6 +157,7 @@ public final class CouponListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -187,12 +189,14 @@ public final class CouponListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CouponListItem that = (CouponListItem) o;
       return java.util.Objects.equals(coupon, that.coupon);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(coupon);
     }
   }

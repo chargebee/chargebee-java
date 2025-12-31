@@ -112,6 +112,7 @@ public final class OfferFulfillmentsResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OfferFulfillmentsResponse that = (OfferFulfillmentsResponse) o;
     return java.util.Objects.equals(offerFulfillment, that.offerFulfillment)
         && java.util.Objects.equals(hostedPage, that.hostedPage);
@@ -119,6 +120,7 @@ public final class OfferFulfillmentsResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(offerFulfillment, hostedPage);
   }
 }

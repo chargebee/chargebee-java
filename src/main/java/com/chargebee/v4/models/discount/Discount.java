@@ -311,6 +311,7 @@ public class Discount {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Discount that = (Discount) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(invoiceName, that.invoiceName)
@@ -334,6 +335,7 @@ public class Discount {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         invoiceName,

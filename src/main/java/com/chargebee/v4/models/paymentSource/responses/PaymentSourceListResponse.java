@@ -152,6 +152,7 @@ public final class PaymentSourceListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceListResponse that = (PaymentSourceListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class PaymentSourceListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class PaymentSourceListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PaymentSourceListItem that = (PaymentSourceListItem) o;
       return java.util.Objects.equals(paymentSource, that.paymentSource);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(paymentSource);
     }
   }

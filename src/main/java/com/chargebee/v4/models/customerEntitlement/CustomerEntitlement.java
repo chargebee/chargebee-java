@@ -82,6 +82,7 @@ public class CustomerEntitlement {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerEntitlement that = (CustomerEntitlement) o;
     return java.util.Objects.equals(customerId, that.customerId)
         && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -93,6 +94,7 @@ public class CustomerEntitlement {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customerId, subscriptionId, featureId, value, name, isEnabled);
   }
 }

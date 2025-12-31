@@ -84,12 +84,14 @@ public final class DeleteOfflineTransactionResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     DeleteOfflineTransactionResponse that = (DeleteOfflineTransactionResponse) o;
     return java.util.Objects.equals(transaction, that.transaction);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(transaction);
   }
 }

@@ -89,12 +89,14 @@ public final class ResourceMigrationRetrieveLatestResponse extends BaseResponse 
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ResourceMigrationRetrieveLatestResponse that = (ResourceMigrationRetrieveLatestResponse) o;
     return java.util.Objects.equals(resourceMigration, that.resourceMigration);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(resourceMigration);
   }
 }

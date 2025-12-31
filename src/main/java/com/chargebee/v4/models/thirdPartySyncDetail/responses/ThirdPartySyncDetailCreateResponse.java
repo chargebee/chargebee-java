@@ -87,12 +87,14 @@ public final class ThirdPartySyncDetailCreateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartySyncDetailCreateResponse that = (ThirdPartySyncDetailCreateResponse) o;
     return java.util.Objects.equals(thirdPartySyncDetail, that.thirdPartySyncDetail);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(thirdPartySyncDetail);
   }
 }

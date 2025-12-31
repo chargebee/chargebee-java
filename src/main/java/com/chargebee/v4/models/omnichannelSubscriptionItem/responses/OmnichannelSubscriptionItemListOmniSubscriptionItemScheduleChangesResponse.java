@@ -181,6 +181,7 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse that =
         (OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse) o;
     return java.util.Objects.equals(list, that.list)
@@ -189,6 +190,7 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -229,6 +231,7 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem that =
           (OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem) o;
       return java.util.Objects.equals(
@@ -238,6 +241,7 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelSubscriptionItemScheduledChange);
     }
   }

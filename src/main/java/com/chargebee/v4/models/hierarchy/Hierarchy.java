@@ -83,6 +83,7 @@ public class Hierarchy {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Hierarchy that = (Hierarchy) o;
     return java.util.Objects.equals(customerId, that.customerId)
         && java.util.Objects.equals(parentId, that.parentId)
@@ -94,6 +95,7 @@ public class Hierarchy {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         customerId, parentId, paymentOwnerId, invoiceOwnerId, hasChildren, childrenIds);
   }

@@ -86,12 +86,14 @@ public final class SubscriptionImportContractTermResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionImportContractTermResponse that = (SubscriptionImportContractTermResponse) o;
     return java.util.Objects.equals(contractTerm, that.contractTerm);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(contractTerm);
   }
 }

@@ -191,6 +191,7 @@ public class Product {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Product that = (Product) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -210,6 +211,7 @@ public class Product {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -323,6 +325,7 @@ public class Product {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Options that = (Options) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(name, that.name)
@@ -333,6 +336,7 @@ public class Product {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, name, values, defaultValue, type);
     }
   }

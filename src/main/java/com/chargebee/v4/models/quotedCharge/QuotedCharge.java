@@ -101,6 +101,7 @@ public class QuotedCharge {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuotedCharge that = (QuotedCharge) o;
     return java.util.Objects.equals(charges, that.charges)
         && java.util.Objects.equals(invoiceItems, that.invoiceItems)
@@ -112,6 +113,7 @@ public class QuotedCharge {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         charges, invoiceItems, itemTiers, coupons, couponApplicabilityMappings, addons);
   }
@@ -231,6 +233,7 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Charges that = (Charges) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
@@ -243,6 +246,7 @@ public class QuotedCharge {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           amount,
           amountInDecimal,
@@ -327,6 +331,7 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       InvoiceItems that = (InvoiceItems) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -338,6 +343,7 @@ public class QuotedCharge {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           quantity,
@@ -487,6 +493,7 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemTiers that = (ItemTiers) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -502,6 +509,7 @@ public class QuotedCharge {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           startingUnit,
@@ -541,12 +549,14 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Coupons that = (Coupons) o;
       return java.util.Objects.equals(couponId, that.couponId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(couponId);
     }
   }
@@ -589,6 +599,7 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CouponApplicabilityMappings that = (CouponApplicabilityMappings) o;
       return java.util.Objects.equals(couponId, that.couponId)
           && java.util.Objects.equals(applicableItemPriceIds, that.applicableItemPriceIds);
@@ -596,6 +607,7 @@ public class QuotedCharge {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(couponId, applicableItemPriceIds);
     }
   }
@@ -712,6 +724,7 @@ public class QuotedCharge {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Addons that = (Addons) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -724,6 +737,7 @@ public class QuotedCharge {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           quantity,

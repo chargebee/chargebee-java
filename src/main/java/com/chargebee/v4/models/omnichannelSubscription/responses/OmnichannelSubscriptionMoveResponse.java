@@ -89,12 +89,14 @@ public final class OmnichannelSubscriptionMoveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscriptionMoveResponse that = (OmnichannelSubscriptionMoveResponse) o;
     return java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(omnichannelSubscription);
   }
 }

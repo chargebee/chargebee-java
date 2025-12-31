@@ -348,6 +348,7 @@ public class ThirdPartyEntityMapping {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartyEntityMapping that = (ThirdPartyEntityMapping) o;
     return java.util.Objects.equals(entityType, that.entityType)
         && java.util.Objects.equals(entityExtId, that.entityExtId)
@@ -369,6 +370,7 @@ public class ThirdPartyEntityMapping {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         entityType,
         entityExtId,

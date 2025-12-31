@@ -111,6 +111,7 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelOneTimeOrderItemCancelledEvent that = (OmnichannelOneTimeOrderItemCancelledEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -124,6 +125,7 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -198,6 +200,7 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(omnichannelOneTimeOrder, that.omnichannelOneTimeOrder)
           && java.util.Objects.equals(omnichannelOneTimeOrderItem, that.omnichannelOneTimeOrderItem)
@@ -207,6 +210,7 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           omnichannelOneTimeOrder, omnichannelOneTimeOrderItem, omnichannelTransaction, customer);
     }

@@ -171,6 +171,7 @@ public final class CustomerListHierarchyDetailResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerListHierarchyDetailResponse that = (CustomerListHierarchyDetailResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -178,6 +179,7 @@ public final class CustomerListHierarchyDetailResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -209,12 +211,14 @@ public final class CustomerListHierarchyDetailResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CustomerListHierarchyDetailItem that = (CustomerListHierarchyDetailItem) o;
       return java.util.Objects.equals(hierarchy, that.hierarchy);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(hierarchy);
     }
   }

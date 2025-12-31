@@ -318,6 +318,7 @@ public class PaymentIntent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentIntent that = (PaymentIntent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(status, that.status)
@@ -342,6 +343,7 @@ public class PaymentIntent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         status,
@@ -593,6 +595,7 @@ public class PaymentIntent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ActivePaymentAttempt that = (ActivePaymentAttempt) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(status, that.status)
@@ -608,6 +611,7 @@ public class PaymentIntent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           status,
@@ -775,6 +779,7 @@ public class PaymentIntent {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         ErrorDetail that = (ErrorDetail) o;
         return java.util.Objects.equals(requestId, that.requestId)
             && java.util.Objects.equals(errorCategory, that.errorCategory)
@@ -795,6 +800,7 @@ public class PaymentIntent {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(
             requestId,
             errorCategory,
@@ -1044,6 +1050,7 @@ public class PaymentIntent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PaymentAttempts that = (PaymentAttempts) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(status, that.status)
@@ -1059,6 +1066,7 @@ public class PaymentIntent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           status,
@@ -1226,6 +1234,7 @@ public class PaymentIntent {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         ErrorDetail that = (ErrorDetail) o;
         return java.util.Objects.equals(requestId, that.requestId)
             && java.util.Objects.equals(errorCategory, that.errorCategory)
@@ -1246,6 +1255,7 @@ public class PaymentIntent {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(
             requestId,
             errorCategory,

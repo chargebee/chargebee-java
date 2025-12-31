@@ -84,12 +84,14 @@ public final class EventRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EventRetrieveResponse that = (EventRetrieveResponse) o;
     return java.util.Objects.equals(event, that.event);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(event);
   }
 }

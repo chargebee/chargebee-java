@@ -163,6 +163,7 @@ public final class SubscriptionImportForCustomerResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionImportForCustomerResponse that = (SubscriptionImportForCustomerResponse) o;
     return java.util.Objects.equals(subscription, that.subscription)
         && java.util.Objects.equals(customer, that.customer)
@@ -172,6 +173,7 @@ public final class SubscriptionImportForCustomerResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(subscription, customer, card, invoice);
   }
 }

@@ -107,6 +107,7 @@ public class EntitlementOverridesRemovedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EntitlementOverridesRemovedEvent that = (EntitlementOverridesRemovedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -120,6 +121,7 @@ public class EntitlementOverridesRemovedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -167,6 +169,7 @@ public class EntitlementOverridesRemovedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(impactedSubscription, that.impactedSubscription)
           && java.util.Objects.equals(metadata, that.metadata);
@@ -174,6 +177,7 @@ public class EntitlementOverridesRemovedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(impactedSubscription, metadata);
     }
   }

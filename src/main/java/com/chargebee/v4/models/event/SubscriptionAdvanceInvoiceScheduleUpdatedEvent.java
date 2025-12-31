@@ -110,6 +110,7 @@ public class SubscriptionAdvanceInvoiceScheduleUpdatedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionAdvanceInvoiceScheduleUpdatedEvent that =
         (SubscriptionAdvanceInvoiceScheduleUpdatedEvent) o;
     return java.util.Objects.equals(id, that.id)
@@ -124,6 +125,7 @@ public class SubscriptionAdvanceInvoiceScheduleUpdatedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -184,6 +186,7 @@ public class SubscriptionAdvanceInvoiceScheduleUpdatedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(subscription, that.subscription)
           && java.util.Objects.equals(customer, that.customer)
@@ -192,6 +195,7 @@ public class SubscriptionAdvanceInvoiceScheduleUpdatedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(subscription, customer, advanceInvoiceSchedules);
     }
   }

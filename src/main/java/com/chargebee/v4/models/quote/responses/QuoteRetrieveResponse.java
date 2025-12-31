@@ -162,6 +162,7 @@ public final class QuoteRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuoteRetrieveResponse that = (QuoteRetrieveResponse) o;
     return java.util.Objects.equals(quote, that.quote)
         && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
@@ -171,6 +172,7 @@ public final class QuoteRetrieveResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedSubscription, quotedCharge, quotedRamp);
   }
 }

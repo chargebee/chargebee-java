@@ -676,6 +676,7 @@ public class Quote {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Quote that = (Quote) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -723,6 +724,7 @@ public class Quote {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -1129,6 +1131,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -1159,6 +1162,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           subscriptionId,
@@ -1336,6 +1340,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTiers that = (LineItemTiers) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -1352,6 +1357,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           startingUnit,
@@ -1467,6 +1473,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemDiscounts that = (LineItemDiscounts) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(discountType, that.discountType)
@@ -1477,6 +1484,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
     }
   }
@@ -1675,6 +1683,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTaxes that = (LineItemTaxes) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(taxName, that.taxName)
@@ -1695,6 +1704,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           taxName,
@@ -1860,6 +1870,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(description, that.description)
@@ -1872,6 +1883,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
     }
@@ -1923,6 +1935,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Taxes that = (Taxes) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(amount, that.amount)
@@ -1931,6 +1944,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, amount, description);
     }
   }
@@ -2113,6 +2127,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ShippingAddress that = (ShippingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -2132,6 +2147,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -2328,6 +2344,7 @@ public class Quote {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddress that = (BillingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -2347,6 +2364,7 @@ public class Quote {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,

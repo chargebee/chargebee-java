@@ -165,6 +165,7 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InvoiceListPaymentReferenceNumbersResponse that =
         (InvoiceListPaymentReferenceNumbersResponse) o;
     return java.util.Objects.equals(list, that.list)
@@ -173,6 +174,7 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -207,12 +209,14 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       InvoiceListPaymentReferenceNumbersItem that = (InvoiceListPaymentReferenceNumbersItem) o;
       return java.util.Objects.equals(paymentReferenceNumber, that.paymentReferenceNumber);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(paymentReferenceNumber);
     }
   }

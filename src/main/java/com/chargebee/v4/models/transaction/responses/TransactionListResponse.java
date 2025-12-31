@@ -152,6 +152,7 @@ public final class TransactionListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     TransactionListResponse that = (TransactionListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class TransactionListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class TransactionListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TransactionListItem that = (TransactionListItem) o;
       return java.util.Objects.equals(transaction, that.transaction);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(transaction);
     }
   }

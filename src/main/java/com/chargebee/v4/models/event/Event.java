@@ -732,6 +732,7 @@ public class Event {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Event that = (Event) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -748,6 +749,7 @@ public class Event {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         occurredAt,
@@ -834,6 +836,7 @@ public class Event {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Webhooks that = (Webhooks) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(webhookStatus, that.webhookStatus);
@@ -841,6 +844,7 @@ public class Event {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, webhookStatus);
     }
   }

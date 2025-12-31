@@ -84,12 +84,14 @@ public final class PlanRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PlanRetrieveResponse that = (PlanRetrieveResponse) o;
     return java.util.Objects.equals(plan, that.plan);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(plan);
   }
 }

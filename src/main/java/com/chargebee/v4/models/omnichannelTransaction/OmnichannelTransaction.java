@@ -174,6 +174,7 @@ public class OmnichannelTransaction {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelTransaction that = (OmnichannelTransaction) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(idAtSource, that.idAtSource)
@@ -193,6 +194,7 @@ public class OmnichannelTransaction {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         idAtSource,
@@ -236,12 +238,14 @@ public class OmnichannelTransaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
       return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelSubscriptionId);
     }
   }
@@ -274,12 +278,14 @@ public class OmnichannelTransaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
       return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelOneTimeOrderId);
     }
   }

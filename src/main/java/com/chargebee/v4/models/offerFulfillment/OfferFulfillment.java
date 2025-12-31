@@ -186,6 +186,7 @@ public class OfferFulfillment {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OfferFulfillment that = (OfferFulfillment) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(personalizedOfferId, that.personalizedOfferId)
@@ -201,6 +202,7 @@ public class OfferFulfillment {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         personalizedOfferId,
@@ -280,6 +282,7 @@ public class OfferFulfillment {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Error that = (Error) o;
       return java.util.Objects.equals(code, that.code)
           && java.util.Objects.equals(message, that.message);
@@ -287,6 +290,7 @@ public class OfferFulfillment {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(code, message);
     }
   }

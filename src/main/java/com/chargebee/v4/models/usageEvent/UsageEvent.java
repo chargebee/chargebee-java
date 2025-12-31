@@ -68,6 +68,7 @@ public class UsageEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     UsageEvent that = (UsageEvent) o;
     return java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(deduplicationId, that.deduplicationId)
@@ -77,6 +78,7 @@ public class UsageEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(subscriptionId, deduplicationId, usageTimestamp, properties);
   }
 }

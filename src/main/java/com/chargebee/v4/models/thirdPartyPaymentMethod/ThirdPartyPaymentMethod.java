@@ -286,6 +286,7 @@ public class ThirdPartyPaymentMethod {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartyPaymentMethod that = (ThirdPartyPaymentMethod) o;
     return java.util.Objects.equals(type, that.type)
         && java.util.Objects.equals(gateway, that.gateway)
@@ -295,6 +296,7 @@ public class ThirdPartyPaymentMethod {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(type, gateway, gatewayAccountId, referenceId);
   }
 }

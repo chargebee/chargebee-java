@@ -199,6 +199,7 @@ public class DifferentialPrice {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     DifferentialPrice that = (DifferentialPrice) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(itemPriceId, that.itemPriceId)
@@ -219,6 +220,7 @@ public class DifferentialPrice {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         itemPriceId,
@@ -358,6 +360,7 @@ public class DifferentialPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Tiers that = (Tiers) o;
       return java.util.Objects.equals(startingUnit, that.startingUnit)
           && java.util.Objects.equals(endingUnit, that.endingUnit)
@@ -371,6 +374,7 @@ public class DifferentialPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           startingUnit,
           endingUnit,
@@ -453,6 +457,7 @@ public class DifferentialPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ParentPeriods that = (ParentPeriods) o;
       return java.util.Objects.equals(periodUnit, that.periodUnit)
           && java.util.Objects.equals(period, that.period);
@@ -460,6 +465,7 @@ public class DifferentialPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(periodUnit, period);
     }
   }

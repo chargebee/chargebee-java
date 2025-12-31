@@ -117,6 +117,7 @@ public final class PaymentSourceCreateUsingPermanentTokenResponse extends BaseRe
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceCreateUsingPermanentTokenResponse that =
         (PaymentSourceCreateUsingPermanentTokenResponse) o;
     return java.util.Objects.equals(customer, that.customer)
@@ -125,6 +126,7 @@ public final class PaymentSourceCreateUsingPermanentTokenResponse extends BaseRe
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer, paymentSource);
   }
 }

@@ -165,6 +165,7 @@ public final class ThirdPartyEntityMappingListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartyEntityMappingListResponse that = (ThirdPartyEntityMappingListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -172,6 +173,7 @@ public final class ThirdPartyEntityMappingListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -207,12 +209,14 @@ public final class ThirdPartyEntityMappingListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ThirdPartyEntityMappingListItem that = (ThirdPartyEntityMappingListItem) o;
       return java.util.Objects.equals(thirdPartyEntityMapping, that.thirdPartyEntityMapping);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(thirdPartyEntityMapping);
     }
   }

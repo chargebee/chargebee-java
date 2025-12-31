@@ -85,12 +85,14 @@ public final class CustomerSetPromotionalCreditsResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerSetPromotionalCreditsResponse that = (CustomerSetPromotionalCreditsResponse) o;
     return java.util.Objects.equals(customer, that.customer);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer);
   }
 }

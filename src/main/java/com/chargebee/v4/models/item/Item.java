@@ -573,6 +573,7 @@ public class Item {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Item that = (Item) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -608,6 +609,7 @@ public class Item {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -666,12 +668,14 @@ public class Item {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ApplicableItems that = (ApplicableItems) o;
       return java.util.Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id);
     }
   }
@@ -761,6 +765,7 @@ public class Item {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BundleItems that = (BundleItems) o;
       return java.util.Objects.equals(itemId, that.itemId)
           && java.util.Objects.equals(itemType, that.itemType)
@@ -770,6 +775,7 @@ public class Item {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(itemId, itemType, quantity, priceAllocation);
     }
   }
@@ -825,12 +831,14 @@ public class Item {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BundleConfiguration that = (BundleConfiguration) o;
       return java.util.Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(type);
     }
   }

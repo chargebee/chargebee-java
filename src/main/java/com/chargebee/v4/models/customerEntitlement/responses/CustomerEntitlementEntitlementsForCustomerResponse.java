@@ -172,6 +172,7 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerEntitlementEntitlementsForCustomerResponse that =
         (CustomerEntitlementEntitlementsForCustomerResponse) o;
     return java.util.Objects.equals(list, that.list)
@@ -180,6 +181,7 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -215,6 +217,7 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CustomerEntitlementEntitlementsForCustomerItem that =
           (CustomerEntitlementEntitlementsForCustomerItem) o;
       return java.util.Objects.equals(customerEntitlement, that.customerEntitlement);
@@ -222,6 +225,7 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(customerEntitlement);
     }
   }

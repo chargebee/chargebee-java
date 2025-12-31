@@ -65,6 +65,7 @@ public class PricingPageSession {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PricingPageSession that = (PricingPageSession) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(url, that.url)
@@ -74,6 +75,7 @@ public class PricingPageSession {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, url, createdAt, expiresAt);
   }
 }

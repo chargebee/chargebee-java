@@ -347,6 +347,7 @@ public class QuotedSubscription {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuotedSubscription that = (QuotedSubscription) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(startDate, that.startDate)
@@ -376,6 +377,7 @@ public class QuotedSubscription {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         startDate,
@@ -427,12 +429,14 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Coupons that = (Coupons) o;
       return java.util.Objects.equals(couponId, that.couponId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(couponId);
     }
   }
@@ -873,6 +877,7 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       SubscriptionItems that = (SubscriptionItems) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(itemType, that.itemType)
@@ -904,6 +909,7 @@ public class QuotedSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           itemType,
@@ -1072,6 +1078,7 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemTiers that = (ItemTiers) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -1087,6 +1094,7 @@ public class QuotedSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           startingUnit,
@@ -1207,6 +1215,7 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       QuotedContractTerm that = (QuotedContractTerm) o;
       return java.util.Objects.equals(contractStart, that.contractStart)
           && java.util.Objects.equals(contractEnd, that.contractEnd)
@@ -1218,6 +1227,7 @@ public class QuotedSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           contractStart,
           contractEnd,
@@ -1354,6 +1364,7 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       EventBasedAddons that = (EventBasedAddons) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -1367,6 +1378,7 @@ public class QuotedSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           quantity,
@@ -1518,6 +1530,7 @@ public class QuotedSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Addons that = (Addons) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -1533,6 +1546,7 @@ public class QuotedSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           quantity,

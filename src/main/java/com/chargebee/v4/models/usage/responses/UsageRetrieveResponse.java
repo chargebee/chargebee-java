@@ -84,12 +84,14 @@ public final class UsageRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     UsageRetrieveResponse that = (UsageRetrieveResponse) o;
     return java.util.Objects.equals(usage, that.usage);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(usage);
   }
 }

@@ -105,6 +105,7 @@ public class PlanCreatedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PlanCreatedEvent that = (PlanCreatedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -118,6 +119,7 @@ public class PlanCreatedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -150,12 +152,14 @@ public class PlanCreatedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(plan, that.plan);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(plan);
     }
   }

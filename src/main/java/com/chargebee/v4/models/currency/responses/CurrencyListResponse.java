@@ -152,6 +152,7 @@ public final class CurrencyListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CurrencyListResponse that = (CurrencyListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class CurrencyListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class CurrencyListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CurrencyListItem that = (CurrencyListItem) o;
       return java.util.Objects.equals(currency, that.currency);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(currency);
     }
   }

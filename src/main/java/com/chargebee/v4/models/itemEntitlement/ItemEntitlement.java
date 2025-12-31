@@ -125,6 +125,7 @@ public class ItemEntitlement {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ItemEntitlement that = (ItemEntitlement) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(itemId, that.itemId)
@@ -137,6 +138,7 @@ public class ItemEntitlement {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, itemId, itemType, featureId, featureName, value, name);
   }
 }

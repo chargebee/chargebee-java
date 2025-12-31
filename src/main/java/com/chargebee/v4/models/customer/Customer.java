@@ -1418,6 +1418,7 @@ public class Customer {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Customer that = (Customer) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(firstName, that.firstName)
@@ -1492,6 +1493,7 @@ public class Customer {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         firstName,
@@ -1741,6 +1743,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddress that = (BillingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -1760,6 +1763,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1899,6 +1903,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ReferralUrls that = (ReferralUrls) o;
       return java.util.Objects.equals(externalCustomerId, that.externalCustomerId)
           && java.util.Objects.equals(referralSharingUrl, that.referralSharingUrl)
@@ -1912,6 +1917,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           externalCustomerId,
           referralSharingUrl,
@@ -2024,6 +2030,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Contacts that = (Contacts) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(firstName, that.firstName)
@@ -2038,6 +2045,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           firstName,
@@ -2371,6 +2379,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PaymentMethod that = (PaymentMethod) o;
       return java.util.Objects.equals(type, that.type)
           && java.util.Objects.equals(gateway, that.gateway)
@@ -2381,6 +2390,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(type, gateway, gatewayAccountId, status, referenceId);
     }
   }
@@ -2468,6 +2478,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Balances that = (Balances) o;
       return java.util.Objects.equals(promotionalCredits, that.promotionalCredits)
           && java.util.Objects.equals(excessPayments, that.excessPayments)
@@ -2480,6 +2491,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           promotionalCredits,
           excessPayments,
@@ -2546,6 +2558,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       EntityIdentifiers that = (EntityIdentifiers) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(value, that.value)
@@ -2555,6 +2568,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, value, scheme, standard);
     }
   }
@@ -2605,6 +2619,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxProvidersFields that = (TaxProvidersFields) o;
       return java.util.Objects.equals(providerName, that.providerName)
           && java.util.Objects.equals(fieldId, that.fieldId)
@@ -2613,6 +2628,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(providerName, fieldId, fieldValue);
     }
   }
@@ -2663,6 +2679,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Relationship that = (Relationship) o;
       return java.util.Objects.equals(parentId, that.parentId)
           && java.util.Objects.equals(paymentOwnerId, that.paymentOwnerId)
@@ -2671,6 +2688,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(parentId, paymentOwnerId, invoiceOwnerId);
     }
   }
@@ -2809,6 +2827,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ParentAccountAccess that = (ParentAccountAccess) o;
       return java.util.Objects.equals(
               portalEditChildSubscriptions, that.portalEditChildSubscriptions)
@@ -2820,6 +2839,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           portalEditChildSubscriptions,
           portalDownloadChildInvoices,
@@ -2959,6 +2979,7 @@ public class Customer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ChildAccountAccess that = (ChildAccountAccess) o;
       return java.util.Objects.equals(portalEditSubscriptions, that.portalEditSubscriptions)
           && java.util.Objects.equals(portalDownloadInvoices, that.portalDownloadInvoices)
@@ -2969,6 +2990,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           portalEditSubscriptions,
           portalDownloadInvoices,

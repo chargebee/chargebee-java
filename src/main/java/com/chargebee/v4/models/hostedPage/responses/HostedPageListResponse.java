@@ -152,6 +152,7 @@ public final class HostedPageListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     HostedPageListResponse that = (HostedPageListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class HostedPageListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class HostedPageListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       HostedPageListItem that = (HostedPageListItem) o;
       return java.util.Objects.equals(hostedPage, that.hostedPage);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(hostedPage);
     }
   }

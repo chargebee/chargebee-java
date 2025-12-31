@@ -84,12 +84,14 @@ public final class ItemPriceRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ItemPriceRetrieveResponse that = (ItemPriceRetrieveResponse) o;
     return java.util.Objects.equals(itemPrice, that.itemPrice);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(itemPrice);
   }
 }

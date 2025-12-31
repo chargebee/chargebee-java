@@ -107,6 +107,7 @@ public final class EditOneTimeQuoteResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EditOneTimeQuoteResponse that = (EditOneTimeQuoteResponse) o;
     return java.util.Objects.equals(quote, that.quote)
         && java.util.Objects.equals(quotedCharge, that.quotedCharge);
@@ -114,6 +115,7 @@ public final class EditOneTimeQuoteResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedCharge);
   }
 }

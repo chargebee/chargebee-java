@@ -151,6 +151,7 @@ public final class Pc2MigrationItemListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Pc2MigrationItemListResponse that = (Pc2MigrationItemListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -158,6 +159,7 @@ public final class Pc2MigrationItemListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 }

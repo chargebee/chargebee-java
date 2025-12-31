@@ -148,6 +148,7 @@ public class ResourceMigration {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ResourceMigration that = (ResourceMigration) o;
     return java.util.Objects.equals(fromSite, that.fromSite)
         && java.util.Objects.equals(entityType, that.entityType)
@@ -160,6 +161,7 @@ public class ResourceMigration {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         fromSite, entityType, entityId, status, errors, createdAt, updatedAt);
   }

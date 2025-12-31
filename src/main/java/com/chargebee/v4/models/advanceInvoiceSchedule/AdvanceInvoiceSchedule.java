@@ -99,6 +99,7 @@ public class AdvanceInvoiceSchedule {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     AdvanceInvoiceSchedule that = (AdvanceInvoiceSchedule) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(scheduleType, that.scheduleType)
@@ -108,6 +109,7 @@ public class AdvanceInvoiceSchedule {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, scheduleType, fixedIntervalSchedule, specificDatesSchedule);
   }
 
@@ -214,6 +216,7 @@ public class AdvanceInvoiceSchedule {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       FixedIntervalSchedule that = (FixedIntervalSchedule) o;
       return java.util.Objects.equals(endScheduleOn, that.endScheduleOn)
           && java.util.Objects.equals(numberOfOccurrences, that.numberOfOccurrences)
@@ -225,6 +228,7 @@ public class AdvanceInvoiceSchedule {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           endScheduleOn, numberOfOccurrences, daysBeforeRenewal, endDate, createdAt, termsToCharge);
     }
@@ -276,6 +280,7 @@ public class AdvanceInvoiceSchedule {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       SpecificDatesSchedule that = (SpecificDatesSchedule) o;
       return java.util.Objects.equals(termsToCharge, that.termsToCharge)
           && java.util.Objects.equals(date, that.date)
@@ -284,6 +289,7 @@ public class AdvanceInvoiceSchedule {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(termsToCharge, date, createdAt);
     }
   }

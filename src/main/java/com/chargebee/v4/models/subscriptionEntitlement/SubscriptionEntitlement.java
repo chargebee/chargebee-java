@@ -181,6 +181,7 @@ public class SubscriptionEntitlement {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionEntitlement that = (SubscriptionEntitlement) o;
     return java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(featureId, that.featureId)
@@ -199,6 +200,7 @@ public class SubscriptionEntitlement {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         subscriptionId,
         featureId,
@@ -243,12 +245,14 @@ public class SubscriptionEntitlement {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Components that = (Components) o;
       return java.util.Objects.equals(entitlementOverrides, that.entitlementOverrides);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(entitlementOverrides);
     }
 
@@ -284,6 +288,7 @@ public class SubscriptionEntitlement {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         EntitlementOverrides that = (EntitlementOverrides) o;
         return java.util.Objects.equals(value, that.value)
             && java.util.Objects.equals(name, that.name);
@@ -291,6 +296,7 @@ public class SubscriptionEntitlement {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(value, name);
       }
     }

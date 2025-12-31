@@ -92,6 +92,7 @@ public final class PricingPageSessionCreateForNewSubscriptionResponse extends Ba
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PricingPageSessionCreateForNewSubscriptionResponse that =
         (PricingPageSessionCreateForNewSubscriptionResponse) o;
     return java.util.Objects.equals(pricingPageSession, that.pricingPageSession);
@@ -99,6 +100,7 @@ public final class PricingPageSessionCreateForNewSubscriptionResponse extends Ba
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(pricingPageSession);
   }
 }

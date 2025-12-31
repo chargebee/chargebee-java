@@ -98,6 +98,7 @@ public class PaymentReferenceNumber {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentReferenceNumber that = (PaymentReferenceNumber) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(type, that.type)
@@ -107,6 +108,7 @@ public class PaymentReferenceNumber {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, type, number, invoiceId);
   }
 }

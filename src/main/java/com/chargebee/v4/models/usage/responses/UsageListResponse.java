@@ -149,6 +149,7 @@ public final class UsageListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     UsageListResponse that = (UsageListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -156,6 +157,7 @@ public final class UsageListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -187,12 +189,14 @@ public final class UsageListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       UsageListItem that = (UsageListItem) o;
       return java.util.Objects.equals(usage, that.usage);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(usage);
     }
   }

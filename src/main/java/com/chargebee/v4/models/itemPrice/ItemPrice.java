@@ -891,6 +891,7 @@ public class ItemPrice {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ItemPrice that = (ItemPrice) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -941,6 +942,7 @@ public class ItemPrice {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -1109,6 +1111,7 @@ public class ItemPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Tiers that = (Tiers) o;
       return java.util.Objects.equals(startingUnit, that.startingUnit)
           && java.util.Objects.equals(endingUnit, that.endingUnit)
@@ -1122,6 +1125,7 @@ public class ItemPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           startingUnit,
           endingUnit,
@@ -1249,6 +1253,7 @@ public class ItemPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxDetail that = (TaxDetail) o;
       return java.util.Objects.equals(taxProfileId, that.taxProfileId)
           && java.util.Objects.equals(avalaraSaleType, that.avalaraSaleType)
@@ -1261,6 +1266,7 @@ public class ItemPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           taxProfileId,
           avalaraSaleType,
@@ -1318,6 +1324,7 @@ public class ItemPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxProvidersFields that = (TaxProvidersFields) o;
       return java.util.Objects.equals(providerName, that.providerName)
           && java.util.Objects.equals(fieldId, that.fieldId)
@@ -1326,6 +1333,7 @@ public class ItemPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(providerName, fieldId, fieldValue);
     }
   }
@@ -1403,6 +1411,7 @@ public class ItemPrice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AccountingDetail that = (AccountingDetail) o;
       return java.util.Objects.equals(sku, that.sku)
           && java.util.Objects.equals(accountingCode, that.accountingCode)
@@ -1414,6 +1423,7 @@ public class ItemPrice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           sku,
           accountingCode,

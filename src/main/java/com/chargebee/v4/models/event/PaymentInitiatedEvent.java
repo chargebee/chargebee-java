@@ -113,6 +113,7 @@ public class PaymentInitiatedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentInitiatedEvent that = (PaymentInitiatedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -126,6 +127,7 @@ public class PaymentInitiatedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -209,6 +211,7 @@ public class PaymentInitiatedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(transaction, that.transaction)
           && java.util.Objects.equals(invoice, that.invoice)
@@ -219,6 +222,7 @@ public class PaymentInitiatedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(transaction, invoice, customer, subscription, card);
     }
   }

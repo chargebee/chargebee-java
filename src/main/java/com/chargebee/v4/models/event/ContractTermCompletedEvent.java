@@ -105,6 +105,7 @@ public class ContractTermCompletedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ContractTermCompletedEvent that = (ContractTermCompletedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -118,6 +119,7 @@ public class ContractTermCompletedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -150,12 +152,14 @@ public class ContractTermCompletedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(contractTerm, that.contractTerm);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(contractTerm);
     }
   }

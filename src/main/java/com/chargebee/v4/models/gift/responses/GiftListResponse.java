@@ -151,6 +151,7 @@ public final class GiftListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     GiftListResponse that = (GiftListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -158,6 +159,7 @@ public final class GiftListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -200,6 +202,7 @@ public final class GiftListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       GiftListItem that = (GiftListItem) o;
       return java.util.Objects.equals(gift, that.gift)
           && java.util.Objects.equals(subscription, that.subscription);
@@ -207,6 +210,7 @@ public final class GiftListResponse {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(gift, subscription);
     }
   }

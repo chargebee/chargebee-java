@@ -135,6 +135,7 @@ public final class PersonalizedOffersResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PersonalizedOffersResponse that = (PersonalizedOffersResponse) o;
     return java.util.Objects.equals(personalizedOffers, that.personalizedOffers)
         && java.util.Objects.equals(brand, that.brand)
@@ -143,6 +144,7 @@ public final class PersonalizedOffersResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(personalizedOffers, brand, expiresAt);
   }
 }

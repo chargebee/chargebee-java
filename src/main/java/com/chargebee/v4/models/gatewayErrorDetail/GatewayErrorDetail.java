@@ -163,6 +163,7 @@ public class GatewayErrorDetail {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     GatewayErrorDetail that = (GatewayErrorDetail) o;
     return java.util.Objects.equals(requestId, that.requestId)
         && java.util.Objects.equals(errorCategory, that.errorCategory)
@@ -183,6 +184,7 @@ public class GatewayErrorDetail {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         requestId,
         errorCategory,

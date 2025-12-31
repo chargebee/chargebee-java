@@ -91,6 +91,7 @@ public final class AddEntitlementOverrideForSubscriptionResponse extends BaseRes
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     AddEntitlementOverrideForSubscriptionResponse that =
         (AddEntitlementOverrideForSubscriptionResponse) o;
     return java.util.Objects.equals(list, that.list);
@@ -98,6 +99,7 @@ public final class AddEntitlementOverrideForSubscriptionResponse extends BaseRes
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list);
   }
 }

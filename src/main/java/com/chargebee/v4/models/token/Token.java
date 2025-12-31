@@ -418,6 +418,7 @@ public class Token {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Token that = (Token) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(gateway, that.gateway)
@@ -435,6 +436,7 @@ public class Token {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         gateway,

@@ -84,12 +84,14 @@ public final class RampRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     RampRetrieveResponse that = (RampRetrieveResponse) o;
     return java.util.Objects.equals(ramp, that.ramp);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(ramp);
   }
 }

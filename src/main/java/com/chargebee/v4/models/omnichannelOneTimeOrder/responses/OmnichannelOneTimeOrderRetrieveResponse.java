@@ -90,12 +90,14 @@ public final class OmnichannelOneTimeOrderRetrieveResponse extends BaseResponse 
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelOneTimeOrderRetrieveResponse that = (OmnichannelOneTimeOrderRetrieveResponse) o;
     return java.util.Objects.equals(omnichannelOneTimeOrder, that.omnichannelOneTimeOrder);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(omnichannelOneTimeOrder);
   }
 }

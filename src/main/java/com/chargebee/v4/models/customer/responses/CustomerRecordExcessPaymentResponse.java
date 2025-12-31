@@ -113,6 +113,7 @@ public final class CustomerRecordExcessPaymentResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerRecordExcessPaymentResponse that = (CustomerRecordExcessPaymentResponse) o;
     return java.util.Objects.equals(customer, that.customer)
         && java.util.Objects.equals(transaction, that.transaction);
@@ -120,6 +121,7 @@ public final class CustomerRecordExcessPaymentResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer, transaction);
   }
 }

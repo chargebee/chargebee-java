@@ -219,6 +219,7 @@ public class UsageFile {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     UsageFile that = (UsageFile) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -241,6 +242,7 @@ public class UsageFile {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -293,6 +295,7 @@ public class UsageFile {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       UploadDetails that = (UploadDetails) o;
       return java.util.Objects.equals(url, that.url)
           && java.util.Objects.equals(expiresAt, that.expiresAt);
@@ -300,6 +303,7 @@ public class UsageFile {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(url, expiresAt);
     }
   }

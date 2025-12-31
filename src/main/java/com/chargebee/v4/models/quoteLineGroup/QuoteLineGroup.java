@@ -208,6 +208,7 @@ public class QuoteLineGroup {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuoteLineGroup that = (QuoteLineGroup) o;
     return java.util.Objects.equals(version, that.version)
         && java.util.Objects.equals(id, that.id)
@@ -227,6 +228,7 @@ public class QuoteLineGroup {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         version,
         id,
@@ -605,6 +607,7 @@ public class QuoteLineGroup {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -635,6 +638,7 @@ public class QuoteLineGroup {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           subscriptionId,
@@ -764,6 +768,7 @@ public class QuoteLineGroup {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemDiscounts that = (LineItemDiscounts) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(discountType, that.discountType)
@@ -774,6 +779,7 @@ public class QuoteLineGroup {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
     }
   }
@@ -972,6 +978,7 @@ public class QuoteLineGroup {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTaxes that = (LineItemTaxes) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(taxName, that.taxName)
@@ -992,6 +999,7 @@ public class QuoteLineGroup {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           taxName,
@@ -1157,6 +1165,7 @@ public class QuoteLineGroup {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(description, that.description)
@@ -1169,6 +1178,7 @@ public class QuoteLineGroup {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
     }
@@ -1220,6 +1230,7 @@ public class QuoteLineGroup {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Taxes that = (Taxes) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(amount, that.amount)
@@ -1228,6 +1239,7 @@ public class QuoteLineGroup {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, amount, description);
     }
   }

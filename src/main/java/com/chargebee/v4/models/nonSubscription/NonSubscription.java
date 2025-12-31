@@ -65,6 +65,7 @@ public class NonSubscription {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     NonSubscription that = (NonSubscription) o;
     return java.util.Objects.equals(appId, that.appId)
         && java.util.Objects.equals(invoiceId, that.invoiceId)
@@ -74,6 +75,7 @@ public class NonSubscription {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(appId, invoiceId, customerId, chargeId);
   }
 }

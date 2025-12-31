@@ -168,6 +168,7 @@ public final class PaymentVouchersForInvoiceResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentVouchersForInvoiceResponse that = (PaymentVouchersForInvoiceResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -175,6 +176,7 @@ public final class PaymentVouchersForInvoiceResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -210,6 +212,7 @@ public final class PaymentVouchersForInvoiceResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PaymentVoucherPaymentVouchersForInvoiceItem that =
           (PaymentVoucherPaymentVouchersForInvoiceItem) o;
       return java.util.Objects.equals(paymentVoucher, that.paymentVoucher);
@@ -217,6 +220,7 @@ public final class PaymentVouchersForInvoiceResponse {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(paymentVoucher);
     }
   }

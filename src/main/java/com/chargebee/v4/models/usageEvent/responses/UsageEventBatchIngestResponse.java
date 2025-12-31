@@ -110,6 +110,7 @@ public final class UsageEventBatchIngestResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     UsageEventBatchIngestResponse that = (UsageEventBatchIngestResponse) o;
     return java.util.Objects.equals(batchId, that.batchId)
         && java.util.Objects.equals(failedEvents, that.failedEvents);
@@ -117,6 +118,7 @@ public final class UsageEventBatchIngestResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(batchId, failedEvents);
   }
 }

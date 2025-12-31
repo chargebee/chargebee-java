@@ -112,6 +112,7 @@ public final class InvoiceRecordPaymentResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InvoiceRecordPaymentResponse that = (InvoiceRecordPaymentResponse) o;
     return java.util.Objects.equals(invoice, that.invoice)
         && java.util.Objects.equals(transaction, that.transaction);
@@ -119,6 +120,7 @@ public final class InvoiceRecordPaymentResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(invoice, transaction);
   }
 }

@@ -163,6 +163,7 @@ public final class QuoteLineGroupsForQuoteResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuoteLineGroupsForQuoteResponse that = (QuoteLineGroupsForQuoteResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -170,6 +171,7 @@ public final class QuoteLineGroupsForQuoteResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -201,12 +203,14 @@ public final class QuoteLineGroupsForQuoteResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       QuoteQuoteLineGroupsForQuoteItem that = (QuoteQuoteLineGroupsForQuoteItem) o;
       return java.util.Objects.equals(quoteLineGroup, that.quoteLineGroup);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(quoteLineGroup);
     }
   }

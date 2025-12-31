@@ -84,12 +84,14 @@ public final class VirtualBankAccountRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     VirtualBankAccountRetrieveResponse that = (VirtualBankAccountRetrieveResponse) o;
     return java.util.Objects.equals(virtualBankAccount, that.virtualBankAccount);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(virtualBankAccount);
   }
 }

@@ -112,6 +112,7 @@ public class SubscriptionScheduledCancellationRemovedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionScheduledCancellationRemovedEvent that =
         (SubscriptionScheduledCancellationRemovedEvent) o;
     return java.util.Objects.equals(id, that.id)
@@ -126,6 +127,7 @@ public class SubscriptionScheduledCancellationRemovedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -197,6 +199,7 @@ public class SubscriptionScheduledCancellationRemovedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(subscription, that.subscription)
           && java.util.Objects.equals(customer, that.customer)
@@ -206,6 +209,7 @@ public class SubscriptionScheduledCancellationRemovedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(subscription, customer, card, advanceInvoiceSchedule);
     }
   }

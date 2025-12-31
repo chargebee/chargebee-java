@@ -105,6 +105,7 @@ public class OrderResentEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OrderResentEvent that = (OrderResentEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -118,6 +119,7 @@ public class OrderResentEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -150,12 +152,14 @@ public class OrderResentEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(order, that.order);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(order);
     }
   }

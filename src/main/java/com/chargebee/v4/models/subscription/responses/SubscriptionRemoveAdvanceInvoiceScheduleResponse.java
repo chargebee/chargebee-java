@@ -119,6 +119,7 @@ public final class SubscriptionRemoveAdvanceInvoiceScheduleResponse extends Base
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionRemoveAdvanceInvoiceScheduleResponse that =
         (SubscriptionRemoveAdvanceInvoiceScheduleResponse) o;
     return java.util.Objects.equals(subscription, that.subscription)
@@ -127,6 +128,7 @@ public final class SubscriptionRemoveAdvanceInvoiceScheduleResponse extends Base
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(subscription, advanceInvoiceSchedules);
   }
 }

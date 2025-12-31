@@ -84,12 +84,14 @@ public final class TimeMachineRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     TimeMachineRetrieveResponse that = (TimeMachineRetrieveResponse) o;
     return java.util.Objects.equals(timeMachine, that.timeMachine);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(timeMachine);
   }
 }

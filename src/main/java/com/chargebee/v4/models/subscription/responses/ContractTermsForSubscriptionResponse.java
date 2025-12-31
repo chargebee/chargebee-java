@@ -171,6 +171,7 @@ public final class ContractTermsForSubscriptionResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ContractTermsForSubscriptionResponse that = (ContractTermsForSubscriptionResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -178,6 +179,7 @@ public final class ContractTermsForSubscriptionResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -210,6 +212,7 @@ public final class ContractTermsForSubscriptionResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       SubscriptionContractTermsForSubscriptionItem that =
           (SubscriptionContractTermsForSubscriptionItem) o;
       return java.util.Objects.equals(contractTerm, that.contractTerm);
@@ -217,6 +220,7 @@ public final class ContractTermsForSubscriptionResponse {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(contractTerm);
     }
   }

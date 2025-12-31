@@ -350,6 +350,7 @@ public class SalesOrder {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SalesOrder that = (SalesOrder) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(version, that.version)
@@ -384,6 +385,7 @@ public class SalesOrder {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         version,
@@ -705,6 +707,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(associationId, that.associationId)
@@ -729,6 +732,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           associationId,
@@ -930,6 +934,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddresses that = (BillingAddresses) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -949,6 +954,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1223,6 +1229,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(invoiceName, that.invoiceName)
@@ -1241,6 +1248,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           invoiceName,
@@ -1436,6 +1444,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ShippingAddresses that = (ShippingAddresses) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -1455,6 +1464,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1576,6 +1586,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTiers that = (LineItemTiers) o;
       return java.util.Objects.equals(startingUnit, that.startingUnit)
           && java.util.Objects.equals(endingUnit, that.endingUnit)
@@ -1587,6 +1598,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           startingUnit, endingUnit, price, pricingType, packageSize, lineItemAssociationId);
     }
@@ -1728,6 +1740,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       PaymentConfiguration that = (PaymentConfiguration) o;
       return java.util.Objects.equals(autoCollection, that.autoCollection)
           && java.util.Objects.equals(paymentSourceId, that.paymentSourceId)
@@ -1737,6 +1750,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           autoCollection, paymentSourceId, paymentIntentId, offlinePaymentMethod);
     }
@@ -1864,6 +1878,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingConfiguration that = (BillingConfiguration) o;
       return java.util.Objects.equals(createPendingInvoices, that.createPendingInvoices)
           && java.util.Objects.equals(invoiceImmediately, that.invoiceImmediately)
@@ -1877,6 +1892,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           createPendingInvoices,
           invoiceImmediately,
@@ -1966,6 +1982,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       RenewalTerm that = (RenewalTerm) o;
       return java.util.Objects.equals(endOfTermAction, that.endOfTermAction)
           && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
@@ -1974,6 +1991,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           endOfTermAction, cancellationCutoffPeriod, renewalBillingCycles);
     }
@@ -2025,6 +2043,7 @@ public class SalesOrder {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CreditLines that = (CreditLines) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(unitPrice, that.unitPrice)
@@ -2033,6 +2052,7 @@ public class SalesOrder {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(amount, unitPrice, lineItemAssociationId);
     }
   }

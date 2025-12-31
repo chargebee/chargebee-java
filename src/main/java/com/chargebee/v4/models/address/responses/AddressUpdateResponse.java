@@ -83,12 +83,14 @@ public final class AddressUpdateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     AddressUpdateResponse that = (AddressUpdateResponse) o;
     return java.util.Objects.equals(address, that.address);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(address);
   }
 }

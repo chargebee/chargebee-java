@@ -1053,6 +1053,7 @@ public class Invoice {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Invoice that = (Invoice) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(customerId, that.customerId)
@@ -1129,6 +1130,7 @@ public class Invoice {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         customerId,
@@ -1564,6 +1566,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -1594,6 +1597,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           subscriptionId,
@@ -1771,6 +1775,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTiers that = (LineItemTiers) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -1787,6 +1792,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           startingUnit,
@@ -1902,6 +1908,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemDiscounts that = (LineItemDiscounts) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(discountType, that.discountType)
@@ -1912,6 +1919,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
     }
   }
@@ -2110,6 +2118,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTaxes that = (LineItemTaxes) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(taxName, that.taxName)
@@ -2130,6 +2139,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           taxName,
@@ -2195,6 +2205,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemCredits that = (LineItemCredits) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -2203,6 +2214,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(cnId, appliedAmount, lineItemId);
     }
   }
@@ -2394,6 +2406,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemAddresses that = (LineItemAddresses) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(firstName, that.firstName)
@@ -2414,6 +2427,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           firstName,
@@ -2579,6 +2593,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Discounts that = (Discounts) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(description, that.description)
@@ -2591,6 +2606,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
     }
@@ -2642,6 +2658,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Taxes that = (Taxes) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(amount, that.amount)
@@ -2650,6 +2667,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, amount, description);
     }
   }
@@ -2691,6 +2709,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxOrigin that = (TaxOrigin) o;
       return java.util.Objects.equals(country, that.country)
           && java.util.Objects.equals(registrationNumber, that.registrationNumber);
@@ -2698,6 +2717,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(country, registrationNumber);
     }
   }
@@ -2813,6 +2833,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedPayments that = (LinkedPayments) o;
       return java.util.Objects.equals(txnId, that.txnId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -2824,6 +2845,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(txnId, appliedAmount, appliedAt, txnStatus, txnDate, txnAmount);
     }
   }
@@ -3031,6 +3053,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ReferenceTransactions that = (ReferenceTransactions) o;
       return java.util.Objects.equals(appliedAmount, that.appliedAmount)
           && java.util.Objects.equals(appliedAt, that.appliedAt)
@@ -3045,6 +3068,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           appliedAmount,
           appliedAt,
@@ -3238,6 +3262,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       DunningAttempts that = (DunningAttempts) o;
       return java.util.Objects.equals(attempt, that.attempt)
           && java.util.Objects.equals(transactionId, that.transactionId)
@@ -3250,6 +3275,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           attempt, transactionId, dunningType, createdAt, txnStatus, txnAmount, retryEngine);
     }
@@ -3454,6 +3480,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AppliedCredits that = (AppliedCredits) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -3467,6 +3494,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           cnId,
           appliedAmount,
@@ -3632,6 +3660,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AdjustmentCreditNotes that = (AdjustmentCreditNotes) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(cnReasonCode, that.cnReasonCode)
@@ -3643,6 +3672,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           cnId, cnReasonCode, cnCreateReasonCode, cnDate, cnTotal, cnStatus);
     }
@@ -3801,6 +3831,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       IssuedCreditNotes that = (IssuedCreditNotes) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(cnReasonCode, that.cnReasonCode)
@@ -3812,6 +3843,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           cnId, cnReasonCode, cnCreateReasonCode, cnDate, cnTotal, cnStatus);
     }
@@ -3984,6 +4016,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedOrders that = (LinkedOrders) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(documentNumber, that.documentNumber)
@@ -3997,6 +4030,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           documentNumber,
@@ -4097,6 +4131,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Notes that = (Notes) o;
       return java.util.Objects.equals(note, that.note)
           && java.util.Objects.equals(entityId, that.entityId)
@@ -4105,6 +4140,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(note, entityId, entityType);
     }
   }
@@ -4287,6 +4323,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ShippingAddress that = (ShippingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -4306,6 +4343,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -4502,6 +4540,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddress that = (BillingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -4521,6 +4560,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -4571,6 +4611,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       StatementDescriptor that = (StatementDescriptor) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(descriptor, that.descriptor);
@@ -4578,6 +4619,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, descriptor);
     }
   }
@@ -4673,6 +4715,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Einvoice that = (Einvoice) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(referenceNumber, that.referenceNumber)
@@ -4682,6 +4725,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, referenceNumber, status, message);
     }
   }
@@ -4727,6 +4771,7 @@ public class Invoice {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       SiteDetailsAtCreation that = (SiteDetailsAtCreation) o;
       return java.util.Objects.equals(timezone, that.timezone)
           && java.util.Objects.equals(organizationAddress, that.organizationAddress);
@@ -4734,6 +4779,7 @@ public class Invoice {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(timezone, organizationAddress);
     }
   }

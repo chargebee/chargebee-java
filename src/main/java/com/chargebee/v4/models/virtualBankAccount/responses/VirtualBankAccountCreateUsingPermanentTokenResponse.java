@@ -117,6 +117,7 @@ public final class VirtualBankAccountCreateUsingPermanentTokenResponse extends B
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     VirtualBankAccountCreateUsingPermanentTokenResponse that =
         (VirtualBankAccountCreateUsingPermanentTokenResponse) o;
     return java.util.Objects.equals(virtualBankAccount, that.virtualBankAccount)
@@ -125,6 +126,7 @@ public final class VirtualBankAccountCreateUsingPermanentTokenResponse extends B
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(virtualBankAccount, customer);
   }
 }

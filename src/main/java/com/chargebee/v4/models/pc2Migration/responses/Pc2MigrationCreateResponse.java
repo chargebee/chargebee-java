@@ -61,12 +61,13 @@ public final class Pc2MigrationCreateResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Pc2MigrationCreateResponse that = (Pc2MigrationCreateResponse) o;
-    return;
+
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return java.util.Objects.hash();
+
+    return 0;
   }
 }

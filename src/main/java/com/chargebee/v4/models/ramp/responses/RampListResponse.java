@@ -149,6 +149,7 @@ public final class RampListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     RampListResponse that = (RampListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -156,6 +157,7 @@ public final class RampListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -187,12 +189,14 @@ public final class RampListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       RampListItem that = (RampListItem) o;
       return java.util.Objects.equals(ramp, that.ramp);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(ramp);
     }
   }

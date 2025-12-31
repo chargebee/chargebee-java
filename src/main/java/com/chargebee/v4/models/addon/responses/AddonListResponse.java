@@ -149,6 +149,7 @@ public final class AddonListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     AddonListResponse that = (AddonListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -156,6 +157,7 @@ public final class AddonListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -187,12 +189,14 @@ public final class AddonListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AddonListItem that = (AddonListItem) o;
       return java.util.Objects.equals(addon, that.addon);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(addon);
     }
   }

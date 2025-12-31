@@ -71,6 +71,7 @@ public class PersonalizedOffer {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PersonalizedOffer that = (PersonalizedOffer) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(offerId, that.offerId)
@@ -80,6 +81,7 @@ public class PersonalizedOffer {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, offerId, content, options);
   }
 
@@ -115,6 +117,7 @@ public class PersonalizedOffer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(title, that.title)
           && java.util.Objects.equals(description, that.description);
@@ -122,6 +125,7 @@ public class PersonalizedOffer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(title, description);
     }
   }
@@ -253,6 +257,7 @@ public class PersonalizedOffer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Options that = (Options) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(label, that.label)
@@ -263,6 +268,7 @@ public class PersonalizedOffer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, label, processingType, processingLayout, redirectUrl);
     }
   }

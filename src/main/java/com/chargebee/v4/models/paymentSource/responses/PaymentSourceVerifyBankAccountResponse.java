@@ -86,12 +86,14 @@ public final class PaymentSourceVerifyBankAccountResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceVerifyBankAccountResponse that = (PaymentSourceVerifyBankAccountResponse) o;
     return java.util.Objects.equals(paymentSource, that.paymentSource);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(paymentSource);
   }
 }

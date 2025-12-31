@@ -45,6 +45,7 @@ public class ImpactedCustomer {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ImpactedCustomer that = (ImpactedCustomer) o;
     return java.util.Objects.equals(actionType, that.actionType)
         && java.util.Objects.equals(download, that.download);
@@ -52,6 +53,7 @@ public class ImpactedCustomer {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(actionType, download);
   }
 
@@ -101,6 +103,7 @@ public class ImpactedCustomer {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Download that = (Download) o;
       return java.util.Objects.equals(downloadUrl, that.downloadUrl)
           && java.util.Objects.equals(validTill, that.validTill)
@@ -109,6 +112,7 @@ public class ImpactedCustomer {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(downloadUrl, validTill, mimeType);
     }
   }

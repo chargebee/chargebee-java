@@ -89,6 +89,7 @@ public final class CreateSubscriptionItemForCustomerEstimateResponse extends Bas
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CreateSubscriptionItemForCustomerEstimateResponse that =
         (CreateSubscriptionItemForCustomerEstimateResponse) o;
     return java.util.Objects.equals(estimate, that.estimate);
@@ -96,6 +97,7 @@ public final class CreateSubscriptionItemForCustomerEstimateResponse extends Bas
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(estimate);
   }
 }

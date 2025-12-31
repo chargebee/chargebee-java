@@ -84,12 +84,14 @@ public final class PaymentSourceAgreementPdfResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSourceAgreementPdfResponse that = (PaymentSourceAgreementPdfResponse) o;
     return java.util.Objects.equals(download, that.download);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(download);
   }
 }

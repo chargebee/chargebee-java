@@ -102,6 +102,7 @@ public class ThirdPartySyncDetail {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartySyncDetail that = (ThirdPartySyncDetail) o;
     return java.util.Objects.equals(integrationName, that.integrationName)
         && java.util.Objects.equals(status, that.status)
@@ -111,6 +112,7 @@ public class ThirdPartySyncDetail {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(integrationName, status, id, context);
   }
 }

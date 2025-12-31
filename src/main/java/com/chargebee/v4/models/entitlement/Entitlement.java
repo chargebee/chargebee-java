@@ -125,6 +125,7 @@ public class Entitlement {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Entitlement that = (Entitlement) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(entityId, that.entityId)
@@ -137,6 +138,7 @@ public class Entitlement {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(id, entityId, entityType, featureId, featureName, value, name);
   }
 }

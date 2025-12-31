@@ -106,6 +106,7 @@ public final class InvoiceWriteOffResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InvoiceWriteOffResponse that = (InvoiceWriteOffResponse) o;
     return java.util.Objects.equals(invoice, that.invoice)
         && java.util.Objects.equals(creditNote, that.creditNote);
@@ -113,6 +114,7 @@ public final class InvoiceWriteOffResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(invoice, creditNote);
   }
 }

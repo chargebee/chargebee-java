@@ -255,6 +255,7 @@ public class Ramp {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Ramp that = (Ramp) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(description, that.description)
@@ -279,6 +280,7 @@ public class Ramp {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         description,
@@ -554,6 +556,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemsToAdd that = (ItemsToAdd) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(itemType, that.itemType)
@@ -575,6 +578,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           itemType,
@@ -848,6 +852,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemsToUpdate that = (ItemsToUpdate) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(itemType, that.itemType)
@@ -869,6 +874,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           itemType,
@@ -921,6 +927,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CouponsToAdd that = (CouponsToAdd) o;
       return java.util.Objects.equals(couponId, that.couponId)
           && java.util.Objects.equals(applyTill, that.applyTill);
@@ -928,6 +935,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(couponId, applyTill);
     }
   }
@@ -1177,6 +1185,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       DiscountsToAdd that = (DiscountsToAdd) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(invoiceName, that.invoiceName)
@@ -1194,6 +1203,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           invoiceName,
@@ -1349,6 +1359,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ItemTiers that = (ItemTiers) o;
       return java.util.Objects.equals(itemPriceId, that.itemPriceId)
           && java.util.Objects.equals(startingUnit, that.startingUnit)
@@ -1364,6 +1375,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           itemPriceId,
           startingUnit,
@@ -1457,6 +1469,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ContractTerm that = (ContractTerm) o;
       return java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
           && java.util.Objects.equals(renewalBillingCycles, that.renewalBillingCycles)
@@ -1465,6 +1478,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           cancellationCutoffPeriod, renewalBillingCycles, actionAtTermEnd);
     }
@@ -1502,6 +1516,7 @@ public class Ramp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       StatusTransitionReason that = (StatusTransitionReason) o;
       return java.util.Objects.equals(code, that.code)
           && java.util.Objects.equals(message, that.message);
@@ -1509,6 +1524,7 @@ public class Ramp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(code, message);
     }
   }

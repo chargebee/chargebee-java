@@ -84,12 +84,14 @@ public final class ExportRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ExportRetrieveResponse that = (ExportRetrieveResponse) o;
     return java.util.Objects.equals(export, that.export);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(export);
   }
 }

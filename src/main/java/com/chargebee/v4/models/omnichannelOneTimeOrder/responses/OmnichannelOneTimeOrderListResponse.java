@@ -165,6 +165,7 @@ public final class OmnichannelOneTimeOrderListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelOneTimeOrderListResponse that = (OmnichannelOneTimeOrderListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -172,6 +173,7 @@ public final class OmnichannelOneTimeOrderListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -207,12 +209,14 @@ public final class OmnichannelOneTimeOrderListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OmnichannelOneTimeOrderListItem that = (OmnichannelOneTimeOrderListItem) o;
       return java.util.Objects.equals(omnichannelOneTimeOrder, that.omnichannelOneTimeOrder);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelOneTimeOrder);
     }
   }

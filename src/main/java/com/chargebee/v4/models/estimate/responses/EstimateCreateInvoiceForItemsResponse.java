@@ -85,12 +85,14 @@ public final class EstimateCreateInvoiceForItemsResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EstimateCreateInvoiceForItemsResponse that = (EstimateCreateInvoiceForItemsResponse) o;
     return java.util.Objects.equals(estimate, that.estimate);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(estimate);
   }
 }

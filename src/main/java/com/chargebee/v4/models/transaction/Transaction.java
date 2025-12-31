@@ -863,6 +863,7 @@ public class Transaction {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Transaction that = (Transaction) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(customerId, that.customerId)
@@ -914,6 +915,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         customerId,
@@ -1072,6 +1074,7 @@ public class Transaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedInvoices that = (LinkedInvoices) o;
       return java.util.Objects.equals(invoiceId, that.invoiceId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -1083,6 +1086,7 @@ public class Transaction {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           invoiceId, appliedAmount, appliedAt, invoiceDate, invoiceTotal, invoiceStatus);
     }
@@ -1268,6 +1272,7 @@ public class Transaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedCreditNotes that = (LinkedCreditNotes) o;
       return java.util.Objects.equals(cnId, that.cnId)
           && java.util.Objects.equals(appliedAmount, that.appliedAmount)
@@ -1282,6 +1287,7 @@ public class Transaction {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           cnId,
           appliedAmount,
@@ -1388,6 +1394,7 @@ public class Transaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedRefunds that = (LinkedRefunds) o;
       return java.util.Objects.equals(txnId, that.txnId)
           && java.util.Objects.equals(txnStatus, that.txnStatus)
@@ -1397,6 +1404,7 @@ public class Transaction {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(txnId, txnStatus, txnDate, txnAmount);
     }
   }
@@ -1494,6 +1502,7 @@ public class Transaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedPayments that = (LinkedPayments) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(status, that.status)
@@ -1503,6 +1512,7 @@ public class Transaction {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, status, amount, date);
     }
   }
@@ -1661,6 +1671,7 @@ public class Transaction {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ErrorDetail that = (ErrorDetail) o;
       return java.util.Objects.equals(requestId, that.requestId)
           && java.util.Objects.equals(errorCategory, that.errorCategory)
@@ -1681,6 +1692,7 @@ public class Transaction {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           requestId,
           errorCategory,

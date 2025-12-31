@@ -73,6 +73,7 @@ public class ThirdPartyConfiguration {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartyConfiguration that = (ThirdPartyConfiguration) o;
     return java.util.Objects.equals(integrationName, that.integrationName)
         && java.util.Objects.equals(lastSyncAt, that.lastSyncAt)
@@ -82,6 +83,7 @@ public class ThirdPartyConfiguration {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(integrationName, lastSyncAt, configJson, authJson);
   }
 }

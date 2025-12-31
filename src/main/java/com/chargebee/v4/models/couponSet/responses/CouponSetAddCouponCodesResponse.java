@@ -84,12 +84,14 @@ public final class CouponSetAddCouponCodesResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CouponSetAddCouponCodesResponse that = (CouponSetAddCouponCodesResponse) o;
     return java.util.Objects.equals(couponSet, that.couponSet);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(couponSet);
   }
 }

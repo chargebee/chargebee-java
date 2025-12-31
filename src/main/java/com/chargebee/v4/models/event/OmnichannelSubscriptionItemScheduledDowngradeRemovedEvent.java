@@ -110,6 +110,7 @@ public class OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent that =
         (OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent) o;
     return java.util.Objects.equals(id, that.id)
@@ -124,6 +125,7 @@ public class OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -186,6 +188,7 @@ public class OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription)
           && java.util.Objects.equals(omnichannelSubscriptionItem, that.omnichannelSubscriptionItem)
@@ -194,6 +197,7 @@ public class OmnichannelSubscriptionItemScheduledDowngradeRemovedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelSubscription, omnichannelSubscriptionItem, customer);
     }
   }

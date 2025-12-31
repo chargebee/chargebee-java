@@ -92,6 +92,7 @@ public final class ThirdPartySyncDetailRetrieveLatestSyncResponse extends BaseRe
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ThirdPartySyncDetailRetrieveLatestSyncResponse that =
         (ThirdPartySyncDetailRetrieveLatestSyncResponse) o;
     return java.util.Objects.equals(thirdPartySyncDetail, that.thirdPartySyncDetail);
@@ -99,6 +100,7 @@ public final class ThirdPartySyncDetailRetrieveLatestSyncResponse extends BaseRe
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(thirdPartySyncDetail);
   }
 }

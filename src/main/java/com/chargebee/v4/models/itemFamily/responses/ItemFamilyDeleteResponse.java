@@ -84,12 +84,14 @@ public final class ItemFamilyDeleteResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ItemFamilyDeleteResponse that = (ItemFamilyDeleteResponse) o;
     return java.util.Objects.equals(itemFamily, that.itemFamily);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(itemFamily);
   }
 }

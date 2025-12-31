@@ -202,6 +202,7 @@ public class ContractTerm {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     ContractTerm that = (ContractTerm) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(status, that.status)
@@ -219,6 +220,7 @@ public class ContractTerm {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         status,

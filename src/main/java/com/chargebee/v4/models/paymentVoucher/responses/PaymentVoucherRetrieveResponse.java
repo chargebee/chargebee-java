@@ -84,12 +84,14 @@ public final class PaymentVoucherRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentVoucherRetrieveResponse that = (PaymentVoucherRetrieveResponse) o;
     return java.util.Objects.equals(paymentVoucher, that.paymentVoucher);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(paymentVoucher);
   }
 }

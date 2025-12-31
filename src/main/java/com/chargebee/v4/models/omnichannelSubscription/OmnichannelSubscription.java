@@ -148,6 +148,7 @@ public class OmnichannelSubscription {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelSubscription that = (OmnichannelSubscription) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(idAtSource, that.idAtSource)
@@ -162,6 +163,7 @@ public class OmnichannelSubscription {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         idAtSource,
@@ -498,6 +500,7 @@ public class OmnichannelSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OmnichannelSubscriptionItems that = (OmnichannelSubscriptionItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(itemIdAtSource, that.itemIdAtSource)
@@ -522,6 +525,7 @@ public class OmnichannelSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           itemIdAtSource,
@@ -787,6 +791,7 @@ public class OmnichannelSubscription {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         OmnichannelSubscriptionItemOffers that = (OmnichannelSubscriptionItemOffers) o;
         return java.util.Objects.equals(id, that.id)
             && java.util.Objects.equals(offerIdAtSource, that.offerIdAtSource)
@@ -807,6 +812,7 @@ public class OmnichannelSubscription {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(
             id,
             offerIdAtSource,
@@ -872,6 +878,7 @@ public class OmnichannelSubscription {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         UpcomingRenewal that = (UpcomingRenewal) o;
         return java.util.Objects.equals(priceCurrency, that.priceCurrency)
             && java.util.Objects.equals(priceUnits, that.priceUnits)
@@ -880,6 +887,7 @@ public class OmnichannelSubscription {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(priceCurrency, priceUnits, priceNanos);
       }
     }
@@ -916,6 +924,7 @@ public class OmnichannelSubscription {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         LinkedItem that = (LinkedItem) o;
         return java.util.Objects.equals(id, that.id)
             && java.util.Objects.equals(linkedAt, that.linkedAt);
@@ -923,6 +932,7 @@ public class OmnichannelSubscription {
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(id, linkedAt);
       }
     }
@@ -1091,6 +1101,7 @@ public class OmnichannelSubscription {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       InitialPurchaseTransaction that = (InitialPurchaseTransaction) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(idAtSource, that.idAtSource)
@@ -1110,6 +1121,7 @@ public class OmnichannelSubscription {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           idAtSource,
@@ -1153,12 +1165,14 @@ public class OmnichannelSubscription {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
         return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
       }
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(omnichannelSubscriptionId);
       }
     }
@@ -1191,12 +1205,14 @@ public class OmnichannelSubscription {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
         return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
       }
 
       @Override
       public int hashCode() {
+
         return java.util.Objects.hash(omnichannelOneTimeOrderId);
       }
     }

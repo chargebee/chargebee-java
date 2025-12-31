@@ -591,6 +591,7 @@ public class Card {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Card that = (Card) o;
     return java.util.Objects.equals(paymentSourceId, that.paymentSourceId)
         && java.util.Objects.equals(status, that.status)
@@ -624,6 +625,7 @@ public class Card {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         paymentSourceId,
         status,

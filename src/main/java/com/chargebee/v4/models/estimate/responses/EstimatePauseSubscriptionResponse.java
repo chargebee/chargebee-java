@@ -84,12 +84,14 @@ public final class EstimatePauseSubscriptionResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EstimatePauseSubscriptionResponse that = (EstimatePauseSubscriptionResponse) o;
     return java.util.Objects.equals(estimate, that.estimate);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(estimate);
   }
 }

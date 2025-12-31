@@ -108,6 +108,7 @@ public final class CurrencyRemoveScheduleResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CurrencyRemoveScheduleResponse that = (CurrencyRemoveScheduleResponse) o;
     return java.util.Objects.equals(scheduledAt, that.scheduledAt)
         && java.util.Objects.equals(currency, that.currency);
@@ -115,6 +116,7 @@ public final class CurrencyRemoveScheduleResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(scheduledAt, currency);
   }
 }

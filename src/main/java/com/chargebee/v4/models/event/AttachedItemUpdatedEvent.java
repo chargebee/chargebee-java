@@ -105,6 +105,7 @@ public class AttachedItemUpdatedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     AttachedItemUpdatedEvent that = (AttachedItemUpdatedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -118,6 +119,7 @@ public class AttachedItemUpdatedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -150,12 +152,14 @@ public class AttachedItemUpdatedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(attachedItem, that.attachedItem);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(attachedItem);
     }
   }

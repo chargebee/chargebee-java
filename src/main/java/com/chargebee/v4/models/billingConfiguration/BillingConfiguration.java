@@ -51,6 +51,7 @@ public class BillingConfiguration {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     BillingConfiguration that = (BillingConfiguration) o;
     return java.util.Objects.equals(isCalendarBillingEnabled, that.isCalendarBillingEnabled)
         && java.util.Objects.equals(billingDates, that.billingDates);
@@ -58,6 +59,7 @@ public class BillingConfiguration {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(isCalendarBillingEnabled, billingDates);
   }
 
@@ -93,6 +95,7 @@ public class BillingConfiguration {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingDates that = (BillingDates) o;
       return java.util.Objects.equals(startDate, that.startDate)
           && java.util.Objects.equals(endDate, that.endDate);
@@ -100,6 +103,7 @@ public class BillingConfiguration {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(startDate, endDate);
     }
   }

@@ -1043,6 +1043,7 @@ public class Plan {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Plan that = (Plan) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -1105,6 +1106,7 @@ public class Plan {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -1286,6 +1288,7 @@ public class Plan {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Tiers that = (Tiers) o;
       return java.util.Objects.equals(startingUnit, that.startingUnit)
           && java.util.Objects.equals(endingUnit, that.endingUnit)
@@ -1299,6 +1302,7 @@ public class Plan {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           startingUnit,
           endingUnit,
@@ -1357,6 +1361,7 @@ public class Plan {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       TaxProvidersFields that = (TaxProvidersFields) o;
       return java.util.Objects.equals(providerName, that.providerName)
           && java.util.Objects.equals(fieldId, that.fieldId)
@@ -1365,6 +1370,7 @@ public class Plan {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(providerName, fieldId, fieldValue);
     }
   }
@@ -1394,12 +1400,14 @@ public class Plan {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ApplicableAddons that = (ApplicableAddons) o;
       return java.util.Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id);
     }
   }
@@ -1496,6 +1504,7 @@ public class Plan {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AttachedAddons that = (AttachedAddons) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -1506,6 +1515,7 @@ public class Plan {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, quantity, billingCycles, type, quantityInDecimal);
     }
   }
@@ -1608,6 +1618,7 @@ public class Plan {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       EventBasedAddons that = (EventBasedAddons) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(quantity, that.quantity)
@@ -1618,6 +1629,7 @@ public class Plan {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, quantity, onEvent, chargeOnce, quantityInDecimal);
     }
   }

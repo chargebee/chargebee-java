@@ -141,6 +141,7 @@ public final class EditUpdateSubscriptionQuoteForItemsResponse extends BaseRespo
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EditUpdateSubscriptionQuoteForItemsResponse that =
         (EditUpdateSubscriptionQuoteForItemsResponse) o;
     return java.util.Objects.equals(quote, that.quote)
@@ -150,6 +151,7 @@ public final class EditUpdateSubscriptionQuoteForItemsResponse extends BaseRespo
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedSubscription, quotedRamp);
   }
 }

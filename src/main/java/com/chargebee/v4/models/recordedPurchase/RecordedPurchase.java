@@ -200,6 +200,7 @@ public class RecordedPurchase {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     RecordedPurchase that = (RecordedPurchase) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(customerId, that.customerId)
@@ -218,6 +219,7 @@ public class RecordedPurchase {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         customerId,
@@ -260,12 +262,14 @@ public class RecordedPurchase {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
       return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelSubscriptionId);
     }
   }
@@ -298,12 +302,14 @@ public class RecordedPurchase {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
       return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelOneTimeOrderId);
     }
   }
@@ -333,12 +339,14 @@ public class RecordedPurchase {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ErrorDetail that = (ErrorDetail) o;
       return java.util.Objects.equals(errorMessage, that.errorMessage);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(errorMessage);
     }
   }

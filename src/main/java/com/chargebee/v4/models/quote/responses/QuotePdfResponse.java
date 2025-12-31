@@ -81,12 +81,14 @@ public final class QuotePdfResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuotePdfResponse that = (QuotePdfResponse) o;
     return java.util.Objects.equals(download, that.download);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(download);
   }
 }

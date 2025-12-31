@@ -122,6 +122,7 @@ public class PaymentScheduleEstimate {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentScheduleEstimate that = (PaymentScheduleEstimate) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(schemeId, that.schemeId)
@@ -134,6 +135,7 @@ public class PaymentScheduleEstimate {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, schemeId, entityType, entityId, amount, currencyCode, scheduleEntries);
   }
@@ -223,6 +225,7 @@ public class PaymentScheduleEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ScheduleEntries that = (ScheduleEntries) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(date, that.date)
@@ -232,6 +235,7 @@ public class PaymentScheduleEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, date, amount, status);
     }
   }

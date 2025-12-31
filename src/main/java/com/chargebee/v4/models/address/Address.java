@@ -205,6 +205,7 @@ public class Address {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Address that = (Address) o;
     return java.util.Objects.equals(label, that.label)
         && java.util.Objects.equals(firstName, that.firstName)
@@ -226,6 +227,7 @@ public class Address {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         label,
         firstName,

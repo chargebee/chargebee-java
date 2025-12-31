@@ -38,12 +38,14 @@ public class QuotedDeltaRamp {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuotedDeltaRamp that = (QuotedDeltaRamp) o;
     return java.util.Objects.equals(lineItems, that.lineItems);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(lineItems);
   }
 
@@ -76,6 +78,7 @@ public class QuotedDeltaRamp {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItems that = (LineItems) o;
       return java.util.Objects.equals(
           itemLevelDiscountPerBillingCycleInDecimal,
@@ -84,6 +87,7 @@ public class QuotedDeltaRamp {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(itemLevelDiscountPerBillingCycleInDecimal);
     }
   }

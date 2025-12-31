@@ -152,6 +152,7 @@ public final class CreditNoteListResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CreditNoteListResponse that = (CreditNoteListResponse) o;
     return java.util.Objects.equals(list, that.list)
         && java.util.Objects.equals(nextOffset, that.nextOffset);
@@ -159,6 +160,7 @@ public final class CreditNoteListResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -190,12 +192,14 @@ public final class CreditNoteListResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       CreditNoteListItem that = (CreditNoteListItem) o;
       return java.util.Objects.equals(creditNote, that.creditNote);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(creditNote);
     }
   }

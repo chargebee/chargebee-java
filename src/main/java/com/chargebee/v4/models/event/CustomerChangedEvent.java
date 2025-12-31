@@ -107,6 +107,7 @@ public class CustomerChangedEvent {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerChangedEvent that = (CustomerChangedEvent) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(occurredAt, that.occurredAt)
@@ -120,6 +121,7 @@ public class CustomerChangedEvent {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
   }
@@ -162,6 +164,7 @@ public class CustomerChangedEvent {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Content that = (Content) o;
       return java.util.Objects.equals(customer, that.customer)
           && java.util.Objects.equals(card, that.card);
@@ -169,6 +172,7 @@ public class CustomerChangedEvent {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(customer, card);
     }
   }

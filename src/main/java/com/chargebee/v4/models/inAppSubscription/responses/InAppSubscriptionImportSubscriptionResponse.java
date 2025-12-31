@@ -91,6 +91,7 @@ public final class InAppSubscriptionImportSubscriptionResponse extends BaseRespo
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InAppSubscriptionImportSubscriptionResponse that =
         (InAppSubscriptionImportSubscriptionResponse) o;
     return java.util.Objects.equals(inAppSubscription, that.inAppSubscription);
@@ -98,6 +99,7 @@ public final class InAppSubscriptionImportSubscriptionResponse extends BaseRespo
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(inAppSubscription);
   }
 }

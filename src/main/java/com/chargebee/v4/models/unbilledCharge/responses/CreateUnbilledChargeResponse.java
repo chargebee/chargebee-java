@@ -86,12 +86,14 @@ public final class CreateUnbilledChargeResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CreateUnbilledChargeResponse that = (CreateUnbilledChargeResponse) o;
     return java.util.Objects.equals(unbilledCharges, that.unbilledCharges);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(unbilledCharges);
   }
 }

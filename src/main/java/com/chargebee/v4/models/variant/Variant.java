@@ -182,6 +182,7 @@ public class Variant {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Variant that = (Variant) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(name, that.name)
@@ -200,6 +201,7 @@ public class Variant {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         name,
@@ -248,6 +250,7 @@ public class Variant {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OptionValues that = (OptionValues) o;
       return java.util.Objects.equals(name, that.name)
           && java.util.Objects.equals(value, that.value);
@@ -255,6 +258,7 @@ public class Variant {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(name, value);
     }
   }

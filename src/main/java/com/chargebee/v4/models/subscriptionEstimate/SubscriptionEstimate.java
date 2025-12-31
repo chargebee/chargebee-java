@@ -186,6 +186,7 @@ public class SubscriptionEstimate {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     SubscriptionEstimate that = (SubscriptionEstimate) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(currencyCode, that.currencyCode)
@@ -200,6 +201,7 @@ public class SubscriptionEstimate {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         currencyCode,
@@ -390,6 +392,7 @@ public class SubscriptionEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ShippingAddress that = (ShippingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -409,6 +412,7 @@ public class SubscriptionEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -619,6 +623,7 @@ public class SubscriptionEstimate {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ContractTerm that = (ContractTerm) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(status, that.status)
@@ -636,6 +641,7 @@ public class SubscriptionEstimate {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           status,

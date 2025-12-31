@@ -532,6 +532,7 @@ public class PaymentSource {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     PaymentSource that = (PaymentSource) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(resourceVersion, that.resourceVersion)
@@ -561,6 +562,7 @@ public class PaymentSource {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         resourceVersion,
@@ -853,6 +855,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Card that = (Card) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -874,6 +877,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1148,6 +1152,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BankAccount that = (BankAccount) o;
       return java.util.Objects.equals(last4, that.last4)
           && java.util.Objects.equals(nameOnAccount, that.nameOnAccount)
@@ -1164,6 +1169,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           last4,
           nameOnAccount,
@@ -1234,6 +1240,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Boleto that = (Boleto) o;
       return java.util.Objects.equals(last4, that.last4)
           && java.util.Objects.equals(firstName, that.firstName)
@@ -1243,6 +1250,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(last4, firstName, lastName, email);
     }
   }
@@ -1425,6 +1433,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddress that = (BillingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -1444,6 +1453,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1494,6 +1504,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       AmazonPayment that = (AmazonPayment) o;
       return java.util.Objects.equals(email, that.email)
           && java.util.Objects.equals(agreementId, that.agreementId);
@@ -1501,6 +1512,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(email, agreementId);
     }
   }
@@ -1530,12 +1542,14 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Upi that = (Upi) o;
       return java.util.Objects.equals(vpa, that.vpa);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(vpa);
     }
   }
@@ -1572,6 +1586,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Paypal that = (Paypal) o;
       return java.util.Objects.equals(email, that.email)
           && java.util.Objects.equals(agreementId, that.agreementId);
@@ -1579,6 +1594,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(email, agreementId);
     }
   }
@@ -1608,12 +1624,14 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Venmo that = (Venmo) o;
       return java.util.Objects.equals(userName, that.userName);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(userName);
     }
   }
@@ -1643,12 +1661,14 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       KlarnaPayNow that = (KlarnaPayNow) o;
       return java.util.Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(email);
     }
   }
@@ -1699,6 +1719,7 @@ public class PaymentSource {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Mandates that = (Mandates) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -1707,6 +1728,7 @@ public class PaymentSource {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(id, subscriptionId, createdAt);
     }
   }

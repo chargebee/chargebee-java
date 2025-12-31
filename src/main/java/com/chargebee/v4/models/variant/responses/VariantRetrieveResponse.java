@@ -84,12 +84,14 @@ public final class VariantRetrieveResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     VariantRetrieveResponse that = (VariantRetrieveResponse) o;
     return java.util.Objects.equals(variant, that.variant);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(variant);
   }
 }

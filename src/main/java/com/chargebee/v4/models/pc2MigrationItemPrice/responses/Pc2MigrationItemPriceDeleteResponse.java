@@ -80,12 +80,14 @@ public final class Pc2MigrationItemPriceDeleteResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Pc2MigrationItemPriceDeleteResponse that = (Pc2MigrationItemPriceDeleteResponse) o;
     return java.util.Objects.equals(isDeleted, that.isDeleted);
   }
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(isDeleted);
   }
 }

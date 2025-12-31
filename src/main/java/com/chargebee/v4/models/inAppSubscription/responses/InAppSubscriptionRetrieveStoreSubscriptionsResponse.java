@@ -94,6 +94,7 @@ public final class InAppSubscriptionRetrieveStoreSubscriptionsResponse extends B
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InAppSubscriptionRetrieveStoreSubscriptionsResponse that =
         (InAppSubscriptionRetrieveStoreSubscriptionsResponse) o;
     return java.util.Objects.equals(inAppSubscriptions, that.inAppSubscriptions);
@@ -101,6 +102,7 @@ public final class InAppSubscriptionRetrieveStoreSubscriptionsResponse extends B
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(inAppSubscriptions);
   }
 }

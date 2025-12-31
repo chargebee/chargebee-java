@@ -116,6 +116,7 @@ public final class QuoteEditForChargeItemsAndChargesResponse extends BaseRespons
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     QuoteEditForChargeItemsAndChargesResponse that = (QuoteEditForChargeItemsAndChargesResponse) o;
     return java.util.Objects.equals(quote, that.quote)
         && java.util.Objects.equals(quotedCharge, that.quotedCharge);
@@ -123,6 +124,7 @@ public final class QuoteEditForChargeItemsAndChargesResponse extends BaseRespons
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedCharge);
   }
 }

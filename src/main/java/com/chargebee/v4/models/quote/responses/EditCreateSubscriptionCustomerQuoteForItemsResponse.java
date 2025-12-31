@@ -142,6 +142,7 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsResponse extends B
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     EditCreateSubscriptionCustomerQuoteForItemsResponse that =
         (EditCreateSubscriptionCustomerQuoteForItemsResponse) o;
     return java.util.Objects.equals(quote, that.quote)
@@ -151,6 +152,7 @@ public final class EditCreateSubscriptionCustomerQuoteForItemsResponse extends B
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(quote, quotedSubscription, quotedRamp);
   }
 }

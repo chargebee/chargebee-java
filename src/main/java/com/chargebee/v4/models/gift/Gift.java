@@ -172,6 +172,7 @@ public class Gift {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Gift that = (Gift) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(status, that.status)
@@ -188,6 +189,7 @@ public class Gift {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         status,
@@ -257,6 +259,7 @@ public class Gift {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       Gifter that = (Gifter) o;
       return java.util.Objects.equals(customerId, that.customerId)
           && java.util.Objects.equals(invoiceId, that.invoiceId)
@@ -266,6 +269,7 @@ public class Gift {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(customerId, invoiceId, signature, note);
     }
   }
@@ -334,6 +338,7 @@ public class Gift {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       GiftReceiver that = (GiftReceiver) o;
       return java.util.Objects.equals(customerId, that.customerId)
           && java.util.Objects.equals(subscriptionId, that.subscriptionId)
@@ -344,6 +349,7 @@ public class Gift {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(customerId, subscriptionId, firstName, lastName, email);
     }
   }
@@ -414,6 +420,7 @@ public class Gift {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       GiftTimelines that = (GiftTimelines) o;
       return java.util.Objects.equals(status, that.status)
           && java.util.Objects.equals(occurredAt, that.occurredAt);
@@ -421,6 +428,7 @@ public class Gift {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(status, occurredAt);
     }
   }

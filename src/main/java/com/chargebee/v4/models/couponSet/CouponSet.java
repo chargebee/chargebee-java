@@ -95,6 +95,7 @@ public class CouponSet {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CouponSet that = (CouponSet) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(couponId, that.couponId)
@@ -107,6 +108,7 @@ public class CouponSet {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id, couponId, name, totalCount, redeemedCount, archivedCount, metaData);
   }

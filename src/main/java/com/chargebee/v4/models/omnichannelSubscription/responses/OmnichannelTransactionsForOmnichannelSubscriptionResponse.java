@@ -180,6 +180,7 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     OmnichannelTransactionsForOmnichannelSubscriptionResponse that =
         (OmnichannelTransactionsForOmnichannelSubscriptionResponse) o;
     return java.util.Objects.equals(list, that.list)
@@ -188,6 +189,7 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(list, nextOffset);
   }
 
@@ -224,6 +226,7 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem that =
           (OmnichannelSubscriptionOmnichannelTransactionsForOmnichannelSubscriptionItem) o;
       return java.util.Objects.equals(omnichannelTransaction, that.omnichannelTransaction);
@@ -231,6 +234,7 @@ public final class OmnichannelTransactionsForOmnichannelSubscriptionResponse {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(omnichannelTransaction);
     }
   }

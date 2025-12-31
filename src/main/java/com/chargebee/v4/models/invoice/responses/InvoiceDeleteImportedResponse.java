@@ -114,6 +114,7 @@ public final class InvoiceDeleteImportedResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     InvoiceDeleteImportedResponse that = (InvoiceDeleteImportedResponse) o;
     return java.util.Objects.equals(invoice, that.invoice)
         && java.util.Objects.equals(creditNotes, that.creditNotes);
@@ -121,6 +122,7 @@ public final class InvoiceDeleteImportedResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(invoice, creditNotes);
   }
 }

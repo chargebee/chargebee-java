@@ -769,6 +769,7 @@ public class Order {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     Order that = (Order) o;
     return java.util.Objects.equals(id, that.id)
         && java.util.Objects.equals(documentNumber, that.documentNumber)
@@ -830,6 +831,7 @@ public class Order {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(
         id,
         documentNumber,
@@ -1166,6 +1168,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       OrderLineItems that = (OrderLineItems) o;
       return java.util.Objects.equals(id, that.id)
           && java.util.Objects.equals(invoiceId, that.invoiceId)
@@ -1191,6 +1194,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           id,
           invoiceId,
@@ -1393,6 +1397,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ShippingAddress that = (ShippingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -1412,6 +1417,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1608,6 +1614,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       BillingAddress that = (BillingAddress) o;
       return java.util.Objects.equals(firstName, that.firstName)
           && java.util.Objects.equals(lastName, that.lastName)
@@ -1627,6 +1634,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           firstName,
           lastName,
@@ -1839,6 +1847,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemTaxes that = (LineItemTaxes) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(taxName, that.taxName)
@@ -1859,6 +1868,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(
           lineItemId,
           taxName,
@@ -1981,6 +1991,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LineItemDiscounts that = (LineItemDiscounts) o;
       return java.util.Objects.equals(lineItemId, that.lineItemId)
           && java.util.Objects.equals(discountType, that.discountType)
@@ -1991,6 +2002,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
     }
   }
@@ -2130,6 +2142,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       LinkedCreditNotes that = (LinkedCreditNotes) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(type, that.type)
@@ -2141,6 +2154,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(amount, type, id, status, amountAdjusted, amountRefunded);
     }
   }
@@ -2191,6 +2205,7 @@ public class Order {
     public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
+
       ResentOrders that = (ResentOrders) o;
       return java.util.Objects.equals(orderId, that.orderId)
           && java.util.Objects.equals(reason, that.reason)
@@ -2199,6 +2214,7 @@ public class Order {
 
     @Override
     public int hashCode() {
+
       return java.util.Objects.hash(orderId, reason, amount);
     }
   }

@@ -108,6 +108,7 @@ public final class CustomerUpdatePaymentMethodResponse extends BaseResponse {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
+
     CustomerUpdatePaymentMethodResponse that = (CustomerUpdatePaymentMethodResponse) o;
     return java.util.Objects.equals(customer, that.customer)
         && java.util.Objects.equals(card, that.card);
@@ -115,6 +116,7 @@ public final class CustomerUpdatePaymentMethodResponse extends BaseResponse {
 
   @Override
   public int hashCode() {
+
     return java.util.Objects.hash(customer, card);
   }
 }
