@@ -118,6 +118,62 @@ public class OmnichannelSubscriptionItemScheduledChange {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionItemScheduledChange{"
+        + "id="
+        + id
+        + ", omnichannelSubscriptionItemId="
+        + omnichannelSubscriptionItemId
+        + ", scheduledAt="
+        + scheduledAt
+        + ", changeType="
+        + changeType
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", currentState="
+        + currentState
+        + ", scheduledState="
+        + scheduledState
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionItemScheduledChange that =
+        (OmnichannelSubscriptionItemScheduledChange) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(
+            omnichannelSubscriptionItemId, that.omnichannelSubscriptionItemId)
+        && java.util.Objects.equals(scheduledAt, that.scheduledAt)
+        && java.util.Objects.equals(changeType, that.changeType)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(currentState, that.currentState)
+        && java.util.Objects.equals(scheduledState, that.scheduledState);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        omnichannelSubscriptionItemId,
+        scheduledAt,
+        changeType,
+        createdAt,
+        modifiedAt,
+        resourceVersion,
+        currentState,
+        scheduledState);
+  }
+
   public static class CurrentState {
 
     private String itemIdAtSource;
@@ -132,6 +188,24 @@ public class OmnichannelSubscriptionItemScheduledChange {
       obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "CurrentState{" + "itemIdAtSource=" + itemIdAtSource + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CurrentState that = (CurrentState) o;
+      return java.util.Objects.equals(itemIdAtSource, that.itemIdAtSource);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemIdAtSource);
     }
   }
 
@@ -149,6 +223,24 @@ public class OmnichannelSubscriptionItemScheduledChange {
       obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ScheduledState{" + "itemIdAtSource=" + itemIdAtSource + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ScheduledState that = (ScheduledState) o;
+      return java.util.Objects.equals(itemIdAtSource, that.itemIdAtSource);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemIdAtSource);
     }
   }
 }

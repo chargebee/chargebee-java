@@ -116,4 +116,62 @@ public class Rule {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Rule{"
+        + "id="
+        + id
+        + ", namespace="
+        + namespace
+        + ", ruleName="
+        + ruleName
+        + ", ruleOrder="
+        + ruleOrder
+        + ", status="
+        + status
+        + ", conditions="
+        + conditions
+        + ", outcome="
+        + outcome
+        + ", deleted="
+        + deleted
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Rule that = (Rule) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(namespace, that.namespace)
+        && java.util.Objects.equals(ruleName, that.ruleName)
+        && java.util.Objects.equals(ruleOrder, that.ruleOrder)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(conditions, that.conditions)
+        && java.util.Objects.equals(outcome, that.outcome)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        namespace,
+        ruleName,
+        ruleOrder,
+        status,
+        conditions,
+        outcome,
+        deleted,
+        createdAt,
+        modifiedAt);
+  }
 }

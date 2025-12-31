@@ -67,6 +67,39 @@ public class QuotedRamp {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "QuotedRamp{"
+        + "id="
+        + id
+        + ", lineItems="
+        + lineItems
+        + ", discounts="
+        + discounts
+        + ", itemTiers="
+        + itemTiers
+        + ", couponApplicabilityMappings="
+        + couponApplicabilityMappings
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuotedRamp that = (QuotedRamp) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(lineItems, that.lineItems)
+        && java.util.Objects.equals(discounts, that.discounts)
+        && java.util.Objects.equals(itemTiers, that.itemTiers)
+        && java.util.Objects.equals(couponApplicabilityMappings, that.couponApplicabilityMappings);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, lineItems, discounts, itemTiers, couponApplicabilityMappings);
+  }
+
   public static class LineItems {
 
     private String itemPriceId;
@@ -411,6 +444,146 @@ public class QuotedRamp {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "LineItems{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", itemType="
+          + itemType
+          + ", quantity="
+          + quantity
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", meteredQuantity="
+          + meteredQuantity
+          + ", unitPrice="
+          + unitPrice
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", amount="
+          + amount
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", billingPeriod="
+          + billingPeriod
+          + ", billingPeriodUnit="
+          + billingPeriodUnit
+          + ", freeQuantity="
+          + freeQuantity
+          + ", freeQuantityInDecimal="
+          + freeQuantityInDecimal
+          + ", billingCycles="
+          + billingCycles
+          + ", servicePeriodDays="
+          + servicePeriodDays
+          + ", chargeOnEvent="
+          + chargeOnEvent
+          + ", chargeOnce="
+          + chargeOnce
+          + ", chargeOnOption="
+          + chargeOnOption
+          + ", startDate="
+          + startDate
+          + ", endDate="
+          + endDate
+          + ", rampTierId="
+          + rampTierId
+          + ", discountPerBillingCycle="
+          + discountPerBillingCycle
+          + ", discountPerBillingCycleInDecimal="
+          + discountPerBillingCycleInDecimal
+          + ", itemLevelDiscountPerBillingCycle="
+          + itemLevelDiscountPerBillingCycle
+          + ", itemLevelDiscountPerBillingCycleInDecimal="
+          + itemLevelDiscountPerBillingCycleInDecimal
+          + ", amountPerBillingCycle="
+          + amountPerBillingCycle
+          + ", amountPerBillingCycleInDecimal="
+          + amountPerBillingCycleInDecimal
+          + ", netAmountPerBillingCycle="
+          + netAmountPerBillingCycle
+          + ", netAmountPerBillingCycleInDecimal="
+          + netAmountPerBillingCycleInDecimal
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LineItems that = (LineItems) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(itemType, that.itemType)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(meteredQuantity, that.meteredQuantity)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(billingPeriod, that.billingPeriod)
+          && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
+          && java.util.Objects.equals(freeQuantity, that.freeQuantity)
+          && java.util.Objects.equals(freeQuantityInDecimal, that.freeQuantityInDecimal)
+          && java.util.Objects.equals(billingCycles, that.billingCycles)
+          && java.util.Objects.equals(servicePeriodDays, that.servicePeriodDays)
+          && java.util.Objects.equals(chargeOnEvent, that.chargeOnEvent)
+          && java.util.Objects.equals(chargeOnce, that.chargeOnce)
+          && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
+          && java.util.Objects.equals(startDate, that.startDate)
+          && java.util.Objects.equals(endDate, that.endDate)
+          && java.util.Objects.equals(rampTierId, that.rampTierId)
+          && java.util.Objects.equals(discountPerBillingCycle, that.discountPerBillingCycle)
+          && java.util.Objects.equals(
+              discountPerBillingCycleInDecimal, that.discountPerBillingCycleInDecimal)
+          && java.util.Objects.equals(
+              itemLevelDiscountPerBillingCycle, that.itemLevelDiscountPerBillingCycle)
+          && java.util.Objects.equals(
+              itemLevelDiscountPerBillingCycleInDecimal,
+              that.itemLevelDiscountPerBillingCycleInDecimal)
+          && java.util.Objects.equals(amountPerBillingCycle, that.amountPerBillingCycle)
+          && java.util.Objects.equals(
+              amountPerBillingCycleInDecimal, that.amountPerBillingCycleInDecimal)
+          && java.util.Objects.equals(netAmountPerBillingCycle, that.netAmountPerBillingCycle)
+          && java.util.Objects.equals(
+              netAmountPerBillingCycleInDecimal, that.netAmountPerBillingCycleInDecimal);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          itemType,
+          quantity,
+          quantityInDecimal,
+          meteredQuantity,
+          unitPrice,
+          unitPriceInDecimal,
+          amount,
+          amountInDecimal,
+          billingPeriod,
+          billingPeriodUnit,
+          freeQuantity,
+          freeQuantityInDecimal,
+          billingCycles,
+          servicePeriodDays,
+          chargeOnEvent,
+          chargeOnce,
+          chargeOnOption,
+          startDate,
+          endDate,
+          rampTierId,
+          discountPerBillingCycle,
+          discountPerBillingCycleInDecimal,
+          itemLevelDiscountPerBillingCycle,
+          itemLevelDiscountPerBillingCycleInDecimal,
+          amountPerBillingCycle,
+          amountPerBillingCycleInDecimal,
+          netAmountPerBillingCycle,
+          netAmountPerBillingCycleInDecimal);
+    }
   }
 
   public static class Discounts {
@@ -690,6 +863,92 @@ public class QuotedRamp {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "Discounts{"
+          + "id="
+          + id
+          + ", invoiceName="
+          + invoiceName
+          + ", type="
+          + type
+          + ", percentage="
+          + percentage
+          + ", amount="
+          + amount
+          + ", durationType="
+          + durationType
+          + ", entityType="
+          + entityType
+          + ", entityId="
+          + entityId
+          + ", period="
+          + period
+          + ", periodUnit="
+          + periodUnit
+          + ", includedInMrr="
+          + includedInMrr
+          + ", applyOn="
+          + applyOn
+          + ", itemPriceId="
+          + itemPriceId
+          + ", createdAt="
+          + createdAt
+          + ", updatedAt="
+          + updatedAt
+          + ", startDate="
+          + startDate
+          + ", endDate="
+          + endDate
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Discounts that = (Discounts) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(invoiceName, that.invoiceName)
+          && java.util.Objects.equals(type, that.type)
+          && java.util.Objects.equals(percentage, that.percentage)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(durationType, that.durationType)
+          && java.util.Objects.equals(entityType, that.entityType)
+          && java.util.Objects.equals(entityId, that.entityId)
+          && java.util.Objects.equals(period, that.period)
+          && java.util.Objects.equals(periodUnit, that.periodUnit)
+          && java.util.Objects.equals(includedInMrr, that.includedInMrr)
+          && java.util.Objects.equals(applyOn, that.applyOn)
+          && java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(updatedAt, that.updatedAt)
+          && java.util.Objects.equals(startDate, that.startDate)
+          && java.util.Objects.equals(endDate, that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          invoiceName,
+          type,
+          percentage,
+          amount,
+          durationType,
+          entityType,
+          entityId,
+          period,
+          periodUnit,
+          includedInMrr,
+          applyOn,
+          itemPriceId,
+          createdAt,
+          updatedAt,
+          startDate,
+          endDate);
+    }
   }
 
   public static class ItemTiers {
@@ -800,6 +1059,64 @@ public class QuotedRamp {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "ItemTiers{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", startingUnit="
+          + startingUnit
+          + ", endingUnit="
+          + endingUnit
+          + ", price="
+          + price
+          + ", startingUnitInDecimal="
+          + startingUnitInDecimal
+          + ", endingUnitInDecimal="
+          + endingUnitInDecimal
+          + ", priceInDecimal="
+          + priceInDecimal
+          + ", rampTierId="
+          + rampTierId
+          + ", pricingType="
+          + pricingType
+          + ", packageSize="
+          + packageSize
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemTiers that = (ItemTiers) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(startingUnit, that.startingUnit)
+          && java.util.Objects.equals(endingUnit, that.endingUnit)
+          && java.util.Objects.equals(price, that.price)
+          && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+          && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+          && java.util.Objects.equals(priceInDecimal, that.priceInDecimal)
+          && java.util.Objects.equals(rampTierId, that.rampTierId)
+          && java.util.Objects.equals(pricingType, that.pricingType)
+          && java.util.Objects.equals(packageSize, that.packageSize);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          startingUnit,
+          endingUnit,
+          price,
+          startingUnitInDecimal,
+          endingUnitInDecimal,
+          priceInDecimal,
+          rampTierId,
+          pricingType,
+          packageSize);
+    }
   }
 
   public static class CouponApplicabilityMappings {
@@ -824,6 +1141,30 @@ public class QuotedRamp {
           JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "applicable_item_price_ids"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "CouponApplicabilityMappings{"
+          + "couponId="
+          + couponId
+          + ", applicableItemPriceIds="
+          + applicableItemPriceIds
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CouponApplicabilityMappings that = (CouponApplicabilityMappings) o;
+      return java.util.Objects.equals(couponId, that.couponId)
+          && java.util.Objects.equals(applicableItemPriceIds, that.applicableItemPriceIds);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(couponId, applicableItemPriceIds);
     }
   }
 }

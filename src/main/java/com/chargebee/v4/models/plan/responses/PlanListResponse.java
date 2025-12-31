@@ -140,6 +140,25 @@ public final class PlanListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "PlanListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PlanListResponse that = (PlanListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class PlanListItem {
 
     private Plan plan;
@@ -157,6 +176,24 @@ public final class PlanListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "PlanListItem{" + "plan=" + plan + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PlanListItem that = (PlanListItem) o;
+      return java.util.Objects.equals(plan, that.plan);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(plan);
     }
   }
 }

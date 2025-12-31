@@ -81,6 +81,49 @@ public class UnbilledChargesInvoicedEvent {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "UnbilledChargesInvoicedEvent{"
+        + "id="
+        + id
+        + ", occurredAt="
+        + occurredAt
+        + ", source="
+        + source
+        + ", object="
+        + object
+        + ", apiVersion="
+        + apiVersion
+        + ", eventType="
+        + eventType
+        + ", webhookStatus="
+        + webhookStatus
+        + ", content="
+        + content
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UnbilledChargesInvoicedEvent that = (UnbilledChargesInvoicedEvent) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(occurredAt, that.occurredAt)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(object, that.object)
+        && java.util.Objects.equals(apiVersion, that.apiVersion)
+        && java.util.Objects.equals(eventType, that.eventType)
+        && java.util.Objects.equals(webhookStatus, that.webhookStatus)
+        && java.util.Objects.equals(content, that.content);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
+  }
+
   public static class Content {
 
     private UnbilledCharge unbilledCharges;
@@ -108,6 +151,25 @@ public class UnbilledChargesInvoicedEvent {
       }
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Content{" + "unbilledCharges=" + unbilledCharges + ", invoice=" + invoice + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Content that = (Content) o;
+      return java.util.Objects.equals(unbilledCharges, that.unbilledCharges)
+          && java.util.Objects.equals(invoice, that.invoice);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(unbilledCharges, invoice);
     }
   }
 }

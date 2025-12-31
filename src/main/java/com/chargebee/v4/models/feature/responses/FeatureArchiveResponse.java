@@ -73,4 +73,22 @@ public final class FeatureArchiveResponse extends BaseResponse {
   public Feature getFeature() {
     return feature;
   }
+
+  @Override
+  public String toString() {
+    return "FeatureArchiveResponse{" + "feature=" + feature + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    FeatureArchiveResponse that = (FeatureArchiveResponse) o;
+    return java.util.Objects.equals(feature, that.feature);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(feature);
+  }
 }

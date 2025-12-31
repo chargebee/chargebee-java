@@ -159,6 +159,84 @@ public class DifferentialPrice {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "DifferentialPrice{"
+        + "id="
+        + id
+        + ", itemPriceId="
+        + itemPriceId
+        + ", parentItemId="
+        + parentItemId
+        + ", price="
+        + price
+        + ", priceInDecimal="
+        + priceInDecimal
+        + ", status="
+        + status
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + ", currencyCode="
+        + currencyCode
+        + ", businessEntityId="
+        + businessEntityId
+        + ", deleted="
+        + deleted
+        + ", tiers="
+        + tiers
+        + ", parentPeriods="
+        + parentPeriods
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DifferentialPrice that = (DifferentialPrice) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(itemPriceId, that.itemPriceId)
+        && java.util.Objects.equals(parentItemId, that.parentItemId)
+        && java.util.Objects.equals(price, that.price)
+        && java.util.Objects.equals(priceInDecimal, that.priceInDecimal)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(tiers, that.tiers)
+        && java.util.Objects.equals(parentPeriods, that.parentPeriods);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        itemPriceId,
+        parentItemId,
+        price,
+        priceInDecimal,
+        status,
+        resourceVersion,
+        updatedAt,
+        createdAt,
+        modifiedAt,
+        currencyCode,
+        businessEntityId,
+        deleted,
+        tiers,
+        parentPeriods);
+  }
+
   public static class Tiers {
 
     private Integer startingUnit;
@@ -253,6 +331,56 @@ public class DifferentialPrice {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "Tiers{"
+          + "startingUnit="
+          + startingUnit
+          + ", endingUnit="
+          + endingUnit
+          + ", price="
+          + price
+          + ", startingUnitInDecimal="
+          + startingUnitInDecimal
+          + ", endingUnitInDecimal="
+          + endingUnitInDecimal
+          + ", priceInDecimal="
+          + priceInDecimal
+          + ", pricingType="
+          + pricingType
+          + ", packageSize="
+          + packageSize
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Tiers that = (Tiers) o;
+      return java.util.Objects.equals(startingUnit, that.startingUnit)
+          && java.util.Objects.equals(endingUnit, that.endingUnit)
+          && java.util.Objects.equals(price, that.price)
+          && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+          && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+          && java.util.Objects.equals(priceInDecimal, that.priceInDecimal)
+          && java.util.Objects.equals(pricingType, that.pricingType)
+          && java.util.Objects.equals(packageSize, that.packageSize);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          startingUnit,
+          endingUnit,
+          price,
+          startingUnitInDecimal,
+          endingUnitInDecimal,
+          priceInDecimal,
+          pricingType,
+          packageSize);
+    }
   }
 
   public static class ParentPeriods {
@@ -314,6 +442,25 @@ public class DifferentialPrice {
               : null;
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ParentPeriods{" + "periodUnit=" + periodUnit + ", period=" + period + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ParentPeriods that = (ParentPeriods) o;
+      return java.util.Objects.equals(periodUnit, that.periodUnit)
+          && java.util.Objects.equals(period, that.period);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(periodUnit, period);
     }
   }
 }

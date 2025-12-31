@@ -213,4 +213,82 @@ public class OmnichannelSubscriptionItemOffer {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionItemOffer{"
+        + "id="
+        + id
+        + ", offerIdAtSource="
+        + offerIdAtSource
+        + ", category="
+        + category
+        + ", categoryAtSource="
+        + categoryAtSource
+        + ", type="
+        + type
+        + ", typeAtSource="
+        + typeAtSource
+        + ", discountType="
+        + discountType
+        + ", duration="
+        + duration
+        + ", percentage="
+        + percentage
+        + ", priceCurrency="
+        + priceCurrency
+        + ", priceUnits="
+        + priceUnits
+        + ", priceNanos="
+        + priceNanos
+        + ", offerTermStart="
+        + offerTermStart
+        + ", offerTermEnd="
+        + offerTermEnd
+        + ", resourceVersion="
+        + resourceVersion
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionItemOffer that = (OmnichannelSubscriptionItemOffer) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(offerIdAtSource, that.offerIdAtSource)
+        && java.util.Objects.equals(category, that.category)
+        && java.util.Objects.equals(categoryAtSource, that.categoryAtSource)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(typeAtSource, that.typeAtSource)
+        && java.util.Objects.equals(discountType, that.discountType)
+        && java.util.Objects.equals(duration, that.duration)
+        && java.util.Objects.equals(percentage, that.percentage)
+        && java.util.Objects.equals(priceCurrency, that.priceCurrency)
+        && java.util.Objects.equals(priceUnits, that.priceUnits)
+        && java.util.Objects.equals(priceNanos, that.priceNanos)
+        && java.util.Objects.equals(offerTermStart, that.offerTermStart)
+        && java.util.Objects.equals(offerTermEnd, that.offerTermEnd)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        offerIdAtSource,
+        category,
+        categoryAtSource,
+        type,
+        typeAtSource,
+        discountType,
+        duration,
+        percentage,
+        priceCurrency,
+        priceUnits,
+        priceNanos,
+        offerTermStart,
+        offerTermEnd,
+        resourceVersion);
+  }
 }

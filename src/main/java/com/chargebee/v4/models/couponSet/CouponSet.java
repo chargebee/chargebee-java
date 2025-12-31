@@ -70,4 +70,44 @@ public class CouponSet {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "CouponSet{"
+        + "id="
+        + id
+        + ", couponId="
+        + couponId
+        + ", name="
+        + name
+        + ", totalCount="
+        + totalCount
+        + ", redeemedCount="
+        + redeemedCount
+        + ", archivedCount="
+        + archivedCount
+        + ", metaData="
+        + metaData
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CouponSet that = (CouponSet) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(couponId, that.couponId)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(totalCount, that.totalCount)
+        && java.util.Objects.equals(redeemedCount, that.redeemedCount)
+        && java.util.Objects.equals(archivedCount, that.archivedCount)
+        && java.util.Objects.equals(metaData, that.metaData);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, couponId, name, totalCount, redeemedCount, archivedCount, metaData);
+  }
 }

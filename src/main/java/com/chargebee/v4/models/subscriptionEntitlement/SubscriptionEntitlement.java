@@ -145,6 +145,76 @@ public class SubscriptionEntitlement {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "SubscriptionEntitlement{"
+        + "subscriptionId="
+        + subscriptionId
+        + ", featureId="
+        + featureId
+        + ", featureName="
+        + featureName
+        + ", featureUnit="
+        + featureUnit
+        + ", featureType="
+        + featureType
+        + ", value="
+        + value
+        + ", name="
+        + name
+        + ", isOverridden="
+        + isOverridden
+        + ", isEnabled="
+        + isEnabled
+        + ", effectiveFrom="
+        + effectiveFrom
+        + ", scheduleStatus="
+        + scheduleStatus
+        + ", expiresAt="
+        + expiresAt
+        + ", components="
+        + components
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionEntitlement that = (SubscriptionEntitlement) o;
+    return java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(featureId, that.featureId)
+        && java.util.Objects.equals(featureName, that.featureName)
+        && java.util.Objects.equals(featureUnit, that.featureUnit)
+        && java.util.Objects.equals(featureType, that.featureType)
+        && java.util.Objects.equals(value, that.value)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(isOverridden, that.isOverridden)
+        && java.util.Objects.equals(isEnabled, that.isEnabled)
+        && java.util.Objects.equals(effectiveFrom, that.effectiveFrom)
+        && java.util.Objects.equals(scheduleStatus, that.scheduleStatus)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(components, that.components);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        subscriptionId,
+        featureId,
+        featureName,
+        featureUnit,
+        featureType,
+        value,
+        name,
+        isOverridden,
+        isEnabled,
+        effectiveFrom,
+        scheduleStatus,
+        expiresAt,
+        components);
+  }
+
   public static class Components {
 
     private EntitlementOverrides entitlementOverrides;
@@ -162,6 +232,24 @@ public class SubscriptionEntitlement {
       }
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Components{" + "entitlementOverrides=" + entitlementOverrides + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Components that = (Components) o;
+      return java.util.Objects.equals(entitlementOverrides, that.entitlementOverrides);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(entitlementOverrides);
     }
 
     public static class EntitlementOverrides {
@@ -185,6 +273,25 @@ public class SubscriptionEntitlement {
         obj.name = JsonUtil.getString(json, "name");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "EntitlementOverrides{" + "value=" + value + ", name=" + name + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EntitlementOverrides that = (EntitlementOverrides) o;
+        return java.util.Objects.equals(value, that.value)
+            && java.util.Objects.equals(name, that.name);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(value, name);
       }
     }
   }

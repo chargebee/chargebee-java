@@ -100,4 +100,43 @@ public class ItemEntitlement {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ItemEntitlement{"
+        + "id="
+        + id
+        + ", itemId="
+        + itemId
+        + ", itemType="
+        + itemType
+        + ", featureId="
+        + featureId
+        + ", featureName="
+        + featureName
+        + ", value="
+        + value
+        + ", name="
+        + name
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemEntitlement that = (ItemEntitlement) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(itemId, that.itemId)
+        && java.util.Objects.equals(itemType, that.itemType)
+        && java.util.Objects.equals(featureId, that.featureId)
+        && java.util.Objects.equals(featureName, that.featureName)
+        && java.util.Objects.equals(value, that.value)
+        && java.util.Objects.equals(name, that.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, itemId, itemType, featureId, featureName, value, name);
+  }
 }

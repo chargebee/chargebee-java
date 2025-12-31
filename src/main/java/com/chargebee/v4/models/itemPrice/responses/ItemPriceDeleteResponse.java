@@ -73,4 +73,22 @@ public final class ItemPriceDeleteResponse extends BaseResponse {
   public ItemPrice getItemPrice() {
     return itemPrice;
   }
+
+  @Override
+  public String toString() {
+    return "ItemPriceDeleteResponse{" + "itemPrice=" + itemPrice + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemPriceDeleteResponse that = (ItemPriceDeleteResponse) o;
+    return java.util.Objects.equals(itemPrice, that.itemPrice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(itemPrice);
+  }
 }

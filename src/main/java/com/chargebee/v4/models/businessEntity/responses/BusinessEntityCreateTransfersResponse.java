@@ -76,4 +76,25 @@ public final class BusinessEntityCreateTransfersResponse extends BaseResponse {
   public BusinessEntityTransfer getBusinessEntityTransfer() {
     return businessEntityTransfer;
   }
+
+  @Override
+  public String toString() {
+    return "BusinessEntityCreateTransfersResponse{"
+        + "businessEntityTransfer="
+        + businessEntityTransfer
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusinessEntityCreateTransfersResponse that = (BusinessEntityCreateTransfersResponse) o;
+    return java.util.Objects.equals(businessEntityTransfer, that.businessEntityTransfer);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(businessEntityTransfer);
+  }
 }

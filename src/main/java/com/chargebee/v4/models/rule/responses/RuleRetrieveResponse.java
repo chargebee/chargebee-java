@@ -74,4 +74,22 @@ public final class RuleRetrieveResponse extends BaseResponse {
   public Rule getRule() {
     return rule;
   }
+
+  @Override
+  public String toString() {
+    return "RuleRetrieveResponse{" + "rule=" + rule + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RuleRetrieveResponse that = (RuleRetrieveResponse) o;
+    return java.util.Objects.equals(rule, that.rule);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(rule);
+  }
 }

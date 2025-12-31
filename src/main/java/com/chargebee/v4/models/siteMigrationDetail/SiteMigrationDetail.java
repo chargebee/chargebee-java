@@ -126,4 +126,41 @@ public class SiteMigrationDetail {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "SiteMigrationDetail{"
+        + "entityId="
+        + entityId
+        + ", otherSiteName="
+        + otherSiteName
+        + ", entityIdAtOtherSite="
+        + entityIdAtOtherSite
+        + ", migratedAt="
+        + migratedAt
+        + ", entityType="
+        + entityType
+        + ", status="
+        + status
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SiteMigrationDetail that = (SiteMigrationDetail) o;
+    return java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(otherSiteName, that.otherSiteName)
+        && java.util.Objects.equals(entityIdAtOtherSite, that.entityIdAtOtherSite)
+        && java.util.Objects.equals(migratedAt, that.migratedAt)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(status, that.status);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        entityId, otherSiteName, entityIdAtOtherSite, migratedAt, entityType, status);
+  }
 }

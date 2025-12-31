@@ -143,6 +143,25 @@ public final class ItemFamilyListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ItemFamilyListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemFamilyListResponse that = (ItemFamilyListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class ItemFamilyListItem {
 
     private ItemFamily itemFamily;
@@ -160,6 +179,24 @@ public final class ItemFamilyListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "ItemFamilyListItem{" + "itemFamily=" + itemFamily + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemFamilyListItem that = (ItemFamilyListItem) o;
+      return java.util.Objects.equals(itemFamily, that.itemFamily);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemFamily);
     }
   }
 }

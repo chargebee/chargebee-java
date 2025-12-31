@@ -168,4 +168,37 @@ public final class SubscriptionResumeResponse extends BaseResponse {
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionResumeResponse{"
+        + "subscription="
+        + subscription
+        + ", customer="
+        + customer
+        + ", card="
+        + card
+        + ", invoice="
+        + invoice
+        + ", unbilledCharges="
+        + unbilledCharges
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionResumeResponse that = (SubscriptionResumeResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card)
+        && java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(unbilledCharges, that.unbilledCharges);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, customer, card, invoice, unbilledCharges);
+  }
 }

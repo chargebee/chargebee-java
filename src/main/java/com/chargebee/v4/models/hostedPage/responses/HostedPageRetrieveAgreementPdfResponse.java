@@ -76,4 +76,22 @@ public final class HostedPageRetrieveAgreementPdfResponse extends BaseResponse {
   public HostedPage getHostedPage() {
     return hostedPage;
   }
+
+  @Override
+  public String toString() {
+    return "HostedPageRetrieveAgreementPdfResponse{" + "hostedPage=" + hostedPage + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPageRetrieveAgreementPdfResponse that = (HostedPageRetrieveAgreementPdfResponse) o;
+    return java.util.Objects.equals(hostedPage, that.hostedPage);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(hostedPage);
+  }
 }

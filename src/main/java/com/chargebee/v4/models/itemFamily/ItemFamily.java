@@ -215,4 +215,62 @@ public class ItemFamily {
     }
     return customFields;
   }
+
+  @Override
+  public String toString() {
+    return "ItemFamily{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", description="
+        + description
+        + ", status="
+        + status
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", channel="
+        + channel
+        + ", businessEntityId="
+        + businessEntityId
+        + ", deleted="
+        + deleted
+        + ", customFields="
+        + customFields
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemFamily that = (ItemFamily) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(channel, that.channel)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(customFields, that.customFields);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        description,
+        status,
+        resourceVersion,
+        updatedAt,
+        channel,
+        businessEntityId,
+        deleted,
+        customFields);
+  }
 }

@@ -142,6 +142,25 @@ public final class GiftListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "GiftListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GiftListResponse that = (GiftListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class GiftListItem {
 
     private Gift gift;
@@ -170,6 +189,25 @@ public final class GiftListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "GiftListItem{" + "gift=" + gift + ", subscription=" + subscription + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      GiftListItem that = (GiftListItem) o;
+      return java.util.Objects.equals(gift, that.gift)
+          && java.util.Objects.equals(subscription, that.subscription);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(gift, subscription);
     }
   }
 }

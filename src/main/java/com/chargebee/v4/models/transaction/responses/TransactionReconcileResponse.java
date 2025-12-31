@@ -74,4 +74,22 @@ public final class TransactionReconcileResponse extends BaseResponse {
   public Transaction getTransaction() {
     return transaction;
   }
+
+  @Override
+  public String toString() {
+    return "TransactionReconcileResponse{" + "transaction=" + transaction + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TransactionReconcileResponse that = (TransactionReconcileResponse) o;
+    return java.util.Objects.equals(transaction, that.transaction);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(transaction);
+  }
 }

@@ -79,4 +79,26 @@ public final class PricingPageSessionCreateForNewSubscriptionResponse extends Ba
   public PricingPageSession getPricingPageSession() {
     return pricingPageSession;
   }
+
+  @Override
+  public String toString() {
+    return "PricingPageSessionCreateForNewSubscriptionResponse{"
+        + "pricingPageSession="
+        + pricingPageSession
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PricingPageSessionCreateForNewSubscriptionResponse that =
+        (PricingPageSessionCreateForNewSubscriptionResponse) o;
+    return java.util.Objects.equals(pricingPageSession, that.pricingPageSession);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(pricingPageSession);
+  }
 }

@@ -117,4 +117,31 @@ public final class GiftCreateResponse extends BaseResponse {
   public Invoice getInvoice() {
     return invoice;
   }
+
+  @Override
+  public String toString() {
+    return "GiftCreateResponse{"
+        + "gift="
+        + gift
+        + ", subscription="
+        + subscription
+        + ", invoice="
+        + invoice
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GiftCreateResponse that = (GiftCreateResponse) o;
+    return java.util.Objects.equals(gift, that.gift)
+        && java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(invoice, that.invoice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(gift, subscription, invoice);
+  }
 }

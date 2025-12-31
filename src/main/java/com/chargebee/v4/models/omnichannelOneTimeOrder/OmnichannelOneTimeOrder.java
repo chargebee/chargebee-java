@@ -125,6 +125,64 @@ public class OmnichannelOneTimeOrder {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelOneTimeOrder{"
+        + "id="
+        + id
+        + ", appId="
+        + appId
+        + ", customerId="
+        + customerId
+        + ", idAtSource="
+        + idAtSource
+        + ", origin="
+        + origin
+        + ", source="
+        + source
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", omnichannelOneTimeOrderItems="
+        + omnichannelOneTimeOrderItems
+        + ", purchaseTransaction="
+        + purchaseTransaction
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelOneTimeOrder that = (OmnichannelOneTimeOrder) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(appId, that.appId)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(idAtSource, that.idAtSource)
+        && java.util.Objects.equals(origin, that.origin)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(omnichannelOneTimeOrderItems, that.omnichannelOneTimeOrderItems)
+        && java.util.Objects.equals(purchaseTransaction, that.purchaseTransaction);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        appId,
+        customerId,
+        idAtSource,
+        origin,
+        source,
+        createdAt,
+        resourceVersion,
+        omnichannelOneTimeOrderItems,
+        purchaseTransaction);
+  }
+
   public static class OmnichannelOneTimeOrderItems {
 
     private String id;
@@ -225,6 +283,56 @@ public class OmnichannelOneTimeOrder {
       obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "OmnichannelOneTimeOrderItems{"
+          + "id="
+          + id
+          + ", itemIdAtSource="
+          + itemIdAtSource
+          + ", itemTypeAtSource="
+          + itemTypeAtSource
+          + ", quantity="
+          + quantity
+          + ", cancelledAt="
+          + cancelledAt
+          + ", cancellationReason="
+          + cancellationReason
+          + ", createdAt="
+          + createdAt
+          + ", resourceVersion="
+          + resourceVersion
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      OmnichannelOneTimeOrderItems that = (OmnichannelOneTimeOrderItems) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(itemIdAtSource, that.itemIdAtSource)
+          && java.util.Objects.equals(itemTypeAtSource, that.itemTypeAtSource)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(cancelledAt, that.cancelledAt)
+          && java.util.Objects.equals(cancellationReason, that.cancellationReason)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(resourceVersion, that.resourceVersion);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          itemIdAtSource,
+          itemTypeAtSource,
+          quantity,
+          cancelledAt,
+          cancellationReason,
+          createdAt,
+          resourceVersion);
     }
   }
 
@@ -357,6 +465,74 @@ public class OmnichannelOneTimeOrder {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "PurchaseTransaction{"
+          + "id="
+          + id
+          + ", idAtSource="
+          + idAtSource
+          + ", appId="
+          + appId
+          + ", priceCurrency="
+          + priceCurrency
+          + ", priceUnits="
+          + priceUnits
+          + ", priceNanos="
+          + priceNanos
+          + ", type="
+          + type
+          + ", transactedAt="
+          + transactedAt
+          + ", createdAt="
+          + createdAt
+          + ", resourceVersion="
+          + resourceVersion
+          + ", linkedOmnichannelSubscriptions="
+          + linkedOmnichannelSubscriptions
+          + ", linkedOmnichannelOneTimeOrders="
+          + linkedOmnichannelOneTimeOrders
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PurchaseTransaction that = (PurchaseTransaction) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(idAtSource, that.idAtSource)
+          && java.util.Objects.equals(appId, that.appId)
+          && java.util.Objects.equals(priceCurrency, that.priceCurrency)
+          && java.util.Objects.equals(priceUnits, that.priceUnits)
+          && java.util.Objects.equals(priceNanos, that.priceNanos)
+          && java.util.Objects.equals(type, that.type)
+          && java.util.Objects.equals(transactedAt, that.transactedAt)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+          && java.util.Objects.equals(
+              linkedOmnichannelSubscriptions, that.linkedOmnichannelSubscriptions)
+          && java.util.Objects.equals(
+              linkedOmnichannelOneTimeOrders, that.linkedOmnichannelOneTimeOrders);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          idAtSource,
+          appId,
+          priceCurrency,
+          priceUnits,
+          priceNanos,
+          type,
+          transactedAt,
+          createdAt,
+          resourceVersion,
+          linkedOmnichannelSubscriptions,
+          linkedOmnichannelOneTimeOrders);
+    }
+
     public static class LinkedOmnichannelSubscriptions {
 
       private String omnichannelSubscriptionId;
@@ -371,6 +547,27 @@ public class OmnichannelOneTimeOrder {
         obj.omnichannelSubscriptionId = JsonUtil.getString(json, "omnichannel_subscription_id");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LinkedOmnichannelSubscriptions{"
+            + "omnichannelSubscriptionId="
+            + omnichannelSubscriptionId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
+        return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(omnichannelSubscriptionId);
       }
     }
 
@@ -388,6 +585,27 @@ public class OmnichannelOneTimeOrder {
         obj.omnichannelOneTimeOrderId = JsonUtil.getString(json, "omnichannel_one_time_order_id");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LinkedOmnichannelOneTimeOrders{"
+            + "omnichannelOneTimeOrderId="
+            + omnichannelOneTimeOrderId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
+        return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(omnichannelOneTimeOrderId);
       }
     }
   }

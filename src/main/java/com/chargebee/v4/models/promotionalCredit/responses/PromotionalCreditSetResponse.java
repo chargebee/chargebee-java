@@ -97,4 +97,28 @@ public final class PromotionalCreditSetResponse extends BaseResponse {
   public PromotionalCredit getPromotionalCredit() {
     return promotionalCredit;
   }
+
+  @Override
+  public String toString() {
+    return "PromotionalCreditSetResponse{"
+        + "customer="
+        + customer
+        + ", promotionalCredit="
+        + promotionalCredit
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PromotionalCreditSetResponse that = (PromotionalCreditSetResponse) o;
+    return java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(promotionalCredit, that.promotionalCredit);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer, promotionalCredit);
+  }
 }

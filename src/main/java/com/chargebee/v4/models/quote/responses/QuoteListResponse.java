@@ -144,6 +144,25 @@ public final class QuoteListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "QuoteListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuoteListResponse that = (QuoteListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class QuoteListItem {
 
     private Quote quote;
@@ -183,6 +202,33 @@ public final class QuoteListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "QuoteListItem{"
+          + "quote="
+          + quote
+          + ", quotedSubscription="
+          + quotedSubscription
+          + ", quotedRamp="
+          + quotedRamp
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      QuoteListItem that = (QuoteListItem) o;
+      return java.util.Objects.equals(quote, that.quote)
+          && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
+          && java.util.Objects.equals(quotedRamp, that.quotedRamp);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(quote, quotedSubscription, quotedRamp);
     }
   }
 }

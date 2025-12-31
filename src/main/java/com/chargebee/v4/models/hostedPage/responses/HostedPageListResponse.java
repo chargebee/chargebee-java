@@ -143,6 +143,25 @@ public final class HostedPageListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "HostedPageListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPageListResponse that = (HostedPageListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class HostedPageListItem {
 
     private HostedPage hostedPage;
@@ -160,6 +179,24 @@ public final class HostedPageListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "HostedPageListItem{" + "hostedPage=" + hostedPage + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      HostedPageListItem that = (HostedPageListItem) o;
+      return java.util.Objects.equals(hostedPage, that.hostedPage);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(hostedPage);
     }
   }
 }

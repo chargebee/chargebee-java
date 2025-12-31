@@ -151,6 +151,31 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "InvoiceListPaymentReferenceNumbersResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceListPaymentReferenceNumbersResponse that =
+        (InvoiceListPaymentReferenceNumbersResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class InvoiceListPaymentReferenceNumbersItem {
 
     private PaymentReferenceNumber paymentReferenceNumber;
@@ -168,6 +193,27 @@ public final class InvoiceListPaymentReferenceNumbersResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "InvoiceListPaymentReferenceNumbersItem{"
+          + "paymentReferenceNumber="
+          + paymentReferenceNumber
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      InvoiceListPaymentReferenceNumbersItem that = (InvoiceListPaymentReferenceNumbersItem) o;
+      return java.util.Objects.equals(paymentReferenceNumber, that.paymentReferenceNumber);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(paymentReferenceNumber);
     }
   }
 }

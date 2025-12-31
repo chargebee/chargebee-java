@@ -77,4 +77,25 @@ public final class OmnichannelSubscriptionRetrieveResponse extends BaseResponse 
   public OmnichannelSubscription getOmnichannelSubscription() {
     return omnichannelSubscription;
   }
+
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionRetrieveResponse{"
+        + "omnichannelSubscription="
+        + omnichannelSubscription
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionRetrieveResponse that = (OmnichannelSubscriptionRetrieveResponse) o;
+    return java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(omnichannelSubscription);
+  }
 }

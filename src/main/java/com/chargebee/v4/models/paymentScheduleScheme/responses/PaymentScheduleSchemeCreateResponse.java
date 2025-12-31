@@ -75,4 +75,25 @@ public final class PaymentScheduleSchemeCreateResponse extends BaseResponse {
   public PaymentScheduleScheme getPaymentScheduleScheme() {
     return paymentScheduleScheme;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentScheduleSchemeCreateResponse{"
+        + "paymentScheduleScheme="
+        + paymentScheduleScheme
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentScheduleSchemeCreateResponse that = (PaymentScheduleSchemeCreateResponse) o;
+    return java.util.Objects.equals(paymentScheduleScheme, that.paymentScheduleScheme);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(paymentScheduleScheme);
+  }
 }

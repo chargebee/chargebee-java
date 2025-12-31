@@ -125,4 +125,32 @@ public final class SubscriptionRemoveScheduledResumptionResponse extends BaseRes
   public Card getCard() {
     return card;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionRemoveScheduledResumptionResponse{"
+        + "subscription="
+        + subscription
+        + ", customer="
+        + customer
+        + ", card="
+        + card
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionRemoveScheduledResumptionResponse that =
+        (SubscriptionRemoveScheduledResumptionResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, customer, card);
+  }
 }

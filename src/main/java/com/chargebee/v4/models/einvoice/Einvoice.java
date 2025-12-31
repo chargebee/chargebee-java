@@ -81,4 +81,34 @@ public class Einvoice {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Einvoice{"
+        + "id="
+        + id
+        + ", referenceNumber="
+        + referenceNumber
+        + ", status="
+        + status
+        + ", message="
+        + message
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Einvoice that = (Einvoice) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(referenceNumber, that.referenceNumber)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(message, that.message);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, referenceNumber, status, message);
+  }
 }

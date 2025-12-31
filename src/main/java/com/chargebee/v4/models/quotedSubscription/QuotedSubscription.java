@@ -291,6 +291,117 @@ public class QuotedSubscription {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "QuotedSubscription{"
+        + "id="
+        + id
+        + ", startDate="
+        + startDate
+        + ", trialEnd="
+        + trialEnd
+        + ", remainingBillingCycles="
+        + remainingBillingCycles
+        + ", poNumber="
+        + poNumber
+        + ", planQuantityInDecimal="
+        + planQuantityInDecimal
+        + ", planUnitPriceInDecimal="
+        + planUnitPriceInDecimal
+        + ", changesScheduledAt="
+        + changesScheduledAt
+        + ", changeOption="
+        + changeOption
+        + ", contractTermBillingCycleOnRenewal="
+        + contractTermBillingCycleOnRenewal
+        + ", coupons="
+        + coupons
+        + ", subscriptionItems="
+        + subscriptionItems
+        + ", itemTiers="
+        + itemTiers
+        + ", quotedContractTerm="
+        + quotedContractTerm
+        + ", billingPeriod="
+        + billingPeriod
+        + ", setupFee="
+        + setupFee
+        + ", autoCollection="
+        + autoCollection
+        + ", eventBasedAddons="
+        + eventBasedAddons
+        + ", addons="
+        + addons
+        + ", billingPeriodUnit="
+        + billingPeriodUnit
+        + ", planQuantity="
+        + planQuantity
+        + ", planId="
+        + planId
+        + ", planUnitPrice="
+        + planUnitPrice
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuotedSubscription that = (QuotedSubscription) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(startDate, that.startDate)
+        && java.util.Objects.equals(trialEnd, that.trialEnd)
+        && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
+        && java.util.Objects.equals(poNumber, that.poNumber)
+        && java.util.Objects.equals(planQuantityInDecimal, that.planQuantityInDecimal)
+        && java.util.Objects.equals(planUnitPriceInDecimal, that.planUnitPriceInDecimal)
+        && java.util.Objects.equals(changesScheduledAt, that.changesScheduledAt)
+        && java.util.Objects.equals(changeOption, that.changeOption)
+        && java.util.Objects.equals(
+            contractTermBillingCycleOnRenewal, that.contractTermBillingCycleOnRenewal)
+        && java.util.Objects.equals(coupons, that.coupons)
+        && java.util.Objects.equals(subscriptionItems, that.subscriptionItems)
+        && java.util.Objects.equals(itemTiers, that.itemTiers)
+        && java.util.Objects.equals(quotedContractTerm, that.quotedContractTerm)
+        && java.util.Objects.equals(billingPeriod, that.billingPeriod)
+        && java.util.Objects.equals(setupFee, that.setupFee)
+        && java.util.Objects.equals(autoCollection, that.autoCollection)
+        && java.util.Objects.equals(eventBasedAddons, that.eventBasedAddons)
+        && java.util.Objects.equals(addons, that.addons)
+        && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
+        && java.util.Objects.equals(planQuantity, that.planQuantity)
+        && java.util.Objects.equals(planId, that.planId)
+        && java.util.Objects.equals(planUnitPrice, that.planUnitPrice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        startDate,
+        trialEnd,
+        remainingBillingCycles,
+        poNumber,
+        planQuantityInDecimal,
+        planUnitPriceInDecimal,
+        changesScheduledAt,
+        changeOption,
+        contractTermBillingCycleOnRenewal,
+        coupons,
+        subscriptionItems,
+        itemTiers,
+        quotedContractTerm,
+        billingPeriod,
+        setupFee,
+        autoCollection,
+        eventBasedAddons,
+        addons,
+        billingPeriodUnit,
+        planQuantity,
+        planId,
+        planUnitPrice);
+  }
+
   public static class Coupons {
 
     private String couponId;
@@ -305,6 +416,24 @@ public class QuotedSubscription {
       obj.couponId = JsonUtil.getString(json, "coupon_id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Coupons{" + "couponId=" + couponId + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Coupons that = (Coupons) o;
+      return java.util.Objects.equals(couponId, that.couponId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(couponId);
     }
   }
 
@@ -683,6 +812,125 @@ public class QuotedSubscription {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "SubscriptionItems{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", itemType="
+          + itemType
+          + ", quantity="
+          + quantity
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", meteredQuantity="
+          + meteredQuantity
+          + ", lastCalculatedAt="
+          + lastCalculatedAt
+          + ", unitPrice="
+          + unitPrice
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", amount="
+          + amount
+          + ", currentTermStart="
+          + currentTermStart
+          + ", currentTermEnd="
+          + currentTermEnd
+          + ", nextBillingAt="
+          + nextBillingAt
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", billingPeriod="
+          + billingPeriod
+          + ", billingPeriodUnit="
+          + billingPeriodUnit
+          + ", freeQuantity="
+          + freeQuantity
+          + ", freeQuantityInDecimal="
+          + freeQuantityInDecimal
+          + ", trialEnd="
+          + trialEnd
+          + ", billingCycles="
+          + billingCycles
+          + ", servicePeriodDays="
+          + servicePeriodDays
+          + ", chargeOnEvent="
+          + chargeOnEvent
+          + ", chargeOnce="
+          + chargeOnce
+          + ", chargeOnOption="
+          + chargeOnOption
+          + ", prorationType="
+          + prorationType
+          + ", usageAccumulationResetFrequency="
+          + usageAccumulationResetFrequency
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionItems that = (SubscriptionItems) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(itemType, that.itemType)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(meteredQuantity, that.meteredQuantity)
+          && java.util.Objects.equals(lastCalculatedAt, that.lastCalculatedAt)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(currentTermStart, that.currentTermStart)
+          && java.util.Objects.equals(currentTermEnd, that.currentTermEnd)
+          && java.util.Objects.equals(nextBillingAt, that.nextBillingAt)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(billingPeriod, that.billingPeriod)
+          && java.util.Objects.equals(billingPeriodUnit, that.billingPeriodUnit)
+          && java.util.Objects.equals(freeQuantity, that.freeQuantity)
+          && java.util.Objects.equals(freeQuantityInDecimal, that.freeQuantityInDecimal)
+          && java.util.Objects.equals(trialEnd, that.trialEnd)
+          && java.util.Objects.equals(billingCycles, that.billingCycles)
+          && java.util.Objects.equals(servicePeriodDays, that.servicePeriodDays)
+          && java.util.Objects.equals(chargeOnEvent, that.chargeOnEvent)
+          && java.util.Objects.equals(chargeOnce, that.chargeOnce)
+          && java.util.Objects.equals(chargeOnOption, that.chargeOnOption)
+          && java.util.Objects.equals(prorationType, that.prorationType)
+          && java.util.Objects.equals(
+              usageAccumulationResetFrequency, that.usageAccumulationResetFrequency);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          itemType,
+          quantity,
+          quantityInDecimal,
+          meteredQuantity,
+          lastCalculatedAt,
+          unitPrice,
+          unitPriceInDecimal,
+          amount,
+          currentTermStart,
+          currentTermEnd,
+          nextBillingAt,
+          amountInDecimal,
+          billingPeriod,
+          billingPeriodUnit,
+          freeQuantity,
+          freeQuantityInDecimal,
+          trialEnd,
+          billingCycles,
+          servicePeriodDays,
+          chargeOnEvent,
+          chargeOnce,
+          chargeOnOption,
+          prorationType,
+          usageAccumulationResetFrequency);
+    }
   }
 
   public static class ItemTiers {
@@ -793,6 +1041,64 @@ public class QuotedSubscription {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "ItemTiers{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", startingUnit="
+          + startingUnit
+          + ", endingUnit="
+          + endingUnit
+          + ", price="
+          + price
+          + ", startingUnitInDecimal="
+          + startingUnitInDecimal
+          + ", endingUnitInDecimal="
+          + endingUnitInDecimal
+          + ", priceInDecimal="
+          + priceInDecimal
+          + ", pricingType="
+          + pricingType
+          + ", packageSize="
+          + packageSize
+          + ", index="
+          + index
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemTiers that = (ItemTiers) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(startingUnit, that.startingUnit)
+          && java.util.Objects.equals(endingUnit, that.endingUnit)
+          && java.util.Objects.equals(price, that.price)
+          && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+          && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+          && java.util.Objects.equals(priceInDecimal, that.priceInDecimal)
+          && java.util.Objects.equals(pricingType, that.pricingType)
+          && java.util.Objects.equals(packageSize, that.packageSize)
+          && java.util.Objects.equals(index, that.index);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          startingUnit,
+          endingUnit,
+          price,
+          startingUnitInDecimal,
+          endingUnitInDecimal,
+          priceInDecimal,
+          pricingType,
+          packageSize,
+          index);
+    }
   }
 
   public static class QuotedContractTerm {
@@ -877,6 +1183,48 @@ public class QuotedSubscription {
       obj.cancellationCutoffPeriod = JsonUtil.getInteger(json, "cancellation_cutoff_period");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "QuotedContractTerm{"
+          + "contractStart="
+          + contractStart
+          + ", contractEnd="
+          + contractEnd
+          + ", billingCycle="
+          + billingCycle
+          + ", actionAtTermEnd="
+          + actionAtTermEnd
+          + ", totalContractValue="
+          + totalContractValue
+          + ", cancellationCutoffPeriod="
+          + cancellationCutoffPeriod
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      QuotedContractTerm that = (QuotedContractTerm) o;
+      return java.util.Objects.equals(contractStart, that.contractStart)
+          && java.util.Objects.equals(contractEnd, that.contractEnd)
+          && java.util.Objects.equals(billingCycle, that.billingCycle)
+          && java.util.Objects.equals(actionAtTermEnd, that.actionAtTermEnd)
+          && java.util.Objects.equals(totalContractValue, that.totalContractValue)
+          && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          contractStart,
+          contractEnd,
+          billingCycle,
+          actionAtTermEnd,
+          totalContractValue,
+          cancellationCutoffPeriod);
     }
   }
 
@@ -978,6 +1326,56 @@ public class QuotedSubscription {
       obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "EventBasedAddons{"
+          + "id="
+          + id
+          + ", quantity="
+          + quantity
+          + ", unitPrice="
+          + unitPrice
+          + ", servicePeriodInDays="
+          + servicePeriodInDays
+          + ", onEvent="
+          + onEvent
+          + ", chargeOnce="
+          + chargeOnce
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      EventBasedAddons that = (EventBasedAddons) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(servicePeriodInDays, that.servicePeriodInDays)
+          && java.util.Objects.equals(onEvent, that.onEvent)
+          && java.util.Objects.equals(chargeOnce, that.chargeOnce)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          quantity,
+          unitPrice,
+          servicePeriodInDays,
+          onEvent,
+          chargeOnce,
+          quantityInDecimal,
+          unitPriceInDecimal);
     }
   }
 
@@ -1088,6 +1486,64 @@ public class QuotedSubscription {
       obj.prorationType = ProrationType.fromString(JsonUtil.getString(json, "proration_type"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Addons{"
+          + "id="
+          + id
+          + ", quantity="
+          + quantity
+          + ", unitPrice="
+          + unitPrice
+          + ", amount="
+          + amount
+          + ", trialEnd="
+          + trialEnd
+          + ", remainingBillingCycles="
+          + remainingBillingCycles
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", prorationType="
+          + prorationType
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Addons that = (Addons) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(trialEnd, that.trialEnd)
+          && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(prorationType, that.prorationType);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          quantity,
+          unitPrice,
+          amount,
+          trialEnd,
+          remainingBillingCycles,
+          quantityInDecimal,
+          unitPriceInDecimal,
+          amountInDecimal,
+          prorationType);
     }
   }
 }

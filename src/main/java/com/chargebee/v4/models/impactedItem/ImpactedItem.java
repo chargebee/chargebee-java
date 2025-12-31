@@ -50,6 +50,26 @@ public class ImpactedItem {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "ImpactedItem{" + "count=" + count + ", items=" + items + ", download=" + download + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ImpactedItem that = (ImpactedItem) o;
+    return java.util.Objects.equals(count, that.count)
+        && java.util.Objects.equals(items, that.items)
+        && java.util.Objects.equals(download, that.download);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(count, items, download);
+  }
+
   public static class Download {
 
     private String downloadUrl;
@@ -78,6 +98,33 @@ public class ImpactedItem {
       obj.mimeType = JsonUtil.getString(json, "mime_type");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Download{"
+          + "downloadUrl="
+          + downloadUrl
+          + ", validTill="
+          + validTill
+          + ", mimeType="
+          + mimeType
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Download that = (Download) o;
+      return java.util.Objects.equals(downloadUrl, that.downloadUrl)
+          && java.util.Objects.equals(validTill, that.validTill)
+          && java.util.Objects.equals(mimeType, that.mimeType);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(downloadUrl, validTill, mimeType);
     }
   }
 }

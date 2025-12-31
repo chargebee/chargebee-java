@@ -73,4 +73,22 @@ public final class ProductUpdateResponse extends BaseResponse {
   public Product getProduct() {
     return product;
   }
+
+  @Override
+  public String toString() {
+    return "ProductUpdateResponse{" + "product=" + product + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ProductUpdateResponse that = (ProductUpdateResponse) o;
+    return java.util.Objects.equals(product, that.product);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(product);
+  }
 }

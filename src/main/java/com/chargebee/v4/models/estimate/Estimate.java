@@ -108,6 +108,60 @@ public class Estimate {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Estimate{"
+        + "createdAt="
+        + createdAt
+        + ", subscriptionEstimate="
+        + subscriptionEstimate
+        + ", subscriptionEstimates="
+        + subscriptionEstimates
+        + ", invoiceEstimate="
+        + invoiceEstimate
+        + ", invoiceEstimates="
+        + invoiceEstimates
+        + ", paymentScheduleEstimates="
+        + paymentScheduleEstimates
+        + ", nextInvoiceEstimate="
+        + nextInvoiceEstimate
+        + ", creditNoteEstimates="
+        + creditNoteEstimates
+        + ", unbilledChargeEstimates="
+        + unbilledChargeEstimates
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Estimate that = (Estimate) o;
+    return java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(subscriptionEstimate, that.subscriptionEstimate)
+        && java.util.Objects.equals(subscriptionEstimates, that.subscriptionEstimates)
+        && java.util.Objects.equals(invoiceEstimate, that.invoiceEstimate)
+        && java.util.Objects.equals(invoiceEstimates, that.invoiceEstimates)
+        && java.util.Objects.equals(paymentScheduleEstimates, that.paymentScheduleEstimates)
+        && java.util.Objects.equals(nextInvoiceEstimate, that.nextInvoiceEstimate)
+        && java.util.Objects.equals(creditNoteEstimates, that.creditNoteEstimates)
+        && java.util.Objects.equals(unbilledChargeEstimates, that.unbilledChargeEstimates);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        createdAt,
+        subscriptionEstimate,
+        subscriptionEstimates,
+        invoiceEstimate,
+        invoiceEstimates,
+        paymentScheduleEstimates,
+        nextInvoiceEstimate,
+        creditNoteEstimates,
+        unbilledChargeEstimates);
+  }
+
   public static class SubscriptionEstimate {
 
     private String id;
@@ -256,6 +310,60 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "SubscriptionEstimate{"
+          + "id="
+          + id
+          + ", currencyCode="
+          + currencyCode
+          + ", status="
+          + status
+          + ", trialEndAction="
+          + trialEndAction
+          + ", nextBillingAt="
+          + nextBillingAt
+          + ", pauseDate="
+          + pauseDate
+          + ", resumeDate="
+          + resumeDate
+          + ", shippingAddress="
+          + shippingAddress
+          + ", contractTerm="
+          + contractTerm
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionEstimate that = (SubscriptionEstimate) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(trialEndAction, that.trialEndAction)
+          && java.util.Objects.equals(nextBillingAt, that.nextBillingAt)
+          && java.util.Objects.equals(pauseDate, that.pauseDate)
+          && java.util.Objects.equals(resumeDate, that.resumeDate)
+          && java.util.Objects.equals(shippingAddress, that.shippingAddress)
+          && java.util.Objects.equals(contractTerm, that.contractTerm);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          currencyCode,
+          status,
+          trialEndAction,
+          nextBillingAt,
+          pauseDate,
+          resumeDate,
+          shippingAddress,
+          contractTerm);
+    }
+
     public static class ShippingAddress {
 
       private String firstName;
@@ -396,6 +504,80 @@ public class Estimate {
             ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ShippingAddress{"
+            + "firstName="
+            + firstName
+            + ", lastName="
+            + lastName
+            + ", email="
+            + email
+            + ", company="
+            + company
+            + ", phone="
+            + phone
+            + ", line1="
+            + line1
+            + ", line2="
+            + line2
+            + ", line3="
+            + line3
+            + ", city="
+            + city
+            + ", stateCode="
+            + stateCode
+            + ", state="
+            + state
+            + ", country="
+            + country
+            + ", zip="
+            + zip
+            + ", validationStatus="
+            + validationStatus
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShippingAddress that = (ShippingAddress) o;
+        return java.util.Objects.equals(firstName, that.firstName)
+            && java.util.Objects.equals(lastName, that.lastName)
+            && java.util.Objects.equals(email, that.email)
+            && java.util.Objects.equals(company, that.company)
+            && java.util.Objects.equals(phone, that.phone)
+            && java.util.Objects.equals(line1, that.line1)
+            && java.util.Objects.equals(line2, that.line2)
+            && java.util.Objects.equals(line3, that.line3)
+            && java.util.Objects.equals(city, that.city)
+            && java.util.Objects.equals(stateCode, that.stateCode)
+            && java.util.Objects.equals(state, that.state)
+            && java.util.Objects.equals(country, that.country)
+            && java.util.Objects.equals(zip, that.zip)
+            && java.util.Objects.equals(validationStatus, that.validationStatus);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            firstName,
+            lastName,
+            email,
+            company,
+            phone,
+            line1,
+            line2,
+            line3,
+            city,
+            stateCode,
+            state,
+            country,
+            zip,
+            validationStatus);
       }
     }
 
@@ -557,6 +739,73 @@ public class Estimate {
         obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ContractTerm{"
+            + "id="
+            + id
+            + ", status="
+            + status
+            + ", contractStart="
+            + contractStart
+            + ", contractEnd="
+            + contractEnd
+            + ", billingCycle="
+            + billingCycle
+            + ", actionAtTermEnd="
+            + actionAtTermEnd
+            + ", totalContractValue="
+            + totalContractValue
+            + ", totalContractValueBeforeTax="
+            + totalContractValueBeforeTax
+            + ", cancellationCutoffPeriod="
+            + cancellationCutoffPeriod
+            + ", createdAt="
+            + createdAt
+            + ", subscriptionId="
+            + subscriptionId
+            + ", remainingBillingCycles="
+            + remainingBillingCycles
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContractTerm that = (ContractTerm) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(status, that.status)
+            && java.util.Objects.equals(contractStart, that.contractStart)
+            && java.util.Objects.equals(contractEnd, that.contractEnd)
+            && java.util.Objects.equals(billingCycle, that.billingCycle)
+            && java.util.Objects.equals(actionAtTermEnd, that.actionAtTermEnd)
+            && java.util.Objects.equals(totalContractValue, that.totalContractValue)
+            && java.util.Objects.equals(
+                totalContractValueBeforeTax, that.totalContractValueBeforeTax)
+            && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
+            && java.util.Objects.equals(createdAt, that.createdAt)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            status,
+            contractStart,
+            contractEnd,
+            billingCycle,
+            actionAtTermEnd,
+            totalContractValue,
+            totalContractValueBeforeTax,
+            cancellationCutoffPeriod,
+            createdAt,
+            subscriptionId,
+            remainingBillingCycles);
       }
     }
   }
@@ -709,6 +958,60 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "SubscriptionEstimates{"
+          + "id="
+          + id
+          + ", currencyCode="
+          + currencyCode
+          + ", status="
+          + status
+          + ", trialEndAction="
+          + trialEndAction
+          + ", nextBillingAt="
+          + nextBillingAt
+          + ", pauseDate="
+          + pauseDate
+          + ", resumeDate="
+          + resumeDate
+          + ", shippingAddress="
+          + shippingAddress
+          + ", contractTerm="
+          + contractTerm
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionEstimates that = (SubscriptionEstimates) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(trialEndAction, that.trialEndAction)
+          && java.util.Objects.equals(nextBillingAt, that.nextBillingAt)
+          && java.util.Objects.equals(pauseDate, that.pauseDate)
+          && java.util.Objects.equals(resumeDate, that.resumeDate)
+          && java.util.Objects.equals(shippingAddress, that.shippingAddress)
+          && java.util.Objects.equals(contractTerm, that.contractTerm);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          currencyCode,
+          status,
+          trialEndAction,
+          nextBillingAt,
+          pauseDate,
+          resumeDate,
+          shippingAddress,
+          contractTerm);
+    }
+
     public static class ShippingAddress {
 
       private String firstName;
@@ -849,6 +1152,80 @@ public class Estimate {
             ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ShippingAddress{"
+            + "firstName="
+            + firstName
+            + ", lastName="
+            + lastName
+            + ", email="
+            + email
+            + ", company="
+            + company
+            + ", phone="
+            + phone
+            + ", line1="
+            + line1
+            + ", line2="
+            + line2
+            + ", line3="
+            + line3
+            + ", city="
+            + city
+            + ", stateCode="
+            + stateCode
+            + ", state="
+            + state
+            + ", country="
+            + country
+            + ", zip="
+            + zip
+            + ", validationStatus="
+            + validationStatus
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShippingAddress that = (ShippingAddress) o;
+        return java.util.Objects.equals(firstName, that.firstName)
+            && java.util.Objects.equals(lastName, that.lastName)
+            && java.util.Objects.equals(email, that.email)
+            && java.util.Objects.equals(company, that.company)
+            && java.util.Objects.equals(phone, that.phone)
+            && java.util.Objects.equals(line1, that.line1)
+            && java.util.Objects.equals(line2, that.line2)
+            && java.util.Objects.equals(line3, that.line3)
+            && java.util.Objects.equals(city, that.city)
+            && java.util.Objects.equals(stateCode, that.stateCode)
+            && java.util.Objects.equals(state, that.state)
+            && java.util.Objects.equals(country, that.country)
+            && java.util.Objects.equals(zip, that.zip)
+            && java.util.Objects.equals(validationStatus, that.validationStatus);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            firstName,
+            lastName,
+            email,
+            company,
+            phone,
+            line1,
+            line2,
+            line3,
+            city,
+            stateCode,
+            state,
+            country,
+            zip,
+            validationStatus);
       }
     }
 
@@ -1010,6 +1387,73 @@ public class Estimate {
         obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ContractTerm{"
+            + "id="
+            + id
+            + ", status="
+            + status
+            + ", contractStart="
+            + contractStart
+            + ", contractEnd="
+            + contractEnd
+            + ", billingCycle="
+            + billingCycle
+            + ", actionAtTermEnd="
+            + actionAtTermEnd
+            + ", totalContractValue="
+            + totalContractValue
+            + ", totalContractValueBeforeTax="
+            + totalContractValueBeforeTax
+            + ", cancellationCutoffPeriod="
+            + cancellationCutoffPeriod
+            + ", createdAt="
+            + createdAt
+            + ", subscriptionId="
+            + subscriptionId
+            + ", remainingBillingCycles="
+            + remainingBillingCycles
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContractTerm that = (ContractTerm) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(status, that.status)
+            && java.util.Objects.equals(contractStart, that.contractStart)
+            && java.util.Objects.equals(contractEnd, that.contractEnd)
+            && java.util.Objects.equals(billingCycle, that.billingCycle)
+            && java.util.Objects.equals(actionAtTermEnd, that.actionAtTermEnd)
+            && java.util.Objects.equals(totalContractValue, that.totalContractValue)
+            && java.util.Objects.equals(
+                totalContractValueBeforeTax, that.totalContractValueBeforeTax)
+            && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
+            && java.util.Objects.equals(createdAt, that.createdAt)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            status,
+            contractStart,
+            contractEnd,
+            billingCycle,
+            actionAtTermEnd,
+            totalContractValue,
+            totalContractValueBeforeTax,
+            cancellationCutoffPeriod,
+            createdAt,
+            subscriptionId,
+            remainingBillingCycles);
       }
     }
   }
@@ -1201,6 +1645,96 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "InvoiceEstimate{"
+          + "recurring="
+          + recurring
+          + ", priceType="
+          + priceType
+          + ", currencyCode="
+          + currencyCode
+          + ", subTotal="
+          + subTotal
+          + ", total="
+          + total
+          + ", creditsApplied="
+          + creditsApplied
+          + ", amountPaid="
+          + amountPaid
+          + ", amountDue="
+          + amountDue
+          + ", lineItems="
+          + lineItems
+          + ", lineItemTiers="
+          + lineItemTiers
+          + ", lineItemDiscounts="
+          + lineItemDiscounts
+          + ", lineItemTaxes="
+          + lineItemTaxes
+          + ", lineItemCredits="
+          + lineItemCredits
+          + ", lineItemAddresses="
+          + lineItemAddresses
+          + ", discounts="
+          + discounts
+          + ", taxes="
+          + taxes
+          + ", roundOffAmount="
+          + roundOffAmount
+          + ", customerId="
+          + customerId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      InvoiceEstimate that = (InvoiceEstimate) o;
+      return java.util.Objects.equals(recurring, that.recurring)
+          && java.util.Objects.equals(priceType, that.priceType)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(subTotal, that.subTotal)
+          && java.util.Objects.equals(total, that.total)
+          && java.util.Objects.equals(creditsApplied, that.creditsApplied)
+          && java.util.Objects.equals(amountPaid, that.amountPaid)
+          && java.util.Objects.equals(amountDue, that.amountDue)
+          && java.util.Objects.equals(lineItems, that.lineItems)
+          && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
+          && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
+          && java.util.Objects.equals(lineItemTaxes, that.lineItemTaxes)
+          && java.util.Objects.equals(lineItemCredits, that.lineItemCredits)
+          && java.util.Objects.equals(lineItemAddresses, that.lineItemAddresses)
+          && java.util.Objects.equals(discounts, that.discounts)
+          && java.util.Objects.equals(taxes, that.taxes)
+          && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+          && java.util.Objects.equals(customerId, that.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          recurring,
+          priceType,
+          currencyCode,
+          subTotal,
+          total,
+          creditsApplied,
+          amountPaid,
+          amountDue,
+          lineItems,
+          lineItemTiers,
+          lineItemDiscounts,
+          lineItemTaxes,
+          lineItemCredits,
+          lineItemAddresses,
+          discounts,
+          taxes,
+          roundOffAmount,
+          customerId);
+    }
+
     public static class LineItems {
 
       private String id;
@@ -1503,6 +2037,124 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItems{"
+            + "id="
+            + id
+            + ", subscriptionId="
+            + subscriptionId
+            + ", dateFrom="
+            + dateFrom
+            + ", dateTo="
+            + dateTo
+            + ", unitAmount="
+            + unitAmount
+            + ", quantity="
+            + quantity
+            + ", amount="
+            + amount
+            + ", pricingModel="
+            + pricingModel
+            + ", isTaxed="
+            + isTaxed
+            + ", taxAmount="
+            + taxAmount
+            + ", taxRate="
+            + taxRate
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", quantityInDecimal="
+            + quantityInDecimal
+            + ", amountInDecimal="
+            + amountInDecimal
+            + ", discountAmount="
+            + discountAmount
+            + ", itemLevelDiscountAmount="
+            + itemLevelDiscountAmount
+            + ", metered="
+            + metered
+            + ", isPercentagePricing="
+            + isPercentagePricing
+            + ", referenceLineItemId="
+            + referenceLineItemId
+            + ", description="
+            + description
+            + ", entityDescription="
+            + entityDescription
+            + ", entityType="
+            + entityType
+            + ", taxExemptReason="
+            + taxExemptReason
+            + ", entityId="
+            + entityId
+            + ", customerId="
+            + customerId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItems that = (LineItems) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(quantity, that.quantity)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(pricingModel, that.pricingModel)
+            && java.util.Objects.equals(isTaxed, that.isTaxed)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+            && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+            && java.util.Objects.equals(discountAmount, that.discountAmount)
+            && java.util.Objects.equals(itemLevelDiscountAmount, that.itemLevelDiscountAmount)
+            && java.util.Objects.equals(metered, that.metered)
+            && java.util.Objects.equals(isPercentagePricing, that.isPercentagePricing)
+            && java.util.Objects.equals(referenceLineItemId, that.referenceLineItemId)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(entityDescription, that.entityDescription)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(customerId, that.customerId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            subscriptionId,
+            dateFrom,
+            dateTo,
+            unitAmount,
+            quantity,
+            amount,
+            pricingModel,
+            isTaxed,
+            taxAmount,
+            taxRate,
+            unitAmountInDecimal,
+            quantityInDecimal,
+            amountInDecimal,
+            discountAmount,
+            itemLevelDiscountAmount,
+            metered,
+            isPercentagePricing,
+            referenceLineItemId,
+            description,
+            entityDescription,
+            entityType,
+            taxExemptReason,
+            entityId,
+            customerId);
+      }
     }
 
     public static class LineItemTiers {
@@ -1620,6 +2272,68 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTiers{"
+            + "lineItemId="
+            + lineItemId
+            + ", startingUnit="
+            + startingUnit
+            + ", endingUnit="
+            + endingUnit
+            + ", quantityUsed="
+            + quantityUsed
+            + ", unitAmount="
+            + unitAmount
+            + ", startingUnitInDecimal="
+            + startingUnitInDecimal
+            + ", endingUnitInDecimal="
+            + endingUnitInDecimal
+            + ", quantityUsedInDecimal="
+            + quantityUsedInDecimal
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", pricingType="
+            + pricingType
+            + ", packageSize="
+            + packageSize
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTiers that = (LineItemTiers) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(startingUnit, that.startingUnit)
+            && java.util.Objects.equals(endingUnit, that.endingUnit)
+            && java.util.Objects.equals(quantityUsed, that.quantityUsed)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+            && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+            && java.util.Objects.equals(quantityUsedInDecimal, that.quantityUsedInDecimal)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(pricingType, that.pricingType)
+            && java.util.Objects.equals(packageSize, that.packageSize);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            startingUnit,
+            endingUnit,
+            quantityUsed,
+            unitAmount,
+            startingUnitInDecimal,
+            endingUnitInDecimal,
+            quantityUsedInDecimal,
+            unitAmountInDecimal,
+            pricingType,
+            packageSize);
+      }
     }
 
     public static class LineItemDiscounts {
@@ -1700,6 +2414,39 @@ public class Estimate {
         obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemDiscounts{"
+            + "lineItemId="
+            + lineItemId
+            + ", discountType="
+            + discountType
+            + ", couponId="
+            + couponId
+            + ", entityId="
+            + entityId
+            + ", discountAmount="
+            + discountAmount
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemDiscounts that = (LineItemDiscounts) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(couponId, that.couponId)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(discountAmount, that.discountAmount);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
       }
     }
 
@@ -1856,6 +2603,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTaxes{"
+            + "lineItemId="
+            + lineItemId
+            + ", taxName="
+            + taxName
+            + ", taxRate="
+            + taxRate
+            + ", dateTo="
+            + dateTo
+            + ", dateFrom="
+            + dateFrom
+            + ", proratedTaxableAmount="
+            + proratedTaxableAmount
+            + ", isPartialTaxApplied="
+            + isPartialTaxApplied
+            + ", isNonComplianceTax="
+            + isNonComplianceTax
+            + ", taxableAmount="
+            + taxableAmount
+            + ", taxAmount="
+            + taxAmount
+            + ", taxJurisType="
+            + taxJurisType
+            + ", taxJurisName="
+            + taxJurisName
+            + ", taxJurisCode="
+            + taxJurisCode
+            + ", taxAmountInLocalCurrency="
+            + taxAmountInLocalCurrency
+            + ", localCurrencyCode="
+            + localCurrencyCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTaxes that = (LineItemTaxes) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(taxName, that.taxName)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(proratedTaxableAmount, that.proratedTaxableAmount)
+            && java.util.Objects.equals(isPartialTaxApplied, that.isPartialTaxApplied)
+            && java.util.Objects.equals(isNonComplianceTax, that.isNonComplianceTax)
+            && java.util.Objects.equals(taxableAmount, that.taxableAmount)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxJurisType, that.taxJurisType)
+            && java.util.Objects.equals(taxJurisName, that.taxJurisName)
+            && java.util.Objects.equals(taxJurisCode, that.taxJurisCode)
+            && java.util.Objects.equals(taxAmountInLocalCurrency, that.taxAmountInLocalCurrency)
+            && java.util.Objects.equals(localCurrencyCode, that.localCurrencyCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            taxName,
+            taxRate,
+            dateTo,
+            dateFrom,
+            proratedTaxableAmount,
+            isPartialTaxApplied,
+            isNonComplianceTax,
+            taxableAmount,
+            taxAmount,
+            taxJurisType,
+            taxJurisName,
+            taxJurisCode,
+            taxAmountInLocalCurrency,
+            localCurrencyCode);
+      }
     }
 
     public static class LineItemCredits {
@@ -1886,6 +2711,33 @@ public class Estimate {
         obj.lineItemId = JsonUtil.getString(json, "line_item_id");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemCredits{"
+            + "cnId="
+            + cnId
+            + ", appliedAmount="
+            + appliedAmount
+            + ", lineItemId="
+            + lineItemId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemCredits that = (LineItemCredits) o;
+        return java.util.Objects.equals(cnId, that.cnId)
+            && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+            && java.util.Objects.equals(lineItemId, that.lineItemId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(cnId, appliedAmount, lineItemId);
       }
     }
 
@@ -2037,6 +2889,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemAddresses{"
+            + "lineItemId="
+            + lineItemId
+            + ", firstName="
+            + firstName
+            + ", lastName="
+            + lastName
+            + ", email="
+            + email
+            + ", company="
+            + company
+            + ", phone="
+            + phone
+            + ", line1="
+            + line1
+            + ", line2="
+            + line2
+            + ", line3="
+            + line3
+            + ", city="
+            + city
+            + ", stateCode="
+            + stateCode
+            + ", state="
+            + state
+            + ", country="
+            + country
+            + ", zip="
+            + zip
+            + ", validationStatus="
+            + validationStatus
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemAddresses that = (LineItemAddresses) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(firstName, that.firstName)
+            && java.util.Objects.equals(lastName, that.lastName)
+            && java.util.Objects.equals(email, that.email)
+            && java.util.Objects.equals(company, that.company)
+            && java.util.Objects.equals(phone, that.phone)
+            && java.util.Objects.equals(line1, that.line1)
+            && java.util.Objects.equals(line2, that.line2)
+            && java.util.Objects.equals(line3, that.line3)
+            && java.util.Objects.equals(city, that.city)
+            && java.util.Objects.equals(stateCode, that.stateCode)
+            && java.util.Objects.equals(state, that.state)
+            && java.util.Objects.equals(country, that.country)
+            && java.util.Objects.equals(zip, that.zip)
+            && java.util.Objects.equals(validationStatus, that.validationStatus);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            firstName,
+            lastName,
+            email,
+            company,
+            phone,
+            line1,
+            line2,
+            line3,
+            city,
+            stateCode,
+            state,
+            country,
+            zip,
+            validationStatus);
+      }
     }
 
     public static class Discounts {
@@ -2160,6 +3090,46 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "Discounts{"
+            + "amount="
+            + amount
+            + ", description="
+            + description
+            + ", lineItemId="
+            + lineItemId
+            + ", entityType="
+            + entityType
+            + ", discountType="
+            + discountType
+            + ", entityId="
+            + entityId
+            + ", couponSetCode="
+            + couponSetCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discounts that = (Discounts) o;
+        return java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(couponSetCode, that.couponSetCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
+      }
     }
 
     public static class Taxes {
@@ -2190,6 +3160,33 @@ public class Estimate {
         obj.description = JsonUtil.getString(json, "description");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "Taxes{"
+            + "name="
+            + name
+            + ", amount="
+            + amount
+            + ", description="
+            + description
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Taxes that = (Taxes) o;
+        return java.util.Objects.equals(name, that.name)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(name, amount, description);
       }
     }
   }
@@ -2381,6 +3378,96 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "InvoiceEstimates{"
+          + "recurring="
+          + recurring
+          + ", priceType="
+          + priceType
+          + ", currencyCode="
+          + currencyCode
+          + ", subTotal="
+          + subTotal
+          + ", total="
+          + total
+          + ", creditsApplied="
+          + creditsApplied
+          + ", amountPaid="
+          + amountPaid
+          + ", amountDue="
+          + amountDue
+          + ", lineItems="
+          + lineItems
+          + ", lineItemTiers="
+          + lineItemTiers
+          + ", lineItemDiscounts="
+          + lineItemDiscounts
+          + ", lineItemTaxes="
+          + lineItemTaxes
+          + ", lineItemCredits="
+          + lineItemCredits
+          + ", lineItemAddresses="
+          + lineItemAddresses
+          + ", discounts="
+          + discounts
+          + ", taxes="
+          + taxes
+          + ", roundOffAmount="
+          + roundOffAmount
+          + ", customerId="
+          + customerId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      InvoiceEstimates that = (InvoiceEstimates) o;
+      return java.util.Objects.equals(recurring, that.recurring)
+          && java.util.Objects.equals(priceType, that.priceType)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(subTotal, that.subTotal)
+          && java.util.Objects.equals(total, that.total)
+          && java.util.Objects.equals(creditsApplied, that.creditsApplied)
+          && java.util.Objects.equals(amountPaid, that.amountPaid)
+          && java.util.Objects.equals(amountDue, that.amountDue)
+          && java.util.Objects.equals(lineItems, that.lineItems)
+          && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
+          && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
+          && java.util.Objects.equals(lineItemTaxes, that.lineItemTaxes)
+          && java.util.Objects.equals(lineItemCredits, that.lineItemCredits)
+          && java.util.Objects.equals(lineItemAddresses, that.lineItemAddresses)
+          && java.util.Objects.equals(discounts, that.discounts)
+          && java.util.Objects.equals(taxes, that.taxes)
+          && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+          && java.util.Objects.equals(customerId, that.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          recurring,
+          priceType,
+          currencyCode,
+          subTotal,
+          total,
+          creditsApplied,
+          amountPaid,
+          amountDue,
+          lineItems,
+          lineItemTiers,
+          lineItemDiscounts,
+          lineItemTaxes,
+          lineItemCredits,
+          lineItemAddresses,
+          discounts,
+          taxes,
+          roundOffAmount,
+          customerId);
+    }
+
     public static class LineItems {
 
       private String id;
@@ -2683,6 +3770,124 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItems{"
+            + "id="
+            + id
+            + ", subscriptionId="
+            + subscriptionId
+            + ", dateFrom="
+            + dateFrom
+            + ", dateTo="
+            + dateTo
+            + ", unitAmount="
+            + unitAmount
+            + ", quantity="
+            + quantity
+            + ", amount="
+            + amount
+            + ", pricingModel="
+            + pricingModel
+            + ", isTaxed="
+            + isTaxed
+            + ", taxAmount="
+            + taxAmount
+            + ", taxRate="
+            + taxRate
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", quantityInDecimal="
+            + quantityInDecimal
+            + ", amountInDecimal="
+            + amountInDecimal
+            + ", discountAmount="
+            + discountAmount
+            + ", itemLevelDiscountAmount="
+            + itemLevelDiscountAmount
+            + ", metered="
+            + metered
+            + ", isPercentagePricing="
+            + isPercentagePricing
+            + ", referenceLineItemId="
+            + referenceLineItemId
+            + ", description="
+            + description
+            + ", entityDescription="
+            + entityDescription
+            + ", entityType="
+            + entityType
+            + ", taxExemptReason="
+            + taxExemptReason
+            + ", entityId="
+            + entityId
+            + ", customerId="
+            + customerId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItems that = (LineItems) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(quantity, that.quantity)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(pricingModel, that.pricingModel)
+            && java.util.Objects.equals(isTaxed, that.isTaxed)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+            && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+            && java.util.Objects.equals(discountAmount, that.discountAmount)
+            && java.util.Objects.equals(itemLevelDiscountAmount, that.itemLevelDiscountAmount)
+            && java.util.Objects.equals(metered, that.metered)
+            && java.util.Objects.equals(isPercentagePricing, that.isPercentagePricing)
+            && java.util.Objects.equals(referenceLineItemId, that.referenceLineItemId)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(entityDescription, that.entityDescription)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(customerId, that.customerId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            subscriptionId,
+            dateFrom,
+            dateTo,
+            unitAmount,
+            quantity,
+            amount,
+            pricingModel,
+            isTaxed,
+            taxAmount,
+            taxRate,
+            unitAmountInDecimal,
+            quantityInDecimal,
+            amountInDecimal,
+            discountAmount,
+            itemLevelDiscountAmount,
+            metered,
+            isPercentagePricing,
+            referenceLineItemId,
+            description,
+            entityDescription,
+            entityType,
+            taxExemptReason,
+            entityId,
+            customerId);
+      }
     }
 
     public static class LineItemTiers {
@@ -2800,6 +4005,68 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTiers{"
+            + "lineItemId="
+            + lineItemId
+            + ", startingUnit="
+            + startingUnit
+            + ", endingUnit="
+            + endingUnit
+            + ", quantityUsed="
+            + quantityUsed
+            + ", unitAmount="
+            + unitAmount
+            + ", startingUnitInDecimal="
+            + startingUnitInDecimal
+            + ", endingUnitInDecimal="
+            + endingUnitInDecimal
+            + ", quantityUsedInDecimal="
+            + quantityUsedInDecimal
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", pricingType="
+            + pricingType
+            + ", packageSize="
+            + packageSize
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTiers that = (LineItemTiers) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(startingUnit, that.startingUnit)
+            && java.util.Objects.equals(endingUnit, that.endingUnit)
+            && java.util.Objects.equals(quantityUsed, that.quantityUsed)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+            && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+            && java.util.Objects.equals(quantityUsedInDecimal, that.quantityUsedInDecimal)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(pricingType, that.pricingType)
+            && java.util.Objects.equals(packageSize, that.packageSize);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            startingUnit,
+            endingUnit,
+            quantityUsed,
+            unitAmount,
+            startingUnitInDecimal,
+            endingUnitInDecimal,
+            quantityUsedInDecimal,
+            unitAmountInDecimal,
+            pricingType,
+            packageSize);
+      }
     }
 
     public static class LineItemDiscounts {
@@ -2880,6 +4147,39 @@ public class Estimate {
         obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemDiscounts{"
+            + "lineItemId="
+            + lineItemId
+            + ", discountType="
+            + discountType
+            + ", couponId="
+            + couponId
+            + ", entityId="
+            + entityId
+            + ", discountAmount="
+            + discountAmount
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemDiscounts that = (LineItemDiscounts) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(couponId, that.couponId)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(discountAmount, that.discountAmount);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
       }
     }
 
@@ -3036,6 +4336,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTaxes{"
+            + "lineItemId="
+            + lineItemId
+            + ", taxName="
+            + taxName
+            + ", taxRate="
+            + taxRate
+            + ", dateTo="
+            + dateTo
+            + ", dateFrom="
+            + dateFrom
+            + ", proratedTaxableAmount="
+            + proratedTaxableAmount
+            + ", isPartialTaxApplied="
+            + isPartialTaxApplied
+            + ", isNonComplianceTax="
+            + isNonComplianceTax
+            + ", taxableAmount="
+            + taxableAmount
+            + ", taxAmount="
+            + taxAmount
+            + ", taxJurisType="
+            + taxJurisType
+            + ", taxJurisName="
+            + taxJurisName
+            + ", taxJurisCode="
+            + taxJurisCode
+            + ", taxAmountInLocalCurrency="
+            + taxAmountInLocalCurrency
+            + ", localCurrencyCode="
+            + localCurrencyCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTaxes that = (LineItemTaxes) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(taxName, that.taxName)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(proratedTaxableAmount, that.proratedTaxableAmount)
+            && java.util.Objects.equals(isPartialTaxApplied, that.isPartialTaxApplied)
+            && java.util.Objects.equals(isNonComplianceTax, that.isNonComplianceTax)
+            && java.util.Objects.equals(taxableAmount, that.taxableAmount)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxJurisType, that.taxJurisType)
+            && java.util.Objects.equals(taxJurisName, that.taxJurisName)
+            && java.util.Objects.equals(taxJurisCode, that.taxJurisCode)
+            && java.util.Objects.equals(taxAmountInLocalCurrency, that.taxAmountInLocalCurrency)
+            && java.util.Objects.equals(localCurrencyCode, that.localCurrencyCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            taxName,
+            taxRate,
+            dateTo,
+            dateFrom,
+            proratedTaxableAmount,
+            isPartialTaxApplied,
+            isNonComplianceTax,
+            taxableAmount,
+            taxAmount,
+            taxJurisType,
+            taxJurisName,
+            taxJurisCode,
+            taxAmountInLocalCurrency,
+            localCurrencyCode);
+      }
     }
 
     public static class LineItemCredits {
@@ -3066,6 +4444,33 @@ public class Estimate {
         obj.lineItemId = JsonUtil.getString(json, "line_item_id");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemCredits{"
+            + "cnId="
+            + cnId
+            + ", appliedAmount="
+            + appliedAmount
+            + ", lineItemId="
+            + lineItemId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemCredits that = (LineItemCredits) o;
+        return java.util.Objects.equals(cnId, that.cnId)
+            && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+            && java.util.Objects.equals(lineItemId, that.lineItemId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(cnId, appliedAmount, lineItemId);
       }
     }
 
@@ -3217,6 +4622,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemAddresses{"
+            + "lineItemId="
+            + lineItemId
+            + ", firstName="
+            + firstName
+            + ", lastName="
+            + lastName
+            + ", email="
+            + email
+            + ", company="
+            + company
+            + ", phone="
+            + phone
+            + ", line1="
+            + line1
+            + ", line2="
+            + line2
+            + ", line3="
+            + line3
+            + ", city="
+            + city
+            + ", stateCode="
+            + stateCode
+            + ", state="
+            + state
+            + ", country="
+            + country
+            + ", zip="
+            + zip
+            + ", validationStatus="
+            + validationStatus
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemAddresses that = (LineItemAddresses) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(firstName, that.firstName)
+            && java.util.Objects.equals(lastName, that.lastName)
+            && java.util.Objects.equals(email, that.email)
+            && java.util.Objects.equals(company, that.company)
+            && java.util.Objects.equals(phone, that.phone)
+            && java.util.Objects.equals(line1, that.line1)
+            && java.util.Objects.equals(line2, that.line2)
+            && java.util.Objects.equals(line3, that.line3)
+            && java.util.Objects.equals(city, that.city)
+            && java.util.Objects.equals(stateCode, that.stateCode)
+            && java.util.Objects.equals(state, that.state)
+            && java.util.Objects.equals(country, that.country)
+            && java.util.Objects.equals(zip, that.zip)
+            && java.util.Objects.equals(validationStatus, that.validationStatus);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            firstName,
+            lastName,
+            email,
+            company,
+            phone,
+            line1,
+            line2,
+            line3,
+            city,
+            stateCode,
+            state,
+            country,
+            zip,
+            validationStatus);
+      }
     }
 
     public static class Discounts {
@@ -3340,6 +4823,46 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "Discounts{"
+            + "amount="
+            + amount
+            + ", description="
+            + description
+            + ", lineItemId="
+            + lineItemId
+            + ", entityType="
+            + entityType
+            + ", discountType="
+            + discountType
+            + ", entityId="
+            + entityId
+            + ", couponSetCode="
+            + couponSetCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discounts that = (Discounts) o;
+        return java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(couponSetCode, that.couponSetCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
+      }
     }
 
     public static class Taxes {
@@ -3370,6 +4893,33 @@ public class Estimate {
         obj.description = JsonUtil.getString(json, "description");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "Taxes{"
+            + "name="
+            + name
+            + ", amount="
+            + amount
+            + ", description="
+            + description
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Taxes that = (Taxes) o;
+        return java.util.Objects.equals(name, that.name)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(name, amount, description);
       }
     }
   }
@@ -3461,6 +5011,46 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "PaymentScheduleEstimates{"
+          + "id="
+          + id
+          + ", schemeId="
+          + schemeId
+          + ", entityType="
+          + entityType
+          + ", entityId="
+          + entityId
+          + ", amount="
+          + amount
+          + ", currencyCode="
+          + currencyCode
+          + ", scheduleEntries="
+          + scheduleEntries
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PaymentScheduleEstimates that = (PaymentScheduleEstimates) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(schemeId, that.schemeId)
+          && java.util.Objects.equals(entityType, that.entityType)
+          && java.util.Objects.equals(entityId, that.entityId)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(scheduleEntries, that.scheduleEntries);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id, schemeId, entityType, entityId, amount, currencyCode, scheduleEntries);
+    }
+
     public static class ScheduleEntries {
 
       private String id;
@@ -3526,6 +5116,36 @@ public class Estimate {
         obj.status = Status.fromString(JsonUtil.getString(json, "status"));
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ScheduleEntries{"
+            + "id="
+            + id
+            + ", date="
+            + date
+            + ", amount="
+            + amount
+            + ", status="
+            + status
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ScheduleEntries that = (ScheduleEntries) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(date, that.date)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(status, that.status);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(id, date, amount, status);
       }
     }
   }
@@ -3717,6 +5337,96 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "NextInvoiceEstimate{"
+          + "recurring="
+          + recurring
+          + ", priceType="
+          + priceType
+          + ", currencyCode="
+          + currencyCode
+          + ", subTotal="
+          + subTotal
+          + ", total="
+          + total
+          + ", creditsApplied="
+          + creditsApplied
+          + ", amountPaid="
+          + amountPaid
+          + ", amountDue="
+          + amountDue
+          + ", lineItems="
+          + lineItems
+          + ", lineItemTiers="
+          + lineItemTiers
+          + ", lineItemDiscounts="
+          + lineItemDiscounts
+          + ", lineItemTaxes="
+          + lineItemTaxes
+          + ", lineItemCredits="
+          + lineItemCredits
+          + ", lineItemAddresses="
+          + lineItemAddresses
+          + ", discounts="
+          + discounts
+          + ", taxes="
+          + taxes
+          + ", roundOffAmount="
+          + roundOffAmount
+          + ", customerId="
+          + customerId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      NextInvoiceEstimate that = (NextInvoiceEstimate) o;
+      return java.util.Objects.equals(recurring, that.recurring)
+          && java.util.Objects.equals(priceType, that.priceType)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(subTotal, that.subTotal)
+          && java.util.Objects.equals(total, that.total)
+          && java.util.Objects.equals(creditsApplied, that.creditsApplied)
+          && java.util.Objects.equals(amountPaid, that.amountPaid)
+          && java.util.Objects.equals(amountDue, that.amountDue)
+          && java.util.Objects.equals(lineItems, that.lineItems)
+          && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
+          && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
+          && java.util.Objects.equals(lineItemTaxes, that.lineItemTaxes)
+          && java.util.Objects.equals(lineItemCredits, that.lineItemCredits)
+          && java.util.Objects.equals(lineItemAddresses, that.lineItemAddresses)
+          && java.util.Objects.equals(discounts, that.discounts)
+          && java.util.Objects.equals(taxes, that.taxes)
+          && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+          && java.util.Objects.equals(customerId, that.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          recurring,
+          priceType,
+          currencyCode,
+          subTotal,
+          total,
+          creditsApplied,
+          amountPaid,
+          amountDue,
+          lineItems,
+          lineItemTiers,
+          lineItemDiscounts,
+          lineItemTaxes,
+          lineItemCredits,
+          lineItemAddresses,
+          discounts,
+          taxes,
+          roundOffAmount,
+          customerId);
+    }
+
     public static class LineItems {
 
       private String id;
@@ -4019,6 +5729,124 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItems{"
+            + "id="
+            + id
+            + ", subscriptionId="
+            + subscriptionId
+            + ", dateFrom="
+            + dateFrom
+            + ", dateTo="
+            + dateTo
+            + ", unitAmount="
+            + unitAmount
+            + ", quantity="
+            + quantity
+            + ", amount="
+            + amount
+            + ", pricingModel="
+            + pricingModel
+            + ", isTaxed="
+            + isTaxed
+            + ", taxAmount="
+            + taxAmount
+            + ", taxRate="
+            + taxRate
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", quantityInDecimal="
+            + quantityInDecimal
+            + ", amountInDecimal="
+            + amountInDecimal
+            + ", discountAmount="
+            + discountAmount
+            + ", itemLevelDiscountAmount="
+            + itemLevelDiscountAmount
+            + ", metered="
+            + metered
+            + ", isPercentagePricing="
+            + isPercentagePricing
+            + ", referenceLineItemId="
+            + referenceLineItemId
+            + ", description="
+            + description
+            + ", entityDescription="
+            + entityDescription
+            + ", entityType="
+            + entityType
+            + ", taxExemptReason="
+            + taxExemptReason
+            + ", entityId="
+            + entityId
+            + ", customerId="
+            + customerId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItems that = (LineItems) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(quantity, that.quantity)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(pricingModel, that.pricingModel)
+            && java.util.Objects.equals(isTaxed, that.isTaxed)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+            && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+            && java.util.Objects.equals(discountAmount, that.discountAmount)
+            && java.util.Objects.equals(itemLevelDiscountAmount, that.itemLevelDiscountAmount)
+            && java.util.Objects.equals(metered, that.metered)
+            && java.util.Objects.equals(isPercentagePricing, that.isPercentagePricing)
+            && java.util.Objects.equals(referenceLineItemId, that.referenceLineItemId)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(entityDescription, that.entityDescription)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(customerId, that.customerId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            subscriptionId,
+            dateFrom,
+            dateTo,
+            unitAmount,
+            quantity,
+            amount,
+            pricingModel,
+            isTaxed,
+            taxAmount,
+            taxRate,
+            unitAmountInDecimal,
+            quantityInDecimal,
+            amountInDecimal,
+            discountAmount,
+            itemLevelDiscountAmount,
+            metered,
+            isPercentagePricing,
+            referenceLineItemId,
+            description,
+            entityDescription,
+            entityType,
+            taxExemptReason,
+            entityId,
+            customerId);
+      }
     }
 
     public static class LineItemTiers {
@@ -4136,6 +5964,68 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTiers{"
+            + "lineItemId="
+            + lineItemId
+            + ", startingUnit="
+            + startingUnit
+            + ", endingUnit="
+            + endingUnit
+            + ", quantityUsed="
+            + quantityUsed
+            + ", unitAmount="
+            + unitAmount
+            + ", startingUnitInDecimal="
+            + startingUnitInDecimal
+            + ", endingUnitInDecimal="
+            + endingUnitInDecimal
+            + ", quantityUsedInDecimal="
+            + quantityUsedInDecimal
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", pricingType="
+            + pricingType
+            + ", packageSize="
+            + packageSize
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTiers that = (LineItemTiers) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(startingUnit, that.startingUnit)
+            && java.util.Objects.equals(endingUnit, that.endingUnit)
+            && java.util.Objects.equals(quantityUsed, that.quantityUsed)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+            && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+            && java.util.Objects.equals(quantityUsedInDecimal, that.quantityUsedInDecimal)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(pricingType, that.pricingType)
+            && java.util.Objects.equals(packageSize, that.packageSize);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            startingUnit,
+            endingUnit,
+            quantityUsed,
+            unitAmount,
+            startingUnitInDecimal,
+            endingUnitInDecimal,
+            quantityUsedInDecimal,
+            unitAmountInDecimal,
+            pricingType,
+            packageSize);
+      }
     }
 
     public static class LineItemDiscounts {
@@ -4216,6 +6106,39 @@ public class Estimate {
         obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemDiscounts{"
+            + "lineItemId="
+            + lineItemId
+            + ", discountType="
+            + discountType
+            + ", couponId="
+            + couponId
+            + ", entityId="
+            + entityId
+            + ", discountAmount="
+            + discountAmount
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemDiscounts that = (LineItemDiscounts) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(couponId, that.couponId)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(discountAmount, that.discountAmount);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
       }
     }
 
@@ -4372,6 +6295,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTaxes{"
+            + "lineItemId="
+            + lineItemId
+            + ", taxName="
+            + taxName
+            + ", taxRate="
+            + taxRate
+            + ", dateTo="
+            + dateTo
+            + ", dateFrom="
+            + dateFrom
+            + ", proratedTaxableAmount="
+            + proratedTaxableAmount
+            + ", isPartialTaxApplied="
+            + isPartialTaxApplied
+            + ", isNonComplianceTax="
+            + isNonComplianceTax
+            + ", taxableAmount="
+            + taxableAmount
+            + ", taxAmount="
+            + taxAmount
+            + ", taxJurisType="
+            + taxJurisType
+            + ", taxJurisName="
+            + taxJurisName
+            + ", taxJurisCode="
+            + taxJurisCode
+            + ", taxAmountInLocalCurrency="
+            + taxAmountInLocalCurrency
+            + ", localCurrencyCode="
+            + localCurrencyCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTaxes that = (LineItemTaxes) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(taxName, that.taxName)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(proratedTaxableAmount, that.proratedTaxableAmount)
+            && java.util.Objects.equals(isPartialTaxApplied, that.isPartialTaxApplied)
+            && java.util.Objects.equals(isNonComplianceTax, that.isNonComplianceTax)
+            && java.util.Objects.equals(taxableAmount, that.taxableAmount)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxJurisType, that.taxJurisType)
+            && java.util.Objects.equals(taxJurisName, that.taxJurisName)
+            && java.util.Objects.equals(taxJurisCode, that.taxJurisCode)
+            && java.util.Objects.equals(taxAmountInLocalCurrency, that.taxAmountInLocalCurrency)
+            && java.util.Objects.equals(localCurrencyCode, that.localCurrencyCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            taxName,
+            taxRate,
+            dateTo,
+            dateFrom,
+            proratedTaxableAmount,
+            isPartialTaxApplied,
+            isNonComplianceTax,
+            taxableAmount,
+            taxAmount,
+            taxJurisType,
+            taxJurisName,
+            taxJurisCode,
+            taxAmountInLocalCurrency,
+            localCurrencyCode);
+      }
     }
 
     public static class LineItemCredits {
@@ -4402,6 +6403,33 @@ public class Estimate {
         obj.lineItemId = JsonUtil.getString(json, "line_item_id");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemCredits{"
+            + "cnId="
+            + cnId
+            + ", appliedAmount="
+            + appliedAmount
+            + ", lineItemId="
+            + lineItemId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemCredits that = (LineItemCredits) o;
+        return java.util.Objects.equals(cnId, that.cnId)
+            && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+            && java.util.Objects.equals(lineItemId, that.lineItemId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(cnId, appliedAmount, lineItemId);
       }
     }
 
@@ -4553,6 +6581,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemAddresses{"
+            + "lineItemId="
+            + lineItemId
+            + ", firstName="
+            + firstName
+            + ", lastName="
+            + lastName
+            + ", email="
+            + email
+            + ", company="
+            + company
+            + ", phone="
+            + phone
+            + ", line1="
+            + line1
+            + ", line2="
+            + line2
+            + ", line3="
+            + line3
+            + ", city="
+            + city
+            + ", stateCode="
+            + stateCode
+            + ", state="
+            + state
+            + ", country="
+            + country
+            + ", zip="
+            + zip
+            + ", validationStatus="
+            + validationStatus
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemAddresses that = (LineItemAddresses) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(firstName, that.firstName)
+            && java.util.Objects.equals(lastName, that.lastName)
+            && java.util.Objects.equals(email, that.email)
+            && java.util.Objects.equals(company, that.company)
+            && java.util.Objects.equals(phone, that.phone)
+            && java.util.Objects.equals(line1, that.line1)
+            && java.util.Objects.equals(line2, that.line2)
+            && java.util.Objects.equals(line3, that.line3)
+            && java.util.Objects.equals(city, that.city)
+            && java.util.Objects.equals(stateCode, that.stateCode)
+            && java.util.Objects.equals(state, that.state)
+            && java.util.Objects.equals(country, that.country)
+            && java.util.Objects.equals(zip, that.zip)
+            && java.util.Objects.equals(validationStatus, that.validationStatus);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            firstName,
+            lastName,
+            email,
+            company,
+            phone,
+            line1,
+            line2,
+            line3,
+            city,
+            stateCode,
+            state,
+            country,
+            zip,
+            validationStatus);
+      }
     }
 
     public static class Discounts {
@@ -4676,6 +6782,46 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "Discounts{"
+            + "amount="
+            + amount
+            + ", description="
+            + description
+            + ", lineItemId="
+            + lineItemId
+            + ", entityType="
+            + entityType
+            + ", discountType="
+            + discountType
+            + ", entityId="
+            + entityId
+            + ", couponSetCode="
+            + couponSetCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discounts that = (Discounts) o;
+        return java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(couponSetCode, that.couponSetCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
+      }
     }
 
     public static class Taxes {
@@ -4706,6 +6852,33 @@ public class Estimate {
         obj.description = JsonUtil.getString(json, "description");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "Taxes{"
+            + "name="
+            + name
+            + ", amount="
+            + amount
+            + ", description="
+            + description
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Taxes that = (Taxes) o;
+        return java.util.Objects.equals(name, that.name)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(name, amount, description);
       }
     }
   }
@@ -4907,6 +7080,88 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "CreditNoteEstimates{"
+          + "referenceInvoiceId="
+          + referenceInvoiceId
+          + ", type="
+          + type
+          + ", priceType="
+          + priceType
+          + ", currencyCode="
+          + currencyCode
+          + ", subTotal="
+          + subTotal
+          + ", total="
+          + total
+          + ", amountAllocated="
+          + amountAllocated
+          + ", amountAvailable="
+          + amountAvailable
+          + ", lineItems="
+          + lineItems
+          + ", lineItemTiers="
+          + lineItemTiers
+          + ", lineItemDiscounts="
+          + lineItemDiscounts
+          + ", lineItemTaxes="
+          + lineItemTaxes
+          + ", discounts="
+          + discounts
+          + ", taxes="
+          + taxes
+          + ", roundOffAmount="
+          + roundOffAmount
+          + ", customerId="
+          + customerId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CreditNoteEstimates that = (CreditNoteEstimates) o;
+      return java.util.Objects.equals(referenceInvoiceId, that.referenceInvoiceId)
+          && java.util.Objects.equals(type, that.type)
+          && java.util.Objects.equals(priceType, that.priceType)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(subTotal, that.subTotal)
+          && java.util.Objects.equals(total, that.total)
+          && java.util.Objects.equals(amountAllocated, that.amountAllocated)
+          && java.util.Objects.equals(amountAvailable, that.amountAvailable)
+          && java.util.Objects.equals(lineItems, that.lineItems)
+          && java.util.Objects.equals(lineItemTiers, that.lineItemTiers)
+          && java.util.Objects.equals(lineItemDiscounts, that.lineItemDiscounts)
+          && java.util.Objects.equals(lineItemTaxes, that.lineItemTaxes)
+          && java.util.Objects.equals(discounts, that.discounts)
+          && java.util.Objects.equals(taxes, that.taxes)
+          && java.util.Objects.equals(roundOffAmount, that.roundOffAmount)
+          && java.util.Objects.equals(customerId, that.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          referenceInvoiceId,
+          type,
+          priceType,
+          currencyCode,
+          subTotal,
+          total,
+          amountAllocated,
+          amountAvailable,
+          lineItems,
+          lineItemTiers,
+          lineItemDiscounts,
+          lineItemTaxes,
+          discounts,
+          taxes,
+          roundOffAmount,
+          customerId);
+    }
+
     public static class LineItems {
 
       private String id;
@@ -5209,6 +7464,124 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItems{"
+            + "id="
+            + id
+            + ", subscriptionId="
+            + subscriptionId
+            + ", dateFrom="
+            + dateFrom
+            + ", dateTo="
+            + dateTo
+            + ", unitAmount="
+            + unitAmount
+            + ", quantity="
+            + quantity
+            + ", amount="
+            + amount
+            + ", pricingModel="
+            + pricingModel
+            + ", isTaxed="
+            + isTaxed
+            + ", taxAmount="
+            + taxAmount
+            + ", taxRate="
+            + taxRate
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", quantityInDecimal="
+            + quantityInDecimal
+            + ", amountInDecimal="
+            + amountInDecimal
+            + ", discountAmount="
+            + discountAmount
+            + ", itemLevelDiscountAmount="
+            + itemLevelDiscountAmount
+            + ", metered="
+            + metered
+            + ", isPercentagePricing="
+            + isPercentagePricing
+            + ", referenceLineItemId="
+            + referenceLineItemId
+            + ", description="
+            + description
+            + ", entityDescription="
+            + entityDescription
+            + ", entityType="
+            + entityType
+            + ", taxExemptReason="
+            + taxExemptReason
+            + ", entityId="
+            + entityId
+            + ", customerId="
+            + customerId
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItems that = (LineItems) o;
+        return java.util.Objects.equals(id, that.id)
+            && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(quantity, that.quantity)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(pricingModel, that.pricingModel)
+            && java.util.Objects.equals(isTaxed, that.isTaxed)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+            && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+            && java.util.Objects.equals(discountAmount, that.discountAmount)
+            && java.util.Objects.equals(itemLevelDiscountAmount, that.itemLevelDiscountAmount)
+            && java.util.Objects.equals(metered, that.metered)
+            && java.util.Objects.equals(isPercentagePricing, that.isPercentagePricing)
+            && java.util.Objects.equals(referenceLineItemId, that.referenceLineItemId)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(entityDescription, that.entityDescription)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(taxExemptReason, that.taxExemptReason)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(customerId, that.customerId);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            id,
+            subscriptionId,
+            dateFrom,
+            dateTo,
+            unitAmount,
+            quantity,
+            amount,
+            pricingModel,
+            isTaxed,
+            taxAmount,
+            taxRate,
+            unitAmountInDecimal,
+            quantityInDecimal,
+            amountInDecimal,
+            discountAmount,
+            itemLevelDiscountAmount,
+            metered,
+            isPercentagePricing,
+            referenceLineItemId,
+            description,
+            entityDescription,
+            entityType,
+            taxExemptReason,
+            entityId,
+            customerId);
+      }
     }
 
     public static class LineItemTiers {
@@ -5326,6 +7699,68 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTiers{"
+            + "lineItemId="
+            + lineItemId
+            + ", startingUnit="
+            + startingUnit
+            + ", endingUnit="
+            + endingUnit
+            + ", quantityUsed="
+            + quantityUsed
+            + ", unitAmount="
+            + unitAmount
+            + ", startingUnitInDecimal="
+            + startingUnitInDecimal
+            + ", endingUnitInDecimal="
+            + endingUnitInDecimal
+            + ", quantityUsedInDecimal="
+            + quantityUsedInDecimal
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", pricingType="
+            + pricingType
+            + ", packageSize="
+            + packageSize
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTiers that = (LineItemTiers) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(startingUnit, that.startingUnit)
+            && java.util.Objects.equals(endingUnit, that.endingUnit)
+            && java.util.Objects.equals(quantityUsed, that.quantityUsed)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+            && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+            && java.util.Objects.equals(quantityUsedInDecimal, that.quantityUsedInDecimal)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(pricingType, that.pricingType)
+            && java.util.Objects.equals(packageSize, that.packageSize);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            startingUnit,
+            endingUnit,
+            quantityUsed,
+            unitAmount,
+            startingUnitInDecimal,
+            endingUnitInDecimal,
+            quantityUsedInDecimal,
+            unitAmountInDecimal,
+            pricingType,
+            packageSize);
+      }
     }
 
     public static class LineItemDiscounts {
@@ -5406,6 +7841,39 @@ public class Estimate {
         obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "LineItemDiscounts{"
+            + "lineItemId="
+            + lineItemId
+            + ", discountType="
+            + discountType
+            + ", couponId="
+            + couponId
+            + ", entityId="
+            + entityId
+            + ", discountAmount="
+            + discountAmount
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemDiscounts that = (LineItemDiscounts) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(couponId, that.couponId)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(discountAmount, that.discountAmount);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(lineItemId, discountType, couponId, entityId, discountAmount);
       }
     }
 
@@ -5562,6 +8030,84 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "LineItemTaxes{"
+            + "lineItemId="
+            + lineItemId
+            + ", taxName="
+            + taxName
+            + ", taxRate="
+            + taxRate
+            + ", dateTo="
+            + dateTo
+            + ", dateFrom="
+            + dateFrom
+            + ", proratedTaxableAmount="
+            + proratedTaxableAmount
+            + ", isPartialTaxApplied="
+            + isPartialTaxApplied
+            + ", isNonComplianceTax="
+            + isNonComplianceTax
+            + ", taxableAmount="
+            + taxableAmount
+            + ", taxAmount="
+            + taxAmount
+            + ", taxJurisType="
+            + taxJurisType
+            + ", taxJurisName="
+            + taxJurisName
+            + ", taxJurisCode="
+            + taxJurisCode
+            + ", taxAmountInLocalCurrency="
+            + taxAmountInLocalCurrency
+            + ", localCurrencyCode="
+            + localCurrencyCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LineItemTaxes that = (LineItemTaxes) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(taxName, that.taxName)
+            && java.util.Objects.equals(taxRate, that.taxRate)
+            && java.util.Objects.equals(dateTo, that.dateTo)
+            && java.util.Objects.equals(dateFrom, that.dateFrom)
+            && java.util.Objects.equals(proratedTaxableAmount, that.proratedTaxableAmount)
+            && java.util.Objects.equals(isPartialTaxApplied, that.isPartialTaxApplied)
+            && java.util.Objects.equals(isNonComplianceTax, that.isNonComplianceTax)
+            && java.util.Objects.equals(taxableAmount, that.taxableAmount)
+            && java.util.Objects.equals(taxAmount, that.taxAmount)
+            && java.util.Objects.equals(taxJurisType, that.taxJurisType)
+            && java.util.Objects.equals(taxJurisName, that.taxJurisName)
+            && java.util.Objects.equals(taxJurisCode, that.taxJurisCode)
+            && java.util.Objects.equals(taxAmountInLocalCurrency, that.taxAmountInLocalCurrency)
+            && java.util.Objects.equals(localCurrencyCode, that.localCurrencyCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            taxName,
+            taxRate,
+            dateTo,
+            dateFrom,
+            proratedTaxableAmount,
+            isPartialTaxApplied,
+            isNonComplianceTax,
+            taxableAmount,
+            taxAmount,
+            taxJurisType,
+            taxJurisName,
+            taxJurisCode,
+            taxAmountInLocalCurrency,
+            localCurrencyCode);
+      }
     }
 
     public static class Discounts {
@@ -5685,6 +8231,46 @@ public class Estimate {
 
         return obj;
       }
+
+      @Override
+      public String toString() {
+        return "Discounts{"
+            + "amount="
+            + amount
+            + ", description="
+            + description
+            + ", lineItemId="
+            + lineItemId
+            + ", entityType="
+            + entityType
+            + ", discountType="
+            + discountType
+            + ", entityId="
+            + entityId
+            + ", couponSetCode="
+            + couponSetCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Discounts that = (Discounts) o;
+        return java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description)
+            && java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(entityType, that.entityType)
+            && java.util.Objects.equals(discountType, that.discountType)
+            && java.util.Objects.equals(entityId, that.entityId)
+            && java.util.Objects.equals(couponSetCode, that.couponSetCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            amount, description, lineItemId, entityType, discountType, entityId, couponSetCode);
+      }
     }
 
     public static class Taxes {
@@ -5715,6 +8301,33 @@ public class Estimate {
         obj.description = JsonUtil.getString(json, "description");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "Taxes{"
+            + "name="
+            + name
+            + ", amount="
+            + amount
+            + ", description="
+            + description
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Taxes that = (Taxes) o;
+        return java.util.Objects.equals(name, that.name)
+            && java.util.Objects.equals(amount, that.amount)
+            && java.util.Objects.equals(description, that.description);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(name, amount, description);
       }
     }
   }
@@ -5971,6 +8584,120 @@ public class Estimate {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "UnbilledChargeEstimates{"
+          + "id="
+          + id
+          + ", customerId="
+          + customerId
+          + ", subscriptionId="
+          + subscriptionId
+          + ", dateFrom="
+          + dateFrom
+          + ", dateTo="
+          + dateTo
+          + ", unitAmount="
+          + unitAmount
+          + ", pricingModel="
+          + pricingModel
+          + ", quantity="
+          + quantity
+          + ", amount="
+          + amount
+          + ", currencyCode="
+          + currencyCode
+          + ", discountAmount="
+          + discountAmount
+          + ", description="
+          + description
+          + ", entityType="
+          + entityType
+          + ", entityId="
+          + entityId
+          + ", isVoided="
+          + isVoided
+          + ", voidedAt="
+          + voidedAt
+          + ", unitAmountInDecimal="
+          + unitAmountInDecimal
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", updatedAt="
+          + updatedAt
+          + ", tiers="
+          + tiers
+          + ", isAdvanceCharge="
+          + isAdvanceCharge
+          + ", businessEntityId="
+          + businessEntityId
+          + ", deleted="
+          + deleted
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      UnbilledChargeEstimates that = (UnbilledChargeEstimates) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+          && java.util.Objects.equals(dateFrom, that.dateFrom)
+          && java.util.Objects.equals(dateTo, that.dateTo)
+          && java.util.Objects.equals(unitAmount, that.unitAmount)
+          && java.util.Objects.equals(pricingModel, that.pricingModel)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(currencyCode, that.currencyCode)
+          && java.util.Objects.equals(discountAmount, that.discountAmount)
+          && java.util.Objects.equals(description, that.description)
+          && java.util.Objects.equals(entityType, that.entityType)
+          && java.util.Objects.equals(entityId, that.entityId)
+          && java.util.Objects.equals(isVoided, that.isVoided)
+          && java.util.Objects.equals(voidedAt, that.voidedAt)
+          && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(updatedAt, that.updatedAt)
+          && java.util.Objects.equals(tiers, that.tiers)
+          && java.util.Objects.equals(isAdvanceCharge, that.isAdvanceCharge)
+          && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+          && java.util.Objects.equals(deleted, that.deleted);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          customerId,
+          subscriptionId,
+          dateFrom,
+          dateTo,
+          unitAmount,
+          pricingModel,
+          quantity,
+          amount,
+          currencyCode,
+          discountAmount,
+          description,
+          entityType,
+          entityId,
+          isVoided,
+          voidedAt,
+          unitAmountInDecimal,
+          quantityInDecimal,
+          amountInDecimal,
+          updatedAt,
+          tiers,
+          isAdvanceCharge,
+          businessEntityId,
+          deleted);
+    }
+
     public static class Tiers {
 
       private String lineItemId;
@@ -6085,6 +8812,68 @@ public class Estimate {
         obj.packageSize = JsonUtil.getInteger(json, "package_size");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "Tiers{"
+            + "lineItemId="
+            + lineItemId
+            + ", startingUnit="
+            + startingUnit
+            + ", endingUnit="
+            + endingUnit
+            + ", quantityUsed="
+            + quantityUsed
+            + ", unitAmount="
+            + unitAmount
+            + ", startingUnitInDecimal="
+            + startingUnitInDecimal
+            + ", endingUnitInDecimal="
+            + endingUnitInDecimal
+            + ", quantityUsedInDecimal="
+            + quantityUsedInDecimal
+            + ", unitAmountInDecimal="
+            + unitAmountInDecimal
+            + ", pricingType="
+            + pricingType
+            + ", packageSize="
+            + packageSize
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tiers that = (Tiers) o;
+        return java.util.Objects.equals(lineItemId, that.lineItemId)
+            && java.util.Objects.equals(startingUnit, that.startingUnit)
+            && java.util.Objects.equals(endingUnit, that.endingUnit)
+            && java.util.Objects.equals(quantityUsed, that.quantityUsed)
+            && java.util.Objects.equals(unitAmount, that.unitAmount)
+            && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+            && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+            && java.util.Objects.equals(quantityUsedInDecimal, that.quantityUsedInDecimal)
+            && java.util.Objects.equals(unitAmountInDecimal, that.unitAmountInDecimal)
+            && java.util.Objects.equals(pricingType, that.pricingType)
+            && java.util.Objects.equals(packageSize, that.packageSize);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            lineItemId,
+            startingUnit,
+            endingUnit,
+            quantityUsed,
+            unitAmount,
+            startingUnitInDecimal,
+            endingUnitInDecimal,
+            quantityUsedInDecimal,
+            unitAmountInDecimal,
+            pricingType,
+            packageSize);
       }
     }
   }

@@ -93,4 +93,28 @@ public final class CurrencyRemoveScheduleResponse extends BaseResponse {
   public Currency getCurrency() {
     return currency;
   }
+
+  @Override
+  public String toString() {
+    return "CurrencyRemoveScheduleResponse{"
+        + "scheduledAt="
+        + scheduledAt
+        + ", currency="
+        + currency
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CurrencyRemoveScheduleResponse that = (CurrencyRemoveScheduleResponse) o;
+    return java.util.Objects.equals(scheduledAt, that.scheduledAt)
+        && java.util.Objects.equals(currency, that.currency);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(scheduledAt, currency);
+  }
 }

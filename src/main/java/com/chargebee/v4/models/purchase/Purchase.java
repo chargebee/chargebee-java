@@ -61,4 +61,41 @@ public class Purchase {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Purchase{"
+        + "id="
+        + id
+        + ", customerId="
+        + customerId
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + ", subscriptionIds="
+        + subscriptionIds
+        + ", invoiceIds="
+        + invoiceIds
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Purchase that = (Purchase) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(subscriptionIds, that.subscriptionIds)
+        && java.util.Objects.equals(invoiceIds, that.invoiceIds);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, customerId, createdAt, modifiedAt, subscriptionIds, invoiceIds);
+  }
 }

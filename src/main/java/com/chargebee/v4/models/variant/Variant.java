@@ -146,6 +146,76 @@ public class Variant {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Variant{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", externalName="
+        + externalName
+        + ", description="
+        + description
+        + ", sku="
+        + sku
+        + ", deleted="
+        + deleted
+        + ", productId="
+        + productId
+        + ", status="
+        + status
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", metadata="
+        + metadata
+        + ", optionValues="
+        + optionValues
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Variant that = (Variant) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(externalName, that.externalName)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(sku, that.sku)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(productId, that.productId)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(metadata, that.metadata)
+        && java.util.Objects.equals(optionValues, that.optionValues);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        externalName,
+        description,
+        sku,
+        deleted,
+        productId,
+        status,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        metadata,
+        optionValues);
+  }
+
   public static class OptionValues {
 
     private String name;
@@ -167,6 +237,25 @@ public class Variant {
       obj.value = JsonUtil.getString(json, "value");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "OptionValues{" + "name=" + name + ", value=" + value + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      OptionValues that = (OptionValues) o;
+      return java.util.Objects.equals(name, that.name)
+          && java.util.Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(name, value);
     }
   }
 }

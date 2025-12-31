@@ -75,4 +75,22 @@ public final class NonSubscriptionProcessReceiptResponse extends BaseResponse {
   public NonSubscription getNonSubscription() {
     return nonSubscription;
   }
+
+  @Override
+  public String toString() {
+    return "NonSubscriptionProcessReceiptResponse{" + "nonSubscription=" + nonSubscription + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    NonSubscriptionProcessReceiptResponse that = (NonSubscriptionProcessReceiptResponse) o;
+    return java.util.Objects.equals(nonSubscription, that.nonSubscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(nonSubscription);
+  }
 }

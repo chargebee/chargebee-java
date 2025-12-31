@@ -360,6 +360,104 @@ public class PaymentVoucher {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PaymentVoucher{"
+        + "id="
+        + id
+        + ", idAtGateway="
+        + idAtGateway
+        + ", paymentVoucherType="
+        + paymentVoucherType
+        + ", expiresAt="
+        + expiresAt
+        + ", status="
+        + status
+        + ", subscriptionId="
+        + subscriptionId
+        + ", currencyCode="
+        + currencyCode
+        + ", amount="
+        + amount
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", paymentSourceId="
+        + paymentSourceId
+        + ", gateway="
+        + gateway
+        + ", payload="
+        + payload
+        + ", errorCode="
+        + errorCode
+        + ", errorText="
+        + errorText
+        + ", url="
+        + url
+        + ", date="
+        + date
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", customerId="
+        + customerId
+        + ", linkedInvoices="
+        + linkedInvoices
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentVoucher that = (PaymentVoucher) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(idAtGateway, that.idAtGateway)
+        && java.util.Objects.equals(paymentVoucherType, that.paymentVoucherType)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(paymentSourceId, that.paymentSourceId)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(payload, that.payload)
+        && java.util.Objects.equals(errorCode, that.errorCode)
+        && java.util.Objects.equals(errorText, that.errorText)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(date, that.date)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(linkedInvoices, that.linkedInvoices);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        idAtGateway,
+        paymentVoucherType,
+        expiresAt,
+        status,
+        subscriptionId,
+        currencyCode,
+        amount,
+        gatewayAccountId,
+        paymentSourceId,
+        gateway,
+        payload,
+        errorCode,
+        errorText,
+        url,
+        date,
+        resourceVersion,
+        updatedAt,
+        customerId,
+        linkedInvoices);
+  }
+
   public static class LinkedInvoices {
 
     private String invoiceId;
@@ -388,6 +486,33 @@ public class PaymentVoucher {
       obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedInvoices{"
+          + "invoiceId="
+          + invoiceId
+          + ", txnId="
+          + txnId
+          + ", appliedAt="
+          + appliedAt
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedInvoices that = (LinkedInvoices) o;
+      return java.util.Objects.equals(invoiceId, that.invoiceId)
+          && java.util.Objects.equals(txnId, that.txnId)
+          && java.util.Objects.equals(appliedAt, that.appliedAt);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(invoiceId, txnId, appliedAt);
     }
   }
 }

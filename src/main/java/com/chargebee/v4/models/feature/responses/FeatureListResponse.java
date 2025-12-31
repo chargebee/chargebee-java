@@ -143,6 +143,25 @@ public final class FeatureListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "FeatureListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    FeatureListResponse that = (FeatureListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class FeatureListItem {
 
     private Feature feature;
@@ -160,6 +179,24 @@ public final class FeatureListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "FeatureListItem{" + "feature=" + feature + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      FeatureListItem that = (FeatureListItem) o;
+      return java.util.Objects.equals(feature, that.feature);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(feature);
     }
   }
 }

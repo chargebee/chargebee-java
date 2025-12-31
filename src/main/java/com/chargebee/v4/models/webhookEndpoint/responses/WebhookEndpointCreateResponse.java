@@ -74,4 +74,22 @@ public final class WebhookEndpointCreateResponse extends BaseResponse {
   public WebhookEndpoint getWebhookEndpoint() {
     return webhookEndpoint;
   }
+
+  @Override
+  public String toString() {
+    return "WebhookEndpointCreateResponse{" + "webhookEndpoint=" + webhookEndpoint + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WebhookEndpointCreateResponse that = (WebhookEndpointCreateResponse) o;
+    return java.util.Objects.equals(webhookEndpoint, that.webhookEndpoint);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(webhookEndpoint);
+  }
 }

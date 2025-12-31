@@ -140,6 +140,25 @@ public final class UsageListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "UsageListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageListResponse that = (UsageListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class UsageListItem {
 
     private Usage usage;
@@ -157,6 +176,24 @@ public final class UsageListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "UsageListItem{" + "usage=" + usage + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      UsageListItem that = (UsageListItem) o;
+      return java.util.Objects.equals(usage, that.usage);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(usage);
     }
   }
 }

@@ -101,4 +101,29 @@ public final class SubscriptionOverrideBillingProfileResponse extends BaseRespon
   public PaymentSource getPaymentSource() {
     return paymentSource;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionOverrideBillingProfileResponse{"
+        + "subscription="
+        + subscription
+        + ", paymentSource="
+        + paymentSource
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionOverrideBillingProfileResponse that =
+        (SubscriptionOverrideBillingProfileResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(paymentSource, that.paymentSource);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, paymentSource);
+  }
 }

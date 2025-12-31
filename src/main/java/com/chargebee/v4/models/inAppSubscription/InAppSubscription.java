@@ -92,4 +92,41 @@ public class InAppSubscription {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "InAppSubscription{"
+        + "appId="
+        + appId
+        + ", subscriptionId="
+        + subscriptionId
+        + ", customerId="
+        + customerId
+        + ", planId="
+        + planId
+        + ", storeStatus="
+        + storeStatus
+        + ", invoiceId="
+        + invoiceId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InAppSubscription that = (InAppSubscription) o;
+    return java.util.Objects.equals(appId, that.appId)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(planId, that.planId)
+        && java.util.Objects.equals(storeStatus, that.storeStatus)
+        && java.util.Objects.equals(invoiceId, that.invoiceId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        appId, subscriptionId, customerId, planId, storeStatus, invoiceId);
+  }
 }

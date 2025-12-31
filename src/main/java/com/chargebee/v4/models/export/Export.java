@@ -122,6 +122,42 @@ public class Export {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Export{"
+        + "id="
+        + id
+        + ", operationType="
+        + operationType
+        + ", mimeType="
+        + mimeType
+        + ", status="
+        + status
+        + ", createdAt="
+        + createdAt
+        + ", download="
+        + download
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Export that = (Export) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(operationType, that.operationType)
+        && java.util.Objects.equals(mimeType, that.mimeType)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(download, that.download);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, operationType, mimeType, status, createdAt, download);
+  }
+
   public static class Download {
 
     private String downloadUrl;
@@ -150,6 +186,33 @@ public class Export {
       obj.mimeType = JsonUtil.getString(json, "mime_type");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Download{"
+          + "downloadUrl="
+          + downloadUrl
+          + ", validTill="
+          + validTill
+          + ", mimeType="
+          + mimeType
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Download that = (Download) o;
+      return java.util.Objects.equals(downloadUrl, that.downloadUrl)
+          && java.util.Objects.equals(validTill, that.validTill)
+          && java.util.Objects.equals(mimeType, that.mimeType);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(downloadUrl, validTill, mimeType);
     }
   }
 }

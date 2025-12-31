@@ -74,4 +74,22 @@ public final class OfferFulfillmentsUpdateResponse extends BaseResponse {
   public OfferFulfillment getOfferFulfillment() {
     return offerFulfillment;
   }
+
+  @Override
+  public String toString() {
+    return "OfferFulfillmentsUpdateResponse{" + "offerFulfillment=" + offerFulfillment + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OfferFulfillmentsUpdateResponse that = (OfferFulfillmentsUpdateResponse) o;
+    return java.util.Objects.equals(offerFulfillment, that.offerFulfillment);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(offerFulfillment);
+  }
 }

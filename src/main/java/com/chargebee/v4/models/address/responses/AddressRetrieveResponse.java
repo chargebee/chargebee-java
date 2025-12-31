@@ -74,4 +74,22 @@ public final class AddressRetrieveResponse extends BaseResponse {
   public Address getAddress() {
     return address;
   }
+
+  @Override
+  public String toString() {
+    return "AddressRetrieveResponse{" + "address=" + address + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AddressRetrieveResponse that = (AddressRetrieveResponse) o;
+    return java.util.Objects.equals(address, that.address);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(address);
+  }
 }

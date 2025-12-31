@@ -95,4 +95,28 @@ public final class UsageEventBatchIngestResponse extends BaseResponse {
   public List<Object> getFailedEvents() {
     return failedEvents;
   }
+
+  @Override
+  public String toString() {
+    return "UsageEventBatchIngestResponse{"
+        + "batchId="
+        + batchId
+        + ", failedEvents="
+        + failedEvents
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageEventBatchIngestResponse that = (UsageEventBatchIngestResponse) o;
+    return java.util.Objects.equals(batchId, that.batchId)
+        && java.util.Objects.equals(failedEvents, that.failedEvents);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(batchId, failedEvents);
+  }
 }

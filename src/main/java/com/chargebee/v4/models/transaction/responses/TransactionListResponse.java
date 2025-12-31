@@ -143,6 +143,25 @@ public final class TransactionListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "TransactionListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TransactionListResponse that = (TransactionListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class TransactionListItem {
 
     private Transaction transaction;
@@ -160,6 +179,24 @@ public final class TransactionListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "TransactionListItem{" + "transaction=" + transaction + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      TransactionListItem that = (TransactionListItem) o;
+      return java.util.Objects.equals(transaction, that.transaction);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(transaction);
     }
   }
 }

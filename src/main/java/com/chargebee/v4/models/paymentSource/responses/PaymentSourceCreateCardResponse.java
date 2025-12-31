@@ -97,4 +97,28 @@ public final class PaymentSourceCreateCardResponse extends BaseResponse {
   public PaymentSource getPaymentSource() {
     return paymentSource;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentSourceCreateCardResponse{"
+        + "customer="
+        + customer
+        + ", paymentSource="
+        + paymentSource
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentSourceCreateCardResponse that = (PaymentSourceCreateCardResponse) o;
+    return java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(paymentSource, that.paymentSource);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer, paymentSource);
+  }
 }

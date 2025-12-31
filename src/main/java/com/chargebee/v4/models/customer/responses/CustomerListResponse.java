@@ -145,6 +145,25 @@ public final class CustomerListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CustomerListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerListResponse that = (CustomerListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CustomerListItem {
 
     private Customer customer;
@@ -173,6 +192,25 @@ public final class CustomerListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CustomerListItem{" + "customer=" + customer + ", card=" + card + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CustomerListItem that = (CustomerListItem) o;
+      return java.util.Objects.equals(customer, that.customer)
+          && java.util.Objects.equals(card, that.card);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(customer, card);
     }
   }
 }

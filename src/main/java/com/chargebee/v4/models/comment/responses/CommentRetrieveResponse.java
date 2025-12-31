@@ -74,4 +74,22 @@ public final class CommentRetrieveResponse extends BaseResponse {
   public Comment getComment() {
     return comment;
   }
+
+  @Override
+  public String toString() {
+    return "CommentRetrieveResponse{" + "comment=" + comment + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CommentRetrieveResponse that = (CommentRetrieveResponse) o;
+    return java.util.Objects.equals(comment, that.comment);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(comment);
+  }
 }

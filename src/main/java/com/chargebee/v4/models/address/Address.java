@@ -162,4 +162,86 @@ public class Address {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Address{"
+        + "label="
+        + label
+        + ", firstName="
+        + firstName
+        + ", lastName="
+        + lastName
+        + ", email="
+        + email
+        + ", company="
+        + company
+        + ", phone="
+        + phone
+        + ", addr="
+        + addr
+        + ", extendedAddr="
+        + extendedAddr
+        + ", extendedAddr2="
+        + extendedAddr2
+        + ", city="
+        + city
+        + ", stateCode="
+        + stateCode
+        + ", state="
+        + state
+        + ", country="
+        + country
+        + ", zip="
+        + zip
+        + ", validationStatus="
+        + validationStatus
+        + ", subscriptionId="
+        + subscriptionId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Address that = (Address) o;
+    return java.util.Objects.equals(label, that.label)
+        && java.util.Objects.equals(firstName, that.firstName)
+        && java.util.Objects.equals(lastName, that.lastName)
+        && java.util.Objects.equals(email, that.email)
+        && java.util.Objects.equals(company, that.company)
+        && java.util.Objects.equals(phone, that.phone)
+        && java.util.Objects.equals(addr, that.addr)
+        && java.util.Objects.equals(extendedAddr, that.extendedAddr)
+        && java.util.Objects.equals(extendedAddr2, that.extendedAddr2)
+        && java.util.Objects.equals(city, that.city)
+        && java.util.Objects.equals(stateCode, that.stateCode)
+        && java.util.Objects.equals(state, that.state)
+        && java.util.Objects.equals(country, that.country)
+        && java.util.Objects.equals(zip, that.zip)
+        && java.util.Objects.equals(validationStatus, that.validationStatus)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        label,
+        firstName,
+        lastName,
+        email,
+        company,
+        phone,
+        addr,
+        extendedAddr,
+        extendedAddr2,
+        city,
+        stateCode,
+        state,
+        country,
+        zip,
+        validationStatus,
+        subscriptionId);
+  }
 }

@@ -97,4 +97,28 @@ public final class InvoiceRemoveCreditNoteResponse extends BaseResponse {
   public CreditNote getCreditNote() {
     return creditNote;
   }
+
+  @Override
+  public String toString() {
+    return "InvoiceRemoveCreditNoteResponse{"
+        + "invoice="
+        + invoice
+        + ", creditNote="
+        + creditNote
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceRemoveCreditNoteResponse that = (InvoiceRemoveCreditNoteResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(creditNote, that.creditNote);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice, creditNote);
+  }
 }

@@ -761,6 +761,208 @@ public class Transaction {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Transaction{"
+        + "id="
+        + id
+        + ", customerId="
+        + customerId
+        + ", subscriptionId="
+        + subscriptionId
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", paymentSourceId="
+        + paymentSourceId
+        + ", paymentMethod="
+        + paymentMethod
+        + ", referenceNumber="
+        + referenceNumber
+        + ", gateway="
+        + gateway
+        + ", type="
+        + type
+        + ", date="
+        + date
+        + ", settledAt="
+        + settledAt
+        + ", exchangeRate="
+        + exchangeRate
+        + ", currencyCode="
+        + currencyCode
+        + ", amount="
+        + amount
+        + ", idAtGateway="
+        + idAtGateway
+        + ", status="
+        + status
+        + ", fraudFlag="
+        + fraudFlag
+        + ", initiatorType="
+        + initiatorType
+        + ", threeDSecure="
+        + threeDSecure
+        + ", authorizationReason="
+        + authorizationReason
+        + ", errorCode="
+        + errorCode
+        + ", errorText="
+        + errorText
+        + ", voidedAt="
+        + voidedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", fraudReason="
+        + fraudReason
+        + ", customPaymentMethodId="
+        + customPaymentMethodId
+        + ", amountUnused="
+        + amountUnused
+        + ", maskedCardNumber="
+        + maskedCardNumber
+        + ", referenceTransactionId="
+        + referenceTransactionId
+        + ", refundedTxnId="
+        + refundedTxnId
+        + ", referenceAuthorizationId="
+        + referenceAuthorizationId
+        + ", amountCapturable="
+        + amountCapturable
+        + ", reversalTransactionId="
+        + reversalTransactionId
+        + ", deleted="
+        + deleted
+        + ", iin="
+        + iin
+        + ", last4="
+        + last4
+        + ", merchantReferenceId="
+        + merchantReferenceId
+        + ", businessEntityId="
+        + businessEntityId
+        + ", paymentMethodDetails="
+        + paymentMethodDetails
+        + ", customPaymentMethodName="
+        + customPaymentMethodName
+        + ", linkedInvoices="
+        + linkedInvoices
+        + ", linkedCreditNotes="
+        + linkedCreditNotes
+        + ", linkedRefunds="
+        + linkedRefunds
+        + ", linkedPayments="
+        + linkedPayments
+        + ", errorDetail="
+        + errorDetail
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Transaction that = (Transaction) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(paymentSourceId, that.paymentSourceId)
+        && java.util.Objects.equals(paymentMethod, that.paymentMethod)
+        && java.util.Objects.equals(referenceNumber, that.referenceNumber)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(date, that.date)
+        && java.util.Objects.equals(settledAt, that.settledAt)
+        && java.util.Objects.equals(exchangeRate, that.exchangeRate)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(idAtGateway, that.idAtGateway)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(fraudFlag, that.fraudFlag)
+        && java.util.Objects.equals(initiatorType, that.initiatorType)
+        && java.util.Objects.equals(threeDSecure, that.threeDSecure)
+        && java.util.Objects.equals(authorizationReason, that.authorizationReason)
+        && java.util.Objects.equals(errorCode, that.errorCode)
+        && java.util.Objects.equals(errorText, that.errorText)
+        && java.util.Objects.equals(voidedAt, that.voidedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(fraudReason, that.fraudReason)
+        && java.util.Objects.equals(customPaymentMethodId, that.customPaymentMethodId)
+        && java.util.Objects.equals(amountUnused, that.amountUnused)
+        && java.util.Objects.equals(maskedCardNumber, that.maskedCardNumber)
+        && java.util.Objects.equals(referenceTransactionId, that.referenceTransactionId)
+        && java.util.Objects.equals(refundedTxnId, that.refundedTxnId)
+        && java.util.Objects.equals(referenceAuthorizationId, that.referenceAuthorizationId)
+        && java.util.Objects.equals(amountCapturable, that.amountCapturable)
+        && java.util.Objects.equals(reversalTransactionId, that.reversalTransactionId)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(iin, that.iin)
+        && java.util.Objects.equals(last4, that.last4)
+        && java.util.Objects.equals(merchantReferenceId, that.merchantReferenceId)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(paymentMethodDetails, that.paymentMethodDetails)
+        && java.util.Objects.equals(customPaymentMethodName, that.customPaymentMethodName)
+        && java.util.Objects.equals(linkedInvoices, that.linkedInvoices)
+        && java.util.Objects.equals(linkedCreditNotes, that.linkedCreditNotes)
+        && java.util.Objects.equals(linkedRefunds, that.linkedRefunds)
+        && java.util.Objects.equals(linkedPayments, that.linkedPayments)
+        && java.util.Objects.equals(errorDetail, that.errorDetail);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        customerId,
+        subscriptionId,
+        gatewayAccountId,
+        paymentSourceId,
+        paymentMethod,
+        referenceNumber,
+        gateway,
+        type,
+        date,
+        settledAt,
+        exchangeRate,
+        currencyCode,
+        amount,
+        idAtGateway,
+        status,
+        fraudFlag,
+        initiatorType,
+        threeDSecure,
+        authorizationReason,
+        errorCode,
+        errorText,
+        voidedAt,
+        resourceVersion,
+        updatedAt,
+        fraudReason,
+        customPaymentMethodId,
+        amountUnused,
+        maskedCardNumber,
+        referenceTransactionId,
+        refundedTxnId,
+        referenceAuthorizationId,
+        amountCapturable,
+        reversalTransactionId,
+        deleted,
+        iin,
+        last4,
+        merchantReferenceId,
+        businessEntityId,
+        paymentMethodDetails,
+        customPaymentMethodName,
+        linkedInvoices,
+        linkedCreditNotes,
+        linkedRefunds,
+        linkedPayments,
+        errorDetail);
+  }
+
   public static class LinkedInvoices {
 
     private String invoiceId;
@@ -846,6 +1048,43 @@ public class Transaction {
       obj.invoiceStatus = InvoiceStatus.fromString(JsonUtil.getString(json, "invoice_status"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedInvoices{"
+          + "invoiceId="
+          + invoiceId
+          + ", appliedAmount="
+          + appliedAmount
+          + ", appliedAt="
+          + appliedAt
+          + ", invoiceDate="
+          + invoiceDate
+          + ", invoiceTotal="
+          + invoiceTotal
+          + ", invoiceStatus="
+          + invoiceStatus
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedInvoices that = (LinkedInvoices) o;
+      return java.util.Objects.equals(invoiceId, that.invoiceId)
+          && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+          && java.util.Objects.equals(appliedAt, that.appliedAt)
+          && java.util.Objects.equals(invoiceDate, that.invoiceDate)
+          && java.util.Objects.equals(invoiceTotal, that.invoiceTotal)
+          && java.util.Objects.equals(invoiceStatus, that.invoiceStatus);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          invoiceId, appliedAmount, appliedAt, invoiceDate, invoiceTotal, invoiceStatus);
     }
   }
 
@@ -1000,6 +1239,60 @@ public class Transaction {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "LinkedCreditNotes{"
+          + "cnId="
+          + cnId
+          + ", appliedAmount="
+          + appliedAmount
+          + ", appliedAt="
+          + appliedAt
+          + ", cnReasonCode="
+          + cnReasonCode
+          + ", cnCreateReasonCode="
+          + cnCreateReasonCode
+          + ", cnDate="
+          + cnDate
+          + ", cnTotal="
+          + cnTotal
+          + ", cnStatus="
+          + cnStatus
+          + ", cnReferenceInvoiceId="
+          + cnReferenceInvoiceId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedCreditNotes that = (LinkedCreditNotes) o;
+      return java.util.Objects.equals(cnId, that.cnId)
+          && java.util.Objects.equals(appliedAmount, that.appliedAmount)
+          && java.util.Objects.equals(appliedAt, that.appliedAt)
+          && java.util.Objects.equals(cnReasonCode, that.cnReasonCode)
+          && java.util.Objects.equals(cnCreateReasonCode, that.cnCreateReasonCode)
+          && java.util.Objects.equals(cnDate, that.cnDate)
+          && java.util.Objects.equals(cnTotal, that.cnTotal)
+          && java.util.Objects.equals(cnStatus, that.cnStatus)
+          && java.util.Objects.equals(cnReferenceInvoiceId, that.cnReferenceInvoiceId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          cnId,
+          appliedAmount,
+          appliedAt,
+          cnReasonCode,
+          cnCreateReasonCode,
+          cnDate,
+          cnTotal,
+          cnStatus,
+          cnReferenceInvoiceId);
+    }
   }
 
   public static class LinkedRefunds {
@@ -1076,6 +1369,36 @@ public class Transaction {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "LinkedRefunds{"
+          + "txnId="
+          + txnId
+          + ", txnStatus="
+          + txnStatus
+          + ", txnDate="
+          + txnDate
+          + ", txnAmount="
+          + txnAmount
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedRefunds that = (LinkedRefunds) o;
+      return java.util.Objects.equals(txnId, that.txnId)
+          && java.util.Objects.equals(txnStatus, that.txnStatus)
+          && java.util.Objects.equals(txnDate, that.txnDate)
+          && java.util.Objects.equals(txnAmount, that.txnAmount);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(txnId, txnStatus, txnDate, txnAmount);
+    }
   }
 
   public static class LinkedPayments {
@@ -1151,6 +1474,36 @@ public class Transaction {
       obj.date = JsonUtil.getTimestamp(json, "date");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedPayments{"
+          + "id="
+          + id
+          + ", status="
+          + status
+          + ", amount="
+          + amount
+          + ", date="
+          + date
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedPayments that = (LinkedPayments) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id, status, amount, date);
     }
   }
 
@@ -1266,6 +1619,84 @@ public class Transaction {
       obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ErrorDetail{"
+          + "requestId="
+          + requestId
+          + ", errorCategory="
+          + errorCategory
+          + ", errorCode="
+          + errorCode
+          + ", errorMessage="
+          + errorMessage
+          + ", declineCode="
+          + declineCode
+          + ", declineMessage="
+          + declineMessage
+          + ", networkErrorCode="
+          + networkErrorCode
+          + ", networkErrorMessage="
+          + networkErrorMessage
+          + ", errorField="
+          + errorField
+          + ", recommendationCode="
+          + recommendationCode
+          + ", recommendationMessage="
+          + recommendationMessage
+          + ", processorErrorCode="
+          + processorErrorCode
+          + ", processorErrorMessage="
+          + processorErrorMessage
+          + ", errorCauseId="
+          + errorCauseId
+          + ", processorAdviceCode="
+          + processorAdviceCode
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ErrorDetail that = (ErrorDetail) o;
+      return java.util.Objects.equals(requestId, that.requestId)
+          && java.util.Objects.equals(errorCategory, that.errorCategory)
+          && java.util.Objects.equals(errorCode, that.errorCode)
+          && java.util.Objects.equals(errorMessage, that.errorMessage)
+          && java.util.Objects.equals(declineCode, that.declineCode)
+          && java.util.Objects.equals(declineMessage, that.declineMessage)
+          && java.util.Objects.equals(networkErrorCode, that.networkErrorCode)
+          && java.util.Objects.equals(networkErrorMessage, that.networkErrorMessage)
+          && java.util.Objects.equals(errorField, that.errorField)
+          && java.util.Objects.equals(recommendationCode, that.recommendationCode)
+          && java.util.Objects.equals(recommendationMessage, that.recommendationMessage)
+          && java.util.Objects.equals(processorErrorCode, that.processorErrorCode)
+          && java.util.Objects.equals(processorErrorMessage, that.processorErrorMessage)
+          && java.util.Objects.equals(errorCauseId, that.errorCauseId)
+          && java.util.Objects.equals(processorAdviceCode, that.processorAdviceCode);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          requestId,
+          errorCategory,
+          errorCode,
+          errorMessage,
+          declineCode,
+          declineMessage,
+          networkErrorCode,
+          networkErrorMessage,
+          errorField,
+          recommendationCode,
+          recommendationMessage,
+          processorErrorCode,
+          processorErrorMessage,
+          errorCauseId,
+          processorAdviceCode);
     }
   }
 }

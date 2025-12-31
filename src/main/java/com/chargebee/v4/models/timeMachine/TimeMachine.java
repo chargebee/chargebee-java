@@ -100,4 +100,50 @@ public class TimeMachine {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "TimeMachine{"
+        + "name="
+        + name
+        + ", timeTravelStatus="
+        + timeTravelStatus
+        + ", genesisTime="
+        + genesisTime
+        + ", destinationTime="
+        + destinationTime
+        + ", failureCode="
+        + failureCode
+        + ", failureReason="
+        + failureReason
+        + ", errorJson="
+        + errorJson
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TimeMachine that = (TimeMachine) o;
+    return java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(timeTravelStatus, that.timeTravelStatus)
+        && java.util.Objects.equals(genesisTime, that.genesisTime)
+        && java.util.Objects.equals(destinationTime, that.destinationTime)
+        && java.util.Objects.equals(failureCode, that.failureCode)
+        && java.util.Objects.equals(failureReason, that.failureReason)
+        && java.util.Objects.equals(errorJson, that.errorJson);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        name,
+        timeTravelStatus,
+        genesisTime,
+        destinationTime,
+        failureCode,
+        failureReason,
+        errorJson);
+  }
 }

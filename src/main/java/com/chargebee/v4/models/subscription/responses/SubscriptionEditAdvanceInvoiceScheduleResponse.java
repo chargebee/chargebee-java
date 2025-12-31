@@ -81,4 +81,26 @@ public final class SubscriptionEditAdvanceInvoiceScheduleResponse extends BaseRe
   public List<AdvanceInvoiceSchedule> getAdvanceInvoiceSchedules() {
     return advanceInvoiceSchedules;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionEditAdvanceInvoiceScheduleResponse{"
+        + "advanceInvoiceSchedules="
+        + advanceInvoiceSchedules
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionEditAdvanceInvoiceScheduleResponse that =
+        (SubscriptionEditAdvanceInvoiceScheduleResponse) o;
+    return java.util.Objects.equals(advanceInvoiceSchedules, that.advanceInvoiceSchedules);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(advanceInvoiceSchedules);
+  }
 }

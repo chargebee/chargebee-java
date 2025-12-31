@@ -147,6 +147,25 @@ public final class SubscriptionListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "SubscriptionListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionListResponse that = (SubscriptionListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class SubscriptionListItem {
 
     private Subscription subscription;
@@ -186,6 +205,33 @@ public final class SubscriptionListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "SubscriptionListItem{"
+          + "subscription="
+          + subscription
+          + ", customer="
+          + customer
+          + ", card="
+          + card
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionListItem that = (SubscriptionListItem) o;
+      return java.util.Objects.equals(subscription, that.subscription)
+          && java.util.Objects.equals(customer, that.customer)
+          && java.util.Objects.equals(card, that.card);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(subscription, customer, card);
     }
   }
 }

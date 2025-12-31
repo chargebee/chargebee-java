@@ -78,4 +78,26 @@ public final class InAppSubscriptionImportSubscriptionResponse extends BaseRespo
   public InAppSubscription getInAppSubscription() {
     return inAppSubscription;
   }
+
+  @Override
+  public String toString() {
+    return "InAppSubscriptionImportSubscriptionResponse{"
+        + "inAppSubscription="
+        + inAppSubscription
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InAppSubscriptionImportSubscriptionResponse that =
+        (InAppSubscriptionImportSubscriptionResponse) o;
+    return java.util.Objects.equals(inAppSubscription, that.inAppSubscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(inAppSubscription);
+  }
 }

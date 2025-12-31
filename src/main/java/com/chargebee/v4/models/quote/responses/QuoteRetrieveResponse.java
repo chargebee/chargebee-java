@@ -143,4 +143,34 @@ public final class QuoteRetrieveResponse extends BaseResponse {
   public QuotedRamp getQuotedRamp() {
     return quotedRamp;
   }
+
+  @Override
+  public String toString() {
+    return "QuoteRetrieveResponse{"
+        + "quote="
+        + quote
+        + ", quotedSubscription="
+        + quotedSubscription
+        + ", quotedCharge="
+        + quotedCharge
+        + ", quotedRamp="
+        + quotedRamp
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuoteRetrieveResponse that = (QuoteRetrieveResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
+        && java.util.Objects.equals(quotedCharge, that.quotedCharge)
+        && java.util.Objects.equals(quotedRamp, that.quotedRamp);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedSubscription, quotedCharge, quotedRamp);
+  }
 }

@@ -123,4 +123,44 @@ public class ResourceMigration {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ResourceMigration{"
+        + "fromSite="
+        + fromSite
+        + ", entityType="
+        + entityType
+        + ", entityId="
+        + entityId
+        + ", status="
+        + status
+        + ", errors="
+        + errors
+        + ", createdAt="
+        + createdAt
+        + ", updatedAt="
+        + updatedAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ResourceMigration that = (ResourceMigration) o;
+    return java.util.Objects.equals(fromSite, that.fromSite)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(errors, that.errors)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(updatedAt, that.updatedAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        fromSite, entityType, entityId, status, errors, createdAt, updatedAt);
+  }
 }

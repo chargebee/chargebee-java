@@ -73,4 +73,22 @@ public final class ExportCouponsResponse extends BaseResponse {
   public Export getExport() {
     return export;
   }
+
+  @Override
+  public String toString() {
+    return "ExportCouponsResponse{" + "export=" + export + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExportCouponsResponse that = (ExportCouponsResponse) o;
+    return java.util.Objects.equals(export, that.export);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(export);
+  }
 }

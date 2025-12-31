@@ -74,4 +74,22 @@ public final class UnbilledChargeDeleteResponse extends BaseResponse {
   public UnbilledCharge getUnbilledCharge() {
     return unbilledCharge;
   }
+
+  @Override
+  public String toString() {
+    return "UnbilledChargeDeleteResponse{" + "unbilledCharge=" + unbilledCharge + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UnbilledChargeDeleteResponse that = (UnbilledChargeDeleteResponse) o;
+    return java.util.Objects.equals(unbilledCharge, that.unbilledCharge);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(unbilledCharge);
+  }
 }

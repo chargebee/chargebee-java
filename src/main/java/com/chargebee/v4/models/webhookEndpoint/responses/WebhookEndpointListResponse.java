@@ -144,6 +144,25 @@ public final class WebhookEndpointListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "WebhookEndpointListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WebhookEndpointListResponse that = (WebhookEndpointListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class WebhookEndpointListItem {
 
     private WebhookEndpoint webhookEndpoint;
@@ -161,6 +180,24 @@ public final class WebhookEndpointListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "WebhookEndpointListItem{" + "webhookEndpoint=" + webhookEndpoint + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      WebhookEndpointListItem that = (WebhookEndpointListItem) o;
+      return java.util.Objects.equals(webhookEndpoint, that.webhookEndpoint);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(webhookEndpoint);
     }
   }
 }

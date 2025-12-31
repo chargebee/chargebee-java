@@ -83,4 +83,34 @@ public class ThirdPartySyncDetail {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ThirdPartySyncDetail{"
+        + "integrationName="
+        + integrationName
+        + ", status="
+        + status
+        + ", id="
+        + id
+        + ", context="
+        + context
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ThirdPartySyncDetail that = (ThirdPartySyncDetail) o;
+    return java.util.Objects.equals(integrationName, that.integrationName)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(context, that.context);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(integrationName, status, id, context);
+  }
 }

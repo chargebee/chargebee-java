@@ -132,4 +132,70 @@ public class Usage {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Usage{"
+        + "id="
+        + id
+        + ", usageDate="
+        + usageDate
+        + ", subscriptionId="
+        + subscriptionId
+        + ", itemPriceId="
+        + itemPriceId
+        + ", invoiceId="
+        + invoiceId
+        + ", lineItemId="
+        + lineItemId
+        + ", quantity="
+        + quantity
+        + ", source="
+        + source
+        + ", note="
+        + note
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", createdAt="
+        + createdAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Usage that = (Usage) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(usageDate, that.usageDate)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(itemPriceId, that.itemPriceId)
+        && java.util.Objects.equals(invoiceId, that.invoiceId)
+        && java.util.Objects.equals(lineItemId, that.lineItemId)
+        && java.util.Objects.equals(quantity, that.quantity)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(note, that.note)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        usageDate,
+        subscriptionId,
+        itemPriceId,
+        invoiceId,
+        lineItemId,
+        quantity,
+        source,
+        note,
+        resourceVersion,
+        updatedAt,
+        createdAt);
+  }
 }

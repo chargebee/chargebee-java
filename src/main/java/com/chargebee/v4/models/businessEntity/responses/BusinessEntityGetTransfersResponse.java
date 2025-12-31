@@ -148,6 +148,30 @@ public final class BusinessEntityGetTransfersResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "BusinessEntityGetTransfersResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusinessEntityGetTransfersResponse that = (BusinessEntityGetTransfersResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class BusinessEntityGetTransfersItem {
 
     private BusinessEntityTransfer businessEntityTransfer;
@@ -165,6 +189,27 @@ public final class BusinessEntityGetTransfersResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "BusinessEntityGetTransfersItem{"
+          + "businessEntityTransfer="
+          + businessEntityTransfer
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      BusinessEntityGetTransfersItem that = (BusinessEntityGetTransfersItem) o;
+      return java.util.Objects.equals(businessEntityTransfer, that.businessEntityTransfer);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(businessEntityTransfer);
     }
   }
 }

@@ -49,4 +49,34 @@ public class UsageEvent {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "UsageEvent{"
+        + "subscriptionId="
+        + subscriptionId
+        + ", deduplicationId="
+        + deduplicationId
+        + ", usageTimestamp="
+        + usageTimestamp
+        + ", properties="
+        + properties
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageEvent that = (UsageEvent) o;
+    return java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(deduplicationId, that.deduplicationId)
+        && java.util.Objects.equals(usageTimestamp, that.usageTimestamp)
+        && java.util.Objects.equals(properties, that.properties);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscriptionId, deduplicationId, usageTimestamp, properties);
+  }
 }

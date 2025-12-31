@@ -157,6 +157,30 @@ public final class ItemPriceFindApplicableItemsResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ItemPriceFindApplicableItemsResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemPriceFindApplicableItemsResponse that = (ItemPriceFindApplicableItemsResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class ItemPriceFindApplicableItemsItem {
 
     private Item item;
@@ -174,6 +198,24 @@ public final class ItemPriceFindApplicableItemsResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "ItemPriceFindApplicableItemsItem{" + "item=" + item + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemPriceFindApplicableItemsItem that = (ItemPriceFindApplicableItemsItem) o;
+      return java.util.Objects.equals(item, that.item);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(item);
     }
   }
 }

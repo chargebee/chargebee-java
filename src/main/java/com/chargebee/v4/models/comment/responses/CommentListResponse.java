@@ -143,6 +143,25 @@ public final class CommentListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CommentListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CommentListResponse that = (CommentListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CommentListItem {
 
     private Comment comment;
@@ -160,6 +179,24 @@ public final class CommentListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CommentListItem{" + "comment=" + comment + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CommentListItem that = (CommentListItem) o;
+      return java.util.Objects.equals(comment, that.comment);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(comment);
     }
   }
 }

@@ -74,4 +74,22 @@ public final class RampCreateForSubscriptionResponse extends BaseResponse {
   public Ramp getRamp() {
     return ramp;
   }
+
+  @Override
+  public String toString() {
+    return "RampCreateForSubscriptionResponse{" + "ramp=" + ramp + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RampCreateForSubscriptionResponse that = (RampCreateForSubscriptionResponse) o;
+    return java.util.Objects.equals(ramp, that.ramp);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(ramp);
+  }
 }

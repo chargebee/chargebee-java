@@ -97,4 +97,28 @@ public final class RecordedPurchaseCreateResponse extends BaseResponse {
   public Customer getCustomer() {
     return customer;
   }
+
+  @Override
+  public String toString() {
+    return "RecordedPurchaseCreateResponse{"
+        + "recordedPurchase="
+        + recordedPurchase
+        + ", customer="
+        + customer
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RecordedPurchaseCreateResponse that = (RecordedPurchaseCreateResponse) o;
+    return java.util.Objects.equals(recordedPurchase, that.recordedPurchase)
+        && java.util.Objects.equals(customer, that.customer);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(recordedPurchase, customer);
+  }
 }

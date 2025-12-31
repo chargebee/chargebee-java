@@ -700,6 +700,68 @@ public class Event {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Event{"
+        + "id="
+        + id
+        + ", occurredAt="
+        + occurredAt
+        + ", source="
+        + source
+        + ", user="
+        + user
+        + ", webhookStatus="
+        + webhookStatus
+        + ", webhookFailureReason="
+        + webhookFailureReason
+        + ", eventType="
+        + eventType
+        + ", apiVersion="
+        + apiVersion
+        + ", content="
+        + content
+        + ", originUser="
+        + originUser
+        + ", webhooks="
+        + webhooks
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Event that = (Event) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(occurredAt, that.occurredAt)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(user, that.user)
+        && java.util.Objects.equals(webhookStatus, that.webhookStatus)
+        && java.util.Objects.equals(webhookFailureReason, that.webhookFailureReason)
+        && java.util.Objects.equals(eventType, that.eventType)
+        && java.util.Objects.equals(apiVersion, that.apiVersion)
+        && java.util.Objects.equals(content, that.content)
+        && java.util.Objects.equals(originUser, that.originUser)
+        && java.util.Objects.equals(webhooks, that.webhooks);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        occurredAt,
+        source,
+        user,
+        webhookStatus,
+        webhookFailureReason,
+        eventType,
+        apiVersion,
+        content,
+        originUser,
+        webhooks);
+  }
+
   public static class Webhooks {
 
     private String id;
@@ -761,6 +823,25 @@ public class Event {
       obj.webhookStatus = WebhookStatus.fromString(JsonUtil.getString(json, "webhook_status"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Webhooks{" + "id=" + id + ", webhookStatus=" + webhookStatus + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Webhooks that = (Webhooks) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(webhookStatus, that.webhookStatus);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id, webhookStatus);
     }
   }
 }

@@ -80,4 +80,26 @@ public final class ThirdPartyConfigurationConfigurationsResponse extends BaseRes
   public ThirdPartyConfiguration getThirdPartyConfiguration() {
     return thirdPartyConfiguration;
   }
+
+  @Override
+  public String toString() {
+    return "ThirdPartyConfigurationConfigurationsResponse{"
+        + "thirdPartyConfiguration="
+        + thirdPartyConfiguration
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ThirdPartyConfigurationConfigurationsResponse that =
+        (ThirdPartyConfigurationConfigurationsResponse) o;
+    return java.util.Objects.equals(thirdPartyConfiguration, that.thirdPartyConfiguration);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(thirdPartyConfiguration);
+  }
 }

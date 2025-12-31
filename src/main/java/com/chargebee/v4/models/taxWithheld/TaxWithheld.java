@@ -170,4 +170,70 @@ public class TaxWithheld {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "TaxWithheld{"
+        + "id="
+        + id
+        + ", user="
+        + user
+        + ", referenceNumber="
+        + referenceNumber
+        + ", description="
+        + description
+        + ", type="
+        + type
+        + ", paymentMethod="
+        + paymentMethod
+        + ", date="
+        + date
+        + ", currencyCode="
+        + currencyCode
+        + ", amount="
+        + amount
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", exchangeRate="
+        + exchangeRate
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TaxWithheld that = (TaxWithheld) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(user, that.user)
+        && java.util.Objects.equals(referenceNumber, that.referenceNumber)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(paymentMethod, that.paymentMethod)
+        && java.util.Objects.equals(date, that.date)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(exchangeRate, that.exchangeRate);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        user,
+        referenceNumber,
+        description,
+        type,
+        paymentMethod,
+        date,
+        currencyCode,
+        amount,
+        resourceVersion,
+        updatedAt,
+        exchangeRate);
+  }
 }

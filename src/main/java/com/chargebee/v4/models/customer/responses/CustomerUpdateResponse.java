@@ -96,4 +96,23 @@ public final class CustomerUpdateResponse extends BaseResponse {
   public Card getCard() {
     return card;
   }
+
+  @Override
+  public String toString() {
+    return "CustomerUpdateResponse{" + "customer=" + customer + ", card=" + card + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerUpdateResponse that = (CustomerUpdateResponse) o;
+    return java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer, card);
+  }
 }

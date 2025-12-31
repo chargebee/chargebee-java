@@ -78,4 +78,22 @@ public final class ConfigurationListResponse extends BaseResponse {
   public List<Configuration> getConfigurations() {
     return configurations;
   }
+
+  @Override
+  public String toString() {
+    return "ConfigurationListResponse{" + "configurations=" + configurations + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ConfigurationListResponse that = (ConfigurationListResponse) o;
+    return java.util.Objects.equals(configurations, that.configurations);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(configurations);
+  }
 }

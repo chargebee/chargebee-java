@@ -109,4 +109,54 @@ public class OmnichannelOneTimeOrderItem {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "OmnichannelOneTimeOrderItem{"
+        + "id="
+        + id
+        + ", itemIdAtSource="
+        + itemIdAtSource
+        + ", itemTypeAtSource="
+        + itemTypeAtSource
+        + ", quantity="
+        + quantity
+        + ", cancelledAt="
+        + cancelledAt
+        + ", cancellationReason="
+        + cancellationReason
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelOneTimeOrderItem that = (OmnichannelOneTimeOrderItem) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(itemIdAtSource, that.itemIdAtSource)
+        && java.util.Objects.equals(itemTypeAtSource, that.itemTypeAtSource)
+        && java.util.Objects.equals(quantity, that.quantity)
+        && java.util.Objects.equals(cancelledAt, that.cancelledAt)
+        && java.util.Objects.equals(cancellationReason, that.cancellationReason)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        itemIdAtSource,
+        itemTypeAtSource,
+        quantity,
+        cancelledAt,
+        cancellationReason,
+        createdAt,
+        resourceVersion);
+  }
 }

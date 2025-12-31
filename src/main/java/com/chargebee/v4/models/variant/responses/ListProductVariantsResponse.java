@@ -150,6 +150,25 @@ public final class ListProductVariantsResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ListProductVariantsResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ListProductVariantsResponse that = (ListProductVariantsResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class VariantListProductVariantsItem {
 
     private Variant variant;
@@ -167,6 +186,24 @@ public final class ListProductVariantsResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "VariantListProductVariantsItem{" + "variant=" + variant + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      VariantListProductVariantsItem that = (VariantListProductVariantsItem) o;
+      return java.util.Objects.equals(variant, that.variant);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(variant);
     }
   }
 }

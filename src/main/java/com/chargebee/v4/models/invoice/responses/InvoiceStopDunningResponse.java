@@ -74,4 +74,22 @@ public final class InvoiceStopDunningResponse extends BaseResponse {
   public Invoice getInvoice() {
     return invoice;
   }
+
+  @Override
+  public String toString() {
+    return "InvoiceStopDunningResponse{" + "invoice=" + invoice + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceStopDunningResponse that = (InvoiceStopDunningResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice);
+  }
 }

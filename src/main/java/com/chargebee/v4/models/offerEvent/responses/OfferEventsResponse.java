@@ -48,4 +48,22 @@ public final class OfferEventsResponse extends BaseResponse {
       return new OfferEventsResponse(this);
     }
   }
+
+  @Override
+  public String toString() {
+    return "OfferEventsResponse{" + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OfferEventsResponse that = (OfferEventsResponse) o;
+    return;
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash();
+  }
 }

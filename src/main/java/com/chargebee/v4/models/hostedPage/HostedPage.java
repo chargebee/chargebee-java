@@ -239,4 +239,78 @@ public class HostedPage {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "HostedPage{"
+        + "id="
+        + id
+        + ", type="
+        + type
+        + ", url="
+        + url
+        + ", state="
+        + state
+        + ", failureReason="
+        + failureReason
+        + ", passThruContent="
+        + passThruContent
+        + ", createdAt="
+        + createdAt
+        + ", expiresAt="
+        + expiresAt
+        + ", content="
+        + content
+        + ", updatedAt="
+        + updatedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", checkoutInfo="
+        + checkoutInfo
+        + ", businessEntityId="
+        + businessEntityId
+        + ", embed="
+        + embed
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPage that = (HostedPage) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(state, that.state)
+        && java.util.Objects.equals(failureReason, that.failureReason)
+        && java.util.Objects.equals(passThruContent, that.passThruContent)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(content, that.content)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(checkoutInfo, that.checkoutInfo)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(embed, that.embed);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        type,
+        url,
+        state,
+        failureReason,
+        passThruContent,
+        createdAt,
+        expiresAt,
+        content,
+        updatedAt,
+        resourceVersion,
+        checkoutInfo,
+        businessEntityId,
+        embed);
+  }
 }

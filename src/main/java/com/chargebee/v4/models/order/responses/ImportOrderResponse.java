@@ -71,4 +71,22 @@ public final class ImportOrderResponse extends BaseResponse {
   public Order getOrder() {
     return order;
   }
+
+  @Override
+  public String toString() {
+    return "ImportOrderResponse{" + "order=" + order + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ImportOrderResponse that = (ImportOrderResponse) o;
+    return java.util.Objects.equals(order, that.order);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(order);
+  }
 }

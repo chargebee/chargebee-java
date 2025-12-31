@@ -143,6 +143,25 @@ public final class CurrencyListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CurrencyListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CurrencyListResponse that = (CurrencyListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CurrencyListItem {
 
     private Currency currency;
@@ -160,6 +179,24 @@ public final class CurrencyListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CurrencyListItem{" + "currency=" + currency + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CurrencyListItem that = (CurrencyListItem) o;
+      return java.util.Objects.equals(currency, that.currency);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(currency);
     }
   }
 }

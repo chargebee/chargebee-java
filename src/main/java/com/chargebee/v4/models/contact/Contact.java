@@ -80,4 +80,50 @@ public class Contact {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Contact{"
+        + "id="
+        + id
+        + ", firstName="
+        + firstName
+        + ", lastName="
+        + lastName
+        + ", email="
+        + email
+        + ", phone="
+        + phone
+        + ", label="
+        + label
+        + ", enabled="
+        + enabled
+        + ", sendAccountEmail="
+        + sendAccountEmail
+        + ", sendBillingEmail="
+        + sendBillingEmail
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Contact that = (Contact) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(firstName, that.firstName)
+        && java.util.Objects.equals(lastName, that.lastName)
+        && java.util.Objects.equals(email, that.email)
+        && java.util.Objects.equals(phone, that.phone)
+        && java.util.Objects.equals(label, that.label)
+        && java.util.Objects.equals(enabled, that.enabled)
+        && java.util.Objects.equals(sendAccountEmail, that.sendAccountEmail)
+        && java.util.Objects.equals(sendBillingEmail, that.sendBillingEmail);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, firstName, lastName, email, phone, label, enabled, sendAccountEmail, sendBillingEmail);
+  }
 }

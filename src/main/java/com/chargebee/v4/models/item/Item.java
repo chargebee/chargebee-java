@@ -503,6 +503,144 @@ public class Item {
     return customFields;
   }
 
+  @Override
+  public String toString() {
+    return "Item{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", externalName="
+        + externalName
+        + ", description="
+        + description
+        + ", status="
+        + status
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", itemFamilyId="
+        + itemFamilyId
+        + ", type="
+        + type
+        + ", isShippable="
+        + isShippable
+        + ", isGiftable="
+        + isGiftable
+        + ", redirectUrl="
+        + redirectUrl
+        + ", enabledForCheckout="
+        + enabledForCheckout
+        + ", enabledInPortal="
+        + enabledInPortal
+        + ", includedInMrr="
+        + includedInMrr
+        + ", itemApplicability="
+        + itemApplicability
+        + ", giftClaimRedirectUrl="
+        + giftClaimRedirectUrl
+        + ", unit="
+        + unit
+        + ", metered="
+        + metered
+        + ", usageCalculation="
+        + usageCalculation
+        + ", isPercentagePricing="
+        + isPercentagePricing
+        + ", archivedAt="
+        + archivedAt
+        + ", channel="
+        + channel
+        + ", metadata="
+        + metadata
+        + ", deleted="
+        + deleted
+        + ", businessEntityId="
+        + businessEntityId
+        + ", applicableItems="
+        + applicableItems
+        + ", bundleItems="
+        + bundleItems
+        + ", bundleConfiguration="
+        + bundleConfiguration
+        + ", customFields="
+        + customFields
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Item that = (Item) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(externalName, that.externalName)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(itemFamilyId, that.itemFamilyId)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(isShippable, that.isShippable)
+        && java.util.Objects.equals(isGiftable, that.isGiftable)
+        && java.util.Objects.equals(redirectUrl, that.redirectUrl)
+        && java.util.Objects.equals(enabledForCheckout, that.enabledForCheckout)
+        && java.util.Objects.equals(enabledInPortal, that.enabledInPortal)
+        && java.util.Objects.equals(includedInMrr, that.includedInMrr)
+        && java.util.Objects.equals(itemApplicability, that.itemApplicability)
+        && java.util.Objects.equals(giftClaimRedirectUrl, that.giftClaimRedirectUrl)
+        && java.util.Objects.equals(unit, that.unit)
+        && java.util.Objects.equals(metered, that.metered)
+        && java.util.Objects.equals(usageCalculation, that.usageCalculation)
+        && java.util.Objects.equals(isPercentagePricing, that.isPercentagePricing)
+        && java.util.Objects.equals(archivedAt, that.archivedAt)
+        && java.util.Objects.equals(channel, that.channel)
+        && java.util.Objects.equals(metadata, that.metadata)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(applicableItems, that.applicableItems)
+        && java.util.Objects.equals(bundleItems, that.bundleItems)
+        && java.util.Objects.equals(bundleConfiguration, that.bundleConfiguration)
+        && java.util.Objects.equals(customFields, that.customFields);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        externalName,
+        description,
+        status,
+        resourceVersion,
+        updatedAt,
+        itemFamilyId,
+        type,
+        isShippable,
+        isGiftable,
+        redirectUrl,
+        enabledForCheckout,
+        enabledInPortal,
+        includedInMrr,
+        itemApplicability,
+        giftClaimRedirectUrl,
+        unit,
+        metered,
+        usageCalculation,
+        isPercentagePricing,
+        archivedAt,
+        channel,
+        metadata,
+        deleted,
+        businessEntityId,
+        applicableItems,
+        bundleItems,
+        bundleConfiguration,
+        customFields);
+  }
+
   public static class ApplicableItems {
 
     private String id;
@@ -517,6 +655,24 @@ public class Item {
       obj.id = JsonUtil.getString(json, "id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ApplicableItems{" + "id=" + id + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ApplicableItems that = (ApplicableItems) o;
+      return java.util.Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id);
     }
   }
 
@@ -586,6 +742,36 @@ public class Item {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "BundleItems{"
+          + "itemId="
+          + itemId
+          + ", itemType="
+          + itemType
+          + ", quantity="
+          + quantity
+          + ", priceAllocation="
+          + priceAllocation
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      BundleItems that = (BundleItems) o;
+      return java.util.Objects.equals(itemId, that.itemId)
+          && java.util.Objects.equals(itemType, that.itemType)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(priceAllocation, that.priceAllocation);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemId, itemType, quantity, priceAllocation);
+    }
   }
 
   public static class BundleConfiguration {
@@ -628,6 +814,24 @@ public class Item {
       obj.type = Type.fromString(JsonUtil.getString(json, "type"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "BundleConfiguration{" + "type=" + type + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      BundleConfiguration that = (BundleConfiguration) o;
+      return java.util.Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(type);
     }
   }
 }

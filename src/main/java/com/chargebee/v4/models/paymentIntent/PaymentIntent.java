@@ -270,6 +270,100 @@ public class PaymentIntent {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PaymentIntent{"
+        + "id="
+        + id
+        + ", status="
+        + status
+        + ", currencyCode="
+        + currencyCode
+        + ", amount="
+        + amount
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", expiresAt="
+        + expiresAt
+        + ", referenceId="
+        + referenceId
+        + ", paymentMethodType="
+        + paymentMethodType
+        + ", successUrl="
+        + successUrl
+        + ", failureUrl="
+        + failureUrl
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", customerId="
+        + customerId
+        + ", gateway="
+        + gateway
+        + ", businessEntityId="
+        + businessEntityId
+        + ", activePaymentAttempt="
+        + activePaymentAttempt
+        + ", paymentAttempts="
+        + paymentAttempts
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentIntent that = (PaymentIntent) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(referenceId, that.referenceId)
+        && java.util.Objects.equals(paymentMethodType, that.paymentMethodType)
+        && java.util.Objects.equals(successUrl, that.successUrl)
+        && java.util.Objects.equals(failureUrl, that.failureUrl)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(activePaymentAttempt, that.activePaymentAttempt)
+        && java.util.Objects.equals(paymentAttempts, that.paymentAttempts);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        status,
+        currencyCode,
+        amount,
+        gatewayAccountId,
+        expiresAt,
+        referenceId,
+        paymentMethodType,
+        successUrl,
+        failureUrl,
+        createdAt,
+        modifiedAt,
+        resourceVersion,
+        updatedAt,
+        customerId,
+        gateway,
+        businessEntityId,
+        activePaymentAttempt,
+        paymentAttempts);
+  }
+
   public static class ActivePaymentAttempt {
 
     private String id;
@@ -469,6 +563,64 @@ public class PaymentIntent {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "ActivePaymentAttempt{"
+          + "id="
+          + id
+          + ", status="
+          + status
+          + ", paymentMethodType="
+          + paymentMethodType
+          + ", idAtGateway="
+          + idAtGateway
+          + ", errorCode="
+          + errorCode
+          + ", errorText="
+          + errorText
+          + ", checkoutDetails="
+          + checkoutDetails
+          + ", createdAt="
+          + createdAt
+          + ", modifiedAt="
+          + modifiedAt
+          + ", errorDetail="
+          + errorDetail
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ActivePaymentAttempt that = (ActivePaymentAttempt) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(paymentMethodType, that.paymentMethodType)
+          && java.util.Objects.equals(idAtGateway, that.idAtGateway)
+          && java.util.Objects.equals(errorCode, that.errorCode)
+          && java.util.Objects.equals(errorText, that.errorText)
+          && java.util.Objects.equals(checkoutDetails, that.checkoutDetails)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+          && java.util.Objects.equals(errorDetail, that.errorDetail);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          status,
+          paymentMethodType,
+          idAtGateway,
+          errorCode,
+          errorText,
+          checkoutDetails,
+          createdAt,
+          modifiedAt,
+          errorDetail);
+    }
+
     public static class ErrorDetail {
 
       private String requestId;
@@ -581,6 +733,84 @@ public class PaymentIntent {
         obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ErrorDetail{"
+            + "requestId="
+            + requestId
+            + ", errorCategory="
+            + errorCategory
+            + ", errorCode="
+            + errorCode
+            + ", errorMessage="
+            + errorMessage
+            + ", declineCode="
+            + declineCode
+            + ", declineMessage="
+            + declineMessage
+            + ", networkErrorCode="
+            + networkErrorCode
+            + ", networkErrorMessage="
+            + networkErrorMessage
+            + ", errorField="
+            + errorField
+            + ", recommendationCode="
+            + recommendationCode
+            + ", recommendationMessage="
+            + recommendationMessage
+            + ", processorErrorCode="
+            + processorErrorCode
+            + ", processorErrorMessage="
+            + processorErrorMessage
+            + ", errorCauseId="
+            + errorCauseId
+            + ", processorAdviceCode="
+            + processorAdviceCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ErrorDetail that = (ErrorDetail) o;
+        return java.util.Objects.equals(requestId, that.requestId)
+            && java.util.Objects.equals(errorCategory, that.errorCategory)
+            && java.util.Objects.equals(errorCode, that.errorCode)
+            && java.util.Objects.equals(errorMessage, that.errorMessage)
+            && java.util.Objects.equals(declineCode, that.declineCode)
+            && java.util.Objects.equals(declineMessage, that.declineMessage)
+            && java.util.Objects.equals(networkErrorCode, that.networkErrorCode)
+            && java.util.Objects.equals(networkErrorMessage, that.networkErrorMessage)
+            && java.util.Objects.equals(errorField, that.errorField)
+            && java.util.Objects.equals(recommendationCode, that.recommendationCode)
+            && java.util.Objects.equals(recommendationMessage, that.recommendationMessage)
+            && java.util.Objects.equals(processorErrorCode, that.processorErrorCode)
+            && java.util.Objects.equals(processorErrorMessage, that.processorErrorMessage)
+            && java.util.Objects.equals(errorCauseId, that.errorCauseId)
+            && java.util.Objects.equals(processorAdviceCode, that.processorAdviceCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            requestId,
+            errorCategory,
+            errorCode,
+            errorMessage,
+            declineCode,
+            declineMessage,
+            networkErrorCode,
+            networkErrorMessage,
+            errorField,
+            recommendationCode,
+            recommendationMessage,
+            processorErrorCode,
+            processorErrorMessage,
+            errorCauseId,
+            processorAdviceCode);
       }
     }
   }
@@ -784,6 +1014,64 @@ public class PaymentIntent {
       return obj;
     }
 
+    @Override
+    public String toString() {
+      return "PaymentAttempts{"
+          + "id="
+          + id
+          + ", status="
+          + status
+          + ", paymentMethodType="
+          + paymentMethodType
+          + ", idAtGateway="
+          + idAtGateway
+          + ", errorCode="
+          + errorCode
+          + ", errorText="
+          + errorText
+          + ", checkoutDetails="
+          + checkoutDetails
+          + ", createdAt="
+          + createdAt
+          + ", modifiedAt="
+          + modifiedAt
+          + ", errorDetail="
+          + errorDetail
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PaymentAttempts that = (PaymentAttempts) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(paymentMethodType, that.paymentMethodType)
+          && java.util.Objects.equals(idAtGateway, that.idAtGateway)
+          && java.util.Objects.equals(errorCode, that.errorCode)
+          && java.util.Objects.equals(errorText, that.errorText)
+          && java.util.Objects.equals(checkoutDetails, that.checkoutDetails)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+          && java.util.Objects.equals(errorDetail, that.errorDetail);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          status,
+          paymentMethodType,
+          idAtGateway,
+          errorCode,
+          errorText,
+          checkoutDetails,
+          createdAt,
+          modifiedAt,
+          errorDetail);
+    }
+
     public static class ErrorDetail {
 
       private String requestId;
@@ -896,6 +1184,84 @@ public class PaymentIntent {
         obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
 
         return obj;
+      }
+
+      @Override
+      public String toString() {
+        return "ErrorDetail{"
+            + "requestId="
+            + requestId
+            + ", errorCategory="
+            + errorCategory
+            + ", errorCode="
+            + errorCode
+            + ", errorMessage="
+            + errorMessage
+            + ", declineCode="
+            + declineCode
+            + ", declineMessage="
+            + declineMessage
+            + ", networkErrorCode="
+            + networkErrorCode
+            + ", networkErrorMessage="
+            + networkErrorMessage
+            + ", errorField="
+            + errorField
+            + ", recommendationCode="
+            + recommendationCode
+            + ", recommendationMessage="
+            + recommendationMessage
+            + ", processorErrorCode="
+            + processorErrorCode
+            + ", processorErrorMessage="
+            + processorErrorMessage
+            + ", errorCauseId="
+            + errorCauseId
+            + ", processorAdviceCode="
+            + processorAdviceCode
+            + "}";
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ErrorDetail that = (ErrorDetail) o;
+        return java.util.Objects.equals(requestId, that.requestId)
+            && java.util.Objects.equals(errorCategory, that.errorCategory)
+            && java.util.Objects.equals(errorCode, that.errorCode)
+            && java.util.Objects.equals(errorMessage, that.errorMessage)
+            && java.util.Objects.equals(declineCode, that.declineCode)
+            && java.util.Objects.equals(declineMessage, that.declineMessage)
+            && java.util.Objects.equals(networkErrorCode, that.networkErrorCode)
+            && java.util.Objects.equals(networkErrorMessage, that.networkErrorMessage)
+            && java.util.Objects.equals(errorField, that.errorField)
+            && java.util.Objects.equals(recommendationCode, that.recommendationCode)
+            && java.util.Objects.equals(recommendationMessage, that.recommendationMessage)
+            && java.util.Objects.equals(processorErrorCode, that.processorErrorCode)
+            && java.util.Objects.equals(processorErrorMessage, that.processorErrorMessage)
+            && java.util.Objects.equals(errorCauseId, that.errorCauseId)
+            && java.util.Objects.equals(processorAdviceCode, that.processorAdviceCode);
+      }
+
+      @Override
+      public int hashCode() {
+        return java.util.Objects.hash(
+            requestId,
+            errorCategory,
+            errorCode,
+            errorMessage,
+            declineCode,
+            declineMessage,
+            networkErrorCode,
+            networkErrorMessage,
+            errorField,
+            recommendationCode,
+            recommendationMessage,
+            processorErrorCode,
+            processorErrorMessage,
+            errorCauseId,
+            processorAdviceCode);
       }
     }
   }

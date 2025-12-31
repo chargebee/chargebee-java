@@ -175,6 +175,92 @@ public class UsageFile {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "UsageFile{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", mimeType="
+        + mimeType
+        + ", errorCode="
+        + errorCode
+        + ", errorReason="
+        + errorReason
+        + ", status="
+        + status
+        + ", totalRecordsCount="
+        + totalRecordsCount
+        + ", processedRecordsCount="
+        + processedRecordsCount
+        + ", failedRecordsCount="
+        + failedRecordsCount
+        + ", fileSizeInBytes="
+        + fileSizeInBytes
+        + ", processingStartedAt="
+        + processingStartedAt
+        + ", processingCompletedAt="
+        + processingCompletedAt
+        + ", uploadedBy="
+        + uploadedBy
+        + ", uploadedAt="
+        + uploadedAt
+        + ", errorFilePath="
+        + errorFilePath
+        + ", errorFileUrl="
+        + errorFileUrl
+        + ", uploadDetails="
+        + uploadDetails
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageFile that = (UsageFile) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(mimeType, that.mimeType)
+        && java.util.Objects.equals(errorCode, that.errorCode)
+        && java.util.Objects.equals(errorReason, that.errorReason)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(totalRecordsCount, that.totalRecordsCount)
+        && java.util.Objects.equals(processedRecordsCount, that.processedRecordsCount)
+        && java.util.Objects.equals(failedRecordsCount, that.failedRecordsCount)
+        && java.util.Objects.equals(fileSizeInBytes, that.fileSizeInBytes)
+        && java.util.Objects.equals(processingStartedAt, that.processingStartedAt)
+        && java.util.Objects.equals(processingCompletedAt, that.processingCompletedAt)
+        && java.util.Objects.equals(uploadedBy, that.uploadedBy)
+        && java.util.Objects.equals(uploadedAt, that.uploadedAt)
+        && java.util.Objects.equals(errorFilePath, that.errorFilePath)
+        && java.util.Objects.equals(errorFileUrl, that.errorFileUrl)
+        && java.util.Objects.equals(uploadDetails, that.uploadDetails);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        mimeType,
+        errorCode,
+        errorReason,
+        status,
+        totalRecordsCount,
+        processedRecordsCount,
+        failedRecordsCount,
+        fileSizeInBytes,
+        processingStartedAt,
+        processingCompletedAt,
+        uploadedBy,
+        uploadedAt,
+        errorFilePath,
+        errorFileUrl,
+        uploadDetails);
+  }
+
   public static class UploadDetails {
 
     private String url;
@@ -196,6 +282,25 @@ public class UsageFile {
       obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "UploadDetails{" + "url=" + url + ", expiresAt=" + expiresAt + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      UploadDetails that = (UploadDetails) o;
+      return java.util.Objects.equals(url, that.url)
+          && java.util.Objects.equals(expiresAt, that.expiresAt);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(url, expiresAt);
     }
   }
 }

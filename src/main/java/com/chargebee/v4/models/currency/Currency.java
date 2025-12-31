@@ -87,4 +87,41 @@ public class Currency {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Currency{"
+        + "id="
+        + id
+        + ", enabled="
+        + enabled
+        + ", forexType="
+        + forexType
+        + ", currencyCode="
+        + currencyCode
+        + ", isBaseCurrency="
+        + isBaseCurrency
+        + ", manualExchangeRate="
+        + manualExchangeRate
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Currency that = (Currency) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(enabled, that.enabled)
+        && java.util.Objects.equals(forexType, that.forexType)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(isBaseCurrency, that.isBaseCurrency)
+        && java.util.Objects.equals(manualExchangeRate, that.manualExchangeRate);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, enabled, forexType, currencyCode, isBaseCurrency, manualExchangeRate);
+  }
 }

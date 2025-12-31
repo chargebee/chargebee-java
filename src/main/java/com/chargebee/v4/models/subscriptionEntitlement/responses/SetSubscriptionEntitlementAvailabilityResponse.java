@@ -81,4 +81,23 @@ public final class SetSubscriptionEntitlementAvailabilityResponse extends BaseRe
   public List<SubscriptionEntitlement> getList() {
     return list;
   }
+
+  @Override
+  public String toString() {
+    return "SetSubscriptionEntitlementAvailabilityResponse{" + "list=" + list + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SetSubscriptionEntitlementAvailabilityResponse that =
+        (SetSubscriptionEntitlementAvailabilityResponse) o;
+    return java.util.Objects.equals(list, that.list);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list);
+  }
 }

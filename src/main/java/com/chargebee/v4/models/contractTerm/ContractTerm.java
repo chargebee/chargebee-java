@@ -167,4 +167,70 @@ public class ContractTerm {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ContractTerm{"
+        + "id="
+        + id
+        + ", status="
+        + status
+        + ", contractStart="
+        + contractStart
+        + ", contractEnd="
+        + contractEnd
+        + ", billingCycle="
+        + billingCycle
+        + ", actionAtTermEnd="
+        + actionAtTermEnd
+        + ", totalContractValue="
+        + totalContractValue
+        + ", totalContractValueBeforeTax="
+        + totalContractValueBeforeTax
+        + ", cancellationCutoffPeriod="
+        + cancellationCutoffPeriod
+        + ", createdAt="
+        + createdAt
+        + ", subscriptionId="
+        + subscriptionId
+        + ", remainingBillingCycles="
+        + remainingBillingCycles
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContractTerm that = (ContractTerm) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(contractStart, that.contractStart)
+        && java.util.Objects.equals(contractEnd, that.contractEnd)
+        && java.util.Objects.equals(billingCycle, that.billingCycle)
+        && java.util.Objects.equals(actionAtTermEnd, that.actionAtTermEnd)
+        && java.util.Objects.equals(totalContractValue, that.totalContractValue)
+        && java.util.Objects.equals(totalContractValueBeforeTax, that.totalContractValueBeforeTax)
+        && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        status,
+        contractStart,
+        contractEnd,
+        billingCycle,
+        actionAtTermEnd,
+        totalContractValue,
+        totalContractValueBeforeTax,
+        cancellationCutoffPeriod,
+        createdAt,
+        subscriptionId,
+        remainingBillingCycles);
+  }
 }

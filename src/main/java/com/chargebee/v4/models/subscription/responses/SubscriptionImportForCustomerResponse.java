@@ -144,4 +144,34 @@ public final class SubscriptionImportForCustomerResponse extends BaseResponse {
   public Invoice getInvoice() {
     return invoice;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionImportForCustomerResponse{"
+        + "subscription="
+        + subscription
+        + ", customer="
+        + customer
+        + ", card="
+        + card
+        + ", invoice="
+        + invoice
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionImportForCustomerResponse that = (SubscriptionImportForCustomerResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card)
+        && java.util.Objects.equals(invoice, that.invoice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, customer, card, invoice);
+  }
 }

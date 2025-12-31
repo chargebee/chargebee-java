@@ -128,4 +128,54 @@ public class BusinessEntityTransfer {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "BusinessEntityTransfer{"
+        + "id="
+        + id
+        + ", resourceType="
+        + resourceType
+        + ", resourceId="
+        + resourceId
+        + ", activeResourceId="
+        + activeResourceId
+        + ", destinationBusinessEntityId="
+        + destinationBusinessEntityId
+        + ", sourceBusinessEntityId="
+        + sourceBusinessEntityId
+        + ", reasonCode="
+        + reasonCode
+        + ", createdAt="
+        + createdAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusinessEntityTransfer that = (BusinessEntityTransfer) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(resourceType, that.resourceType)
+        && java.util.Objects.equals(resourceId, that.resourceId)
+        && java.util.Objects.equals(activeResourceId, that.activeResourceId)
+        && java.util.Objects.equals(destinationBusinessEntityId, that.destinationBusinessEntityId)
+        && java.util.Objects.equals(sourceBusinessEntityId, that.sourceBusinessEntityId)
+        && java.util.Objects.equals(reasonCode, that.reasonCode)
+        && java.util.Objects.equals(createdAt, that.createdAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        resourceType,
+        resourceId,
+        activeResourceId,
+        destinationBusinessEntityId,
+        sourceBusinessEntityId,
+        reasonCode,
+        createdAt);
+  }
 }

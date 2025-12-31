@@ -69,4 +69,22 @@ public final class Pc2MigrationItemRetrieveResponse extends BaseResponse {
   public Object getPc2MigrationItem() {
     return pc2MigrationItem;
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationItemRetrieveResponse{" + "pc2MigrationItem=" + pc2MigrationItem + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationItemRetrieveResponse that = (Pc2MigrationItemRetrieveResponse) o;
+    return java.util.Objects.equals(pc2MigrationItem, that.pc2MigrationItem);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(pc2MigrationItem);
+  }
 }

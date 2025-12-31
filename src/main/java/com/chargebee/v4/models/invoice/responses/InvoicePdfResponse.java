@@ -71,4 +71,22 @@ public final class InvoicePdfResponse extends BaseResponse {
   public Download getDownload() {
     return download;
   }
+
+  @Override
+  public String toString() {
+    return "InvoicePdfResponse{" + "download=" + download + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoicePdfResponse that = (InvoicePdfResponse) o;
+    return java.util.Objects.equals(download, that.download);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(download);
+  }
 }

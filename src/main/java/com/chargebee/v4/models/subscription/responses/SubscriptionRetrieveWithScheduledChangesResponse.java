@@ -125,4 +125,32 @@ public final class SubscriptionRetrieveWithScheduledChangesResponse extends Base
   public Card getCard() {
     return card;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionRetrieveWithScheduledChangesResponse{"
+        + "subscription="
+        + subscription
+        + ", customer="
+        + customer
+        + ", card="
+        + card
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionRetrieveWithScheduledChangesResponse that =
+        (SubscriptionRetrieveWithScheduledChangesResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, customer, card);
+  }
 }

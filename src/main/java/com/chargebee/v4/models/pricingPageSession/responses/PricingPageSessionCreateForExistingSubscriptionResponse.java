@@ -79,4 +79,26 @@ public final class PricingPageSessionCreateForExistingSubscriptionResponse exten
   public PricingPageSession getPricingPageSession() {
     return pricingPageSession;
   }
+
+  @Override
+  public String toString() {
+    return "PricingPageSessionCreateForExistingSubscriptionResponse{"
+        + "pricingPageSession="
+        + pricingPageSession
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PricingPageSessionCreateForExistingSubscriptionResponse that =
+        (PricingPageSessionCreateForExistingSubscriptionResponse) o;
+    return java.util.Objects.equals(pricingPageSession, that.pricingPageSession);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(pricingPageSession);
+  }
 }

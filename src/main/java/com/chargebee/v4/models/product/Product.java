@@ -153,6 +153,80 @@ public class Product {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Product{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", externalName="
+        + externalName
+        + ", description="
+        + description
+        + ", hasVariant="
+        + hasVariant
+        + ", status="
+        + status
+        + ", shippable="
+        + shippable
+        + ", sku="
+        + sku
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", deleted="
+        + deleted
+        + ", metadata="
+        + metadata
+        + ", options="
+        + options
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Product that = (Product) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(externalName, that.externalName)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(hasVariant, that.hasVariant)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(shippable, that.shippable)
+        && java.util.Objects.equals(sku, that.sku)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(metadata, that.metadata)
+        && java.util.Objects.equals(options, that.options);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        externalName,
+        description,
+        hasVariant,
+        status,
+        shippable,
+        sku,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        deleted,
+        metadata,
+        options);
+  }
+
   public static class Options {
 
     private String id;
@@ -227,6 +301,39 @@ public class Product {
       obj.type = Type.fromString(JsonUtil.getString(json, "type"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Options{"
+          + "id="
+          + id
+          + ", name="
+          + name
+          + ", values="
+          + values
+          + ", defaultValue="
+          + defaultValue
+          + ", type="
+          + type
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Options that = (Options) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(name, that.name)
+          && java.util.Objects.equals(values, that.values)
+          && java.util.Objects.equals(defaultValue, that.defaultValue)
+          && java.util.Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id, name, values, defaultValue, type);
     }
   }
 }

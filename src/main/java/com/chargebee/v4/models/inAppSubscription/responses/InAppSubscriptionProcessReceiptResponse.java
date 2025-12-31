@@ -76,4 +76,25 @@ public final class InAppSubscriptionProcessReceiptResponse extends BaseResponse 
   public InAppSubscription getInAppSubscription() {
     return inAppSubscription;
   }
+
+  @Override
+  public String toString() {
+    return "InAppSubscriptionProcessReceiptResponse{"
+        + "inAppSubscription="
+        + inAppSubscription
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InAppSubscriptionProcessReceiptResponse that = (InAppSubscriptionProcessReceiptResponse) o;
+    return java.util.Objects.equals(inAppSubscription, that.inAppSubscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(inAppSubscription);
+  }
 }

@@ -69,4 +69,22 @@ public final class Pc2MigrationItemDeleteResponse extends BaseResponse {
   public Boolean getIsDeleted() {
     return isDeleted;
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationItemDeleteResponse{" + "isDeleted=" + isDeleted + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationItemDeleteResponse that = (Pc2MigrationItemDeleteResponse) o;
+    return java.util.Objects.equals(isDeleted, that.isDeleted);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(isDeleted);
+  }
 }

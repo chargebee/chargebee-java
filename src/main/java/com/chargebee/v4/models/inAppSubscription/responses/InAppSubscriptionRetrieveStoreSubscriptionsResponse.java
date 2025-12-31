@@ -81,4 +81,26 @@ public final class InAppSubscriptionRetrieveStoreSubscriptionsResponse extends B
   public List<InAppSubscription> getInAppSubscriptions() {
     return inAppSubscriptions;
   }
+
+  @Override
+  public String toString() {
+    return "InAppSubscriptionRetrieveStoreSubscriptionsResponse{"
+        + "inAppSubscriptions="
+        + inAppSubscriptions
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InAppSubscriptionRetrieveStoreSubscriptionsResponse that =
+        (InAppSubscriptionRetrieveStoreSubscriptionsResponse) o;
+    return java.util.Objects.equals(inAppSubscriptions, that.inAppSubscriptions);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(inAppSubscriptions);
+  }
 }

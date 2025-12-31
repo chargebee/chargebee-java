@@ -158,6 +158,31 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CustomerEntitlementEntitlementsForCustomerResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerEntitlementEntitlementsForCustomerResponse that =
+        (CustomerEntitlementEntitlementsForCustomerResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CustomerEntitlementEntitlementsForCustomerItem {
 
     private CustomerEntitlement customerEntitlement;
@@ -176,6 +201,28 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CustomerEntitlementEntitlementsForCustomerItem{"
+          + "customerEntitlement="
+          + customerEntitlement
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CustomerEntitlementEntitlementsForCustomerItem that =
+          (CustomerEntitlementEntitlementsForCustomerItem) o;
+      return java.util.Objects.equals(customerEntitlement, that.customerEntitlement);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(customerEntitlement);
     }
   }
 }

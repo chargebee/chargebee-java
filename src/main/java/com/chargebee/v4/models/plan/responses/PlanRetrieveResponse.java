@@ -74,4 +74,22 @@ public final class PlanRetrieveResponse extends BaseResponse {
   public Plan getPlan() {
     return plan;
   }
+
+  @Override
+  public String toString() {
+    return "PlanRetrieveResponse{" + "plan=" + plan + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PlanRetrieveResponse that = (PlanRetrieveResponse) o;
+    return java.util.Objects.equals(plan, that.plan);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(plan);
+  }
 }

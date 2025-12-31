@@ -79,4 +79,23 @@ public final class CreateSubscriptionForCustomerEstimateResponse extends BaseRes
   public Estimate getEstimate() {
     return estimate;
   }
+
+  @Override
+  public String toString() {
+    return "CreateSubscriptionForCustomerEstimateResponse{" + "estimate=" + estimate + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreateSubscriptionForCustomerEstimateResponse that =
+        (CreateSubscriptionForCustomerEstimateResponse) o;
+    return java.util.Objects.equals(estimate, that.estimate);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(estimate);
+  }
 }

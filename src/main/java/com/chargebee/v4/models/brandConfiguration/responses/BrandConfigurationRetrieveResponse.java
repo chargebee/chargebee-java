@@ -69,4 +69,22 @@ public final class BrandConfigurationRetrieveResponse extends BaseResponse {
   public Object getBrandConfiguration() {
     return brandConfiguration;
   }
+
+  @Override
+  public String toString() {
+    return "BrandConfigurationRetrieveResponse{" + "brandConfiguration=" + brandConfiguration + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BrandConfigurationRetrieveResponse that = (BrandConfigurationRetrieveResponse) o;
+    return java.util.Objects.equals(brandConfiguration, that.brandConfiguration);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(brandConfiguration);
+  }
 }

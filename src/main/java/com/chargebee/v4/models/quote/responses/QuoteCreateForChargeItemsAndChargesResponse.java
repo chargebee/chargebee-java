@@ -101,4 +101,29 @@ public final class QuoteCreateForChargeItemsAndChargesResponse extends BaseRespo
   public QuotedCharge getQuotedCharge() {
     return quotedCharge;
   }
+
+  @Override
+  public String toString() {
+    return "QuoteCreateForChargeItemsAndChargesResponse{"
+        + "quote="
+        + quote
+        + ", quotedCharge="
+        + quotedCharge
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuoteCreateForChargeItemsAndChargesResponse that =
+        (QuoteCreateForChargeItemsAndChargesResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedCharge, that.quotedCharge);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedCharge);
+  }
 }

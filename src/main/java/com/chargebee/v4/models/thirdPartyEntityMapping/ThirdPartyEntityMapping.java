@@ -305,4 +305,86 @@ public class ThirdPartyEntityMapping {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ThirdPartyEntityMapping{"
+        + "entityType="
+        + entityType
+        + ", entityExtId="
+        + entityExtId
+        + ", integrationName="
+        + integrationName
+        + ", thirdPartyEntityId="
+        + thirdPartyEntityId
+        + ", lastSyncAt="
+        + lastSyncAt
+        + ", status="
+        + status
+        + ", failedDependentEntityType="
+        + failedDependentEntityType
+        + ", errorMessage="
+        + errorMessage
+        + ", url="
+        + url
+        + ", createdAt="
+        + createdAt
+        + ", modifiedAt="
+        + modifiedAt
+        + ", entityId="
+        + entityId
+        + ", newResource="
+        + newResource
+        + ", oldResource="
+        + oldResource
+        + ", mappingMeta="
+        + mappingMeta
+        + ", failedDependentEntityId="
+        + failedDependentEntityId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ThirdPartyEntityMapping that = (ThirdPartyEntityMapping) o;
+    return java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(entityExtId, that.entityExtId)
+        && java.util.Objects.equals(integrationName, that.integrationName)
+        && java.util.Objects.equals(thirdPartyEntityId, that.thirdPartyEntityId)
+        && java.util.Objects.equals(lastSyncAt, that.lastSyncAt)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(failedDependentEntityType, that.failedDependentEntityType)
+        && java.util.Objects.equals(errorMessage, that.errorMessage)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(modifiedAt, that.modifiedAt)
+        && java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(newResource, that.newResource)
+        && java.util.Objects.equals(oldResource, that.oldResource)
+        && java.util.Objects.equals(mappingMeta, that.mappingMeta)
+        && java.util.Objects.equals(failedDependentEntityId, that.failedDependentEntityId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        entityType,
+        entityExtId,
+        integrationName,
+        thirdPartyEntityId,
+        lastSyncAt,
+        status,
+        failedDependentEntityType,
+        errorMessage,
+        url,
+        createdAt,
+        modifiedAt,
+        entityId,
+        newResource,
+        oldResource,
+        mappingMeta,
+        failedDependentEntityId);
+  }
 }

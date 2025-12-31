@@ -78,4 +78,22 @@ public final class CreditNoteDownloadEinvoiceResponse extends BaseResponse {
   public List<Download> getDownloads() {
     return downloads;
   }
+
+  @Override
+  public String toString() {
+    return "CreditNoteDownloadEinvoiceResponse{" + "downloads=" + downloads + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreditNoteDownloadEinvoiceResponse that = (CreditNoteDownloadEinvoiceResponse) o;
+    return java.util.Objects.equals(downloads, that.downloads);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(downloads);
+  }
 }

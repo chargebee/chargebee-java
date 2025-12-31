@@ -51,4 +51,22 @@ public final class CsvTaxRuleCreateResponse extends BaseResponse {
       return new CsvTaxRuleCreateResponse(this);
     }
   }
+
+  @Override
+  public String toString() {
+    return "CsvTaxRuleCreateResponse{" + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CsvTaxRuleCreateResponse that = (CsvTaxRuleCreateResponse) o;
+    return;
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash();
+  }
 }

@@ -157,6 +157,30 @@ public final class TransactionPaymentsForInvoiceResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "TransactionPaymentsForInvoiceResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TransactionPaymentsForInvoiceResponse that = (TransactionPaymentsForInvoiceResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class TransactionPaymentsForInvoiceItem {
 
     private Transaction transaction;
@@ -174,6 +198,24 @@ public final class TransactionPaymentsForInvoiceResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "TransactionPaymentsForInvoiceItem{" + "transaction=" + transaction + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      TransactionPaymentsForInvoiceItem that = (TransactionPaymentsForInvoiceItem) o;
+      return java.util.Objects.equals(transaction, that.transaction);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(transaction);
     }
   }
 }

@@ -102,4 +102,29 @@ public final class VirtualBankAccountCreateUsingPermanentTokenResponse extends B
   public Customer getCustomer() {
     return customer;
   }
+
+  @Override
+  public String toString() {
+    return "VirtualBankAccountCreateUsingPermanentTokenResponse{"
+        + "virtualBankAccount="
+        + virtualBankAccount
+        + ", customer="
+        + customer
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VirtualBankAccountCreateUsingPermanentTokenResponse that =
+        (VirtualBankAccountCreateUsingPermanentTokenResponse) o;
+    return java.util.Objects.equals(virtualBankAccount, that.virtualBankAccount)
+        && java.util.Objects.equals(customer, that.customer);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(virtualBankAccount, customer);
+  }
 }

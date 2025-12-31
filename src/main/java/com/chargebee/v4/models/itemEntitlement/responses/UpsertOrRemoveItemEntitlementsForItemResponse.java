@@ -79,4 +79,26 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
   public ItemEntitlement getItemEntitlement() {
     return itemEntitlement;
   }
+
+  @Override
+  public String toString() {
+    return "UpsertOrRemoveItemEntitlementsForItemResponse{"
+        + "itemEntitlement="
+        + itemEntitlement
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UpsertOrRemoveItemEntitlementsForItemResponse that =
+        (UpsertOrRemoveItemEntitlementsForItemResponse) o;
+    return java.util.Objects.equals(itemEntitlement, that.itemEntitlement);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(itemEntitlement);
+  }
 }

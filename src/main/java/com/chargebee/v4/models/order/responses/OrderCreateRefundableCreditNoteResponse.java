@@ -76,4 +76,22 @@ public final class OrderCreateRefundableCreditNoteResponse extends BaseResponse 
   public Order getOrder() {
     return order;
   }
+
+  @Override
+  public String toString() {
+    return "OrderCreateRefundableCreditNoteResponse{" + "order=" + order + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OrderCreateRefundableCreditNoteResponse that = (OrderCreateRefundableCreditNoteResponse) o;
+    return java.util.Objects.equals(order, that.order);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(order);
+  }
 }

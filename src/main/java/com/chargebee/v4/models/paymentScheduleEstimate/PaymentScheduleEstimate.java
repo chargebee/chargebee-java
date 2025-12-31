@@ -98,6 +98,46 @@ public class PaymentScheduleEstimate {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PaymentScheduleEstimate{"
+        + "id="
+        + id
+        + ", schemeId="
+        + schemeId
+        + ", entityType="
+        + entityType
+        + ", entityId="
+        + entityId
+        + ", amount="
+        + amount
+        + ", currencyCode="
+        + currencyCode
+        + ", scheduleEntries="
+        + scheduleEntries
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentScheduleEstimate that = (PaymentScheduleEstimate) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(schemeId, that.schemeId)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(scheduleEntries, that.scheduleEntries);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, schemeId, entityType, entityId, amount, currencyCode, scheduleEntries);
+  }
+
   public static class ScheduleEntries {
 
     private String id;
@@ -163,6 +203,36 @@ public class PaymentScheduleEstimate {
       obj.status = Status.fromString(JsonUtil.getString(json, "status"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ScheduleEntries{"
+          + "id="
+          + id
+          + ", date="
+          + date
+          + ", amount="
+          + amount
+          + ", status="
+          + status
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ScheduleEntries that = (ScheduleEntries) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(date, that.date)
+          && java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id, date, amount, status);
     }
   }
 }

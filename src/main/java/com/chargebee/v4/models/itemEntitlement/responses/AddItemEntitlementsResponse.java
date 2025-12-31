@@ -74,4 +74,22 @@ public final class AddItemEntitlementsResponse extends BaseResponse {
   public ItemEntitlement getItemEntitlement() {
     return itemEntitlement;
   }
+
+  @Override
+  public String toString() {
+    return "AddItemEntitlementsResponse{" + "itemEntitlement=" + itemEntitlement + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AddItemEntitlementsResponse that = (AddItemEntitlementsResponse) o;
+    return java.util.Objects.equals(itemEntitlement, that.itemEntitlement);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(itemEntitlement);
+  }
 }

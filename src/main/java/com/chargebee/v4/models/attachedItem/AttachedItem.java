@@ -256,4 +256,86 @@ public class AttachedItem {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "AttachedItem{"
+        + "id="
+        + id
+        + ", parentItemId="
+        + parentItemId
+        + ", itemId="
+        + itemId
+        + ", type="
+        + type
+        + ", status="
+        + status
+        + ", quantity="
+        + quantity
+        + ", quantityInDecimal="
+        + quantityInDecimal
+        + ", billingCycles="
+        + billingCycles
+        + ", chargeOnEvent="
+        + chargeOnEvent
+        + ", chargeOnce="
+        + chargeOnce
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", channel="
+        + channel
+        + ", businessEntityId="
+        + businessEntityId
+        + ", deleted="
+        + deleted
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AttachedItem that = (AttachedItem) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(parentItemId, that.parentItemId)
+        && java.util.Objects.equals(itemId, that.itemId)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(quantity, that.quantity)
+        && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+        && java.util.Objects.equals(billingCycles, that.billingCycles)
+        && java.util.Objects.equals(chargeOnEvent, that.chargeOnEvent)
+        && java.util.Objects.equals(chargeOnce, that.chargeOnce)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(channel, that.channel)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(deleted, that.deleted);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        parentItemId,
+        itemId,
+        type,
+        status,
+        quantity,
+        quantityInDecimal,
+        billingCycles,
+        chargeOnEvent,
+        chargeOnce,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        channel,
+        businessEntityId,
+        deleted);
+  }
 }

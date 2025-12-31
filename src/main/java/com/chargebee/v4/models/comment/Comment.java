@@ -156,4 +156,47 @@ public class Comment {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Comment{"
+        + "id="
+        + id
+        + ", entityType="
+        + entityType
+        + ", addedBy="
+        + addedBy
+        + ", notes="
+        + notes
+        + ", createdAt="
+        + createdAt
+        + ", type="
+        + type
+        + ", entityId="
+        + entityId
+        + ", businessEntityId="
+        + businessEntityId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Comment that = (Comment) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(addedBy, that.addedBy)
+        && java.util.Objects.equals(notes, that.notes)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, entityType, addedBy, notes, createdAt, type, entityId, businessEntityId);
+  }
 }

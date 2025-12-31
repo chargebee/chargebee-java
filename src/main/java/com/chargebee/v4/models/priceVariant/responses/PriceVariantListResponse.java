@@ -143,6 +143,25 @@ public final class PriceVariantListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "PriceVariantListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PriceVariantListResponse that = (PriceVariantListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class PriceVariantListItem {
 
     private PriceVariant priceVariant;
@@ -160,6 +179,24 @@ public final class PriceVariantListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "PriceVariantListItem{" + "priceVariant=" + priceVariant + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PriceVariantListItem that = (PriceVariantListItem) o;
+      return java.util.Objects.equals(priceVariant, that.priceVariant);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(priceVariant);
     }
   }
 }

@@ -118,4 +118,31 @@ public final class PersonalizedOffersResponse extends BaseResponse {
   public Timestamp getExpiresAt() {
     return expiresAt;
   }
+
+  @Override
+  public String toString() {
+    return "PersonalizedOffersResponse{"
+        + "personalizedOffers="
+        + personalizedOffers
+        + ", brand="
+        + brand
+        + ", expiresAt="
+        + expiresAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PersonalizedOffersResponse that = (PersonalizedOffersResponse) o;
+    return java.util.Objects.equals(personalizedOffers, that.personalizedOffers)
+        && java.util.Objects.equals(brand, that.brand)
+        && java.util.Objects.equals(expiresAt, that.expiresAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(personalizedOffers, brand, expiresAt);
+  }
 }

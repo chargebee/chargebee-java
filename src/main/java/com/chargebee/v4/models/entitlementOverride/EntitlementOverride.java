@@ -119,4 +119,62 @@ public class EntitlementOverride {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "EntitlementOverride{"
+        + "id="
+        + id
+        + ", entityId="
+        + entityId
+        + ", entityType="
+        + entityType
+        + ", featureId="
+        + featureId
+        + ", featureName="
+        + featureName
+        + ", value="
+        + value
+        + ", name="
+        + name
+        + ", expiresAt="
+        + expiresAt
+        + ", effectiveFrom="
+        + effectiveFrom
+        + ", scheduleStatus="
+        + scheduleStatus
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EntitlementOverride that = (EntitlementOverride) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(entityId, that.entityId)
+        && java.util.Objects.equals(entityType, that.entityType)
+        && java.util.Objects.equals(featureId, that.featureId)
+        && java.util.Objects.equals(featureName, that.featureName)
+        && java.util.Objects.equals(value, that.value)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(effectiveFrom, that.effectiveFrom)
+        && java.util.Objects.equals(scheduleStatus, that.scheduleStatus);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        entityId,
+        entityType,
+        featureId,
+        featureName,
+        value,
+        name,
+        expiresAt,
+        effectiveFrom,
+        scheduleStatus);
+  }
 }

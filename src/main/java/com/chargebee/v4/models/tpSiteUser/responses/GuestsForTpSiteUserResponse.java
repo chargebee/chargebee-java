@@ -150,6 +150,25 @@ public final class GuestsForTpSiteUserResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "GuestsForTpSiteUserResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GuestsForTpSiteUserResponse that = (GuestsForTpSiteUserResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class TpSiteUserGuestsForTpSiteUserItem {
 
     private TpSiteUser tpSiteUser;
@@ -167,6 +186,24 @@ public final class GuestsForTpSiteUserResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "TpSiteUserGuestsForTpSiteUserItem{" + "tpSiteUser=" + tpSiteUser + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      TpSiteUserGuestsForTpSiteUserItem that = (TpSiteUserGuestsForTpSiteUserItem) o;
+      return java.util.Objects.equals(tpSiteUser, that.tpSiteUser);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(tpSiteUser);
     }
   }
 }

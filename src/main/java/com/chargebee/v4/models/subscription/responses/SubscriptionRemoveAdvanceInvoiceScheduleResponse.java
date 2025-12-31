@@ -104,4 +104,29 @@ public final class SubscriptionRemoveAdvanceInvoiceScheduleResponse extends Base
   public List<AdvanceInvoiceSchedule> getAdvanceInvoiceSchedules() {
     return advanceInvoiceSchedules;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionRemoveAdvanceInvoiceScheduleResponse{"
+        + "subscription="
+        + subscription
+        + ", advanceInvoiceSchedules="
+        + advanceInvoiceSchedules
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionRemoveAdvanceInvoiceScheduleResponse that =
+        (SubscriptionRemoveAdvanceInvoiceScheduleResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(advanceInvoiceSchedules, that.advanceInvoiceSchedules);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, advanceInvoiceSchedules);
+  }
 }

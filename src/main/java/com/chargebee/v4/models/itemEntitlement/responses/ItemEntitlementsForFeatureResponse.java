@@ -154,6 +154,30 @@ public final class ItemEntitlementsForFeatureResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ItemEntitlementsForFeatureResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemEntitlementsForFeatureResponse that = (ItemEntitlementsForFeatureResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class ItemEntitlementItemEntitlementsForFeatureItem {
 
     private ItemEntitlement itemEntitlement;
@@ -172,6 +196,28 @@ public final class ItemEntitlementsForFeatureResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "ItemEntitlementItemEntitlementsForFeatureItem{"
+          + "itemEntitlement="
+          + itemEntitlement
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemEntitlementItemEntitlementsForFeatureItem that =
+          (ItemEntitlementItemEntitlementsForFeatureItem) o;
+      return java.util.Objects.equals(itemEntitlement, that.itemEntitlement);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemEntitlement);
     }
   }
 }

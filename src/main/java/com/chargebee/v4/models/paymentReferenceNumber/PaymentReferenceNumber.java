@@ -79,4 +79,34 @@ public class PaymentReferenceNumber {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentReferenceNumber{"
+        + "id="
+        + id
+        + ", type="
+        + type
+        + ", number="
+        + number
+        + ", invoiceId="
+        + invoiceId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentReferenceNumber that = (PaymentReferenceNumber) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(number, that.number)
+        && java.util.Objects.equals(invoiceId, that.invoiceId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, type, number, invoiceId);
+  }
 }

@@ -140,6 +140,74 @@ public class OmnichannelTransaction {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelTransaction{"
+        + "id="
+        + id
+        + ", idAtSource="
+        + idAtSource
+        + ", appId="
+        + appId
+        + ", priceCurrency="
+        + priceCurrency
+        + ", priceUnits="
+        + priceUnits
+        + ", priceNanos="
+        + priceNanos
+        + ", type="
+        + type
+        + ", transactedAt="
+        + transactedAt
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", linkedOmnichannelSubscriptions="
+        + linkedOmnichannelSubscriptions
+        + ", linkedOmnichannelOneTimeOrders="
+        + linkedOmnichannelOneTimeOrders
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelTransaction that = (OmnichannelTransaction) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(idAtSource, that.idAtSource)
+        && java.util.Objects.equals(appId, that.appId)
+        && java.util.Objects.equals(priceCurrency, that.priceCurrency)
+        && java.util.Objects.equals(priceUnits, that.priceUnits)
+        && java.util.Objects.equals(priceNanos, that.priceNanos)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(transactedAt, that.transactedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(
+            linkedOmnichannelSubscriptions, that.linkedOmnichannelSubscriptions)
+        && java.util.Objects.equals(
+            linkedOmnichannelOneTimeOrders, that.linkedOmnichannelOneTimeOrders);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        idAtSource,
+        appId,
+        priceCurrency,
+        priceUnits,
+        priceNanos,
+        type,
+        transactedAt,
+        createdAt,
+        resourceVersion,
+        linkedOmnichannelSubscriptions,
+        linkedOmnichannelOneTimeOrders);
+  }
+
   public static class LinkedOmnichannelSubscriptions {
 
     private String omnichannelSubscriptionId;
@@ -154,6 +222,27 @@ public class OmnichannelTransaction {
       obj.omnichannelSubscriptionId = JsonUtil.getString(json, "omnichannel_subscription_id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedOmnichannelSubscriptions{"
+          + "omnichannelSubscriptionId="
+          + omnichannelSubscriptionId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
+      return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelSubscriptionId);
     }
   }
 
@@ -171,6 +260,27 @@ public class OmnichannelTransaction {
       obj.omnichannelOneTimeOrderId = JsonUtil.getString(json, "omnichannel_one_time_order_id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedOmnichannelOneTimeOrders{"
+          + "omnichannelOneTimeOrderId="
+          + omnichannelOneTimeOrderId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
+      return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelOneTimeOrderId);
     }
   }
 }

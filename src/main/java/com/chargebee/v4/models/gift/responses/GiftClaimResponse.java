@@ -94,4 +94,23 @@ public final class GiftClaimResponse extends BaseResponse {
   public Subscription getSubscription() {
     return subscription;
   }
+
+  @Override
+  public String toString() {
+    return "GiftClaimResponse{" + "gift=" + gift + ", subscription=" + subscription + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GiftClaimResponse that = (GiftClaimResponse) o;
+    return java.util.Objects.equals(gift, that.gift)
+        && java.util.Objects.equals(subscription, that.subscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(gift, subscription);
+  }
 }

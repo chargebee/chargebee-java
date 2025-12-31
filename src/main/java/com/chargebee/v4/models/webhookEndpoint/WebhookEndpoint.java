@@ -144,4 +144,58 @@ public class WebhookEndpoint {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "WebhookEndpoint{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", url="
+        + url
+        + ", sendCardResource="
+        + sendCardResource
+        + ", disabled="
+        + disabled
+        + ", primaryUrl="
+        + primaryUrl
+        + ", apiVersion="
+        + apiVersion
+        + ", chargebeeResponseSchemaType="
+        + chargebeeResponseSchemaType
+        + ", enabledEvents="
+        + enabledEvents
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WebhookEndpoint that = (WebhookEndpoint) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(sendCardResource, that.sendCardResource)
+        && java.util.Objects.equals(disabled, that.disabled)
+        && java.util.Objects.equals(primaryUrl, that.primaryUrl)
+        && java.util.Objects.equals(apiVersion, that.apiVersion)
+        && java.util.Objects.equals(chargebeeResponseSchemaType, that.chargebeeResponseSchemaType)
+        && java.util.Objects.equals(enabledEvents, that.enabledEvents);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        url,
+        sendCardResource,
+        disabled,
+        primaryUrl,
+        apiVersion,
+        chargebeeResponseSchemaType,
+        enabledEvents);
+  }
 }

@@ -46,4 +46,34 @@ public class PricingPageSession {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "PricingPageSession{"
+        + "id="
+        + id
+        + ", url="
+        + url
+        + ", createdAt="
+        + createdAt
+        + ", expiresAt="
+        + expiresAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PricingPageSession that = (PricingPageSession) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(expiresAt, that.expiresAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, url, createdAt, expiresAt);
+  }
 }

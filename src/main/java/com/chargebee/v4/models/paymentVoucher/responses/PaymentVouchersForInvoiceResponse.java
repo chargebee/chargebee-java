@@ -154,6 +154,30 @@ public final class PaymentVouchersForInvoiceResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "PaymentVouchersForInvoiceResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentVouchersForInvoiceResponse that = (PaymentVouchersForInvoiceResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class PaymentVoucherPaymentVouchersForInvoiceItem {
 
     private PaymentVoucher paymentVoucher;
@@ -172,6 +196,28 @@ public final class PaymentVouchersForInvoiceResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "PaymentVoucherPaymentVouchersForInvoiceItem{"
+          + "paymentVoucher="
+          + paymentVoucher
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PaymentVoucherPaymentVouchersForInvoiceItem that =
+          (PaymentVoucherPaymentVouchersForInvoiceItem) o;
+      return java.util.Objects.equals(paymentVoucher, that.paymentVoucher);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(paymentVoucher);
     }
   }
 }

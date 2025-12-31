@@ -73,4 +73,22 @@ public final class CustomerMoveResponse extends BaseResponse {
   public ResourceMigration getResourceMigration() {
     return resourceMigration;
   }
+
+  @Override
+  public String toString() {
+    return "CustomerMoveResponse{" + "resourceMigration=" + resourceMigration + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerMoveResponse that = (CustomerMoveResponse) o;
+    return java.util.Objects.equals(resourceMigration, that.resourceMigration);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(resourceMigration);
+  }
 }

@@ -74,4 +74,22 @@ public final class CreateMediaAndAttachToItemResponse extends BaseResponse {
   public Media getMedia() {
     return media;
   }
+
+  @Override
+  public String toString() {
+    return "CreateMediaAndAttachToItemResponse{" + "media=" + media + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreateMediaAndAttachToItemResponse that = (CreateMediaAndAttachToItemResponse) o;
+    return java.util.Objects.equals(media, that.media);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(media);
+  }
 }

@@ -74,4 +74,22 @@ public final class AttachedItemRetrieveResponse extends BaseResponse {
   public AttachedItem getAttachedItem() {
     return attachedItem;
   }
+
+  @Override
+  public String toString() {
+    return "AttachedItemRetrieveResponse{" + "attachedItem=" + attachedItem + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AttachedItemRetrieveResponse that = (AttachedItemRetrieveResponse) o;
+    return java.util.Objects.equals(attachedItem, that.attachedItem);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(attachedItem);
+  }
 }

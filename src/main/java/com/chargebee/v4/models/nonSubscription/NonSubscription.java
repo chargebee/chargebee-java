@@ -46,4 +46,34 @@ public class NonSubscription {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "NonSubscription{"
+        + "appId="
+        + appId
+        + ", invoiceId="
+        + invoiceId
+        + ", customerId="
+        + customerId
+        + ", chargeId="
+        + chargeId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    NonSubscription that = (NonSubscription) o;
+    return java.util.Objects.equals(appId, that.appId)
+        && java.util.Objects.equals(invoiceId, that.invoiceId)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(chargeId, that.chargeId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(appId, invoiceId, customerId, chargeId);
+  }
 }

@@ -79,6 +79,49 @@ public class PurchaseCreatedEvent {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PurchaseCreatedEvent{"
+        + "id="
+        + id
+        + ", occurredAt="
+        + occurredAt
+        + ", source="
+        + source
+        + ", object="
+        + object
+        + ", apiVersion="
+        + apiVersion
+        + ", eventType="
+        + eventType
+        + ", webhookStatus="
+        + webhookStatus
+        + ", content="
+        + content
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PurchaseCreatedEvent that = (PurchaseCreatedEvent) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(occurredAt, that.occurredAt)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(object, that.object)
+        && java.util.Objects.equals(apiVersion, that.apiVersion)
+        && java.util.Objects.equals(eventType, that.eventType)
+        && java.util.Objects.equals(webhookStatus, that.webhookStatus)
+        && java.util.Objects.equals(content, that.content);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
+  }
+
   public static class Content {
 
     private Purchase purchase;
@@ -96,6 +139,24 @@ public class PurchaseCreatedEvent {
       }
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Content{" + "purchase=" + purchase + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Content that = (Content) o;
+      return java.util.Objects.equals(purchase, that.purchase);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(purchase);
     }
   }
 }

@@ -70,4 +70,25 @@ public final class Pc2MigrationItemPriceRetrieveResponse extends BaseResponse {
   public Object getPc2MigrationItemPrice() {
     return pc2MigrationItemPrice;
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationItemPriceRetrieveResponse{"
+        + "pc2MigrationItemPrice="
+        + pc2MigrationItemPrice
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationItemPriceRetrieveResponse that = (Pc2MigrationItemPriceRetrieveResponse) o;
+    return java.util.Objects.equals(pc2MigrationItemPrice, that.pc2MigrationItemPrice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(pc2MigrationItemPrice);
+  }
 }

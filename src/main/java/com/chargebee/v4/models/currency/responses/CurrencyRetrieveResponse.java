@@ -74,4 +74,22 @@ public final class CurrencyRetrieveResponse extends BaseResponse {
   public Currency getCurrency() {
     return currency;
   }
+
+  @Override
+  public String toString() {
+    return "CurrencyRetrieveResponse{" + "currency=" + currency + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CurrencyRetrieveResponse that = (CurrencyRetrieveResponse) o;
+    return java.util.Objects.equals(currency, that.currency);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(currency);
+  }
 }

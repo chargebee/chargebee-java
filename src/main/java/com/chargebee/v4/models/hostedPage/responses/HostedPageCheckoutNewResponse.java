@@ -74,4 +74,22 @@ public final class HostedPageCheckoutNewResponse extends BaseResponse {
   public HostedPage getHostedPage() {
     return hostedPage;
   }
+
+  @Override
+  public String toString() {
+    return "HostedPageCheckoutNewResponse{" + "hostedPage=" + hostedPage + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPageCheckoutNewResponse that = (HostedPageCheckoutNewResponse) o;
+    return java.util.Objects.equals(hostedPage, that.hostedPage);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(hostedPage);
+  }
 }

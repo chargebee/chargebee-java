@@ -101,4 +101,28 @@ public final class PaymentSourceSwitchGatewayAccountResponse extends BaseRespons
   public PaymentSource getPaymentSource() {
     return paymentSource;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentSourceSwitchGatewayAccountResponse{"
+        + "customer="
+        + customer
+        + ", paymentSource="
+        + paymentSource
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentSourceSwitchGatewayAccountResponse that = (PaymentSourceSwitchGatewayAccountResponse) o;
+    return java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(paymentSource, that.paymentSource);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer, paymentSource);
+  }
 }

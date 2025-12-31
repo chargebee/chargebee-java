@@ -158,6 +158,60 @@ public class SubscriptionEstimate {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "SubscriptionEstimate{"
+        + "id="
+        + id
+        + ", currencyCode="
+        + currencyCode
+        + ", status="
+        + status
+        + ", trialEndAction="
+        + trialEndAction
+        + ", nextBillingAt="
+        + nextBillingAt
+        + ", pauseDate="
+        + pauseDate
+        + ", resumeDate="
+        + resumeDate
+        + ", shippingAddress="
+        + shippingAddress
+        + ", contractTerm="
+        + contractTerm
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionEstimate that = (SubscriptionEstimate) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(trialEndAction, that.trialEndAction)
+        && java.util.Objects.equals(nextBillingAt, that.nextBillingAt)
+        && java.util.Objects.equals(pauseDate, that.pauseDate)
+        && java.util.Objects.equals(resumeDate, that.resumeDate)
+        && java.util.Objects.equals(shippingAddress, that.shippingAddress)
+        && java.util.Objects.equals(contractTerm, that.contractTerm);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        currencyCode,
+        status,
+        trialEndAction,
+        nextBillingAt,
+        pauseDate,
+        resumeDate,
+        shippingAddress,
+        contractTerm);
+  }
+
   public static class ShippingAddress {
 
     private String firstName;
@@ -296,6 +350,80 @@ public class SubscriptionEstimate {
           ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ShippingAddress{"
+          + "firstName="
+          + firstName
+          + ", lastName="
+          + lastName
+          + ", email="
+          + email
+          + ", company="
+          + company
+          + ", phone="
+          + phone
+          + ", line1="
+          + line1
+          + ", line2="
+          + line2
+          + ", line3="
+          + line3
+          + ", city="
+          + city
+          + ", stateCode="
+          + stateCode
+          + ", state="
+          + state
+          + ", country="
+          + country
+          + ", zip="
+          + zip
+          + ", validationStatus="
+          + validationStatus
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ShippingAddress that = (ShippingAddress) o;
+      return java.util.Objects.equals(firstName, that.firstName)
+          && java.util.Objects.equals(lastName, that.lastName)
+          && java.util.Objects.equals(email, that.email)
+          && java.util.Objects.equals(company, that.company)
+          && java.util.Objects.equals(phone, that.phone)
+          && java.util.Objects.equals(line1, that.line1)
+          && java.util.Objects.equals(line2, that.line2)
+          && java.util.Objects.equals(line3, that.line3)
+          && java.util.Objects.equals(city, that.city)
+          && java.util.Objects.equals(stateCode, that.stateCode)
+          && java.util.Objects.equals(state, that.state)
+          && java.util.Objects.equals(country, that.country)
+          && java.util.Objects.equals(zip, that.zip)
+          && java.util.Objects.equals(validationStatus, that.validationStatus);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          firstName,
+          lastName,
+          email,
+          company,
+          phone,
+          line1,
+          line2,
+          line3,
+          city,
+          stateCode,
+          state,
+          country,
+          zip,
+          validationStatus);
     }
   }
 
@@ -455,6 +583,72 @@ public class SubscriptionEstimate {
       obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ContractTerm{"
+          + "id="
+          + id
+          + ", status="
+          + status
+          + ", contractStart="
+          + contractStart
+          + ", contractEnd="
+          + contractEnd
+          + ", billingCycle="
+          + billingCycle
+          + ", actionAtTermEnd="
+          + actionAtTermEnd
+          + ", totalContractValue="
+          + totalContractValue
+          + ", totalContractValueBeforeTax="
+          + totalContractValueBeforeTax
+          + ", cancellationCutoffPeriod="
+          + cancellationCutoffPeriod
+          + ", createdAt="
+          + createdAt
+          + ", subscriptionId="
+          + subscriptionId
+          + ", remainingBillingCycles="
+          + remainingBillingCycles
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ContractTerm that = (ContractTerm) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(contractStart, that.contractStart)
+          && java.util.Objects.equals(contractEnd, that.contractEnd)
+          && java.util.Objects.equals(billingCycle, that.billingCycle)
+          && java.util.Objects.equals(actionAtTermEnd, that.actionAtTermEnd)
+          && java.util.Objects.equals(totalContractValue, that.totalContractValue)
+          && java.util.Objects.equals(totalContractValueBeforeTax, that.totalContractValueBeforeTax)
+          && java.util.Objects.equals(cancellationCutoffPeriod, that.cancellationCutoffPeriod)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+          && java.util.Objects.equals(remainingBillingCycles, that.remainingBillingCycles);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          status,
+          contractStart,
+          contractEnd,
+          billingCycle,
+          actionAtTermEnd,
+          totalContractValue,
+          totalContractValueBeforeTax,
+          cancellationCutoffPeriod,
+          createdAt,
+          subscriptionId,
+          remainingBillingCycles);
     }
   }
 }

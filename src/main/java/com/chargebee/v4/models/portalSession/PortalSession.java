@@ -148,6 +148,76 @@ public class PortalSession {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PortalSession{"
+        + "id="
+        + id
+        + ", token="
+        + token
+        + ", accessUrl="
+        + accessUrl
+        + ", redirectUrl="
+        + redirectUrl
+        + ", status="
+        + status
+        + ", createdAt="
+        + createdAt
+        + ", expiresAt="
+        + expiresAt
+        + ", customerId="
+        + customerId
+        + ", loginAt="
+        + loginAt
+        + ", logoutAt="
+        + logoutAt
+        + ", loginIpaddress="
+        + loginIpaddress
+        + ", logoutIpaddress="
+        + logoutIpaddress
+        + ", linkedCustomers="
+        + linkedCustomers
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PortalSession that = (PortalSession) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(token, that.token)
+        && java.util.Objects.equals(accessUrl, that.accessUrl)
+        && java.util.Objects.equals(redirectUrl, that.redirectUrl)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(expiresAt, that.expiresAt)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(loginAt, that.loginAt)
+        && java.util.Objects.equals(logoutAt, that.logoutAt)
+        && java.util.Objects.equals(loginIpaddress, that.loginIpaddress)
+        && java.util.Objects.equals(logoutIpaddress, that.logoutIpaddress)
+        && java.util.Objects.equals(linkedCustomers, that.linkedCustomers);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        token,
+        accessUrl,
+        redirectUrl,
+        status,
+        createdAt,
+        expiresAt,
+        customerId,
+        loginAt,
+        logoutAt,
+        loginIpaddress,
+        logoutIpaddress,
+        linkedCustomers);
+  }
+
   public static class LinkedCustomers {
 
     private String customerId;
@@ -190,6 +260,40 @@ public class PortalSession {
       obj.hasActiveSubscription = JsonUtil.getBoolean(json, "has_active_subscription");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedCustomers{"
+          + "customerId="
+          + customerId
+          + ", email="
+          + email
+          + ", hasBillingAddress="
+          + hasBillingAddress
+          + ", hasPaymentMethod="
+          + hasPaymentMethod
+          + ", hasActiveSubscription="
+          + hasActiveSubscription
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedCustomers that = (LinkedCustomers) o;
+      return java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(email, that.email)
+          && java.util.Objects.equals(hasBillingAddress, that.hasBillingAddress)
+          && java.util.Objects.equals(hasPaymentMethod, that.hasPaymentMethod)
+          && java.util.Objects.equals(hasActiveSubscription, that.hasActiveSubscription);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          customerId, email, hasBillingAddress, hasPaymentMethod, hasActiveSubscription);
     }
   }
 }

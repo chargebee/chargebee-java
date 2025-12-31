@@ -143,6 +143,25 @@ public final class PaymentSourceListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "PaymentSourceListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentSourceListResponse that = (PaymentSourceListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class PaymentSourceListItem {
 
     private PaymentSource paymentSource;
@@ -160,6 +179,24 @@ public final class PaymentSourceListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "PaymentSourceListItem{" + "paymentSource=" + paymentSource + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PaymentSourceListItem that = (PaymentSourceListItem) o;
+      return java.util.Objects.equals(paymentSource, that.paymentSource);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(paymentSource);
     }
   }
 }

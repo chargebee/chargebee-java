@@ -71,4 +71,22 @@ public final class AddonDeleteResponse extends BaseResponse {
   public Addon getAddon() {
     return addon;
   }
+
+  @Override
+  public String toString() {
+    return "AddonDeleteResponse{" + "addon=" + addon + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AddonDeleteResponse that = (AddonDeleteResponse) o;
+    return java.util.Objects.equals(addon, that.addon);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(addon);
+  }
 }

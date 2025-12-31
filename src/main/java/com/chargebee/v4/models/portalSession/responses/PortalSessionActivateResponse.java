@@ -74,4 +74,22 @@ public final class PortalSessionActivateResponse extends BaseResponse {
   public PortalSession getPortalSession() {
     return portalSession;
   }
+
+  @Override
+  public String toString() {
+    return "PortalSessionActivateResponse{" + "portalSession=" + portalSession + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PortalSessionActivateResponse that = (PortalSessionActivateResponse) o;
+    return java.util.Objects.equals(portalSession, that.portalSession);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(portalSession);
+  }
 }

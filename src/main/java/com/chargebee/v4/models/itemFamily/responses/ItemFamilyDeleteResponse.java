@@ -74,4 +74,22 @@ public final class ItemFamilyDeleteResponse extends BaseResponse {
   public ItemFamily getItemFamily() {
     return itemFamily;
   }
+
+  @Override
+  public String toString() {
+    return "ItemFamilyDeleteResponse{" + "itemFamily=" + itemFamily + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemFamilyDeleteResponse that = (ItemFamilyDeleteResponse) o;
+    return java.util.Objects.equals(itemFamily, that.itemFamily);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(itemFamily);
+  }
 }

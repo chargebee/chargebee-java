@@ -524,4 +524,134 @@ public class Card {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Card{"
+        + "paymentSourceId="
+        + paymentSourceId
+        + ", status="
+        + status
+        + ", gateway="
+        + gateway
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", refTxId="
+        + refTxId
+        + ", firstName="
+        + firstName
+        + ", lastName="
+        + lastName
+        + ", iin="
+        + iin
+        + ", last4="
+        + last4
+        + ", cardType="
+        + cardType
+        + ", fundingType="
+        + fundingType
+        + ", expiryMonth="
+        + expiryMonth
+        + ", expiryYear="
+        + expiryYear
+        + ", issuingCountry="
+        + issuingCountry
+        + ", billingAddr1="
+        + billingAddr1
+        + ", billingAddr2="
+        + billingAddr2
+        + ", billingCity="
+        + billingCity
+        + ", billingStateCode="
+        + billingStateCode
+        + ", billingState="
+        + billingState
+        + ", billingCountry="
+        + billingCountry
+        + ", billingZip="
+        + billingZip
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", ipAddress="
+        + ipAddress
+        + ", poweredBy="
+        + poweredBy
+        + ", customerId="
+        + customerId
+        + ", maskedNumber="
+        + maskedNumber
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Card that = (Card) o;
+    return java.util.Objects.equals(paymentSourceId, that.paymentSourceId)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(refTxId, that.refTxId)
+        && java.util.Objects.equals(firstName, that.firstName)
+        && java.util.Objects.equals(lastName, that.lastName)
+        && java.util.Objects.equals(iin, that.iin)
+        && java.util.Objects.equals(last4, that.last4)
+        && java.util.Objects.equals(cardType, that.cardType)
+        && java.util.Objects.equals(fundingType, that.fundingType)
+        && java.util.Objects.equals(expiryMonth, that.expiryMonth)
+        && java.util.Objects.equals(expiryYear, that.expiryYear)
+        && java.util.Objects.equals(issuingCountry, that.issuingCountry)
+        && java.util.Objects.equals(billingAddr1, that.billingAddr1)
+        && java.util.Objects.equals(billingAddr2, that.billingAddr2)
+        && java.util.Objects.equals(billingCity, that.billingCity)
+        && java.util.Objects.equals(billingStateCode, that.billingStateCode)
+        && java.util.Objects.equals(billingState, that.billingState)
+        && java.util.Objects.equals(billingCountry, that.billingCountry)
+        && java.util.Objects.equals(billingZip, that.billingZip)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(ipAddress, that.ipAddress)
+        && java.util.Objects.equals(poweredBy, that.poweredBy)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(maskedNumber, that.maskedNumber);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        paymentSourceId,
+        status,
+        gateway,
+        gatewayAccountId,
+        refTxId,
+        firstName,
+        lastName,
+        iin,
+        last4,
+        cardType,
+        fundingType,
+        expiryMonth,
+        expiryYear,
+        issuingCountry,
+        billingAddr1,
+        billingAddr2,
+        billingCity,
+        billingStateCode,
+        billingState,
+        billingCountry,
+        billingZip,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        ipAddress,
+        poweredBy,
+        customerId,
+        maskedNumber);
+  }
 }

@@ -144,6 +144,76 @@ public class PriceVariant {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PriceVariant{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", externalName="
+        + externalName
+        + ", variantGroup="
+        + variantGroup
+        + ", description="
+        + description
+        + ", status="
+        + status
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", archivedAt="
+        + archivedAt
+        + ", businessEntityId="
+        + businessEntityId
+        + ", deleted="
+        + deleted
+        + ", attributes="
+        + attributes
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PriceVariant that = (PriceVariant) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(externalName, that.externalName)
+        && java.util.Objects.equals(variantGroup, that.variantGroup)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(archivedAt, that.archivedAt)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(attributes, that.attributes);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        externalName,
+        variantGroup,
+        description,
+        status,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        archivedAt,
+        businessEntityId,
+        deleted,
+        attributes);
+  }
+
   public static class Attributes {
 
     private String name;
@@ -165,6 +235,25 @@ public class PriceVariant {
       obj.value = JsonUtil.getString(json, "value");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Attributes{" + "name=" + name + ", value=" + value + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Attributes that = (Attributes) o;
+      return java.util.Objects.equals(name, that.name)
+          && java.util.Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(name, value);
     }
   }
 }

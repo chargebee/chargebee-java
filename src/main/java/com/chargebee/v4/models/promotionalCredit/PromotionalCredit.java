@@ -167,4 +167,74 @@ public class PromotionalCredit {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "PromotionalCredit{"
+        + "id="
+        + id
+        + ", customerId="
+        + customerId
+        + ", type="
+        + type
+        + ", amountInDecimal="
+        + amountInDecimal
+        + ", amount="
+        + amount
+        + ", currencyCode="
+        + currencyCode
+        + ", description="
+        + description
+        + ", creditType="
+        + creditType
+        + ", reference="
+        + reference
+        + ", closingBalance="
+        + closingBalance
+        + ", doneBy="
+        + doneBy
+        + ", createdAt="
+        + createdAt
+        + ", businessEntityId="
+        + businessEntityId
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PromotionalCredit that = (PromotionalCredit) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(creditType, that.creditType)
+        && java.util.Objects.equals(reference, that.reference)
+        && java.util.Objects.equals(closingBalance, that.closingBalance)
+        && java.util.Objects.equals(doneBy, that.doneBy)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(businessEntityId, that.businessEntityId);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        customerId,
+        type,
+        amountInDecimal,
+        amount,
+        currencyCode,
+        description,
+        creditType,
+        reference,
+        closingBalance,
+        doneBy,
+        createdAt,
+        businessEntityId);
+  }
 }

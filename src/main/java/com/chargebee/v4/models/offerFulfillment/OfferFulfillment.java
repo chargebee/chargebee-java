@@ -156,6 +156,64 @@ public class OfferFulfillment {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "OfferFulfillment{"
+        + "id="
+        + id
+        + ", personalizedOfferId="
+        + personalizedOfferId
+        + ", optionId="
+        + optionId
+        + ", processingType="
+        + processingType
+        + ", status="
+        + status
+        + ", redirectUrl="
+        + redirectUrl
+        + ", failedAt="
+        + failedAt
+        + ", createdAt="
+        + createdAt
+        + ", completedAt="
+        + completedAt
+        + ", error="
+        + error
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OfferFulfillment that = (OfferFulfillment) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(personalizedOfferId, that.personalizedOfferId)
+        && java.util.Objects.equals(optionId, that.optionId)
+        && java.util.Objects.equals(processingType, that.processingType)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(redirectUrl, that.redirectUrl)
+        && java.util.Objects.equals(failedAt, that.failedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(completedAt, that.completedAt)
+        && java.util.Objects.equals(error, that.error);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        personalizedOfferId,
+        optionId,
+        processingType,
+        status,
+        redirectUrl,
+        failedAt,
+        createdAt,
+        completedAt,
+        error);
+  }
+
   public static class Error {
 
     private Code code;
@@ -211,6 +269,25 @@ public class OfferFulfillment {
       obj.message = JsonUtil.getString(json, "message");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Error{" + "code=" + code + ", message=" + message + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Error that = (Error) o;
+      return java.util.Objects.equals(code, that.code)
+          && java.util.Objects.equals(message, that.message);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(code, message);
     }
   }
 }

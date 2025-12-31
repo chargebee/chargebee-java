@@ -168,6 +168,70 @@ public class RecordedPurchase {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "RecordedPurchase{"
+        + "id="
+        + id
+        + ", customerId="
+        + customerId
+        + ", appId="
+        + appId
+        + ", source="
+        + source
+        + ", status="
+        + status
+        + ", omnichannelTransactionId="
+        + omnichannelTransactionId
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", linkedOmnichannelSubscriptions="
+        + linkedOmnichannelSubscriptions
+        + ", linkedOmnichannelOneTimeOrders="
+        + linkedOmnichannelOneTimeOrders
+        + ", errorDetail="
+        + errorDetail
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RecordedPurchase that = (RecordedPurchase) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(appId, that.appId)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(omnichannelTransactionId, that.omnichannelTransactionId)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(
+            linkedOmnichannelSubscriptions, that.linkedOmnichannelSubscriptions)
+        && java.util.Objects.equals(
+            linkedOmnichannelOneTimeOrders, that.linkedOmnichannelOneTimeOrders)
+        && java.util.Objects.equals(errorDetail, that.errorDetail);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        customerId,
+        appId,
+        source,
+        status,
+        omnichannelTransactionId,
+        createdAt,
+        resourceVersion,
+        linkedOmnichannelSubscriptions,
+        linkedOmnichannelOneTimeOrders,
+        errorDetail);
+  }
+
   public static class LinkedOmnichannelSubscriptions {
 
     private String omnichannelSubscriptionId;
@@ -182,6 +246,27 @@ public class RecordedPurchase {
       obj.omnichannelSubscriptionId = JsonUtil.getString(json, "omnichannel_subscription_id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LinkedOmnichannelSubscriptions{"
+          + "omnichannelSubscriptionId="
+          + omnichannelSubscriptionId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedOmnichannelSubscriptions that = (LinkedOmnichannelSubscriptions) o;
+      return java.util.Objects.equals(omnichannelSubscriptionId, that.omnichannelSubscriptionId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelSubscriptionId);
     }
   }
 
@@ -200,6 +285,27 @@ public class RecordedPurchase {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "LinkedOmnichannelOneTimeOrders{"
+          + "omnichannelOneTimeOrderId="
+          + omnichannelOneTimeOrderId
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LinkedOmnichannelOneTimeOrders that = (LinkedOmnichannelOneTimeOrders) o;
+      return java.util.Objects.equals(omnichannelOneTimeOrderId, that.omnichannelOneTimeOrderId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelOneTimeOrderId);
+    }
   }
 
   public static class ErrorDetail {
@@ -216,6 +322,24 @@ public class RecordedPurchase {
       obj.errorMessage = JsonUtil.getString(json, "error_message");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ErrorDetail{" + "errorMessage=" + errorMessage + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ErrorDetail that = (ErrorDetail) o;
+      return java.util.Objects.equals(errorMessage, that.errorMessage);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(errorMessage);
     }
   }
 }

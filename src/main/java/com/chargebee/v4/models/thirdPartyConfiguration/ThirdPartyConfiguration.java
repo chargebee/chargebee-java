@@ -54,4 +54,34 @@ public class ThirdPartyConfiguration {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "ThirdPartyConfiguration{"
+        + "integrationName="
+        + integrationName
+        + ", lastSyncAt="
+        + lastSyncAt
+        + ", configJson="
+        + configJson
+        + ", authJson="
+        + authJson
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ThirdPartyConfiguration that = (ThirdPartyConfiguration) o;
+    return java.util.Objects.equals(integrationName, that.integrationName)
+        && java.util.Objects.equals(lastSyncAt, that.lastSyncAt)
+        && java.util.Objects.equals(configJson, that.configJson)
+        && java.util.Objects.equals(authJson, that.authJson);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(integrationName, lastSyncAt, configJson, authJson);
+  }
 }

@@ -97,4 +97,28 @@ public final class InvoiceCollectPaymentResponse extends BaseResponse {
   public Transaction getTransaction() {
     return transaction;
   }
+
+  @Override
+  public String toString() {
+    return "InvoiceCollectPaymentResponse{"
+        + "invoice="
+        + invoice
+        + ", transaction="
+        + transaction
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceCollectPaymentResponse that = (InvoiceCollectPaymentResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(transaction, that.transaction);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice, transaction);
+  }
 }

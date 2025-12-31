@@ -167,6 +167,31 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse that =
+        (OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem {
 
     private OmnichannelSubscriptionItemScheduledChange omnichannelSubscriptionItemScheduledChange;
@@ -190,6 +215,30 @@ public final class OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleCh
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem{"
+          + "omnichannelSubscriptionItemScheduledChange="
+          + omnichannelSubscriptionItemScheduledChange
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem that =
+          (OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesItem) o;
+      return java.util.Objects.equals(
+          omnichannelSubscriptionItemScheduledChange,
+          that.omnichannelSubscriptionItemScheduledChange);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelSubscriptionItemScheduledChange);
     }
   }
 }

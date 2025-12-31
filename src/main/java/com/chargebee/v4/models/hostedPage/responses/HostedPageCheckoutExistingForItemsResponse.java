@@ -78,4 +78,23 @@ public final class HostedPageCheckoutExistingForItemsResponse extends BaseRespon
   public HostedPage getHostedPage() {
     return hostedPage;
   }
+
+  @Override
+  public String toString() {
+    return "HostedPageCheckoutExistingForItemsResponse{" + "hostedPage=" + hostedPage + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPageCheckoutExistingForItemsResponse that =
+        (HostedPageCheckoutExistingForItemsResponse) o;
+    return java.util.Objects.equals(hostedPage, that.hostedPage);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(hostedPage);
+  }
 }

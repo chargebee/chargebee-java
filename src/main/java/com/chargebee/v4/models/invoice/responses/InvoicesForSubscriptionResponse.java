@@ -154,6 +154,25 @@ public final class InvoicesForSubscriptionResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "InvoicesForSubscriptionResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoicesForSubscriptionResponse that = (InvoicesForSubscriptionResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class InvoiceInvoicesForSubscriptionItem {
 
     private Invoice invoice;
@@ -171,6 +190,24 @@ public final class InvoicesForSubscriptionResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "InvoiceInvoicesForSubscriptionItem{" + "invoice=" + invoice + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      InvoiceInvoicesForSubscriptionItem that = (InvoiceInvoicesForSubscriptionItem) o;
+      return java.util.Objects.equals(invoice, that.invoice);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(invoice);
     }
   }
 }

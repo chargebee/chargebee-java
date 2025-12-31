@@ -74,4 +74,22 @@ public final class UsageFileProcessingStatusResponse extends BaseResponse {
   public UsageFile getUsageFile() {
     return usageFile;
   }
+
+  @Override
+  public String toString() {
+    return "UsageFileProcessingStatusResponse{" + "usageFile=" + usageFile + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageFileProcessingStatusResponse that = (UsageFileProcessingStatusResponse) o;
+    return java.util.Objects.equals(usageFile, that.usageFile);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(usageFile);
+  }
 }

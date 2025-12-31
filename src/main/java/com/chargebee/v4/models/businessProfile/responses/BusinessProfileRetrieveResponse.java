@@ -69,4 +69,22 @@ public final class BusinessProfileRetrieveResponse extends BaseResponse {
   public Object getBusinessProfile() {
     return businessProfile;
   }
+
+  @Override
+  public String toString() {
+    return "BusinessProfileRetrieveResponse{" + "businessProfile=" + businessProfile + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusinessProfileRetrieveResponse that = (BusinessProfileRetrieveResponse) o;
+    return java.util.Objects.equals(businessProfile, that.businessProfile);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(businessProfile);
+  }
 }

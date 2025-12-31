@@ -143,6 +143,25 @@ public final class CouponSetListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CouponSetListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CouponSetListResponse that = (CouponSetListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CouponSetListItem {
 
     private CouponSet couponSet;
@@ -160,6 +179,24 @@ public final class CouponSetListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CouponSetListItem{" + "couponSet=" + couponSet + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CouponSetListItem that = (CouponSetListItem) o;
+      return java.util.Objects.equals(couponSet, that.couponSet);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(couponSet);
     }
   }
 }

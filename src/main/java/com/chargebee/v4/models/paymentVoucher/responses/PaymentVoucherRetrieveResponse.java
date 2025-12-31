@@ -74,4 +74,22 @@ public final class PaymentVoucherRetrieveResponse extends BaseResponse {
   public PaymentVoucher getPaymentVoucher() {
     return paymentVoucher;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentVoucherRetrieveResponse{" + "paymentVoucher=" + paymentVoucher + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentVoucherRetrieveResponse that = (PaymentVoucherRetrieveResponse) o;
+    return java.util.Objects.equals(paymentVoucher, that.paymentVoucher);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(paymentVoucher);
+  }
 }

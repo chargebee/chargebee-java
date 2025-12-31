@@ -143,6 +143,25 @@ public final class ProductListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ProductListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ProductListResponse that = (ProductListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class ProductListItem {
 
     private Product product;
@@ -160,6 +179,24 @@ public final class ProductListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "ProductListItem{" + "product=" + product + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ProductListItem that = (ProductListItem) o;
+      return java.util.Objects.equals(product, that.product);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(product);
     }
   }
 }

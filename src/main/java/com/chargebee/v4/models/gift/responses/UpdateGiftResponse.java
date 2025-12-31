@@ -94,4 +94,23 @@ public final class UpdateGiftResponse extends BaseResponse {
   public Subscription getSubscription() {
     return subscription;
   }
+
+  @Override
+  public String toString() {
+    return "UpdateGiftResponse{" + "gift=" + gift + ", subscription=" + subscription + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UpdateGiftResponse that = (UpdateGiftResponse) o;
+    return java.util.Objects.equals(gift, that.gift)
+        && java.util.Objects.equals(subscription, that.subscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(gift, subscription);
+  }
 }

@@ -74,4 +74,22 @@ public final class UsageEventCreateResponse extends BaseResponse {
   public UsageEvent getUsageEvent() {
     return usageEvent;
   }
+
+  @Override
+  public String toString() {
+    return "UsageEventCreateResponse{" + "usageEvent=" + usageEvent + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageEventCreateResponse that = (UsageEventCreateResponse) o;
+    return java.util.Objects.equals(usageEvent, that.usageEvent);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(usageEvent);
+  }
 }

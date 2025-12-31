@@ -157,6 +157,30 @@ public final class CustomerListHierarchyDetailResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CustomerListHierarchyDetailResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerListHierarchyDetailResponse that = (CustomerListHierarchyDetailResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CustomerListHierarchyDetailItem {
 
     private Hierarchy hierarchy;
@@ -174,6 +198,24 @@ public final class CustomerListHierarchyDetailResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CustomerListHierarchyDetailItem{" + "hierarchy=" + hierarchy + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CustomerListHierarchyDetailItem that = (CustomerListHierarchyDetailItem) o;
+      return java.util.Objects.equals(hierarchy, that.hierarchy);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(hierarchy);
     }
   }
 }

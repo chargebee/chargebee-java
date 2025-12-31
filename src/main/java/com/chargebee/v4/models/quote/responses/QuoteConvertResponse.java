@@ -259,4 +259,58 @@ public final class QuoteConvertResponse extends BaseResponse {
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
   }
+
+  @Override
+  public String toString() {
+    return "QuoteConvertResponse{"
+        + "quote="
+        + quote
+        + ", quotedSubscription="
+        + quotedSubscription
+        + ", quotedCharge="
+        + quotedCharge
+        + ", quotedRamp="
+        + quotedRamp
+        + ", customer="
+        + customer
+        + ", subscription="
+        + subscription
+        + ", invoice="
+        + invoice
+        + ", creditNote="
+        + creditNote
+        + ", unbilledCharges="
+        + unbilledCharges
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuoteConvertResponse that = (QuoteConvertResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
+        && java.util.Objects.equals(quotedCharge, that.quotedCharge)
+        && java.util.Objects.equals(quotedRamp, that.quotedRamp)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(creditNote, that.creditNote)
+        && java.util.Objects.equals(unbilledCharges, that.unbilledCharges);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        quote,
+        quotedSubscription,
+        quotedCharge,
+        quotedRamp,
+        customer,
+        subscription,
+        invoice,
+        creditNote,
+        unbilledCharges);
+  }
 }

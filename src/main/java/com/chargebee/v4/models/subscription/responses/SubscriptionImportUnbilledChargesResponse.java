@@ -80,4 +80,25 @@ public final class SubscriptionImportUnbilledChargesResponse extends BaseRespons
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionImportUnbilledChargesResponse{"
+        + "unbilledCharges="
+        + unbilledCharges
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionImportUnbilledChargesResponse that = (SubscriptionImportUnbilledChargesResponse) o;
+    return java.util.Objects.equals(unbilledCharges, that.unbilledCharges);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(unbilledCharges);
+  }
 }

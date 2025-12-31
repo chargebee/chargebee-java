@@ -125,6 +125,64 @@ public class PaymentScheduleScheme {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PaymentScheduleScheme{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", description="
+        + description
+        + ", numberOfSchedules="
+        + numberOfSchedules
+        + ", periodUnit="
+        + periodUnit
+        + ", period="
+        + period
+        + ", createdAt="
+        + createdAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", preferredSchedules="
+        + preferredSchedules
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentScheduleScheme that = (PaymentScheduleScheme) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(numberOfSchedules, that.numberOfSchedules)
+        && java.util.Objects.equals(periodUnit, that.periodUnit)
+        && java.util.Objects.equals(period, that.period)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(preferredSchedules, that.preferredSchedules);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        description,
+        numberOfSchedules,
+        periodUnit,
+        period,
+        createdAt,
+        resourceVersion,
+        updatedAt,
+        preferredSchedules);
+  }
+
   public static class PreferredSchedules {
 
     private Integer period;
@@ -146,6 +204,30 @@ public class PaymentScheduleScheme {
       obj.amountPercentage = JsonUtil.getBigDecimal(json, "amount_percentage");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "PreferredSchedules{"
+          + "period="
+          + period
+          + ", amountPercentage="
+          + amountPercentage
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      PreferredSchedules that = (PreferredSchedules) o;
+      return java.util.Objects.equals(period, that.period)
+          && java.util.Objects.equals(amountPercentage, that.amountPercentage);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(period, amountPercentage);
     }
   }
 }

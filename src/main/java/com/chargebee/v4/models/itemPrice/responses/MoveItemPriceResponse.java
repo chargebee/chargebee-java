@@ -73,4 +73,22 @@ public final class MoveItemPriceResponse extends BaseResponse {
   public ItemPrice getItemPrice() {
     return itemPrice;
   }
+
+  @Override
+  public String toString() {
+    return "MoveItemPriceResponse{" + "itemPrice=" + itemPrice + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MoveItemPriceResponse that = (MoveItemPriceResponse) o;
+    return java.util.Objects.equals(itemPrice, that.itemPrice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(itemPrice);
+  }
 }

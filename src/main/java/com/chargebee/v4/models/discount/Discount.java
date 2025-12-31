@@ -264,4 +264,94 @@ public class Discount {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Discount{"
+        + "id="
+        + id
+        + ", invoiceName="
+        + invoiceName
+        + ", type="
+        + type
+        + ", percentage="
+        + percentage
+        + ", amount="
+        + amount
+        + ", quantity="
+        + quantity
+        + ", currencyCode="
+        + currencyCode
+        + ", durationType="
+        + durationType
+        + ", period="
+        + period
+        + ", periodUnit="
+        + periodUnit
+        + ", includedInMrr="
+        + includedInMrr
+        + ", applyOn="
+        + applyOn
+        + ", itemPriceId="
+        + itemPriceId
+        + ", createdAt="
+        + createdAt
+        + ", applyTill="
+        + applyTill
+        + ", appliedCount="
+        + appliedCount
+        + ", couponId="
+        + couponId
+        + ", index="
+        + index
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Discount that = (Discount) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(invoiceName, that.invoiceName)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(percentage, that.percentage)
+        && java.util.Objects.equals(amount, that.amount)
+        && java.util.Objects.equals(quantity, that.quantity)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(durationType, that.durationType)
+        && java.util.Objects.equals(period, that.period)
+        && java.util.Objects.equals(periodUnit, that.periodUnit)
+        && java.util.Objects.equals(includedInMrr, that.includedInMrr)
+        && java.util.Objects.equals(applyOn, that.applyOn)
+        && java.util.Objects.equals(itemPriceId, that.itemPriceId)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(applyTill, that.applyTill)
+        && java.util.Objects.equals(appliedCount, that.appliedCount)
+        && java.util.Objects.equals(couponId, that.couponId)
+        && java.util.Objects.equals(index, that.index);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        invoiceName,
+        type,
+        percentage,
+        amount,
+        quantity,
+        currencyCode,
+        durationType,
+        period,
+        periodUnit,
+        includedInMrr,
+        applyOn,
+        itemPriceId,
+        createdAt,
+        applyTill,
+        appliedCount,
+        couponId,
+        index);
+  }
 }

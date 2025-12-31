@@ -38,4 +38,31 @@ public class TpSiteUser {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "TpSiteUser{"
+        + "hostedPageToken="
+        + hostedPageToken
+        + ", email="
+        + email
+        + ", domain="
+        + domain
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TpSiteUser that = (TpSiteUser) o;
+    return java.util.Objects.equals(hostedPageToken, that.hostedPageToken)
+        && java.util.Objects.equals(email, that.email)
+        && java.util.Objects.equals(domain, that.domain);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(hostedPageToken, email, domain);
+  }
 }

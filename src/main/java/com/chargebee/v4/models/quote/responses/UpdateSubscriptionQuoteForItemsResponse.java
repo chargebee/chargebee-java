@@ -122,4 +122,31 @@ public final class UpdateSubscriptionQuoteForItemsResponse extends BaseResponse 
   public QuotedRamp getQuotedRamp() {
     return quotedRamp;
   }
+
+  @Override
+  public String toString() {
+    return "UpdateSubscriptionQuoteForItemsResponse{"
+        + "quote="
+        + quote
+        + ", quotedSubscription="
+        + quotedSubscription
+        + ", quotedRamp="
+        + quotedRamp
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UpdateSubscriptionQuoteForItemsResponse that = (UpdateSubscriptionQuoteForItemsResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
+        && java.util.Objects.equals(quotedRamp, that.quotedRamp);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedSubscription, quotedRamp);
+  }
 }

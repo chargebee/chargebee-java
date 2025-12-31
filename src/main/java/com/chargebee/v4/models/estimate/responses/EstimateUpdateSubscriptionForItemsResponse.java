@@ -78,4 +78,23 @@ public final class EstimateUpdateSubscriptionForItemsResponse extends BaseRespon
   public Estimate getEstimate() {
     return estimate;
   }
+
+  @Override
+  public String toString() {
+    return "EstimateUpdateSubscriptionForItemsResponse{" + "estimate=" + estimate + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EstimateUpdateSubscriptionForItemsResponse that =
+        (EstimateUpdateSubscriptionForItemsResponse) o;
+    return java.util.Objects.equals(estimate, that.estimate);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(estimate);
+  }
 }

@@ -59,4 +59,40 @@ public class CustomerEntitlement {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "CustomerEntitlement{"
+        + "customerId="
+        + customerId
+        + ", subscriptionId="
+        + subscriptionId
+        + ", featureId="
+        + featureId
+        + ", value="
+        + value
+        + ", name="
+        + name
+        + ", isEnabled="
+        + isEnabled
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerEntitlement that = (CustomerEntitlement) o;
+    return java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(featureId, that.featureId)
+        && java.util.Objects.equals(value, that.value)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(isEnabled, that.isEnabled);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customerId, subscriptionId, featureId, value, name, isEnabled);
+  }
 }

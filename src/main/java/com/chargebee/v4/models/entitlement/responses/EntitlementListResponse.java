@@ -143,6 +143,25 @@ public final class EntitlementListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "EntitlementListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EntitlementListResponse that = (EntitlementListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class EntitlementListItem {
 
     private Entitlement entitlement;
@@ -160,6 +179,24 @@ public final class EntitlementListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "EntitlementListItem{" + "entitlement=" + entitlement + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      EntitlementListItem that = (EntitlementListItem) o;
+      return java.util.Objects.equals(entitlement, that.entitlement);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(entitlement);
     }
   }
 }

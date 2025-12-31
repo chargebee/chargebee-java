@@ -74,4 +74,22 @@ public final class CustomerClearPersonalDataResponse extends BaseResponse {
   public Customer getCustomer() {
     return customer;
   }
+
+  @Override
+  public String toString() {
+    return "CustomerClearPersonalDataResponse{" + "customer=" + customer + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerClearPersonalDataResponse that = (CustomerClearPersonalDataResponse) o;
+    return java.util.Objects.equals(customer, that.customer);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer);
+  }
 }

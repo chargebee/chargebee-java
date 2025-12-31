@@ -37,6 +37,30 @@ public class BillingConfiguration {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "BillingConfiguration{"
+        + "isCalendarBillingEnabled="
+        + isCalendarBillingEnabled
+        + ", billingDates="
+        + billingDates
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BillingConfiguration that = (BillingConfiguration) o;
+    return java.util.Objects.equals(isCalendarBillingEnabled, that.isCalendarBillingEnabled)
+        && java.util.Objects.equals(billingDates, that.billingDates);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(isCalendarBillingEnabled, billingDates);
+  }
+
   public static class BillingDates {
 
     private Timestamp startDate;
@@ -58,6 +82,25 @@ public class BillingConfiguration {
       obj.endDate = JsonUtil.getTimestamp(json, "end_date");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "BillingDates{" + "startDate=" + startDate + ", endDate=" + endDate + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      BillingDates that = (BillingDates) o;
+      return java.util.Objects.equals(startDate, that.startDate)
+          && java.util.Objects.equals(endDate, that.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(startDate, endDate);
     }
   }
 }

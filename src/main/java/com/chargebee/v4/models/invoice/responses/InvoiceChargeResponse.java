@@ -73,4 +73,22 @@ public final class InvoiceChargeResponse extends BaseResponse {
   public Invoice getInvoice() {
     return invoice;
   }
+
+  @Override
+  public String toString() {
+    return "InvoiceChargeResponse{" + "invoice=" + invoice + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceChargeResponse that = (InvoiceChargeResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice);
+  }
 }

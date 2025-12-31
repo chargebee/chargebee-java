@@ -104,4 +104,31 @@ public class Configuration {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Configuration{"
+        + "domain="
+        + domain
+        + ", productCatalogVersion="
+        + productCatalogVersion
+        + ", chargebeeResponseSchemaType="
+        + chargebeeResponseSchemaType
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Configuration that = (Configuration) o;
+    return java.util.Objects.equals(domain, that.domain)
+        && java.util.Objects.equals(productCatalogVersion, that.productCatalogVersion)
+        && java.util.Objects.equals(chargebeeResponseSchemaType, that.chargebeeResponseSchemaType);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(domain, productCatalogVersion, chargebeeResponseSchemaType);
+  }
 }

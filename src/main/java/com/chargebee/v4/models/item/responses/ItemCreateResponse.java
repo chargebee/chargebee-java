@@ -71,4 +71,22 @@ public final class ItemCreateResponse extends BaseResponse {
   public Item getItem() {
     return item;
   }
+
+  @Override
+  public String toString() {
+    return "ItemCreateResponse{" + "item=" + item + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemCreateResponse that = (ItemCreateResponse) o;
+    return java.util.Objects.equals(item, that.item);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(item);
+  }
 }

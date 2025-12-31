@@ -140,6 +140,68 @@ public class Gift {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "Gift{"
+        + "id="
+        + id
+        + ", status="
+        + status
+        + ", scheduledAt="
+        + scheduledAt
+        + ", autoClaim="
+        + autoClaim
+        + ", noExpiry="
+        + noExpiry
+        + ", claimExpiryDate="
+        + claimExpiryDate
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", gifter="
+        + gifter
+        + ", giftReceiver="
+        + giftReceiver
+        + ", giftTimelines="
+        + giftTimelines
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Gift that = (Gift) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(scheduledAt, that.scheduledAt)
+        && java.util.Objects.equals(autoClaim, that.autoClaim)
+        && java.util.Objects.equals(noExpiry, that.noExpiry)
+        && java.util.Objects.equals(claimExpiryDate, that.claimExpiryDate)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(gifter, that.gifter)
+        && java.util.Objects.equals(giftReceiver, that.giftReceiver)
+        && java.util.Objects.equals(giftTimelines, that.giftTimelines);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        status,
+        scheduledAt,
+        autoClaim,
+        noExpiry,
+        claimExpiryDate,
+        resourceVersion,
+        updatedAt,
+        gifter,
+        giftReceiver,
+        giftTimelines);
+  }
+
   public static class Gifter {
 
     private String customerId;
@@ -175,6 +237,36 @@ public class Gift {
       obj.note = JsonUtil.getString(json, "note");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Gifter{"
+          + "customerId="
+          + customerId
+          + ", invoiceId="
+          + invoiceId
+          + ", signature="
+          + signature
+          + ", note="
+          + note
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Gifter that = (Gifter) o;
+      return java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(invoiceId, that.invoiceId)
+          && java.util.Objects.equals(signature, that.signature)
+          && java.util.Objects.equals(note, that.note);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(customerId, invoiceId, signature, note);
     }
   }
 
@@ -220,6 +312,39 @@ public class Gift {
       obj.email = JsonUtil.getString(json, "email");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "GiftReceiver{"
+          + "customerId="
+          + customerId
+          + ", subscriptionId="
+          + subscriptionId
+          + ", firstName="
+          + firstName
+          + ", lastName="
+          + lastName
+          + ", email="
+          + email
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      GiftReceiver that = (GiftReceiver) o;
+      return java.util.Objects.equals(customerId, that.customerId)
+          && java.util.Objects.equals(subscriptionId, that.subscriptionId)
+          && java.util.Objects.equals(firstName, that.firstName)
+          && java.util.Objects.equals(lastName, that.lastName)
+          && java.util.Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(customerId, subscriptionId, firstName, lastName, email);
     }
   }
 
@@ -278,6 +403,25 @@ public class Gift {
       obj.occurredAt = JsonUtil.getTimestamp(json, "occurred_at");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "GiftTimelines{" + "status=" + status + ", occurredAt=" + occurredAt + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      GiftTimelines that = (GiftTimelines) o;
+      return java.util.Objects.equals(status, that.status)
+          && java.util.Objects.equals(occurredAt, that.occurredAt);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(status, occurredAt);
     }
   }
 }

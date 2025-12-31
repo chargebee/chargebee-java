@@ -101,4 +101,29 @@ public final class CreateSubscriptionForCustomerQuoteResponse extends BaseRespon
   public QuotedSubscription getQuotedSubscription() {
     return quotedSubscription;
   }
+
+  @Override
+  public String toString() {
+    return "CreateSubscriptionForCustomerQuoteResponse{"
+        + "quote="
+        + quote
+        + ", quotedSubscription="
+        + quotedSubscription
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreateSubscriptionForCustomerQuoteResponse that =
+        (CreateSubscriptionForCustomerQuoteResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedSubscription, that.quotedSubscription);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedSubscription);
+  }
 }

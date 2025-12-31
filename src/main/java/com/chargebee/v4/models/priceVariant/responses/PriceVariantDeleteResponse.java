@@ -74,4 +74,22 @@ public final class PriceVariantDeleteResponse extends BaseResponse {
   public PriceVariant getPriceVariant() {
     return priceVariant;
   }
+
+  @Override
+  public String toString() {
+    return "PriceVariantDeleteResponse{" + "priceVariant=" + priceVariant + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PriceVariantDeleteResponse that = (PriceVariantDeleteResponse) o;
+    return java.util.Objects.equals(priceVariant, that.priceVariant);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(priceVariant);
+  }
 }

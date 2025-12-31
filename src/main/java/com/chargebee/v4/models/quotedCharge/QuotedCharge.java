@@ -79,6 +79,43 @@ public class QuotedCharge {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "QuotedCharge{"
+        + "charges="
+        + charges
+        + ", invoiceItems="
+        + invoiceItems
+        + ", itemTiers="
+        + itemTiers
+        + ", coupons="
+        + coupons
+        + ", couponApplicabilityMappings="
+        + couponApplicabilityMappings
+        + ", addons="
+        + addons
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuotedCharge that = (QuotedCharge) o;
+    return java.util.Objects.equals(charges, that.charges)
+        && java.util.Objects.equals(invoiceItems, that.invoiceItems)
+        && java.util.Objects.equals(itemTiers, that.itemTiers)
+        && java.util.Objects.equals(coupons, that.coupons)
+        && java.util.Objects.equals(couponApplicabilityMappings, that.couponApplicabilityMappings)
+        && java.util.Objects.equals(addons, that.addons);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        charges, invoiceItems, itemTiers, coupons, couponApplicabilityMappings, addons);
+  }
+
   public static class Charges {
 
     private Long amount;
@@ -169,6 +206,52 @@ public class QuotedCharge {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "Charges{"
+          + "amount="
+          + amount
+          + ", amountInDecimal="
+          + amountInDecimal
+          + ", description="
+          + description
+          + ", servicePeriodInDays="
+          + servicePeriodInDays
+          + ", avalaraSaleType="
+          + avalaraSaleType
+          + ", avalaraTransactionType="
+          + avalaraTransactionType
+          + ", avalaraServiceType="
+          + avalaraServiceType
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Charges that = (Charges) o;
+      return java.util.Objects.equals(amount, that.amount)
+          && java.util.Objects.equals(amountInDecimal, that.amountInDecimal)
+          && java.util.Objects.equals(description, that.description)
+          && java.util.Objects.equals(servicePeriodInDays, that.servicePeriodInDays)
+          && java.util.Objects.equals(avalaraSaleType, that.avalaraSaleType)
+          && java.util.Objects.equals(avalaraTransactionType, that.avalaraTransactionType)
+          && java.util.Objects.equals(avalaraServiceType, that.avalaraServiceType);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          amount,
+          amountInDecimal,
+          description,
+          servicePeriodInDays,
+          avalaraSaleType,
+          avalaraTransactionType,
+          avalaraServiceType);
+    }
   }
 
   public static class InvoiceItems {
@@ -220,6 +303,48 @@ public class QuotedCharge {
       obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "InvoiceItems{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", quantity="
+          + quantity
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", unitPrice="
+          + unitPrice
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", servicePeriodDays="
+          + servicePeriodDays
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      InvoiceItems that = (InvoiceItems) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(servicePeriodDays, that.servicePeriodDays);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          quantity,
+          quantityInDecimal,
+          unitPrice,
+          unitPriceInDecimal,
+          servicePeriodDays);
     }
   }
 
@@ -331,6 +456,64 @@ public class QuotedCharge {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "ItemTiers{"
+          + "itemPriceId="
+          + itemPriceId
+          + ", startingUnit="
+          + startingUnit
+          + ", endingUnit="
+          + endingUnit
+          + ", price="
+          + price
+          + ", startingUnitInDecimal="
+          + startingUnitInDecimal
+          + ", endingUnitInDecimal="
+          + endingUnitInDecimal
+          + ", priceInDecimal="
+          + priceInDecimal
+          + ", pricingType="
+          + pricingType
+          + ", packageSize="
+          + packageSize
+          + ", index="
+          + index
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemTiers that = (ItemTiers) o;
+      return java.util.Objects.equals(itemPriceId, that.itemPriceId)
+          && java.util.Objects.equals(startingUnit, that.startingUnit)
+          && java.util.Objects.equals(endingUnit, that.endingUnit)
+          && java.util.Objects.equals(price, that.price)
+          && java.util.Objects.equals(startingUnitInDecimal, that.startingUnitInDecimal)
+          && java.util.Objects.equals(endingUnitInDecimal, that.endingUnitInDecimal)
+          && java.util.Objects.equals(priceInDecimal, that.priceInDecimal)
+          && java.util.Objects.equals(pricingType, that.pricingType)
+          && java.util.Objects.equals(packageSize, that.packageSize)
+          && java.util.Objects.equals(index, that.index);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          itemPriceId,
+          startingUnit,
+          endingUnit,
+          price,
+          startingUnitInDecimal,
+          endingUnitInDecimal,
+          priceInDecimal,
+          pricingType,
+          packageSize,
+          index);
+    }
   }
 
   public static class Coupons {
@@ -347,6 +530,24 @@ public class QuotedCharge {
       obj.couponId = JsonUtil.getString(json, "coupon_id");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Coupons{" + "couponId=" + couponId + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Coupons that = (Coupons) o;
+      return java.util.Objects.equals(couponId, that.couponId);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(couponId);
     }
   }
 
@@ -372,6 +573,30 @@ public class QuotedCharge {
           JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "applicable_item_price_ids"));
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "CouponApplicabilityMappings{"
+          + "couponId="
+          + couponId
+          + ", applicableItemPriceIds="
+          + applicableItemPriceIds
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CouponApplicabilityMappings that = (CouponApplicabilityMappings) o;
+      return java.util.Objects.equals(couponId, that.couponId)
+          && java.util.Objects.equals(applicableItemPriceIds, that.applicableItemPriceIds);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(couponId, applicableItemPriceIds);
     }
   }
 
@@ -461,6 +686,52 @@ public class QuotedCharge {
       obj.servicePeriod = JsonUtil.getInteger(json, "service_period");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Addons{"
+          + "id="
+          + id
+          + ", quantity="
+          + quantity
+          + ", unitPrice="
+          + unitPrice
+          + ", quantityInDecimal="
+          + quantityInDecimal
+          + ", unitPriceInDecimal="
+          + unitPriceInDecimal
+          + ", prorationType="
+          + prorationType
+          + ", servicePeriod="
+          + servicePeriod
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Addons that = (Addons) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(quantity, that.quantity)
+          && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(quantityInDecimal, that.quantityInDecimal)
+          && java.util.Objects.equals(unitPriceInDecimal, that.unitPriceInDecimal)
+          && java.util.Objects.equals(prorationType, that.prorationType)
+          && java.util.Objects.equals(servicePeriod, that.servicePeriod);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          id,
+          quantity,
+          unitPrice,
+          quantityInDecimal,
+          unitPriceInDecimal,
+          prorationType,
+          servicePeriod);
     }
   }
 }

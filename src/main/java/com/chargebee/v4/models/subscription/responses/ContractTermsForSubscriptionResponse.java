@@ -157,6 +157,30 @@ public final class ContractTermsForSubscriptionResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ContractTermsForSubscriptionResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContractTermsForSubscriptionResponse that = (ContractTermsForSubscriptionResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class SubscriptionContractTermsForSubscriptionItem {
 
     private ContractTerm contractTerm;
@@ -175,6 +199,25 @@ public final class ContractTermsForSubscriptionResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "SubscriptionContractTermsForSubscriptionItem{" + "contractTerm=" + contractTerm + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionContractTermsForSubscriptionItem that =
+          (SubscriptionContractTermsForSubscriptionItem) o;
+      return java.util.Objects.equals(contractTerm, that.contractTerm);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(contractTerm);
     }
   }
 }

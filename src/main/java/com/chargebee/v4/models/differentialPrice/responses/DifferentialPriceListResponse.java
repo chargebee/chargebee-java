@@ -146,6 +146,25 @@ public final class DifferentialPriceListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "DifferentialPriceListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DifferentialPriceListResponse that = (DifferentialPriceListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class DifferentialPriceListItem {
 
     private DifferentialPrice differentialPrice;
@@ -163,6 +182,24 @@ public final class DifferentialPriceListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "DifferentialPriceListItem{" + "differentialPrice=" + differentialPrice + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      DifferentialPriceListItem that = (DifferentialPriceListItem) o;
+      return java.util.Objects.equals(differentialPrice, that.differentialPrice);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(differentialPrice);
     }
   }
 }

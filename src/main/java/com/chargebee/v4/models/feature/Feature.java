@@ -233,6 +233,68 @@ public class Feature {
     return customFields;
   }
 
+  @Override
+  public String toString() {
+    return "Feature{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", description="
+        + description
+        + ", status="
+        + status
+        + ", type="
+        + type
+        + ", unit="
+        + unit
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", createdAt="
+        + createdAt
+        + ", levels="
+        + levels
+        + ", customFields="
+        + customFields
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Feature that = (Feature) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(description, that.description)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(type, that.type)
+        && java.util.Objects.equals(unit, that.unit)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(levels, that.levels)
+        && java.util.Objects.equals(customFields, that.customFields);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        description,
+        status,
+        type,
+        unit,
+        resourceVersion,
+        updatedAt,
+        createdAt,
+        levels,
+        customFields);
+  }
+
   public static class Levels {
 
     private String name;
@@ -268,6 +330,36 @@ public class Feature {
       obj.isUnlimited = JsonUtil.getBoolean(json, "is_unlimited");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Levels{"
+          + "name="
+          + name
+          + ", value="
+          + value
+          + ", level="
+          + level
+          + ", isUnlimited="
+          + isUnlimited
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Levels that = (Levels) o;
+      return java.util.Objects.equals(name, that.name)
+          && java.util.Objects.equals(value, that.value)
+          && java.util.Objects.equals(level, that.level)
+          && java.util.Objects.equals(isUnlimited, that.isUnlimited);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(name, value, level, isUnlimited);
     }
   }
 }

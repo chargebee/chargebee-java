@@ -73,4 +73,22 @@ public final class VariantDeleteResponse extends BaseResponse {
   public Variant getVariant() {
     return variant;
   }
+
+  @Override
+  public String toString() {
+    return "VariantDeleteResponse{" + "variant=" + variant + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VariantDeleteResponse that = (VariantDeleteResponse) o;
+    return java.util.Objects.equals(variant, that.variant);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(variant);
+  }
 }

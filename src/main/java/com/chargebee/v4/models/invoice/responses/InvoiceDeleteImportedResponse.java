@@ -99,4 +99,28 @@ public final class InvoiceDeleteImportedResponse extends BaseResponse {
   public List<CreditNote> getCreditNotes() {
     return creditNotes;
   }
+
+  @Override
+  public String toString() {
+    return "InvoiceDeleteImportedResponse{"
+        + "invoice="
+        + invoice
+        + ", creditNotes="
+        + creditNotes
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoiceDeleteImportedResponse that = (InvoiceDeleteImportedResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(creditNotes, that.creditNotes);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice, creditNotes);
+  }
 }

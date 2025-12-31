@@ -148,6 +148,25 @@ public final class SiteMigrationDetailListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "SiteMigrationDetailListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SiteMigrationDetailListResponse that = (SiteMigrationDetailListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class SiteMigrationDetailListItem {
 
     private SiteMigrationDetail siteMigrationDetail;
@@ -165,6 +184,24 @@ public final class SiteMigrationDetailListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "SiteMigrationDetailListItem{" + "siteMigrationDetail=" + siteMigrationDetail + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SiteMigrationDetailListItem that = (SiteMigrationDetailListItem) o;
+      return java.util.Objects.equals(siteMigrationDetail, that.siteMigrationDetail);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(siteMigrationDetail);
     }
   }
 }

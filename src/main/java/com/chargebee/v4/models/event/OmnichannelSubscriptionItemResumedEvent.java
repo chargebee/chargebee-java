@@ -83,6 +83,49 @@ public class OmnichannelSubscriptionItemResumedEvent {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionItemResumedEvent{"
+        + "id="
+        + id
+        + ", occurredAt="
+        + occurredAt
+        + ", source="
+        + source
+        + ", object="
+        + object
+        + ", apiVersion="
+        + apiVersion
+        + ", eventType="
+        + eventType
+        + ", webhookStatus="
+        + webhookStatus
+        + ", content="
+        + content
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionItemResumedEvent that = (OmnichannelSubscriptionItemResumedEvent) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(occurredAt, that.occurredAt)
+        && java.util.Objects.equals(source, that.source)
+        && java.util.Objects.equals(object, that.object)
+        && java.util.Objects.equals(apiVersion, that.apiVersion)
+        && java.util.Objects.equals(eventType, that.eventType)
+        && java.util.Objects.equals(webhookStatus, that.webhookStatus)
+        && java.util.Objects.equals(content, that.content);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id, occurredAt, source, object, apiVersion, eventType, webhookStatus, content);
+  }
+
   public static class Content {
 
     private OmnichannelSubscription omnichannelSubscription;
@@ -123,6 +166,33 @@ public class OmnichannelSubscriptionItemResumedEvent {
       }
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Content{"
+          + "omnichannelSubscription="
+          + omnichannelSubscription
+          + ", omnichannelSubscriptionItem="
+          + omnichannelSubscriptionItem
+          + ", customer="
+          + customer
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Content that = (Content) o;
+      return java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription)
+          && java.util.Objects.equals(omnichannelSubscriptionItem, that.omnichannelSubscriptionItem)
+          && java.util.Objects.equals(customer, that.customer);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelSubscription, omnichannelSubscriptionItem, customer);
     }
   }
 }

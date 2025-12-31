@@ -73,4 +73,22 @@ public final class CreditNotePdfResponse extends BaseResponse {
   public Download getDownload() {
     return download;
   }
+
+  @Override
+  public String toString() {
+    return "CreditNotePdfResponse{" + "download=" + download + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreditNotePdfResponse that = (CreditNotePdfResponse) o;
+    return java.util.Objects.equals(download, that.download);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(download);
+  }
 }

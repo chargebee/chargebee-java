@@ -152,6 +152,25 @@ public final class CreditNotesForCustomerResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "CreditNotesForCustomerResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreditNotesForCustomerResponse that = (CreditNotesForCustomerResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class CreditNoteCreditNotesForCustomerItem {
 
     private CreditNote creditNote;
@@ -169,6 +188,24 @@ public final class CreditNotesForCustomerResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "CreditNoteCreditNotesForCustomerItem{" + "creditNote=" + creditNote + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CreditNoteCreditNotesForCustomerItem that = (CreditNoteCreditNotesForCustomerItem) o;
+      return java.util.Objects.equals(creditNote, that.creditNote);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(creditNote);
     }
   }
 }

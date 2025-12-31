@@ -81,6 +81,36 @@ public class AdvanceInvoiceSchedule {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "AdvanceInvoiceSchedule{"
+        + "id="
+        + id
+        + ", scheduleType="
+        + scheduleType
+        + ", fixedIntervalSchedule="
+        + fixedIntervalSchedule
+        + ", specificDatesSchedule="
+        + specificDatesSchedule
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AdvanceInvoiceSchedule that = (AdvanceInvoiceSchedule) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(scheduleType, that.scheduleType)
+        && java.util.Objects.equals(fixedIntervalSchedule, that.fixedIntervalSchedule)
+        && java.util.Objects.equals(specificDatesSchedule, that.specificDatesSchedule);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, scheduleType, fixedIntervalSchedule, specificDatesSchedule);
+  }
+
   public static class FixedIntervalSchedule {
 
     private EndScheduleOn endScheduleOn;
@@ -161,6 +191,43 @@ public class AdvanceInvoiceSchedule {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "FixedIntervalSchedule{"
+          + "endScheduleOn="
+          + endScheduleOn
+          + ", numberOfOccurrences="
+          + numberOfOccurrences
+          + ", daysBeforeRenewal="
+          + daysBeforeRenewal
+          + ", endDate="
+          + endDate
+          + ", createdAt="
+          + createdAt
+          + ", termsToCharge="
+          + termsToCharge
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      FixedIntervalSchedule that = (FixedIntervalSchedule) o;
+      return java.util.Objects.equals(endScheduleOn, that.endScheduleOn)
+          && java.util.Objects.equals(numberOfOccurrences, that.numberOfOccurrences)
+          && java.util.Objects.equals(daysBeforeRenewal, that.daysBeforeRenewal)
+          && java.util.Objects.equals(endDate, that.endDate)
+          && java.util.Objects.equals(createdAt, that.createdAt)
+          && java.util.Objects.equals(termsToCharge, that.termsToCharge);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(
+          endScheduleOn, numberOfOccurrences, daysBeforeRenewal, endDate, createdAt, termsToCharge);
+    }
   }
 
   public static class SpecificDatesSchedule {
@@ -191,6 +258,33 @@ public class AdvanceInvoiceSchedule {
       obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "SpecificDatesSchedule{"
+          + "termsToCharge="
+          + termsToCharge
+          + ", date="
+          + date
+          + ", createdAt="
+          + createdAt
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SpecificDatesSchedule that = (SpecificDatesSchedule) o;
+      return java.util.Objects.equals(termsToCharge, that.termsToCharge)
+          && java.util.Objects.equals(date, that.date)
+          && java.util.Objects.equals(createdAt, that.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(termsToCharge, date, createdAt);
     }
   }
 }

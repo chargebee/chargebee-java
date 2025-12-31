@@ -141,4 +141,23 @@ public final class Pc2MigrationItemListResponse {
         .findFirst()
         .orElse(null);
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationItemListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationItemListResponse that = (Pc2MigrationItemListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
 }

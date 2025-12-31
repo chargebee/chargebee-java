@@ -299,4 +299,82 @@ public class VirtualBankAccount {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "VirtualBankAccount{"
+        + "id="
+        + id
+        + ", customerId="
+        + customerId
+        + ", email="
+        + email
+        + ", scheme="
+        + scheme
+        + ", bankName="
+        + bankName
+        + ", accountNumber="
+        + accountNumber
+        + ", routingNumber="
+        + routingNumber
+        + ", swiftCode="
+        + swiftCode
+        + ", gateway="
+        + gateway
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", createdAt="
+        + createdAt
+        + ", referenceId="
+        + referenceId
+        + ", deleted="
+        + deleted
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VirtualBankAccount that = (VirtualBankAccount) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(customerId, that.customerId)
+        && java.util.Objects.equals(email, that.email)
+        && java.util.Objects.equals(scheme, that.scheme)
+        && java.util.Objects.equals(bankName, that.bankName)
+        && java.util.Objects.equals(accountNumber, that.accountNumber)
+        && java.util.Objects.equals(routingNumber, that.routingNumber)
+        && java.util.Objects.equals(swiftCode, that.swiftCode)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(referenceId, that.referenceId)
+        && java.util.Objects.equals(deleted, that.deleted);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        customerId,
+        email,
+        scheme,
+        bankName,
+        accountNumber,
+        routingNumber,
+        swiftCode,
+        gateway,
+        gatewayAccountId,
+        resourceVersion,
+        updatedAt,
+        createdAt,
+        referenceId,
+        deleted);
+  }
 }

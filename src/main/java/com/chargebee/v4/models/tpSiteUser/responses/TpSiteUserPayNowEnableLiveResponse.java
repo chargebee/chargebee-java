@@ -74,4 +74,22 @@ public final class TpSiteUserPayNowEnableLiveResponse extends BaseResponse {
   public TpSiteUser getTpSiteUser() {
     return tpSiteUser;
   }
+
+  @Override
+  public String toString() {
+    return "TpSiteUserPayNowEnableLiveResponse{" + "tpSiteUser=" + tpSiteUser + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TpSiteUserPayNowEnableLiveResponse that = (TpSiteUserPayNowEnableLiveResponse) o;
+    return java.util.Objects.equals(tpSiteUser, that.tpSiteUser);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(tpSiteUser);
+  }
 }

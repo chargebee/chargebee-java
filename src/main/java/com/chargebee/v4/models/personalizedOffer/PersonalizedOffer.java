@@ -53,6 +53,36 @@ public class PersonalizedOffer {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "PersonalizedOffer{"
+        + "id="
+        + id
+        + ", offerId="
+        + offerId
+        + ", content="
+        + content
+        + ", options="
+        + options
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PersonalizedOffer that = (PersonalizedOffer) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(offerId, that.offerId)
+        && java.util.Objects.equals(content, that.content)
+        && java.util.Objects.equals(options, that.options);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, offerId, content, options);
+  }
+
   public static class Content {
 
     private String title;
@@ -74,6 +104,25 @@ public class PersonalizedOffer {
       obj.description = JsonUtil.getString(json, "description");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Content{" + "title=" + title + ", description=" + description + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Content that = (Content) o;
+      return java.util.Objects.equals(title, that.title)
+          && java.util.Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(title, description);
     }
   }
 
@@ -182,6 +231,39 @@ public class PersonalizedOffer {
       obj.redirectUrl = JsonUtil.getString(json, "redirect_url");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "Options{"
+          + "id="
+          + id
+          + ", label="
+          + label
+          + ", processingType="
+          + processingType
+          + ", processingLayout="
+          + processingLayout
+          + ", redirectUrl="
+          + redirectUrl
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Options that = (Options) o;
+      return java.util.Objects.equals(id, that.id)
+          && java.util.Objects.equals(label, that.label)
+          && java.util.Objects.equals(processingType, that.processingType)
+          && java.util.Objects.equals(processingLayout, that.processingLayout)
+          && java.util.Objects.equals(redirectUrl, that.redirectUrl);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(id, label, processingType, processingLayout, redirectUrl);
     }
   }
 }

@@ -82,4 +82,37 @@ public class CouponCode {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "CouponCode{"
+        + "code="
+        + code
+        + ", status="
+        + status
+        + ", couponId="
+        + couponId
+        + ", couponSetId="
+        + couponSetId
+        + ", couponSetName="
+        + couponSetName
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CouponCode that = (CouponCode) o;
+    return java.util.Objects.equals(code, that.code)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(couponId, that.couponId)
+        && java.util.Objects.equals(couponSetId, that.couponSetId)
+        && java.util.Objects.equals(couponSetName, that.couponSetName);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(code, status, couponId, couponSetId, couponSetName);
+  }
 }

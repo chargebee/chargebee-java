@@ -73,4 +73,22 @@ public final class CouponSetDeleteResponse extends BaseResponse {
   public CouponSet getCouponSet() {
     return couponSet;
   }
+
+  @Override
+  public String toString() {
+    return "CouponSetDeleteResponse{" + "couponSet=" + couponSet + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CouponSetDeleteResponse that = (CouponSetDeleteResponse) o;
+    return java.util.Objects.equals(couponSet, that.couponSet);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(couponSet);
+  }
 }

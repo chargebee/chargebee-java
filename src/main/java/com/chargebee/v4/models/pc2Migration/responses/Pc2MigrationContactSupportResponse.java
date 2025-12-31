@@ -51,4 +51,22 @@ public final class Pc2MigrationContactSupportResponse extends BaseResponse {
       return new Pc2MigrationContactSupportResponse(this);
     }
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationContactSupportResponse{" + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationContactSupportResponse that = (Pc2MigrationContactSupportResponse) o;
+    return;
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash();
+  }
 }

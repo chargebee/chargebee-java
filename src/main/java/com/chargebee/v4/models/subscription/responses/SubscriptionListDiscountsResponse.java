@@ -154,6 +154,30 @@ public final class SubscriptionListDiscountsResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "SubscriptionListDiscountsResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionListDiscountsResponse that = (SubscriptionListDiscountsResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class SubscriptionListDiscountsItem {
 
     private Discount discount;
@@ -171,6 +195,24 @@ public final class SubscriptionListDiscountsResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "SubscriptionListDiscountsItem{" + "discount=" + discount + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionListDiscountsItem that = (SubscriptionListDiscountsItem) o;
+      return java.util.Objects.equals(discount, that.discount);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(discount);
     }
   }
 }

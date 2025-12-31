@@ -172,4 +172,37 @@ public final class SubscriptionChargeFutureRenewalsResponse extends BaseResponse
   public List<AdvanceInvoiceSchedule> getAdvanceInvoiceSchedules() {
     return advanceInvoiceSchedules;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionChargeFutureRenewalsResponse{"
+        + "subscription="
+        + subscription
+        + ", customer="
+        + customer
+        + ", card="
+        + card
+        + ", invoice="
+        + invoice
+        + ", advanceInvoiceSchedules="
+        + advanceInvoiceSchedules
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionChargeFutureRenewalsResponse that = (SubscriptionChargeFutureRenewalsResponse) o;
+    return java.util.Objects.equals(subscription, that.subscription)
+        && java.util.Objects.equals(customer, that.customer)
+        && java.util.Objects.equals(card, that.card)
+        && java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(advanceInvoiceSchedules, that.advanceInvoiceSchedules);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscription, customer, card, invoice, advanceInvoiceSchedules);
+  }
 }

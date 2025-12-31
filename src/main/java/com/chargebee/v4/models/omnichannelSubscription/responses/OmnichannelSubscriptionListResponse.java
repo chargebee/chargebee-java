@@ -151,6 +151,30 @@ public final class OmnichannelSubscriptionListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "OmnichannelSubscriptionListResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OmnichannelSubscriptionListResponse that = (OmnichannelSubscriptionListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class OmnichannelSubscriptionListItem {
 
     private OmnichannelSubscription omnichannelSubscription;
@@ -169,6 +193,27 @@ public final class OmnichannelSubscriptionListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "OmnichannelSubscriptionListItem{"
+          + "omnichannelSubscription="
+          + omnichannelSubscription
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      OmnichannelSubscriptionListItem that = (OmnichannelSubscriptionListItem) o;
+      return java.util.Objects.equals(omnichannelSubscription, that.omnichannelSubscription);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(omnichannelSubscription);
     }
   }
 }

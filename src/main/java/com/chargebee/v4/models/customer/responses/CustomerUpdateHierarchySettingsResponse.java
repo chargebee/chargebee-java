@@ -76,4 +76,22 @@ public final class CustomerUpdateHierarchySettingsResponse extends BaseResponse 
   public Customer getCustomer() {
     return customer;
   }
+
+  @Override
+  public String toString() {
+    return "CustomerUpdateHierarchySettingsResponse{" + "customer=" + customer + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerUpdateHierarchySettingsResponse that = (CustomerUpdateHierarchySettingsResponse) o;
+    return java.util.Objects.equals(customer, that.customer);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(customer);
+  }
 }

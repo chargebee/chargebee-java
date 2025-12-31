@@ -125,4 +125,32 @@ public final class CreateSubscriptionItemsForCustomerQuoteResponse extends BaseR
   public QuotedRamp getQuotedRamp() {
     return quotedRamp;
   }
+
+  @Override
+  public String toString() {
+    return "CreateSubscriptionItemsForCustomerQuoteResponse{"
+        + "quote="
+        + quote
+        + ", quotedSubscription="
+        + quotedSubscription
+        + ", quotedRamp="
+        + quotedRamp
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreateSubscriptionItemsForCustomerQuoteResponse that =
+        (CreateSubscriptionItemsForCustomerQuoteResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedSubscription, that.quotedSubscription)
+        && java.util.Objects.equals(quotedRamp, that.quotedRamp);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedSubscription, quotedRamp);
+  }
 }

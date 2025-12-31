@@ -45,4 +45,34 @@ public class Media {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Media{"
+        + "id="
+        + id
+        + ", url="
+        + url
+        + ", altText="
+        + altText
+        + ", mediaType="
+        + mediaType
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Media that = (Media) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(url, that.url)
+        && java.util.Objects.equals(altText, that.altText)
+        && java.util.Objects.equals(mediaType, that.mediaType);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(id, url, altText, mediaType);
+  }
 }

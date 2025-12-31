@@ -383,4 +383,70 @@ public class Token {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "Token{"
+        + "id="
+        + id
+        + ", gateway="
+        + gateway
+        + ", gatewayAccountId="
+        + gatewayAccountId
+        + ", paymentMethodType="
+        + paymentMethodType
+        + ", status="
+        + status
+        + ", idAtVault="
+        + idAtVault
+        + ", vault="
+        + vault
+        + ", ipAddress="
+        + ipAddress
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", createdAt="
+        + createdAt
+        + ", expiredAt="
+        + expiredAt
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Token that = (Token) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(gateway, that.gateway)
+        && java.util.Objects.equals(gatewayAccountId, that.gatewayAccountId)
+        && java.util.Objects.equals(paymentMethodType, that.paymentMethodType)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(idAtVault, that.idAtVault)
+        && java.util.Objects.equals(vault, that.vault)
+        && java.util.Objects.equals(ipAddress, that.ipAddress)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(expiredAt, that.expiredAt);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        gateway,
+        gatewayAccountId,
+        paymentMethodType,
+        status,
+        idAtVault,
+        vault,
+        ipAddress,
+        resourceVersion,
+        updatedAt,
+        createdAt,
+        expiredAt);
+  }
 }

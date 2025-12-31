@@ -29,6 +29,24 @@ public class QuotedDeltaRamp {
     return obj;
   }
 
+  @Override
+  public String toString() {
+    return "QuotedDeltaRamp{" + "lineItems=" + lineItems + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuotedDeltaRamp that = (QuotedDeltaRamp) o;
+    return java.util.Objects.equals(lineItems, that.lineItems);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(lineItems);
+  }
+
   public static class LineItems {
 
     private String itemLevelDiscountPerBillingCycleInDecimal;
@@ -44,6 +62,29 @@ public class QuotedDeltaRamp {
           JsonUtil.getString(json, "item_level_discount_per_billing_cycle_in_decimal");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "LineItems{"
+          + "itemLevelDiscountPerBillingCycleInDecimal="
+          + itemLevelDiscountPerBillingCycleInDecimal
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      LineItems that = (LineItems) o;
+      return java.util.Objects.equals(
+          itemLevelDiscountPerBillingCycleInDecimal,
+          that.itemLevelDiscountPerBillingCycleInDecimal);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemLevelDiscountPerBillingCycleInDecimal);
     }
   }
 }

@@ -653,6 +653,164 @@ public class Coupon {
     return customFields;
   }
 
+  @Override
+  public String toString() {
+    return "Coupon{"
+        + "id="
+        + id
+        + ", name="
+        + name
+        + ", invoiceName="
+        + invoiceName
+        + ", discountType="
+        + discountType
+        + ", discountPercentage="
+        + discountPercentage
+        + ", discountAmount="
+        + discountAmount
+        + ", discountQuantity="
+        + discountQuantity
+        + ", currencyCode="
+        + currencyCode
+        + ", durationType="
+        + durationType
+        + ", durationMonth="
+        + durationMonth
+        + ", validFrom="
+        + validFrom
+        + ", validTill="
+        + validTill
+        + ", maxRedemptions="
+        + maxRedemptions
+        + ", status="
+        + status
+        + ", applyDiscountOn="
+        + applyDiscountOn
+        + ", applyOn="
+        + applyOn
+        + ", createdAt="
+        + createdAt
+        + ", archivedAt="
+        + archivedAt
+        + ", resourceVersion="
+        + resourceVersion
+        + ", updatedAt="
+        + updatedAt
+        + ", period="
+        + period
+        + ", periodUnit="
+        + periodUnit
+        + ", redemptions="
+        + redemptions
+        + ", invoiceNotes="
+        + invoiceNotes
+        + ", metaData="
+        + metaData
+        + ", deleted="
+        + deleted
+        + ", itemConstraints="
+        + itemConstraints
+        + ", itemConstraintCriteria="
+        + itemConstraintCriteria
+        + ", couponConstraints="
+        + couponConstraints
+        + ", planIds="
+        + planIds
+        + ", addonConstraint="
+        + addonConstraint
+        + ", planConstraint="
+        + planConstraint
+        + ", includedInMrr="
+        + includedInMrr
+        + ", addonIds="
+        + addonIds
+        + ", customFields="
+        + customFields
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Coupon that = (Coupon) o;
+    return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(name, that.name)
+        && java.util.Objects.equals(invoiceName, that.invoiceName)
+        && java.util.Objects.equals(discountType, that.discountType)
+        && java.util.Objects.equals(discountPercentage, that.discountPercentage)
+        && java.util.Objects.equals(discountAmount, that.discountAmount)
+        && java.util.Objects.equals(discountQuantity, that.discountQuantity)
+        && java.util.Objects.equals(currencyCode, that.currencyCode)
+        && java.util.Objects.equals(durationType, that.durationType)
+        && java.util.Objects.equals(durationMonth, that.durationMonth)
+        && java.util.Objects.equals(validFrom, that.validFrom)
+        && java.util.Objects.equals(validTill, that.validTill)
+        && java.util.Objects.equals(maxRedemptions, that.maxRedemptions)
+        && java.util.Objects.equals(status, that.status)
+        && java.util.Objects.equals(applyDiscountOn, that.applyDiscountOn)
+        && java.util.Objects.equals(applyOn, that.applyOn)
+        && java.util.Objects.equals(createdAt, that.createdAt)
+        && java.util.Objects.equals(archivedAt, that.archivedAt)
+        && java.util.Objects.equals(resourceVersion, that.resourceVersion)
+        && java.util.Objects.equals(updatedAt, that.updatedAt)
+        && java.util.Objects.equals(period, that.period)
+        && java.util.Objects.equals(periodUnit, that.periodUnit)
+        && java.util.Objects.equals(redemptions, that.redemptions)
+        && java.util.Objects.equals(invoiceNotes, that.invoiceNotes)
+        && java.util.Objects.equals(metaData, that.metaData)
+        && java.util.Objects.equals(deleted, that.deleted)
+        && java.util.Objects.equals(itemConstraints, that.itemConstraints)
+        && java.util.Objects.equals(itemConstraintCriteria, that.itemConstraintCriteria)
+        && java.util.Objects.equals(couponConstraints, that.couponConstraints)
+        && java.util.Objects.equals(planIds, that.planIds)
+        && java.util.Objects.equals(addonConstraint, that.addonConstraint)
+        && java.util.Objects.equals(planConstraint, that.planConstraint)
+        && java.util.Objects.equals(includedInMrr, that.includedInMrr)
+        && java.util.Objects.equals(addonIds, that.addonIds)
+        && java.util.Objects.equals(customFields, that.customFields);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        id,
+        name,
+        invoiceName,
+        discountType,
+        discountPercentage,
+        discountAmount,
+        discountQuantity,
+        currencyCode,
+        durationType,
+        durationMonth,
+        validFrom,
+        validTill,
+        maxRedemptions,
+        status,
+        applyDiscountOn,
+        applyOn,
+        createdAt,
+        archivedAt,
+        resourceVersion,
+        updatedAt,
+        period,
+        periodUnit,
+        redemptions,
+        invoiceNotes,
+        metaData,
+        deleted,
+        itemConstraints,
+        itemConstraintCriteria,
+        couponConstraints,
+        planIds,
+        addonConstraint,
+        planConstraint,
+        includedInMrr,
+        addonIds,
+        customFields);
+  }
+
   public static class ItemConstraints {
 
     private ItemType itemType;
@@ -750,6 +908,33 @@ public class Coupon {
 
       return obj;
     }
+
+    @Override
+    public String toString() {
+      return "ItemConstraints{"
+          + "itemType="
+          + itemType
+          + ", constraint="
+          + constraint
+          + ", itemPriceIds="
+          + itemPriceIds
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemConstraints that = (ItemConstraints) o;
+      return java.util.Objects.equals(itemType, that.itemType)
+          && java.util.Objects.equals(constraint, that.constraint)
+          && java.util.Objects.equals(itemPriceIds, that.itemPriceIds);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemType, constraint, itemPriceIds);
+    }
   }
 
   public static class ItemConstraintCriteria {
@@ -835,6 +1020,36 @@ public class Coupon {
               : null;
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "ItemConstraintCriteria{"
+          + "itemType="
+          + itemType
+          + ", currencies="
+          + currencies
+          + ", itemFamilyIds="
+          + itemFamilyIds
+          + ", itemPricePeriods="
+          + itemPricePeriods
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      ItemConstraintCriteria that = (ItemConstraintCriteria) o;
+      return java.util.Objects.equals(itemType, that.itemType)
+          && java.util.Objects.equals(currencies, that.currencies)
+          && java.util.Objects.equals(itemFamilyIds, that.itemFamilyIds)
+          && java.util.Objects.equals(itemPricePeriods, that.itemPricePeriods);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(itemType, currencies, itemFamilyIds, itemPricePeriods);
     }
   }
 
@@ -924,6 +1139,33 @@ public class Coupon {
       obj.value = JsonUtil.getString(json, "value");
 
       return obj;
+    }
+
+    @Override
+    public String toString() {
+      return "CouponConstraints{"
+          + "entityType="
+          + entityType
+          + ", type="
+          + type
+          + ", value="
+          + value
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      CouponConstraints that = (CouponConstraints) o;
+      return java.util.Objects.equals(entityType, that.entityType)
+          && java.util.Objects.equals(type, that.type)
+          && java.util.Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(entityType, type, value);
     }
   }
 }

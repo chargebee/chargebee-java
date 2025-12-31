@@ -154,6 +154,30 @@ public final class SubscriptionsForCustomerResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "SubscriptionsForCustomerResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionsForCustomerResponse that = (SubscriptionsForCustomerResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class SubscriptionSubscriptionsForCustomerItem {
 
     private Subscription subscription;
@@ -172,6 +196,24 @@ public final class SubscriptionsForCustomerResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "SubscriptionSubscriptionsForCustomerItem{" + "subscription=" + subscription + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      SubscriptionSubscriptionsForCustomerItem that = (SubscriptionSubscriptionsForCustomerItem) o;
+      return java.util.Objects.equals(subscription, that.subscription);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(subscription);
     }
   }
 }

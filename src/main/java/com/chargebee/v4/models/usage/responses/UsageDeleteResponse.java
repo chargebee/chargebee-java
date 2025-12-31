@@ -71,4 +71,22 @@ public final class UsageDeleteResponse extends BaseResponse {
   public Usage getUsage() {
     return usage;
   }
+
+  @Override
+  public String toString() {
+    return "UsageDeleteResponse{" + "usage=" + usage + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UsageDeleteResponse that = (UsageDeleteResponse) o;
+    return java.util.Objects.equals(usage, that.usage);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(usage);
+  }
 }

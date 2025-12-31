@@ -73,4 +73,22 @@ public final class FeatureActivateResponse extends BaseResponse {
   public Feature getFeature() {
     return feature;
   }
+
+  @Override
+  public String toString() {
+    return "FeatureActivateResponse{" + "feature=" + feature + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    FeatureActivateResponse that = (FeatureActivateResponse) o;
+    return java.util.Objects.equals(feature, that.feature);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(feature);
+  }
 }

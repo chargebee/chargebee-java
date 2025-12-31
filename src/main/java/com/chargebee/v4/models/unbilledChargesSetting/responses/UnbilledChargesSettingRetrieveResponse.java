@@ -71,4 +71,25 @@ public final class UnbilledChargesSettingRetrieveResponse extends BaseResponse {
   public Object getUnbilledChargesSetting() {
     return unbilledChargesSetting;
   }
+
+  @Override
+  public String toString() {
+    return "UnbilledChargesSettingRetrieveResponse{"
+        + "unbilledChargesSetting="
+        + unbilledChargesSetting
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UnbilledChargesSettingRetrieveResponse that = (UnbilledChargesSettingRetrieveResponse) o;
+    return java.util.Objects.equals(unbilledChargesSetting, that.unbilledChargesSetting);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(unbilledChargesSetting);
+  }
 }

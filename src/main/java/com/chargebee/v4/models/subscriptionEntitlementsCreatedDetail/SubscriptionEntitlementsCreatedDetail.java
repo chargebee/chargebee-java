@@ -31,4 +31,28 @@ public class SubscriptionEntitlementsCreatedDetail {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionEntitlementsCreatedDetail{"
+        + "subscriptionId="
+        + subscriptionId
+        + ", hasNext="
+        + hasNext
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionEntitlementsCreatedDetail that = (SubscriptionEntitlementsCreatedDetail) o;
+    return java.util.Objects.equals(subscriptionId, that.subscriptionId)
+        && java.util.Objects.equals(hasNext, that.hasNext);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(subscriptionId, hasNext);
+  }
 }

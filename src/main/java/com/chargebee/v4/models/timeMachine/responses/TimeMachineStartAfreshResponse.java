@@ -74,4 +74,22 @@ public final class TimeMachineStartAfreshResponse extends BaseResponse {
   public TimeMachine getTimeMachine() {
     return timeMachine;
   }
+
+  @Override
+  public String toString() {
+    return "TimeMachineStartAfreshResponse{" + "timeMachine=" + timeMachine + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TimeMachineStartAfreshResponse that = (TimeMachineStartAfreshResponse) o;
+    return java.util.Objects.equals(timeMachine, that.timeMachine);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(timeMachine);
+  }
 }

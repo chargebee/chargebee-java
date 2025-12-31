@@ -74,4 +74,22 @@ public final class PaymentIntentRetrieveResponse extends BaseResponse {
   public PaymentIntent getPaymentIntent() {
     return paymentIntent;
   }
+
+  @Override
+  public String toString() {
+    return "PaymentIntentRetrieveResponse{" + "paymentIntent=" + paymentIntent + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentIntentRetrieveResponse that = (PaymentIntentRetrieveResponse) o;
+    return java.util.Objects.equals(paymentIntent, that.paymentIntent);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(paymentIntent);
+  }
 }

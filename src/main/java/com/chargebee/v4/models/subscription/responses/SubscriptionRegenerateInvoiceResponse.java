@@ -100,4 +100,28 @@ public final class SubscriptionRegenerateInvoiceResponse extends BaseResponse {
   public List<UnbilledCharge> getUnbilledCharges() {
     return unbilledCharges;
   }
+
+  @Override
+  public String toString() {
+    return "SubscriptionRegenerateInvoiceResponse{"
+        + "invoice="
+        + invoice
+        + ", unbilledCharges="
+        + unbilledCharges
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SubscriptionRegenerateInvoiceResponse that = (SubscriptionRegenerateInvoiceResponse) o;
+    return java.util.Objects.equals(invoice, that.invoice)
+        && java.util.Objects.equals(unbilledCharges, that.unbilledCharges);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(invoice, unbilledCharges);
+  }
 }

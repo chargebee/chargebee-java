@@ -98,4 +98,28 @@ public final class QuoteCreateForOnetimeChargesResponse extends BaseResponse {
   public QuotedCharge getQuotedCharge() {
     return quotedCharge;
   }
+
+  @Override
+  public String toString() {
+    return "QuoteCreateForOnetimeChargesResponse{"
+        + "quote="
+        + quote
+        + ", quotedCharge="
+        + quotedCharge
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuoteCreateForOnetimeChargesResponse that = (QuoteCreateForOnetimeChargesResponse) o;
+    return java.util.Objects.equals(quote, that.quote)
+        && java.util.Objects.equals(quotedCharge, that.quotedCharge);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(quote, quotedCharge);
+  }
 }

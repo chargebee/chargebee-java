@@ -74,4 +74,22 @@ public final class CouponCodeArchiveResponse extends BaseResponse {
   public CouponCode getCouponCode() {
     return couponCode;
   }
+
+  @Override
+  public String toString() {
+    return "CouponCodeArchiveResponse{" + "couponCode=" + couponCode + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CouponCodeArchiveResponse that = (CouponCodeArchiveResponse) o;
+    return java.util.Objects.equals(couponCode, that.couponCode);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(couponCode);
+  }
 }

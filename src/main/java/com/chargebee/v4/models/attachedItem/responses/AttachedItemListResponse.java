@@ -150,6 +150,25 @@ public final class AttachedItemListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "AttachedItemListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AttachedItemListResponse that = (AttachedItemListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class AttachedItemListItem {
 
     private AttachedItem attachedItem;
@@ -167,6 +186,24 @@ public final class AttachedItemListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "AttachedItemListItem{" + "attachedItem=" + attachedItem + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      AttachedItemListItem that = (AttachedItemListItem) o;
+      return java.util.Objects.equals(attachedItem, that.attachedItem);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(attachedItem);
     }
   }
 }

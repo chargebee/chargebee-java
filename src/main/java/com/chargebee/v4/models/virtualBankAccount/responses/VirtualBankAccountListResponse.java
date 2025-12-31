@@ -146,6 +146,25 @@ public final class VirtualBankAccountListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "VirtualBankAccountListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VirtualBankAccountListResponse that = (VirtualBankAccountListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class VirtualBankAccountListItem {
 
     private VirtualBankAccount virtualBankAccount;
@@ -163,6 +182,24 @@ public final class VirtualBankAccountListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "VirtualBankAccountListItem{" + "virtualBankAccount=" + virtualBankAccount + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      VirtualBankAccountListItem that = (VirtualBankAccountListItem) o;
+      return java.util.Objects.equals(virtualBankAccount, that.virtualBankAccount);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(virtualBankAccount);
     }
   }
 }

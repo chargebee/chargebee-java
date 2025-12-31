@@ -122,4 +122,82 @@ public class GatewayErrorDetail {
 
     return obj;
   }
+
+  @Override
+  public String toString() {
+    return "GatewayErrorDetail{"
+        + "requestId="
+        + requestId
+        + ", errorCategory="
+        + errorCategory
+        + ", errorCode="
+        + errorCode
+        + ", errorMessage="
+        + errorMessage
+        + ", declineCode="
+        + declineCode
+        + ", declineMessage="
+        + declineMessage
+        + ", networkErrorCode="
+        + networkErrorCode
+        + ", networkErrorMessage="
+        + networkErrorMessage
+        + ", errorField="
+        + errorField
+        + ", recommendationCode="
+        + recommendationCode
+        + ", recommendationMessage="
+        + recommendationMessage
+        + ", processorErrorCode="
+        + processorErrorCode
+        + ", processorErrorMessage="
+        + processorErrorMessage
+        + ", errorCauseId="
+        + errorCauseId
+        + ", processorAdviceCode="
+        + processorAdviceCode
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GatewayErrorDetail that = (GatewayErrorDetail) o;
+    return java.util.Objects.equals(requestId, that.requestId)
+        && java.util.Objects.equals(errorCategory, that.errorCategory)
+        && java.util.Objects.equals(errorCode, that.errorCode)
+        && java.util.Objects.equals(errorMessage, that.errorMessage)
+        && java.util.Objects.equals(declineCode, that.declineCode)
+        && java.util.Objects.equals(declineMessage, that.declineMessage)
+        && java.util.Objects.equals(networkErrorCode, that.networkErrorCode)
+        && java.util.Objects.equals(networkErrorMessage, that.networkErrorMessage)
+        && java.util.Objects.equals(errorField, that.errorField)
+        && java.util.Objects.equals(recommendationCode, that.recommendationCode)
+        && java.util.Objects.equals(recommendationMessage, that.recommendationMessage)
+        && java.util.Objects.equals(processorErrorCode, that.processorErrorCode)
+        && java.util.Objects.equals(processorErrorMessage, that.processorErrorMessage)
+        && java.util.Objects.equals(errorCauseId, that.errorCauseId)
+        && java.util.Objects.equals(processorAdviceCode, that.processorAdviceCode);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(
+        requestId,
+        errorCategory,
+        errorCode,
+        errorMessage,
+        declineCode,
+        declineMessage,
+        networkErrorCode,
+        networkErrorMessage,
+        errorField,
+        recommendationCode,
+        recommendationMessage,
+        processorErrorCode,
+        processorErrorMessage,
+        errorCauseId,
+        processorAdviceCode);
+  }
 }

@@ -74,4 +74,22 @@ public final class CreditNoteDeleteResponse extends BaseResponse {
   public CreditNote getCreditNote() {
     return creditNote;
   }
+
+  @Override
+  public String toString() {
+    return "CreditNoteDeleteResponse{" + "creditNote=" + creditNote + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreditNoteDeleteResponse that = (CreditNoteDeleteResponse) o;
+    return java.util.Objects.equals(creditNote, that.creditNote);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(creditNote);
+  }
 }

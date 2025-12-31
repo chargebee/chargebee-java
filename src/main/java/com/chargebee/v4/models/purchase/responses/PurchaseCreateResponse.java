@@ -73,4 +73,22 @@ public final class PurchaseCreateResponse extends BaseResponse {
   public Purchase getPurchase() {
     return purchase;
   }
+
+  @Override
+  public String toString() {
+    return "PurchaseCreateResponse{" + "purchase=" + purchase + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PurchaseCreateResponse that = (PurchaseCreateResponse) o;
+    return java.util.Objects.equals(purchase, that.purchase);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(purchase);
+  }
 }

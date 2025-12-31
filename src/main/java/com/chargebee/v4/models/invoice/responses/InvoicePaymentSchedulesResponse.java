@@ -78,4 +78,22 @@ public final class InvoicePaymentSchedulesResponse extends BaseResponse {
   public List<PaymentSchedule> getPaymentSchedules() {
     return paymentSchedules;
   }
+
+  @Override
+  public String toString() {
+    return "InvoicePaymentSchedulesResponse{" + "paymentSchedules=" + paymentSchedules + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InvoicePaymentSchedulesResponse that = (InvoicePaymentSchedulesResponse) o;
+    return java.util.Objects.equals(paymentSchedules, that.paymentSchedules);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(paymentSchedules);
+  }
 }

@@ -51,4 +51,22 @@ public final class Pc2MigrationItemUpdateResponse extends BaseResponse {
       return new Pc2MigrationItemUpdateResponse(this);
     }
   }
+
+  @Override
+  public String toString() {
+    return "Pc2MigrationItemUpdateResponse{" + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Pc2MigrationItemUpdateResponse that = (Pc2MigrationItemUpdateResponse) o;
+    return;
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash();
+  }
 }

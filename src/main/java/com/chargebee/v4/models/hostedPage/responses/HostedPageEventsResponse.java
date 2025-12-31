@@ -69,4 +69,22 @@ public final class HostedPageEventsResponse extends BaseResponse {
   public Boolean getSuccess() {
     return success;
   }
+
+  @Override
+  public String toString() {
+    return "HostedPageEventsResponse{" + "success=" + success + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    HostedPageEventsResponse that = (HostedPageEventsResponse) o;
+    return java.util.Objects.equals(success, that.success);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(success);
+  }
 }

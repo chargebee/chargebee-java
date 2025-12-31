@@ -158,6 +158,31 @@ public final class ListEntitlementOverrideForSubscriptionResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "ListEntitlementOverrideForSubscriptionResponse{"
+        + "list="
+        + list
+        + ", nextOffset="
+        + nextOffset
+        + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ListEntitlementOverrideForSubscriptionResponse that =
+        (ListEntitlementOverrideForSubscriptionResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class EntitlementOverrideListEntitlementOverrideForSubscriptionItem {
 
     private EntitlementOverride entitlementOverride;
@@ -177,6 +202,28 @@ public final class ListEntitlementOverrideForSubscriptionResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "EntitlementOverrideListEntitlementOverrideForSubscriptionItem{"
+          + "entitlementOverride="
+          + entitlementOverride
+          + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      EntitlementOverrideListEntitlementOverrideForSubscriptionItem that =
+          (EntitlementOverrideListEntitlementOverrideForSubscriptionItem) o;
+      return java.util.Objects.equals(entitlementOverride, that.entitlementOverride);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(entitlementOverride);
     }
   }
 }

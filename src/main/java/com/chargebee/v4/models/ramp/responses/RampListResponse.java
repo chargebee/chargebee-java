@@ -140,6 +140,25 @@ public final class RampListResponse {
         .orElse(null);
   }
 
+  @Override
+  public String toString() {
+    return "RampListResponse{" + "list=" + list + ", nextOffset=" + nextOffset + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RampListResponse that = (RampListResponse) o;
+    return java.util.Objects.equals(list, that.list)
+        && java.util.Objects.equals(nextOffset, that.nextOffset);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(list, nextOffset);
+  }
+
   public static class RampListItem {
 
     private Ramp ramp;
@@ -157,6 +176,24 @@ public final class RampListResponse {
       }
 
       return item;
+    }
+
+    @Override
+    public String toString() {
+      return "RampListItem{" + "ramp=" + ramp + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      RampListItem that = (RampListItem) o;
+      return java.util.Objects.equals(ramp, that.ramp);
+    }
+
+    @Override
+    public int hashCode() {
+      return java.util.Objects.hash(ramp);
     }
   }
 }

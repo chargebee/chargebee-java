@@ -74,4 +74,22 @@ public final class VirtualBankAccountSyncFundResponse extends BaseResponse {
   public Transaction getTransaction() {
     return transaction;
   }
+
+  @Override
+  public String toString() {
+    return "VirtualBankAccountSyncFundResponse{" + "transaction=" + transaction + "}";
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VirtualBankAccountSyncFundResponse that = (VirtualBankAccountSyncFundResponse) o;
+    return java.util.Objects.equals(transaction, that.transaction);
+  }
+
+  @Override
+  public int hashCode() {
+    return java.util.Objects.hash(transaction);
+  }
 }
