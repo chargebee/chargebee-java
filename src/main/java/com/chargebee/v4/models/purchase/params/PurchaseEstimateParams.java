@@ -1522,7 +1522,7 @@ public final class PurchaseEstimateParams {
 
     private final String couponId;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Integer quantity;
 
@@ -1553,7 +1553,7 @@ public final class PurchaseEstimateParams {
       return couponId;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1618,7 +1618,7 @@ public final class PurchaseEstimateParams {
 
       private String couponId;
 
-      private Number percentage;
+      private Double percentage;
 
       private Integer quantity;
 
@@ -1638,7 +1638,7 @@ public final class PurchaseEstimateParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

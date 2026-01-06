@@ -1657,7 +1657,7 @@ public class Order {
 
     private String lineItemId;
     private String taxName;
-    private Number taxRate;
+    private Double taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
     private BigDecimal proratedTaxableAmount;
@@ -1679,7 +1679,7 @@ public class Order {
       return taxName;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1778,7 +1778,7 @@ public class Order {
 
       obj.taxName = JsonUtil.getString(json, "tax_name");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
 

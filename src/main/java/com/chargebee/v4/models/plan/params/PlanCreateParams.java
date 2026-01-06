@@ -54,7 +54,7 @@ public final class PlanCreateParams {
 
   private final AddonApplicability addonApplicability;
 
-  private final Number downgradePenalty;
+  private final Double downgradePenalty;
 
   private final String redirectUrl;
 
@@ -310,7 +310,7 @@ public final class PlanCreateParams {
     return addonApplicability;
   }
 
-  public Number getDowngradePenalty() {
+  public Double getDowngradePenalty() {
     return downgradePenalty;
   }
 
@@ -811,7 +811,7 @@ public final class PlanCreateParams {
 
     private AddonApplicability addonApplicability;
 
-    private Number downgradePenalty;
+    private Double downgradePenalty;
 
     private String redirectUrl;
 
@@ -978,7 +978,7 @@ public final class PlanCreateParams {
     }
 
     @Deprecated
-    public PlanCreateBuilder downgradePenalty(Number value) {
+    public PlanCreateBuilder downgradePenalty(Double value) {
       this.downgradePenalty = value;
       return this;
     }

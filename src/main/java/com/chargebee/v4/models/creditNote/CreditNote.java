@@ -949,7 +949,7 @@ public class CreditNote {
     private PricingModel pricingModel;
     private Boolean isTaxed;
     private Long taxAmount;
-    private Number taxRate;
+    private Double taxRate;
     private String unitAmountInDecimal;
     private String quantityInDecimal;
     private String amountInDecimal;
@@ -1005,7 +1005,7 @@ public class CreditNote {
       return taxAmount;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1204,7 +1204,7 @@ public class CreditNote {
 
       obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
 
@@ -1660,7 +1660,7 @@ public class CreditNote {
 
     private String lineItemId;
     private String taxName;
-    private Number taxRate;
+    private Double taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
     private BigDecimal proratedTaxableAmount;
@@ -1682,7 +1682,7 @@ public class CreditNote {
       return taxName;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1781,7 +1781,7 @@ public class CreditNote {
 
       obj.taxName = JsonUtil.getString(json, "tax_name");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
 

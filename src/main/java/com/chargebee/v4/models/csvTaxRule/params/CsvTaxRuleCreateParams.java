@@ -28,7 +28,7 @@ public final class CsvTaxRuleCreateParams {
 
   private final String tax1Name;
 
-  private final Number tax1Rate;
+  private final Double tax1Rate;
 
   private final Tax1JurisType tax1JurisType;
 
@@ -38,7 +38,7 @@ public final class CsvTaxRuleCreateParams {
 
   private final String tax2Name;
 
-  private final Number tax2Rate;
+  private final Double tax2Rate;
 
   private final Tax2JurisType tax2JurisType;
 
@@ -48,7 +48,7 @@ public final class CsvTaxRuleCreateParams {
 
   private final String tax3Name;
 
-  private final Number tax3Rate;
+  private final Double tax3Rate;
 
   private final Tax3JurisType tax3JurisType;
 
@@ -58,7 +58,7 @@ public final class CsvTaxRuleCreateParams {
 
   private final String tax4Name;
 
-  private final Number tax4Rate;
+  private final Double tax4Rate;
 
   private final Tax4JurisType tax4JurisType;
 
@@ -169,7 +169,7 @@ public final class CsvTaxRuleCreateParams {
     return tax1Name;
   }
 
-  public Number getTax1Rate() {
+  public Double getTax1Rate() {
     return tax1Rate;
   }
 
@@ -189,7 +189,7 @@ public final class CsvTaxRuleCreateParams {
     return tax2Name;
   }
 
-  public Number getTax2Rate() {
+  public Double getTax2Rate() {
     return tax2Rate;
   }
 
@@ -209,7 +209,7 @@ public final class CsvTaxRuleCreateParams {
     return tax3Name;
   }
 
-  public Number getTax3Rate() {
+  public Double getTax3Rate() {
     return tax3Rate;
   }
 
@@ -229,7 +229,7 @@ public final class CsvTaxRuleCreateParams {
     return tax4Name;
   }
 
-  public Number getTax4Rate() {
+  public Double getTax4Rate() {
     return tax4Rate;
   }
 
@@ -449,7 +449,7 @@ public final class CsvTaxRuleCreateParams {
 
     private String tax1Name;
 
-    private Number tax1Rate;
+    private Double tax1Rate;
 
     private Tax1JurisType tax1JurisType;
 
@@ -459,7 +459,7 @@ public final class CsvTaxRuleCreateParams {
 
     private String tax2Name;
 
-    private Number tax2Rate;
+    private Double tax2Rate;
 
     private Tax2JurisType tax2JurisType;
 
@@ -469,7 +469,7 @@ public final class CsvTaxRuleCreateParams {
 
     private String tax3Name;
 
-    private Number tax3Rate;
+    private Double tax3Rate;
 
     private Tax3JurisType tax3JurisType;
 
@@ -479,7 +479,7 @@ public final class CsvTaxRuleCreateParams {
 
     private String tax4Name;
 
-    private Number tax4Rate;
+    private Double tax4Rate;
 
     private Tax4JurisType tax4JurisType;
 
@@ -534,7 +534,7 @@ public final class CsvTaxRuleCreateParams {
       return this;
     }
 
-    public CsvTaxRuleCreateBuilder tax1Rate(Number value) {
+    public CsvTaxRuleCreateBuilder tax1Rate(Double value) {
       this.tax1Rate = value;
       return this;
     }
@@ -559,7 +559,7 @@ public final class CsvTaxRuleCreateParams {
       return this;
     }
 
-    public CsvTaxRuleCreateBuilder tax2Rate(Number value) {
+    public CsvTaxRuleCreateBuilder tax2Rate(Double value) {
       this.tax2Rate = value;
       return this;
     }
@@ -584,7 +584,7 @@ public final class CsvTaxRuleCreateParams {
       return this;
     }
 
-    public CsvTaxRuleCreateBuilder tax3Rate(Number value) {
+    public CsvTaxRuleCreateBuilder tax3Rate(Double value) {
       this.tax3Rate = value;
       return this;
     }
@@ -609,7 +609,7 @@ public final class CsvTaxRuleCreateParams {
       return this;
     }
 
-    public CsvTaxRuleCreateBuilder tax4Rate(Number value) {
+    public CsvTaxRuleCreateBuilder tax4Rate(Double value) {
       this.tax4Rate = value;
       return this;
     }

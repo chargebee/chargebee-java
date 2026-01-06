@@ -1771,7 +1771,7 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
 
     private final DurationType durationType;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -1814,7 +1814,7 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1906,7 +1906,7 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
 
       private DurationType durationType;
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -1932,7 +1932,7 @@ public final class CreateSubscriptionItemForCustomerEstimateParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

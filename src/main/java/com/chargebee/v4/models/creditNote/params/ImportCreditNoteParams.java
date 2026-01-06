@@ -1854,7 +1854,7 @@ public final class ImportCreditNoteParams {
 
     private final String name;
 
-    private final Number rate;
+    private final Double rate;
 
     private final Long amount;
 
@@ -1887,7 +1887,7 @@ public final class ImportCreditNoteParams {
       return name;
     }
 
-    public Number getRate() {
+    public Double getRate() {
       return rate;
     }
 
@@ -1963,7 +1963,7 @@ public final class ImportCreditNoteParams {
 
       private String name;
 
-      private Number rate;
+      private Double rate;
 
       private Long amount;
 
@@ -1982,7 +1982,7 @@ public final class ImportCreditNoteParams {
         return this;
       }
 
-      public TaxesBuilder rate(Number value) {
+      public TaxesBuilder rate(Double value) {
         this.rate = value;
         return this;
       }

@@ -1798,7 +1798,7 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     private final DurationType durationType;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -1849,7 +1849,7 @@ public final class HostedPageCheckoutExistingForItemsParams {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1959,7 +1959,7 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
       private DurationType durationType;
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -1989,7 +1989,7 @@ public final class HostedPageCheckoutExistingForItemsParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

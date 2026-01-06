@@ -980,7 +980,7 @@ public class SalesOrder {
     private Type type;
     private ApplyOn applyOn;
     private DurationType durationType;
-    private Number percentage;
+    private Double percentage;
     private String amount;
     private String couponId;
     private Integer period;
@@ -1009,7 +1009,7 @@ public class SalesOrder {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1174,7 +1174,7 @@ public class SalesOrder {
 
       obj.durationType = DurationType.fromString(JsonUtil.getString(json, "duration_type"));
 
-      obj.percentage = JsonUtil.getNumber(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(json, "percentage");
 
       obj.amount = JsonUtil.getString(json, "amount");
 

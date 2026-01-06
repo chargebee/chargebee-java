@@ -595,7 +595,7 @@ public class QuotedRamp {
     private String id;
     private String invoiceName;
     private Type type;
-    private Number percentage;
+    private Double percentage;
     private Long amount;
     private DurationType durationType;
     private EntityType entityType;
@@ -622,7 +622,7 @@ public class QuotedRamp {
       return type;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -837,7 +837,7 @@ public class QuotedRamp {
 
       obj.type = Type.fromString(JsonUtil.getString(json, "type"));
 
-      obj.percentage = JsonUtil.getNumber(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(json, "percentage");
 
       obj.amount = JsonUtil.getLong(json, "amount");
 

@@ -1217,7 +1217,7 @@ public class Invoice {
     private PricingModel pricingModel;
     private Boolean isTaxed;
     private Long taxAmount;
-    private Number taxRate;
+    private Double taxRate;
     private String unitAmountInDecimal;
     private String quantityInDecimal;
     private String amountInDecimal;
@@ -1273,7 +1273,7 @@ public class Invoice {
       return taxAmount;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1472,7 +1472,7 @@ public class Invoice {
 
       obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
 
@@ -1928,7 +1928,7 @@ public class Invoice {
 
     private String lineItemId;
     private String taxName;
-    private Number taxRate;
+    private Double taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
     private BigDecimal proratedTaxableAmount;
@@ -1950,7 +1950,7 @@ public class Invoice {
       return taxName;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -2049,7 +2049,7 @@ public class Invoice {
 
       obj.taxName = JsonUtil.getString(json, "tax_name");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
 
@@ -2162,14 +2162,14 @@ public class Invoice {
   public static class LineItemCredits {
 
     private String cnId;
-    private Number appliedAmount;
+    private Double appliedAmount;
     private String lineItemId;
 
     public String getCnId() {
       return cnId;
     }
 
-    public Number getAppliedAmount() {
+    public Double getAppliedAmount() {
       return appliedAmount;
     }
 
@@ -2182,7 +2182,7 @@ public class Invoice {
 
       obj.cnId = JsonUtil.getString(json, "cn_id");
 
-      obj.appliedAmount = JsonUtil.getNumber(json, "applied_amount");
+      obj.appliedAmount = JsonUtil.getDouble(json, "applied_amount");
 
       obj.lineItemId = JsonUtil.getString(json, "line_item_id");
 

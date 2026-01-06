@@ -782,7 +782,7 @@ public class Quote {
     private PricingModel pricingModel;
     private Boolean isTaxed;
     private Long taxAmount;
-    private Number taxRate;
+    private Double taxRate;
     private String unitAmountInDecimal;
     private String quantityInDecimal;
     private String amountInDecimal;
@@ -838,7 +838,7 @@ public class Quote {
       return taxAmount;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1037,7 +1037,7 @@ public class Quote {
 
       obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
 
@@ -1493,7 +1493,7 @@ public class Quote {
 
     private String lineItemId;
     private String taxName;
-    private Number taxRate;
+    private Double taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
     private BigDecimal proratedTaxableAmount;
@@ -1515,7 +1515,7 @@ public class Quote {
       return taxName;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1614,7 +1614,7 @@ public class Quote {
 
       obj.taxName = JsonUtil.getString(json, "tax_name");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
 

@@ -1630,7 +1630,7 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
   public static final class DiscountsParams {
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Integer quantity;
 
@@ -1653,7 +1653,7 @@ public final class QuoteEditForChargeItemsAndChargesParams {
       this.itemPriceId = builder.itemPriceId;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1713,7 +1713,7 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
     public static final class DiscountsBuilder {
 
-      private Number percentage;
+      private Double percentage;
 
       private Integer quantity;
 
@@ -1725,7 +1725,7 @@ public final class QuoteEditForChargeItemsAndChargesParams {
 
       private DiscountsBuilder() {}
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

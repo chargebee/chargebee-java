@@ -27,7 +27,7 @@ public final class CouponUpdateForItemsParams {
 
   private final String currencyCode;
 
-  private final Number discountPercentage;
+  private final Double discountPercentage;
 
   private final Integer discountQuantity;
 
@@ -131,7 +131,7 @@ public final class CouponUpdateForItemsParams {
     return currencyCode;
   }
 
-  public Number getDiscountPercentage() {
+  public Double getDiscountPercentage() {
     return discountPercentage;
   }
 
@@ -361,7 +361,7 @@ public final class CouponUpdateForItemsParams {
 
     private String currencyCode;
 
-    private Number discountPercentage;
+    private Double discountPercentage;
 
     private Integer discountQuantity;
 
@@ -422,7 +422,7 @@ public final class CouponUpdateForItemsParams {
       return this;
     }
 
-    public CouponUpdateForItemsBuilder discountPercentage(Number value) {
+    public CouponUpdateForItemsBuilder discountPercentage(Double value) {
       this.discountPercentage = value;
       return this;
     }

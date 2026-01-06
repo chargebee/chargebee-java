@@ -1493,7 +1493,7 @@ public final class PurchaseCreateParams {
 
     private final String couponId;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Integer quantity;
 
@@ -1524,7 +1524,7 @@ public final class PurchaseCreateParams {
       return couponId;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1589,7 +1589,7 @@ public final class PurchaseCreateParams {
 
       private String couponId;
 
-      private Number percentage;
+      private Double percentage;
 
       private Integer quantity;
 
@@ -1609,7 +1609,7 @@ public final class PurchaseCreateParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

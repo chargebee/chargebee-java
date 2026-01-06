@@ -1952,7 +1952,7 @@ public final class SubscriptionImportForItemsParams {
 
     private final DurationType durationType;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -1995,7 +1995,7 @@ public final class SubscriptionImportForItemsParams {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -2087,7 +2087,7 @@ public final class SubscriptionImportForItemsParams {
 
       private DurationType durationType;
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -2113,7 +2113,7 @@ public final class SubscriptionImportForItemsParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

@@ -28,7 +28,7 @@ public class Plan {
   @Deprecated private ChargeModel chargeModel;
   private Integer freeQuantity;
   private Long setupCost;
-  @Deprecated private Number downgradePenalty;
+  @Deprecated private Double downgradePenalty;
   private Status status;
   private Timestamp archivedAt;
   private Integer billingCycles;
@@ -134,7 +134,7 @@ public class Plan {
   }
 
   @Deprecated
-  public Number getDowngradePenalty() {
+  public Double getDowngradePenalty() {
     return downgradePenalty;
   }
 
@@ -779,7 +779,7 @@ public class Plan {
 
     obj.setupCost = JsonUtil.getLong(json, "setup_cost");
 
-    obj.downgradePenalty = JsonUtil.getNumber(json, "downgrade_penalty");
+    obj.downgradePenalty = JsonUtil.getDouble(json, "downgrade_penalty");
 
     obj.status = Status.fromString(JsonUtil.getString(json, "status"));
 

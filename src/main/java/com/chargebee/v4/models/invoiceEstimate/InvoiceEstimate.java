@@ -303,7 +303,7 @@ public class InvoiceEstimate {
     private PricingModel pricingModel;
     private Boolean isTaxed;
     private Long taxAmount;
-    private Number taxRate;
+    private Double taxRate;
     private String unitAmountInDecimal;
     private String quantityInDecimal;
     private String amountInDecimal;
@@ -359,7 +359,7 @@ public class InvoiceEstimate {
       return taxAmount;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -558,7 +558,7 @@ public class InvoiceEstimate {
 
       obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
 
@@ -1014,7 +1014,7 @@ public class InvoiceEstimate {
 
     private String lineItemId;
     private String taxName;
-    private Number taxRate;
+    private Double taxRate;
     private Timestamp dateTo;
     private Timestamp dateFrom;
     private BigDecimal proratedTaxableAmount;
@@ -1036,7 +1036,7 @@ public class InvoiceEstimate {
       return taxName;
     }
 
-    public Number getTaxRate() {
+    public Double getTaxRate() {
       return taxRate;
     }
 
@@ -1135,7 +1135,7 @@ public class InvoiceEstimate {
 
       obj.taxName = JsonUtil.getString(json, "tax_name");
 
-      obj.taxRate = JsonUtil.getNumber(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
 
       obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
 
@@ -1248,14 +1248,14 @@ public class InvoiceEstimate {
   public static class LineItemCredits {
 
     private String cnId;
-    private Number appliedAmount;
+    private Double appliedAmount;
     private String lineItemId;
 
     public String getCnId() {
       return cnId;
     }
 
-    public Number getAppliedAmount() {
+    public Double getAppliedAmount() {
       return appliedAmount;
     }
 
@@ -1268,7 +1268,7 @@ public class InvoiceEstimate {
 
       obj.cnId = JsonUtil.getString(json, "cn_id");
 
-      obj.appliedAmount = JsonUtil.getNumber(json, "applied_amount");
+      obj.appliedAmount = JsonUtil.getDouble(json, "applied_amount");
 
       obj.lineItemId = JsonUtil.getString(json, "line_item_id");
 

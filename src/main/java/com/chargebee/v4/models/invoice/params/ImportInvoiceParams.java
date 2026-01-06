@@ -2991,7 +2991,7 @@ public final class ImportInvoiceParams {
 
     private final String name;
 
-    private final Number rate;
+    private final Double rate;
 
     private final Long amount;
 
@@ -3024,7 +3024,7 @@ public final class ImportInvoiceParams {
       return name;
     }
 
-    public Number getRate() {
+    public Double getRate() {
       return rate;
     }
 
@@ -3100,7 +3100,7 @@ public final class ImportInvoiceParams {
 
       private String name;
 
-      private Number rate;
+      private Double rate;
 
       private Long amount;
 
@@ -3119,7 +3119,7 @@ public final class ImportInvoiceParams {
         return this;
       }
 
-      public TaxesBuilder rate(Number value) {
+      public TaxesBuilder rate(Double value) {
         this.rate = value;
         return this;
       }

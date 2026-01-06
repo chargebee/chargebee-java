@@ -267,7 +267,7 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
     private final DurationType durationType;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -314,7 +314,7 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -415,7 +415,7 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
 
       private DurationType durationType;
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -443,7 +443,7 @@ public final class PricingPageSessionCreateForExistingSubscriptionParams {
         return this;
       }
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

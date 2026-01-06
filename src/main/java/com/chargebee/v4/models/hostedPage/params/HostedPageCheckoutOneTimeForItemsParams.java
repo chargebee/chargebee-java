@@ -2571,7 +2571,7 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
   public static final class DiscountsParams {
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -2594,7 +2594,7 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
       this.itemPriceId = builder.itemPriceId;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -2654,7 +2654,7 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
     public static final class DiscountsBuilder {
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -2666,7 +2666,7 @@ public final class HostedPageCheckoutOneTimeForItemsParams {
 
       private DiscountsBuilder() {}
 
-      public DiscountsBuilder percentage(Number value) {
+      public DiscountsBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

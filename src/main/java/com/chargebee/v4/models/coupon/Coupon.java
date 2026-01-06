@@ -17,7 +17,7 @@ public class Coupon {
   private String name;
   private String invoiceName;
   private DiscountType discountType;
-  private Number discountPercentage;
+  private Double discountPercentage;
   private Long discountAmount;
   private Integer discountQuantity;
   private String currencyCode;
@@ -66,7 +66,7 @@ public class Coupon {
     return discountType;
   }
 
-  public Number getDiscountPercentage() {
+  public Double getDiscountPercentage() {
     return discountPercentage;
   }
 
@@ -544,7 +544,7 @@ public class Coupon {
 
     obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
 
-    obj.discountPercentage = JsonUtil.getNumber(json, "discount_percentage");
+    obj.discountPercentage = JsonUtil.getDouble(json, "discount_percentage");
 
     obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
 

@@ -389,7 +389,7 @@ public class OmnichannelSubscriptionItem {
     private String typeAtSource;
     private DiscountType discountType;
     private String duration;
-    private Number percentage;
+    private Double percentage;
     private String priceCurrency;
     private Long priceUnits;
     private Long priceNanos;
@@ -429,7 +429,7 @@ public class OmnichannelSubscriptionItem {
       return duration;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -566,7 +566,7 @@ public class OmnichannelSubscriptionItem {
 
       obj.duration = JsonUtil.getString(json, "duration");
 
-      obj.percentage = JsonUtil.getNumber(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(json, "percentage");
 
       obj.priceCurrency = JsonUtil.getString(json, "price_currency");
 

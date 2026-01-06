@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
@@ -14,7 +15,7 @@ class FormRequestBody extends RequestBody {
     private final Map<String, Object> data;
     
     FormRequestBody(Map<String, Object> data) {
-        this.data = new HashMap<>(data);
+        this.data = data != null ? new HashMap<>(data) : new HashMap<>();
     }
     
     @Override
@@ -45,7 +46,7 @@ class FormRequestBody extends RequestBody {
             } else if (value instanceof Map) {
                 encodeMap(buf, key, (Map<?, ?>) value);
             } else {
-                buf.append(urlEncode(key)).append('=').append(urlEncode(value.toString()));
+                buf.append(urlEncode(key)).append('=').append(urlEncode(valueToString(value)));
             }
         }
         return buf.toString();
@@ -57,7 +58,7 @@ class FormRequestBody extends RequestBody {
             String indexedKey = key + "[" + i + "]";
             Object value = list.get(i);
             buf.append(urlEncode(indexedKey)).append('=')
-               .append(urlEncode(value != null ? value.toString() : ""));
+               .append(urlEncode(valueToString(value)));
         }
     }
     
@@ -76,9 +77,24 @@ class FormRequestBody extends RequestBody {
                 encodeList(buf, key, (List<?>) value);
             } else {
                 buf.append(urlEncode(key)).append('=')
-                   .append(urlEncode(value != null ? value.toString() : ""));
+                   .append(urlEncode(valueToString(value)));
             }
         }
+    }
+    
+    /**
+     * Convert a value to its string representation for form encoding.
+     * Handles special types like Timestamp (converts to unix seconds).
+     */
+    private String valueToString(Object value) {
+        if (value == null) {
+            return "";
+        }
+        if (value instanceof Timestamp) {
+            // Convert Timestamp to unix timestamp (seconds since epoch)
+            return String.valueOf(((Timestamp) value).getTime() / 1000);
+        }
+        return value.toString();
     }
     
     private String urlEncode(String value) {

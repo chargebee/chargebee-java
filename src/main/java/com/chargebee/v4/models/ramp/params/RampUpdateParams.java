@@ -1323,7 +1323,7 @@ public final class RampUpdateParams {
 
     private final DurationType durationType;
 
-    private final Number percentage;
+    private final Double percentage;
 
     private final Long amount;
 
@@ -1362,7 +1362,7 @@ public final class RampUpdateParams {
       return durationType;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -1445,7 +1445,7 @@ public final class RampUpdateParams {
 
       private DurationType durationType;
 
-      private Number percentage;
+      private Double percentage;
 
       private Long amount;
 
@@ -1469,7 +1469,7 @@ public final class RampUpdateParams {
         return this;
       }
 
-      public DiscountsToAddBuilder percentage(Number value) {
+      public DiscountsToAddBuilder percentage(Double value) {
         this.percentage = value;
         return this;
       }

@@ -3075,7 +3075,7 @@ public class Subscription {
     private String id;
     private String invoiceName;
     private Type type;
-    private Number percentage;
+    private Double percentage;
     private Long amount;
     private Integer quantity;
     private String currencyCode;
@@ -3103,7 +3103,7 @@ public class Subscription {
       return type;
     }
 
-    public Number getPercentage() {
+    public Double getPercentage() {
       return percentage;
     }
 
@@ -3292,7 +3292,7 @@ public class Subscription {
 
       obj.type = Type.fromString(JsonUtil.getString(json, "type"));
 
-      obj.percentage = JsonUtil.getNumber(json, "percentage");
+      obj.percentage = JsonUtil.getDouble(json, "percentage");
 
       obj.amount = JsonUtil.getLong(json, "amount");
 
