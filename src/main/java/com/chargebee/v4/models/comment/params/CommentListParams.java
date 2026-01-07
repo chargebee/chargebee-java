@@ -8,8 +8,8 @@
 package com.chargebee.v4.models.comment.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -65,7 +65,7 @@ public final class CommentListParams {
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -76,35 +76,9 @@ public final class CommentListParams {
       return new CommentListParams(this);
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final CommentListBuilder builder;
-
-      CreatedAtFilter(String fieldName, CommentListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CommentListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CommentListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CommentListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CommentListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter extends TimestampFilter<CommentListBuilder> {
+      CreatedAtFilter(String fieldName, CommentListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

@@ -57,6 +57,12 @@ public final class ConfigurationService extends BaseService<ConfigurationService
     return get("/configurations", params != null ? params.toQueryParams() : null);
   }
 
+  /** list a configuration without params (executes immediately) - returns raw Response. */
+  Response listRaw() throws ChargebeeException {
+
+    return get("/configurations", null);
+  }
+
   /** list a configuration using raw JSON payload (executes immediately) - returns raw Response. */
   Response listRaw(String jsonPayload) throws ChargebeeException {
 
@@ -65,6 +71,12 @@ public final class ConfigurationService extends BaseService<ConfigurationService
 
   public ConfigurationListResponse list(ConfigurationListParams params) throws ChargebeeException {
     Response response = listRaw(params);
+
+    return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public ConfigurationListResponse list() throws ChargebeeException {
+    Response response = listRaw();
 
     return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }

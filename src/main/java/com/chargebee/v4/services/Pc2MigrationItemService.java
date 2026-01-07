@@ -181,6 +181,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
 
   public Pc2MigrationItemListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
@@ -247,6 +248,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
   public Pc2MigrationItemListApplicableAddonsResponse listApplicableAddons()
       throws ChargebeeException {
     Response response = listApplicableAddonsRaw();
+
     return Pc2MigrationItemListApplicableAddonsResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

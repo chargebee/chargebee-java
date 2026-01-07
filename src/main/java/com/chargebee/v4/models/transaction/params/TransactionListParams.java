@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.transaction.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,63 +62,63 @@ public final class TransactionListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public PaymentSourceIdFilter paymentSourceId() {
-      return new PaymentSourceIdFilter("payment_source_id", this);
+      return new PaymentSourceIdFilter("payment_source_id", this, queryParams);
     }
 
     public PaymentMethodFilter paymentMethod() {
-      return new PaymentMethodFilter("payment_method", this);
+      return new PaymentMethodFilter("payment_method", this, queryParams);
     }
 
     public GatewayFilter gateway() {
-      return new GatewayFilter("gateway", this);
+      return new GatewayFilter("gateway", this, queryParams);
     }
 
     public GatewayAccountIdFilter gatewayAccountId() {
-      return new GatewayAccountIdFilter("gateway_account_id", this);
+      return new GatewayAccountIdFilter("gateway_account_id", this, queryParams);
     }
 
     public IdAtGatewayFilter idAtGateway() {
-      return new IdAtGatewayFilter("id_at_gateway", this);
+      return new IdAtGatewayFilter("id_at_gateway", this, queryParams);
     }
 
     public ReferenceNumberFilter referenceNumber() {
-      return new ReferenceNumberFilter("reference_number", this);
+      return new ReferenceNumberFilter("reference_number", this, queryParams);
     }
 
     public TypeFilter type() {
-      return new TypeFilter("type", this);
+      return new TypeFilter("type", this, queryParams);
     }
 
     public DateFilter date() {
-      return new DateFilter("date", this);
+      return new DateFilter("date", this, queryParams);
     }
 
     public AmountFilter amount() {
-      return new AmountFilter("amount", this);
+      return new AmountFilter("amount", this, queryParams);
     }
 
     public AmountCapturableFilter amountCapturable() {
-      return new AmountCapturableFilter("amount_capturable", this);
+      return new AmountCapturableFilter("amount_capturable", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -127,486 +129,102 @@ public final class TransactionListParams {
       return new TransactionListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      IdFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<TransactionListBuilder> {
+      IdFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      CustomerIdFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<TransactionListBuilder> {
+      CustomerIdFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<TransactionListBuilder> {
+      SubscriptionIdFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PaymentSourceIdFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      PaymentSourceIdFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PaymentSourceIdFilter extends StringFilter<TransactionListBuilder> {
+      PaymentSourceIdFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PaymentMethodFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      PaymentMethodFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PaymentMethodFilter extends StringFilter<TransactionListBuilder> {
+      PaymentMethodFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class GatewayFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      GatewayFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class GatewayFilter extends StringFilter<TransactionListBuilder> {
+      GatewayFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class GatewayAccountIdFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      GatewayAccountIdFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class GatewayAccountIdFilter extends StringFilter<TransactionListBuilder> {
+      GatewayAccountIdFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IdAtGatewayFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      IdAtGatewayFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class IdAtGatewayFilter extends StringFilter<TransactionListBuilder> {
+      IdAtGatewayFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ReferenceNumberFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      ReferenceNumberFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class ReferenceNumberFilter extends StringFilter<TransactionListBuilder> {
+      ReferenceNumberFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TypeFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      TypeFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TypeFilter extends StringFilter<TransactionListBuilder> {
+      TypeFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class DateFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      DateFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class DateFilter extends TimestampFilter<TransactionListBuilder> {
+      DateFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      AmountFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountFilter extends NumberFilter<TransactionListBuilder> {
+      AmountFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountCapturableFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      AmountCapturableFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountCapturableFilter extends NumberFilter<TransactionListBuilder> {
+      AmountCapturableFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      StatusFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public TransactionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public TransactionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<TransactionListBuilder> {
+      StatusFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final TransactionListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, TransactionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public TransactionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public TransactionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<TransactionListBuilder> {
+      UpdatedAtFilter(
+          String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

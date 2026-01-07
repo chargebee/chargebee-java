@@ -490,6 +490,7 @@ public final class QuoteService extends BaseService<QuoteService> {
 
   public QuoteListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

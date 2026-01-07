@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.plan.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,64 +57,64 @@ public final class PlanListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public NameFilter name() {
-      return new NameFilter("name", this);
+      return new NameFilter("name", this, queryParams);
     }
 
     public PriceFilter price() {
-      return new PriceFilter("price", this);
+      return new PriceFilter("price", this, queryParams);
     }
 
     public PeriodFilter period() {
-      return new PeriodFilter("period", this);
+      return new PeriodFilter("period", this, queryParams);
     }
 
     public PeriodUnitFilter periodUnit() {
-      return new PeriodUnitFilter("period_unit", this);
+      return new PeriodUnitFilter("period_unit", this, queryParams);
     }
 
     public TrialPeriodFilter trialPeriod() {
-      return new TrialPeriodFilter("trial_period", this);
+      return new TrialPeriodFilter("trial_period", this, queryParams);
     }
 
     public TrialPeriodUnitFilter trialPeriodUnit() {
-      return new TrialPeriodUnitFilter("trial_period_unit", this);
+      return new TrialPeriodUnitFilter("trial_period_unit", this, queryParams);
     }
 
     public AddonApplicabilityFilter addonApplicability() {
-      return new AddonApplicabilityFilter("addon_applicability", this);
+      return new AddonApplicabilityFilter("addon_applicability", this, queryParams);
     }
 
     public GiftableFilter giftable() {
-      return new GiftableFilter("giftable", this);
+      return new GiftableFilter("giftable", this, queryParams);
     }
 
     @Deprecated
     public ChargeModelFilter chargeModel() {
-      return new ChargeModelFilter("charge_model", this);
+      return new ChargeModelFilter("charge_model", this, queryParams);
     }
 
     public PricingModelFilter pricingModel() {
-      return new PricingModelFilter("pricing_model", this);
+      return new PricingModelFilter("pricing_model", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public CurrencyCodeFilter currencyCode() {
-      return new CurrencyCodeFilter("currency_code", this);
+      return new CurrencyCodeFilter("currency_code", this, queryParams);
     }
 
     public ChannelFilter channel() {
-      return new ChannelFilter("channel", this);
+      return new ChannelFilter("channel", this, queryParams);
     }
 
     public PlanListBuilder includeDeleted(Boolean value) {
@@ -124,451 +126,94 @@ public final class PlanListParams {
       return new PlanListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      IdFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<PlanListBuilder> {
+      IdFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NameFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      NameFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class NameFilter extends StringFilter<PlanListBuilder> {
+      NameFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PriceFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      PriceFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class PriceFilter extends NumberFilter<PlanListBuilder> {
+      PriceFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PeriodFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      PeriodFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class PeriodFilter extends NumberFilter<PlanListBuilder> {
+      PeriodFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PeriodUnitFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      PeriodUnitFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PeriodUnitFilter extends StringFilter<PlanListBuilder> {
+      PeriodUnitFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TrialPeriodFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      TrialPeriodFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class TrialPeriodFilter extends NumberFilter<PlanListBuilder> {
+      TrialPeriodFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TrialPeriodUnitFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      TrialPeriodUnitFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TrialPeriodUnitFilter extends StringFilter<PlanListBuilder> {
+      TrialPeriodUnitFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AddonApplicabilityFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      AddonApplicabilityFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class AddonApplicabilityFilter extends StringFilter<PlanListBuilder> {
+      AddonApplicabilityFilter(
+          String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class GiftableFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      GiftableFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class GiftableFilter extends StringFilter<PlanListBuilder> {
+      GiftableFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChargeModelFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      ChargeModelFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChargeModelFilter extends StringFilter<PlanListBuilder> {
+      ChargeModelFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PricingModelFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      PricingModelFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PricingModelFilter extends StringFilter<PlanListBuilder> {
+      PricingModelFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      StatusFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<PlanListBuilder> {
+      StatusFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PlanListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PlanListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PlanListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<PlanListBuilder> {
+      UpdatedAtFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CurrencyCodeFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      CurrencyCodeFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CurrencyCodeFilter extends StringFilter<PlanListBuilder> {
+      CurrencyCodeFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChannelFilter {
-      private final String fieldName;
-      private final PlanListBuilder builder;
-
-      ChannelFilter(String fieldName, PlanListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PlanListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PlanListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PlanListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PlanListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChannelFilter extends StringFilter<PlanListBuilder> {
+      ChannelFilter(String fieldName, PlanListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

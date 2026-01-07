@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.siteMigrationDetail.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,161 +55,64 @@ public final class SiteMigrationDetailListParams {
     }
 
     public EntityIdAtOtherSiteFilter entityIdAtOtherSite() {
-      return new EntityIdAtOtherSiteFilter("entity_id_at_other_site", this);
+      return new EntityIdAtOtherSiteFilter("entity_id_at_other_site", this, queryParams);
     }
 
     public OtherSiteNameFilter otherSiteName() {
-      return new OtherSiteNameFilter("other_site_name", this);
+      return new OtherSiteNameFilter("other_site_name", this, queryParams);
     }
 
     public EntityIdFilter entityId() {
-      return new EntityIdFilter("entity_id", this);
+      return new EntityIdFilter("entity_id", this, queryParams);
     }
 
     public EntityTypeFilter entityType() {
-      return new EntityTypeFilter("entity_type", this);
+      return new EntityTypeFilter("entity_type", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public SiteMigrationDetailListParams build() {
       return new SiteMigrationDetailListParams(this);
     }
 
-    public static final class EntityIdAtOtherSiteFilter {
-      private final String fieldName;
-      private final SiteMigrationDetailListBuilder builder;
-
-      EntityIdAtOtherSiteFilter(String fieldName, SiteMigrationDetailListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SiteMigrationDetailListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class EntityIdAtOtherSiteFilter
+        extends StringFilter<SiteMigrationDetailListBuilder> {
+      EntityIdAtOtherSiteFilter(
+          String fieldName, SiteMigrationDetailListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class OtherSiteNameFilter {
-      private final String fieldName;
-      private final SiteMigrationDetailListBuilder builder;
-
-      OtherSiteNameFilter(String fieldName, SiteMigrationDetailListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SiteMigrationDetailListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class OtherSiteNameFilter
+        extends StringFilter<SiteMigrationDetailListBuilder> {
+      OtherSiteNameFilter(
+          String fieldName, SiteMigrationDetailListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EntityIdFilter {
-      private final String fieldName;
-      private final SiteMigrationDetailListBuilder builder;
-
-      EntityIdFilter(String fieldName, SiteMigrationDetailListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SiteMigrationDetailListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class EntityIdFilter extends StringFilter<SiteMigrationDetailListBuilder> {
+      EntityIdFilter(
+          String fieldName, SiteMigrationDetailListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EntityTypeFilter {
-      private final String fieldName;
-      private final SiteMigrationDetailListBuilder builder;
-
-      EntityTypeFilter(String fieldName, SiteMigrationDetailListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SiteMigrationDetailListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class EntityTypeFilter
+        extends StringFilter<SiteMigrationDetailListBuilder> {
+      EntityTypeFilter(
+          String fieldName, SiteMigrationDetailListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final SiteMigrationDetailListBuilder builder;
-
-      StatusFilter(String fieldName, SiteMigrationDetailListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SiteMigrationDetailListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SiteMigrationDetailListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<SiteMigrationDetailListBuilder> {
+      StatusFilter(
+          String fieldName, SiteMigrationDetailListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

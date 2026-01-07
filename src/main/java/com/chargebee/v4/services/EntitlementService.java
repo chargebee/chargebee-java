@@ -80,6 +80,7 @@ public final class EntitlementService extends BaseService<EntitlementService> {
 
   public EntitlementListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return EntitlementListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

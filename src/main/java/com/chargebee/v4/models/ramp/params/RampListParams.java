@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.ramp.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,19 +61,19 @@ public final class RampListParams {
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public EffectiveFromFilter effectiveFrom() {
-      return new EffectiveFromFilter("effective_from", this);
+      return new EffectiveFromFilter("effective_from", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -83,107 +84,27 @@ public final class RampListParams {
       return new RampListParams(this);
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final RampListBuilder builder;
-
-      StatusFilter(String fieldName, RampListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<RampListBuilder> {
+      StatusFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final RampListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, RampListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public RampListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public RampListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<RampListBuilder> {
+      SubscriptionIdFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EffectiveFromFilter {
-      private final String fieldName;
-      private final RampListBuilder builder;
-
-      EffectiveFromFilter(String fieldName, RampListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public RampListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class EffectiveFromFilter extends TimestampFilter<RampListBuilder> {
+      EffectiveFromFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final RampListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, RampListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public RampListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public RampListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<RampListBuilder> {
+      UpdatedAtFilter(String fieldName, RampListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

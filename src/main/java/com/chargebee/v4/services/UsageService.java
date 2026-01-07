@@ -201,6 +201,7 @@ public final class UsageService extends BaseService<UsageService> {
 
   public UsageListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return UsageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 }

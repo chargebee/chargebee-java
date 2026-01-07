@@ -112,6 +112,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
 
   public PromotionalCreditListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

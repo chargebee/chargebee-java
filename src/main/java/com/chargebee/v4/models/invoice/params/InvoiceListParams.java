@@ -8,6 +8,9 @@
 package com.chargebee.v4.models.invoice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
 import java.sql.Timestamp;
 import java.util.Collections;
@@ -66,79 +69,79 @@ public final class InvoiceListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public RecurringFilter recurring() {
-      return new RecurringFilter("recurring", this);
+      return new RecurringFilter("recurring", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public PriceTypeFilter priceType() {
-      return new PriceTypeFilter("price_type", this);
+      return new PriceTypeFilter("price_type", this, queryParams);
     }
 
     public DateFilter date() {
-      return new DateFilter("date", this);
+      return new DateFilter("date", this, queryParams);
     }
 
     public PaidAtFilter paidAt() {
-      return new PaidAtFilter("paid_at", this);
+      return new PaidAtFilter("paid_at", this, queryParams);
     }
 
     public TotalFilter total() {
-      return new TotalFilter("total", this);
+      return new TotalFilter("total", this, queryParams);
     }
 
     public AmountPaidFilter amountPaid() {
-      return new AmountPaidFilter("amount_paid", this);
+      return new AmountPaidFilter("amount_paid", this, queryParams);
     }
 
     public AmountAdjustedFilter amountAdjusted() {
-      return new AmountAdjustedFilter("amount_adjusted", this);
+      return new AmountAdjustedFilter("amount_adjusted", this, queryParams);
     }
 
     public CreditsAppliedFilter creditsApplied() {
-      return new CreditsAppliedFilter("credits_applied", this);
+      return new CreditsAppliedFilter("credits_applied", this, queryParams);
     }
 
     public AmountDueFilter amountDue() {
-      return new AmountDueFilter("amount_due", this);
+      return new AmountDueFilter("amount_due", this, queryParams);
     }
 
     public DunningStatusFilter dunningStatus() {
-      return new DunningStatusFilter("dunning_status", this);
+      return new DunningStatusFilter("dunning_status", this, queryParams);
     }
 
     public PaymentOwnerFilter paymentOwner() {
-      return new PaymentOwnerFilter("payment_owner", this);
+      return new PaymentOwnerFilter("payment_owner", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public ChannelFilter channel() {
-      return new ChannelFilter("channel", this);
+      return new ChannelFilter("channel", this, queryParams);
     }
 
     public VoidedAtFilter voidedAt() {
-      return new VoidedAtFilter("voided_at", this);
+      return new VoidedAtFilter("voided_at", this, queryParams);
     }
 
     public VoidReasonCodeFilter voidReasonCode() {
-      return new VoidReasonCodeFilter("void_reason_code", this);
+      return new VoidReasonCodeFilter("void_reason_code", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -154,586 +157,122 @@ public final class InvoiceListParams {
       return new InvoiceListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      IdFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<InvoiceListBuilder> {
+      IdFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<InvoiceListBuilder> {
+      SubscriptionIdFilter(
+          String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      CustomerIdFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<InvoiceListBuilder> {
+      CustomerIdFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class RecurringFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      RecurringFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class RecurringFilter extends StringFilter<InvoiceListBuilder> {
+      RecurringFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      StatusFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<InvoiceListBuilder> {
+      StatusFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PriceTypeFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      PriceTypeFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PriceTypeFilter extends StringFilter<InvoiceListBuilder> {
+      PriceTypeFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class DateFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      DateFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class DateFilter extends TimestampFilter<InvoiceListBuilder> {
+      DateFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PaidAtFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      PaidAtFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class PaidAtFilter extends TimestampFilter<InvoiceListBuilder> {
+      PaidAtFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TotalFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      TotalFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class TotalFilter extends NumberFilter<InvoiceListBuilder> {
+      TotalFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountPaidFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      AmountPaidFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountPaidFilter extends NumberFilter<InvoiceListBuilder> {
+      AmountPaidFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountAdjustedFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      AmountAdjustedFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountAdjustedFilter extends NumberFilter<InvoiceListBuilder> {
+      AmountAdjustedFilter(
+          String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreditsAppliedFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      CreditsAppliedFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreditsAppliedFilter extends NumberFilter<InvoiceListBuilder> {
+      CreditsAppliedFilter(
+          String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountDueFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      AmountDueFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountDueFilter extends NumberFilter<InvoiceListBuilder> {
+      AmountDueFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class DunningStatusFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      DunningStatusFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class DunningStatusFilter extends StringFilter<InvoiceListBuilder> {
+      DunningStatusFilter(
+          String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PaymentOwnerFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      PaymentOwnerFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PaymentOwnerFilter extends StringFilter<InvoiceListBuilder> {
+      PaymentOwnerFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<InvoiceListBuilder> {
+      UpdatedAtFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChannelFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      ChannelFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChannelFilter extends StringFilter<InvoiceListBuilder> {
+      ChannelFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class VoidedAtFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      VoidedAtFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public InvoiceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class VoidedAtFilter extends TimestampFilter<InvoiceListBuilder> {
+      VoidedAtFilter(String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class VoidReasonCodeFilter {
-      private final String fieldName;
-      private final InvoiceListBuilder builder;
-
-      VoidReasonCodeFilter(String fieldName, InvoiceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public InvoiceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public InvoiceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class VoidReasonCodeFilter extends StringFilter<InvoiceListBuilder> {
+      VoidReasonCodeFilter(
+          String fieldName, InvoiceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
@@ -1206,40 +745,16 @@ public final class InvoiceListParams {
       private EinvoiceBuilder() {}
 
       public StatusFilter status() {
-        return new StatusFilter("status", this);
+        return new StatusFilter("status", this, queryParams);
       }
 
       public EinvoiceParams build() {
         return new EinvoiceParams(this);
       }
 
-      public static final class StatusFilter {
-        private final String fieldName;
-        private final EinvoiceBuilder builder;
-
-        StatusFilter(String fieldName, EinvoiceBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public EinvoiceBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public EinvoiceBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public EinvoiceBuilder in(String... values) {
-          builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-          return builder;
-        }
-
-        public EinvoiceBuilder notIn(String... values) {
-          builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-          return builder;
+      public static final class StatusFilter extends StringFilter<EinvoiceBuilder> {
+        StatusFilter(String fieldName, EinvoiceBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

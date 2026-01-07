@@ -60,6 +60,12 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
     return get("/business_profiles", params != null ? params.toQueryParams() : null);
   }
 
+  /** retrieve a businessProfile without params (executes immediately) - returns raw Response. */
+  Response retrieveRaw() throws ChargebeeException {
+
+    return get("/business_profiles", null);
+  }
+
   /**
    * retrieve a businessProfile using raw JSON payload (executes immediately) - returns raw
    * Response.
@@ -72,6 +78,12 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
   public BusinessProfileRetrieveResponse retrieve(BusinessProfileRetrieveParams params)
       throws ChargebeeException {
     Response response = retrieveRaw(params);
+
+    return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public BusinessProfileRetrieveResponse retrieve() throws ChargebeeException {
+    Response response = retrieveRaw();
 
     return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

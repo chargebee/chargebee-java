@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.businessEntity.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,19 +56,19 @@ public final class BusinessEntityGetTransfersParams {
     }
 
     public ResourceTypeFilter resourceType() {
-      return new ResourceTypeFilter("resource_type", this);
+      return new ResourceTypeFilter("resource_type", this, queryParams);
     }
 
     public ResourceIdFilter resourceId() {
-      return new ResourceIdFilter("resource_id", this);
+      return new ResourceIdFilter("resource_id", this, queryParams);
     }
 
     public ActiveResourceIdFilter activeResourceId() {
-      return new ActiveResourceIdFilter("active_resource_id", this);
+      return new ActiveResourceIdFilter("active_resource_id", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -78,80 +79,35 @@ public final class BusinessEntityGetTransfersParams {
       return new BusinessEntityGetTransfersParams(this);
     }
 
-    public static final class ResourceTypeFilter {
-      private final String fieldName;
-      private final BusinessEntityGetTransfersBuilder builder;
-
-      ResourceTypeFilter(String fieldName, BusinessEntityGetTransfersBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class ResourceTypeFilter
+        extends StringFilter<BusinessEntityGetTransfersBuilder> {
+      ResourceTypeFilter(
+          String fieldName, BusinessEntityGetTransfersBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ResourceIdFilter {
-      private final String fieldName;
-      private final BusinessEntityGetTransfersBuilder builder;
-
-      ResourceIdFilter(String fieldName, BusinessEntityGetTransfersBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class ResourceIdFilter
+        extends StringFilter<BusinessEntityGetTransfersBuilder> {
+      ResourceIdFilter(
+          String fieldName, BusinessEntityGetTransfersBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ActiveResourceIdFilter {
-      private final String fieldName;
-      private final BusinessEntityGetTransfersBuilder builder;
-
-      ActiveResourceIdFilter(String fieldName, BusinessEntityGetTransfersBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class ActiveResourceIdFilter
+        extends StringFilter<BusinessEntityGetTransfersBuilder> {
+      ActiveResourceIdFilter(
+          String fieldName, BusinessEntityGetTransfersBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final BusinessEntityGetTransfersBuilder builder;
-
-      CreatedAtFilter(String fieldName, BusinessEntityGetTransfersBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public BusinessEntityGetTransfersBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter
+        extends TimestampFilter<BusinessEntityGetTransfersBuilder> {
+      CreatedAtFilter(
+          String fieldName, BusinessEntityGetTransfersBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.paymentSource.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -65,23 +66,23 @@ public final class PaymentSourceListParams {
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public TypeFilter type() {
-      return new TypeFilter("type", this);
+      return new TypeFilter("type", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -92,162 +93,36 @@ public final class PaymentSourceListParams {
       return new PaymentSourceListParams(this);
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final PaymentSourceListBuilder builder;
-
-      CustomerIdFilter(String fieldName, PaymentSourceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentSourceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PaymentSourceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<PaymentSourceListBuilder> {
+      CustomerIdFilter(
+          String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TypeFilter {
-      private final String fieldName;
-      private final PaymentSourceListBuilder builder;
-
-      TypeFilter(String fieldName, PaymentSourceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentSourceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PaymentSourceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TypeFilter extends StringFilter<PaymentSourceListBuilder> {
+      TypeFilter(String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final PaymentSourceListBuilder builder;
-
-      StatusFilter(String fieldName, PaymentSourceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentSourceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PaymentSourceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<PaymentSourceListBuilder> {
+      StatusFilter(String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final PaymentSourceListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, PaymentSourceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentSourceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<PaymentSourceListBuilder> {
+      UpdatedAtFilter(
+          String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final PaymentSourceListBuilder builder;
-
-      CreatedAtFilter(String fieldName, PaymentSourceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentSourceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PaymentSourceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter extends TimestampFilter<PaymentSourceListBuilder> {
+      CreatedAtFilter(
+          String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.itemFamily.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,153 +56,59 @@ public final class ItemFamilyListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public NameFilter name() {
-      return new NameFilter("name", this);
+      return new NameFilter("name", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public BusinessEntityIdFilter businessEntityId() {
-      return new BusinessEntityIdFilter("business_entity_id", this);
+      return new BusinessEntityIdFilter("business_entity_id", this, queryParams);
     }
 
     public IncludeSiteLevelResourcesFilter includeSiteLevelResources() {
-      return new IncludeSiteLevelResourcesFilter("include_site_level_resources", this);
+      return new IncludeSiteLevelResourcesFilter("include_site_level_resources", this, queryParams);
     }
 
     public ItemFamilyListParams build() {
       return new ItemFamilyListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final ItemFamilyListBuilder builder;
-
-      IdFilter(String fieldName, ItemFamilyListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemFamilyListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<ItemFamilyListBuilder> {
+      IdFilter(String fieldName, ItemFamilyListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NameFilter {
-      private final String fieldName;
-      private final ItemFamilyListBuilder builder;
-
-      NameFilter(String fieldName, ItemFamilyListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class NameFilter extends StringFilter<ItemFamilyListBuilder> {
+      NameFilter(String fieldName, ItemFamilyListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final ItemFamilyListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, ItemFamilyListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemFamilyListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemFamilyListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<ItemFamilyListBuilder> {
+      UpdatedAtFilter(String fieldName, ItemFamilyListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class BusinessEntityIdFilter {
-      private final String fieldName;
-      private final ItemFamilyListBuilder builder;
-
-      BusinessEntityIdFilter(String fieldName, ItemFamilyListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemFamilyListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class BusinessEntityIdFilter extends StringFilter<ItemFamilyListBuilder> {
+      BusinessEntityIdFilter(
+          String fieldName, ItemFamilyListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IncludeSiteLevelResourcesFilter {
-      private final String fieldName;
-      private final ItemFamilyListBuilder builder;
-
-      IncludeSiteLevelResourcesFilter(String fieldName, ItemFamilyListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemFamilyListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class IncludeSiteLevelResourcesFilter
+        extends StringFilter<ItemFamilyListBuilder> {
+      IncludeSiteLevelResourcesFilter(
+          String fieldName, ItemFamilyListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

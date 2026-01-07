@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.creditNote.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,67 +62,67 @@ public final class CreditNoteListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public ReferenceInvoiceIdFilter referenceInvoiceId() {
-      return new ReferenceInvoiceIdFilter("reference_invoice_id", this);
+      return new ReferenceInvoiceIdFilter("reference_invoice_id", this, queryParams);
     }
 
     public TypeFilter type() {
-      return new TypeFilter("type", this);
+      return new TypeFilter("type", this, queryParams);
     }
 
     public ReasonCodeFilter reasonCode() {
-      return new ReasonCodeFilter("reason_code", this);
+      return new ReasonCodeFilter("reason_code", this, queryParams);
     }
 
     public CreateReasonCodeFilter createReasonCode() {
-      return new CreateReasonCodeFilter("create_reason_code", this);
+      return new CreateReasonCodeFilter("create_reason_code", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public DateFilter date() {
-      return new DateFilter("date", this);
+      return new DateFilter("date", this, queryParams);
     }
 
     public TotalFilter total() {
-      return new TotalFilter("total", this);
+      return new TotalFilter("total", this, queryParams);
     }
 
     public PriceTypeFilter priceType() {
-      return new PriceTypeFilter("price_type", this);
+      return new PriceTypeFilter("price_type", this, queryParams);
     }
 
     public AmountAllocatedFilter amountAllocated() {
-      return new AmountAllocatedFilter("amount_allocated", this);
+      return new AmountAllocatedFilter("amount_allocated", this, queryParams);
     }
 
     public AmountRefundedFilter amountRefunded() {
-      return new AmountRefundedFilter("amount_refunded", this);
+      return new AmountRefundedFilter("amount_refunded", this, queryParams);
     }
 
     public AmountAvailableFilter amountAvailable() {
-      return new AmountAvailableFilter("amount_available", this);
+      return new AmountAvailableFilter("amount_available", this, queryParams);
     }
 
     public VoidedAtFilter voidedAt() {
-      return new VoidedAtFilter("voided_at", this);
+      return new VoidedAtFilter("voided_at", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -128,7 +130,7 @@ public final class CreditNoteListParams {
     }
 
     public ChannelFilter channel() {
-      return new ChannelFilter("channel", this);
+      return new ChannelFilter("channel", this, queryParams);
     }
 
     public CreditNoteListBuilder einvoice(EinvoiceParams value) {
@@ -140,542 +142,113 @@ public final class CreditNoteListParams {
       return new CreditNoteListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      IdFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<CreditNoteListBuilder> {
+      IdFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      CustomerIdFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<CreditNoteListBuilder> {
+      CustomerIdFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<CreditNoteListBuilder> {
+      SubscriptionIdFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ReferenceInvoiceIdFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      ReferenceInvoiceIdFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ReferenceInvoiceIdFilter extends StringFilter<CreditNoteListBuilder> {
+      ReferenceInvoiceIdFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TypeFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      TypeFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TypeFilter extends StringFilter<CreditNoteListBuilder> {
+      TypeFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ReasonCodeFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      ReasonCodeFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ReasonCodeFilter extends StringFilter<CreditNoteListBuilder> {
+      ReasonCodeFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreateReasonCodeFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      CreateReasonCodeFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CreateReasonCodeFilter extends StringFilter<CreditNoteListBuilder> {
+      CreateReasonCodeFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      StatusFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<CreditNoteListBuilder> {
+      StatusFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class DateFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      DateFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class DateFilter extends TimestampFilter<CreditNoteListBuilder> {
+      DateFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TotalFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      TotalFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class TotalFilter extends NumberFilter<CreditNoteListBuilder> {
+      TotalFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PriceTypeFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      PriceTypeFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PriceTypeFilter extends StringFilter<CreditNoteListBuilder> {
+      PriceTypeFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountAllocatedFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      AmountAllocatedFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountAllocatedFilter extends NumberFilter<CreditNoteListBuilder> {
+      AmountAllocatedFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountRefundedFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      AmountRefundedFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountRefundedFilter extends NumberFilter<CreditNoteListBuilder> {
+      AmountRefundedFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AmountAvailableFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      AmountAvailableFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class AmountAvailableFilter extends NumberFilter<CreditNoteListBuilder> {
+      AmountAvailableFilter(
+          String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class VoidedAtFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      VoidedAtFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class VoidedAtFilter extends TimestampFilter<CreditNoteListBuilder> {
+      VoidedAtFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public CreditNoteListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<CreditNoteListBuilder> {
+      UpdatedAtFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChannelFilter {
-      private final String fieldName;
-      private final CreditNoteListBuilder builder;
-
-      ChannelFilter(String fieldName, CreditNoteListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CreditNoteListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CreditNoteListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CreditNoteListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChannelFilter extends StringFilter<CreditNoteListBuilder> {
+      ChannelFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
@@ -1197,40 +770,16 @@ public final class CreditNoteListParams {
       private EinvoiceBuilder() {}
 
       public StatusFilter status() {
-        return new StatusFilter("status", this);
+        return new StatusFilter("status", this, queryParams);
       }
 
       public EinvoiceParams build() {
         return new EinvoiceParams(this);
       }
 
-      public static final class StatusFilter {
-        private final String fieldName;
-        private final EinvoiceBuilder builder;
-
-        StatusFilter(String fieldName, EinvoiceBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public EinvoiceBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public EinvoiceBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public EinvoiceBuilder in(String... values) {
-          builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-          return builder;
-        }
-
-        public EinvoiceBuilder notIn(String... values) {
-          builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-          return builder;
+      public static final class StatusFilter extends StringFilter<EinvoiceBuilder> {
+        StatusFilter(String fieldName, EinvoiceBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

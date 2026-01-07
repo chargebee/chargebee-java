@@ -587,6 +587,7 @@ public final class CustomerService extends BaseService<CustomerService> {
 
   public CustomerListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

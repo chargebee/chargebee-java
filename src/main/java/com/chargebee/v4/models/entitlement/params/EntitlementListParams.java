@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.entitlement.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,15 +55,15 @@ public final class EntitlementListParams {
     }
 
     public FeatureIdFilter featureId() {
-      return new FeatureIdFilter("feature_id", this);
+      return new FeatureIdFilter("feature_id", this, queryParams);
     }
 
     public EntityTypeFilter entityType() {
-      return new EntityTypeFilter("entity_type", this);
+      return new EntityTypeFilter("entity_type", this, queryParams);
     }
 
     public EntityIdFilter entityId() {
-      return new EntityIdFilter("entity_id", this);
+      return new EntityIdFilter("entity_id", this, queryParams);
     }
 
     @Deprecated
@@ -81,63 +82,23 @@ public final class EntitlementListParams {
       return new EntitlementListParams(this);
     }
 
-    public static final class FeatureIdFilter {
-      private final String fieldName;
-      private final EntitlementListBuilder builder;
-
-      FeatureIdFilter(String fieldName, EntitlementListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class FeatureIdFilter extends StringFilter<EntitlementListBuilder> {
+      FeatureIdFilter(
+          String fieldName, EntitlementListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EntityTypeFilter {
-      private final String fieldName;
-      private final EntitlementListBuilder builder;
-
-      EntityTypeFilter(String fieldName, EntitlementListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class EntityTypeFilter extends StringFilter<EntitlementListBuilder> {
+      EntityTypeFilter(
+          String fieldName, EntitlementListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EntityIdFilter {
-      private final String fieldName;
-      private final EntitlementListBuilder builder;
-
-      EntityIdFilter(String fieldName, EntitlementListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EntitlementListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EntitlementListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class EntityIdFilter extends StringFilter<EntitlementListBuilder> {
+      EntityIdFilter(String fieldName, EntitlementListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

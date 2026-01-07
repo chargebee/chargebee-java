@@ -94,6 +94,7 @@ public final class FeatureService extends BaseService<FeatureService> {
 
   public FeatureListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

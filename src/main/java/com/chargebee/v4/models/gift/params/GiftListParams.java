@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.gift.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,7 +55,7 @@ public final class GiftListParams {
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public GiftListBuilder giftReceiver(GiftReceiverParams value) {
@@ -71,33 +72,9 @@ public final class GiftListParams {
       return new GiftListParams(this);
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final GiftListBuilder builder;
-
-      StatusFilter(String fieldName, GiftListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public GiftListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public GiftListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public GiftListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public GiftListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<GiftListBuilder> {
+      StatusFilter(String fieldName, GiftListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }
@@ -201,64 +178,27 @@ public final class GiftListParams {
       private GiftReceiverBuilder() {}
 
       public EmailFilter email() {
-        return new EmailFilter("email", this);
+        return new EmailFilter("email", this, queryParams);
       }
 
       public CustomerIdFilter customerId() {
-        return new CustomerIdFilter("customer_id", this);
+        return new CustomerIdFilter("customer_id", this, queryParams);
       }
 
       public GiftReceiverParams build() {
         return new GiftReceiverParams(this);
       }
 
-      public static final class EmailFilter {
-        private final String fieldName;
-        private final GiftReceiverBuilder builder;
-
-        EmailFilter(String fieldName, GiftReceiverBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public GiftReceiverBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public GiftReceiverBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public GiftReceiverBuilder startsWith(String value) {
-          builder.queryParams.put(fieldName + "[starts_with]", value);
-          return builder;
+      public static final class EmailFilter extends StringFilter<GiftReceiverBuilder> {
+        EmailFilter(String fieldName, GiftReceiverBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class CustomerIdFilter {
-        private final String fieldName;
-        private final GiftReceiverBuilder builder;
-
-        CustomerIdFilter(String fieldName, GiftReceiverBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public GiftReceiverBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public GiftReceiverBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public GiftReceiverBuilder startsWith(String value) {
-          builder.queryParams.put(fieldName + "[starts_with]", value);
-          return builder;
+      public static final class CustomerIdFilter extends StringFilter<GiftReceiverBuilder> {
+        CustomerIdFilter(
+            String fieldName, GiftReceiverBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }
@@ -295,35 +235,16 @@ public final class GiftListParams {
       private GifterBuilder() {}
 
       public CustomerIdFilter customerId() {
-        return new CustomerIdFilter("customer_id", this);
+        return new CustomerIdFilter("customer_id", this, queryParams);
       }
 
       public GifterParams build() {
         return new GifterParams(this);
       }
 
-      public static final class CustomerIdFilter {
-        private final String fieldName;
-        private final GifterBuilder builder;
-
-        CustomerIdFilter(String fieldName, GifterBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public GifterBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public GifterBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public GifterBuilder startsWith(String value) {
-          builder.queryParams.put(fieldName + "[starts_with]", value);
-          return builder;
+      public static final class CustomerIdFilter extends StringFilter<GifterBuilder> {
+        CustomerIdFilter(String fieldName, GifterBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

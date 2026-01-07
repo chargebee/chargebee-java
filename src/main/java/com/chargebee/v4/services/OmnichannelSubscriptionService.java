@@ -224,6 +224,7 @@ public final class OmnichannelSubscriptionService
 
   public OmnichannelSubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return OmnichannelSubscriptionListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

@@ -114,6 +114,7 @@ public final class TransactionService extends BaseService<TransactionService> {
 
   public TransactionListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

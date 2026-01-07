@@ -103,6 +103,7 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
 
   public PriceVariantListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

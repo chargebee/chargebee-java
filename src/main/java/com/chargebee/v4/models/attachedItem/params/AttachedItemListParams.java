@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.attachedItem.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,222 +56,69 @@ public final class AttachedItemListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public ItemIdFilter itemId() {
-      return new ItemIdFilter("item_id", this);
+      return new ItemIdFilter("item_id", this, queryParams);
     }
 
     public TypeFilter type() {
-      return new TypeFilter("type", this);
+      return new TypeFilter("type", this, queryParams);
     }
 
     public ItemTypeFilter itemType() {
-      return new ItemTypeFilter("item_type", this);
+      return new ItemTypeFilter("item_type", this, queryParams);
     }
 
     public ChargeOnEventFilter chargeOnEvent() {
-      return new ChargeOnEventFilter("charge_on_event", this);
+      return new ChargeOnEventFilter("charge_on_event", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public AttachedItemListParams build() {
       return new AttachedItemListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      IdFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public AttachedItemListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<AttachedItemListBuilder> {
+      IdFilter(String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemIdFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      ItemIdFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public AttachedItemListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemIdFilter extends StringFilter<AttachedItemListBuilder> {
+      ItemIdFilter(String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TypeFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      TypeFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public AttachedItemListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TypeFilter extends StringFilter<AttachedItemListBuilder> {
+      TypeFilter(String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemTypeFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      ItemTypeFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public AttachedItemListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemTypeFilter extends StringFilter<AttachedItemListBuilder> {
+      ItemTypeFilter(
+          String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChargeOnEventFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      ChargeOnEventFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public AttachedItemListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public AttachedItemListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChargeOnEventFilter extends StringFilter<AttachedItemListBuilder> {
+      ChargeOnEventFilter(
+          String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final AttachedItemListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, AttachedItemListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public AttachedItemListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public AttachedItemListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public AttachedItemListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public AttachedItemListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<AttachedItemListBuilder> {
+      UpdatedAtFilter(
+          String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

@@ -7,25 +7,26 @@
 package com.chargebee.v4.models.export.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class ExportDifferentialPricesParams {
 
-  private final ItemIdParams itemId;
-
   private final DifferentialPriceParams differentialPrice;
+
+  private final Map<String, Object> filterParams;
 
   private ExportDifferentialPricesParams(ExportDifferentialPricesBuilder builder) {
 
-    this.itemId = builder.itemId;
-
     this.differentialPrice = builder.differentialPrice;
-  }
 
-  public ItemIdParams getItemId() {
-    return itemId;
+    this.filterParams =
+        builder.filterParams.isEmpty()
+            ? Collections.emptyMap()
+            : Collections.unmodifiableMap(new LinkedHashMap<>(builder.filterParams));
   }
 
   public DifferentialPriceParams getDifferentialPrice() {
@@ -36,16 +37,6 @@ public final class ExportDifferentialPricesParams {
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
 
-    if (this.itemId != null) {
-
-      // Single object
-      Map<String, Object> nestedData = this.itemId.toFormData();
-      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "item_id[" + entry.getKey() + "]";
-        formData.put(nestedKey, entry.getValue());
-      }
-    }
-
     if (this.differentialPrice != null) {
 
       // Single object
@@ -55,6 +46,9 @@ public final class ExportDifferentialPricesParams {
         formData.put(nestedKey, entry.getValue());
       }
     }
+
+    // Add filter params
+    formData.putAll(filterParams);
 
     return formData;
   }
@@ -67,15 +61,14 @@ public final class ExportDifferentialPricesParams {
 
   public static final class ExportDifferentialPricesBuilder {
 
-    private ItemIdParams itemId;
-
     private DifferentialPriceParams differentialPrice;
+
+    private final Map<String, Object> filterParams = new LinkedHashMap<>();
 
     private ExportDifferentialPricesBuilder() {}
 
-    public ExportDifferentialPricesBuilder itemId(ItemIdParams value) {
-      this.itemId = value;
-      return this;
+    public ItemIdFilter itemId() {
+      return new ItemIdFilter("item_id", this, filterParams);
     }
 
     public ExportDifferentialPricesBuilder differentialPrice(DifferentialPriceParams value) {
@@ -86,198 +79,33 @@ public final class ExportDifferentialPricesParams {
     public ExportDifferentialPricesParams build() {
       return new ExportDifferentialPricesParams(this);
     }
-  }
 
-  public static final class ItemIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private ItemIdParams(ItemIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ItemIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ItemIdBuilder builder() {
-      return new ItemIdBuilder();
-    }
-
-    public static final class ItemIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private ItemIdBuilder() {}
-
-      public ItemIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public ItemIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public ItemIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public ItemIdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public ItemIdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public ItemIdParams build() {
-        return new ItemIdParams(this);
+    public static final class ItemIdFilter extends StringFilter<ExportDifferentialPricesBuilder> {
+      ItemIdFilter(
+          String fieldName, ExportDifferentialPricesBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }
 
   public static final class DifferentialPriceParams {
 
-    private final ItemPriceIdParams itemPriceId;
-
-    private final IdParams id;
-
-    private final ParentItemIdParams parentItemId;
+    private final Map<String, Object> filterParams;
 
     private DifferentialPriceParams(DifferentialPriceBuilder builder) {
 
-      this.itemPriceId = builder.itemPriceId;
-
-      this.id = builder.id;
-
-      this.parentItemId = builder.parentItemId;
-    }
-
-    public ItemPriceIdParams getItemPriceId() {
-      return itemPriceId;
-    }
-
-    public IdParams getId() {
-      return id;
-    }
-
-    public ParentItemIdParams getParentItemId() {
-      return parentItemId;
+      this.filterParams =
+          builder.filterParams.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.filterParams));
     }
 
     /** Get the form data for this request. */
     public Map<String, Object> toFormData() {
       Map<String, Object> formData = new LinkedHashMap<>();
 
-      if (this.itemPriceId != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.itemPriceId.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "item_price_id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.id != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.id.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.parentItemId != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.parentItemId.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "parent_item_id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
+      // Add filter params
+      formData.putAll(filterParams);
 
       return formData;
     }
@@ -290,415 +118,44 @@ public final class ExportDifferentialPricesParams {
 
     public static final class DifferentialPriceBuilder {
 
-      private ItemPriceIdParams itemPriceId;
-
-      private IdParams id;
-
-      private ParentItemIdParams parentItemId;
+      private final Map<String, Object> filterParams = new LinkedHashMap<>();
 
       private DifferentialPriceBuilder() {}
 
-      public DifferentialPriceBuilder itemPriceId(ItemPriceIdParams value) {
-        this.itemPriceId = value;
-        return this;
+      public ItemPriceIdFilter itemPriceId() {
+        return new ItemPriceIdFilter("item_price_id", this, filterParams);
       }
 
-      public DifferentialPriceBuilder id(IdParams value) {
-        this.id = value;
-        return this;
+      public IdFilter id() {
+        return new IdFilter("id", this, filterParams);
       }
 
-      public DifferentialPriceBuilder parentItemId(ParentItemIdParams value) {
-        this.parentItemId = value;
-        return this;
+      public ParentItemIdFilter parentItemId() {
+        return new ParentItemIdFilter("parent_item_id", this, filterParams);
       }
 
       public DifferentialPriceParams build() {
         return new DifferentialPriceParams(this);
       }
-    }
-  }
 
-  public static final class ItemPriceIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private ItemPriceIdParams(ItemPriceIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
+      public static final class ItemPriceIdFilter extends StringFilter<DifferentialPriceBuilder> {
+        ItemPriceIdFilter(
+            String fieldName, DifferentialPriceBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
+      public static final class IdFilter extends StringFilter<DifferentialPriceBuilder> {
+        IdFilter(String fieldName, DifferentialPriceBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ItemPriceIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ItemPriceIdBuilder builder() {
-      return new ItemPriceIdBuilder();
-    }
-
-    public static final class ItemPriceIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private ItemPriceIdBuilder() {}
-
-      public ItemPriceIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public ItemPriceIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public ItemPriceIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public ItemPriceIdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public ItemPriceIdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public ItemPriceIdParams build() {
-        return new ItemPriceIdParams(this);
-      }
-    }
-  }
-
-  public static final class IdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private IdParams(IdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for IdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static IdBuilder builder() {
-      return new IdBuilder();
-    }
-
-    public static final class IdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private IdBuilder() {}
-
-      public IdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public IdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public IdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public IdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public IdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public IdParams build() {
-        return new IdParams(this);
-      }
-    }
-  }
-
-  public static final class ParentItemIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private ParentItemIdParams(ParentItemIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ParentItemIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ParentItemIdBuilder builder() {
-      return new ParentItemIdBuilder();
-    }
-
-    public static final class ParentItemIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private ParentItemIdBuilder() {}
-
-      public ParentItemIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public ParentItemIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public ParentItemIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public ParentItemIdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public ParentItemIdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public ParentItemIdParams build() {
-        return new ParentItemIdParams(this);
+      public static final class ParentItemIdFilter extends StringFilter<DifferentialPriceBuilder> {
+        ParentItemIdFilter(
+            String fieldName, DifferentialPriceBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
     }
   }

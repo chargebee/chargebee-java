@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.pc2MigrationItem.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -56,25 +57,20 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
     }
 
     public IsRecurringFilter isRecurring() {
-      return new IsRecurringFilter("is_recurring", this);
+      return new IsRecurringFilter("is_recurring", this, queryParams);
     }
 
     public Pc2MigrationItemListApplicableAddonsParams build() {
       return new Pc2MigrationItemListApplicableAddonsParams(this);
     }
 
-    public static final class IsRecurringFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemListApplicableAddonsBuilder builder;
-
-      IsRecurringFilter(String fieldName, Pc2MigrationItemListApplicableAddonsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemListApplicableAddonsBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class IsRecurringFilter
+        extends StringFilter<Pc2MigrationItemListApplicableAddonsBuilder> {
+      IsRecurringFilter(
+          String fieldName,
+          Pc2MigrationItemListApplicableAddonsBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

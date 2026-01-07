@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.invoice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -56,7 +58,7 @@ public final class InvoiceListPaymentReferenceNumbersParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public InvoiceListPaymentReferenceNumbersBuilder paymentReferenceNumber(
@@ -69,23 +71,13 @@ public final class InvoiceListPaymentReferenceNumbersParams {
       return new InvoiceListPaymentReferenceNumbersParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final InvoiceListPaymentReferenceNumbersBuilder builder;
-
-      IdFilter(String fieldName, InvoiceListPaymentReferenceNumbersBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public InvoiceListPaymentReferenceNumbersBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public InvoiceListPaymentReferenceNumbersBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter
+        extends StringFilter<InvoiceListPaymentReferenceNumbersBuilder> {
+      IdFilter(
+          String fieldName,
+          InvoiceListPaymentReferenceNumbersBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }
@@ -121,30 +113,17 @@ public final class InvoiceListPaymentReferenceNumbersParams {
       private PaymentReferenceNumberBuilder() {}
 
       public NumberFilter number() {
-        return new NumberFilter("number", this);
+        return new NumberFilter("number", this, queryParams);
       }
 
       public PaymentReferenceNumberParams build() {
         return new PaymentReferenceNumberParams(this);
       }
 
-      public static final class NumberFilter {
-        private final String fieldName;
-        private final PaymentReferenceNumberBuilder builder;
-
-        NumberFilter(String fieldName, PaymentReferenceNumberBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public PaymentReferenceNumberBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public PaymentReferenceNumberBuilder in(String... values) {
-          builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-          return builder;
+      public static final class NumberFilter extends StringFilter<PaymentReferenceNumberBuilder> {
+        NumberFilter(
+            String fieldName, PaymentReferenceNumberBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

@@ -161,6 +161,15 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   }
 
   /**
+   * retrieveLatestSync a thirdPartySyncDetail without params (executes immediately) - returns raw
+   * Response.
+   */
+  Response retrieveLatestSyncRaw() throws ChargebeeException {
+
+    return get("/third_party_sync_details/retrieve_latest_sync", null);
+  }
+
+  /**
    * retrieveLatestSync a thirdPartySyncDetail using raw JSON payload (executes immediately) -
    * returns raw Response.
    */
@@ -172,6 +181,14 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
   public ThirdPartySyncDetailRetrieveLatestSyncResponse retrieveLatestSync(
       ThirdPartySyncDetailRetrieveLatestSyncParams params) throws ChargebeeException {
     Response response = retrieveLatestSyncRaw(params);
+
+    return ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
+        response.getBodyAsString(), response);
+  }
+
+  public ThirdPartySyncDetailRetrieveLatestSyncResponse retrieveLatestSync()
+      throws ChargebeeException {
+    Response response = retrieveLatestSyncRaw();
 
     return ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
         response.getBodyAsString(), response);

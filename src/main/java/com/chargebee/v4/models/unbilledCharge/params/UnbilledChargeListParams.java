@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.unbilledCharge.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -64,94 +65,28 @@ public final class UnbilledChargeListParams {
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public UnbilledChargeListParams build() {
       return new UnbilledChargeListParams(this);
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final UnbilledChargeListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, UnbilledChargeListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UnbilledChargeListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<UnbilledChargeListBuilder> {
+      SubscriptionIdFilter(
+          String fieldName, UnbilledChargeListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final UnbilledChargeListBuilder builder;
-
-      CustomerIdFilter(String fieldName, UnbilledChargeListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UnbilledChargeListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public UnbilledChargeListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<UnbilledChargeListBuilder> {
+      CustomerIdFilter(
+          String fieldName, UnbilledChargeListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

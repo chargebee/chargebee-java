@@ -102,6 +102,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
 
   public ItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

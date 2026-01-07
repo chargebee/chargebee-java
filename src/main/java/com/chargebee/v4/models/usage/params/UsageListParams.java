@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.usage.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,31 +56,31 @@ public final class UsageListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public SubscriptionIdFilter subscriptionId() {
-      return new SubscriptionIdFilter("subscription_id", this);
+      return new SubscriptionIdFilter("subscription_id", this, queryParams);
     }
 
     public UsageDateFilter usageDate() {
-      return new UsageDateFilter("usage_date", this);
+      return new UsageDateFilter("usage_date", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public ItemPriceIdFilter itemPriceId() {
-      return new ItemPriceIdFilter("item_price_id", this);
+      return new ItemPriceIdFilter("item_price_id", this, queryParams);
     }
 
     public InvoiceIdFilter invoiceId() {
-      return new InvoiceIdFilter("invoice_id", this);
+      return new InvoiceIdFilter("invoice_id", this, queryParams);
     }
 
     public SourceFilter source() {
-      return new SourceFilter("source", this);
+      return new SourceFilter("source", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -90,202 +91,45 @@ public final class UsageListParams {
       return new UsageListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      IdFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UsageListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class IdFilter extends StringFilter<UsageListBuilder> {
+      IdFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SubscriptionIdFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      SubscriptionIdFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UsageListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class SubscriptionIdFilter extends StringFilter<UsageListBuilder> {
+      SubscriptionIdFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UsageDateFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      UsageDateFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UsageDateFilter extends TimestampFilter<UsageListBuilder> {
+      UsageDateFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public UsageListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<UsageListBuilder> {
+      UpdatedAtFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemPriceIdFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      ItemPriceIdFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UsageListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class ItemPriceIdFilter extends StringFilter<UsageListBuilder> {
+      ItemPriceIdFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class InvoiceIdFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      InvoiceIdFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UsageListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class InvoiceIdFilter extends StringFilter<UsageListBuilder> {
+      InvoiceIdFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SourceFilter {
-      private final String fieldName;
-      private final UsageListBuilder builder;
-
-      SourceFilter(String fieldName, UsageListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public UsageListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public UsageListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public UsageListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public UsageListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SourceFilter extends StringFilter<UsageListBuilder> {
+      SourceFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

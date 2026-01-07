@@ -7,25 +7,29 @@
 package com.chargebee.v4.models.export.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class ExportOrdersParams {
 
-  private final TotalParams total;
-
   private final OrderParams order;
+
+  private final Map<String, Object> filterParams;
 
   private ExportOrdersParams(ExportOrdersBuilder builder) {
 
-    this.total = builder.total;
-
     this.order = builder.order;
-  }
 
-  public TotalParams getTotal() {
-    return total;
+    this.filterParams =
+        builder.filterParams.isEmpty()
+            ? Collections.emptyMap()
+            : Collections.unmodifiableMap(new LinkedHashMap<>(builder.filterParams));
   }
 
   public OrderParams getOrder() {
@@ -36,16 +40,6 @@ public final class ExportOrdersParams {
   public Map<String, Object> toFormData() {
     Map<String, Object> formData = new LinkedHashMap<>();
 
-    if (this.total != null) {
-
-      // Single object
-      Map<String, Object> nestedData = this.total.toFormData();
-      for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "total[" + entry.getKey() + "]";
-        formData.put(nestedKey, entry.getValue());
-      }
-    }
-
     if (this.order != null) {
 
       // Single object
@@ -55,6 +49,9 @@ public final class ExportOrdersParams {
         formData.put(nestedKey, entry.getValue());
       }
     }
+
+    // Add filter params
+    formData.putAll(filterParams);
 
     return formData;
   }
@@ -67,15 +64,14 @@ public final class ExportOrdersParams {
 
   public static final class ExportOrdersBuilder {
 
-    private TotalParams total;
-
     private OrderParams order;
+
+    private final Map<String, Object> filterParams = new LinkedHashMap<>();
 
     private ExportOrdersBuilder() {}
 
-    public ExportOrdersBuilder total(TotalParams value) {
-      this.total = value;
-      return this;
+    public TotalFilter total() {
+      return new TotalFilter("total", this, filterParams);
     }
 
     public ExportOrdersBuilder order(OrderParams value) {
@@ -86,490 +82,32 @@ public final class ExportOrdersParams {
     public ExportOrdersParams build() {
       return new ExportOrdersParams(this);
     }
-  }
 
-  public static final class TotalParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String lt;
-
-    private final String lte;
-
-    private final String gt;
-
-    private final String gte;
-
-    private final String between;
-
-    private TotalParams(TotalBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.lt = builder.lt;
-
-      this.lte = builder.lte;
-
-      this.gt = builder.gt;
-
-      this.gte = builder.gte;
-
-      this.between = builder.between;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getLt() {
-      return lt;
-    }
-
-    public String getLte() {
-      return lte;
-    }
-
-    public String getGt() {
-      return gt;
-    }
-
-    public String getGte() {
-      return gte;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.lt != null) {
-
-        formData.put("lt", this.lt);
-      }
-
-      if (this.lte != null) {
-
-        formData.put("lte", this.lte);
-      }
-
-      if (this.gt != null) {
-
-        formData.put("gt", this.gt);
-      }
-
-      if (this.gte != null) {
-
-        formData.put("gte", this.gte);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for TotalParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static TotalBuilder builder() {
-      return new TotalBuilder();
-    }
-
-    public static final class TotalBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String lt;
-
-      private String lte;
-
-      private String gt;
-
-      private String gte;
-
-      private String between;
-
-      private TotalBuilder() {}
-
-      public TotalBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public TotalBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public TotalBuilder lt(String value) {
-        this.lt = value;
-        return this;
-      }
-
-      public TotalBuilder lte(String value) {
-        this.lte = value;
-        return this;
-      }
-
-      public TotalBuilder gt(String value) {
-        this.gt = value;
-        return this;
-      }
-
-      public TotalBuilder gte(String value) {
-        this.gte = value;
-        return this;
-      }
-
-      public TotalBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public TotalParams build() {
-        return new TotalParams(this);
+    public static final class TotalFilter extends NumberFilter<ExportOrdersBuilder> {
+      TotalFilter(String fieldName, ExportOrdersBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }
 
   public static final class OrderParams {
 
-    private final IdParams id;
-
-    private final SubscriptionIdParams subscriptionId;
-
-    private final CustomerIdParams customerId;
-
-    private final StatusParams status;
-
-    private final PriceTypeParams priceType;
-
-    private final OrderDateParams orderDate;
-
-    private final ShippingDateParams shippingDate;
-
-    private final ShippedAtParams shippedAt;
-
-    private final DeliveredAtParams deliveredAt;
-
-    private final CancelledAtParams cancelledAt;
-
-    private final AmountPaidParams amountPaid;
-
-    private final RefundableCreditsParams refundableCredits;
-
-    private final RefundableCreditsIssuedParams refundableCreditsIssued;
-
-    private final UpdatedAtParams updatedAt;
-
-    private final ResentStatusParams resentStatus;
-
-    private final IsResentParams isResent;
-
-    private final OriginalOrderIdParams originalOrderId;
+    private final Map<String, Object> filterParams;
 
     private OrderParams(OrderBuilder builder) {
 
-      this.id = builder.id;
-
-      this.subscriptionId = builder.subscriptionId;
-
-      this.customerId = builder.customerId;
-
-      this.status = builder.status;
-
-      this.priceType = builder.priceType;
-
-      this.orderDate = builder.orderDate;
-
-      this.shippingDate = builder.shippingDate;
-
-      this.shippedAt = builder.shippedAt;
-
-      this.deliveredAt = builder.deliveredAt;
-
-      this.cancelledAt = builder.cancelledAt;
-
-      this.amountPaid = builder.amountPaid;
-
-      this.refundableCredits = builder.refundableCredits;
-
-      this.refundableCreditsIssued = builder.refundableCreditsIssued;
-
-      this.updatedAt = builder.updatedAt;
-
-      this.resentStatus = builder.resentStatus;
-
-      this.isResent = builder.isResent;
-
-      this.originalOrderId = builder.originalOrderId;
-    }
-
-    public IdParams getId() {
-      return id;
-    }
-
-    public SubscriptionIdParams getSubscriptionId() {
-      return subscriptionId;
-    }
-
-    public CustomerIdParams getCustomerId() {
-      return customerId;
-    }
-
-    public StatusParams getStatus() {
-      return status;
-    }
-
-    public PriceTypeParams getPriceType() {
-      return priceType;
-    }
-
-    public OrderDateParams getOrderDate() {
-      return orderDate;
-    }
-
-    public ShippingDateParams getShippingDate() {
-      return shippingDate;
-    }
-
-    public ShippedAtParams getShippedAt() {
-      return shippedAt;
-    }
-
-    public DeliveredAtParams getDeliveredAt() {
-      return deliveredAt;
-    }
-
-    public CancelledAtParams getCancelledAt() {
-      return cancelledAt;
-    }
-
-    public AmountPaidParams getAmountPaid() {
-      return amountPaid;
-    }
-
-    public RefundableCreditsParams getRefundableCredits() {
-      return refundableCredits;
-    }
-
-    public RefundableCreditsIssuedParams getRefundableCreditsIssued() {
-      return refundableCreditsIssued;
-    }
-
-    public UpdatedAtParams getUpdatedAt() {
-      return updatedAt;
-    }
-
-    public ResentStatusParams getResentStatus() {
-      return resentStatus;
-    }
-
-    public IsResentParams getIsResent() {
-      return isResent;
-    }
-
-    public OriginalOrderIdParams getOriginalOrderId() {
-      return originalOrderId;
+      this.filterParams =
+          builder.filterParams.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.filterParams));
     }
 
     /** Get the form data for this request. */
     public Map<String, Object> toFormData() {
       Map<String, Object> formData = new LinkedHashMap<>();
 
-      if (this.id != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.id.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.subscriptionId != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.subscriptionId.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "subscription_id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.customerId != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.customerId.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "customer_id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.status != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.status.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "status[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.priceType != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.priceType.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "price_type[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.orderDate != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.orderDate.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "order_date[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.shippingDate != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.shippingDate.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "shipping_date[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.shippedAt != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.shippedAt.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "shipped_at[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.deliveredAt != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.deliveredAt.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "delivered_at[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.cancelledAt != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.cancelledAt.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "cancelled_at[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.amountPaid != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.amountPaid.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "amount_paid[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.refundableCredits != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.refundableCredits.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "refundable_credits[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.refundableCreditsIssued != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.refundableCreditsIssued.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "refundable_credits_issued[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.updatedAt != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.updatedAt.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "updated_at[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.resentStatus != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.resentStatus.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "resent_status[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.isResent != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.isResent.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "is_resent[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
-
-      if (this.originalOrderId != null) {
-
-        // Single object
-        Map<String, Object> nestedData = this.originalOrderId.toFormData();
-        for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-          String nestedKey = "original_order_id[" + entry.getKey() + "]";
-          formData.put(nestedKey, entry.getValue());
-        }
-      }
+      // Add filter params
+      formData.putAll(filterParams);
 
       return formData;
     }
@@ -582,418 +120,198 @@ public final class ExportOrdersParams {
 
     public static final class OrderBuilder {
 
-      private IdParams id;
-
-      private SubscriptionIdParams subscriptionId;
-
-      private CustomerIdParams customerId;
-
-      private StatusParams status;
-
-      private PriceTypeParams priceType;
-
-      private OrderDateParams orderDate;
-
-      private ShippingDateParams shippingDate;
-
-      private ShippedAtParams shippedAt;
-
-      private DeliveredAtParams deliveredAt;
-
-      private CancelledAtParams cancelledAt;
-
-      private AmountPaidParams amountPaid;
-
-      private RefundableCreditsParams refundableCredits;
-
-      private RefundableCreditsIssuedParams refundableCreditsIssued;
-
-      private UpdatedAtParams updatedAt;
-
-      private ResentStatusParams resentStatus;
-
-      private IsResentParams isResent;
-
-      private OriginalOrderIdParams originalOrderId;
+      private final Map<String, Object> filterParams = new LinkedHashMap<>();
 
       private OrderBuilder() {}
 
-      public OrderBuilder id(IdParams value) {
-        this.id = value;
-        return this;
+      public IdFilter id() {
+        return new IdFilter("id", this, filterParams);
       }
 
-      public OrderBuilder subscriptionId(SubscriptionIdParams value) {
-        this.subscriptionId = value;
-        return this;
+      public SubscriptionIdFilter subscriptionId() {
+        return new SubscriptionIdFilter("subscription_id", this, filterParams);
       }
 
-      public OrderBuilder customerId(CustomerIdParams value) {
-        this.customerId = value;
-        return this;
+      public CustomerIdFilter customerId() {
+        return new CustomerIdFilter("customer_id", this, filterParams);
       }
 
-      public OrderBuilder status(StatusParams value) {
-        this.status = value;
-        return this;
+      public StatusFilter status() {
+        return new StatusFilter("status", this, filterParams);
       }
 
-      public OrderBuilder priceType(PriceTypeParams value) {
-        this.priceType = value;
-        return this;
+      public PriceTypeFilter priceType() {
+        return new PriceTypeFilter("price_type", this, filterParams);
       }
 
-      public OrderBuilder orderDate(OrderDateParams value) {
-        this.orderDate = value;
-        return this;
+      public OrderDateFilter orderDate() {
+        return new OrderDateFilter("order_date", this, filterParams);
       }
 
-      public OrderBuilder shippingDate(ShippingDateParams value) {
-        this.shippingDate = value;
-        return this;
+      public ShippingDateFilter shippingDate() {
+        return new ShippingDateFilter("shipping_date", this, filterParams);
       }
 
-      public OrderBuilder shippedAt(ShippedAtParams value) {
-        this.shippedAt = value;
-        return this;
+      public ShippedAtFilter shippedAt() {
+        return new ShippedAtFilter("shipped_at", this, filterParams);
       }
 
-      public OrderBuilder deliveredAt(DeliveredAtParams value) {
-        this.deliveredAt = value;
-        return this;
+      public DeliveredAtFilter deliveredAt() {
+        return new DeliveredAtFilter("delivered_at", this, filterParams);
       }
 
-      public OrderBuilder cancelledAt(CancelledAtParams value) {
-        this.cancelledAt = value;
-        return this;
+      public CancelledAtFilter cancelledAt() {
+        return new CancelledAtFilter("cancelled_at", this, filterParams);
       }
 
-      public OrderBuilder amountPaid(AmountPaidParams value) {
-        this.amountPaid = value;
-        return this;
+      public AmountPaidFilter amountPaid() {
+        return new AmountPaidFilter("amount_paid", this, filterParams);
       }
 
-      public OrderBuilder refundableCredits(RefundableCreditsParams value) {
-        this.refundableCredits = value;
-        return this;
+      public RefundableCreditsFilter refundableCredits() {
+        return new RefundableCreditsFilter("refundable_credits", this, filterParams);
       }
 
-      public OrderBuilder refundableCreditsIssued(RefundableCreditsIssuedParams value) {
-        this.refundableCreditsIssued = value;
-        return this;
+      public RefundableCreditsIssuedFilter refundableCreditsIssued() {
+        return new RefundableCreditsIssuedFilter("refundable_credits_issued", this, filterParams);
       }
 
-      public OrderBuilder updatedAt(UpdatedAtParams value) {
-        this.updatedAt = value;
-        return this;
+      public UpdatedAtFilter updatedAt() {
+        return new UpdatedAtFilter("updated_at", this, filterParams);
       }
 
-      public OrderBuilder resentStatus(ResentStatusParams value) {
-        this.resentStatus = value;
-        return this;
+      public ResentStatusFilter resentStatus() {
+        return new ResentStatusFilter("resent_status", this, filterParams);
       }
 
-      public OrderBuilder isResent(IsResentParams value) {
-        this.isResent = value;
-        return this;
+      public IsResentFilter isResent() {
+        return new IsResentFilter("is_resent", this, filterParams);
       }
 
-      public OrderBuilder originalOrderId(OriginalOrderIdParams value) {
-        this.originalOrderId = value;
-        return this;
+      public OriginalOrderIdFilter originalOrderId() {
+        return new OriginalOrderIdFilter("original_order_id", this, filterParams);
       }
 
       public OrderParams build() {
         return new OrderParams(this);
       }
-    }
-  }
 
-  public static final class IdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private IdParams(IdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
+      public static final class IdFilter extends StringFilter<OrderBuilder> {
+        IdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
+      public static final class SubscriptionIdFilter
+          extends EnumFilter<SubscriptionId, OrderBuilder> {
+        SubscriptionIdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params, SubscriptionId::getValue);
+        }
       }
 
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
+      public static final class CustomerIdFilter extends StringFilter<OrderBuilder> {
+        CustomerIdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.in != null) {
-
-        formData.put("in", this.in);
+      public static final class StatusFilter extends EnumFilter<Status, OrderBuilder> {
+        StatusFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params, Status::getValue);
+        }
       }
 
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
+      public static final class PriceTypeFilter extends EnumFilter<PriceType, OrderBuilder> {
+        PriceTypeFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params, PriceType::getValue);
+        }
       }
 
-      return formData;
-    }
-
-    /** Create a new builder for IdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static IdBuilder builder() {
-      return new IdBuilder();
-    }
-
-    public static final class IdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private IdBuilder() {}
-
-      public IdBuilder is(String value) {
-        this.is = value;
-        return this;
+      public static final class OrderDateFilter extends TimestampFilter<OrderBuilder> {
+        OrderDateFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      public IdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
+      public static final class ShippingDateFilter extends TimestampFilter<OrderBuilder> {
+        ShippingDateFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      public IdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
+      public static final class ShippedAtFilter extends TimestampFilter<OrderBuilder> {
+        ShippedAtFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      public IdBuilder in(String value) {
-        this.in = value;
-        return this;
+      public static final class DeliveredAtFilter extends TimestampFilter<OrderBuilder> {
+        DeliveredAtFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      public IdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
+      public static final class CancelledAtFilter extends TimestampFilter<OrderBuilder> {
+        CancelledAtFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      public IdParams build() {
-        return new IdParams(this);
-      }
-    }
-  }
-
-  public static final class SubscriptionIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final IsPresent isPresent;
-
-    private final String in;
-
-    private final String notIn;
-
-    private SubscriptionIdParams(SubscriptionIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.isPresent = builder.isPresent;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public IsPresent getIsPresent() {
-      return isPresent;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
+      public static final class AmountPaidFilter extends NumberFilter<OrderBuilder> {
+        AmountPaidFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
+      public static final class RefundableCreditsFilter extends NumberFilter<OrderBuilder> {
+        RefundableCreditsFilter(
+            String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
+      public static final class RefundableCreditsIssuedFilter extends NumberFilter<OrderBuilder> {
+        RefundableCreditsIssuedFilter(
+            String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.isPresent != null) {
-
-        formData.put("is_present", this.isPresent);
+      public static final class UpdatedAtFilter extends TimestampFilter<OrderBuilder> {
+        UpdatedAtFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
 
-      if (this.in != null) {
-
-        formData.put("in", this.in);
+      public static final class ResentStatusFilter extends EnumFilter<ResentStatus, OrderBuilder> {
+        ResentStatusFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params, ResentStatus::getValue);
+        }
       }
 
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
+      public static final class IsResentFilter extends EnumFilter<IsResent, OrderBuilder> {
+        IsResentFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params, IsResent::getValue);
+        }
       }
 
-      return formData;
-    }
-
-    /** Create a new builder for SubscriptionIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static SubscriptionIdBuilder builder() {
-      return new SubscriptionIdBuilder();
-    }
-
-    public static final class SubscriptionIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private IsPresent isPresent;
-
-      private String in;
-
-      private String notIn;
-
-      private SubscriptionIdBuilder() {}
-
-      public SubscriptionIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public SubscriptionIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public SubscriptionIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public SubscriptionIdBuilder isPresent(IsPresent value) {
-        this.isPresent = value;
-        return this;
-      }
-
-      public SubscriptionIdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public SubscriptionIdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public SubscriptionIdParams build() {
-        return new SubscriptionIdParams(this);
+      public static final class OriginalOrderIdFilter extends StringFilter<OrderBuilder> {
+        OriginalOrderIdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
       }
     }
 
-    public enum IsPresent {
+    public enum SubscriptionId {
       TRUE("true"),
 
       FALSE("false"),
 
-      /** An enum member indicating that IsPresent was instantiated with an unknown value. */
+      /** An enum member indicating that SubscriptionId was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
 
-      IsPresent(String value) {
+      SubscriptionId(String value) {
         this.value = value;
       }
 
@@ -1001,9 +319,9 @@ public final class ExportOrdersParams {
         return value;
       }
 
-      public static IsPresent fromString(String value) {
+      public static SubscriptionId fromString(String value) {
         if (value == null) return _UNKNOWN;
-        for (IsPresent enumValue : IsPresent.values()) {
+        for (SubscriptionId enumValue : SubscriptionId.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
@@ -1011,244 +329,8 @@ public final class ExportOrdersParams {
         return _UNKNOWN;
       }
     }
-  }
 
-  public static final class CustomerIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private final String in;
-
-    private final String notIn;
-
-    private CustomerIdParams(CustomerIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for CustomerIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static CustomerIdBuilder builder() {
-      return new CustomerIdBuilder();
-    }
-
-    public static final class CustomerIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private String in;
-
-      private String notIn;
-
-      private CustomerIdBuilder() {}
-
-      public CustomerIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public CustomerIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public CustomerIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public CustomerIdBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public CustomerIdBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public CustomerIdParams build() {
-        return new CustomerIdParams(this);
-      }
-    }
-  }
-
-  public static final class StatusParams {
-
-    private final Is is;
-
-    private final IsNot isNot;
-
-    private final String in;
-
-    private final String notIn;
-
-    private StatusParams(StatusBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public Is getIs() {
-      return is;
-    }
-
-    public IsNot getIsNot() {
-      return isNot;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for StatusParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static StatusBuilder builder() {
-      return new StatusBuilder();
-    }
-
-    public static final class StatusBuilder {
-
-      private Is is;
-
-      private IsNot isNot;
-
-      private String in;
-
-      private String notIn;
-
-      private StatusBuilder() {}
-
-      public StatusBuilder is(Is value) {
-        this.is = value;
-        return this;
-      }
-
-      public StatusBuilder isNot(IsNot value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public StatusBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public StatusBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public StatusParams build() {
-        return new StatusParams(this);
-      }
-    }
-
-    public enum Is {
+    public enum Status {
       NEW("new"),
 
       PROCESSING("processing"),
@@ -1273,11 +355,11 @@ public final class ExportOrdersParams {
 
       RETURNED("returned"),
 
-      /** An enum member indicating that Is was instantiated with an unknown value. */
+      /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
 
-      Is(String value) {
+      Status(String value) {
         this.value = value;
       }
 
@@ -1285,9 +367,9 @@ public final class ExportOrdersParams {
         return value;
       }
 
-      public static Is fromString(String value) {
+      public static Status fromString(String value) {
         if (value == null) return _UNKNOWN;
-        for (Is enumValue : Is.values()) {
+        for (Status enumValue : Status.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
@@ -1296,172 +378,16 @@ public final class ExportOrdersParams {
       }
     }
 
-    public enum IsNot {
-      NEW("new"),
-
-      PROCESSING("processing"),
-
-      COMPLETE("complete"),
-
-      CANCELLED("cancelled"),
-
-      VOIDED("voided"),
-
-      QUEUED("queued"),
-
-      AWAITING_SHIPMENT("awaiting_shipment"),
-
-      ON_HOLD("on_hold"),
-
-      DELIVERED("delivered"),
-
-      SHIPPED("shipped"),
-
-      PARTIALLY_DELIVERED("partially_delivered"),
-
-      RETURNED("returned"),
-
-      /** An enum member indicating that IsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsNot enumValue : IsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-  }
-
-  public static final class PriceTypeParams {
-
-    private final Is is;
-
-    private final IsNot isNot;
-
-    private final String in;
-
-    private final String notIn;
-
-    private PriceTypeParams(PriceTypeBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public Is getIs() {
-      return is;
-    }
-
-    public IsNot getIsNot() {
-      return isNot;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for PriceTypeParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static PriceTypeBuilder builder() {
-      return new PriceTypeBuilder();
-    }
-
-    public static final class PriceTypeBuilder {
-
-      private Is is;
-
-      private IsNot isNot;
-
-      private String in;
-
-      private String notIn;
-
-      private PriceTypeBuilder() {}
-
-      public PriceTypeBuilder is(Is value) {
-        this.is = value;
-        return this;
-      }
-
-      public PriceTypeBuilder isNot(IsNot value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public PriceTypeBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public PriceTypeBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public PriceTypeParams build() {
-        return new PriceTypeParams(this);
-      }
-    }
-
-    public enum Is {
+    public enum PriceType {
       TAX_EXCLUSIVE("tax_exclusive"),
 
       TAX_INCLUSIVE("tax_inclusive"),
 
-      /** An enum member indicating that Is was instantiated with an unknown value. */
+      /** An enum member indicating that PriceType was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
 
-      Is(String value) {
+      PriceType(String value) {
         this.value = value;
       }
 
@@ -1469,9 +395,9 @@ public final class ExportOrdersParams {
         return value;
       }
 
-      public static Is fromString(String value) {
+      public static PriceType fromString(String value) {
         if (value == null) return _UNKNOWN;
-        for (Is enumValue : Is.values()) {
+        for (PriceType enumValue : PriceType.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
@@ -1480,1304 +406,16 @@ public final class ExportOrdersParams {
       }
     }
 
-    public enum IsNot {
-      TAX_EXCLUSIVE("tax_exclusive"),
-
-      TAX_INCLUSIVE("tax_inclusive"),
-
-      /** An enum member indicating that IsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsNot enumValue : IsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-  }
-
-  public static final class OrderDateParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private OrderDateParams(OrderDateBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for OrderDateParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static OrderDateBuilder builder() {
-      return new OrderDateBuilder();
-    }
-
-    public static final class OrderDateBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private OrderDateBuilder() {}
-
-      public OrderDateBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public OrderDateBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public OrderDateBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public OrderDateBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public OrderDateParams build() {
-        return new OrderDateParams(this);
-      }
-    }
-  }
-
-  public static final class ShippingDateParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private ShippingDateParams(ShippingDateBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ShippingDateParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ShippingDateBuilder builder() {
-      return new ShippingDateBuilder();
-    }
-
-    public static final class ShippingDateBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private ShippingDateBuilder() {}
-
-      public ShippingDateBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public ShippingDateBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public ShippingDateBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public ShippingDateBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public ShippingDateParams build() {
-        return new ShippingDateParams(this);
-      }
-    }
-  }
-
-  public static final class ShippedAtParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private ShippedAtParams(ShippedAtBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ShippedAtParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ShippedAtBuilder builder() {
-      return new ShippedAtBuilder();
-    }
-
-    public static final class ShippedAtBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private ShippedAtBuilder() {}
-
-      public ShippedAtBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public ShippedAtBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public ShippedAtBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public ShippedAtBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public ShippedAtParams build() {
-        return new ShippedAtParams(this);
-      }
-    }
-  }
-
-  public static final class DeliveredAtParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private DeliveredAtParams(DeliveredAtBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for DeliveredAtParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static DeliveredAtBuilder builder() {
-      return new DeliveredAtBuilder();
-    }
-
-    public static final class DeliveredAtBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private DeliveredAtBuilder() {}
-
-      public DeliveredAtBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public DeliveredAtBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public DeliveredAtBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public DeliveredAtBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public DeliveredAtParams build() {
-        return new DeliveredAtParams(this);
-      }
-    }
-  }
-
-  public static final class CancelledAtParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private CancelledAtParams(CancelledAtBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for CancelledAtParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static CancelledAtBuilder builder() {
-      return new CancelledAtBuilder();
-    }
-
-    public static final class CancelledAtBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private CancelledAtBuilder() {}
-
-      public CancelledAtBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public CancelledAtBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public CancelledAtBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public CancelledAtBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public CancelledAtParams build() {
-        return new CancelledAtParams(this);
-      }
-    }
-  }
-
-  public static final class AmountPaidParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String lt;
-
-    private final String lte;
-
-    private final String gt;
-
-    private final String gte;
-
-    private final String between;
-
-    private AmountPaidParams(AmountPaidBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.lt = builder.lt;
-
-      this.lte = builder.lte;
-
-      this.gt = builder.gt;
-
-      this.gte = builder.gte;
-
-      this.between = builder.between;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getLt() {
-      return lt;
-    }
-
-    public String getLte() {
-      return lte;
-    }
-
-    public String getGt() {
-      return gt;
-    }
-
-    public String getGte() {
-      return gte;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.lt != null) {
-
-        formData.put("lt", this.lt);
-      }
-
-      if (this.lte != null) {
-
-        formData.put("lte", this.lte);
-      }
-
-      if (this.gt != null) {
-
-        formData.put("gt", this.gt);
-      }
-
-      if (this.gte != null) {
-
-        formData.put("gte", this.gte);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for AmountPaidParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static AmountPaidBuilder builder() {
-      return new AmountPaidBuilder();
-    }
-
-    public static final class AmountPaidBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String lt;
-
-      private String lte;
-
-      private String gt;
-
-      private String gte;
-
-      private String between;
-
-      private AmountPaidBuilder() {}
-
-      public AmountPaidBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public AmountPaidBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public AmountPaidBuilder lt(String value) {
-        this.lt = value;
-        return this;
-      }
-
-      public AmountPaidBuilder lte(String value) {
-        this.lte = value;
-        return this;
-      }
-
-      public AmountPaidBuilder gt(String value) {
-        this.gt = value;
-        return this;
-      }
-
-      public AmountPaidBuilder gte(String value) {
-        this.gte = value;
-        return this;
-      }
-
-      public AmountPaidBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public AmountPaidParams build() {
-        return new AmountPaidParams(this);
-      }
-    }
-  }
-
-  public static final class RefundableCreditsParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String lt;
-
-    private final String lte;
-
-    private final String gt;
-
-    private final String gte;
-
-    private final String between;
-
-    private RefundableCreditsParams(RefundableCreditsBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.lt = builder.lt;
-
-      this.lte = builder.lte;
-
-      this.gt = builder.gt;
-
-      this.gte = builder.gte;
-
-      this.between = builder.between;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getLt() {
-      return lt;
-    }
-
-    public String getLte() {
-      return lte;
-    }
-
-    public String getGt() {
-      return gt;
-    }
-
-    public String getGte() {
-      return gte;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.lt != null) {
-
-        formData.put("lt", this.lt);
-      }
-
-      if (this.lte != null) {
-
-        formData.put("lte", this.lte);
-      }
-
-      if (this.gt != null) {
-
-        formData.put("gt", this.gt);
-      }
-
-      if (this.gte != null) {
-
-        formData.put("gte", this.gte);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for RefundableCreditsParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static RefundableCreditsBuilder builder() {
-      return new RefundableCreditsBuilder();
-    }
-
-    public static final class RefundableCreditsBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String lt;
-
-      private String lte;
-
-      private String gt;
-
-      private String gte;
-
-      private String between;
-
-      private RefundableCreditsBuilder() {}
-
-      public RefundableCreditsBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder lt(String value) {
-        this.lt = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder lte(String value) {
-        this.lte = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder gt(String value) {
-        this.gt = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder gte(String value) {
-        this.gte = value;
-        return this;
-      }
-
-      public RefundableCreditsBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public RefundableCreditsParams build() {
-        return new RefundableCreditsParams(this);
-      }
-    }
-  }
-
-  public static final class RefundableCreditsIssuedParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String lt;
-
-    private final String lte;
-
-    private final String gt;
-
-    private final String gte;
-
-    private final String between;
-
-    private RefundableCreditsIssuedParams(RefundableCreditsIssuedBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.lt = builder.lt;
-
-      this.lte = builder.lte;
-
-      this.gt = builder.gt;
-
-      this.gte = builder.gte;
-
-      this.between = builder.between;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getLt() {
-      return lt;
-    }
-
-    public String getLte() {
-      return lte;
-    }
-
-    public String getGt() {
-      return gt;
-    }
-
-    public String getGte() {
-      return gte;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.lt != null) {
-
-        formData.put("lt", this.lt);
-      }
-
-      if (this.lte != null) {
-
-        formData.put("lte", this.lte);
-      }
-
-      if (this.gt != null) {
-
-        formData.put("gt", this.gt);
-      }
-
-      if (this.gte != null) {
-
-        formData.put("gte", this.gte);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for RefundableCreditsIssuedParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static RefundableCreditsIssuedBuilder builder() {
-      return new RefundableCreditsIssuedBuilder();
-    }
-
-    public static final class RefundableCreditsIssuedBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String lt;
-
-      private String lte;
-
-      private String gt;
-
-      private String gte;
-
-      private String between;
-
-      private RefundableCreditsIssuedBuilder() {}
-
-      public RefundableCreditsIssuedBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder lt(String value) {
-        this.lt = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder lte(String value) {
-        this.lte = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder gt(String value) {
-        this.gt = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder gte(String value) {
-        this.gte = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public RefundableCreditsIssuedParams build() {
-        return new RefundableCreditsIssuedParams(this);
-      }
-    }
-  }
-
-  public static final class UpdatedAtParams {
-
-    private final String after;
-
-    private final String before;
-
-    private final String on;
-
-    private final String between;
-
-    private UpdatedAtParams(UpdatedAtBuilder builder) {
-
-      this.after = builder.after;
-
-      this.before = builder.before;
-
-      this.on = builder.on;
-
-      this.between = builder.between;
-    }
-
-    public String getAfter() {
-      return after;
-    }
-
-    public String getBefore() {
-      return before;
-    }
-
-    public String getOn() {
-      return on;
-    }
-
-    public String getBetween() {
-      return between;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.after != null) {
-
-        formData.put("after", this.after);
-      }
-
-      if (this.before != null) {
-
-        formData.put("before", this.before);
-      }
-
-      if (this.on != null) {
-
-        formData.put("on", this.on);
-      }
-
-      if (this.between != null) {
-
-        formData.put("between", this.between);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for UpdatedAtParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static UpdatedAtBuilder builder() {
-      return new UpdatedAtBuilder();
-    }
-
-    public static final class UpdatedAtBuilder {
-
-      private String after;
-
-      private String before;
-
-      private String on;
-
-      private String between;
-
-      private UpdatedAtBuilder() {}
-
-      public UpdatedAtBuilder after(String value) {
-        this.after = value;
-        return this;
-      }
-
-      public UpdatedAtBuilder before(String value) {
-        this.before = value;
-        return this;
-      }
-
-      public UpdatedAtBuilder on(String value) {
-        this.on = value;
-        return this;
-      }
-
-      public UpdatedAtBuilder between(String value) {
-        this.between = value;
-        return this;
-      }
-
-      public UpdatedAtParams build() {
-        return new UpdatedAtParams(this);
-      }
-    }
-  }
-
-  public static final class ResentStatusParams {
-
-    private final Is is;
-
-    private final IsNot isNot;
-
-    private final String in;
-
-    private final String notIn;
-
-    private ResentStatusParams(ResentStatusBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.in = builder.in;
-
-      this.notIn = builder.notIn;
-    }
-
-    public Is getIs() {
-      return is;
-    }
-
-    public IsNot getIsNot() {
-      return isNot;
-    }
-
-    public String getIn() {
-      return in;
-    }
-
-    public String getNotIn() {
-      return notIn;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.in != null) {
-
-        formData.put("in", this.in);
-      }
-
-      if (this.notIn != null) {
-
-        formData.put("not_in", this.notIn);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for ResentStatusParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static ResentStatusBuilder builder() {
-      return new ResentStatusBuilder();
-    }
-
-    public static final class ResentStatusBuilder {
-
-      private Is is;
-
-      private IsNot isNot;
-
-      private String in;
-
-      private String notIn;
-
-      private ResentStatusBuilder() {}
-
-      public ResentStatusBuilder is(Is value) {
-        this.is = value;
-        return this;
-      }
-
-      public ResentStatusBuilder isNot(IsNot value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public ResentStatusBuilder in(String value) {
-        this.in = value;
-        return this;
-      }
-
-      public ResentStatusBuilder notIn(String value) {
-        this.notIn = value;
-        return this;
-      }
-
-      public ResentStatusParams build() {
-        return new ResentStatusParams(this);
-      }
-    }
-
-    public enum Is {
+    public enum ResentStatus {
       FULLY_RESENT("fully_resent"),
 
       PARTIALLY_RESENT("partially_resent"),
 
-      /** An enum member indicating that Is was instantiated with an unknown value. */
+      /** An enum member indicating that ResentStatus was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
 
-      Is(String value) {
+      ResentStatus(String value) {
         this.value = value;
       }
 
@@ -2785,9 +423,9 @@ public final class ExportOrdersParams {
         return value;
       }
 
-      public static Is fromString(String value) {
+      public static ResentStatus fromString(String value) {
         if (value == null) return _UNKNOWN;
-        for (Is enumValue : Is.values()) {
+        for (ResentStatus enumValue : ResentStatus.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
@@ -2796,92 +434,16 @@ public final class ExportOrdersParams {
       }
     }
 
-    public enum IsNot {
-      FULLY_RESENT("fully_resent"),
-
-      PARTIALLY_RESENT("partially_resent"),
-
-      /** An enum member indicating that IsNot was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsNot(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsNot fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsNot enumValue : IsNot.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-  }
-
-  public static final class IsResentParams {
-
-    private final Is is;
-
-    private IsResentParams(IsResentBuilder builder) {
-
-      this.is = builder.is;
-    }
-
-    public Is getIs() {
-      return is;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for IsResentParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static IsResentBuilder builder() {
-      return new IsResentBuilder();
-    }
-
-    public static final class IsResentBuilder {
-
-      private Is is;
-
-      private IsResentBuilder() {}
-
-      public IsResentBuilder is(Is value) {
-        this.is = value;
-        return this;
-      }
-
-      public IsResentParams build() {
-        return new IsResentParams(this);
-      }
-    }
-
-    public enum Is {
+    public enum IsResent {
       TRUE("true"),
 
       FALSE("false"),
 
-      /** An enum member indicating that Is was instantiated with an unknown value. */
+      /** An enum member indicating that IsResent was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
 
-      Is(String value) {
+      IsResent(String value) {
         this.value = value;
       }
 
@@ -2889,102 +451,14 @@ public final class ExportOrdersParams {
         return value;
       }
 
-      public static Is fromString(String value) {
+      public static IsResent fromString(String value) {
         if (value == null) return _UNKNOWN;
-        for (Is enumValue : Is.values()) {
+        for (IsResent enumValue : IsResent.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
         }
         return _UNKNOWN;
-      }
-    }
-  }
-
-  public static final class OriginalOrderIdParams {
-
-    private final String is;
-
-    private final String isNot;
-
-    private final String startsWith;
-
-    private OriginalOrderIdParams(OriginalOrderIdBuilder builder) {
-
-      this.is = builder.is;
-
-      this.isNot = builder.isNot;
-
-      this.startsWith = builder.startsWith;
-    }
-
-    public String getIs() {
-      return is;
-    }
-
-    public String getIsNot() {
-      return isNot;
-    }
-
-    public String getStartsWith() {
-      return startsWith;
-    }
-
-    /** Get the form data for this request. */
-    public Map<String, Object> toFormData() {
-      Map<String, Object> formData = new LinkedHashMap<>();
-
-      if (this.is != null) {
-
-        formData.put("is", this.is);
-      }
-
-      if (this.isNot != null) {
-
-        formData.put("is_not", this.isNot);
-      }
-
-      if (this.startsWith != null) {
-
-        formData.put("starts_with", this.startsWith);
-      }
-
-      return formData;
-    }
-
-    /** Create a new builder for OriginalOrderIdParams. */
-    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
-    public static OriginalOrderIdBuilder builder() {
-      return new OriginalOrderIdBuilder();
-    }
-
-    public static final class OriginalOrderIdBuilder {
-
-      private String is;
-
-      private String isNot;
-
-      private String startsWith;
-
-      private OriginalOrderIdBuilder() {}
-
-      public OriginalOrderIdBuilder is(String value) {
-        this.is = value;
-        return this;
-      }
-
-      public OriginalOrderIdBuilder isNot(String value) {
-        this.isNot = value;
-        return this;
-      }
-
-      public OriginalOrderIdBuilder startsWith(String value) {
-        this.startsWith = value;
-        return this;
-      }
-
-      public OriginalOrderIdParams build() {
-        return new OriginalOrderIdParams(this);
       }
     }
   }

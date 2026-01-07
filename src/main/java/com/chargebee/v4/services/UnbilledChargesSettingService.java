@@ -62,6 +62,14 @@ public final class UnbilledChargesSettingService
   }
 
   /**
+   * retrieve a unbilledChargesSetting without params (executes immediately) - returns raw Response.
+   */
+  Response retrieveRaw() throws ChargebeeException {
+
+    return get("/unbilled_charges_settings", null);
+  }
+
+  /**
    * retrieve a unbilledChargesSetting using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
@@ -73,6 +81,12 @@ public final class UnbilledChargesSettingService
   public UnbilledChargesSettingRetrieveResponse retrieve(
       UnbilledChargesSettingRetrieveParams params) throws ChargebeeException {
     Response response = retrieveRaw(params);
+
+    return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public UnbilledChargesSettingRetrieveResponse retrieve() throws ChargebeeException {
+    Response response = retrieveRaw();
 
     return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

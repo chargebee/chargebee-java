@@ -133,6 +133,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
   public VirtualBankAccountListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return VirtualBankAccountListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

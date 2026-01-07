@@ -139,6 +139,7 @@ public final class RampService extends BaseService<RampService> {
 
   public RampListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return RampListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

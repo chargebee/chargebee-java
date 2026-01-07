@@ -181,6 +181,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
 
   public DifferentialPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

@@ -250,6 +250,7 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
 
   public PaymentSourceListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

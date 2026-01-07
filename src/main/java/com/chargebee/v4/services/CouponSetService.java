@@ -94,6 +94,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
 
   public CouponSetListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.virtualBankAccount.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,117 +56,41 @@ public final class VirtualBankAccountListParams {
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public VirtualBankAccountListParams build() {
       return new VirtualBankAccountListParams(this);
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final VirtualBankAccountListBuilder builder;
-
-      CustomerIdFilter(String fieldName, VirtualBankAccountListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public VirtualBankAccountListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<VirtualBankAccountListBuilder> {
+      CustomerIdFilter(
+          String fieldName, VirtualBankAccountListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final VirtualBankAccountListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, VirtualBankAccountListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public VirtualBankAccountListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter
+        extends TimestampFilter<VirtualBankAccountListBuilder> {
+      UpdatedAtFilter(
+          String fieldName, VirtualBankAccountListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final VirtualBankAccountListBuilder builder;
-
-      CreatedAtFilter(String fieldName, VirtualBankAccountListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public VirtualBankAccountListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public VirtualBankAccountListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter
+        extends TimestampFilter<VirtualBankAccountListBuilder> {
+      CreatedAtFilter(
+          String fieldName, VirtualBankAccountListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

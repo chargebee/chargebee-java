@@ -638,6 +638,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
 
   public InvoiceListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return InvoiceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
@@ -1187,6 +1188,7 @@ public final class InvoiceService extends BaseService<InvoiceService> {
   public InvoiceListPaymentReferenceNumbersResponse listPaymentReferenceNumbers()
       throws ChargebeeException {
     Response response = listPaymentReferenceNumbersRaw();
+
     return InvoiceListPaymentReferenceNumbersResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

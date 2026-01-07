@@ -78,6 +78,7 @@ public final class EventService extends BaseService<EventService> {
 
   public EventListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return EventListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

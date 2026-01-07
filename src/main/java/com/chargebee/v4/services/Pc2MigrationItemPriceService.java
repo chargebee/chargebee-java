@@ -93,6 +93,7 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
 
   public Pc2MigrationItemPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return Pc2MigrationItemPriceListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

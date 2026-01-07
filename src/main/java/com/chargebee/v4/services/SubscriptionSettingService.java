@@ -61,6 +61,14 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
   }
 
   /**
+   * retrieve a subscriptionSetting without params (executes immediately) - returns raw Response.
+   */
+  Response retrieveRaw() throws ChargebeeException {
+
+    return get("/subscription_settings/retrieve", null);
+  }
+
+  /**
    * retrieve a subscriptionSetting using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
@@ -72,6 +80,12 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
   public SubscriptionSettingRetrieveResponse retrieve(SubscriptionSettingRetrieveParams params)
       throws ChargebeeException {
     Response response = retrieveRaw(params);
+
+    return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public SubscriptionSettingRetrieveResponse retrieve() throws ChargebeeException {
+    Response response = retrieveRaw();
 
     return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

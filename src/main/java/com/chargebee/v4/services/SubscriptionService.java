@@ -482,6 +482,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
 
   public SubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

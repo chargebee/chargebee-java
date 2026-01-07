@@ -60,6 +60,12 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
     return get("/brand_configurations", params != null ? params.toQueryParams() : null);
   }
 
+  /** retrieve a brandConfiguration without params (executes immediately) - returns raw Response. */
+  Response retrieveRaw() throws ChargebeeException {
+
+    return get("/brand_configurations", null);
+  }
+
   /**
    * retrieve a brandConfiguration using raw JSON payload (executes immediately) - returns raw
    * Response.
@@ -72,6 +78,12 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
   public BrandConfigurationRetrieveResponse retrieve(BrandConfigurationRetrieveParams params)
       throws ChargebeeException {
     Response response = retrieveRaw(params);
+
+    return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public BrandConfigurationRetrieveResponse retrieve() throws ChargebeeException {
+    Response response = retrieveRaw();
 
     return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

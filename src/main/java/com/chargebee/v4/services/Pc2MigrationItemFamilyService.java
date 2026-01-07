@@ -184,6 +184,7 @@ public final class Pc2MigrationItemFamilyService
 
   public Pc2MigrationItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return Pc2MigrationItemFamilyListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

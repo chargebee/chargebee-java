@@ -150,6 +150,7 @@ public final class GiftService extends BaseService<GiftService> {
 
   public GiftListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return GiftListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

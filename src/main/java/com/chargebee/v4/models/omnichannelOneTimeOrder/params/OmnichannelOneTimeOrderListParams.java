@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelOneTimeOrder.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,69 +55,34 @@ public final class OmnichannelOneTimeOrderListParams {
     }
 
     public SourceFilter source() {
-      return new SourceFilter("source", this);
+      return new SourceFilter("source", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public OmnichannelOneTimeOrderListParams build() {
       return new OmnichannelOneTimeOrderListParams(this);
     }
 
-    public static final class SourceFilter {
-      private final String fieldName;
-      private final OmnichannelOneTimeOrderListBuilder builder;
-
-      SourceFilter(String fieldName, OmnichannelOneTimeOrderListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SourceFilter
+        extends StringFilter<OmnichannelOneTimeOrderListBuilder> {
+      SourceFilter(
+          String fieldName,
+          OmnichannelOneTimeOrderListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final OmnichannelOneTimeOrderListBuilder builder;
-
-      CustomerIdFilter(String fieldName, OmnichannelOneTimeOrderListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public OmnichannelOneTimeOrderListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class CustomerIdFilter
+        extends StringFilter<OmnichannelOneTimeOrderListBuilder> {
+      CustomerIdFilter(
+          String fieldName,
+          OmnichannelOneTimeOrderListBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

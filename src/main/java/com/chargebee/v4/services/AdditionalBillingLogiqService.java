@@ -62,6 +62,14 @@ public final class AdditionalBillingLogiqService
   }
 
   /**
+   * retrieve a additionalBillingLogiq without params (executes immediately) - returns raw Response.
+   */
+  Response retrieveRaw() throws ChargebeeException {
+
+    return get("/additional_billing_logiqs", null);
+  }
+
+  /**
    * retrieve a additionalBillingLogiq using raw JSON payload (executes immediately) - returns raw
    * Response.
    */
@@ -73,6 +81,12 @@ public final class AdditionalBillingLogiqService
   public AdditionalBillingLogiqRetrieveResponse retrieve(
       AdditionalBillingLogiqRetrieveParams params) throws ChargebeeException {
     Response response = retrieveRaw(params);
+
+    return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public AdditionalBillingLogiqRetrieveResponse retrieve() throws ChargebeeException {
+    Response response = retrieveRaw();
 
     return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }

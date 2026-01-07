@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.subscription.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,71 +62,71 @@ public final class SubscriptionListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public ItemIdFilter itemId() {
-      return new ItemIdFilter("item_id", this);
+      return new ItemIdFilter("item_id", this, queryParams);
     }
 
     public ItemPriceIdFilter itemPriceId() {
-      return new ItemPriceIdFilter("item_price_id", this);
+      return new ItemPriceIdFilter("item_price_id", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public CancelReasonFilter cancelReason() {
-      return new CancelReasonFilter("cancel_reason", this);
+      return new CancelReasonFilter("cancel_reason", this, queryParams);
     }
 
     public CancelReasonCodeFilter cancelReasonCode() {
-      return new CancelReasonCodeFilter("cancel_reason_code", this);
+      return new CancelReasonCodeFilter("cancel_reason_code", this, queryParams);
     }
 
     public RemainingBillingCyclesFilter remainingBillingCycles() {
-      return new RemainingBillingCyclesFilter("remaining_billing_cycles", this);
+      return new RemainingBillingCyclesFilter("remaining_billing_cycles", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public ActivatedAtFilter activatedAt() {
-      return new ActivatedAtFilter("activated_at", this);
+      return new ActivatedAtFilter("activated_at", this, queryParams);
     }
 
     public NextBillingAtFilter nextBillingAt() {
-      return new NextBillingAtFilter("next_billing_at", this);
+      return new NextBillingAtFilter("next_billing_at", this, queryParams);
     }
 
     public CancelledAtFilter cancelledAt() {
-      return new CancelledAtFilter("cancelled_at", this);
+      return new CancelledAtFilter("cancelled_at", this, queryParams);
     }
 
     public HasScheduledChangesFilter hasScheduledChanges() {
-      return new HasScheduledChangesFilter("has_scheduled_changes", this);
+      return new HasScheduledChangesFilter("has_scheduled_changes", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public OfflinePaymentMethodFilter offlinePaymentMethod() {
-      return new OfflinePaymentMethodFilter("offline_payment_method", this);
+      return new OfflinePaymentMethodFilter("offline_payment_method", this, queryParams);
     }
 
     public AutoCloseInvoicesFilter autoCloseInvoices() {
-      return new AutoCloseInvoicesFilter("auto_close_invoices", this);
+      return new AutoCloseInvoicesFilter("auto_close_invoices", this, queryParams);
     }
 
     public OverrideRelationshipFilter overrideRelationship() {
-      return new OverrideRelationshipFilter("override_relationship", this);
+      return new OverrideRelationshipFilter("override_relationship", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -132,610 +134,158 @@ public final class SubscriptionListParams {
     }
 
     public BusinessEntityIdFilter businessEntityId() {
-      return new BusinessEntityIdFilter("business_entity_id", this);
+      return new BusinessEntityIdFilter("business_entity_id", this, queryParams);
     }
 
     public ChannelFilter channel() {
-      return new ChannelFilter("channel", this);
+      return new ChannelFilter("channel", this, queryParams);
     }
 
     public PlanIdFilter planId() {
-      return new PlanIdFilter("plan_id", this);
+      return new PlanIdFilter("plan_id", this, queryParams);
     }
 
     public SubscriptionListParams build() {
       return new SubscriptionListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      IdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<SubscriptionListBuilder> {
+      IdFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      CustomerIdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<SubscriptionListBuilder> {
+      CustomerIdFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemIdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      ItemIdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemIdFilter extends StringFilter<SubscriptionListBuilder> {
+      ItemIdFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemPriceIdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      ItemPriceIdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemPriceIdFilter extends StringFilter<SubscriptionListBuilder> {
+      ItemPriceIdFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      StatusFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<SubscriptionListBuilder> {
+      StatusFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CancelReasonFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      CancelReasonFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class CancelReasonFilter extends StringFilter<SubscriptionListBuilder> {
+      CancelReasonFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CancelReasonCodeFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      CancelReasonCodeFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CancelReasonCodeFilter extends StringFilter<SubscriptionListBuilder> {
+      CancelReasonCodeFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class RemainingBillingCyclesFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      RemainingBillingCyclesFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class RemainingBillingCyclesFilter
+        extends NumberFilter<SubscriptionListBuilder> {
+      RemainingBillingCyclesFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      CreatedAtFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter extends TimestampFilter<SubscriptionListBuilder> {
+      CreatedAtFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ActivatedAtFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      ActivatedAtFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
+    public static final class ActivatedAtFilter extends TimestampFilter<SubscriptionListBuilder> {
+      ActivatedAtFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NextBillingAtFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      NextBillingAtFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class NextBillingAtFilter extends TimestampFilter<SubscriptionListBuilder> {
+      NextBillingAtFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CancelledAtFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      CancelledAtFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CancelledAtFilter extends TimestampFilter<SubscriptionListBuilder> {
+      CancelledAtFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class HasScheduledChangesFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      HasScheduledChangesFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class HasScheduledChangesFilter
+        extends StringFilter<SubscriptionListBuilder> {
+      HasScheduledChangesFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public SubscriptionListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<SubscriptionListBuilder> {
+      UpdatedAtFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class OfflinePaymentMethodFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      OfflinePaymentMethodFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class OfflinePaymentMethodFilter
+        extends StringFilter<SubscriptionListBuilder> {
+      OfflinePaymentMethodFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class AutoCloseInvoicesFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      AutoCloseInvoicesFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class AutoCloseInvoicesFilter
+        extends StringFilter<SubscriptionListBuilder> {
+      AutoCloseInvoicesFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class OverrideRelationshipFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      OverrideRelationshipFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class OverrideRelationshipFilter
+        extends StringFilter<SubscriptionListBuilder> {
+      OverrideRelationshipFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class BusinessEntityIdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      BusinessEntityIdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class BusinessEntityIdFilter extends StringFilter<SubscriptionListBuilder> {
+      BusinessEntityIdFilter(
+          String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChannelFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      ChannelFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChannelFilter extends StringFilter<SubscriptionListBuilder> {
+      ChannelFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PlanIdFilter {
-      private final String fieldName;
-      private final SubscriptionListBuilder builder;
-
-      PlanIdFilter(String fieldName, SubscriptionListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public SubscriptionListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public SubscriptionListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public SubscriptionListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PlanIdFilter extends StringFilter<SubscriptionListBuilder> {
+      PlanIdFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

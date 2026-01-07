@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.pc2MigrationItemPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,136 +55,66 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public Pc2MigrationIdFilter pc2MigrationId() {
-      return new Pc2MigrationIdFilter("pc2_migration_id", this);
+      return new Pc2MigrationIdFilter("pc2_migration_id", this, queryParams);
     }
 
     public Pc2MigrationItemIdFilter pc2MigrationItemId() {
-      return new Pc2MigrationItemIdFilter("pc2_migration_item_id", this);
+      return new Pc2MigrationItemIdFilter("pc2_migration_item_id", this, queryParams);
     }
 
     public IsInvalidPc1IdFilter isInvalidPc1Id() {
-      return new IsInvalidPc1IdFilter("is_invalid_pc1_id", this);
+      return new IsInvalidPc1IdFilter("is_invalid_pc1_id", this, queryParams);
     }
 
     public Pc1ItemTypeFilter pc1ItemType() {
-      return new Pc1ItemTypeFilter("pc1_item_type", this);
+      return new Pc1ItemTypeFilter("pc1_item_type", this, queryParams);
     }
 
     public IsRecurringFilter isRecurring() {
-      return new IsRecurringFilter("is_recurring", this);
+      return new IsRecurringFilter("is_recurring", this, queryParams);
     }
 
     public Pc2MigrationItemPriceListParams build() {
       return new Pc2MigrationItemPriceListParams(this);
     }
 
-    public static final class Pc2MigrationIdFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemPriceListBuilder builder;
-
-      Pc2MigrationIdFilter(String fieldName, Pc2MigrationItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class Pc2MigrationIdFilter
+        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+      Pc2MigrationIdFilter(
+          String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class Pc2MigrationItemIdFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemPriceListBuilder builder;
-
-      Pc2MigrationItemIdFilter(String fieldName, Pc2MigrationItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class Pc2MigrationItemIdFilter
+        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+      Pc2MigrationItemIdFilter(
+          String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IsInvalidPc1IdFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemPriceListBuilder builder;
-
-      IsInvalidPc1IdFilter(String fieldName, Pc2MigrationItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class IsInvalidPc1IdFilter
+        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+      IsInvalidPc1IdFilter(
+          String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class Pc1ItemTypeFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemPriceListBuilder builder;
-
-      Pc1ItemTypeFilter(String fieldName, Pc2MigrationItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class Pc1ItemTypeFilter
+        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+      Pc1ItemTypeFilter(
+          String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IsRecurringFilter {
-      private final String fieldName;
-      private final Pc2MigrationItemPriceListBuilder builder;
-
-      IsRecurringFilter(String fieldName, Pc2MigrationItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public Pc2MigrationItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class IsRecurringFilter
+        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+      IsRecurringFilter(
+          String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

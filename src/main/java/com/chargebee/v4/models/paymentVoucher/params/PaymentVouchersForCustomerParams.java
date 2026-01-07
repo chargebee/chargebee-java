@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentVoucher.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,7 +55,7 @@ public final class PaymentVouchersForCustomerParams {
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -65,33 +66,10 @@ public final class PaymentVouchersForCustomerParams {
       return new PaymentVouchersForCustomerParams(this);
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final PaymentVouchersForCustomerBuilder builder;
-
-      StatusFilter(String fieldName, PaymentVouchersForCustomerBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PaymentVouchersForCustomerBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PaymentVouchersForCustomerBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PaymentVouchersForCustomerBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PaymentVouchersForCustomerBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<PaymentVouchersForCustomerBuilder> {
+      StatusFilter(
+          String fieldName, PaymentVouchersForCustomerBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

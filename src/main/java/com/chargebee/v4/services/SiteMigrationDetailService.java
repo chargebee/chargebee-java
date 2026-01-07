@@ -85,6 +85,7 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
 
   public SiteMigrationDetailListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return SiteMigrationDetailListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.promotionalCredit.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,134 +56,50 @@ public final class PromotionalCreditListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public TypeFilter type() {
-      return new TypeFilter("type", this);
+      return new TypeFilter("type", this, queryParams);
     }
 
     public CustomerIdFilter customerId() {
-      return new CustomerIdFilter("customer_id", this);
+      return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
     public PromotionalCreditListParams build() {
       return new PromotionalCreditListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final PromotionalCreditListBuilder builder;
-
-      IdFilter(String fieldName, PromotionalCreditListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PromotionalCreditListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class IdFilter extends StringFilter<PromotionalCreditListBuilder> {
+      IdFilter(String fieldName, PromotionalCreditListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final PromotionalCreditListBuilder builder;
-
-      CreatedAtFilter(String fieldName, PromotionalCreditListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PromotionalCreditListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter
+        extends TimestampFilter<PromotionalCreditListBuilder> {
+      CreatedAtFilter(
+          String fieldName, PromotionalCreditListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TypeFilter {
-      private final String fieldName;
-      private final PromotionalCreditListBuilder builder;
-
-      TypeFilter(String fieldName, PromotionalCreditListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PromotionalCreditListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TypeFilter extends StringFilter<PromotionalCreditListBuilder> {
+      TypeFilter(
+          String fieldName, PromotionalCreditListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CustomerIdFilter {
-      private final String fieldName;
-      private final PromotionalCreditListBuilder builder;
-
-      CustomerIdFilter(String fieldName, PromotionalCreditListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public PromotionalCreditListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public PromotionalCreditListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class CustomerIdFilter extends StringFilter<PromotionalCreditListBuilder> {
+      CustomerIdFilter(
+          String fieldName, PromotionalCreditListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

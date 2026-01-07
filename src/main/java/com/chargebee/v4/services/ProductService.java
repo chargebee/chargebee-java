@@ -184,6 +184,7 @@ public final class ProductService extends BaseService<ProductService> {
 
   public ProductListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return ProductListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

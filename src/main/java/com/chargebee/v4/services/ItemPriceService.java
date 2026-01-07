@@ -285,6 +285,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
 
   public ItemPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

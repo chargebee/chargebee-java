@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.thirdPartyEntityMapping.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,204 +61,90 @@ public final class ThirdPartyEntityMappingListAllParams {
     }
 
     public EntityIdFilter entityId() {
-      return new EntityIdFilter("entity_id", this);
+      return new EntityIdFilter("entity_id", this, queryParams);
     }
 
     public EntityTypeFilter entityType() {
-      return new EntityTypeFilter("entity_type", this);
+      return new EntityTypeFilter("entity_type", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public ModifiedAtFilter modifiedAt() {
-      return new ModifiedAtFilter("modified_at", this);
+      return new ModifiedAtFilter("modified_at", this, queryParams);
     }
 
     public ThirdPartyEntityIdFilter thirdPartyEntityId() {
-      return new ThirdPartyEntityIdFilter("third_party_entity_id", this);
+      return new ThirdPartyEntityIdFilter("third_party_entity_id", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public ThirdPartyEntityMappingListAllParams build() {
       return new ThirdPartyEntityMappingListAllParams(this);
     }
 
-    public static final class EntityIdFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      EntityIdFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class EntityIdFilter
+        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+      EntityIdFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EntityTypeFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      EntityTypeFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class EntityTypeFilter
+        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+      EntityTypeFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      StatusFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter
+        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+      StatusFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ModifiedAtFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      ModifiedAtFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class ModifiedAtFilter
+        extends TimestampFilter<ThirdPartyEntityMappingListAllBuilder> {
+      ModifiedAtFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ThirdPartyEntityIdFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      ThirdPartyEntityIdFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
+    public static final class ThirdPartyEntityIdFilter
+        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+      ThirdPartyEntityIdFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final ThirdPartyEntityMappingListAllBuilder builder;
-
-      CreatedAtFilter(String fieldName, ThirdPartyEntityMappingListAllBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ThirdPartyEntityMappingListAllBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter
+        extends TimestampFilter<ThirdPartyEntityMappingListAllBuilder> {
+      CreatedAtFilter(
+          String fieldName,
+          ThirdPartyEntityMappingListAllBuilder builder,
+          Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

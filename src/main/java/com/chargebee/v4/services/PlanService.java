@@ -136,6 +136,7 @@ public final class PlanService extends BaseService<PlanService> {
 
   public PlanListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return PlanListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

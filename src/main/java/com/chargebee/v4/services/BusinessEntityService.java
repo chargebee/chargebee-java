@@ -89,6 +89,7 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
 
   public BusinessEntityGetTransfersResponse getTransfers() throws ChargebeeException {
     Response response = getTransfersRaw();
+
     return BusinessEntityGetTransfersResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

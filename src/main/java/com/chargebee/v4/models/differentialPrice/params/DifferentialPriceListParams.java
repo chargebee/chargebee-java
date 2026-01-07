@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.differentialPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -54,162 +55,50 @@ public final class DifferentialPriceListParams {
     }
 
     public ItemPriceIdFilter itemPriceId() {
-      return new ItemPriceIdFilter("item_price_id", this);
+      return new ItemPriceIdFilter("item_price_id", this, queryParams);
     }
 
     public ItemIdFilter itemId() {
-      return new ItemIdFilter("item_id", this);
+      return new ItemIdFilter("item_id", this, queryParams);
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public ParentItemIdFilter parentItemId() {
-      return new ParentItemIdFilter("parent_item_id", this);
+      return new ParentItemIdFilter("parent_item_id", this, queryParams);
     }
 
     public DifferentialPriceListParams build() {
       return new DifferentialPriceListParams(this);
     }
 
-    public static final class ItemPriceIdFilter {
-      private final String fieldName;
-      private final DifferentialPriceListBuilder builder;
-
-      ItemPriceIdFilter(String fieldName, DifferentialPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public DifferentialPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemPriceIdFilter extends StringFilter<DifferentialPriceListBuilder> {
+      ItemPriceIdFilter(
+          String fieldName, DifferentialPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemIdFilter {
-      private final String fieldName;
-      private final DifferentialPriceListBuilder builder;
-
-      ItemIdFilter(String fieldName, DifferentialPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public DifferentialPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemIdFilter extends StringFilter<DifferentialPriceListBuilder> {
+      ItemIdFilter(
+          String fieldName, DifferentialPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final DifferentialPriceListBuilder builder;
-
-      IdFilter(String fieldName, DifferentialPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public DifferentialPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<DifferentialPriceListBuilder> {
+      IdFilter(String fieldName, DifferentialPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ParentItemIdFilter {
-      private final String fieldName;
-      private final DifferentialPriceListBuilder builder;
-
-      ParentItemIdFilter(String fieldName, DifferentialPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public DifferentialPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public DifferentialPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ParentItemIdFilter
+        extends StringFilter<DifferentialPriceListBuilder> {
+      ParentItemIdFilter(
+          String fieldName, DifferentialPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

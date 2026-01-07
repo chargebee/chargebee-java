@@ -303,6 +303,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
 
   public HostedPageListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

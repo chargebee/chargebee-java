@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.pc2MigrationItem.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -94,35 +95,18 @@ public final class Pc2MigrationItemListParams {
       private Pc2MigrationItemFamilyBuilder() {}
 
       public Pc2MigrationIdFilter pc2MigrationId() {
-        return new Pc2MigrationIdFilter("pc2_migration_id", this);
+        return new Pc2MigrationIdFilter("pc2_migration_id", this, queryParams);
       }
 
       public Pc2MigrationItemFamilyParams build() {
         return new Pc2MigrationItemFamilyParams(this);
       }
 
-      public static final class Pc2MigrationIdFilter {
-        private final String fieldName;
-        private final Pc2MigrationItemFamilyBuilder builder;
-
-        Pc2MigrationIdFilter(String fieldName, Pc2MigrationItemFamilyBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public Pc2MigrationItemFamilyBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
-        }
-
-        public Pc2MigrationItemFamilyBuilder isNot(String value) {
-          builder.queryParams.put(fieldName + "[is_not]", value);
-          return builder;
-        }
-
-        public Pc2MigrationItemFamilyBuilder startsWith(String value) {
-          builder.queryParams.put(fieldName + "[starts_with]", value);
-          return builder;
+      public static final class Pc2MigrationIdFilter
+          extends StringFilter<Pc2MigrationItemFamilyBuilder> {
+        Pc2MigrationIdFilter(
+            String fieldName, Pc2MigrationItemFamilyBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

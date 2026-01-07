@@ -166,6 +166,7 @@ public final class AddonService extends BaseService<AddonService> {
 
   public AddonListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return AddonListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

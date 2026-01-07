@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.invoice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -96,45 +97,28 @@ public final class InvoiceRetrieveParams {
 
       @Deprecated
       public SubscriptionIdFilter subscriptionId() {
-        return new SubscriptionIdFilter("subscription_id", this);
+        return new SubscriptionIdFilter("subscription_id", this, queryParams);
       }
 
       @Deprecated
       public CustomerIdFilter customerId() {
-        return new CustomerIdFilter("customer_id", this);
+        return new CustomerIdFilter("customer_id", this, queryParams);
       }
 
       public LineItemParams build() {
         return new LineItemParams(this);
       }
 
-      public static final class SubscriptionIdFilter {
-        private final String fieldName;
-        private final LineItemBuilder builder;
-
-        SubscriptionIdFilter(String fieldName, LineItemBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public LineItemBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
+      public static final class SubscriptionIdFilter extends StringFilter<LineItemBuilder> {
+        SubscriptionIdFilter(
+            String fieldName, LineItemBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class CustomerIdFilter {
-        private final String fieldName;
-        private final LineItemBuilder builder;
-
-        CustomerIdFilter(String fieldName, LineItemBuilder builder) {
-          this.fieldName = fieldName;
-          this.builder = builder;
-        }
-
-        public LineItemBuilder is(String value) {
-          builder.queryParams.put(fieldName + "[is]", value);
-          return builder;
+      public static final class CustomerIdFilter extends StringFilter<LineItemBuilder> {
+        CustomerIdFilter(String fieldName, LineItemBuilder builder, Map<String, Object> params) {
+          super(fieldName, builder, params);
         }
       }
     }

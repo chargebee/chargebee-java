@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.variant.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -60,27 +61,27 @@ public final class ListProductVariantsParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public NameFilter name() {
-      return new NameFilter("name", this);
+      return new NameFilter("name", this, queryParams);
     }
 
     public SkuFilter sku() {
-      return new SkuFilter("sku", this);
+      return new SkuFilter("sku", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public CreatedAtFilter createdAt() {
-      return new CreatedAtFilter("created_at", this);
+      return new CreatedAtFilter("created_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -91,202 +92,42 @@ public final class ListProductVariantsParams {
       return new ListProductVariantsParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      IdFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ListProductVariantsBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<ListProductVariantsBuilder> {
+      IdFilter(String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NameFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      NameFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ListProductVariantsBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class NameFilter extends StringFilter<ListProductVariantsBuilder> {
+      NameFilter(String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SkuFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      SkuFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ListProductVariantsBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SkuFilter extends StringFilter<ListProductVariantsBuilder> {
+      SkuFilter(String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      StatusFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ListProductVariantsBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<ListProductVariantsBuilder> {
+      StatusFilter(
+          String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      UpdatedAtFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<ListProductVariantsBuilder> {
+      UpdatedAtFilter(
+          String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CreatedAtFilter {
-      private final String fieldName;
-      private final ListProductVariantsBuilder builder;
-
-      CreatedAtFilter(String fieldName, ListProductVariantsBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ListProductVariantsBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ListProductVariantsBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class CreatedAtFilter extends TimestampFilter<ListProductVariantsBuilder> {
+      CreatedAtFilter(
+          String fieldName, ListProductVariantsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

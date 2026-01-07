@@ -182,6 +182,7 @@ public final class ThirdPartyEntityMappingService
 
   public ThirdPartyEntityMappingListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return ThirdPartyEntityMappingListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

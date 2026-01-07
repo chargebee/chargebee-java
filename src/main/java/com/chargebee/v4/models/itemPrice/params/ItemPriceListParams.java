@@ -8,8 +8,10 @@
 package com.chargebee.v4.models.itemPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,71 +57,71 @@ public final class ItemPriceListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public NameFilter name() {
-      return new NameFilter("name", this);
+      return new NameFilter("name", this, queryParams);
     }
 
     public PricingModelFilter pricingModel() {
-      return new PricingModelFilter("pricing_model", this);
+      return new PricingModelFilter("pricing_model", this, queryParams);
     }
 
     public ItemIdFilter itemId() {
-      return new ItemIdFilter("item_id", this);
+      return new ItemIdFilter("item_id", this, queryParams);
     }
 
     public ItemFamilyIdFilter itemFamilyId() {
-      return new ItemFamilyIdFilter("item_family_id", this);
+      return new ItemFamilyIdFilter("item_family_id", this, queryParams);
     }
 
     public ItemTypeFilter itemType() {
-      return new ItemTypeFilter("item_type", this);
+      return new ItemTypeFilter("item_type", this, queryParams);
     }
 
     public CurrencyCodeFilter currencyCode() {
-      return new CurrencyCodeFilter("currency_code", this);
+      return new CurrencyCodeFilter("currency_code", this, queryParams);
     }
 
     public PriceVariantIdFilter priceVariantId() {
-      return new PriceVariantIdFilter("price_variant_id", this);
+      return new PriceVariantIdFilter("price_variant_id", this, queryParams);
     }
 
     public TrialPeriodFilter trialPeriod() {
-      return new TrialPeriodFilter("trial_period", this);
+      return new TrialPeriodFilter("trial_period", this, queryParams);
     }
 
     public TrialPeriodUnitFilter trialPeriodUnit() {
-      return new TrialPeriodUnitFilter("trial_period_unit", this);
+      return new TrialPeriodUnitFilter("trial_period_unit", this, queryParams);
     }
 
     public StatusFilter status() {
-      return new StatusFilter("status", this);
+      return new StatusFilter("status", this, queryParams);
     }
 
     public UpdatedAtFilter updatedAt() {
-      return new UpdatedAtFilter("updated_at", this);
+      return new UpdatedAtFilter("updated_at", this, queryParams);
     }
 
     public BusinessEntityIdFilter businessEntityId() {
-      return new BusinessEntityIdFilter("business_entity_id", this);
+      return new BusinessEntityIdFilter("business_entity_id", this, queryParams);
     }
 
     public IncludeSiteLevelResourcesFilter includeSiteLevelResources() {
-      return new IncludeSiteLevelResourcesFilter("include_site_level_resources", this);
+      return new IncludeSiteLevelResourcesFilter("include_site_level_resources", this, queryParams);
     }
 
     public PeriodUnitFilter periodUnit() {
-      return new PeriodUnitFilter("period_unit", this);
+      return new PeriodUnitFilter("period_unit", this, queryParams);
     }
 
     public PeriodFilter period() {
-      return new PeriodFilter("period", this);
+      return new PeriodFilter("period", this, queryParams);
     }
 
     public ChannelFilter channel() {
-      return new ChannelFilter("channel", this);
+      return new ChannelFilter("channel", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -130,514 +132,114 @@ public final class ItemPriceListParams {
       return new ItemPriceListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      IdFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<ItemPriceListBuilder> {
+      IdFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NameFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      NameFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class NameFilter extends StringFilter<ItemPriceListBuilder> {
+      NameFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PricingModelFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      PricingModelFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PricingModelFilter extends StringFilter<ItemPriceListBuilder> {
+      PricingModelFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemIdFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      ItemIdFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemIdFilter extends StringFilter<ItemPriceListBuilder> {
+      ItemIdFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemFamilyIdFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      ItemFamilyIdFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemFamilyIdFilter extends StringFilter<ItemPriceListBuilder> {
+      ItemFamilyIdFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ItemTypeFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      ItemTypeFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ItemTypeFilter extends StringFilter<ItemPriceListBuilder> {
+      ItemTypeFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CurrencyCodeFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      CurrencyCodeFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CurrencyCodeFilter extends StringFilter<ItemPriceListBuilder> {
+      CurrencyCodeFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PriceVariantIdFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      PriceVariantIdFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PriceVariantIdFilter extends StringFilter<ItemPriceListBuilder> {
+      PriceVariantIdFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TrialPeriodFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      TrialPeriodFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class TrialPeriodFilter extends NumberFilter<ItemPriceListBuilder> {
+      TrialPeriodFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TrialPeriodUnitFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      TrialPeriodUnitFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class TrialPeriodUnitFilter extends StringFilter<ItemPriceListBuilder> {
+      TrialPeriodUnitFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class StatusFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      StatusFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class StatusFilter extends StringFilter<ItemPriceListBuilder> {
+      StatusFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class UpdatedAtFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      UpdatedAtFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemPriceListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemPriceListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public ItemPriceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class UpdatedAtFilter extends TimestampFilter<ItemPriceListBuilder> {
+      UpdatedAtFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class BusinessEntityIdFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      BusinessEntityIdFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder isPresent(boolean value) {
-        builder.queryParams.put(fieldName + "[is_present]", String.valueOf(value));
-        return builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class BusinessEntityIdFilter extends StringFilter<ItemPriceListBuilder> {
+      BusinessEntityIdFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class IncludeSiteLevelResourcesFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      IncludeSiteLevelResourcesFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
+    public static final class IncludeSiteLevelResourcesFilter
+        extends StringFilter<ItemPriceListBuilder> {
+      IncludeSiteLevelResourcesFilter(
+          String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PeriodUnitFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      PeriodUnitFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class PeriodUnitFilter extends StringFilter<ItemPriceListBuilder> {
+      PeriodUnitFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class PeriodFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      PeriodFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class PeriodFilter extends NumberFilter<ItemPriceListBuilder> {
+      PeriodFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ChannelFilter {
-      private final String fieldName;
-      private final ItemPriceListBuilder builder;
-
-      ChannelFilter(String fieldName, ItemPriceListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public ItemPriceListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public ItemPriceListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public ItemPriceListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class ChannelFilter extends StringFilter<ItemPriceListBuilder> {
+      ChannelFilter(String fieldName, ItemPriceListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 

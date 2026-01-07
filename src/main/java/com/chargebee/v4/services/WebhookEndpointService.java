@@ -166,6 +166,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
 
   public WebhookEndpointListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

@@ -166,6 +166,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
 
   public UnbilledChargeListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

@@ -8,8 +8,9 @@
 package com.chargebee.v4.models.couponSet.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
 
-import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -55,216 +56,68 @@ public final class CouponSetListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public NameFilter name() {
-      return new NameFilter("name", this);
+      return new NameFilter("name", this, queryParams);
     }
 
     public CouponIdFilter couponId() {
-      return new CouponIdFilter("coupon_id", this);
+      return new CouponIdFilter("coupon_id", this, queryParams);
     }
 
     public TotalCountFilter totalCount() {
-      return new TotalCountFilter("total_count", this);
+      return new TotalCountFilter("total_count", this, queryParams);
     }
 
     public RedeemedCountFilter redeemedCount() {
-      return new RedeemedCountFilter("redeemed_count", this);
+      return new RedeemedCountFilter("redeemed_count", this, queryParams);
     }
 
     public ArchivedCountFilter archivedCount() {
-      return new ArchivedCountFilter("archived_count", this);
+      return new ArchivedCountFilter("archived_count", this, queryParams);
     }
 
     public CouponSetListParams build() {
       return new CouponSetListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      IdFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CouponSetListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<CouponSetListBuilder> {
+      IdFilter(String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class NameFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      NameFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CouponSetListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class NameFilter extends StringFilter<CouponSetListBuilder> {
+      NameFilter(String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class CouponIdFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      CouponIdFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public CouponSetListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class CouponIdFilter extends StringFilter<CouponSetListBuilder> {
+      CouponIdFilter(String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class TotalCountFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      TotalCountFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class TotalCountFilter extends NumberFilter<CouponSetListBuilder> {
+      TotalCountFilter(String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class RedeemedCountFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      RedeemedCountFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class RedeemedCountFilter extends NumberFilter<CouponSetListBuilder> {
+      RedeemedCountFilter(
+          String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class ArchivedCountFilter {
-      private final String fieldName;
-      private final CouponSetListBuilder builder;
-
-      ArchivedCountFilter(String fieldName, CouponSetListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public CouponSetListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public CouponSetListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class ArchivedCountFilter extends NumberFilter<CouponSetListBuilder> {
+      ArchivedCountFilter(
+          String fieldName, CouponSetListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
   }

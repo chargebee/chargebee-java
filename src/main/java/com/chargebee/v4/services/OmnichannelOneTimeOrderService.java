@@ -90,6 +90,7 @@ public final class OmnichannelOneTimeOrderService
 
   public OmnichannelOneTimeOrderListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return OmnichannelOneTimeOrderListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
   }

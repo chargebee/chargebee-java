@@ -88,6 +88,7 @@ public final class ItemService extends BaseService<ItemService> {
 
   public ItemListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return ItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

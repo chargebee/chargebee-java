@@ -395,6 +395,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
 
   public CreditNoteListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

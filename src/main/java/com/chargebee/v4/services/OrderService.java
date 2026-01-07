@@ -114,6 +114,7 @@ public final class OrderService extends BaseService<OrderService> {
 
   public OrderListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return OrderListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

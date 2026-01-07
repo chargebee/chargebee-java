@@ -202,6 +202,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
 
   public CurrencyListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 }

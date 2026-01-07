@@ -108,6 +108,7 @@ public final class CommentService extends BaseService<CommentService> {
 
   public CommentListResponse list() throws ChargebeeException {
     Response response = listRaw();
+
     return CommentListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 

@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.event.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.TimestampFilter;
 
 import java.sql.Timestamp;
 import java.util.Collections;
@@ -67,23 +69,23 @@ public final class EventListParams {
     }
 
     public IdFilter id() {
-      return new IdFilter("id", this);
+      return new IdFilter("id", this, queryParams);
     }
 
     public WebhookStatusFilter webhookStatus() {
-      return new WebhookStatusFilter("webhook_status", this);
+      return new WebhookStatusFilter("webhook_status", this, queryParams);
     }
 
     public EventTypeFilter eventType() {
-      return new EventTypeFilter("event_type", this);
+      return new EventTypeFilter("event_type", this, queryParams);
     }
 
     public SourceFilter source() {
-      return new SourceFilter("source", this);
+      return new SourceFilter("source", this, queryParams);
     }
 
     public OccurredAtFilter occurredAt() {
-      return new OccurredAtFilter("occurred_at", this);
+      return new OccurredAtFilter("occurred_at", this, queryParams);
     }
 
     public SortBySortBuilder sortBy() {
@@ -94,160 +96,33 @@ public final class EventListParams {
       return new EventListParams(this);
     }
 
-    public static final class IdFilter {
-      private final String fieldName;
-      private final EventListBuilder builder;
-
-      IdFilter(String fieldName, EventListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EventListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EventListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public EventListBuilder startsWith(String value) {
-        builder.queryParams.put(fieldName + "[starts_with]", value);
-        return builder;
-      }
-
-      public EventListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public EventListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class IdFilter extends StringFilter<EventListBuilder> {
+      IdFilter(String fieldName, EventListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class WebhookStatusFilter {
-      private final String fieldName;
-      private final EventListBuilder builder;
-
-      WebhookStatusFilter(String fieldName, EventListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EventListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EventListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public EventListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public EventListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class WebhookStatusFilter extends StringFilter<EventListBuilder> {
+      WebhookStatusFilter(String fieldName, EventListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class EventTypeFilter {
-      private final String fieldName;
-      private final EventListBuilder builder;
-
-      EventTypeFilter(String fieldName, EventListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EventListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EventListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public EventListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public EventListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class EventTypeFilter extends StringFilter<EventListBuilder> {
+      EventTypeFilter(String fieldName, EventListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class SourceFilter {
-      private final String fieldName;
-      private final EventListBuilder builder;
-
-      SourceFilter(String fieldName, EventListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EventListBuilder is(String value) {
-        builder.queryParams.put(fieldName + "[is]", value);
-        return builder;
-      }
-
-      public EventListBuilder isNot(String value) {
-        builder.queryParams.put(fieldName + "[is_not]", value);
-        return builder;
-      }
-
-      public EventListBuilder in(String... values) {
-        builder.queryParams.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
-        return builder;
-      }
-
-      public EventListBuilder notIn(String... values) {
-        builder.queryParams.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
-        return builder;
+    public static final class SourceFilter extends StringFilter<EventListBuilder> {
+      SourceFilter(String fieldName, EventListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
-    public static final class OccurredAtFilter {
-      private final String fieldName;
-      private final EventListBuilder builder;
-
-      OccurredAtFilter(String fieldName, EventListBuilder builder) {
-        this.fieldName = fieldName;
-        this.builder = builder;
-      }
-
-      public EventListBuilder after(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[after]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public EventListBuilder before(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[before]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public EventListBuilder on(Timestamp timestamp) {
-        builder.queryParams.put(fieldName + "[on]", timestamp.getTime() / 1000);
-        return builder;
-      }
-
-      public EventListBuilder between(Timestamp start, Timestamp end) {
-        builder.queryParams.put(
-            fieldName + "[between]",
-            "[" + (start.getTime() / 1000) + "," + (end.getTime() / 1000) + "]");
-        return builder;
+    public static final class OccurredAtFilter extends TimestampFilter<EventListBuilder> {
+      OccurredAtFilter(String fieldName, EventListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
       }
     }
 
