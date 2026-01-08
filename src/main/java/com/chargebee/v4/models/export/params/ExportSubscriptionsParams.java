@@ -8,6 +8,7 @@ package com.chargebee.v4.models.export.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
 
@@ -287,10 +288,10 @@ public final class ExportSubscriptionsParams {
       }
 
       public static final class RemainingBillingCyclesFilter
-          extends EnumFilter<RemainingBillingCycles, SubscriptionBuilder> {
+          extends NumberFilter<SubscriptionBuilder> {
         RemainingBillingCyclesFilter(
             String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, RemainingBillingCycles::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -300,11 +301,10 @@ public final class ExportSubscriptionsParams {
         }
       }
 
-      public static final class ActivatedAtFilter
-          extends EnumFilter<ActivatedAt, SubscriptionBuilder> {
+      public static final class ActivatedAtFilter extends TimestampFilter<SubscriptionBuilder> {
         ActivatedAtFilter(
             String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, ActivatedAt::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -433,65 +433,6 @@ public final class ExportSubscriptionsParams {
       public static CancelReason fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (CancelReason enumValue : CancelReason.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum RemainingBillingCycles {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that RemainingBillingCycles was instantiated with an unknown
-       * value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      RemainingBillingCycles(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static RemainingBillingCycles fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (RemainingBillingCycles enumValue : RemainingBillingCycles.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum ActivatedAt {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that ActivatedAt was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ActivatedAt(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ActivatedAt fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ActivatedAt enumValue : ActivatedAt.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

@@ -114,7 +114,7 @@ public final class NonSubscriptionProcessReceiptParams {
 
     private final String currencyCode;
 
-    private final Integer price;
+    private final Long price;
 
     private final Type type;
 
@@ -145,7 +145,7 @@ public final class NonSubscriptionProcessReceiptParams {
       return currencyCode;
     }
 
-    public Integer getPrice() {
+    public Long getPrice() {
       return price;
     }
 
@@ -210,7 +210,7 @@ public final class NonSubscriptionProcessReceiptParams {
 
       private String currencyCode;
 
-      private Integer price;
+      private Long price;
 
       private Type type;
 
@@ -230,7 +230,7 @@ public final class NonSubscriptionProcessReceiptParams {
         return this;
       }
 
-      public ProductBuilder price(Integer value) {
+      public ProductBuilder price(Long value) {
         this.price = value;
         return this;
       }

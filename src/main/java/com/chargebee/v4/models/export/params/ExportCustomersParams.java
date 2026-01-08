@@ -259,33 +259,33 @@ public final class ExportCustomersParams {
         }
       }
 
-      public static final class FirstNameFilter extends EnumFilter<FirstName, CustomerBuilder> {
+      public static final class FirstNameFilter extends StringFilter<CustomerBuilder> {
         FirstNameFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, FirstName::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class LastNameFilter extends EnumFilter<LastName, CustomerBuilder> {
+      public static final class LastNameFilter extends StringFilter<CustomerBuilder> {
         LastNameFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, LastName::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class EmailFilter extends EnumFilter<Email, CustomerBuilder> {
+      public static final class EmailFilter extends StringFilter<CustomerBuilder> {
         EmailFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Email::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class CompanyFilter extends EnumFilter<Company, CustomerBuilder> {
+      public static final class CompanyFilter extends StringFilter<CustomerBuilder> {
         CompanyFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Company::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class PhoneFilter extends EnumFilter<Phone, CustomerBuilder> {
+      public static final class PhoneFilter extends StringFilter<CustomerBuilder> {
         PhoneFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Phone::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -335,146 +335,6 @@ public final class ExportCustomersParams {
         ChannelFilter(String fieldName, CustomerBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params, Channel::getValue);
         }
-      }
-    }
-
-    public enum FirstName {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that FirstName was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      FirstName(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static FirstName fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (FirstName enumValue : FirstName.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum LastName {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that LastName was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      LastName(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static LastName fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (LastName enumValue : LastName.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum Email {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Email was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Email(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Email fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Email enumValue : Email.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum Company {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Company was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Company(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Company fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Company enumValue : Company.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum Phone {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Phone was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Phone(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Phone fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Phone enumValue : Phone.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
       }
     }
 

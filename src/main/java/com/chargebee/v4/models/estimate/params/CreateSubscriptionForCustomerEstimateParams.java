@@ -793,7 +793,7 @@ public final class CreateSubscriptionForCustomerEstimateParams {
         return this;
       }
 
-      public AddonsBuilder unitPrice(List<Integer> value) {
+      public AddonsBuilder unitPrice(List<Long> value) {
         queryParams.put("unit_price", value);
         return this;
       }
@@ -859,7 +859,7 @@ public final class CreateSubscriptionForCustomerEstimateParams {
         return this;
       }
 
-      public EventBasedAddonsBuilder unitPrice(List<Integer> value) {
+      public EventBasedAddonsBuilder unitPrice(List<Long> value) {
         queryParams.put("unit_price", value);
         return this;
       }

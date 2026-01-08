@@ -186,19 +186,17 @@ public final class ExportCreditNotesParams {
         }
       }
 
-      public static final class SubscriptionIdFilter
-          extends EnumFilter<SubscriptionId, CreditNoteBuilder> {
+      public static final class SubscriptionIdFilter extends StringFilter<CreditNoteBuilder> {
         SubscriptionIdFilter(
             String fieldName, CreditNoteBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, SubscriptionId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class ReferenceInvoiceIdFilter
-          extends EnumFilter<ReferenceInvoiceId, CreditNoteBuilder> {
+      public static final class ReferenceInvoiceIdFilter extends StringFilter<CreditNoteBuilder> {
         ReferenceInvoiceIdFilter(
             String fieldName, CreditNoteBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, ReferenceInvoiceId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -282,64 +280,6 @@ public final class ExportCreditNotesParams {
         ChannelFilter(String fieldName, CreditNoteBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params, Channel::getValue);
         }
-      }
-    }
-
-    public enum SubscriptionId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that SubscriptionId was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SubscriptionId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionId enumValue : SubscriptionId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum ReferenceInvoiceId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that ReferenceInvoiceId was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReferenceInvoiceId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReferenceInvoiceId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReferenceInvoiceId enumValue : ReferenceInvoiceId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
       }
     }
 

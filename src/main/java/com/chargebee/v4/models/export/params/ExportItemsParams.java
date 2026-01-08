@@ -87,11 +87,10 @@ public final class ExportItemsParams {
       return new ExportItemsParams(this);
     }
 
-    public static final class BusinessEntityIdFilter
-        extends EnumFilter<BusinessEntityId, ExportItemsBuilder> {
+    public static final class BusinessEntityIdFilter extends StringFilter<ExportItemsBuilder> {
       BusinessEntityIdFilter(
           String fieldName, ExportItemsBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params, BusinessEntityId::getValue);
+        super(fieldName, builder, params);
       }
     }
 
@@ -101,34 +100,6 @@ public final class ExportItemsParams {
           String fieldName, ExportItemsBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params, IncludeSiteLevelResources::getValue);
       }
-    }
-  }
-
-  public enum BusinessEntityId {
-    TRUE("true"),
-
-    FALSE("false"),
-
-    /** An enum member indicating that BusinessEntityId was instantiated with an unknown value. */
-    _UNKNOWN(null);
-    private final String value;
-
-    BusinessEntityId(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static BusinessEntityId fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (BusinessEntityId enumValue : BusinessEntityId.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
     }
   }
 

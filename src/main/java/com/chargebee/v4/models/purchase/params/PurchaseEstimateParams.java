@@ -848,7 +848,7 @@ public final class PurchaseEstimateParams {
 
     private final Integer quantity;
 
-    private final Integer unitAmount;
+    private final Long unitAmount;
 
     private final String unitAmountInDecimal;
 
@@ -881,7 +881,7 @@ public final class PurchaseEstimateParams {
       return quantity;
     }
 
-    public Integer getUnitAmount() {
+    public Long getUnitAmount() {
       return unitAmount;
     }
 
@@ -944,7 +944,7 @@ public final class PurchaseEstimateParams {
 
       private Integer quantity;
 
-      private Integer unitAmount;
+      private Long unitAmount;
 
       private String unitAmountInDecimal;
 
@@ -967,7 +967,7 @@ public final class PurchaseEstimateParams {
         return this;
       }
 
-      public PurchaseItemsBuilder unitAmount(Integer value) {
+      public PurchaseItemsBuilder unitAmount(Long value) {
         this.unitAmount = value;
         return this;
       }

@@ -202,10 +202,9 @@ public final class ExportOrdersParams {
         }
       }
 
-      public static final class SubscriptionIdFilter
-          extends EnumFilter<SubscriptionId, OrderBuilder> {
+      public static final class SubscriptionIdFilter extends StringFilter<OrderBuilder> {
         SubscriptionIdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, SubscriptionId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -299,34 +298,6 @@ public final class ExportOrdersParams {
         OriginalOrderIdFilter(String fieldName, OrderBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params);
         }
-      }
-    }
-
-    public enum SubscriptionId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that SubscriptionId was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SubscriptionId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionId enumValue : SubscriptionId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
       }
     }
 

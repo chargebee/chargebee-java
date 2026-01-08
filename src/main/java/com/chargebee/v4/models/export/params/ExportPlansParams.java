@@ -206,9 +206,9 @@ public final class ExportPlansParams {
         }
       }
 
-      public static final class TrialPeriodFilter extends EnumFilter<TrialPeriod, PlanBuilder> {
+      public static final class TrialPeriodFilter extends NumberFilter<PlanBuilder> {
         TrialPeriodFilter(String fieldName, PlanBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, TrialPeriod::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -276,34 +276,6 @@ public final class ExportPlansParams {
       public static PeriodUnit fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (PeriodUnit enumValue : PeriodUnit.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum TrialPeriod {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that TrialPeriod was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      TrialPeriod(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static TrialPeriod fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (TrialPeriod enumValue : TrialPeriod.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

@@ -172,26 +172,23 @@ public final class ExportTransactionsParams {
         }
       }
 
-      public static final class CustomerIdFilter
-          extends EnumFilter<CustomerId, TransactionBuilder> {
+      public static final class CustomerIdFilter extends StringFilter<TransactionBuilder> {
         CustomerIdFilter(String fieldName, TransactionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, CustomerId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class SubscriptionIdFilter
-          extends EnumFilter<SubscriptionId, TransactionBuilder> {
+      public static final class SubscriptionIdFilter extends StringFilter<TransactionBuilder> {
         SubscriptionIdFilter(
             String fieldName, TransactionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, SubscriptionId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class PaymentSourceIdFilter
-          extends EnumFilter<PaymentSourceId, TransactionBuilder> {
+      public static final class PaymentSourceIdFilter extends StringFilter<TransactionBuilder> {
         PaymentSourceIdFilter(
             String fieldName, TransactionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, PaymentSourceId::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -223,11 +220,10 @@ public final class ExportTransactionsParams {
         }
       }
 
-      public static final class ReferenceNumberFilter
-          extends EnumFilter<ReferenceNumber, TransactionBuilder> {
+      public static final class ReferenceNumberFilter extends StringFilter<TransactionBuilder> {
         ReferenceNumberFilter(
             String fieldName, TransactionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, ReferenceNumber::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -266,90 +262,6 @@ public final class ExportTransactionsParams {
         UpdatedAtFilter(String fieldName, TransactionBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params);
         }
-      }
-    }
-
-    public enum CustomerId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that CustomerId was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      CustomerId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static CustomerId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (CustomerId enumValue : CustomerId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum SubscriptionId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that SubscriptionId was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      SubscriptionId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static SubscriptionId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (SubscriptionId enumValue : SubscriptionId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum PaymentSourceId {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that PaymentSourceId was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      PaymentSourceId(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static PaymentSourceId fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (PaymentSourceId enumValue : PaymentSourceId.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
       }
     }
 
@@ -587,34 +499,6 @@ public final class ExportTransactionsParams {
       public static Gateway fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (Gateway enumValue : Gateway.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum ReferenceNumber {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that ReferenceNumber was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      ReferenceNumber(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static ReferenceNumber fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (ReferenceNumber enumValue : ReferenceNumber.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

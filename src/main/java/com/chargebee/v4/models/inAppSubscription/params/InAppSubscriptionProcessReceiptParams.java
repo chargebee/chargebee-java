@@ -114,7 +114,7 @@ public final class InAppSubscriptionProcessReceiptParams {
 
     private final String currencyCode;
 
-    private final Integer price;
+    private final Long price;
 
     private final String name;
 
@@ -149,7 +149,7 @@ public final class InAppSubscriptionProcessReceiptParams {
       return currencyCode;
     }
 
-    public Integer getPrice() {
+    public Long getPrice() {
       return price;
     }
 
@@ -223,7 +223,7 @@ public final class InAppSubscriptionProcessReceiptParams {
 
       private String currencyCode;
 
-      private Integer price;
+      private Long price;
 
       private String name;
 
@@ -245,7 +245,7 @@ public final class InAppSubscriptionProcessReceiptParams {
         return this;
       }
 
-      public ProductBuilder price(Integer value) {
+      public ProductBuilder price(Long value) {
         this.price = value;
         return this;
       }
