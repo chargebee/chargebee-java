@@ -613,7 +613,7 @@ If you find something amiss, you are welcome to create an [issue](https://github
 ## Documentation
 ***
 
-- [Migration Guide](https://github.com/chargebee/chargebee-java/wiki/Migration-Guide) - Upgrade instructions between versions
+- [Migration Guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-V4) - Upgrade instructions between versions
 
 The API documentation for the Java library can be found in our [API reference](https://apidocs.chargebee.com/docs/api?lang=java).
 
