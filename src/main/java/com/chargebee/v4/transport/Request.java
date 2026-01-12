@@ -6,6 +6,8 @@ import java.util.*;
  * Immutable HTTP request representation.
  */
 public final class Request {
+    public static final String HEADER_RETRY_ATTEMPT = "X-CB-Retry-Attempt";
+    
     private final String method;
     private final String url;
     private final Map<String, List<String>> queryParams;
@@ -50,6 +52,22 @@ public final class Request {
 
     public Boolean getFollowRedirectsOverride() {
         return followRedirectsOverride;
+    }
+    
+    public Request withHeader(String key, String value) {
+        Map<String, String> newHeaders = new HashMap<>(this.headers);
+        newHeaders.put(key, value);
+        return new Request(this, newHeaders);
+    }
+    
+    private Request(Request source, Map<String, String> newHeaders) {
+        this.method = source.method;
+        this.url = source.url;
+        this.queryParams = source.queryParams;
+        this.headers = Collections.unmodifiableMap(newHeaders);
+        this.body = source.body;
+        this.maxNetworkRetriesOverride = source.maxNetworkRetriesOverride;
+        this.followRedirectsOverride = source.followRedirectsOverride;
     }
     
     public static Builder builder() {

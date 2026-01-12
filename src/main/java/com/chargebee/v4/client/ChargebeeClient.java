@@ -296,7 +296,8 @@ public final class ChargebeeClient extends ClientMethodsImpl {
 
         while (attempts <= maxRetries) {
             try {
-                Response response = transport.send(enrichedRequest);
+                Request requestToSend = addRetryAttemptHeader(enrichedRequest, attempts);
+                Response response = transport.send(requestToSend);
 
                 if (attempts < maxRetries && shouldRetry(response.getStatusCode())) {
                     attempts++;
@@ -402,6 +403,13 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     private boolean shouldRetry(int statusCode) {
         return retry.getRetryOnStatus().contains(statusCode);
     }
+    
+    private Request addRetryAttemptHeader(Request request, int attempts) {
+        if (attempts <= 0) {
+            return request;
+        }
+        return request.withHeader(Request.HEADER_RETRY_ATTEMPT, String.valueOf(attempts));
+    }
 
     private void sleep(long delayMs) {
         try {
@@ -439,7 +447,8 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     }
     
     private CompletableFuture<Response> sendWithRetryAsyncInternal(Request request, int attempts, int maxRetries) {
-        return transport.sendAsync(request)
+        Request requestToSend = addRetryAttemptHeader(request, attempts);
+        return transport.sendAsync(requestToSend)
             .handle((response, throwable) -> {
                 if (throwable != null) {
                     // Handle retryable exceptions
