@@ -1,9 +1,9 @@
 # Chargebee Java Client Library
 
 > [!NOTE]
-> [![Join Discord](https://img.shields.io/badge/Discord-Early%20Access-blue?logo=discord&logoColor=white)](https://discord.gg/S3SXDzXHAg)
+> [![Join Discord](https://img.shields.io/badge/Discord-Early%20Access-blue?logo=discord&logoColor=white)](https://discord.gg/gpsNqnhDm2)
 >
-> We are trialing a Discord server for developers building with Chargebee. Limited spots are open on a first-come basis. Join [here](https://discord.gg/S3SXDzXHAg) if interested.
+> We are trialing a Discord server for developers building with Chargebee. Limited spots are open on a first-come basis. Join [here](https://discord.gg/gpsNqnhDm2) if interested.
 
 This is the official Java library for integrating with Chargebee.
 
@@ -28,7 +28,9 @@ A couple of terms used in the above table are explained below:
 - **Status**: The current development status for the library version. **Beta** versions are feature-complete but may have breaking changes. **Active** major versions are currently being maintained and continue to get backward-compatible changes. **Inactive** versions no longer receive any updates.
 - **Branch**: The branch in this repository containing the source code for the latest release of the library version. Every version of the library has been [tagged](https://github.com/chargebee/chargebee-java/tags). You can check out the source code for any version using its tag.
 
-🔴 **Attention**: The support for v3 will eventually be discontinued on **December 31st 2026** and will no longer receive any further updates. We strongly recommend upgrading to v4 as soon as possible. See our [migration guide](docs/MIGRATION_GUIDE.md) for detailed upgrade instructions.
+🔴 **Attention**: The support for v3 will eventually be discontinued on **December 31st 2026** and will no longer receive any further updates. We strongly recommend upgrading to v4 as soon as possible. See our [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-V4) for detailed upgrade instructions.
+
+> 💡 **Rest assured**: Your existing v3 integrations will continue to function indefinitely. After December 31st 2026, v3 will no longer receive updates for new API features, but all current functionality will remain operational.
 
 **Note:** See the [changelog](CHANGELOG.md) for a history of changes.
 
@@ -39,15 +41,15 @@ A couple of terms used in the above table are explained below:
 ***
 * Java 1.8 or later.
 
-### Install v4 SDK
+### Installation
 ***
 
-The v4 SDK provides a modern, immutable client with enhanced type safety and improved developer experience.
+The SDK provides a modern, immutable client with enhanced type safety and improved developer experience.
 
 #### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
-    implementation("com.chargebee:chargebee-java:4.0.0")
+    implementation("com.chargebee:chargebee-java:{MAJOR}.{MINOR}.{PATCH}")
 }
 ```
 
@@ -56,41 +58,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0</version>
-</dependency>
-```
-
-### Install v3 SDK (Stable)
-***
-
-You can install any release of an **active** library version by adding the below dependency:
-
-#### Maven
-```xml
-<dependency>
-  <groupId>com.chargebee</groupId>
-  <artifactId>chargebee-java</artifactId>
   <version>{MAJOR}.{MINOR}.{PATCH}</version>
-</dependency>
-```
-
-For example, the following are valid:
-
-- Install the latest stable version:
-```xml
-<dependency>
-  <groupId>com.chargebee</groupId>
-  <artifactId>chargebee-java</artifactId>
-  <version>3.0.0</version>
-</dependency>
-```
-
-- Install an earlier version, say v2.5.1:
-```xml
-<dependency>
-  <groupId>com.chargebee</groupId>
-  <artifactId>chargebee-java</artifactId>
-  <version>2.5.1</version>
 </dependency>
 ```
 
@@ -113,7 +81,7 @@ git checkout {tagname}
 ```
 For example, the following is valid:
 ```shell
-git checkout v3.0.0
+git checkout v4.0.0
 ```
 
 2. Clean and build using Maven.
@@ -124,7 +92,7 @@ mvn clean package
 ## Use the library
 ***
 
-### v4 SDK
+### Quick Start
 
 #### Create a client
 ```java
@@ -257,7 +225,7 @@ ChargebeeException (unchecked - extends RuntimeException)
 
 #### Strongly-Typed Error Enums
 
-The v4 SDK provides strongly-typed enums for error handling, making it easier to write type-safe error handling code:
+The SDK provides strongly-typed enums for error handling, making it easier to write type-safe error handling code:
 
 ##### ErrorType Enum
 Represents the type of error returned by the API:
@@ -288,14 +256,19 @@ Each HTTP status code has its own enum with specific error codes:
 
 All enums include an `_UNKNOWN` value for forward compatibility when new error codes are added by the API.
 
-#### v4 SDK Exception Handling Examples
+#### Exception Handling Examples
 
 ##### Basic exception handling with enums
 ```java
-import com.chargebee.v4.exceptions.*;
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.exceptions.APIException;
+import com.chargebee.v4.exceptions.PaymentException;
 import com.chargebee.v4.exceptions.codes.ApiErrorCode;
 import com.chargebee.v4.exceptions.codes.BadRequestApiErrorCode;
+import com.chargebee.v4.models.customer.responses.CustomerCreateResponse;
 import com.chargebee.v4.services.CustomerService;
+
+import com.chargebee.v4.exceptions.*;
 import com.chargebee.v4.models.customer.params.CustomerCreateParams;
 
 CustomerService customers = client.customers();
@@ -559,64 +532,6 @@ futureCustomer
     });
 ```
 
-### v3 SDK Examples
-
-#### Create a subscription
-
-```java
-import java.io.IOException;
-import com.chargebee.*;
-import com.chargebee.models.*;
-import com.chargebee.models.enums.*;
-
-public class Sample{
-
-  public static void main(String args[]) throws IOException{
-    Environment.configure("{site}","{site_api_key}");
-    Result result = Subscription.create()
-                      .id("HwxfyiHNUFzaiWO")
-                      .planId("starter")
-                      .customerEmail("john@user.com")
-                      .customerFirstName("John")
-                      .customerLastName("Wayne").request();
-    Subscription subscription = result.subscription();
-    Customer customer = result.customer();
-    Card card = result.card();
-    System.out.println(result);
-  }
-}
-```
-
-#### Create an idempotent request
-[Idempotency keys](https://apidocs.chargebee.com/docs/api/idempotency?prod_cat_ver=2) are passed along with request headers to allow a safe retry of POST requests. 
-
-```java
-import com.chargebee.models.Card;
-import com.chargebee.models.Contact;
-import com.chargebee.models.Customer;
-import com.chargebee.models.Subscription;
-import org.json.JSONObject;
-
-public class Sample {
-    public static void main(String[] args) throws Exception {
-        Environment.configure("{site}", "{site_api_key}");
-        Result result = Customer.create()
-                .firstName("John")
-                .lastName("Dove")
-                .email("john@test.com")
-                .setIdempotencyKey("<<UUID>>") // Replace <<UUID>> with a unique string
-                .request();
-        Customer customer = result.customer();
-        System.out.println(result.customer());
-        Map<String, List<String>> responseHeaders = result.getResponseHeaders(); // Retrieves response headers
-        System.out.println(responseHeaders);
-        String idempotencyReplayedHeader = result.isIdempotencyReplayed();// Retrieves idempotency replayed header value 
-        System.out.println(idempotencyReplayedHeader);
-    }
-}
-```
-`isIdempotencyReplayed()` method can be accessed to differentiate between original and replayed requests.
-
 ### Retry Handling
 
 Chargebee's SDK includes built-in retry logic to handle temporary network issues and server-side errors. This feature is **disabled by default** but can be **enabled when needed**.
@@ -676,19 +591,13 @@ public class Sample {
 
 ## Features
 
-### v4 SDK
+### SDK Features
 - Immutable `ChargebeeClient` with fluent builder
 - Direct property naming (e.g., `.apiKey()`, `.siteName()`)
 - Type-safe request models and responses
 - Sync and async APIs with retry/backoff
 - Per-request options and headers
 - Enhanced error handling and debugging
-
-### v3 SDK
-- Traditional mutable request builders
-- Environment-based configuration
-- Comprehensive API coverage
-- Battle-tested stability
 
 ## Build & Test
 - Java 8+
@@ -704,7 +613,7 @@ If you find something amiss, you are welcome to create an [issue](https://github
 ## Documentation
 ***
 
-- [Migration Guide](docs/MIGRATION_GUIDE.md) - Upgrade instructions between versions
+- [Migration Guide](https://github.com/chargebee/chargebee-java/wiki/Migration-Guide) - Upgrade instructions between versions
 
 The API documentation for the Java library can be found in our [API reference](https://apidocs.chargebee.com/docs/api?lang=java).
 
