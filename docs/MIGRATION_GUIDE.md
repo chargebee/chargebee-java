@@ -2,7 +2,7 @@
 
 This guide helps you upgrade between different versions of the Chargebee Java SDK.
 
-## Migrating to v4 SDK (Beta)
+## Migrating to v4 SDK
 
 The v4 SDK provides a modern, immutable client with enhanced type safety and improved developer experience.
 
@@ -34,7 +34,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0-beta.3</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 

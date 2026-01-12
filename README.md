@@ -19,7 +19,7 @@ The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v4                         | Beta     | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `next`      |
+| v4                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `next`      |
 | v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `master`|
 | v2                         | Inactive | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
 | v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
@@ -39,7 +39,7 @@ A couple of terms used in the above table are explained below:
 ***
 * Java 1.8 or later.
 
-### Install v4 SDK (Beta)
+### Install v4 SDK
 ***
 
 The v4 SDK provides a modern, immutable client with enhanced type safety and improved developer experience.
@@ -47,7 +47,7 @@ The v4 SDK provides a modern, immutable client with enhanced type safety and imp
 #### Gradle (Kotlin DSL)
 ```kotlin
 dependencies {
-    implementation("com.chargebee:chargebee-java:4.0.0-beta.3")
+    implementation("com.chargebee:chargebee-java:4.0.0")
 }
 ```
 
@@ -56,7 +56,7 @@ dependencies {
 <dependency>
   <groupId>com.chargebee</groupId>
   <artifactId>chargebee-java</artifactId>
-  <version>4.0.0-beta.3</version>
+  <version>4.0.0</version>
 </dependency>
 ```
 
@@ -124,7 +124,7 @@ mvn clean package
 ## Use the library
 ***
 
-### v4 SDK (Beta)
+### v4 SDK
 
 #### Create a client
 ```java
@@ -676,7 +676,7 @@ public class Sample {
 
 ## Features
 
-### v4 SDK (Beta)
+### v4 SDK
 - Immutable `ChargebeeClient` with fluent builder
 - Direct property naming (e.g., `.apiKey()`, `.siteName()`)
 - Type-safe request models and responses
