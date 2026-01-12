@@ -2398,6 +2398,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CheckoutExistingForItemsRequest invoiceUsages(Boolean invoiceUsages) {
+            params.addOpt("invoice_usages", invoiceUsages);
+            return this;
+        }
+
+
         public CheckoutExistingForItemsRequest redirectUrl(String redirectUrl) {
             params.addOpt("redirect_url", redirectUrl);
             return this;
