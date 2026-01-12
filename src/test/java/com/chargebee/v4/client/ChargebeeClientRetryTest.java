@@ -935,6 +935,172 @@ class ChargebeeClientRetryTest {
         }
     }
     
+    @Nested
+    @DisplayName("X-CB-Retry-Attempt Header Tests")
+    class RetryAttemptHeaderTests {
+        
+        @Test
+        @DisplayName("should not include retry header on first attempt")
+        void shouldNotIncludeRetryHeaderOnFirstAttempt() throws Exception {
+            Transport mockTransport = mock(Transport.class);
+            Response successResponse = createSuccessResponse();
+            
+            when(mockTransport.send(any(Request.class))).thenReturn(successResponse);
+            
+            RetryConfig retryConfig = RetryConfig.builder()
+                .enabled(true)
+                .maxRetries(2)
+                .baseDelayMs(10)
+                .build();
+            
+            ChargebeeClient client = ChargebeeClient.builder()
+                .apiKey(TEST_API_KEY)
+                .siteName(TEST_SITE)
+                .transport(mockTransport)
+                .retry(retryConfig)
+                .build();
+            
+            Request request = Request.builder()
+                .method("GET")
+                .url("http://test.com")
+                .build();
+            
+            client.sendWithRetry(request);
+            
+            org.mockito.ArgumentCaptor<Request> requestCaptor = org.mockito.ArgumentCaptor.forClass(Request.class);
+            verify(mockTransport).send(requestCaptor.capture());
+            
+            Request capturedRequest = requestCaptor.getValue();
+            assertFalse(capturedRequest.getHeaders().containsKey(Request.HEADER_RETRY_ATTEMPT));
+        }
+        
+        @Test
+        @DisplayName("should include retry header with attempt number on retries")
+        void shouldIncludeRetryHeaderOnRetries() throws Exception {
+            Transport mockTransport = mock(Transport.class);
+            NetworkException networkException = new NetworkException("Network error", new Exception());
+            Response successResponse = createSuccessResponse();
+            
+            when(mockTransport.send(any(Request.class)))
+                .thenThrow(networkException)
+                .thenThrow(networkException)
+                .thenReturn(successResponse);
+            
+            RetryConfig retryConfig = RetryConfig.builder()
+                .enabled(true)
+                .maxRetries(3)
+                .baseDelayMs(10)
+                .build();
+            
+            ChargebeeClient client = ChargebeeClient.builder()
+                .apiKey(TEST_API_KEY)
+                .siteName(TEST_SITE)
+                .transport(mockTransport)
+                .retry(retryConfig)
+                .build();
+            
+            Request request = Request.builder()
+                .method("GET")
+                .url("http://test.com")
+                .build();
+            
+            client.sendWithRetry(request);
+            
+            org.mockito.ArgumentCaptor<Request> requestCaptor = org.mockito.ArgumentCaptor.forClass(Request.class);
+            verify(mockTransport, times(3)).send(requestCaptor.capture());
+            
+            List<Request> capturedRequests = requestCaptor.getAllValues();
+            
+            assertFalse(capturedRequests.get(0).getHeaders().containsKey(Request.HEADER_RETRY_ATTEMPT));
+            assertEquals("1", capturedRequests.get(1).getHeaders().get(Request.HEADER_RETRY_ATTEMPT));
+            assertEquals("2", capturedRequests.get(2).getHeaders().get(Request.HEADER_RETRY_ATTEMPT));
+        }
+        
+        @Test
+        @DisplayName("should include retry header on status code retry")
+        void shouldIncludeRetryHeaderOnStatusCodeRetry() throws Exception {
+            Transport mockTransport = mock(Transport.class);
+            Response serverError = createResponse(503);
+            Response successResponse = createSuccessResponse();
+            
+            when(mockTransport.send(any(Request.class)))
+                .thenReturn(serverError)
+                .thenReturn(successResponse);
+            
+            RetryConfig retryConfig = RetryConfig.builder()
+                .enabled(true)
+                .maxRetries(2)
+                .baseDelayMs(10)
+                .retryOnStatus(new HashSet<>(Arrays.asList(503)))
+                .build();
+            
+            ChargebeeClient client = ChargebeeClient.builder()
+                .apiKey(TEST_API_KEY)
+                .siteName(TEST_SITE)
+                .transport(mockTransport)
+                .retry(retryConfig)
+                .build();
+            
+            Request request = Request.builder()
+                .method("GET")
+                .url("http://test.com")
+                .build();
+            
+            client.sendWithRetry(request);
+            
+            org.mockito.ArgumentCaptor<Request> requestCaptor = org.mockito.ArgumentCaptor.forClass(Request.class);
+            verify(mockTransport, times(2)).send(requestCaptor.capture());
+            
+            List<Request> capturedRequests = requestCaptor.getAllValues();
+            
+            assertFalse(capturedRequests.get(0).getHeaders().containsKey(Request.HEADER_RETRY_ATTEMPT));
+            assertEquals("1", capturedRequests.get(1).getHeaders().get(Request.HEADER_RETRY_ATTEMPT));
+        }
+        
+        @Test
+        @DisplayName("should include retry header on async retries")
+        void shouldIncludeRetryHeaderOnAsyncRetries() throws Exception {
+            Transport mockTransport = mock(Transport.class);
+            NetworkException networkException = new NetworkException("Network error", new Exception());
+            Response successResponse = createSuccessResponse();
+            
+            CompletableFuture<Response> failedFuture = new CompletableFuture<>();
+            failedFuture.completeExceptionally(networkException);
+            
+            when(mockTransport.sendAsync(any(Request.class)))
+                .thenReturn(failedFuture)
+                .thenReturn(CompletableFuture.completedFuture(successResponse));
+            
+            RetryConfig retryConfig = RetryConfig.builder()
+                .enabled(true)
+                .maxRetries(2)
+                .baseDelayMs(10)
+                .build();
+            
+            ChargebeeClient client = ChargebeeClient.builder()
+                .apiKey(TEST_API_KEY)
+                .siteName(TEST_SITE)
+                .transport(mockTransport)
+                .retry(retryConfig)
+                .build();
+            
+            Request request = Request.builder()
+                .method("GET")
+                .url("http://test.com")
+                .build();
+            
+            client.sendWithRetryAsync(request).get();
+            
+            org.mockito.ArgumentCaptor<Request> requestCaptor = org.mockito.ArgumentCaptor.forClass(Request.class);
+            verify(mockTransport, times(2)).sendAsync(requestCaptor.capture());
+            
+            List<Request> capturedRequests = requestCaptor.getAllValues();
+            
+            assertFalse(capturedRequests.get(0).getHeaders().containsKey(Request.HEADER_RETRY_ATTEMPT));
+            assertEquals("1", capturedRequests.get(1).getHeaders().get(Request.HEADER_RETRY_ATTEMPT));
+        }
+    }
+    
     // Helper methods
     
     private Response createSuccessResponse() {
