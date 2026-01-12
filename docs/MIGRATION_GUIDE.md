@@ -74,11 +74,12 @@ Customer customer = result.customer();
 
 **v4 SDK:**
 ```java
-import com.chargebee.core.services.CustomerService;
-import com.chargebee.core.models.customer.params.CustomerCreateParams;
-import com.chargebee.core.responses.customer.CustomerCreateResponse;
+import com.chargebee.v4.client.ChargebeeClient;
+import com.chargebee.v4.models.customer.params.CustomerCreateParams;
+import com.chargebee.v4.models.customer.responses.CustomerCreateResponse;
+import com.chargebee.v4.services.CustomerService;
 
-CustomerService customers = client.customer();
+CustomerService customers = client.customers();
 CustomerCreateResponse response = customers.create(
     CustomerCreateParams.builder()
         .firstName("John")
@@ -173,7 +174,7 @@ public void testMigration() {
         .siteName("test-site")
         .apiKey("test-key")
         .build();
-    CustomerRetrieveResponse nextGenResult = client.customer()
+    CustomerRetrieveResponse nextGenResult = client.customers()
         .retrieve("customer-id");
     
     // Compare results

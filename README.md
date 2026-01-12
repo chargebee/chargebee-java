@@ -13,14 +13,14 @@ This is the official Java library for integrating with Chargebee.
 ## Library versions
 ***
 
-The versioning scheme of this library is inspired by [SemVer](https://semver.org/) and the format is `v{MAJOR}.{MINOR}.{PATCH}`. For example, `v3.0.0` and `v2.5.1` are valid library versions.
+The versioning scheme of this library is inspired by [SemVer](https://semver.org/) and the format is `v{MAJOR}.{MINOR}.{PATCH}`. For example, `v4.0.0` and `v3.0.0` are valid library versions.
 
 The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v4                         | Beta     | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `next`      |
-| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `master`|
+| v4                         | Beta     | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `next`      |
+| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `master`|
 | v2                         | Inactive | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
 | v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
 
@@ -28,7 +28,7 @@ A couple of terms used in the above table are explained below:
 - **Status**: The current development status for the library version. **Beta** versions are feature-complete but may have breaking changes. **Active** major versions are currently being maintained and continue to get backward-compatible changes. **Inactive** versions no longer receive any updates.
 - **Branch**: The branch in this repository containing the source code for the latest release of the library version. Every version of the library has been [tagged](https://github.com/chargebee/chargebee-java/tags). You can check out the source code for any version using its tag.
 
-🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend upgrading to the latest version as soon as possible. See our [migration guide](docs/MIGRATION_GUIDE.md) for detailed upgrade instructions.
+🔴 **Attention**: The support for v3 will eventually be discontinued on **December 31st 2026** and will no longer receive any further updates. We strongly recommend upgrading to v4 as soon as possible. See our [migration guide](docs/MIGRATION_GUIDE.md) for detailed upgrade instructions.
 
 **Note:** See the [changelog](CHANGELOG.md) for a history of changes.
 
