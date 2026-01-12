@@ -604,6 +604,21 @@ public class Sample {
 - `./gradlew build` - Build project
 - `./gradlew test` - Run tests
 
+## ProGuard / R8 Configuration
+
+If you're using ProGuard or R8, add the following rules to prevent the SDK from being obfuscated:
+
+```proguard
+# Chargebee SDK - preserve all public API classes and models
+-keep class com.chargebee.v4.** { *; }
+-keepclassmembers class com.chargebee.v4.** { *; }
+
+# Keep all enum values
+-keepclassmembers enum com.chargebee.v4.** { *; }
+```
+
+These rules ensure that reflection-based serialization/deserialization and the exception hierarchy work correctly at runtime.
+
 ## Contribution
 ***
 You may contribute patches to any of the **Active** versions of this library. To do so, raise a PR against the [respective branch](#library-versions). 
