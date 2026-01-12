@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.util.List;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -140,8 +141,8 @@ public class SubscriptionChangedEvent {
     private Customer customer;
     private Card card;
     private Invoice invoice;
-    private CreditNote creditNotes;
-    private UnbilledCharge unbilledCharges;
+    private List<CreditNote> creditNotes;
+    private List<UnbilledCharge> unbilledCharges;
 
     public Subscription getSubscription() {
       return subscription;
@@ -159,11 +160,11 @@ public class SubscriptionChangedEvent {
       return invoice;
     }
 
-    public CreditNote getCreditNotes() {
+    public List<CreditNote> getCreditNotes() {
       return creditNotes;
     }
 
-    public UnbilledCharge getUnbilledCharges() {
+    public List<UnbilledCharge> getUnbilledCharges() {
       return unbilledCharges;
     }
 
@@ -190,15 +191,15 @@ public class SubscriptionChangedEvent {
         obj.invoice = Invoice.fromJson(__invoiceJson);
       }
 
-      String __creditNotesJson = JsonUtil.getObject(json, "credit_notes");
-      if (__creditNotesJson != null) {
-        obj.creditNotes = CreditNote.fromJson(__creditNotesJson);
-      }
+      obj.creditNotes =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "credit_notes")).stream()
+              .map(CreditNote::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
-      String __unbilledChargesJson = JsonUtil.getObject(json, "unbilled_charges");
-      if (__unbilledChargesJson != null) {
-        obj.unbilledCharges = UnbilledCharge.fromJson(__unbilledChargesJson);
-      }
+      obj.unbilledCharges =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "unbilled_charges")).stream()
+              .map(UnbilledCharge::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
       return obj;
     }

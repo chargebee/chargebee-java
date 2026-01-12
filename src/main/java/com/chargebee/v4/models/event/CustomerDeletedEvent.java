@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.util.List;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -132,7 +133,7 @@ public class CustomerDeletedEvent {
 
     private Customer customer;
     private Card card;
-    private Subscription subscriptions;
+    private List<Subscription> subscriptions;
 
     public Customer getCustomer() {
       return customer;
@@ -142,7 +143,7 @@ public class CustomerDeletedEvent {
       return card;
     }
 
-    public Subscription getSubscriptions() {
+    public List<Subscription> getSubscriptions() {
       return subscriptions;
     }
 
@@ -159,10 +160,10 @@ public class CustomerDeletedEvent {
         obj.card = Card.fromJson(__cardJson);
       }
 
-      String __subscriptionsJson = JsonUtil.getObject(json, "subscriptions");
-      if (__subscriptionsJson != null) {
-        obj.subscriptions = Subscription.fromJson(__subscriptionsJson);
-      }
+      obj.subscriptions =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "subscriptions")).stream()
+              .map(Subscription::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
       return obj;
     }

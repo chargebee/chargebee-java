@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.util.List;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -138,7 +139,7 @@ public class SubscriptionResumedEvent {
     private Customer customer;
     private Card card;
     private Invoice invoice;
-    private UnbilledCharge unbilledCharges;
+    private List<UnbilledCharge> unbilledCharges;
 
     public Subscription getSubscription() {
       return subscription;
@@ -156,7 +157,7 @@ public class SubscriptionResumedEvent {
       return invoice;
     }
 
-    public UnbilledCharge getUnbilledCharges() {
+    public List<UnbilledCharge> getUnbilledCharges() {
       return unbilledCharges;
     }
 
@@ -183,10 +184,10 @@ public class SubscriptionResumedEvent {
         obj.invoice = Invoice.fromJson(__invoiceJson);
       }
 
-      String __unbilledChargesJson = JsonUtil.getObject(json, "unbilled_charges");
-      if (__unbilledChargesJson != null) {
-        obj.unbilledCharges = UnbilledCharge.fromJson(__unbilledChargesJson);
-      }
+      obj.unbilledCharges =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "unbilled_charges")).stream()
+              .map(UnbilledCharge::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
       return obj;
     }

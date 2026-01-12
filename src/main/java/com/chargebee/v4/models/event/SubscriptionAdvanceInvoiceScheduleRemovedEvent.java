@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.util.List;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -134,7 +135,7 @@ public class SubscriptionAdvanceInvoiceScheduleRemovedEvent {
 
     private Subscription subscription;
     private Customer customer;
-    private AdvanceInvoiceSchedule advanceInvoiceSchedules;
+    private List<AdvanceInvoiceSchedule> advanceInvoiceSchedules;
 
     public Subscription getSubscription() {
       return subscription;
@@ -144,7 +145,7 @@ public class SubscriptionAdvanceInvoiceScheduleRemovedEvent {
       return customer;
     }
 
-    public AdvanceInvoiceSchedule getAdvanceInvoiceSchedules() {
+    public List<AdvanceInvoiceSchedule> getAdvanceInvoiceSchedules() {
       return advanceInvoiceSchedules;
     }
 
@@ -161,11 +162,10 @@ public class SubscriptionAdvanceInvoiceScheduleRemovedEvent {
         obj.customer = Customer.fromJson(__customerJson);
       }
 
-      String __advanceInvoiceSchedulesJson = JsonUtil.getObject(json, "advance_invoice_schedules");
-      if (__advanceInvoiceSchedulesJson != null) {
-        obj.advanceInvoiceSchedules =
-            AdvanceInvoiceSchedule.fromJson(__advanceInvoiceSchedulesJson);
-      }
+      obj.advanceInvoiceSchedules =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "advance_invoice_schedules")).stream()
+              .map(AdvanceInvoiceSchedule::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
       return obj;
     }

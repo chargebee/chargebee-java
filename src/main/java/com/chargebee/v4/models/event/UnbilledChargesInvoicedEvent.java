@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import java.util.List;
 
 import com.chargebee.v4.models.unbilledCharge.UnbilledCharge;
 
@@ -128,10 +129,10 @@ public class UnbilledChargesInvoicedEvent {
 
   public static class Content {
 
-    private UnbilledCharge unbilledCharges;
+    private List<UnbilledCharge> unbilledCharges;
     private Invoice invoice;
 
-    public UnbilledCharge getUnbilledCharges() {
+    public List<UnbilledCharge> getUnbilledCharges() {
       return unbilledCharges;
     }
 
@@ -142,10 +143,10 @@ public class UnbilledChargesInvoicedEvent {
     public static Content fromJson(String json) {
       Content obj = new Content();
 
-      String __unbilledChargesJson = JsonUtil.getObject(json, "unbilled_charges");
-      if (__unbilledChargesJson != null) {
-        obj.unbilledCharges = UnbilledCharge.fromJson(__unbilledChargesJson);
-      }
+      obj.unbilledCharges =
+          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "unbilled_charges")).stream()
+              .map(UnbilledCharge::fromJson)
+              .collect(java.util.stream.Collectors.toList());
 
       String __invoiceJson = JsonUtil.getObject(json, "invoice");
       if (__invoiceJson != null) {

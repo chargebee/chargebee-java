@@ -43,6 +43,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
   private final Timestamp changesScheduledAt;
 
+  private final Boolean invoiceUsages;
+
   private final String redirectUrl;
 
   private final String cancelUrl;
@@ -97,6 +99,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
     this.changeOption = builder.changeOption;
 
     this.changesScheduledAt = builder.changesScheduledAt;
+
+    this.invoiceUsages = builder.invoiceUsages;
 
     this.redirectUrl = builder.redirectUrl;
 
@@ -177,6 +181,10 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
   public Timestamp getChangesScheduledAt() {
     return changesScheduledAt;
+  }
+
+  public Boolean getInvoiceUsages() {
+    return invoiceUsages;
   }
 
   public String getRedirectUrl() {
@@ -299,6 +307,11 @@ public final class HostedPageCheckoutExistingForItemsParams {
     if (this.changesScheduledAt != null) {
 
       formData.put("changes_scheduled_at", this.changesScheduledAt);
+    }
+
+    if (this.invoiceUsages != null) {
+
+      formData.put("invoice_usages", this.invoiceUsages);
     }
 
     if (this.redirectUrl != null) {
@@ -460,6 +473,8 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     private Timestamp changesScheduledAt;
 
+    private Boolean invoiceUsages;
+
     private String redirectUrl;
 
     private String cancelUrl;
@@ -554,6 +569,11 @@ public final class HostedPageCheckoutExistingForItemsParams {
 
     public HostedPageCheckoutExistingForItemsBuilder changesScheduledAt(Timestamp value) {
       this.changesScheduledAt = value;
+      return this;
+    }
+
+    public HostedPageCheckoutExistingForItemsBuilder invoiceUsages(Boolean value) {
+      this.invoiceUsages = value;
       return this;
     }
 
