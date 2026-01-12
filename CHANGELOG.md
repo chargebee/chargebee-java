@@ -1,3 +1,9 @@
+### v3.41.0 (2026-01-12)
+* * * 
+
+### New Parameters:
+* invoice_usages has been added to HostedPage#CheckoutExistingForItemsInputParam.
+
 ### v3.40.0 (2025-12-30)
 * * * 
 
