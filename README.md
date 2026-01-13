@@ -19,7 +19,7 @@ The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v4                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `master`      |
+| v4                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `v4`      |
 | v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `v3`|
 | v2                         | Inactive | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
 | v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
