@@ -1,0 +1,12 @@
+target
+.DS_Store
+
+# Ignore all VS Code (Java Plugin) files
+.classpath
+.project
+.settings/
+.vscode/
+
+# Ignore Intellij IDE specific files
+.idea/
+*.iml
