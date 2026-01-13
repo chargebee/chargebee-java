@@ -19,8 +19,8 @@ The following table provides some details for each major version:
 
 | Library major version | Status   | Compatible API versions                                                                                               | **Branch**        |
 |----------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| v4                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `next`      |
-| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `master`|
+| v4                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `master`      |
+| v3                         | Active   | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) | `v3`|
 | v2                         | Inactive | [v2](https://apidocs.chargebee.com/docs/api/?lang=java) and [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java) | `chargebee-v2`|
 | v1                         | Inactive | [v1](https://apidocs.chargebee.com/docs/api/v1?lang=java)                                                             | `chargebee-v1`|
 
@@ -31,6 +31,8 @@ A couple of terms used in the above table are explained below:
 🔴 **Attention**: The support for v3 will eventually be discontinued on **December 31st 2026** and will no longer receive any further updates. We strongly recommend upgrading to v4 as soon as possible. See our [migration guide](https://github.com/chargebee/chargebee-java/wiki/Migration-guide-for-V4) for detailed upgrade instructions.
 
 > 💡 **Rest assured**: Your existing v3 integrations will continue to function indefinitely. After December 31st 2026, v3 will no longer receive updates for new API features, but all current functionality will remain operational.
+
+> 📘 **Looking for v3 SDK documentation?** Please refer to the [`v3`](https://github.com/chargebee/chargebee-java/tree/v3) branch for v3 SDK usage and documentation.
 
 **Note:** See the [changelog](CHANGELOG.md) for a history of changes.
 
