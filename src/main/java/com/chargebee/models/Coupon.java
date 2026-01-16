@@ -920,6 +920,11 @@ public class Coupon extends Resource<Coupon> {
         }
 
 
+        public StringFilter<CouponListRequest> applicableItemPriceIds() {
+            return new StringFilter<CouponListRequest>("applicable_item_price_ids",this).supportsMultiOperators(true);        
+        }
+
+
         @Override
         public Params params() {
             return params;

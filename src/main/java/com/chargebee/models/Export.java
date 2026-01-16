@@ -954,6 +954,11 @@ public Export waitForExportCompletion()
         }
 
 
+        public StringFilter<CouponsRequest> applicableItemPriceIds() {
+            return new StringFilter<CouponsRequest>("applicable_item_price_ids",this).supportsMultiOperators(true);        
+        }
+
+
         public StringFilter<CouponsRequest> couponId() {
             return new StringFilter<CouponsRequest>("coupon[id]",this).supportsMultiOperators(true);        
         }
