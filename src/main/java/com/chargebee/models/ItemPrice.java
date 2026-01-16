@@ -418,12 +418,6 @@ public class ItemPrice extends Resource<ItemPrice> {
         return new ItemPriceFindApplicableItemPricesRequest(uri);
     }
 
-    @Deprecated
-    public static MoveItemPriceRequest moveItemPrice(String id) {
-        String uri = uri("item_prices", nullCheck(id), "move");
-        return new MoveItemPriceRequest(Method.POST, uri);
-    }
-
 
     // Operation Request Classes
     //==========================
@@ -1153,30 +1147,6 @@ public class ItemPrice extends Resource<ItemPrice> {
         }
         public ItemPriceFindApplicableItemPricesRequest sortByUpdatedAt(SortOrder order) {
             params.addOpt("sort_by["+order.name().toLowerCase()+"]","updated_at");
-            return this;
-        }
-
-
-        @Override
-        public Params params() {
-            return params;
-        }
-    }
-
-    public static class MoveItemPriceRequest extends Request<MoveItemPriceRequest> {
-
-        private MoveItemPriceRequest(Method httpMeth, String uri) {
-            super(httpMeth, uri);
-        }
-    
-        public MoveItemPriceRequest destinationItemId(String destinationItemId) {
-            params.add("destination_item_id", destinationItemId);
-            return this;
-        }
-
-
-        public MoveItemPriceRequest variantId(String variantId) {
-            params.addOpt("variant_id", variantId);
             return this;
         }
 
