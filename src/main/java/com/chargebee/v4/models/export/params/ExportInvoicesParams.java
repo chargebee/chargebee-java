@@ -45,7 +45,9 @@ public final class ExportInvoicesParams {
       // Single object
       Map<String, Object> nestedData = this.invoice.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "invoice[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "invoice[" + key.replace("[", "][") : "invoice[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

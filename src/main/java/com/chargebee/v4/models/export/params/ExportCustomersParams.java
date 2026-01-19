@@ -65,7 +65,9 @@ public final class ExportCustomersParams {
       // Single object
       Map<String, Object> nestedData = this.customer.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "customer[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "customer[" + key.replace("[", "][") : "customer[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
@@ -75,7 +77,11 @@ public final class ExportCustomersParams {
       // Single object
       Map<String, Object> nestedData = this.relationship.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "relationship[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "relationship[" + key.replace("[", "][")
+                : "relationship[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

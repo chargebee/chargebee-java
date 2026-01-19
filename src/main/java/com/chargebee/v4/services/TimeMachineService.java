@@ -22,6 +22,12 @@ import com.chargebee.v4.models.timeMachine.responses.TimeMachineTravelForwardRes
 
 import com.chargebee.v4.models.timeMachine.responses.TimeMachineStartAfreshResponse;
 
+import com.chargebee.v4.models.timeMachine.TimeMachine;
+import com.chargebee.v4.models.timeMachine.TimeMachine.TimeTravelStatus;
+import com.chargebee.v4.exceptions.OperationFailedException;
+import com.chargebee.v4.exceptions.codes.BadRequestApiErrorCode;
+import com.chargebee.v4.internal.JsonUtil;
+
 public final class TimeMachineService extends BaseService<TimeMachineService> {
 
   private final ServiceConfig config;
@@ -166,5 +172,71 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
       throws ChargebeeException {
     Response response = startAfreshRaw(timeMachineName);
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  // === Time Travel Completion Helper ===
+
+  /**
+   * Waits for time travel operation to complete. Polls the API until the status changes from
+   * IN_PROGRESS.
+   *
+   * @param timeMachine The TimeMachine instance to wait for
+   * @return The updated TimeMachine with final status
+   * @throws ChargebeeException if the API call fails
+   * @throws InterruptedException if the thread is interrupted while waiting
+   * @throws RuntimeException if time travel takes too long or ends in invalid state
+   * @throws OperationFailedException if time travel fails
+   */
+  public TimeMachine waitForTimeTravelCompletion(TimeMachine timeMachine)
+      throws ChargebeeException, InterruptedException {
+    return waitForTimeTravelCompletion(timeMachine.getName());
+  }
+
+  /**
+   * Waits for time travel operation to complete. Polls the API until the status changes from
+   * IN_PROGRESS.
+   *
+   * @param timeMachineName The name of the TimeMachine to wait for
+   * @return The updated TimeMachine with final status
+   * @throws ChargebeeException if the API call fails
+   * @throws InterruptedException if the thread is interrupted while waiting
+   * @throws RuntimeException if time travel takes too long or ends in invalid state
+   * @throws OperationFailedException if time travel fails
+   */
+  public TimeMachine waitForTimeTravelCompletion(String timeMachineName)
+      throws ChargebeeException, InterruptedException {
+    int count = 0;
+    int sleepTime = Integer.getInteger("cb.java.time_travel.sleep.millis", 3000);
+    TimeMachine timeMachine = retrieve(timeMachineName).getTimeMachine();
+
+    while (timeMachine.getTimeTravelStatus() == TimeTravelStatus.IN_PROGRESS) {
+      if (count++ > 30) {
+        throw new RuntimeException("The time travel is taking too much time");
+      }
+      Thread.sleep(sleepTime);
+      timeMachine = retrieve(timeMachineName).getTimeMachine();
+    }
+
+    if (timeMachine.getTimeTravelStatus() == TimeTravelStatus.FAILED) {
+      String errorJson = timeMachine.getErrorJson();
+      int httpStatusCode = JsonUtil.getInteger(errorJson, "http_code");
+      String exceptionMessage = JsonUtil.getString(errorJson, "message");
+      throw new OperationFailedException(
+          httpStatusCode,
+          "operation_failed",
+          BadRequestApiErrorCode._UNKNOWN,
+          exceptionMessage,
+          errorJson,
+          null,
+          null);
+    }
+
+    if (timeMachine.getTimeTravelStatus() == TimeTravelStatus.NOT_ENABLED
+        || timeMachine.getTimeTravelStatus() == TimeTravelStatus._UNKNOWN) {
+      throw new RuntimeException(
+          "Time travel status is in wrong state: " + timeMachine.getTimeTravelStatus());
+    }
+
+    return timeMachine;
   }
 }

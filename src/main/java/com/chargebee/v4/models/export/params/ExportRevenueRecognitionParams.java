@@ -160,7 +160,9 @@ public final class ExportRevenueRecognitionParams {
       // Single object
       Map<String, Object> nestedData = this.invoice.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "invoice[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "invoice[" + key.replace("[", "][") : "invoice[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
@@ -170,7 +172,11 @@ public final class ExportRevenueRecognitionParams {
       // Single object
       Map<String, Object> nestedData = this.subscription.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "subscription[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "subscription[" + key.replace("[", "][")
+                : "subscription[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
@@ -180,7 +186,9 @@ public final class ExportRevenueRecognitionParams {
       // Single object
       Map<String, Object> nestedData = this.customer.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "customer[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "customer[" + key.replace("[", "][") : "customer[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
@@ -190,7 +198,11 @@ public final class ExportRevenueRecognitionParams {
       // Single object
       Map<String, Object> nestedData = this.relationship.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "relationship[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "relationship[" + key.replace("[", "][")
+                : "relationship[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

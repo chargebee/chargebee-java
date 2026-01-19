@@ -45,7 +45,9 @@ public final class ExportAddonsParams {
       // Single object
       Map<String, Object> nestedData = this.addon.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "addon[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "addon[" + key.replace("[", "][") : "addon[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

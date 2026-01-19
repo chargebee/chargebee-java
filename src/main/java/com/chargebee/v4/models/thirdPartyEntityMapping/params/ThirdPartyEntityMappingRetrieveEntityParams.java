@@ -107,6 +107,8 @@ public final class ThirdPartyEntityMappingRetrieveEntityParams {
 
     TAX_GROUP("tax_group"),
 
+    SALES_ORDER("sales_order"),
+
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;

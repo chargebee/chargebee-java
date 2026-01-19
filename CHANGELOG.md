@@ -1,3 +1,19 @@
+### v4.0.1 (2026-01-19)
+* * * 
+
+### New Parameters:
+* `applicable_item_price_ids` has been added to Coupon#CouponListRequest.
+* `applicable_item_price_ids` has been added to Export#CouponRequest.
+
+### New Enums: 
+* `Twikey` has been added to GatewayEnum.
+
+### Deleted Action: 
+* `move` action has been removed from the ItemPrice. 
+
+### New Features:
+* add util method for export and 'Time Machine' async handler.
+
 ### v4.0.0 (2026-01-13)
 * * *
 

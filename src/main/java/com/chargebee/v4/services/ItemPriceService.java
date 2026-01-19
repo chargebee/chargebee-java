@@ -12,21 +12,15 @@ import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
 
-import com.chargebee.v4.models.itemPrice.params.ItemPriceFindApplicableItemsParams;
-
-import com.chargebee.v4.models.itemPrice.params.MoveItemPriceParams;
-
 import com.chargebee.v4.models.itemPrice.params.ItemPriceUpdateParams;
 
 import com.chargebee.v4.models.itemPrice.params.FindApplicableItemPricesParams;
 
+import com.chargebee.v4.models.itemPrice.params.ItemPriceFindApplicableItemsParams;
+
 import com.chargebee.v4.models.itemPrice.params.ItemPriceListParams;
 
 import com.chargebee.v4.models.itemPrice.params.ItemPriceCreateParams;
-
-import com.chargebee.v4.models.itemPrice.responses.ItemPriceFindApplicableItemsResponse;
-
-import com.chargebee.v4.models.itemPrice.responses.MoveItemPriceResponse;
 
 import com.chargebee.v4.models.itemPrice.responses.ItemPriceRetrieveResponse;
 
@@ -35,6 +29,8 @@ import com.chargebee.v4.models.itemPrice.responses.ItemPriceUpdateResponse;
 import com.chargebee.v4.models.itemPrice.responses.ItemPriceDeleteResponse;
 
 import com.chargebee.v4.models.itemPrice.responses.FindApplicableItemPricesResponse;
+
+import com.chargebee.v4.models.itemPrice.responses.ItemPriceFindApplicableItemsResponse;
 
 import com.chargebee.v4.models.itemPrice.responses.ItemPriceListResponse;
 
@@ -73,87 +69,6 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
   }
 
   // === Operations ===
-
-  /**
-   * findApplicableItems a itemPrice using immutable params (executes immediately) - returns raw
-   * Response.
-   */
-  Response findApplicableItemsRaw(String itemPriceId, ItemPriceFindApplicableItemsParams params)
-      throws ChargebeeException {
-    String path =
-        buildPathWithParams(
-            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return get(path, params != null ? params.toQueryParams() : null);
-  }
-
-  /**
-   * findApplicableItems a itemPrice without params (executes immediately) - returns raw Response.
-   */
-  Response findApplicableItemsRaw(String itemPriceId) throws ChargebeeException {
-    String path =
-        buildPathWithParams(
-            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    return get(path, null);
-  }
-
-  /**
-   * findApplicableItems a itemPrice using raw JSON payload (executes immediately) - returns raw
-   * Response.
-   */
-  Response findApplicableItemsRaw(String itemPriceId, String jsonPayload)
-      throws ChargebeeException {
-    String path =
-        buildPathWithParams(
-            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
-    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
-  }
-
-  public ItemPriceFindApplicableItemsResponse findApplicableItems(
-      String itemPriceId, ItemPriceFindApplicableItemsParams params) throws ChargebeeException {
-    Response response = findApplicableItemsRaw(itemPriceId, params);
-    return ItemPriceFindApplicableItemsResponse.fromJson(
-        response.getBodyAsString(), this, params, itemPriceId, response);
-  }
-
-  public ItemPriceFindApplicableItemsResponse findApplicableItems(String itemPriceId)
-      throws ChargebeeException {
-    Response response = findApplicableItemsRaw(itemPriceId);
-    return ItemPriceFindApplicableItemsResponse.fromJson(
-        response.getBodyAsString(), this, null, itemPriceId, response);
-  }
-
-  /** moveItemPrice a itemPrice (executes immediately) - returns raw Response. */
-  Response moveItemPriceRaw(String itemPriceId) throws ChargebeeException {
-    String path =
-        buildPathWithParams("/item_prices/{item-price-id}/move", "item-price-id", itemPriceId);
-
-    return post(path, null);
-  }
-
-  /**
-   * moveItemPrice a itemPrice using immutable params (executes immediately) - returns raw Response.
-   */
-  Response moveItemPriceRaw(String itemPriceId, MoveItemPriceParams params)
-      throws ChargebeeException {
-    String path =
-        buildPathWithParams("/item_prices/{item-price-id}/move", "item-price-id", itemPriceId);
-    return post(path, params.toFormData());
-  }
-
-  /**
-   * moveItemPrice a itemPrice using raw JSON payload (executes immediately) - returns raw Response.
-   */
-  Response moveItemPriceRaw(String itemPriceId, String jsonPayload) throws ChargebeeException {
-    String path =
-        buildPathWithParams("/item_prices/{item-price-id}/move", "item-price-id", itemPriceId);
-    return postJson(path, jsonPayload);
-  }
-
-  public MoveItemPriceResponse moveItemPrice(String itemPriceId, MoveItemPriceParams params)
-      throws ChargebeeException {
-    Response response = moveItemPriceRaw(itemPriceId, params);
-    return MoveItemPriceResponse.fromJson(response.getBodyAsString(), response);
-  }
 
   /** retrieve a itemPrice (executes immediately) - returns raw Response. */
   Response retrieveRaw(String itemPriceId) throws ChargebeeException {
@@ -256,6 +171,54 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
       throws ChargebeeException {
     Response response = findApplicableItemPricesRaw(itemPriceId);
     return FindApplicableItemPricesResponse.fromJson(
+        response.getBodyAsString(), this, null, itemPriceId, response);
+  }
+
+  /**
+   * findApplicableItems a itemPrice using immutable params (executes immediately) - returns raw
+   * Response.
+   */
+  Response findApplicableItemsRaw(String itemPriceId, ItemPriceFindApplicableItemsParams params)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
+    return get(path, params != null ? params.toQueryParams() : null);
+  }
+
+  /**
+   * findApplicableItems a itemPrice without params (executes immediately) - returns raw Response.
+   */
+  Response findApplicableItemsRaw(String itemPriceId) throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
+    return get(path, null);
+  }
+
+  /**
+   * findApplicableItems a itemPrice using raw JSON payload (executes immediately) - returns raw
+   * Response.
+   */
+  Response findApplicableItemsRaw(String itemPriceId, String jsonPayload)
+      throws ChargebeeException {
+    String path =
+        buildPathWithParams(
+            "/item_prices/{item-price-id}/applicable_items", "item-price-id", itemPriceId);
+    throw new UnsupportedOperationException("JSON payload not supported for GET operations");
+  }
+
+  public ItemPriceFindApplicableItemsResponse findApplicableItems(
+      String itemPriceId, ItemPriceFindApplicableItemsParams params) throws ChargebeeException {
+    Response response = findApplicableItemsRaw(itemPriceId, params);
+    return ItemPriceFindApplicableItemsResponse.fromJson(
+        response.getBodyAsString(), this, params, itemPriceId, response);
+  }
+
+  public ItemPriceFindApplicableItemsResponse findApplicableItems(String itemPriceId)
+      throws ChargebeeException {
+    Response response = findApplicableItemsRaw(itemPriceId);
+    return ItemPriceFindApplicableItemsResponse.fromJson(
         response.getBodyAsString(), this, null, itemPriceId, response);
   }
 

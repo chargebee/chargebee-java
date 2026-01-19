@@ -2001,6 +2001,7 @@ public class SalesOrder {
 
     private String amount;
     private String unitPrice;
+    private String quantity;
     private String lineItemAssociationId;
 
     public String getAmount() {
@@ -2009,6 +2010,10 @@ public class SalesOrder {
 
     public String getUnitPrice() {
       return unitPrice;
+    }
+
+    public String getQuantity() {
+      return quantity;
     }
 
     public String getLineItemAssociationId() {
@@ -2022,6 +2027,8 @@ public class SalesOrder {
 
       obj.unitPrice = JsonUtil.getString(json, "unit_price");
 
+      obj.quantity = JsonUtil.getString(json, "quantity");
+
       obj.lineItemAssociationId = JsonUtil.getString(json, "line_item_association_id");
 
       return obj;
@@ -2034,6 +2041,8 @@ public class SalesOrder {
           + amount
           + ", unitPrice="
           + unitPrice
+          + ", quantity="
+          + quantity
           + ", lineItemAssociationId="
           + lineItemAssociationId
           + "}";
@@ -2047,13 +2056,14 @@ public class SalesOrder {
       CreditLines that = (CreditLines) o;
       return java.util.Objects.equals(amount, that.amount)
           && java.util.Objects.equals(unitPrice, that.unitPrice)
+          && java.util.Objects.equals(quantity, that.quantity)
           && java.util.Objects.equals(lineItemAssociationId, that.lineItemAssociationId);
     }
 
     @Override
     public int hashCode() {
 
-      return java.util.Objects.hash(amount, unitPrice, lineItemAssociationId);
+      return java.util.Objects.hash(amount, unitPrice, quantity, lineItemAssociationId);
     }
   }
 }

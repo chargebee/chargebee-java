@@ -294,6 +294,8 @@ public final class ThirdPartyEntityMappingUpdateEntityParams {
 
     TAX_GROUP("tax_group"),
 
+    SALES_ORDER("sales_order"),
+
     /** An enum member indicating that EntityType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -397,6 +399,8 @@ public final class ThirdPartyEntityMappingUpdateEntityParams {
     TAX_RATE("tax_rate"),
 
     TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
 
     /**
      * An enum member indicating that FailedDependentEntityType was instantiated with an unknown

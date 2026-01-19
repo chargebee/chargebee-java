@@ -45,7 +45,9 @@ public final class ExportPlansParams {
       // Single object
       Map<String, Object> nestedData = this.plan.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "plan[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "plan[" + key.replace("[", "][") : "plan[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

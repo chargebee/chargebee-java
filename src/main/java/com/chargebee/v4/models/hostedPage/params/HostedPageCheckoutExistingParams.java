@@ -1207,6 +1207,8 @@ public final class HostedPageCheckoutExistingParams {
 
       EZIDEBIT("ezidebit"),
 
+      TWIKEY("twikey"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;

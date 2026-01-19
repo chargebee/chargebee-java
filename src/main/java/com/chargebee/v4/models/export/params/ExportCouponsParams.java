@@ -44,7 +44,9 @@ public final class ExportCouponsParams {
       // Single object
       Map<String, Object> nestedData = this.coupon.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "coupon[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "coupon[" + key.replace("[", "][") : "coupon[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
@@ -73,6 +75,10 @@ public final class ExportCouponsParams {
       return new CurrencyCodeFilter("currency_code", this, filterParams);
     }
 
+    public ApplicableItemPriceIdsFilter applicableItemPriceIds() {
+      return new ApplicableItemPriceIdsFilter("applicable_item_price_ids", this, filterParams);
+    }
+
     public ExportCouponsBuilder coupon(CouponParams value) {
       this.coupon = value;
       return this;
@@ -84,6 +90,14 @@ public final class ExportCouponsParams {
 
     public static final class CurrencyCodeFilter extends StringFilter<ExportCouponsBuilder> {
       CurrencyCodeFilter(
+          String fieldName, ExportCouponsBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class ApplicableItemPriceIdsFilter
+        extends StringFilter<ExportCouponsBuilder> {
+      ApplicableItemPriceIdsFilter(
           String fieldName, ExportCouponsBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
       }
