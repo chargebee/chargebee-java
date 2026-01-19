@@ -95,6 +95,10 @@ public final class CouponListParams {
       return new CurrencyCodeFilter("currency_code", this, queryParams);
     }
 
+    public ApplicableItemPriceIdsFilter applicableItemPriceIds() {
+      return new ApplicableItemPriceIdsFilter("applicable_item_price_ids", this, queryParams);
+    }
+
     public CouponListParams build() {
       return new CouponListParams(this);
     }
@@ -149,6 +153,13 @@ public final class CouponListParams {
 
     public static final class CurrencyCodeFilter extends StringFilter<CouponListBuilder> {
       CurrencyCodeFilter(String fieldName, CouponListBuilder builder, Map<String, Object> params) {
+        super(fieldName, builder, params);
+      }
+    }
+
+    public static final class ApplicableItemPriceIdsFilter extends StringFilter<CouponListBuilder> {
+      ApplicableItemPriceIdsFilter(
+          String fieldName, CouponListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
       }
     }

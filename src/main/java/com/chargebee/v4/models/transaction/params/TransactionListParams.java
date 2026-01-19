@@ -682,6 +682,8 @@ public final class TransactionListParams {
 
     EZIDEBIT("ezidebit"),
 
+    TWIKEY("twikey"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that GatewayIs was instantiated with an unknown value. */
@@ -819,6 +821,8 @@ public final class TransactionListParams {
     DEUTSCHE_BANK("deutsche_bank"),
 
     EZIDEBIT("ezidebit"),
+
+    TWIKEY("twikey"),
 
     NOT_APPLICABLE("not_applicable"),
 
