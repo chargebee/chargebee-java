@@ -7,8 +7,8 @@ plugins {
 }
 
 group = "com.chargebee"
-version = "4.0.0"
-description = "Next-gen Java client library for ChargeBee API"
+version = "4.0.1"
+description = "Java client library for ChargeBee"
 
 // Project metadata
 val projectUrl = "https://github.com/chargebee/chargebee-java"
