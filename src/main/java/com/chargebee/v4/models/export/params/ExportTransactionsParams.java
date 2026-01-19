@@ -38,7 +38,11 @@ public final class ExportTransactionsParams {
       // Single object
       Map<String, Object> nestedData = this.transaction.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "transaction[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "transaction[" + key.replace("[", "][")
+                : "transaction[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

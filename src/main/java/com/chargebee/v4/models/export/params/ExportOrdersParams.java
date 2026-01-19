@@ -45,7 +45,9 @@ public final class ExportOrdersParams {
       // Single object
       Map<String, Object> nestedData = this.order.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "order[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "order[" + key.replace("[", "][") : "order[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

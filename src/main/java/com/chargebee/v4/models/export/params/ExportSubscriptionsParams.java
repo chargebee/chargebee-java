@@ -58,7 +58,11 @@ public final class ExportSubscriptionsParams {
       // Single object
       Map<String, Object> nestedData = this.subscription.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "subscription[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "subscription[" + key.replace("[", "][")
+                : "subscription[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

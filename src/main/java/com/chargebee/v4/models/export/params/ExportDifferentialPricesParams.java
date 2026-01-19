@@ -42,7 +42,11 @@ public final class ExportDifferentialPricesParams {
       // Single object
       Map<String, Object> nestedData = this.differentialPrice.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "differential_price[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "differential_price[" + key.replace("[", "][")
+                : "differential_price[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

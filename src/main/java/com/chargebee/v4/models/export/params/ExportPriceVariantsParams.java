@@ -44,7 +44,11 @@ public final class ExportPriceVariantsParams {
       // Single object
       Map<String, Object> nestedData = this.priceVariant.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "price_variant[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "price_variant[" + key.replace("[", "][")
+                : "price_variant[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

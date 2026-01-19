@@ -44,7 +44,11 @@ public final class ExportItemFamiliesParams {
       // Single object
       Map<String, Object> nestedData = this.itemFamily.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "item_family[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[")
+                ? "item_family[" + key.replace("[", "][")
+                : "item_family[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

@@ -44,7 +44,9 @@ public final class ExportCouponsParams {
       // Single object
       Map<String, Object> nestedData = this.coupon.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "coupon[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "coupon[" + key.replace("[", "][") : "coupon[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }

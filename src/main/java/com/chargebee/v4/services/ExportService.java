@@ -471,4 +471,34 @@ public final class ExportService extends BaseService<ExportService> {
 
     return ExportPlansResponse.fromJson(response.getBodyAsString(), response);
   }
+
+  // === Export Utility Methods ===
+
+  /**
+   * Waits for an export operation to complete by polling its status. Polls every 10 seconds
+   * (configurable via cb.java.export.sleep.millis system property).
+   *
+   * @param export The export to wait for (must have a valid ID)
+   * @return The completed Export object with COMPLETED or FAILED status
+   * @throws ChargebeeException if API call fails during polling
+   * @throws RuntimeException if export takes too long (over 50 polling attempts)
+   * @throws InterruptedException if thread is interrupted while waiting
+   */
+  public com.chargebee.v4.models.export.Export waitForExportCompletion(
+      com.chargebee.v4.models.export.Export export)
+      throws ChargebeeException, InterruptedException {
+    int count = 0;
+    int sleepTime = Integer.getInteger("cb.java.export.sleep.millis", 10000);
+    com.chargebee.v4.models.export.Export currentExport = export;
+
+    while (currentExport.getStatus() == com.chargebee.v4.models.export.Export.Status.IN_PROCESS) {
+      if (count++ > 50) {
+        throw new RuntimeException("Export is taking too long");
+      }
+      Thread.sleep(sleepTime);
+      ExportRetrieveResponse response = retrieve(currentExport.getId());
+      currentExport = response.getExport();
+    }
+    return currentExport;
+  }
 }

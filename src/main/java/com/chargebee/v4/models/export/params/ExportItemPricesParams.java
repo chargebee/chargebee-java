@@ -45,7 +45,9 @@ public final class ExportItemPricesParams {
       // Single object
       Map<String, Object> nestedData = this.itemPrice.toFormData();
       for (Map.Entry<String, Object> entry : nestedData.entrySet()) {
-        String nestedKey = "item_price[" + entry.getKey() + "]";
+        String key = entry.getKey();
+        String nestedKey =
+            key.contains("[") ? "item_price[" + key.replace("[", "][") : "item_price[" + key + "]";
         formData.put(nestedKey, entry.getValue());
       }
     }
