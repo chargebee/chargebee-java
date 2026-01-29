@@ -9,6 +9,7 @@ package com.chargebee.v4.models.feature.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+
 import com.chargebee.v4.filters.CustomFieldSelector;
 
 import java.util.Collections;
@@ -73,19 +74,6 @@ public final class FeatureListParams {
 
     /**
      * Create a filter for a custom field.
-     *
-     * <p>Supports both simple custom fields (e.g., "cf_discord_id") and nested custom fields (e.g.,
-     * "item_price[cf_price]").
-     *
-     * <p>Example usage:
-     *
-     * <pre>{@code
-     * // Simple custom field: cf_discord_id[is]=123
-     * .customField("cf_discord_id").stringFilter().is("123")
-     *
-     * // Nested custom field: item_price[cf_price][gte]=1000
-     * .customField("item_price[cf_price]").numberFilter().gte(1000L)
-     * }</pre>
      *
      * @param fieldName the custom field name (must contain "cf_")
      * @return CustomFieldSelector for choosing filter type
