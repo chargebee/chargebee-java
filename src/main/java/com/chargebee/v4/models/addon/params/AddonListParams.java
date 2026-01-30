@@ -12,6 +12,8 @@ import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 
+import com.chargebee.v4.filters.CustomFieldSelector;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -108,6 +110,19 @@ public final class AddonListParams {
     public AddonListBuilder includeDeleted(Boolean value) {
       queryParams.put("include_deleted", value);
       return this;
+    }
+
+    /**
+     * Create a filter for a custom field.
+     *
+     * @param fieldName the custom field name (must contain "cf_")
+     * @return CustomFieldSelector for choosing filter type
+     */
+    public CustomFieldSelector<AddonListBuilder> customField(String fieldName) {
+      if (fieldName == null || !fieldName.contains("cf_")) {
+        throw new IllegalArgumentException("Custom field name must contain 'cf_'");
+      }
+      return new CustomFieldSelector<>(fieldName, this, queryParams);
     }
 
     public AddonListParams build() {

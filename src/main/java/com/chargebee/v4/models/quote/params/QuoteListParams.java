@@ -11,6 +11,8 @@ import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 
+import com.chargebee.v4.filters.CustomFieldSelector;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -86,6 +88,19 @@ public final class QuoteListParams {
 
     public SortBySortBuilder sortBy() {
       return new SortBySortBuilder("sort_by", this);
+    }
+
+    /**
+     * Create a filter for a custom field.
+     *
+     * @param fieldName the custom field name (must contain "cf_")
+     * @return CustomFieldSelector for choosing filter type
+     */
+    public CustomFieldSelector<QuoteListBuilder> customField(String fieldName) {
+      if (fieldName == null || !fieldName.contains("cf_")) {
+        throw new IllegalArgumentException("Custom field name must contain 'cf_'");
+      }
+      return new CustomFieldSelector<>(fieldName, this, queryParams);
     }
 
     public QuoteListParams build() {

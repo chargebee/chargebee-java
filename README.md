@@ -185,6 +185,20 @@ future.thenAccept(resp -> {
 });
 ```
 
+### Custom Field Filtering
+
+Filter list operations by custom fields using type-safe filters (`stringFilter()`, `numberFilter()`, `timestampFilter()`, `booleanFilter()`):
+
+```java
+CustomerListParams params = CustomerListParams.builder()
+    .customField("cf_plan_tier").stringFilter().in("gold", "platinum")
+    .customField("cf_is_vip").booleanFilter().is(true)
+    .customField("cf_total_spent").numberFilter().gte(5000L)
+    .build();
+
+CustomerListResponse response = client.customers().list(params);
+```
+
 ### Exception Handling
 
 The library provides a comprehensive exception hierarchy with **strongly-typed error enums** to handle different types of errors that may occur during API operations.

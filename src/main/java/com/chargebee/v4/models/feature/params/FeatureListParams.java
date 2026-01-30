@@ -10,6 +10,8 @@ package com.chargebee.v4.models.feature.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 
+import com.chargebee.v4.filters.CustomFieldSelector;
+
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -68,6 +70,19 @@ public final class FeatureListParams {
 
     public TypeFilter type() {
       return new TypeFilter("type", this, queryParams);
+    }
+
+    /**
+     * Create a filter for a custom field.
+     *
+     * @param fieldName the custom field name (must contain "cf_")
+     * @return CustomFieldSelector for choosing filter type
+     */
+    public CustomFieldSelector<FeatureListBuilder> customField(String fieldName) {
+      if (fieldName == null || !fieldName.contains("cf_")) {
+        throw new IllegalArgumentException("Custom field name must contain 'cf_'");
+      }
+      return new CustomFieldSelector<>(fieldName, this, queryParams);
     }
 
     public FeatureListParams build() {
