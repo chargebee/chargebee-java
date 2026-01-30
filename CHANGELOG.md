@@ -1,3 +1,9 @@
+### v4.0.2 (2026-01-30)
+* * *
+
+### New Features:
+* Add custom field filtering support for list operations using type-safe filters.
+
 ### v4.0.1 (2026-01-19)
 * * * 
 
