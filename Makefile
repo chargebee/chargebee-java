@@ -1,4 +1,4 @@
-.PHONY: update-version increment-major increment-minor increment-patch test build clean install
+.PHONY: update-version increment-major increment-minor increment-patch test build clean install format
 
 update-version:
 	@echo "$(VERSION)" > VERSION
@@ -37,6 +37,9 @@ build:
 
 clean:
 	mvn clean
+
+format:
+	@echo "Formatter not configured."
 
 install:
 	mvn clean install
