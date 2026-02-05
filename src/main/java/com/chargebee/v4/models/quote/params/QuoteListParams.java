@@ -10,7 +10,6 @@ package com.chargebee.v4.models.quote.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
-
 import com.chargebee.v4.filters.CustomFieldSelector;
 
 import java.util.Collections;

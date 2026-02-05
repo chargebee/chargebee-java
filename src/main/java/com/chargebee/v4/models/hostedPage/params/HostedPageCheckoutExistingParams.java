@@ -8,6 +8,7 @@ package com.chargebee.v4.models.hostedPage.params;
 
 import com.chargebee.v4.internal.Recommended;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
@@ -600,6 +601,8 @@ public final class HostedPageCheckoutExistingParams {
 
     private final Integer contractTermBillingCycleOnRenewal;
 
+    private final Map<String, String> customFields;
+
     private SubscriptionParams(SubscriptionBuilder builder) {
 
       this.id = builder.id;
@@ -629,6 +632,11 @@ public final class HostedPageCheckoutExistingParams {
       this.invoiceNotes = builder.invoiceNotes;
 
       this.contractTermBillingCycleOnRenewal = builder.contractTermBillingCycleOnRenewal;
+
+      this.customFields =
+          builder.customFields.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.customFields));
     }
 
     public String getId() {
@@ -685,6 +693,10 @@ public final class HostedPageCheckoutExistingParams {
 
     public Integer getContractTermBillingCycleOnRenewal() {
       return contractTermBillingCycleOnRenewal;
+    }
+
+    public Map<String, String> customFields() {
+      return customFields;
     }
 
     /** Get the form data for this request. */
@@ -762,6 +774,8 @@ public final class HostedPageCheckoutExistingParams {
             "contract_term_billing_cycle_on_renewal", this.contractTermBillingCycleOnRenewal);
       }
 
+      formData.putAll(customFields);
+
       return formData;
     }
 
@@ -800,6 +814,8 @@ public final class HostedPageCheckoutExistingParams {
       private String invoiceNotes;
 
       private Integer contractTermBillingCycleOnRenewal;
+
+      private Map<String, String> customFields = new LinkedHashMap<>();
 
       private SubscriptionBuilder() {}
 
@@ -871,6 +887,42 @@ public final class HostedPageCheckoutExistingParams {
 
       public SubscriptionBuilder contractTermBillingCycleOnRenewal(Integer value) {
         this.contractTermBillingCycleOnRenewal = value;
+        return this;
+      }
+
+      /**
+       * Add a custom field to the request. Custom fields must start with "cf_".
+       *
+       * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+       * @param value the value of the custom field
+       * @return this builder
+       * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+       */
+      public SubscriptionBuilder customField(String fieldName, String value) {
+        if (fieldName == null || !fieldName.startsWith("cf_")) {
+          throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+        }
+        this.customFields.put(fieldName, value);
+        return this;
+      }
+
+      /**
+       * Add multiple custom fields to the request. All field names must start with "cf_".
+       *
+       * @param customFields map of custom field names to values
+       * @return this builder
+       * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+       */
+      public SubscriptionBuilder customFields(Map<String, String> customFields) {
+        if (customFields != null) {
+          for (Map.Entry<String, String> entry : customFields.entrySet()) {
+            if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+              throw new IllegalArgumentException(
+                  "Custom field name must start with 'cf_': " + entry.getKey());
+            }
+            this.customFields.put(entry.getKey(), entry.getValue());
+          }
+        }
         return this;
       }
 
@@ -966,11 +1018,18 @@ public final class HostedPageCheckoutExistingParams {
 
     private final String vatNumberPrefix;
 
+    private final Map<String, String> customFields;
+
     private CustomerParams(CustomerBuilder builder) {
 
       this.vatNumber = builder.vatNumber;
 
       this.vatNumberPrefix = builder.vatNumberPrefix;
+
+      this.customFields =
+          builder.customFields.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.customFields));
     }
 
     public String getVatNumber() {
@@ -979,6 +1038,10 @@ public final class HostedPageCheckoutExistingParams {
 
     public String getVatNumberPrefix() {
       return vatNumberPrefix;
+    }
+
+    public Map<String, String> customFields() {
+      return customFields;
     }
 
     /** Get the form data for this request. */
@@ -995,6 +1058,8 @@ public final class HostedPageCheckoutExistingParams {
         formData.put("vat_number_prefix", this.vatNumberPrefix);
       }
 
+      formData.putAll(customFields);
+
       return formData;
     }
 
@@ -1010,6 +1075,8 @@ public final class HostedPageCheckoutExistingParams {
 
       private String vatNumberPrefix;
 
+      private Map<String, String> customFields = new LinkedHashMap<>();
+
       private CustomerBuilder() {}
 
       public CustomerBuilder vatNumber(String value) {
@@ -1019,6 +1086,42 @@ public final class HostedPageCheckoutExistingParams {
 
       public CustomerBuilder vatNumberPrefix(String value) {
         this.vatNumberPrefix = value;
+        return this;
+      }
+
+      /**
+       * Add a custom field to the request. Custom fields must start with "cf_".
+       *
+       * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+       * @param value the value of the custom field
+       * @return this builder
+       * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+       */
+      public CustomerBuilder customField(String fieldName, String value) {
+        if (fieldName == null || !fieldName.startsWith("cf_")) {
+          throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+        }
+        this.customFields.put(fieldName, value);
+        return this;
+      }
+
+      /**
+       * Add multiple custom fields to the request. All field names must start with "cf_".
+       *
+       * @param customFields map of custom field names to values
+       * @return this builder
+       * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+       */
+      public CustomerBuilder customFields(Map<String, String> customFields) {
+        if (customFields != null) {
+          for (Map.Entry<String, String> entry : customFields.entrySet()) {
+            if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+              throw new IllegalArgumentException(
+                  "Custom field name must start with 'cf_': " + entry.getKey());
+            }
+            this.customFields.put(entry.getKey(), entry.getValue());
+          }
+        }
         return this;
       }
 

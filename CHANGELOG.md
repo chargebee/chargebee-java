@@ -1,3 +1,9 @@
+### v4.0.3 (2026-02-05)
+* * *
+
+### New Features:
+* Add custom field support for sub-resources in HostedPage, PricingPageSession, Quote, Subscription, and Gift operations.
+
 ### v4.0.2 (2026-01-30)
 * * *
 

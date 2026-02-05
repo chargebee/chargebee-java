@@ -9,6 +9,7 @@ package com.chargebee.v4.models.pricingPageSession.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.internal.JsonUtil;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
@@ -334,13 +335,24 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     private final String id;
 
+    private final Map<String, String> customFields;
+
     private SubscriptionParams(SubscriptionBuilder builder) {
 
       this.id = builder.id;
+
+      this.customFields =
+          builder.customFields.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.customFields));
     }
 
     public String getId() {
       return id;
+    }
+
+    public Map<String, String> customFields() {
+      return customFields;
     }
 
     /** Get the form data for this request. */
@@ -351,6 +363,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
         formData.put("id", this.id);
       }
+
+      formData.putAll(customFields);
 
       return formData;
     }
@@ -365,10 +379,48 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
       private String id;
 
+      private Map<String, String> customFields = new LinkedHashMap<>();
+
       private SubscriptionBuilder() {}
 
       public SubscriptionBuilder id(String value) {
         this.id = value;
+        return this;
+      }
+
+      /**
+       * Add a custom field to the request. Custom fields must start with "cf_".
+       *
+       * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+       * @param value the value of the custom field
+       * @return this builder
+       * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+       */
+      public SubscriptionBuilder customField(String fieldName, String value) {
+        if (fieldName == null || !fieldName.startsWith("cf_")) {
+          throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+        }
+        this.customFields.put(fieldName, value);
+        return this;
+      }
+
+      /**
+       * Add multiple custom fields to the request. All field names must start with "cf_".
+       *
+       * @param customFields map of custom field names to values
+       * @return this builder
+       * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+       */
+      public SubscriptionBuilder customFields(Map<String, String> customFields) {
+        if (customFields != null) {
+          for (Map.Entry<String, String> entry : customFields.entrySet()) {
+            if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+              throw new IllegalArgumentException(
+                  "Custom field name must start with 'cf_': " + entry.getKey());
+            }
+            this.customFields.put(entry.getKey(), entry.getValue());
+          }
+        }
         return this;
       }
 
@@ -394,6 +446,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     private final String locale;
 
+    private final Map<String, String> customFields;
+
     private CustomerParams(CustomerBuilder builder) {
 
       this.id = builder.id;
@@ -409,6 +463,11 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       this.phone = builder.phone;
 
       this.locale = builder.locale;
+
+      this.customFields =
+          builder.customFields.isEmpty()
+              ? Collections.emptyMap()
+              : Collections.unmodifiableMap(new LinkedHashMap<>(builder.customFields));
     }
 
     public String getId() {
@@ -437,6 +496,10 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
     public String getLocale() {
       return locale;
+    }
+
+    public Map<String, String> customFields() {
+      return customFields;
     }
 
     /** Get the form data for this request. */
@@ -478,6 +541,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
         formData.put("locale", this.locale);
       }
 
+      formData.putAll(customFields);
+
       return formData;
     }
 
@@ -502,6 +567,8 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
       private String phone;
 
       private String locale;
+
+      private Map<String, String> customFields = new LinkedHashMap<>();
 
       private CustomerBuilder() {}
 
@@ -537,6 +604,42 @@ public final class PricingPageSessionCreateForNewSubscriptionParams {
 
       public CustomerBuilder locale(String value) {
         this.locale = value;
+        return this;
+      }
+
+      /**
+       * Add a custom field to the request. Custom fields must start with "cf_".
+       *
+       * @param fieldName the name of the custom field (e.g., "cf_custom_field_name")
+       * @param value the value of the custom field
+       * @return this builder
+       * @throws IllegalArgumentException if fieldName doesn't start with "cf_"
+       */
+      public CustomerBuilder customField(String fieldName, String value) {
+        if (fieldName == null || !fieldName.startsWith("cf_")) {
+          throw new IllegalArgumentException("Custom field name must start with 'cf_'");
+        }
+        this.customFields.put(fieldName, value);
+        return this;
+      }
+
+      /**
+       * Add multiple custom fields to the request. All field names must start with "cf_".
+       *
+       * @param customFields map of custom field names to values
+       * @return this builder
+       * @throws IllegalArgumentException if any field name doesn't start with "cf_"
+       */
+      public CustomerBuilder customFields(Map<String, String> customFields) {
+        if (customFields != null) {
+          for (Map.Entry<String, String> entry : customFields.entrySet()) {
+            if (entry.getKey() == null || !entry.getKey().startsWith("cf_")) {
+              throw new IllegalArgumentException(
+                  "Custom field name must start with 'cf_': " + entry.getKey());
+            }
+            this.customFields.put(entry.getKey(), entry.getValue());
+          }
+        }
         return this;
       }
 
