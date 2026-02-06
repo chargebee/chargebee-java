@@ -372,6 +372,8 @@ public final class EventListParams {
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
 
+    PAYMENT_DUE_REMINDER("payment_due_reminder"),
+
     TRANSACTION_CREATED("transaction_created"),
 
     TRANSACTION_UPDATED("transaction_updated"),
@@ -839,6 +841,8 @@ public final class EventListParams {
     SUBSCRIPTION_RENEWAL_REMINDER("subscription_renewal_reminder"),
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
+
+    PAYMENT_DUE_REMINDER("payment_due_reminder"),
 
     TRANSACTION_CREATED("transaction_created"),
 

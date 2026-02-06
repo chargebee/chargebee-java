@@ -69,6 +69,7 @@ public class Subscription {
   private Boolean createPendingInvoices;
   private Boolean autoCloseInvoices;
   private String businessEntityId;
+  private Boolean decommissioned;
   private List<SubscriptionItems> subscriptionItems;
   private List<ItemTiers> itemTiers;
   private List<ChargedItems> chargedItems;
@@ -315,6 +316,10 @@ public class Subscription {
 
   public String getBusinessEntityId() {
     return businessEntityId;
+  }
+
+  public Boolean getDecommissioned() {
+    return decommissioned;
   }
 
   public List<SubscriptionItems> getSubscriptionItems() {
@@ -827,6 +832,8 @@ public class Subscription {
 
     knownFields.add("business_entity_id");
 
+    knownFields.add("decommissioned");
+
     knownFields.add("subscription_items");
 
     knownFields.add("item_tiers");
@@ -988,6 +995,8 @@ public class Subscription {
     obj.autoCloseInvoices = JsonUtil.getBoolean(json, "auto_close_invoices");
 
     obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+
+    obj.decommissioned = JsonUtil.getBoolean(json, "decommissioned");
 
     obj.subscriptionItems =
         JsonUtil.parseObjectArray(JsonUtil.getArray(json, "subscription_items")).stream()
@@ -1221,6 +1230,8 @@ public class Subscription {
         + autoCloseInvoices
         + ", businessEntityId="
         + businessEntityId
+        + ", decommissioned="
+        + decommissioned
         + ", subscriptionItems="
         + subscriptionItems
         + ", itemTiers="
@@ -1334,6 +1345,7 @@ public class Subscription {
         && java.util.Objects.equals(createPendingInvoices, that.createPendingInvoices)
         && java.util.Objects.equals(autoCloseInvoices, that.autoCloseInvoices)
         && java.util.Objects.equals(businessEntityId, that.businessEntityId)
+        && java.util.Objects.equals(decommissioned, that.decommissioned)
         && java.util.Objects.equals(subscriptionItems, that.subscriptionItems)
         && java.util.Objects.equals(itemTiers, that.itemTiers)
         && java.util.Objects.equals(chargedItems, that.chargedItems)
@@ -1419,6 +1431,7 @@ public class Subscription {
         createPendingInvoices,
         autoCloseInvoices,
         businessEntityId,
+        decommissioned,
         subscriptionItems,
         itemTiers,
         chargedItems,

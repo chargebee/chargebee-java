@@ -298,6 +298,8 @@ public class Card {
 
     TWIKEY("twikey"),
 
+    TEMPUS("tempus"),
+
     NOT_APPLICABLE("not_applicable"),
 
     /** An enum member indicating that Gateway was instantiated with an unknown value. */

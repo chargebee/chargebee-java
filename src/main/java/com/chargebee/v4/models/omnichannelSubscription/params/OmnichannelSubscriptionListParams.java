@@ -62,6 +62,12 @@ public final class OmnichannelSubscriptionListParams {
       return new CustomerIdFilter("customer_id", this, queryParams);
     }
 
+    public OmnichannelSubscriptionListBuilder omnichannelSubscriptionItem(
+        OmnichannelSubscriptionItemParams value) {
+      queryParams.put("omnichannel_subscription_item", value);
+      return this;
+    }
+
     public OmnichannelSubscriptionListParams build() {
       return new OmnichannelSubscriptionListParams(this);
     }
@@ -140,6 +146,70 @@ public final class OmnichannelSubscriptionListParams {
         }
       }
       return _UNKNOWN;
+    }
+  }
+
+  public static final class OmnichannelSubscriptionItemParams {
+
+    private final Map<String, Object> queryParams;
+
+    private OmnichannelSubscriptionItemParams(OmnichannelSubscriptionItemBuilder builder) {
+      this.queryParams = Collections.unmodifiableMap(new LinkedHashMap<>(builder.queryParams));
+    }
+
+    /** Get the query parameters for this request. */
+    public Map<String, Object> toQueryParams() {
+      return queryParams;
+    }
+
+    public OmnichannelSubscriptionItemBuilder toBuilder() {
+      OmnichannelSubscriptionItemBuilder builder = new OmnichannelSubscriptionItemBuilder();
+      builder.queryParams.putAll(queryParams);
+      return builder;
+    }
+
+    /** Create a new builder for OmnichannelSubscriptionItemParams. */
+    @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
+    public static OmnichannelSubscriptionItemBuilder builder() {
+      return new OmnichannelSubscriptionItemBuilder();
+    }
+
+    public static final class OmnichannelSubscriptionItemBuilder {
+      private final Map<String, Object> queryParams = new LinkedHashMap<>();
+
+      private OmnichannelSubscriptionItemBuilder() {}
+
+      public StatusFilter status() {
+        return new StatusFilter("status", this, queryParams);
+      }
+
+      public ItemIdAtSourceFilter itemIdAtSource() {
+        return new ItemIdAtSourceFilter("item_id_at_source", this, queryParams);
+      }
+
+      public OmnichannelSubscriptionItemParams build() {
+        return new OmnichannelSubscriptionItemParams(this);
+      }
+
+      public static final class StatusFilter
+          extends StringFilter<OmnichannelSubscriptionItemBuilder> {
+        StatusFilter(
+            String fieldName,
+            OmnichannelSubscriptionItemBuilder builder,
+            Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
+      }
+
+      public static final class ItemIdAtSourceFilter
+          extends StringFilter<OmnichannelSubscriptionItemBuilder> {
+        ItemIdAtSourceFilter(
+            String fieldName,
+            OmnichannelSubscriptionItemBuilder builder,
+            Map<String, Object> params) {
+          super(fieldName, builder, params);
+        }
+      }
     }
   }
 }

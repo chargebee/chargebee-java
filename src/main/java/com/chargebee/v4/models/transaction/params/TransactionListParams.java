@@ -442,6 +442,14 @@ public final class TransactionListParams {
 
     STABLECOIN("stablecoin"),
 
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
     /** An enum member indicating that PaymentMethodIs was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -545,6 +553,14 @@ public final class TransactionListParams {
     TRUSTLY("trustly"),
 
     STABLECOIN("stablecoin"),
+
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
 
     /** An enum member indicating that PaymentMethodIsNot was instantiated with an unknown value. */
     _UNKNOWN(null);
@@ -683,6 +699,8 @@ public final class TransactionListParams {
     EZIDEBIT("ezidebit"),
 
     TWIKEY("twikey"),
+
+    TEMPUS("tempus"),
 
     NOT_APPLICABLE("not_applicable"),
 
@@ -823,6 +841,8 @@ public final class TransactionListParams {
     EZIDEBIT("ezidebit"),
 
     TWIKEY("twikey"),
+
+    TEMPUS("tempus"),
 
     NOT_APPLICABLE("not_applicable"),
 

@@ -2681,6 +2681,8 @@ public final class SubscriptionCreateParams {
 
       TWIKEY("twikey"),
 
+      TEMPUS("tempus"),
+
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -3424,6 +3426,14 @@ public final class SubscriptionCreateParams {
 
       STABLECOIN("stablecoin"),
 
+      KAKAO_PAY("kakao_pay"),
+
+      NAVER_PAY("naver_pay"),
+
+      REVOLUT_PAY("revolut_pay"),
+
+      CASH_APP_PAY("cash_app_pay"),
+
       /** An enum member indicating that Type was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
@@ -3559,6 +3569,8 @@ public final class SubscriptionCreateParams {
       EZIDEBIT("ezidebit"),
 
       TWIKEY("twikey"),
+
+      TEMPUS("tempus"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);
@@ -3804,6 +3816,18 @@ public final class SubscriptionCreateParams {
       TRUSTLY("trustly"),
 
       STABLECOIN("stablecoin"),
+
+      KAKAO_PAY("kakao_pay"),
+
+      NAVER_PAY("naver_pay"),
+
+      REVOLUT_PAY("revolut_pay"),
+
+      CASH_APP_PAY("cash_app_pay"),
+
+      WECHAT_PAY("wechat_pay"),
+
+      ALIPAY("alipay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
