@@ -35,6 +35,8 @@ public final class SubscriptionCancelForItemsParams {
 
   private final String cancelReasonCode;
 
+  private final Boolean decommissioned;
+
   private final List<SubscriptionItemsParams> subscriptionItems;
 
   private SubscriptionCancelForItemsParams(SubscriptionCancelForItemsBuilder builder) {
@@ -58,6 +60,8 @@ public final class SubscriptionCancelForItemsParams {
     this.invoiceDate = builder.invoiceDate;
 
     this.cancelReasonCode = builder.cancelReasonCode;
+
+    this.decommissioned = builder.decommissioned;
 
     this.subscriptionItems = builder.subscriptionItems;
   }
@@ -100,6 +104,10 @@ public final class SubscriptionCancelForItemsParams {
 
   public String getCancelReasonCode() {
     return cancelReasonCode;
+  }
+
+  public Boolean getDecommissioned() {
+    return decommissioned;
   }
 
   public List<SubscriptionItemsParams> getSubscriptionItems() {
@@ -161,6 +169,11 @@ public final class SubscriptionCancelForItemsParams {
       formData.put("cancel_reason_code", this.cancelReasonCode);
     }
 
+    if (this.decommissioned != null) {
+
+      formData.put("decommissioned", this.decommissioned);
+    }
+
     if (this.subscriptionItems != null) {
 
       // List of objects
@@ -206,6 +219,8 @@ public final class SubscriptionCancelForItemsParams {
     private Timestamp invoiceDate;
 
     private String cancelReasonCode;
+
+    private Boolean decommissioned;
 
     private List<SubscriptionItemsParams> subscriptionItems;
 
@@ -262,6 +277,11 @@ public final class SubscriptionCancelForItemsParams {
 
     public SubscriptionCancelForItemsBuilder cancelReasonCode(String value) {
       this.cancelReasonCode = value;
+      return this;
+    }
+
+    public SubscriptionCancelForItemsBuilder decommissioned(Boolean value) {
+      this.decommissioned = value;
       return this;
     }
 

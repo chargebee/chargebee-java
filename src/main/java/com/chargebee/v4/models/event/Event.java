@@ -286,6 +286,8 @@ public class Event {
 
     ADD_USAGES_REMINDER("add_usages_reminder"),
 
+    PAYMENT_DUE_REMINDER("payment_due_reminder"),
+
     TRANSACTION_CREATED("transaction_created"),
 
     TRANSACTION_UPDATED("transaction_updated"),

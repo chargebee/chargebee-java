@@ -124,25 +124,45 @@ public final class AddEntitlementOverrideForSubscriptionParams {
 
     private final String featureId;
 
+    private final String entityId;
+
+    private final EntityType entityType;
+
     private final String value;
 
     private final Timestamp expiresAt;
 
     private final Timestamp effectiveFrom;
 
+    private final Boolean isEnabled;
+
     private EntitlementOverridesParams(EntitlementOverridesBuilder builder) {
 
       this.featureId = builder.featureId;
+
+      this.entityId = builder.entityId;
+
+      this.entityType = builder.entityType;
 
       this.value = builder.value;
 
       this.expiresAt = builder.expiresAt;
 
       this.effectiveFrom = builder.effectiveFrom;
+
+      this.isEnabled = builder.isEnabled;
     }
 
     public String getFeatureId() {
       return featureId;
+    }
+
+    public String getEntityId() {
+      return entityId;
+    }
+
+    public EntityType getEntityType() {
+      return entityType;
     }
 
     public String getValue() {
@@ -157,6 +177,10 @@ public final class AddEntitlementOverrideForSubscriptionParams {
       return effectiveFrom;
     }
 
+    public Boolean getIsEnabled() {
+      return isEnabled;
+    }
+
     /** Get the form data for this request. */
     public Map<String, Object> toFormData() {
       Map<String, Object> formData = new LinkedHashMap<>();
@@ -164,6 +188,16 @@ public final class AddEntitlementOverrideForSubscriptionParams {
       if (this.featureId != null) {
 
         formData.put("feature_id", this.featureId);
+      }
+
+      if (this.entityId != null) {
+
+        formData.put("entity_id", this.entityId);
+      }
+
+      if (this.entityType != null) {
+
+        formData.put("entity_type", this.entityType);
       }
 
       if (this.value != null) {
@@ -181,6 +215,11 @@ public final class AddEntitlementOverrideForSubscriptionParams {
         formData.put("effective_from", this.effectiveFrom);
       }
 
+      if (this.isEnabled != null) {
+
+        formData.put("is_enabled", this.isEnabled);
+      }
+
       return formData;
     }
 
@@ -194,16 +233,32 @@ public final class AddEntitlementOverrideForSubscriptionParams {
 
       private String featureId;
 
+      private String entityId;
+
+      private EntityType entityType;
+
       private String value;
 
       private Timestamp expiresAt;
 
       private Timestamp effectiveFrom;
 
+      private Boolean isEnabled;
+
       private EntitlementOverridesBuilder() {}
 
       public EntitlementOverridesBuilder featureId(String value) {
         this.featureId = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder entityId(String value) {
+        this.entityId = value;
+        return this;
+      }
+
+      public EntitlementOverridesBuilder entityType(EntityType value) {
+        this.entityType = value;
         return this;
       }
 
@@ -222,8 +277,43 @@ public final class AddEntitlementOverrideForSubscriptionParams {
         return this;
       }
 
+      public EntitlementOverridesBuilder isEnabled(Boolean value) {
+        this.isEnabled = value;
+        return this;
+      }
+
       public EntitlementOverridesParams build() {
         return new EntitlementOverridesParams(this);
+      }
+    }
+
+    public enum EntityType {
+      PLAN_PRICE("plan_price"),
+
+      ADDON_PRICE("addon_price"),
+
+      CHARGE("charge"),
+
+      /** An enum member indicating that EntityType was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      EntityType(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static EntityType fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (EntityType enumValue : EntityType.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

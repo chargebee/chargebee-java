@@ -439,6 +439,8 @@ public class SalesOrder {
     private Timestamp startDate;
     private Timestamp endDate;
     private Timestamp trialEnd;
+    private Integer freePeriod;
+    private FreePeriodUnit freePeriodUnit;
 
     public String getId() {
       return id;
@@ -514,6 +516,14 @@ public class SalesOrder {
 
     public Timestamp getTrialEnd() {
       return trialEnd;
+    }
+
+    public Integer getFreePeriod() {
+      return freePeriod;
+    }
+
+    public FreePeriodUnit getFreePeriodUnit() {
+      return freePeriodUnit;
     }
 
     public enum BillingPeriodUnit {
@@ -614,6 +624,38 @@ public class SalesOrder {
       }
     }
 
+    public enum FreePeriodUnit {
+      DAY("day"),
+
+      WEEK("week"),
+
+      MONTH("month"),
+
+      YEAR("year"),
+
+      /** An enum member indicating that FreePeriodUnit was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      FreePeriodUnit(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static FreePeriodUnit fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (FreePeriodUnit enumValue : FreePeriodUnit.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
+      }
+    }
+
     public static LineItems fromJson(String json) {
       LineItems obj = new LineItems();
 
@@ -655,6 +697,10 @@ public class SalesOrder {
       obj.endDate = JsonUtil.getTimestamp(json, "end_date");
 
       obj.trialEnd = JsonUtil.getTimestamp(json, "trial_end");
+
+      obj.freePeriod = JsonUtil.getInteger(json, "free_period");
+
+      obj.freePeriodUnit = FreePeriodUnit.fromString(JsonUtil.getString(json, "free_period_unit"));
 
       return obj;
     }
@@ -700,6 +746,10 @@ public class SalesOrder {
           + endDate
           + ", trialEnd="
           + trialEnd
+          + ", freePeriod="
+          + freePeriod
+          + ", freePeriodUnit="
+          + freePeriodUnit
           + "}";
     }
 
@@ -727,7 +777,9 @@ public class SalesOrder {
           && java.util.Objects.equals(billingType, that.billingType)
           && java.util.Objects.equals(startDate, that.startDate)
           && java.util.Objects.equals(endDate, that.endDate)
-          && java.util.Objects.equals(trialEnd, that.trialEnd);
+          && java.util.Objects.equals(trialEnd, that.trialEnd)
+          && java.util.Objects.equals(freePeriod, that.freePeriod)
+          && java.util.Objects.equals(freePeriodUnit, that.freePeriodUnit);
     }
 
     @Override
@@ -752,7 +804,9 @@ public class SalesOrder {
           billingType,
           startDate,
           endDate,
-          trialEnd);
+          trialEnd,
+          freePeriod,
+          freePeriodUnit);
     }
   }
 

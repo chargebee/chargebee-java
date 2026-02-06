@@ -195,6 +195,14 @@ public class PaymentSource {
 
     STABLECOIN("stablecoin"),
 
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
     /** An enum member indicating that Type was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -366,6 +374,8 @@ public class PaymentSource {
     EZIDEBIT("ezidebit"),
 
     TWIKEY("twikey"),
+
+    TEMPUS("tempus"),
 
     NOT_APPLICABLE("not_applicable"),
 

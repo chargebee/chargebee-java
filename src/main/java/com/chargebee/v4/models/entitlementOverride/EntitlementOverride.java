@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 public class EntitlementOverride {
 
   private String id;
+  private String subscriptionId;
   private String entityId;
   private String entityType;
   private String featureId;
@@ -21,10 +22,15 @@ public class EntitlementOverride {
   private String name;
   private Timestamp expiresAt;
   private Timestamp effectiveFrom;
+  private Boolean isEnabled;
   @Deprecated private ScheduleStatus scheduleStatus;
 
   public String getId() {
     return id;
+  }
+
+  public String getSubscriptionId() {
+    return subscriptionId;
   }
 
   public String getEntityId() {
@@ -57,6 +63,10 @@ public class EntitlementOverride {
 
   public Timestamp getEffectiveFrom() {
     return effectiveFrom;
+  }
+
+  public Boolean getIsEnabled() {
+    return isEnabled;
   }
 
   @Deprecated
@@ -99,6 +109,8 @@ public class EntitlementOverride {
 
     obj.id = JsonUtil.getString(json, "id");
 
+    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+
     obj.entityId = JsonUtil.getString(json, "entity_id");
 
     obj.entityType = JsonUtil.getString(json, "entity_type");
@@ -115,6 +127,8 @@ public class EntitlementOverride {
 
     obj.effectiveFrom = JsonUtil.getTimestamp(json, "effective_from");
 
+    obj.isEnabled = JsonUtil.getBoolean(json, "is_enabled");
+
     obj.scheduleStatus = ScheduleStatus.fromString(JsonUtil.getString(json, "schedule_status"));
 
     return obj;
@@ -125,6 +139,8 @@ public class EntitlementOverride {
     return "EntitlementOverride{"
         + "id="
         + id
+        + ", subscriptionId="
+        + subscriptionId
         + ", entityId="
         + entityId
         + ", entityType="
@@ -141,6 +157,8 @@ public class EntitlementOverride {
         + expiresAt
         + ", effectiveFrom="
         + effectiveFrom
+        + ", isEnabled="
+        + isEnabled
         + ", scheduleStatus="
         + scheduleStatus
         + "}";
@@ -153,6 +171,7 @@ public class EntitlementOverride {
 
     EntitlementOverride that = (EntitlementOverride) o;
     return java.util.Objects.equals(id, that.id)
+        && java.util.Objects.equals(subscriptionId, that.subscriptionId)
         && java.util.Objects.equals(entityId, that.entityId)
         && java.util.Objects.equals(entityType, that.entityType)
         && java.util.Objects.equals(featureId, that.featureId)
@@ -161,6 +180,7 @@ public class EntitlementOverride {
         && java.util.Objects.equals(name, that.name)
         && java.util.Objects.equals(expiresAt, that.expiresAt)
         && java.util.Objects.equals(effectiveFrom, that.effectiveFrom)
+        && java.util.Objects.equals(isEnabled, that.isEnabled)
         && java.util.Objects.equals(scheduleStatus, that.scheduleStatus);
   }
 
@@ -169,6 +189,7 @@ public class EntitlementOverride {
 
     return java.util.Objects.hash(
         id,
+        subscriptionId,
         entityId,
         entityType,
         featureId,
@@ -177,6 +198,7 @@ public class EntitlementOverride {
         name,
         expiresAt,
         effectiveFrom,
+        isEnabled,
         scheduleStatus);
   }
 }

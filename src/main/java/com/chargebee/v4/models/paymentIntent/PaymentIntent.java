@@ -196,6 +196,18 @@ public class PaymentIntent {
 
     STABLECOIN("stablecoin"),
 
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    ALIPAY("alipay"),
+
     /** An enum member indicating that PaymentMethodType was instantiated with an unknown value. */
     _UNKNOWN(null);
     private final String value;
@@ -509,6 +521,18 @@ public class PaymentIntent {
       TRUSTLY("trustly"),
 
       STABLECOIN("stablecoin"),
+
+      KAKAO_PAY("kakao_pay"),
+
+      NAVER_PAY("naver_pay"),
+
+      REVOLUT_PAY("revolut_pay"),
+
+      CASH_APP_PAY("cash_app_pay"),
+
+      WECHAT_PAY("wechat_pay"),
+
+      ALIPAY("alipay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.
@@ -964,6 +988,18 @@ public class PaymentIntent {
       TRUSTLY("trustly"),
 
       STABLECOIN("stablecoin"),
+
+      KAKAO_PAY("kakao_pay"),
+
+      NAVER_PAY("naver_pay"),
+
+      REVOLUT_PAY("revolut_pay"),
+
+      CASH_APP_PAY("cash_app_pay"),
+
+      WECHAT_PAY("wechat_pay"),
+
+      ALIPAY("alipay"),
 
       /**
        * An enum member indicating that PaymentMethodType was instantiated with an unknown value.

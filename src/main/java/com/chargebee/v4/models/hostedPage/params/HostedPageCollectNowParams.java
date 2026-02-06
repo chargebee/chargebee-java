@@ -17,6 +17,8 @@ public final class HostedPageCollectNowParams {
 
   private final String currencyCode;
 
+  private final PaymentMethodSavePolicy paymentMethodSavePolicy;
+
   private final CustomerParams customer;
 
   private final CardParams card;
@@ -26,6 +28,8 @@ public final class HostedPageCollectNowParams {
     this.redirectUrl = builder.redirectUrl;
 
     this.currencyCode = builder.currencyCode;
+
+    this.paymentMethodSavePolicy = builder.paymentMethodSavePolicy;
 
     this.customer = builder.customer;
 
@@ -38,6 +42,10 @@ public final class HostedPageCollectNowParams {
 
   public String getCurrencyCode() {
     return currencyCode;
+  }
+
+  public PaymentMethodSavePolicy getPaymentMethodSavePolicy() {
+    return paymentMethodSavePolicy;
   }
 
   public CustomerParams getCustomer() {
@@ -60,6 +68,11 @@ public final class HostedPageCollectNowParams {
     if (this.currencyCode != null) {
 
       formData.put("currency_code", this.currencyCode);
+    }
+
+    if (this.paymentMethodSavePolicy != null) {
+
+      formData.put("payment_method_save_policy", this.paymentMethodSavePolicy);
     }
 
     if (this.customer != null) {
@@ -97,6 +110,8 @@ public final class HostedPageCollectNowParams {
 
     private String currencyCode;
 
+    private PaymentMethodSavePolicy paymentMethodSavePolicy;
+
     private CustomerParams customer;
 
     private CardParams card;
@@ -113,6 +128,11 @@ public final class HostedPageCollectNowParams {
       return this;
     }
 
+    public HostedPageCollectNowBuilder paymentMethodSavePolicy(PaymentMethodSavePolicy value) {
+      this.paymentMethodSavePolicy = value;
+      return this;
+    }
+
     public HostedPageCollectNowBuilder customer(CustomerParams value) {
       this.customer = value;
       return this;
@@ -125,6 +145,39 @@ public final class HostedPageCollectNowParams {
 
     public HostedPageCollectNowParams build() {
       return new HostedPageCollectNowParams(this);
+    }
+  }
+
+  public enum PaymentMethodSavePolicy {
+    ALWAYS("always"),
+
+    ASK("ask"),
+
+    NEVER("never"),
+
+    /**
+     * An enum member indicating that PaymentMethodSavePolicy was instantiated with an unknown
+     * value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentMethodSavePolicy(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PaymentMethodSavePolicy fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentMethodSavePolicy enumValue : PaymentMethodSavePolicy.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
     }
   }
 
@@ -356,6 +409,8 @@ public final class HostedPageCollectNowParams {
       EZIDEBIT("ezidebit"),
 
       TWIKEY("twikey"),
+
+      TEMPUS("tempus"),
 
       /** An enum member indicating that Gateway was instantiated with an unknown value. */
       _UNKNOWN(null);

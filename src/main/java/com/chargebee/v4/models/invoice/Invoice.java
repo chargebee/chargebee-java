@@ -4660,6 +4660,20 @@ public class Invoice {
 
       REGISTERED("registered"),
 
+      ACCEPTED("accepted"),
+
+      REJECTED("rejected"),
+
+      MESSAGE_ACKNOWLEDGEMENT("message_acknowledgement"),
+
+      IN_PROCESS("in_process"),
+
+      UNDER_QUERY("under_query"),
+
+      CONDITIONALLY_ACCEPTED("conditionally_accepted"),
+
+      PAID("paid"),
+
       /** An enum member indicating that Status was instantiated with an unknown value. */
       _UNKNOWN(null);
       private final String value;
