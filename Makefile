@@ -1,4 +1,4 @@
-.PHONY: update-version increment-major increment-minor increment-patch test build clean install check
+.PHONY: update-version increment-major increment-minor increment-patch test build clean install check format
 
 # Version file location
 VERSION_FILE := VERSION
@@ -87,3 +87,6 @@ update:
 outdated:
 	@echo "Checking for outdated dependencies..."
 	@$(GRADLE) dependencyUpdates
+
+format: 
+	@echo "Format is already been implemented by the SDK generator for this module"
