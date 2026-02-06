@@ -103,6 +103,16 @@ public class OmnichannelSubscription extends Resource<OmnichannelSubscription> {
             super(uri);
         }
     
+        public EnumFilter<OmnichannelSubscriptionItem.Status, OmnichannelSubscriptionListRequest> omnichannelSubscriptionItemStatus() {
+            return new EnumFilter<OmnichannelSubscriptionItem.Status, OmnichannelSubscriptionListRequest>("omnichannel_subscription_item[status]",this);        
+        }
+
+
+        public StringFilter<OmnichannelSubscriptionListRequest> omnichannelSubscriptionItemItemIdAtSource() {
+            return new StringFilter<OmnichannelSubscriptionListRequest>("omnichannel_subscription_item[item_id_at_source]",this);        
+        }
+
+
         public EnumFilter<OmnichannelSubscription.Source, OmnichannelSubscriptionListRequest> source() {
             return new EnumFilter<OmnichannelSubscription.Source, OmnichannelSubscriptionListRequest>("source",this);        
         }

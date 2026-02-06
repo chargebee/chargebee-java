@@ -340,7 +340,7 @@ public class PricingPageSession extends Resource<PricingPageSession> {
 
 
         public CreateForExistingSubscriptionRequest pricingPageId(String pricingPageId) {
-            params.add("pricing_page[id]", pricingPageId);
+            params.addOpt("pricing_page[id]", pricingPageId);
             return this;
         }
         

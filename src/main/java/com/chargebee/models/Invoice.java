@@ -906,7 +906,7 @@ public class Invoice extends Resource<Invoice> {
 
     public static class Einvoice extends Resource<Einvoice> {
         public enum Status {
-             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,
+             SCHEDULED,SKIPPED,IN_PROGRESS,SUCCESS,FAILED,REGISTERED,ACCEPTED,REJECTED,MESSAGE_ACKNOWLEDGEMENT,IN_PROCESS,UNDER_QUERY,CONDITIONALLY_ACCEPTED,PAID,
             _UNKNOWN; /*Indicates unexpected value for this enum. You can get this when there is a
             java-client version incompatibility. We suggest you to upgrade to the latest version */ 
         }
