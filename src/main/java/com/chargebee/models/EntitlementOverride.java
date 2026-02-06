@@ -40,6 +40,10 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
         return reqString("id");
     }
 
+    public String subscriptionId() {
+        return optString("subscription_id");
+    }
+
     public String entityId() {
         return optString("entity_id");
     }
@@ -70,6 +74,10 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
 
     public Timestamp effectiveFrom() {
         return optTimestamp("effective_from");
+    }
+
+    public Boolean isEnabled() {
+        return reqBoolean("is_enabled");
     }
 
     @Deprecated
@@ -110,6 +118,14 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
             params.add("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
             return this;
         }
+        public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideEntityId(int index, String entitlementOverrideEntityId) {
+            params.addOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+            return this;
+        }
+        public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideEntityType(int index, com.chargebee.models.enums.EntityType entitlementOverrideEntityType) {
+            params.addOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+            return this;
+        }
         public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideValue(int index, String entitlementOverrideValue) {
             params.addOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
             return this;
@@ -120,6 +136,10 @@ public class EntitlementOverride extends Resource<EntitlementOverride> {
         }
         public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideEffectiveFrom(int index, Timestamp entitlementOverrideEffectiveFrom) {
             params.addOpt("entitlement_overrides[effective_from][" + index + "]", entitlementOverrideEffectiveFrom);
+            return this;
+        }
+        public AddEntitlementOverrideForSubscriptionRequest entitlementOverrideIsEnabled(int index, Boolean entitlementOverrideIsEnabled) {
+            params.addOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
             return this;
         }
         @Override

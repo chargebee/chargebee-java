@@ -2868,6 +2868,12 @@ public class HostedPage extends Resource<HostedPage> {
         }
 
 
+        public CollectNowRequest paymentMethodSavePolicy(com.chargebee.models.enums.PaymentMethodSavePolicy paymentMethodSavePolicy) {
+            params.addOpt("payment_method_save_policy", paymentMethodSavePolicy);
+            return this;
+        }
+
+
         public CollectNowRequest customerId(String customerId) {
             params.add("customer[id]", customerId);
             return this;

@@ -1006,6 +1006,10 @@ public class Subscription extends Resource<Subscription> {
         return optString("business_entity_id");
     }
 
+    public Boolean decommissioned() {
+        return reqBoolean("decommissioned");
+    }
+
     @Deprecated
     public JSONObject metadata(){
         return optJSONObject("metadata");
@@ -6929,6 +6933,12 @@ public class Subscription extends Resource<Subscription> {
 
         public CancelForItemsRequest cancelReasonCode(String cancelReasonCode) {
             params.addOpt("cancel_reason_code", cancelReasonCode);
+            return this;
+        }
+
+
+        public CancelForItemsRequest decommissioned(Boolean decommissioned) {
+            params.addOpt("decommissioned", decommissioned);
             return this;
         }
 
