@@ -11,6 +11,7 @@ import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -498,9 +499,9 @@ public final class ExportRevenueRecognitionParams {
         }
       }
 
-      public static final class RecurringFilter extends EnumFilter<Recurring, InvoiceBuilder> {
+      public static final class RecurringFilter extends BooleanFilter<InvoiceBuilder> {
         RecurringFilter(String fieldName, InvoiceBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Recurring::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -575,34 +576,6 @@ public final class ExportRevenueRecognitionParams {
         ChannelFilter(String fieldName, InvoiceBuilder builder, Map<String, Object> params) {
           super(fieldName, builder, params, Channel::getValue);
         }
-      }
-    }
-
-    public enum Recurring {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Recurring was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Recurring(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Recurring fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Recurring enumValue : Recurring.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
       }
     }
 
@@ -894,10 +867,10 @@ public final class ExportRevenueRecognitionParams {
       }
 
       public static final class HasScheduledChangesFilter
-          extends EnumFilter<HasScheduledChanges, SubscriptionBuilder> {
+          extends BooleanFilter<SubscriptionBuilder> {
         HasScheduledChangesFilter(
             String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, HasScheduledChanges::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -915,11 +888,10 @@ public final class ExportRevenueRecognitionParams {
         }
       }
 
-      public static final class AutoCloseInvoicesFilter
-          extends EnumFilter<AutoCloseInvoices, SubscriptionBuilder> {
+      public static final class AutoCloseInvoicesFilter extends BooleanFilter<SubscriptionBuilder> {
         AutoCloseInvoicesFilter(
             String fieldName, SubscriptionBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, AutoCloseInvoices::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -1012,36 +984,6 @@ public final class ExportRevenueRecognitionParams {
       }
     }
 
-    public enum HasScheduledChanges {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that HasScheduledChanges was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      HasScheduledChanges(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static HasScheduledChanges fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (HasScheduledChanges enumValue : HasScheduledChanges.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
     public enum OfflinePaymentMethod {
       NO_PREFERENCE("no_preference"),
 
@@ -1086,36 +1028,6 @@ public final class ExportRevenueRecognitionParams {
       public static OfflinePaymentMethod fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum AutoCloseInvoices {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that AutoCloseInvoices was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AutoCloseInvoices(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCloseInvoices fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCloseInvoices enumValue : AutoCloseInvoices.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }
@@ -1315,11 +1227,10 @@ public final class ExportRevenueRecognitionParams {
         }
       }
 
-      public static final class AutoCloseInvoicesFilter
-          extends EnumFilter<AutoCloseInvoices, CustomerBuilder> {
+      public static final class AutoCloseInvoicesFilter extends BooleanFilter<CustomerBuilder> {
         AutoCloseInvoicesFilter(
             String fieldName, CustomerBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, AutoCloseInvoices::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -1430,36 +1341,6 @@ public final class ExportRevenueRecognitionParams {
       public static OfflinePaymentMethod fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum AutoCloseInvoices {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that AutoCloseInvoices was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      AutoCloseInvoices(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static AutoCloseInvoices fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (AutoCloseInvoices enumValue : AutoCloseInvoices.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

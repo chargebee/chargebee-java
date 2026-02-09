@@ -10,6 +10,7 @@ package com.chargebee.v4.models.promotionalCredit.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -89,10 +90,62 @@ public final class PromotionalCreditListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<PromotionalCreditListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, PromotionalCreditListBuilder> {
       TypeFilter(
           String fieldName, PromotionalCreditListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public PromotionalCreditListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public PromotionalCreditListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public PromotionalCreditListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public PromotionalCreditListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -152,6 +205,34 @@ public final class PromotionalCreditListParams {
     public static TypeIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (TypeIsNot enumValue : TypeIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    INCREMENT("increment"),
+
+    DECREMENT("decrement"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

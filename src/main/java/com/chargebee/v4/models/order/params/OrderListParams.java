@@ -10,6 +10,8 @@ package com.chargebee.v4.models.order.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -147,9 +149,61 @@ public final class OrderListParams {
       }
     }
 
-    public static final class StatusFilter extends StringFilter<OrderListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, OrderListBuilder> {
       StatusFilter(String fieldName, OrderListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public OrderListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public OrderListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public OrderListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public OrderListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -165,9 +219,61 @@ public final class OrderListParams {
       }
     }
 
-    public static final class OrderTypeFilter extends StringFilter<OrderListBuilder> {
+    public static final class OrderTypeFilter extends EnumFilter<OrderType, OrderListBuilder> {
       OrderTypeFilter(String fieldName, OrderListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, OrderType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .orderType().is(OrderType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(OrderType)
+       */
+      @Deprecated
+      public OrderListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .orderType().isNot(OrderType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(OrderType)
+       */
+      @Deprecated
+      public OrderListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .orderType().in(OrderType.VALUE1, OrderType.VALUE2)}</pre>
+       *
+       * @see #in(OrderType[])
+       */
+      @Deprecated
+      public OrderListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .orderType().notIn(OrderType.VALUE1, OrderType.VALUE2)}</pre>
+       *
+       * @see #notIn(OrderType[])
+       */
+      @Deprecated
+      public OrderListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -195,15 +301,81 @@ public final class OrderListParams {
       }
     }
 
-    public static final class ResentStatusFilter extends StringFilter<OrderListBuilder> {
+    public static final class ResentStatusFilter
+        extends EnumFilter<ResentStatus, OrderListBuilder> {
       ResentStatusFilter(String fieldName, OrderListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, ResentStatus::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .resentStatus().is(ResentStatus.YOUR_VALUE)}</pre>
+       *
+       * @see #is(ResentStatus)
+       */
+      @Deprecated
+      public OrderListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .resentStatus().isNot(ResentStatus.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(ResentStatus)
+       */
+      @Deprecated
+      public OrderListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .resentStatus().in(ResentStatus.VALUE1, ResentStatus.VALUE2)}</pre>
+       *
+       * @see #in(ResentStatus[])
+       */
+      @Deprecated
+      public OrderListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .resentStatus().notIn(ResentStatus.VALUE1, ResentStatus.VALUE2)}</pre>
+       *
+       * @see #notIn(ResentStatus[])
+       */
+      @Deprecated
+      public OrderListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class IsResentFilter extends StringFilter<OrderListBuilder> {
+    public static final class IsResentFilter extends BooleanFilter<OrderListBuilder> {
       IsResentFilter(String fieldName, OrderListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .isResent().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public OrderListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
       }
     }
 
@@ -539,6 +711,110 @@ public final class OrderListParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    NEW("new"),
+
+    PROCESSING("processing"),
+
+    COMPLETE("complete"),
+
+    CANCELLED("cancelled"),
+
+    VOIDED("voided"),
+
+    QUEUED("queued"),
+
+    AWAITING_SHIPMENT("awaiting_shipment"),
+
+    ON_HOLD("on_hold"),
+
+    DELIVERED("delivered"),
+
+    SHIPPED("shipped"),
+
+    PARTIALLY_DELIVERED("partially_delivered"),
+
+    RETURNED("returned"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OrderType {
+    MANUAL("manual"),
+
+    SYSTEM_GENERATED("system_generated"),
+
+    /** An enum member indicating that OrderType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    OrderType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OrderType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OrderType enumValue : OrderType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ResentStatus {
+    FULLY_RESENT("fully_resent"),
+
+    PARTIALLY_RESENT("partially_resent"),
+
+    /** An enum member indicating that ResentStatus was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ResentStatus(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ResentStatus fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ResentStatus enumValue : ResentStatus.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

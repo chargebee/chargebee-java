@@ -9,6 +9,7 @@ package com.chargebee.v4.models.omnichannelOneTimeOrder.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -67,12 +68,64 @@ public final class OmnichannelOneTimeOrderListParams {
     }
 
     public static final class SourceFilter
-        extends StringFilter<OmnichannelOneTimeOrderListBuilder> {
+        extends EnumFilter<Source, OmnichannelOneTimeOrderListBuilder> {
       SourceFilter(
           String fieldName,
           OmnichannelOneTimeOrderListBuilder builder,
           Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Source::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().is(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Source)
+       */
+      @Deprecated
+      public OmnichannelOneTimeOrderListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().isNot(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Source)
+       */
+      @Deprecated
+      public OmnichannelOneTimeOrderListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().in(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #in(Source[])
+       */
+      @Deprecated
+      public OmnichannelOneTimeOrderListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().notIn(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #notIn(Source[])
+       */
+      @Deprecated
+      public OmnichannelOneTimeOrderListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -135,6 +188,34 @@ public final class OmnichannelOneTimeOrderListParams {
     public static SourceIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SourceIsNot enumValue : SourceIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Source {
+    APPLE_APP_STORE("apple_app_store"),
+
+    GOOGLE_PLAY_STORE("google_play_store"),
+
+    /** An enum member indicating that Source was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Source(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Source fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Source enumValue : Source.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

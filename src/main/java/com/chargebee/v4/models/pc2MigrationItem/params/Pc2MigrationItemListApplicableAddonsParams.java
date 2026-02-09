@@ -8,7 +8,7 @@
 package com.chargebee.v4.models.pc2MigrationItem.params;
 
 import com.chargebee.v4.internal.Recommended;
-import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -65,12 +65,25 @@ public final class Pc2MigrationItemListApplicableAddonsParams {
     }
 
     public static final class IsRecurringFilter
-        extends StringFilter<Pc2MigrationItemListApplicableAddonsBuilder> {
+        extends BooleanFilter<Pc2MigrationItemListApplicableAddonsBuilder> {
       IsRecurringFilter(
           String fieldName,
           Pc2MigrationItemListApplicableAddonsBuilder builder,
           Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .isRecurring().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public Pc2MigrationItemListApplicableAddonsBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
       }
     }
   }

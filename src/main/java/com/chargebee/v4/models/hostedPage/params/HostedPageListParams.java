@@ -10,6 +10,7 @@ package com.chargebee.v4.models.hostedPage.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -81,15 +82,119 @@ public final class HostedPageListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<HostedPageListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, HostedPageListBuilder> {
       TypeFilter(String fieldName, HostedPageListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public HostedPageListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public HostedPageListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public HostedPageListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public HostedPageListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class StateFilter extends StringFilter<HostedPageListBuilder> {
+    public static final class StateFilter extends EnumFilter<State, HostedPageListBuilder> {
       StateFilter(String fieldName, HostedPageListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, State::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .state().is(State.YOUR_VALUE)}</pre>
+       *
+       * @see #is(State)
+       */
+      @Deprecated
+      public HostedPageListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .state().isNot(State.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(State)
+       */
+      @Deprecated
+      public HostedPageListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .state().in(State.VALUE1, State.VALUE2)}</pre>
+       *
+       * @see #in(State[])
+       */
+      @Deprecated
+      public HostedPageListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .state().notIn(State.VALUE1, State.VALUE2)}</pre>
+       *
+       * @see #notIn(State[])
+       */
+      @Deprecated
+      public HostedPageListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -256,6 +361,88 @@ public final class HostedPageListParams {
     public static StateIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StateIsNot enumValue : StateIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    CHECKOUT_NEW("checkout_new"),
+
+    CHECKOUT_EXISTING("checkout_existing"),
+
+    UPDATE_CARD("update_card"),
+
+    UPDATE_PAYMENT_METHOD("update_payment_method"),
+
+    MANAGE_PAYMENT_SOURCES("manage_payment_sources"),
+
+    COLLECT_NOW("collect_now"),
+
+    EXTEND_SUBSCRIPTION("extend_subscription"),
+
+    CHECKOUT_ONE_TIME("checkout_one_time"),
+
+    PRE_CANCEL("pre_cancel"),
+
+    VIEW_VOUCHER("view_voucher"),
+
+    ACCEPT_QUOTE("accept_quote"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum State {
+    CREATED("created"),
+
+    REQUESTED("requested"),
+
+    SUCCEEDED("succeeded"),
+
+    CANCELLED("cancelled"),
+
+    FAILED("failed"),
+
+    ACKNOWLEDGED("acknowledged"),
+
+    /** An enum member indicating that State was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    State(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static State fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (State enumValue : State.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

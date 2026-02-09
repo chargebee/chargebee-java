@@ -10,6 +10,7 @@ package com.chargebee.v4.models.attachedItem.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -95,23 +96,180 @@ public final class AttachedItemListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<AttachedItemListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, AttachedItemListBuilder> {
       TypeFilter(String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public AttachedItemListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public AttachedItemListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class ItemTypeFilter extends StringFilter<AttachedItemListBuilder> {
+    public static final class ItemTypeFilter extends EnumFilter<ItemType, AttachedItemListBuilder> {
       ItemTypeFilter(
           String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, ItemType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .itemType().is(ItemType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(ItemType)
+       */
+      @Deprecated
+      public AttachedItemListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .itemType().isNot(ItemType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(ItemType)
+       */
+      @Deprecated
+      public AttachedItemListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .itemType().in(ItemType.VALUE1, ItemType.VALUE2)}</pre>
+       *
+       * @see #in(ItemType[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .itemType().notIn(ItemType.VALUE1, ItemType.VALUE2)}</pre>
+       *
+       * @see #notIn(ItemType[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class ChargeOnEventFilter extends StringFilter<AttachedItemListBuilder> {
+    public static final class ChargeOnEventFilter
+        extends EnumFilter<ChargeOnEvent, AttachedItemListBuilder> {
       ChargeOnEventFilter(
           String fieldName, AttachedItemListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, ChargeOnEvent::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .chargeOnEvent().is(ChargeOnEvent.YOUR_VALUE)}</pre>
+       *
+       * @see #is(ChargeOnEvent)
+       */
+      @Deprecated
+      public AttachedItemListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .chargeOnEvent().isNot(ChargeOnEvent.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(ChargeOnEvent)
+       */
+      @Deprecated
+      public AttachedItemListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .chargeOnEvent().in(ChargeOnEvent.VALUE1, ChargeOnEvent.VALUE2)}</pre>
+       *
+       * @see #in(ChargeOnEvent[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .chargeOnEvent().notIn(ChargeOnEvent.VALUE1, ChargeOnEvent.VALUE2)}</pre>
+       *
+       * @see #notIn(ChargeOnEvent[])
+       */
+      @Deprecated
+      public AttachedItemListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -307,6 +465,102 @@ public final class AttachedItemListParams {
     public static ChargeOnEventIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChargeOnEventIsNot enumValue : ChargeOnEventIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    RECOMMENDED("recommended"),
+
+    MANDATORY("mandatory"),
+
+    OPTIONAL("optional"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ItemType {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    CHARGE("charge"),
+
+    /** An enum member indicating that ItemType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ItemType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ItemType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ItemType enumValue : ItemType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ChargeOnEvent {
+    SUBSCRIPTION_CREATION("subscription_creation"),
+
+    SUBSCRIPTION_TRIAL_START("subscription_trial_start"),
+
+    PLAN_ACTIVATION("plan_activation"),
+
+    SUBSCRIPTION_ACTIVATION("subscription_activation"),
+
+    CONTRACT_TERMINATION("contract_termination"),
+
+    ON_DEMAND("on_demand"),
+
+    /** An enum member indicating that ChargeOnEvent was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ChargeOnEvent(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ChargeOnEvent fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ChargeOnEvent enumValue : ChargeOnEvent.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -11,6 +11,7 @@ import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -131,10 +132,10 @@ public final class ExportItemPricesParams {
     }
 
     public static final class IncludeSiteLevelResourcesFilter
-        extends EnumFilter<IncludeSiteLevelResources, ExportItemPricesBuilder> {
+        extends BooleanFilter<ExportItemPricesBuilder> {
       IncludeSiteLevelResourcesFilter(
           String fieldName, ExportItemPricesBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params, IncludeSiteLevelResources::getValue);
+        super(fieldName, builder, params);
       }
     }
   }
@@ -161,37 +162,6 @@ public final class ExportItemPricesParams {
     public static ItemType fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ItemType enumValue : ItemType.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
-    }
-  }
-
-  public enum IncludeSiteLevelResources {
-    TRUE("true"),
-
-    FALSE("false"),
-
-    /**
-     * An enum member indicating that IncludeSiteLevelResources was instantiated with an unknown
-     * value.
-     */
-    _UNKNOWN(null);
-    private final String value;
-
-    IncludeSiteLevelResources(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static IncludeSiteLevelResources fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (IncludeSiteLevelResources enumValue : IncludeSiteLevelResources.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -11,6 +11,7 @@ import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -169,16 +170,121 @@ public final class CreditNoteListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<CreditNoteListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, CreditNoteListBuilder> {
       TypeFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public CreditNoteListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public CreditNoteListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class ReasonCodeFilter extends StringFilter<CreditNoteListBuilder> {
+    public static final class ReasonCodeFilter
+        extends EnumFilter<ReasonCode, CreditNoteListBuilder> {
       ReasonCodeFilter(
           String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, ReasonCode::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .reasonCode().is(ReasonCode.YOUR_VALUE)}</pre>
+       *
+       * @see #is(ReasonCode)
+       */
+      @Deprecated
+      public CreditNoteListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .reasonCode().isNot(ReasonCode.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(ReasonCode)
+       */
+      @Deprecated
+      public CreditNoteListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .reasonCode().in(ReasonCode.VALUE1, ReasonCode.VALUE2)}</pre>
+       *
+       * @see #in(ReasonCode[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .reasonCode().notIn(ReasonCode.VALUE1, ReasonCode.VALUE2)}</pre>
+       *
+       * @see #notIn(ReasonCode[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -189,9 +295,61 @@ public final class CreditNoteListParams {
       }
     }
 
-    public static final class StatusFilter extends StringFilter<CreditNoteListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, CreditNoteListBuilder> {
       StatusFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public CreditNoteListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public CreditNoteListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -207,9 +365,61 @@ public final class CreditNoteListParams {
       }
     }
 
-    public static final class PriceTypeFilter extends StringFilter<CreditNoteListBuilder> {
+    public static final class PriceTypeFilter extends EnumFilter<PriceType, CreditNoteListBuilder> {
       PriceTypeFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, PriceType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .priceType().is(PriceType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(PriceType)
+       */
+      @Deprecated
+      public CreditNoteListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .priceType().isNot(PriceType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(PriceType)
+       */
+      @Deprecated
+      public CreditNoteListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .priceType().in(PriceType.VALUE1, PriceType.VALUE2)}</pre>
+       *
+       * @see #in(PriceType[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .priceType().notIn(PriceType.VALUE1, PriceType.VALUE2)}</pre>
+       *
+       * @see #notIn(PriceType[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -246,9 +456,61 @@ public final class CreditNoteListParams {
       }
     }
 
-    public static final class ChannelFilter extends StringFilter<CreditNoteListBuilder> {
+    public static final class ChannelFilter extends EnumFilter<Channel, CreditNoteListBuilder> {
       ChannelFilter(String fieldName, CreditNoteListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Channel::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().is(Channel.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Channel)
+       */
+      @Deprecated
+      public CreditNoteListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().isNot(Channel.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Channel)
+       */
+      @Deprecated
+      public CreditNoteListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().in(Channel.VALUE1, Channel.VALUE2)}</pre>
+       *
+       * @see #in(Channel[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().notIn(Channel.VALUE1, Channel.VALUE2)}</pre>
+       *
+       * @see #notIn(Channel[])
+       */
+      @Deprecated
+      public CreditNoteListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -739,6 +1001,174 @@ public final class CreditNoteListParams {
     }
   }
 
+  public enum Type {
+    ADJUSTMENT("adjustment"),
+
+    REFUNDABLE("refundable"),
+
+    STORE("store"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ReasonCode {
+    WRITE_OFF("write_off"),
+
+    SUBSCRIPTION_CHANGE("subscription_change"),
+
+    SUBSCRIPTION_CANCELLATION("subscription_cancellation"),
+
+    SUBSCRIPTION_PAUSE("subscription_pause"),
+
+    CHARGEBACK("chargeback"),
+
+    PRODUCT_UNSATISFACTORY("product_unsatisfactory"),
+
+    SERVICE_UNSATISFACTORY("service_unsatisfactory"),
+
+    ORDER_CHANGE("order_change"),
+
+    ORDER_CANCELLATION("order_cancellation"),
+
+    WAIVER("waiver"),
+
+    OTHER("other"),
+
+    FRAUDULENT("fraudulent"),
+
+    /** An enum member indicating that ReasonCode was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ReasonCode(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ReasonCode fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ReasonCode enumValue : ReasonCode.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ADJUSTED("adjusted"),
+
+    REFUNDED("refunded"),
+
+    REFUND_DUE("refund_due"),
+
+    VOIDED("voided"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PriceType {
+    TAX_EXCLUSIVE("tax_exclusive"),
+
+    TAX_INCLUSIVE("tax_inclusive"),
+
+    /** An enum member indicating that PriceType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PriceType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PriceType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PriceType enumValue : PriceType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Channel {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that Channel was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Channel(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Channel fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Channel enumValue : Channel.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public static final class EinvoiceParams {
 
     private final Map<String, Object> queryParams;
@@ -777,10 +1207,112 @@ public final class CreditNoteListParams {
         return new EinvoiceParams(this);
       }
 
-      public static final class StatusFilter extends StringFilter<EinvoiceBuilder> {
+      public static final class StatusFilter extends EnumFilter<Status, EinvoiceBuilder> {
         StatusFilter(String fieldName, EinvoiceBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params);
+          super(fieldName, builder, params, Status::getValue);
         }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+         *
+         * @see #is(Status)
+         */
+        @Deprecated
+        public EinvoiceBuilder is(String value) {
+          params.put(fieldName + "[is]", value);
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+         *
+         * @see #isNot(Status)
+         */
+        @Deprecated
+        public EinvoiceBuilder isNot(String value) {
+          params.put(fieldName + "[is_not]", value);
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+         *
+         * @see #in(Status[])
+         */
+        @Deprecated
+        public EinvoiceBuilder in(String... values) {
+          params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+         *
+         * @see #notIn(Status[])
+         */
+        @Deprecated
+        public EinvoiceBuilder notIn(String... values) {
+          params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+          return builder;
+        }
+      }
+    }
+
+    public enum Status {
+      SCHEDULED("scheduled"),
+
+      SKIPPED("skipped"),
+
+      IN_PROGRESS("in_progress"),
+
+      SUCCESS("success"),
+
+      FAILED("failed"),
+
+      REGISTERED("registered"),
+
+      ACCEPTED("accepted"),
+
+      REJECTED("rejected"),
+
+      MESSAGE_ACKNOWLEDGEMENT("message_acknowledgement"),
+
+      IN_PROCESS("in_process"),
+
+      UNDER_QUERY("under_query"),
+
+      CONDITIONALLY_ACCEPTED("conditionally_accepted"),
+
+      PAID("paid"),
+
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Status(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

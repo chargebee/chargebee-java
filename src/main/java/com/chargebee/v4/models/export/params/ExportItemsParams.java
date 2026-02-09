@@ -10,6 +10,7 @@ import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -97,42 +98,11 @@ public final class ExportItemsParams {
     }
 
     public static final class IncludeSiteLevelResourcesFilter
-        extends EnumFilter<IncludeSiteLevelResources, ExportItemsBuilder> {
+        extends BooleanFilter<ExportItemsBuilder> {
       IncludeSiteLevelResourcesFilter(
           String fieldName, ExportItemsBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params, IncludeSiteLevelResources::getValue);
+        super(fieldName, builder, params);
       }
-    }
-  }
-
-  public enum IncludeSiteLevelResources {
-    TRUE("true"),
-
-    FALSE("false"),
-
-    /**
-     * An enum member indicating that IncludeSiteLevelResources was instantiated with an unknown
-     * value.
-     */
-    _UNKNOWN(null);
-    private final String value;
-
-    IncludeSiteLevelResources(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    public static IncludeSiteLevelResources fromString(String value) {
-      if (value == null) return _UNKNOWN;
-      for (IncludeSiteLevelResources enumValue : IncludeSiteLevelResources.values()) {
-        if (enumValue.value != null && enumValue.value.equals(value)) {
-          return enumValue;
-        }
-      }
-      return _UNKNOWN;
     }
   }
 
@@ -263,9 +233,9 @@ public final class ExportItemsParams {
         }
       }
 
-      public static final class IsGiftableFilter extends EnumFilter<IsGiftable, ItemBuilder> {
+      public static final class IsGiftableFilter extends BooleanFilter<ItemBuilder> {
         IsGiftableFilter(String fieldName, ItemBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, IsGiftable::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -275,24 +245,22 @@ public final class ExportItemsParams {
         }
       }
 
-      public static final class EnabledForCheckoutFilter
-          extends EnumFilter<EnabledForCheckout, ItemBuilder> {
+      public static final class EnabledForCheckoutFilter extends BooleanFilter<ItemBuilder> {
         EnabledForCheckoutFilter(
             String fieldName, ItemBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, EnabledForCheckout::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class EnabledInPortalFilter
-          extends EnumFilter<EnabledInPortal, ItemBuilder> {
+      public static final class EnabledInPortalFilter extends BooleanFilter<ItemBuilder> {
         EnabledInPortalFilter(String fieldName, ItemBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, EnabledInPortal::getValue);
+          super(fieldName, builder, params);
         }
       }
 
-      public static final class MeteredFilter extends EnumFilter<Metered, ItemBuilder> {
+      public static final class MeteredFilter extends BooleanFilter<ItemBuilder> {
         MeteredFilter(String fieldName, ItemBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Metered::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -392,120 +360,6 @@ public final class ExportItemsParams {
       public static Status fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (Status enumValue : Status.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum IsGiftable {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that IsGiftable was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      IsGiftable(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static IsGiftable fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (IsGiftable enumValue : IsGiftable.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum EnabledForCheckout {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /**
-       * An enum member indicating that EnabledForCheckout was instantiated with an unknown value.
-       */
-      _UNKNOWN(null);
-      private final String value;
-
-      EnabledForCheckout(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EnabledForCheckout fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EnabledForCheckout enumValue : EnabledForCheckout.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum EnabledInPortal {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that EnabledInPortal was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      EnabledInPortal(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static EnabledInPortal fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (EnabledInPortal enumValue : EnabledInPortal.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum Metered {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Metered was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Metered(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Metered fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Metered enumValue : Metered.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

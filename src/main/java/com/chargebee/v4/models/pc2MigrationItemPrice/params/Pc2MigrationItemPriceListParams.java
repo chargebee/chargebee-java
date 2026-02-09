@@ -9,6 +9,8 @@ package com.chargebee.v4.models.pc2MigrationItemPrice.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -95,26 +97,104 @@ public final class Pc2MigrationItemPriceListParams {
     }
 
     public static final class IsInvalidPc1IdFilter
-        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+        extends BooleanFilter<Pc2MigrationItemPriceListBuilder> {
       IsInvalidPc1IdFilter(
           String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
       }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .isInvalidPc1Id().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
     }
 
     public static final class Pc1ItemTypeFilter
-        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+        extends EnumFilter<Pc1ItemType, Pc2MigrationItemPriceListBuilder> {
       Pc1ItemTypeFilter(
           String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Pc1ItemType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .pc1ItemType().is(Pc1ItemType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Pc1ItemType)
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .pc1ItemType().isNot(Pc1ItemType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Pc1ItemType)
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .pc1ItemType().in(Pc1ItemType.VALUE1, Pc1ItemType.VALUE2)}</pre>
+       *
+       * @see #in(Pc1ItemType[])
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .pc1ItemType().notIn(Pc1ItemType.VALUE1, Pc1ItemType.VALUE2)}</pre>
+       *
+       * @see #notIn(Pc1ItemType[])
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
     public static final class IsRecurringFilter
-        extends StringFilter<Pc2MigrationItemPriceListBuilder> {
+        extends BooleanFilter<Pc2MigrationItemPriceListBuilder> {
       IsRecurringFilter(
           String fieldName, Pc2MigrationItemPriceListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .isRecurring().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public Pc2MigrationItemPriceListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
       }
     }
   }
@@ -223,6 +303,34 @@ public final class Pc2MigrationItemPriceListParams {
     public static IsRecurringIs fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (IsRecurringIs enumValue : IsRecurringIs.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Pc1ItemType {
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    /** An enum member indicating that Pc1ItemType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Pc1ItemType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Pc1ItemType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Pc1ItemType enumValue : Pc1ItemType.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

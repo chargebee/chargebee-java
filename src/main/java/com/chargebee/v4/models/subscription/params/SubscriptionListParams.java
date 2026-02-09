@@ -11,6 +11,8 @@ import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import com.chargebee.v4.filters.CustomFieldSelector;
 
@@ -190,16 +192,121 @@ public final class SubscriptionListParams {
       }
     }
 
-    public static final class StatusFilter extends StringFilter<SubscriptionListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, SubscriptionListBuilder> {
       StatusFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public SubscriptionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class CancelReasonFilter extends StringFilter<SubscriptionListBuilder> {
+    public static final class CancelReasonFilter
+        extends EnumFilter<CancelReason, SubscriptionListBuilder> {
       CancelReasonFilter(
           String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, CancelReason::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .cancelReason().is(CancelReason.YOUR_VALUE)}</pre>
+       *
+       * @see #is(CancelReason)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .cancelReason().isNot(CancelReason.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(CancelReason)
+       */
+      @Deprecated
+      public SubscriptionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .cancelReason().in(CancelReason.VALUE1, CancelReason.VALUE2)}</pre>
+       *
+       * @see #in(CancelReason[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .cancelReason().notIn(CancelReason.VALUE1, CancelReason.VALUE2)}</pre>
+       *
+       * @see #notIn(CancelReason[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -247,10 +354,23 @@ public final class SubscriptionListParams {
     }
 
     public static final class HasScheduledChangesFilter
-        extends StringFilter<SubscriptionListBuilder> {
+        extends BooleanFilter<SubscriptionListBuilder> {
       HasScheduledChangesFilter(
           String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .hasScheduledChanges().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
       }
     }
 
@@ -262,26 +382,108 @@ public final class SubscriptionListParams {
     }
 
     public static final class OfflinePaymentMethodFilter
-        extends StringFilter<SubscriptionListBuilder> {
+        extends EnumFilter<OfflinePaymentMethod, SubscriptionListBuilder> {
       OfflinePaymentMethodFilter(
           String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, OfflinePaymentMethod::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .offlinePaymentMethod().is(OfflinePaymentMethod.YOUR_VALUE)}</pre>
+       *
+       * @see #is(OfflinePaymentMethod)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .offlinePaymentMethod().isNot(OfflinePaymentMethod.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(OfflinePaymentMethod)
+       */
+      @Deprecated
+      public SubscriptionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>
+       *     {@code .offlinePaymentMethod().in(OfflinePaymentMethod.VALUE1, OfflinePaymentMethod.VALUE2)}
+       *     </pre>
+       *
+       * @see #in(OfflinePaymentMethod[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>
+       *     {@code .offlinePaymentMethod().notIn(OfflinePaymentMethod.VALUE1, OfflinePaymentMethod.VALUE2)}
+       *     </pre>
+       *
+       * @see #notIn(OfflinePaymentMethod[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
     public static final class AutoCloseInvoicesFilter
-        extends StringFilter<SubscriptionListBuilder> {
+        extends BooleanFilter<SubscriptionListBuilder> {
       AutoCloseInvoicesFilter(
           String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
       }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .autoCloseInvoices().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
     }
 
     public static final class OverrideRelationshipFilter
-        extends StringFilter<SubscriptionListBuilder> {
+        extends BooleanFilter<SubscriptionListBuilder> {
       OverrideRelationshipFilter(
           String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
         super(fieldName, builder, params);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe boolean overload instead:
+       *     <pre>{@code .overrideRelationship().is(true)}</pre>
+       *
+       * @see #is(boolean)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
       }
     }
 
@@ -292,9 +494,61 @@ public final class SubscriptionListParams {
       }
     }
 
-    public static final class ChannelFilter extends StringFilter<SubscriptionListBuilder> {
+    public static final class ChannelFilter extends EnumFilter<Channel, SubscriptionListBuilder> {
       ChannelFilter(String fieldName, SubscriptionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Channel::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().is(Channel.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Channel)
+       */
+      @Deprecated
+      public SubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().isNot(Channel.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Channel)
+       */
+      @Deprecated
+      public SubscriptionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().in(Channel.VALUE1, Channel.VALUE2)}</pre>
+       *
+       * @see #in(Channel[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .channel().notIn(Channel.VALUE1, Channel.VALUE2)}</pre>
+       *
+       * @see #notIn(Channel[])
+       */
+      @Deprecated
+      public SubscriptionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -891,6 +1145,164 @@ public final class SubscriptionListParams {
     public static ChannelIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (ChannelIsNot enumValue : ChannelIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    FUTURE("future"),
+
+    IN_TRIAL("in_trial"),
+
+    ACTIVE("active"),
+
+    NON_RENEWING("non_renewing"),
+
+    PAUSED("paused"),
+
+    CANCELLED("cancelled"),
+
+    TRANSFERRED("transferred"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum CancelReason {
+    NOT_PAID("not_paid"),
+
+    NO_CARD("no_card"),
+
+    FRAUD_REVIEW_FAILED("fraud_review_failed"),
+
+    NON_COMPLIANT_EU_CUSTOMER("non_compliant_eu_customer"),
+
+    TAX_CALCULATION_FAILED("tax_calculation_failed"),
+
+    CURRENCY_INCOMPATIBLE_WITH_GATEWAY("currency_incompatible_with_gateway"),
+
+    NON_COMPLIANT_CUSTOMER("non_compliant_customer"),
+
+    /** An enum member indicating that CancelReason was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    CancelReason(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static CancelReason fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (CancelReason enumValue : CancelReason.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum OfflinePaymentMethod {
+    NO_PREFERENCE("no_preference"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    BOLETO("boleto"),
+
+    US_AUTOMATED_BANK_TRANSFER("us_automated_bank_transfer"),
+
+    EU_AUTOMATED_BANK_TRANSFER("eu_automated_bank_transfer"),
+
+    UK_AUTOMATED_BANK_TRANSFER("uk_automated_bank_transfer"),
+
+    JP_AUTOMATED_BANK_TRANSFER("jp_automated_bank_transfer"),
+
+    MX_AUTOMATED_BANK_TRANSFER("mx_automated_bank_transfer"),
+
+    CUSTOM("custom"),
+
+    /**
+     * An enum member indicating that OfflinePaymentMethod was instantiated with an unknown value.
+     */
+    _UNKNOWN(null);
+    private final String value;
+
+    OfflinePaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static OfflinePaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (OfflinePaymentMethod enumValue : OfflinePaymentMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Channel {
+    WEB("web"),
+
+    APP_STORE("app_store"),
+
+    PLAY_STORE("play_store"),
+
+    /** An enum member indicating that Channel was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Channel(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Channel fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Channel enumValue : Channel.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
