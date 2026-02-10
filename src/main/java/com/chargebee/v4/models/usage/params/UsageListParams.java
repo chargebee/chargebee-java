@@ -10,6 +10,7 @@ package com.chargebee.v4.models.usage.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -127,9 +128,61 @@ public final class UsageListParams {
       }
     }
 
-    public static final class SourceFilter extends StringFilter<UsageListBuilder> {
+    public static final class SourceFilter extends EnumFilter<Source, UsageListBuilder> {
       SourceFilter(String fieldName, UsageListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Source::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().is(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Source)
+       */
+      @Deprecated
+      public UsageListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().isNot(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Source)
+       */
+      @Deprecated
+      public UsageListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().in(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #in(Source[])
+       */
+      @Deprecated
+      public UsageListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().notIn(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #notIn(Source[])
+       */
+      @Deprecated
+      public UsageListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -310,6 +363,36 @@ public final class UsageListParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Source {
+    ADMIN_CONSOLE("admin_console"),
+
+    API("api"),
+
+    BULK_OPERATION("bulk_operation"),
+
+    /** An enum member indicating that Source was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Source(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Source fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Source enumValue : Source.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

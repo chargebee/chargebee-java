@@ -9,6 +9,7 @@ package com.chargebee.v4.models.omnichannelSubscription.params;
 
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -73,12 +74,64 @@ public final class OmnichannelSubscriptionListParams {
     }
 
     public static final class SourceFilter
-        extends StringFilter<OmnichannelSubscriptionListBuilder> {
+        extends EnumFilter<Source, OmnichannelSubscriptionListBuilder> {
       SourceFilter(
           String fieldName,
           OmnichannelSubscriptionListBuilder builder,
           Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Source::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().is(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Source)
+       */
+      @Deprecated
+      public OmnichannelSubscriptionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().isNot(Source.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Source)
+       */
+      @Deprecated
+      public OmnichannelSubscriptionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().in(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #in(Source[])
+       */
+      @Deprecated
+      public OmnichannelSubscriptionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .source().notIn(Source.VALUE1, Source.VALUE2)}</pre>
+       *
+       * @see #notIn(Source[])
+       */
+      @Deprecated
+      public OmnichannelSubscriptionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -149,6 +202,34 @@ public final class OmnichannelSubscriptionListParams {
     }
   }
 
+  public enum Source {
+    APPLE_APP_STORE("apple_app_store"),
+
+    GOOGLE_PLAY_STORE("google_play_store"),
+
+    /** An enum member indicating that Source was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Source(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Source fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Source enumValue : Source.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
   public static final class OmnichannelSubscriptionItemParams {
 
     private final Map<String, Object> queryParams;
@@ -192,12 +273,64 @@ public final class OmnichannelSubscriptionListParams {
       }
 
       public static final class StatusFilter
-          extends StringFilter<OmnichannelSubscriptionItemBuilder> {
+          extends EnumFilter<Status, OmnichannelSubscriptionItemBuilder> {
         StatusFilter(
             String fieldName,
             OmnichannelSubscriptionItemBuilder builder,
             Map<String, Object> params) {
-          super(fieldName, builder, params);
+          super(fieldName, builder, params, Status::getValue);
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+         *
+         * @see #is(Status)
+         */
+        @Deprecated
+        public OmnichannelSubscriptionItemBuilder is(String value) {
+          params.put(fieldName + "[is]", value);
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+         *
+         * @see #isNot(Status)
+         */
+        @Deprecated
+        public OmnichannelSubscriptionItemBuilder isNot(String value) {
+          params.put(fieldName + "[is_not]", value);
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+         *
+         * @see #in(Status[])
+         */
+        @Deprecated
+        public OmnichannelSubscriptionItemBuilder in(String... values) {
+          params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+          return builder;
+        }
+
+        /**
+         * @deprecated This method accepting raw String will be removed in a future version. Use the
+         *     type-safe enum overload instead:
+         *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+         *
+         * @see #notIn(Status[])
+         */
+        @Deprecated
+        public OmnichannelSubscriptionItemBuilder notIn(String... values) {
+          params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+          return builder;
         }
       }
 
@@ -209,6 +342,42 @@ public final class OmnichannelSubscriptionListParams {
             Map<String, Object> params) {
           super(fieldName, builder, params);
         }
+      }
+    }
+
+    public enum Status {
+      ACTIVE("active"),
+
+      EXPIRED("expired"),
+
+      CANCELLED("cancelled"),
+
+      IN_DUNNING("in_dunning"),
+
+      IN_GRACE_PERIOD("in_grace_period"),
+
+      PAUSED("paused"),
+
+      /** An enum member indicating that Status was instantiated with an unknown value. */
+      _UNKNOWN(null);
+      private final String value;
+
+      Status(String value) {
+        this.value = value;
+      }
+
+      public String getValue() {
+        return value;
+      }
+
+      public static Status fromString(String value) {
+        if (value == null) return _UNKNOWN;
+        for (Status enumValue : Status.values()) {
+          if (enumValue.value != null && enumValue.value.equals(value)) {
+            return enumValue;
+          }
+        }
+        return _UNKNOWN;
       }
     }
   }

@@ -10,6 +10,7 @@ package com.chargebee.v4.models.coupon.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import com.chargebee.v4.filters.CustomFieldSelector;
 
@@ -130,27 +131,237 @@ public final class CouponListParams {
       }
     }
 
-    public static final class DiscountTypeFilter extends StringFilter<CouponListBuilder> {
+    public static final class DiscountTypeFilter
+        extends EnumFilter<DiscountType, CouponListBuilder> {
       DiscountTypeFilter(String fieldName, CouponListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, DiscountType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .discountType().is(DiscountType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(DiscountType)
+       */
+      @Deprecated
+      public CouponListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .discountType().isNot(DiscountType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(DiscountType)
+       */
+      @Deprecated
+      public CouponListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .discountType().in(DiscountType.VALUE1, DiscountType.VALUE2)}</pre>
+       *
+       * @see #in(DiscountType[])
+       */
+      @Deprecated
+      public CouponListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .discountType().notIn(DiscountType.VALUE1, DiscountType.VALUE2)}</pre>
+       *
+       * @see #notIn(DiscountType[])
+       */
+      @Deprecated
+      public CouponListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class DurationTypeFilter extends StringFilter<CouponListBuilder> {
+    public static final class DurationTypeFilter
+        extends EnumFilter<DurationType, CouponListBuilder> {
       DurationTypeFilter(String fieldName, CouponListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, DurationType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .durationType().is(DurationType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(DurationType)
+       */
+      @Deprecated
+      public CouponListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .durationType().isNot(DurationType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(DurationType)
+       */
+      @Deprecated
+      public CouponListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .durationType().in(DurationType.VALUE1, DurationType.VALUE2)}</pre>
+       *
+       * @see #in(DurationType[])
+       */
+      @Deprecated
+      public CouponListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .durationType().notIn(DurationType.VALUE1, DurationType.VALUE2)}</pre>
+       *
+       * @see #notIn(DurationType[])
+       */
+      @Deprecated
+      public CouponListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class StatusFilter extends StringFilter<CouponListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, CouponListBuilder> {
       StatusFilter(String fieldName, CouponListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public CouponListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public CouponListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public CouponListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public CouponListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class ApplyOnFilter extends StringFilter<CouponListBuilder> {
+    public static final class ApplyOnFilter extends EnumFilter<ApplyOn, CouponListBuilder> {
       ApplyOnFilter(String fieldName, CouponListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, ApplyOn::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .applyOn().is(ApplyOn.YOUR_VALUE)}</pre>
+       *
+       * @see #is(ApplyOn)
+       */
+      @Deprecated
+      public CouponListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .applyOn().isNot(ApplyOn.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(ApplyOn)
+       */
+      @Deprecated
+      public CouponListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .applyOn().in(ApplyOn.VALUE1, ApplyOn.VALUE2)}</pre>
+       *
+       * @see #in(ApplyOn[])
+       */
+      @Deprecated
+      public CouponListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .applyOn().notIn(ApplyOn.VALUE1, ApplyOn.VALUE2)}</pre>
+       *
+       * @see #notIn(ApplyOn[])
+       */
+      @Deprecated
+      public CouponListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -512,6 +723,132 @@ public final class CouponListParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DiscountType {
+    FIXED_AMOUNT("fixed_amount"),
+
+    PERCENTAGE("percentage"),
+
+    OFFER_QUANTITY("offer_quantity"),
+
+    /** An enum member indicating that DiscountType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DiscountType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DiscountType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DiscountType enumValue : DiscountType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum DurationType {
+    ONE_TIME("one_time"),
+
+    FOREVER("forever"),
+
+    LIMITED_PERIOD("limited_period"),
+
+    /** An enum member indicating that DurationType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    DurationType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static DurationType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (DurationType enumValue : DurationType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    ACTIVE("active"),
+
+    EXPIRED("expired"),
+
+    ARCHIVED("archived"),
+
+    DELETED("deleted"),
+
+    FUTURE("future"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum ApplyOn {
+    INVOICE_AMOUNT("invoice_amount"),
+
+    SPECIFIED_ITEMS_TOTAL("specified_items_total"),
+
+    EACH_SPECIFIED_ITEM("each_specified_item"),
+
+    EACH_UNIT_OF_SPECIFIED_ITEMS("each_unit_of_specified_items"),
+
+    /** An enum member indicating that ApplyOn was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    ApplyOn(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static ApplyOn fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (ApplyOn enumValue : ApplyOn.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

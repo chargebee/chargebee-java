@@ -11,6 +11,7 @@ import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
 import com.chargebee.v4.filters.EnumFilter;
+import com.chargebee.v4.filters.BooleanFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -229,9 +230,9 @@ public final class ExportPlansParams {
         }
       }
 
-      public static final class GiftableFilter extends EnumFilter<Giftable, PlanBuilder> {
+      public static final class GiftableFilter extends BooleanFilter<PlanBuilder> {
         GiftableFilter(String fieldName, PlanBuilder builder, Map<String, Object> params) {
-          super(fieldName, builder, params, Giftable::getValue);
+          super(fieldName, builder, params);
         }
       }
 
@@ -336,34 +337,6 @@ public final class ExportPlansParams {
       public static AddonApplicability fromString(String value) {
         if (value == null) return _UNKNOWN;
         for (AddonApplicability enumValue : AddonApplicability.values()) {
-          if (enumValue.value != null && enumValue.value.equals(value)) {
-            return enumValue;
-          }
-        }
-        return _UNKNOWN;
-      }
-    }
-
-    public enum Giftable {
-      TRUE("true"),
-
-      FALSE("false"),
-
-      /** An enum member indicating that Giftable was instantiated with an unknown value. */
-      _UNKNOWN(null);
-      private final String value;
-
-      Giftable(String value) {
-        this.value = value;
-      }
-
-      public String getValue() {
-        return value;
-      }
-
-      public static Giftable fromString(String value) {
-        if (value == null) return _UNKNOWN;
-        for (Giftable enumValue : Giftable.values()) {
           if (enumValue.value != null && enumValue.value.equals(value)) {
             return enumValue;
           }

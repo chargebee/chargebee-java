@@ -10,6 +10,7 @@ package com.chargebee.v4.models.paymentSource.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -100,15 +101,119 @@ public final class PaymentSourceListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<PaymentSourceListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, PaymentSourceListBuilder> {
       TypeFilter(String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public PaymentSourceListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public PaymentSourceListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public PaymentSourceListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public PaymentSourceListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class StatusFilter extends StringFilter<PaymentSourceListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, PaymentSourceListBuilder> {
       StatusFilter(String fieldName, PaymentSourceListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public PaymentSourceListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public PaymentSourceListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public PaymentSourceListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public PaymentSourceListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -467,6 +572,132 @@ public final class PaymentSourceListParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    CARD("card"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    GENERIC("generic"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+    KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+    PAY_BY_BANK("pay_by_bank"),
+
+    TRUSTLY("trustly"),
+
+    STABLECOIN("stablecoin"),
+
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    VALID("valid"),
+
+    EXPIRING("expiring"),
+
+    EXPIRED("expired"),
+
+    INVALID("invalid"),
+
+    PENDING_VERIFICATION("pending_verification"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

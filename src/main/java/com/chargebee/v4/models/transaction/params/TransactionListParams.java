@@ -11,6 +11,7 @@ import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.NumberFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -156,16 +157,121 @@ public final class TransactionListParams {
       }
     }
 
-    public static final class PaymentMethodFilter extends StringFilter<TransactionListBuilder> {
+    public static final class PaymentMethodFilter
+        extends EnumFilter<PaymentMethod, TransactionListBuilder> {
       PaymentMethodFilter(
           String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, PaymentMethod::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .paymentMethod().is(PaymentMethod.YOUR_VALUE)}</pre>
+       *
+       * @see #is(PaymentMethod)
+       */
+      @Deprecated
+      public TransactionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .paymentMethod().isNot(PaymentMethod.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(PaymentMethod)
+       */
+      @Deprecated
+      public TransactionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .paymentMethod().in(PaymentMethod.VALUE1, PaymentMethod.VALUE2)}</pre>
+       *
+       * @see #in(PaymentMethod[])
+       */
+      @Deprecated
+      public TransactionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .paymentMethod().notIn(PaymentMethod.VALUE1, PaymentMethod.VALUE2)}</pre>
+       *
+       * @see #notIn(PaymentMethod[])
+       */
+      @Deprecated
+      public TransactionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
-    public static final class GatewayFilter extends StringFilter<TransactionListBuilder> {
+    public static final class GatewayFilter extends EnumFilter<Gateway, TransactionListBuilder> {
       GatewayFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Gateway::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .gateway().is(Gateway.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Gateway)
+       */
+      @Deprecated
+      public TransactionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .gateway().isNot(Gateway.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Gateway)
+       */
+      @Deprecated
+      public TransactionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .gateway().in(Gateway.VALUE1, Gateway.VALUE2)}</pre>
+       *
+       * @see #in(Gateway[])
+       */
+      @Deprecated
+      public TransactionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .gateway().notIn(Gateway.VALUE1, Gateway.VALUE2)}</pre>
+       *
+       * @see #notIn(Gateway[])
+       */
+      @Deprecated
+      public TransactionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -190,9 +296,61 @@ public final class TransactionListParams {
       }
     }
 
-    public static final class TypeFilter extends StringFilter<TransactionListBuilder> {
+    public static final class TypeFilter extends EnumFilter<Type, TransactionListBuilder> {
       TypeFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Type::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().is(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Type)
+       */
+      @Deprecated
+      public TransactionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().isNot(Type.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Type)
+       */
+      @Deprecated
+      public TransactionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().in(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #in(Type[])
+       */
+      @Deprecated
+      public TransactionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .type().notIn(Type.VALUE1, Type.VALUE2)}</pre>
+       *
+       * @see #notIn(Type[])
+       */
+      @Deprecated
+      public TransactionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -215,9 +373,61 @@ public final class TransactionListParams {
       }
     }
 
-    public static final class StatusFilter extends StringFilter<TransactionListBuilder> {
+    public static final class StatusFilter extends EnumFilter<Status, TransactionListBuilder> {
       StatusFilter(String fieldName, TransactionListBuilder builder, Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public TransactionListBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public TransactionListBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public TransactionListBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public TransactionListBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -1088,6 +1298,330 @@ public final class TransactionListParams {
     public static SortByDesc fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (SortByDesc enumValue : SortByDesc.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum PaymentMethod {
+    CARD("card"),
+
+    CASH("cash"),
+
+    CHECK("check"),
+
+    CHARGEBACK("chargeback"),
+
+    BANK_TRANSFER("bank_transfer"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    DIRECT_DEBIT("direct_debit"),
+
+    ALIPAY("alipay"),
+
+    UNIONPAY("unionpay"),
+
+    APPLE_PAY("apple_pay"),
+
+    WECHAT_PAY("wechat_pay"),
+
+    ACH_CREDIT("ach_credit"),
+
+    SEPA_CREDIT("sepa_credit"),
+
+    IDEAL("ideal"),
+
+    GOOGLE_PAY("google_pay"),
+
+    SOFORT("sofort"),
+
+    BANCONTACT("bancontact"),
+
+    GIROPAY("giropay"),
+
+    DOTPAY("dotpay"),
+
+    OTHER("other"),
+
+    APP_STORE("app_store"),
+
+    UPI("upi"),
+
+    NETBANKING_EMANDATES("netbanking_emandates"),
+
+    PLAY_STORE("play_store"),
+
+    CUSTOM("custom"),
+
+    BOLETO("boleto"),
+
+    VENMO("venmo"),
+
+    PAY_TO("pay_to"),
+
+    FASTER_PAYMENTS("faster_payments"),
+
+    SEPA_INSTANT_TRANSFER("sepa_instant_transfer"),
+
+    AUTOMATED_BANK_TRANSFER("automated_bank_transfer"),
+
+    KLARNA_PAY_NOW("klarna_pay_now"),
+
+    ONLINE_BANKING_POLAND("online_banking_poland"),
+
+    PAYCONIQ_BY_BANCONTACT("payconiq_by_bancontact"),
+
+    ELECTRONIC_PAYMENT_STANDARD("electronic_payment_standard"),
+
+    KBC_PAYMENT_BUTTON("kbc_payment_button"),
+
+    PAY_BY_BANK("pay_by_bank"),
+
+    TRUSTLY("trustly"),
+
+    STABLECOIN("stablecoin"),
+
+    KAKAO_PAY("kakao_pay"),
+
+    NAVER_PAY("naver_pay"),
+
+    REVOLUT_PAY("revolut_pay"),
+
+    CASH_APP_PAY("cash_app_pay"),
+
+    /** An enum member indicating that PaymentMethod was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    PaymentMethod(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static PaymentMethod fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (PaymentMethod enumValue : PaymentMethod.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Gateway {
+    CHARGEBEE("chargebee"),
+
+    CHARGEBEE_PAYMENTS("chargebee_payments"),
+
+    ADYEN("adyen"),
+
+    STRIPE("stripe"),
+
+    WEPAY("wepay"),
+
+    BRAINTREE("braintree"),
+
+    AUTHORIZE_NET("authorize_net"),
+
+    PAYPAL_PRO("paypal_pro"),
+
+    PIN("pin"),
+
+    EWAY("eway"),
+
+    EWAY_RAPID("eway_rapid"),
+
+    WORLDPAY("worldpay"),
+
+    BALANCED_PAYMENTS("balanced_payments"),
+
+    BEANSTREAM("beanstream"),
+
+    BLUEPAY("bluepay"),
+
+    ELAVON("elavon"),
+
+    FIRST_DATA_GLOBAL("first_data_global"),
+
+    HDFC("hdfc"),
+
+    MIGS("migs"),
+
+    NMI("nmi"),
+
+    OGONE("ogone"),
+
+    PAYMILL("paymill"),
+
+    PAYPAL_PAYFLOW_PRO("paypal_payflow_pro"),
+
+    SAGE_PAY("sage_pay"),
+
+    TCO("tco"),
+
+    WIRECARD("wirecard"),
+
+    AMAZON_PAYMENTS("amazon_payments"),
+
+    PAYPAL_EXPRESS_CHECKOUT("paypal_express_checkout"),
+
+    GOCARDLESS("gocardless"),
+
+    ORBITAL("orbital"),
+
+    MONERIS_US("moneris_us"),
+
+    MONERIS("moneris"),
+
+    BLUESNAP("bluesnap"),
+
+    CYBERSOURCE("cybersource"),
+
+    VANTIV("vantiv"),
+
+    CHECKOUT_COM("checkout_com"),
+
+    PAYPAL("paypal"),
+
+    INGENICO_DIRECT("ingenico_direct"),
+
+    EXACT("exact"),
+
+    MOLLIE("mollie"),
+
+    QUICKBOOKS("quickbooks"),
+
+    RAZORPAY("razorpay"),
+
+    GLOBAL_PAYMENTS("global_payments"),
+
+    BANK_OF_AMERICA("bank_of_america"),
+
+    ECENTRIC("ecentric"),
+
+    METRICS_GLOBAL("metrics_global"),
+
+    WINDCAVE("windcave"),
+
+    PAY_COM("pay_com"),
+
+    EBANX("ebanx"),
+
+    DLOCAL("dlocal"),
+
+    NUVEI("nuvei"),
+
+    SOLIDGATE("solidgate"),
+
+    PAYSTACK("paystack"),
+
+    JP_MORGAN("jp_morgan"),
+
+    DEUTSCHE_BANK("deutsche_bank"),
+
+    EZIDEBIT("ezidebit"),
+
+    TWIKEY("twikey"),
+
+    TEMPUS("tempus"),
+
+    NOT_APPLICABLE("not_applicable"),
+
+    /** An enum member indicating that Gateway was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Gateway(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Gateway fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Gateway enumValue : Gateway.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Type {
+    AUTHORIZATION("authorization"),
+
+    PAYMENT("payment"),
+
+    REFUND("refund"),
+
+    PAYMENT_REVERSAL("payment_reversal"),
+
+    /** An enum member indicating that Type was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Type(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Type fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Type enumValue : Type.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    IN_PROGRESS("in_progress"),
+
+    SUCCESS("success"),
+
+    VOIDED("voided"),
+
+    FAILURE("failure"),
+
+    TIMEOUT("timeout"),
+
+    NEEDS_ATTENTION("needs_attention"),
+
+    LATE_FAILURE("late_failure"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }

@@ -1,3 +1,8 @@
+### v4.1.1 (2026-02-10)
+* * *
+### Bug Fixes:
+* Corrected the generation of `StringFilter` for `EnumFilter` and `BooleanFilter` parameters in GET list APIs.
+
 ### v4.1.0 (2026-02-06)
 * * *
 ### New Attributes:

@@ -10,6 +10,7 @@ package com.chargebee.v4.models.thirdPartyEntityMapping.params;
 import com.chargebee.v4.internal.Recommended;
 import com.chargebee.v4.filters.StringFilter;
 import com.chargebee.v4.filters.TimestampFilter;
+import com.chargebee.v4.filters.EnumFilter;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -99,22 +100,126 @@ public final class ThirdPartyEntityMappingListAllParams {
     }
 
     public static final class EntityTypeFilter
-        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+        extends EnumFilter<EntityType, ThirdPartyEntityMappingListAllBuilder> {
       EntityTypeFilter(
           String fieldName,
           ThirdPartyEntityMappingListAllBuilder builder,
           Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, EntityType::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .entityType().is(EntityType.YOUR_VALUE)}</pre>
+       *
+       * @see #is(EntityType)
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .entityType().isNot(EntityType.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(EntityType)
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .entityType().in(EntityType.VALUE1, EntityType.VALUE2)}</pre>
+       *
+       * @see #in(EntityType[])
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .entityType().notIn(EntityType.VALUE1, EntityType.VALUE2)}</pre>
+       *
+       * @see #notIn(EntityType[])
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
     public static final class StatusFilter
-        extends StringFilter<ThirdPartyEntityMappingListAllBuilder> {
+        extends EnumFilter<Status, ThirdPartyEntityMappingListAllBuilder> {
       StatusFilter(
           String fieldName,
           ThirdPartyEntityMappingListAllBuilder builder,
           Map<String, Object> params) {
-        super(fieldName, builder, params);
+        super(fieldName, builder, params, Status::getValue);
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().is(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #is(Status)
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder is(String value) {
+        params.put(fieldName + "[is]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().isNot(Status.YOUR_VALUE)}</pre>
+       *
+       * @see #isNot(Status)
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder isNot(String value) {
+        params.put(fieldName + "[is_not]", value);
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().in(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #in(Status[])
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder in(String... values) {
+        params.put(fieldName + "[in]", "[" + String.join(",", values) + "]");
+        return builder;
+      }
+
+      /**
+       * @deprecated This method accepting raw String will be removed in a future version. Use the
+       *     type-safe enum overload instead:
+       *     <pre>{@code .status().notIn(Status.VALUE1, Status.VALUE2)}</pre>
+       *
+       * @see #notIn(Status[])
+       */
+      @Deprecated
+      public ThirdPartyEntityMappingListAllBuilder notIn(String... values) {
+        params.put(fieldName + "[not_in]", "[" + String.join(",", values) + "]");
+        return builder;
       }
     }
 
@@ -353,6 +458,112 @@ public final class ThirdPartyEntityMappingListAllParams {
     public static StatusIsNot fromString(String value) {
       if (value == null) return _UNKNOWN;
       for (StatusIsNot enumValue : StatusIsNot.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum EntityType {
+    CUSTOMER("customer"),
+
+    INVOICE("invoice"),
+
+    CREDIT_NOTE("credit_note"),
+
+    TRANSACTION("transaction"),
+
+    PLAN("plan"),
+
+    ADDON("addon"),
+
+    COUPON("coupon"),
+
+    SUBSCRIPTION("subscription"),
+
+    ORDER("order"),
+
+    QUOTE("quote"),
+
+    ITEM_FAMILY("item_family"),
+
+    ITEM("item"),
+
+    ITEM_PRICE("item_price"),
+
+    TAX_RATE("tax_rate"),
+
+    TAX_GROUP("tax_group"),
+
+    SALES_ORDER("sales_order"),
+
+    /** An enum member indicating that EntityType was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    EntityType(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static EntityType fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (EntityType enumValue : EntityType.values()) {
+        if (enumValue.value != null && enumValue.value.equals(value)) {
+          return enumValue;
+        }
+      }
+      return _UNKNOWN;
+    }
+  }
+
+  public enum Status {
+    SYNCED("synced"),
+
+    PARTIALLY_SYNCED("partially_synced"),
+
+    CREATE_FAILED("create_failed"),
+
+    UPDATE_FAILED("update_failed"),
+
+    STOPPED("stopped"),
+
+    IGNORED("ignored"),
+
+    TO_BE_PICKED("to_be_picked"),
+
+    FORCE_SYNC("force_sync"),
+
+    MISMATCH("mismatch"),
+
+    DELETED("deleted"),
+
+    QUEUED("queued"),
+
+    DELETE_FAILED("delete_failed"),
+
+    DELETE_SUCCESS("delete_success"),
+
+    /** An enum member indicating that Status was instantiated with an unknown value. */
+    _UNKNOWN(null);
+    private final String value;
+
+    Status(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    public static Status fromString(String value) {
+      if (value == null) return _UNKNOWN;
+      for (Status enumValue : Status.values()) {
         if (enumValue.value != null && enumValue.value.equals(value)) {
           return enumValue;
         }
