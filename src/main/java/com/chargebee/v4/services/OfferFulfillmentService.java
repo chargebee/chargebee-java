@@ -63,7 +63,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(OfferFulfillmentsParams params) throws ChargebeeException {
 
-    return post("/offer_fulfillments", params != null ? params.toFormData() : null);
+    return postWithSubDomain(
+        "/offer_fulfillments", "grow", params != null ? params.toFormData() : null);
   }
 
   /**
@@ -72,7 +73,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/offer_fulfillments", jsonPayload);
+    return postJsonWithSubDomain("/offer_fulfillments", "grow", jsonPayload);
   }
 
   public OfferFulfillmentsResponse offerFulfillments(OfferFulfillmentsParams params)
@@ -90,7 +91,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return get(path, null);
+    return getWithSubDomain(path, "grow", null);
   }
 
   public OfferFulfillmentsGetResponse offerFulfillmentsGet(String offerFulfillmentId)
@@ -107,7 +108,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return post(path, null);
+    return postWithSubDomain(path, "grow", null);
   }
 
   /**
@@ -121,7 +122,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return post(path, params.toFormData());
+    return postWithSubDomain(path, "grow", params.toFormData());
   }
 
   /**
@@ -135,7 +136,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return postJson(path, jsonPayload);
+    return postJsonWithSubDomain(path, "grow", jsonPayload);
   }
 
   public OfferFulfillmentsUpdateResponse offerFulfillmentsUpdate(

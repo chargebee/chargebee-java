@@ -109,10 +109,38 @@ public abstract class BaseService<T extends BaseService<T>> {
     }
 
     /**
+     * Helper: POST with subdomain routing.
+     */
+    protected Response postWithSubDomain(String path, String subDomain, Map<String, Object> formData) throws ChargebeeException {
+        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
+        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
      * Helper: POST JSON with optional headers.
      */
     protected Response postJson(String path, String jsonData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * Helper: POST JSON with subdomain routing.
+     */
+    protected Response postJsonWithSubDomain(String path, String subDomain, String jsonData) throws ChargebeeException {
+        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
+        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
@@ -183,6 +211,19 @@ public abstract class BaseService<T extends BaseService<T>> {
         return client.executeWithInterceptor(builder.build());
     }
     
+    /**
+     * GET with subdomain routing.
+     */
+    protected Response getWithSubDomain(String path, String subDomain, Map<String, Object> queryParams) throws ChargebeeException {
+        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
+        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
     /**
      * GET async with Object query parameters.
      */

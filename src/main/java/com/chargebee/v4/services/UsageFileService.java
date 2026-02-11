@@ -58,7 +58,7 @@ public final class UsageFileService extends BaseService<UsageFileService> {
         buildPathWithParams(
             "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
 
-    return get(path, null);
+    return getWithSubDomain(path, "file-ingest", null);
   }
 
   public UsageFileProcessingStatusResponse processingStatus(String usageFileId)
@@ -70,13 +70,14 @@ public final class UsageFileService extends BaseService<UsageFileService> {
   /** uploadUrl a usageFile using immutable params (executes immediately) - returns raw Response. */
   Response uploadUrlRaw(UsageFileUploadUrlParams params) throws ChargebeeException {
 
-    return post("/usage_files/upload_url", params != null ? params.toFormData() : null);
+    return postWithSubDomain(
+        "/usage_files/upload_url", "file-ingest", params != null ? params.toFormData() : null);
   }
 
   /** uploadUrl a usageFile using raw JSON payload (executes immediately) - returns raw Response. */
   Response uploadUrlRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/usage_files/upload_url", jsonPayload);
+    return postJsonWithSubDomain("/usage_files/upload_url", "file-ingest", jsonPayload);
   }
 
   public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params)
