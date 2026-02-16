@@ -20,6 +20,8 @@ import com.chargebee.v4.models.usageEvent.responses.UsageEventCreateResponse;
 
 import com.chargebee.v4.models.usageEvent.responses.UsageEventBatchIngestResponse;
 
+import com.chargebee.v4.internal.SubDomain;
+
 public final class UsageEventService extends BaseService<UsageEventService> {
 
   private final ServiceConfig config;
@@ -58,13 +60,13 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   Response createRaw(UsageEventCreateParams params) throws ChargebeeException {
 
     return postWithSubDomain(
-        "/usage_events", "ingest", params != null ? params.toFormData() : null);
+        "/usage_events", SubDomain.INGEST.getValue(), params != null ? params.toFormData() : null);
   }
 
   /** create a usageEvent using raw JSON payload (executes immediately) - returns raw Response. */
   Response createRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/usage_events", "ingest", jsonPayload);
+    return postJsonWithSubDomain("/usage_events", SubDomain.INGEST.getValue(), jsonPayload);
   }
 
   public UsageEventCreateResponse create(UsageEventCreateParams params) throws ChargebeeException {
@@ -79,7 +81,9 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   Response batchIngestRaw(UsageEventBatchIngestParams params) throws ChargebeeException {
 
     return postWithSubDomain(
-        "/batch/usage_events", "ingest", params != null ? params.toFormData() : null);
+        "/batch/usage_events",
+        SubDomain.INGEST.getValue(),
+        params != null ? params.toFormData() : null);
   }
 
   /**
@@ -87,7 +91,7 @@ public final class UsageEventService extends BaseService<UsageEventService> {
    */
   Response batchIngestRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/batch/usage_events", "ingest", jsonPayload);
+    return postJsonWithSubDomain("/batch/usage_events", SubDomain.INGEST.getValue(), jsonPayload);
   }
 
   public UsageEventBatchIngestResponse batchIngest(UsageEventBatchIngestParams params)

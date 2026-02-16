@@ -18,6 +18,8 @@ import com.chargebee.v4.models.usageFile.responses.UsageFileProcessingStatusResp
 
 import com.chargebee.v4.models.usageFile.responses.UsageFileUploadUrlResponse;
 
+import com.chargebee.v4.internal.SubDomain;
+
 public final class UsageFileService extends BaseService<UsageFileService> {
 
   private final ServiceConfig config;
@@ -58,7 +60,7 @@ public final class UsageFileService extends BaseService<UsageFileService> {
         buildPathWithParams(
             "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
 
-    return getWithSubDomain(path, "file-ingest", null);
+    return getWithSubDomain(path, SubDomain.FILE_INGEST.getValue(), null);
   }
 
   public UsageFileProcessingStatusResponse processingStatus(String usageFileId)
@@ -71,13 +73,16 @@ public final class UsageFileService extends BaseService<UsageFileService> {
   Response uploadUrlRaw(UsageFileUploadUrlParams params) throws ChargebeeException {
 
     return postWithSubDomain(
-        "/usage_files/upload_url", "file-ingest", params != null ? params.toFormData() : null);
+        "/usage_files/upload_url",
+        SubDomain.FILE_INGEST.getValue(),
+        params != null ? params.toFormData() : null);
   }
 
   /** uploadUrl a usageFile using raw JSON payload (executes immediately) - returns raw Response. */
   Response uploadUrlRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJsonWithSubDomain("/usage_files/upload_url", "file-ingest", jsonPayload);
+    return postJsonWithSubDomain(
+        "/usage_files/upload_url", SubDomain.FILE_INGEST.getValue(), jsonPayload);
   }
 
   public UsageFileUploadUrlResponse uploadUrl(UsageFileUploadUrlParams params)
