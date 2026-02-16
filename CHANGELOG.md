@@ -1,3 +1,10 @@
+### v4.2.0 (2026-02-16)
+* * *
+
+### New Features:
+* Added subdomain routing support for API requests.
+* Added JSON request body support for applicable APIs.
+
 ### v4.1.1 (2026-02-10)
 * * *
 ### Bug Fixes:
