@@ -105,24 +105,6 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     }
 
     /**
-     * Get the base URL for API requests with a subdomain.
-     * Constructs URL with subdomain: protocol://siteName.subdomain.domainSuffix/api/v2
-     *
-     * @param subDomain the subdomain to insert (e.g., "integrations")
-     * @return the base URL with subdomain
-     */
-    public String getBaseUrlWithSubDomain(String subDomain) {
-        if (subDomain == null || subDomain.trim().isEmpty()) {
-            return getBaseUrl();
-        }
-        // If endpoint is explicitly configured, subdomain routing is not supported
-        if (endpoint != null && !endpoint.trim().isEmpty()) {
-            return endpoint;
-        }
-        return String.format("%s://%s.%s.%s/api/v2", protocol, siteName, subDomain, domainSuffix);
-    }
-    
-    /**
      * Send a GET request to the specified path.
      * 
      * @param path the API path (e.g., "/customers")

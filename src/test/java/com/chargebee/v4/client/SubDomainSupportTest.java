@@ -1,14 +1,13 @@
 package com.chargebee.v4.client;
 
+import com.chargebee.v4.exceptions.ChargebeeException;
+import com.chargebee.v4.services.TestSubDomainService;
 import com.chargebee.v4.transport.FakeTransport;
 import com.chargebee.v4.transport.Request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,68 +21,28 @@ class SubDomainSupportTest {
     }
 
     @Nested
-    @DisplayName("getBaseUrlWithSubDomain")
-    class GetBaseUrlWithSubDomain {
+    @DisplayName("Subdomain URL construction via BaseService")
+    class SubDomainUrlConstruction {
 
         @Test
         @DisplayName("should construct URL with subdomain")
-        void shouldConstructUrlWithSubDomain() {
+        void shouldConstructUrlWithSubDomain() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
                     .transport(fakeTransport)
                     .build();
 
-            String url = client.getBaseUrlWithSubDomain("integrations");
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
 
-            assertEquals("https://acme.integrations.chargebee.com/api/v2", url);
-        }
-
-        @Test
-        @DisplayName("should fall back to base URL when subdomain is null")
-        void shouldFallBackWhenSubDomainIsNull() {
-            ChargebeeClient client = ChargebeeClient.builder()
-                    .apiKey("cb_test_123")
-                    .siteName("acme")
-                    .transport(fakeTransport)
-                    .build();
-
-            String url = client.getBaseUrlWithSubDomain(null);
-
-            assertEquals(client.getBaseUrl(), url);
-        }
-
-        @Test
-        @DisplayName("should fall back to base URL when subdomain is empty")
-        void shouldFallBackWhenSubDomainIsEmpty() {
-            ChargebeeClient client = ChargebeeClient.builder()
-                    .apiKey("cb_test_123")
-                    .siteName("acme")
-                    .transport(fakeTransport)
-                    .build();
-
-            String url = client.getBaseUrlWithSubDomain("");
-
-            assertEquals(client.getBaseUrl(), url);
-        }
-
-        @Test
-        @DisplayName("should fall back to base URL when subdomain is blank")
-        void shouldFallBackWhenSubDomainIsBlank() {
-            ChargebeeClient client = ChargebeeClient.builder()
-                    .apiKey("cb_test_123")
-                    .siteName("acme")
-                    .transport(fakeTransport)
-                    .build();
-
-            String url = client.getBaseUrlWithSubDomain("   ");
-
-            assertEquals(client.getBaseUrl(), url);
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().startsWith("https://acme.integrations.chargebee.com/api/v2"));
         }
 
         @Test
         @DisplayName("should return configured endpoint when endpoint is set")
-        void shouldReturnEndpointWhenSet() {
+        void shouldReturnEndpointWhenSet() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
@@ -91,14 +50,16 @@ class SubDomainSupportTest {
                     .transport(fakeTransport)
                     .build();
 
-            String url = client.getBaseUrlWithSubDomain("integrations");
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
 
-            assertEquals("https://custom.example.com/api/v2", url);
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().startsWith("https://custom.example.com/api/v2"));
         }
 
         @Test
         @DisplayName("should respect custom domain suffix")
-        void shouldRespectCustomDomainSuffix() {
+        void shouldRespectCustomDomainSuffix() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
@@ -106,14 +67,16 @@ class SubDomainSupportTest {
                     .transport(fakeTransport)
                     .build();
 
-            String url = client.getBaseUrlWithSubDomain("integrations");
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
 
-            assertEquals("https://acme.integrations.chargebee-staging.com/api/v2", url);
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().startsWith("https://acme.integrations.chargebee-staging.com/api/v2"));
         }
 
         @Test
         @DisplayName("should respect custom protocol")
-        void shouldRespectCustomProtocol() {
+        void shouldRespectCustomProtocol() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
@@ -121,9 +84,11 @@ class SubDomainSupportTest {
                     .transport(fakeTransport)
                     .build();
 
-            String url = client.getBaseUrlWithSubDomain("integrations");
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
 
-            assertEquals("http://acme.integrations.chargebee.com/api/v2", url);
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().startsWith("http://acme.integrations.chargebee.com/api/v2"));
         }
     }
 
@@ -133,23 +98,58 @@ class SubDomainSupportTest {
 
         @Test
         @DisplayName("getWithSubDomain should route request through subdomain URL")
-        void getWithSubDomainShouldRouteCorrectly() {
+        void getWithSubDomainShouldRouteCorrectly() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
                     .transport(fakeTransport)
                     .build();
 
-            client.get("/test-path", new HashMap<>());
-            Request normalRequest = fakeTransport.getLastRequest();
-            fakeTransport.clearRequests();
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
 
-            assertTrue(normalRequest.getUrl().startsWith("https://acme.chargebee.com/api/v2"));
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().contains("integrations"));
+            assertEquals("GET", request.getMethod());
+        }
+
+        @Test
+        @DisplayName("postWithSubDomain should route request through subdomain URL")
+        void postWithSubDomainShouldRouteCorrectly() throws ChargebeeException {
+            ChargebeeClient client = ChargebeeClient.builder()
+                    .apiKey("cb_test_123")
+                    .siteName("acme")
+                    .transport(fakeTransport)
+                    .build();
+
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callPostWithSubDomain("/test-path", "integrations");
+
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().contains("integrations"));
+            assertEquals("POST", request.getMethod());
+        }
+
+        @Test
+        @DisplayName("postJsonWithSubDomain should route request through subdomain URL")
+        void postJsonWithSubDomainShouldRouteCorrectly() throws ChargebeeException {
+            ChargebeeClient client = ChargebeeClient.builder()
+                    .apiKey("cb_test_123")
+                    .siteName("acme")
+                    .transport(fakeTransport)
+                    .build();
+
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callPostJsonWithSubDomain("/test-path", "integrations");
+
+            Request request = fakeTransport.getLastRequest();
+            assertTrue(request.getUrl().contains("integrations"));
+            assertEquals("POST", request.getMethod());
         }
 
         @Test
         @DisplayName("subdomain URL should differ from normal URL")
-        void subDomainUrlShouldDiffer() {
+        void subDomainUrlShouldDiffer() throws ChargebeeException {
             ChargebeeClient client = ChargebeeClient.builder()
                     .apiKey("cb_test_123")
                     .siteName("acme")
@@ -157,11 +157,13 @@ class SubDomainSupportTest {
                     .build();
 
             String normalUrl = client.getBaseUrl();
-            String subDomainUrl = client.getBaseUrlWithSubDomain("integrations");
 
-            assertNotEquals(normalUrl, subDomainUrl);
+            TestSubDomainService service = new TestSubDomainService(client);
+            service.callGetWithSubDomain("/test-path", "integrations");
+            Request request = fakeTransport.getLastRequest();
+
             assertFalse(normalUrl.contains("integrations"));
-            assertTrue(subDomainUrl.contains("integrations"));
+            assertTrue(request.getUrl().contains("integrations"));
         }
     }
 }

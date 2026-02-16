@@ -112,8 +112,7 @@ public abstract class BaseService<T extends BaseService<T>> {
      * Helper: POST with subdomain routing.
      */
     protected Response postWithSubDomain(String path, String subDomain, Map<String, Object> formData) throws ChargebeeException {
-        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
-        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, null);
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
@@ -139,8 +138,7 @@ public abstract class BaseService<T extends BaseService<T>> {
      * Helper: POST JSON with subdomain routing.
      */
     protected Response postJsonWithSubDomain(String path, String subDomain, String jsonData) throws ChargebeeException {
-        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
-        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, null);
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
@@ -215,13 +213,25 @@ public abstract class BaseService<T extends BaseService<T>> {
      * GET with subdomain routing.
      */
     protected Response getWithSubDomain(String path, String subDomain, Map<String, Object> queryParams) throws ChargebeeException {
-        String baseUrl = client.getBaseUrlWithSubDomain(subDomain);
-        String fullUrl = UrlBuilder.buildUrl(baseUrl, path, queryParams);
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, queryParams);
         Request.Builder builder = Request.builder()
                 .method("GET")
                 .url(fullUrl);
         applyMergedHeaders(builder);
         return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * Build base URL with subdomain prefix for routing.
+     * Constructs {@code protocol://siteName.subDomain.domainSuffix/api/v2}.
+     */
+    private String baseUrlWithSubDomain(String subDomain) {
+        String endpoint = client.getEndpoint();
+        if (endpoint != null && !endpoint.trim().isEmpty()) {
+            return endpoint;
+        }
+        return String.format("%s://%s.%s.%s/api/v2",
+                client.getProtocol(), client.getSiteName(), subDomain, client.getDomainSuffix());
     }
 
     /**
