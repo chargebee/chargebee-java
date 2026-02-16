@@ -7,6 +7,7 @@
 package com.chargebee.v4.models.offerFulfillment.params;
 
 import com.chargebee.v4.internal.Recommended;
+import com.chargebee.v4.internal.JsonUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -47,6 +48,11 @@ public final class OfferFulfillmentsParams {
     }
 
     return formData;
+  }
+
+  /** Get the JSON string representation for this request. */
+  public String toJsonString() {
+    return JsonUtil.toJson(toFormData());
   }
 
   /** Create a new builder for OfferFulfillmentsParams. */

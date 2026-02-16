@@ -65,10 +65,10 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(OfferFulfillmentsParams params) throws ChargebeeException {
 
-    return postWithSubDomain(
+    return postJsonWithSubDomain(
         "/offer_fulfillments",
         SubDomain.GROW.getValue(),
-        params != null ? params.toFormData() : null);
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -126,7 +126,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return postWithSubDomain(path, SubDomain.GROW.getValue(), params.toFormData());
+    return postJsonWithSubDomain(
+        path, SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null);
   }
 
   /**

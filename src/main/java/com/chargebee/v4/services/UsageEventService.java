@@ -59,8 +59,10 @@ public final class UsageEventService extends BaseService<UsageEventService> {
   /** create a usageEvent using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(UsageEventCreateParams params) throws ChargebeeException {
 
-    return postWithSubDomain(
-        "/usage_events", SubDomain.INGEST.getValue(), params != null ? params.toFormData() : null);
+    return postJsonWithSubDomain(
+        "/usage_events",
+        SubDomain.INGEST.getValue(),
+        params != null ? params.toJsonString() : null);
   }
 
   /** create a usageEvent using raw JSON payload (executes immediately) - returns raw Response. */
@@ -80,10 +82,10 @@ public final class UsageEventService extends BaseService<UsageEventService> {
    */
   Response batchIngestRaw(UsageEventBatchIngestParams params) throws ChargebeeException {
 
-    return postWithSubDomain(
+    return postJsonWithSubDomain(
         "/batch/usage_events",
         SubDomain.INGEST.getValue(),
-        params != null ? params.toFormData() : null);
+        params != null ? params.toJsonString() : null);
   }
 
   /**
