@@ -16,6 +16,8 @@ import com.chargebee.v4.models.personalizedOffer.params.PersonalizedOffersParams
 
 import com.chargebee.v4.models.personalizedOffer.responses.PersonalizedOffersResponse;
 
+import com.chargebee.v4.internal.SubDomain;
+
 public final class PersonalizedOfferService extends BaseService<PersonalizedOfferService> {
 
   private final ServiceConfig config;
@@ -57,7 +59,10 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
    */
   Response personalizedOffersRaw(PersonalizedOffersParams params) throws ChargebeeException {
 
-    return post("/personalized_offers", params != null ? params.toFormData() : null);
+    return postJsonWithSubDomain(
+        "/personalized_offers",
+        SubDomain.GROW.getValue(),
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -66,7 +71,7 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
    */
   Response personalizedOffersRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/personalized_offers", jsonPayload);
+    return postJsonWithSubDomain("/personalized_offers", SubDomain.GROW.getValue(), jsonPayload);
   }
 
   public PersonalizedOffersResponse personalizedOffers(PersonalizedOffersParams params)

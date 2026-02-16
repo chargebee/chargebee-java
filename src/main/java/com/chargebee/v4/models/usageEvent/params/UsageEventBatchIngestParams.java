@@ -49,6 +49,11 @@ public final class UsageEventBatchIngestParams {
     return formData;
   }
 
+  /** Get the JSON string representation for this request. */
+  public String toJsonString() {
+    return JsonUtil.toJson(toFormData());
+  }
+
   /** Create a new builder for UsageEventBatchIngestParams. */
   @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
   public static UsageEventBatchIngestBuilder builder() {
@@ -133,6 +138,11 @@ public final class UsageEventBatchIngestParams {
       }
 
       return formData;
+    }
+
+    /** Get the JSON string representation for this request. */
+    public String toJsonString() {
+      return JsonUtil.toJson(toFormData());
     }
 
     /** Create a new builder for EventsParams. */

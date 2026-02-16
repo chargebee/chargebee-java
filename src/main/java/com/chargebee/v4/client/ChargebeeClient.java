@@ -103,7 +103,7 @@ public final class ChargebeeClient extends ClientMethodsImpl {
         }
         return String.format("%s://%s.%s/api/v2", protocol, siteName, domainSuffix);
     }
-    
+
     /**
      * Send a GET request to the specified path.
      * 

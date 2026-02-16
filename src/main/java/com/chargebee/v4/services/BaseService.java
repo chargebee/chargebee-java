@@ -109,10 +109,36 @@ public abstract class BaseService<T extends BaseService<T>> {
     }
 
     /**
+     * Helper: POST with subdomain routing.
+     */
+    protected Response postWithSubDomain(String path, String subDomain, Map<String, Object> formData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
      * Helper: POST JSON with optional headers.
      */
     protected Response postJson(String path, String jsonData) throws ChargebeeException {
         String fullUrl = UrlBuilder.buildUrl(client.getBaseUrl(), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * Helper: POST JSON with subdomain routing.
+     */
+    protected Response postJsonWithSubDomain(String path, String subDomain, String jsonData) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
         Request.Builder builder = Request.builder()
                 .method("POST")
                 .url(fullUrl)
@@ -183,6 +209,31 @@ public abstract class BaseService<T extends BaseService<T>> {
         return client.executeWithInterceptor(builder.build());
     }
     
+    /**
+     * GET with subdomain routing.
+     */
+    protected Response getWithSubDomain(String path, String subDomain, Map<String, Object> queryParams) throws ChargebeeException {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptor(builder.build());
+    }
+
+    /**
+     * Build base URL with subdomain prefix for routing.
+     * Constructs {@code protocol://siteName.subDomain.domainSuffix/api/v2}.
+     */
+    private String baseUrlWithSubDomain(String subDomain) {
+        String endpoint = client.getEndpoint();
+        if (endpoint != null && !endpoint.trim().isEmpty()) {
+            return endpoint;
+        }
+        return String.format("%s://%s.%s.%s/api/v2",
+                client.getProtocol(), client.getSiteName(), subDomain, client.getDomainSuffix());
+    }
+
     /**
      * GET async with Object query parameters.
      */

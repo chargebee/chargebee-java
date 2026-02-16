@@ -76,6 +76,11 @@ public final class UsageEventCreateParams {
     return formData;
   }
 
+  /** Get the JSON string representation for this request. */
+  public String toJsonString() {
+    return JsonUtil.toJson(toFormData());
+  }
+
   /** Create a new builder for UsageEventCreateParams. */
   @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
   public static UsageEventCreateBuilder builder() {
