@@ -7,17 +7,21 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.GZIPInputStream;
 
 /**
  * Default HTTP transport implementation using HttpURLConnection for both sync and async operations.
  * Async operations are executed on a background thread pool.
  */
-public class DefaultTransport implements Transport {
+public class DefaultTransport implements Transport, AutoCloseable {
     private final TransportConfig config;
-    private final Executor asyncExecutor;
+    private final ExecutorService asyncExecutor;
+    private final boolean ownsExecutor;
 
     private static final String VERSION;
 
@@ -41,7 +45,45 @@ public class DefaultTransport implements Transport {
     
     public DefaultTransport(TransportConfig config) {
         this.config = Objects.requireNonNull(config, "TransportConfig cannot be null");
-        this.asyncExecutor = ForkJoinPool.commonPool();
+        if (config.getAsyncExecutor() != null) {
+            this.asyncExecutor = config.getAsyncExecutor();
+            this.ownsExecutor = false;
+        } else {
+            this.asyncExecutor = createDefaultExecutor();
+            this.ownsExecutor = true;
+        }
+    }
+
+    private static ExecutorService createDefaultExecutor() {
+        AtomicInteger counter = new AtomicInteger();
+        ThreadFactory factory = r -> {
+            Thread t = new Thread(r, "chargebee-async-" + counter.incrementAndGet());
+            t.setDaemon(true);
+            return t;
+        };
+        return Executors.newCachedThreadPool(factory);
+    }
+
+    /**
+     * Returns the executor used for async operations.
+     */
+    public ExecutorService getAsyncExecutor() {
+        return asyncExecutor;
+    }
+
+    @Override
+    public void close() {
+        if (ownsExecutor) {
+            asyncExecutor.shutdown();
+            try {
+                if (!asyncExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
+                    asyncExecutor.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                asyncExecutor.shutdownNow();
+                Thread.currentThread().interrupt();
+            }
+        }
     }
     
     @Override

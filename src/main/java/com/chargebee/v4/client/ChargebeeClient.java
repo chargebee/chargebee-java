@@ -14,7 +14,10 @@ import com.chargebee.v4.transport.Transport;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Immutable, thread-safe Chargebee API client with pluggable transport.
@@ -25,7 +28,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *     .build();
  * }</pre>
  */
-public final class ChargebeeClient extends ClientMethodsImpl {
+public final class ChargebeeClient extends ClientMethodsImpl implements AutoCloseable {
     private final String apiKey;
     private final String siteName;
     private final String endpoint;
@@ -37,7 +40,8 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     private final String protocol;
     private final RequestInterceptor requestInterceptor;
     private final RequestContext clientHeaders;
-    
+    private final ScheduledExecutorService retryScheduler;
+
     // Auto-generated service registry for lazy loading
     private final ServiceRegistry serviceRegistry;
 
@@ -53,6 +57,11 @@ public final class ChargebeeClient extends ClientMethodsImpl {
         this.protocol = builder.protocol;
         this.requestInterceptor = builder.requestInterceptor;
         this.clientHeaders = new RequestContext(builder.clientHeaders.getHeaders());
+        this.retryScheduler = Executors.newSingleThreadScheduledExecutor(r -> {
+            Thread t = new Thread(r, "chargebee-retry-scheduler");
+            t.setDaemon(true);
+            return t;
+        });
         this.serviceRegistry = new ServiceRegistry(this);
     }
 
@@ -83,7 +92,19 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     public String getProtocol() { return protocol; }
     public RequestInterceptor getRequestInterceptor() { return requestInterceptor; }
     public RequestContext getClientHeaders() { return clientHeaders; }
-    
+
+    @Override
+    public void close() {
+        retryScheduler.shutdown();
+        if (transport instanceof AutoCloseable) {
+            try {
+                ((AutoCloseable) transport).close();
+            } catch (Exception e) {
+                // best-effort cleanup
+            }
+        }
+    }
+
     // (Header decoration removed from public API)
     
     // Resource Services - Auto-generated via ClientMethodsImpl
@@ -477,25 +498,18 @@ public final class ChargebeeClient extends ClientMethodsImpl {
     
     private CompletableFuture<Response> delayAndRetry(Request request, int nextAttempt, long delayMs, int maxRetries) {
         CompletableFuture<Response> delayedRetry = new CompletableFuture<>();
-        
-        // Use a separate thread for the delay to avoid blocking
-        CompletableFuture.runAsync(() -> {
-            try {
-                Thread.sleep(delayMs);
-                sendWithRetryAsyncInternal(request, nextAttempt, maxRetries)
-                    .whenComplete((response, throwable) -> {
-                        if (throwable != null) {
-                            delayedRetry.completeExceptionally(throwable);
-                        } else {
-                            delayedRetry.complete(response);
-                        }
-                    });
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                delayedRetry.completeExceptionally(new RuntimeException("Interrupted during retry delay", e));
-            }
-        });
-        
+
+        retryScheduler.schedule(() -> {
+            sendWithRetryAsyncInternal(request, nextAttempt, maxRetries)
+                .whenComplete((response, throwable) -> {
+                    if (throwable != null) {
+                        delayedRetry.completeExceptionally(throwable);
+                    } else {
+                        delayedRetry.complete(response);
+                    }
+                });
+        }, delayMs, TimeUnit.MILLISECONDS);
+
         return delayedRetry;
     }
 
