@@ -112,6 +112,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for differentialPrice with params. */
   public CompletableFuture<DifferentialPriceDeleteResponse> deleteAsync(
       String differentialPriceId, DifferentialPriceDeleteParams params) {
     String path =
@@ -163,6 +164,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for differentialPrice with params. */
   public CompletableFuture<DifferentialPriceCreateResponse> createAsync(
       String itemPriceId, DifferentialPriceCreateParams params) {
     String path =
@@ -204,6 +206,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for differentialPrice with params. */
   public CompletableFuture<DifferentialPriceListResponse> listAsync(
       DifferentialPriceListParams params) {
 
@@ -220,6 +223,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for differentialPrice without params. */
   public CompletableFuture<DifferentialPriceListResponse> listAsync() {
 
     return getAsync("/differential_prices", null)
@@ -261,6 +265,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for differentialPrice with params. */
   public CompletableFuture<DifferentialPriceRetrieveResponse> retrieveAsync(
       String differentialPriceId, DifferentialPriceRetrieveParams params) {
     String path =
@@ -280,6 +285,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for differentialPrice without params. */
   public CompletableFuture<DifferentialPriceRetrieveResponse> retrieveAsync(
       String differentialPriceId) {
     String path =
@@ -338,6 +344,7 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for differentialPrice with params. */
   public CompletableFuture<DifferentialPriceUpdateResponse> updateAsync(
       String differentialPriceId, DifferentialPriceUpdateParams params) {
     String path =

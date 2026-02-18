@@ -76,6 +76,7 @@ public final class OfferEventService extends BaseService<OfferEventService> {
     return OfferEventsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of offerEvents for offerEvent with params. */
   public CompletableFuture<OfferEventsResponse> offerEventsAsync(OfferEventsParams params) {
 
     return postJsonWithSubDomainAsync(

@@ -86,6 +86,7 @@ public final class AdditionalBillingLogiqService
     return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for additionalBillingLogiq with params. */
   public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync(
       AdditionalBillingLogiqRetrieveParams params) {
 
@@ -102,6 +103,7 @@ public final class AdditionalBillingLogiqService
     return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for additionalBillingLogiq without params. */
   public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync() {
 
     return getAsync("/additional_billing_logiqs", null)

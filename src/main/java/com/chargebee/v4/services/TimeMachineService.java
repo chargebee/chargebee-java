@@ -77,6 +77,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for timeMachine without params. */
   public CompletableFuture<TimeMachineRetrieveResponse> retrieveAsync(String timeMachineName) {
     String path =
         buildPathWithParams(
@@ -131,6 +132,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of travelForward for timeMachine with params. */
   public CompletableFuture<TimeMachineTravelForwardResponse> travelForwardAsync(
       String timeMachineName, TimeMachineTravelForwardParams params) {
     String path =
@@ -150,6 +152,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of travelForward for timeMachine without params. */
   public CompletableFuture<TimeMachineTravelForwardResponse> travelForwardAsync(
       String timeMachineName) {
     String path =
@@ -206,6 +209,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of startAfresh for timeMachine with params. */
   public CompletableFuture<TimeMachineStartAfreshResponse> startAfreshAsync(
       String timeMachineName, TimeMachineStartAfreshParams params) {
     String path =
@@ -225,6 +229,7 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of startAfresh for timeMachine without params. */
   public CompletableFuture<TimeMachineStartAfreshResponse> startAfreshAsync(
       String timeMachineName) {
     String path =

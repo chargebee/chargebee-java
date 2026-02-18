@@ -83,6 +83,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for couponCode with params. */
   public CompletableFuture<CouponCodeListResponse> listAsync(CouponCodeListParams params) {
 
     return getAsync("/coupon_codes", params != null ? params.toQueryParams() : null)
@@ -98,6 +99,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for couponCode without params. */
   public CompletableFuture<CouponCodeListResponse> listAsync() {
 
     return getAsync("/coupon_codes", null)
@@ -124,6 +126,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for couponCode with params. */
   public CompletableFuture<CouponCodeCreateResponse> createAsync(CouponCodeCreateParams params) {
 
     return postAsync("/coupon_codes", params != null ? params.toFormData() : null)
@@ -144,6 +147,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for couponCode without params. */
   public CompletableFuture<CouponCodeRetrieveResponse> retrieveAsync(String couponCodeCode) {
     String path =
         buildPathWithParams("/coupon_codes/{coupon-code-code}", "coupon-code-code", couponCodeCode);
@@ -167,6 +171,7 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of archive for couponCode without params. */
   public CompletableFuture<CouponCodeArchiveResponse> archiveAsync(String couponCodeCode) {
     String path =
         buildPathWithParams(

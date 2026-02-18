@@ -82,6 +82,7 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for pc2MigrationItemFamily without params. */
   public CompletableFuture<Pc2MigrationItemFamilyDeleteResponse> deleteAsync(
       String pc2MigrationItemFamilyId) {
     String path =
@@ -114,6 +115,7 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for pc2MigrationItemFamily without params. */
   public CompletableFuture<Pc2MigrationItemFamilyRetrieveResponse> retrieveAsync(
       String pc2MigrationItemFamilyId) {
     String path =
@@ -175,6 +177,7 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for pc2MigrationItemFamily with params. */
   public CompletableFuture<Pc2MigrationItemFamilyUpdateResponse> updateAsync(
       String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params) {
     String path =
@@ -195,6 +198,7 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for pc2MigrationItemFamily without params. */
   public CompletableFuture<Pc2MigrationItemFamilyUpdateResponse> updateAsync(
       String pc2MigrationItemFamilyId) {
     String path =
@@ -242,6 +246,7 @@ public final class Pc2MigrationItemFamilyService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for pc2MigrationItemFamily with params. */
   public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync(
       Pc2MigrationItemFamilyListParams params) {
 
@@ -259,6 +264,7 @@ public final class Pc2MigrationItemFamilyService
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for pc2MigrationItemFamily without params. */
   public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync() {
 
     return getAsync("/pc2_migration_item_families", null)
@@ -293,6 +299,7 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for pc2MigrationItemFamily with params. */
   public CompletableFuture<Pc2MigrationItemFamilyCreateResponse> createAsync(
       Pc2MigrationItemFamilyCreateParams params) {
 

@@ -230,6 +230,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeAdvanceInvoiceSchedule for subscription with params. */
   public CompletableFuture<SubscriptionRemoveAdvanceInvoiceScheduleResponse>
       removeAdvanceInvoiceScheduleAsync(
           String subscriptionId, SubscriptionRemoveAdvanceInvoiceScheduleParams params) {
@@ -252,6 +253,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeAdvanceInvoiceSchedule for subscription without params. */
   public CompletableFuture<SubscriptionRemoveAdvanceInvoiceScheduleResponse>
       removeAdvanceInvoiceScheduleAsync(String subscriptionId) {
     String path =
@@ -305,6 +307,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateForItems for subscription with params. */
   public CompletableFuture<SubscriptionUpdateForItemsResponse> updateForItemsAsync(
       String subscriptionId, SubscriptionUpdateForItemsParams params) {
     String path =
@@ -322,6 +325,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateForItems for subscription without params. */
   public CompletableFuture<SubscriptionUpdateForItemsResponse> updateForItemsAsync(
       String subscriptionId) {
     String path =
@@ -372,6 +376,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeCoupons for subscription with params. */
   public CompletableFuture<SubscriptionRemoveCouponsResponse> removeCouponsAsync(
       String subscriptionId, SubscriptionRemoveCouponsParams params) {
     String path =
@@ -389,6 +394,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeCoupons for subscription without params. */
   public CompletableFuture<SubscriptionRemoveCouponsResponse> removeCouponsAsync(
       String subscriptionId) {
     String path =
@@ -433,6 +439,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resume for subscription with params. */
   public CompletableFuture<SubscriptionResumeResponse> resumeAsync(
       String subscriptionId, SubscriptionResumeParams params) {
     String path =
@@ -448,6 +455,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resume for subscription without params. */
   public CompletableFuture<SubscriptionResumeResponse> resumeAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -496,6 +504,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelForItems for subscription with params. */
   public CompletableFuture<SubscriptionCancelForItemsResponse> cancelForItemsAsync(
       String subscriptionId, SubscriptionCancelForItemsParams params) {
     String path =
@@ -513,6 +522,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelForItems for subscription without params. */
   public CompletableFuture<SubscriptionCancelForItemsResponse> cancelForItemsAsync(
       String subscriptionId) {
     String path =
@@ -570,6 +580,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of regenerateInvoice for subscription with params. */
   public CompletableFuture<SubscriptionRegenerateInvoiceResponse> regenerateInvoiceAsync(
       String subscriptionId, SubscriptionRegenerateInvoiceParams params) {
     String path =
@@ -590,6 +601,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of regenerateInvoice for subscription without params. */
   public CompletableFuture<SubscriptionRegenerateInvoiceResponse> regenerateInvoiceAsync(
       String subscriptionId) {
     String path =
@@ -629,6 +641,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for subscription with params. */
   public CompletableFuture<SubscriptionListResponse> listAsync(SubscriptionListParams params) {
 
     return getAsync("/subscriptions", params != null ? params.toQueryParams() : null)
@@ -644,6 +657,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for subscription without params. */
   public CompletableFuture<SubscriptionListResponse> listAsync() {
 
     return getAsync("/subscriptions", null)
@@ -672,6 +686,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for subscription with params. */
   public CompletableFuture<SubscriptionCreateResponse> createAsync(
       SubscriptionCreateParams params) {
 
@@ -711,6 +726,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of move for subscription with params. */
   public CompletableFuture<SubscriptionMoveResponse> moveAsync(
       String subscriptionId, SubscriptionMoveParams params) {
     String path =
@@ -767,6 +783,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of subscriptionsForCustomer for subscription with params. */
   public CompletableFuture<SubscriptionsForCustomerResponse> subscriptionsForCustomerAsync(
       String customerId, SubscriptionsForCustomerParams params) {
     String path =
@@ -778,6 +795,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of subscriptionsForCustomer for subscription without params. */
   public CompletableFuture<SubscriptionsForCustomerResponse> subscriptionsForCustomerAsync(
       String customerId) {
     String path =
@@ -824,6 +842,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForCustomer for subscription with params. */
   public CompletableFuture<SubscriptionCreateForCustomerResponse> createForCustomerAsync(
       String customerId, SubscriptionCreateForCustomerParams params) {
     String path =
@@ -870,6 +889,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importForItems for subscription with params. */
   public CompletableFuture<SubscriptionImportForItemsResponse> importForItemsAsync(
       String customerId, SubscriptionImportForItemsParams params) {
     String path =
@@ -900,6 +920,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveAdvanceInvoiceSchedule for subscription without params. */
   public CompletableFuture<SubscriptionRetrieveAdvanceInvoiceScheduleResponse>
       retrieveAdvanceInvoiceScheduleAsync(String subscriptionId) {
     String path =
@@ -963,6 +984,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeScheduledCancellation for subscription with params. */
   public CompletableFuture<SubscriptionRemoveScheduledCancellationResponse>
       removeScheduledCancellationAsync(
           String subscriptionId, SubscriptionRemoveScheduledCancellationParams params) {
@@ -985,6 +1007,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeScheduledCancellation for subscription without params. */
   public CompletableFuture<SubscriptionRemoveScheduledCancellationResponse>
       removeScheduledCancellationAsync(String subscriptionId) {
     String path =
@@ -1018,6 +1041,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveWithScheduledChanges for subscription without params. */
   public CompletableFuture<SubscriptionRetrieveWithScheduledChangesResponse>
       retrieveWithScheduledChangesAsync(String subscriptionId) {
     String path =
@@ -1069,6 +1093,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reactivate for subscription with params. */
   public CompletableFuture<SubscriptionReactivateResponse> reactivateAsync(
       String subscriptionId, SubscriptionReactivateParams params) {
     String path =
@@ -1086,6 +1111,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reactivate for subscription without params. */
   public CompletableFuture<SubscriptionReactivateResponse> reactivateAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -1144,6 +1170,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of chargeFutureRenewals for subscription with params. */
   public CompletableFuture<SubscriptionChargeFutureRenewalsResponse> chargeFutureRenewalsAsync(
       String subscriptionId, SubscriptionChargeFutureRenewalsParams params) {
     String path =
@@ -1164,6 +1191,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of chargeFutureRenewals for subscription without params. */
   public CompletableFuture<SubscriptionChargeFutureRenewalsResponse> chargeFutureRenewalsAsync(
       String subscriptionId) {
     String path =
@@ -1225,6 +1253,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionAddChargeAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addChargeAtTermEnd for subscription with params. */
   public CompletableFuture<SubscriptionAddChargeAtTermEndResponse> addChargeAtTermEndAsync(
       String subscriptionId, SubscriptionAddChargeAtTermEndParams params) {
     String path =
@@ -1257,6 +1286,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeScheduledChanges for subscription without params. */
   public CompletableFuture<SubscriptionRemoveScheduledChangesResponse> removeScheduledChangesAsync(
       String subscriptionId) {
     String path =
@@ -1310,6 +1340,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of changeTermEnd for subscription with params. */
   public CompletableFuture<SubscriptionChangeTermEndResponse> changeTermEndAsync(
       String subscriptionId, SubscriptionChangeTermEndParams params) {
     String path =
@@ -1335,6 +1366,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for subscription without params. */
   public CompletableFuture<SubscriptionDeleteResponse> deleteAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -1383,6 +1415,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createWithItems for subscription with params. */
   public CompletableFuture<SubscriptionCreateWithItemsResponse> createWithItemsAsync(
       String customerId, SubscriptionCreateWithItemsParams params) {
     String path =
@@ -1400,6 +1433,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createWithItems for subscription without params. */
   public CompletableFuture<SubscriptionCreateWithItemsResponse> createWithItemsAsync(
       String customerId) {
     String path =
@@ -1459,6 +1493,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importUnbilledCharges for subscription with params. */
   public CompletableFuture<SubscriptionImportUnbilledChargesResponse> importUnbilledChargesAsync(
       String subscriptionId, SubscriptionImportUnbilledChargesParams params) {
     String path =
@@ -1479,6 +1514,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importUnbilledCharges for subscription without params. */
   public CompletableFuture<SubscriptionImportUnbilledChargesResponse> importUnbilledChargesAsync(
       String subscriptionId) {
     String path =
@@ -1512,6 +1548,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeScheduledResumption for subscription without params. */
   public CompletableFuture<SubscriptionRemoveScheduledResumptionResponse>
       removeScheduledResumptionAsync(String subscriptionId) {
     String path =
@@ -1540,6 +1577,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for subscription without params. */
   public CompletableFuture<SubscriptionRetrieveResponse> retrieveAsync(String subscriptionId) {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
@@ -1579,6 +1617,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for subscription with params. */
   public CompletableFuture<SubscriptionUpdateResponse> updateAsync(
       String subscriptionId, SubscriptionUpdateParams params) {
     String path =
@@ -1593,6 +1632,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for subscription without params. */
   public CompletableFuture<SubscriptionUpdateResponse> updateAsync(String subscriptionId) {
     String path =
         buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
@@ -1648,6 +1688,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importContractTerm for subscription with params. */
   public CompletableFuture<SubscriptionImportContractTermResponse> importContractTermAsync(
       String subscriptionId, SubscriptionImportContractTermParams params) {
     String path =
@@ -1668,6 +1709,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importContractTerm for subscription without params. */
   public CompletableFuture<SubscriptionImportContractTermResponse> importContractTermAsync(
       String subscriptionId) {
     String path =
@@ -1731,6 +1773,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of overrideBillingProfile for subscription with params. */
   public CompletableFuture<SubscriptionOverrideBillingProfileResponse> overrideBillingProfileAsync(
       String subscriptionId, SubscriptionOverrideBillingProfileParams params) {
     String path =
@@ -1752,6 +1795,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of overrideBillingProfile for subscription without params. */
   public CompletableFuture<SubscriptionOverrideBillingProfileResponse> overrideBillingProfileAsync(
       String subscriptionId) {
     String path =
@@ -1784,6 +1828,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRemoveScheduledPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeScheduledPause for subscription without params. */
   public CompletableFuture<SubscriptionRemoveScheduledPauseResponse> removeScheduledPauseAsync(
       String subscriptionId) {
     String path =
@@ -1847,6 +1892,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editAdvanceInvoiceSchedule for subscription with params. */
   public CompletableFuture<SubscriptionEditAdvanceInvoiceScheduleResponse>
       editAdvanceInvoiceScheduleAsync(
           String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params) {
@@ -1869,6 +1915,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editAdvanceInvoiceSchedule for subscription without params. */
   public CompletableFuture<SubscriptionEditAdvanceInvoiceScheduleResponse>
       editAdvanceInvoiceScheduleAsync(String subscriptionId) {
     String path =
@@ -1929,6 +1976,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  /** Async variant of listDiscounts for subscription with params. */
   public CompletableFuture<SubscriptionListDiscountsResponse> listDiscountsAsync(
       String subscriptionId, SubscriptionListDiscountsParams params) {
     String path =
@@ -1941,6 +1989,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
                     response.getBodyAsString(), this, params, subscriptionId, response));
   }
 
+  /** Async variant of listDiscounts for subscription without params. */
   public CompletableFuture<SubscriptionListDiscountsResponse> listDiscountsAsync(
       String subscriptionId) {
     String path =
@@ -2002,6 +2051,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  /** Async variant of contractTermsForSubscription for subscription with params. */
   public CompletableFuture<ContractTermsForSubscriptionResponse> contractTermsForSubscriptionAsync(
       String subscriptionId, ContractTermsForSubscriptionParams params) {
     String path =
@@ -2014,6 +2064,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
                     response.getBodyAsString(), this, params, subscriptionId, response));
   }
 
+  /** Async variant of contractTermsForSubscription for subscription without params. */
   public CompletableFuture<ContractTermsForSubscriptionResponse> contractTermsForSubscriptionAsync(
       String subscriptionId) {
     String path =
@@ -2058,6 +2109,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pause for subscription with params. */
   public CompletableFuture<SubscriptionPauseResponse> pauseAsync(
       String subscriptionId, SubscriptionPauseParams params) {
     String path =
@@ -2073,6 +2125,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pause for subscription without params. */
   public CompletableFuture<SubscriptionPauseResponse> pauseAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -2121,6 +2174,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importForCustomer for subscription with params. */
   public CompletableFuture<SubscriptionImportForCustomerResponse> importForCustomerAsync(
       String customerId, SubscriptionImportForCustomerParams params) {
     String path =
@@ -2158,6 +2212,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return ImportSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importSubscription for subscription with params. */
   public CompletableFuture<ImportSubscriptionResponse> importSubscriptionAsync(
       ImportSubscriptionParams params) {
 
@@ -2199,6 +2254,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancel for subscription with params. */
   public CompletableFuture<SubscriptionCancelResponse> cancelAsync(
       String subscriptionId, SubscriptionCancelParams params) {
     String path =
@@ -2214,6 +2270,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancel for subscription without params. */
   public CompletableFuture<SubscriptionCancelResponse> cancelAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -2271,6 +2328,7 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChargeAddonAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of chargeAddonAtTermEnd for subscription with params. */
   public CompletableFuture<SubscriptionChargeAddonAtTermEndResponse> chargeAddonAtTermEndAsync(
       String subscriptionId, SubscriptionChargeAddonAtTermEndParams params) {
     String path =

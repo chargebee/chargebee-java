@@ -87,6 +87,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for item with params. */
   public CompletableFuture<ItemListResponse> listAsync(ItemListParams params) {
 
     return getAsync("/items", params != null ? params.toQueryParams() : null)
@@ -101,6 +102,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for item without params. */
   public CompletableFuture<ItemListResponse> listAsync() {
 
     return getAsync("/items", null)
@@ -127,6 +129,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for item with params. */
   public CompletableFuture<ItemCreateResponse> createAsync(ItemCreateParams params) {
 
     return postAsync("/items", params != null ? params.toFormData() : null)
@@ -145,6 +148,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for item without params. */
   public CompletableFuture<ItemDeleteResponse> deleteAsync(String itemId) {
     String path = buildPathWithParams("/items/{item-id}/delete", "item-id", itemId);
 
@@ -164,6 +168,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for item without params. */
   public CompletableFuture<ItemRetrieveResponse> retrieveAsync(String itemId) {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
 
@@ -196,6 +201,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for item with params. */
   public CompletableFuture<ItemUpdateResponse> updateAsync(String itemId, ItemUpdateParams params) {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
     return postAsync(path, params.toFormData())
@@ -207,6 +213,7 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for item without params. */
   public CompletableFuture<ItemUpdateResponse> updateAsync(String itemId) {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
 

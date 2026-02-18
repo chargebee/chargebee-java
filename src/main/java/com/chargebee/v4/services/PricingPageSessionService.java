@@ -85,6 +85,7 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForExistingSubscription for pricingPageSession with params. */
   public CompletableFuture<PricingPageSessionCreateForExistingSubscriptionResponse>
       createForExistingSubscriptionAsync(
           PricingPageSessionCreateForExistingSubscriptionParams params) {
@@ -127,6 +128,7 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForNewSubscription for pricingPageSession with params. */
   public CompletableFuture<PricingPageSessionCreateForNewSubscriptionResponse>
       createForNewSubscriptionAsync(PricingPageSessionCreateForNewSubscriptionParams params) {
 

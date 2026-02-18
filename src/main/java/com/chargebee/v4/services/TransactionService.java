@@ -113,6 +113,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for transaction with params. */
   public CompletableFuture<TransactionListResponse> listAsync(TransactionListParams params) {
 
     return getAsync("/transactions", params != null ? params.toQueryParams() : null)
@@ -128,6 +129,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for transaction without params. */
   public CompletableFuture<TransactionListResponse> listAsync() {
 
     return getAsync("/transactions", null)
@@ -172,6 +174,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reconcile for transaction with params. */
   public CompletableFuture<TransactionReconcileResponse> reconcileAsync(
       String transactionId, TransactionReconcileParams params) {
     String path =
@@ -188,6 +191,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reconcile for transaction without params. */
   public CompletableFuture<TransactionReconcileResponse> reconcileAsync(String transactionId) {
     String path =
         buildPathWithParams(
@@ -212,6 +216,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for transaction without params. */
   public CompletableFuture<TransactionRetrieveResponse> retrieveAsync(String transactionId) {
     String path =
         buildPathWithParams("/transactions/{transaction-id}", "transaction-id", transactionId);
@@ -253,6 +258,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of refund for transaction with params. */
   public CompletableFuture<TransactionRefundResponse> refundAsync(
       String transactionId, TransactionRefundParams params) {
     String path =
@@ -268,6 +274,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of refund for transaction without params. */
   public CompletableFuture<TransactionRefundResponse> refundAsync(String transactionId) {
     String path =
         buildPathWithParams(
@@ -324,6 +331,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of transactionsForCustomer for transaction with params. */
   public CompletableFuture<TransactionsForCustomerResponse> transactionsForCustomerAsync(
       String customerId, TransactionsForCustomerParams params) {
     String path =
@@ -335,6 +343,7 @@ public final class TransactionService extends BaseService<TransactionService> {
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of transactionsForCustomer for transaction without params. */
   public CompletableFuture<TransactionsForCustomerResponse> transactionsForCustomerAsync(
       String customerId) {
     String path =
@@ -384,6 +393,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of recordRefund for transaction with params. */
   public CompletableFuture<TransactionRecordRefundResponse> recordRefundAsync(
       String transactionId, TransactionRecordRefundParams params) {
     String path =
@@ -444,6 +454,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  /** Async variant of transactionsForSubscription for transaction with params. */
   public CompletableFuture<TransactionsForSubscriptionResponse> transactionsForSubscriptionAsync(
       String subscriptionId, TransactionsForSubscriptionParams params) {
     String path =
@@ -456,6 +467,7 @@ public final class TransactionService extends BaseService<TransactionService> {
                     response.getBodyAsString(), this, params, subscriptionId, response));
   }
 
+  /** Async variant of transactionsForSubscription for transaction without params. */
   public CompletableFuture<TransactionsForSubscriptionResponse> transactionsForSubscriptionAsync(
       String subscriptionId) {
     String path =
@@ -481,6 +493,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return VoidTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of voidTransaction for transaction without params. */
   public CompletableFuture<VoidTransactionResponse> voidTransactionAsync(String transactionId) {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/void", "transaction-id", transactionId);
@@ -503,6 +516,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return SyncTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of syncTransaction for transaction without params. */
   public CompletableFuture<SyncTransactionResponse> syncTransactionAsync(String transactionId) {
     String path =
         buildPathWithParams("/transactions/{transaction-id}/sync", "transaction-id", transactionId);
@@ -538,6 +552,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionCreateAuthorizationResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createAuthorization for transaction with params. */
   public CompletableFuture<TransactionCreateAuthorizationResponse> createAuthorizationAsync(
       TransactionCreateAuthorizationParams params) {
 
@@ -590,6 +605,7 @@ public final class TransactionService extends BaseService<TransactionService> {
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
+  /** Async variant of paymentsForInvoice for transaction with params. */
   public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
       String invoiceId, TransactionPaymentsForInvoiceParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
@@ -600,6 +616,7 @@ public final class TransactionService extends BaseService<TransactionService> {
                     response.getBodyAsString(), this, params, invoiceId, response));
   }
 
+  /** Async variant of paymentsForInvoice for transaction without params. */
   public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
       String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
@@ -655,6 +672,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteOfflineTransaction for transaction with params. */
   public CompletableFuture<DeleteOfflineTransactionResponse> deleteOfflineTransactionAsync(
       String transactionId, DeleteOfflineTransactionParams params) {
     String path =
@@ -674,6 +692,7 @@ public final class TransactionService extends BaseService<TransactionService> {
     return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteOfflineTransaction for transaction without params. */
   public CompletableFuture<DeleteOfflineTransactionResponse> deleteOfflineTransactionAsync(
       String transactionId) {
     String path =

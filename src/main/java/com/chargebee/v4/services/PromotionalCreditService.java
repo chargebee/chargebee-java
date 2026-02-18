@@ -81,6 +81,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for promotionalCredit without params. */
   public CompletableFuture<PromotionalCreditRetrieveResponse> retrieveAsync(
       String accountCreditId) {
     String path =
@@ -123,6 +124,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for promotionalCredit with params. */
   public CompletableFuture<PromotionalCreditListResponse> listAsync(
       PromotionalCreditListParams params) {
 
@@ -139,6 +141,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for promotionalCredit without params. */
   public CompletableFuture<PromotionalCreditListResponse> listAsync() {
 
     return getAsync("/promotional_credits", null)
@@ -173,6 +176,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deduct for promotionalCredit with params. */
   public CompletableFuture<PromotionalCreditDeductResponse> deductAsync(
       PromotionalCreditDeductParams params) {
 
@@ -205,6 +209,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of set for promotionalCredit with params. */
   public CompletableFuture<PromotionalCreditSetResponse> setAsync(
       PromotionalCreditSetParams params) {
 
@@ -237,6 +242,7 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of add for promotionalCredit with params. */
   public CompletableFuture<PromotionalCreditAddResponse> addAsync(
       PromotionalCreditAddParams params) {
 

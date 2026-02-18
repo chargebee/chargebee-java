@@ -93,6 +93,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for couponSet with params. */
   public CompletableFuture<CouponSetListResponse> listAsync(CouponSetListParams params) {
 
     return getAsync("/coupon_sets", params != null ? params.toQueryParams() : null)
@@ -107,6 +108,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for couponSet without params. */
   public CompletableFuture<CouponSetListResponse> listAsync() {
 
     return getAsync("/coupon_sets", null)
@@ -133,6 +135,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for couponSet with params. */
   public CompletableFuture<CouponSetCreateResponse> createAsync(CouponSetCreateParams params) {
 
     return postAsync("/coupon_sets", params != null ? params.toFormData() : null)
@@ -168,6 +171,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for couponSet with params. */
   public CompletableFuture<CouponSetUpdateResponse> updateAsync(
       String couponSetId, CouponSetUpdateParams params) {
     String path =
@@ -182,6 +186,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for couponSet without params. */
   public CompletableFuture<CouponSetUpdateResponse> updateAsync(String couponSetId) {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
@@ -203,6 +208,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for couponSet without params. */
   public CompletableFuture<CouponSetRetrieveResponse> retrieveAsync(String couponSetId) {
     String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
 
@@ -249,6 +255,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addCouponCodes for couponSet with params. */
   public CompletableFuture<CouponSetAddCouponCodesResponse> addCouponCodesAsync(
       String couponSetId, CouponSetAddCouponCodesParams params) {
     String path =
@@ -266,6 +273,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addCouponCodes for couponSet without params. */
   public CompletableFuture<CouponSetAddCouponCodesResponse> addCouponCodesAsync(
       String couponSetId) {
     String path =
@@ -295,6 +303,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetDeleteUnusedCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteUnusedCouponCodes for couponSet without params. */
   public CompletableFuture<CouponSetDeleteUnusedCouponCodesResponse> deleteUnusedCouponCodesAsync(
       String couponSetId) {
     String path =
@@ -323,6 +332,7 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for couponSet without params. */
   public CompletableFuture<CouponSetDeleteResponse> deleteAsync(String couponSetId) {
     String path =
         buildPathWithParams("/coupon_sets/{coupon-set-id}/delete", "coupon-set-id", couponSetId);

@@ -76,6 +76,7 @@ public final class ConfigurationService extends BaseService<ConfigurationService
     return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of list for configuration with params. */
   public CompletableFuture<ConfigurationListResponse> listAsync(ConfigurationListParams params) {
 
     return getAsync("/configurations", params != null ? params.toQueryParams() : null)
@@ -89,6 +90,7 @@ public final class ConfigurationService extends BaseService<ConfigurationService
     return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of list for configuration without params. */
   public CompletableFuture<ConfigurationListResponse> listAsync() {
 
     return getAsync("/configurations", null)

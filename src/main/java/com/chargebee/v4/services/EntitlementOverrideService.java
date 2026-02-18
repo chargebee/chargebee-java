@@ -114,6 +114,9 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  /**
+   * Async variant of listEntitlementOverrideForSubscription for entitlementOverride with params.
+   */
   public CompletableFuture<ListEntitlementOverrideForSubscriptionResponse>
       listEntitlementOverrideForSubscriptionAsync(
           String subscriptionId, ListEntitlementOverrideForSubscriptionParams params) {
@@ -129,6 +132,9 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
                     response.getBodyAsString(), this, params, subscriptionId, response));
   }
 
+  /**
+   * Async variant of listEntitlementOverrideForSubscription for entitlementOverride without params.
+   */
   public CompletableFuture<ListEntitlementOverrideForSubscriptionResponse>
       listEntitlementOverrideForSubscriptionAsync(String subscriptionId) {
     String path =
@@ -195,6 +201,7 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of addEntitlementOverrideForSubscription for entitlementOverride with params. */
   public CompletableFuture<AddEntitlementOverrideForSubscriptionResponse>
       addEntitlementOverrideForSubscriptionAsync(
           String subscriptionId, AddEntitlementOverrideForSubscriptionParams params) {
@@ -217,6 +224,9 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
         response.getBodyAsString(), response);
   }
 
+  /**
+   * Async variant of addEntitlementOverrideForSubscription for entitlementOverride without params.
+   */
   public CompletableFuture<AddEntitlementOverrideForSubscriptionResponse>
       addEntitlementOverrideForSubscriptionAsync(String subscriptionId) {
     String path =

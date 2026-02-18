@@ -135,6 +135,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportCustomersResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of customers for export with params. */
   public CompletableFuture<ExportCustomersResponse> customersAsync(ExportCustomersParams params) {
 
     return postAsync("/exports/customers", params != null ? params.toFormData() : null)
@@ -165,6 +166,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportAttachedItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of attachedItems for export with params. */
   public CompletableFuture<ExportAttachedItemsResponse> attachedItemsAsync(
       ExportAttachedItemsParams params) {
 
@@ -192,6 +194,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportTransactionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of transactions for export with params. */
   public CompletableFuture<ExportTransactionsResponse> transactionsAsync(
       ExportTransactionsParams params) {
 
@@ -225,6 +228,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportDifferentialPricesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of differentialPrices for export with params. */
   public CompletableFuture<ExportDifferentialPricesResponse> differentialPricesAsync(
       ExportDifferentialPricesParams params) {
 
@@ -253,6 +257,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportItemFamiliesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of itemFamilies for export with params. */
   public CompletableFuture<ExportItemFamiliesResponse> itemFamiliesAsync(
       ExportItemFamiliesParams params) {
 
@@ -279,6 +284,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportInvoicesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of invoices for export with params. */
   public CompletableFuture<ExportInvoicesResponse> invoicesAsync(ExportInvoicesParams params) {
 
     return postAsync("/exports/invoices", params != null ? params.toFormData() : null)
@@ -298,6 +304,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for export without params. */
   public CompletableFuture<ExportRetrieveResponse> retrieveAsync(String exportId) {
     String path = buildPathWithParams("/exports/{export-id}", "export-id", exportId);
 
@@ -329,6 +336,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportPriceVariantsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of priceVariants for export with params. */
   public CompletableFuture<ExportPriceVariantsResponse> priceVariantsAsync(
       ExportPriceVariantsParams params) {
 
@@ -355,6 +363,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of items for export with params. */
   public CompletableFuture<ExportItemsResponse> itemsAsync(ExportItemsParams params) {
 
     return postAsync("/exports/items", params != null ? params.toFormData() : null)
@@ -384,6 +393,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportDeferredRevenueResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deferredRevenue for export with params. */
   public CompletableFuture<ExportDeferredRevenueResponse> deferredRevenueAsync(
       ExportDeferredRevenueParams params) {
 
@@ -418,6 +428,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportRevenueRecognitionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of revenueRecognition for export with params. */
   public CompletableFuture<ExportRevenueRecognitionResponse> revenueRecognitionAsync(
       ExportRevenueRecognitionParams params) {
 
@@ -446,6 +457,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportCreditNotesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of creditNotes for export with params. */
   public CompletableFuture<ExportCreditNotesResponse> creditNotesAsync(
       ExportCreditNotesParams params) {
 
@@ -472,6 +484,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of coupons for export with params. */
   public CompletableFuture<ExportCouponsResponse> couponsAsync(ExportCouponsParams params) {
 
     return postAsync("/exports/coupons", params != null ? params.toFormData() : null)
@@ -497,6 +510,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportOrdersResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of orders for export with params. */
   public CompletableFuture<ExportOrdersResponse> ordersAsync(ExportOrdersParams params) {
 
     return postAsync("/exports/orders", params != null ? params.toFormData() : null)
@@ -522,6 +536,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportItemPricesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of itemPrices for export with params. */
   public CompletableFuture<ExportItemPricesResponse> itemPricesAsync(
       ExportItemPricesParams params) {
 
@@ -553,6 +568,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportSubscriptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of subscriptions for export with params. */
   public CompletableFuture<ExportSubscriptionsResponse> subscriptionsAsync(
       ExportSubscriptionsParams params) {
 
@@ -579,6 +595,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportAddonsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addons for export with params. */
   public CompletableFuture<ExportAddonsResponse> addonsAsync(ExportAddonsParams params) {
 
     return postAsync("/exports/addons", params != null ? params.toFormData() : null)
@@ -603,6 +620,7 @@ public final class ExportService extends BaseService<ExportService> {
     return ExportPlansResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of plans for export with params. */
   public CompletableFuture<ExportPlansResponse> plansAsync(ExportPlansParams params) {
 
     return postAsync("/exports/plans", params != null ? params.toFormData() : null)

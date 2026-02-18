@@ -109,6 +109,10 @@ public final class SubscriptionEntitlementService
         response.getBodyAsString(), response);
   }
 
+  /**
+   * Async variant of setSubscriptionEntitlementAvailability for subscriptionEntitlement with
+   * params.
+   */
   public CompletableFuture<SetSubscriptionEntitlementAvailabilityResponse>
       setSubscriptionEntitlementAvailabilityAsync(
           String subscriptionId, SetSubscriptionEntitlementAvailabilityParams params) {
@@ -182,6 +186,10 @@ public final class SubscriptionEntitlementService
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  /**
+   * Async variant of subscriptionEntitlementsForSubscription for subscriptionEntitlement with
+   * params.
+   */
   public CompletableFuture<SubscriptionEntitlementsForSubscriptionResponse>
       subscriptionEntitlementsForSubscriptionAsync(
           String subscriptionId, SubscriptionEntitlementsForSubscriptionParams params) {
@@ -197,6 +205,10 @@ public final class SubscriptionEntitlementService
                     response.getBodyAsString(), this, params, subscriptionId, response));
   }
 
+  /**
+   * Async variant of subscriptionEntitlementsForSubscription for subscriptionEntitlement without
+   * params.
+   */
   public CompletableFuture<SubscriptionEntitlementsForSubscriptionResponse>
       subscriptionEntitlementsForSubscriptionAsync(String subscriptionId) {
     String path =

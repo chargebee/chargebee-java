@@ -70,6 +70,7 @@ public final class UsageFileService extends BaseService<UsageFileService> {
     return UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of processingStatus for usageFile without params. */
   public CompletableFuture<UsageFileProcessingStatusResponse> processingStatusAsync(
       String usageFileId) {
     String path =
@@ -105,6 +106,7 @@ public final class UsageFileService extends BaseService<UsageFileService> {
     return UsageFileUploadUrlResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of uploadUrl for usageFile with params. */
   public CompletableFuture<UsageFileUploadUrlResponse> uploadUrlAsync(
       UsageFileUploadUrlParams params) {
 

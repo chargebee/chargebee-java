@@ -77,6 +77,7 @@ public final class EventService extends BaseService<EventService> {
     return EventListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for event with params. */
   public CompletableFuture<EventListResponse> listAsync(EventListParams params) {
 
     return getAsync("/events", params != null ? params.toQueryParams() : null)
@@ -91,6 +92,7 @@ public final class EventService extends BaseService<EventService> {
     return EventListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for event without params. */
   public CompletableFuture<EventListResponse> listAsync() {
 
     return getAsync("/events", null)
@@ -111,6 +113,7 @@ public final class EventService extends BaseService<EventService> {
     return EventRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for event without params. */
   public CompletableFuture<EventRetrieveResponse> retrieveAsync(String eventId) {
     String path = buildPathWithParams("/events/{event-id}", "event-id", eventId);
 

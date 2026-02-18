@@ -113,6 +113,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for order with params. */
   public CompletableFuture<OrderListResponse> listAsync(OrderListParams params) {
 
     return getAsync("/orders", params != null ? params.toQueryParams() : null)
@@ -127,6 +128,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for order without params. */
   public CompletableFuture<OrderListResponse> listAsync() {
 
     return getAsync("/orders", null)
@@ -153,6 +155,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for order with params. */
   public CompletableFuture<OrderCreateResponse> createAsync(OrderCreateParams params) {
 
     return postAsync("/orders", params != null ? params.toFormData() : null)
@@ -177,6 +180,7 @@ public final class OrderService extends BaseService<OrderService> {
     return ImportOrderResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importOrder for order with params. */
   public CompletableFuture<ImportOrderResponse> importOrderAsync(ImportOrderParams params) {
 
     return postAsync("/orders/import_order", params != null ? params.toFormData() : null)
@@ -196,6 +200,7 @@ public final class OrderService extends BaseService<OrderService> {
     return AssignOrderNumberResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of assignOrderNumber for order without params. */
   public CompletableFuture<AssignOrderNumberResponse> assignOrderNumberAsync(String orderId) {
     String path =
         buildPathWithParams("/orders/{order-id}/assign_order_number", "order-id", orderId);
@@ -230,6 +235,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderResendResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resend for order with params. */
   public CompletableFuture<OrderResendResponse> resendAsync(
       String orderId, OrderResendParams params) {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
@@ -242,6 +248,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderResendResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resend for order without params. */
   public CompletableFuture<OrderResendResponse> resendAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/resend", "order-id", orderId);
 
@@ -274,6 +281,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reopen for order with params. */
   public CompletableFuture<OrderReopenResponse> reopenAsync(
       String orderId, OrderReopenParams params) {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
@@ -286,6 +294,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderReopenResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reopen for order without params. */
   public CompletableFuture<OrderReopenResponse> reopenAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/reopen", "order-id", orderId);
 
@@ -329,6 +338,7 @@ public final class OrderService extends BaseService<OrderService> {
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
+  /** Async variant of ordersForInvoice for order with params. */
   public CompletableFuture<OrdersForInvoiceResponse> ordersForInvoiceAsync(
       String invoiceId, OrdersForInvoiceParams params) {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
@@ -339,6 +349,7 @@ public final class OrderService extends BaseService<OrderService> {
                     response.getBodyAsString(), this, params, invoiceId, response));
   }
 
+  /** Async variant of ordersForInvoice for order without params. */
   public CompletableFuture<OrdersForInvoiceResponse> ordersForInvoiceAsync(String invoiceId) {
     String path = buildPathWithParams("/invoices/{invoice-id}/orders", "invoice-id", invoiceId);
     return getAsync(path, null)
@@ -373,6 +384,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancel for order with params. */
   public CompletableFuture<OrderCancelResponse> cancelAsync(
       String orderId, OrderCancelParams params) {
     String path = buildPathWithParams("/orders/{order-id}/cancel", "order-id", orderId);
@@ -392,6 +404,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for order without params. */
   public CompletableFuture<OrderRetrieveResponse> retrieveAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
@@ -425,6 +438,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for order with params. */
   public CompletableFuture<OrderUpdateResponse> updateAsync(
       String orderId, OrderUpdateParams params) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
@@ -437,6 +451,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for order without params. */
   public CompletableFuture<OrderUpdateResponse> updateAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}", "order-id", orderId);
 
@@ -456,6 +471,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for order without params. */
   public CompletableFuture<OrderDeleteResponse> deleteAsync(String orderId) {
     String path = buildPathWithParams("/orders/{order-id}/delete", "order-id", orderId);
 
@@ -502,6 +518,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createRefundableCreditNote for order with params. */
   public CompletableFuture<OrderCreateRefundableCreditNoteResponse> createRefundableCreditNoteAsync(
       String orderId, OrderCreateRefundableCreditNoteParams params) {
     String path =
@@ -520,6 +537,7 @@ public final class OrderService extends BaseService<OrderService> {
     return OrderCreateRefundableCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createRefundableCreditNote for order without params. */
   public CompletableFuture<OrderCreateRefundableCreditNoteResponse> createRefundableCreditNoteAsync(
       String orderId) {
     String path =

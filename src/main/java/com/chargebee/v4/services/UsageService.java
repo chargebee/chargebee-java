@@ -85,6 +85,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsagePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pdf for usage with params. */
   public CompletableFuture<UsagePdfResponse> pdfAsync(UsagePdfParams params) {
 
     return postAsync("/usages/pdf", params != null ? params.toFormData() : null)
@@ -115,6 +116,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for usage with params. */
   public CompletableFuture<UsageRetrieveResponse> retrieveAsync(
       String subscriptionId, UsageRetrieveParams params) {
     String path =
@@ -130,6 +132,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for usage without params. */
   public CompletableFuture<UsageRetrieveResponse> retrieveAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -171,6 +174,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for usage with params. */
   public CompletableFuture<UsageCreateResponse> createAsync(
       String subscriptionId, UsageCreateParams params) {
     String path =
@@ -211,6 +215,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for usage with params. */
   public CompletableFuture<UsageDeleteResponse> deleteAsync(
       String subscriptionId, UsageDeleteParams params) {
     String path =
@@ -244,6 +249,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for usage with params. */
   public CompletableFuture<UsageListResponse> listAsync(UsageListParams params) {
 
     return getAsync("/usages", params != null ? params.toQueryParams() : null)
@@ -258,6 +264,7 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for usage without params. */
   public CompletableFuture<UsageListResponse> listAsync() {
 
     return getAsync("/usages", null)

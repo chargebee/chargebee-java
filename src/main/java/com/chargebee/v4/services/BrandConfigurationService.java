@@ -83,6 +83,7 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
     return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for brandConfiguration with params. */
   public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync(
       BrandConfigurationRetrieveParams params) {
 
@@ -98,6 +99,7 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
     return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for brandConfiguration without params. */
   public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync() {
 
     return getAsync("/brand_configurations", null)

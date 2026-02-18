@@ -88,6 +88,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return OfferFulfillmentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of offerFulfillments for offerFulfillment with params. */
   public CompletableFuture<OfferFulfillmentsResponse> offerFulfillmentsAsync(
       OfferFulfillmentsParams params) {
 
@@ -116,6 +117,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return OfferFulfillmentsGetResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of offerFulfillmentsGet for offerFulfillment without params. */
   public CompletableFuture<OfferFulfillmentsGetResponse> offerFulfillmentsGetAsync(
       String offerFulfillmentId) {
     String path =
@@ -176,6 +178,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return OfferFulfillmentsUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of offerFulfillmentsUpdate for offerFulfillment with params. */
   public CompletableFuture<OfferFulfillmentsUpdateResponse> offerFulfillmentsUpdateAsync(
       String offerFulfillmentId, OfferFulfillmentsUpdateParams params) {
     String path =

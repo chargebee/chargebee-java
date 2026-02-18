@@ -94,6 +94,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for attachedItem with params. */
   public CompletableFuture<AttachedItemRetrieveResponse> retrieveAsync(
       String attachedItemId, AttachedItemRetrieveParams params) {
     String path =
@@ -110,6 +111,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for attachedItem without params. */
   public CompletableFuture<AttachedItemRetrieveResponse> retrieveAsync(String attachedItemId) {
     String path =
         buildPathWithParams(
@@ -153,6 +155,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for attachedItem with params. */
   public CompletableFuture<AttachedItemUpdateResponse> updateAsync(
       String attachedItemId, AttachedItemUpdateParams params) {
     String path =
@@ -194,6 +197,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         response.getBodyAsString(), this, null, itemId, response);
   }
 
+  /** Async variant of list for attachedItem with params. */
   public CompletableFuture<AttachedItemListResponse> listAsync(
       String itemId, AttachedItemListParams params) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
@@ -204,6 +208,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
                     response.getBodyAsString(), this, params, itemId, response));
   }
 
+  /** Async variant of list for attachedItem without params. */
   public CompletableFuture<AttachedItemListResponse> listAsync(String itemId) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
     return getAsync(path, null)
@@ -238,6 +243,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for attachedItem with params. */
   public CompletableFuture<AttachedItemCreateResponse> createAsync(
       String itemId, AttachedItemCreateParams params) {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
@@ -278,6 +284,7 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for attachedItem with params. */
   public CompletableFuture<AttachedItemDeleteResponse> deleteAsync(
       String attachedItemId, AttachedItemDeleteParams params) {
     String path =

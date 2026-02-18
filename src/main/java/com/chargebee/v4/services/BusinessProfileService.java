@@ -83,6 +83,7 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
     return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for businessProfile with params. */
   public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync(
       BusinessProfileRetrieveParams params) {
 
@@ -98,6 +99,7 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
     return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for businessProfile without params. */
   public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync() {
 
     return getAsync("/business_profiles", null)

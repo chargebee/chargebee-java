@@ -99,6 +99,7 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
     return NonSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of processReceipt for nonSubscription with params. */
   public CompletableFuture<NonSubscriptionProcessReceiptResponse> processReceiptAsync(
       String nonSubscriptionAppId, NonSubscriptionProcessReceiptParams params) {
     String path =

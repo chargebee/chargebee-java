@@ -87,6 +87,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copy for addon with params. */
   public CompletableFuture<AddonCopyResponse> copyAsync(AddonCopyParams params) {
 
     return postAsync("/addons/copy", params != null ? params.toFormData() : null)
@@ -105,6 +106,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of unarchive for addon without params. */
   public CompletableFuture<AddonUnarchiveResponse> unarchiveAsync(String addonId) {
     String path = buildPathWithParams("/addons/{addon-id}/unarchive", "addon-id", addonId);
 
@@ -125,6 +127,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for addon without params. */
   public CompletableFuture<AddonRetrieveResponse> retrieveAsync(String addonId) {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
 
@@ -158,6 +161,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for addon with params. */
   public CompletableFuture<AddonUpdateResponse> updateAsync(
       String addonId, AddonUpdateParams params) {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
@@ -170,6 +174,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for addon without params. */
   public CompletableFuture<AddonUpdateResponse> updateAsync(String addonId) {
     String path = buildPathWithParams("/addons/{addon-id}", "addon-id", addonId);
 
@@ -201,6 +206,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for addon with params. */
   public CompletableFuture<AddonListResponse> listAsync(AddonListParams params) {
 
     return getAsync("/addons", params != null ? params.toQueryParams() : null)
@@ -215,6 +221,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for addon without params. */
   public CompletableFuture<AddonListResponse> listAsync() {
 
     return getAsync("/addons", null)
@@ -241,6 +248,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for addon with params. */
   public CompletableFuture<AddonCreateResponse> createAsync(AddonCreateParams params) {
 
     return postAsync("/addons", params != null ? params.toFormData() : null)
@@ -259,6 +267,7 @@ public final class AddonService extends BaseService<AddonService> {
     return AddonDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for addon without params. */
   public CompletableFuture<AddonDeleteResponse> deleteAsync(String addonId) {
     String path = buildPathWithParams("/addons/{addon-id}/delete", "addon-id", addonId);
 

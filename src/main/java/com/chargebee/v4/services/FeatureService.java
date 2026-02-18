@@ -93,6 +93,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for feature with params. */
   public CompletableFuture<FeatureListResponse> listAsync(FeatureListParams params) {
 
     return getAsync("/features", params != null ? params.toQueryParams() : null)
@@ -107,6 +108,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for feature without params. */
   public CompletableFuture<FeatureListResponse> listAsync() {
 
     return getAsync("/features", null)
@@ -133,6 +135,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for feature with params. */
   public CompletableFuture<FeatureCreateResponse> createAsync(FeatureCreateParams params) {
 
     return postAsync("/features", params != null ? params.toFormData() : null)
@@ -152,6 +155,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for feature without params. */
   public CompletableFuture<FeatureDeleteResponse> deleteAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
 
@@ -172,6 +176,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for feature without params. */
   public CompletableFuture<FeatureRetrieveResponse> retrieveAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
@@ -205,6 +210,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for feature with params. */
   public CompletableFuture<FeatureUpdateResponse> updateAsync(
       String featureId, FeatureUpdateParams params) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
@@ -218,6 +224,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for feature without params. */
   public CompletableFuture<FeatureUpdateResponse> updateAsync(String featureId) {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
 
@@ -239,6 +246,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of archive for feature without params. */
   public CompletableFuture<FeatureArchiveResponse> archiveAsync(String featureId) {
     String path =
         buildPathWithParams("/features/{feature-id}/archive_command", "feature-id", featureId);
@@ -261,6 +269,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of activate for feature without params. */
   public CompletableFuture<FeatureActivateResponse> activateAsync(String featureId) {
     String path =
         buildPathWithParams("/features/{feature-id}/activate_command", "feature-id", featureId);
@@ -283,6 +292,7 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of reactivate for feature without params. */
   public CompletableFuture<FeatureReactivateResponse> reactivateAsync(String featureId) {
     String path =
         buildPathWithParams("/features/{feature-id}/reactivate_command", "feature-id", featureId);

@@ -77,6 +77,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for itemFamily without params. */
   public CompletableFuture<ItemFamilyDeleteResponse> deleteAsync(String itemFamilyId) {
     String path =
         buildPathWithParams(
@@ -111,6 +112,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for itemFamily with params. */
   public CompletableFuture<ItemFamilyListResponse> listAsync(ItemFamilyListParams params) {
 
     return getAsync("/item_families", params != null ? params.toQueryParams() : null)
@@ -126,6 +128,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for itemFamily without params. */
   public CompletableFuture<ItemFamilyListResponse> listAsync() {
 
     return getAsync("/item_families", null)
@@ -152,6 +155,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for itemFamily with params. */
   public CompletableFuture<ItemFamilyCreateResponse> createAsync(ItemFamilyCreateParams params) {
 
     return postAsync("/item_families", params != null ? params.toFormData() : null)
@@ -172,6 +176,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for itemFamily without params. */
   public CompletableFuture<ItemFamilyRetrieveResponse> retrieveAsync(String itemFamilyId) {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
@@ -209,6 +214,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for itemFamily with params. */
   public CompletableFuture<ItemFamilyUpdateResponse> updateAsync(
       String itemFamilyId, ItemFamilyUpdateParams params) {
     String path =
@@ -223,6 +229,7 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for itemFamily without params. */
   public CompletableFuture<ItemFamilyUpdateResponse> updateAsync(String itemFamilyId) {
     String path =
         buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);

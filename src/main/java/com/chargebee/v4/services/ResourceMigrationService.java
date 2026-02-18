@@ -79,6 +79,7 @@ public final class ResourceMigrationService extends BaseService<ResourceMigratio
     return ResourceMigrationRetrieveLatestResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveLatest for resourceMigration with params. */
   public CompletableFuture<ResourceMigrationRetrieveLatestResponse> retrieveLatestAsync(
       ResourceMigrationRetrieveLatestParams params) {
 

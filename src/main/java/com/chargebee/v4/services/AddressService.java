@@ -73,6 +73,7 @@ public final class AddressService extends BaseService<AddressService> {
     return AddressRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for address with params. */
   public CompletableFuture<AddressRetrieveResponse> retrieveAsync(AddressRetrieveParams params) {
 
     return getAsync("/addresses", params != null ? params.toQueryParams() : null)
@@ -98,6 +99,7 @@ public final class AddressService extends BaseService<AddressService> {
     return AddressUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for address with params. */
   public CompletableFuture<AddressUpdateResponse> updateAsync(AddressUpdateParams params) {
 
     return postAsync("/addresses", params != null ? params.toFormData() : null)

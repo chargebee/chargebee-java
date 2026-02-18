@@ -108,6 +108,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of paymentVouchersForCustomer for paymentVoucher with params. */
   public CompletableFuture<PaymentVouchersForCustomerResponse> paymentVouchersForCustomerAsync(
       String customerId, PaymentVouchersForCustomerParams params) {
     String path =
@@ -119,6 +120,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of paymentVouchersForCustomer for paymentVoucher without params. */
   public CompletableFuture<PaymentVouchersForCustomerResponse> paymentVouchersForCustomerAsync(
       String customerId) {
     String path =
@@ -176,6 +178,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
+  /** Async variant of paymentVouchersForInvoice for paymentVoucher with params. */
   public CompletableFuture<PaymentVouchersForInvoiceResponse> paymentVouchersForInvoiceAsync(
       String invoiceId, PaymentVouchersForInvoiceParams params) {
     String path =
@@ -187,6 +190,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
                     response.getBodyAsString(), this, params, invoiceId, response));
   }
 
+  /** Async variant of paymentVouchersForInvoice for paymentVoucher without params. */
   public CompletableFuture<PaymentVouchersForInvoiceResponse> paymentVouchersForInvoiceAsync(
       String invoiceId) {
     String path =
@@ -213,6 +217,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
     return PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for paymentVoucher without params. */
   public CompletableFuture<PaymentVoucherRetrieveResponse> retrieveAsync(String paymentVoucherId) {
     String path =
         buildPathWithParams(
@@ -247,6 +252,7 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
     return PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for paymentVoucher with params. */
   public CompletableFuture<PaymentVoucherCreateResponse> createAsync(
       PaymentVoucherCreateParams params) {
 

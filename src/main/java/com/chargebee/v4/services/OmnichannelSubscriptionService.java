@@ -108,6 +108,7 @@ public final class OmnichannelSubscriptionService
     return OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of move for omnichannelSubscription with params. */
   public CompletableFuture<OmnichannelSubscriptionMoveResponse> moveAsync(
       String omnichannelSubscriptionId, OmnichannelSubscriptionMoveParams params) {
     String path =
@@ -138,6 +139,7 @@ public final class OmnichannelSubscriptionService
     return OmnichannelSubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for omnichannelSubscription without params. */
   public CompletableFuture<OmnichannelSubscriptionRetrieveResponse> retrieveAsync(
       String omnichannelSubscriptionId) {
     String path =
@@ -217,6 +219,10 @@ public final class OmnichannelSubscriptionService
         response.getBodyAsString(), this, null, omnichannelSubscriptionId, response);
   }
 
+  /**
+   * Async variant of omnichannelTransactionsForOmnichannelSubscription for omnichannelSubscription
+   * with params.
+   */
   public CompletableFuture<OmnichannelTransactionsForOmnichannelSubscriptionResponse>
       omnichannelTransactionsForOmnichannelSubscriptionAsync(
           String omnichannelSubscriptionId,
@@ -233,6 +239,10 @@ public final class OmnichannelSubscriptionService
                     response.getBodyAsString(), this, params, omnichannelSubscriptionId, response));
   }
 
+  /**
+   * Async variant of omnichannelTransactionsForOmnichannelSubscription for omnichannelSubscription
+   * without params.
+   */
   public CompletableFuture<OmnichannelTransactionsForOmnichannelSubscriptionResponse>
       omnichannelTransactionsForOmnichannelSubscriptionAsync(String omnichannelSubscriptionId) {
     String path =
@@ -281,6 +291,7 @@ public final class OmnichannelSubscriptionService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for omnichannelSubscription with params. */
   public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync(
       OmnichannelSubscriptionListParams params) {
 
@@ -298,6 +309,7 @@ public final class OmnichannelSubscriptionService
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for omnichannelSubscription without params. */
   public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync() {
 
     return getAsync("/omnichannel_subscriptions", null)

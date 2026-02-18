@@ -71,6 +71,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
     return RecordedPurchaseRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for recordedPurchase without params. */
   public CompletableFuture<RecordedPurchaseRetrieveResponse> retrieveAsync(
       String recordedPurchaseId) {
     String path =
@@ -108,6 +109,7 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
     return RecordedPurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for recordedPurchase with params. */
   public CompletableFuture<RecordedPurchaseCreateResponse> createAsync(
       RecordedPurchaseCreateParams params) {
 

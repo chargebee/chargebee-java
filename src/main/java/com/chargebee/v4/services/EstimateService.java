@@ -152,6 +152,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of renewalEstimate for estimate with params. */
   public CompletableFuture<RenewalEstimateResponse> renewalEstimateAsync(
       String subscriptionId, RenewalEstimateParams params) {
     String path =
@@ -167,6 +168,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of renewalEstimate for estimate without params. */
   public CompletableFuture<RenewalEstimateResponse> renewalEstimateAsync(String subscriptionId) {
     String path =
         buildPathWithParams(
@@ -204,6 +206,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return CreateSubscriptionItemEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionItemEstimate for estimate with params. */
   public CompletableFuture<CreateSubscriptionItemEstimateResponse>
       createSubscriptionItemEstimateAsync(CreateSubscriptionItemEstimateParams params) {
 
@@ -240,6 +243,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of paymentSchedules for estimate with params. */
   public CompletableFuture<EstimatePaymentSchedulesResponse> paymentSchedulesAsync(
       EstimatePaymentSchedulesParams params) {
 
@@ -297,6 +301,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelSubscriptionForItems for estimate with params. */
   public CompletableFuture<EstimateCancelSubscriptionForItemsResponse>
       cancelSubscriptionForItemsAsync(
           String subscriptionId, EstimateCancelSubscriptionForItemsParams params) {
@@ -319,6 +324,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelSubscriptionForItems for estimate without params. */
   public CompletableFuture<EstimateCancelSubscriptionForItemsResponse>
       cancelSubscriptionForItemsAsync(String subscriptionId) {
     String path =
@@ -379,6 +385,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resumeSubscription for estimate with params. */
   public CompletableFuture<EstimateResumeSubscriptionResponse> resumeSubscriptionAsync(
       String subscriptionId, EstimateResumeSubscriptionParams params) {
     String path =
@@ -398,6 +405,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resumeSubscription for estimate without params. */
   public CompletableFuture<EstimateResumeSubscriptionResponse> resumeSubscriptionAsync(
       String subscriptionId) {
     String path =
@@ -438,6 +446,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCreateInvoiceForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createInvoiceForItems for estimate with params. */
   public CompletableFuture<EstimateCreateInvoiceForItemsResponse> createInvoiceForItemsAsync(
       EstimateCreateInvoiceForItemsParams params) {
 
@@ -476,6 +485,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateGiftSubscriptionForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of giftSubscriptionForItems for estimate with params. */
   public CompletableFuture<EstimateGiftSubscriptionForItemsResponse> giftSubscriptionForItemsAsync(
       EstimateGiftSubscriptionForItemsParams params) {
 
@@ -515,6 +525,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateSubscriptionForItems for estimate with params. */
   public CompletableFuture<EstimateUpdateSubscriptionForItemsResponse>
       updateSubscriptionForItemsAsync(EstimateUpdateSubscriptionForItemsParams params) {
 
@@ -541,6 +552,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of upcomingInvoicesEstimate for estimate without params. */
   public CompletableFuture<UpcomingInvoicesEstimateResponse> upcomingInvoicesEstimateAsync(
       String customerId) {
     String path =
@@ -598,6 +610,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of regenerateInvoiceEstimate for estimate with params. */
   public CompletableFuture<RegenerateInvoiceEstimateResponse> regenerateInvoiceEstimateAsync(
       String subscriptionId, RegenerateInvoiceEstimateParams params) {
     String path =
@@ -617,6 +630,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of regenerateInvoiceEstimate for estimate without params. */
   public CompletableFuture<RegenerateInvoiceEstimateResponse> regenerateInvoiceEstimateAsync(
       String subscriptionId) {
     String path =
@@ -684,6 +698,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionItemForCustomerEstimate for estimate with params. */
   public CompletableFuture<CreateSubscriptionItemForCustomerEstimateResponse>
       createSubscriptionItemForCustomerEstimateAsync(
           String customerId, CreateSubscriptionItemForCustomerEstimateParams params) {
@@ -706,6 +721,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionItemForCustomerEstimate for estimate without params. */
   public CompletableFuture<CreateSubscriptionItemForCustomerEstimateResponse>
       createSubscriptionItemForCustomerEstimateAsync(String customerId) {
     String path =
@@ -763,6 +779,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of changeTermEnd for estimate with params. */
   public CompletableFuture<EstimateChangeTermEndResponse> changeTermEndAsync(
       String subscriptionId, EstimateChangeTermEndParams params) {
     String path =
@@ -821,6 +838,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pauseSubscription for estimate with params. */
   public CompletableFuture<EstimatePauseSubscriptionResponse> pauseSubscriptionAsync(
       String subscriptionId, EstimatePauseSubscriptionParams params) {
     String path =
@@ -840,6 +858,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pauseSubscription for estimate without params. */
   public CompletableFuture<EstimatePauseSubscriptionResponse> pauseSubscriptionAsync(
       String subscriptionId) {
     String path =
@@ -899,6 +918,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of advanceInvoiceEstimate for estimate with params. */
   public CompletableFuture<AdvanceInvoiceEstimateResponse> advanceInvoiceEstimateAsync(
       String subscriptionId, AdvanceInvoiceEstimateParams params) {
     String path =
@@ -918,6 +938,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of advanceInvoiceEstimate for estimate without params. */
   public CompletableFuture<AdvanceInvoiceEstimateResponse> advanceInvoiceEstimateAsync(
       String subscriptionId) {
     String path =
@@ -958,6 +979,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateSubscription for estimate with params. */
   public CompletableFuture<EstimateUpdateSubscriptionResponse> updateSubscriptionAsync(
       EstimateUpdateSubscriptionParams params) {
 
@@ -992,6 +1014,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of giftSubscription for estimate with params. */
   public CompletableFuture<EstimateGiftSubscriptionResponse> giftSubscriptionAsync(
       EstimateGiftSubscriptionParams params) {
 
@@ -1033,6 +1056,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionForCustomerEstimate for estimate with params. */
   public CompletableFuture<CreateSubscriptionForCustomerEstimateResponse>
       createSubscriptionForCustomerEstimateAsync(
           String customerId, CreateSubscriptionForCustomerEstimateParams params) {
@@ -1053,6 +1077,7 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionForCustomerEstimate for estimate without params. */
   public CompletableFuture<CreateSubscriptionForCustomerEstimateResponse>
       createSubscriptionForCustomerEstimateAsync(String customerId) {
     String path =
@@ -1092,6 +1117,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscription for estimate with params. */
   public CompletableFuture<EstimateCreateSubscriptionResponse> createSubscriptionAsync(
       EstimateCreateSubscriptionParams params) {
 
@@ -1124,6 +1150,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createInvoice for estimate with params. */
   public CompletableFuture<EstimateCreateInvoiceResponse> createInvoiceAsync(
       EstimateCreateInvoiceParams params) {
 
@@ -1178,6 +1205,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelSubscription for estimate with params. */
   public CompletableFuture<EstimateCancelSubscriptionResponse> cancelSubscriptionAsync(
       String subscriptionId, EstimateCancelSubscriptionParams params) {
     String path =
@@ -1197,6 +1225,7 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of cancelSubscription for estimate without params. */
   public CompletableFuture<EstimateCancelSubscriptionResponse> cancelSubscriptionAsync(
       String subscriptionId) {
     String path =

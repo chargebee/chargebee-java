@@ -133,6 +133,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of recordRefund for creditNote with params. */
   public CompletableFuture<CreditNoteRecordRefundResponse> recordRefundAsync(
       String creditNoteId, CreditNoteRecordRefundParams params) {
     String path =
@@ -150,6 +151,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of recordRefund for creditNote without params. */
   public CompletableFuture<CreditNoteRecordRefundResponse> recordRefundAsync(String creditNoteId) {
     String path =
         buildPathWithParams(
@@ -186,6 +188,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return ImportCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importCreditNote for creditNote with params. */
   public CompletableFuture<ImportCreditNoteResponse> importCreditNoteAsync(
       ImportCreditNoteParams params) {
 
@@ -226,6 +229,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for creditNote with params. */
   public CompletableFuture<CreditNoteDeleteResponse> deleteAsync(
       String creditNoteId, CreditNoteDeleteParams params) {
     String path =
@@ -241,6 +245,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for creditNote without params. */
   public CompletableFuture<CreditNoteDeleteResponse> deleteAsync(String creditNoteId) {
     String path =
         buildPathWithParams(
@@ -297,6 +302,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of creditNotesForCustomer for creditNote with params. */
   public CompletableFuture<CreditNotesForCustomerResponse> creditNotesForCustomerAsync(
       String customerId, CreditNotesForCustomerParams params) {
     String path =
@@ -308,6 +314,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of creditNotesForCustomer for creditNote without params. */
   public CompletableFuture<CreditNotesForCustomerResponse> creditNotesForCustomerAsync(
       String customerId) {
     String path =
@@ -347,6 +354,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pdf for creditNote with params. */
   public CompletableFuture<CreditNotePdfResponse> pdfAsync(
       String creditNoteId, CreditNotePdfParams params) {
     String path =
@@ -361,6 +369,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pdf for creditNote without params. */
   public CompletableFuture<CreditNotePdfResponse> pdfAsync(String creditNoteId) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
@@ -385,6 +394,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteSendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of sendEinvoice for creditNote without params. */
   public CompletableFuture<CreditNoteSendEinvoiceResponse> sendEinvoiceAsync(String creditNoteId) {
     String path =
         buildPathWithParams(
@@ -431,6 +441,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of voidCreditNote for creditNote with params. */
   public CompletableFuture<VoidCreditNoteResponse> voidCreditNoteAsync(
       String creditNoteId, VoidCreditNoteParams params) {
     String path =
@@ -445,6 +456,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of voidCreditNote for creditNote without params. */
   public CompletableFuture<VoidCreditNoteResponse> voidCreditNoteAsync(String creditNoteId) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
@@ -485,6 +497,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of refund for creditNote with params. */
   public CompletableFuture<CreditNoteRefundResponse> refundAsync(
       String creditNoteId, CreditNoteRefundParams params) {
     String path =
@@ -500,6 +513,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of refund for creditNote without params. */
   public CompletableFuture<CreditNoteRefundResponse> refundAsync(String creditNoteId) {
     String path =
         buildPathWithParams(
@@ -534,6 +548,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for creditNote with params. */
   public CompletableFuture<CreditNoteListResponse> listAsync(CreditNoteListParams params) {
 
     return getAsync("/credit_notes", params != null ? params.toQueryParams() : null)
@@ -549,6 +564,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for creditNote without params. */
   public CompletableFuture<CreditNoteListResponse> listAsync() {
 
     return getAsync("/credit_notes", null)
@@ -575,6 +591,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for creditNote with params. */
   public CompletableFuture<CreditNoteCreateResponse> createAsync(CreditNoteCreateParams params) {
 
     return postAsync("/credit_notes", params != null ? params.toFormData() : null)
@@ -597,6 +614,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of downloadEinvoice for creditNote without params. */
   public CompletableFuture<CreditNoteDownloadEinvoiceResponse> downloadEinvoiceAsync(
       String creditNoteId) {
     String path =
@@ -624,6 +642,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteResendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of resendEinvoice for creditNote without params. */
   public CompletableFuture<CreditNoteResendEinvoiceResponse> resendEinvoiceAsync(
       String creditNoteId) {
     String path =
@@ -683,6 +702,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeTaxWithheldRefund for creditNote with params. */
   public CompletableFuture<CreditNoteRemoveTaxWithheldRefundResponse> removeTaxWithheldRefundAsync(
       String creditNoteId, CreditNoteRemoveTaxWithheldRefundParams params) {
     String path =
@@ -703,6 +723,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeTaxWithheldRefund for creditNote without params. */
   public CompletableFuture<CreditNoteRemoveTaxWithheldRefundResponse> removeTaxWithheldRefundAsync(
       String creditNoteId) {
     String path =
@@ -740,6 +761,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for creditNote with params. */
   public CompletableFuture<CreditNoteRetrieveResponse> retrieveAsync(
       String creditNoteId, CreditNoteRetrieveParams params) {
     String path =
@@ -754,6 +776,7 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for creditNote without params. */
   public CompletableFuture<CreditNoteRetrieveResponse> retrieveAsync(String creditNoteId) {
     String path =
         buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);

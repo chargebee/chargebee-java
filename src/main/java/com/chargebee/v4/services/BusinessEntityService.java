@@ -88,6 +88,7 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of getTransfers for businessEntity with params. */
   public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync(
       BusinessEntityGetTransfersParams params) {
 
@@ -105,6 +106,7 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of getTransfers for businessEntity without params. */
   public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync() {
 
     return getAsync("/business_entities/transfers", null)
@@ -140,6 +142,7 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
     return BusinessEntityCreateTransfersResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createTransfers for businessEntity with params. */
   public CompletableFuture<BusinessEntityCreateTransfersResponse> createTransfersAsync(
       BusinessEntityCreateTransfersParams params) {
 

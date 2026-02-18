@@ -75,6 +75,7 @@ public final class RampService extends BaseService<RampService> {
     return RampRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for ramp without params. */
   public CompletableFuture<RampRetrieveResponse> retrieveAsync(String rampId) {
     String path = buildPathWithParams("/ramps/{ramp-id}", "ramp-id", rampId);
 
@@ -121,6 +122,7 @@ public final class RampService extends BaseService<RampService> {
     return RampCreateForSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForSubscription for ramp with params. */
   public CompletableFuture<RampCreateForSubscriptionResponse> createForSubscriptionAsync(
       String subscriptionId, RampCreateForSubscriptionParams params) {
     String path =
@@ -156,6 +158,7 @@ public final class RampService extends BaseService<RampService> {
     return RampListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for ramp with params. */
   public CompletableFuture<RampListResponse> listAsync(RampListParams params) {
 
     return getAsync("/ramps", params != null ? params.toQueryParams() : null)
@@ -170,6 +173,7 @@ public final class RampService extends BaseService<RampService> {
     return RampListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for ramp without params. */
   public CompletableFuture<RampListResponse> listAsync() {
 
     return getAsync("/ramps", null)
@@ -203,6 +207,7 @@ public final class RampService extends BaseService<RampService> {
     return RampUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for ramp with params. */
   public CompletableFuture<RampUpdateResponse> updateAsync(String rampId, RampUpdateParams params) {
     String path = buildPathWithParams("/ramps/{ramp-id}/update", "ramp-id", rampId);
     return postAsync(path, params.toFormData())
@@ -221,6 +226,7 @@ public final class RampService extends BaseService<RampService> {
     return RampDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for ramp without params. */
   public CompletableFuture<RampDeleteResponse> deleteAsync(String rampId) {
     String path = buildPathWithParams("/ramps/{ramp-id}/delete", "ramp-id", rampId);
 

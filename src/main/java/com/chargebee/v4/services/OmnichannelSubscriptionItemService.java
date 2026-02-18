@@ -116,6 +116,10 @@ public final class OmnichannelSubscriptionItemService
         response.getBodyAsString(), this, null, omnichannelSubscriptionItemId, response);
   }
 
+  /**
+   * Async variant of listOmniSubscriptionItemScheduleChanges for omnichannelSubscriptionItem with
+   * params.
+   */
   public CompletableFuture<
           OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse>
       listOmniSubscriptionItemScheduleChangesAsync(
@@ -137,6 +141,10 @@ public final class OmnichannelSubscriptionItemService
                     response));
   }
 
+  /**
+   * Async variant of listOmniSubscriptionItemScheduleChanges for omnichannelSubscriptionItem
+   * without params.
+   */
   public CompletableFuture<
           OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse>
       listOmniSubscriptionItemScheduleChangesAsync(String omnichannelSubscriptionItemId) {

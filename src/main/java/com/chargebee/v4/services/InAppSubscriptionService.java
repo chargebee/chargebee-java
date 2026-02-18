@@ -114,6 +114,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveStoreSubscriptions for inAppSubscription with params. */
   public CompletableFuture<InAppSubscriptionRetrieveStoreSubscriptionsResponse>
       retrieveStoreSubscriptionsAsync(
           String inAppSubscriptionAppId, InAppSubscriptionRetrieveStoreSubscriptionsParams params) {
@@ -176,6 +177,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
     return InAppSubscriptionImportReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of importReceipt for inAppSubscription with params. */
   public CompletableFuture<InAppSubscriptionImportReceiptResponse> importReceiptAsync(
       String inAppSubscriptionAppId, InAppSubscriptionImportReceiptParams params) {
     String path =
@@ -238,6 +240,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of importSubscription for inAppSubscription with params. */
   public CompletableFuture<InAppSubscriptionImportSubscriptionResponse> importSubscriptionAsync(
       String inAppSubscriptionAppId, InAppSubscriptionImportSubscriptionParams params) {
     String path =
@@ -259,6 +262,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of importSubscription for inAppSubscription without params. */
   public CompletableFuture<InAppSubscriptionImportSubscriptionResponse> importSubscriptionAsync(
       String inAppSubscriptionAppId) {
     String path =
@@ -321,6 +325,7 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
     return InAppSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of processReceipt for inAppSubscription with params. */
   public CompletableFuture<InAppSubscriptionProcessReceiptResponse> processReceiptAsync(
       String inAppSubscriptionAppId, InAppSubscriptionProcessReceiptParams params) {
     String path =

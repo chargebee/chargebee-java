@@ -110,6 +110,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
         response.getBodyAsString(), this, null, featureId, response);
   }
 
+  /** Async variant of itemEntitlementsForFeature for itemEntitlement with params. */
   public CompletableFuture<ItemEntitlementsForFeatureResponse> itemEntitlementsForFeatureAsync(
       String featureId, ItemEntitlementsForFeatureParams params) {
     String path =
@@ -121,6 +122,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
                     response.getBodyAsString(), this, params, featureId, response));
   }
 
+  /** Async variant of itemEntitlementsForFeature for itemEntitlement without params. */
   public CompletableFuture<ItemEntitlementsForFeatureResponse> itemEntitlementsForFeatureAsync(
       String featureId) {
     String path =
@@ -167,6 +169,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
     return AddItemEntitlementsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addItemEntitlements for itemEntitlement with params. */
   public CompletableFuture<AddItemEntitlementsResponse> addItemEntitlementsAsync(
       String featureId, AddItemEntitlementsParams params) {
     String path =
@@ -218,6 +221,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
         response.getBodyAsString(), this, null, itemId, response);
   }
 
+  /** Async variant of itemEntitlementsForItem for itemEntitlement with params. */
   public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
       String itemId, ItemEntitlementsForItemParams params) {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
@@ -228,6 +232,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
                     response.getBodyAsString(), this, params, itemId, response));
   }
 
+  /** Async variant of itemEntitlementsForItem for itemEntitlement without params. */
   public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
       String itemId) {
     String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
@@ -275,6 +280,7 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of upsertOrRemoveItemEntitlementsForItem for itemEntitlement with params. */
   public CompletableFuture<UpsertOrRemoveItemEntitlementsForItemResponse>
       upsertOrRemoveItemEntitlementsForItemAsync(
           String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) {

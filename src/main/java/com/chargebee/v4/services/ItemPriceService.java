@@ -83,6 +83,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for itemPrice without params. */
   public CompletableFuture<ItemPriceRetrieveResponse> retrieveAsync(String itemPriceId) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
@@ -116,6 +117,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for itemPrice with params. */
   public CompletableFuture<ItemPriceUpdateResponse> updateAsync(
       String itemPriceId, ItemPriceUpdateParams params) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
@@ -129,6 +131,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for itemPrice without params. */
   public CompletableFuture<ItemPriceUpdateResponse> updateAsync(String itemPriceId) {
     String path = buildPathWithParams("/item_prices/{item-price-id}", "item-price-id", itemPriceId);
 
@@ -150,6 +153,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for itemPrice without params. */
   public CompletableFuture<ItemPriceDeleteResponse> deleteAsync(String itemPriceId) {
     String path =
         buildPathWithParams("/item_prices/{item-price-id}/delete", "item-price-id", itemPriceId);
@@ -208,6 +212,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
         response.getBodyAsString(), this, null, itemPriceId, response);
   }
 
+  /** Async variant of findApplicableItemPrices for itemPrice with params. */
   public CompletableFuture<FindApplicableItemPricesResponse> findApplicableItemPricesAsync(
       String itemPriceId, FindApplicableItemPricesParams params) {
     String path =
@@ -220,6 +225,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
                     response.getBodyAsString(), this, params, itemPriceId, response));
   }
 
+  /** Async variant of findApplicableItemPrices for itemPrice without params. */
   public CompletableFuture<FindApplicableItemPricesResponse> findApplicableItemPricesAsync(
       String itemPriceId) {
     String path =
@@ -280,6 +286,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
         response.getBodyAsString(), this, null, itemPriceId, response);
   }
 
+  /** Async variant of findApplicableItems for itemPrice with params. */
   public CompletableFuture<ItemPriceFindApplicableItemsResponse> findApplicableItemsAsync(
       String itemPriceId, ItemPriceFindApplicableItemsParams params) {
     String path =
@@ -292,6 +299,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
                     response.getBodyAsString(), this, params, itemPriceId, response));
   }
 
+  /** Async variant of findApplicableItems for itemPrice without params. */
   public CompletableFuture<ItemPriceFindApplicableItemsResponse> findApplicableItemsAsync(
       String itemPriceId) {
     String path =
@@ -328,6 +336,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for itemPrice with params. */
   public CompletableFuture<ItemPriceListResponse> listAsync(ItemPriceListParams params) {
 
     return getAsync("/item_prices", params != null ? params.toQueryParams() : null)
@@ -342,6 +351,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for itemPrice without params. */
   public CompletableFuture<ItemPriceListResponse> listAsync() {
 
     return getAsync("/item_prices", null)
@@ -368,6 +378,7 @@ public final class ItemPriceService extends BaseService<ItemPriceService> {
     return ItemPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for itemPrice with params. */
   public CompletableFuture<ItemPriceCreateResponse> createAsync(ItemPriceCreateParams params) {
 
     return postAsync("/item_prices", params != null ? params.toFormData() : null)

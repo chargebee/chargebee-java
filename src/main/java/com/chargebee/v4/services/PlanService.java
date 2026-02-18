@@ -81,6 +81,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of unarchive for plan without params. */
   public CompletableFuture<PlanUnarchiveResponse> unarchiveAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}/unarchive", "plan-id", planId);
 
@@ -101,6 +102,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for plan without params. */
   public CompletableFuture<PlanDeleteResponse> deleteAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}/delete", "plan-id", planId);
 
@@ -126,6 +128,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copy for plan with params. */
   public CompletableFuture<PlanCopyResponse> copyAsync(PlanCopyParams params) {
 
     return postAsync("/plans/copy", params != null ? params.toFormData() : null)
@@ -156,6 +159,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for plan with params. */
   public CompletableFuture<PlanListResponse> listAsync(PlanListParams params) {
 
     return getAsync("/plans", params != null ? params.toQueryParams() : null)
@@ -170,6 +174,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for plan without params. */
   public CompletableFuture<PlanListResponse> listAsync() {
 
     return getAsync("/plans", null)
@@ -196,6 +201,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for plan with params. */
   public CompletableFuture<PlanCreateResponse> createAsync(PlanCreateParams params) {
 
     return postAsync("/plans", params != null ? params.toFormData() : null)
@@ -214,6 +220,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for plan without params. */
   public CompletableFuture<PlanRetrieveResponse> retrieveAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 
@@ -246,6 +253,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for plan with params. */
   public CompletableFuture<PlanUpdateResponse> updateAsync(String planId, PlanUpdateParams params) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
     return postAsync(path, params.toFormData())
@@ -257,6 +265,7 @@ public final class PlanService extends BaseService<PlanService> {
     return PlanUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for plan without params. */
   public CompletableFuture<PlanUpdateResponse> updateAsync(String planId) {
     String path = buildPathWithParams("/plans/{plan-id}", "plan-id", planId);
 

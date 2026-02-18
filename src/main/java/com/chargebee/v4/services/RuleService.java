@@ -61,6 +61,7 @@ public final class RuleService extends BaseService<RuleService> {
     return RuleRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for rule without params. */
   public CompletableFuture<RuleRetrieveResponse> retrieveAsync(String ruleId) {
     String path = buildPathWithParams("/rules/{rule-id}", "rule-id", ruleId);
 

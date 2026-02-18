@@ -103,6 +103,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addSchedule for currency with params. */
   public CompletableFuture<CurrencyAddScheduleResponse> addScheduleAsync(
       String siteCurrencyId, CurrencyAddScheduleParams params) {
     String path =
@@ -131,6 +132,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for currency with params. */
   public CompletableFuture<CurrencyCreateResponse> createAsync(CurrencyCreateParams params) {
 
     return postAsync("/currencies", params != null ? params.toFormData() : null)
@@ -151,6 +153,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for currency without params. */
   public CompletableFuture<CurrencyRetrieveResponse> retrieveAsync(String siteCurrencyId) {
     String path =
         buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
@@ -188,6 +191,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for currency with params. */
   public CompletableFuture<CurrencyUpdateResponse> updateAsync(
       String siteCurrencyId, CurrencyUpdateParams params) {
     String path =
@@ -212,6 +216,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of removeSchedule for currency without params. */
   public CompletableFuture<CurrencyRemoveScheduleResponse> removeScheduleAsync(
       String siteCurrencyId) {
     String path =
@@ -248,6 +253,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for currency with params. */
   public CompletableFuture<CurrencyListResponse> listAsync(CurrencyListParams params) {
 
     return getAsync("/currencies/list", params != null ? params.toQueryParams() : null)
@@ -262,6 +268,7 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for currency without params. */
   public CompletableFuture<CurrencyListResponse> listAsync() {
 
     return getAsync("/currencies/list", null)

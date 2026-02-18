@@ -85,6 +85,7 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
     return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for subscriptionSetting with params. */
   public CompletableFuture<SubscriptionSettingRetrieveResponse> retrieveAsync(
       SubscriptionSettingRetrieveParams params) {
 
@@ -101,6 +102,7 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
     return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for subscriptionSetting without params. */
   public CompletableFuture<SubscriptionSettingRetrieveResponse> retrieveAsync() {
 
     return getAsync("/subscription_settings/retrieve", null)

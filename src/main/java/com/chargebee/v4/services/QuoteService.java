@@ -175,6 +175,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionItemsForCustomerQuote for quote with params. */
   public CompletableFuture<CreateSubscriptionItemsForCustomerQuoteResponse>
       createSubscriptionItemsForCustomerQuoteAsync(
           String customerId, CreateSubscriptionItemsForCustomerQuoteParams params) {
@@ -197,6 +198,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionItemsForCustomerQuote for quote without params. */
   public CompletableFuture<CreateSubscriptionItemsForCustomerQuoteResponse>
       createSubscriptionItemsForCustomerQuoteAsync(String customerId) {
     String path =
@@ -224,6 +226,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for quote without params. */
   public CompletableFuture<QuoteRetrieveResponse> retrieveAsync(String quoteId) {
     String path = buildPathWithParams("/quotes/{quote-id}", "quote-id", quoteId);
 
@@ -279,6 +282,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editCreateSubscriptionCustomerQuoteForItems for quote with params. */
   public CompletableFuture<EditCreateSubscriptionCustomerQuoteForItemsResponse>
       editCreateSubscriptionCustomerQuoteForItemsAsync(
           String quoteId, EditCreateSubscriptionCustomerQuoteForItemsParams params) {
@@ -299,6 +303,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editCreateSubscriptionCustomerQuoteForItems for quote without params. */
   public CompletableFuture<EditCreateSubscriptionCustomerQuoteForItemsResponse>
       editCreateSubscriptionCustomerQuoteForItemsAsync(String quoteId) {
     String path =
@@ -338,6 +343,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteUpdateStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateStatus for quote with params. */
   public CompletableFuture<QuoteUpdateStatusResponse> updateStatusAsync(
       String quoteId, QuoteUpdateStatusParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/update_status", "quote-id", quoteId);
@@ -373,6 +379,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return UpdateSubscriptionQuoteForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateSubscriptionQuoteForItems for quote with params. */
   public CompletableFuture<UpdateSubscriptionQuoteForItemsResponse>
       updateSubscriptionQuoteForItemsAsync(UpdateSubscriptionQuoteForItemsParams params) {
 
@@ -427,6 +434,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), this, null, quoteId, response);
   }
 
+  /** Async variant of quoteLineGroupsForQuote for quote with params. */
   public CompletableFuture<QuoteLineGroupsForQuoteResponse> quoteLineGroupsForQuoteAsync(
       String quoteId, QuoteLineGroupsForQuoteParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
@@ -437,6 +445,7 @@ public final class QuoteService extends BaseService<QuoteService> {
                     response.getBodyAsString(), this, params, quoteId, response));
   }
 
+  /** Async variant of quoteLineGroupsForQuote for quote without params. */
   public CompletableFuture<QuoteLineGroupsForQuoteResponse> quoteLineGroupsForQuoteAsync(
       String quoteId) {
     String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
@@ -477,6 +486,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteExtendExpiryDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of extendExpiryDate for quote with params. */
   public CompletableFuture<QuoteExtendExpiryDateResponse> extendExpiryDateAsync(
       String quoteId, QuoteExtendExpiryDateParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
@@ -525,6 +535,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editForChargeItemsAndCharges for quote with params. */
   public CompletableFuture<QuoteEditForChargeItemsAndChargesResponse>
       editForChargeItemsAndChargesAsync(
           String quoteId, QuoteEditForChargeItemsAndChargesParams params) {
@@ -544,6 +555,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editForChargeItemsAndCharges for quote without params. */
   public CompletableFuture<QuoteEditForChargeItemsAndChargesResponse>
       editForChargeItemsAndChargesAsync(String quoteId) {
     String path =
@@ -597,6 +609,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editUpdateSubscriptionQuoteForItems for quote with params. */
   public CompletableFuture<EditUpdateSubscriptionQuoteForItemsResponse>
       editUpdateSubscriptionQuoteForItemsAsync(
           String quoteId, EditUpdateSubscriptionQuoteForItemsParams params) {
@@ -617,6 +630,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editUpdateSubscriptionQuoteForItems for quote without params. */
   public CompletableFuture<EditUpdateSubscriptionQuoteForItemsResponse>
       editUpdateSubscriptionQuoteForItemsAsync(String quoteId) {
     String path =
@@ -654,6 +668,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for quote with params. */
   public CompletableFuture<QuoteListResponse> listAsync(QuoteListParams params) {
 
     return getAsync("/quotes", params != null ? params.toQueryParams() : null)
@@ -668,6 +683,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for quote without params. */
   public CompletableFuture<QuoteListResponse> listAsync() {
 
     return getAsync("/quotes", null)
@@ -700,6 +716,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pdf for quote with params. */
   public CompletableFuture<QuotePdfResponse> pdfAsync(String quoteId, QuotePdfParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
     return postAsync(path, params.toFormData())
@@ -711,6 +728,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of pdf for quote without params. */
   public CompletableFuture<QuotePdfResponse> pdfAsync(String quoteId) {
     String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
 
@@ -743,6 +761,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of convert for quote with params. */
   public CompletableFuture<QuoteConvertResponse> convertAsync(
       String quoteId, QuoteConvertParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
@@ -755,6 +774,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of convert for quote without params. */
   public CompletableFuture<QuoteConvertResponse> convertAsync(String quoteId) {
     String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
 
@@ -790,6 +810,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForChargeItemsAndCharges for quote with params. */
   public CompletableFuture<QuoteCreateForChargeItemsAndChargesResponse>
       createForChargeItemsAndChargesAsync(QuoteCreateForChargeItemsAndChargesParams params) {
 
@@ -827,6 +848,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for quote with params. */
   public CompletableFuture<QuoteDeleteResponse> deleteAsync(
       String quoteId, QuoteDeleteParams params) {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
@@ -839,6 +861,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for quote without params. */
   public CompletableFuture<QuoteDeleteResponse> deleteAsync(String quoteId) {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
 
@@ -879,6 +902,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editOneTimeQuote for quote with params. */
   public CompletableFuture<EditOneTimeQuoteResponse> editOneTimeQuoteAsync(
       String quoteId, EditOneTimeQuoteParams params) {
     String path =
@@ -893,6 +917,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editOneTimeQuote for quote without params. */
   public CompletableFuture<EditOneTimeQuoteResponse> editOneTimeQuoteAsync(String quoteId) {
     String path =
         buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
@@ -928,6 +953,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return UpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateSubscriptionQuote for quote with params. */
   public CompletableFuture<UpdateSubscriptionQuoteResponse> updateSubscriptionQuoteAsync(
       UpdateSubscriptionQuoteParams params) {
 
@@ -964,6 +990,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteCreateForOnetimeChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForOnetimeCharges for quote with params. */
   public CompletableFuture<QuoteCreateForOnetimeChargesResponse> createForOnetimeChargesAsync(
       QuoteCreateForOnetimeChargesParams params) {
 
@@ -1017,6 +1044,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionForCustomerQuote for quote with params. */
   public CompletableFuture<CreateSubscriptionForCustomerQuoteResponse>
       createSubscriptionForCustomerQuoteAsync(
           String customerId, CreateSubscriptionForCustomerQuoteParams params) {
@@ -1037,6 +1065,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createSubscriptionForCustomerQuote for quote without params. */
   public CompletableFuture<CreateSubscriptionForCustomerQuoteResponse>
       createSubscriptionForCustomerQuoteAsync(String customerId) {
     String path =
@@ -1089,6 +1118,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editUpdateSubscriptionQuote for quote with params. */
   public CompletableFuture<EditUpdateSubscriptionQuoteResponse> editUpdateSubscriptionQuoteAsync(
       String quoteId, EditUpdateSubscriptionQuoteParams params) {
     String path =
@@ -1106,6 +1136,7 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of editUpdateSubscriptionQuote for quote without params. */
   public CompletableFuture<EditUpdateSubscriptionQuoteResponse> editUpdateSubscriptionQuoteAsync(
       String quoteId) {
     String path =
@@ -1162,6 +1193,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editCreateSubscriptionForCustomerQuote for quote with params. */
   public CompletableFuture<EditCreateSubscriptionForCustomerQuoteResponse>
       editCreateSubscriptionForCustomerQuoteAsync(
           String quoteId, EditCreateSubscriptionForCustomerQuoteParams params) {
@@ -1182,6 +1214,7 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of editCreateSubscriptionForCustomerQuote for quote without params. */
   public CompletableFuture<EditCreateSubscriptionForCustomerQuoteResponse>
       editCreateSubscriptionForCustomerQuoteAsync(String quoteId) {
     String path =

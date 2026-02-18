@@ -79,6 +79,7 @@ public final class EntitlementService extends BaseService<EntitlementService> {
     return EntitlementListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for entitlement with params. */
   public CompletableFuture<EntitlementListResponse> listAsync(EntitlementListParams params) {
 
     return getAsync("/entitlements", params != null ? params.toQueryParams() : null)
@@ -94,6 +95,7 @@ public final class EntitlementService extends BaseService<EntitlementService> {
     return EntitlementListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for entitlement without params. */
   public CompletableFuture<EntitlementListResponse> listAsync() {
 
     return getAsync("/entitlements", null)
@@ -121,6 +123,7 @@ public final class EntitlementService extends BaseService<EntitlementService> {
     return EntitlementCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for entitlement with params. */
   public CompletableFuture<EntitlementCreateResponse> createAsync(EntitlementCreateParams params) {
 
     return postAsync("/entitlements", params != null ? params.toFormData() : null)

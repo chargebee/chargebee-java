@@ -101,6 +101,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for coupon with params. */
   public CompletableFuture<CouponListResponse> listAsync(CouponListParams params) {
 
     return getAsync("/coupons", params != null ? params.toQueryParams() : null)
@@ -115,6 +116,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for coupon without params. */
   public CompletableFuture<CouponListResponse> listAsync() {
 
     return getAsync("/coupons", null)
@@ -141,6 +143,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for coupon with params. */
   public CompletableFuture<CouponCreateResponse> createAsync(CouponCreateParams params) {
 
     return postAsync("/coupons", params != null ? params.toFormData() : null)
@@ -180,6 +183,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateForItems for coupon with params. */
   public CompletableFuture<CouponUpdateForItemsResponse> updateForItemsAsync(
       String couponId, CouponUpdateForItemsParams params) {
     String path =
@@ -195,6 +199,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateForItems for coupon without params. */
   public CompletableFuture<CouponUpdateForItemsResponse> updateForItemsAsync(String couponId) {
     String path =
         buildPathWithParams("/coupons/{coupon-id}/update_for_items", "coupon-id", couponId);
@@ -217,6 +222,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of unarchive for coupon without params. */
   public CompletableFuture<CouponUnarchiveResponse> unarchiveAsync(String couponId) {
     String path = buildPathWithParams("/coupons/{coupon-id}/unarchive", "coupon-id", couponId);
 
@@ -237,6 +243,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for coupon without params. */
   public CompletableFuture<CouponDeleteResponse> deleteAsync(String couponId) {
     String path = buildPathWithParams("/coupons/{coupon-id}/delete", "coupon-id", couponId);
 
@@ -262,6 +269,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copy for coupon with params. */
   public CompletableFuture<CouponCopyResponse> copyAsync(CouponCopyParams params) {
 
     return postAsync("/coupons/copy", params != null ? params.toFormData() : null)
@@ -280,6 +288,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for coupon without params. */
   public CompletableFuture<CouponRetrieveResponse> retrieveAsync(String couponId) {
     String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
 
@@ -313,6 +322,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for coupon with params. */
   public CompletableFuture<CouponUpdateResponse> updateAsync(
       String couponId, CouponUpdateParams params) {
     String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
@@ -325,6 +335,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for coupon without params. */
   public CompletableFuture<CouponUpdateResponse> updateAsync(String couponId) {
     String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
 
@@ -355,6 +366,7 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForItems for coupon with params. */
   public CompletableFuture<CouponCreateForItemsResponse> createForItemsAsync(
       CouponCreateForItemsParams params) {
 

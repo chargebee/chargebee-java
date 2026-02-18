@@ -86,6 +86,7 @@ public final class UnbilledChargesSettingService
     return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for unbilledChargesSetting with params. */
   public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync(
       UnbilledChargesSettingRetrieveParams params) {
 
@@ -102,6 +103,7 @@ public final class UnbilledChargesSettingService
     return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for unbilledChargesSetting without params. */
   public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync() {
 
     return getAsync("/unbilled_charges_settings", null)

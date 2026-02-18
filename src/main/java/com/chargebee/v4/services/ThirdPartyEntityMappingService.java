@@ -93,6 +93,7 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveEntity for thirdPartyEntityMapping with params. */
   public CompletableFuture<ThirdPartyEntityMappingRetrieveEntityResponse> retrieveEntityAsync(
       ThirdPartyEntityMappingRetrieveEntityParams params) {
 
@@ -130,6 +131,7 @@ public final class ThirdPartyEntityMappingService
     return ThirdPartyEntityMappingListAllResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of listAll for thirdPartyEntityMapping with params. */
   public CompletableFuture<ThirdPartyEntityMappingListAllResponse> listAllAsync(
       ThirdPartyEntityMappingListAllParams params) {
 
@@ -169,6 +171,7 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateEntity for thirdPartyEntityMapping with params. */
   public CompletableFuture<ThirdPartyEntityMappingUpdateEntityResponse> updateEntityAsync(
       ThirdPartyEntityMappingUpdateEntityParams params) {
 
@@ -215,6 +218,7 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for thirdPartyEntityMapping with params. */
   public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync(
       ThirdPartyEntityMappingListParams params) {
 
@@ -232,6 +236,7 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for thirdPartyEntityMapping without params. */
   public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync() {
 
     return getAsync("/third_party_entity_mappings", null)

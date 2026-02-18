@@ -102,6 +102,7 @@ public final class VariantService extends BaseService<VariantService> {
         response.getBodyAsString(), this, null, productId, response);
   }
 
+  /** Async variant of listProductVariants for variant with params. */
   public CompletableFuture<ListProductVariantsResponse> listProductVariantsAsync(
       String productId, ListProductVariantsParams params) {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
@@ -112,6 +113,7 @@ public final class VariantService extends BaseService<VariantService> {
                     response.getBodyAsString(), this, params, productId, response));
   }
 
+  /** Async variant of listProductVariants for variant without params. */
   public CompletableFuture<ListProductVariantsResponse> listProductVariantsAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
     return getAsync(path, null)
@@ -153,6 +155,7 @@ public final class VariantService extends BaseService<VariantService> {
     return CreateProductVariantResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createProductVariant for variant with params. */
   public CompletableFuture<CreateProductVariantResponse> createProductVariantAsync(
       String productId, CreateProductVariantParams params) {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
@@ -176,6 +179,7 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for variant without params. */
   public CompletableFuture<VariantRetrieveResponse> retrieveAsync(String productVariantId) {
     String path =
         buildPathWithParams(
@@ -218,6 +222,7 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for variant with params. */
   public CompletableFuture<VariantUpdateResponse> updateAsync(
       String productVariantId, VariantUpdateParams params) {
     String path =
@@ -233,6 +238,7 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for variant without params. */
   public CompletableFuture<VariantUpdateResponse> updateAsync(String productVariantId) {
     String path =
         buildPathWithParams(
@@ -257,6 +263,7 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for variant without params. */
   public CompletableFuture<VariantDeleteResponse> deleteAsync(String productVariantId) {
     String path =
         buildPathWithParams(

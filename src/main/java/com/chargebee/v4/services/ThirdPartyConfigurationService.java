@@ -90,6 +90,7 @@ public final class ThirdPartyConfigurationService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of configurations for thirdPartyConfiguration with params. */
   public CompletableFuture<ThirdPartyConfigurationConfigurationsResponse> configurationsAsync(
       ThirdPartyConfigurationConfigurationsParams params) {
 
@@ -127,6 +128,7 @@ public final class ThirdPartyConfigurationService
     return ThirdPartyConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for thirdPartyConfiguration with params. */
   public CompletableFuture<ThirdPartyConfigurationRetrieveResponse> retrieveAsync(
       ThirdPartyConfigurationRetrieveParams params) {
 
@@ -162,6 +164,7 @@ public final class ThirdPartyConfigurationService
     return ThirdPartyConfigurationUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for thirdPartyConfiguration with params. */
   public CompletableFuture<ThirdPartyConfigurationUpdateResponse> updateAsync(
       ThirdPartyConfigurationUpdateParams params) {
 

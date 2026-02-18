@@ -85,6 +85,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemRetrieveResponse> retrieveAsync(
       String pc2MigrationItemId) {
     String path =
@@ -141,6 +142,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for pc2MigrationItem with params. */
   public CompletableFuture<Pc2MigrationItemUpdateResponse> updateAsync(
       String pc2MigrationItemId, Pc2MigrationItemUpdateParams params) {
     String path =
@@ -160,6 +162,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemUpdateResponse> updateAsync(String pc2MigrationItemId) {
     String path =
         buildPathWithParams(
@@ -190,6 +193,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemDeleteResponse> deleteAsync(String pc2MigrationItemId) {
     String path =
         buildPathWithParams(
@@ -233,6 +237,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for pc2MigrationItem with params. */
   public CompletableFuture<Pc2MigrationItemListResponse> listAsync(
       Pc2MigrationItemListParams params) {
 
@@ -249,6 +254,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemListResponse> listAsync() {
 
     return getAsync("/pc2_migration_items", null)
@@ -281,6 +287,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
     return Pc2MigrationItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for pc2MigrationItem with params. */
   public CompletableFuture<Pc2MigrationItemCreateResponse> createAsync(
       Pc2MigrationItemCreateParams params) {
 
@@ -327,6 +334,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of listApplicableAddons for pc2MigrationItem with params. */
   public CompletableFuture<Pc2MigrationItemListApplicableAddonsResponse> listApplicableAddonsAsync(
       Pc2MigrationItemListApplicableAddonsParams params) {
 
@@ -346,6 +354,7 @@ public final class Pc2MigrationItemService extends BaseService<Pc2MigrationItemS
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of listApplicableAddons for pc2MigrationItem without params. */
   public CompletableFuture<Pc2MigrationItemListApplicableAddonsResponse>
       listApplicableAddonsAsync() {
 

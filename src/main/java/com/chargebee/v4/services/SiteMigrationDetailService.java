@@ -84,6 +84,7 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for siteMigrationDetail with params. */
   public CompletableFuture<SiteMigrationDetailListResponse> listAsync(
       SiteMigrationDetailListParams params) {
 
@@ -101,6 +102,7 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for siteMigrationDetail without params. */
   public CompletableFuture<SiteMigrationDetailListResponse> listAsync() {
 
     return getAsync("/site_migration_details", null)

@@ -83,6 +83,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for portalSession with params. */
   public CompletableFuture<PortalSessionCreateResponse> createAsync(
       PortalSessionCreateParams params) {
 
@@ -127,6 +128,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of activate for portalSession with params. */
   public CompletableFuture<PortalSessionActivateResponse> activateAsync(
       String portalSessionId, PortalSessionActivateParams params) {
     String path =
@@ -152,6 +154,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionLogoutResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of logout for portalSession without params. */
   public CompletableFuture<PortalSessionLogoutResponse> logoutAsync(String portalSessionId) {
     String path =
         buildPathWithParams(
@@ -176,6 +179,7 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for portalSession without params. */
   public CompletableFuture<PortalSessionRetrieveResponse> retrieveAsync(String portalSessionId) {
     String path =
         buildPathWithParams(

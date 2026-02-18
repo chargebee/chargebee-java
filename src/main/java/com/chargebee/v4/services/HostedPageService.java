@@ -158,6 +158,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutOneTimeForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutOneTimeForItems for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutOneTimeForItemsResponse> checkoutOneTimeForItemsAsync(
       HostedPageCheckoutOneTimeForItemsParams params) {
 
@@ -196,6 +197,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updatePaymentMethod for hostedPage with params. */
   public CompletableFuture<HostedPageUpdatePaymentMethodResponse> updatePaymentMethodAsync(
       HostedPageUpdatePaymentMethodParams params) {
 
@@ -230,6 +232,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateCard for hostedPage with params. */
   public CompletableFuture<HostedPageUpdateCardResponse> updateCardAsync(
       HostedPageUpdateCardParams params) {
 
@@ -265,6 +268,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageExtendSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of extendSubscription for hostedPage with params. */
   public CompletableFuture<HostedPageExtendSubscriptionResponse> extendSubscriptionAsync(
       HostedPageExtendSubscriptionParams params) {
 
@@ -294,6 +298,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageEventsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of events for hostedPage with params. */
   public CompletableFuture<HostedPageEventsResponse> eventsAsync(HostedPageEventsParams params) {
 
     return postAsync("/hosted_pages/events", params != null ? params.toFormData() : null)
@@ -328,6 +333,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutGiftForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutGiftForItems for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutGiftForItemsResponse> checkoutGiftForItemsAsync(
       HostedPageCheckoutGiftForItemsParams params) {
 
@@ -363,6 +369,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for hostedPage with params. */
   public CompletableFuture<HostedPageListResponse> listAsync(HostedPageListParams params) {
 
     return getAsync("/hosted_pages", params != null ? params.toQueryParams() : null)
@@ -378,6 +385,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for hostedPage without params. */
   public CompletableFuture<HostedPageListResponse> listAsync() {
 
     return getAsync("/hosted_pages", null)
@@ -409,6 +417,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of viewVoucher for hostedPage with params. */
   public CompletableFuture<HostedPageViewVoucherResponse> viewVoucherAsync(
       HostedPageViewVoucherParams params) {
 
@@ -441,6 +450,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of collectNow for hostedPage with params. */
   public CompletableFuture<HostedPageCollectNowResponse> collectNowAsync(
       HostedPageCollectNowParams params) {
 
@@ -473,6 +483,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of acceptQuote for hostedPage with params. */
   public CompletableFuture<HostedPageAcceptQuoteResponse> acceptQuoteAsync(
       HostedPageAcceptQuoteParams params) {
 
@@ -509,6 +520,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutNewForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutNewForItems for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutNewForItemsResponse> checkoutNewForItemsAsync(
       HostedPageCheckoutNewForItemsParams params) {
 
@@ -543,6 +555,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of claimGift for hostedPage with params. */
   public CompletableFuture<HostedPageClaimGiftResponse> claimGiftAsync(
       HostedPageClaimGiftParams params) {
 
@@ -579,6 +592,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutExistingForItems for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutExistingForItemsResponse>
       checkoutExistingForItemsAsync(HostedPageCheckoutExistingForItemsParams params) {
 
@@ -614,6 +628,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of preCancel for hostedPage with params. */
   public CompletableFuture<HostedPagePreCancelResponse> preCancelAsync(
       HostedPagePreCancelParams params) {
 
@@ -636,6 +651,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of acknowledge for hostedPage without params. */
   public CompletableFuture<HostedPageAcknowledgeResponse> acknowledgeAsync(String hostedPageId) {
     String path =
         buildPathWithParams(
@@ -674,6 +690,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageRetrieveAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveAgreementPdf for hostedPage with params. */
   public CompletableFuture<HostedPageRetrieveAgreementPdfResponse> retrieveAgreementPdfAsync(
       HostedPageRetrieveAgreementPdfParams params) {
 
@@ -698,6 +715,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for hostedPage without params. */
   public CompletableFuture<HostedPageRetrieveResponse> retrieveAsync(String hostedPageId) {
     String path =
         buildPathWithParams("/hosted_pages/{hosted-page-id}", "hosted-page-id", hostedPageId);
@@ -734,6 +752,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageManagePaymentSourcesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of managePaymentSources for hostedPage with params. */
   public CompletableFuture<HostedPageManagePaymentSourcesResponse> managePaymentSourcesAsync(
       HostedPageManagePaymentSourcesParams params) {
 
@@ -770,6 +789,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutOneTime for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutOneTimeResponse> checkoutOneTimeAsync(
       HostedPageCheckoutOneTimeParams params) {
 
@@ -802,6 +822,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutNew for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutNewResponse> checkoutNewAsync(
       HostedPageCheckoutNewParams params) {
 
@@ -834,6 +855,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutGift for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutGiftResponse> checkoutGiftAsync(
       HostedPageCheckoutGiftParams params) {
 
@@ -868,6 +890,7 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutExisting for hostedPage with params. */
   public CompletableFuture<HostedPageCheckoutExistingResponse> checkoutExistingAsync(
       HostedPageCheckoutExistingParams params) {
 

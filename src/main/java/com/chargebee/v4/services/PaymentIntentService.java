@@ -72,6 +72,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for paymentIntent without params. */
   public CompletableFuture<PaymentIntentRetrieveResponse> retrieveAsync(String paymentIntentId) {
     String path =
         buildPathWithParams(
@@ -119,6 +120,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for paymentIntent with params. */
   public CompletableFuture<PaymentIntentUpdateResponse> updateAsync(
       String paymentIntentId, PaymentIntentUpdateParams params) {
     String path =
@@ -134,6 +136,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for paymentIntent without params. */
   public CompletableFuture<PaymentIntentUpdateResponse> updateAsync(String paymentIntentId) {
     String path =
         buildPathWithParams(
@@ -167,6 +170,7 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for paymentIntent with params. */
   public CompletableFuture<PaymentIntentCreateResponse> createAsync(
       PaymentIntentCreateParams params) {
 

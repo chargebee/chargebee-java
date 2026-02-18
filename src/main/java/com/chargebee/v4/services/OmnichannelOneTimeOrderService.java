@@ -89,6 +89,7 @@ public final class OmnichannelOneTimeOrderService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for omnichannelOneTimeOrder with params. */
   public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync(
       OmnichannelOneTimeOrderListParams params) {
 
@@ -106,6 +107,7 @@ public final class OmnichannelOneTimeOrderService
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for omnichannelOneTimeOrder without params. */
   public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync() {
 
     return getAsync("/omnichannel_one_time_orders", null)
@@ -132,6 +134,7 @@ public final class OmnichannelOneTimeOrderService
     return OmnichannelOneTimeOrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for omnichannelOneTimeOrder without params. */
   public CompletableFuture<OmnichannelOneTimeOrderRetrieveResponse> retrieveAsync(
       String omnichannelOneTimeOrderId) {
     String path =

@@ -98,6 +98,7 @@ public final class CardService extends BaseService<CardService> {
     return CopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copyCardForCustomer for card with params. */
   public CompletableFuture<CopyCardForCustomerResponse> copyCardForCustomerAsync(
       String customerId, CopyCardForCustomerParams params) {
     String path =
@@ -119,6 +120,7 @@ public final class CardService extends BaseService<CardService> {
     return CardRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for card without params. */
   public CompletableFuture<CardRetrieveResponse> retrieveAsync(String customerId) {
     String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
 
@@ -162,6 +164,7 @@ public final class CardService extends BaseService<CardService> {
     return CardSwitchGatewayForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of switchGatewayForCustomer for card with params. */
   public CompletableFuture<CardSwitchGatewayForCustomerResponse> switchGatewayForCustomerAsync(
       String customerId, CardSwitchGatewayForCustomerParams params) {
     String path =
@@ -187,6 +190,7 @@ public final class CardService extends BaseService<CardService> {
     return DeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteCardForCustomer for card without params. */
   public CompletableFuture<DeleteCardForCustomerResponse> deleteCardForCustomerAsync(
       String customerId) {
     String path =
@@ -234,6 +238,7 @@ public final class CardService extends BaseService<CardService> {
     return UpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateCardForCustomer for card with params. */
   public CompletableFuture<UpdateCardForCustomerResponse> updateCardForCustomerAsync(
       String customerId, UpdateCardForCustomerParams params) {
     String path =

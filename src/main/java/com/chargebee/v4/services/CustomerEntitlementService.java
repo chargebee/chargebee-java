@@ -103,6 +103,7 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of entitlementsForCustomer for customerEntitlement with params. */
   public CompletableFuture<CustomerEntitlementEntitlementsForCustomerResponse>
       entitlementsForCustomerAsync(
           String customerId, CustomerEntitlementEntitlementsForCustomerParams params) {
@@ -116,6 +117,7 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of entitlementsForCustomer for customerEntitlement without params. */
   public CompletableFuture<CustomerEntitlementEntitlementsForCustomerResponse>
       entitlementsForCustomerAsync(String customerId) {
     String path =

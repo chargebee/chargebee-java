@@ -78,6 +78,7 @@ public final class UsageEventService extends BaseService<UsageEventService> {
     return UsageEventCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for usageEvent with params. */
   public CompletableFuture<UsageEventCreateResponse> createAsync(UsageEventCreateParams params) {
 
     return postJsonWithSubDomainAsync(
@@ -114,6 +115,7 @@ public final class UsageEventService extends BaseService<UsageEventService> {
     return UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of batchIngest for usageEvent with params. */
   public CompletableFuture<UsageEventBatchIngestResponse> batchIngestAsync(
       UsageEventBatchIngestParams params) {
 

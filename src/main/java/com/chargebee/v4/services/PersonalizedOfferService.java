@@ -82,6 +82,7 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
     return PersonalizedOffersResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of personalizedOffers for personalizedOffer with params. */
   public CompletableFuture<PersonalizedOffersResponse> personalizedOffersAsync(
       PersonalizedOffersParams params) {
 

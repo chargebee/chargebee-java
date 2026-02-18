@@ -69,6 +69,7 @@ public final class FullExportService extends BaseService<FullExportService> {
     return FullExportStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of status for fullExport with params. */
   public CompletableFuture<FullExportStatusResponse> statusAsync(FullExportStatusParams params) {
 
     return getAsync("/full_exports/status", params != null ? params.toQueryParams() : null)

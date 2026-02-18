@@ -73,6 +73,7 @@ public final class PurchaseService extends BaseService<PurchaseService> {
     return PurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for purchase with params. */
   public CompletableFuture<PurchaseCreateResponse> createAsync(PurchaseCreateParams params) {
 
     return postAsync("/purchases", params != null ? params.toFormData() : null)
@@ -99,6 +100,7 @@ public final class PurchaseService extends BaseService<PurchaseService> {
     return PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of estimate for purchase with params. */
   public CompletableFuture<PurchaseEstimateResponse> estimateAsync(PurchaseEstimateParams params) {
 
     return postAsync("/purchases/estimate", params != null ? params.toFormData() : null)

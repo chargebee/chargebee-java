@@ -84,6 +84,7 @@ public final class MediaService extends BaseService<MediaService> {
     return CreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createMediaAndAttachToItem for media with params. */
   public CompletableFuture<CreateMediaAndAttachToItemResponse> createMediaAndAttachToItemAsync(
       String itemId, CreateMediaAndAttachToItemParams params) {
     String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);

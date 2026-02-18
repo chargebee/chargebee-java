@@ -79,6 +79,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for product without params. */
   public CompletableFuture<ProductRetrieveResponse> retrieveAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
@@ -112,6 +113,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for product with params. */
   public CompletableFuture<ProductUpdateResponse> updateAsync(
       String productId, ProductUpdateParams params) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
@@ -125,6 +127,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for product without params. */
   public CompletableFuture<ProductUpdateResponse> updateAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
 
@@ -145,6 +148,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for product without params. */
   public CompletableFuture<ProductDeleteResponse> deleteAsync(String productId) {
     String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
 
@@ -186,6 +190,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateOptions for product with params. */
   public CompletableFuture<ProductUpdateOptionsResponse> updateOptionsAsync(
       String productId, ProductUpdateOptionsParams params) {
     String path =
@@ -201,6 +206,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateOptions for product without params. */
   public CompletableFuture<ProductUpdateOptionsResponse> updateOptionsAsync(String productId) {
     String path =
         buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
@@ -235,6 +241,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for product with params. */
   public CompletableFuture<ProductListResponse> listAsync(ProductListParams params) {
 
     return getAsync("/products", params != null ? params.toQueryParams() : null)
@@ -249,6 +256,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for product without params. */
   public CompletableFuture<ProductListResponse> listAsync() {
 
     return getAsync("/products", null)
@@ -275,6 +283,7 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for product with params. */
   public CompletableFuture<ProductCreateResponse> createAsync(ProductCreateParams params) {
 
     return postAsync("/products", params != null ? params.toFormData() : null)

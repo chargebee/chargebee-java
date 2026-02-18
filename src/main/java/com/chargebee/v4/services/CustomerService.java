@@ -170,6 +170,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for customer with params. */
   public CompletableFuture<CustomerDeleteResponse> deleteAsync(
       String customerId, CustomerDeleteParams params) {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
@@ -183,6 +184,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for customer without params. */
   public CompletableFuture<CustomerDeleteResponse> deleteAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
 
@@ -230,6 +232,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAddPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addPromotionalCredits for customer with params. */
   public CompletableFuture<CustomerAddPromotionalCreditsResponse> addPromotionalCreditsAsync(
       String customerId, CustomerAddPromotionalCreditsParams params) {
     String path =
@@ -275,6 +278,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of relationships for customer with params. */
   public CompletableFuture<CustomerRelationshipsResponse> relationshipsAsync(
       String customerId, CustomerRelationshipsParams params) {
     String path =
@@ -290,6 +294,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of relationships for customer without params. */
   public CompletableFuture<CustomerRelationshipsResponse> relationshipsAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
@@ -315,6 +320,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteRelationship for customer without params. */
   public CompletableFuture<CustomerDeleteRelationshipResponse> deleteRelationshipAsync(
       String customerId) {
     String path =
@@ -360,6 +366,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteContact for customer with params. */
   public CompletableFuture<CustomerDeleteContactResponse> deleteContactAsync(
       String customerId, CustomerDeleteContactParams params) {
     String path =
@@ -375,6 +382,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteContact for customer without params. */
   public CompletableFuture<CustomerDeleteContactResponse> deleteContactAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
@@ -423,6 +431,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of assignPaymentRole for customer with params. */
   public CompletableFuture<CustomerAssignPaymentRoleResponse> assignPaymentRoleAsync(
       String customerId, CustomerAssignPaymentRoleParams params) {
     String path =
@@ -452,6 +461,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of move for customer with params. */
   public CompletableFuture<CustomerMoveResponse> moveAsync(CustomerMoveParams params) {
 
     return postAsync("/customers/move", params != null ? params.toFormData() : null)
@@ -480,6 +490,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of hierarchy for customer with params. */
   public CompletableFuture<CustomerHierarchyResponse> hierarchyAsync(
       String customerId, CustomerHierarchyParams params) {
     String path =
@@ -494,6 +505,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of hierarchy for customer without params. */
   public CompletableFuture<CustomerHierarchyResponse> hierarchyAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
@@ -541,6 +553,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updatePaymentMethod for customer with params. */
   public CompletableFuture<CustomerUpdatePaymentMethodResponse> updatePaymentMethodAsync(
       String customerId, CustomerUpdatePaymentMethodParams params) {
     String path =
@@ -558,6 +571,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updatePaymentMethod for customer without params. */
   public CompletableFuture<CustomerUpdatePaymentMethodResponse> updatePaymentMethodAsync(
       String customerId) {
     String path =
@@ -582,6 +596,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for customer without params. */
   public CompletableFuture<CustomerRetrieveResponse> retrieveAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
@@ -615,6 +630,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for customer with params. */
   public CompletableFuture<CustomerUpdateResponse> updateAsync(
       String customerId, CustomerUpdateParams params) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
@@ -628,6 +644,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for customer without params. */
   public CompletableFuture<CustomerUpdateResponse> updateAsync(String customerId) {
     String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
 
@@ -680,6 +697,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of listHierarchyDetail for customer with params. */
   public CompletableFuture<CustomerListHierarchyDetailResponse> listHierarchyDetailAsync(
       String customerId, CustomerListHierarchyDetailParams params) {
     String path =
@@ -691,6 +709,7 @@ public final class CustomerService extends BaseService<CustomerService> {
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of listHierarchyDetail for customer without params. */
   public CompletableFuture<CustomerListHierarchyDetailResponse> listHierarchyDetailAsync(
       String customerId) {
     String path =
@@ -740,6 +759,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of changeBillingDate for customer with params. */
   public CompletableFuture<CustomerChangeBillingDateResponse> changeBillingDateAsync(
       String customerId, CustomerChangeBillingDateParams params) {
     String path =
@@ -757,6 +777,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of changeBillingDate for customer without params. */
   public CompletableFuture<CustomerChangeBillingDateResponse> changeBillingDateAsync(
       String customerId) {
     String path =
@@ -793,6 +814,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for customer with params. */
   public CompletableFuture<CustomerListResponse> listAsync(CustomerListParams params) {
 
     return getAsync("/customers", params != null ? params.toQueryParams() : null)
@@ -807,6 +829,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for customer without params. */
   public CompletableFuture<CustomerListResponse> listAsync() {
 
     return getAsync("/customers", null)
@@ -833,6 +856,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for customer with params. */
   public CompletableFuture<CustomerCreateResponse> createAsync(CustomerCreateParams params) {
 
     return postAsync("/customers", params != null ? params.toFormData() : null)
@@ -869,6 +893,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addContact for customer with params. */
   public CompletableFuture<CustomerAddContactResponse> addContactAsync(
       String customerId, CustomerAddContactParams params) {
     String path =
@@ -883,6 +908,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of addContact for customer without params. */
   public CompletableFuture<CustomerAddContactResponse> addContactAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
@@ -936,6 +962,7 @@ public final class CustomerService extends BaseService<CustomerService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  /** Async variant of contactsForCustomer for customer with params. */
   public CompletableFuture<ContactsForCustomerResponse> contactsForCustomerAsync(
       String customerId, ContactsForCustomerParams params) {
     String path =
@@ -947,6 +974,7 @@ public final class CustomerService extends BaseService<CustomerService> {
                     response.getBodyAsString(), this, params, customerId, response));
   }
 
+  /** Async variant of contactsForCustomer for customer without params. */
   public CompletableFuture<ContactsForCustomerResponse> contactsForCustomerAsync(
       String customerId) {
     String path =
@@ -997,6 +1025,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeductPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deductPromotionalCredits for customer with params. */
   public CompletableFuture<CustomerDeductPromotionalCreditsResponse> deductPromotionalCreditsAsync(
       String customerId, CustomerDeductPromotionalCreditsParams params) {
     String path =
@@ -1024,6 +1053,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of clearPersonalData for customer without params. */
   public CompletableFuture<CustomerClearPersonalDataResponse> clearPersonalDataAsync(
       String customerId) {
     String path =
@@ -1054,6 +1084,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerMergeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of merge for customer with params. */
   public CompletableFuture<CustomerMergeResponse> mergeAsync(CustomerMergeParams params) {
 
     return postAsync("/customers/merge", params != null ? params.toFormData() : null)
@@ -1094,6 +1125,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of collectPayment for customer with params. */
   public CompletableFuture<CustomerCollectPaymentResponse> collectPaymentAsync(
       String customerId, CustomerCollectPaymentParams params) {
     String path =
@@ -1110,6 +1142,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of collectPayment for customer without params. */
   public CompletableFuture<CustomerCollectPaymentResponse> collectPaymentAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
@@ -1158,6 +1191,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of recordExcessPayment for customer with params. */
   public CompletableFuture<CustomerRecordExcessPaymentResponse> recordExcessPaymentAsync(
       String customerId, CustomerRecordExcessPaymentParams params) {
     String path =
@@ -1175,6 +1209,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of recordExcessPayment for customer without params. */
   public CompletableFuture<CustomerRecordExcessPaymentResponse> recordExcessPaymentAsync(
       String customerId) {
     String path =
@@ -1226,6 +1261,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerSetPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of setPromotionalCredits for customer with params. */
   public CompletableFuture<CustomerSetPromotionalCreditsResponse> setPromotionalCreditsAsync(
       String customerId, CustomerSetPromotionalCreditsParams params) {
     String path =
@@ -1271,6 +1307,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateContact for customer with params. */
   public CompletableFuture<CustomerUpdateContactResponse> updateContactAsync(
       String customerId, CustomerUpdateContactParams params) {
     String path =
@@ -1286,6 +1323,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateContact for customer without params. */
   public CompletableFuture<CustomerUpdateContactResponse> updateContactAsync(String customerId) {
     String path =
         buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
@@ -1335,6 +1373,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateHierarchySettings for customer with params. */
   public CompletableFuture<CustomerUpdateHierarchySettingsResponse> updateHierarchySettingsAsync(
       String customerId, CustomerUpdateHierarchySettingsParams params) {
     String path =
@@ -1353,6 +1392,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateHierarchySettings for customer without params. */
   public CompletableFuture<CustomerUpdateHierarchySettingsResponse> updateHierarchySettingsAsync(
       String customerId) {
     String path =
@@ -1404,6 +1444,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateBillingInfo for customer with params. */
   public CompletableFuture<CustomerUpdateBillingInfoResponse> updateBillingInfoAsync(
       String customerId, CustomerUpdateBillingInfoParams params) {
     String path =
@@ -1421,6 +1462,7 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateBillingInfo for customer without params. */
   public CompletableFuture<CustomerUpdateBillingInfoResponse> updateBillingInfoAsync(
       String customerId) {
     String path =

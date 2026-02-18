@@ -71,6 +71,7 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for comment without params. */
   public CompletableFuture<CommentDeleteResponse> deleteAsync(String commentId) {
     String path = buildPathWithParams("/comments/{comment-id}/delete", "comment-id", commentId);
 
@@ -91,6 +92,7 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for comment without params. */
   public CompletableFuture<CommentRetrieveResponse> retrieveAsync(String commentId) {
     String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
 
@@ -123,6 +125,7 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for comment with params. */
   public CompletableFuture<CommentListResponse> listAsync(CommentListParams params) {
 
     return getAsync("/comments", params != null ? params.toQueryParams() : null)
@@ -137,6 +140,7 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for comment without params. */
   public CompletableFuture<CommentListResponse> listAsync() {
 
     return getAsync("/comments", null)
@@ -163,6 +167,7 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for comment with params. */
   public CompletableFuture<CommentCreateResponse> createAsync(CommentCreateParams params) {
 
     return postAsync("/comments", params != null ? params.toFormData() : null)

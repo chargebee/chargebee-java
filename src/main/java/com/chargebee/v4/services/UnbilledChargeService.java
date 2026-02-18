@@ -86,6 +86,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for unbilledCharge without params. */
   public CompletableFuture<UnbilledChargeDeleteResponse> deleteAsync(String unbilledChargeId) {
     String path =
         buildPathWithParams(
@@ -126,6 +127,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeInvoiceNowEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of invoiceNowEstimate for unbilledCharge with params. */
   public CompletableFuture<UnbilledChargeInvoiceNowEstimateResponse> invoiceNowEstimateAsync(
       UnbilledChargeInvoiceNowEstimateParams params) {
 
@@ -164,6 +166,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return InvoiceUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of invoiceUnbilledCharges for unbilledCharge with params. */
   public CompletableFuture<InvoiceUnbilledChargesResponse> invoiceUnbilledChargesAsync(
       InvoiceUnbilledChargesParams params) {
 
@@ -200,6 +203,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for unbilledCharge with params. */
   public CompletableFuture<UnbilledChargeListResponse> listAsync(UnbilledChargeListParams params) {
 
     return getAsync("/unbilled_charges", params != null ? params.toQueryParams() : null)
@@ -215,6 +219,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for unbilledCharge without params. */
   public CompletableFuture<UnbilledChargeListResponse> listAsync() {
 
     return getAsync("/unbilled_charges", null)
@@ -247,6 +252,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for unbilledCharge with params. */
   public CompletableFuture<UnbilledChargeCreateResponse> createAsync(
       UnbilledChargeCreateParams params) {
 
@@ -281,6 +287,7 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return CreateUnbilledChargeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createUnbilledCharge for unbilledCharge with params. */
   public CompletableFuture<CreateUnbilledChargeResponse> createUnbilledChargeAsync(
       CreateUnbilledChargeParams params) {
 

@@ -107,6 +107,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);
   }
 
+  /** Async variant of usersForTpSiteUser for tpSiteUser with params. */
   public CompletableFuture<UsersForTpSiteUserResponse> usersForTpSiteUserAsync(
       String tpSiteUserDomain, UsersForTpSiteUserParams params) {
     String path =
@@ -119,6 +120,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
                     response.getBodyAsString(), this, params, tpSiteUserDomain, response));
   }
 
+  /** Async variant of usersForTpSiteUser for tpSiteUser without params. */
   public CompletableFuture<UsersForTpSiteUserResponse> usersForTpSiteUserAsync(
       String tpSiteUserDomain) {
     String path =
@@ -156,6 +158,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     return TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of payNowEnableLive for tpSiteUser with params. */
   public CompletableFuture<TpSiteUserPayNowEnableLiveResponse> payNowEnableLiveAsync(
       TpSiteUserPayNowEnableLiveParams params) {
 
@@ -214,6 +217,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);
   }
 
+  /** Async variant of guestsForTpSiteUser for tpSiteUser with params. */
   public CompletableFuture<GuestsForTpSiteUserResponse> guestsForTpSiteUserAsync(
       String tpSiteUserDomain, GuestsForTpSiteUserParams params) {
     String path =
@@ -226,6 +230,7 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
                     response.getBodyAsString(), this, params, tpSiteUserDomain, response));
   }
 
+  /** Async variant of guestsForTpSiteUser for tpSiteUser without params. */
   public CompletableFuture<GuestsForTpSiteUserResponse> guestsForTpSiteUserAsync(
       String tpSiteUserDomain) {
     String path =

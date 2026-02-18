@@ -85,6 +85,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteLocal for virtualBankAccount without params. */
   public CompletableFuture<VirtualBankAccountDeleteLocalResponse> deleteLocalAsync(
       String virtualBankAccountId) {
     String path =
@@ -117,6 +118,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for virtualBankAccount without params. */
   public CompletableFuture<VirtualBankAccountDeleteResponse> deleteAsync(
       String virtualBankAccountId) {
     String path =
@@ -161,6 +163,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for virtualBankAccount with params. */
   public CompletableFuture<VirtualBankAccountListResponse> listAsync(
       VirtualBankAccountListParams params) {
 
@@ -178,6 +181,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
         response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for virtualBankAccount without params. */
   public CompletableFuture<VirtualBankAccountListResponse> listAsync() {
 
     return getAsync("/virtual_bank_accounts", null)
@@ -212,6 +216,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for virtualBankAccount with params. */
   public CompletableFuture<VirtualBankAccountCreateResponse> createAsync(
       VirtualBankAccountCreateParams params) {
 
@@ -238,6 +243,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountSyncFundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of syncFund for virtualBankAccount without params. */
   public CompletableFuture<VirtualBankAccountSyncFundResponse> syncFundAsync(
       String virtualBankAccountId) {
     String path =
@@ -269,6 +275,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for virtualBankAccount without params. */
   public CompletableFuture<VirtualBankAccountRetrieveResponse> retrieveAsync(
       String virtualBankAccountId) {
     String path =
@@ -312,6 +319,7 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createUsingPermanentToken for virtualBankAccount with params. */
   public CompletableFuture<VirtualBankAccountCreateUsingPermanentTokenResponse>
       createUsingPermanentTokenAsync(VirtualBankAccountCreateUsingPermanentTokenParams params) {
 

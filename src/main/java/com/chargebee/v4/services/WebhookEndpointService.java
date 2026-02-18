@@ -80,6 +80,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for webhookEndpoint without params. */
   public CompletableFuture<WebhookEndpointDeleteResponse> deleteAsync(String webhookEndpointId) {
     String path =
         buildPathWithParams(
@@ -108,6 +109,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for webhookEndpoint without params. */
   public CompletableFuture<WebhookEndpointRetrieveResponse> retrieveAsync(
       String webhookEndpointId) {
     String path =
@@ -156,6 +158,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for webhookEndpoint with params. */
   public CompletableFuture<WebhookEndpointUpdateResponse> updateAsync(
       String webhookEndpointId, WebhookEndpointUpdateParams params) {
     String path =
@@ -172,6 +175,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for webhookEndpoint without params. */
   public CompletableFuture<WebhookEndpointUpdateResponse> updateAsync(String webhookEndpointId) {
     String path =
         buildPathWithParams(
@@ -212,6 +216,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for webhookEndpoint with params. */
   public CompletableFuture<WebhookEndpointListResponse> listAsync(
       WebhookEndpointListParams params) {
 
@@ -228,6 +233,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null, response);
   }
 
+  /** Async variant of list for webhookEndpoint without params. */
   public CompletableFuture<WebhookEndpointListResponse> listAsync() {
 
     return getAsync("/webhook_endpoints", null)
@@ -260,6 +266,7 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for webhookEndpoint with params. */
   public CompletableFuture<WebhookEndpointCreateResponse> createAsync(
       WebhookEndpointCreateParams params) {
 
