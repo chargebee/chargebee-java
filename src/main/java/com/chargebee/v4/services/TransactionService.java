@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.transaction.params.TransactionListParams;
 
@@ -112,10 +113,27 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<TransactionListResponse> listAsync(TransactionListParams params) {
+
+    return getAsync("/transactions", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                TransactionListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public TransactionListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<TransactionListResponse> listAsync() {
+
+    return getAsync("/transactions", null)
+        .thenApply(
+            response ->
+                TransactionListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** reconcile a transaction (executes immediately) - returns raw Response. */
@@ -154,9 +172,31 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<TransactionReconcileResponse> reconcileAsync(
+      String transactionId, TransactionReconcileParams params) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                TransactionReconcileResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public TransactionReconcileResponse reconcile(String transactionId) throws ChargebeeException {
     Response response = reconcileRaw(transactionId);
     return TransactionReconcileResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TransactionReconcileResponse> reconcileAsync(String transactionId) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/reconcile", "transaction-id", transactionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                TransactionReconcileResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** retrieve a transaction (executes immediately) - returns raw Response. */
@@ -170,6 +210,15 @@ public final class TransactionService extends BaseService<TransactionService> {
   public TransactionRetrieveResponse retrieve(String transactionId) throws ChargebeeException {
     Response response = retrieveRaw(transactionId);
     return TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TransactionRetrieveResponse> retrieveAsync(String transactionId) {
+    String path =
+        buildPathWithParams("/transactions/{transaction-id}", "transaction-id", transactionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> TransactionRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** refund a transaction (executes immediately) - returns raw Response. */
@@ -204,9 +253,29 @@ public final class TransactionService extends BaseService<TransactionService> {
     return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<TransactionRefundResponse> refundAsync(
+      String transactionId, TransactionRefundParams params) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> TransactionRefundResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public TransactionRefundResponse refund(String transactionId) throws ChargebeeException {
     Response response = refundRaw(transactionId);
     return TransactionRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TransactionRefundResponse> refundAsync(String transactionId) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/refund", "transaction-id", transactionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> TransactionRefundResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -255,6 +324,28 @@ public final class TransactionService extends BaseService<TransactionService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<TransactionsForCustomerResponse> transactionsForCustomerAsync(
+      String customerId, TransactionsForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                TransactionsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<TransactionsForCustomerResponse> transactionsForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/transactions", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                TransactionsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /** recordRefund a transaction (executes immediately) - returns raw Response. */
   Response recordRefundRaw(String transactionId) throws ChargebeeException {
     String path =
@@ -291,6 +382,17 @@ public final class TransactionService extends BaseService<TransactionService> {
       String transactionId, TransactionRecordRefundParams params) throws ChargebeeException {
     Response response = recordRefundRaw(transactionId, params);
     return TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TransactionRecordRefundResponse> recordRefundAsync(
+      String transactionId, TransactionRecordRefundParams params) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/record_refund", "transaction-id", transactionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                TransactionRecordRefundResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -342,6 +444,30 @@ public final class TransactionService extends BaseService<TransactionService> {
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  public CompletableFuture<TransactionsForSubscriptionResponse> transactionsForSubscriptionAsync(
+      String subscriptionId, TransactionsForSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                TransactionsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, params, subscriptionId, response));
+  }
+
+  public CompletableFuture<TransactionsForSubscriptionResponse> transactionsForSubscriptionAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/transactions", "subscription-id", subscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                TransactionsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, null, subscriptionId, response));
+  }
+
   /** voidTransaction a transaction (executes immediately) - returns raw Response. */
   Response voidTransactionRaw(String transactionId) throws ChargebeeException {
     String path =
@@ -355,6 +481,15 @@ public final class TransactionService extends BaseService<TransactionService> {
     return VoidTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<VoidTransactionResponse> voidTransactionAsync(String transactionId) {
+    String path =
+        buildPathWithParams("/transactions/{transaction-id}/void", "transaction-id", transactionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> VoidTransactionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** syncTransaction a transaction (executes immediately) - returns raw Response. */
   Response syncTransactionRaw(String transactionId) throws ChargebeeException {
     String path =
@@ -366,6 +501,15 @@ public final class TransactionService extends BaseService<TransactionService> {
   public SyncTransactionResponse syncTransaction(String transactionId) throws ChargebeeException {
     Response response = syncTransactionRaw(transactionId);
     return SyncTransactionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SyncTransactionResponse> syncTransactionAsync(String transactionId) {
+    String path =
+        buildPathWithParams("/transactions/{transaction-id}/sync", "transaction-id", transactionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SyncTransactionResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -392,6 +536,17 @@ public final class TransactionService extends BaseService<TransactionService> {
     Response response = createAuthorizationRaw(params);
 
     return TransactionCreateAuthorizationResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TransactionCreateAuthorizationResponse> createAuthorizationAsync(
+      TransactionCreateAuthorizationParams params) {
+
+    return postAsync(
+            "/transactions/create_authorization", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                TransactionCreateAuthorizationResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -433,6 +588,26 @@ public final class TransactionService extends BaseService<TransactionService> {
     Response response = paymentsForInvoiceRaw(invoiceId);
     return TransactionPaymentsForInvoiceResponse.fromJson(
         response.getBodyAsString(), this, null, invoiceId, response);
+  }
+
+  public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
+      String invoiceId, TransactionPaymentsForInvoiceParams params) {
+    String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                TransactionPaymentsForInvoiceResponse.fromJson(
+                    response.getBodyAsString(), this, params, invoiceId, response));
+  }
+
+  public CompletableFuture<TransactionPaymentsForInvoiceResponse> paymentsForInvoiceAsync(
+      String invoiceId) {
+    String path = buildPathWithParams("/invoices/{invoice-id}/payments", "invoice-id", invoiceId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                TransactionPaymentsForInvoiceResponse.fromJson(
+                    response.getBodyAsString(), this, null, invoiceId, response));
   }
 
   /** deleteOfflineTransaction a transaction (executes immediately) - returns raw Response. */
@@ -480,9 +655,36 @@ public final class TransactionService extends BaseService<TransactionService> {
     return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<DeleteOfflineTransactionResponse> deleteOfflineTransactionAsync(
+      String transactionId, DeleteOfflineTransactionParams params) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/delete_offline_transaction",
+            "transaction-id",
+            transactionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public DeleteOfflineTransactionResponse deleteOfflineTransaction(String transactionId)
       throws ChargebeeException {
     Response response = deleteOfflineTransactionRaw(transactionId);
     return DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<DeleteOfflineTransactionResponse> deleteOfflineTransactionAsync(
+      String transactionId) {
+    String path =
+        buildPathWithParams(
+            "/transactions/{transaction-id}/delete_offline_transaction",
+            "transaction-id",
+            transactionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                DeleteOfflineTransactionResponse.fromJson(response.getBodyAsString(), response));
   }
 }

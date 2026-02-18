@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.customer.params.CustomerDeleteParams;
 
@@ -169,9 +170,25 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerDeleteResponse> deleteAsync(
+      String customerId, CustomerDeleteParams params) {
+    String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CustomerDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerDeleteResponse delete(String customerId) throws ChargebeeException {
     Response response = deleteRaw(customerId);
     return CustomerDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerDeleteResponse> deleteAsync(String customerId) {
+    String path = buildPathWithParams("/customers/{customer-id}/delete", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CustomerDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** addPromotionalCredits a customer (executes immediately) - returns raw Response. */
@@ -213,6 +230,18 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAddPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerAddPromotionalCreditsResponse> addPromotionalCreditsAsync(
+      String customerId, CustomerAddPromotionalCreditsParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/add_promotional_credits", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerAddPromotionalCreditsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** relationships a customer (executes immediately) - returns raw Response. */
   Response relationshipsRaw(String customerId) throws ChargebeeException {
     String path =
@@ -246,9 +275,29 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerRelationshipsResponse> relationshipsAsync(
+      String customerId, CustomerRelationshipsParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerRelationshipsResponse relationships(String customerId) throws ChargebeeException {
     Response response = relationshipsRaw(customerId);
     return CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerRelationshipsResponse> relationshipsAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/relationships", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerRelationshipsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** deleteRelationship a customer (executes immediately) - returns raw Response. */
@@ -264,6 +313,18 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     Response response = deleteRelationshipRaw(customerId);
     return CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerDeleteRelationshipResponse> deleteRelationshipAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/delete_relationship", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerDeleteRelationshipResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** deleteContact a customer (executes immediately) - returns raw Response. */
@@ -299,9 +360,29 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerDeleteContactResponse> deleteContactAsync(
+      String customerId, CustomerDeleteContactParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerDeleteContactResponse deleteContact(String customerId) throws ChargebeeException {
     Response response = deleteContactRaw(customerId);
     return CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerDeleteContactResponse> deleteContactAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/delete_contact", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerDeleteContactResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** assignPaymentRole a customer (executes immediately) - returns raw Response. */
@@ -342,6 +423,17 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerAssignPaymentRoleResponse> assignPaymentRoleAsync(
+      String customerId, CustomerAssignPaymentRoleParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/assign_payment_role", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerAssignPaymentRoleResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** move a customer using immutable params (executes immediately) - returns raw Response. */
   Response moveRaw(CustomerMoveParams params) throws ChargebeeException {
 
@@ -358,6 +450,12 @@ public final class CustomerService extends BaseService<CustomerService> {
     Response response = moveRaw(params);
 
     return CustomerMoveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerMoveResponse> moveAsync(CustomerMoveParams params) {
+
+    return postAsync("/customers/move", params != null ? params.toFormData() : null)
+        .thenApply(response -> CustomerMoveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** hierarchy a customer (executes immediately) - returns raw Response. */
@@ -382,9 +480,27 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerHierarchyResponse> hierarchyAsync(
+      String customerId, CustomerHierarchyParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerHierarchyResponse hierarchy(String customerId) throws ChargebeeException {
     Response response = hierarchyRaw(customerId);
     return CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerHierarchyResponse> hierarchyAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/hierarchy", "customer-id", customerId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CustomerHierarchyResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updatePaymentMethod a customer (executes immediately) - returns raw Response. */
@@ -425,10 +541,33 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerUpdatePaymentMethodResponse> updatePaymentMethodAsync(
+      String customerId, CustomerUpdatePaymentMethodParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerUpdatePaymentMethodResponse updatePaymentMethod(String customerId)
       throws ChargebeeException {
     Response response = updatePaymentMethodRaw(customerId);
     return CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerUpdatePaymentMethodResponse> updatePaymentMethodAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_payment_method", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** retrieve a customer (executes immediately) - returns raw Response. */
@@ -441,6 +580,14 @@ public final class CustomerService extends BaseService<CustomerService> {
   public CustomerRetrieveResponse retrieve(String customerId) throws ChargebeeException {
     Response response = retrieveRaw(customerId);
     return CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerRetrieveResponse> retrieveAsync(String customerId) {
+    String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CustomerRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a customer (executes immediately) - returns raw Response. */
@@ -468,9 +615,25 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerUpdateResponse> updateAsync(
+      String customerId, CustomerUpdateParams params) {
+    String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CustomerUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerUpdateResponse update(String customerId) throws ChargebeeException {
     Response response = updateRaw(customerId);
     return CustomerUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerUpdateResponse> updateAsync(String customerId) {
+    String path = buildPathWithParams("/customers/{customer-id}", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CustomerUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -517,6 +680,28 @@ public final class CustomerService extends BaseService<CustomerService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<CustomerListHierarchyDetailResponse> listHierarchyDetailAsync(
+      String customerId, CustomerListHierarchyDetailParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CustomerListHierarchyDetailResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<CustomerListHierarchyDetailResponse> listHierarchyDetailAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/hierarchy_detail", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerListHierarchyDetailResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /** changeBillingDate a customer (executes immediately) - returns raw Response. */
   Response changeBillingDateRaw(String customerId) throws ChargebeeException {
     String path =
@@ -555,10 +740,33 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerChangeBillingDateResponse> changeBillingDateAsync(
+      String customerId, CustomerChangeBillingDateParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerChangeBillingDateResponse changeBillingDate(String customerId)
       throws ChargebeeException {
     Response response = changeBillingDateRaw(customerId);
     return CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerChangeBillingDateResponse> changeBillingDateAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/change_billing_date", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerChangeBillingDateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a customer using immutable params (executes immediately) - returns raw Response. */
@@ -585,10 +793,26 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<CustomerListResponse> listAsync(CustomerListParams params) {
+
+    return getAsync("/customers", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CustomerListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public CustomerListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<CustomerListResponse> listAsync() {
+
+    return getAsync("/customers", null)
+        .thenApply(
+            response ->
+                CustomerListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a customer using immutable params (executes immediately) - returns raw Response. */
@@ -607,6 +831,13 @@ public final class CustomerService extends BaseService<CustomerService> {
     Response response = createRaw(params);
 
     return CustomerCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerCreateResponse> createAsync(CustomerCreateParams params) {
+
+    return postAsync("/customers", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CustomerCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** addContact a customer (executes immediately) - returns raw Response. */
@@ -638,9 +869,27 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerAddContactResponse> addContactAsync(
+      String customerId, CustomerAddContactParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CustomerAddContactResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerAddContactResponse addContact(String customerId) throws ChargebeeException {
     Response response = addContactRaw(customerId);
     return CustomerAddContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerAddContactResponse> addContactAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/add_contact", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CustomerAddContactResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -687,6 +936,28 @@ public final class CustomerService extends BaseService<CustomerService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<ContactsForCustomerResponse> contactsForCustomerAsync(
+      String customerId, ContactsForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ContactsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<ContactsForCustomerResponse> contactsForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/contacts", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ContactsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /** deductPromotionalCredits a customer (executes immediately) - returns raw Response. */
   Response deductPromotionalCreditsRaw(String customerId) throws ChargebeeException {
     String path =
@@ -726,6 +997,18 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerDeductPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerDeductPromotionalCreditsResponse> deductPromotionalCreditsAsync(
+      String customerId, CustomerDeductPromotionalCreditsParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/deduct_promotional_credits", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerDeductPromotionalCreditsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** clearPersonalData a customer (executes immediately) - returns raw Response. */
   Response clearPersonalDataRaw(String customerId) throws ChargebeeException {
     String path =
@@ -739,6 +1022,18 @@ public final class CustomerService extends BaseService<CustomerService> {
       throws ChargebeeException {
     Response response = clearPersonalDataRaw(customerId);
     return CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerClearPersonalDataResponse> clearPersonalDataAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/clear_personal_data", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerClearPersonalDataResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** merge a customer using immutable params (executes immediately) - returns raw Response. */
@@ -757,6 +1052,13 @@ public final class CustomerService extends BaseService<CustomerService> {
     Response response = mergeRaw(params);
 
     return CustomerMergeResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerMergeResponse> mergeAsync(CustomerMergeParams params) {
+
+    return postAsync("/customers/merge", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CustomerMergeResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** collectPayment a customer (executes immediately) - returns raw Response. */
@@ -792,10 +1094,30 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerCollectPaymentResponse> collectPaymentAsync(
+      String customerId, CustomerCollectPaymentParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerCollectPaymentResponse collectPayment(String customerId)
       throws ChargebeeException {
     Response response = collectPaymentRaw(customerId);
     return CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerCollectPaymentResponse> collectPaymentAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/collect_payment", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerCollectPaymentResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** recordExcessPayment a customer (executes immediately) - returns raw Response. */
@@ -836,10 +1158,33 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerRecordExcessPaymentResponse> recordExcessPaymentAsync(
+      String customerId, CustomerRecordExcessPaymentParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerRecordExcessPaymentResponse recordExcessPayment(String customerId)
       throws ChargebeeException {
     Response response = recordExcessPaymentRaw(customerId);
     return CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerRecordExcessPaymentResponse> recordExcessPaymentAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/record_excess_payment", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerRecordExcessPaymentResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** setPromotionalCredits a customer (executes immediately) - returns raw Response. */
@@ -881,6 +1226,18 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerSetPromotionalCreditsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerSetPromotionalCreditsResponse> setPromotionalCreditsAsync(
+      String customerId, CustomerSetPromotionalCreditsParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/set_promotional_credits", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerSetPromotionalCreditsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** updateContact a customer (executes immediately) - returns raw Response. */
   Response updateContactRaw(String customerId) throws ChargebeeException {
     String path =
@@ -914,9 +1271,29 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerUpdateContactResponse> updateContactAsync(
+      String customerId, CustomerUpdateContactParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerUpdateContactResponse updateContact(String customerId) throws ChargebeeException {
     Response response = updateContactRaw(customerId);
     return CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerUpdateContactResponse> updateContactAsync(String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/update_contact", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerUpdateContactResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updateHierarchySettings a customer (executes immediately) - returns raw Response. */
@@ -958,10 +1335,35 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerUpdateHierarchySettingsResponse> updateHierarchySettingsAsync(
+      String customerId, CustomerUpdateHierarchySettingsParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerUpdateHierarchySettingsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CustomerUpdateHierarchySettingsResponse updateHierarchySettings(String customerId)
       throws ChargebeeException {
     Response response = updateHierarchySettingsRaw(customerId);
     return CustomerUpdateHierarchySettingsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerUpdateHierarchySettingsResponse> updateHierarchySettingsAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_hierarchy_settings", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerUpdateHierarchySettingsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** updateBillingInfo a customer (executes immediately) - returns raw Response. */
@@ -1002,9 +1404,32 @@ public final class CustomerService extends BaseService<CustomerService> {
     return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CustomerUpdateBillingInfoResponse> updateBillingInfoAsync(
+      String customerId, CustomerUpdateBillingInfoParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CustomerUpdateBillingInfoResponse updateBillingInfo(String customerId)
       throws ChargebeeException {
     Response response = updateBillingInfoRaw(customerId);
     return CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CustomerUpdateBillingInfoResponse> updateBillingInfoAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/update_billing_info", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerUpdateBillingInfoResponse.fromJson(response.getBodyAsString(), response));
   }
 }

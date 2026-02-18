@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.resourceMigration.params.ResourceMigrationRetrieveLatestParams;
 
@@ -76,5 +77,16 @@ public final class ResourceMigrationService extends BaseService<ResourceMigratio
     Response response = retrieveLatestRaw(params);
 
     return ResourceMigrationRetrieveLatestResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ResourceMigrationRetrieveLatestResponse> retrieveLatestAsync(
+      ResourceMigrationRetrieveLatestParams params) {
+
+    return getAsync(
+            "/resource_migrations/retrieve_latest", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ResourceMigrationRetrieveLatestResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

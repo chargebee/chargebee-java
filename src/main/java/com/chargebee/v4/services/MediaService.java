@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.media.params.CreateMediaAndAttachToItemParams;
 
@@ -81,5 +82,14 @@ public final class MediaService extends BaseService<MediaService> {
       String itemId, CreateMediaAndAttachToItemParams params) throws ChargebeeException {
     Response response = createMediaAndAttachToItemRaw(itemId, params);
     return CreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateMediaAndAttachToItemResponse> createMediaAndAttachToItemAsync(
+      String itemId, CreateMediaAndAttachToItemParams params) {
+    String path = buildPathWithParams("/items/{item-id}/media", "item-id", itemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreateMediaAndAttachToItemResponse.fromJson(response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.variant.params.ListProductVariantsParams;
 
@@ -101,6 +102,25 @@ public final class VariantService extends BaseService<VariantService> {
         response.getBodyAsString(), this, null, productId, response);
   }
 
+  public CompletableFuture<ListProductVariantsResponse> listProductVariantsAsync(
+      String productId, ListProductVariantsParams params) {
+    String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ListProductVariantsResponse.fromJson(
+                    response.getBodyAsString(), this, params, productId, response));
+  }
+
+  public CompletableFuture<ListProductVariantsResponse> listProductVariantsAsync(String productId) {
+    String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ListProductVariantsResponse.fromJson(
+                    response.getBodyAsString(), this, null, productId, response));
+  }
+
   /** createProductVariant a variant (executes immediately) - returns raw Response. */
   Response createProductVariantRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
@@ -133,6 +153,15 @@ public final class VariantService extends BaseService<VariantService> {
     return CreateProductVariantResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateProductVariantResponse> createProductVariantAsync(
+      String productId, CreateProductVariantParams params) {
+    String path = buildPathWithParams("/products/{product-id}/variants", "product-id", productId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreateProductVariantResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a variant (executes immediately) - returns raw Response. */
   Response retrieveRaw(String productVariantId) throws ChargebeeException {
     String path =
@@ -145,6 +174,16 @@ public final class VariantService extends BaseService<VariantService> {
   public VariantRetrieveResponse retrieve(String productVariantId) throws ChargebeeException {
     Response response = retrieveRaw(productVariantId);
     return VariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<VariantRetrieveResponse> retrieveAsync(String productVariantId) {
+    String path =
+        buildPathWithParams(
+            "/variants/{product-variant-id}", "product-variant-id", productVariantId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> VariantRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a variant (executes immediately) - returns raw Response. */
@@ -179,9 +218,29 @@ public final class VariantService extends BaseService<VariantService> {
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<VariantUpdateResponse> updateAsync(
+      String productVariantId, VariantUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/variants/{product-variant-id}", "product-variant-id", productVariantId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> VariantUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public VariantUpdateResponse update(String productVariantId) throws ChargebeeException {
     Response response = updateRaw(productVariantId);
     return VariantUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<VariantUpdateResponse> updateAsync(String productVariantId) {
+    String path =
+        buildPathWithParams(
+            "/variants/{product-variant-id}", "product-variant-id", productVariantId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> VariantUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** delete a variant (executes immediately) - returns raw Response. */
@@ -196,5 +255,15 @@ public final class VariantService extends BaseService<VariantService> {
   public VariantDeleteResponse delete(String productVariantId) throws ChargebeeException {
     Response response = deleteRaw(productVariantId);
     return VariantDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<VariantDeleteResponse> deleteAsync(String productVariantId) {
+    String path =
+        buildPathWithParams(
+            "/variants/{product-variant-id}/delete", "product-variant-id", productVariantId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> VariantDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 }

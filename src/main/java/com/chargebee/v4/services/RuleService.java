@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.rule.responses.RuleRetrieveResponse;
 
@@ -58,5 +59,12 @@ public final class RuleService extends BaseService<RuleService> {
   public RuleRetrieveResponse retrieve(String ruleId) throws ChargebeeException {
     Response response = retrieveRaw(ruleId);
     return RuleRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<RuleRetrieveResponse> retrieveAsync(String ruleId) {
+    String path = buildPathWithParams("/rules/{rule-id}", "rule-id", ruleId);
+
+    return getAsync(path, null)
+        .thenApply(response -> RuleRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

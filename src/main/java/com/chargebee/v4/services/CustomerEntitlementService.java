@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.customerEntitlement.params.CustomerEntitlementEntitlementsForCustomerParams;
 
@@ -100,5 +101,30 @@ public final class CustomerEntitlementService extends BaseService<CustomerEntitl
     Response response = entitlementsForCustomerRaw(customerId);
     return CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
         response.getBodyAsString(), this, null, customerId, response);
+  }
+
+  public CompletableFuture<CustomerEntitlementEntitlementsForCustomerResponse>
+      entitlementsForCustomerAsync(
+          String customerId, CustomerEntitlementEntitlementsForCustomerParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<CustomerEntitlementEntitlementsForCustomerResponse>
+      entitlementsForCustomerAsync(String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/customer_entitlements", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                CustomerEntitlementEntitlementsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
   }
 }

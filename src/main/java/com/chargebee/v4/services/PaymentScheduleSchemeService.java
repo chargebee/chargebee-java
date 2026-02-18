@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.paymentScheduleScheme.params.PaymentScheduleSchemeCreateParams;
 
@@ -72,6 +73,21 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
     return PaymentScheduleSchemeRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PaymentScheduleSchemeRetrieveResponse> retrieveAsync(
+      String paymentScheduleSchemeId) {
+    String path =
+        buildPathWithParams(
+            "/payment_schedule_schemes/{payment-schedule-scheme-id}",
+            "payment-schedule-scheme-id",
+            paymentScheduleSchemeId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentScheduleSchemeRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * create a paymentScheduleScheme using immutable params (executes immediately) - returns raw
    * Response.
@@ -97,6 +113,15 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
     return PaymentScheduleSchemeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PaymentScheduleSchemeCreateResponse> createAsync(
+      PaymentScheduleSchemeCreateParams params) {
+
+    return postAsync("/payment_schedule_schemes", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentScheduleSchemeCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a paymentScheduleScheme (executes immediately) - returns raw Response. */
   Response deleteRaw(String paymentScheduleSchemeId) throws ChargebeeException {
     String path =
@@ -112,5 +137,19 @@ public final class PaymentScheduleSchemeService extends BaseService<PaymentSched
       throws ChargebeeException {
     Response response = deleteRaw(paymentScheduleSchemeId);
     return PaymentScheduleSchemeDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PaymentScheduleSchemeDeleteResponse> deleteAsync(
+      String paymentScheduleSchemeId) {
+    String path =
+        buildPathWithParams(
+            "/payment_schedule_schemes/{payment-schedule-scheme-id}/delete",
+            "payment-schedule-scheme-id",
+            paymentScheduleSchemeId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentScheduleSchemeDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 }

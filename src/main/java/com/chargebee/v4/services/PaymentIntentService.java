@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.paymentIntent.params.PaymentIntentUpdateParams;
 
@@ -71,6 +72,17 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PaymentIntentRetrieveResponse> retrieveAsync(String paymentIntentId) {
+    String path =
+        buildPathWithParams(
+            "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentIntentRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** update a paymentIntent (executes immediately) - returns raw Response. */
   Response updateRaw(String paymentIntentId) throws ChargebeeException {
     String path =
@@ -107,9 +119,29 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PaymentIntentUpdateResponse> updateAsync(
+      String paymentIntentId, PaymentIntentUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public PaymentIntentUpdateResponse update(String paymentIntentId) throws ChargebeeException {
     Response response = updateRaw(paymentIntentId);
     return PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PaymentIntentUpdateResponse> updateAsync(String paymentIntentId) {
+    String path =
+        buildPathWithParams(
+            "/payment_intents/{payment-intent-id}", "payment-intent-id", paymentIntentId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> PaymentIntentUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -133,5 +165,13 @@ public final class PaymentIntentService extends BaseService<PaymentIntentService
     Response response = createRaw(params);
 
     return PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PaymentIntentCreateResponse> createAsync(
+      PaymentIntentCreateParams params) {
+
+    return postAsync("/payment_intents", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> PaymentIntentCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

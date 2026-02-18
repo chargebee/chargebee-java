@@ -519,17 +519,17 @@ try {
 ```java
 import java.util.concurrent.CompletableFuture;
 
-CompletableFuture<CustomerCreateResponse> futureCustomer = customers.create(params);
+CompletableFuture<CustomerCreateResponse> futureCustomer = customers.createAsync(params);
 
 futureCustomer
-    .thenAccept(customer -> {
-        System.out.println("Customer created: " + customer.getCustomer().getId());
+    .thenAccept(response -> {
+        System.out.println("Customer created: " + response.getCustomer().getId());
     })
     .exceptionally(throwable -> {
         if (throwable.getCause() instanceof InvalidRequestException) {
             InvalidRequestException e = (InvalidRequestException) throwable.getCause();
             ApiErrorCode errorCode = e.getApiErrorCode();
-            
+
             if (errorCode instanceof BadRequestApiErrorCode) {
                 BadRequestApiErrorCode code = (BadRequestApiErrorCode) errorCode;
                 if (code == BadRequestApiErrorCode.DUPLICATE_ENTRY) {

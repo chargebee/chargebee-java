@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.unbilledChargesSetting.params.UnbilledChargesSettingRetrieveParams;
 
@@ -85,9 +86,28 @@ public final class UnbilledChargesSettingService
     return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync(
+      UnbilledChargesSettingRetrieveParams params) {
+
+    return getAsync("/unbilled_charges_settings", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                UnbilledChargesSettingRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public UnbilledChargesSettingRetrieveResponse retrieve() throws ChargebeeException {
     Response response = retrieveRaw();
 
     return UnbilledChargesSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UnbilledChargesSettingRetrieveResponse> retrieveAsync() {
+
+    return getAsync("/unbilled_charges_settings", null)
+        .thenApply(
+            response ->
+                UnbilledChargesSettingRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.itemFamily.params.ItemFamilyListParams;
 
@@ -76,6 +77,16 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemFamilyDeleteResponse> deleteAsync(String itemFamilyId) {
+    String path =
+        buildPathWithParams(
+            "/item_families/{item-family-id}/delete", "item-family-id", itemFamilyId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> ItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a itemFamily using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(ItemFamilyListParams params) throws ChargebeeException {
 
@@ -100,10 +111,27 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<ItemFamilyListResponse> listAsync(ItemFamilyListParams params) {
+
+    return getAsync("/item_families", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ItemFamilyListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public ItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<ItemFamilyListResponse> listAsync() {
+
+    return getAsync("/item_families", null)
+        .thenApply(
+            response ->
+                ItemFamilyListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a itemFamily using immutable params (executes immediately) - returns raw Response. */
@@ -124,6 +152,13 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemFamilyCreateResponse> createAsync(ItemFamilyCreateParams params) {
+
+    return postAsync("/item_families", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> ItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a itemFamily (executes immediately) - returns raw Response. */
   Response retrieveRaw(String itemFamilyId) throws ChargebeeException {
     String path =
@@ -135,6 +170,15 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
   public ItemFamilyRetrieveResponse retrieve(String itemFamilyId) throws ChargebeeException {
     Response response = retrieveRaw(itemFamilyId);
     return ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ItemFamilyRetrieveResponse> retrieveAsync(String itemFamilyId) {
+    String path =
+        buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> ItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a itemFamily (executes immediately) - returns raw Response. */
@@ -165,8 +209,26 @@ public final class ItemFamilyService extends BaseService<ItemFamilyService> {
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemFamilyUpdateResponse> updateAsync(
+      String itemFamilyId, ItemFamilyUpdateParams params) {
+    String path =
+        buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public ItemFamilyUpdateResponse update(String itemFamilyId) throws ChargebeeException {
     Response response = updateRaw(itemFamilyId);
     return ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ItemFamilyUpdateResponse> updateAsync(String itemFamilyId) {
+    String path =
+        buildPathWithParams("/item_families/{item-family-id}", "item-family-id", itemFamilyId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> ItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

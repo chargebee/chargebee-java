@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.offerEvent.params.OfferEventsParams;
 
@@ -73,5 +74,14 @@ public final class OfferEventService extends BaseService<OfferEventService> {
     Response response = offerEventsRaw(params);
 
     return OfferEventsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<OfferEventsResponse> offerEventsAsync(OfferEventsParams params) {
+
+    return postJsonWithSubDomainAsync(
+            "/offer_events",
+            SubDomain.GROW.getValue(),
+            params != null ? params.toJsonString() : null)
+        .thenApply(response -> OfferEventsResponse.fromJson(response.getBodyAsString(), response));
   }
 }

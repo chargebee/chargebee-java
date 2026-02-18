@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.personalizedOffer.params.PersonalizedOffersParams;
 
@@ -79,5 +80,16 @@ public final class PersonalizedOfferService extends BaseService<PersonalizedOffe
     Response response = personalizedOffersRaw(params);
 
     return PersonalizedOffersResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PersonalizedOffersResponse> personalizedOffersAsync(
+      PersonalizedOffersParams params) {
+
+    return postJsonWithSubDomainAsync(
+            "/personalized_offers",
+            SubDomain.GROW.getValue(),
+            params != null ? params.toJsonString() : null)
+        .thenApply(
+            response -> PersonalizedOffersResponse.fromJson(response.getBodyAsString(), response));
   }
 }

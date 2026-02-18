@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.attachedItem.params.AttachedItemRetrieveParams;
 
@@ -93,9 +94,31 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<AttachedItemRetrieveResponse> retrieveAsync(
+      String attachedItemId, AttachedItemRetrieveParams params) {
+    String path =
+        buildPathWithParams(
+            "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public AttachedItemRetrieveResponse retrieve(String attachedItemId) throws ChargebeeException {
     Response response = retrieveRaw(attachedItemId);
     return AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AttachedItemRetrieveResponse> retrieveAsync(String attachedItemId) {
+    String path =
+        buildPathWithParams(
+            "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                AttachedItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a attachedItem (executes immediately) - returns raw Response. */
@@ -130,6 +153,16 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
     return AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<AttachedItemUpdateResponse> updateAsync(
+      String attachedItemId, AttachedItemUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/attached_items/{attached-item-id}", "attached-item-id", attachedItemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> AttachedItemUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a attachedItem using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(String itemId, AttachedItemListParams params) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
@@ -161,6 +194,25 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
         response.getBodyAsString(), this, null, itemId, response);
   }
 
+  public CompletableFuture<AttachedItemListResponse> listAsync(
+      String itemId, AttachedItemListParams params) {
+    String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                AttachedItemListResponse.fromJson(
+                    response.getBodyAsString(), this, params, itemId, response));
+  }
+
+  public CompletableFuture<AttachedItemListResponse> listAsync(String itemId) {
+    String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                AttachedItemListResponse.fromJson(
+                    response.getBodyAsString(), this, null, itemId, response));
+  }
+
   /** create a attachedItem (executes immediately) - returns raw Response. */
   Response createRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
@@ -184,6 +236,14 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
       throws ChargebeeException {
     Response response = createRaw(itemId, params);
     return AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AttachedItemCreateResponse> createAsync(
+      String itemId, AttachedItemCreateParams params) {
+    String path = buildPathWithParams("/items/{item-id}/attached_items", "item-id", itemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> AttachedItemCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** delete a attachedItem (executes immediately) - returns raw Response. */
@@ -216,5 +276,15 @@ public final class AttachedItemService extends BaseService<AttachedItemService> 
       throws ChargebeeException {
     Response response = deleteRaw(attachedItemId, params);
     return AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AttachedItemDeleteResponse> deleteAsync(
+      String attachedItemId, AttachedItemDeleteParams params) {
+    String path =
+        buildPathWithParams(
+            "/attached_items/{attached-item-id}/delete", "attached-item-id", attachedItemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> AttachedItemDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 }

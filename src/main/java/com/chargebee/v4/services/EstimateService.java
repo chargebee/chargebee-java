@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.estimate.params.RenewalEstimateParams;
 
@@ -151,9 +152,29 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<RenewalEstimateResponse> renewalEstimateAsync(
+      String subscriptionId, RenewalEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> RenewalEstimateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public RenewalEstimateResponse renewalEstimate(String subscriptionId) throws ChargebeeException {
     Response response = renewalEstimateRaw(subscriptionId);
     return RenewalEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<RenewalEstimateResponse> renewalEstimateAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/renewal_estimate", "subscription-id", subscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> RenewalEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -183,6 +204,17 @@ public final class EstimateService extends BaseService<EstimateService> {
     return CreateSubscriptionItemEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateSubscriptionItemEstimateResponse>
+      createSubscriptionItemEstimateAsync(CreateSubscriptionItemEstimateParams params) {
+
+    return postAsync(
+            "/estimates/create_subscription_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                CreateSubscriptionItemEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * paymentSchedules a estimate using immutable params (executes immediately) - returns raw
    * Response.
@@ -206,6 +238,15 @@ public final class EstimateService extends BaseService<EstimateService> {
     Response response = paymentSchedulesRaw(params);
 
     return EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimatePaymentSchedulesResponse> paymentSchedulesAsync(
+      EstimatePaymentSchedulesParams params) {
+
+    return postAsync("/estimates/payment_schedules", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimatePaymentSchedulesResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** cancelSubscriptionForItems a estimate (executes immediately) - returns raw Response. */
@@ -256,11 +297,41 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateCancelSubscriptionForItemsResponse>
+      cancelSubscriptionForItemsAsync(
+          String subscriptionId, EstimateCancelSubscriptionForItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EstimateCancelSubscriptionForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public EstimateCancelSubscriptionForItemsResponse cancelSubscriptionForItems(
       String subscriptionId) throws ChargebeeException {
     Response response = cancelSubscriptionForItemsRaw(subscriptionId);
     return EstimateCancelSubscriptionForItemsResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateCancelSubscriptionForItemsResponse>
+      cancelSubscriptionForItemsAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_subscription_for_items_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EstimateCancelSubscriptionForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** resumeSubscription a estimate (executes immediately) - returns raw Response. */
@@ -308,10 +379,37 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateResumeSubscriptionResponse> resumeSubscriptionAsync(
+      String subscriptionId, EstimateResumeSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/resume_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public EstimateResumeSubscriptionResponse resumeSubscription(String subscriptionId)
       throws ChargebeeException {
     Response response = resumeSubscriptionRaw(subscriptionId);
     return EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateResumeSubscriptionResponse> resumeSubscriptionAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/resume_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EstimateResumeSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -340,6 +438,17 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCreateInvoiceForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateCreateInvoiceForItemsResponse> createInvoiceForItemsAsync(
+      EstimateCreateInvoiceForItemsParams params) {
+
+    return postAsync(
+            "/estimates/create_invoice_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateCreateInvoiceForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * giftSubscriptionForItems a estimate using immutable params (executes immediately) - returns raw
    * Response.
@@ -365,6 +474,17 @@ public final class EstimateService extends BaseService<EstimateService> {
     Response response = giftSubscriptionForItemsRaw(params);
 
     return EstimateGiftSubscriptionForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateGiftSubscriptionForItemsResponse> giftSubscriptionForItemsAsync(
+      EstimateGiftSubscriptionForItemsParams params) {
+
+    return postAsync(
+            "/estimates/gift_subscription_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateGiftSubscriptionForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -395,6 +515,17 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateUpdateSubscriptionForItemsResponse>
+      updateSubscriptionForItemsAsync(EstimateUpdateSubscriptionForItemsParams params) {
+
+    return postAsync(
+            "/estimates/update_subscription_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateUpdateSubscriptionForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** upcomingInvoicesEstimate a estimate (executes immediately) - returns raw Response. */
   Response upcomingInvoicesEstimateRaw(String customerId) throws ChargebeeException {
     String path =
@@ -408,6 +539,18 @@ public final class EstimateService extends BaseService<EstimateService> {
       throws ChargebeeException {
     Response response = upcomingInvoicesEstimateRaw(customerId);
     return UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UpcomingInvoicesEstimateResponse> upcomingInvoicesEstimateAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/upcoming_invoices_estimate", "customer-id", customerId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                UpcomingInvoicesEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** regenerateInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
@@ -455,10 +598,37 @@ public final class EstimateService extends BaseService<EstimateService> {
     return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<RegenerateInvoiceEstimateResponse> regenerateInvoiceEstimateAsync(
+      String subscriptionId, RegenerateInvoiceEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public RegenerateInvoiceEstimateResponse regenerateInvoiceEstimate(String subscriptionId)
       throws ChargebeeException {
     Response response = regenerateInvoiceEstimateRaw(subscriptionId);
     return RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<RegenerateInvoiceEstimateResponse> regenerateInvoiceEstimateAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/regenerate_invoice_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                RegenerateInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -514,11 +684,41 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateSubscriptionItemForCustomerEstimateResponse>
+      createSubscriptionItemForCustomerEstimateAsync(
+          String customerId, CreateSubscriptionItemForCustomerEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_for_items_estimate",
+            "customer-id",
+            customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CreateSubscriptionItemForCustomerEstimateResponse
       createSubscriptionItemForCustomerEstimate(String customerId) throws ChargebeeException {
     Response response = createSubscriptionItemForCustomerEstimateRaw(customerId);
     return CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateSubscriptionItemForCustomerEstimateResponse>
+      createSubscriptionItemForCustomerEstimateAsync(String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_for_items_estimate",
+            "customer-id",
+            customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreateSubscriptionItemForCustomerEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** changeTermEnd a estimate (executes immediately) - returns raw Response. */
@@ -561,6 +761,19 @@ public final class EstimateService extends BaseService<EstimateService> {
       String subscriptionId, EstimateChangeTermEndParams params) throws ChargebeeException {
     Response response = changeTermEndRaw(subscriptionId, params);
     return EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateChangeTermEndResponse> changeTermEndAsync(
+      String subscriptionId, EstimateChangeTermEndParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/change_term_end_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EstimateChangeTermEndResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** pauseSubscription a estimate (executes immediately) - returns raw Response. */
@@ -608,10 +821,37 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimatePauseSubscriptionResponse> pauseSubscriptionAsync(
+      String subscriptionId, EstimatePauseSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/pause_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public EstimatePauseSubscriptionResponse pauseSubscription(String subscriptionId)
       throws ChargebeeException {
     Response response = pauseSubscriptionRaw(subscriptionId);
     return EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimatePauseSubscriptionResponse> pauseSubscriptionAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/pause_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EstimatePauseSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** advanceInvoiceEstimate a estimate (executes immediately) - returns raw Response. */
@@ -659,10 +899,37 @@ public final class EstimateService extends BaseService<EstimateService> {
     return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<AdvanceInvoiceEstimateResponse> advanceInvoiceEstimateAsync(
+      String subscriptionId, AdvanceInvoiceEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/advance_invoice_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public AdvanceInvoiceEstimateResponse advanceInvoiceEstimate(String subscriptionId)
       throws ChargebeeException {
     Response response = advanceInvoiceEstimateRaw(subscriptionId);
     return AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AdvanceInvoiceEstimateResponse> advanceInvoiceEstimateAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/advance_invoice_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                AdvanceInvoiceEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -691,6 +958,15 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateUpdateSubscriptionResponse> updateSubscriptionAsync(
+      EstimateUpdateSubscriptionParams params) {
+
+    return postAsync("/estimates/update_subscription", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateUpdateSubscriptionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * giftSubscription a estimate using immutable params (executes immediately) - returns raw
    * Response.
@@ -714,6 +990,15 @@ public final class EstimateService extends BaseService<EstimateService> {
     Response response = giftSubscriptionRaw(params);
 
     return EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateGiftSubscriptionResponse> giftSubscriptionAsync(
+      EstimateGiftSubscriptionParams params) {
+
+    return postAsync("/estimates/gift_subscription", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateGiftSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -748,11 +1033,37 @@ public final class EstimateService extends BaseService<EstimateService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateSubscriptionForCustomerEstimateResponse>
+      createSubscriptionForCustomerEstimateAsync(
+          String customerId, CreateSubscriptionForCustomerEstimateParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CreateSubscriptionForCustomerEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CreateSubscriptionForCustomerEstimateResponse createSubscriptionForCustomerEstimate(
       String customerId) throws ChargebeeException {
     Response response = createSubscriptionForCustomerEstimateRaw(customerId);
     return CreateSubscriptionForCustomerEstimateResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateSubscriptionForCustomerEstimateResponse>
+      createSubscriptionForCustomerEstimateAsync(String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_estimate", "customer-id", customerId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                CreateSubscriptionForCustomerEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -781,6 +1092,15 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateCreateSubscriptionResponse> createSubscriptionAsync(
+      EstimateCreateSubscriptionParams params) {
+
+    return postAsync("/estimates/create_subscription", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateCreateSubscriptionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * createInvoice a estimate using immutable params (executes immediately) - returns raw Response.
    */
@@ -802,6 +1122,15 @@ public final class EstimateService extends BaseService<EstimateService> {
     Response response = createInvoiceRaw(params);
 
     return EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateCreateInvoiceResponse> createInvoiceAsync(
+      EstimateCreateInvoiceParams params) {
+
+    return postAsync("/estimates/create_invoice", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                EstimateCreateInvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** cancelSubscription a estimate (executes immediately) - returns raw Response. */
@@ -849,9 +1178,36 @@ public final class EstimateService extends BaseService<EstimateService> {
     return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EstimateCancelSubscriptionResponse> cancelSubscriptionAsync(
+      String subscriptionId, EstimateCancelSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public EstimateCancelSubscriptionResponse cancelSubscription(String subscriptionId)
       throws ChargebeeException {
     Response response = cancelSubscriptionRaw(subscriptionId);
     return EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EstimateCancelSubscriptionResponse> cancelSubscriptionAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_subscription_estimate",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EstimateCancelSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.unbilledCharge.params.UnbilledChargeInvoiceNowEstimateParams;
 
@@ -85,6 +86,19 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UnbilledChargeDeleteResponse> deleteAsync(String unbilledChargeId) {
+    String path =
+        buildPathWithParams(
+            "/unbilled_charges/{unbilled-charge-id}/delete",
+            "unbilled-charge-id",
+            unbilledChargeId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                UnbilledChargeDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * invoiceNowEstimate a unbilledCharge using immutable params (executes immediately) - returns raw
    * Response.
@@ -110,6 +124,17 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     Response response = invoiceNowEstimateRaw(params);
 
     return UnbilledChargeInvoiceNowEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UnbilledChargeInvoiceNowEstimateResponse> invoiceNowEstimateAsync(
+      UnbilledChargeInvoiceNowEstimateParams params) {
+
+    return postAsync(
+            "/unbilled_charges/invoice_now_estimate", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                UnbilledChargeInvoiceNowEstimateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -139,6 +164,17 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return InvoiceUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<InvoiceUnbilledChargesResponse> invoiceUnbilledChargesAsync(
+      InvoiceUnbilledChargesParams params) {
+
+    return postAsync(
+            "/unbilled_charges/invoice_unbilled_charges",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                InvoiceUnbilledChargesResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a unbilledCharge using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(UnbilledChargeListParams params) throws ChargebeeException {
 
@@ -164,10 +200,28 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<UnbilledChargeListResponse> listAsync(UnbilledChargeListParams params) {
+
+    return getAsync("/unbilled_charges", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                UnbilledChargeListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public UnbilledChargeListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return UnbilledChargeListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<UnbilledChargeListResponse> listAsync() {
+
+    return getAsync("/unbilled_charges", null)
+        .thenApply(
+            response ->
+                UnbilledChargeListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -193,6 +247,15 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     return UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UnbilledChargeCreateResponse> createAsync(
+      UnbilledChargeCreateParams params) {
+
+    return postAsync("/unbilled_charges", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                UnbilledChargeCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * createUnbilledCharge a unbilledCharge using immutable params (executes immediately) - returns
    * raw Response.
@@ -216,5 +279,14 @@ public final class UnbilledChargeService extends BaseService<UnbilledChargeServi
     Response response = createUnbilledChargeRaw(params);
 
     return CreateUnbilledChargeResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateUnbilledChargeResponse> createUnbilledChargeAsync(
+      CreateUnbilledChargeParams params) {
+
+    return postAsync("/unbilled_charges/create", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                CreateUnbilledChargeResponse.fromJson(response.getBodyAsString(), response));
   }
 }

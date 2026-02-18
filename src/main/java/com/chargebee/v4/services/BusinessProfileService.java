@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.businessProfile.params.BusinessProfileRetrieveParams;
 
@@ -82,9 +83,26 @@ public final class BusinessProfileService extends BaseService<BusinessProfileSer
     return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync(
+      BusinessProfileRetrieveParams params) {
+
+    return getAsync("/business_profiles", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public BusinessProfileRetrieveResponse retrieve() throws ChargebeeException {
     Response response = retrieveRaw();
 
     return BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<BusinessProfileRetrieveResponse> retrieveAsync() {
+
+    return getAsync("/business_profiles", null)
+        .thenApply(
+            response ->
+                BusinessProfileRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

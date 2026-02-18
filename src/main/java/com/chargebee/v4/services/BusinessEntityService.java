@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.businessEntity.params.BusinessEntityGetTransfersParams;
 
@@ -87,11 +88,30 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
         response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync(
+      BusinessEntityGetTransfersParams params) {
+
+    return getAsync("/business_entities/transfers", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                BusinessEntityGetTransfersResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public BusinessEntityGetTransfersResponse getTransfers() throws ChargebeeException {
     Response response = getTransfersRaw();
 
     return BusinessEntityGetTransfersResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<BusinessEntityGetTransfersResponse> getTransfersAsync() {
+
+    return getAsync("/business_entities/transfers", null)
+        .thenApply(
+            response ->
+                BusinessEntityGetTransfersResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -118,5 +138,15 @@ public final class BusinessEntityService extends BaseService<BusinessEntityServi
     Response response = createTransfersRaw(params);
 
     return BusinessEntityCreateTransfersResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<BusinessEntityCreateTransfersResponse> createTransfersAsync(
+      BusinessEntityCreateTransfersParams params) {
+
+    return postAsync("/business_entities/transfers", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                BusinessEntityCreateTransfersResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

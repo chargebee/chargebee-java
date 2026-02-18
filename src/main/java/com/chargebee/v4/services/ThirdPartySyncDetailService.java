@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.thirdPartySyncDetail.params.ThirdPartySyncDetailUpdateParams;
 
@@ -78,6 +79,21 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
     return ThirdPartySyncDetailRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ThirdPartySyncDetailRetrieveResponse> retrieveAsync(
+      String tpIntegSyncDetailId) {
+    String path =
+        buildPathWithParams(
+            "/third_party_sync_details/{tp-integ-sync-detail-id}",
+            "tp-integ-sync-detail-id",
+            tpIntegSyncDetailId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ThirdPartySyncDetailRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** update a thirdPartySyncDetail (executes immediately) - returns raw Response. */
   Response updateRaw(String tpIntegSyncDetailId) throws ChargebeeException {
     String path =
@@ -123,6 +139,19 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
     return ThirdPartySyncDetailUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ThirdPartySyncDetailUpdateResponse> updateAsync(
+      String tpIntegSyncDetailId, ThirdPartySyncDetailUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/third_party_sync_details/{tp-integ-sync-detail-id}",
+            "tp-integ-sync-detail-id",
+            tpIntegSyncDetailId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                ThirdPartySyncDetailUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * create a thirdPartySyncDetail using immutable params (executes immediately) - returns raw
    * Response.
@@ -146,6 +175,15 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
     Response response = createRaw(params);
 
     return ThirdPartySyncDetailCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ThirdPartySyncDetailCreateResponse> createAsync(
+      ThirdPartySyncDetailCreateParams params) {
+
+    return postAsync("/third_party_sync_details", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                ThirdPartySyncDetailCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -186,11 +224,33 @@ public final class ThirdPartySyncDetailService extends BaseService<ThirdPartySyn
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ThirdPartySyncDetailRetrieveLatestSyncResponse> retrieveLatestSyncAsync(
+      ThirdPartySyncDetailRetrieveLatestSyncParams params) {
+
+    return getAsync(
+            "/third_party_sync_details/retrieve_latest_sync",
+            params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public ThirdPartySyncDetailRetrieveLatestSyncResponse retrieveLatestSync()
       throws ChargebeeException {
     Response response = retrieveLatestSyncRaw();
 
     return ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ThirdPartySyncDetailRetrieveLatestSyncResponse>
+      retrieveLatestSyncAsync() {
+
+    return getAsync("/third_party_sync_details/retrieve_latest_sync", null)
+        .thenApply(
+            response ->
+                ThirdPartySyncDetailRetrieveLatestSyncResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

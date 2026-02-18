@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.subscription.params.SubscriptionRemoveAdvanceInvoiceScheduleParams;
 
@@ -229,11 +230,41 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionRemoveAdvanceInvoiceScheduleResponse>
+      removeAdvanceInvoiceScheduleAsync(
+          String subscriptionId, SubscriptionRemoveAdvanceInvoiceScheduleParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionRemoveAdvanceInvoiceScheduleResponse removeAdvanceInvoiceSchedule(
       String subscriptionId) throws ChargebeeException {
     Response response = removeAdvanceInvoiceScheduleRaw(subscriptionId);
     return SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRemoveAdvanceInvoiceScheduleResponse>
+      removeAdvanceInvoiceScheduleAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_advance_invoice_schedule",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveAdvanceInvoiceScheduleResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** updateForItems a subscription (executes immediately) - returns raw Response. */
@@ -274,10 +305,33 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionUpdateForItemsResponse> updateForItemsAsync(
+      String subscriptionId, SubscriptionUpdateForItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionUpdateForItemsResponse updateForItems(String subscriptionId)
       throws ChargebeeException {
     Response response = updateForItemsRaw(subscriptionId);
     return SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionUpdateForItemsResponse> updateForItemsAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/update_for_items", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** removeCoupons a subscription (executes immediately) - returns raw Response. */
@@ -318,10 +372,33 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionRemoveCouponsResponse> removeCouponsAsync(
+      String subscriptionId, SubscriptionRemoveCouponsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionRemoveCouponsResponse removeCoupons(String subscriptionId)
       throws ChargebeeException {
     Response response = removeCouponsRaw(subscriptionId);
     return SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRemoveCouponsResponse> removeCouponsAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_coupons", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveCouponsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** resume a subscription (executes immediately) - returns raw Response. */
@@ -356,9 +433,29 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionResumeResponse> resumeAsync(
+      String subscriptionId, SubscriptionResumeParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionResumeResponse resume(String subscriptionId) throws ChargebeeException {
     Response response = resumeRaw(subscriptionId);
     return SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionResumeResponse> resumeAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/resume", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SubscriptionResumeResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** cancelForItems a subscription (executes immediately) - returns raw Response. */
@@ -399,10 +496,33 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionCancelForItemsResponse> cancelForItemsAsync(
+      String subscriptionId, SubscriptionCancelForItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionCancelForItemsResponse cancelForItems(String subscriptionId)
       throws ChargebeeException {
     Response response = cancelForItemsRaw(subscriptionId);
     return SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionCancelForItemsResponse> cancelForItemsAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel_for_items", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionCancelForItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** regenerateInvoice a subscription (executes immediately) - returns raw Response. */
@@ -450,10 +570,39 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionRegenerateInvoiceResponse> regenerateInvoiceAsync(
+      String subscriptionId, SubscriptionRegenerateInvoiceParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/regenerate_invoice",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionRegenerateInvoiceResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionRegenerateInvoiceResponse regenerateInvoice(String subscriptionId)
       throws ChargebeeException {
     Response response = regenerateInvoiceRaw(subscriptionId);
     return SubscriptionRegenerateInvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRegenerateInvoiceResponse> regenerateInvoiceAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/regenerate_invoice",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRegenerateInvoiceResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** list a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -480,10 +629,28 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<SubscriptionListResponse> listAsync(SubscriptionListParams params) {
+
+    return getAsync("/subscriptions", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SubscriptionListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public SubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return SubscriptionListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<SubscriptionListResponse> listAsync() {
+
+    return getAsync("/subscriptions", null)
+        .thenApply(
+            response ->
+                SubscriptionListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** create a subscription using immutable params (executes immediately) - returns raw Response. */
@@ -503,6 +670,14 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = createRaw(params);
 
     return SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionCreateResponse> createAsync(
+      SubscriptionCreateParams params) {
+
+    return postAsync("/subscriptions", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> SubscriptionCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** move a subscription (executes immediately) - returns raw Response. */
@@ -534,6 +709,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     Response response = moveRaw(subscriptionId, params);
     return SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionMoveResponse> moveAsync(
+      String subscriptionId, SubscriptionMoveParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/move", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> SubscriptionMoveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -582,6 +767,28 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<SubscriptionsForCustomerResponse> subscriptionsForCustomerAsync(
+      String customerId, SubscriptionsForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SubscriptionsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<SubscriptionsForCustomerResponse> subscriptionsForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionsForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /** createForCustomer a subscription (executes immediately) - returns raw Response. */
   Response createForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
@@ -615,6 +822,17 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       String customerId, SubscriptionCreateForCustomerParams params) throws ChargebeeException {
     Response response = createForCustomerRaw(customerId, params);
     return SubscriptionCreateForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionCreateForCustomerResponse> createForCustomerAsync(
+      String customerId, SubscriptionCreateForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/subscriptions", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionCreateForCustomerResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** importForItems a subscription (executes immediately) - returns raw Response. */
@@ -652,6 +870,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionImportForItemsResponse> importForItemsAsync(
+      String customerId, SubscriptionImportForItemsParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/import_for_items", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionImportForItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * retrieveAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response.
    */
@@ -670,6 +898,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = retrieveAdvanceInvoiceScheduleRaw(subscriptionId);
     return SubscriptionRetrieveAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRetrieveAdvanceInvoiceScheduleResponse>
+      retrieveAdvanceInvoiceScheduleAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/retrieve_advance_invoice_schedule",
+            "subscription-id",
+            subscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRetrieveAdvanceInvoiceScheduleResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** removeScheduledCancellation a subscription (executes immediately) - returns raw Response. */
@@ -720,11 +963,41 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionRemoveScheduledCancellationResponse>
+      removeScheduledCancellationAsync(
+          String subscriptionId, SubscriptionRemoveScheduledCancellationParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionRemoveScheduledCancellationResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionRemoveScheduledCancellationResponse removeScheduledCancellation(
       String subscriptionId) throws ChargebeeException {
     Response response = removeScheduledCancellationRaw(subscriptionId);
     return SubscriptionRemoveScheduledCancellationResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRemoveScheduledCancellationResponse>
+      removeScheduledCancellationAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_scheduled_cancellation",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveScheduledCancellationResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** retrieveWithScheduledChanges a subscription (executes immediately) - returns raw Response. */
@@ -743,6 +1016,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = retrieveWithScheduledChangesRaw(subscriptionId);
     return SubscriptionRetrieveWithScheduledChangesResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRetrieveWithScheduledChangesResponse>
+      retrieveWithScheduledChangesAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/retrieve_with_scheduled_changes",
+            "subscription-id",
+            subscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRetrieveWithScheduledChangesResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** reactivate a subscription (executes immediately) - returns raw Response. */
@@ -781,10 +1069,32 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionReactivateResponse> reactivateAsync(
+      String subscriptionId, SubscriptionReactivateParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionReactivateResponse reactivate(String subscriptionId)
       throws ChargebeeException {
     Response response = reactivateRaw(subscriptionId);
     return SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionReactivateResponse> reactivateAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/reactivate", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionReactivateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** chargeFutureRenewals a subscription (executes immediately) - returns raw Response. */
@@ -834,10 +1144,39 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionChargeFutureRenewalsResponse> chargeFutureRenewalsAsync(
+      String subscriptionId, SubscriptionChargeFutureRenewalsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_future_renewals",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionChargeFutureRenewalsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionChargeFutureRenewalsResponse chargeFutureRenewals(String subscriptionId)
       throws ChargebeeException {
     Response response = chargeFutureRenewalsRaw(subscriptionId);
     return SubscriptionChargeFutureRenewalsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionChargeFutureRenewalsResponse> chargeFutureRenewalsAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_future_renewals",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionChargeFutureRenewalsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** addChargeAtTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -886,6 +1225,20 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionAddChargeAtTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionAddChargeAtTermEndResponse> addChargeAtTermEndAsync(
+      String subscriptionId, SubscriptionAddChargeAtTermEndParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/add_charge_at_term_end",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionAddChargeAtTermEndResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** removeScheduledChanges a subscription (executes immediately) - returns raw Response. */
   Response removeScheduledChangesRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -902,6 +1255,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = removeScheduledChangesRaw(subscriptionId);
     return SubscriptionRemoveScheduledChangesResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRemoveScheduledChangesResponse> removeScheduledChangesAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_scheduled_changes",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveScheduledChangesResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** changeTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -942,6 +1310,17 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionChangeTermEndResponse> changeTermEndAsync(
+      String subscriptionId, SubscriptionChangeTermEndParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/change_term_end", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionChangeTermEndResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a subscription (executes immediately) - returns raw Response. */
   Response deleteRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -954,6 +1333,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionDeleteResponse delete(String subscriptionId) throws ChargebeeException {
     Response response = deleteRaw(subscriptionId);
     return SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionDeleteResponse> deleteAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/delete", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SubscriptionDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** createWithItems a subscription (executes immediately) - returns raw Response. */
@@ -994,10 +1383,33 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionCreateWithItemsResponse> createWithItemsAsync(
+      String customerId, SubscriptionCreateWithItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionCreateWithItemsResponse createWithItems(String customerId)
       throws ChargebeeException {
     Response response = createWithItemsRaw(customerId);
     return SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionCreateWithItemsResponse> createWithItemsAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/subscription_for_items", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionCreateWithItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** importUnbilledCharges a subscription (executes immediately) - returns raw Response. */
@@ -1047,10 +1459,39 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionImportUnbilledChargesResponse> importUnbilledChargesAsync(
+      String subscriptionId, SubscriptionImportUnbilledChargesParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_unbilled_charges",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionImportUnbilledChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionImportUnbilledChargesResponse importUnbilledCharges(String subscriptionId)
       throws ChargebeeException {
     Response response = importUnbilledChargesRaw(subscriptionId);
     return SubscriptionImportUnbilledChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionImportUnbilledChargesResponse> importUnbilledChargesAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_unbilled_charges",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionImportUnbilledChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** removeScheduledResumption a subscription (executes immediately) - returns raw Response. */
@@ -1071,6 +1512,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionRemoveScheduledResumptionResponse>
+      removeScheduledResumptionAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_scheduled_resumption",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveScheduledResumptionResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** retrieve a subscription (executes immediately) - returns raw Response. */
   Response retrieveRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -1082,6 +1538,16 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
   public SubscriptionRetrieveResponse retrieve(String subscriptionId) throws ChargebeeException {
     Response response = retrieveRaw(subscriptionId);
     return SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRetrieveResponse> retrieveAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a subscription (executes immediately) - returns raw Response. */
@@ -1113,9 +1579,27 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionUpdateResponse> updateAsync(
+      String subscriptionId, SubscriptionUpdateParams params) {
+    String path =
+        buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionUpdateResponse update(String subscriptionId) throws ChargebeeException {
     Response response = updateRaw(subscriptionId);
     return SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionUpdateResponse> updateAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams("/subscriptions/{subscription-id}", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SubscriptionUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** importContractTerm a subscription (executes immediately) - returns raw Response. */
@@ -1164,10 +1648,39 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionImportContractTermResponse> importContractTermAsync(
+      String subscriptionId, SubscriptionImportContractTermParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_contract_term",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionImportContractTermResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionImportContractTermResponse importContractTerm(String subscriptionId)
       throws ChargebeeException {
     Response response = importContractTermRaw(subscriptionId);
     return SubscriptionImportContractTermResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionImportContractTermResponse> importContractTermAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/import_contract_term",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionImportContractTermResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** overrideBillingProfile a subscription (executes immediately) - returns raw Response. */
@@ -1218,11 +1731,40 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionOverrideBillingProfileResponse> overrideBillingProfileAsync(
+      String subscriptionId, SubscriptionOverrideBillingProfileParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/override_billing_profile",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionOverrideBillingProfileResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionOverrideBillingProfileResponse overrideBillingProfile(String subscriptionId)
       throws ChargebeeException {
     Response response = overrideBillingProfileRaw(subscriptionId);
     return SubscriptionOverrideBillingProfileResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionOverrideBillingProfileResponse> overrideBillingProfileAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/override_billing_profile",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionOverrideBillingProfileResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** removeScheduledPause a subscription (executes immediately) - returns raw Response. */
@@ -1240,6 +1782,21 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     Response response = removeScheduledPauseRaw(subscriptionId);
     return SubscriptionRemoveScheduledPauseResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionRemoveScheduledPauseResponse> removeScheduledPauseAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/remove_scheduled_pause",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionRemoveScheduledPauseResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** editAdvanceInvoiceSchedule a subscription (executes immediately) - returns raw Response. */
@@ -1290,11 +1847,41 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionEditAdvanceInvoiceScheduleResponse>
+      editAdvanceInvoiceScheduleAsync(
+          String subscriptionId, SubscriptionEditAdvanceInvoiceScheduleParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public SubscriptionEditAdvanceInvoiceScheduleResponse editAdvanceInvoiceSchedule(
       String subscriptionId) throws ChargebeeException {
     Response response = editAdvanceInvoiceScheduleRaw(subscriptionId);
     return SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionEditAdvanceInvoiceScheduleResponse>
+      editAdvanceInvoiceScheduleAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/edit_advance_invoice_schedule",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionEditAdvanceInvoiceScheduleResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -1340,6 +1927,30 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = listDiscountsRaw(subscriptionId);
     return SubscriptionListDiscountsResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
+  }
+
+  public CompletableFuture<SubscriptionListDiscountsResponse> listDiscountsAsync(
+      String subscriptionId, SubscriptionListDiscountsParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SubscriptionListDiscountsResponse.fromJson(
+                    response.getBodyAsString(), this, params, subscriptionId, response));
+  }
+
+  public CompletableFuture<SubscriptionListDiscountsResponse> listDiscountsAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/discounts", "subscription-id", subscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionListDiscountsResponse.fromJson(
+                    response.getBodyAsString(), this, null, subscriptionId, response));
   }
 
   /**
@@ -1391,6 +2002,30 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  public CompletableFuture<ContractTermsForSubscriptionResponse> contractTermsForSubscriptionAsync(
+      String subscriptionId, ContractTermsForSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ContractTermsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, params, subscriptionId, response));
+  }
+
+  public CompletableFuture<ContractTermsForSubscriptionResponse> contractTermsForSubscriptionAsync(
+      String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/contract_terms", "subscription-id", subscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ContractTermsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, null, subscriptionId, response));
+  }
+
   /** pause a subscription (executes immediately) - returns raw Response. */
   Response pauseRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -1423,9 +2058,29 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionPauseResponse> pauseAsync(
+      String subscriptionId, SubscriptionPauseParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionPauseResponse pause(String subscriptionId) throws ChargebeeException {
     Response response = pauseRaw(subscriptionId);
     return SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionPauseResponse> pauseAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/pause", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SubscriptionPauseResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** importForCustomer a subscription (executes immediately) - returns raw Response. */
@@ -1466,6 +2121,18 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionImportForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionImportForCustomerResponse> importForCustomerAsync(
+      String customerId, SubscriptionImportForCustomerParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/import_subscription", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionImportForCustomerResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * importSubscription a subscription using immutable params (executes immediately) - returns raw
    * Response.
@@ -1489,6 +2156,15 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     Response response = importSubscriptionRaw(params);
 
     return ImportSubscriptionResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ImportSubscriptionResponse> importSubscriptionAsync(
+      ImportSubscriptionParams params) {
+
+    return postAsync(
+            "/subscriptions/import_subscription", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> ImportSubscriptionResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** cancel a subscription (executes immediately) - returns raw Response. */
@@ -1523,9 +2199,29 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
     return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionCancelResponse> cancelAsync(
+      String subscriptionId, SubscriptionCancelParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionCancelResponse cancel(String subscriptionId) throws ChargebeeException {
     Response response = cancelRaw(subscriptionId);
     return SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionCancelResponse> cancelAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/cancel", "subscription-id", subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> SubscriptionCancelResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** chargeAddonAtTermEnd a subscription (executes immediately) - returns raw Response. */
@@ -1573,5 +2269,19 @@ public final class SubscriptionService extends BaseService<SubscriptionService> 
       throws ChargebeeException {
     Response response = chargeAddonAtTermEndRaw(subscriptionId, params);
     return SubscriptionChargeAddonAtTermEndResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionChargeAddonAtTermEndResponse> chargeAddonAtTermEndAsync(
+      String subscriptionId, SubscriptionChargeAddonAtTermEndParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/charge_addon_at_term_end",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SubscriptionChargeAddonAtTermEndResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

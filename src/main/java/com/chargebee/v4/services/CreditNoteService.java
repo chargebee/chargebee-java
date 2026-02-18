@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.creditNote.params.CreditNoteRecordRefundParams;
 
@@ -132,10 +133,32 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteRecordRefundResponse> recordRefundAsync(
+      String creditNoteId, CreditNoteRecordRefundParams params) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CreditNoteRecordRefundResponse recordRefund(String creditNoteId)
       throws ChargebeeException {
     Response response = recordRefundRaw(creditNoteId);
     return CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteRecordRefundResponse> recordRefundAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/record_refund", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNoteRecordRefundResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -161,6 +184,15 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     Response response = importCreditNoteRaw(params);
 
     return ImportCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ImportCreditNoteResponse> importCreditNoteAsync(
+      ImportCreditNoteParams params) {
+
+    return postAsync(
+            "/credit_notes/import_credit_note", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> ImportCreditNoteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** delete a creditNote (executes immediately) - returns raw Response. */
@@ -194,9 +226,29 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteDeleteResponse> deleteAsync(
+      String creditNoteId, CreditNoteDeleteParams params) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CreditNoteDeleteResponse delete(String creditNoteId) throws ChargebeeException {
     Response response = deleteRaw(creditNoteId);
     return CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteDeleteResponse> deleteAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/delete", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CreditNoteDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -245,6 +297,28 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<CreditNotesForCustomerResponse> creditNotesForCustomerAsync(
+      String customerId, CreditNotesForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CreditNotesForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<CreditNotesForCustomerResponse> creditNotesForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/credit_notes", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNotesForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /** pdf a creditNote (executes immediately) - returns raw Response. */
   Response pdfRaw(String creditNoteId) throws ChargebeeException {
     String path =
@@ -273,9 +347,27 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNotePdfResponse> pdfAsync(
+      String creditNoteId, CreditNotePdfParams params) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CreditNotePdfResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CreditNotePdfResponse pdf(String creditNoteId) throws ChargebeeException {
     Response response = pdfRaw(creditNoteId);
     return CreditNotePdfResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNotePdfResponse> pdfAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/pdf", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CreditNotePdfResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** sendEinvoice a creditNote (executes immediately) - returns raw Response. */
@@ -291,6 +383,17 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       throws ChargebeeException {
     Response response = sendEinvoiceRaw(creditNoteId);
     return CreditNoteSendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteSendEinvoiceResponse> sendEinvoiceAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/send_einvoice", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNoteSendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** voidCreditNote a creditNote (executes immediately) - returns raw Response. */
@@ -328,9 +431,27 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<VoidCreditNoteResponse> voidCreditNoteAsync(
+      String creditNoteId, VoidCreditNoteParams params) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public VoidCreditNoteResponse voidCreditNote(String creditNoteId) throws ChargebeeException {
     Response response = voidCreditNoteRaw(creditNoteId);
     return VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<VoidCreditNoteResponse> voidCreditNoteAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}/void", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> VoidCreditNoteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** refund a creditNote (executes immediately) - returns raw Response. */
@@ -364,9 +485,29 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteRefundResponse> refundAsync(
+      String creditNoteId, CreditNoteRefundParams params) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CreditNoteRefundResponse refund(String creditNoteId) throws ChargebeeException {
     Response response = refundRaw(creditNoteId);
     return CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteRefundResponse> refundAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/refund", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CreditNoteRefundResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -393,10 +534,27 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<CreditNoteListResponse> listAsync(CreditNoteListParams params) {
+
+    return getAsync("/credit_notes", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CreditNoteListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public CreditNoteListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<CreditNoteListResponse> listAsync() {
+
+    return getAsync("/credit_notes", null)
+        .thenApply(
+            response ->
+                CreditNoteListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a creditNote using immutable params (executes immediately) - returns raw Response. */
@@ -417,6 +575,13 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteCreateResponse> createAsync(CreditNoteCreateParams params) {
+
+    return postAsync("/credit_notes", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CreditNoteCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** downloadEinvoice a creditNote (executes immediately) - returns raw Response. */
   Response downloadEinvoiceRaw(String creditNoteId) throws ChargebeeException {
     String path =
@@ -432,6 +597,18 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteDownloadEinvoiceResponse> downloadEinvoiceAsync(
+      String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/download_einvoice", "credit-note-id", creditNoteId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNoteDownloadEinvoiceResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** resendEinvoice a creditNote (executes immediately) - returns raw Response. */
   Response resendEinvoiceRaw(String creditNoteId) throws ChargebeeException {
     String path =
@@ -445,6 +622,18 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
       throws ChargebeeException {
     Response response = resendEinvoiceRaw(creditNoteId);
     return CreditNoteResendEinvoiceResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteResendEinvoiceResponse> resendEinvoiceAsync(
+      String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/resend_einvoice", "credit-note-id", creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNoteResendEinvoiceResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** removeTaxWithheldRefund a creditNote (executes immediately) - returns raw Response. */
@@ -494,10 +683,39 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteRemoveTaxWithheldRefundResponse> removeTaxWithheldRefundAsync(
+      String creditNoteId, CreditNoteRemoveTaxWithheldRefundParams params) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/remove_tax_withheld_refund",
+            "credit-note-id",
+            creditNoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreditNoteRemoveTaxWithheldRefundResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CreditNoteRemoveTaxWithheldRefundResponse removeTaxWithheldRefund(String creditNoteId)
       throws ChargebeeException {
     Response response = removeTaxWithheldRefundRaw(creditNoteId);
     return CreditNoteRemoveTaxWithheldRefundResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteRemoveTaxWithheldRefundResponse> removeTaxWithheldRefundAsync(
+      String creditNoteId) {
+    String path =
+        buildPathWithParams(
+            "/credit_notes/{credit-note-id}/remove_tax_withheld_refund",
+            "credit-note-id",
+            creditNoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreditNoteRemoveTaxWithheldRefundResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** retrieve a creditNote (executes immediately) - returns raw Response. */
@@ -522,8 +740,26 @@ public final class CreditNoteService extends BaseService<CreditNoteService> {
     return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreditNoteRetrieveResponse> retrieveAsync(
+      String creditNoteId, CreditNoteRetrieveParams params) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CreditNoteRetrieveResponse retrieve(String creditNoteId) throws ChargebeeException {
     Response response = retrieveRaw(creditNoteId);
     return CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreditNoteRetrieveResponse> retrieveAsync(String creditNoteId) {
+    String path =
+        buildPathWithParams("/credit_notes/{credit-note-id}", "credit-note-id", creditNoteId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CreditNoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.address.params.AddressRetrieveParams;
 
@@ -72,6 +73,13 @@ public final class AddressService extends BaseService<AddressService> {
     return AddressRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<AddressRetrieveResponse> retrieveAsync(AddressRetrieveParams params) {
+
+    return getAsync("/addresses", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> AddressRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** update a address using immutable params (executes immediately) - returns raw Response. */
   Response updateRaw(AddressUpdateParams params) throws ChargebeeException {
 
@@ -88,5 +96,12 @@ public final class AddressService extends BaseService<AddressService> {
     Response response = updateRaw(params);
 
     return AddressUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AddressUpdateResponse> updateAsync(AddressUpdateParams params) {
+
+    return postAsync("/addresses", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> AddressUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

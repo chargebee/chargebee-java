@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.subscriptionSetting.params.SubscriptionSettingRetrieveParams;
 
@@ -84,9 +85,27 @@ public final class SubscriptionSettingService extends BaseService<SubscriptionSe
     return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SubscriptionSettingRetrieveResponse> retrieveAsync(
+      SubscriptionSettingRetrieveParams params) {
+
+    return getAsync(
+            "/subscription_settings/retrieve", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public SubscriptionSettingRetrieveResponse retrieve() throws ChargebeeException {
     Response response = retrieveRaw();
 
     return SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<SubscriptionSettingRetrieveResponse> retrieveAsync() {
+
+    return getAsync("/subscription_settings/retrieve", null)
+        .thenApply(
+            response ->
+                SubscriptionSettingRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

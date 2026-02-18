@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.paymentVoucher.params.PaymentVouchersForCustomerParams;
 
@@ -107,6 +108,28 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         response.getBodyAsString(), this, null, customerId, response);
   }
 
+  public CompletableFuture<PaymentVouchersForCustomerResponse> paymentVouchersForCustomerAsync(
+      String customerId, PaymentVouchersForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PaymentVouchersForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, params, customerId, response));
+  }
+
+  public CompletableFuture<PaymentVouchersForCustomerResponse> paymentVouchersForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/payment_vouchers", "customer-id", customerId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentVouchersForCustomerResponse.fromJson(
+                    response.getBodyAsString(), this, null, customerId, response));
+  }
+
   /**
    * paymentVouchersForInvoice a paymentVoucher using immutable params (executes immediately) -
    * returns raw Response.
@@ -153,6 +176,28 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
         response.getBodyAsString(), this, null, invoiceId, response);
   }
 
+  public CompletableFuture<PaymentVouchersForInvoiceResponse> paymentVouchersForInvoiceAsync(
+      String invoiceId, PaymentVouchersForInvoiceParams params) {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PaymentVouchersForInvoiceResponse.fromJson(
+                    response.getBodyAsString(), this, params, invoiceId, response));
+  }
+
+  public CompletableFuture<PaymentVouchersForInvoiceResponse> paymentVouchersForInvoiceAsync(
+      String invoiceId) {
+    String path =
+        buildPathWithParams("/invoices/{invoice-id}/payment_vouchers", "invoice-id", invoiceId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentVouchersForInvoiceResponse.fromJson(
+                    response.getBodyAsString(), this, null, invoiceId, response));
+  }
+
   /** retrieve a paymentVoucher (executes immediately) - returns raw Response. */
   Response retrieveRaw(String paymentVoucherId) throws ChargebeeException {
     String path =
@@ -166,6 +211,17 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
       throws ChargebeeException {
     Response response = retrieveRaw(paymentVoucherId);
     return PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PaymentVoucherRetrieveResponse> retrieveAsync(String paymentVoucherId) {
+    String path =
+        buildPathWithParams(
+            "/payment_vouchers/{payment-voucher-id}", "payment-voucher-id", paymentVoucherId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentVoucherRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -189,5 +245,14 @@ public final class PaymentVoucherService extends BaseService<PaymentVoucherServi
     Response response = createRaw(params);
 
     return PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PaymentVoucherCreateResponse> createAsync(
+      PaymentVoucherCreateParams params) {
+
+    return postAsync("/payment_vouchers", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentVoucherCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

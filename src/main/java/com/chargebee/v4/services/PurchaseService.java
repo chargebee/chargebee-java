@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.purchase.params.PurchaseCreateParams;
 
@@ -72,6 +73,13 @@ public final class PurchaseService extends BaseService<PurchaseService> {
     return PurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PurchaseCreateResponse> createAsync(PurchaseCreateParams params) {
+
+    return postAsync("/purchases", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> PurchaseCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** estimate a purchase using immutable params (executes immediately) - returns raw Response. */
   Response estimateRaw(PurchaseEstimateParams params) throws ChargebeeException {
 
@@ -89,5 +97,12 @@ public final class PurchaseService extends BaseService<PurchaseService> {
     Response response = estimateRaw(params);
 
     return PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PurchaseEstimateResponse> estimateAsync(PurchaseEstimateParams params) {
+
+    return postAsync("/purchases/estimate", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> PurchaseEstimateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

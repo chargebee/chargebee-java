@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.pc2MigrationItemFamily.params.Pc2MigrationItemFamilyUpdateParams;
 
@@ -81,6 +82,21 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<Pc2MigrationItemFamilyDeleteResponse> deleteAsync(
+      String pc2MigrationItemFamilyId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_families/{pc2-migration-item-family-id}/delete",
+            "pc2-migration-item-family-id",
+            pc2MigrationItemFamilyId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyDeleteResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** retrieve a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
   Response retrieveRaw(String pc2MigrationItemFamilyId) throws ChargebeeException {
     String path =
@@ -96,6 +112,21 @@ public final class Pc2MigrationItemFamilyService
       throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationItemFamilyId);
     return Pc2MigrationItemFamilyRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<Pc2MigrationItemFamilyRetrieveResponse> retrieveAsync(
+      String pc2MigrationItemFamilyId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_families/{pc2-migration-item-family-id}",
+            "pc2-migration-item-family-id",
+            pc2MigrationItemFamilyId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** update a pc2MigrationItemFamily (executes immediately) - returns raw Response. */
@@ -144,10 +175,39 @@ public final class Pc2MigrationItemFamilyService
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<Pc2MigrationItemFamilyUpdateResponse> updateAsync(
+      String pc2MigrationItemFamilyId, Pc2MigrationItemFamilyUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_families/{pc2-migration-item-family-id}",
+            "pc2-migration-item-family-id",
+            pc2MigrationItemFamilyId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyUpdateResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public Pc2MigrationItemFamilyUpdateResponse update(String pc2MigrationItemFamilyId)
       throws ChargebeeException {
     Response response = updateRaw(pc2MigrationItemFamilyId);
     return Pc2MigrationItemFamilyUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<Pc2MigrationItemFamilyUpdateResponse> updateAsync(
+      String pc2MigrationItemFamilyId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_families/{pc2-migration-item-family-id}",
+            "pc2-migration-item-family-id",
+            pc2MigrationItemFamilyId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyUpdateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -182,11 +242,30 @@ public final class Pc2MigrationItemFamilyService
         response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync(
+      Pc2MigrationItemFamilyListParams params) {
+
+    return getAsync("/pc2_migration_item_families", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public Pc2MigrationItemFamilyListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return Pc2MigrationItemFamilyListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<Pc2MigrationItemFamilyListResponse> listAsync() {
+
+    return getAsync("/pc2_migration_item_families", null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -212,5 +291,15 @@ public final class Pc2MigrationItemFamilyService
     Response response = createRaw(params);
 
     return Pc2MigrationItemFamilyCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<Pc2MigrationItemFamilyCreateResponse> createAsync(
+      Pc2MigrationItemFamilyCreateParams params) {
+
+    return postAsync("/pc2_migration_item_families", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemFamilyCreateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.event.params.EventListParams;
 
@@ -76,10 +77,26 @@ public final class EventService extends BaseService<EventService> {
     return EventListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<EventListResponse> listAsync(EventListParams params) {
+
+    return getAsync("/events", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                EventListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public EventListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return EventListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<EventListResponse> listAsync() {
+
+    return getAsync("/events", null)
+        .thenApply(
+            response ->
+                EventListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** retrieve a event (executes immediately) - returns raw Response. */
@@ -92,5 +109,13 @@ public final class EventService extends BaseService<EventService> {
   public EventRetrieveResponse retrieve(String eventId) throws ChargebeeException {
     Response response = retrieveRaw(eventId);
     return EventRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EventRetrieveResponse> retrieveAsync(String eventId) {
+    String path = buildPathWithParams("/events/{event-id}", "event-id", eventId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> EventRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

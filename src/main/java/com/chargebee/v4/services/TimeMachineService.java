@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.timeMachine.params.TimeMachineTravelForwardParams;
 
@@ -76,6 +77,16 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<TimeMachineRetrieveResponse> retrieveAsync(String timeMachineName) {
+    String path =
+        buildPathWithParams(
+            "/time_machines/{time-machine-name}", "time-machine-name", timeMachineName);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> TimeMachineRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** travelForward a timeMachine (executes immediately) - returns raw Response. */
   Response travelForwardRaw(String timeMachineName) throws ChargebeeException {
     String path =
@@ -120,10 +131,37 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<TimeMachineTravelForwardResponse> travelForwardAsync(
+      String timeMachineName, TimeMachineTravelForwardParams params) {
+    String path =
+        buildPathWithParams(
+            "/time_machines/{time-machine-name}/travel_forward",
+            "time-machine-name",
+            timeMachineName);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public TimeMachineTravelForwardResponse travelForward(String timeMachineName)
       throws ChargebeeException {
     Response response = travelForwardRaw(timeMachineName);
     return TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TimeMachineTravelForwardResponse> travelForwardAsync(
+      String timeMachineName) {
+    String path =
+        buildPathWithParams(
+            "/time_machines/{time-machine-name}/travel_forward",
+            "time-machine-name",
+            timeMachineName);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                TimeMachineTravelForwardResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** startAfresh a timeMachine (executes immediately) - returns raw Response. */
@@ -168,10 +206,37 @@ public final class TimeMachineService extends BaseService<TimeMachineService> {
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<TimeMachineStartAfreshResponse> startAfreshAsync(
+      String timeMachineName, TimeMachineStartAfreshParams params) {
+    String path =
+        buildPathWithParams(
+            "/time_machines/{time-machine-name}/start_afresh",
+            "time-machine-name",
+            timeMachineName);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public TimeMachineStartAfreshResponse startAfresh(String timeMachineName)
       throws ChargebeeException {
     Response response = startAfreshRaw(timeMachineName);
     return TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<TimeMachineStartAfreshResponse> startAfreshAsync(
+      String timeMachineName) {
+    String path =
+        buildPathWithParams(
+            "/time_machines/{time-machine-name}/start_afresh",
+            "time-machine-name",
+            timeMachineName);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                TimeMachineStartAfreshResponse.fromJson(response.getBodyAsString(), response));
   }
 
   // === Time Travel Completion Helper ===

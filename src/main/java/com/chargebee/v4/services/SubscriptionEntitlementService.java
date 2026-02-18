@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.subscriptionEntitlement.params.SetSubscriptionEntitlementAvailabilityParams;
 
@@ -108,6 +109,21 @@ public final class SubscriptionEntitlementService
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<SetSubscriptionEntitlementAvailabilityResponse>
+      setSubscriptionEntitlementAvailabilityAsync(
+          String subscriptionId, SetSubscriptionEntitlementAvailabilityParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/subscription_entitlements/set_availability",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                SetSubscriptionEntitlementAvailabilityResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * subscriptionEntitlementsForSubscription a subscriptionEntitlement using immutable params
    * (executes immediately) - returns raw Response.
@@ -164,5 +180,34 @@ public final class SubscriptionEntitlementService
     Response response = subscriptionEntitlementsForSubscriptionRaw(subscriptionId);
     return SubscriptionEntitlementsForSubscriptionResponse.fromJson(
         response.getBodyAsString(), this, null, subscriptionId, response);
+  }
+
+  public CompletableFuture<SubscriptionEntitlementsForSubscriptionResponse>
+      subscriptionEntitlementsForSubscriptionAsync(
+          String subscriptionId, SubscriptionEntitlementsForSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/subscription_entitlements",
+            "subscription-id",
+            subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SubscriptionEntitlementsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, params, subscriptionId, response));
+  }
+
+  public CompletableFuture<SubscriptionEntitlementsForSubscriptionResponse>
+      subscriptionEntitlementsForSubscriptionAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/subscription_entitlements",
+            "subscription-id",
+            subscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                SubscriptionEntitlementsForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, null, subscriptionId, response));
   }
 }

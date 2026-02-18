@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.entitlementOverride.params.ListEntitlementOverrideForSubscriptionParams;
 
@@ -113,6 +114,35 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
         response.getBodyAsString(), this, null, subscriptionId, response);
   }
 
+  public CompletableFuture<ListEntitlementOverrideForSubscriptionResponse>
+      listEntitlementOverrideForSubscriptionAsync(
+          String subscriptionId, ListEntitlementOverrideForSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/entitlement_overrides",
+            "subscription-id",
+            subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ListEntitlementOverrideForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, params, subscriptionId, response));
+  }
+
+  public CompletableFuture<ListEntitlementOverrideForSubscriptionResponse>
+      listEntitlementOverrideForSubscriptionAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/entitlement_overrides",
+            "subscription-id",
+            subscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ListEntitlementOverrideForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, null, subscriptionId, response));
+  }
+
   /**
    * addEntitlementOverrideForSubscription a entitlementOverride (executes immediately) - returns
    * raw Response.
@@ -165,10 +195,40 @@ public final class EntitlementOverrideService extends BaseService<EntitlementOve
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<AddEntitlementOverrideForSubscriptionResponse>
+      addEntitlementOverrideForSubscriptionAsync(
+          String subscriptionId, AddEntitlementOverrideForSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/entitlement_overrides",
+            "subscription-id",
+            subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                AddEntitlementOverrideForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public AddEntitlementOverrideForSubscriptionResponse addEntitlementOverrideForSubscription(
       String subscriptionId) throws ChargebeeException {
     Response response = addEntitlementOverrideForSubscriptionRaw(subscriptionId);
     return AddEntitlementOverrideForSubscriptionResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<AddEntitlementOverrideForSubscriptionResponse>
+      addEntitlementOverrideForSubscriptionAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/entitlement_overrides",
+            "subscription-id",
+            subscriptionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                AddEntitlementOverrideForSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

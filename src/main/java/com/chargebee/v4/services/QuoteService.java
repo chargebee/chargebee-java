@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.quote.params.CreateSubscriptionItemsForCustomerQuoteParams;
 
@@ -174,11 +175,41 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateSubscriptionItemsForCustomerQuoteResponse>
+      createSubscriptionItemsForCustomerQuoteAsync(
+          String customerId, CreateSubscriptionItemsForCustomerQuoteParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_quote_for_items",
+            "customer-id",
+            customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreateSubscriptionItemsForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CreateSubscriptionItemsForCustomerQuoteResponse createSubscriptionItemsForCustomerQuote(
       String customerId) throws ChargebeeException {
     Response response = createSubscriptionItemsForCustomerQuoteRaw(customerId);
     return CreateSubscriptionItemsForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateSubscriptionItemsForCustomerQuoteResponse>
+      createSubscriptionItemsForCustomerQuoteAsync(String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_quote_for_items",
+            "customer-id",
+            customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreateSubscriptionItemsForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** retrieve a quote (executes immediately) - returns raw Response. */
@@ -191,6 +222,14 @@ public final class QuoteService extends BaseService<QuoteService> {
   public QuoteRetrieveResponse retrieve(String quoteId) throws ChargebeeException {
     Response response = retrieveRaw(quoteId);
     return QuoteRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteRetrieveResponse> retrieveAsync(String quoteId) {
+    String path = buildPathWithParams("/quotes/{quote-id}", "quote-id", quoteId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> QuoteRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -240,11 +279,37 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EditCreateSubscriptionCustomerQuoteForItemsResponse>
+      editCreateSubscriptionCustomerQuoteForItemsAsync(
+          String quoteId, EditCreateSubscriptionCustomerQuoteForItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_create_subscription_quote_for_items", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public EditCreateSubscriptionCustomerQuoteForItemsResponse
       editCreateSubscriptionCustomerQuoteForItems(String quoteId) throws ChargebeeException {
     Response response = editCreateSubscriptionCustomerQuoteForItemsRaw(quoteId);
     return EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EditCreateSubscriptionCustomerQuoteForItemsResponse>
+      editCreateSubscriptionCustomerQuoteForItemsAsync(String quoteId) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_create_subscription_quote_for_items", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EditCreateSubscriptionCustomerQuoteForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** updateStatus a quote (executes immediately) - returns raw Response. */
@@ -273,6 +338,14 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteUpdateStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuoteUpdateStatusResponse> updateStatusAsync(
+      String quoteId, QuoteUpdateStatusParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/update_status", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> QuoteUpdateStatusResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * updateSubscriptionQuoteForItems a quote using immutable params (executes immediately) - returns
    * raw Response.
@@ -298,6 +371,18 @@ public final class QuoteService extends BaseService<QuoteService> {
     Response response = updateSubscriptionQuoteForItemsRaw(params);
 
     return UpdateSubscriptionQuoteForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UpdateSubscriptionQuoteForItemsResponse>
+      updateSubscriptionQuoteForItemsAsync(UpdateSubscriptionQuoteForItemsParams params) {
+
+    return postAsync(
+            "/quotes/update_subscription_quote_for_items",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                UpdateSubscriptionQuoteForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -342,6 +427,26 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), this, null, quoteId, response);
   }
 
+  public CompletableFuture<QuoteLineGroupsForQuoteResponse> quoteLineGroupsForQuoteAsync(
+      String quoteId, QuoteLineGroupsForQuoteParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                QuoteLineGroupsForQuoteResponse.fromJson(
+                    response.getBodyAsString(), this, params, quoteId, response));
+  }
+
+  public CompletableFuture<QuoteLineGroupsForQuoteResponse> quoteLineGroupsForQuoteAsync(
+      String quoteId) {
+    String path = buildPathWithParams("/quotes/{quote-id}/quote_line_groups", "quote-id", quoteId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                QuoteLineGroupsForQuoteResponse.fromJson(
+                    response.getBodyAsString(), this, null, quoteId, response));
+  }
+
   /** extendExpiryDate a quote (executes immediately) - returns raw Response. */
   Response extendExpiryDateRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
@@ -370,6 +475,15 @@ public final class QuoteService extends BaseService<QuoteService> {
       String quoteId, QuoteExtendExpiryDateParams params) throws ChargebeeException {
     Response response = extendExpiryDateRaw(quoteId, params);
     return QuoteExtendExpiryDateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteExtendExpiryDateResponse> extendExpiryDateAsync(
+      String quoteId, QuoteExtendExpiryDateParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/extend_expiry_date", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                QuoteExtendExpiryDateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** editForChargeItemsAndCharges a quote (executes immediately) - returns raw Response. */
@@ -411,10 +525,36 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuoteEditForChargeItemsAndChargesResponse>
+      editForChargeItemsAndChargesAsync(
+          String quoteId, QuoteEditForChargeItemsAndChargesParams params) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                QuoteEditForChargeItemsAndChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public QuoteEditForChargeItemsAndChargesResponse editForChargeItemsAndCharges(String quoteId)
       throws ChargebeeException {
     Response response = editForChargeItemsAndChargesRaw(quoteId);
     return QuoteEditForChargeItemsAndChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteEditForChargeItemsAndChargesResponse>
+      editForChargeItemsAndChargesAsync(String quoteId) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_for_charge_items_and_charges", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                QuoteEditForChargeItemsAndChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** editUpdateSubscriptionQuoteForItems a quote (executes immediately) - returns raw Response. */
@@ -457,11 +597,37 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EditUpdateSubscriptionQuoteForItemsResponse>
+      editUpdateSubscriptionQuoteForItemsAsync(
+          String quoteId, EditUpdateSubscriptionQuoteForItemsParams params) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public EditUpdateSubscriptionQuoteForItemsResponse editUpdateSubscriptionQuoteForItems(
       String quoteId) throws ChargebeeException {
     Response response = editUpdateSubscriptionQuoteForItemsRaw(quoteId);
     return EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EditUpdateSubscriptionQuoteForItemsResponse>
+      editUpdateSubscriptionQuoteForItemsAsync(String quoteId) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_update_subscription_quote_for_items", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EditUpdateSubscriptionQuoteForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** list a quote using immutable params (executes immediately) - returns raw Response. */
@@ -488,10 +654,26 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<QuoteListResponse> listAsync(QuoteListParams params) {
+
+    return getAsync("/quotes", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                QuoteListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public QuoteListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<QuoteListResponse> listAsync() {
+
+    return getAsync("/quotes", null)
+        .thenApply(
+            response ->
+                QuoteListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** pdf a quote (executes immediately) - returns raw Response. */
@@ -518,9 +700,22 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuotePdfResponse> pdfAsync(String quoteId, QuotePdfParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> QuotePdfResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public QuotePdfResponse pdf(String quoteId) throws ChargebeeException {
     Response response = pdfRaw(quoteId);
     return QuotePdfResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuotePdfResponse> pdfAsync(String quoteId) {
+    String path = buildPathWithParams("/quotes/{quote-id}/pdf", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(response -> QuotePdfResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** convert a quote (executes immediately) - returns raw Response. */
@@ -548,9 +743,23 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuoteConvertResponse> convertAsync(
+      String quoteId, QuoteConvertParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> QuoteConvertResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public QuoteConvertResponse convert(String quoteId) throws ChargebeeException {
     Response response = convertRaw(quoteId);
     return QuoteConvertResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteConvertResponse> convertAsync(String quoteId) {
+    String path = buildPathWithParams("/quotes/{quote-id}/convert", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(response -> QuoteConvertResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -581,6 +790,18 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuoteCreateForChargeItemsAndChargesResponse>
+      createForChargeItemsAndChargesAsync(QuoteCreateForChargeItemsAndChargesParams params) {
+
+    return postAsync(
+            "/quotes/create_for_charge_items_and_charges",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                QuoteCreateForChargeItemsAndChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** delete a quote (executes immediately) - returns raw Response. */
   Response deleteRaw(String quoteId) throws ChargebeeException {
     String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
@@ -606,9 +827,23 @@ public final class QuoteService extends BaseService<QuoteService> {
     return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<QuoteDeleteResponse> deleteAsync(
+      String quoteId, QuoteDeleteParams params) {
+    String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> QuoteDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public QuoteDeleteResponse delete(String quoteId) throws ChargebeeException {
     Response response = deleteRaw(quoteId);
     return QuoteDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteDeleteResponse> deleteAsync(String quoteId) {
+    String path = buildPathWithParams("/quotes/{quote-id}/delete", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(response -> QuoteDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** editOneTimeQuote a quote (executes immediately) - returns raw Response. */
@@ -644,9 +879,27 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EditOneTimeQuoteResponse> editOneTimeQuoteAsync(
+      String quoteId, EditOneTimeQuoteParams params) {
+    String path =
+        buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public EditOneTimeQuoteResponse editOneTimeQuote(String quoteId) throws ChargebeeException {
     Response response = editOneTimeQuoteRaw(quoteId);
     return EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EditOneTimeQuoteResponse> editOneTimeQuoteAsync(String quoteId) {
+    String path =
+        buildPathWithParams("/quotes/{quote-id}/edit_one_time_quote", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> EditOneTimeQuoteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -675,6 +928,16 @@ public final class QuoteService extends BaseService<QuoteService> {
     return UpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UpdateSubscriptionQuoteResponse> updateSubscriptionQuoteAsync(
+      UpdateSubscriptionQuoteParams params) {
+
+    return postAsync(
+            "/quotes/update_subscription_quote", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                UpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * createForOnetimeCharges a quote using immutable params (executes immediately) - returns raw
    * Response.
@@ -699,6 +962,17 @@ public final class QuoteService extends BaseService<QuoteService> {
     Response response = createForOnetimeChargesRaw(params);
 
     return QuoteCreateForOnetimeChargesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<QuoteCreateForOnetimeChargesResponse> createForOnetimeChargesAsync(
+      QuoteCreateForOnetimeChargesParams params) {
+
+    return postAsync(
+            "/quotes/create_for_onetime_charges", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                QuoteCreateForOnetimeChargesResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** createSubscriptionForCustomerQuote a quote (executes immediately) - returns raw Response. */
@@ -743,11 +1017,37 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CreateSubscriptionForCustomerQuoteResponse>
+      createSubscriptionForCustomerQuoteAsync(
+          String customerId, CreateSubscriptionForCustomerQuoteParams params) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_quote", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CreateSubscriptionForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public CreateSubscriptionForCustomerQuoteResponse createSubscriptionForCustomerQuote(
       String customerId) throws ChargebeeException {
     Response response = createSubscriptionForCustomerQuoteRaw(customerId);
     return CreateSubscriptionForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CreateSubscriptionForCustomerQuoteResponse>
+      createSubscriptionForCustomerQuoteAsync(String customerId) {
+    String path =
+        buildPathWithParams(
+            "/customers/{customer-id}/create_subscription_quote", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CreateSubscriptionForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** editUpdateSubscriptionQuote a quote (executes immediately) - returns raw Response. */
@@ -789,10 +1089,33 @@ public final class QuoteService extends BaseService<QuoteService> {
     return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EditUpdateSubscriptionQuoteResponse> editUpdateSubscriptionQuoteAsync(
+      String quoteId, EditUpdateSubscriptionQuoteParams params) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_update_subscription_quote", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public EditUpdateSubscriptionQuoteResponse editUpdateSubscriptionQuote(String quoteId)
       throws ChargebeeException {
     Response response = editUpdateSubscriptionQuoteRaw(quoteId);
     return EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EditUpdateSubscriptionQuoteResponse> editUpdateSubscriptionQuoteAsync(
+      String quoteId) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_update_subscription_quote", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EditUpdateSubscriptionQuoteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -839,10 +1162,36 @@ public final class QuoteService extends BaseService<QuoteService> {
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<EditCreateSubscriptionForCustomerQuoteResponse>
+      editCreateSubscriptionForCustomerQuoteAsync(
+          String quoteId, EditCreateSubscriptionForCustomerQuoteParams params) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_create_subscription_quote", "quote-id", quoteId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public EditCreateSubscriptionForCustomerQuoteResponse editCreateSubscriptionForCustomerQuote(
       String quoteId) throws ChargebeeException {
     Response response = editCreateSubscriptionForCustomerQuoteRaw(quoteId);
     return EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<EditCreateSubscriptionForCustomerQuoteResponse>
+      editCreateSubscriptionForCustomerQuoteAsync(String quoteId) {
+    String path =
+        buildPathWithParams(
+            "/quotes/{quote-id}/edit_create_subscription_quote", "quote-id", quoteId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                EditCreateSubscriptionForCustomerQuoteResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

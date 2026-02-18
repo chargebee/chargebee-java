@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.couponCode.params.CouponCodeListParams;
 
@@ -82,10 +83,27 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<CouponCodeListResponse> listAsync(CouponCodeListParams params) {
+
+    return getAsync("/coupon_codes", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CouponCodeListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public CouponCodeListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<CouponCodeListResponse> listAsync() {
+
+    return getAsync("/coupon_codes", null)
+        .thenApply(
+            response ->
+                CouponCodeListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a couponCode using immutable params (executes immediately) - returns raw Response. */
@@ -106,6 +124,13 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
     return CouponCodeCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CouponCodeCreateResponse> createAsync(CouponCodeCreateParams params) {
+
+    return postAsync("/coupon_codes", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CouponCodeCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a couponCode (executes immediately) - returns raw Response. */
   Response retrieveRaw(String couponCodeCode) throws ChargebeeException {
     String path =
@@ -117,6 +142,15 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
   public CouponCodeRetrieveResponse retrieve(String couponCodeCode) throws ChargebeeException {
     Response response = retrieveRaw(couponCodeCode);
     return CouponCodeRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponCodeRetrieveResponse> retrieveAsync(String couponCodeCode) {
+    String path =
+        buildPathWithParams("/coupon_codes/{coupon-code-code}", "coupon-code-code", couponCodeCode);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CouponCodeRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** archive a couponCode (executes immediately) - returns raw Response. */
@@ -131,5 +165,15 @@ public final class CouponCodeService extends BaseService<CouponCodeService> {
   public CouponCodeArchiveResponse archive(String couponCodeCode) throws ChargebeeException {
     Response response = archiveRaw(couponCodeCode);
     return CouponCodeArchiveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponCodeArchiveResponse> archiveAsync(String couponCodeCode) {
+    String path =
+        buildPathWithParams(
+            "/coupon_codes/{coupon-code-code}/archive", "coupon-code-code", couponCodeCode);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CouponCodeArchiveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

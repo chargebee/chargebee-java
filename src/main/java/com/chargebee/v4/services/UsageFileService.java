@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.usageFile.params.UsageFileUploadUrlParams;
 
@@ -69,6 +70,18 @@ public final class UsageFileService extends BaseService<UsageFileService> {
     return UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsageFileProcessingStatusResponse> processingStatusAsync(
+      String usageFileId) {
+    String path =
+        buildPathWithParams(
+            "/usage_files/{usage-file-id}/processing_status", "usage-file-id", usageFileId);
+
+    return getWithSubDomainAsync(path, SubDomain.FILE_INGEST.getValue(), null)
+        .thenApply(
+            response ->
+                UsageFileProcessingStatusResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** uploadUrl a usageFile using immutable params (executes immediately) - returns raw Response. */
   Response uploadUrlRaw(UsageFileUploadUrlParams params) throws ChargebeeException {
 
@@ -90,5 +103,16 @@ public final class UsageFileService extends BaseService<UsageFileService> {
     Response response = uploadUrlRaw(params);
 
     return UsageFileUploadUrlResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UsageFileUploadUrlResponse> uploadUrlAsync(
+      UsageFileUploadUrlParams params) {
+
+    return postWithSubDomainAsync(
+            "/usage_files/upload_url",
+            SubDomain.FILE_INGEST.getValue(),
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> UsageFileUploadUrlResponse.fromJson(response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.inAppSubscription.params.InAppSubscriptionRetrieveStoreSubscriptionsParams;
 
@@ -113,6 +114,21 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<InAppSubscriptionRetrieveStoreSubscriptionsResponse>
+      retrieveStoreSubscriptionsAsync(
+          String inAppSubscriptionAppId, InAppSubscriptionRetrieveStoreSubscriptionsParams params) {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/retrieve",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                InAppSubscriptionRetrieveStoreSubscriptionsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** importReceipt a inAppSubscription (executes immediately) - returns raw Response. */
   Response importReceiptRaw(String inAppSubscriptionAppId) throws ChargebeeException {
     String path =
@@ -158,6 +174,20 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
       throws ChargebeeException {
     Response response = importReceiptRaw(inAppSubscriptionAppId, params);
     return InAppSubscriptionImportReceiptResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<InAppSubscriptionImportReceiptResponse> importReceiptAsync(
+      String inAppSubscriptionAppId, InAppSubscriptionImportReceiptParams params) {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_receipt",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                InAppSubscriptionImportReceiptResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** importSubscription a inAppSubscription (executes immediately) - returns raw Response. */
@@ -208,11 +238,40 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<InAppSubscriptionImportSubscriptionResponse> importSubscriptionAsync(
+      String inAppSubscriptionAppId, InAppSubscriptionImportSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                InAppSubscriptionImportSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public InAppSubscriptionImportSubscriptionResponse importSubscription(
       String inAppSubscriptionAppId) throws ChargebeeException {
     Response response = importSubscriptionRaw(inAppSubscriptionAppId);
     return InAppSubscriptionImportSubscriptionResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<InAppSubscriptionImportSubscriptionResponse> importSubscriptionAsync(
+      String inAppSubscriptionAppId) {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/import_subscription",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                InAppSubscriptionImportSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** processReceipt a inAppSubscription (executes immediately) - returns raw Response. */
@@ -260,5 +319,19 @@ public final class InAppSubscriptionService extends BaseService<InAppSubscriptio
       throws ChargebeeException {
     Response response = processReceiptRaw(inAppSubscriptionAppId, params);
     return InAppSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<InAppSubscriptionProcessReceiptResponse> processReceiptAsync(
+      String inAppSubscriptionAppId, InAppSubscriptionProcessReceiptParams params) {
+    String path =
+        buildPathWithParams(
+            "/in_app_subscriptions/{in-app-subscription-app-id}/process_purchase_command",
+            "in-app-subscription-app-id",
+            inAppSubscriptionAppId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                InAppSubscriptionProcessReceiptResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.usage.params.UsagePdfParams;
 
@@ -84,6 +85,12 @@ public final class UsageService extends BaseService<UsageService> {
     return UsagePdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsagePdfResponse> pdfAsync(UsagePdfParams params) {
+
+    return postAsync("/usages/pdf", params != null ? params.toFormData() : null)
+        .thenApply(response -> UsagePdfResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a usage (executes immediately) - returns raw Response. */
   Response retrieveRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -108,9 +115,29 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsageRetrieveResponse> retrieveAsync(
+      String subscriptionId, UsageRetrieveParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> UsageRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public UsageRetrieveResponse retrieve(String subscriptionId) throws ChargebeeException {
     Response response = retrieveRaw(subscriptionId);
     return UsageRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UsageRetrieveResponse> retrieveAsync(String subscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> UsageRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** create a usage (executes immediately) - returns raw Response. */
@@ -144,6 +171,15 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsageCreateResponse> createAsync(
+      String subscriptionId, UsageCreateParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/usages", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> UsageCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a usage (executes immediately) - returns raw Response. */
   Response deleteRaw(String subscriptionId) throws ChargebeeException {
     String path =
@@ -175,6 +211,15 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsageDeleteResponse> deleteAsync(
+      String subscriptionId, UsageDeleteParams params) {
+    String path =
+        buildPathWithParams(
+            "/subscriptions/{subscription-id}/delete_usage", "subscription-id", subscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> UsageDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a usage using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(UsageListParams params) throws ChargebeeException {
 
@@ -199,9 +244,25 @@ public final class UsageService extends BaseService<UsageService> {
     return UsageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<UsageListResponse> listAsync(UsageListParams params) {
+
+    return getAsync("/usages", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                UsageListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public UsageListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return UsageListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<UsageListResponse> listAsync() {
+
+    return getAsync("/usages", null)
+        .thenApply(
+            response ->
+                UsageListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 }

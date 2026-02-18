@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.nonSubscription.params.NonSubscriptionProcessReceiptParams;
 
@@ -96,5 +97,19 @@ public final class NonSubscriptionService extends BaseService<NonSubscriptionSer
       throws ChargebeeException {
     Response response = processReceiptRaw(nonSubscriptionAppId, params);
     return NonSubscriptionProcessReceiptResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<NonSubscriptionProcessReceiptResponse> processReceiptAsync(
+      String nonSubscriptionAppId, NonSubscriptionProcessReceiptParams params) {
+    String path =
+        buildPathWithParams(
+            "/non_subscriptions/{non-subscription-app-id}/one_time_purchase",
+            "non-subscription-app-id",
+            nonSubscriptionAppId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                NonSubscriptionProcessReceiptResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

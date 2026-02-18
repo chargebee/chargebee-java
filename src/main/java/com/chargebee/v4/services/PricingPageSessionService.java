@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.pricingPageSession.params.PricingPageSessionCreateForExistingSubscriptionParams;
 
@@ -84,6 +85,19 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
         response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<PricingPageSessionCreateForExistingSubscriptionResponse>
+      createForExistingSubscriptionAsync(
+          PricingPageSessionCreateForExistingSubscriptionParams params) {
+
+    return postAsync(
+            "/pricing_page_sessions/create_for_existing_subscription",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PricingPageSessionCreateForExistingSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * createForNewSubscription a pricingPageSession using immutable params (executes immediately) -
    * returns raw Response.
@@ -111,5 +125,17 @@ public final class PricingPageSessionService extends BaseService<PricingPageSess
 
     return PricingPageSessionCreateForNewSubscriptionResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<PricingPageSessionCreateForNewSubscriptionResponse>
+      createForNewSubscriptionAsync(PricingPageSessionCreateForNewSubscriptionParams params) {
+
+    return postAsync(
+            "/pricing_page_sessions/create_for_new_subscription",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PricingPageSessionCreateForNewSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

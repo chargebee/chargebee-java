@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.product.params.ProductUpdateParams;
 
@@ -78,6 +79,14 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ProductRetrieveResponse> retrieveAsync(String productId) {
+    String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> ProductRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** update a product (executes immediately) - returns raw Response. */
   Response updateRaw(String productId) throws ChargebeeException {
     String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
@@ -103,9 +112,25 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ProductUpdateResponse> updateAsync(
+      String productId, ProductUpdateParams params) {
+    String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> ProductUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public ProductUpdateResponse update(String productId) throws ChargebeeException {
     Response response = updateRaw(productId);
     return ProductUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ProductUpdateResponse> updateAsync(String productId) {
+    String path = buildPathWithParams("/products/{product-id}", "product-id", productId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> ProductUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** delete a product (executes immediately) - returns raw Response. */
@@ -118,6 +143,14 @@ public final class ProductService extends BaseService<ProductService> {
   public ProductDeleteResponse delete(String productId) throws ChargebeeException {
     Response response = deleteRaw(productId);
     return ProductDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ProductDeleteResponse> deleteAsync(String productId) {
+    String path = buildPathWithParams("/products/{product-id}/delete", "product-id", productId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> ProductDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updateOptions a product (executes immediately) - returns raw Response. */
@@ -153,9 +186,29 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ProductUpdateOptionsResponse> updateOptionsAsync(
+      String productId, ProductUpdateOptionsParams params) {
+    String path =
+        buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public ProductUpdateOptionsResponse updateOptions(String productId) throws ChargebeeException {
     Response response = updateOptionsRaw(productId);
     return ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ProductUpdateOptionsResponse> updateOptionsAsync(String productId) {
+    String path =
+        buildPathWithParams("/products/{product-id}/update_options", "product-id", productId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                ProductUpdateOptionsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a product using immutable params (executes immediately) - returns raw Response. */
@@ -182,10 +235,26 @@ public final class ProductService extends BaseService<ProductService> {
     return ProductListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<ProductListResponse> listAsync(ProductListParams params) {
+
+    return getAsync("/products", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ProductListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public ProductListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return ProductListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<ProductListResponse> listAsync() {
+
+    return getAsync("/products", null)
+        .thenApply(
+            response ->
+                ProductListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a product using immutable params (executes immediately) - returns raw Response. */
@@ -204,5 +273,12 @@ public final class ProductService extends BaseService<ProductService> {
     Response response = createRaw(params);
 
     return ProductCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ProductCreateResponse> createAsync(ProductCreateParams params) {
+
+    return postAsync("/products", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> ProductCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

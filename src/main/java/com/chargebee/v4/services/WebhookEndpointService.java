@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.webhookEndpoint.params.WebhookEndpointUpdateParams;
 
@@ -79,6 +80,19 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<WebhookEndpointDeleteResponse> deleteAsync(String webhookEndpointId) {
+    String path =
+        buildPathWithParams(
+            "/webhook_endpoints/{webhook-endpoint-id}/delete",
+            "webhook-endpoint-id",
+            webhookEndpointId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                WebhookEndpointDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a webhookEndpoint (executes immediately) - returns raw Response. */
   Response retrieveRaw(String webhookEndpointId) throws ChargebeeException {
     String path =
@@ -92,6 +106,18 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
       throws ChargebeeException {
     Response response = retrieveRaw(webhookEndpointId);
     return WebhookEndpointRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<WebhookEndpointRetrieveResponse> retrieveAsync(
+      String webhookEndpointId) {
+    String path =
+        buildPathWithParams(
+            "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                WebhookEndpointRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a webhookEndpoint (executes immediately) - returns raw Response. */
@@ -130,9 +156,31 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<WebhookEndpointUpdateResponse> updateAsync(
+      String webhookEndpointId, WebhookEndpointUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public WebhookEndpointUpdateResponse update(String webhookEndpointId) throws ChargebeeException {
     Response response = updateRaw(webhookEndpointId);
     return WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<WebhookEndpointUpdateResponse> updateAsync(String webhookEndpointId) {
+    String path =
+        buildPathWithParams(
+            "/webhook_endpoints/{webhook-endpoint-id}", "webhook-endpoint-id", webhookEndpointId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                WebhookEndpointUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -164,10 +212,29 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<WebhookEndpointListResponse> listAsync(
+      WebhookEndpointListParams params) {
+
+    return getAsync("/webhook_endpoints", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                WebhookEndpointListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public WebhookEndpointListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return WebhookEndpointListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<WebhookEndpointListResponse> listAsync() {
+
+    return getAsync("/webhook_endpoints", null)
+        .thenApply(
+            response ->
+                WebhookEndpointListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -191,5 +258,14 @@ public final class WebhookEndpointService extends BaseService<WebhookEndpointSer
     Response response = createRaw(params);
 
     return WebhookEndpointCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<WebhookEndpointCreateResponse> createAsync(
+      WebhookEndpointCreateParams params) {
+
+    return postAsync("/webhook_endpoints", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                WebhookEndpointCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.currency.params.CurrencyAddScheduleParams;
 
@@ -102,6 +103,16 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CurrencyAddScheduleResponse> addScheduleAsync(
+      String siteCurrencyId, CurrencyAddScheduleParams params) {
+    String path =
+        buildPathWithParams(
+            "/currencies/{site-currency-id}/add_schedule", "site-currency-id", siteCurrencyId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CurrencyAddScheduleResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** create a currency using immutable params (executes immediately) - returns raw Response. */
   Response createRaw(CurrencyCreateParams params) throws ChargebeeException {
 
@@ -120,6 +131,13 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CurrencyCreateResponse> createAsync(CurrencyCreateParams params) {
+
+    return postAsync("/currencies", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CurrencyCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a currency (executes immediately) - returns raw Response. */
   Response retrieveRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
@@ -131,6 +149,15 @@ public final class CurrencyService extends BaseService<CurrencyService> {
   public CurrencyRetrieveResponse retrieve(String siteCurrencyId) throws ChargebeeException {
     Response response = retrieveRaw(siteCurrencyId);
     return CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CurrencyRetrieveResponse> retrieveAsync(String siteCurrencyId) {
+    String path =
+        buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CurrencyRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a currency (executes immediately) - returns raw Response. */
@@ -161,6 +188,15 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CurrencyUpdateResponse> updateAsync(
+      String siteCurrencyId, CurrencyUpdateParams params) {
+    String path =
+        buildPathWithParams("/currencies/{site-currency-id}", "site-currency-id", siteCurrencyId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CurrencyUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** removeSchedule a currency (executes immediately) - returns raw Response. */
   Response removeScheduleRaw(String siteCurrencyId) throws ChargebeeException {
     String path =
@@ -174,6 +210,18 @@ public final class CurrencyService extends BaseService<CurrencyService> {
       throws ChargebeeException {
     Response response = removeScheduleRaw(siteCurrencyId);
     return CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CurrencyRemoveScheduleResponse> removeScheduleAsync(
+      String siteCurrencyId) {
+    String path =
+        buildPathWithParams(
+            "/currencies/{site-currency-id}/remove_schedule", "site-currency-id", siteCurrencyId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CurrencyRemoveScheduleResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a currency using immutable params (executes immediately) - returns raw Response. */
@@ -200,9 +248,25 @@ public final class CurrencyService extends BaseService<CurrencyService> {
     return CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<CurrencyListResponse> listAsync(CurrencyListParams params) {
+
+    return getAsync("/currencies/list", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CurrencyListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public CurrencyListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<CurrencyListResponse> listAsync() {
+
+    return getAsync("/currencies/list", null)
+        .thenApply(
+            response ->
+                CurrencyListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 }

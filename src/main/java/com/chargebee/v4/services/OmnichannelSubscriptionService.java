@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelSubscriptionMoveParams;
 
@@ -107,6 +108,19 @@ public final class OmnichannelSubscriptionService
     return OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<OmnichannelSubscriptionMoveResponse> moveAsync(
+      String omnichannelSubscriptionId, OmnichannelSubscriptionMoveParams params) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscriptions/{omnichannel-subscription-id}/move",
+            "omnichannel-subscription-id",
+            omnichannelSubscriptionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionMoveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a omnichannelSubscription (executes immediately) - returns raw Response. */
   Response retrieveRaw(String omnichannelSubscriptionId) throws ChargebeeException {
     String path =
@@ -122,6 +136,21 @@ public final class OmnichannelSubscriptionService
       throws ChargebeeException {
     Response response = retrieveRaw(omnichannelSubscriptionId);
     return OmnichannelSubscriptionRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<OmnichannelSubscriptionRetrieveResponse> retrieveAsync(
+      String omnichannelSubscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscriptions/{omnichannel-subscription-id}",
+            "omnichannel-subscription-id",
+            omnichannelSubscriptionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -188,6 +217,36 @@ public final class OmnichannelSubscriptionService
         response.getBodyAsString(), this, null, omnichannelSubscriptionId, response);
   }
 
+  public CompletableFuture<OmnichannelTransactionsForOmnichannelSubscriptionResponse>
+      omnichannelTransactionsForOmnichannelSubscriptionAsync(
+          String omnichannelSubscriptionId,
+          OmnichannelTransactionsForOmnichannelSubscriptionParams params) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
+            "omnichannel-subscription-id",
+            omnichannelSubscriptionId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, params, omnichannelSubscriptionId, response));
+  }
+
+  public CompletableFuture<OmnichannelTransactionsForOmnichannelSubscriptionResponse>
+      omnichannelTransactionsForOmnichannelSubscriptionAsync(String omnichannelSubscriptionId) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscriptions/{omnichannel-subscription-id}/omnichannel_transactions",
+            "omnichannel-subscription-id",
+            omnichannelSubscriptionId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                OmnichannelTransactionsForOmnichannelSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), this, null, omnichannelSubscriptionId, response));
+  }
+
   /**
    * list a omnichannelSubscription using immutable params (executes immediately) - returns raw
    * Response.
@@ -222,10 +281,29 @@ public final class OmnichannelSubscriptionService
         response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync(
+      OmnichannelSubscriptionListParams params) {
+
+    return getAsync("/omnichannel_subscriptions", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public OmnichannelSubscriptionListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return OmnichannelSubscriptionListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<OmnichannelSubscriptionListResponse> listAsync() {
+
+    return getAsync("/omnichannel_subscriptions", null)
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 }

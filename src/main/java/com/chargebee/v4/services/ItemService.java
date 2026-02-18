@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.item.params.ItemListParams;
 
@@ -86,10 +87,26 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<ItemListResponse> listAsync(ItemListParams params) {
+
+    return getAsync("/items", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ItemListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public ItemListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return ItemListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<ItemListResponse> listAsync() {
+
+    return getAsync("/items", null)
+        .thenApply(
+            response ->
+                ItemListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a item using immutable params (executes immediately) - returns raw Response. */
@@ -110,6 +127,12 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemCreateResponse> createAsync(ItemCreateParams params) {
+
+    return postAsync("/items", params != null ? params.toFormData() : null)
+        .thenApply(response -> ItemCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a item (executes immediately) - returns raw Response. */
   Response deleteRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}/delete", "item-id", itemId);
@@ -122,6 +145,13 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemDeleteResponse> deleteAsync(String itemId) {
+    String path = buildPathWithParams("/items/{item-id}/delete", "item-id", itemId);
+
+    return postAsync(path, null)
+        .thenApply(response -> ItemDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a item (executes immediately) - returns raw Response. */
   Response retrieveRaw(String itemId) throws ChargebeeException {
     String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
@@ -132,6 +162,13 @@ public final class ItemService extends BaseService<ItemService> {
   public ItemRetrieveResponse retrieve(String itemId) throws ChargebeeException {
     Response response = retrieveRaw(itemId);
     return ItemRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ItemRetrieveResponse> retrieveAsync(String itemId) {
+    String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
+
+    return getAsync(path, null)
+        .thenApply(response -> ItemRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a item (executes immediately) - returns raw Response. */
@@ -159,8 +196,21 @@ public final class ItemService extends BaseService<ItemService> {
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<ItemUpdateResponse> updateAsync(String itemId, ItemUpdateParams params) {
+    String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> ItemUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public ItemUpdateResponse update(String itemId) throws ChargebeeException {
     Response response = updateRaw(itemId);
     return ItemUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<ItemUpdateResponse> updateAsync(String itemId) {
+    String path = buildPathWithParams("/items/{item-id}", "item-id", itemId);
+
+    return postAsync(path, null)
+        .thenApply(response -> ItemUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

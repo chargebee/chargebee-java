@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.siteMigrationDetail.params.SiteMigrationDetailListParams;
 
@@ -83,10 +84,29 @@ public final class SiteMigrationDetailService extends BaseService<SiteMigrationD
         response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<SiteMigrationDetailListResponse> listAsync(
+      SiteMigrationDetailListParams params) {
+
+    return getAsync("/site_migration_details", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                SiteMigrationDetailListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public SiteMigrationDetailListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return SiteMigrationDetailListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<SiteMigrationDetailListResponse> listAsync() {
+
+    return getAsync("/site_migration_details", null)
+        .thenApply(
+            response ->
+                SiteMigrationDetailListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 }

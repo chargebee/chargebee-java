@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.couponSet.params.CouponSetListParams;
 
@@ -92,10 +93,26 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  public CompletableFuture<CouponSetListResponse> listAsync(CouponSetListParams params) {
+
+    return getAsync("/coupon_sets", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CouponSetListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public CouponSetListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  public CompletableFuture<CouponSetListResponse> listAsync() {
+
+    return getAsync("/coupon_sets", null)
+        .thenApply(
+            response ->
+                CouponSetListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a couponSet using immutable params (executes immediately) - returns raw Response. */
@@ -114,6 +131,13 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     Response response = createRaw(params);
 
     return CouponSetCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponSetCreateResponse> createAsync(CouponSetCreateParams params) {
+
+    return postAsync("/coupon_sets", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CouponSetCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a couponSet (executes immediately) - returns raw Response. */
@@ -144,9 +168,27 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CouponSetUpdateResponse> updateAsync(
+      String couponSetId, CouponSetUpdateParams params) {
+    String path =
+        buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CouponSetUpdateResponse update(String couponSetId) throws ChargebeeException {
     Response response = updateRaw(couponSetId);
     return CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponSetUpdateResponse> updateAsync(String couponSetId) {
+    String path =
+        buildPathWithParams("/coupon_sets/{coupon-set-id}/update", "coupon-set-id", couponSetId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CouponSetUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** retrieve a couponSet (executes immediately) - returns raw Response. */
@@ -159,6 +201,14 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetRetrieveResponse retrieve(String couponSetId) throws ChargebeeException {
     Response response = retrieveRaw(couponSetId);
     return CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponSetRetrieveResponse> retrieveAsync(String couponSetId) {
+    String path = buildPathWithParams("/coupon_sets/{coupon-set-id}", "coupon-set-id", couponSetId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CouponSetRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** addCouponCodes a couponSet (executes immediately) - returns raw Response. */
@@ -199,10 +249,33 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CouponSetAddCouponCodesResponse> addCouponCodesAsync(
+      String couponSetId, CouponSetAddCouponCodesParams params) {
+    String path =
+        buildPathWithParams(
+            "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CouponSetAddCouponCodesResponse addCouponCodes(String couponSetId)
       throws ChargebeeException {
     Response response = addCouponCodesRaw(couponSetId);
     return CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponSetAddCouponCodesResponse> addCouponCodesAsync(
+      String couponSetId) {
+    String path =
+        buildPathWithParams(
+            "/coupon_sets/{coupon-set-id}/add_coupon_codes", "coupon-set-id", couponSetId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CouponSetAddCouponCodesResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** deleteUnusedCouponCodes a couponSet (executes immediately) - returns raw Response. */
@@ -222,6 +295,21 @@ public final class CouponSetService extends BaseService<CouponSetService> {
     return CouponSetDeleteUnusedCouponCodesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<CouponSetDeleteUnusedCouponCodesResponse> deleteUnusedCouponCodesAsync(
+      String couponSetId) {
+    String path =
+        buildPathWithParams(
+            "/coupon_sets/{coupon-set-id}/delete_unused_coupon_codes",
+            "coupon-set-id",
+            couponSetId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CouponSetDeleteUnusedCouponCodesResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** delete a couponSet (executes immediately) - returns raw Response. */
   Response deleteRaw(String couponSetId) throws ChargebeeException {
     String path =
@@ -233,5 +321,14 @@ public final class CouponSetService extends BaseService<CouponSetService> {
   public CouponSetDeleteResponse delete(String couponSetId) throws ChargebeeException {
     Response response = deleteRaw(couponSetId);
     return CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<CouponSetDeleteResponse> deleteAsync(String couponSetId) {
+    String path =
+        buildPathWithParams("/coupon_sets/{coupon-set-id}/delete", "coupon-set-id", couponSetId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CouponSetDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 }

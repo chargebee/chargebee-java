@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.usageEvent.params.UsageEventCreateParams;
 
@@ -77,6 +78,16 @@ public final class UsageEventService extends BaseService<UsageEventService> {
     return UsageEventCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  public CompletableFuture<UsageEventCreateResponse> createAsync(UsageEventCreateParams params) {
+
+    return postJsonWithSubDomainAsync(
+            "/usage_events",
+            SubDomain.INGEST.getValue(),
+            params != null ? params.toJsonString() : null)
+        .thenApply(
+            response -> UsageEventCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * batchIngest a usageEvent using immutable params (executes immediately) - returns raw Response.
    */
@@ -101,5 +112,17 @@ public final class UsageEventService extends BaseService<UsageEventService> {
     Response response = batchIngestRaw(params);
 
     return UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  public CompletableFuture<UsageEventBatchIngestResponse> batchIngestAsync(
+      UsageEventBatchIngestParams params) {
+
+    return postJsonWithSubDomainAsync(
+            "/batch/usage_events",
+            SubDomain.INGEST.getValue(),
+            params != null ? params.toJsonString() : null)
+        .thenApply(
+            response ->
+                UsageEventBatchIngestResponse.fromJson(response.getBodyAsString(), response));
   }
 }
