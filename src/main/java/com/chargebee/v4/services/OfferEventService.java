@@ -16,6 +16,8 @@ import com.chargebee.v4.models.offerEvent.params.OfferEventsParams;
 
 import com.chargebee.v4.models.offerEvent.responses.OfferEventsResponse;
 
+import com.chargebee.v4.internal.SubDomain;
+
 public final class OfferEventService extends BaseService<OfferEventService> {
 
   private final ServiceConfig config;
@@ -55,7 +57,8 @@ public final class OfferEventService extends BaseService<OfferEventService> {
    */
   Response offerEventsRaw(OfferEventsParams params) throws ChargebeeException {
 
-    return post("/offer_events", params != null ? params.toFormData() : null);
+    return postJsonWithSubDomain(
+        "/offer_events", SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -63,7 +66,7 @@ public final class OfferEventService extends BaseService<OfferEventService> {
    */
   Response offerEventsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/offer_events", jsonPayload);
+    return postJsonWithSubDomain("/offer_events", SubDomain.GROW.getValue(), jsonPayload);
   }
 
   public OfferEventsResponse offerEvents(OfferEventsParams params) throws ChargebeeException {

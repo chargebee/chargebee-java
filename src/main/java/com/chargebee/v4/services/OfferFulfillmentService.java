@@ -22,6 +22,8 @@ import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentsGetRe
 
 import com.chargebee.v4.models.offerFulfillment.responses.OfferFulfillmentsUpdateResponse;
 
+import com.chargebee.v4.internal.SubDomain;
+
 public final class OfferFulfillmentService extends BaseService<OfferFulfillmentService> {
 
   private final ServiceConfig config;
@@ -63,7 +65,10 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(OfferFulfillmentsParams params) throws ChargebeeException {
 
-    return post("/offer_fulfillments", params != null ? params.toFormData() : null);
+    return postJsonWithSubDomain(
+        "/offer_fulfillments",
+        SubDomain.GROW.getValue(),
+        params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -72,7 +77,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
    */
   Response offerFulfillmentsRaw(String jsonPayload) throws ChargebeeException {
 
-    return postJson("/offer_fulfillments", jsonPayload);
+    return postJsonWithSubDomain("/offer_fulfillments", SubDomain.GROW.getValue(), jsonPayload);
   }
 
   public OfferFulfillmentsResponse offerFulfillments(OfferFulfillmentsParams params)
@@ -90,7 +95,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return get(path, null);
+    return getWithSubDomain(path, SubDomain.GROW.getValue(), null);
   }
 
   public OfferFulfillmentsGetResponse offerFulfillmentsGet(String offerFulfillmentId)
@@ -107,7 +112,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "offer-fulfillment-id",
             offerFulfillmentId);
 
-    return post(path, null);
+    return postWithSubDomain(path, SubDomain.GROW.getValue(), null);
   }
 
   /**
@@ -121,7 +126,8 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return post(path, params.toFormData());
+    return postJsonWithSubDomain(
+        path, SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null);
   }
 
   /**
@@ -135,7 +141,7 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
             "/offer_fulfillments/{offer-fulfillment-id}",
             "offer-fulfillment-id",
             offerFulfillmentId);
-    return postJson(path, jsonPayload);
+    return postJsonWithSubDomain(path, SubDomain.GROW.getValue(), jsonPayload);
   }
 
   public OfferFulfillmentsUpdateResponse offerFulfillmentsUpdate(

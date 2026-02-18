@@ -147,6 +147,11 @@ public final class PersonalizedOffersParams {
     return formData;
   }
 
+  /** Get the JSON string representation for this request. */
+  public String toJsonString() {
+    return JsonUtil.toJson(toFormData());
+  }
+
   /** Create a new builder for PersonalizedOffersParams. */
   @Recommended(reason = "Preferred for reusability, validation, and LLM-friendliness")
   public static PersonalizedOffersBuilder builder() {
@@ -300,6 +305,11 @@ public final class PersonalizedOffersParams {
       }
 
       return formData;
+    }
+
+    /** Get the JSON string representation for this request. */
+    public String toJsonString() {
+      return JsonUtil.toJson(toFormData());
     }
 
     /** Create a new builder for RequestContextParams. */
