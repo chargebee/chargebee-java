@@ -1,3 +1,9 @@
+### v4.2.1 (2026-02-18)
+* * *
+
+### New Features:
+* Added async API support for all resource operations via `CompletableFuture`-based async methods (e.g., `createAsync`, `listAsync`, `retrieveAsync`).
+
 ### v4.2.0 (2026-02-16)
 * * *
 
