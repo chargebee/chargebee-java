@@ -516,8 +516,16 @@ try {
 ```
 
 ##### Async exception handling
+
+> **Important:** When using async methods, exceptions are wrapped in a `java.util.concurrent.CompletionException`.
+> Unlike sync methods that throw `ChargebeeException` directly, async methods deliver errors through
+> `CompletableFuture`'s `.exceptionally()` or `.handle()` callbacks, where the original exception is
+> available via `throwable.getCause()`. Always unwrap the `CompletionException` to access the
+> underlying `ChargebeeException` (e.g., `InvalidRequestException`, `APIException`).
+
 ```java
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
 CompletableFuture<CustomerCreateResponse> futureCustomer = customers.createAsync(params);
 
@@ -526,8 +534,13 @@ futureCustomer
         System.out.println("Customer created: " + response.getCustomer().getId());
     })
     .exceptionally(throwable -> {
-        if (throwable.getCause() instanceof InvalidRequestException) {
-            InvalidRequestException e = (InvalidRequestException) throwable.getCause();
+        // Unwrap CompletionException to get the actual ChargebeeException
+        Throwable cause = throwable instanceof CompletionException
+            ? throwable.getCause()
+            : throwable;
+
+        if (cause instanceof InvalidRequestException) {
+            InvalidRequestException e = (InvalidRequestException) cause;
             ApiErrorCode errorCode = e.getApiErrorCode();
 
             if (errorCode instanceof BadRequestApiErrorCode) {
@@ -538,14 +551,33 @@ futureCustomer
             } else {
                 System.err.println("Validation error: " + e.getMessage());
             }
-        } else if (throwable.getCause() instanceof APIException) {
-            APIException e = (APIException) throwable.getCause();
+        } else if (cause instanceof APIException) {
+            APIException e = (APIException) cause;
             System.err.println("API error: " + e.getApiErrorCodeRaw());
         } else {
-            System.err.println("Unexpected error: " + throwable.getMessage());
+            System.err.println("Unexpected error: " + cause.getMessage());
         }
         return null;
     });
+```
+
+If you prefer blocking on the result, use a try-catch around `.join()` or `.get()`:
+
+```java
+try {
+    CustomerCreateResponse response = customers.createAsync(params).join();
+    System.out.println("Customer created: " + response.getCustomer().getId());
+} catch (CompletionException e) {
+    // Unwrap to get the original ChargebeeException
+    Throwable cause = e.getCause();
+    if (cause instanceof InvalidRequestException) {
+        System.err.println("Validation error: " + cause.getMessage());
+    } else if (cause instanceof APIException) {
+        System.err.println("API error: " + ((APIException) cause).getApiErrorCodeRaw());
+    } else {
+        throw e; // Re-throw unexpected errors
+    }
+}
 ```
 
 ### Retry Handling
