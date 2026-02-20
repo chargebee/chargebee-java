@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.omnichannelOneTimeOrder.params.OmnichannelOneTimeOrderListParams;
 
@@ -88,11 +89,32 @@ public final class OmnichannelOneTimeOrderService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for omnichannelOneTimeOrder with params. */
+  public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync(
+      OmnichannelOneTimeOrderListParams params) {
+
+    return getAsync("/omnichannel_one_time_orders", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                OmnichannelOneTimeOrderListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public OmnichannelOneTimeOrderListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return OmnichannelOneTimeOrderListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for omnichannelOneTimeOrder without params. */
+  public CompletableFuture<OmnichannelOneTimeOrderListResponse> listAsync() {
+
+    return getAsync("/omnichannel_one_time_orders", null)
+        .thenApply(
+            response ->
+                OmnichannelOneTimeOrderListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** retrieve a omnichannelOneTimeOrder (executes immediately) - returns raw Response. */
@@ -110,5 +132,21 @@ public final class OmnichannelOneTimeOrderService
       throws ChargebeeException {
     Response response = retrieveRaw(omnichannelOneTimeOrderId);
     return OmnichannelOneTimeOrderRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for omnichannelOneTimeOrder without params. */
+  public CompletableFuture<OmnichannelOneTimeOrderRetrieveResponse> retrieveAsync(
+      String omnichannelOneTimeOrderId) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_one_time_orders/{omnichannel-one-time-order-id}",
+            "omnichannel-one-time-order-id",
+            omnichannelOneTimeOrderId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                OmnichannelOneTimeOrderRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

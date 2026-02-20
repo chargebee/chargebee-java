@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.comment.params.CommentListParams;
 
@@ -70,6 +71,15 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for comment without params. */
+  public CompletableFuture<CommentDeleteResponse> deleteAsync(String commentId) {
+    String path = buildPathWithParams("/comments/{comment-id}/delete", "comment-id", commentId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CommentDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a comment (executes immediately) - returns raw Response. */
   Response retrieveRaw(String commentId) throws ChargebeeException {
     String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
@@ -80,6 +90,15 @@ public final class CommentService extends BaseService<CommentService> {
   public CommentRetrieveResponse retrieve(String commentId) throws ChargebeeException {
     Response response = retrieveRaw(commentId);
     return CommentRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for comment without params. */
+  public CompletableFuture<CommentRetrieveResponse> retrieveAsync(String commentId) {
+    String path = buildPathWithParams("/comments/{comment-id}", "comment-id", commentId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CommentRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** list a comment using immutable params (executes immediately) - returns raw Response. */
@@ -106,10 +125,28 @@ public final class CommentService extends BaseService<CommentService> {
     return CommentListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for comment with params. */
+  public CompletableFuture<CommentListResponse> listAsync(CommentListParams params) {
+
+    return getAsync("/comments", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CommentListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public CommentListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CommentListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for comment without params. */
+  public CompletableFuture<CommentListResponse> listAsync() {
+
+    return getAsync("/comments", null)
+        .thenApply(
+            response ->
+                CommentListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a comment using immutable params (executes immediately) - returns raw Response. */
@@ -128,5 +165,13 @@ public final class CommentService extends BaseService<CommentService> {
     Response response = createRaw(params);
 
     return CommentCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of create for comment with params. */
+  public CompletableFuture<CommentCreateResponse> createAsync(CommentCreateParams params) {
+
+    return postAsync("/comments", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CommentCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

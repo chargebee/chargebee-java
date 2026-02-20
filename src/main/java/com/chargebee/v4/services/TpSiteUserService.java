@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.tpSiteUser.params.UsersForTpSiteUserParams;
 
@@ -106,6 +107,32 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);
   }
 
+  /** Async variant of usersForTpSiteUser for tpSiteUser with params. */
+  public CompletableFuture<UsersForTpSiteUserResponse> usersForTpSiteUserAsync(
+      String tpSiteUserDomain, UsersForTpSiteUserParams params) {
+    String path =
+        buildPathWithParams(
+            "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                UsersForTpSiteUserResponse.fromJson(
+                    response.getBodyAsString(), this, params, tpSiteUserDomain, response));
+  }
+
+  /** Async variant of usersForTpSiteUser for tpSiteUser without params. */
+  public CompletableFuture<UsersForTpSiteUserResponse> usersForTpSiteUserAsync(
+      String tpSiteUserDomain) {
+    String path =
+        buildPathWithParams(
+            "/tp_site_users/{tp-site-user-domain}/users", "tp-site-user-domain", tpSiteUserDomain);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                UsersForTpSiteUserResponse.fromJson(
+                    response.getBodyAsString(), this, null, tpSiteUserDomain, response));
+  }
+
   /**
    * payNowEnableLive a tpSiteUser using immutable params (executes immediately) - returns raw
    * Response.
@@ -129,6 +156,17 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     Response response = payNowEnableLiveRaw(params);
 
     return TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of payNowEnableLive for tpSiteUser with params. */
+  public CompletableFuture<TpSiteUserPayNowEnableLiveResponse> payNowEnableLiveAsync(
+      TpSiteUserPayNowEnableLiveParams params) {
+
+    return postAsync(
+            "/tp_site_users/pay_now_enable_live", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                TpSiteUserPayNowEnableLiveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -177,5 +215,31 @@ public final class TpSiteUserService extends BaseService<TpSiteUserService> {
     Response response = guestsForTpSiteUserRaw(tpSiteUserDomain);
     return GuestsForTpSiteUserResponse.fromJson(
         response.getBodyAsString(), this, null, tpSiteUserDomain, response);
+  }
+
+  /** Async variant of guestsForTpSiteUser for tpSiteUser with params. */
+  public CompletableFuture<GuestsForTpSiteUserResponse> guestsForTpSiteUserAsync(
+      String tpSiteUserDomain, GuestsForTpSiteUserParams params) {
+    String path =
+        buildPathWithParams(
+            "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                GuestsForTpSiteUserResponse.fromJson(
+                    response.getBodyAsString(), this, params, tpSiteUserDomain, response));
+  }
+
+  /** Async variant of guestsForTpSiteUser for tpSiteUser without params. */
+  public CompletableFuture<GuestsForTpSiteUserResponse> guestsForTpSiteUserAsync(
+      String tpSiteUserDomain) {
+    String path =
+        buildPathWithParams(
+            "/tp_site_users/{tp-site-user-domain}/guests", "tp-site-user-domain", tpSiteUserDomain);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                GuestsForTpSiteUserResponse.fromJson(
+                    response.getBodyAsString(), this, null, tpSiteUserDomain, response));
   }
 }

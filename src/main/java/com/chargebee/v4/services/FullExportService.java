@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.fullExport.params.FullExportStatusParams;
 
@@ -66,5 +67,13 @@ public final class FullExportService extends BaseService<FullExportService> {
     Response response = statusRaw(params);
 
     return FullExportStatusResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of status for fullExport with params. */
+  public CompletableFuture<FullExportStatusResponse> statusAsync(FullExportStatusParams params) {
+
+    return getAsync("/full_exports/status", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> FullExportStatusResponse.fromJson(response.getBodyAsString(), response));
   }
 }

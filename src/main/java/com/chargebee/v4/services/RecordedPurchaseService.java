@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.recordedPurchase.params.RecordedPurchaseCreateParams;
 
@@ -70,6 +71,21 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
     return RecordedPurchaseRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for recordedPurchase without params. */
+  public CompletableFuture<RecordedPurchaseRetrieveResponse> retrieveAsync(
+      String recordedPurchaseId) {
+    String path =
+        buildPathWithParams(
+            "/recorded_purchases/{recorded-purchase-id}",
+            "recorded-purchase-id",
+            recordedPurchaseId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                RecordedPurchaseRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * create a recordedPurchase using immutable params (executes immediately) - returns raw Response.
    */
@@ -91,5 +107,15 @@ public final class RecordedPurchaseService extends BaseService<RecordedPurchaseS
     Response response = createRaw(params);
 
     return RecordedPurchaseCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of create for recordedPurchase with params. */
+  public CompletableFuture<RecordedPurchaseCreateResponse> createAsync(
+      RecordedPurchaseCreateParams params) {
+
+    return postAsync("/recorded_purchases", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                RecordedPurchaseCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

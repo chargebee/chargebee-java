@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.omnichannelSubscriptionItem.params.OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams;
 
@@ -113,5 +114,53 @@ public final class OmnichannelSubscriptionItemService
     Response response = listOmniSubscriptionItemScheduleChangesRaw(omnichannelSubscriptionItemId);
     return OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
         response.getBodyAsString(), this, null, omnichannelSubscriptionItemId, response);
+  }
+
+  /**
+   * Async variant of listOmniSubscriptionItemScheduleChanges for omnichannelSubscriptionItem with
+   * params.
+   */
+  public CompletableFuture<
+          OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse>
+      listOmniSubscriptionItemScheduleChangesAsync(
+          String omnichannelSubscriptionItemId,
+          OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesParams params) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
+            "omnichannel-subscription-item-id",
+            omnichannelSubscriptionItemId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
+                    response.getBodyAsString(),
+                    this,
+                    params,
+                    omnichannelSubscriptionItemId,
+                    response));
+  }
+
+  /**
+   * Async variant of listOmniSubscriptionItemScheduleChanges for omnichannelSubscriptionItem
+   * without params.
+   */
+  public CompletableFuture<
+          OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse>
+      listOmniSubscriptionItemScheduleChangesAsync(String omnichannelSubscriptionItemId) {
+    String path =
+        buildPathWithParams(
+            "/omnichannel_subscription_items/{omnichannel-subscription-item-id}/scheduled_changes",
+            "omnichannel-subscription-item-id",
+            omnichannelSubscriptionItemId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                OmnichannelSubscriptionItemListOmniSubscriptionItemScheduleChangesResponse.fromJson(
+                    response.getBodyAsString(),
+                    this,
+                    null,
+                    omnichannelSubscriptionItemId,
+                    response));
   }
 }

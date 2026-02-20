@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.pc2Migration.params.Pc2MigrationCreateParams;
 
@@ -74,6 +75,21 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
     return Pc2MigrationContactSupportResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of contactSupport for pc2Migration without params. */
+  public CompletableFuture<Pc2MigrationContactSupportResponse> contactSupportAsync(
+      String pc2MigrationId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migrations/{pc2-migration-id}/contact_support",
+            "pc2-migration-id",
+            pc2MigrationId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationContactSupportResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a pc2Migration (executes immediately) - returns raw Response. */
   Response retrieveRaw(String pc2MigrationId) throws ChargebeeException {
     String path =
@@ -86,6 +102,18 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
   public Pc2MigrationRetrieveResponse retrieve(String pc2MigrationId) throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationId);
     return Pc2MigrationRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for pc2Migration without params. */
+  public CompletableFuture<Pc2MigrationRetrieveResponse> retrieveAsync(String pc2MigrationId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migrations/{pc2-migration-id}", "pc2-migration-id", pc2MigrationId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** create a pc2Migration using immutable params (executes immediately) - returns raw Response. */
@@ -107,6 +135,15 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
     return Pc2MigrationCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for pc2Migration with params. */
+  public CompletableFuture<Pc2MigrationCreateResponse> createAsync(
+      Pc2MigrationCreateParams params) {
+
+    return postAsync("/pc2_migrations", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> Pc2MigrationCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** initiate a pc2Migration (executes immediately) - returns raw Response. */
   Response initiateRaw(String pc2MigrationId) throws ChargebeeException {
     String path =
@@ -119,5 +156,17 @@ public final class Pc2MigrationService extends BaseService<Pc2MigrationService> 
   public Pc2MigrationInitiateResponse initiate(String pc2MigrationId) throws ChargebeeException {
     Response response = initiateRaw(pc2MigrationId);
     return Pc2MigrationInitiateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of initiate for pc2Migration without params. */
+  public CompletableFuture<Pc2MigrationInitiateResponse> initiateAsync(String pc2MigrationId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migrations/{pc2-migration-id}/initiate", "pc2-migration-id", pc2MigrationId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationInitiateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

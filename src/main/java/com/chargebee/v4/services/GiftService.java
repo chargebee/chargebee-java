@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.gift.params.GiftCreateForItemsParams;
 
@@ -87,6 +88,15 @@ public final class GiftService extends BaseService<GiftService> {
     return GiftCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createForItems for gift with params. */
+  public CompletableFuture<GiftCreateForItemsResponse> createForItemsAsync(
+      GiftCreateForItemsParams params) {
+
+    return postAsync("/gifts/create_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> GiftCreateForItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** cancel a gift (executes immediately) - returns raw Response. */
   Response cancelRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/cancel", "gift-id", giftId);
@@ -97,6 +107,14 @@ public final class GiftService extends BaseService<GiftService> {
   public GiftCancelResponse cancel(String giftId) throws ChargebeeException {
     Response response = cancelRaw(giftId);
     return GiftCancelResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of cancel for gift without params. */
+  public CompletableFuture<GiftCancelResponse> cancelAsync(String giftId) {
+    String path = buildPathWithParams("/gifts/{gift-id}/cancel", "gift-id", giftId);
+
+    return postAsync(path, null)
+        .thenApply(response -> GiftCancelResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updateGift a gift (executes immediately) - returns raw Response. */
@@ -124,6 +142,14 @@ public final class GiftService extends BaseService<GiftService> {
     return UpdateGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateGift for gift with params. */
+  public CompletableFuture<UpdateGiftResponse> updateGiftAsync(
+      String giftId, UpdateGiftParams params) {
+    String path = buildPathWithParams("/gifts/{gift-id}/update_gift", "gift-id", giftId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> UpdateGiftResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a gift using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(GiftListParams params) throws ChargebeeException {
 
@@ -148,10 +174,28 @@ public final class GiftService extends BaseService<GiftService> {
     return GiftListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for gift with params. */
+  public CompletableFuture<GiftListResponse> listAsync(GiftListParams params) {
+
+    return getAsync("/gifts", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                GiftListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public GiftListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return GiftListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for gift without params. */
+  public CompletableFuture<GiftListResponse> listAsync() {
+
+    return getAsync("/gifts", null)
+        .thenApply(
+            response ->
+                GiftListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a gift using immutable params (executes immediately) - returns raw Response. */
@@ -172,6 +216,13 @@ public final class GiftService extends BaseService<GiftService> {
     return GiftCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for gift with params. */
+  public CompletableFuture<GiftCreateResponse> createAsync(GiftCreateParams params) {
+
+    return postAsync("/gifts", params != null ? params.toFormData() : null)
+        .thenApply(response -> GiftCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a gift (executes immediately) - returns raw Response. */
   Response retrieveRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}", "gift-id", giftId);
@@ -184,6 +235,14 @@ public final class GiftService extends BaseService<GiftService> {
     return GiftRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for gift without params. */
+  public CompletableFuture<GiftRetrieveResponse> retrieveAsync(String giftId) {
+    String path = buildPathWithParams("/gifts/{gift-id}", "gift-id", giftId);
+
+    return getAsync(path, null)
+        .thenApply(response -> GiftRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** claim a gift (executes immediately) - returns raw Response. */
   Response claimRaw(String giftId) throws ChargebeeException {
     String path = buildPathWithParams("/gifts/{gift-id}/claim", "gift-id", giftId);
@@ -194,5 +253,13 @@ public final class GiftService extends BaseService<GiftService> {
   public GiftClaimResponse claim(String giftId) throws ChargebeeException {
     Response response = claimRaw(giftId);
     return GiftClaimResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of claim for gift without params. */
+  public CompletableFuture<GiftClaimResponse> claimAsync(String giftId) {
+    String path = buildPathWithParams("/gifts/{gift-id}/claim", "gift-id", giftId);
+
+    return postAsync(path, null)
+        .thenApply(response -> GiftClaimResponse.fromJson(response.getBodyAsString(), response));
   }
 }

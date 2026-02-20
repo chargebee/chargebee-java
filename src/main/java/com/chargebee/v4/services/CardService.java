@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.card.params.CopyCardForCustomerParams;
 
@@ -97,6 +98,16 @@ public final class CardService extends BaseService<CardService> {
     return CopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copyCardForCustomer for card with params. */
+  public CompletableFuture<CopyCardForCustomerResponse> copyCardForCustomerAsync(
+      String customerId, CopyCardForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/copy_card", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> CopyCardForCustomerResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a card (executes immediately) - returns raw Response. */
   Response retrieveRaw(String customerId) throws ChargebeeException {
     String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
@@ -107,6 +118,14 @@ public final class CardService extends BaseService<CardService> {
   public CardRetrieveResponse retrieve(String customerId) throws ChargebeeException {
     Response response = retrieveRaw(customerId);
     return CardRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for card without params. */
+  public CompletableFuture<CardRetrieveResponse> retrieveAsync(String customerId) {
+    String path = buildPathWithParams("/cards/{customer-id}", "customer-id", customerId);
+
+    return getAsync(path, null)
+        .thenApply(response -> CardRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** switchGatewayForCustomer a card (executes immediately) - returns raw Response. */
@@ -145,6 +164,18 @@ public final class CardService extends BaseService<CardService> {
     return CardSwitchGatewayForCustomerResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of switchGatewayForCustomer for card with params. */
+  public CompletableFuture<CardSwitchGatewayForCustomerResponse> switchGatewayForCustomerAsync(
+      String customerId, CardSwitchGatewayForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/switch_gateway", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CardSwitchGatewayForCustomerResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** deleteCardForCustomer a card (executes immediately) - returns raw Response. */
   Response deleteCardForCustomerRaw(String customerId) throws ChargebeeException {
     String path =
@@ -157,6 +188,18 @@ public final class CardService extends BaseService<CardService> {
       throws ChargebeeException {
     Response response = deleteCardForCustomerRaw(customerId);
     return DeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of deleteCardForCustomer for card without params. */
+  public CompletableFuture<DeleteCardForCustomerResponse> deleteCardForCustomerAsync(
+      String customerId) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/delete_card", "customer-id", customerId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                DeleteCardForCustomerResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updateCardForCustomer a card (executes immediately) - returns raw Response. */
@@ -193,5 +236,16 @@ public final class CardService extends BaseService<CardService> {
       String customerId, UpdateCardForCustomerParams params) throws ChargebeeException {
     Response response = updateCardForCustomerRaw(customerId, params);
     return UpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateCardForCustomer for card with params. */
+  public CompletableFuture<UpdateCardForCustomerResponse> updateCardForCustomerAsync(
+      String customerId, UpdateCardForCustomerParams params) {
+    String path =
+        buildPathWithParams("/customers/{customer-id}/credit_card", "customer-id", customerId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                UpdateCardForCustomerResponse.fromJson(response.getBodyAsString(), response));
   }
 }

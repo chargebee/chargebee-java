@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.coupon.params.CouponListParams;
 
@@ -100,10 +101,28 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for coupon with params. */
+  public CompletableFuture<CouponListResponse> listAsync(CouponListParams params) {
+
+    return getAsync("/coupons", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                CouponListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public CouponListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return CouponListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for coupon without params. */
+  public CompletableFuture<CouponListResponse> listAsync() {
+
+    return getAsync("/coupons", null)
+        .thenApply(
+            response ->
+                CouponListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a coupon using immutable params (executes immediately) - returns raw Response. */
@@ -122,6 +141,13 @@ public final class CouponService extends BaseService<CouponService> {
     Response response = createRaw(params);
 
     return CouponCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of create for coupon with params. */
+  public CompletableFuture<CouponCreateResponse> createAsync(CouponCreateParams params) {
+
+    return postAsync("/coupons", params != null ? params.toFormData() : null)
+        .thenApply(response -> CouponCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** updateForItems a coupon (executes immediately) - returns raw Response. */
@@ -157,9 +183,31 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateForItems for coupon with params. */
+  public CompletableFuture<CouponUpdateForItemsResponse> updateForItemsAsync(
+      String couponId, CouponUpdateForItemsParams params) {
+    String path =
+        buildPathWithParams("/coupons/{coupon-id}/update_for_items", "coupon-id", couponId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CouponUpdateForItemsResponse updateForItems(String couponId) throws ChargebeeException {
     Response response = updateForItemsRaw(couponId);
     return CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateForItems for coupon without params. */
+  public CompletableFuture<CouponUpdateForItemsResponse> updateForItemsAsync(String couponId) {
+    String path =
+        buildPathWithParams("/coupons/{coupon-id}/update_for_items", "coupon-id", couponId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                CouponUpdateForItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** unarchive a coupon (executes immediately) - returns raw Response. */
@@ -174,6 +222,15 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUnarchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of unarchive for coupon without params. */
+  public CompletableFuture<CouponUnarchiveResponse> unarchiveAsync(String couponId) {
+    String path = buildPathWithParams("/coupons/{coupon-id}/unarchive", "coupon-id", couponId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> CouponUnarchiveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a coupon (executes immediately) - returns raw Response. */
   Response deleteRaw(String couponId) throws ChargebeeException {
     String path = buildPathWithParams("/coupons/{coupon-id}/delete", "coupon-id", couponId);
@@ -184,6 +241,14 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponDeleteResponse delete(String couponId) throws ChargebeeException {
     Response response = deleteRaw(couponId);
     return CouponDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of delete for coupon without params. */
+  public CompletableFuture<CouponDeleteResponse> deleteAsync(String couponId) {
+    String path = buildPathWithParams("/coupons/{coupon-id}/delete", "coupon-id", couponId);
+
+    return postAsync(path, null)
+        .thenApply(response -> CouponDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** copy a coupon using immutable params (executes immediately) - returns raw Response. */
@@ -204,6 +269,13 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponCopyResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of copy for coupon with params. */
+  public CompletableFuture<CouponCopyResponse> copyAsync(CouponCopyParams params) {
+
+    return postAsync("/coupons/copy", params != null ? params.toFormData() : null)
+        .thenApply(response -> CouponCopyResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a coupon (executes immediately) - returns raw Response. */
   Response retrieveRaw(String couponId) throws ChargebeeException {
     String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
@@ -214,6 +286,15 @@ public final class CouponService extends BaseService<CouponService> {
   public CouponRetrieveResponse retrieve(String couponId) throws ChargebeeException {
     Response response = retrieveRaw(couponId);
     return CouponRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for coupon without params. */
+  public CompletableFuture<CouponRetrieveResponse> retrieveAsync(String couponId) {
+    String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> CouponRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a coupon (executes immediately) - returns raw Response. */
@@ -241,9 +322,25 @@ public final class CouponService extends BaseService<CouponService> {
     return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for coupon with params. */
+  public CompletableFuture<CouponUpdateResponse> updateAsync(
+      String couponId, CouponUpdateParams params) {
+    String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
+    return postAsync(path, params.toFormData())
+        .thenApply(response -> CouponUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public CouponUpdateResponse update(String couponId) throws ChargebeeException {
     Response response = updateRaw(couponId);
     return CouponUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for coupon without params. */
+  public CompletableFuture<CouponUpdateResponse> updateAsync(String couponId) {
+    String path = buildPathWithParams("/coupons/{coupon-id}", "coupon-id", couponId);
+
+    return postAsync(path, null)
+        .thenApply(response -> CouponUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -267,5 +364,15 @@ public final class CouponService extends BaseService<CouponService> {
     Response response = createForItemsRaw(params);
 
     return CouponCreateForItemsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of createForItems for coupon with params. */
+  public CompletableFuture<CouponCreateForItemsResponse> createForItemsAsync(
+      CouponCreateForItemsParams params) {
+
+    return postAsync("/coupons/create_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                CouponCreateForItemsResponse.fromJson(response.getBodyAsString(), response));
   }
 }

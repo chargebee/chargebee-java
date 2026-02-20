@@ -1,6 +1,7 @@
 package com.chargebee.v4.transport;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
 
 /**
  * Immutable configuration for HTTP transport.
@@ -15,7 +16,8 @@ public final class TransportConfig {
     private final int maxConnections;
     private final long keepAliveDurationMs;
     private final RequestLogger requestLogger;
-    
+    private final ExecutorService asyncExecutor;
+
     private TransportConfig(Builder builder) {
         this.apiKey = builder.apiKey;
         this.connectTimeoutMs = builder.connectTimeoutMs;
@@ -26,6 +28,7 @@ public final class TransportConfig {
         this.maxConnections = builder.maxConnections;
         this.keepAliveDurationMs = builder.keepAliveDurationMs;
         this.requestLogger = builder.requestLogger;
+        this.asyncExecutor = builder.asyncExecutor;
     }
     
     public String getApiKey() { 
@@ -63,6 +66,13 @@ public final class TransportConfig {
     public RequestLogger getRequestLogger() {
         return requestLogger;
     }
+
+    /**
+     * Returns the configured async executor, or null if the default should be used.
+     */
+    public ExecutorService getAsyncExecutor() {
+        return asyncExecutor;
+    }
     
     public static Builder builder() {
         return new Builder();
@@ -78,6 +88,7 @@ public final class TransportConfig {
         private int maxConnections = 20;
         private long keepAliveDurationMs = 300000; // 5 minutes
         private RequestLogger requestLogger;
+        private ExecutorService asyncExecutor;
         
         public Builder() {
             // Standard headers are set by DefaultTransport
@@ -148,6 +159,14 @@ public final class TransportConfig {
         
         public Builder requestLogger(RequestLogger requestLogger) {
             this.requestLogger = requestLogger;
+            return this;
+        }
+
+        /**
+         * Set a custom executor for async operations. If not set, a dedicated cached thread pool is used.
+         */
+        public Builder asyncExecutor(ExecutorService asyncExecutor) {
+            this.asyncExecutor = asyncExecutor;
             return this;
         }
         

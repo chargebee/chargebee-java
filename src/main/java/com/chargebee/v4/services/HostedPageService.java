@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.hostedPage.params.HostedPageCheckoutOneTimeForItemsParams;
 
@@ -157,6 +158,19 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutOneTimeForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutOneTimeForItems for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutOneTimeForItemsResponse> checkoutOneTimeForItemsAsync(
+      HostedPageCheckoutOneTimeForItemsParams params) {
+
+    return postAsync(
+            "/hosted_pages/checkout_one_time_for_items",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutOneTimeForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * updatePaymentMethod a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
@@ -183,6 +197,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageUpdatePaymentMethodResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updatePaymentMethod for hostedPage with params. */
+  public CompletableFuture<HostedPageUpdatePaymentMethodResponse> updatePaymentMethodAsync(
+      HostedPageUpdatePaymentMethodParams params) {
+
+    return postAsync(
+            "/hosted_pages/update_payment_method", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageUpdatePaymentMethodResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * updateCard a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -204,6 +230,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = updateCardRaw(params);
 
     return HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateCard for hostedPage with params. */
+  public CompletableFuture<HostedPageUpdateCardResponse> updateCardAsync(
+      HostedPageUpdateCardParams params) {
+
+    return postAsync("/hosted_pages/update_card", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageUpdateCardResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -232,6 +268,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageExtendSubscriptionResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of extendSubscription for hostedPage with params. */
+  public CompletableFuture<HostedPageExtendSubscriptionResponse> extendSubscriptionAsync(
+      HostedPageExtendSubscriptionParams params) {
+
+    return postAsync(
+            "/hosted_pages/extend_subscription", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageExtendSubscriptionResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** events a hostedPage using immutable params (executes immediately) - returns raw Response. */
   Response eventsRaw(HostedPageEventsParams params) throws ChargebeeException {
 
@@ -248,6 +296,14 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = eventsRaw(params);
 
     return HostedPageEventsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of events for hostedPage with params. */
+  public CompletableFuture<HostedPageEventsResponse> eventsAsync(HostedPageEventsParams params) {
+
+    return postAsync("/hosted_pages/events", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> HostedPageEventsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -277,6 +333,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutGiftForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutGiftForItems for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutGiftForItemsResponse> checkoutGiftForItemsAsync(
+      HostedPageCheckoutGiftForItemsParams params) {
+
+    return postAsync(
+            "/hosted_pages/checkout_gift_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutGiftForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** list a hostedPage using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(HostedPageListParams params) throws ChargebeeException {
 
@@ -301,10 +369,29 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for hostedPage with params. */
+  public CompletableFuture<HostedPageListResponse> listAsync(HostedPageListParams params) {
+
+    return getAsync("/hosted_pages", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                HostedPageListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public HostedPageListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for hostedPage without params. */
+  public CompletableFuture<HostedPageListResponse> listAsync() {
+
+    return getAsync("/hosted_pages", null)
+        .thenApply(
+            response ->
+                HostedPageListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -330,6 +417,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of viewVoucher for hostedPage with params. */
+  public CompletableFuture<HostedPageViewVoucherResponse> viewVoucherAsync(
+      HostedPageViewVoucherParams params) {
+
+    return postAsync("/hosted_pages/view_voucher", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageViewVoucherResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * collectNow a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -353,6 +450,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of collectNow for hostedPage with params. */
+  public CompletableFuture<HostedPageCollectNowResponse> collectNowAsync(
+      HostedPageCollectNowParams params) {
+
+    return postAsync("/hosted_pages/collect_now", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCollectNowResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * acceptQuote a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -374,6 +481,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = acceptQuoteRaw(params);
 
     return HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of acceptQuote for hostedPage with params. */
+  public CompletableFuture<HostedPageAcceptQuoteResponse> acceptQuoteAsync(
+      HostedPageAcceptQuoteParams params) {
+
+    return postAsync("/hosted_pages/accept_quote", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageAcceptQuoteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -403,6 +520,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutNewForItemsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutNewForItems for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutNewForItemsResponse> checkoutNewForItemsAsync(
+      HostedPageCheckoutNewForItemsParams params) {
+
+    return postAsync(
+            "/hosted_pages/checkout_new_for_items", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutNewForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * claimGift a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -424,6 +553,15 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = claimGiftRaw(params);
 
     return HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of claimGift for hostedPage with params. */
+  public CompletableFuture<HostedPageClaimGiftResponse> claimGiftAsync(
+      HostedPageClaimGiftParams params) {
+
+    return postAsync("/hosted_pages/claim_gift", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> HostedPageClaimGiftResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -454,6 +592,19 @@ public final class HostedPageService extends BaseService<HostedPageService> {
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutExistingForItems for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutExistingForItemsResponse>
+      checkoutExistingForItemsAsync(HostedPageCheckoutExistingForItemsParams params) {
+
+    return postAsync(
+            "/hosted_pages/checkout_existing_for_items",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutExistingForItemsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * preCancel a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -477,6 +628,15 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of preCancel for hostedPage with params. */
+  public CompletableFuture<HostedPagePreCancelResponse> preCancelAsync(
+      HostedPagePreCancelParams params) {
+
+    return postAsync("/hosted_pages/pre_cancel", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> HostedPagePreCancelResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** acknowledge a hostedPage (executes immediately) - returns raw Response. */
   Response acknowledgeRaw(String hostedPageId) throws ChargebeeException {
     String path =
@@ -489,6 +649,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPageAcknowledgeResponse acknowledge(String hostedPageId) throws ChargebeeException {
     Response response = acknowledgeRaw(hostedPageId);
     return HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of acknowledge for hostedPage without params. */
+  public CompletableFuture<HostedPageAcknowledgeResponse> acknowledgeAsync(String hostedPageId) {
+    String path =
+        buildPathWithParams(
+            "/hosted_pages/{hosted-page-id}/acknowledge", "hosted-page-id", hostedPageId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                HostedPageAcknowledgeResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -518,6 +690,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageRetrieveAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveAgreementPdf for hostedPage with params. */
+  public CompletableFuture<HostedPageRetrieveAgreementPdfResponse> retrieveAgreementPdfAsync(
+      HostedPageRetrieveAgreementPdfParams params) {
+
+    return postAsync(
+            "/hosted_pages/retrieve_agreement_pdf", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageRetrieveAgreementPdfResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** retrieve a hostedPage (executes immediately) - returns raw Response. */
   Response retrieveRaw(String hostedPageId) throws ChargebeeException {
     String path =
@@ -529,6 +713,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
   public HostedPageRetrieveResponse retrieve(String hostedPageId) throws ChargebeeException {
     Response response = retrieveRaw(hostedPageId);
     return HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for hostedPage without params. */
+  public CompletableFuture<HostedPageRetrieveResponse> retrieveAsync(String hostedPageId) {
+    String path =
+        buildPathWithParams("/hosted_pages/{hosted-page-id}", "hosted-page-id", hostedPageId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> HostedPageRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -558,6 +752,18 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageManagePaymentSourcesResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of managePaymentSources for hostedPage with params. */
+  public CompletableFuture<HostedPageManagePaymentSourcesResponse> managePaymentSourcesAsync(
+      HostedPageManagePaymentSourcesParams params) {
+
+    return postAsync(
+            "/hosted_pages/manage_payment_sources", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageManagePaymentSourcesResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * checkoutOneTime a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
@@ -583,6 +789,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutOneTime for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutOneTimeResponse> checkoutOneTimeAsync(
+      HostedPageCheckoutOneTimeParams params) {
+
+    return postAsync("/hosted_pages/checkout_one_time", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutOneTimeResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * checkoutNew a hostedPage using immutable params (executes immediately) - returns raw Response.
    */
@@ -604,6 +820,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = checkoutNewRaw(params);
 
     return HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of checkoutNew for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutNewResponse> checkoutNewAsync(
+      HostedPageCheckoutNewParams params) {
+
+    return postAsync("/hosted_pages/checkout_new", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutNewResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -629,6 +855,16 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     return HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of checkoutGift for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutGiftResponse> checkoutGiftAsync(
+      HostedPageCheckoutGiftParams params) {
+
+    return postAsync("/hosted_pages/checkout_gift", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutGiftResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * checkoutExisting a hostedPage using immutable params (executes immediately) - returns raw
    * Response.
@@ -652,5 +888,15 @@ public final class HostedPageService extends BaseService<HostedPageService> {
     Response response = checkoutExistingRaw(params);
 
     return HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of checkoutExisting for hostedPage with params. */
+  public CompletableFuture<HostedPageCheckoutExistingResponse> checkoutExistingAsync(
+      HostedPageCheckoutExistingParams params) {
+
+    return postAsync("/hosted_pages/checkout_existing", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                HostedPageCheckoutExistingResponse.fromJson(response.getBodyAsString(), response));
   }
 }

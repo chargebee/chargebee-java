@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.priceVariant.params.PriceVariantListParams;
 
@@ -77,6 +78,17 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return PriceVariantDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for priceVariant without params. */
+  public CompletableFuture<PriceVariantDeleteResponse> deleteAsync(String priceVariantId) {
+    String path =
+        buildPathWithParams(
+            "/price_variants/{price-variant-id}/delete", "price-variant-id", priceVariantId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> PriceVariantDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** list a priceVariant using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(PriceVariantListParams params) throws ChargebeeException {
 
@@ -101,10 +113,30 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for priceVariant with params. */
+  public CompletableFuture<PriceVariantListResponse> listAsync(PriceVariantListParams params) {
+
+    return getAsync("/price_variants", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PriceVariantListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public PriceVariantListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return PriceVariantListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for priceVariant without params. */
+  public CompletableFuture<PriceVariantListResponse> listAsync() {
+
+    return getAsync("/price_variants", null)
+        .thenApply(
+            response ->
+                PriceVariantListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** create a priceVariant using immutable params (executes immediately) - returns raw Response. */
@@ -126,6 +158,15 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return PriceVariantCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for priceVariant with params. */
+  public CompletableFuture<PriceVariantCreateResponse> createAsync(
+      PriceVariantCreateParams params) {
+
+    return postAsync("/price_variants", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> PriceVariantCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a priceVariant (executes immediately) - returns raw Response. */
   Response retrieveRaw(String priceVariantId) throws ChargebeeException {
     String path =
@@ -138,6 +179,18 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
   public PriceVariantRetrieveResponse retrieve(String priceVariantId) throws ChargebeeException {
     Response response = retrieveRaw(priceVariantId);
     return PriceVariantRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for priceVariant without params. */
+  public CompletableFuture<PriceVariantRetrieveResponse> retrieveAsync(String priceVariantId) {
+    String path =
+        buildPathWithParams(
+            "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PriceVariantRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a priceVariant (executes immediately) - returns raw Response. */
@@ -172,8 +225,30 @@ public final class PriceVariantService extends BaseService<PriceVariantService> 
     return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for priceVariant with params. */
+  public CompletableFuture<PriceVariantUpdateResponse> updateAsync(
+      String priceVariantId, PriceVariantUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public PriceVariantUpdateResponse update(String priceVariantId) throws ChargebeeException {
     Response response = updateRaw(priceVariantId);
     return PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for priceVariant without params. */
+  public CompletableFuture<PriceVariantUpdateResponse> updateAsync(String priceVariantId) {
+    String path =
+        buildPathWithParams(
+            "/price_variants/{price-variant-id}", "price-variant-id", priceVariantId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> PriceVariantUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

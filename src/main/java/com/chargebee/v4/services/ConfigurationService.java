@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.configuration.params.ConfigurationListParams;
 
@@ -75,9 +76,25 @@ public final class ConfigurationService extends BaseService<ConfigurationService
     return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of list for configuration with params. */
+  public CompletableFuture<ConfigurationListResponse> listAsync(ConfigurationListParams params) {
+
+    return getAsync("/configurations", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response -> ConfigurationListResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public ConfigurationListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return ConfigurationListResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of list for configuration without params. */
+  public CompletableFuture<ConfigurationListResponse> listAsync() {
+
+    return getAsync("/configurations", null)
+        .thenApply(
+            response -> ConfigurationListResponse.fromJson(response.getBodyAsString(), response));
   }
 }

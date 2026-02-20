@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.itemEntitlement.params.ItemEntitlementsForFeatureParams;
 
@@ -109,6 +110,30 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
         response.getBodyAsString(), this, null, featureId, response);
   }
 
+  /** Async variant of itemEntitlementsForFeature for itemEntitlement with params. */
+  public CompletableFuture<ItemEntitlementsForFeatureResponse> itemEntitlementsForFeatureAsync(
+      String featureId, ItemEntitlementsForFeatureParams params) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ItemEntitlementsForFeatureResponse.fromJson(
+                    response.getBodyAsString(), this, params, featureId, response));
+  }
+
+  /** Async variant of itemEntitlementsForFeature for itemEntitlement without params. */
+  public CompletableFuture<ItemEntitlementsForFeatureResponse> itemEntitlementsForFeatureAsync(
+      String featureId) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ItemEntitlementsForFeatureResponse.fromJson(
+                    response.getBodyAsString(), this, null, featureId, response));
+  }
+
   /** addItemEntitlements a itemEntitlement (executes immediately) - returns raw Response. */
   Response addItemEntitlementsRaw(String featureId) throws ChargebeeException {
     String path =
@@ -142,6 +167,16 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
       String featureId, AddItemEntitlementsParams params) throws ChargebeeException {
     Response response = addItemEntitlementsRaw(featureId, params);
     return AddItemEntitlementsResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of addItemEntitlements for itemEntitlement with params. */
+  public CompletableFuture<AddItemEntitlementsResponse> addItemEntitlementsAsync(
+      String featureId, AddItemEntitlementsParams params) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/item_entitlements", "feature-id", featureId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> AddItemEntitlementsResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -186,6 +221,28 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
         response.getBodyAsString(), this, null, itemId, response);
   }
 
+  /** Async variant of itemEntitlementsForItem for itemEntitlement with params. */
+  public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
+      String itemId, ItemEntitlementsForItemParams params) {
+    String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ItemEntitlementsForItemResponse.fromJson(
+                    response.getBodyAsString(), this, params, itemId, response));
+  }
+
+  /** Async variant of itemEntitlementsForItem for itemEntitlement without params. */
+  public CompletableFuture<ItemEntitlementsForItemResponse> itemEntitlementsForItemAsync(
+      String itemId) {
+    String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                ItemEntitlementsForItemResponse.fromJson(
+                    response.getBodyAsString(), this, null, itemId, response));
+  }
+
   /**
    * upsertOrRemoveItemEntitlementsForItem a itemEntitlement (executes immediately) - returns raw
    * Response.
@@ -221,5 +278,17 @@ public final class ItemEntitlementService extends BaseService<ItemEntitlementSer
     Response response = upsertOrRemoveItemEntitlementsForItemRaw(itemId, params);
     return UpsertOrRemoveItemEntitlementsForItemResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  /** Async variant of upsertOrRemoveItemEntitlementsForItem for itemEntitlement with params. */
+  public CompletableFuture<UpsertOrRemoveItemEntitlementsForItemResponse>
+      upsertOrRemoveItemEntitlementsForItemAsync(
+          String itemId, UpsertOrRemoveItemEntitlementsForItemParams params) {
+    String path = buildPathWithParams("/items/{item-id}/item_entitlements", "item-id", itemId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                UpsertOrRemoveItemEntitlementsForItemResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.feature.params.FeatureListParams;
 
@@ -92,10 +93,28 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for feature with params. */
+  public CompletableFuture<FeatureListResponse> listAsync(FeatureListParams params) {
+
+    return getAsync("/features", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                FeatureListResponse.fromJson(response.getBodyAsString(), this, params, response));
+  }
+
   public FeatureListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for feature without params. */
+  public CompletableFuture<FeatureListResponse> listAsync() {
+
+    return getAsync("/features", null)
+        .thenApply(
+            response ->
+                FeatureListResponse.fromJson(response.getBodyAsString(), this, null, response));
   }
 
   /** create a feature using immutable params (executes immediately) - returns raw Response. */
@@ -116,6 +135,14 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for feature with params. */
+  public CompletableFuture<FeatureCreateResponse> createAsync(FeatureCreateParams params) {
+
+    return postAsync("/features", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> FeatureCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** delete a feature (executes immediately) - returns raw Response. */
   Response deleteRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
@@ -128,6 +155,15 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for feature without params. */
+  public CompletableFuture<FeatureDeleteResponse> deleteAsync(String featureId) {
+    String path = buildPathWithParams("/features/{feature-id}/delete", "feature-id", featureId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> FeatureDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a feature (executes immediately) - returns raw Response. */
   Response retrieveRaw(String featureId) throws ChargebeeException {
     String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
@@ -138,6 +174,15 @@ public final class FeatureService extends BaseService<FeatureService> {
   public FeatureRetrieveResponse retrieve(String featureId) throws ChargebeeException {
     Response response = retrieveRaw(featureId);
     return FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for feature without params. */
+  public CompletableFuture<FeatureRetrieveResponse> retrieveAsync(String featureId) {
+    String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response -> FeatureRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a feature (executes immediately) - returns raw Response. */
@@ -165,9 +210,27 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for feature with params. */
+  public CompletableFuture<FeatureUpdateResponse> updateAsync(
+      String featureId, FeatureUpdateParams params) {
+    String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> FeatureUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public FeatureUpdateResponse update(String featureId) throws ChargebeeException {
     Response response = updateRaw(featureId);
     return FeatureUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for feature without params. */
+  public CompletableFuture<FeatureUpdateResponse> updateAsync(String featureId) {
+    String path = buildPathWithParams("/features/{feature-id}", "feature-id", featureId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> FeatureUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** archive a feature (executes immediately) - returns raw Response. */
@@ -183,6 +246,16 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureArchiveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of archive for feature without params. */
+  public CompletableFuture<FeatureArchiveResponse> archiveAsync(String featureId) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/archive_command", "feature-id", featureId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> FeatureArchiveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** activate a feature (executes immediately) - returns raw Response. */
   Response activateRaw(String featureId) throws ChargebeeException {
     String path =
@@ -196,6 +269,16 @@ public final class FeatureService extends BaseService<FeatureService> {
     return FeatureActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of activate for feature without params. */
+  public CompletableFuture<FeatureActivateResponse> activateAsync(String featureId) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/activate_command", "feature-id", featureId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> FeatureActivateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** reactivate a feature (executes immediately) - returns raw Response. */
   Response reactivateRaw(String featureId) throws ChargebeeException {
     String path =
@@ -207,5 +290,15 @@ public final class FeatureService extends BaseService<FeatureService> {
   public FeatureReactivateResponse reactivate(String featureId) throws ChargebeeException {
     Response response = reactivateRaw(featureId);
     return FeatureReactivateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of reactivate for feature without params. */
+  public CompletableFuture<FeatureReactivateResponse> reactivateAsync(String featureId) {
+    String path =
+        buildPathWithParams("/features/{feature-id}/reactivate_command", "feature-id", featureId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> FeatureReactivateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

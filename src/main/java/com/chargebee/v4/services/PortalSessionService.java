@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.portalSession.params.PortalSessionCreateParams;
 
@@ -82,6 +83,15 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for portalSession with params. */
+  public CompletableFuture<PortalSessionCreateResponse> createAsync(
+      PortalSessionCreateParams params) {
+
+    return postAsync("/portal_sessions", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> PortalSessionCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** activate a portalSession (executes immediately) - returns raw Response. */
   Response activateRaw(String portalSessionId) throws ChargebeeException {
     String path =
@@ -118,6 +128,18 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionActivateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of activate for portalSession with params. */
+  public CompletableFuture<PortalSessionActivateResponse> activateAsync(
+      String portalSessionId, PortalSessionActivateParams params) {
+    String path =
+        buildPathWithParams(
+            "/portal_sessions/{portal-session-id}/activate", "portal-session-id", portalSessionId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                PortalSessionActivateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** logout a portalSession (executes immediately) - returns raw Response. */
   Response logoutRaw(String portalSessionId) throws ChargebeeException {
     String path =
@@ -132,6 +154,17 @@ public final class PortalSessionService extends BaseService<PortalSessionService
     return PortalSessionLogoutResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of logout for portalSession without params. */
+  public CompletableFuture<PortalSessionLogoutResponse> logoutAsync(String portalSessionId) {
+    String path =
+        buildPathWithParams(
+            "/portal_sessions/{portal-session-id}/logout", "portal-session-id", portalSessionId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> PortalSessionLogoutResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a portalSession (executes immediately) - returns raw Response. */
   Response retrieveRaw(String portalSessionId) throws ChargebeeException {
     String path =
@@ -144,5 +177,17 @@ public final class PortalSessionService extends BaseService<PortalSessionService
   public PortalSessionRetrieveResponse retrieve(String portalSessionId) throws ChargebeeException {
     Response response = retrieveRaw(portalSessionId);
     return PortalSessionRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for portalSession without params. */
+  public CompletableFuture<PortalSessionRetrieveResponse> retrieveAsync(String portalSessionId) {
+    String path =
+        buildPathWithParams(
+            "/portal_sessions/{portal-session-id}", "portal-session-id", portalSessionId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PortalSessionRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

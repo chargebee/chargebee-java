@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.additionalBillingLogiq.params.AdditionalBillingLogiqRetrieveParams;
 
@@ -85,9 +86,30 @@ public final class AdditionalBillingLogiqService
     return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for additionalBillingLogiq with params. */
+  public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync(
+      AdditionalBillingLogiqRetrieveParams params) {
+
+    return getAsync("/additional_billing_logiqs", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                AdditionalBillingLogiqRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public AdditionalBillingLogiqRetrieveResponse retrieve() throws ChargebeeException {
     Response response = retrieveRaw();
 
     return AdditionalBillingLogiqRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for additionalBillingLogiq without params. */
+  public CompletableFuture<AdditionalBillingLogiqRetrieveResponse> retrieveAsync() {
+
+    return getAsync("/additional_billing_logiqs", null)
+        .thenApply(
+            response ->
+                AdditionalBillingLogiqRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.csvTaxRule.params.CsvTaxRuleCreateParams;
 
@@ -66,5 +67,13 @@ public final class CsvTaxRuleService extends BaseService<CsvTaxRuleService> {
     Response response = createRaw(params);
 
     return CsvTaxRuleCreateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of create for csvTaxRule with params. */
+  public CompletableFuture<CsvTaxRuleCreateResponse> createAsync(CsvTaxRuleCreateParams params) {
+
+    return postAsync("/csv_tax_rules", params != null ? params.toFormData() : null)
+        .thenApply(
+            response -> CsvTaxRuleCreateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

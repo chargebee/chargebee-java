@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.virtualBankAccount.params.VirtualBankAccountListParams;
 
@@ -84,6 +85,22 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deleteLocal for virtualBankAccount without params. */
+  public CompletableFuture<VirtualBankAccountDeleteLocalResponse> deleteLocalAsync(
+      String virtualBankAccountId) {
+    String path =
+        buildPathWithParams(
+            "/virtual_bank_accounts/{virtual-bank-account-id}/delete_local",
+            "virtual-bank-account-id",
+            virtualBankAccountId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                VirtualBankAccountDeleteLocalResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** delete a virtualBankAccount (executes immediately) - returns raw Response. */
   Response deleteRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
@@ -99,6 +116,21 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
       throws ChargebeeException {
     Response response = deleteRaw(virtualBankAccountId);
     return VirtualBankAccountDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of delete for virtualBankAccount without params. */
+  public CompletableFuture<VirtualBankAccountDeleteResponse> deleteAsync(
+      String virtualBankAccountId) {
+    String path =
+        buildPathWithParams(
+            "/virtual_bank_accounts/{virtual-bank-account-id}/delete",
+            "virtual-bank-account-id",
+            virtualBankAccountId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                VirtualBankAccountDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -131,11 +163,32 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for virtualBankAccount with params. */
+  public CompletableFuture<VirtualBankAccountListResponse> listAsync(
+      VirtualBankAccountListParams params) {
+
+    return getAsync("/virtual_bank_accounts", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                VirtualBankAccountListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public VirtualBankAccountListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return VirtualBankAccountListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for virtualBankAccount without params. */
+  public CompletableFuture<VirtualBankAccountListResponse> listAsync() {
+
+    return getAsync("/virtual_bank_accounts", null)
+        .thenApply(
+            response ->
+                VirtualBankAccountListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -163,6 +216,16 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for virtualBankAccount with params. */
+  public CompletableFuture<VirtualBankAccountCreateResponse> createAsync(
+      VirtualBankAccountCreateParams params) {
+
+    return postAsync("/virtual_bank_accounts", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                VirtualBankAccountCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** syncFund a virtualBankAccount (executes immediately) - returns raw Response. */
   Response syncFundRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
@@ -180,6 +243,21 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
     return VirtualBankAccountSyncFundResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of syncFund for virtualBankAccount without params. */
+  public CompletableFuture<VirtualBankAccountSyncFundResponse> syncFundAsync(
+      String virtualBankAccountId) {
+    String path =
+        buildPathWithParams(
+            "/virtual_bank_accounts/{virtual-bank-account-id}/sync_fund",
+            "virtual-bank-account-id",
+            virtualBankAccountId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                VirtualBankAccountSyncFundResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a virtualBankAccount (executes immediately) - returns raw Response. */
   Response retrieveRaw(String virtualBankAccountId) throws ChargebeeException {
     String path =
@@ -195,6 +273,21 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
       throws ChargebeeException {
     Response response = retrieveRaw(virtualBankAccountId);
     return VirtualBankAccountRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for virtualBankAccount without params. */
+  public CompletableFuture<VirtualBankAccountRetrieveResponse> retrieveAsync(
+      String virtualBankAccountId) {
+    String path =
+        buildPathWithParams(
+            "/virtual_bank_accounts/{virtual-bank-account-id}",
+            "virtual-bank-account-id",
+            virtualBankAccountId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                VirtualBankAccountRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -224,5 +317,18 @@ public final class VirtualBankAccountService extends BaseService<VirtualBankAcco
 
     return VirtualBankAccountCreateUsingPermanentTokenResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  /** Async variant of createUsingPermanentToken for virtualBankAccount with params. */
+  public CompletableFuture<VirtualBankAccountCreateUsingPermanentTokenResponse>
+      createUsingPermanentTokenAsync(VirtualBankAccountCreateUsingPermanentTokenParams params) {
+
+    return postAsync(
+            "/virtual_bank_accounts/create_using_permanent_token",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                VirtualBankAccountCreateUsingPermanentTokenResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

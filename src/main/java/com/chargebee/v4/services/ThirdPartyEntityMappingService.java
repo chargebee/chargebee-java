@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.thirdPartyEntityMapping.params.ThirdPartyEntityMappingRetrieveEntityParams;
 
@@ -92,6 +93,18 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieveEntity for thirdPartyEntityMapping with params. */
+  public CompletableFuture<ThirdPartyEntityMappingRetrieveEntityResponse> retrieveEntityAsync(
+      ThirdPartyEntityMappingRetrieveEntityParams params) {
+
+    return getAsync(
+            "/third_party_entity_mappings/retrieve", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartyEntityMappingRetrieveEntityResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * listAll a thirdPartyEntityMapping using immutable params (executes immediately) - returns raw
    * Response.
@@ -116,6 +129,18 @@ public final class ThirdPartyEntityMappingService
     Response response = listAllRaw(params);
 
     return ThirdPartyEntityMappingListAllResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of listAll for thirdPartyEntityMapping with params. */
+  public CompletableFuture<ThirdPartyEntityMappingListAllResponse> listAllAsync(
+      ThirdPartyEntityMappingListAllParams params) {
+
+    return getAsync(
+            "/third_party_entity_mappings/list_all", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartyEntityMappingListAllResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -144,6 +169,19 @@ public final class ThirdPartyEntityMappingService
 
     return ThirdPartyEntityMappingUpdateEntityResponse.fromJson(
         response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateEntity for thirdPartyEntityMapping with params. */
+  public CompletableFuture<ThirdPartyEntityMappingUpdateEntityResponse> updateEntityAsync(
+      ThirdPartyEntityMappingUpdateEntityParams params) {
+
+    return postAsync(
+            "/third_party_entity_mappings/update_entity",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                ThirdPartyEntityMappingUpdateEntityResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /**
@@ -180,10 +218,31 @@ public final class ThirdPartyEntityMappingService
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for thirdPartyEntityMapping with params. */
+  public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync(
+      ThirdPartyEntityMappingListParams params) {
+
+    return getAsync("/third_party_entity_mappings", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartyEntityMappingListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public ThirdPartyEntityMappingListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return ThirdPartyEntityMappingListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for thirdPartyEntityMapping without params. */
+  public CompletableFuture<ThirdPartyEntityMappingListResponse> listAsync() {
+
+    return getAsync("/third_party_entity_mappings", null)
+        .thenApply(
+            response ->
+                ThirdPartyEntityMappingListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 }

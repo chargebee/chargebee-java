@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceCreateUsingPermanentTokenParams;
 
@@ -136,6 +137,19 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createUsingPermanentToken for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateUsingPermanentTokenResponse>
+      createUsingPermanentTokenAsync(PaymentSourceCreateUsingPermanentTokenParams params) {
+
+    return postAsync(
+            "/payment_sources/create_using_permanent_token",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateUsingPermanentTokenResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** delete a paymentSource (executes immediately) - returns raw Response. */
   Response deleteRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
@@ -150,6 +164,19 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
   public PaymentSourceDeleteResponse delete(String custPaymentSourceId) throws ChargebeeException {
     Response response = deleteRaw(custPaymentSourceId);
     return PaymentSourceDeleteResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of delete for paymentSource without params. */
+  public CompletableFuture<PaymentSourceDeleteResponse> deleteAsync(String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/delete",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response -> PaymentSourceDeleteResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -175,6 +202,16 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     Response response = createCardRaw(params);
 
     return PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of createCard for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateCardResponse> createCardAsync(
+      PaymentSourceCreateCardParams params) {
+
+    return postAsync("/payment_sources/create_card", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateCardResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** verifyBankAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -224,6 +261,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceVerifyBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of verifyBankAccount for paymentSource with params. */
+  public CompletableFuture<PaymentSourceVerifyBankAccountResponse> verifyBankAccountAsync(
+      String custPaymentSourceId, PaymentSourceVerifyBankAccountParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/verify_bank_account",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                PaymentSourceVerifyBankAccountResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** list a paymentSource using immutable params (executes immediately) - returns raw Response. */
   Response listRaw(PaymentSourceListParams params) throws ChargebeeException {
 
@@ -248,10 +300,30 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for paymentSource with params. */
+  public CompletableFuture<PaymentSourceListResponse> listAsync(PaymentSourceListParams params) {
+
+    return getAsync("/payment_sources", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PaymentSourceListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public PaymentSourceListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return PaymentSourceListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for paymentSource without params. */
+  public CompletableFuture<PaymentSourceListResponse> listAsync() {
+
+    return getAsync("/payment_sources", null)
+        .thenApply(
+            response ->
+                PaymentSourceListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** exportPaymentSource a paymentSource (executes immediately) - returns raw Response. */
@@ -299,6 +371,19 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return ExportPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of exportPaymentSource for paymentSource with params. */
+  public CompletableFuture<ExportPaymentSourceResponse> exportPaymentSourceAsync(
+      String custPaymentSourceId, ExportPaymentSourceParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/export_payment_source",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response -> ExportPaymentSourceResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * createUsingPaymentIntent a paymentSource using immutable params (executes immediately) -
    * returns raw Response.
@@ -328,6 +413,19 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of createUsingPaymentIntent for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateUsingPaymentIntentResponse>
+      createUsingPaymentIntentAsync(PaymentSourceCreateUsingPaymentIntentParams params) {
+
+    return postAsync(
+            "/payment_sources/create_using_payment_intent",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateUsingPaymentIntentResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** agreementPdf a paymentSource (executes immediately) - returns raw Response. */
   Response agreementPdfRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
@@ -345,6 +443,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceAgreementPdfResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of agreementPdf for paymentSource without params. */
+  public CompletableFuture<PaymentSourceAgreementPdfResponse> agreementPdfAsync(
+      String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/agreement_pdf",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentSourceAgreementPdfResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a paymentSource (executes immediately) - returns raw Response. */
   Response retrieveRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
@@ -360,6 +473,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
     Response response = retrieveRaw(custPaymentSourceId);
     return PaymentSourceRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for paymentSource without params. */
+  public CompletableFuture<PaymentSourceRetrieveResponse> retrieveAsync(
+      String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentSourceRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -390,6 +518,18 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return CreateVoucherPaymentSourceResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createVoucherPaymentSource for paymentSource with params. */
+  public CompletableFuture<CreateVoucherPaymentSourceResponse> createVoucherPaymentSourceAsync(
+      CreateVoucherPaymentSourceParams params) {
+
+    return postAsync(
+            "/payment_sources/create_voucher_payment_source",
+            params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                CreateVoucherPaymentSourceResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * createUsingTempToken a paymentSource using immutable params (executes immediately) - returns
    * raw Response.
@@ -415,6 +555,18 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     Response response = createUsingTempTokenRaw(params);
 
     return PaymentSourceCreateUsingTempTokenResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of createUsingTempToken for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateUsingTempTokenResponse> createUsingTempTokenAsync(
+      PaymentSourceCreateUsingTempTokenParams params) {
+
+    return postAsync(
+            "/payment_sources/create_using_temp_token", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateUsingTempTokenResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** updateCard a paymentSource (executes immediately) - returns raw Response. */
@@ -461,10 +613,39 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateCard for paymentSource with params. */
+  public CompletableFuture<PaymentSourceUpdateCardResponse> updateCardAsync(
+      String custPaymentSourceId, PaymentSourceUpdateCardParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_card",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public PaymentSourceUpdateCardResponse updateCard(String custPaymentSourceId)
       throws ChargebeeException {
     Response response = updateCardRaw(custPaymentSourceId);
     return PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateCard for paymentSource without params. */
+  public CompletableFuture<PaymentSourceUpdateCardResponse> updateCardAsync(
+      String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_card",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentSourceUpdateCardResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** switchGatewayAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -514,6 +695,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceSwitchGatewayAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of switchGatewayAccount for paymentSource with params. */
+  public CompletableFuture<PaymentSourceSwitchGatewayAccountResponse> switchGatewayAccountAsync(
+      String custPaymentSourceId, PaymentSourceSwitchGatewayAccountParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/switch_gateway_account",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                PaymentSourceSwitchGatewayAccountResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * createUsingToken a paymentSource using immutable params (executes immediately) - returns raw
    * Response.
@@ -540,6 +736,18 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceCreateUsingTokenResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of createUsingToken for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateUsingTokenResponse> createUsingTokenAsync(
+      PaymentSourceCreateUsingTokenParams params) {
+
+    return postAsync(
+            "/payment_sources/create_using_token", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateUsingTokenResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /** deleteLocal a paymentSource (executes immediately) - returns raw Response. */
   Response deleteLocalRaw(String custPaymentSourceId) throws ChargebeeException {
     String path =
@@ -555,6 +763,21 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
       throws ChargebeeException {
     Response response = deleteLocalRaw(custPaymentSourceId);
     return PaymentSourceDeleteLocalResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of deleteLocal for paymentSource without params. */
+  public CompletableFuture<PaymentSourceDeleteLocalResponse> deleteLocalAsync(
+      String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/delete_local",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentSourceDeleteLocalResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /**
@@ -582,6 +805,18 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     Response response = createBankAccountRaw(params);
 
     return PaymentSourceCreateBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of createBankAccount for paymentSource with params. */
+  public CompletableFuture<PaymentSourceCreateBankAccountResponse> createBankAccountAsync(
+      PaymentSourceCreateBankAccountParams params) {
+
+    return postAsync(
+            "/payment_sources/create_bank_account", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PaymentSourceCreateBankAccountResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** updateBankAccount a paymentSource (executes immediately) - returns raw Response. */
@@ -631,9 +866,40 @@ public final class PaymentSourceService extends BaseService<PaymentSourceService
     return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of updateBankAccount for paymentSource with params. */
+  public CompletableFuture<PaymentSourceUpdateBankAccountResponse> updateBankAccountAsync(
+      String custPaymentSourceId, PaymentSourceUpdateBankAccountParams params) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_bank_account",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                PaymentSourceUpdateBankAccountResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   public PaymentSourceUpdateBankAccountResponse updateBankAccount(String custPaymentSourceId)
       throws ChargebeeException {
     Response response = updateBankAccountRaw(custPaymentSourceId);
     return PaymentSourceUpdateBankAccountResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of updateBankAccount for paymentSource without params. */
+  public CompletableFuture<PaymentSourceUpdateBankAccountResponse> updateBankAccountAsync(
+      String custPaymentSourceId) {
+    String path =
+        buildPathWithParams(
+            "/payment_sources/{cust-payment-source-id}/update_bank_account",
+            "cust-payment-source-id",
+            custPaymentSourceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                PaymentSourceUpdateBankAccountResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

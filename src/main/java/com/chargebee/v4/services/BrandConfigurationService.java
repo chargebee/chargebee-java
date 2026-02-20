@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.brandConfiguration.params.BrandConfigurationRetrieveParams;
 
@@ -82,9 +83,28 @@ public final class BrandConfigurationService extends BaseService<BrandConfigurat
     return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for brandConfiguration with params. */
+  public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync(
+      BrandConfigurationRetrieveParams params) {
+
+    return getAsync("/brand_configurations", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public BrandConfigurationRetrieveResponse retrieve() throws ChargebeeException {
     Response response = retrieveRaw();
 
     return BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for brandConfiguration without params. */
+  public CompletableFuture<BrandConfigurationRetrieveResponse> retrieveAsync() {
+
+    return getAsync("/brand_configurations", null)
+        .thenApply(
+            response ->
+                BrandConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 }

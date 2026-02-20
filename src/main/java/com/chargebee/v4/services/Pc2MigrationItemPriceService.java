@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.pc2MigrationItemPrice.params.Pc2MigrationItemPriceListParams;
 
@@ -91,11 +92,32 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for pc2MigrationItemPrice with params. */
+  public CompletableFuture<Pc2MigrationItemPriceListResponse> listAsync(
+      Pc2MigrationItemPriceListParams params) {
+
+    return getAsync("/pc2_migration_item_prices", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public Pc2MigrationItemPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return Pc2MigrationItemPriceListResponse.fromJson(
         response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for pc2MigrationItemPrice without params. */
+  public CompletableFuture<Pc2MigrationItemPriceListResponse> listAsync() {
+
+    return getAsync("/pc2_migration_item_prices", null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** delete a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
@@ -115,6 +137,21 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
     return Pc2MigrationItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for pc2MigrationItemPrice without params. */
+  public CompletableFuture<Pc2MigrationItemPriceDeleteResponse> deleteAsync(
+      String pc2MigrationItemPriceId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_prices/{pc2-migration-item-price-id}/delete",
+            "pc2-migration-item-price-id",
+            pc2MigrationItemPriceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** retrieve a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
   Response retrieveRaw(String pc2MigrationItemPriceId) throws ChargebeeException {
     String path =
@@ -130,6 +167,22 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
       throws ChargebeeException {
     Response response = retrieveRaw(pc2MigrationItemPriceId);
     return Pc2MigrationItemPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for pc2MigrationItemPrice without params. */
+  public CompletableFuture<Pc2MigrationItemPriceRetrieveResponse> retrieveAsync(
+      String pc2MigrationItemPriceId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
+            "pc2-migration-item-price-id",
+            pc2MigrationItemPriceId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 
   /** update a pc2MigrationItemPrice (executes immediately) - returns raw Response. */
@@ -177,9 +230,38 @@ public final class Pc2MigrationItemPriceService extends BaseService<Pc2Migration
     return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of update for pc2MigrationItemPrice with params. */
+  public CompletableFuture<Pc2MigrationItemPriceUpdateResponse> updateAsync(
+      String pc2MigrationItemPriceId, Pc2MigrationItemPriceUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
+            "pc2-migration-item-price-id",
+            pc2MigrationItemPriceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public Pc2MigrationItemPriceUpdateResponse update(String pc2MigrationItemPriceId)
       throws ChargebeeException {
     Response response = updateRaw(pc2MigrationItemPriceId);
     return Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for pc2MigrationItemPrice without params. */
+  public CompletableFuture<Pc2MigrationItemPriceUpdateResponse> updateAsync(
+      String pc2MigrationItemPriceId) {
+    String path =
+        buildPathWithParams(
+            "/pc2_migration_item_prices/{pc2-migration-item-price-id}",
+            "pc2-migration-item-price-id",
+            pc2MigrationItemPriceId);
+
+    return postAsync(path, null)
+        .thenApply(
+            response ->
+                Pc2MigrationItemPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

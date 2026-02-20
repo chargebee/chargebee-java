@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.promotionalCredit.params.PromotionalCreditListParams;
 
@@ -80,6 +81,19 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for promotionalCredit without params. */
+  public CompletableFuture<PromotionalCreditRetrieveResponse> retrieveAsync(
+      String accountCreditId) {
+    String path =
+        buildPathWithParams(
+            "/promotional_credits/{account-credit-id}", "account-credit-id", accountCreditId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                PromotionalCreditRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * list a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
@@ -110,10 +124,31 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for promotionalCredit with params. */
+  public CompletableFuture<PromotionalCreditListResponse> listAsync(
+      PromotionalCreditListParams params) {
+
+    return getAsync("/promotional_credits", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                PromotionalCreditListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public PromotionalCreditListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return PromotionalCreditListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for promotionalCredit without params. */
+  public CompletableFuture<PromotionalCreditListResponse> listAsync() {
+
+    return getAsync("/promotional_credits", null)
+        .thenApply(
+            response ->
+                PromotionalCreditListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /**
@@ -141,6 +176,16 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of deduct for promotionalCredit with params. */
+  public CompletableFuture<PromotionalCreditDeductResponse> deductAsync(
+      PromotionalCreditDeductParams params) {
+
+    return postAsync("/promotional_credits/deduct", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PromotionalCreditDeductResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * set a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
@@ -164,6 +209,16 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     return PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of set for promotionalCredit with params. */
+  public CompletableFuture<PromotionalCreditSetResponse> setAsync(
+      PromotionalCreditSetParams params) {
+
+    return postAsync("/promotional_credits/set", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PromotionalCreditSetResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * add a promotionalCredit using immutable params (executes immediately) - returns raw Response.
    */
@@ -185,5 +240,15 @@ public final class PromotionalCreditService extends BaseService<PromotionalCredi
     Response response = addRaw(params);
 
     return PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of add for promotionalCredit with params. */
+  public CompletableFuture<PromotionalCreditAddResponse> addAsync(
+      PromotionalCreditAddParams params) {
+
+    return postAsync("/promotional_credits/add", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                PromotionalCreditAddResponse.fromJson(response.getBodyAsString(), response));
   }
 }

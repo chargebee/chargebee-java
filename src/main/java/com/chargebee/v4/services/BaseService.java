@@ -235,6 +235,44 @@ public abstract class BaseService<T extends BaseService<T>> {
     }
 
     /**
+     * POST async with subdomain routing.
+     */
+    protected CompletableFuture<Response> postWithSubDomainAsync(String path, String subDomain, Map<String, Object> formData) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .formBody(formData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * POST JSON async with subdomain routing.
+     */
+    protected CompletableFuture<Response> postJsonWithSubDomainAsync(String path, String subDomain, String jsonData) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, null);
+        Request.Builder builder = Request.builder()
+                .method("POST")
+                .url(fullUrl)
+                .jsonBody(jsonData);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
+     * GET async with subdomain routing.
+     */
+    protected CompletableFuture<Response> getWithSubDomainAsync(String path, String subDomain, Map<String, Object> queryParams) {
+        String fullUrl = UrlBuilder.buildUrl(baseUrlWithSubDomain(subDomain), path, queryParams);
+        Request.Builder builder = Request.builder()
+                .method("GET")
+                .url(fullUrl);
+        applyMergedHeaders(builder);
+        return client.executeWithInterceptorAsync(builder.build());
+    }
+
+    /**
      * GET async with Object query parameters.
      */
     protected CompletableFuture<Response> getAsync(String path, Map<String, Object> queryParams) {

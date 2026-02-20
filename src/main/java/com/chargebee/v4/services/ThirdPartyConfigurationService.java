@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.thirdPartyConfiguration.params.ThirdPartyConfigurationConfigurationsParams;
 
@@ -89,6 +90,19 @@ public final class ThirdPartyConfigurationService
         response.getBodyAsString(), response);
   }
 
+  /** Async variant of configurations for thirdPartyConfiguration with params. */
+  public CompletableFuture<ThirdPartyConfigurationConfigurationsResponse> configurationsAsync(
+      ThirdPartyConfigurationConfigurationsParams params) {
+
+    return getAsync(
+            "/third_party_configurations/configurations",
+            params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartyConfigurationConfigurationsResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * retrieve a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
    * Response.
@@ -114,6 +128,17 @@ public final class ThirdPartyConfigurationService
     return ThirdPartyConfigurationRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for thirdPartyConfiguration with params. */
+  public CompletableFuture<ThirdPartyConfigurationRetrieveResponse> retrieveAsync(
+      ThirdPartyConfigurationRetrieveParams params) {
+
+    return getAsync("/third_party_configurations", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                ThirdPartyConfigurationRetrieveResponse.fromJson(
+                    response.getBodyAsString(), response));
+  }
+
   /**
    * update a thirdPartyConfiguration using immutable params (executes immediately) - returns raw
    * Response.
@@ -137,5 +162,16 @@ public final class ThirdPartyConfigurationService
     Response response = updateRaw(params);
 
     return ThirdPartyConfigurationUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for thirdPartyConfiguration with params. */
+  public CompletableFuture<ThirdPartyConfigurationUpdateResponse> updateAsync(
+      ThirdPartyConfigurationUpdateParams params) {
+
+    return postAsync("/third_party_configurations", params != null ? params.toFormData() : null)
+        .thenApply(
+            response ->
+                ThirdPartyConfigurationUpdateResponse.fromJson(
+                    response.getBodyAsString(), response));
   }
 }

@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.offerFulfillment.params.OfferFulfillmentsParams;
 
@@ -87,6 +88,18 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
     return OfferFulfillmentsResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of offerFulfillments for offerFulfillment with params. */
+  public CompletableFuture<OfferFulfillmentsResponse> offerFulfillmentsAsync(
+      OfferFulfillmentsParams params) {
+
+    return postJsonWithSubDomainAsync(
+            "/offer_fulfillments",
+            SubDomain.GROW.getValue(),
+            params != null ? params.toJsonString() : null)
+        .thenApply(
+            response -> OfferFulfillmentsResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** offerFulfillmentsGet a offerFulfillment (executes immediately) - returns raw Response. */
   Response offerFulfillmentsGetRaw(String offerFulfillmentId) throws ChargebeeException {
     String path =
@@ -102,6 +115,21 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
       throws ChargebeeException {
     Response response = offerFulfillmentsGetRaw(offerFulfillmentId);
     return OfferFulfillmentsGetResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of offerFulfillmentsGet for offerFulfillment without params. */
+  public CompletableFuture<OfferFulfillmentsGetResponse> offerFulfillmentsGetAsync(
+      String offerFulfillmentId) {
+    String path =
+        buildPathWithParams(
+            "/offer_fulfillments/{offer-fulfillment-id}",
+            "offer-fulfillment-id",
+            offerFulfillmentId);
+
+    return getWithSubDomainAsync(path, SubDomain.GROW.getValue(), null)
+        .thenApply(
+            response ->
+                OfferFulfillmentsGetResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** offerFulfillmentsUpdate a offerFulfillment (executes immediately) - returns raw Response. */
@@ -148,5 +176,20 @@ public final class OfferFulfillmentService extends BaseService<OfferFulfillmentS
       String offerFulfillmentId, OfferFulfillmentsUpdateParams params) throws ChargebeeException {
     Response response = offerFulfillmentsUpdateRaw(offerFulfillmentId, params);
     return OfferFulfillmentsUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of offerFulfillmentsUpdate for offerFulfillment with params. */
+  public CompletableFuture<OfferFulfillmentsUpdateResponse> offerFulfillmentsUpdateAsync(
+      String offerFulfillmentId, OfferFulfillmentsUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/offer_fulfillments/{offer-fulfillment-id}",
+            "offer-fulfillment-id",
+            offerFulfillmentId);
+    return postJsonWithSubDomainAsync(
+            path, SubDomain.GROW.getValue(), params != null ? params.toJsonString() : null)
+        .thenApply(
+            response ->
+                OfferFulfillmentsUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }

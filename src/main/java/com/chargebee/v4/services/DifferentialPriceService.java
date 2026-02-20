@@ -11,6 +11,7 @@ import com.chargebee.v4.client.ChargebeeClient;
 import com.chargebee.v4.client.request.RequestOptions;
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.transport.Response;
+import java.util.concurrent.CompletableFuture;
 
 import com.chargebee.v4.models.differentialPrice.params.DifferentialPriceDeleteParams;
 
@@ -111,6 +112,20 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of delete for differentialPrice with params. */
+  public CompletableFuture<DifferentialPriceDeleteResponse> deleteAsync(
+      String differentialPriceId, DifferentialPriceDeleteParams params) {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}/delete",
+            "differential-price-id",
+            differentialPriceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                DifferentialPriceDeleteResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /** create a differentialPrice (executes immediately) - returns raw Response. */
   Response createRaw(String itemPriceId) throws ChargebeeException {
     String path =
@@ -149,6 +164,18 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of create for differentialPrice with params. */
+  public CompletableFuture<DifferentialPriceCreateResponse> createAsync(
+      String itemPriceId, DifferentialPriceCreateParams params) {
+    String path =
+        buildPathWithParams(
+            "/item_prices/{item-price-id}/differential_prices", "item-price-id", itemPriceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                DifferentialPriceCreateResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   /**
    * list a differentialPrice using immutable params (executes immediately) - returns raw Response.
    */
@@ -179,10 +206,31 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
         response.getBodyAsString(), this, params, response);
   }
 
+  /** Async variant of list for differentialPrice with params. */
+  public CompletableFuture<DifferentialPriceListResponse> listAsync(
+      DifferentialPriceListParams params) {
+
+    return getAsync("/differential_prices", params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                DifferentialPriceListResponse.fromJson(
+                    response.getBodyAsString(), this, params, response));
+  }
+
   public DifferentialPriceListResponse list() throws ChargebeeException {
     Response response = listRaw();
 
     return DifferentialPriceListResponse.fromJson(response.getBodyAsString(), this, null, response);
+  }
+
+  /** Async variant of list for differentialPrice without params. */
+  public CompletableFuture<DifferentialPriceListResponse> listAsync() {
+
+    return getAsync("/differential_prices", null)
+        .thenApply(
+            response ->
+                DifferentialPriceListResponse.fromJson(
+                    response.getBodyAsString(), this, null, response));
   }
 
   /** retrieve a differentialPrice (executes immediately) - returns raw Response. */
@@ -217,10 +265,39 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
   }
 
+  /** Async variant of retrieve for differentialPrice with params. */
+  public CompletableFuture<DifferentialPriceRetrieveResponse> retrieveAsync(
+      String differentialPriceId, DifferentialPriceRetrieveParams params) {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}",
+            "differential-price-id",
+            differentialPriceId);
+    return getAsync(path, params != null ? params.toQueryParams() : null)
+        .thenApply(
+            response ->
+                DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response));
+  }
+
   public DifferentialPriceRetrieveResponse retrieve(String differentialPriceId)
       throws ChargebeeException {
     Response response = retrieveRaw(differentialPriceId);
     return DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of retrieve for differentialPrice without params. */
+  public CompletableFuture<DifferentialPriceRetrieveResponse> retrieveAsync(
+      String differentialPriceId) {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}",
+            "differential-price-id",
+            differentialPriceId);
+
+    return getAsync(path, null)
+        .thenApply(
+            response ->
+                DifferentialPriceRetrieveResponse.fromJson(response.getBodyAsString(), response));
   }
 
   /** update a differentialPrice (executes immediately) - returns raw Response. */
@@ -265,5 +342,19 @@ public final class DifferentialPriceService extends BaseService<DifferentialPric
       String differentialPriceId, DifferentialPriceUpdateParams params) throws ChargebeeException {
     Response response = updateRaw(differentialPriceId, params);
     return DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response);
+  }
+
+  /** Async variant of update for differentialPrice with params. */
+  public CompletableFuture<DifferentialPriceUpdateResponse> updateAsync(
+      String differentialPriceId, DifferentialPriceUpdateParams params) {
+    String path =
+        buildPathWithParams(
+            "/differential_prices/{differential-price-id}",
+            "differential-price-id",
+            differentialPriceId);
+    return postAsync(path, params.toFormData())
+        .thenApply(
+            response ->
+                DifferentialPriceUpdateResponse.fromJson(response.getBodyAsString(), response));
   }
 }
