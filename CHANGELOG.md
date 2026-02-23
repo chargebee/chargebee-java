@@ -1,3 +1,11 @@
+### v4.3.1 (2026-02-23)
+* * *
+
+### Bug Fixes:
+* Fixed `JsonUtil` to only extract top-level keys from JSON objects. Previously, regex-based matching could return values from nested objects or arrays (e.g., `id` or `amount` inside `line_items`) instead of the correct root-level value.
+* Custom fields (`cf_*`) are now correctly extracted from the root level only and no longer leak from nested objects or arrays.
+* Numeric parsing methods (`getLong`, `getInteger`, `getDouble`, `getBigDecimal`) now return `null` instead of throwing `NumberFormatException` on malformed or overflow values.
+
 ### v4.3.0 (2026-02-20)
 * * *
 
