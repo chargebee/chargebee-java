@@ -11,7 +11,16 @@ import java.util.regex.Pattern;
  * Avoids heavy dependencies while providing essential JSON functionality.
  */
 public class JsonUtil {
-            
+
+    private static final Pattern ARRAY_STRING_PATTERN =
+            Pattern.compile("\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
+    private static final Pattern ARRAY_INT_PATTERN =
+            Pattern.compile("(-?\\d+)(?![.\\d])");
+    private static final Pattern ARRAY_BOOL_PATTERN =
+            Pattern.compile("\\b(true|false)\\b");
+    private static final Pattern ARRAY_DECIMAL_PATTERN =
+            Pattern.compile("(-?\\d+(?:\\.\\d+)?)");
+
     /**
      * Extract string value from JSON for a given key.
      * Only matches top-level keys (not inside nested objects/arrays).
@@ -20,11 +29,22 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return unescapeJsonString(matcher.group(1));
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length() || json.charAt(start) != '"') {
+            return null;
+        }
+        int i = start + 1;
+        boolean escaped = false;
+        while (i < json.length()) {
+            char c = json.charAt(i);
+            if (escaped) {
+                escaped = false;
+            } else if (c == '\\') {
+                escaped = true;
+            } else if (c == '"') {
+                return unescapeJsonString(json.substring(start + 1, i));
+            }
+            i++;
         }
         return null;
     }
@@ -37,13 +57,15 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return Long.parseLong(matcher.group(1));
+        String numStr = extractNumericString(json, key);
+        if (numStr == null) {
+            return null;
         }
-        return null;
+        try {
+            return Long.parseLong(numStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
     
     /**
@@ -54,13 +76,15 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return Integer.parseInt(matcher.group(1));
+        String numStr = extractNumericString(json, key);
+        if (numStr == null) {
+            return null;
         }
-        return null;
+        try {
+            return Integer.parseInt(numStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
     
     /**
@@ -71,11 +95,15 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(true|false)");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return Boolean.parseBoolean(matcher.group(1));
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length()) {
+            return null;
+        }
+        if (json.regionMatches(start, "true", 0, 4)) {
+            return Boolean.TRUE;
+        }
+        if (json.regionMatches(start, "false", 0, 5)) {
+            return Boolean.FALSE;
         }
         return null;
     }
@@ -84,17 +112,19 @@ public class JsonUtil {
      * Extract double value from JSON for a given key.
      * Only matches top-level keys (not inside nested objects/arrays).
      */
-    public static Double getDouble(String json, String key) {   
+    public static Double getDouble(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return Double.parseDouble(matcher.group(1));
+        String numStr = extractNumericString(json, key);
+        if (numStr == null) {
+            return null;
         }
-        return null;
+        try {
+            return Double.parseDouble(numStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
     
     /**
@@ -116,13 +146,15 @@ public class JsonUtil {
         if (json == null || key == null) {
             return null;
         }
-        String flat = stripNested(json);
-        Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(flat);
-        if (matcher.find()) {
-            return new java.math.BigDecimal(matcher.group(1));
+        String numStr = extractNumericString(json, key);
+        if (numStr == null) {
+            return null;
         }
-        return null;
+        try {
+            return new java.math.BigDecimal(numStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     /**
@@ -270,6 +302,32 @@ public class JsonUtil {
         }
         return -1;
     }
+
+    /**
+     * Locate a top-level numeric value for the given key and return it as a
+     * raw string (e.g. "-123", "3.75").  Returns {@code null} when the key
+     * is absent or the value is not a number.
+     */
+    private static String extractNumericString(String json, String key) {
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length()) {
+            return null;
+        }
+        char c = json.charAt(start);
+        if (c != '-' && !Character.isDigit(c)) {
+            return null;
+        }
+        int end = start + 1;
+        while (end < json.length()) {
+            c = json.charAt(end);
+            if (Character.isDigit(c) || c == '.') {
+                end++;
+            } else {
+                break;
+            }
+        }
+        return json.substring(start, end);
+    }
     
     /**
      * Parse array of objects and extract each object as JSON string.
@@ -331,15 +389,11 @@ public class JsonUtil {
         if (json == null || key == null) {
             return false;
         }
-        String flat = stripNested(json);
-        // First check if the key exists with null value
-        Pattern nullPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*null\\b");
-        if (nullPattern.matcher(flat).find()) {
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length()) {
             return false;
         }
-        // Then check if the key exists at all
-        Pattern keyPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:");
-        return keyPattern.matcher(flat).find();
+        return !json.regionMatches(start, "null", 0, 4);
     }
     
     /**
@@ -351,9 +405,7 @@ public class JsonUtil {
             return result;
         }
         
-        // Extract string values from array
-        Pattern pattern = Pattern.compile("\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_STRING_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             result.add(unescapeJsonString(matcher.group(1)));
         }
@@ -369,9 +421,7 @@ public class JsonUtil {
             return result;
         }
         
-        // Extract integer values from array
-        Pattern pattern = Pattern.compile("(-?\\d+)(?![.\\d])");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_INT_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             try {
                 result.add(Integer.parseInt(matcher.group(1)));
@@ -391,9 +441,7 @@ public class JsonUtil {
             return result;
         }
         
-        // Extract long values from array
-        Pattern pattern = Pattern.compile("(-?\\d+)(?![.\\d])");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_INT_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             try {
                 result.add(Long.parseLong(matcher.group(1)));
@@ -413,9 +461,7 @@ public class JsonUtil {
             return result;
         }
         
-        // Extract boolean values from array
-        Pattern pattern = Pattern.compile("\\b(true|false)\\b");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_BOOL_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             result.add(Boolean.parseBoolean(matcher.group(1)));
         }
@@ -431,9 +477,7 @@ public class JsonUtil {
             return result;
         }
         
-        // Extract double values from array
-        Pattern pattern = Pattern.compile("(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_DECIMAL_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             try {
                 result.add(Double.parseDouble(matcher.group(1)));
@@ -453,9 +497,7 @@ public class JsonUtil {
             return result;
         }
 
-        // Extract BigDecimal values from array
-        Pattern pattern = Pattern.compile("(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(arrayJson);
+        Matcher matcher = ARRAY_DECIMAL_PATTERN.matcher(arrayJson);
         while (matcher.find()) {
             try {
                 result.add(new java.math.BigDecimal(matcher.group(1)));
@@ -669,64 +711,6 @@ public class JsonUtil {
         }
         
         return map;
-    }
-
-    /**
-     * Returns a flattened version of the JSON with nested objects and arrays
-     * replaced by {@code null}, so regex-based extraction only matches
-     * top-level keys.
-     */
-    private static String stripNested(String json) {
-        if (json == null) return null;
-        StringBuilder sb = new StringBuilder();
-        int depth = 0;
-        boolean inString = false;
-        boolean escaped = false;
-
-        for (int i = 0; i < json.length(); i++) {
-            char c = json.charAt(i);
-
-            if (escaped) {
-                escaped = false;
-                if (depth == 1) sb.append(c);
-                continue;
-            }
-
-            if (c == '\\' && inString) {
-                escaped = true;
-                if (depth == 1) sb.append(c);
-                continue;
-            }
-
-            if (c == '"') {
-                inString = !inString;
-                if (depth == 1) sb.append(c);
-                continue;
-            }
-
-            if (!inString) {
-                if (c == '{' || c == '[') {
-                    if (depth == 0) {
-                        sb.append(c);
-                    } else if (depth == 1) {
-                        sb.append("null");
-                    }
-                    depth++;
-                    continue;
-                }
-                if (c == '}' || c == ']') {
-                    depth--;
-                    if (depth == 0) {
-                        sb.append(c);
-                    }
-                    continue;
-                }
-            }
-
-            if (depth == 1) sb.append(c);
-        }
-
-        return sb.toString();
     }
 
     /**

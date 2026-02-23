@@ -19,8 +19,8 @@ class TransactionParserTest {
 
     @BeforeAll
     static void loadFixture() throws IOException {
-        try (InputStream is = TransactionParserTest.class.getResourceAsStream("/fixtures/transactioin.json")) {
-            assertNotNull(is, "fixtures/transactioin.json not found on classpath");
+        try (InputStream is = TransactionParserTest.class.getResourceAsStream("/fixtures/transaction.json")) {
+            assertNotNull(is, "fixtures/transaction.json not found on classpath");
             transactionJson = new String(is.readAllBytes(), StandardCharsets.UTF_8);
         }
         transaction = Transaction.fromJson(transactionJson);

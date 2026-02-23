@@ -968,6 +968,24 @@ class JsonUtilTest {
             assertFalse(JsonUtil.hasValue("{\"inner\": {\"key\": \"val\"}}", "key"));
         }
 
+        @Test void hasValue_topLevelArray() {
+            assertTrue(JsonUtil.hasValue(
+                    "{\"tags\": [1, 2, 3], \"name\": \"test\"}", "tags"));
+        }
+
+        @Test void hasValue_topLevelObject() {
+            assertTrue(JsonUtil.hasValue(
+                    "{\"billing_address\": {\"city\": \"SF\"}, \"id\": \"inv_1\"}", "billing_address"));
+        }
+
+        @Test void hasValue_topLevelEmptyArray() {
+            assertTrue(JsonUtil.hasValue("{\"items\": [], \"id\": \"x\"}", "items"));
+        }
+
+        @Test void hasValue_topLevelEmptyObject() {
+            assertTrue(JsonUtil.hasValue("{\"meta\": {}, \"id\": \"x\"}", "meta"));
+        }
+
         @Test void stripNested_escapedCharInNestedString() {
             assertEquals("top", JsonUtil.getString(
                     "{\"child\": {\"k\": \"a\\\\b\"}, \"id\": \"top\"}", "id"));
