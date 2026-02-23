@@ -14,13 +14,15 @@ public class JsonUtil {
             
     /**
      * Extract string value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static String getString(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*\"([^\"\\\\]*(\\\\.[^\"\\\\]*)*)\"");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return unescapeJsonString(matcher.group(1));
         }
@@ -29,13 +31,15 @@ public class JsonUtil {
     
     /**
      * Extract long value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static Long getLong(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return Long.parseLong(matcher.group(1));
         }
@@ -44,13 +48,15 @@ public class JsonUtil {
     
     /**
      * Extract integer value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static Integer getInteger(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return Integer.parseInt(matcher.group(1));
         }
@@ -59,13 +65,15 @@ public class JsonUtil {
     
     /**
      * Extract boolean value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static Boolean getBoolean(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(true|false)");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return Boolean.parseBoolean(matcher.group(1));
         }
@@ -74,13 +82,15 @@ public class JsonUtil {
     
     /**
      * Extract double value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static Double getDouble(String json, String key) {   
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return Double.parseDouble(matcher.group(1));
         }
@@ -100,13 +110,15 @@ public class JsonUtil {
     
     /**
      * Extract BigDecimal value from JSON for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static java.math.BigDecimal getBigDecimal(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
+        String flat = stripNested(json);
         Pattern pattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)");
-        Matcher matcher = pattern.matcher(json);
+        Matcher matcher = pattern.matcher(flat);
         if (matcher.find()) {
             return new java.math.BigDecimal(matcher.group(1));
         }
@@ -115,34 +127,20 @@ public class JsonUtil {
 
     /**
      * Extract nested object as JSON string for a given key.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static String getObject(String json, String key) {   
         if (json == null || key == null) {
             return null;
         }
-        // Find the key position
-        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:";
-        Pattern pattern = Pattern.compile(keyPattern);
-        Matcher matcher = pattern.matcher(json);
-        if (!matcher.find()) {
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length() || json.charAt(start) != '{') {
             return null;
         }
         
-        // Find the start of the object value (skip whitespace after colon)
-        int start = matcher.end();
-        while (start < json.length() && Character.isWhitespace(json.charAt(start))) {
-            start++;
-        }
-        
-        if (start >= json.length() || json.charAt(start) != '{') {
-            return null;
-        }
-        
-        // Extract the object by tracking brace depth
         int depth = 0;
         boolean inString = false;
         boolean escaped = false;
-        int objectStart = start;
         
         for (int i = start; i < json.length(); i++) {
             char c = json.charAt(i);
@@ -168,7 +166,7 @@ public class JsonUtil {
                 } else if (c == '}') {
                     depth--;
                     if (depth == 0) {
-                        return json.substring(objectStart, i + 1);
+                        return json.substring(start, i + 1);
                     }
                 }
             }
@@ -179,23 +177,17 @@ public class JsonUtil {
     
     /**
      * Extract array as JSON string for a given key.
-     * Handles nested arrays and objects by tracking bracket depth.
+     * Only matches top-level keys (not inside nested objects/arrays).
      */
     public static String getArray(String json, String key) {
         if (json == null || key == null) {
             return null;
         }
-        
-        // Find the key position
-        String keyPattern = "\"" + Pattern.quote(key) + "\"\\s*:\\s*\\[";
-        Pattern p = Pattern.compile(keyPattern);
-        Matcher matcher = p.matcher(json);
-        if (!matcher.find()) {
+        int start = findTopLevelValueStart(json, key);
+        if (start < 0 || start >= json.length() || json.charAt(start) != '[') {
             return null;
         }
         
-        // Start from the opening bracket
-        int start = matcher.end() - 1; // Position of '['
         int depth = 0;
         boolean inString = false;
         boolean escaped = false;
@@ -230,6 +222,53 @@ public class JsonUtil {
             }
         }
         return null;
+    }
+    
+    /**
+     * Find the index in the original JSON where the value starts for a
+     * top-level key (depth&nbsp;1 inside the outermost braces).
+     *
+     * @return index of the first non-whitespace character after the colon,
+     *         or {@code -1} if the key is not found at the top level.
+     */
+    private static int findTopLevelValueStart(String json, String key) {
+        String target = "\"" + key + "\"";
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+
+        for (int i = 0; i < json.length(); i++) {
+            char c = json.charAt(i);
+
+            if (escaped) {
+                escaped = false;
+                continue;
+            }
+            if (c == '\\' && inString) {
+                escaped = true;
+                continue;
+            }
+            if (c == '"') {
+                if (!inString && depth == 1
+                        && i + target.length() <= json.length()
+                        && json.regionMatches(i, target, 0, target.length())) {
+                    int j = i + target.length();
+                    while (j < json.length() && Character.isWhitespace(json.charAt(j))) j++;
+                    if (j < json.length() && json.charAt(j) == ':') {
+                        j++;
+                        while (j < json.length() && Character.isWhitespace(json.charAt(j))) j++;
+                        return j;
+                    }
+                }
+                inString = !inString;
+                continue;
+            }
+            if (!inString) {
+                if (c == '{' || c == '[') depth++;
+                else if (c == '}' || c == ']') depth--;
+            }
+        }
+        return -1;
     }
     
     /**
@@ -286,19 +325,21 @@ public class JsonUtil {
     
     /**
      * Check if a key exists and has non-null value.
+     * Only checks top-level keys (not inside nested objects/arrays).
      */
     public static boolean hasValue(String json, String key) {
         if (json == null || key == null) {
             return false;
         }
+        String flat = stripNested(json);
         // First check if the key exists with null value
         Pattern nullPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:\\s*null\\b");
-        if (nullPattern.matcher(json).find()) {
+        if (nullPattern.matcher(flat).find()) {
             return false;
         }
         // Then check if the key exists at all
         Pattern keyPattern = Pattern.compile("\"" + Pattern.quote(key) + "\"\\s*:");
-        return keyPattern.matcher(json).find();
+        return keyPattern.matcher(flat).find();
     }
     
     /**
@@ -628,6 +669,64 @@ public class JsonUtil {
         }
         
         return map;
+    }
+
+    /**
+     * Returns a flattened version of the JSON with nested objects and arrays
+     * replaced by {@code null}, so regex-based extraction only matches
+     * top-level keys.
+     */
+    private static String stripNested(String json) {
+        if (json == null) return null;
+        StringBuilder sb = new StringBuilder();
+        int depth = 0;
+        boolean inString = false;
+        boolean escaped = false;
+
+        for (int i = 0; i < json.length(); i++) {
+            char c = json.charAt(i);
+
+            if (escaped) {
+                escaped = false;
+                if (depth == 1) sb.append(c);
+                continue;
+            }
+
+            if (c == '\\' && inString) {
+                escaped = true;
+                if (depth == 1) sb.append(c);
+                continue;
+            }
+
+            if (c == '"') {
+                inString = !inString;
+                if (depth == 1) sb.append(c);
+                continue;
+            }
+
+            if (!inString) {
+                if (c == '{' || c == '[') {
+                    if (depth == 0) {
+                        sb.append(c);
+                    } else if (depth == 1) {
+                        sb.append("null");
+                    }
+                    depth++;
+                    continue;
+                }
+                if (c == '}' || c == ']') {
+                    depth--;
+                    if (depth == 0) {
+                        sb.append(c);
+                    }
+                    continue;
+                }
+            }
+
+            if (depth == 1) sb.append(c);
+        }
+
+        return sb.toString();
     }
 
     /**
