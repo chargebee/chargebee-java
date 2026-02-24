@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.hierarchy;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.util.List;
 
 public class Hierarchy {
@@ -44,19 +46,26 @@ public class Hierarchy {
   }
 
   public static Hierarchy fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Hierarchy fromJson(JsonObject jsonObj) {
     Hierarchy obj = new Hierarchy();
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.parentId = JsonUtil.getString(json, "parent_id");
+    obj.parentId = JsonUtil.getString(jsonObj, "parent_id");
 
-    obj.paymentOwnerId = JsonUtil.getString(json, "payment_owner_id");
+    obj.paymentOwnerId = JsonUtil.getString(jsonObj, "payment_owner_id");
 
-    obj.invoiceOwnerId = JsonUtil.getString(json, "invoice_owner_id");
+    obj.invoiceOwnerId = JsonUtil.getString(jsonObj, "invoice_owner_id");
 
-    obj.hasChildren = JsonUtil.getBoolean(json, "has_children");
+    obj.hasChildren = JsonUtil.getBoolean(jsonObj, "has_children");
 
-    obj.childrenIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "children_ids"));
+    JsonArray __childrenIdsArr = JsonUtil.getJsonArray(jsonObj, "children_ids");
+    if (__childrenIdsArr != null) {
+      obj.childrenIds = JsonUtil.parseArrayOfString(__childrenIdsArr);
+    }
 
     return obj;
   }

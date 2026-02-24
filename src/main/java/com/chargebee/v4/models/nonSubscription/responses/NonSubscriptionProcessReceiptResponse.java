@@ -4,6 +4,7 @@ import com.chargebee.v4.models.nonSubscription.NonSubscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class NonSubscriptionProcessReceiptResponse extends BaseResponse {
   /** Parse JSON response into NonSubscriptionProcessReceiptResponse object with HTTP response. */
   public static NonSubscriptionProcessReceiptResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __nonSubscriptionJson = JsonUtil.getObject(json, "non_subscription");
-      if (__nonSubscriptionJson != null) {
-        builder.nonSubscription(NonSubscription.fromJson(__nonSubscriptionJson));
+      JsonObject __nonSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "non_subscription");
+      if (__nonSubscriptionObj != null) {
+        builder.nonSubscription(NonSubscription.fromJson(__nonSubscriptionObj));
       }
 
       builder.httpResponse(httpResponse);

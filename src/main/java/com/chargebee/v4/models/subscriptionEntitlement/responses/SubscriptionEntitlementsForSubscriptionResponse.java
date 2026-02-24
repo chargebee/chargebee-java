@@ -6,6 +6,7 @@ import com.chargebee.v4.models.subscriptionEntitlement.SubscriptionEntitlement;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SubscriptionEntitlementService;
 import com.chargebee.v4.models.subscriptionEntitlement.params.SubscriptionEntitlementsForSubscriptionParams;
@@ -51,13 +52,14 @@ public final class SubscriptionEntitlementsForSubscriptionResponse {
    */
   public static SubscriptionEntitlementsForSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SubscriptionEntitlementsForSubscriptionResponse(
           list, nextOffset, null, null, null, null);
@@ -78,13 +80,14 @@ public final class SubscriptionEntitlementsForSubscriptionResponse {
       String subscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SubscriptionEntitlementsForSubscriptionResponse(
           list, nextOffset, subscriptionId, service, originalParams, httpResponse);
@@ -195,13 +198,19 @@ public final class SubscriptionEntitlementsForSubscriptionResponse {
 
     public static SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem fromJson(
         String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem fromJson(
+        JsonObject jsonObj) {
       SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem item =
           new SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionItem();
 
-      String __subscriptionEntitlementJson = JsonUtil.getObject(json, "subscription_entitlement");
-      if (__subscriptionEntitlementJson != null) {
+      JsonObject __subscriptionEntitlementObj =
+          JsonUtil.getJsonObject(jsonObj, "subscription_entitlement");
+      if (__subscriptionEntitlementObj != null) {
         item.subscriptionEntitlement =
-            SubscriptionEntitlement.fromJson(__subscriptionEntitlementJson);
+            SubscriptionEntitlement.fromJson(__subscriptionEntitlementObj);
       }
 
       return item;

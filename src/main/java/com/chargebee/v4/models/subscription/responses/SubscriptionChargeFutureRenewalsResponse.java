@@ -14,6 +14,7 @@ import com.chargebee.v4.models.card.Card;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -56,32 +57,33 @@ public final class SubscriptionChargeFutureRenewalsResponse extends BaseResponse
   public static SubscriptionChargeFutureRenewalsResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionObj));
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        builder.customer(Customer.fromJson(__customerJson));
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        builder.customer(Customer.fromJson(__customerObj));
       }
 
-      String __cardJson = JsonUtil.getObject(json, "card");
-      if (__cardJson != null) {
-        builder.card(Card.fromJson(__cardJson));
+      JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
+      if (__cardObj != null) {
+        builder.card(Card.fromJson(__cardObj));
       }
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        builder.invoice(Invoice.fromJson(__invoiceJson));
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        builder.invoice(Invoice.fromJson(__invoiceObj));
       }
 
       builder.advanceInvoiceSchedules(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "advance_invoice_schedules")).stream()
-              .map(AdvanceInvoiceSchedule::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "advance_invoice_schedules"),
+              AdvanceInvoiceSchedule::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

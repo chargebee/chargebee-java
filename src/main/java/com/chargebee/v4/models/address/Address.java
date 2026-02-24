@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.address;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Address {
 
@@ -125,40 +126,44 @@ public class Address {
   }
 
   public static Address fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Address fromJson(JsonObject jsonObj) {
     Address obj = new Address();
 
-    obj.label = JsonUtil.getString(json, "label");
+    obj.label = JsonUtil.getString(jsonObj, "label");
 
-    obj.firstName = JsonUtil.getString(json, "first_name");
+    obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-    obj.lastName = JsonUtil.getString(json, "last_name");
+    obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-    obj.email = JsonUtil.getString(json, "email");
+    obj.email = JsonUtil.getString(jsonObj, "email");
 
-    obj.company = JsonUtil.getString(json, "company");
+    obj.company = JsonUtil.getString(jsonObj, "company");
 
-    obj.phone = JsonUtil.getString(json, "phone");
+    obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-    obj.addr = JsonUtil.getString(json, "addr");
+    obj.addr = JsonUtil.getString(jsonObj, "addr");
 
-    obj.extendedAddr = JsonUtil.getString(json, "extended_addr");
+    obj.extendedAddr = JsonUtil.getString(jsonObj, "extended_addr");
 
-    obj.extendedAddr2 = JsonUtil.getString(json, "extended_addr2");
+    obj.extendedAddr2 = JsonUtil.getString(jsonObj, "extended_addr2");
 
-    obj.city = JsonUtil.getString(json, "city");
+    obj.city = JsonUtil.getString(jsonObj, "city");
 
-    obj.stateCode = JsonUtil.getString(json, "state_code");
+    obj.stateCode = JsonUtil.getString(jsonObj, "state_code");
 
-    obj.state = JsonUtil.getString(json, "state");
+    obj.state = JsonUtil.getString(jsonObj, "state");
 
-    obj.country = JsonUtil.getString(json, "country");
+    obj.country = JsonUtil.getString(jsonObj, "country");
 
-    obj.zip = JsonUtil.getString(json, "zip");
+    obj.zip = JsonUtil.getString(jsonObj, "zip");
 
     obj.validationStatus =
-        ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
+        ValidationStatus.fromString(JsonUtil.getString(jsonObj, "validation_status"));
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
     return obj;
   }

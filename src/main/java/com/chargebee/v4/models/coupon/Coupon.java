@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.coupon;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -463,9 +465,12 @@ public class Coupon {
   }
 
   public static Coupon fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Coupon fromJson(JsonObject jsonObj) {
     Coupon obj = new Coupon();
 
-    // Parse JSON to extract all keys for custom field extraction
     java.util.Set<String> knownFields = new java.util.HashSet<>();
 
     knownFields.add("id");
@@ -536,121 +541,96 @@ public class Coupon {
 
     knownFields.add("addon_ids");
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.invoiceName = JsonUtil.getString(json, "invoice_name");
+    obj.invoiceName = JsonUtil.getString(jsonObj, "invoice_name");
 
-    obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+    obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-    obj.discountPercentage = JsonUtil.getDouble(json, "discount_percentage");
+    obj.discountPercentage = JsonUtil.getDouble(jsonObj, "discount_percentage");
 
-    obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+    obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
-    obj.discountQuantity = JsonUtil.getInteger(json, "discount_quantity");
+    obj.discountQuantity = JsonUtil.getInteger(jsonObj, "discount_quantity");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.durationType = DurationType.fromString(JsonUtil.getString(json, "duration_type"));
+    obj.durationType = DurationType.fromString(JsonUtil.getString(jsonObj, "duration_type"));
 
-    obj.durationMonth = JsonUtil.getInteger(json, "duration_month");
+    obj.durationMonth = JsonUtil.getInteger(jsonObj, "duration_month");
 
-    obj.validFrom = JsonUtil.getTimestamp(json, "valid_from");
+    obj.validFrom = JsonUtil.getTimestamp(jsonObj, "valid_from");
 
-    obj.validTill = JsonUtil.getTimestamp(json, "valid_till");
+    obj.validTill = JsonUtil.getTimestamp(jsonObj, "valid_till");
 
-    obj.maxRedemptions = JsonUtil.getInteger(json, "max_redemptions");
+    obj.maxRedemptions = JsonUtil.getInteger(jsonObj, "max_redemptions");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.applyDiscountOn = ApplyDiscountOn.fromString(JsonUtil.getString(json, "apply_discount_on"));
+    obj.applyDiscountOn =
+        ApplyDiscountOn.fromString(JsonUtil.getString(jsonObj, "apply_discount_on"));
 
-    obj.applyOn = ApplyOn.fromString(JsonUtil.getString(json, "apply_on"));
+    obj.applyOn = ApplyOn.fromString(JsonUtil.getString(jsonObj, "apply_on"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.archivedAt = JsonUtil.getTimestamp(json, "archived_at");
+    obj.archivedAt = JsonUtil.getTimestamp(jsonObj, "archived_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.period = JsonUtil.getInteger(json, "period");
+    obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-    obj.redemptions = JsonUtil.getInteger(json, "redemptions");
+    obj.redemptions = JsonUtil.getInteger(jsonObj, "redemptions");
 
-    obj.invoiceNotes = JsonUtil.getString(json, "invoice_notes");
+    obj.invoiceNotes = JsonUtil.getString(jsonObj, "invoice_notes");
 
-    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    JsonObject __metaDataObj = JsonUtil.getJsonObject(jsonObj, "meta_data");
     obj.metaData =
-        __metaDataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+        __metaDataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataObj)
             : new java.util.HashMap<>();
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
     obj.itemConstraints =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_constraints")).stream()
-            .map(ItemConstraints::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "item_constraints"), ItemConstraints::fromJson);
 
     obj.itemConstraintCriteria =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_constraint_criteria")).stream()
-            .map(ItemConstraintCriteria::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "item_constraint_criteria"),
+            ItemConstraintCriteria::fromJson);
 
     obj.couponConstraints =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupon_constraints")).stream()
-            .map(CouponConstraints::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "coupon_constraints"), CouponConstraints::fromJson);
 
-    obj.planIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "plan_ids"));
+    JsonArray __planIdsArr = JsonUtil.getJsonArray(jsonObj, "plan_ids");
+    if (__planIdsArr != null) {
+      obj.planIds = JsonUtil.parseArrayOfString(__planIdsArr);
+    }
 
-    obj.addonConstraint = AddonConstraint.fromString(JsonUtil.getString(json, "addon_constraint"));
+    obj.addonConstraint =
+        AddonConstraint.fromString(JsonUtil.getString(jsonObj, "addon_constraint"));
 
-    obj.planConstraint = PlanConstraint.fromString(JsonUtil.getString(json, "plan_constraint"));
+    obj.planConstraint = PlanConstraint.fromString(JsonUtil.getString(jsonObj, "plan_constraint"));
 
-    obj.includedInMrr = JsonUtil.getBoolean(json, "included_in_mrr");
+    obj.includedInMrr = JsonUtil.getBoolean(jsonObj, "included_in_mrr");
 
-    obj.addonIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "addon_ids"));
+    JsonArray __addonIdsArr = JsonUtil.getJsonArray(jsonObj, "addon_ids");
+    if (__addonIdsArr != null) {
+      obj.addonIds = JsonUtil.parseArrayOfString(__addonIdsArr);
+    }
 
-    // Extract custom fields (fields starting with cf_)
-    obj.customFields = extractCustomFields(json, knownFields);
+    obj.customFields = JsonUtil.extractCustomFields(jsonObj, knownFields);
 
     return obj;
-  }
-
-  /**
-   * Helper method to extract custom fields from JSON. Custom fields are fields that start with
-   * "cf_" and are not in the known fields set.
-   *
-   * @param json JSON string to parse
-   * @param knownFields set of known field names
-   * @return map of custom fields
-   */
-  private static java.util.Map<String, String> extractCustomFields(
-      String json, java.util.Set<String> knownFields) {
-    java.util.Map<String, String> customFields = new java.util.HashMap<>();
-    try {
-      // Parse the entire JSON as a map
-      java.util.Map<String, Object> allFields = JsonUtil.parseJsonObjectToMap(json);
-      if (allFields != null) {
-        for (java.util.Map.Entry<String, Object> entry : allFields.entrySet()) {
-          String key = entry.getKey();
-          // Include fields that start with "cf_" and are not in knownFields
-          if (key != null && key.startsWith("cf_") && !knownFields.contains(key)) {
-            customFields.put(
-                key, entry.getValue() != null ? String.valueOf(entry.getValue()) : null);
-          }
-        }
-      }
-    } catch (Exception e) {
-      // If parsing fails, return empty map
-    }
-    return customFields;
   }
 
   @Override
@@ -894,19 +874,20 @@ public class Coupon {
     }
 
     public static ItemConstraints fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemConstraints fromJson(JsonObject jsonObj) {
       ItemConstraints obj = new ItemConstraints();
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.constraint = Constraint.fromString(JsonUtil.getString(json, "constraint"));
+      obj.constraint = Constraint.fromString(JsonUtil.getString(jsonObj, "constraint"));
 
-      String __itemPriceIdsJson = JsonUtil.getArray(json, "item_price_ids");
-      obj.itemPriceIds =
-          __itemPriceIdsJson != null
-              ? JsonUtil.parseObjectArray(__itemPriceIdsJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __itemPriceIdsArr = JsonUtil.getJsonArray(jsonObj, "item_price_ids");
+      if (__itemPriceIdsArr != null) {
+        obj.itemPriceIds = JsonUtil.mapArrayToObjects(__itemPriceIdsArr);
+      }
 
       return obj;
     }
@@ -995,33 +976,28 @@ public class Coupon {
     }
 
     public static ItemConstraintCriteria fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemConstraintCriteria fromJson(JsonObject jsonObj) {
       ItemConstraintCriteria obj = new ItemConstraintCriteria();
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      String __currenciesJson = JsonUtil.getArray(json, "currencies");
-      obj.currencies =
-          __currenciesJson != null
-              ? JsonUtil.parseObjectArray(__currenciesJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __currenciesArr = JsonUtil.getJsonArray(jsonObj, "currencies");
+      if (__currenciesArr != null) {
+        obj.currencies = JsonUtil.mapArrayToObjects(__currenciesArr);
+      }
 
-      String __itemFamilyIdsJson = JsonUtil.getArray(json, "item_family_ids");
-      obj.itemFamilyIds =
-          __itemFamilyIdsJson != null
-              ? JsonUtil.parseObjectArray(__itemFamilyIdsJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __itemFamilyIdsArr = JsonUtil.getJsonArray(jsonObj, "item_family_ids");
+      if (__itemFamilyIdsArr != null) {
+        obj.itemFamilyIds = JsonUtil.mapArrayToObjects(__itemFamilyIdsArr);
+      }
 
-      String __itemPricePeriodsJson = JsonUtil.getArray(json, "item_price_periods");
-      obj.itemPricePeriods =
-          __itemPricePeriodsJson != null
-              ? JsonUtil.parseObjectArray(__itemPricePeriodsJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __itemPricePeriodsArr = JsonUtil.getJsonArray(jsonObj, "item_price_periods");
+      if (__itemPricePeriodsArr != null) {
+        obj.itemPricePeriods = JsonUtil.mapArrayToObjects(__itemPricePeriodsArr);
+      }
 
       return obj;
     }
@@ -1136,13 +1112,17 @@ public class Coupon {
     }
 
     public static CouponConstraints fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponConstraints fromJson(JsonObject jsonObj) {
       CouponConstraints obj = new CouponConstraints();
 
-      obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-      obj.value = JsonUtil.getString(json, "value");
+      obj.value = JsonUtil.getString(jsonObj, "value");
 
       return obj;
     }

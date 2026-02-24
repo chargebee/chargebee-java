@@ -4,6 +4,7 @@ import com.chargebee.v4.models.promotionalCredit.PromotionalCredit;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PromotionalCreditRetrieveResponse extends BaseResponse {
   /** Parse JSON response into PromotionalCreditRetrieveResponse object with HTTP response. */
   public static PromotionalCreditRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __promotionalCreditJson = JsonUtil.getObject(json, "promotional_credit");
-      if (__promotionalCreditJson != null) {
-        builder.promotionalCredit(PromotionalCredit.fromJson(__promotionalCreditJson));
+      JsonObject __promotionalCreditObj = JsonUtil.getJsonObject(jsonObj, "promotional_credit");
+      if (__promotionalCreditObj != null) {
+        builder.promotionalCredit(PromotionalCredit.fromJson(__promotionalCreditObj));
       }
 
       builder.httpResponse(httpResponse);

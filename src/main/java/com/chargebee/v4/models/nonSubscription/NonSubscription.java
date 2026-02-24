@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.nonSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class NonSubscription {
 
@@ -34,15 +35,19 @@ public class NonSubscription {
   }
 
   public static NonSubscription fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static NonSubscription fromJson(JsonObject jsonObj) {
     NonSubscription obj = new NonSubscription();
 
-    obj.appId = JsonUtil.getString(json, "app_id");
+    obj.appId = JsonUtil.getString(jsonObj, "app_id");
 
-    obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+    obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.chargeId = JsonUtil.getString(json, "charge_id");
+    obj.chargeId = JsonUtil.getString(jsonObj, "charge_id");
 
     return obj;
   }

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.event.Event;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.EventService;
 import com.chargebee.v4.models.event.params.EventListParams;
@@ -43,13 +44,12 @@ public final class EventListResponse {
    */
   public static EventListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EventListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EventListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), EventListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new EventListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -64,13 +64,12 @@ public final class EventListResponse {
   public static EventListResponse fromJson(
       String json, EventService service, EventListParams originalParams, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EventListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EventListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), EventListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new EventListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -170,11 +169,15 @@ public final class EventListResponse {
     }
 
     public static EventListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EventListItem fromJson(JsonObject jsonObj) {
       EventListItem item = new EventListItem();
 
-      String __eventJson = JsonUtil.getObject(json, "event");
-      if (__eventJson != null) {
-        item.event = Event.fromJson(__eventJson);
+      JsonObject __eventObj = JsonUtil.getJsonObject(jsonObj, "event");
+      if (__eventObj != null) {
+        item.event = Event.fromJson(__eventObj);
       }
 
       return item;

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.invoice.Invoice;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -29,12 +30,11 @@ public final class InvoiceUnbilledChargesResponse extends BaseResponse {
   /** Parse JSON response into InvoiceUnbilledChargesResponse object with HTTP response. */
   public static InvoiceUnbilledChargesResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.invoices(
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "invoices")).stream()
-              .map(Invoice::fromJson)
-              .collect(java.util.stream.Collectors.toList()));
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "invoices"), Invoice::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

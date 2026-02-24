@@ -2,6 +2,7 @@ package com.chargebee.v4.models.subscriptionSetting.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class SubscriptionSettingRetrieveResponse extends BaseResponse {
   /** Parse JSON response into SubscriptionSettingRetrieveResponse object with HTTP response. */
   public static SubscriptionSettingRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.subscriptionSetting(JsonUtil.getObject(json, "subscription_setting"));
+      builder.subscriptionSetting(JsonUtil.getObject(jsonObj, "subscription_setting"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.metadata;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Metadata {
 
@@ -18,9 +19,13 @@ public class Metadata {
   }
 
   public static Metadata fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Metadata fromJson(JsonObject jsonObj) {
     Metadata obj = new Metadata();
 
-    obj.changeType = JsonUtil.getString(json, "change_type");
+    obj.changeType = JsonUtil.getString(jsonObj, "change_type");
 
     return obj;
   }

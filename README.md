@@ -64,6 +64,42 @@ dependencies {
 </dependency>
 ```
 
+### Dependencies
+
+The Chargebee Java SDK uses [Gson](https://github.com/google/gson) `2.13.2` for JSON processing. Gson is declared as a regular dependency of the SDK and is therefore included transitively when the SDK is added to a project.
+
+#### Gson version conflicts
+
+Projects that already depend on a different version of Gson may encounter version conflicts. The build tool resolves a single version based on its dependency resolution strategy, which can lead to mismatches.
+
+**Gradle** selects the highest version by default. If the project uses an older Gson version, Gradle will resolve to the highest version (`2.13.2`) by default. To pin a specific version:
+
+```kotlin
+configurations.all {
+    resolutionStrategy {
+        force("com.google.code.gson:gson:2.13.2")
+    }
+}
+```
+
+**Maven** uses the nearest-wins strategy, meaning a direct dependency declared in the project takes precedence over the SDK's transitive dependency. If an older version is declared directly, it will override the SDK's version. To align versions, either upgrade the direct dependency or use `<dependencyManagement>`:
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.2</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
+**Minimum compatible Gson version**: `2.8.6`. The SDK relies on `JsonParser.parseString()`, which was introduced in Gson 2.8.6. Versions older than 2.8.6 will cause a `NoSuchMethodError` at runtime.
+
+**Recommended**: Gson `2.10.1` or later is recommended for best compatibility. Projects unable to upgrade should verify that the resolved Gson version is at least `2.8.6`.
+
 ### Install JAR files
 ***
 

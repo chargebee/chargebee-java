@@ -4,6 +4,7 @@ import com.chargebee.v4.models.coupon.Coupon;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class CouponDeleteResponse extends BaseResponse {
   /** Parse JSON response into CouponDeleteResponse object with HTTP response. */
   public static CouponDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __couponJson = JsonUtil.getObject(json, "coupon");
-      if (__couponJson != null) {
-        builder.coupon(Coupon.fromJson(__couponJson));
+      JsonObject __couponObj = JsonUtil.getJsonObject(jsonObj, "coupon");
+      if (__couponObj != null) {
+        builder.coupon(Coupon.fromJson(__couponObj));
       }
 
       builder.httpResponse(httpResponse);

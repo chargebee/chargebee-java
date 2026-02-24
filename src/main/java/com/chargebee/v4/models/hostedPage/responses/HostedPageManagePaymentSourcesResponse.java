@@ -4,6 +4,7 @@ import com.chargebee.v4.models.hostedPage.HostedPage;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -28,11 +29,12 @@ public final class HostedPageManagePaymentSourcesResponse extends BaseResponse {
   public static HostedPageManagePaymentSourcesResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __hostedPageJson = JsonUtil.getObject(json, "hosted_page");
-      if (__hostedPageJson != null) {
-        builder.hostedPage(HostedPage.fromJson(__hostedPageJson));
+      JsonObject __hostedPageObj = JsonUtil.getJsonObject(jsonObj, "hosted_page");
+      if (__hostedPageObj != null) {
+        builder.hostedPage(HostedPage.fromJson(__hostedPageObj));
       }
 
       builder.httpResponse(httpResponse);

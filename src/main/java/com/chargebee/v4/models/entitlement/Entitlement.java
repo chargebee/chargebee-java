@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.entitlement;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Entitlement {
 
@@ -82,21 +83,25 @@ public class Entitlement {
   }
 
   public static Entitlement fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Entitlement fromJson(JsonObject jsonObj) {
     Entitlement obj = new Entitlement();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.featureId = JsonUtil.getString(json, "feature_id");
+    obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
 
-    obj.featureName = JsonUtil.getString(json, "feature_name");
+    obj.featureName = JsonUtil.getString(jsonObj, "feature_name");
 
-    obj.value = JsonUtil.getString(json, "value");
+    obj.value = JsonUtil.getString(jsonObj, "value");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
     return obj;
   }

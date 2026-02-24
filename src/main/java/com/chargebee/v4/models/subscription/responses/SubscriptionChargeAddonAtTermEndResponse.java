@@ -4,6 +4,7 @@ import com.chargebee.v4.models.estimate.Estimate;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -30,11 +31,12 @@ public final class SubscriptionChargeAddonAtTermEndResponse extends BaseResponse
   public static SubscriptionChargeAddonAtTermEndResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __estimateJson = JsonUtil.getObject(json, "estimate");
-      if (__estimateJson != null) {
-        builder.estimate(Estimate.fromJson(__estimateJson));
+      JsonObject __estimateObj = JsonUtil.getJsonObject(jsonObj, "estimate");
+      if (__estimateObj != null) {
+        builder.estimate(Estimate.fromJson(__estimateObj));
       }
 
       builder.httpResponse(httpResponse);

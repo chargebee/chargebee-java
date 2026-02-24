@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.usageFile;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class UsageFile {
@@ -133,43 +134,47 @@ public class UsageFile {
   }
 
   public static UsageFile fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static UsageFile fromJson(JsonObject jsonObj) {
     UsageFile obj = new UsageFile();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.mimeType = JsonUtil.getString(json, "mime_type");
+    obj.mimeType = JsonUtil.getString(jsonObj, "mime_type");
 
-    obj.errorCode = JsonUtil.getString(json, "error_code");
+    obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-    obj.errorReason = JsonUtil.getString(json, "error_reason");
+    obj.errorReason = JsonUtil.getString(jsonObj, "error_reason");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.totalRecordsCount = JsonUtil.getLong(json, "total_records_count");
+    obj.totalRecordsCount = JsonUtil.getLong(jsonObj, "total_records_count");
 
-    obj.processedRecordsCount = JsonUtil.getLong(json, "processed_records_count");
+    obj.processedRecordsCount = JsonUtil.getLong(jsonObj, "processed_records_count");
 
-    obj.failedRecordsCount = JsonUtil.getLong(json, "failed_records_count");
+    obj.failedRecordsCount = JsonUtil.getLong(jsonObj, "failed_records_count");
 
-    obj.fileSizeInBytes = JsonUtil.getLong(json, "file_size_in_bytes");
+    obj.fileSizeInBytes = JsonUtil.getLong(jsonObj, "file_size_in_bytes");
 
-    obj.processingStartedAt = JsonUtil.getTimestamp(json, "processing_started_at");
+    obj.processingStartedAt = JsonUtil.getTimestamp(jsonObj, "processing_started_at");
 
-    obj.processingCompletedAt = JsonUtil.getTimestamp(json, "processing_completed_at");
+    obj.processingCompletedAt = JsonUtil.getTimestamp(jsonObj, "processing_completed_at");
 
-    obj.uploadedBy = JsonUtil.getString(json, "uploaded_by");
+    obj.uploadedBy = JsonUtil.getString(jsonObj, "uploaded_by");
 
-    obj.uploadedAt = JsonUtil.getTimestamp(json, "uploaded_at");
+    obj.uploadedAt = JsonUtil.getTimestamp(jsonObj, "uploaded_at");
 
-    obj.errorFilePath = JsonUtil.getString(json, "error_file_path");
+    obj.errorFilePath = JsonUtil.getString(jsonObj, "error_file_path");
 
-    obj.errorFileUrl = JsonUtil.getString(json, "error_file_url");
+    obj.errorFileUrl = JsonUtil.getString(jsonObj, "error_file_url");
 
-    String __uploadDetailsJson = JsonUtil.getObject(json, "upload_details");
-    if (__uploadDetailsJson != null) {
-      obj.uploadDetails = UploadDetails.fromJson(__uploadDetailsJson);
+    JsonObject __uploadDetailsObj = JsonUtil.getJsonObject(jsonObj, "upload_details");
+    if (__uploadDetailsObj != null) {
+      obj.uploadDetails = UploadDetails.fromJson(__uploadDetailsObj);
     }
 
     return obj;
@@ -277,11 +282,15 @@ public class UsageFile {
     }
 
     public static UploadDetails fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static UploadDetails fromJson(JsonObject jsonObj) {
       UploadDetails obj = new UploadDetails();
 
-      obj.url = JsonUtil.getString(json, "url");
+      obj.url = JsonUtil.getString(jsonObj, "url");
 
-      obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+      obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
       return obj;
     }

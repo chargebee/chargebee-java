@@ -6,6 +6,7 @@ import com.chargebee.v4.models.businessEntityTransfer.BusinessEntityTransfer;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.BusinessEntityService;
 import com.chargebee.v4.models.businessEntity.params.BusinessEntityGetTransfersParams;
@@ -45,13 +46,13 @@ public final class BusinessEntityGetTransfersResponse {
    */
   public static BusinessEntityGetTransfersResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<BusinessEntityGetTransfersItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(BusinessEntityGetTransfersItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), BusinessEntityGetTransfersItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new BusinessEntityGetTransfersResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -69,13 +70,13 @@ public final class BusinessEntityGetTransfersResponse {
       BusinessEntityGetTransfersParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<BusinessEntityGetTransfersItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(BusinessEntityGetTransfersItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), BusinessEntityGetTransfersItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new BusinessEntityGetTransfersResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -183,11 +184,16 @@ public final class BusinessEntityGetTransfersResponse {
     }
 
     public static BusinessEntityGetTransfersItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static BusinessEntityGetTransfersItem fromJson(JsonObject jsonObj) {
       BusinessEntityGetTransfersItem item = new BusinessEntityGetTransfersItem();
 
-      String __businessEntityTransferJson = JsonUtil.getObject(json, "business_entity_transfer");
-      if (__businessEntityTransferJson != null) {
-        item.businessEntityTransfer = BusinessEntityTransfer.fromJson(__businessEntityTransferJson);
+      JsonObject __businessEntityTransferObj =
+          JsonUtil.getJsonObject(jsonObj, "business_entity_transfer");
+      if (__businessEntityTransferObj != null) {
+        item.businessEntityTransfer = BusinessEntityTransfer.fromJson(__businessEntityTransferObj);
       }
 
       return item;

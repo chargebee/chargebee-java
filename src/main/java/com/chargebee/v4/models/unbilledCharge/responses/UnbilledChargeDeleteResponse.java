@@ -4,6 +4,7 @@ import com.chargebee.v4.models.unbilledCharge.UnbilledCharge;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class UnbilledChargeDeleteResponse extends BaseResponse {
   /** Parse JSON response into UnbilledChargeDeleteResponse object with HTTP response. */
   public static UnbilledChargeDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __unbilledChargeJson = JsonUtil.getObject(json, "unbilled_charge");
-      if (__unbilledChargeJson != null) {
-        builder.unbilledCharge(UnbilledCharge.fromJson(__unbilledChargeJson));
+      JsonObject __unbilledChargeObj = JsonUtil.getJsonObject(jsonObj, "unbilled_charge");
+      if (__unbilledChargeObj != null) {
+        builder.unbilledCharge(UnbilledCharge.fromJson(__unbilledChargeObj));
       }
 
       builder.httpResponse(httpResponse);

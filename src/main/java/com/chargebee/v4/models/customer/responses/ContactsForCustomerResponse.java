@@ -6,6 +6,7 @@ import com.chargebee.v4.models.contact.Contact;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CustomerService;
 import com.chargebee.v4.models.customer.params.ContactsForCustomerParams;
@@ -48,13 +49,13 @@ public final class ContactsForCustomerResponse {
    */
   public static ContactsForCustomerResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerContactsForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerContactsForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), CustomerContactsForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ContactsForCustomerResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +74,13 @@ public final class ContactsForCustomerResponse {
       String customerId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerContactsForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerContactsForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), CustomerContactsForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ContactsForCustomerResponse(
           list, nextOffset, customerId, service, originalParams, httpResponse);
@@ -180,11 +181,15 @@ public final class ContactsForCustomerResponse {
     }
 
     public static CustomerContactsForCustomerItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CustomerContactsForCustomerItem fromJson(JsonObject jsonObj) {
       CustomerContactsForCustomerItem item = new CustomerContactsForCustomerItem();
 
-      String __contactJson = JsonUtil.getObject(json, "contact");
-      if (__contactJson != null) {
-        item.contact = Contact.fromJson(__contactJson);
+      JsonObject __contactObj = JsonUtil.getJsonObject(jsonObj, "contact");
+      if (__contactObj != null) {
+        item.contact = Contact.fromJson(__contactObj);
       }
 
       return item;

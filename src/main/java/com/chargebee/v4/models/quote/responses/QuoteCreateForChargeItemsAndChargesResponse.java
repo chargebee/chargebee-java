@@ -6,6 +6,7 @@ import com.chargebee.v4.models.quotedCharge.QuotedCharge;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -36,16 +37,17 @@ public final class QuoteCreateForChargeItemsAndChargesResponse extends BaseRespo
   public static QuoteCreateForChargeItemsAndChargesResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __quoteJson = JsonUtil.getObject(json, "quote");
-      if (__quoteJson != null) {
-        builder.quote(Quote.fromJson(__quoteJson));
+      JsonObject __quoteObj = JsonUtil.getJsonObject(jsonObj, "quote");
+      if (__quoteObj != null) {
+        builder.quote(Quote.fromJson(__quoteObj));
       }
 
-      String __quotedChargeJson = JsonUtil.getObject(json, "quoted_charge");
-      if (__quotedChargeJson != null) {
-        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeJson));
+      JsonObject __quotedChargeObj = JsonUtil.getJsonObject(jsonObj, "quoted_charge");
+      if (__quotedChargeObj != null) {
+        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeObj));
       }
 
       builder.httpResponse(httpResponse);

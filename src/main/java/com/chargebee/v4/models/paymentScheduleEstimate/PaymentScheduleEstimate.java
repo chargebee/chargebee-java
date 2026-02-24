@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentScheduleEstimate;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -76,24 +77,27 @@ public class PaymentScheduleEstimate {
   }
 
   public static PaymentScheduleEstimate fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PaymentScheduleEstimate fromJson(JsonObject jsonObj) {
     PaymentScheduleEstimate obj = new PaymentScheduleEstimate();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.schemeId = JsonUtil.getString(json, "scheme_id");
+    obj.schemeId = JsonUtil.getString(jsonObj, "scheme_id");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
     obj.scheduleEntries =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "schedule_entries")).stream()
-            .map(ScheduleEntries::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "schedule_entries"), ScheduleEntries::fromJson);
 
     return obj;
   }
@@ -194,15 +198,19 @@ public class PaymentScheduleEstimate {
     }
 
     public static ScheduleEntries fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ScheduleEntries fromJson(JsonObject jsonObj) {
       ScheduleEntries obj = new ScheduleEntries();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.date = JsonUtil.getTimestamp(json, "date");
+      obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       return obj;
     }

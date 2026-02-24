@@ -6,6 +6,7 @@ import com.chargebee.v4.models.transaction.Transaction;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.TransactionService;
 import com.chargebee.v4.models.transaction.params.TransactionsForSubscriptionParams;
@@ -51,13 +52,14 @@ public final class TransactionsForSubscriptionResponse {
    */
   public static TransactionsForSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionTransactionsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionTransactionsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              TransactionTransactionsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionsForSubscriptionResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -77,13 +79,14 @@ public final class TransactionsForSubscriptionResponse {
       String subscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionTransactionsForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionTransactionsForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              TransactionTransactionsForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionsForSubscriptionResponse(
           list, nextOffset, subscriptionId, service, originalParams, httpResponse);
@@ -192,12 +195,16 @@ public final class TransactionsForSubscriptionResponse {
     }
 
     public static TransactionTransactionsForSubscriptionItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TransactionTransactionsForSubscriptionItem fromJson(JsonObject jsonObj) {
       TransactionTransactionsForSubscriptionItem item =
           new TransactionTransactionsForSubscriptionItem();
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        item.transaction = Transaction.fromJson(__transactionJson);
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        item.transaction = Transaction.fromJson(__transactionObj);
       }
 
       return item;

@@ -4,6 +4,7 @@ import com.chargebee.v4.models.invoice.Invoice;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class InvoiceSyncUsagesResponse extends BaseResponse {
   /** Parse JSON response into InvoiceSyncUsagesResponse object with HTTP response. */
   public static InvoiceSyncUsagesResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        builder.invoice(Invoice.fromJson(__invoiceJson));
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        builder.invoice(Invoice.fromJson(__invoiceObj));
       }
 
       builder.httpResponse(httpResponse);

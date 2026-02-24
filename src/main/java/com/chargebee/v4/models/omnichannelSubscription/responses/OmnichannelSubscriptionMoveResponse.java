@@ -4,6 +4,7 @@ import com.chargebee.v4.models.omnichannelSubscription.OmnichannelSubscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,12 +28,14 @@ public final class OmnichannelSubscriptionMoveResponse extends BaseResponse {
   /** Parse JSON response into OmnichannelSubscriptionMoveResponse object with HTTP response. */
   public static OmnichannelSubscriptionMoveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __omnichannelSubscriptionJson = JsonUtil.getObject(json, "omnichannel_subscription");
-      if (__omnichannelSubscriptionJson != null) {
+      JsonObject __omnichannelSubscriptionObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_subscription");
+      if (__omnichannelSubscriptionObj != null) {
         builder.omnichannelSubscription(
-            OmnichannelSubscription.fromJson(__omnichannelSubscriptionJson));
+            OmnichannelSubscription.fromJson(__omnichannelSubscriptionObj));
       }
 
       builder.httpResponse(httpResponse);

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.priceVariant.PriceVariant;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PriceVariantService;
 import com.chargebee.v4.models.priceVariant.params.PriceVariantListParams;
@@ -43,13 +44,12 @@ public final class PriceVariantListResponse {
    */
   public static PriceVariantListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PriceVariantListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PriceVariantListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), PriceVariantListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PriceVariantListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class PriceVariantListResponse {
       PriceVariantListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PriceVariantListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PriceVariantListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), PriceVariantListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PriceVariantListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class PriceVariantListResponse {
     }
 
     public static PriceVariantListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PriceVariantListItem fromJson(JsonObject jsonObj) {
       PriceVariantListItem item = new PriceVariantListItem();
 
-      String __priceVariantJson = JsonUtil.getObject(json, "price_variant");
-      if (__priceVariantJson != null) {
-        item.priceVariant = PriceVariant.fromJson(__priceVariantJson);
+      JsonObject __priceVariantObj = JsonUtil.getJsonObject(jsonObj, "price_variant");
+      if (__priceVariantObj != null) {
+        item.priceVariant = PriceVariant.fromJson(__priceVariantObj);
       }
 
       return item;

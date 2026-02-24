@@ -6,6 +6,7 @@ import com.chargebee.v4.models.hostedPage.HostedPage;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.HostedPageService;
 import com.chargebee.v4.models.hostedPage.params.HostedPageListParams;
@@ -43,13 +44,12 @@ public final class HostedPageListResponse {
    */
   public static HostedPageListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<HostedPageListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(HostedPageListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), HostedPageListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new HostedPageListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class HostedPageListResponse {
       HostedPageListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<HostedPageListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(HostedPageListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), HostedPageListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new HostedPageListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class HostedPageListResponse {
     }
 
     public static HostedPageListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static HostedPageListItem fromJson(JsonObject jsonObj) {
       HostedPageListItem item = new HostedPageListItem();
 
-      String __hostedPageJson = JsonUtil.getObject(json, "hosted_page");
-      if (__hostedPageJson != null) {
-        item.hostedPage = HostedPage.fromJson(__hostedPageJson);
+      JsonObject __hostedPageObj = JsonUtil.getJsonObject(jsonObj, "hosted_page");
+      if (__hostedPageObj != null) {
+        item.hostedPage = HostedPage.fromJson(__hostedPageObj);
       }
 
       return item;

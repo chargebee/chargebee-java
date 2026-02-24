@@ -4,6 +4,7 @@ import com.chargebee.v4.models.configuration.Configuration;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.util.List;
 
@@ -28,15 +29,12 @@ public final class ConfigurationListResponse extends BaseResponse {
   /** Parse JSON response into ConfigurationListResponse object with HTTP response. */
   public static ConfigurationListResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __configurationsJson = JsonUtil.getArray(json, "configurations");
-      if (__configurationsJson != null) {
-        builder.configurations(
-            JsonUtil.parseObjectArray(__configurationsJson).stream()
-                .map(Configuration::fromJson)
-                .collect(java.util.stream.Collectors.toList()));
-      }
+      builder.configurations(
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "configurations"), Configuration::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

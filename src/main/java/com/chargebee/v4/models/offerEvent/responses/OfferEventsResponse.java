@@ -1,6 +1,8 @@
 package com.chargebee.v4.models.offerEvent.responses;
 
 import com.chargebee.v4.models.BaseResponse;
+import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for OfferEvents operation. Contains the response data from the API. */
@@ -18,6 +20,7 @@ public final class OfferEventsResponse extends BaseResponse {
   /** Parse JSON response into OfferEventsResponse object with HTTP response. */
   public static OfferEventsResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
       builder.httpResponse(httpResponse);

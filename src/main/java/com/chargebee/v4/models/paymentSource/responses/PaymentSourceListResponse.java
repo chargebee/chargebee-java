@@ -6,6 +6,7 @@ import com.chargebee.v4.models.paymentSource.PaymentSource;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PaymentSourceService;
 import com.chargebee.v4.models.paymentSource.params.PaymentSourceListParams;
@@ -43,13 +44,13 @@ public final class PaymentSourceListResponse {
    */
   public static PaymentSourceListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PaymentSourceListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PaymentSourceListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), PaymentSourceListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PaymentSourceListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class PaymentSourceListResponse {
       PaymentSourceListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PaymentSourceListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PaymentSourceListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), PaymentSourceListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PaymentSourceListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +174,15 @@ public final class PaymentSourceListResponse {
     }
 
     public static PaymentSourceListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentSourceListItem fromJson(JsonObject jsonObj) {
       PaymentSourceListItem item = new PaymentSourceListItem();
 
-      String __paymentSourceJson = JsonUtil.getObject(json, "payment_source");
-      if (__paymentSourceJson != null) {
-        item.paymentSource = PaymentSource.fromJson(__paymentSourceJson);
+      JsonObject __paymentSourceObj = JsonUtil.getJsonObject(jsonObj, "payment_source");
+      if (__paymentSourceObj != null) {
+        item.paymentSource = PaymentSource.fromJson(__paymentSourceObj);
       }
 
       return item;

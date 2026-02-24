@@ -1,950 +1,626 @@
 package com.chargebee.v4.internal;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Comprehensive test suite for JsonUtil.
- * Inspired by Gson's testing strategies to battle-test our JSON parsing.
- */
 @DisplayName("JsonUtil Tests")
 class JsonUtilTest {
 
-    // ========== getString Tests ==========
+    // ========== parse / parseToArray ==========
+    @Nested
+    @DisplayName("parse Tests")
+    class ParseTests {
+
+        @Test void validJson() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"sub_123\", \"amount\": 1000}");
+            assertNotNull(obj);
+            assertEquals("sub_123", JsonUtil.getString(obj, "id"));
+            assertEquals(1000L, JsonUtil.getLong(obj, "amount"));
+        }
+
+        @Test void nullReturnsEmptyObject() {
+            JsonObject obj = JsonUtil.parse(null);
+            assertNotNull(obj);
+            assertTrue(obj.entrySet().isEmpty());
+        }
+
+        @Test void emptyStringReturnsEmptyObject() {
+            assertNotNull(JsonUtil.parse(""));
+            assertNotNull(JsonUtil.parse("  "));
+        }
+
+        @Test void invalidJsonReturnsEmptyObject() {
+            JsonObject obj = JsonUtil.parse("not json");
+            assertNotNull(obj);
+            assertTrue(obj.entrySet().isEmpty());
+        }
+
+        @Test void parseToArrayValid() {
+            JsonArray arr = JsonUtil.parseToArray("[1, 2, 3]");
+            assertNotNull(arr);
+            assertEquals(3, arr.size());
+        }
+
+        @Test void parseToArrayNull() {
+            JsonArray arr = JsonUtil.parseToArray(null);
+            assertNotNull(arr);
+            assertEquals(0, arr.size());
+        }
+    }
+
+    // ========== getString ==========
     @Nested
     @DisplayName("getString Tests")
     class GetStringTests {
 
-        @Test
-        @DisplayName("should extract simple string value")
-        void shouldExtractSimpleString() {
-            String json = "{\"name\": \"John\"}";
-            assertEquals("John", JsonUtil.getString(json, "name"));
+        @Test void simpleString() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertEquals("John", JsonUtil.getString(obj, "name"));
         }
 
-        @Test
-        @DisplayName("should extract string with spaces")
-        void shouldExtractStringWithSpaces() {
-            String json = "{\"message\": \"Hello World\"}";
-            assertEquals("Hello World", JsonUtil.getString(json, "message"));
+        @Test void stringWithSpaces() {
+            JsonObject obj = JsonUtil.parse("{\"message\": \"Hello World\"}");
+            assertEquals("Hello World", JsonUtil.getString(obj, "message"));
         }
 
-        @Test
-        @DisplayName("should handle escaped quotes in string")
-        void shouldHandleEscapedQuotes() {
-            String json = "{\"text\": \"He said \\\"Hello\\\"\"}";
-            assertEquals("He said \"Hello\"", JsonUtil.getString(json, "text"));
+        @Test void escapedQuotes() {
+            JsonObject obj = JsonUtil.parse("{\"text\": \"He said \\\"Hello\\\"\"}");
+            assertEquals("He said \"Hello\"", JsonUtil.getString(obj, "text"));
         }
 
-        @Test
-        @DisplayName("should handle escaped backslashes")
-        void shouldHandleEscapedBackslashes() {
-            String json = "{\"path\": \"C:\\\\Users\\\\test\"}";
-            assertEquals("C:\\Users\\test", JsonUtil.getString(json, "path"));
+        @Test void escapedBackslashes() {
+            JsonObject obj = JsonUtil.parse("{\"path\": \"C:\\\\Users\\\\test\"}");
+            assertEquals("C:\\Users\\test", JsonUtil.getString(obj, "path"));
         }
 
-        @Test
-        @DisplayName("should handle newlines and tabs")
-        void shouldHandleNewlinesAndTabs() {
-            String json = "{\"text\": \"line1\\nline2\\ttab\"}";
-            assertEquals("line1\nline2\ttab", JsonUtil.getString(json, "text"));
+        @Test void newlinesAndTabs() {
+            JsonObject obj = JsonUtil.parse("{\"text\": \"line1\\nline2\\ttab\"}");
+            assertEquals("line1\nline2\ttab", JsonUtil.getString(obj, "text"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"name\": \"John\"}";
-            assertNull(JsonUtil.getString(json, "missing"));
+        @Test void missingKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertNull(JsonUtil.getString(obj, "missing"));
         }
 
-        @Test
-        @DisplayName("should return null for null json")
-        void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getString(null, "key"));
+        @Test void nullObjReturnsNull() {
+            assertNull(JsonUtil.getString((JsonObject) null, "key"));
         }
 
-        @Test
-        @DisplayName("should return null for null key")
-        void shouldReturnNullForNullKey() {
-            assertNull(JsonUtil.getString("{\"name\": \"John\"}", null));
+        @Test void nullKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertNull(JsonUtil.getString(obj, null));
         }
 
-        @Test
-        @DisplayName("should extract empty string")
-        void shouldExtractEmptyString() {
-            String json = "{\"empty\": \"\"}";
-            assertEquals("", JsonUtil.getString(json, "empty"));
+        @Test void emptyString() {
+            JsonObject obj = JsonUtil.parse("{\"empty\": \"\"}");
+            assertEquals("", JsonUtil.getString(obj, "empty"));
         }
 
-        @Test
-        @DisplayName("should extract string with unicode characters")
-        void shouldExtractUnicodeString() {
-            String json = "{\"text\": \"日本語 中文 한국어\"}";
-            assertEquals("日本語 中文 한국어", JsonUtil.getString(json, "text"));
+        @Test void unicode() {
+            JsonObject obj = JsonUtil.parse("{\"text\": \"日本語 中文 한국어\"}");
+            assertEquals("日本語 中文 한국어", JsonUtil.getString(obj, "text"));
         }
 
-        @Test
-        @DisplayName("should extract string with special JSON characters")
-        void shouldExtractStringWithSpecialChars() {
-            String json = "{\"text\": \"test: \\\"value\\\", more\"}";
-            assertEquals("test: \"value\", more", JsonUtil.getString(json, "text"));
+        @Test void colonsInValue() {
+            JsonObject obj = JsonUtil.parse("{\"url\": \"https://example.com:8080/path\"}");
+            assertEquals("https://example.com:8080/path", JsonUtil.getString(obj, "url"));
         }
     }
 
-    // ========== getLong Tests ==========
+    // ========== getLong ==========
     @Nested
     @DisplayName("getLong Tests")
     class GetLongTests {
 
-        @Test
-        @DisplayName("should extract positive long")
-        void shouldExtractPositiveLong() {
-            String json = "{\"id\": 12345678901234}";
-            assertEquals(12345678901234L, JsonUtil.getLong(json, "id"));
+        @Test void positiveLong() {
+            JsonObject obj = JsonUtil.parse("{\"id\": 12345678901234}");
+            assertEquals(12345678901234L, JsonUtil.getLong(obj, "id"));
         }
 
-        @Test
-        @DisplayName("should extract negative long")
-        void shouldExtractNegativeLong() {
-            String json = "{\"value\": -9876543210}";
-            assertEquals(-9876543210L, JsonUtil.getLong(json, "value"));
+        @Test void negativeLong() {
+            JsonObject obj = JsonUtil.parse("{\"value\": -9876543210}");
+            assertEquals(-9876543210L, JsonUtil.getLong(obj, "value"));
         }
 
-        @Test
-        @DisplayName("should extract zero")
-        void shouldExtractZero() {
-            String json = "{\"count\": 0}";
-            assertEquals(0L, JsonUtil.getLong(json, "count"));
+        @Test void zero() {
+            JsonObject obj = JsonUtil.parse("{\"count\": 0}");
+            assertEquals(0L, JsonUtil.getLong(obj, "count"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"id\": 123}";
-            assertNull(JsonUtil.getLong(json, "missing"));
+        @Test void missingKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"id\": 123}");
+            assertNull(JsonUtil.getLong(obj, "missing"));
         }
 
-        @Test
-        @DisplayName("should return null for null json")
-        void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getLong(null, "key"));
+        @Test void epochTimestamp() {
+            JsonObject obj = JsonUtil.parse("{\"created_at\": 1605530769}");
+            assertEquals(1605530769L, JsonUtil.getLong(obj, "created_at"));
         }
 
-        @Test
-        @DisplayName("should extract epoch timestamp")
-        void shouldExtractEpochTimestamp() {
-            String json = "{\"created_at\": 1605530769}";
-            assertEquals(1605530769L, JsonUtil.getLong(json, "created_at"));
-        }
-
-        @Test
-        @DisplayName("should extract resource_version (large long)")
-        void shouldExtractResourceVersion() {
-            String json = "{\"resource_version\": 1605530769000}";
-            assertEquals(1605530769000L, JsonUtil.getLong(json, "resource_version"));
+        @Test void resourceVersion() {
+            JsonObject obj = JsonUtil.parse("{\"resource_version\": 1605530769000}");
+            assertEquals(1605530769000L, JsonUtil.getLong(obj, "resource_version"));
         }
     }
 
-    // ========== getInteger Tests ==========
+    // ========== getInteger ==========
     @Nested
     @DisplayName("getInteger Tests")
     class GetIntegerTests {
 
-        @Test
-        @DisplayName("should extract positive integer")
-        void shouldExtractPositiveInteger() {
-            String json = "{\"count\": 42}";
-            assertEquals(42, JsonUtil.getInteger(json, "count"));
+        @Test void positiveInteger() {
+            JsonObject obj = JsonUtil.parse("{\"count\": 42}");
+            assertEquals(42, JsonUtil.getInteger(obj, "count"));
         }
 
-        @Test
-        @DisplayName("should extract negative integer")
-        void shouldExtractNegativeInteger() {
-            String json = "{\"offset\": -10}";
-            assertEquals(-10, JsonUtil.getInteger(json, "offset"));
+        @Test void negativeInteger() {
+            JsonObject obj = JsonUtil.parse("{\"offset\": -10}");
+            assertEquals(-10, JsonUtil.getInteger(obj, "offset"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"count\": 42}";
-            assertNull(JsonUtil.getInteger(json, "missing"));
+        @Test void missingKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"count\": 42}");
+            assertNull(JsonUtil.getInteger(obj, "missing"));
         }
     }
 
-    // ========== getBoolean Tests ==========
+    // ========== getBoolean ==========
     @Nested
     @DisplayName("getBoolean Tests")
     class GetBooleanTests {
 
-        @Test
-        @DisplayName("should extract true")
-        void shouldExtractTrue() {
-            String json = "{\"active\": true}";
-            assertTrue(JsonUtil.getBoolean(json, "active"));
+        @Test void trueValue() {
+            JsonObject obj = JsonUtil.parse("{\"active\": true}");
+            assertTrue(JsonUtil.getBoolean(obj, "active"));
         }
 
-        @Test
-        @DisplayName("should extract false")
-        void shouldExtractFalse() {
-            String json = "{\"deleted\": false}";
-            assertFalse(JsonUtil.getBoolean(json, "deleted"));
+        @Test void falseValue() {
+            JsonObject obj = JsonUtil.parse("{\"deleted\": false}");
+            assertFalse(JsonUtil.getBoolean(obj, "deleted"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"active\": true}";
-            assertNull(JsonUtil.getBoolean(json, "missing"));
+        @Test void missingKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"active\": true}");
+            assertNull(JsonUtil.getBoolean(obj, "missing"));
         }
 
-        @Test
-        @DisplayName("should return null for null json")
-        void shouldReturnNullForNullJson() {
-            assertNull(JsonUtil.getBoolean(null, "key"));
+        @Test void nullObjReturnsNull() {
+            assertNull(JsonUtil.getBoolean((JsonObject) null, "key"));
         }
     }
 
-    // ========== getDouble Tests ==========
+    // ========== getDouble ==========
     @Nested
     @DisplayName("getDouble Tests")
     class GetDoubleTests {
 
-        @Test
-        @DisplayName("should extract positive double")
-        void shouldExtractPositiveDouble() {
-            String json = "{\"price\": 99.99}";
-            assertEquals(99.99, JsonUtil.getDouble(json, "price"), 0.001);
+        @Test void positiveDouble() {
+            JsonObject obj = JsonUtil.parse("{\"price\": 99.99}");
+            assertEquals(99.99, JsonUtil.getDouble(obj, "price"), 0.001);
         }
 
-        @Test
-        @DisplayName("should extract negative double")
-        void shouldExtractNegativeDouble() {
-            String json = "{\"balance\": -123.45}";
-            assertEquals(-123.45, JsonUtil.getDouble(json, "balance"), 0.001);
+        @Test void negativeDouble() {
+            JsonObject obj = JsonUtil.parse("{\"balance\": -123.45}");
+            assertEquals(-123.45, JsonUtil.getDouble(obj, "balance"), 0.001);
         }
 
-        @Test
-        @DisplayName("should extract exchange rate")
-        void shouldExtractExchangeRate() {
-            String json = "{\"exchange_rate\": 1.0}";
-            assertEquals(1.0, JsonUtil.getDouble(json, "exchange_rate"), 0.001);
+        @Test void exchangeRate() {
+            JsonObject obj = JsonUtil.parse("{\"exchange_rate\": 1.0}");
+            assertEquals(1.0, JsonUtil.getDouble(obj, "exchange_rate"), 0.001);
         }
 
-        @Test
-        @DisplayName("should extract integer as double")
-        void shouldExtractIntegerAsDouble() {
-            String json = "{\"amount\": 10000}";
-            assertEquals(10000.0, JsonUtil.getDouble(json, "amount"), 0.001);
+        @Test void integerAsDouble() {
+            JsonObject obj = JsonUtil.parse("{\"amount\": 10000}");
+            assertEquals(10000.0, JsonUtil.getDouble(obj, "amount"), 0.001);
         }
     }
 
-    // ========== getBigDecimal Tests ==========
+    // ========== getBigDecimal ==========
     @Nested
     @DisplayName("getBigDecimal Tests")
     class GetBigDecimalTests {
 
-        @Test
-        @DisplayName("should extract decimal value")
-        void shouldExtractDecimalValue() {
-            String json = "{\"amount\": 1234.56}";
-            assertEquals(new BigDecimal("1234.56"), JsonUtil.getBigDecimal(json, "amount"));
+        @Test void decimalValue() {
+            JsonObject obj = JsonUtil.parse("{\"amount\": 1234.56}");
+            assertEquals(new BigDecimal("1234.56"), JsonUtil.getBigDecimal(obj, "amount"));
         }
 
-        @Test
-        @DisplayName("should extract integer as BigDecimal")
-        void shouldExtractIntegerAsBigDecimal() {
-            String json = "{\"amount\": 10000}";
-            assertEquals(new BigDecimal("10000"), JsonUtil.getBigDecimal(json, "amount"));
+        @Test void integerAsBigDecimal() {
+            JsonObject obj = JsonUtil.parse("{\"amount\": 10000}");
+            assertEquals(new BigDecimal("10000"), JsonUtil.getBigDecimal(obj, "amount"));
         }
     }
 
-    // ========== getObject Tests ==========
+    // ========== getTimestamp ==========
     @Nested
-    @DisplayName("getObject Tests")
+    @DisplayName("getTimestamp Tests")
+    class GetTimestampTests {
+
+        @Test void epochSecondsToTimestamp() {
+            JsonObject obj = JsonUtil.parse("{\"created_at\": 1605530769}");
+            Timestamp result = JsonUtil.getTimestamp(obj, "created_at");
+            assertNotNull(result);
+            assertEquals(1605530769000L, result.getTime());
+        }
+
+        @Test void missingKeyReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"updated_at\": 1605530769}");
+            assertNull(JsonUtil.getTimestamp(obj, "created_at"));
+        }
+    }
+
+    // ========== getJsonObject / getObject ==========
+    @Nested
+    @DisplayName("getJsonObject / getObject Tests")
     class GetObjectTests {
 
-        @Test
-        @DisplayName("should extract simple nested object")
-        void shouldExtractSimpleNestedObject() {
-            String json = "{\"customer\": {\"id\": \"cust_123\", \"name\": \"John\"}}";
-            String result = JsonUtil.getObject(json, "customer");
-            assertNotNull(result);
-            assertTrue(result.contains("\"id\": \"cust_123\""));
-            assertTrue(result.contains("\"name\": \"John\""));
+        @Test void getJsonObjectNested() {
+            JsonObject root = JsonUtil.parse("{\"customer\": {\"id\": \"cust_1\", \"email\": \"a@b.com\"}}");
+            JsonObject customer = JsonUtil.getJsonObject(root, "customer");
+            assertNotNull(customer);
+            assertEquals("cust_1", JsonUtil.getString(customer, "id"));
+            assertEquals("a@b.com", JsonUtil.getString(customer, "email"));
         }
 
-        @Test
-        @DisplayName("should extract deeply nested object")
-        void shouldExtractDeeplyNestedObject() {
-            String json = "{\"data\": {\"customer\": {\"address\": {\"city\": \"NYC\"}}}}";
-            String dataObj = JsonUtil.getObject(json, "data");
-            assertNotNull(dataObj);
-            String customerObj = JsonUtil.getObject(dataObj, "customer");
-            assertNotNull(customerObj);
-            String addressObj = JsonUtil.getObject(customerObj, "address");
-            assertNotNull(addressObj);
-            assertEquals("NYC", JsonUtil.getString(addressObj, "city"));
+        @Test void getJsonObjectMissingReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
+            assertNull(JsonUtil.getJsonObject(obj, "missing"));
         }
 
-        @Test
-        @DisplayName("should handle object with nested arrays")
-        void shouldHandleObjectWithNestedArrays() {
-            String json = "{\"transaction\": {\"id\": \"txn_123\", \"linked_invoices\": [{\"id\": \"inv_1\"}]}}";
-            String result = JsonUtil.getObject(json, "transaction");
-            assertNotNull(result);
-            assertTrue(result.contains("linked_invoices"));
-            assertTrue(result.contains("inv_1"));
+        @Test void getJsonObjectNonObjectReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
+            assertNull(JsonUtil.getJsonObject(obj, "name"));
         }
 
-        @Test
-        @DisplayName("should handle object with escaped strings")
-        void shouldHandleObjectWithEscapedStrings() {
-            String json = "{\"data\": {\"text\": \"Hello \\\"World\\\"\"}}";
-            String result = JsonUtil.getObject(json, "data");
-            assertNotNull(result);
-            assertTrue(result.contains("Hello \\\"World\\\""));
+        @Test void getObjectReturnsJsonString() {
+            JsonObject root = JsonUtil.parse("{\"meta\": {\"key\": \"val\"}}");
+            String meta = JsonUtil.getObject(root, "meta");
+            assertNotNull(meta);
+            assertTrue(meta.contains("key"));
+            assertTrue(meta.contains("val"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"customer\": {\"id\": \"123\"}}";
-            assertNull(JsonUtil.getObject(json, "missing"));
+        @Test void getObjectDeeplyNested() {
+            JsonObject root = JsonUtil.parse("{\"data\": {\"customer\": {\"address\": {\"city\": \"NYC\"}}}}");
+            JsonObject data = JsonUtil.getJsonObject(root, "data");
+            JsonObject customer = JsonUtil.getJsonObject(data, "customer");
+            JsonObject address = JsonUtil.getJsonObject(customer, "address");
+            assertEquals("NYC", JsonUtil.getString(address, "city"));
         }
 
-        @Test
-        @DisplayName("should return null when value is not object")
-        void shouldReturnNullWhenNotObject() {
-            String json = "{\"name\": \"John\"}";
-            assertNull(JsonUtil.getObject(json, "name"));
+        @Test void getObjectEmptyObject() {
+            JsonObject obj = JsonUtil.parse("{\"metadata\": {}}");
+            assertEquals("{}", JsonUtil.getObject(obj, "metadata"));
         }
 
-        @Test
-        @DisplayName("should extract empty object")
-        void shouldExtractEmptyObject() {
-            String json = "{\"metadata\": {}}";
-            assertEquals("{}", JsonUtil.getObject(json, "metadata"));
+        @Test void getObjectNonObjectReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertNull(JsonUtil.getObject(obj, "name"));
         }
     }
 
-    // ========== getArray Tests - THE CRITICAL FIX ==========
+    // ========== getJsonArray / getArray ==========
     @Nested
-    @DisplayName("getArray Tests")
+    @DisplayName("getJsonArray / getArray Tests")
     class GetArrayTests {
 
-        @Test
-        @DisplayName("should extract simple array of strings")
-        void shouldExtractSimpleArrayOfStrings() {
-            String json = "{\"tags\": [\"a\", \"b\", \"c\"]}";
-            String result = JsonUtil.getArray(json, "tags");
-            assertNotNull(result);
-            assertEquals("[\"a\", \"b\", \"c\"]", result);
+        @Test void getJsonArrayValid() {
+            JsonObject root = JsonUtil.parse("{\"items\": [{\"id\": \"item_1\"}, {\"id\": \"item_2\"}]}");
+            JsonArray items = JsonUtil.getJsonArray(root, "items");
+            assertNotNull(items);
+            assertEquals(2, items.size());
+            assertEquals("item_1", items.get(0).getAsJsonObject().get("id").getAsString());
         }
 
-        @Test
-        @DisplayName("should extract empty array")
-        void shouldExtractEmptyArray() {
-            String json = "{\"items\": []}";
-            assertEquals("[]", JsonUtil.getArray(json, "items"));
+        @Test void getJsonArrayMissingReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
+            assertNull(JsonUtil.getJsonArray(obj, "missing"));
         }
 
-        @Test
-        @DisplayName("should extract array of objects")
-        void shouldExtractArrayOfObjects() {
-            String json = "{\"list\": [{\"id\": 1}, {\"id\": 2}]}";
-            String result = JsonUtil.getArray(json, "list");
-            assertNotNull(result);
-            assertTrue(result.startsWith("["));
-            assertTrue(result.endsWith("]"));
-            assertTrue(result.contains("{\"id\": 1}"));
-            assertTrue(result.contains("{\"id\": 2}"));
+        @Test void getArrayReturnsJsonString() {
+            JsonObject obj = JsonUtil.parse("{\"tags\": [\"a\", \"b\"]}");
+            String tags = JsonUtil.getArray(obj, "tags");
+            assertNotNull(tags);
+            assertTrue(tags.startsWith("["));
+            assertTrue(tags.endsWith("]"));
         }
 
-        @Test
-        @DisplayName("should handle array with nested arrays - THE BUG FIX TEST")
-        void shouldHandleArrayWithNestedArrays() {
-            // This is the exact case that was failing before the fix!
-            String json = "{\"list\": [{\"transaction\": {\"linked_invoices\": [{\"id\": \"inv_1\"}], \"linked_refunds\": []}}]}";
-            String result = JsonUtil.getArray(json, "list");
+        @Test void getArrayEmpty() {
+            JsonObject obj = JsonUtil.parse("{\"items\": []}");
+            assertEquals("[]", JsonUtil.getArray(obj, "items"));
+        }
+
+        @Test void getArrayNestedStructures() {
+            JsonObject root = JsonUtil.parse(
+                "{\"list\": [{\"transaction\": {\"linked_invoices\": [{\"id\": \"inv_1\"}], \"linked_refunds\": []}}]}");
+            String result = JsonUtil.getArray(root, "list");
             assertNotNull(result);
-            assertTrue(result.startsWith("["));
-            assertTrue(result.endsWith("]"));
-            // Verify the entire array is extracted, not truncated at first ]
             assertTrue(result.contains("linked_invoices"));
             assertTrue(result.contains("linked_refunds"));
             assertTrue(result.contains("inv_1"));
         }
 
-        @Test
-        @DisplayName("should handle complex nested structure from transaction API")
-        void shouldHandleComplexNestedStructure() {
-            // Real-world example from the bug report
-            String json = "{\"list\": [{\"transaction\": {" +
-                "\"id\": \"txn_AzZhUGSPAkLskJQo\"," +
-                "\"customer_id\": \"cbdemo_dave\"," +
-                "\"amount\": 10000," +
-                "\"linked_invoices\": [{" +
-                    "\"invoice_id\": \"DemoInv_103\"," +
-                    "\"applied_amount\": 10000," +
-                    "\"applied_at\": 1605530769" +
-                "}]," +
-                "\"linked_refunds\": []," +
-                "\"payment_method_details\": \"{\\\"card\\\":{\\\"iin\\\":\\\"555555\\\"}}\"" +
-                "}}]}";
-            
-            String result = JsonUtil.getArray(json, "list");
-            assertNotNull(result);
-            assertTrue(result.startsWith("["));
-            assertTrue(result.endsWith("]"));
-            
-            // Critical: verify we got the complete array, not truncated
-            assertTrue(result.contains("txn_AzZhUGSPAkLskJQo"));
-            assertTrue(result.contains("linked_invoices"));
-            assertTrue(result.contains("DemoInv_103"));
-            assertTrue(result.contains("linked_refunds"));
-        }
-
-        @Test
-        @DisplayName("should handle array with deeply nested objects")
-        void shouldHandleArrayWithDeeplyNestedObjects() {
-            String json = "{\"data\": [{\"level1\": {\"level2\": {\"level3\": [{\"value\": 1}]}}}]}";
-            String result = JsonUtil.getArray(json, "data");
-            assertNotNull(result);
-            assertTrue(result.contains("level1"));
-            assertTrue(result.contains("level2"));
-            assertTrue(result.contains("level3"));
-            assertTrue(result.contains("value"));
-        }
-
-        @Test
-        @DisplayName("should handle array with escaped strings containing brackets")
-        void shouldHandleArrayWithEscapedBrackets() {
-            String json = "{\"messages\": [\"text with [brackets]\", \"another [one]\"]}";
-            String result = JsonUtil.getArray(json, "messages");
-            assertNotNull(result);
-            assertTrue(result.contains("[brackets]"));
-            assertTrue(result.contains("[one]"));
-        }
-
-        @Test
-        @DisplayName("should handle array with JSON string field containing brackets")
-        void shouldHandleArrayWithJsonStringField() {
-            // payment_method_details contains a JSON string with brackets
-            String json = "{\"list\": [{\"details\": \"{\\\"array\\\":[1,2,3]}\"}]}";
-            String result = JsonUtil.getArray(json, "list");
-            assertNotNull(result);
-            assertTrue(result.contains("details"));
-        }
-
-        @Test
-        @DisplayName("should return null for missing array key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"data\": [1, 2, 3]}";
-            assertNull(JsonUtil.getArray(json, "missing"));
-        }
-
-        @Test
-        @DisplayName("should return null when value is not array")
-        void shouldReturnNullWhenNotArray() {
-            String json = "{\"name\": \"John\"}";
-            assertNull(JsonUtil.getArray(json, "name"));
-        }
-
-        @Test
-        @DisplayName("should handle multiple arrays in same object")
-        void shouldHandleMultipleArrays() {
-            String json = "{\"first\": [1, 2], \"second\": [3, 4], \"third\": [5, 6]}";
-            assertEquals("[1, 2]", JsonUtil.getArray(json, "first"));
-            assertEquals("[3, 4]", JsonUtil.getArray(json, "second"));
-            assertEquals("[5, 6]", JsonUtil.getArray(json, "third"));
-        }
-
-        @Test
-        @DisplayName("should handle array with null values")
-        void shouldHandleArrayWithNulls() {
-            String json = "{\"values\": [null, \"a\", null, \"b\"]}";
-            String result = JsonUtil.getArray(json, "values");
-            assertNotNull(result);
-            assertTrue(result.contains("null"));
+        @Test void getArrayNonArrayReturnsNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertNull(JsonUtil.getArray(obj, "name"));
         }
     }
 
-    // ========== parseObjectArray Tests ==========
+    // ========== hasValue ==========
     @Nested
-    @DisplayName("parseObjectArray Tests")
-    class ParseObjectArrayTests {
+    @DisplayName("hasValue Tests")
+    class HasValueTests {
 
-        @Test
-        @DisplayName("should parse array of simple objects")
-        void shouldParseArrayOfSimpleObjects() {
-            String arrayJson = "[{\"id\": 1}, {\"id\": 2}, {\"id\": 3}]";
-            List<String> objects = JsonUtil.parseObjectArray(arrayJson);
-            assertEquals(3, objects.size());
-            assertTrue(objects.get(0).contains("\"id\": 1"));
-            assertTrue(objects.get(1).contains("\"id\": 2"));
-            assertTrue(objects.get(2).contains("\"id\": 3"));
+        @Test void existingNonNullValue() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\", \"age\": 30}");
+            assertTrue(JsonUtil.hasValue(obj, "name"));
+            assertTrue(JsonUtil.hasValue(obj, "age"));
         }
 
-        @Test
-        @DisplayName("should parse array of complex objects")
-        void shouldParseArrayOfComplexObjects() {
-            String arrayJson = "[{\"transaction\": {\"id\": \"txn_1\", \"items\": [1, 2]}}, {\"transaction\": {\"id\": \"txn_2\"}}]";
-            List<String> objects = JsonUtil.parseObjectArray(arrayJson);
-            assertEquals(2, objects.size());
-            assertTrue(objects.get(0).contains("txn_1"));
-            assertTrue(objects.get(1).contains("txn_2"));
+        @Test void nullValueReturnsFalse() {
+            JsonObject obj = JsonUtil.parse("{\"name\": null}");
+            assertFalse(JsonUtil.hasValue(obj, "name"));
         }
 
-        @Test
-        @DisplayName("should return empty list for null input")
-        void shouldReturnEmptyListForNull() {
-            List<String> objects = JsonUtil.parseObjectArray(null);
-            assertTrue(objects.isEmpty());
-        }
-
-        @Test
-        @DisplayName("should return empty list for empty array")
-        void shouldReturnEmptyListForEmptyArray() {
-            List<String> objects = JsonUtil.parseObjectArray("[]");
-            assertTrue(objects.isEmpty());
-        }
-
-        @Test
-        @DisplayName("should return empty list for non-array input")
-        void shouldReturnEmptyListForNonArray() {
-            List<String> objects = JsonUtil.parseObjectArray("{\"id\": 1}");
-            assertTrue(objects.isEmpty());
-        }
-
-        @Test
-        @DisplayName("should handle objects with escaped strings")
-        void shouldHandleObjectsWithEscapedStrings() {
-            String arrayJson = "[{\"text\": \"Hello \\\"World\\\"\"}]";
-            List<String> objects = JsonUtil.parseObjectArray(arrayJson);
-            assertEquals(1, objects.size());
-            assertTrue(objects.get(0).contains("Hello \\\"World\\\""));
+        @Test void missingKeyReturnsFalse() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\"}");
+            assertFalse(JsonUtil.hasValue(obj, "missing"));
         }
     }
 
-    // ========== parseArrayOf* Tests ==========
+    // ========== parseJsonObjectToMap ==========
+    @Nested
+    @DisplayName("parseJsonObjectToMap Tests")
+    class ParseJsonObjectToMapTests {
+
+        @Test void simpleObjectToMap() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"John\", \"age\": 30, \"active\": true}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertEquals("John", map.get("name"));
+            assertEquals(30L, map.get("age"));
+            assertEquals(true, map.get("active"));
+        }
+
+        @Test void nestedObjectsAsStrings() {
+            JsonObject obj = JsonUtil.parse("{\"user\": {\"name\": \"John\"}}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertTrue(map.get("user") instanceof String);
+            assertTrue(((String) map.get("user")).contains("name"));
+        }
+
+        @Test void arraysAsStrings() {
+            JsonObject obj = JsonUtil.parse("{\"tags\": [\"a\", \"b\"]}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertTrue(map.get("tags") instanceof String);
+            assertTrue(((String) map.get("tags")).contains("\"a\""));
+        }
+
+        @Test void nullReturnsEmptyMap() {
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap((JsonObject) null);
+            assertTrue(map.isEmpty());
+        }
+
+        @Test void nullValuesPreserved() {
+            JsonObject obj = JsonUtil.parse("{\"value\": null}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertTrue(map.containsKey("value"));
+            assertNull(map.get("value"));
+        }
+
+        @Test void doubleValues() {
+            JsonObject obj = JsonUtil.parse("{\"price\": 99.99}");
+            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(obj);
+            assertEquals(99.99, (Double) map.get("price"), 0.001);
+        }
+    }
+
+    // ========== mapArray ==========
+    @Nested
+    @DisplayName("mapArray Tests")
+    class MapArrayTests {
+
+        @Test void mapsElements() {
+            JsonArray array = JsonUtil.parseToArray("[{\"id\": \"a\"}, {\"id\": \"b\"}, {\"id\": \"c\"}]");
+            List<String> ids = JsonUtil.mapArray(array, obj -> JsonUtil.getString(obj, "id"));
+            assertEquals(3, ids.size());
+            assertEquals("a", ids.get(0));
+            assertEquals("b", ids.get(1));
+            assertEquals("c", ids.get(2));
+        }
+
+        @Test void nullReturnsEmptyList() {
+            List<String> result = JsonUtil.mapArray(null, obj -> "x");
+            assertNotNull(result);
+            assertTrue(result.isEmpty());
+        }
+    }
+
+    // ========== mapArrayToObjects / mapArrayToMaps ==========
+    @Nested
+    @DisplayName("mapArrayToObjects / mapArrayToMaps Tests")
+    class MapArrayToTests {
+
+        @Test void mapArrayToMaps() {
+            JsonArray array = JsonUtil.parseToArray("[{\"k1\": \"v1\"}, {\"k2\": 42}]");
+            List<Map<String, Object>> maps = JsonUtil.mapArrayToMaps(array);
+            assertEquals(2, maps.size());
+            assertEquals("v1", maps.get(0).get("k1"));
+            assertEquals(42L, maps.get(1).get("k2"));
+        }
+
+        @Test void mapArrayToObjects() {
+            JsonArray array = JsonUtil.parseToArray("[{\"k\": \"v\"}, 42, \"text\", null]");
+            List<Object> objs = JsonUtil.mapArrayToObjects(array);
+            assertEquals(4, objs.size());
+            assertTrue(objs.get(0) instanceof Map);
+            assertEquals(42L, objs.get(1));
+            assertEquals("text", objs.get(2));
+            assertNull(objs.get(3));
+        }
+    }
+
+    // ========== parseArrayOf* ==========
     @Nested
     @DisplayName("parseArrayOf* Tests")
     class ParseArrayOfTests {
 
-        @Test
-        @DisplayName("should parse array of strings")
-        void shouldParseArrayOfStrings() {
-            String arrayJson = "[\"a\", \"b\", \"c\"]";
-            List<String> result = JsonUtil.parseArrayOfString(arrayJson);
+        @Test void strings() {
+            JsonArray arr = JsonUtil.parseToArray("[\"a\", \"b\", \"c\"]");
+            List<String> result = JsonUtil.parseArrayOfString(arr);
             assertEquals(3, result.size());
             assertEquals("a", result.get(0));
-            assertEquals("b", result.get(1));
-            assertEquals("c", result.get(2));
         }
 
-        @Test
-        @DisplayName("should parse array of integers")
-        void shouldParseArrayOfIntegers() {
-            String arrayJson = "[1, 2, 3, -4, 0]";
-            List<Integer> result = JsonUtil.parseArrayOfInteger(arrayJson);
+        @Test void integers() {
+            JsonArray arr = JsonUtil.parseToArray("[1, 2, 3, -4, 0]");
+            List<Integer> result = JsonUtil.parseArrayOfInteger(arr);
             assertEquals(5, result.size());
             assertEquals(1, result.get(0));
             assertEquals(-4, result.get(3));
             assertEquals(0, result.get(4));
         }
 
-        @Test
-        @DisplayName("should parse array of longs")
-        void shouldParseArrayOfLongs() {
-            String arrayJson = "[1605530769000, 1605530770000]";
-            List<Long> result = JsonUtil.parseArrayOfLong(arrayJson);
+        @Test void longs() {
+            JsonArray arr = JsonUtil.parseToArray("[1605530769000, 1605530770000]");
+            List<Long> result = JsonUtil.parseArrayOfLong(arr);
             assertEquals(2, result.size());
             assertEquals(1605530769000L, result.get(0));
         }
 
-        @Test
-        @DisplayName("should parse array of booleans")
-        void shouldParseArrayOfBooleans() {
-            String arrayJson = "[true, false, true]";
-            List<Boolean> result = JsonUtil.parseArrayOfBoolean(arrayJson);
+        @Test void booleans() {
+            JsonArray arr = JsonUtil.parseToArray("[true, false, true]");
+            List<Boolean> result = JsonUtil.parseArrayOfBoolean(arr);
             assertEquals(3, result.size());
             assertTrue(result.get(0));
             assertFalse(result.get(1));
-            assertTrue(result.get(2));
         }
 
-        @Test
-        @DisplayName("should parse array of doubles")
-        void shouldParseArrayOfDoubles() {
-            String arrayJson = "[1.5, 2.7, 3.14]";
-            List<Double> result = JsonUtil.parseArrayOfDouble(arrayJson);
+        @Test void doubles() {
+            JsonArray arr = JsonUtil.parseToArray("[1.5, 2.7, 3.14]");
+            List<Double> result = JsonUtil.parseArrayOfDouble(arr);
             assertEquals(3, result.size());
             assertEquals(1.5, result.get(0), 0.001);
         }
 
-        @Test
-        @DisplayName("should parse array of BigDecimal")
-        void shouldParseArrayOfBigDecimal() {
-            String arrayJson = "[123.45, 678.90]";
-            List<BigDecimal> result = JsonUtil.parseArrayOfBigDecimal(arrayJson);
+        @Test void bigDecimals() {
+            JsonArray arr = JsonUtil.parseToArray("[123.45, 678.90]");
+            List<BigDecimal> result = JsonUtil.parseArrayOfBigDecimal(arr);
             assertEquals(2, result.size());
         }
 
-        @Test
-        @DisplayName("should return empty list for empty arrays")
-        void shouldReturnEmptyListForEmptyArrays() {
-            assertTrue(JsonUtil.parseArrayOfString("[]").isEmpty());
-            assertTrue(JsonUtil.parseArrayOfInteger("[]").isEmpty());
-            assertTrue(JsonUtil.parseArrayOfLong("[]").isEmpty());
-            assertTrue(JsonUtil.parseArrayOfBoolean("[]").isEmpty());
-            assertTrue(JsonUtil.parseArrayOfDouble("[]").isEmpty());
-        }
-
-        @Test
-        @DisplayName("should return empty list for null input")
-        void shouldReturnEmptyListForNull() {
-            assertTrue(JsonUtil.parseArrayOfString(null).isEmpty());
-            assertTrue(JsonUtil.parseArrayOfInteger(null).isEmpty());
+        @Test void nullReturnsEmptyLists() {
+            assertTrue(JsonUtil.parseArrayOfString((JsonArray) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfInteger((JsonArray) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfLong((JsonArray) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfBoolean((JsonArray) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfDouble((JsonArray) null).isEmpty());
+            assertTrue(JsonUtil.parseArrayOfBigDecimal((JsonArray) null).isEmpty());
         }
     }
 
-    // ========== getTimestamp Tests ==========
+    // ========== extractCustomFields / extractConsentFields ==========
     @Nested
-    @DisplayName("getTimestamp Tests")
-    class GetTimestampTests {
+    @DisplayName("extractCustomFields / extractConsentFields Tests")
+    class ExtractFieldsTests {
 
-        @Test
-        @DisplayName("should parse epoch seconds to timestamp")
-        void shouldParseEpochSecondsToTimestamp() {
-            String json = "{\"created_at\": 1605530769}";
-            Timestamp result = JsonUtil.getTimestamp(json, "created_at");
-            assertNotNull(result);
-            assertEquals(1605530769000L, result.getTime());
+        @Test void extractsCustomFields() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"sub_1\", \"cf_color\": \"blue\", \"cf_size\": \"large\", \"name\": \"test\"}");
+            Set<String> known = new HashSet<>();
+            known.add("id");
+            known.add("name");
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, known);
+            assertEquals(2, cf.size());
+            assertEquals("blue", cf.get("cf_color"));
+            assertEquals("large", cf.get("cf_size"));
         }
 
-        @Test
-        @DisplayName("should return null for missing key")
-        void shouldReturnNullForMissingKey() {
-            String json = "{\"updated_at\": 1605530769}";
-            assertNull(JsonUtil.getTimestamp(json, "created_at"));
-        }
-    }
-
-    // ========== hasValue Tests ==========
-    @Nested
-    @DisplayName("hasValue Tests")
-    class HasValueTests {
-
-        @Test
-        @DisplayName("should return true for existing non-null value")
-        void shouldReturnTrueForExistingValue() {
-            String json = "{\"name\": \"John\", \"age\": 30}";
-            assertTrue(JsonUtil.hasValue(json, "name"));
-            assertTrue(JsonUtil.hasValue(json, "age"));
+        @Test void customFieldNullValues() {
+            JsonObject obj = JsonUtil.parse("{\"cf_nullable\": null}");
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, new HashSet<>());
+            assertEquals(1, cf.size());
+            assertNull(cf.get("cf_nullable"));
         }
 
-        @Test
-        @DisplayName("should return false for null value")
-        void shouldReturnFalseForNullValue() {
-            String json = "{\"name\": null}";
-            assertFalse(JsonUtil.hasValue(json, "name"));
+        @Test void excludesKnownCustomFields() {
+            JsonObject obj = JsonUtil.parse("{\"cf_known\": \"val\"}");
+            Set<String> known = new HashSet<>();
+            known.add("cf_known");
+            Map<String, String> cf = JsonUtil.extractCustomFields(obj, known);
+            assertTrue(cf.isEmpty());
         }
 
-        @Test
-        @DisplayName("should return false for missing key")
-        void shouldReturnFalseForMissingKey() {
-            String json = "{\"name\": \"John\"}";
-            assertFalse(JsonUtil.hasValue(json, "missing"));
+        @Test void extractsConsentFields() {
+            JsonObject obj = JsonUtil.parse("{\"id\": \"cust_1\", \"cs_marketing\": true, \"cs_analytics\": false}");
+            Set<String> known = new HashSet<>();
+            known.add("id");
+            Map<String, Object> cs = JsonUtil.extractConsentFields(obj, known);
+            assertEquals(2, cs.size());
+            assertEquals(true, cs.get("cs_marketing"));
+            assertEquals(false, cs.get("cs_analytics"));
         }
     }
 
-    // ========== parseJsonObjectToMap Tests ==========
-    @Nested
-    @DisplayName("parseJsonObjectToMap Tests")
-    class ParseJsonObjectToMapTests {
-
-        @Test
-        @DisplayName("should parse simple object to map")
-        void shouldParseSimpleObjectToMap() {
-            String json = "{\"name\": \"John\", \"age\": 30, \"active\": true}";
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(json);
-            assertEquals("John", map.get("name"));
-            assertEquals(30L, map.get("age"));
-            assertEquals(true, map.get("active"));
-        }
-
-        @Test
-        @DisplayName("should handle nested objects")
-        void shouldHandleNestedObjects() {
-            String json = "{\"user\": {\"name\": \"John\"}}";
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(json);
-            assertTrue(map.get("user") instanceof String);
-            assertTrue(((String) map.get("user")).contains("name"));
-        }
-
-        @Test
-        @DisplayName("should handle arrays in map")
-        void shouldHandleArraysInMap() {
-            String json = "{\"tags\": [\"a\", \"b\"]}";
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(json);
-            assertTrue(map.get("tags") instanceof String);
-            assertTrue(((String) map.get("tags")).contains("\"a\""));
-        }
-
-        @Test
-        @DisplayName("should return empty map for empty object")
-        void shouldReturnEmptyMapForEmptyObject() {
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap("{}");
-            assertTrue(map.isEmpty());
-        }
-
-        @Test
-        @DisplayName("should return empty map for null")
-        void shouldReturnEmptyMapForNull() {
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(null);
-            assertTrue(map.isEmpty());
-        }
-
-        @Test
-        @DisplayName("should handle null values")
-        void shouldHandleNullValues() {
-            String json = "{\"value\": null}";
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(json);
-            assertTrue(map.containsKey("value"));
-            assertNull(map.get("value"));
-        }
-
-        @Test
-        @DisplayName("should handle double values")
-        void shouldHandleDoubleValues() {
-            String json = "{\"price\": 99.99}";
-            Map<String, Object> map = JsonUtil.parseJsonObjectToMap(json);
-            assertEquals(99.99, (Double) map.get("price"), 0.001);
-        }
-    }
-
-    // ========== toJson Tests ==========
+    // ========== toJson ==========
     @Nested
     @DisplayName("toJson Tests")
     class ToJsonTests {
 
-        @Test
-        @DisplayName("should serialize map to JSON")
-        void shouldSerializeMapToJson() {
+        @Test void serializeMap() {
             Map<String, Object> map = new java.util.LinkedHashMap<>();
             map.put("name", "John");
             map.put("age", 30);
-            
             String json = JsonUtil.toJson(map);
             assertTrue(json.contains("\"name\":\"John\""));
             assertTrue(json.contains("\"age\":30"));
         }
 
-        @Test
-        @DisplayName("should serialize list to JSON")
-        void shouldSerializeListToJson() {
+        @Test void serializeList() {
             List<String> list = java.util.Arrays.asList("a", "b", "c");
-            String json = JsonUtil.toJson(list);
-            assertEquals("[\"a\",\"b\",\"c\"]", json);
+            assertEquals("[\"a\",\"b\",\"c\"]", JsonUtil.toJson(list));
         }
 
-        @Test
-        @DisplayName("should serialize empty map")
-        void shouldSerializeEmptyMap() {
+        @Test void serializeEmptyMap() {
             assertEquals("{}", JsonUtil.toJson(new java.util.HashMap<>()));
         }
 
-        @Test
-        @DisplayName("should serialize empty list")
-        void shouldSerializeEmptyList() {
+        @Test void serializeEmptyList() {
             assertEquals("[]", JsonUtil.toJson(new java.util.ArrayList<>()));
         }
 
-        @Test
-        @DisplayName("should escape special characters")
-        void shouldEscapeSpecialCharacters() {
+        @Test void escapeSpecialCharacters() {
             Map<String, Object> map = new java.util.HashMap<>();
             map.put("text", "Hello \"World\"\nNew line");
-            
             String json = JsonUtil.toJson(map);
             assertTrue(json.contains("\\\"World\\\""));
             assertTrue(json.contains("\\n"));
         }
 
-        @Test
-        @DisplayName("should serialize null values")
-        void shouldSerializeNullValues() {
+        @Test void serializeNullValues() {
             Map<String, Object> map = new java.util.HashMap<>();
             map.put("value", null);
-            
             String json = JsonUtil.toJson(map);
             assertTrue(json.contains("\"value\":null"));
         }
 
-        @Test
-        @DisplayName("should serialize nested structures")
-        void shouldSerializeNestedStructures() {
+        @Test void serializeNestedStructures() {
             Map<String, Object> inner = new java.util.HashMap<>();
             inner.put("id", 123);
-            
             Map<String, Object> outer = new java.util.HashMap<>();
             outer.put("data", inner);
-            
             String json = JsonUtil.toJson(outer);
             assertTrue(json.contains("\"data\":{"));
             assertTrue(json.contains("\"id\":123"));
-        }
-    }
-
-    // ========== Edge Cases and Real-World Scenarios ==========
-    @Nested
-    @DisplayName("Real-World Scenarios")
-    class RealWorldScenarios {
-
-        @Test
-        @DisplayName("should parse transaction list response correctly")
-        void shouldParseTransactionListResponse() {
-            String json = "{" +
-                "\"list\": [{\"transaction\": {" +
-                    "\"id\": \"txn_AzZhUGSPAkLskJQo\"," +
-                    "\"customer_id\": \"cbdemo_dave\"," +
-                    "\"subscription_id\": \"cbdemo_dave-sub1\"," +
-                    "\"gateway_account_id\": \"gw_AzZhUGSPAkLeQJPg\"," +
-                    "\"payment_method\": \"card\"," +
-                    "\"gateway\": \"chargebee\"," +
-                    "\"type\": \"payment\"," +
-                    "\"date\": 1605530769," +
-                    "\"exchange_rate\": 1.0," +
-                    "\"amount\": 10000," +
-                    "\"id_at_gateway\": \"cb___dev__KyVnqiSIrqRVUEN\"," +
-                    "\"status\": \"success\"," +
-                    "\"updated_at\": 1605530769," +
-                    "\"resource_version\": 1605530769000," +
-                    "\"deleted\": false," +
-                    "\"object\": \"transaction\"," +
-                    "\"masked_card_number\": \"************4444\"," +
-                    "\"currency_code\": \"USD\"," +
-                    "\"base_currency_code\": \"USD\"," +
-                    "\"amount_unused\": 0," +
-                    "\"linked_invoices\": [{" +
-                        "\"invoice_id\": \"DemoInv_103\"," +
-                        "\"applied_amount\": 10000," +
-                        "\"applied_at\": 1605530769," +
-                        "\"invoice_date\": 1605530769," +
-                        "\"invoice_total\": 10000," +
-                        "\"invoice_status\": \"paid\"" +
-                    "}]," +
-                    "\"linked_refunds\": []," +
-                    "\"payment_method_details\": \"{\\\"card\\\":{\\\"iin\\\":\\\"555555\\\",\\\"last4\\\":\\\"4444\\\"}}\"" +
-                "}}]," +
-                "\"next_offset\": null" +
-            "}";
-
-            // Test getArray with nested structures
-            String listArray = JsonUtil.getArray(json, "list");
-            assertNotNull(listArray, "list array should not be null");
-            assertTrue(listArray.startsWith("["), "Should start with [");
-            assertTrue(listArray.endsWith("]"), "Should end with ]");
-            
-            // Verify it contains the complete transaction data
-            assertTrue(listArray.contains("txn_AzZhUGSPAkLskJQo"));
-            assertTrue(listArray.contains("linked_invoices"));
-            assertTrue(listArray.contains("DemoInv_103"));
-            assertTrue(listArray.contains("linked_refunds"));
-            assertTrue(listArray.contains("payment_method_details"));
-
-            // Test parseObjectArray
-            List<String> objects = JsonUtil.parseObjectArray(listArray);
-            assertEquals(1, objects.size());
-            
-            // Test nested object extraction
-            String transactionWrapper = objects.get(0);
-            String transaction = JsonUtil.getObject(transactionWrapper, "transaction");
-            assertNotNull(transaction);
-            
-            assertEquals("txn_AzZhUGSPAkLskJQo", JsonUtil.getString(transaction, "id"));
-            assertEquals("cbdemo_dave", JsonUtil.getString(transaction, "customer_id"));
-            assertEquals(10000, JsonUtil.getInteger(transaction, "amount"));
-            assertEquals(1.0, JsonUtil.getDouble(transaction, "exchange_rate"), 0.001);
-            assertFalse(JsonUtil.getBoolean(transaction, "deleted"));
-            assertEquals(1605530769000L, JsonUtil.getLong(transaction, "resource_version"));
-            
-            // Test nested array extraction
-            String linkedInvoices = JsonUtil.getArray(transaction, "linked_invoices");
-            assertNotNull(linkedInvoices);
-            assertTrue(linkedInvoices.contains("DemoInv_103"));
-            
-            String linkedRefunds = JsonUtil.getArray(transaction, "linked_refunds");
-            assertNotNull(linkedRefunds);
-            assertEquals("[]", linkedRefunds);
-        }
-
-        @Test
-        @DisplayName("should handle customer list response")
-        void shouldHandleCustomerListResponse() {
-            String json = "{" +
-                "\"list\": [" +
-                    "{\"customer\": {\"id\": \"cust_123\", \"email\": \"test@example.com\"}}," +
-                    "{\"customer\": {\"id\": \"cust_456\", \"email\": \"user@example.com\"}}" +
-                "]," +
-                "\"next_offset\": \"offset_abc123\"" +
-            "}";
-
-            String listArray = JsonUtil.getArray(json, "list");
-            assertNotNull(listArray);
-            
-            List<String> items = JsonUtil.parseObjectArray(listArray);
-            assertEquals(2, items.size());
-            
-            String customer1 = JsonUtil.getObject(items.get(0), "customer");
-            assertEquals("cust_123", JsonUtil.getString(customer1, "id"));
-            
-            String nextOffset = JsonUtil.getString(json, "next_offset");
-            assertEquals("offset_abc123", nextOffset);
-        }
-
-        @Test
-        @DisplayName("should handle subscription with multiple nested arrays")
-        void shouldHandleSubscriptionWithMultipleNestedArrays() {
-            String json = "{" +
-                "\"subscription\": {" +
-                    "\"id\": \"sub_123\"," +
-                    "\"subscription_items\": [" +
-                        "{\"item_price_id\": \"price_1\", \"quantity\": 1}," +
-                        "{\"item_price_id\": \"price_2\", \"quantity\": 2}" +
-                    "]," +
-                    "\"addons\": [{\"id\": \"addon_1\"}]," +
-                    "\"coupons\": []," +
-                    "\"discounts\": [{\"id\": \"disc_1\", \"apply_till\": [1, 2, 3]}]" +
-                "}" +
-            "}";
-
-            String subscription = JsonUtil.getObject(json, "subscription");
-            assertNotNull(subscription);
-            
-            String items = JsonUtil.getArray(subscription, "subscription_items");
-            assertNotNull(items);
-            List<String> itemsList = JsonUtil.parseObjectArray(items);
-            assertEquals(2, itemsList.size());
-            
-            String addons = JsonUtil.getArray(subscription, "addons");
-            assertNotNull(addons);
-            
-            String coupons = JsonUtil.getArray(subscription, "coupons");
-            assertEquals("[]", coupons);
-            
-            String discounts = JsonUtil.getArray(subscription, "discounts");
-            assertNotNull(discounts);
-            // Verify nested array within object within array is handled
-            assertTrue(discounts.contains("apply_till"));
-            assertTrue(discounts.contains("[1, 2, 3]") || discounts.contains("[1,2,3]"));
         }
     }
 
@@ -953,85 +629,137 @@ class JsonUtilTest {
     @DisplayName("Edge Cases")
     class EdgeCases {
 
-        @Test
-        @DisplayName("should handle whitespace variations")
-        void shouldHandleWhitespaceVariations() {
-            String json1 = "{\"key\":\"value\"}";
-            String json2 = "{ \"key\" : \"value\" }";
-            String json3 = "{\n  \"key\"\t:\n  \"value\"\n}";
-            
-            assertEquals("value", JsonUtil.getString(json1, "key"));
-            assertEquals("value", JsonUtil.getString(json2, "key"));
-            assertEquals("value", JsonUtil.getString(json3, "key"));
+        @Test void whitespaceVariations() {
+            assertEquals("value", JsonUtil.getString(JsonUtil.parse("{\"key\":\"value\"}"), "key"));
+            assertEquals("value", JsonUtil.getString(JsonUtil.parse("{ \"key\" : \"value\" }"), "key"));
+            assertEquals("value", JsonUtil.getString(JsonUtil.parse("{\n  \"key\"\t:\n  \"value\"\n}"), "key"));
         }
 
-        @Test
-        @DisplayName("should handle keys with special characters")
-        void shouldHandleKeysWithSpecialCharacters() {
-            String json = "{\"my-key\": \"value1\", \"my_key\": \"value2\", \"my.key\": \"value3\"}";
-            assertEquals("value1", JsonUtil.getString(json, "my-key"));
-            assertEquals("value2", JsonUtil.getString(json, "my_key"));
-            assertEquals("value3", JsonUtil.getString(json, "my.key"));
+        @Test void keysWithSpecialCharacters() {
+            JsonObject obj = JsonUtil.parse("{\"my-key\": \"value1\", \"my_key\": \"value2\", \"my.key\": \"value3\"}");
+            assertEquals("value1", JsonUtil.getString(obj, "my-key"));
+            assertEquals("value2", JsonUtil.getString(obj, "my_key"));
+            assertEquals("value3", JsonUtil.getString(obj, "my.key"));
         }
 
-        @Test
-        @DisplayName("should handle very long strings")
-        void shouldHandleVeryLongStrings() {
+        @Test void veryLongStrings() {
             StringBuilder longValue = new StringBuilder();
-            for (int i = 0; i < 10000; i++) {
-                longValue.append("x");
-            }
-            String json = "{\"long\": \"" + longValue + "\"}";
-            assertEquals(longValue.toString(), JsonUtil.getString(json, "long"));
+            for (int i = 0; i < 10000; i++) longValue.append("x");
+            JsonObject obj = JsonUtil.parse("{\"long\": \"" + longValue + "\"}");
+            assertEquals(longValue.toString(), JsonUtil.getString(obj, "long"));
         }
 
-        @Test
-        @DisplayName("should handle deeply nested structures")
-        void shouldHandleDeeplyNestedStructures() {
-            // Create 10 levels of nesting
+        @Test void deeplyNestedStructures() {
             StringBuilder json = new StringBuilder();
-            for (int i = 0; i < 10; i++) {
-                json.append("{\"level").append(i).append("\": ");
-            }
+            for (int i = 0; i < 10; i++) json.append("{\"level").append(i).append("\": ");
             json.append("\"deep_value\"");
-            for (int i = 0; i < 10; i++) {
-                json.append("}");
-            }
-            
-            String result = json.toString();
-            String level0 = JsonUtil.getObject(result, "level0");
+            for (int i = 0; i < 10; i++) json.append("}");
+            JsonObject root = JsonUtil.parse(json.toString());
+            JsonObject level0 = JsonUtil.getJsonObject(root, "level0");
             assertNotNull(level0);
-            assertTrue(level0.contains("deep_value"));
         }
 
-        @Test
-        @DisplayName("should handle array with mixed types")
-        void shouldHandleArrayWithMixedTypes() {
-            String json = "{\"mixed\": [1, \"two\", true, null, {\"key\": \"value\"}, [1, 2]]}";
-            String array = JsonUtil.getArray(json, "mixed");
-            assertNotNull(array);
-            assertTrue(array.contains("1"));
-            assertTrue(array.contains("\"two\""));
-            assertTrue(array.contains("true"));
-            assertTrue(array.contains("null"));
+        @Test void mixedTypesInArray() {
+            JsonObject obj = JsonUtil.parse("{\"mixed\": [1, \"two\", true, null, {\"key\": \"value\"}, [1, 2]]}");
+            JsonArray arr = JsonUtil.getJsonArray(obj, "mixed");
+            assertNotNull(arr);
+            assertEquals(6, arr.size());
         }
 
-        @Test
-        @DisplayName("should handle colons in string values")
-        void shouldHandleColonsInStringValues() {
-            String json = "{\"url\": \"https://example.com:8080/path\"}";
-            assertEquals("https://example.com:8080/path", JsonUtil.getString(json, "url"));
+        @Test void nullAndMissingKeysReturnNull() {
+            JsonObject obj = JsonUtil.parse("{\"name\": \"test\"}");
+            assertNull(JsonUtil.getString(obj, "missing"));
+            assertNull(JsonUtil.getLong(obj, "missing"));
+            assertNull(JsonUtil.getInteger(obj, "missing"));
+            assertNull(JsonUtil.getBoolean(obj, "missing"));
+            assertNull(JsonUtil.getDouble(obj, "missing"));
+            assertNull(JsonUtil.getBigDecimal(obj, "missing"));
+            assertNull(JsonUtil.getTimestamp(obj, "missing"));
+            assertNull(JsonUtil.getJsonObject(obj, "missing"));
+            assertNull(JsonUtil.getJsonArray(obj, "missing"));
+        }
+    }
+
+    // ========== Real-World Scenarios ==========
+    @Nested
+    @DisplayName("Real-World Scenarios")
+    class RealWorldScenarios {
+
+        @Test void complexSubscriptionResponse() {
+            String json = "{" +
+                "\"subscription\": {" +
+                    "\"id\": \"sub_123\"," +
+                    "\"status\": \"active\"," +
+                    "\"customer_id\": \"cust_456\"," +
+                    "\"mrr\": 5000," +
+                    "\"created_at\": 1605530769," +
+                    "\"deleted\": false," +
+                    "\"exchange_rate\": 1.25," +
+                    "\"subscription_items\": [" +
+                        "{\"item_price_id\": \"price_1\", \"quantity\": 1}," +
+                        "{\"item_price_id\": \"price_2\", \"quantity\": 2}" +
+                    "]," +
+                    "\"shipping_address\": {\"city\": \"NYC\", \"zip\": \"10001\"}," +
+                    "\"coupons\": []," +
+                    "\"meta_data\": {\"source\": \"api\"}" +
+                "}" +
+            "}";
+
+            JsonObject root = JsonUtil.parse(json);
+            JsonObject sub = JsonUtil.getJsonObject(root, "subscription");
+            assertNotNull(sub);
+
+            assertEquals("sub_123", JsonUtil.getString(sub, "id"));
+            assertEquals("active", JsonUtil.getString(sub, "status"));
+            assertEquals(5000L, JsonUtil.getLong(sub, "mrr"));
+            assertEquals(1605530769000L, JsonUtil.getTimestamp(sub, "created_at").getTime());
+            assertFalse(JsonUtil.getBoolean(sub, "deleted"));
+            assertEquals(1.25, JsonUtil.getDouble(sub, "exchange_rate"), 0.001);
+
+            JsonArray items = JsonUtil.getJsonArray(sub, "subscription_items");
+            assertEquals(2, items.size());
+            List<String> itemIds = JsonUtil.mapArray(items, obj -> JsonUtil.getString(obj, "item_price_id"));
+            assertEquals("price_1", itemIds.get(0));
+            assertEquals("price_2", itemIds.get(1));
+
+            JsonObject shipping = JsonUtil.getJsonObject(sub, "shipping_address");
+            assertEquals("NYC", JsonUtil.getString(shipping, "city"));
+
+            JsonArray coupons = JsonUtil.getJsonArray(sub, "coupons");
+            assertEquals(0, coupons.size());
+
+            Map<String, Object> meta = JsonUtil.parseJsonObjectToMap(JsonUtil.getJsonObject(sub, "meta_data"));
+            assertEquals("api", meta.get("source"));
         }
 
-        @Test
-        @DisplayName("should handle quotes in key names")
-        void shouldHandleFirstMatchForDuplicateKeys() {
-            // JSON spec says duplicate keys have undefined behavior, but we should handle gracefully
-            String json = "{\"key\": \"first\", \"key\": \"second\"}";
-            String result = JsonUtil.getString(json, "key");
-            // Should return one of the values (typically first)
-            assertNotNull(result);
+        @Test void transactionListResponse() {
+            String json = "{" +
+                "\"list\": [{\"transaction\": {" +
+                    "\"id\": \"txn_AzZhUGSPAkLskJQo\"," +
+                    "\"amount\": 10000," +
+                    "\"linked_invoices\": [{\"invoice_id\": \"DemoInv_103\", \"applied_amount\": 10000}]," +
+                    "\"linked_refunds\": []" +
+                "}}]," +
+                "\"next_offset\": null" +
+            "}";
+
+            JsonObject root = JsonUtil.parse(json);
+            JsonArray list = JsonUtil.getJsonArray(root, "list");
+            assertNotNull(list);
+            assertEquals(1, list.size());
+
+            JsonObject wrapper = list.get(0).getAsJsonObject();
+            JsonObject txn = JsonUtil.getJsonObject(wrapper, "transaction");
+            assertEquals("txn_AzZhUGSPAkLskJQo", JsonUtil.getString(txn, "id"));
+            assertEquals(10000, JsonUtil.getInteger(txn, "amount"));
+
+            JsonArray invoices = JsonUtil.getJsonArray(txn, "linked_invoices");
+            assertEquals(1, invoices.size());
+
+            JsonArray refunds = JsonUtil.getJsonArray(txn, "linked_refunds");
+            assertEquals(0, refunds.size());
+
+            assertNull(JsonUtil.getString(root, "next_offset"));
         }
     }
 }
-

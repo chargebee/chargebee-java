@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.usageReminderInfo;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class UsageReminderInfo {
@@ -24,11 +25,15 @@ public class UsageReminderInfo {
   }
 
   public static UsageReminderInfo fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static UsageReminderInfo fromJson(JsonObject jsonObj) {
     UsageReminderInfo obj = new UsageReminderInfo();
 
-    obj.usageDateStart = JsonUtil.getTimestamp(json, "usage_date_start");
+    obj.usageDateStart = JsonUtil.getTimestamp(jsonObj, "usage_date_start");
 
-    obj.usageDateEnd = JsonUtil.getTimestamp(json, "usage_date_end");
+    obj.usageDateEnd = JsonUtil.getTimestamp(jsonObj, "usage_date_end");
 
     return obj;
   }

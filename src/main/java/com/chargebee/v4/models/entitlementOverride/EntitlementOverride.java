@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.entitlementOverride;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class EntitlementOverride {
@@ -105,31 +106,35 @@ public class EntitlementOverride {
   }
 
   public static EntitlementOverride fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static EntitlementOverride fromJson(JsonObject jsonObj) {
     EntitlementOverride obj = new EntitlementOverride();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.entityType = JsonUtil.getString(json, "entity_type");
+    obj.entityType = JsonUtil.getString(jsonObj, "entity_type");
 
-    obj.featureId = JsonUtil.getString(json, "feature_id");
+    obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
 
-    obj.featureName = JsonUtil.getString(json, "feature_name");
+    obj.featureName = JsonUtil.getString(jsonObj, "feature_name");
 
-    obj.value = JsonUtil.getString(json, "value");
+    obj.value = JsonUtil.getString(jsonObj, "value");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    obj.effectiveFrom = JsonUtil.getTimestamp(json, "effective_from");
+    obj.effectiveFrom = JsonUtil.getTimestamp(jsonObj, "effective_from");
 
-    obj.isEnabled = JsonUtil.getBoolean(json, "is_enabled");
+    obj.isEnabled = JsonUtil.getBoolean(jsonObj, "is_enabled");
 
-    obj.scheduleStatus = ScheduleStatus.fromString(JsonUtil.getString(json, "schedule_status"));
+    obj.scheduleStatus = ScheduleStatus.fromString(JsonUtil.getString(jsonObj, "schedule_status"));
 
     return obj;
   }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.gatewayErrorDetail;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class GatewayErrorDetail {
 
@@ -88,37 +89,41 @@ public class GatewayErrorDetail {
   }
 
   public static GatewayErrorDetail fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static GatewayErrorDetail fromJson(JsonObject jsonObj) {
     GatewayErrorDetail obj = new GatewayErrorDetail();
 
-    obj.requestId = JsonUtil.getString(json, "request_id");
+    obj.requestId = JsonUtil.getString(jsonObj, "request_id");
 
-    obj.errorCategory = JsonUtil.getString(json, "error_category");
+    obj.errorCategory = JsonUtil.getString(jsonObj, "error_category");
 
-    obj.errorCode = JsonUtil.getString(json, "error_code");
+    obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-    obj.errorMessage = JsonUtil.getString(json, "error_message");
+    obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
-    obj.declineCode = JsonUtil.getString(json, "decline_code");
+    obj.declineCode = JsonUtil.getString(jsonObj, "decline_code");
 
-    obj.declineMessage = JsonUtil.getString(json, "decline_message");
+    obj.declineMessage = JsonUtil.getString(jsonObj, "decline_message");
 
-    obj.networkErrorCode = JsonUtil.getString(json, "network_error_code");
+    obj.networkErrorCode = JsonUtil.getString(jsonObj, "network_error_code");
 
-    obj.networkErrorMessage = JsonUtil.getString(json, "network_error_message");
+    obj.networkErrorMessage = JsonUtil.getString(jsonObj, "network_error_message");
 
-    obj.errorField = JsonUtil.getString(json, "error_field");
+    obj.errorField = JsonUtil.getString(jsonObj, "error_field");
 
-    obj.recommendationCode = JsonUtil.getString(json, "recommendation_code");
+    obj.recommendationCode = JsonUtil.getString(jsonObj, "recommendation_code");
 
-    obj.recommendationMessage = JsonUtil.getString(json, "recommendation_message");
+    obj.recommendationMessage = JsonUtil.getString(jsonObj, "recommendation_message");
 
-    obj.processorErrorCode = JsonUtil.getString(json, "processor_error_code");
+    obj.processorErrorCode = JsonUtil.getString(jsonObj, "processor_error_code");
 
-    obj.processorErrorMessage = JsonUtil.getString(json, "processor_error_message");
+    obj.processorErrorMessage = JsonUtil.getString(jsonObj, "processor_error_message");
 
-    obj.errorCauseId = JsonUtil.getString(json, "error_cause_id");
+    obj.errorCauseId = JsonUtil.getString(jsonObj, "error_cause_id");
 
-    obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
+    obj.processorAdviceCode = JsonUtil.getString(jsonObj, "processor_advice_code");
 
     return obj;
   }

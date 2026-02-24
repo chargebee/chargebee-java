@@ -6,6 +6,7 @@ import com.chargebee.v4.models.comment.Comment;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CommentService;
 import com.chargebee.v4.models.comment.params.CommentListParams;
@@ -43,13 +44,12 @@ public final class CommentListResponse {
    */
   public static CommentListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CommentListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CommentListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CommentListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CommentListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class CommentListResponse {
       CommentListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CommentListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CommentListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CommentListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CommentListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class CommentListResponse {
     }
 
     public static CommentListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CommentListItem fromJson(JsonObject jsonObj) {
       CommentListItem item = new CommentListItem();
 
-      String __commentJson = JsonUtil.getObject(json, "comment");
-      if (__commentJson != null) {
-        item.comment = Comment.fromJson(__commentJson);
+      JsonObject __commentObj = JsonUtil.getJsonObject(jsonObj, "comment");
+      if (__commentObj != null) {
+        item.comment = Comment.fromJson(__commentObj);
       }
 
       return item;

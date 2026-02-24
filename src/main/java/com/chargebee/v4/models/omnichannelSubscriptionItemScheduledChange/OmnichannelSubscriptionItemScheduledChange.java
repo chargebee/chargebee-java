@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.omnichannelSubscriptionItemScheduledChange;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class OmnichannelSubscriptionItemScheduledChange {
@@ -87,32 +88,36 @@ public class OmnichannelSubscriptionItemScheduledChange {
   }
 
   public static OmnichannelSubscriptionItemScheduledChange fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelSubscriptionItemScheduledChange fromJson(JsonObject jsonObj) {
     OmnichannelSubscriptionItemScheduledChange obj =
         new OmnichannelSubscriptionItemScheduledChange();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
     obj.omnichannelSubscriptionItemId =
-        JsonUtil.getString(json, "omnichannel_subscription_item_id");
+        JsonUtil.getString(jsonObj, "omnichannel_subscription_item_id");
 
-    obj.scheduledAt = JsonUtil.getTimestamp(json, "scheduled_at");
+    obj.scheduledAt = JsonUtil.getTimestamp(jsonObj, "scheduled_at");
 
-    obj.changeType = ChangeType.fromString(JsonUtil.getString(json, "change_type"));
+    obj.changeType = ChangeType.fromString(JsonUtil.getString(jsonObj, "change_type"));
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    String __currentStateJson = JsonUtil.getObject(json, "current_state");
-    if (__currentStateJson != null) {
-      obj.currentState = CurrentState.fromJson(__currentStateJson);
+    JsonObject __currentStateObj = JsonUtil.getJsonObject(jsonObj, "current_state");
+    if (__currentStateObj != null) {
+      obj.currentState = CurrentState.fromJson(__currentStateObj);
     }
 
-    String __scheduledStateJson = JsonUtil.getObject(json, "scheduled_state");
-    if (__scheduledStateJson != null) {
-      obj.scheduledState = ScheduledState.fromJson(__scheduledStateJson);
+    JsonObject __scheduledStateObj = JsonUtil.getJsonObject(jsonObj, "scheduled_state");
+    if (__scheduledStateObj != null) {
+      obj.scheduledState = ScheduledState.fromJson(__scheduledStateObj);
     }
 
     return obj;
@@ -185,9 +190,13 @@ public class OmnichannelSubscriptionItemScheduledChange {
     }
 
     public static CurrentState fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CurrentState fromJson(JsonObject jsonObj) {
       CurrentState obj = new CurrentState();
 
-      obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
+      obj.itemIdAtSource = JsonUtil.getString(jsonObj, "item_id_at_source");
 
       return obj;
     }
@@ -222,9 +231,13 @@ public class OmnichannelSubscriptionItemScheduledChange {
     }
 
     public static ScheduledState fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ScheduledState fromJson(JsonObject jsonObj) {
       ScheduledState obj = new ScheduledState();
 
-      obj.itemIdAtSource = JsonUtil.getString(json, "item_id_at_source");
+      obj.itemIdAtSource = JsonUtil.getString(jsonObj, "item_id_at_source");
 
       return obj;
     }

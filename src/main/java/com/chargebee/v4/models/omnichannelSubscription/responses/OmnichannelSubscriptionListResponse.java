@@ -6,6 +6,7 @@ import com.chargebee.v4.models.omnichannelSubscription.OmnichannelSubscription;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OmnichannelSubscriptionService;
 import com.chargebee.v4.models.omnichannelSubscription.params.OmnichannelSubscriptionListParams;
@@ -46,13 +47,13 @@ public final class OmnichannelSubscriptionListResponse {
    */
   public static OmnichannelSubscriptionListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelSubscriptionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OmnichannelSubscriptionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelSubscriptionListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -71,13 +72,13 @@ public final class OmnichannelSubscriptionListResponse {
       OmnichannelSubscriptionListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelSubscriptionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelSubscriptionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OmnichannelSubscriptionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelSubscriptionListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -186,12 +187,17 @@ public final class OmnichannelSubscriptionListResponse {
     }
 
     public static OmnichannelSubscriptionListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelSubscriptionListItem fromJson(JsonObject jsonObj) {
       OmnichannelSubscriptionListItem item = new OmnichannelSubscriptionListItem();
 
-      String __omnichannelSubscriptionJson = JsonUtil.getObject(json, "omnichannel_subscription");
-      if (__omnichannelSubscriptionJson != null) {
+      JsonObject __omnichannelSubscriptionObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_subscription");
+      if (__omnichannelSubscriptionObj != null) {
         item.omnichannelSubscription =
-            OmnichannelSubscription.fromJson(__omnichannelSubscriptionJson);
+            OmnichannelSubscription.fromJson(__omnichannelSubscriptionObj);
       }
 
       return item;

@@ -1,3 +1,13 @@
+### v4.4.0 (2026-02-24)
+* * *
+
+### Improvements:
+* Replaced the internal regex-based JSON parser with [Google Gson](https://github.com/google/gson) for reliable, spec-compliant JSON handling.
+* Added comprehensive test coverage for the internal `JsonUtil` utility.
+
+### Dependencies:
+* Added `com.google.code.gson:gson:2.13.2` as a compile dependency (transitive for SDK consumers). Minimum compatible Gson version is `2.8.6`. See [README](README.md#dependencies) for version conflict guidance.
+
 ### v4.3.0 (2026-02-20)
 * * *
 

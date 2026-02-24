@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.card;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Card {
@@ -468,63 +469,67 @@ public class Card {
   }
 
   public static Card fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Card fromJson(JsonObject jsonObj) {
     Card obj = new Card();
 
-    obj.paymentSourceId = JsonUtil.getString(json, "payment_source_id");
+    obj.paymentSourceId = JsonUtil.getString(jsonObj, "payment_source_id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.refTxId = JsonUtil.getString(json, "ref_tx_id");
+    obj.refTxId = JsonUtil.getString(jsonObj, "ref_tx_id");
 
-    obj.firstName = JsonUtil.getString(json, "first_name");
+    obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-    obj.lastName = JsonUtil.getString(json, "last_name");
+    obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-    obj.iin = JsonUtil.getString(json, "iin");
+    obj.iin = JsonUtil.getString(jsonObj, "iin");
 
-    obj.last4 = JsonUtil.getString(json, "last4");
+    obj.last4 = JsonUtil.getString(jsonObj, "last4");
 
-    obj.cardType = CardType.fromString(JsonUtil.getString(json, "card_type"));
+    obj.cardType = CardType.fromString(JsonUtil.getString(jsonObj, "card_type"));
 
-    obj.fundingType = FundingType.fromString(JsonUtil.getString(json, "funding_type"));
+    obj.fundingType = FundingType.fromString(JsonUtil.getString(jsonObj, "funding_type"));
 
-    obj.expiryMonth = JsonUtil.getInteger(json, "expiry_month");
+    obj.expiryMonth = JsonUtil.getInteger(jsonObj, "expiry_month");
 
-    obj.expiryYear = JsonUtil.getInteger(json, "expiry_year");
+    obj.expiryYear = JsonUtil.getInteger(jsonObj, "expiry_year");
 
-    obj.issuingCountry = JsonUtil.getString(json, "issuing_country");
+    obj.issuingCountry = JsonUtil.getString(jsonObj, "issuing_country");
 
-    obj.billingAddr1 = JsonUtil.getString(json, "billing_addr1");
+    obj.billingAddr1 = JsonUtil.getString(jsonObj, "billing_addr1");
 
-    obj.billingAddr2 = JsonUtil.getString(json, "billing_addr2");
+    obj.billingAddr2 = JsonUtil.getString(jsonObj, "billing_addr2");
 
-    obj.billingCity = JsonUtil.getString(json, "billing_city");
+    obj.billingCity = JsonUtil.getString(jsonObj, "billing_city");
 
-    obj.billingStateCode = JsonUtil.getString(json, "billing_state_code");
+    obj.billingStateCode = JsonUtil.getString(jsonObj, "billing_state_code");
 
-    obj.billingState = JsonUtil.getString(json, "billing_state");
+    obj.billingState = JsonUtil.getString(jsonObj, "billing_state");
 
-    obj.billingCountry = JsonUtil.getString(json, "billing_country");
+    obj.billingCountry = JsonUtil.getString(jsonObj, "billing_country");
 
-    obj.billingZip = JsonUtil.getString(json, "billing_zip");
+    obj.billingZip = JsonUtil.getString(jsonObj, "billing_zip");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.ipAddress = JsonUtil.getString(json, "ip_address");
+    obj.ipAddress = JsonUtil.getString(jsonObj, "ip_address");
 
-    obj.poweredBy = PoweredBy.fromString(JsonUtil.getString(json, "powered_by"));
+    obj.poweredBy = PoweredBy.fromString(JsonUtil.getString(jsonObj, "powered_by"));
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.maskedNumber = JsonUtil.getString(json, "masked_number");
+    obj.maskedNumber = JsonUtil.getString(jsonObj, "masked_number");
 
     return obj;
   }

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.order.Order;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OrderService;
 import com.chargebee.v4.models.order.params.OrderListParams;
@@ -43,13 +44,12 @@ public final class OrderListResponse {
    */
   public static OrderListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OrderListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OrderListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), OrderListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OrderListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -64,13 +64,12 @@ public final class OrderListResponse {
   public static OrderListResponse fromJson(
       String json, OrderService service, OrderListParams originalParams, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OrderListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OrderListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), OrderListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OrderListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -170,11 +169,15 @@ public final class OrderListResponse {
     }
 
     public static OrderListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OrderListItem fromJson(JsonObject jsonObj) {
       OrderListItem item = new OrderListItem();
 
-      String __orderJson = JsonUtil.getObject(json, "order");
-      if (__orderJson != null) {
-        item.order = Order.fromJson(__orderJson);
+      JsonObject __orderObj = JsonUtil.getJsonObject(jsonObj, "order");
+      if (__orderObj != null) {
+        item.order = Order.fromJson(__orderObj);
       }
 
       return item;

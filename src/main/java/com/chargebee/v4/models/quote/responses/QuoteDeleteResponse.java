@@ -10,6 +10,7 @@ import com.chargebee.v4.models.quotedCharge.QuotedCharge;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for QuoteDelete operation. Contains the response data from the API. */
@@ -42,26 +43,27 @@ public final class QuoteDeleteResponse extends BaseResponse {
   /** Parse JSON response into QuoteDeleteResponse object with HTTP response. */
   public static QuoteDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __quoteJson = JsonUtil.getObject(json, "quote");
-      if (__quoteJson != null) {
-        builder.quote(Quote.fromJson(__quoteJson));
+      JsonObject __quoteObj = JsonUtil.getJsonObject(jsonObj, "quote");
+      if (__quoteObj != null) {
+        builder.quote(Quote.fromJson(__quoteObj));
       }
 
-      String __quotedSubscriptionJson = JsonUtil.getObject(json, "quoted_subscription");
-      if (__quotedSubscriptionJson != null) {
-        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionJson));
+      JsonObject __quotedSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "quoted_subscription");
+      if (__quotedSubscriptionObj != null) {
+        builder.quotedSubscription(QuotedSubscription.fromJson(__quotedSubscriptionObj));
       }
 
-      String __quotedChargeJson = JsonUtil.getObject(json, "quoted_charge");
-      if (__quotedChargeJson != null) {
-        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeJson));
+      JsonObject __quotedChargeObj = JsonUtil.getJsonObject(jsonObj, "quoted_charge");
+      if (__quotedChargeObj != null) {
+        builder.quotedCharge(QuotedCharge.fromJson(__quotedChargeObj));
       }
 
-      String __quotedRampJson = JsonUtil.getObject(json, "quoted_ramp");
-      if (__quotedRampJson != null) {
-        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampJson));
+      JsonObject __quotedRampObj = JsonUtil.getJsonObject(jsonObj, "quoted_ramp");
+      if (__quotedRampObj != null) {
+        builder.quotedRamp(QuotedRamp.fromJson(__quotedRampObj));
       }
 
       builder.httpResponse(httpResponse);

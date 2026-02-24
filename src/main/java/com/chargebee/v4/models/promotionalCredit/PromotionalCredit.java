@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.promotionalCredit;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class PromotionalCredit {
@@ -137,33 +138,37 @@ public class PromotionalCredit {
   }
 
   public static PromotionalCredit fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PromotionalCredit fromJson(JsonObject jsonObj) {
     PromotionalCredit obj = new PromotionalCredit();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+    obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.creditType = CreditType.fromString(JsonUtil.getString(json, "credit_type"));
+    obj.creditType = CreditType.fromString(JsonUtil.getString(jsonObj, "credit_type"));
 
-    obj.reference = JsonUtil.getString(json, "reference");
+    obj.reference = JsonUtil.getString(jsonObj, "reference");
 
-    obj.closingBalance = JsonUtil.getLong(json, "closing_balance");
+    obj.closingBalance = JsonUtil.getLong(jsonObj, "closing_balance");
 
-    obj.doneBy = JsonUtil.getString(json, "done_by");
+    obj.doneBy = JsonUtil.getString(jsonObj, "done_by");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
     return obj;
   }

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.attachedItem.AttachedItem;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.AttachedItemService;
 import com.chargebee.v4.models.attachedItem.params.AttachedItemListParams;
@@ -48,13 +49,12 @@ public final class AttachedItemListResponse {
    */
   public static AttachedItemListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<AttachedItemListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(AttachedItemListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), AttachedItemListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new AttachedItemListResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +73,12 @@ public final class AttachedItemListResponse {
       String itemId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<AttachedItemListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(AttachedItemListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), AttachedItemListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new AttachedItemListResponse(
           list, nextOffset, itemId, service, originalParams, httpResponse);
@@ -180,11 +179,15 @@ public final class AttachedItemListResponse {
     }
 
     public static AttachedItemListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static AttachedItemListItem fromJson(JsonObject jsonObj) {
       AttachedItemListItem item = new AttachedItemListItem();
 
-      String __attachedItemJson = JsonUtil.getObject(json, "attached_item");
-      if (__attachedItemJson != null) {
-        item.attachedItem = AttachedItem.fromJson(__attachedItemJson);
+      JsonObject __attachedItemObj = JsonUtil.getJsonObject(jsonObj, "attached_item");
+      if (__attachedItemObj != null) {
+        item.attachedItem = AttachedItem.fromJson(__attachedItemObj);
       }
 
       return item;

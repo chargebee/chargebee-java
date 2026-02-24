@@ -6,6 +6,7 @@ import com.chargebee.v4.models.subscription.Subscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -36,16 +37,17 @@ public final class SubscriptionOverrideBillingProfileResponse extends BaseRespon
   public static SubscriptionOverrideBillingProfileResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionObj));
       }
 
-      String __paymentSourceJson = JsonUtil.getObject(json, "payment_source");
-      if (__paymentSourceJson != null) {
-        builder.paymentSource(PaymentSource.fromJson(__paymentSourceJson));
+      JsonObject __paymentSourceObj = JsonUtil.getJsonObject(jsonObj, "payment_source");
+      if (__paymentSourceObj != null) {
+        builder.paymentSource(PaymentSource.fromJson(__paymentSourceObj));
       }
 
       builder.httpResponse(httpResponse);

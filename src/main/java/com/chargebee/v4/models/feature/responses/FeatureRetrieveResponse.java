@@ -4,6 +4,7 @@ import com.chargebee.v4.models.feature.Feature;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class FeatureRetrieveResponse extends BaseResponse {
   /** Parse JSON response into FeatureRetrieveResponse object with HTTP response. */
   public static FeatureRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __featureJson = JsonUtil.getObject(json, "feature");
-      if (__featureJson != null) {
-        builder.feature(Feature.fromJson(__featureJson));
+      JsonObject __featureObj = JsonUtil.getJsonObject(jsonObj, "feature");
+      if (__featureObj != null) {
+        builder.feature(Feature.fromJson(__featureObj));
       }
 
       builder.httpResponse(httpResponse);

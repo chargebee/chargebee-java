@@ -6,6 +6,7 @@ import com.chargebee.v4.models.quoteLineGroup.QuoteLineGroup;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.QuoteService;
 import com.chargebee.v4.models.quote.params.QuoteLineGroupsForQuoteParams;
@@ -50,13 +51,13 @@ public final class QuoteLineGroupsForQuoteResponse {
    */
   public static QuoteLineGroupsForQuoteResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<QuoteQuoteLineGroupsForQuoteItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(QuoteQuoteLineGroupsForQuoteItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), QuoteQuoteLineGroupsForQuoteItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new QuoteLineGroupsForQuoteResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -75,13 +76,13 @@ public final class QuoteLineGroupsForQuoteResponse {
       String quoteId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<QuoteQuoteLineGroupsForQuoteItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(QuoteQuoteLineGroupsForQuoteItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), QuoteQuoteLineGroupsForQuoteItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new QuoteLineGroupsForQuoteResponse(
           list, nextOffset, quoteId, service, originalParams, httpResponse);
@@ -184,11 +185,15 @@ public final class QuoteLineGroupsForQuoteResponse {
     }
 
     public static QuoteQuoteLineGroupsForQuoteItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static QuoteQuoteLineGroupsForQuoteItem fromJson(JsonObject jsonObj) {
       QuoteQuoteLineGroupsForQuoteItem item = new QuoteQuoteLineGroupsForQuoteItem();
 
-      String __quoteLineGroupJson = JsonUtil.getObject(json, "quote_line_group");
-      if (__quoteLineGroupJson != null) {
-        item.quoteLineGroup = QuoteLineGroup.fromJson(__quoteLineGroupJson);
+      JsonObject __quoteLineGroupObj = JsonUtil.getJsonObject(jsonObj, "quote_line_group");
+      if (__quoteLineGroupObj != null) {
+        item.quoteLineGroup = QuoteLineGroup.fromJson(__quoteLineGroupObj);
       }
 
       return item;

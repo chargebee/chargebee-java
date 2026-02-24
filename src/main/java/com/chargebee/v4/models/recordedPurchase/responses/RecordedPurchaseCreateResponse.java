@@ -6,6 +6,7 @@ import com.chargebee.v4.models.recordedPurchase.RecordedPurchase;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -33,16 +34,17 @@ public final class RecordedPurchaseCreateResponse extends BaseResponse {
   /** Parse JSON response into RecordedPurchaseCreateResponse object with HTTP response. */
   public static RecordedPurchaseCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __recordedPurchaseJson = JsonUtil.getObject(json, "recorded_purchase");
-      if (__recordedPurchaseJson != null) {
-        builder.recordedPurchase(RecordedPurchase.fromJson(__recordedPurchaseJson));
+      JsonObject __recordedPurchaseObj = JsonUtil.getJsonObject(jsonObj, "recorded_purchase");
+      if (__recordedPurchaseObj != null) {
+        builder.recordedPurchase(RecordedPurchase.fromJson(__recordedPurchaseObj));
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        builder.customer(Customer.fromJson(__customerJson));
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        builder.customer(Customer.fromJson(__customerObj));
       }
 
       builder.httpResponse(httpResponse);

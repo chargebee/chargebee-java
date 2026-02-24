@@ -4,6 +4,7 @@ import com.chargebee.v4.models.recordedPurchase.RecordedPurchase;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class RecordedPurchaseRetrieveResponse extends BaseResponse {
   /** Parse JSON response into RecordedPurchaseRetrieveResponse object with HTTP response. */
   public static RecordedPurchaseRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __recordedPurchaseJson = JsonUtil.getObject(json, "recorded_purchase");
-      if (__recordedPurchaseJson != null) {
-        builder.recordedPurchase(RecordedPurchase.fromJson(__recordedPurchaseJson));
+      JsonObject __recordedPurchaseObj = JsonUtil.getJsonObject(jsonObj, "recorded_purchase");
+      if (__recordedPurchaseObj != null) {
+        builder.recordedPurchase(RecordedPurchase.fromJson(__recordedPurchaseObj));
       }
 
       builder.httpResponse(httpResponse);

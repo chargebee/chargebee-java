@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.quotedSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -220,73 +221,67 @@ public class QuotedSubscription {
   }
 
   public static QuotedSubscription fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static QuotedSubscription fromJson(JsonObject jsonObj) {
     QuotedSubscription obj = new QuotedSubscription();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.startDate = JsonUtil.getTimestamp(json, "start_date");
+    obj.startDate = JsonUtil.getTimestamp(jsonObj, "start_date");
 
-    obj.trialEnd = JsonUtil.getTimestamp(json, "trial_end");
+    obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
 
-    obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
+    obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
 
-    obj.poNumber = JsonUtil.getString(json, "po_number");
+    obj.poNumber = JsonUtil.getString(jsonObj, "po_number");
 
-    obj.planQuantityInDecimal = JsonUtil.getString(json, "plan_quantity_in_decimal");
+    obj.planQuantityInDecimal = JsonUtil.getString(jsonObj, "plan_quantity_in_decimal");
 
-    obj.planUnitPriceInDecimal = JsonUtil.getString(json, "plan_unit_price_in_decimal");
+    obj.planUnitPriceInDecimal = JsonUtil.getString(jsonObj, "plan_unit_price_in_decimal");
 
-    obj.changesScheduledAt = JsonUtil.getTimestamp(json, "changes_scheduled_at");
+    obj.changesScheduledAt = JsonUtil.getTimestamp(jsonObj, "changes_scheduled_at");
 
-    obj.changeOption = ChangeOption.fromString(JsonUtil.getString(json, "change_option"));
+    obj.changeOption = ChangeOption.fromString(JsonUtil.getString(jsonObj, "change_option"));
 
     obj.contractTermBillingCycleOnRenewal =
-        JsonUtil.getInteger(json, "contract_term_billing_cycle_on_renewal");
+        JsonUtil.getInteger(jsonObj, "contract_term_billing_cycle_on_renewal");
 
-    obj.coupons =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupons")).stream()
-            .map(Coupons::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.coupons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "coupons"), Coupons::fromJson);
 
     obj.subscriptionItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "subscription_items")).stream()
-            .map(SubscriptionItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "subscription_items"), SubscriptionItems::fromJson);
 
     obj.itemTiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_tiers")).stream()
-            .map(ItemTiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "item_tiers"), ItemTiers::fromJson);
 
-    String __quotedContractTermJson = JsonUtil.getObject(json, "quoted_contract_term");
-    if (__quotedContractTermJson != null) {
-      obj.quotedContractTerm = QuotedContractTerm.fromJson(__quotedContractTermJson);
+    JsonObject __quotedContractTermObj = JsonUtil.getJsonObject(jsonObj, "quoted_contract_term");
+    if (__quotedContractTermObj != null) {
+      obj.quotedContractTerm = QuotedContractTerm.fromJson(__quotedContractTermObj);
     }
 
-    obj.billingPeriod = JsonUtil.getInteger(json, "billing_period");
+    obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
 
-    obj.setupFee = JsonUtil.getLong(json, "setup_fee");
+    obj.setupFee = JsonUtil.getLong(jsonObj, "setup_fee");
 
-    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(json, "auto_collection"));
+    obj.autoCollection = AutoCollection.fromString(JsonUtil.getString(jsonObj, "auto_collection"));
 
     obj.eventBasedAddons =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "event_based_addons")).stream()
-            .map(EventBasedAddons::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "event_based_addons"), EventBasedAddons::fromJson);
 
-    obj.addons =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "addons")).stream()
-            .map(Addons::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.addons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "addons"), Addons::fromJson);
 
     obj.billingPeriodUnit =
-        BillingPeriodUnit.fromString(JsonUtil.getString(json, "billing_period_unit"));
+        BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
-    obj.planQuantity = JsonUtil.getInteger(json, "plan_quantity");
+    obj.planQuantity = JsonUtil.getInteger(jsonObj, "plan_quantity");
 
-    obj.planId = JsonUtil.getString(json, "plan_id");
+    obj.planId = JsonUtil.getString(jsonObj, "plan_id");
 
-    obj.planUnitPrice = JsonUtil.getLong(json, "plan_unit_price");
+    obj.planUnitPrice = JsonUtil.getLong(jsonObj, "plan_unit_price");
 
     return obj;
   }
@@ -413,9 +408,13 @@ public class QuotedSubscription {
     }
 
     public static Coupons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Coupons fromJson(JsonObject jsonObj) {
       Coupons obj = new Coupons();
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
       return obj;
     }
@@ -759,60 +758,65 @@ public class QuotedSubscription {
     }
 
     public static SubscriptionItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SubscriptionItems fromJson(JsonObject jsonObj) {
       SubscriptionItems obj = new SubscriptionItems();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.itemType = ItemType.fromString(JsonUtil.getString(json, "item_type"));
+      obj.itemType = ItemType.fromString(JsonUtil.getString(jsonObj, "item_type"));
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.meteredQuantity = JsonUtil.getString(json, "metered_quantity");
+      obj.meteredQuantity = JsonUtil.getString(jsonObj, "metered_quantity");
 
-      obj.lastCalculatedAt = JsonUtil.getTimestamp(json, "last_calculated_at");
+      obj.lastCalculatedAt = JsonUtil.getTimestamp(jsonObj, "last_calculated_at");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.currentTermStart = JsonUtil.getTimestamp(json, "current_term_start");
+      obj.currentTermStart = JsonUtil.getTimestamp(jsonObj, "current_term_start");
 
-      obj.currentTermEnd = JsonUtil.getTimestamp(json, "current_term_end");
+      obj.currentTermEnd = JsonUtil.getTimestamp(jsonObj, "current_term_end");
 
-      obj.nextBillingAt = JsonUtil.getTimestamp(json, "next_billing_at");
+      obj.nextBillingAt = JsonUtil.getTimestamp(jsonObj, "next_billing_at");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.billingPeriod = JsonUtil.getInteger(json, "billing_period");
+      obj.billingPeriod = JsonUtil.getInteger(jsonObj, "billing_period");
 
       obj.billingPeriodUnit =
-          BillingPeriodUnit.fromString(JsonUtil.getString(json, "billing_period_unit"));
+          BillingPeriodUnit.fromString(JsonUtil.getString(jsonObj, "billing_period_unit"));
 
-      obj.freeQuantity = JsonUtil.getInteger(json, "free_quantity");
+      obj.freeQuantity = JsonUtil.getInteger(jsonObj, "free_quantity");
 
-      obj.freeQuantityInDecimal = JsonUtil.getString(json, "free_quantity_in_decimal");
+      obj.freeQuantityInDecimal = JsonUtil.getString(jsonObj, "free_quantity_in_decimal");
 
-      obj.trialEnd = JsonUtil.getTimestamp(json, "trial_end");
+      obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
 
-      obj.billingCycles = JsonUtil.getInteger(json, "billing_cycles");
+      obj.billingCycles = JsonUtil.getInteger(jsonObj, "billing_cycles");
 
-      obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
+      obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
-      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(json, "charge_on_event"));
+      obj.chargeOnEvent = ChargeOnEvent.fromString(JsonUtil.getString(jsonObj, "charge_on_event"));
 
-      obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+      obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-      obj.chargeOnOption = ChargeOnOption.fromString(JsonUtil.getString(json, "charge_on_option"));
+      obj.chargeOnOption =
+          ChargeOnOption.fromString(JsonUtil.getString(jsonObj, "charge_on_option"));
 
-      obj.prorationType = ProrationType.fromString(JsonUtil.getString(json, "proration_type"));
+      obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
 
       obj.usageAccumulationResetFrequency =
           UsageAccumulationResetFrequency.fromString(
-              JsonUtil.getString(json, "usage_accumulation_reset_frequency"));
+              JsonUtil.getString(jsonObj, "usage_accumulation_reset_frequency"));
 
       return obj;
     }
@@ -1023,27 +1027,31 @@ public class QuotedSubscription {
     }
 
     public static ItemTiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
-      obj.index = JsonUtil.getInteger(json, "index");
+      obj.index = JsonUtil.getInteger(jsonObj, "index");
 
       return obj;
     }
@@ -1175,20 +1183,24 @@ public class QuotedSubscription {
     }
 
     public static QuotedContractTerm fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static QuotedContractTerm fromJson(JsonObject jsonObj) {
       QuotedContractTerm obj = new QuotedContractTerm();
 
-      obj.contractStart = JsonUtil.getTimestamp(json, "contract_start");
+      obj.contractStart = JsonUtil.getTimestamp(jsonObj, "contract_start");
 
-      obj.contractEnd = JsonUtil.getTimestamp(json, "contract_end");
+      obj.contractEnd = JsonUtil.getTimestamp(jsonObj, "contract_end");
 
-      obj.billingCycle = JsonUtil.getInteger(json, "billing_cycle");
+      obj.billingCycle = JsonUtil.getInteger(jsonObj, "billing_cycle");
 
       obj.actionAtTermEnd =
-          ActionAtTermEnd.fromString(JsonUtil.getString(json, "action_at_term_end"));
+          ActionAtTermEnd.fromString(JsonUtil.getString(jsonObj, "action_at_term_end"));
 
-      obj.totalContractValue = JsonUtil.getLong(json, "total_contract_value");
+      obj.totalContractValue = JsonUtil.getLong(jsonObj, "total_contract_value");
 
-      obj.cancellationCutoffPeriod = JsonUtil.getInteger(json, "cancellation_cutoff_period");
+      obj.cancellationCutoffPeriod = JsonUtil.getInteger(jsonObj, "cancellation_cutoff_period");
 
       return obj;
     }
@@ -1317,23 +1329,27 @@ public class QuotedSubscription {
     }
 
     public static EventBasedAddons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EventBasedAddons fromJson(JsonObject jsonObj) {
       EventBasedAddons obj = new EventBasedAddons();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.servicePeriodInDays = JsonUtil.getInteger(json, "service_period_in_days");
+      obj.servicePeriodInDays = JsonUtil.getInteger(jsonObj, "service_period_in_days");
 
-      obj.onEvent = OnEvent.fromString(JsonUtil.getString(json, "on_event"));
+      obj.onEvent = OnEvent.fromString(JsonUtil.getString(jsonObj, "on_event"));
 
-      obj.chargeOnce = JsonUtil.getBoolean(json, "charge_once");
+      obj.chargeOnce = JsonUtil.getBoolean(jsonObj, "charge_once");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
       return obj;
     }
@@ -1475,27 +1491,31 @@ public class QuotedSubscription {
     }
 
     public static Addons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(JsonObject jsonObj) {
       Addons obj = new Addons();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.trialEnd = JsonUtil.getTimestamp(json, "trial_end");
+      obj.trialEnd = JsonUtil.getTimestamp(jsonObj, "trial_end");
 
-      obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
+      obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.prorationType = ProrationType.fromString(JsonUtil.getString(json, "proration_type"));
+      obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
 
       return obj;
     }

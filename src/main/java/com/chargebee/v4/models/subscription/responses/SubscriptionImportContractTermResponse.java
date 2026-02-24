@@ -4,6 +4,7 @@ import com.chargebee.v4.models.contractTerm.ContractTerm;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -28,11 +29,12 @@ public final class SubscriptionImportContractTermResponse extends BaseResponse {
   public static SubscriptionImportContractTermResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __contractTermJson = JsonUtil.getObject(json, "contract_term");
-      if (__contractTermJson != null) {
-        builder.contractTerm(ContractTerm.fromJson(__contractTermJson));
+      JsonObject __contractTermObj = JsonUtil.getJsonObject(jsonObj, "contract_term");
+      if (__contractTermObj != null) {
+        builder.contractTerm(ContractTerm.fromJson(__contractTermObj));
       }
 
       builder.httpResponse(httpResponse);

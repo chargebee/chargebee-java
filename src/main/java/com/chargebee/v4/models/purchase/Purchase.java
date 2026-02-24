@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.purchase;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -45,19 +47,29 @@ public class Purchase {
   }
 
   public static Purchase fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Purchase fromJson(JsonObject jsonObj) {
     Purchase obj = new Purchase();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.subscriptionIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "subscription_ids"));
+    JsonArray __subscriptionIdsArr = JsonUtil.getJsonArray(jsonObj, "subscription_ids");
+    if (__subscriptionIdsArr != null) {
+      obj.subscriptionIds = JsonUtil.parseArrayOfString(__subscriptionIdsArr);
+    }
 
-    obj.invoiceIds = JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "invoice_ids"));
+    JsonArray __invoiceIdsArr = JsonUtil.getJsonArray(jsonObj, "invoice_ids");
+    if (__invoiceIdsArr != null) {
+      obj.invoiceIds = JsonUtil.parseArrayOfString(__invoiceIdsArr);
+    }
 
     return obj;
   }

@@ -10,6 +10,7 @@ import com.chargebee.v4.models.quotedRamp.QuotedRamp;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.QuoteService;
 import com.chargebee.v4.models.quote.params.QuoteListParams;
@@ -47,13 +48,12 @@ public final class QuoteListResponse {
    */
   public static QuoteListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<QuoteListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(QuoteListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), QuoteListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new QuoteListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -68,13 +68,12 @@ public final class QuoteListResponse {
   public static QuoteListResponse fromJson(
       String json, QuoteService service, QuoteListParams originalParams, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<QuoteListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(QuoteListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), QuoteListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new QuoteListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -186,21 +185,25 @@ public final class QuoteListResponse {
     }
 
     public static QuoteListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static QuoteListItem fromJson(JsonObject jsonObj) {
       QuoteListItem item = new QuoteListItem();
 
-      String __quoteJson = JsonUtil.getObject(json, "quote");
-      if (__quoteJson != null) {
-        item.quote = Quote.fromJson(__quoteJson);
+      JsonObject __quoteObj = JsonUtil.getJsonObject(jsonObj, "quote");
+      if (__quoteObj != null) {
+        item.quote = Quote.fromJson(__quoteObj);
       }
 
-      String __quotedSubscriptionJson = JsonUtil.getObject(json, "quoted_subscription");
-      if (__quotedSubscriptionJson != null) {
-        item.quotedSubscription = QuotedSubscription.fromJson(__quotedSubscriptionJson);
+      JsonObject __quotedSubscriptionObj = JsonUtil.getJsonObject(jsonObj, "quoted_subscription");
+      if (__quotedSubscriptionObj != null) {
+        item.quotedSubscription = QuotedSubscription.fromJson(__quotedSubscriptionObj);
       }
 
-      String __quotedRampJson = JsonUtil.getObject(json, "quoted_ramp");
-      if (__quotedRampJson != null) {
-        item.quotedRamp = QuotedRamp.fromJson(__quotedRampJson);
+      JsonObject __quotedRampObj = JsonUtil.getJsonObject(jsonObj, "quoted_ramp");
+      if (__quotedRampObj != null) {
+        item.quotedRamp = QuotedRamp.fromJson(__quotedRampObj);
       }
 
       return item;

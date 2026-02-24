@@ -6,6 +6,7 @@ import com.chargebee.v4.models.virtualBankAccount.VirtualBankAccount;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.VirtualBankAccountService;
 import com.chargebee.v4.models.virtualBankAccount.params.VirtualBankAccountListParams;
@@ -43,13 +44,13 @@ public final class VirtualBankAccountListResponse {
    */
   public static VirtualBankAccountListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<VirtualBankAccountListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(VirtualBankAccountListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), VirtualBankAccountListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new VirtualBankAccountListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class VirtualBankAccountListResponse {
       VirtualBankAccountListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<VirtualBankAccountListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(VirtualBankAccountListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), VirtualBankAccountListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new VirtualBankAccountListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -176,11 +177,15 @@ public final class VirtualBankAccountListResponse {
     }
 
     public static VirtualBankAccountListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static VirtualBankAccountListItem fromJson(JsonObject jsonObj) {
       VirtualBankAccountListItem item = new VirtualBankAccountListItem();
 
-      String __virtualBankAccountJson = JsonUtil.getObject(json, "virtual_bank_account");
-      if (__virtualBankAccountJson != null) {
-        item.virtualBankAccount = VirtualBankAccount.fromJson(__virtualBankAccountJson);
+      JsonObject __virtualBankAccountObj = JsonUtil.getJsonObject(jsonObj, "virtual_bank_account");
+      if (__virtualBankAccountObj != null) {
+        item.virtualBankAccount = VirtualBankAccount.fromJson(__virtualBankAccountObj);
       }
 
       return item;

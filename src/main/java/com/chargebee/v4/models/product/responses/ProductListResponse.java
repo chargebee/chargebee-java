@@ -6,6 +6,7 @@ import com.chargebee.v4.models.product.Product;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.ProductService;
 import com.chargebee.v4.models.product.params.ProductListParams;
@@ -43,13 +44,12 @@ public final class ProductListResponse {
    */
   public static ProductListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ProductListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ProductListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), ProductListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ProductListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class ProductListResponse {
       ProductListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ProductListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ProductListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), ProductListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ProductListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class ProductListResponse {
     }
 
     public static ProductListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ProductListItem fromJson(JsonObject jsonObj) {
       ProductListItem item = new ProductListItem();
 
-      String __productJson = JsonUtil.getObject(json, "product");
-      if (__productJson != null) {
-        item.product = Product.fromJson(__productJson);
+      JsonObject __productObj = JsonUtil.getJsonObject(jsonObj, "product");
+      if (__productObj != null) {
+        item.product = Product.fromJson(__productObj);
       }
 
       return item;

@@ -10,6 +10,7 @@ import com.chargebee.v4.models.card.Card;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SubscriptionService;
 import com.chargebee.v4.models.subscription.params.SubscriptionListParams;
@@ -47,13 +48,12 @@ public final class SubscriptionListResponse {
    */
   public static SubscriptionListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), SubscriptionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SubscriptionListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -71,13 +71,12 @@ public final class SubscriptionListResponse {
       SubscriptionListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SubscriptionListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SubscriptionListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), SubscriptionListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SubscriptionListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -189,21 +188,25 @@ public final class SubscriptionListResponse {
     }
 
     public static SubscriptionListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SubscriptionListItem fromJson(JsonObject jsonObj) {
       SubscriptionListItem item = new SubscriptionListItem();
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        item.subscription = Subscription.fromJson(__subscriptionJson);
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        item.subscription = Subscription.fromJson(__subscriptionObj);
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        item.customer = Customer.fromJson(__customerJson);
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        item.customer = Customer.fromJson(__customerObj);
       }
 
-      String __cardJson = JsonUtil.getObject(json, "card");
-      if (__cardJson != null) {
-        item.card = Card.fromJson(__cardJson);
+      JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
+      if (__cardObj != null) {
+        item.card = Card.fromJson(__cardObj);
       }
 
       return item;

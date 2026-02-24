@@ -4,6 +4,7 @@ import com.chargebee.v4.models.thirdPartyEntityMapping.ThirdPartyEntityMapping;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -30,12 +31,14 @@ public final class ThirdPartyEntityMappingUpdateEntityResponse extends BaseRespo
   public static ThirdPartyEntityMappingUpdateEntityResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __thirdPartyEntityMappingJson = JsonUtil.getObject(json, "third_party_entity_mapping");
-      if (__thirdPartyEntityMappingJson != null) {
+      JsonObject __thirdPartyEntityMappingObj =
+          JsonUtil.getJsonObject(jsonObj, "third_party_entity_mapping");
+      if (__thirdPartyEntityMappingObj != null) {
         builder.thirdPartyEntityMapping(
-            ThirdPartyEntityMapping.fromJson(__thirdPartyEntityMappingJson));
+            ThirdPartyEntityMapping.fromJson(__thirdPartyEntityMappingObj));
       }
 
       builder.httpResponse(httpResponse);

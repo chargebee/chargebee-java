@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.product;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -113,42 +115,43 @@ public class Product {
   }
 
   public static Product fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Product fromJson(JsonObject jsonObj) {
     Product obj = new Product();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.externalName = JsonUtil.getString(json, "external_name");
+    obj.externalName = JsonUtil.getString(jsonObj, "external_name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.hasVariant = JsonUtil.getBoolean(json, "has_variant");
+    obj.hasVariant = JsonUtil.getBoolean(jsonObj, "has_variant");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.shippable = JsonUtil.getBoolean(json, "shippable");
+    obj.shippable = JsonUtil.getBoolean(jsonObj, "shippable");
 
-    obj.sku = JsonUtil.getString(json, "sku");
+    obj.sku = JsonUtil.getString(jsonObj, "sku");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    String __metadataJson = JsonUtil.getObject(json, "metadata");
+    JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
     obj.metadata =
-        __metadataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metadataJson)
+        __metadataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metadataObj)
             : new java.util.HashMap<>();
 
-    obj.options =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "options")).stream()
-            .map(Options::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.options = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "options"), Options::fromJson);
 
     return obj;
   }
@@ -284,23 +287,24 @@ public class Product {
     }
 
     public static Options fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Options fromJson(JsonObject jsonObj) {
       Options obj = new Options();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.name = JsonUtil.getString(json, "name");
+      obj.name = JsonUtil.getString(jsonObj, "name");
 
-      String __valuesJson = JsonUtil.getArray(json, "values");
-      obj.values =
-          __valuesJson != null
-              ? JsonUtil.parseObjectArray(__valuesJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __valuesArr = JsonUtil.getJsonArray(jsonObj, "values");
+      if (__valuesArr != null) {
+        obj.values = JsonUtil.mapArrayToObjects(__valuesArr);
+      }
 
-      obj.defaultValue = JsonUtil.getString(json, "default_value");
+      obj.defaultValue = JsonUtil.getString(jsonObj, "default_value");
 
-      obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+      obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
       return obj;
     }

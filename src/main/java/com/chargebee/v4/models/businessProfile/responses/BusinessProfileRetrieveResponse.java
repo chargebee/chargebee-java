@@ -2,6 +2,7 @@ package com.chargebee.v4.models.businessProfile.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class BusinessProfileRetrieveResponse extends BaseResponse {
   /** Parse JSON response into BusinessProfileRetrieveResponse object with HTTP response. */
   public static BusinessProfileRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.businessProfile(JsonUtil.getObject(json, "business_profile"));
+      builder.businessProfile(JsonUtil.getObject(jsonObj, "business_profile"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.siteMigrationDetail.SiteMigrationDetail;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.SiteMigrationDetailService;
 import com.chargebee.v4.models.siteMigrationDetail.params.SiteMigrationDetailListParams;
@@ -45,13 +46,13 @@ public final class SiteMigrationDetailListResponse {
    */
   public static SiteMigrationDetailListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SiteMigrationDetailListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SiteMigrationDetailListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), SiteMigrationDetailListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SiteMigrationDetailListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -69,13 +70,13 @@ public final class SiteMigrationDetailListResponse {
       SiteMigrationDetailListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<SiteMigrationDetailListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(SiteMigrationDetailListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), SiteMigrationDetailListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new SiteMigrationDetailListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -178,11 +179,16 @@ public final class SiteMigrationDetailListResponse {
     }
 
     public static SiteMigrationDetailListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SiteMigrationDetailListItem fromJson(JsonObject jsonObj) {
       SiteMigrationDetailListItem item = new SiteMigrationDetailListItem();
 
-      String __siteMigrationDetailJson = JsonUtil.getObject(json, "site_migration_detail");
-      if (__siteMigrationDetailJson != null) {
-        item.siteMigrationDetail = SiteMigrationDetail.fromJson(__siteMigrationDetailJson);
+      JsonObject __siteMigrationDetailObj =
+          JsonUtil.getJsonObject(jsonObj, "site_migration_detail");
+      if (__siteMigrationDetailObj != null) {
+        item.siteMigrationDetail = SiteMigrationDetail.fromJson(__siteMigrationDetailObj);
       }
 
       return item;

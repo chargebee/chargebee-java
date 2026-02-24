@@ -6,6 +6,7 @@ import com.chargebee.v4.models.item.Item;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.ItemPriceService;
 import com.chargebee.v4.models.itemPrice.params.ItemPriceFindApplicableItemsParams;
@@ -51,13 +52,13 @@ public final class ItemPriceFindApplicableItemsResponse {
    */
   public static ItemPriceFindApplicableItemsResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemPriceFindApplicableItemsItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemPriceFindApplicableItemsItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), ItemPriceFindApplicableItemsItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemPriceFindApplicableItemsResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -77,13 +78,13 @@ public final class ItemPriceFindApplicableItemsResponse {
       String itemPriceId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<ItemPriceFindApplicableItemsItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(ItemPriceFindApplicableItemsItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), ItemPriceFindApplicableItemsItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ItemPriceFindApplicableItemsResponse(
           list, nextOffset, itemPriceId, service, originalParams, httpResponse);
@@ -192,11 +193,15 @@ public final class ItemPriceFindApplicableItemsResponse {
     }
 
     public static ItemPriceFindApplicableItemsItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemPriceFindApplicableItemsItem fromJson(JsonObject jsonObj) {
       ItemPriceFindApplicableItemsItem item = new ItemPriceFindApplicableItemsItem();
 
-      String __itemJson = JsonUtil.getObject(json, "item");
-      if (__itemJson != null) {
-        item.item = Item.fromJson(__itemJson);
+      JsonObject __itemObj = JsonUtil.getJsonObject(jsonObj, "item");
+      if (__itemObj != null) {
+        item.item = Item.fromJson(__itemObj);
       }
 
       return item;

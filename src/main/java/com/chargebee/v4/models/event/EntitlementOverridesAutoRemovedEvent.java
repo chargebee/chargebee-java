@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 import com.chargebee.v4.models.impactedItem.ImpactedItem;
 
@@ -61,25 +62,29 @@ public class EntitlementOverridesAutoRemovedEvent {
   }
 
   public static EntitlementOverridesAutoRemovedEvent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static EntitlementOverridesAutoRemovedEvent fromJson(JsonObject jsonObj) {
     EntitlementOverridesAutoRemovedEvent obj = new EntitlementOverridesAutoRemovedEvent();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.occurredAt = JsonUtil.getLong(json, "occurred_at");
+    obj.occurredAt = JsonUtil.getLong(jsonObj, "occurred_at");
 
-    obj.source = JsonUtil.getString(json, "source");
+    obj.source = JsonUtil.getString(jsonObj, "source");
 
-    obj.object = JsonUtil.getString(json, "object");
+    obj.object = JsonUtil.getString(jsonObj, "object");
 
-    obj.apiVersion = JsonUtil.getString(json, "api_version");
+    obj.apiVersion = JsonUtil.getString(jsonObj, "api_version");
 
-    obj.eventType = JsonUtil.getString(json, "event_type");
+    obj.eventType = JsonUtil.getString(jsonObj, "event_type");
 
-    obj.webhookStatus = JsonUtil.getString(json, "webhook_status");
+    obj.webhookStatus = JsonUtil.getString(jsonObj, "webhook_status");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
-    if (__contentJson != null) {
-      obj.content = Content.fromJson(__contentJson);
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
+    if (__contentObj != null) {
+      obj.content = Content.fromJson(__contentObj);
     }
 
     return obj;
@@ -154,26 +159,31 @@ public class EntitlementOverridesAutoRemovedEvent {
     }
 
     public static Content fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(JsonObject jsonObj) {
       Content obj = new Content();
 
-      String __featureJson = JsonUtil.getObject(json, "feature");
-      if (__featureJson != null) {
-        obj.feature = Feature.fromJson(__featureJson);
+      JsonObject __featureObj = JsonUtil.getJsonObject(jsonObj, "feature");
+      if (__featureObj != null) {
+        obj.feature = Feature.fromJson(__featureObj);
       }
 
-      String __metadataJson = JsonUtil.getObject(json, "metadata");
-      if (__metadataJson != null) {
-        obj.metadata = Metadata.fromJson(__metadataJson);
+      JsonObject __metadataObj = JsonUtil.getJsonObject(jsonObj, "metadata");
+      if (__metadataObj != null) {
+        obj.metadata = Metadata.fromJson(__metadataObj);
       }
 
-      String __impactedItemJson = JsonUtil.getObject(json, "impacted_item");
-      if (__impactedItemJson != null) {
-        obj.impactedItem = ImpactedItem.fromJson(__impactedItemJson);
+      JsonObject __impactedItemObj = JsonUtil.getJsonObject(jsonObj, "impacted_item");
+      if (__impactedItemObj != null) {
+        obj.impactedItem = ImpactedItem.fromJson(__impactedItemObj);
       }
 
-      String __impactedSubscriptionJson = JsonUtil.getObject(json, "impacted_subscription");
-      if (__impactedSubscriptionJson != null) {
-        obj.impactedSubscription = ImpactedSubscription.fromJson(__impactedSubscriptionJson);
+      JsonObject __impactedSubscriptionObj =
+          JsonUtil.getJsonObject(jsonObj, "impacted_subscription");
+      if (__impactedSubscriptionObj != null) {
+        obj.impactedSubscription = ImpactedSubscription.fromJson(__impactedSubscriptionObj);
       }
 
       return obj;

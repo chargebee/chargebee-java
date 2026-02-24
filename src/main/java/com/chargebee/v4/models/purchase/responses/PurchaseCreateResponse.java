@@ -4,6 +4,7 @@ import com.chargebee.v4.models.purchase.Purchase;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class PurchaseCreateResponse extends BaseResponse {
   /** Parse JSON response into PurchaseCreateResponse object with HTTP response. */
   public static PurchaseCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __purchaseJson = JsonUtil.getObject(json, "purchase");
-      if (__purchaseJson != null) {
-        builder.purchase(Purchase.fromJson(__purchaseJson));
+      JsonObject __purchaseObj = JsonUtil.getJsonObject(jsonObj, "purchase");
+      if (__purchaseObj != null) {
+        builder.purchase(Purchase.fromJson(__purchaseObj));
       }
 
       builder.httpResponse(httpResponse);

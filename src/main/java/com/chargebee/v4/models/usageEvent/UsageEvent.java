@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.usageEvent;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class UsageEvent {
 
@@ -33,18 +34,22 @@ public class UsageEvent {
   }
 
   public static UsageEvent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static UsageEvent fromJson(JsonObject jsonObj) {
     UsageEvent obj = new UsageEvent();
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.deduplicationId = JsonUtil.getString(json, "deduplication_id");
+    obj.deduplicationId = JsonUtil.getString(jsonObj, "deduplication_id");
 
-    obj.usageTimestamp = JsonUtil.getLong(json, "usage_timestamp");
+    obj.usageTimestamp = JsonUtil.getLong(jsonObj, "usage_timestamp");
 
-    String __propertiesJson = JsonUtil.getObject(json, "properties");
+    JsonObject __propertiesObj = JsonUtil.getJsonObject(jsonObj, "properties");
     obj.properties =
-        __propertiesJson != null
-            ? JsonUtil.parseJsonObjectToMap(__propertiesJson)
+        __propertiesObj != null
+            ? JsonUtil.parseJsonObjectToMap(__propertiesObj)
             : new java.util.HashMap<>();
 
     return obj;

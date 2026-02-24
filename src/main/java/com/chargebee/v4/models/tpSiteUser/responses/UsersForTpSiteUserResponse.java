@@ -6,6 +6,7 @@ import com.chargebee.v4.models.tpSiteUser.TpSiteUser;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.TpSiteUserService;
 import com.chargebee.v4.models.tpSiteUser.params.UsersForTpSiteUserParams;
@@ -48,13 +49,13 @@ public final class UsersForTpSiteUserResponse {
    */
   public static UsersForTpSiteUserResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TpSiteUserUsersForTpSiteUserItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TpSiteUserUsersForTpSiteUserItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), TpSiteUserUsersForTpSiteUserItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new UsersForTpSiteUserResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -73,13 +74,13 @@ public final class UsersForTpSiteUserResponse {
       String tpSiteUserDomain,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TpSiteUserUsersForTpSiteUserItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TpSiteUserUsersForTpSiteUserItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), TpSiteUserUsersForTpSiteUserItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new UsersForTpSiteUserResponse(
           list, nextOffset, tpSiteUserDomain, service, originalParams, httpResponse);
@@ -180,11 +181,15 @@ public final class UsersForTpSiteUserResponse {
     }
 
     public static TpSiteUserUsersForTpSiteUserItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TpSiteUserUsersForTpSiteUserItem fromJson(JsonObject jsonObj) {
       TpSiteUserUsersForTpSiteUserItem item = new TpSiteUserUsersForTpSiteUserItem();
 
-      String __tpSiteUserJson = JsonUtil.getObject(json, "tp_site_user");
-      if (__tpSiteUserJson != null) {
-        item.tpSiteUser = TpSiteUser.fromJson(__tpSiteUserJson);
+      JsonObject __tpSiteUserObj = JsonUtil.getJsonObject(jsonObj, "tp_site_user");
+      if (__tpSiteUserObj != null) {
+        item.tpSiteUser = TpSiteUser.fromJson(__tpSiteUserObj);
       }
 
       return item;

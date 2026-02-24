@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.event;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 import com.chargebee.v4.models.customer.Customer;
 
@@ -61,25 +62,29 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
   }
 
   public static OmnichannelOneTimeOrderItemCancelledEvent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static OmnichannelOneTimeOrderItemCancelledEvent fromJson(JsonObject jsonObj) {
     OmnichannelOneTimeOrderItemCancelledEvent obj = new OmnichannelOneTimeOrderItemCancelledEvent();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.occurredAt = JsonUtil.getLong(json, "occurred_at");
+    obj.occurredAt = JsonUtil.getLong(jsonObj, "occurred_at");
 
-    obj.source = JsonUtil.getString(json, "source");
+    obj.source = JsonUtil.getString(jsonObj, "source");
 
-    obj.object = JsonUtil.getString(json, "object");
+    obj.object = JsonUtil.getString(jsonObj, "object");
 
-    obj.apiVersion = JsonUtil.getString(json, "api_version");
+    obj.apiVersion = JsonUtil.getString(jsonObj, "api_version");
 
-    obj.eventType = JsonUtil.getString(json, "event_type");
+    obj.eventType = JsonUtil.getString(jsonObj, "event_type");
 
-    obj.webhookStatus = JsonUtil.getString(json, "webhook_status");
+    obj.webhookStatus = JsonUtil.getString(jsonObj, "webhook_status");
 
-    String __contentJson = JsonUtil.getObject(json, "content");
-    if (__contentJson != null) {
-      obj.content = Content.fromJson(__contentJson);
+    JsonObject __contentObj = JsonUtil.getJsonObject(jsonObj, "content");
+    if (__contentObj != null) {
+      obj.content = Content.fromJson(__contentObj);
     }
 
     return obj;
@@ -154,29 +159,35 @@ public class OmnichannelOneTimeOrderItemCancelledEvent {
     }
 
     public static Content fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Content fromJson(JsonObject jsonObj) {
       Content obj = new Content();
 
-      String __omnichannelOneTimeOrderJson = JsonUtil.getObject(json, "omnichannel_one_time_order");
-      if (__omnichannelOneTimeOrderJson != null) {
+      JsonObject __omnichannelOneTimeOrderObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_one_time_order");
+      if (__omnichannelOneTimeOrderObj != null) {
         obj.omnichannelOneTimeOrder =
-            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderJson);
+            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderObj);
       }
 
-      String __omnichannelOneTimeOrderItemJson =
-          JsonUtil.getObject(json, "omnichannel_one_time_order_item");
-      if (__omnichannelOneTimeOrderItemJson != null) {
+      JsonObject __omnichannelOneTimeOrderItemObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_one_time_order_item");
+      if (__omnichannelOneTimeOrderItemObj != null) {
         obj.omnichannelOneTimeOrderItem =
-            OmnichannelOneTimeOrderItem.fromJson(__omnichannelOneTimeOrderItemJson);
+            OmnichannelOneTimeOrderItem.fromJson(__omnichannelOneTimeOrderItemObj);
       }
 
-      String __omnichannelTransactionJson = JsonUtil.getObject(json, "omnichannel_transaction");
-      if (__omnichannelTransactionJson != null) {
-        obj.omnichannelTransaction = OmnichannelTransaction.fromJson(__omnichannelTransactionJson);
+      JsonObject __omnichannelTransactionObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_transaction");
+      if (__omnichannelTransactionObj != null) {
+        obj.omnichannelTransaction = OmnichannelTransaction.fromJson(__omnichannelTransactionObj);
       }
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        obj.customer = Customer.fromJson(__customerJson);
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        obj.customer = Customer.fromJson(__customerObj);
       }
 
       return obj;

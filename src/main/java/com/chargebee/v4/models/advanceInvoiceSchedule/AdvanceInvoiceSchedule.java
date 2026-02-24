@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.advanceInvoiceSchedule;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class AdvanceInvoiceSchedule {
@@ -62,20 +63,26 @@ public class AdvanceInvoiceSchedule {
   }
 
   public static AdvanceInvoiceSchedule fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static AdvanceInvoiceSchedule fromJson(JsonObject jsonObj) {
     AdvanceInvoiceSchedule obj = new AdvanceInvoiceSchedule();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.scheduleType = ScheduleType.fromString(JsonUtil.getString(json, "schedule_type"));
+    obj.scheduleType = ScheduleType.fromString(JsonUtil.getString(jsonObj, "schedule_type"));
 
-    String __fixedIntervalScheduleJson = JsonUtil.getObject(json, "fixed_interval_schedule");
-    if (__fixedIntervalScheduleJson != null) {
-      obj.fixedIntervalSchedule = FixedIntervalSchedule.fromJson(__fixedIntervalScheduleJson);
+    JsonObject __fixedIntervalScheduleObj =
+        JsonUtil.getJsonObject(jsonObj, "fixed_interval_schedule");
+    if (__fixedIntervalScheduleObj != null) {
+      obj.fixedIntervalSchedule = FixedIntervalSchedule.fromJson(__fixedIntervalScheduleObj);
     }
 
-    String __specificDatesScheduleJson = JsonUtil.getObject(json, "specific_dates_schedule");
-    if (__specificDatesScheduleJson != null) {
-      obj.specificDatesSchedule = SpecificDatesSchedule.fromJson(__specificDatesScheduleJson);
+    JsonObject __specificDatesScheduleObj =
+        JsonUtil.getJsonObject(jsonObj, "specific_dates_schedule");
+    if (__specificDatesScheduleObj != null) {
+      obj.specificDatesSchedule = SpecificDatesSchedule.fromJson(__specificDatesScheduleObj);
     }
 
     return obj;
@@ -177,19 +184,23 @@ public class AdvanceInvoiceSchedule {
     }
 
     public static FixedIntervalSchedule fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static FixedIntervalSchedule fromJson(JsonObject jsonObj) {
       FixedIntervalSchedule obj = new FixedIntervalSchedule();
 
-      obj.endScheduleOn = EndScheduleOn.fromString(JsonUtil.getString(json, "end_schedule_on"));
+      obj.endScheduleOn = EndScheduleOn.fromString(JsonUtil.getString(jsonObj, "end_schedule_on"));
 
-      obj.numberOfOccurrences = JsonUtil.getInteger(json, "number_of_occurrences");
+      obj.numberOfOccurrences = JsonUtil.getInteger(jsonObj, "number_of_occurrences");
 
-      obj.daysBeforeRenewal = JsonUtil.getInteger(json, "days_before_renewal");
+      obj.daysBeforeRenewal = JsonUtil.getInteger(jsonObj, "days_before_renewal");
 
-      obj.endDate = JsonUtil.getTimestamp(json, "end_date");
+      obj.endDate = JsonUtil.getTimestamp(jsonObj, "end_date");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.termsToCharge = JsonUtil.getInteger(json, "terms_to_charge");
+      obj.termsToCharge = JsonUtil.getInteger(jsonObj, "terms_to_charge");
 
       return obj;
     }
@@ -253,13 +264,17 @@ public class AdvanceInvoiceSchedule {
     }
 
     public static SpecificDatesSchedule fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static SpecificDatesSchedule fromJson(JsonObject jsonObj) {
       SpecificDatesSchedule obj = new SpecificDatesSchedule();
 
-      obj.termsToCharge = JsonUtil.getInteger(json, "terms_to_charge");
+      obj.termsToCharge = JsonUtil.getInteger(jsonObj, "terms_to_charge");
 
-      obj.date = JsonUtil.getTimestamp(json, "date");
+      obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
       return obj;
     }

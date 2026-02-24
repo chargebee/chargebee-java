@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.pricingPageSession;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class PricingPageSession {
@@ -34,15 +35,19 @@ public class PricingPageSession {
   }
 
   public static PricingPageSession fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PricingPageSession fromJson(JsonObject jsonObj) {
     PricingPageSession obj = new PricingPageSession();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
     return obj;
   }

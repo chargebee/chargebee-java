@@ -6,6 +6,7 @@ import com.chargebee.v4.models.creditNote.CreditNote;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -33,16 +34,17 @@ public final class CreditNoteRecordRefundResponse extends BaseResponse {
   /** Parse JSON response into CreditNoteRecordRefundResponse object with HTTP response. */
   public static CreditNoteRecordRefundResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
-      if (__creditNoteJson != null) {
-        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteObj));
       }
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        builder.transaction(Transaction.fromJson(__transactionJson));
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        builder.transaction(Transaction.fromJson(__transactionObj));
       }
 
       builder.httpResponse(httpResponse);

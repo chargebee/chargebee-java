@@ -4,6 +4,7 @@ import com.chargebee.v4.models.rule.Rule;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class RuleRetrieveResponse extends BaseResponse {
   /** Parse JSON response into RuleRetrieveResponse object with HTTP response. */
   public static RuleRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __ruleJson = JsonUtil.getObject(json, "rule");
-      if (__ruleJson != null) {
-        builder.rule(Rule.fromJson(__ruleJson));
+      JsonObject __ruleObj = JsonUtil.getJsonObject(jsonObj, "rule");
+      if (__ruleObj != null) {
+        builder.rule(Rule.fromJson(__ruleObj));
       }
 
       builder.httpResponse(httpResponse);

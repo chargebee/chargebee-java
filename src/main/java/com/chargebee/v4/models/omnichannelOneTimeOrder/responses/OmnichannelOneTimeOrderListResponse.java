@@ -6,6 +6,7 @@ import com.chargebee.v4.models.omnichannelOneTimeOrder.OmnichannelOneTimeOrder;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.OmnichannelOneTimeOrderService;
 import com.chargebee.v4.models.omnichannelOneTimeOrder.params.OmnichannelOneTimeOrderListParams;
@@ -46,13 +47,13 @@ public final class OmnichannelOneTimeOrderListResponse {
    */
   public static OmnichannelOneTimeOrderListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelOneTimeOrderListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelOneTimeOrderListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OmnichannelOneTimeOrderListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelOneTimeOrderListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -71,13 +72,13 @@ public final class OmnichannelOneTimeOrderListResponse {
       OmnichannelOneTimeOrderListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<OmnichannelOneTimeOrderListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(OmnichannelOneTimeOrderListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), OmnichannelOneTimeOrderListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new OmnichannelOneTimeOrderListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -186,12 +187,17 @@ public final class OmnichannelOneTimeOrderListResponse {
     }
 
     public static OmnichannelOneTimeOrderListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static OmnichannelOneTimeOrderListItem fromJson(JsonObject jsonObj) {
       OmnichannelOneTimeOrderListItem item = new OmnichannelOneTimeOrderListItem();
 
-      String __omnichannelOneTimeOrderJson = JsonUtil.getObject(json, "omnichannel_one_time_order");
-      if (__omnichannelOneTimeOrderJson != null) {
+      JsonObject __omnichannelOneTimeOrderObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_one_time_order");
+      if (__omnichannelOneTimeOrderObj != null) {
         item.omnichannelOneTimeOrder =
-            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderJson);
+            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderObj);
       }
 
       return item;

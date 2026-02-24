@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.quotedCharge;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.util.List;
 
 public class QuotedCharge {
@@ -44,37 +46,28 @@ public class QuotedCharge {
   }
 
   public static QuotedCharge fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static QuotedCharge fromJson(JsonObject jsonObj) {
     QuotedCharge obj = new QuotedCharge();
 
-    obj.charges =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "charges")).stream()
-            .map(Charges::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.charges = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "charges"), Charges::fromJson);
 
     obj.invoiceItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "invoice_items")).stream()
-            .map(InvoiceItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "invoice_items"), InvoiceItems::fromJson);
 
     obj.itemTiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "item_tiers")).stream()
-            .map(ItemTiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "item_tiers"), ItemTiers::fromJson);
 
-    obj.coupons =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupons")).stream()
-            .map(Coupons::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.coupons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "coupons"), Coupons::fromJson);
 
     obj.couponApplicabilityMappings =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "coupon_applicability_mappings")).stream()
-            .map(CouponApplicabilityMappings::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "coupon_applicability_mappings"),
+            CouponApplicabilityMappings::fromJson);
 
-    obj.addons =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "addons")).stream()
-            .map(Addons::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.addons = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "addons"), Addons::fromJson);
 
     return obj;
   }
@@ -189,22 +182,26 @@ public class QuotedCharge {
     }
 
     public static Charges fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Charges fromJson(JsonObject jsonObj) {
       Charges obj = new Charges();
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
-      obj.servicePeriodInDays = JsonUtil.getInteger(json, "service_period_in_days");
+      obj.servicePeriodInDays = JsonUtil.getInteger(jsonObj, "service_period_in_days");
 
       obj.avalaraSaleType =
-          AvalaraSaleType.fromString(JsonUtil.getString(json, "avalara_sale_type"));
+          AvalaraSaleType.fromString(JsonUtil.getString(jsonObj, "avalara_sale_type"));
 
-      obj.avalaraTransactionType = JsonUtil.getInteger(json, "avalara_transaction_type");
+      obj.avalaraTransactionType = JsonUtil.getInteger(jsonObj, "avalara_transaction_type");
 
-      obj.avalaraServiceType = JsonUtil.getInteger(json, "avalara_service_type");
+      obj.avalaraServiceType = JsonUtil.getInteger(jsonObj, "avalara_service_type");
 
       return obj;
     }
@@ -292,19 +289,23 @@ public class QuotedCharge {
     }
 
     public static InvoiceItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static InvoiceItems fromJson(JsonObject jsonObj) {
       InvoiceItems obj = new InvoiceItems();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.servicePeriodDays = JsonUtil.getInteger(json, "service_period_days");
+      obj.servicePeriodDays = JsonUtil.getInteger(jsonObj, "service_period_days");
 
       return obj;
     }
@@ -438,27 +439,31 @@ public class QuotedCharge {
     }
 
     public static ItemTiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ItemTiers fromJson(JsonObject jsonObj) {
       ItemTiers obj = new ItemTiers();
 
-      obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+      obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
-      obj.index = JsonUtil.getInteger(json, "index");
+      obj.index = JsonUtil.getInteger(jsonObj, "index");
 
       return obj;
     }
@@ -533,9 +538,13 @@ public class QuotedCharge {
     }
 
     public static Coupons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Coupons fromJson(JsonObject jsonObj) {
       Coupons obj = new Coupons();
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
       return obj;
     }
@@ -575,12 +584,19 @@ public class QuotedCharge {
     }
 
     public static CouponApplicabilityMappings fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponApplicabilityMappings fromJson(JsonObject jsonObj) {
       CouponApplicabilityMappings obj = new CouponApplicabilityMappings();
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-      obj.applicableItemPriceIds =
-          JsonUtil.parseArrayOfString(JsonUtil.getArray(json, "applicable_item_price_ids"));
+      JsonArray __applicableItemPriceIdsArr =
+          JsonUtil.getJsonArray(jsonObj, "applicable_item_price_ids");
+      if (__applicableItemPriceIdsArr != null) {
+        obj.applicableItemPriceIds = JsonUtil.parseArrayOfString(__applicableItemPriceIdsArr);
+      }
 
       return obj;
     }
@@ -681,21 +697,25 @@ public class QuotedCharge {
     }
 
     public static Addons fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Addons fromJson(JsonObject jsonObj) {
       Addons obj = new Addons();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.unitPrice = JsonUtil.getLong(json, "unit_price");
+      obj.unitPrice = JsonUtil.getLong(jsonObj, "unit_price");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.unitPriceInDecimal = JsonUtil.getString(json, "unit_price_in_decimal");
+      obj.unitPriceInDecimal = JsonUtil.getString(jsonObj, "unit_price_in_decimal");
 
-      obj.prorationType = ProrationType.fromString(JsonUtil.getString(json, "proration_type"));
+      obj.prorationType = ProrationType.fromString(JsonUtil.getString(jsonObj, "proration_type"));
 
-      obj.servicePeriod = JsonUtil.getInteger(json, "service_period");
+      obj.servicePeriod = JsonUtil.getInteger(jsonObj, "service_period");
 
       return obj;
     }

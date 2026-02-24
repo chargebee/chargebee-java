@@ -8,6 +8,7 @@ import com.chargebee.v4.models.creditNote.CreditNote;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -39,21 +40,22 @@ public final class InvoiceRecordRefundResponse extends BaseResponse {
   /** Parse JSON response into InvoiceRecordRefundResponse object with HTTP response. */
   public static InvoiceRecordRefundResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        builder.invoice(Invoice.fromJson(__invoiceJson));
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        builder.invoice(Invoice.fromJson(__invoiceObj));
       }
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        builder.transaction(Transaction.fromJson(__transactionJson));
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        builder.transaction(Transaction.fromJson(__transactionObj));
       }
 
-      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
-      if (__creditNoteJson != null) {
-        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteObj));
       }
 
       builder.httpResponse(httpResponse);

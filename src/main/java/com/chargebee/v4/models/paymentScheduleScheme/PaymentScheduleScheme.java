@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentScheduleScheme;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -97,30 +98,33 @@ public class PaymentScheduleScheme {
   }
 
   public static PaymentScheduleScheme fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PaymentScheduleScheme fromJson(JsonObject jsonObj) {
     PaymentScheduleScheme obj = new PaymentScheduleScheme();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.description = JsonUtil.getString(json, "description");
+    obj.description = JsonUtil.getString(jsonObj, "description");
 
-    obj.numberOfSchedules = JsonUtil.getInteger(json, "number_of_schedules");
+    obj.numberOfSchedules = JsonUtil.getInteger(jsonObj, "number_of_schedules");
 
-    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+    obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-    obj.period = JsonUtil.getInteger(json, "period");
+    obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
     obj.preferredSchedules =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "preferred_schedules")).stream()
-            .map(PreferredSchedules::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "preferred_schedules"), PreferredSchedules::fromJson);
 
     return obj;
   }
@@ -199,11 +203,15 @@ public class PaymentScheduleScheme {
     }
 
     public static PreferredSchedules fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PreferredSchedules fromJson(JsonObject jsonObj) {
       PreferredSchedules obj = new PreferredSchedules();
 
-      obj.period = JsonUtil.getInteger(json, "period");
+      obj.period = JsonUtil.getInteger(jsonObj, "period");
 
-      obj.amountPercentage = JsonUtil.getBigDecimal(json, "amount_percentage");
+      obj.amountPercentage = JsonUtil.getBigDecimal(jsonObj, "amount_percentage");
 
       return obj;
     }

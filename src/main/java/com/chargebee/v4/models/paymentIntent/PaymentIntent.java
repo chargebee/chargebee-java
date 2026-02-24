@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentIntent;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -232,52 +233,56 @@ public class PaymentIntent {
   }
 
   public static PaymentIntent fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PaymentIntent fromJson(JsonObject jsonObj) {
     PaymentIntent obj = new PaymentIntent();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    obj.referenceId = JsonUtil.getString(json, "reference_id");
+    obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
     obj.paymentMethodType =
-        PaymentMethodType.fromString(JsonUtil.getString(json, "payment_method_type"));
+        PaymentMethodType.fromString(JsonUtil.getString(jsonObj, "payment_method_type"));
 
-    obj.successUrl = JsonUtil.getString(json, "success_url");
+    obj.successUrl = JsonUtil.getString(jsonObj, "success_url");
 
-    obj.failureUrl = JsonUtil.getString(json, "failure_url");
+    obj.failureUrl = JsonUtil.getString(jsonObj, "failure_url");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.gateway = JsonUtil.getString(json, "gateway");
+    obj.gateway = JsonUtil.getString(jsonObj, "gateway");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    String __activePaymentAttemptJson = JsonUtil.getObject(json, "active_payment_attempt");
-    if (__activePaymentAttemptJson != null) {
-      obj.activePaymentAttempt = ActivePaymentAttempt.fromJson(__activePaymentAttemptJson);
+    JsonObject __activePaymentAttemptObj =
+        JsonUtil.getJsonObject(jsonObj, "active_payment_attempt");
+    if (__activePaymentAttemptObj != null) {
+      obj.activePaymentAttempt = ActivePaymentAttempt.fromJson(__activePaymentAttemptObj);
     }
 
     obj.paymentAttempts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "payment_attempts")).stream()
-            .map(PaymentAttempts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "payment_attempts"), PaymentAttempts::fromJson);
 
     return obj;
   }
@@ -560,30 +565,34 @@ public class PaymentIntent {
     }
 
     public static ActivePaymentAttempt fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ActivePaymentAttempt fromJson(JsonObject jsonObj) {
       ActivePaymentAttempt obj = new ActivePaymentAttempt();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       obj.paymentMethodType =
-          PaymentMethodType.fromString(JsonUtil.getString(json, "payment_method_type"));
+          PaymentMethodType.fromString(JsonUtil.getString(jsonObj, "payment_method_type"));
 
-      obj.idAtGateway = JsonUtil.getString(json, "id_at_gateway");
+      obj.idAtGateway = JsonUtil.getString(jsonObj, "id_at_gateway");
 
-      obj.errorCode = JsonUtil.getString(json, "error_code");
+      obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-      obj.errorText = JsonUtil.getString(json, "error_text");
+      obj.errorText = JsonUtil.getString(jsonObj, "error_text");
 
-      obj.checkoutDetails = JsonUtil.getString(json, "checkout_details");
+      obj.checkoutDetails = JsonUtil.getString(jsonObj, "checkout_details");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+      obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-      String __errorDetailJson = JsonUtil.getObject(json, "error_detail");
-      if (__errorDetailJson != null) {
-        obj.errorDetail = ErrorDetail.fromJson(__errorDetailJson);
+      JsonObject __errorDetailObj = JsonUtil.getJsonObject(jsonObj, "error_detail");
+      if (__errorDetailObj != null) {
+        obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
       }
 
       return obj;
@@ -728,37 +737,41 @@ public class PaymentIntent {
       }
 
       public static ErrorDetail fromJson(String json) {
+        return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ErrorDetail fromJson(JsonObject jsonObj) {
         ErrorDetail obj = new ErrorDetail();
 
-        obj.requestId = JsonUtil.getString(json, "request_id");
+        obj.requestId = JsonUtil.getString(jsonObj, "request_id");
 
-        obj.errorCategory = JsonUtil.getString(json, "error_category");
+        obj.errorCategory = JsonUtil.getString(jsonObj, "error_category");
 
-        obj.errorCode = JsonUtil.getString(json, "error_code");
+        obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-        obj.errorMessage = JsonUtil.getString(json, "error_message");
+        obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
-        obj.declineCode = JsonUtil.getString(json, "decline_code");
+        obj.declineCode = JsonUtil.getString(jsonObj, "decline_code");
 
-        obj.declineMessage = JsonUtil.getString(json, "decline_message");
+        obj.declineMessage = JsonUtil.getString(jsonObj, "decline_message");
 
-        obj.networkErrorCode = JsonUtil.getString(json, "network_error_code");
+        obj.networkErrorCode = JsonUtil.getString(jsonObj, "network_error_code");
 
-        obj.networkErrorMessage = JsonUtil.getString(json, "network_error_message");
+        obj.networkErrorMessage = JsonUtil.getString(jsonObj, "network_error_message");
 
-        obj.errorField = JsonUtil.getString(json, "error_field");
+        obj.errorField = JsonUtil.getString(jsonObj, "error_field");
 
-        obj.recommendationCode = JsonUtil.getString(json, "recommendation_code");
+        obj.recommendationCode = JsonUtil.getString(jsonObj, "recommendation_code");
 
-        obj.recommendationMessage = JsonUtil.getString(json, "recommendation_message");
+        obj.recommendationMessage = JsonUtil.getString(jsonObj, "recommendation_message");
 
-        obj.processorErrorCode = JsonUtil.getString(json, "processor_error_code");
+        obj.processorErrorCode = JsonUtil.getString(jsonObj, "processor_error_code");
 
-        obj.processorErrorMessage = JsonUtil.getString(json, "processor_error_message");
+        obj.processorErrorMessage = JsonUtil.getString(jsonObj, "processor_error_message");
 
-        obj.errorCauseId = JsonUtil.getString(json, "error_cause_id");
+        obj.errorCauseId = JsonUtil.getString(jsonObj, "error_cause_id");
 
-        obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
+        obj.processorAdviceCode = JsonUtil.getString(jsonObj, "processor_advice_code");
 
         return obj;
       }
@@ -1027,30 +1040,34 @@ public class PaymentIntent {
     }
 
     public static PaymentAttempts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PaymentAttempts fromJson(JsonObject jsonObj) {
       PaymentAttempts obj = new PaymentAttempts();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
       obj.paymentMethodType =
-          PaymentMethodType.fromString(JsonUtil.getString(json, "payment_method_type"));
+          PaymentMethodType.fromString(JsonUtil.getString(jsonObj, "payment_method_type"));
 
-      obj.idAtGateway = JsonUtil.getString(json, "id_at_gateway");
+      obj.idAtGateway = JsonUtil.getString(jsonObj, "id_at_gateway");
 
-      obj.errorCode = JsonUtil.getString(json, "error_code");
+      obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-      obj.errorText = JsonUtil.getString(json, "error_text");
+      obj.errorText = JsonUtil.getString(jsonObj, "error_text");
 
-      obj.checkoutDetails = JsonUtil.getString(json, "checkout_details");
+      obj.checkoutDetails = JsonUtil.getString(jsonObj, "checkout_details");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+      obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-      String __errorDetailJson = JsonUtil.getObject(json, "error_detail");
-      if (__errorDetailJson != null) {
-        obj.errorDetail = ErrorDetail.fromJson(__errorDetailJson);
+      JsonObject __errorDetailObj = JsonUtil.getJsonObject(jsonObj, "error_detail");
+      if (__errorDetailObj != null) {
+        obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
       }
 
       return obj;
@@ -1195,37 +1212,41 @@ public class PaymentIntent {
       }
 
       public static ErrorDetail fromJson(String json) {
+        return fromJson(JsonUtil.parse(json));
+      }
+
+      public static ErrorDetail fromJson(JsonObject jsonObj) {
         ErrorDetail obj = new ErrorDetail();
 
-        obj.requestId = JsonUtil.getString(json, "request_id");
+        obj.requestId = JsonUtil.getString(jsonObj, "request_id");
 
-        obj.errorCategory = JsonUtil.getString(json, "error_category");
+        obj.errorCategory = JsonUtil.getString(jsonObj, "error_category");
 
-        obj.errorCode = JsonUtil.getString(json, "error_code");
+        obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-        obj.errorMessage = JsonUtil.getString(json, "error_message");
+        obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
-        obj.declineCode = JsonUtil.getString(json, "decline_code");
+        obj.declineCode = JsonUtil.getString(jsonObj, "decline_code");
 
-        obj.declineMessage = JsonUtil.getString(json, "decline_message");
+        obj.declineMessage = JsonUtil.getString(jsonObj, "decline_message");
 
-        obj.networkErrorCode = JsonUtil.getString(json, "network_error_code");
+        obj.networkErrorCode = JsonUtil.getString(jsonObj, "network_error_code");
 
-        obj.networkErrorMessage = JsonUtil.getString(json, "network_error_message");
+        obj.networkErrorMessage = JsonUtil.getString(jsonObj, "network_error_message");
 
-        obj.errorField = JsonUtil.getString(json, "error_field");
+        obj.errorField = JsonUtil.getString(jsonObj, "error_field");
 
-        obj.recommendationCode = JsonUtil.getString(json, "recommendation_code");
+        obj.recommendationCode = JsonUtil.getString(jsonObj, "recommendation_code");
 
-        obj.recommendationMessage = JsonUtil.getString(json, "recommendation_message");
+        obj.recommendationMessage = JsonUtil.getString(jsonObj, "recommendation_message");
 
-        obj.processorErrorCode = JsonUtil.getString(json, "processor_error_code");
+        obj.processorErrorCode = JsonUtil.getString(jsonObj, "processor_error_code");
 
-        obj.processorErrorMessage = JsonUtil.getString(json, "processor_error_message");
+        obj.processorErrorMessage = JsonUtil.getString(jsonObj, "processor_error_message");
 
-        obj.errorCauseId = JsonUtil.getString(json, "error_cause_id");
+        obj.errorCauseId = JsonUtil.getString(jsonObj, "error_cause_id");
 
-        obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
+        obj.processorAdviceCode = JsonUtil.getString(jsonObj, "processor_advice_code");
 
         return obj;
       }

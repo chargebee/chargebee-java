@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.couponSet;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class CouponSet {
 
@@ -48,24 +49,28 @@ public class CouponSet {
   }
 
   public static CouponSet fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static CouponSet fromJson(JsonObject jsonObj) {
     CouponSet obj = new CouponSet();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.couponId = JsonUtil.getString(json, "coupon_id");
+    obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.totalCount = JsonUtil.getInteger(json, "total_count");
+    obj.totalCount = JsonUtil.getInteger(jsonObj, "total_count");
 
-    obj.redeemedCount = JsonUtil.getInteger(json, "redeemed_count");
+    obj.redeemedCount = JsonUtil.getInteger(jsonObj, "redeemed_count");
 
-    obj.archivedCount = JsonUtil.getInteger(json, "archived_count");
+    obj.archivedCount = JsonUtil.getInteger(jsonObj, "archived_count");
 
-    String __metaDataJson = JsonUtil.getObject(json, "meta_data");
+    JsonObject __metaDataObj = JsonUtil.getJsonObject(jsonObj, "meta_data");
     obj.metaData =
-        __metaDataJson != null
-            ? JsonUtil.parseJsonObjectToMap(__metaDataJson)
+        __metaDataObj != null
+            ? JsonUtil.parseJsonObjectToMap(__metaDataObj)
             : new java.util.HashMap<>();
 
     return obj;

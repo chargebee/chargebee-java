@@ -6,6 +6,7 @@ import com.chargebee.v4.models.addon.Addon;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.AddonService;
 import com.chargebee.v4.models.addon.params.AddonListParams;
@@ -43,13 +44,12 @@ public final class AddonListResponse {
    */
   public static AddonListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<AddonListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(AddonListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), AddonListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new AddonListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -64,13 +64,12 @@ public final class AddonListResponse {
   public static AddonListResponse fromJson(
       String json, AddonService service, AddonListParams originalParams, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<AddonListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(AddonListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), AddonListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new AddonListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -170,11 +169,15 @@ public final class AddonListResponse {
     }
 
     public static AddonListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static AddonListItem fromJson(JsonObject jsonObj) {
       AddonListItem item = new AddonListItem();
 
-      String __addonJson = JsonUtil.getObject(json, "addon");
-      if (__addonJson != null) {
-        item.addon = Addon.fromJson(__addonJson);
+      JsonObject __addonObj = JsonUtil.getJsonObject(jsonObj, "addon");
+      if (__addonObj != null) {
+        item.addon = Addon.fromJson(__addonObj);
       }
 
       return item;

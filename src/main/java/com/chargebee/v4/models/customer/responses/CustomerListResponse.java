@@ -8,6 +8,7 @@ import com.chargebee.v4.models.card.Card;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CustomerService;
 import com.chargebee.v4.models.customer.params.CustomerListParams;
@@ -45,13 +46,12 @@ public final class CustomerListResponse {
    */
   public static CustomerListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CustomerListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -69,13 +69,12 @@ public final class CustomerListResponse {
       CustomerListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CustomerListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -181,16 +180,20 @@ public final class CustomerListResponse {
     }
 
     public static CustomerListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CustomerListItem fromJson(JsonObject jsonObj) {
       CustomerListItem item = new CustomerListItem();
 
-      String __customerJson = JsonUtil.getObject(json, "customer");
-      if (__customerJson != null) {
-        item.customer = Customer.fromJson(__customerJson);
+      JsonObject __customerObj = JsonUtil.getJsonObject(jsonObj, "customer");
+      if (__customerObj != null) {
+        item.customer = Customer.fromJson(__customerObj);
       }
 
-      String __cardJson = JsonUtil.getObject(json, "card");
-      if (__cardJson != null) {
-        item.card = Card.fromJson(__cardJson);
+      JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
+      if (__cardObj != null) {
+        item.card = Card.fromJson(__cardObj);
       }
 
       return item;

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.transaction;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -660,114 +661,114 @@ public class Transaction {
   }
 
   public static Transaction fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Transaction fromJson(JsonObject jsonObj) {
     Transaction obj = new Transaction();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.paymentSourceId = JsonUtil.getString(json, "payment_source_id");
+    obj.paymentSourceId = JsonUtil.getString(jsonObj, "payment_source_id");
 
-    obj.paymentMethod = PaymentMethod.fromString(JsonUtil.getString(json, "payment_method"));
+    obj.paymentMethod = PaymentMethod.fromString(JsonUtil.getString(jsonObj, "payment_method"));
 
-    obj.referenceNumber = JsonUtil.getString(json, "reference_number");
+    obj.referenceNumber = JsonUtil.getString(jsonObj, "reference_number");
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.date = JsonUtil.getTimestamp(json, "date");
+    obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
-    obj.settledAt = JsonUtil.getTimestamp(json, "settled_at");
+    obj.settledAt = JsonUtil.getTimestamp(jsonObj, "settled_at");
 
-    obj.exchangeRate = JsonUtil.getBigDecimal(json, "exchange_rate");
+    obj.exchangeRate = JsonUtil.getBigDecimal(jsonObj, "exchange_rate");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.idAtGateway = JsonUtil.getString(json, "id_at_gateway");
+    obj.idAtGateway = JsonUtil.getString(jsonObj, "id_at_gateway");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.fraudFlag = FraudFlag.fromString(JsonUtil.getString(json, "fraud_flag"));
+    obj.fraudFlag = FraudFlag.fromString(JsonUtil.getString(jsonObj, "fraud_flag"));
 
-    obj.initiatorType = InitiatorType.fromString(JsonUtil.getString(json, "initiator_type"));
+    obj.initiatorType = InitiatorType.fromString(JsonUtil.getString(jsonObj, "initiator_type"));
 
-    obj.threeDSecure = JsonUtil.getBoolean(json, "three_d_secure");
+    obj.threeDSecure = JsonUtil.getBoolean(jsonObj, "three_d_secure");
 
     obj.authorizationReason =
-        AuthorizationReason.fromString(JsonUtil.getString(json, "authorization_reason"));
+        AuthorizationReason.fromString(JsonUtil.getString(jsonObj, "authorization_reason"));
 
-    obj.errorCode = JsonUtil.getString(json, "error_code");
+    obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-    obj.errorText = JsonUtil.getString(json, "error_text");
+    obj.errorText = JsonUtil.getString(jsonObj, "error_text");
 
-    obj.voidedAt = JsonUtil.getTimestamp(json, "voided_at");
+    obj.voidedAt = JsonUtil.getTimestamp(jsonObj, "voided_at");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.fraudReason = JsonUtil.getString(json, "fraud_reason");
+    obj.fraudReason = JsonUtil.getString(jsonObj, "fraud_reason");
 
-    obj.customPaymentMethodId = JsonUtil.getString(json, "custom_payment_method_id");
+    obj.customPaymentMethodId = JsonUtil.getString(jsonObj, "custom_payment_method_id");
 
-    obj.amountUnused = JsonUtil.getLong(json, "amount_unused");
+    obj.amountUnused = JsonUtil.getLong(jsonObj, "amount_unused");
 
-    obj.maskedCardNumber = JsonUtil.getString(json, "masked_card_number");
+    obj.maskedCardNumber = JsonUtil.getString(jsonObj, "masked_card_number");
 
-    obj.referenceTransactionId = JsonUtil.getString(json, "reference_transaction_id");
+    obj.referenceTransactionId = JsonUtil.getString(jsonObj, "reference_transaction_id");
 
-    obj.refundedTxnId = JsonUtil.getString(json, "refunded_txn_id");
+    obj.refundedTxnId = JsonUtil.getString(jsonObj, "refunded_txn_id");
 
-    obj.referenceAuthorizationId = JsonUtil.getString(json, "reference_authorization_id");
+    obj.referenceAuthorizationId = JsonUtil.getString(jsonObj, "reference_authorization_id");
 
-    obj.amountCapturable = JsonUtil.getLong(json, "amount_capturable");
+    obj.amountCapturable = JsonUtil.getLong(jsonObj, "amount_capturable");
 
-    obj.reversalTransactionId = JsonUtil.getString(json, "reversal_transaction_id");
+    obj.reversalTransactionId = JsonUtil.getString(jsonObj, "reversal_transaction_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.iin = JsonUtil.getString(json, "iin");
+    obj.iin = JsonUtil.getString(jsonObj, "iin");
 
-    obj.last4 = JsonUtil.getString(json, "last4");
+    obj.last4 = JsonUtil.getString(jsonObj, "last4");
 
-    obj.merchantReferenceId = JsonUtil.getString(json, "merchant_reference_id");
+    obj.merchantReferenceId = JsonUtil.getString(jsonObj, "merchant_reference_id");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.paymentMethodDetails = JsonUtil.getString(json, "payment_method_details");
+    obj.paymentMethodDetails = JsonUtil.getString(jsonObj, "payment_method_details");
 
-    obj.customPaymentMethodName = JsonUtil.getString(json, "custom_payment_method_name");
+    obj.customPaymentMethodName = JsonUtil.getString(jsonObj, "custom_payment_method_name");
 
     obj.linkedInvoices =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_invoices")).stream()
-            .map(LinkedInvoices::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_invoices"), LinkedInvoices::fromJson);
 
     obj.linkedCreditNotes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_credit_notes")).stream()
-            .map(LinkedCreditNotes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_credit_notes"), LinkedCreditNotes::fromJson);
 
     obj.linkedRefunds =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_refunds")).stream()
-            .map(LinkedRefunds::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_refunds"), LinkedRefunds::fromJson);
 
     obj.linkedPayments =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_payments")).stream()
-            .map(LinkedPayments::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_payments"), LinkedPayments::fromJson);
 
-    String __errorDetailJson = JsonUtil.getObject(json, "error_detail");
-    if (__errorDetailJson != null) {
-      obj.errorDetail = ErrorDetail.fromJson(__errorDetailJson);
+    JsonObject __errorDetailObj = JsonUtil.getJsonObject(jsonObj, "error_detail");
+    if (__errorDetailObj != null) {
+      obj.errorDetail = ErrorDetail.fromJson(__errorDetailObj);
     }
 
     return obj;
@@ -1047,19 +1048,23 @@ public class Transaction {
     }
 
     public static LinkedInvoices fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedInvoices fromJson(JsonObject jsonObj) {
       LinkedInvoices obj = new LinkedInvoices();
 
-      obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+      obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-      obj.appliedAmount = JsonUtil.getLong(json, "applied_amount");
+      obj.appliedAmount = JsonUtil.getLong(jsonObj, "applied_amount");
 
-      obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
+      obj.appliedAt = JsonUtil.getTimestamp(jsonObj, "applied_at");
 
-      obj.invoiceDate = JsonUtil.getTimestamp(json, "invoice_date");
+      obj.invoiceDate = JsonUtil.getTimestamp(jsonObj, "invoice_date");
 
-      obj.invoiceTotal = JsonUtil.getLong(json, "invoice_total");
+      obj.invoiceTotal = JsonUtil.getLong(jsonObj, "invoice_total");
 
-      obj.invoiceStatus = InvoiceStatus.fromString(JsonUtil.getString(json, "invoice_status"));
+      obj.invoiceStatus = InvoiceStatus.fromString(JsonUtil.getString(jsonObj, "invoice_status"));
 
       return obj;
     }
@@ -1233,25 +1238,29 @@ public class Transaction {
     }
 
     public static LinkedCreditNotes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedCreditNotes fromJson(JsonObject jsonObj) {
       LinkedCreditNotes obj = new LinkedCreditNotes();
 
-      obj.cnId = JsonUtil.getString(json, "cn_id");
+      obj.cnId = JsonUtil.getString(jsonObj, "cn_id");
 
-      obj.appliedAmount = JsonUtil.getLong(json, "applied_amount");
+      obj.appliedAmount = JsonUtil.getLong(jsonObj, "applied_amount");
 
-      obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
+      obj.appliedAt = JsonUtil.getTimestamp(jsonObj, "applied_at");
 
-      obj.cnReasonCode = CnReasonCode.fromString(JsonUtil.getString(json, "cn_reason_code"));
+      obj.cnReasonCode = CnReasonCode.fromString(JsonUtil.getString(jsonObj, "cn_reason_code"));
 
-      obj.cnCreateReasonCode = JsonUtil.getString(json, "cn_create_reason_code");
+      obj.cnCreateReasonCode = JsonUtil.getString(jsonObj, "cn_create_reason_code");
 
-      obj.cnDate = JsonUtil.getTimestamp(json, "cn_date");
+      obj.cnDate = JsonUtil.getTimestamp(jsonObj, "cn_date");
 
-      obj.cnTotal = JsonUtil.getLong(json, "cn_total");
+      obj.cnTotal = JsonUtil.getLong(jsonObj, "cn_total");
 
-      obj.cnStatus = CnStatus.fromString(JsonUtil.getString(json, "cn_status"));
+      obj.cnStatus = CnStatus.fromString(JsonUtil.getString(jsonObj, "cn_status"));
 
-      obj.cnReferenceInvoiceId = JsonUtil.getString(json, "cn_reference_invoice_id");
+      obj.cnReferenceInvoiceId = JsonUtil.getString(jsonObj, "cn_reference_invoice_id");
 
       return obj;
     }
@@ -1375,15 +1384,19 @@ public class Transaction {
     }
 
     public static LinkedRefunds fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedRefunds fromJson(JsonObject jsonObj) {
       LinkedRefunds obj = new LinkedRefunds();
 
-      obj.txnId = JsonUtil.getString(json, "txn_id");
+      obj.txnId = JsonUtil.getString(jsonObj, "txn_id");
 
-      obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(json, "txn_status"));
+      obj.txnStatus = TxnStatus.fromString(JsonUtil.getString(jsonObj, "txn_status"));
 
-      obj.txnDate = JsonUtil.getTimestamp(json, "txn_date");
+      obj.txnDate = JsonUtil.getTimestamp(jsonObj, "txn_date");
 
-      obj.txnAmount = JsonUtil.getLong(json, "txn_amount");
+      obj.txnAmount = JsonUtil.getLong(jsonObj, "txn_amount");
 
       return obj;
     }
@@ -1483,15 +1496,19 @@ public class Transaction {
     }
 
     public static LinkedPayments fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedPayments fromJson(JsonObject jsonObj) {
       LinkedPayments obj = new LinkedPayments();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.date = JsonUtil.getTimestamp(json, "date");
+      obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
       return obj;
     }
@@ -1608,37 +1625,41 @@ public class Transaction {
     }
 
     public static ErrorDetail fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ErrorDetail fromJson(JsonObject jsonObj) {
       ErrorDetail obj = new ErrorDetail();
 
-      obj.requestId = JsonUtil.getString(json, "request_id");
+      obj.requestId = JsonUtil.getString(jsonObj, "request_id");
 
-      obj.errorCategory = JsonUtil.getString(json, "error_category");
+      obj.errorCategory = JsonUtil.getString(jsonObj, "error_category");
 
-      obj.errorCode = JsonUtil.getString(json, "error_code");
+      obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-      obj.errorMessage = JsonUtil.getString(json, "error_message");
+      obj.errorMessage = JsonUtil.getString(jsonObj, "error_message");
 
-      obj.declineCode = JsonUtil.getString(json, "decline_code");
+      obj.declineCode = JsonUtil.getString(jsonObj, "decline_code");
 
-      obj.declineMessage = JsonUtil.getString(json, "decline_message");
+      obj.declineMessage = JsonUtil.getString(jsonObj, "decline_message");
 
-      obj.networkErrorCode = JsonUtil.getString(json, "network_error_code");
+      obj.networkErrorCode = JsonUtil.getString(jsonObj, "network_error_code");
 
-      obj.networkErrorMessage = JsonUtil.getString(json, "network_error_message");
+      obj.networkErrorMessage = JsonUtil.getString(jsonObj, "network_error_message");
 
-      obj.errorField = JsonUtil.getString(json, "error_field");
+      obj.errorField = JsonUtil.getString(jsonObj, "error_field");
 
-      obj.recommendationCode = JsonUtil.getString(json, "recommendation_code");
+      obj.recommendationCode = JsonUtil.getString(jsonObj, "recommendation_code");
 
-      obj.recommendationMessage = JsonUtil.getString(json, "recommendation_message");
+      obj.recommendationMessage = JsonUtil.getString(jsonObj, "recommendation_message");
 
-      obj.processorErrorCode = JsonUtil.getString(json, "processor_error_code");
+      obj.processorErrorCode = JsonUtil.getString(jsonObj, "processor_error_code");
 
-      obj.processorErrorMessage = JsonUtil.getString(json, "processor_error_message");
+      obj.processorErrorMessage = JsonUtil.getString(jsonObj, "processor_error_message");
 
-      obj.errorCauseId = JsonUtil.getString(json, "error_cause_id");
+      obj.errorCauseId = JsonUtil.getString(jsonObj, "error_cause_id");
 
-      obj.processorAdviceCode = JsonUtil.getString(json, "processor_advice_code");
+      obj.processorAdviceCode = JsonUtil.getString(jsonObj, "processor_advice_code");
 
       return obj;
     }

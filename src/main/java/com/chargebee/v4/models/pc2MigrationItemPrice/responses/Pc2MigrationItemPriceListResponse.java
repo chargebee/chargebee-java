@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.Pc2MigrationItemPriceService;
 import com.chargebee.v4.models.pc2MigrationItemPrice.params.Pc2MigrationItemPriceListParams;
@@ -43,13 +45,13 @@ public final class Pc2MigrationItemPriceListResponse {
    */
   public static Pc2MigrationItemPriceListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
+      JsonArray __listArr = JsonUtil.getJsonArray(jsonObj, "list");
       List<java.util.Map<String, Object>> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(JsonUtil::parseJsonObjectToMap)
-              .collect(java.util.stream.Collectors.toList());
+          __listArr != null ? JsonUtil.mapArrayToMaps(__listArr) : null;
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new Pc2MigrationItemPriceListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +69,13 @@ public final class Pc2MigrationItemPriceListResponse {
       Pc2MigrationItemPriceListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
+      JsonArray __listArr = JsonUtil.getJsonArray(jsonObj, "list");
       List<java.util.Map<String, Object>> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(JsonUtil::parseJsonObjectToMap)
-              .collect(java.util.stream.Collectors.toList());
+          __listArr != null ? JsonUtil.mapArrayToMaps(__listArr) : null;
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new Pc2MigrationItemPriceListResponse(
           list, nextOffset, service, originalParams, httpResponse);

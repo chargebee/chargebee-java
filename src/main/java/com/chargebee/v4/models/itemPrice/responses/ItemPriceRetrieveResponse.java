@@ -4,6 +4,7 @@ import com.chargebee.v4.models.itemPrice.ItemPrice;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class ItemPriceRetrieveResponse extends BaseResponse {
   /** Parse JSON response into ItemPriceRetrieveResponse object with HTTP response. */
   public static ItemPriceRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __itemPriceJson = JsonUtil.getObject(json, "item_price");
-      if (__itemPriceJson != null) {
-        builder.itemPrice(ItemPrice.fromJson(__itemPriceJson));
+      JsonObject __itemPriceObj = JsonUtil.getJsonObject(jsonObj, "item_price");
+      if (__itemPriceObj != null) {
+        builder.itemPrice(ItemPrice.fromJson(__itemPriceObj));
       }
 
       builder.httpResponse(httpResponse);

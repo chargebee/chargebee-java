@@ -4,6 +4,7 @@ import com.chargebee.v4.models.advanceInvoiceSchedule.AdvanceInvoiceSchedule;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.util.List;
 
@@ -32,15 +33,13 @@ public final class SubscriptionRetrieveAdvanceInvoiceScheduleResponse extends Ba
   public static SubscriptionRetrieveAdvanceInvoiceScheduleResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __advanceInvoiceSchedulesJson = JsonUtil.getArray(json, "advance_invoice_schedules");
-      if (__advanceInvoiceSchedulesJson != null) {
-        builder.advanceInvoiceSchedules(
-            JsonUtil.parseObjectArray(__advanceInvoiceSchedulesJson).stream()
-                .map(AdvanceInvoiceSchedule::fromJson)
-                .collect(java.util.stream.Collectors.toList()));
-      }
+      builder.advanceInvoiceSchedules(
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "advance_invoice_schedules"),
+              AdvanceInvoiceSchedule::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

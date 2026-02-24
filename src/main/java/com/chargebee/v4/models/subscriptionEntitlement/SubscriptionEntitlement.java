@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.subscriptionEntitlement;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class SubscriptionEntitlement {
@@ -111,35 +112,39 @@ public class SubscriptionEntitlement {
   }
 
   public static SubscriptionEntitlement fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static SubscriptionEntitlement fromJson(JsonObject jsonObj) {
     SubscriptionEntitlement obj = new SubscriptionEntitlement();
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.featureId = JsonUtil.getString(json, "feature_id");
+    obj.featureId = JsonUtil.getString(jsonObj, "feature_id");
 
-    obj.featureName = JsonUtil.getString(json, "feature_name");
+    obj.featureName = JsonUtil.getString(jsonObj, "feature_name");
 
-    obj.featureUnit = JsonUtil.getString(json, "feature_unit");
+    obj.featureUnit = JsonUtil.getString(jsonObj, "feature_unit");
 
-    obj.featureType = JsonUtil.getString(json, "feature_type");
+    obj.featureType = JsonUtil.getString(jsonObj, "feature_type");
 
-    obj.value = JsonUtil.getString(json, "value");
+    obj.value = JsonUtil.getString(jsonObj, "value");
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.isOverridden = JsonUtil.getBoolean(json, "is_overridden");
+    obj.isOverridden = JsonUtil.getBoolean(jsonObj, "is_overridden");
 
-    obj.isEnabled = JsonUtil.getBoolean(json, "is_enabled");
+    obj.isEnabled = JsonUtil.getBoolean(jsonObj, "is_enabled");
 
-    obj.effectiveFrom = JsonUtil.getTimestamp(json, "effective_from");
+    obj.effectiveFrom = JsonUtil.getTimestamp(jsonObj, "effective_from");
 
-    obj.scheduleStatus = ScheduleStatus.fromString(JsonUtil.getString(json, "schedule_status"));
+    obj.scheduleStatus = ScheduleStatus.fromString(JsonUtil.getString(jsonObj, "schedule_status"));
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    String __componentsJson = JsonUtil.getObject(json, "components");
-    if (__componentsJson != null) {
-      obj.components = Components.fromJson(__componentsJson);
+    JsonObject __componentsObj = JsonUtil.getJsonObject(jsonObj, "components");
+    if (__componentsObj != null) {
+      obj.components = Components.fromJson(__componentsObj);
     }
 
     return obj;
@@ -226,11 +231,16 @@ public class SubscriptionEntitlement {
     }
 
     public static Components fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Components fromJson(JsonObject jsonObj) {
       Components obj = new Components();
 
-      String __entitlementOverridesJson = JsonUtil.getObject(json, "entitlement_overrides");
-      if (__entitlementOverridesJson != null) {
-        obj.entitlementOverrides = EntitlementOverrides.fromJson(__entitlementOverridesJson);
+      JsonObject __entitlementOverridesObj =
+          JsonUtil.getJsonObject(jsonObj, "entitlement_overrides");
+      if (__entitlementOverridesObj != null) {
+        obj.entitlementOverrides = EntitlementOverrides.fromJson(__entitlementOverridesObj);
       }
 
       return obj;
@@ -270,11 +280,15 @@ public class SubscriptionEntitlement {
       }
 
       public static EntitlementOverrides fromJson(String json) {
+        return fromJson(JsonUtil.parse(json));
+      }
+
+      public static EntitlementOverrides fromJson(JsonObject jsonObj) {
         EntitlementOverrides obj = new EntitlementOverrides();
 
-        obj.value = JsonUtil.getString(json, "value");
+        obj.value = JsonUtil.getString(jsonObj, "value");
 
-        obj.name = JsonUtil.getString(json, "name");
+        obj.name = JsonUtil.getString(jsonObj, "name");
 
         return obj;
       }

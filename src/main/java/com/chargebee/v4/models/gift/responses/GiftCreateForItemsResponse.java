@@ -8,6 +8,7 @@ import com.chargebee.v4.models.subscription.Subscription;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -39,21 +40,22 @@ public final class GiftCreateForItemsResponse extends BaseResponse {
   /** Parse JSON response into GiftCreateForItemsResponse object with HTTP response. */
   public static GiftCreateForItemsResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __giftJson = JsonUtil.getObject(json, "gift");
-      if (__giftJson != null) {
-        builder.gift(Gift.fromJson(__giftJson));
+      JsonObject __giftObj = JsonUtil.getJsonObject(jsonObj, "gift");
+      if (__giftObj != null) {
+        builder.gift(Gift.fromJson(__giftObj));
       }
 
-      String __subscriptionJson = JsonUtil.getObject(json, "subscription");
-      if (__subscriptionJson != null) {
-        builder.subscription(Subscription.fromJson(__subscriptionJson));
+      JsonObject __subscriptionObj = JsonUtil.getJsonObject(jsonObj, "subscription");
+      if (__subscriptionObj != null) {
+        builder.subscription(Subscription.fromJson(__subscriptionObj));
       }
 
-      String __invoiceJson = JsonUtil.getObject(json, "invoice");
-      if (__invoiceJson != null) {
-        builder.invoice(Invoice.fromJson(__invoiceJson));
+      JsonObject __invoiceObj = JsonUtil.getJsonObject(jsonObj, "invoice");
+      if (__invoiceObj != null) {
+        builder.invoice(Invoice.fromJson(__invoiceObj));
       }
 
       builder.httpResponse(httpResponse);

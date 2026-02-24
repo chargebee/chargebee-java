@@ -4,6 +4,7 @@ import com.chargebee.v4.models.item.Item;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /** Immutable response object for ItemDelete operation. Contains the response data from the API. */
@@ -24,11 +25,12 @@ public final class ItemDeleteResponse extends BaseResponse {
   /** Parse JSON response into ItemDeleteResponse object with HTTP response. */
   public static ItemDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __itemJson = JsonUtil.getObject(json, "item");
-      if (__itemJson != null) {
-        builder.item(Item.fromJson(__itemJson));
+      JsonObject __itemObj = JsonUtil.getJsonObject(jsonObj, "item");
+      if (__itemObj != null) {
+        builder.item(Item.fromJson(__itemObj));
       }
 
       builder.httpResponse(httpResponse);

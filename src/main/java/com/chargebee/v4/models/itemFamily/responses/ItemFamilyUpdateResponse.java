@@ -4,6 +4,7 @@ import com.chargebee.v4.models.itemFamily.ItemFamily;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class ItemFamilyUpdateResponse extends BaseResponse {
   /** Parse JSON response into ItemFamilyUpdateResponse object with HTTP response. */
   public static ItemFamilyUpdateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __itemFamilyJson = JsonUtil.getObject(json, "item_family");
-      if (__itemFamilyJson != null) {
-        builder.itemFamily(ItemFamily.fromJson(__itemFamilyJson));
+      JsonObject __itemFamilyObj = JsonUtil.getJsonObject(jsonObj, "item_family");
+      if (__itemFamilyObj != null) {
+        builder.itemFamily(ItemFamily.fromJson(__itemFamilyObj));
       }
 
       builder.httpResponse(httpResponse);

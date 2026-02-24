@@ -4,6 +4,7 @@ import com.chargebee.v4.models.virtualBankAccount.VirtualBankAccount;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class VirtualBankAccountDeleteResponse extends BaseResponse {
   /** Parse JSON response into VirtualBankAccountDeleteResponse object with HTTP response. */
   public static VirtualBankAccountDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __virtualBankAccountJson = JsonUtil.getObject(json, "virtual_bank_account");
-      if (__virtualBankAccountJson != null) {
-        builder.virtualBankAccount(VirtualBankAccount.fromJson(__virtualBankAccountJson));
+      JsonObject __virtualBankAccountObj = JsonUtil.getJsonObject(jsonObj, "virtual_bank_account");
+      if (__virtualBankAccountObj != null) {
+        builder.virtualBankAccount(VirtualBankAccount.fromJson(__virtualBankAccountObj));
       }
 
       builder.httpResponse(httpResponse);

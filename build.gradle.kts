@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.chargebee"
-version = "4.3.0"
+version = "4.4.0"
 description = "Java client library for ChargeBee"
 
 // Project metadata
@@ -42,6 +42,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.code.gson:gson:2.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.mockito:mockito-core:4.11.0")

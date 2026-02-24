@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.usage;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Usage {
@@ -104,31 +105,35 @@ public class Usage {
   }
 
   public static Usage fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Usage fromJson(JsonObject jsonObj) {
     Usage obj = new Usage();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.usageDate = JsonUtil.getTimestamp(json, "usage_date");
+    obj.usageDate = JsonUtil.getTimestamp(jsonObj, "usage_date");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+    obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-    obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+    obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-    obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+    obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-    obj.quantity = JsonUtil.getString(json, "quantity");
+    obj.quantity = JsonUtil.getString(jsonObj, "quantity");
 
-    obj.source = Source.fromString(JsonUtil.getString(json, "source"));
+    obj.source = Source.fromString(JsonUtil.getString(jsonObj, "source"));
 
-    obj.note = JsonUtil.getString(json, "note");
+    obj.note = JsonUtil.getString(jsonObj, "note");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
     return obj;
   }

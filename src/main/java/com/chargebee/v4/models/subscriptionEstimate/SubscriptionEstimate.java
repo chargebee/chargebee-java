@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.subscriptionEstimate;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class SubscriptionEstimate {
@@ -129,30 +130,34 @@ public class SubscriptionEstimate {
   }
 
   public static SubscriptionEstimate fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static SubscriptionEstimate fromJson(JsonObject jsonObj) {
     SubscriptionEstimate obj = new SubscriptionEstimate();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.trialEndAction = TrialEndAction.fromString(JsonUtil.getString(json, "trial_end_action"));
+    obj.trialEndAction = TrialEndAction.fromString(JsonUtil.getString(jsonObj, "trial_end_action"));
 
-    obj.nextBillingAt = JsonUtil.getTimestamp(json, "next_billing_at");
+    obj.nextBillingAt = JsonUtil.getTimestamp(jsonObj, "next_billing_at");
 
-    obj.pauseDate = JsonUtil.getTimestamp(json, "pause_date");
+    obj.pauseDate = JsonUtil.getTimestamp(jsonObj, "pause_date");
 
-    obj.resumeDate = JsonUtil.getTimestamp(json, "resume_date");
+    obj.resumeDate = JsonUtil.getTimestamp(jsonObj, "resume_date");
 
-    String __shippingAddressJson = JsonUtil.getObject(json, "shipping_address");
-    if (__shippingAddressJson != null) {
-      obj.shippingAddress = ShippingAddress.fromJson(__shippingAddressJson);
+    JsonObject __shippingAddressObj = JsonUtil.getJsonObject(jsonObj, "shipping_address");
+    if (__shippingAddressObj != null) {
+      obj.shippingAddress = ShippingAddress.fromJson(__shippingAddressObj);
     }
 
-    String __contractTermJson = JsonUtil.getObject(json, "contract_term");
-    if (__contractTermJson != null) {
-      obj.contractTerm = ContractTerm.fromJson(__contractTermJson);
+    JsonObject __contractTermObj = JsonUtil.getJsonObject(jsonObj, "contract_term");
+    if (__contractTermObj != null) {
+      obj.contractTerm = ContractTerm.fromJson(__contractTermObj);
     }
 
     return obj;
@@ -320,36 +325,40 @@ public class SubscriptionEstimate {
     }
 
     public static ShippingAddress fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ShippingAddress fromJson(JsonObject jsonObj) {
       ShippingAddress obj = new ShippingAddress();
 
-      obj.firstName = JsonUtil.getString(json, "first_name");
+      obj.firstName = JsonUtil.getString(jsonObj, "first_name");
 
-      obj.lastName = JsonUtil.getString(json, "last_name");
+      obj.lastName = JsonUtil.getString(jsonObj, "last_name");
 
-      obj.email = JsonUtil.getString(json, "email");
+      obj.email = JsonUtil.getString(jsonObj, "email");
 
-      obj.company = JsonUtil.getString(json, "company");
+      obj.company = JsonUtil.getString(jsonObj, "company");
 
-      obj.phone = JsonUtil.getString(json, "phone");
+      obj.phone = JsonUtil.getString(jsonObj, "phone");
 
-      obj.line1 = JsonUtil.getString(json, "line1");
+      obj.line1 = JsonUtil.getString(jsonObj, "line1");
 
-      obj.line2 = JsonUtil.getString(json, "line2");
+      obj.line2 = JsonUtil.getString(jsonObj, "line2");
 
-      obj.line3 = JsonUtil.getString(json, "line3");
+      obj.line3 = JsonUtil.getString(jsonObj, "line3");
 
-      obj.city = JsonUtil.getString(json, "city");
+      obj.city = JsonUtil.getString(jsonObj, "city");
 
-      obj.stateCode = JsonUtil.getString(json, "state_code");
+      obj.stateCode = JsonUtil.getString(jsonObj, "state_code");
 
-      obj.state = JsonUtil.getString(json, "state");
+      obj.state = JsonUtil.getString(jsonObj, "state");
 
-      obj.country = JsonUtil.getString(json, "country");
+      obj.country = JsonUtil.getString(jsonObj, "country");
 
-      obj.zip = JsonUtil.getString(json, "zip");
+      obj.zip = JsonUtil.getString(jsonObj, "zip");
 
       obj.validationStatus =
-          ValidationStatus.fromString(JsonUtil.getString(json, "validation_status"));
+          ValidationStatus.fromString(JsonUtil.getString(jsonObj, "validation_status"));
 
       return obj;
     }
@@ -559,32 +568,37 @@ public class SubscriptionEstimate {
     }
 
     public static ContractTerm fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ContractTerm fromJson(JsonObject jsonObj) {
       ContractTerm obj = new ContractTerm();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+      obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-      obj.contractStart = JsonUtil.getTimestamp(json, "contract_start");
+      obj.contractStart = JsonUtil.getTimestamp(jsonObj, "contract_start");
 
-      obj.contractEnd = JsonUtil.getTimestamp(json, "contract_end");
+      obj.contractEnd = JsonUtil.getTimestamp(jsonObj, "contract_end");
 
-      obj.billingCycle = JsonUtil.getInteger(json, "billing_cycle");
+      obj.billingCycle = JsonUtil.getInteger(jsonObj, "billing_cycle");
 
       obj.actionAtTermEnd =
-          ActionAtTermEnd.fromString(JsonUtil.getString(json, "action_at_term_end"));
+          ActionAtTermEnd.fromString(JsonUtil.getString(jsonObj, "action_at_term_end"));
 
-      obj.totalContractValue = JsonUtil.getLong(json, "total_contract_value");
+      obj.totalContractValue = JsonUtil.getLong(jsonObj, "total_contract_value");
 
-      obj.totalContractValueBeforeTax = JsonUtil.getLong(json, "total_contract_value_before_tax");
+      obj.totalContractValueBeforeTax =
+          JsonUtil.getLong(jsonObj, "total_contract_value_before_tax");
 
-      obj.cancellationCutoffPeriod = JsonUtil.getInteger(json, "cancellation_cutoff_period");
+      obj.cancellationCutoffPeriod = JsonUtil.getInteger(jsonObj, "cancellation_cutoff_period");
 
-      obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+      obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-      obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+      obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-      obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
+      obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
 
       return obj;
     }

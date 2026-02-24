@@ -2,6 +2,7 @@ package com.chargebee.v4.models.fullExport.responses;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -25,9 +26,10 @@ public final class FullExportStatusResponse extends BaseResponse {
   /** Parse JSON response into FullExportStatusResponse object with HTTP response. */
   public static FullExportStatusResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.fullExport(JsonUtil.getObject(json, "full_export"));
+      builder.fullExport(JsonUtil.getObject(jsonObj, "full_export"));
 
       builder.httpResponse(httpResponse);
       return builder.build();

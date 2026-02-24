@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.media;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Media {
 
@@ -33,15 +34,19 @@ public class Media {
   }
 
   public static Media fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Media fromJson(JsonObject jsonObj) {
     Media obj = new Media();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.altText = JsonUtil.getString(json, "alt_text");
+    obj.altText = JsonUtil.getString(jsonObj, "alt_text");
 
-    obj.mediaType = JsonUtil.getString(json, "media_type");
+    obj.mediaType = JsonUtil.getString(jsonObj, "media_type");
 
     return obj;
   }

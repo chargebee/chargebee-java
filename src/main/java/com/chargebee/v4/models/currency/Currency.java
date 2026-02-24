@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.currency;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Currency {
 
@@ -71,19 +72,23 @@ public class Currency {
   }
 
   public static Currency fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Currency fromJson(JsonObject jsonObj) {
     Currency obj = new Currency();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.enabled = JsonUtil.getBoolean(json, "enabled");
+    obj.enabled = JsonUtil.getBoolean(jsonObj, "enabled");
 
-    obj.forexType = ForexType.fromString(JsonUtil.getString(json, "forex_type"));
+    obj.forexType = ForexType.fromString(JsonUtil.getString(jsonObj, "forex_type"));
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.isBaseCurrency = JsonUtil.getBoolean(json, "is_base_currency");
+    obj.isBaseCurrency = JsonUtil.getBoolean(jsonObj, "is_base_currency");
 
-    obj.manualExchangeRate = JsonUtil.getString(json, "manual_exchange_rate");
+    obj.manualExchangeRate = JsonUtil.getString(jsonObj, "manual_exchange_rate");
 
     return obj;
   }

@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.attribute;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class Attribute {
 
@@ -23,11 +24,15 @@ public class Attribute {
   }
 
   public static Attribute fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Attribute fromJson(JsonObject jsonObj) {
     Attribute obj = new Attribute();
 
-    obj.name = JsonUtil.getString(json, "name");
+    obj.name = JsonUtil.getString(jsonObj, "name");
 
-    obj.value = JsonUtil.getString(json, "value");
+    obj.value = JsonUtil.getString(jsonObj, "value");
 
     return obj;
   }

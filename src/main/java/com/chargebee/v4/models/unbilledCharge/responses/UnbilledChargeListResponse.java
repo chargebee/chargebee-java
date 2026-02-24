@@ -6,6 +6,7 @@ import com.chargebee.v4.models.unbilledCharge.UnbilledCharge;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.UnbilledChargeService;
 import com.chargebee.v4.models.unbilledCharge.params.UnbilledChargeListParams;
@@ -43,13 +44,13 @@ public final class UnbilledChargeListResponse {
    */
   public static UnbilledChargeListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<UnbilledChargeListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(UnbilledChargeListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), UnbilledChargeListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new UnbilledChargeListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class UnbilledChargeListResponse {
       UnbilledChargeListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<UnbilledChargeListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(UnbilledChargeListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), UnbilledChargeListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new UnbilledChargeListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -174,11 +175,15 @@ public final class UnbilledChargeListResponse {
     }
 
     public static UnbilledChargeListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static UnbilledChargeListItem fromJson(JsonObject jsonObj) {
       UnbilledChargeListItem item = new UnbilledChargeListItem();
 
-      String __unbilledChargeJson = JsonUtil.getObject(json, "unbilled_charge");
-      if (__unbilledChargeJson != null) {
-        item.unbilledCharge = UnbilledCharge.fromJson(__unbilledChargeJson);
+      JsonObject __unbilledChargeObj = JsonUtil.getJsonObject(jsonObj, "unbilled_charge");
+      if (__unbilledChargeObj != null) {
+        item.unbilledCharge = UnbilledCharge.fromJson(__unbilledChargeObj);
       }
 
       return item;

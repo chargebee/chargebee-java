@@ -6,6 +6,7 @@ import com.chargebee.v4.models.couponCode.CouponCode;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CouponCodeService;
 import com.chargebee.v4.models.couponCode.params.CouponCodeListParams;
@@ -43,13 +44,12 @@ public final class CouponCodeListResponse {
    */
   public static CouponCodeListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CouponCodeListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CouponCodeListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CouponCodeListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CouponCodeListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class CouponCodeListResponse {
       CouponCodeListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CouponCodeListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CouponCodeListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), CouponCodeListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CouponCodeListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class CouponCodeListResponse {
     }
 
     public static CouponCodeListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CouponCodeListItem fromJson(JsonObject jsonObj) {
       CouponCodeListItem item = new CouponCodeListItem();
 
-      String __couponCodeJson = JsonUtil.getObject(json, "coupon_code");
-      if (__couponCodeJson != null) {
-        item.couponCode = CouponCode.fromJson(__couponCodeJson);
+      JsonObject __couponCodeObj = JsonUtil.getJsonObject(jsonObj, "coupon_code");
+      if (__couponCodeObj != null) {
+        item.couponCode = CouponCode.fromJson(__couponCodeObj);
       }
 
       return item;

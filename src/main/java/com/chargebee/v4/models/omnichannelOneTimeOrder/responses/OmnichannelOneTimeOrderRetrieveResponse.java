@@ -4,6 +4,7 @@ import com.chargebee.v4.models.omnichannelOneTimeOrder.OmnichannelOneTimeOrder;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -28,12 +29,14 @@ public final class OmnichannelOneTimeOrderRetrieveResponse extends BaseResponse 
   public static OmnichannelOneTimeOrderRetrieveResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __omnichannelOneTimeOrderJson = JsonUtil.getObject(json, "omnichannel_one_time_order");
-      if (__omnichannelOneTimeOrderJson != null) {
+      JsonObject __omnichannelOneTimeOrderObj =
+          JsonUtil.getJsonObject(jsonObj, "omnichannel_one_time_order");
+      if (__omnichannelOneTimeOrderObj != null) {
         builder.omnichannelOneTimeOrder(
-            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderJson));
+            OmnichannelOneTimeOrder.fromJson(__omnichannelOneTimeOrderObj));
       }
 
       builder.httpResponse(httpResponse);

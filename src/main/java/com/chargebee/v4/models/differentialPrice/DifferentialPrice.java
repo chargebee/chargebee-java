@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.differentialPrice;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -118,43 +120,43 @@ public class DifferentialPrice {
   }
 
   public static DifferentialPrice fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static DifferentialPrice fromJson(JsonObject jsonObj) {
     DifferentialPrice obj = new DifferentialPrice();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.itemPriceId = JsonUtil.getString(json, "item_price_id");
+    obj.itemPriceId = JsonUtil.getString(jsonObj, "item_price_id");
 
-    obj.parentItemId = JsonUtil.getString(json, "parent_item_id");
+    obj.parentItemId = JsonUtil.getString(jsonObj, "parent_item_id");
 
-    obj.price = JsonUtil.getLong(json, "price");
+    obj.price = JsonUtil.getLong(jsonObj, "price");
 
-    obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+    obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.modifiedAt = JsonUtil.getTimestamp(json, "modified_at");
+    obj.modifiedAt = JsonUtil.getTimestamp(jsonObj, "modified_at");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
-    obj.tiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "tiers")).stream()
-            .map(Tiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.tiers = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "tiers"), Tiers::fromJson);
 
     obj.parentPeriods =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "parent_periods")).stream()
-            .map(ParentPeriods::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "parent_periods"), ParentPeriods::fromJson);
 
     return obj;
   }
@@ -313,23 +315,27 @@ public class DifferentialPrice {
     }
 
     public static Tiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Tiers fromJson(JsonObject jsonObj) {
       Tiers obj = new Tiers();
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.price = JsonUtil.getLong(json, "price");
+      obj.price = JsonUtil.getLong(jsonObj, "price");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.priceInDecimal = JsonUtil.getString(json, "price_in_decimal");
+      obj.priceInDecimal = JsonUtil.getString(jsonObj, "price_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
       return obj;
     }
@@ -433,17 +439,18 @@ public class DifferentialPrice {
     }
 
     public static ParentPeriods fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static ParentPeriods fromJson(JsonObject jsonObj) {
       ParentPeriods obj = new ParentPeriods();
 
-      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(json, "period_unit"));
+      obj.periodUnit = PeriodUnit.fromString(JsonUtil.getString(jsonObj, "period_unit"));
 
-      String __periodJson = JsonUtil.getArray(json, "period");
-      obj.period =
-          __periodJson != null
-              ? JsonUtil.parseObjectArray(__periodJson).stream()
-                  .map(JsonUtil::parseJsonObjectToMap)
-                  .collect(java.util.stream.Collectors.toList())
-              : null;
+      JsonArray __periodArr = JsonUtil.getJsonArray(jsonObj, "period");
+      if (__periodArr != null) {
+        obj.period = JsonUtil.mapArrayToObjects(__periodArr);
+      }
 
       return obj;
     }

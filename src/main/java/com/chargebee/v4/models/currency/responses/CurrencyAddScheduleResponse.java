@@ -4,6 +4,7 @@ import com.chargebee.v4.models.currency.Currency;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.sql.Timestamp;
 
@@ -32,13 +33,14 @@ public final class CurrencyAddScheduleResponse extends BaseResponse {
   /** Parse JSON response into CurrencyAddScheduleResponse object with HTTP response. */
   public static CurrencyAddScheduleResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      builder.scheduledAt(JsonUtil.getTimestamp(json, "scheduled_at"));
+      builder.scheduledAt(JsonUtil.getTimestamp(jsonObj, "scheduled_at"));
 
-      String __currencyJson = JsonUtil.getObject(json, "currency");
-      if (__currencyJson != null) {
-        builder.currency(Currency.fromJson(__currencyJson));
+      JsonObject __currencyObj = JsonUtil.getJsonObject(jsonObj, "currency");
+      if (__currencyObj != null) {
+        builder.currency(Currency.fromJson(__currencyObj));
       }
 
       builder.httpResponse(httpResponse);

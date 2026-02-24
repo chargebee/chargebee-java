@@ -5,6 +5,7 @@ import com.chargebee.v4.models.itemPrice.ItemPrice;
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
 import com.chargebee.v4.transport.Response;
+import com.google.gson.JsonObject;
 
 /**
  * Immutable response object for MoveItemPrice operation. Contains the response data from the API.
@@ -28,9 +29,10 @@ public final class MoveItemPriceResponse extends BaseResponse {
     try {
       Builder builder = builder();
 
-      String __itemPriceJson = JsonUtil.getObject(json, "item_price");
-      if (__itemPriceJson != null) {
-        builder.itemPrice(ItemPrice.fromJson(__itemPriceJson));
+      JsonObject jsonObj = JsonUtil.parse(json);
+      JsonObject __itemPriceObj = JsonUtil.getJsonObject(jsonObj, "item_price");
+      if (__itemPriceObj != null) {
+        builder.itemPrice(ItemPrice.fromJson(__itemPriceObj));
       }
 
       builder.httpResponse(httpResponse);

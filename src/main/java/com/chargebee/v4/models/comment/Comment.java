@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.comment;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class Comment {
@@ -136,23 +137,27 @@ public class Comment {
   }
 
   public static Comment fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static Comment fromJson(JsonObject jsonObj) {
     Comment obj = new Comment();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+    obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-    obj.addedBy = JsonUtil.getString(json, "added_by");
+    obj.addedBy = JsonUtil.getString(jsonObj, "added_by");
 
-    obj.notes = JsonUtil.getString(json, "notes");
+    obj.notes = JsonUtil.getString(jsonObj, "notes");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.entityId = JsonUtil.getString(json, "entity_id");
+    obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-    obj.businessEntityId = JsonUtil.getString(json, "business_entity_id");
+    obj.businessEntityId = JsonUtil.getString(jsonObj, "business_entity_id");
 
     return obj;
   }

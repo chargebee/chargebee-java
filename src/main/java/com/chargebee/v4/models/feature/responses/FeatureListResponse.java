@@ -6,6 +6,7 @@ import com.chargebee.v4.models.feature.Feature;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.FeatureService;
 import com.chargebee.v4.models.feature.params.FeatureListParams;
@@ -43,13 +44,12 @@ public final class FeatureListResponse {
    */
   public static FeatureListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<FeatureListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(FeatureListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), FeatureListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new FeatureListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class FeatureListResponse {
       FeatureListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<FeatureListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(FeatureListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), FeatureListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new FeatureListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class FeatureListResponse {
     }
 
     public static FeatureListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static FeatureListItem fromJson(JsonObject jsonObj) {
       FeatureListItem item = new FeatureListItem();
 
-      String __featureJson = JsonUtil.getObject(json, "feature");
-      if (__featureJson != null) {
-        item.feature = Feature.fromJson(__featureJson);
+      JsonObject __featureObj = JsonUtil.getJsonObject(jsonObj, "feature");
+      if (__featureObj != null) {
+        item.feature = Feature.fromJson(__featureObj);
       }
 
       return item;

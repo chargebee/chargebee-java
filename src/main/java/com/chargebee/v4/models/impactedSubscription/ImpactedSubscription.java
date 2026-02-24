@@ -8,6 +8,8 @@
 package com.chargebee.v4.models.impactedSubscription;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -30,21 +32,22 @@ public class ImpactedSubscription {
   }
 
   public static ImpactedSubscription fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ImpactedSubscription fromJson(JsonObject jsonObj) {
     ImpactedSubscription obj = new ImpactedSubscription();
 
-    obj.count = JsonUtil.getInteger(json, "count");
+    obj.count = JsonUtil.getInteger(jsonObj, "count");
 
-    String __subscriptionIdsJson = JsonUtil.getArray(json, "subscription_ids");
-    obj.subscriptionIds =
-        __subscriptionIdsJson != null
-            ? JsonUtil.parseObjectArray(__subscriptionIdsJson).stream()
-                .map(JsonUtil::parseJsonObjectToMap)
-                .collect(java.util.stream.Collectors.toList())
-            : null;
+    JsonArray __subscriptionIdsArr = JsonUtil.getJsonArray(jsonObj, "subscription_ids");
+    if (__subscriptionIdsArr != null) {
+      obj.subscriptionIds = JsonUtil.mapArrayToObjects(__subscriptionIdsArr);
+    }
 
-    String __downloadJson = JsonUtil.getObject(json, "download");
-    if (__downloadJson != null) {
-      obj.download = Download.fromJson(__downloadJson);
+    JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
+    if (__downloadObj != null) {
+      obj.download = Download.fromJson(__downloadObj);
     }
 
     return obj;
@@ -98,13 +101,17 @@ public class ImpactedSubscription {
     }
 
     public static Download fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(JsonObject jsonObj) {
       Download obj = new Download();
 
-      obj.downloadUrl = JsonUtil.getString(json, "download_url");
+      obj.downloadUrl = JsonUtil.getString(jsonObj, "download_url");
 
-      obj.validTill = JsonUtil.getTimestamp(json, "valid_till");
+      obj.validTill = JsonUtil.getTimestamp(jsonObj, "valid_till");
 
-      obj.mimeType = JsonUtil.getString(json, "mime_type");
+      obj.mimeType = JsonUtil.getString(jsonObj, "mime_type");
 
       return obj;
     }

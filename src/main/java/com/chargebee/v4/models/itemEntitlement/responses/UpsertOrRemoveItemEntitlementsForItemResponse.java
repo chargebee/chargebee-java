@@ -4,6 +4,7 @@ import com.chargebee.v4.models.itemEntitlement.ItemEntitlement;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -31,11 +32,12 @@ public final class UpsertOrRemoveItemEntitlementsForItemResponse extends BaseRes
   public static UpsertOrRemoveItemEntitlementsForItemResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __itemEntitlementJson = JsonUtil.getObject(json, "item_entitlement");
-      if (__itemEntitlementJson != null) {
-        builder.itemEntitlement(ItemEntitlement.fromJson(__itemEntitlementJson));
+      JsonObject __itemEntitlementObj = JsonUtil.getJsonObject(jsonObj, "item_entitlement");
+      if (__itemEntitlementObj != null) {
+        builder.itemEntitlement(ItemEntitlement.fromJson(__itemEntitlementObj));
       }
 
       builder.httpResponse(httpResponse);

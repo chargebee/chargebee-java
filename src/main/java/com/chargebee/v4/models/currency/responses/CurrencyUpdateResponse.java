@@ -4,6 +4,7 @@ import com.chargebee.v4.models.currency.Currency;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class CurrencyUpdateResponse extends BaseResponse {
   /** Parse JSON response into CurrencyUpdateResponse object with HTTP response. */
   public static CurrencyUpdateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __currencyJson = JsonUtil.getObject(json, "currency");
-      if (__currencyJson != null) {
-        builder.currency(Currency.fromJson(__currencyJson));
+      JsonObject __currencyObj = JsonUtil.getJsonObject(jsonObj, "currency");
+      if (__currencyObj != null) {
+        builder.currency(Currency.fromJson(__currencyObj));
       }
 
       builder.httpResponse(httpResponse);

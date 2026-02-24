@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.contractTerm;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class ContractTerm {
@@ -138,32 +139,36 @@ public class ContractTerm {
   }
 
   public static ContractTerm fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ContractTerm fromJson(JsonObject jsonObj) {
     ContractTerm obj = new ContractTerm();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.contractStart = JsonUtil.getTimestamp(json, "contract_start");
+    obj.contractStart = JsonUtil.getTimestamp(jsonObj, "contract_start");
 
-    obj.contractEnd = JsonUtil.getTimestamp(json, "contract_end");
+    obj.contractEnd = JsonUtil.getTimestamp(jsonObj, "contract_end");
 
-    obj.billingCycle = JsonUtil.getInteger(json, "billing_cycle");
+    obj.billingCycle = JsonUtil.getInteger(jsonObj, "billing_cycle");
 
     obj.actionAtTermEnd =
-        ActionAtTermEnd.fromString(JsonUtil.getString(json, "action_at_term_end"));
+        ActionAtTermEnd.fromString(JsonUtil.getString(jsonObj, "action_at_term_end"));
 
-    obj.totalContractValue = JsonUtil.getLong(json, "total_contract_value");
+    obj.totalContractValue = JsonUtil.getLong(jsonObj, "total_contract_value");
 
-    obj.totalContractValueBeforeTax = JsonUtil.getLong(json, "total_contract_value_before_tax");
+    obj.totalContractValueBeforeTax = JsonUtil.getLong(jsonObj, "total_contract_value_before_tax");
 
-    obj.cancellationCutoffPeriod = JsonUtil.getInteger(json, "cancellation_cutoff_period");
+    obj.cancellationCutoffPeriod = JsonUtil.getInteger(jsonObj, "cancellation_cutoff_period");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.remainingBillingCycles = JsonUtil.getInteger(json, "remaining_billing_cycles");
+    obj.remainingBillingCycles = JsonUtil.getInteger(jsonObj, "remaining_billing_cycles");
 
     return obj;
   }

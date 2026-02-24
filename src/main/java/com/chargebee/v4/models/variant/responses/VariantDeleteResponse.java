@@ -4,6 +4,7 @@ import com.chargebee.v4.models.variant.Variant;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class VariantDeleteResponse extends BaseResponse {
   /** Parse JSON response into VariantDeleteResponse object with HTTP response. */
   public static VariantDeleteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __variantJson = JsonUtil.getObject(json, "variant");
-      if (__variantJson != null) {
-        builder.variant(Variant.fromJson(__variantJson));
+      JsonObject __variantObj = JsonUtil.getJsonObject(jsonObj, "variant");
+      if (__variantObj != null) {
+        builder.variant(Variant.fromJson(__variantObj));
       }
 
       builder.httpResponse(httpResponse);

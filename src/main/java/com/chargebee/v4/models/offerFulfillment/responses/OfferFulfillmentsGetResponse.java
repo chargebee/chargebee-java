@@ -4,6 +4,7 @@ import com.chargebee.v4.models.offerFulfillment.OfferFulfillment;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class OfferFulfillmentsGetResponse extends BaseResponse {
   /** Parse JSON response into OfferFulfillmentsGetResponse object with HTTP response. */
   public static OfferFulfillmentsGetResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __offerFulfillmentJson = JsonUtil.getObject(json, "offer_fulfillment");
-      if (__offerFulfillmentJson != null) {
-        builder.offerFulfillment(OfferFulfillment.fromJson(__offerFulfillmentJson));
+      JsonObject __offerFulfillmentObj = JsonUtil.getJsonObject(jsonObj, "offer_fulfillment");
+      if (__offerFulfillmentObj != null) {
+        builder.offerFulfillment(OfferFulfillment.fromJson(__offerFulfillmentObj));
       }
 
       builder.httpResponse(httpResponse);

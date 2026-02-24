@@ -6,6 +6,7 @@ import com.chargebee.v4.models.customerEntitlement.CustomerEntitlement;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CustomerEntitlementService;
 import com.chargebee.v4.models.customerEntitlement.params.CustomerEntitlementEntitlementsForCustomerParams;
@@ -51,13 +52,14 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
    */
   public static CustomerEntitlementEntitlementsForCustomerResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerEntitlementEntitlementsForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerEntitlementEntitlementsForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              CustomerEntitlementEntitlementsForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerEntitlementEntitlementsForCustomerResponse(
           list, nextOffset, null, null, null, null);
@@ -78,13 +80,14 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
       String customerId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerEntitlementEntitlementsForCustomerItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerEntitlementEntitlementsForCustomerItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              CustomerEntitlementEntitlementsForCustomerItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerEntitlementEntitlementsForCustomerResponse(
           list, nextOffset, customerId, service, originalParams, httpResponse);
@@ -194,12 +197,16 @@ public final class CustomerEntitlementEntitlementsForCustomerResponse {
     }
 
     public static CustomerEntitlementEntitlementsForCustomerItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CustomerEntitlementEntitlementsForCustomerItem fromJson(JsonObject jsonObj) {
       CustomerEntitlementEntitlementsForCustomerItem item =
           new CustomerEntitlementEntitlementsForCustomerItem();
 
-      String __customerEntitlementJson = JsonUtil.getObject(json, "customer_entitlement");
-      if (__customerEntitlementJson != null) {
-        item.customerEntitlement = CustomerEntitlement.fromJson(__customerEntitlementJson);
+      JsonObject __customerEntitlementObj = JsonUtil.getJsonObject(jsonObj, "customer_entitlement");
+      if (__customerEntitlementObj != null) {
+        item.customerEntitlement = CustomerEntitlement.fromJson(__customerEntitlementObj);
       }
 
       return item;

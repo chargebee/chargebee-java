@@ -6,6 +6,7 @@ import com.chargebee.v4.models.entitlement.Entitlement;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.EntitlementService;
 import com.chargebee.v4.models.entitlement.params.EntitlementListParams;
@@ -43,13 +44,12 @@ public final class EntitlementListResponse {
    */
   public static EntitlementListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EntitlementListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EntitlementListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), EntitlementListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new EntitlementListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +67,12 @@ public final class EntitlementListResponse {
       EntitlementListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EntitlementListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EntitlementListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "list"), EntitlementListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new EntitlementListResponse(list, nextOffset, service, originalParams, httpResponse);
     } catch (Exception e) {
@@ -173,11 +172,15 @@ public final class EntitlementListResponse {
     }
 
     public static EntitlementListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EntitlementListItem fromJson(JsonObject jsonObj) {
       EntitlementListItem item = new EntitlementListItem();
 
-      String __entitlementJson = JsonUtil.getObject(json, "entitlement");
-      if (__entitlementJson != null) {
-        item.entitlement = Entitlement.fromJson(__entitlementJson);
+      JsonObject __entitlementObj = JsonUtil.getJsonObject(jsonObj, "entitlement");
+      if (__entitlementObj != null) {
+        item.entitlement = Entitlement.fromJson(__entitlementObj);
       }
 
       return item;

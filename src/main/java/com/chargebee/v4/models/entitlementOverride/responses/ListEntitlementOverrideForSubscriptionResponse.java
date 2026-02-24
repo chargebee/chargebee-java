@@ -6,6 +6,7 @@ import com.chargebee.v4.models.entitlementOverride.EntitlementOverride;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.EntitlementOverrideService;
 import com.chargebee.v4.models.entitlementOverride.params.ListEntitlementOverrideForSubscriptionParams;
@@ -51,13 +52,14 @@ public final class ListEntitlementOverrideForSubscriptionResponse {
    */
   public static ListEntitlementOverrideForSubscriptionResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EntitlementOverrideListEntitlementOverrideForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              EntitlementOverrideListEntitlementOverrideForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ListEntitlementOverrideForSubscriptionResponse(
           list, nextOffset, null, null, null, null);
@@ -78,13 +80,14 @@ public final class ListEntitlementOverrideForSubscriptionResponse {
       String subscriptionId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<EntitlementOverrideListEntitlementOverrideForSubscriptionItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(EntitlementOverrideListEntitlementOverrideForSubscriptionItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"),
+              EntitlementOverrideListEntitlementOverrideForSubscriptionItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new ListEntitlementOverrideForSubscriptionResponse(
           list, nextOffset, subscriptionId, service, originalParams, httpResponse);
@@ -195,12 +198,17 @@ public final class ListEntitlementOverrideForSubscriptionResponse {
 
     public static EntitlementOverrideListEntitlementOverrideForSubscriptionItem fromJson(
         String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static EntitlementOverrideListEntitlementOverrideForSubscriptionItem fromJson(
+        JsonObject jsonObj) {
       EntitlementOverrideListEntitlementOverrideForSubscriptionItem item =
           new EntitlementOverrideListEntitlementOverrideForSubscriptionItem();
 
-      String __entitlementOverrideJson = JsonUtil.getObject(json, "entitlement_override");
-      if (__entitlementOverrideJson != null) {
-        item.entitlementOverride = EntitlementOverride.fromJson(__entitlementOverrideJson);
+      JsonObject __entitlementOverrideObj = JsonUtil.getJsonObject(jsonObj, "entitlement_override");
+      if (__entitlementOverrideObj != null) {
+        item.entitlementOverride = EntitlementOverride.fromJson(__entitlementOverrideObj);
       }
 
       return item;

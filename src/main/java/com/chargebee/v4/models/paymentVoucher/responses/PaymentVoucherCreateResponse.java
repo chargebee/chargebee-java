@@ -4,6 +4,7 @@ import com.chargebee.v4.models.paymentVoucher.PaymentVoucher;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class PaymentVoucherCreateResponse extends BaseResponse {
   /** Parse JSON response into PaymentVoucherCreateResponse object with HTTP response. */
   public static PaymentVoucherCreateResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __paymentVoucherJson = JsonUtil.getObject(json, "payment_voucher");
-      if (__paymentVoucherJson != null) {
-        builder.paymentVoucher(PaymentVoucher.fromJson(__paymentVoucherJson));
+      JsonObject __paymentVoucherObj = JsonUtil.getJsonObject(jsonObj, "payment_voucher");
+      if (__paymentVoucherObj != null) {
+        builder.paymentVoucher(PaymentVoucher.fromJson(__paymentVoucherObj));
       }
 
       builder.httpResponse(httpResponse);

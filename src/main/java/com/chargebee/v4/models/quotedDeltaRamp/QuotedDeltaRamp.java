@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.quotedDeltaRamp;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.util.List;
 
 public class QuotedDeltaRamp {
@@ -19,12 +20,14 @@ public class QuotedDeltaRamp {
   }
 
   public static QuotedDeltaRamp fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static QuotedDeltaRamp fromJson(JsonObject jsonObj) {
     QuotedDeltaRamp obj = new QuotedDeltaRamp();
 
     obj.lineItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_items")).stream()
-            .map(LineItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
 
     return obj;
   }
@@ -58,10 +61,14 @@ public class QuotedDeltaRamp {
     }
 
     public static LineItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
       obj.itemLevelDiscountPerBillingCycleInDecimal =
-          JsonUtil.getString(json, "item_level_discount_per_billing_cycle_in_decimal");
+          JsonUtil.getString(jsonObj, "item_level_discount_per_billing_cycle_in_decimal");
 
       return obj;
     }

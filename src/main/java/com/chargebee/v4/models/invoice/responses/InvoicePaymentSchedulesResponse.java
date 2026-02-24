@@ -4,6 +4,7 @@ import com.chargebee.v4.models.paymentSchedule.PaymentSchedule;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import java.util.List;
 
@@ -28,15 +29,12 @@ public final class InvoicePaymentSchedulesResponse extends BaseResponse {
   /** Parse JSON response into InvoicePaymentSchedulesResponse object with HTTP response. */
   public static InvoicePaymentSchedulesResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __paymentSchedulesJson = JsonUtil.getArray(json, "payment_schedules");
-      if (__paymentSchedulesJson != null) {
-        builder.paymentSchedules(
-            JsonUtil.parseObjectArray(__paymentSchedulesJson).stream()
-                .map(PaymentSchedule::fromJson)
-                .collect(java.util.stream.Collectors.toList()));
-      }
+      builder.paymentSchedules(
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "payment_schedules"), PaymentSchedule::fromJson));
 
       builder.httpResponse(httpResponse);
       return builder.build();

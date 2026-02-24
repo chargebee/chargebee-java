@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.paymentVoucher;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -315,51 +316,54 @@ public class PaymentVoucher {
   }
 
   public static PaymentVoucher fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static PaymentVoucher fromJson(JsonObject jsonObj) {
     PaymentVoucher obj = new PaymentVoucher();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.idAtGateway = JsonUtil.getString(json, "id_at_gateway");
+    obj.idAtGateway = JsonUtil.getString(jsonObj, "id_at_gateway");
 
     obj.paymentVoucherType =
-        PaymentVoucherType.fromString(JsonUtil.getString(json, "payment_voucher_type"));
+        PaymentVoucherType.fromString(JsonUtil.getString(jsonObj, "payment_voucher_type"));
 
-    obj.expiresAt = JsonUtil.getTimestamp(json, "expires_at");
+    obj.expiresAt = JsonUtil.getTimestamp(jsonObj, "expires_at");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+    obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.amount = JsonUtil.getLong(json, "amount");
+    obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.paymentSourceId = JsonUtil.getString(json, "payment_source_id");
+    obj.paymentSourceId = JsonUtil.getString(jsonObj, "payment_source_id");
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.payload = JsonUtil.getString(json, "payload");
+    obj.payload = JsonUtil.getString(jsonObj, "payload");
 
-    obj.errorCode = JsonUtil.getString(json, "error_code");
+    obj.errorCode = JsonUtil.getString(jsonObj, "error_code");
 
-    obj.errorText = JsonUtil.getString(json, "error_text");
+    obj.errorText = JsonUtil.getString(jsonObj, "error_text");
 
-    obj.url = JsonUtil.getString(json, "url");
+    obj.url = JsonUtil.getString(jsonObj, "url");
 
-    obj.date = JsonUtil.getTimestamp(json, "date");
+    obj.date = JsonUtil.getTimestamp(jsonObj, "date");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
     obj.linkedInvoices =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "linked_invoices")).stream()
-            .map(LinkedInvoices::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "linked_invoices"), LinkedInvoices::fromJson);
 
     return obj;
   }
@@ -483,13 +487,17 @@ public class PaymentVoucher {
     }
 
     public static LinkedInvoices fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LinkedInvoices fromJson(JsonObject jsonObj) {
       LinkedInvoices obj = new LinkedInvoices();
 
-      obj.invoiceId = JsonUtil.getString(json, "invoice_id");
+      obj.invoiceId = JsonUtil.getString(jsonObj, "invoice_id");
 
-      obj.txnId = JsonUtil.getString(json, "txn_id");
+      obj.txnId = JsonUtil.getString(jsonObj, "txn_id");
 
-      obj.appliedAt = JsonUtil.getTimestamp(json, "applied_at");
+      obj.appliedAt = JsonUtil.getTimestamp(jsonObj, "applied_at");
 
       return obj;
     }

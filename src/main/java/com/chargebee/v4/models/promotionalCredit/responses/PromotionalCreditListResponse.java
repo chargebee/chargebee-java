@@ -6,6 +6,7 @@ import com.chargebee.v4.models.promotionalCredit.PromotionalCredit;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.PromotionalCreditService;
 import com.chargebee.v4.models.promotionalCredit.params.PromotionalCreditListParams;
@@ -43,13 +44,13 @@ public final class PromotionalCreditListResponse {
    */
   public static PromotionalCreditListResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PromotionalCreditListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PromotionalCreditListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), PromotionalCreditListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PromotionalCreditListResponse(list, nextOffset, null, null, null);
     } catch (Exception e) {
@@ -67,13 +68,13 @@ public final class PromotionalCreditListResponse {
       PromotionalCreditListParams originalParams,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<PromotionalCreditListItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(PromotionalCreditListItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), PromotionalCreditListItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new PromotionalCreditListResponse(
           list, nextOffset, service, originalParams, httpResponse);
@@ -176,11 +177,15 @@ public final class PromotionalCreditListResponse {
     }
 
     public static PromotionalCreditListItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static PromotionalCreditListItem fromJson(JsonObject jsonObj) {
       PromotionalCreditListItem item = new PromotionalCreditListItem();
 
-      String __promotionalCreditJson = JsonUtil.getObject(json, "promotional_credit");
-      if (__promotionalCreditJson != null) {
-        item.promotionalCredit = PromotionalCredit.fromJson(__promotionalCreditJson);
+      JsonObject __promotionalCreditObj = JsonUtil.getJsonObject(jsonObj, "promotional_credit");
+      if (__promotionalCreditObj != null) {
+        item.promotionalCredit = PromotionalCredit.fromJson(__promotionalCreditObj);
       }
 
       return item;

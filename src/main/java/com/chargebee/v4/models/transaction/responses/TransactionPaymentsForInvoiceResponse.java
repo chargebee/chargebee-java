@@ -6,6 +6,7 @@ import com.chargebee.v4.models.transaction.Transaction;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.TransactionService;
 import com.chargebee.v4.models.transaction.params.TransactionPaymentsForInvoiceParams;
@@ -51,13 +52,13 @@ public final class TransactionPaymentsForInvoiceResponse {
    */
   public static TransactionPaymentsForInvoiceResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionPaymentsForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionPaymentsForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), TransactionPaymentsForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionPaymentsForInvoiceResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -77,13 +78,13 @@ public final class TransactionPaymentsForInvoiceResponse {
       String invoiceId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<TransactionPaymentsForInvoiceItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(TransactionPaymentsForInvoiceItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), TransactionPaymentsForInvoiceItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new TransactionPaymentsForInvoiceResponse(
           list, nextOffset, invoiceId, service, originalParams, httpResponse);
@@ -192,11 +193,15 @@ public final class TransactionPaymentsForInvoiceResponse {
     }
 
     public static TransactionPaymentsForInvoiceItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static TransactionPaymentsForInvoiceItem fromJson(JsonObject jsonObj) {
       TransactionPaymentsForInvoiceItem item = new TransactionPaymentsForInvoiceItem();
 
-      String __transactionJson = JsonUtil.getObject(json, "transaction");
-      if (__transactionJson != null) {
-        item.transaction = Transaction.fromJson(__transactionJson);
+      JsonObject __transactionObj = JsonUtil.getJsonObject(jsonObj, "transaction");
+      if (__transactionObj != null) {
+        item.transaction = Transaction.fromJson(__transactionObj);
       }
 
       return item;

@@ -6,6 +6,7 @@ import com.chargebee.v4.models.hierarchy.Hierarchy;
 
 import com.chargebee.v4.exceptions.ChargebeeException;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 import com.chargebee.v4.services.CustomerService;
 import com.chargebee.v4.models.customer.params.CustomerListHierarchyDetailParams;
@@ -51,13 +52,13 @@ public final class CustomerListHierarchyDetailResponse {
    */
   public static CustomerListHierarchyDetailResponse fromJson(String json) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerListHierarchyDetailItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerListHierarchyDetailItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), CustomerListHierarchyDetailItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerListHierarchyDetailResponse(list, nextOffset, null, null, null, null);
     } catch (Exception e) {
@@ -77,13 +78,13 @@ public final class CustomerListHierarchyDetailResponse {
       String customerId,
       Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
 
       List<CustomerListHierarchyDetailItem> list =
-          JsonUtil.parseObjectArray(JsonUtil.getArray(json, "list")).stream()
-              .map(CustomerListHierarchyDetailItem::fromJson)
-              .collect(java.util.stream.Collectors.toList());
+          JsonUtil.mapArray(
+              JsonUtil.getJsonArray(jsonObj, "list"), CustomerListHierarchyDetailItem::fromJson);
 
-      String nextOffset = JsonUtil.getString(json, "next_offset");
+      String nextOffset = JsonUtil.getString(jsonObj, "next_offset");
 
       return new CustomerListHierarchyDetailResponse(
           list, nextOffset, customerId, service, originalParams, httpResponse);
@@ -192,11 +193,15 @@ public final class CustomerListHierarchyDetailResponse {
     }
 
     public static CustomerListHierarchyDetailItem fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static CustomerListHierarchyDetailItem fromJson(JsonObject jsonObj) {
       CustomerListHierarchyDetailItem item = new CustomerListHierarchyDetailItem();
 
-      String __hierarchyJson = JsonUtil.getObject(json, "hierarchy");
-      if (__hierarchyJson != null) {
-        item.hierarchy = Hierarchy.fromJson(__hierarchyJson);
+      JsonObject __hierarchyObj = JsonUtil.getJsonObject(jsonObj, "hierarchy");
+      if (__hierarchyObj != null) {
+        item.hierarchy = Hierarchy.fromJson(__hierarchyObj);
       }
 
       return item;

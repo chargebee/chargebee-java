@@ -4,6 +4,7 @@ import com.chargebee.v4.models.pricingPageSession.PricingPageSession;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -31,11 +32,12 @@ public final class PricingPageSessionCreateForNewSubscriptionResponse extends Ba
   public static PricingPageSessionCreateForNewSubscriptionResponse fromJson(
       String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __pricingPageSessionJson = JsonUtil.getObject(json, "pricing_page_session");
-      if (__pricingPageSessionJson != null) {
-        builder.pricingPageSession(PricingPageSession.fromJson(__pricingPageSessionJson));
+      JsonObject __pricingPageSessionObj = JsonUtil.getJsonObject(jsonObj, "pricing_page_session");
+      if (__pricingPageSessionObj != null) {
+        builder.pricingPageSession(PricingPageSession.fromJson(__pricingPageSessionObj));
       }
 
       builder.httpResponse(httpResponse);

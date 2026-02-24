@@ -4,6 +4,7 @@ import com.chargebee.v4.models.creditNote.CreditNote;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -26,11 +27,12 @@ public final class VoidCreditNoteResponse extends BaseResponse {
   /** Parse JSON response into VoidCreditNoteResponse object with HTTP response. */
   public static VoidCreditNoteResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __creditNoteJson = JsonUtil.getObject(json, "credit_note");
-      if (__creditNoteJson != null) {
-        builder.creditNote(CreditNote.fromJson(__creditNoteJson));
+      JsonObject __creditNoteObj = JsonUtil.getJsonObject(jsonObj, "credit_note");
+      if (__creditNoteObj != null) {
+        builder.creditNote(CreditNote.fromJson(__creditNoteObj));
       }
 
       builder.httpResponse(httpResponse);

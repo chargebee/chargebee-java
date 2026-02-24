@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.couponCode;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 
 public class CouponCode {
 
@@ -68,17 +69,21 @@ public class CouponCode {
   }
 
   public static CouponCode fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static CouponCode fromJson(JsonObject jsonObj) {
     CouponCode obj = new CouponCode();
 
-    obj.code = JsonUtil.getString(json, "code");
+    obj.code = JsonUtil.getString(jsonObj, "code");
 
-    obj.status = Status.fromString(JsonUtil.getString(json, "status"));
+    obj.status = Status.fromString(JsonUtil.getString(jsonObj, "status"));
 
-    obj.couponId = JsonUtil.getString(json, "coupon_id");
+    obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-    obj.couponSetId = JsonUtil.getString(json, "coupon_set_id");
+    obj.couponSetId = JsonUtil.getString(jsonObj, "coupon_set_id");
 
-    obj.couponSetName = JsonUtil.getString(json, "coupon_set_name");
+    obj.couponSetName = JsonUtil.getString(jsonObj, "coupon_set_name");
 
     return obj;
   }

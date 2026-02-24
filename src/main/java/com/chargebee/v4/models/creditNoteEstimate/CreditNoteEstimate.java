@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.creditNoteEstimate;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -154,57 +155,51 @@ public class CreditNoteEstimate {
   }
 
   public static CreditNoteEstimate fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static CreditNoteEstimate fromJson(JsonObject jsonObj) {
     CreditNoteEstimate obj = new CreditNoteEstimate();
 
-    obj.referenceInvoiceId = JsonUtil.getString(json, "reference_invoice_id");
+    obj.referenceInvoiceId = JsonUtil.getString(jsonObj, "reference_invoice_id");
 
-    obj.type = Type.fromString(JsonUtil.getString(json, "type"));
+    obj.type = Type.fromString(JsonUtil.getString(jsonObj, "type"));
 
-    obj.priceType = PriceType.fromString(JsonUtil.getString(json, "price_type"));
+    obj.priceType = PriceType.fromString(JsonUtil.getString(jsonObj, "price_type"));
 
-    obj.currencyCode = JsonUtil.getString(json, "currency_code");
+    obj.currencyCode = JsonUtil.getString(jsonObj, "currency_code");
 
-    obj.subTotal = JsonUtil.getLong(json, "sub_total");
+    obj.subTotal = JsonUtil.getLong(jsonObj, "sub_total");
 
-    obj.total = JsonUtil.getLong(json, "total");
+    obj.total = JsonUtil.getLong(jsonObj, "total");
 
-    obj.amountAllocated = JsonUtil.getLong(json, "amount_allocated");
+    obj.amountAllocated = JsonUtil.getLong(jsonObj, "amount_allocated");
 
-    obj.amountAvailable = JsonUtil.getLong(json, "amount_available");
+    obj.amountAvailable = JsonUtil.getLong(jsonObj, "amount_available");
 
-    obj.roundOffAmount = JsonUtil.getLong(json, "round_off_amount");
+    obj.roundOffAmount = JsonUtil.getLong(jsonObj, "round_off_amount");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
     obj.lineItems =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_items")).stream()
-            .map(LineItems::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "line_items"), LineItems::fromJson);
 
     obj.lineItemTiers =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_item_tiers")).stream()
-            .map(LineItemTiers::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "line_item_tiers"), LineItemTiers::fromJson);
 
     obj.lineItemDiscounts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_item_discounts")).stream()
-            .map(LineItemDiscounts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "line_item_discounts"), LineItemDiscounts::fromJson);
 
     obj.lineItemTaxes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "line_item_taxes")).stream()
-            .map(LineItemTaxes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(
+            JsonUtil.getJsonArray(jsonObj, "line_item_taxes"), LineItemTaxes::fromJson);
 
     obj.discounts =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "discounts")).stream()
-            .map(Discounts::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+        JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "discounts"), Discounts::fromJson);
 
-    obj.taxes =
-        JsonUtil.parseObjectArray(JsonUtil.getArray(json, "taxes")).stream()
-            .map(Taxes::fromJson)
-            .collect(java.util.stream.Collectors.toList());
+    obj.taxes = JsonUtil.mapArray(JsonUtil.getJsonArray(jsonObj, "taxes"), Taxes::fromJson);
 
     return obj;
   }
@@ -538,58 +533,62 @@ public class CreditNoteEstimate {
     }
 
     public static LineItems fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItems fromJson(JsonObject jsonObj) {
       LineItems obj = new LineItems();
 
-      obj.id = JsonUtil.getString(json, "id");
+      obj.id = JsonUtil.getString(jsonObj, "id");
 
-      obj.subscriptionId = JsonUtil.getString(json, "subscription_id");
+      obj.subscriptionId = JsonUtil.getString(jsonObj, "subscription_id");
 
-      obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
+      obj.dateFrom = JsonUtil.getTimestamp(jsonObj, "date_from");
 
-      obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
+      obj.dateTo = JsonUtil.getTimestamp(jsonObj, "date_to");
 
-      obj.unitAmount = JsonUtil.getLong(json, "unit_amount");
+      obj.unitAmount = JsonUtil.getLong(jsonObj, "unit_amount");
 
-      obj.quantity = JsonUtil.getInteger(json, "quantity");
+      obj.quantity = JsonUtil.getInteger(jsonObj, "quantity");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.pricingModel = PricingModel.fromString(JsonUtil.getString(json, "pricing_model"));
+      obj.pricingModel = PricingModel.fromString(JsonUtil.getString(jsonObj, "pricing_model"));
 
-      obj.isTaxed = JsonUtil.getBoolean(json, "is_taxed");
+      obj.isTaxed = JsonUtil.getBoolean(jsonObj, "is_taxed");
 
-      obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
+      obj.taxAmount = JsonUtil.getLong(jsonObj, "tax_amount");
 
-      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(jsonObj, "tax_rate");
 
-      obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
+      obj.unitAmountInDecimal = JsonUtil.getString(jsonObj, "unit_amount_in_decimal");
 
-      obj.quantityInDecimal = JsonUtil.getString(json, "quantity_in_decimal");
+      obj.quantityInDecimal = JsonUtil.getString(jsonObj, "quantity_in_decimal");
 
-      obj.amountInDecimal = JsonUtil.getString(json, "amount_in_decimal");
+      obj.amountInDecimal = JsonUtil.getString(jsonObj, "amount_in_decimal");
 
-      obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+      obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
-      obj.itemLevelDiscountAmount = JsonUtil.getLong(json, "item_level_discount_amount");
+      obj.itemLevelDiscountAmount = JsonUtil.getLong(jsonObj, "item_level_discount_amount");
 
-      obj.metered = JsonUtil.getBoolean(json, "metered");
+      obj.metered = JsonUtil.getBoolean(jsonObj, "metered");
 
-      obj.isPercentagePricing = JsonUtil.getBoolean(json, "is_percentage_pricing");
+      obj.isPercentagePricing = JsonUtil.getBoolean(jsonObj, "is_percentage_pricing");
 
-      obj.referenceLineItemId = JsonUtil.getString(json, "reference_line_item_id");
+      obj.referenceLineItemId = JsonUtil.getString(jsonObj, "reference_line_item_id");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
-      obj.entityDescription = JsonUtil.getString(json, "entity_description");
+      obj.entityDescription = JsonUtil.getString(jsonObj, "entity_description");
 
-      obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
       obj.taxExemptReason =
-          TaxExemptReason.fromString(JsonUtil.getString(json, "tax_exempt_reason"));
+          TaxExemptReason.fromString(JsonUtil.getString(jsonObj, "tax_exempt_reason"));
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-      obj.customerId = JsonUtil.getString(json, "customer_id");
+      obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
       return obj;
     }
@@ -804,29 +803,33 @@ public class CreditNoteEstimate {
     }
 
     public static LineItemTiers fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemTiers fromJson(JsonObject jsonObj) {
       LineItemTiers obj = new LineItemTiers();
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.startingUnit = JsonUtil.getInteger(json, "starting_unit");
+      obj.startingUnit = JsonUtil.getInteger(jsonObj, "starting_unit");
 
-      obj.endingUnit = JsonUtil.getInteger(json, "ending_unit");
+      obj.endingUnit = JsonUtil.getInteger(jsonObj, "ending_unit");
 
-      obj.quantityUsed = JsonUtil.getInteger(json, "quantity_used");
+      obj.quantityUsed = JsonUtil.getInteger(jsonObj, "quantity_used");
 
-      obj.unitAmount = JsonUtil.getLong(json, "unit_amount");
+      obj.unitAmount = JsonUtil.getLong(jsonObj, "unit_amount");
 
-      obj.startingUnitInDecimal = JsonUtil.getString(json, "starting_unit_in_decimal");
+      obj.startingUnitInDecimal = JsonUtil.getString(jsonObj, "starting_unit_in_decimal");
 
-      obj.endingUnitInDecimal = JsonUtil.getString(json, "ending_unit_in_decimal");
+      obj.endingUnitInDecimal = JsonUtil.getString(jsonObj, "ending_unit_in_decimal");
 
-      obj.quantityUsedInDecimal = JsonUtil.getString(json, "quantity_used_in_decimal");
+      obj.quantityUsedInDecimal = JsonUtil.getString(jsonObj, "quantity_used_in_decimal");
 
-      obj.unitAmountInDecimal = JsonUtil.getString(json, "unit_amount_in_decimal");
+      obj.unitAmountInDecimal = JsonUtil.getString(jsonObj, "unit_amount_in_decimal");
 
-      obj.pricingType = PricingType.fromString(JsonUtil.getString(json, "pricing_type"));
+      obj.pricingType = PricingType.fromString(JsonUtil.getString(jsonObj, "pricing_type"));
 
-      obj.packageSize = JsonUtil.getInteger(json, "package_size");
+      obj.packageSize = JsonUtil.getInteger(jsonObj, "package_size");
 
       return obj;
     }
@@ -961,17 +964,21 @@ public class CreditNoteEstimate {
     }
 
     public static LineItemDiscounts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemDiscounts fromJson(JsonObject jsonObj) {
       LineItemDiscounts obj = new LineItemDiscounts();
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+      obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-      obj.couponId = JsonUtil.getString(json, "coupon_id");
+      obj.couponId = JsonUtil.getString(jsonObj, "coupon_id");
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-      obj.discountAmount = JsonUtil.getLong(json, "discount_amount");
+      obj.discountAmount = JsonUtil.getLong(jsonObj, "discount_amount");
 
       return obj;
     }
@@ -1131,37 +1138,41 @@ public class CreditNoteEstimate {
     }
 
     public static LineItemTaxes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static LineItemTaxes fromJson(JsonObject jsonObj) {
       LineItemTaxes obj = new LineItemTaxes();
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.taxName = JsonUtil.getString(json, "tax_name");
+      obj.taxName = JsonUtil.getString(jsonObj, "tax_name");
 
-      obj.taxRate = JsonUtil.getDouble(json, "tax_rate");
+      obj.taxRate = JsonUtil.getDouble(jsonObj, "tax_rate");
 
-      obj.dateTo = JsonUtil.getTimestamp(json, "date_to");
+      obj.dateTo = JsonUtil.getTimestamp(jsonObj, "date_to");
 
-      obj.dateFrom = JsonUtil.getTimestamp(json, "date_from");
+      obj.dateFrom = JsonUtil.getTimestamp(jsonObj, "date_from");
 
-      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(json, "prorated_taxable_amount");
+      obj.proratedTaxableAmount = JsonUtil.getBigDecimal(jsonObj, "prorated_taxable_amount");
 
-      obj.isPartialTaxApplied = JsonUtil.getBoolean(json, "is_partial_tax_applied");
+      obj.isPartialTaxApplied = JsonUtil.getBoolean(jsonObj, "is_partial_tax_applied");
 
-      obj.isNonComplianceTax = JsonUtil.getBoolean(json, "is_non_compliance_tax");
+      obj.isNonComplianceTax = JsonUtil.getBoolean(jsonObj, "is_non_compliance_tax");
 
-      obj.taxableAmount = JsonUtil.getLong(json, "taxable_amount");
+      obj.taxableAmount = JsonUtil.getLong(jsonObj, "taxable_amount");
 
-      obj.taxAmount = JsonUtil.getLong(json, "tax_amount");
+      obj.taxAmount = JsonUtil.getLong(jsonObj, "tax_amount");
 
-      obj.taxJurisType = TaxJurisType.fromString(JsonUtil.getString(json, "tax_juris_type"));
+      obj.taxJurisType = TaxJurisType.fromString(JsonUtil.getString(jsonObj, "tax_juris_type"));
 
-      obj.taxJurisName = JsonUtil.getString(json, "tax_juris_name");
+      obj.taxJurisName = JsonUtil.getString(jsonObj, "tax_juris_name");
 
-      obj.taxJurisCode = JsonUtil.getString(json, "tax_juris_code");
+      obj.taxJurisCode = JsonUtil.getString(jsonObj, "tax_juris_code");
 
-      obj.taxAmountInLocalCurrency = JsonUtil.getLong(json, "tax_amount_in_local_currency");
+      obj.taxAmountInLocalCurrency = JsonUtil.getLong(jsonObj, "tax_amount_in_local_currency");
 
-      obj.localCurrencyCode = JsonUtil.getString(json, "local_currency_code");
+      obj.localCurrencyCode = JsonUtil.getString(jsonObj, "local_currency_code");
 
       return obj;
     }
@@ -1350,21 +1361,25 @@ public class CreditNoteEstimate {
     }
 
     public static Discounts fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Discounts fromJson(JsonObject jsonObj) {
       Discounts obj = new Discounts();
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
-      obj.lineItemId = JsonUtil.getString(json, "line_item_id");
+      obj.lineItemId = JsonUtil.getString(jsonObj, "line_item_id");
 
-      obj.entityType = EntityType.fromString(JsonUtil.getString(json, "entity_type"));
+      obj.entityType = EntityType.fromString(JsonUtil.getString(jsonObj, "entity_type"));
 
-      obj.discountType = DiscountType.fromString(JsonUtil.getString(json, "discount_type"));
+      obj.discountType = DiscountType.fromString(JsonUtil.getString(jsonObj, "discount_type"));
 
-      obj.entityId = JsonUtil.getString(json, "entity_id");
+      obj.entityId = JsonUtil.getString(jsonObj, "entity_id");
 
-      obj.couponSetCode = JsonUtil.getString(json, "coupon_set_code");
+      obj.couponSetCode = JsonUtil.getString(jsonObj, "coupon_set_code");
 
       return obj;
     }
@@ -1431,13 +1446,17 @@ public class CreditNoteEstimate {
     }
 
     public static Taxes fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Taxes fromJson(JsonObject jsonObj) {
       Taxes obj = new Taxes();
 
-      obj.name = JsonUtil.getString(json, "name");
+      obj.name = JsonUtil.getString(jsonObj, "name");
 
-      obj.amount = JsonUtil.getLong(json, "amount");
+      obj.amount = JsonUtil.getLong(jsonObj, "amount");
 
-      obj.description = JsonUtil.getString(json, "description");
+      obj.description = JsonUtil.getString(jsonObj, "description");
 
       return obj;
     }

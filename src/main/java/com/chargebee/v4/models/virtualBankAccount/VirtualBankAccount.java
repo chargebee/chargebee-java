@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.virtualBankAccount;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class VirtualBankAccount {
@@ -269,37 +270,41 @@ public class VirtualBankAccount {
   }
 
   public static VirtualBankAccount fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static VirtualBankAccount fromJson(JsonObject jsonObj) {
     VirtualBankAccount obj = new VirtualBankAccount();
 
-    obj.id = JsonUtil.getString(json, "id");
+    obj.id = JsonUtil.getString(jsonObj, "id");
 
-    obj.customerId = JsonUtil.getString(json, "customer_id");
+    obj.customerId = JsonUtil.getString(jsonObj, "customer_id");
 
-    obj.email = JsonUtil.getString(json, "email");
+    obj.email = JsonUtil.getString(jsonObj, "email");
 
-    obj.scheme = Scheme.fromString(JsonUtil.getString(json, "scheme"));
+    obj.scheme = Scheme.fromString(JsonUtil.getString(jsonObj, "scheme"));
 
-    obj.bankName = JsonUtil.getString(json, "bank_name");
+    obj.bankName = JsonUtil.getString(jsonObj, "bank_name");
 
-    obj.accountNumber = JsonUtil.getString(json, "account_number");
+    obj.accountNumber = JsonUtil.getString(jsonObj, "account_number");
 
-    obj.routingNumber = JsonUtil.getString(json, "routing_number");
+    obj.routingNumber = JsonUtil.getString(jsonObj, "routing_number");
 
-    obj.swiftCode = JsonUtil.getString(json, "swift_code");
+    obj.swiftCode = JsonUtil.getString(jsonObj, "swift_code");
 
-    obj.gateway = Gateway.fromString(JsonUtil.getString(json, "gateway"));
+    obj.gateway = Gateway.fromString(JsonUtil.getString(jsonObj, "gateway"));
 
-    obj.gatewayAccountId = JsonUtil.getString(json, "gateway_account_id");
+    obj.gatewayAccountId = JsonUtil.getString(jsonObj, "gateway_account_id");
 
-    obj.resourceVersion = JsonUtil.getLong(json, "resource_version");
+    obj.resourceVersion = JsonUtil.getLong(jsonObj, "resource_version");
 
-    obj.updatedAt = JsonUtil.getTimestamp(json, "updated_at");
+    obj.updatedAt = JsonUtil.getTimestamp(jsonObj, "updated_at");
 
-    obj.createdAt = JsonUtil.getTimestamp(json, "created_at");
+    obj.createdAt = JsonUtil.getTimestamp(jsonObj, "created_at");
 
-    obj.referenceId = JsonUtil.getString(json, "reference_id");
+    obj.referenceId = JsonUtil.getString(jsonObj, "reference_id");
 
-    obj.deleted = JsonUtil.getBoolean(json, "deleted");
+    obj.deleted = JsonUtil.getBoolean(jsonObj, "deleted");
 
     return obj;
   }

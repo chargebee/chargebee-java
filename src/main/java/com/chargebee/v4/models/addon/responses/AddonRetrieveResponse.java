@@ -4,6 +4,7 @@ import com.chargebee.v4.models.addon.Addon;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class AddonRetrieveResponse extends BaseResponse {
   /** Parse JSON response into AddonRetrieveResponse object with HTTP response. */
   public static AddonRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __addonJson = JsonUtil.getObject(json, "addon");
-      if (__addonJson != null) {
-        builder.addon(Addon.fromJson(__addonJson));
+      JsonObject __addonObj = JsonUtil.getJsonObject(jsonObj, "addon");
+      if (__addonObj != null) {
+        builder.addon(Addon.fromJson(__addonObj));
       }
 
       builder.httpResponse(httpResponse);

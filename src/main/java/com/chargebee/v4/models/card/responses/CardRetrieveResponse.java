@@ -4,6 +4,7 @@ import com.chargebee.v4.models.card.Card;
 
 import com.chargebee.v4.models.BaseResponse;
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import com.chargebee.v4.transport.Response;
 
 /**
@@ -27,11 +28,12 @@ public final class CardRetrieveResponse extends BaseResponse {
   /** Parse JSON response into CardRetrieveResponse object with HTTP response. */
   public static CardRetrieveResponse fromJson(String json, Response httpResponse) {
     try {
+      JsonObject jsonObj = JsonUtil.parse(json);
       Builder builder = builder();
 
-      String __cardJson = JsonUtil.getObject(json, "card");
-      if (__cardJson != null) {
-        builder.card(Card.fromJson(__cardJson));
+      JsonObject __cardObj = JsonUtil.getJsonObject(jsonObj, "card");
+      if (__cardObj != null) {
+        builder.card(Card.fromJson(__cardObj));
       }
 
       builder.httpResponse(httpResponse);

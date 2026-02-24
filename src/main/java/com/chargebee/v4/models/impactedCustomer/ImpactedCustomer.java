@@ -8,6 +8,7 @@
 package com.chargebee.v4.models.impactedCustomer;
 
 import com.chargebee.v4.internal.JsonUtil;
+import com.google.gson.JsonObject;
 import java.sql.Timestamp;
 
 public class ImpactedCustomer {
@@ -24,13 +25,17 @@ public class ImpactedCustomer {
   }
 
   public static ImpactedCustomer fromJson(String json) {
+    return fromJson(JsonUtil.parse(json));
+  }
+
+  public static ImpactedCustomer fromJson(JsonObject jsonObj) {
     ImpactedCustomer obj = new ImpactedCustomer();
 
-    obj.actionType = JsonUtil.getString(json, "action_type");
+    obj.actionType = JsonUtil.getString(jsonObj, "action_type");
 
-    String __downloadJson = JsonUtil.getObject(json, "download");
-    if (__downloadJson != null) {
-      obj.download = Download.fromJson(__downloadJson);
+    JsonObject __downloadObj = JsonUtil.getJsonObject(jsonObj, "download");
+    if (__downloadObj != null) {
+      obj.download = Download.fromJson(__downloadObj);
     }
 
     return obj;
@@ -76,13 +81,17 @@ public class ImpactedCustomer {
     }
 
     public static Download fromJson(String json) {
+      return fromJson(JsonUtil.parse(json));
+    }
+
+    public static Download fromJson(JsonObject jsonObj) {
       Download obj = new Download();
 
-      obj.downloadUrl = JsonUtil.getString(json, "download_url");
+      obj.downloadUrl = JsonUtil.getString(jsonObj, "download_url");
 
-      obj.validTill = JsonUtil.getTimestamp(json, "valid_till");
+      obj.validTill = JsonUtil.getTimestamp(jsonObj, "valid_till");
 
-      obj.mimeType = JsonUtil.getString(json, "mime_type");
+      obj.mimeType = JsonUtil.getString(jsonObj, "mime_type");
 
       return obj;
     }
